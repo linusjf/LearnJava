@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : buildall
+# @created     : Thursday May 02, 2019 17:40:19 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : 
+######################################################################
+
+rm *.dex
+find . -name "*.class" -type f ! -path "*.git*" -delete
+for dir in $(find . -type d ! -path "*.git*" ! -path . -maxdepth 1 )
+  do
+    echo $dir
+    ecj $dir
+    echo ecj done
+    dx --dex --output=$dir.dex $dir
+    echo dx done
+  done
+exit 0

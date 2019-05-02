@@ -1,0 +1,24 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : run
+# @created     : Thursday May 02, 2019 16:31:33 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : 
+######################################################################
+if [ -z $2 ]
+then
+  main=$(<$1/.main)
+else
+  main=$2
+fi
+echo Main class: $main
+[ -e $1.dex ] && { dalvikvm -cp $1.dex $main;exit 0; }
+usage ()
+{
+  echo 'Usage: run <dir> <class>'
+  echo 'dir - project directory'
+  echo 'class - full name including package name of the main class'
+}
+usage

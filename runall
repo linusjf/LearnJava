@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : runall
+# @created     : Thursday May 02, 2019 17:41:08 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : 
+######################################################################
+
+for dir in $(find . -type d ! -path "*.git*" ! -path . -maxdepth 1)
+  do
+    echo $dir
+    ./run $dir
+  done
+exit 0
