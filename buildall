@@ -14,8 +14,6 @@ for dir in $(find . -type d ! -path "*.git*" ! -path . -maxdepth 1 )
   do
     echo $dir
     ecj $dir
-    echo ecj done
     dx --dex --output=$dir.dex $dir
-    echo dx done
   done
 exit 0
