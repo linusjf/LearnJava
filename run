@@ -19,6 +19,7 @@ usage ()
 {
   echo 'Usage: run <dir> <class>'
   echo 'dir - project directory'
-  echo 'class - full name including package name of the main class'
+  echo 'class - full name including package name of the main class. Overrides contents of .main under project directory.'
+  exit 1
 }
 usage
