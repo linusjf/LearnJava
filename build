@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+#######################################################################
+#@author: Linus Fernandes(linusfernandes @gmail.com)
+# @file: build
+## @created: Friday May 03, 2019 21: 20: 25 IST
+# @copyright: Copyright(c) Linus Fernandes
+## @description: 
+######################################################################
+    usage() {
+        echo "usage: build dir"
+        exit 1
+    }
+if [ -z $1 ]
+  then
+    usage
+else
+    echo $1
+    ecj $1
+    dx --dex --output=$1.dex $1
+fi
+exit 0
