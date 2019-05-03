@@ -8,6 +8,8 @@ public class Client {
         EncryptorFacade e= new EncryptorFacade();
         System.out.println("MD5 encryption");
         System.out.println(e.encrypt(MD5, myText));
+        System.out.println("MD5 salted encryption");
+        System.out.println(e.encrypt(MD5Salted, myText));
         System.out.println("SHA encryption");
         System.out.println(e.encrypt(SHA, myText));
         System.out.println("SHA256 encryption");
