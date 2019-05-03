@@ -9,12 +9,11 @@ public class MD5Encryptor implements Encrypt {
             msgDigest.update(text.getBytes());
 
             byte textBytes[] = msgDigest.digest();
-
             StringBuffer buffer = new StringBuffer();
             for (int i = 0; i < textBytes.length; i++) {
-                buffer.append(Integer.toString((textBytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-
+    buffer.append(Character.forDigit((textBytes[i] >> 4) & 0xF, 16));
+    buffer.append(Character.forDigit((textBytes[i] & 0xF), 16));
+}
             hash = buffer.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
