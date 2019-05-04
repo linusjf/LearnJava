@@ -4,6 +4,8 @@ import com.javacodegeeks.abk.MD5Encryptor;
 import com.javacodegeeks.abk.MD5Salted;
 import com.javacodegeeks.abk.SHA;
 import com.javacodegeeks.abk.SHA256;
+import com.javacodegeeks.abk.SHASalted;
+import com.javacodegeeks.abk.SHA256Salted;
 public class EncryptorFacade {
 
   public static enum EncryptionType
@@ -11,7 +13,9 @@ public class EncryptorFacade {
     MD5,
     MD5Salted,
     SHA,
-    SHA256
+    SHASalted,
+    SHA256,
+    SHA256Salted
   };
     public String encrypt(EncryptionType type, String text) {
         String hash = "";
@@ -32,9 +36,19 @@ public class EncryptorFacade {
             e = new SHA();
             hash = e.encrypt(text);
             break;
+          
+          case SHASalted:
+            e = new SHASalted();
+            hash = e.encrypt(text);
+            break;
             
           case SHA256:
             e = new SHA256();
+            hash = e.encrypt(text);
+            break;
+          
+          case SHA256Salted:
+            e = new SHA256Salted();
             hash = e.encrypt(text);
             break;
         
