@@ -18,5 +18,13 @@ public class Client {
         System.out.println(e.encrypt(SHA256, myText));
         System.out.println("SHA256Salted encryption");
         System.out.println(e.encrypt(SHA256Salted, myText));
+        System.out.println("SHA384 encryption");
+        System.out.println(e.encrypt(SHA384, myText));
+        System.out.println("SHA384Salted encryption");
+        System.out.println(e.encrypt(SHA384Salted, myText));
+        System.out.println("SHA512 encryption");
+        System.out.println(e.encrypt(SHA512, myText));
+        System.out.println("SHA512Salted encryption");
+        System.out.println(e.encrypt(SHA512Salted, myText));
     }
 }

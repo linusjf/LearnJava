@@ -5,6 +5,10 @@ import com.javacodegeeks.abk.SHA;
 import com.javacodegeeks.abk.SHA256;
 import com.javacodegeeks.abk.SHASalted;
 import com.javacodegeeks.abk.SHA256Salted;
+import com.javacodegeeks.abk.SHA384;
+import com.javacodegeeks.abk.SHA512;
+import com.javacodegeeks.abk.SHA384Salted;
+import com.javacodegeeks.abk.SHA512Salted;
 public class Client2 {
     public static void main(String[] args) {
         String myText = "Encrypt this text";
@@ -26,5 +30,17 @@ public class Client2 {
         SHA256Salted s256salted= new SHA256Salted();
         System.out.println("SHA256 Salted encryption");
         System.out.println(s256salted.encrypt(myText));
+        SHA384 s384 = new SHA384();
+        System.out.println("SHA384 encryption");
+        System.out.println(s384.encrypt(myText));
+        SHA384Salted s384salted= new SHA384Salted();
+        System.out.println("SHA384 Salted encryption");
+        System.out.println(s384salted.encrypt(myText));
+        SHA512 s512 = new SHA512();
+        System.out.println("SHA512 encryption");
+        System.out.println(s512.encrypt(myText));
+        SHA512Salted s512salted= new SHA512Salted();
+        System.out.println("SHA512 Salted encryption");
+        System.out.println(s512salted.encrypt(myText));
     }
 }
