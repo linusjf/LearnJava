@@ -10,6 +10,8 @@ import com.javacodegeeks.abk.SHA384;
 import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA384Salted;
 import com.javacodegeeks.abk.SHA512Salted;
+import com.javacodegeeks.abk.SHA224;
+import com.javacodegeeks.abk.SHA224Salted;
 public class EncryptorFacade {
 
   public static enum EncryptionType
@@ -18,12 +20,14 @@ public class EncryptorFacade {
     MD5Salted,
     SHA,
     SHASalted,
+    SHA224,
+    SHA224Salted,
     SHA256,
     SHA256Salted,
     SHA384,
     SHA384Salted,
     SHA512,
-    SHA512Salted,
+    SHA512Salted
   };
     public String encrypt(EncryptionType type, String text) {
         String hash = "";
@@ -47,6 +51,16 @@ public class EncryptorFacade {
           
           case SHASalted:
             e = new SHASalted();
+            hash = e.encrypt(text);
+            break;
+          
+          case SHA224:
+            e = new SHA224();
+            hash = e.encrypt(text);
+            break;
+          
+          case SHA224Salted:
+            e = new SHA224Salted();
             hash = e.encrypt(text);
             break;
             
