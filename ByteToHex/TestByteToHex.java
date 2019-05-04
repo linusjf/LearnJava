@@ -8,7 +8,7 @@
 public class TestByteToHex {
     public static void main(String[] args) {
         long start, end, elapsed;
-        String hex;
+        String hex,hex2,hex3,hex4;
         String byteString = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€$123456789003356788990335688335678888))5778889===66://))*£&'/!!))))?:/!??????!//!!!!!!!!!?????      dffvbbfrewshjoohgvvvzscvbmmmxxvffew236889uygghhbhjkiu65fvbhbbvvvvvdew13yhgftggjioo9hhgggggvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJHFDSSSGHIJJH";
         byte[] raw = byteString.getBytes();
         start = System.nanoTime();
@@ -18,21 +18,22 @@ public class TestByteToHex {
         System.out.println("getHex: "+elapsed);
 
         start = System.nanoTime();
-        hex = ByteToHex.getHex2(raw);
+        hex2 = ByteToHex.getHex2(raw);
         end = System.nanoTime();
         elapsed = end - start;
         System.out.println("getHex2: "+elapsed);
         
         start = System.nanoTime();
-        hex = ByteToHex.getHex3(raw);
+        hex3 = ByteToHex.getHex3(raw);
         end = System.nanoTime();
         elapsed = end - start;
         System.out.println("getHex3: "+elapsed);
         
         start = System.nanoTime();
-        hex = ByteToHex.getHex4(raw);
+        hex4 = ByteToHex.getHex4(raw);
         end = System.nanoTime();
         elapsed = end - start;
         System.out.println("getHex4: "+elapsed);
+        assert((hex == hex2) && (hex2 == hex3) && (hex3 == hex4));
     }
 }
