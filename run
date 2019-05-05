@@ -7,15 +7,32 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
+proj=$1
 if [ -z $2 ]
 then
-  main=$(<$1/.main)
+  main=$(<$proj/.main)
 else
   main=$2
 fi
 echo Main class: $main
-[ -e $1.dex ] && { dalvikvm -cp $1.dex $main;exit 0; }
-[ -e $1.jar ] && { java -cp $1.jar $main;exit 0; }
+setUp ()
+{
+echo into setup
+	echo cd $proj
+	cd $proj
+[ -e setup ] && { ./setup; }
+cd ..
+}
+tearDown ()
+{
+	echo into teardown
+	cd $proj
+[ -e teardown ] && { ./teardown; }
+cd ..
+}
+setUp
+[ -e $proj.dex ] && { dalvikvm -cp $proj.dex $main;tearDown;exit 0; }
+[ -e $proj.jar ] && { java -cp $proj.jar $main;tearDown;exit 0; }
 usage ()
 {
   echo 'Usage: run <dir> <class>'
