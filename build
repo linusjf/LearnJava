@@ -16,7 +16,9 @@ if [ -z $1 ]
     usage
 else
     echo $1
-    ecj $1
-    dx --dex --output=$1.dex $1
+    ver=$(<$1/.ver)
+    ecj -$ver $1
+    type dx && dx --dex --output=$1.dex $1
+    type jar && jar cfn $1.jar -C $1/ .
 fi
 exit 0

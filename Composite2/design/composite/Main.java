@@ -26,11 +26,11 @@ public class Main {
 		
 		WorkLoader workLoad = new WorkLoader("work.properties");
 
-    /*workLoad.getWorkList().stream().forEach(work -> {
+    workLoad.getWorkList().stream().forEach(work -> {
 			rachelle.assignWork(rachelle, work);
-		});*/
-    for (Work work: workLoad.getWorkList())
-      rachelle.assignWork(rachelle,work);
+		});
+    /*for (Work work: workLoad.getWorkList())
+      rachelle.assignWork(rachelle,work);*/
 		
 		rachelle.performWork();
 		

@@ -15,6 +15,7 @@ else
 fi
 echo Main class: $main
 [ -e $1.dex ] && { dalvikvm -cp $1.dex $main;exit 0; }
+[ -e $1.jar ] && { java -cp $1.jar $main;exit 0; }
 usage ()
 {
   echo 'Usage: run <dir> <class>'

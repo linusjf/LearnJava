@@ -10,12 +10,13 @@ import java.util.Set;
 public class WorkLoader {
 	protected Properties properties = new Properties();
 	public WorkLoader(String fileName) {
-		try (InputStream input = new FileInputStream(fileName)) {
+/**		try (InputStream input = new FileInputStream(fileName)) {
 			// load a properties file
 			properties.load(input);
 		} catch (IOException exp) {
 			exp.printStackTrace();
-		}
+		}**/
+		properties = PropertyLoader.loadProperties(fileName);
 	}
 	public Properties getProperties() {
 		return properties;
