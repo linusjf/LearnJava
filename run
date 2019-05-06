@@ -26,12 +26,18 @@ tearDown ()
 	[ -e teardown ] && { ./teardown; }
 	cd ..
 }
-type dalvikvm &>/dev/null
-dalvik=$?
-type java &>/dev/null
-jvm=$?
-if [ $dalvik -eq 0 ]
-  then
+isDalvik ()
+{
+  type dalvikvm &>/dev/null
+  return $?
+}
+isJVM ()
+{
+  type java &>/dev/null
+  return $?
+}
+runDalvik()
+{
   if [ -e $proj.dex ] 
     then
     setUp
@@ -43,9 +49,9 @@ if [ $dalvik -eq 0 ]
     echo $proj.dex does not exist. Run build or buildall.
     exit 1
   fi
-fi
-if [ $jvm -eq 0 ]
-  then
+}
+runJVM()
+{
   if [ -e $proj.jar ]
     then
       setUp
@@ -57,6 +63,19 @@ if [ $jvm -eq 0 ]
       echo $proj.jar does not exist. Run build and buildall.
     exit 1
   fi
+}
+isDalvik
+dalvik=$?
+if [ $dalvik -eq 0 ]
+  then
+    runDalvik
+fi
+
+isJVM
+jvm=$?
+if [ $jvm -eq 0 ]
+  then
+    runJVM
 fi
 usage ()
 {
