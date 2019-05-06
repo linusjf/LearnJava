@@ -14,6 +14,7 @@ import com.javacodegeeks.abk.SHA224Salted;
 public class Client2 {
     public static void main(String[] args) {
         String myText = "Encrypt this text";
+        System.out.println("Client2: "+myText);
         MD5Encryptor e= new MD5Encryptor();
         System.out.println("MD5 encryption");
         System.out.println(e.encrypt(myText));
