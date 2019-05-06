@@ -19,6 +19,9 @@ else
     ver=$(<$1/.ver)
     ecj -$ver $1
     type dx && dx --dex --output=$1.dex $1
-    type jar && jar cfn $1.jar -C $1/ .
+    cd $1
+    type jar && jar cfn $1.jar `find . ! -name "*.java" ! -path "*.git*" ! -type d`
+    mv $1.jar ..
+    cd ..
 fi
 exit 0
