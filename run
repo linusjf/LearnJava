@@ -17,18 +17,15 @@ fi
 echo Main class: $main
 setUp ()
 {
-echo into setup
-	echo cd $proj
 	cd $proj
-[ -e setup ] && { ./setup; }
-cd ..
+	[ -e setup ] && { ./setup; }
+	cd ..
 }
 tearDown ()
 {
-	echo into teardown
 	cd $proj
-[ -e teardown ] && { ./teardown; }
-cd ..
+	[ -e teardown ] && { ./teardown; }
+	cd ..
 }
 setUp
 [ -e $proj.dex ] && { dalvikvm -cp $proj.dex $main;tearDown;exit 0; }

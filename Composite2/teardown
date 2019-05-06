@@ -1,2 +1,4 @@
 #!/bin/bash
+echo into teardown
 rm -f ../work.properties
+echo teardown done

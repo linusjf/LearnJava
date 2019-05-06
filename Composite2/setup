@@ -1,2 +1,4 @@
 #!/bin/bash
+echo into setup
 cp work.properties ..
+echo setup done
