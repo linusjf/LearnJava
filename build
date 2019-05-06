@@ -20,7 +20,7 @@ else
     ecj -$ver $1
     type dx && dx --dex --output=$1.dex $1
     cd $1
-    type jar && jar cfn $1.jar `find . ! -name "*.java" ! -path "*.git*" ! -type d`
+    type jar && jar cfn $1.jar `find . -name "*.class" ! -path "*.git*" ! -type d`
     mv $1.jar ..
     cd ..
 fi
