@@ -7,10 +7,11 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
-
+errors=0
 for dir in $(find . -maxdepth 1 -type d ! -path "*.git*" ! -path . )
   do
     echo $dir
     ./run $dir
+    errors=$( expr $errors + $? )
   done
-exit 0
+exit $errors

@@ -14,7 +14,6 @@ then
 else
   main=$2
 fi
-echo Main class: $main
 setUp ()
 {
 	cd $proj
@@ -27,9 +26,38 @@ tearDown ()
 	[ -e teardown ] && { ./teardown; }
 	cd ..
 }
-setUp
-[ -e $proj.dex ] && { dalvikvm -cp $proj.dex $main;tearDown;exit 0; }
-[ -e $proj.jar ] && { java -cp $proj.jar $main;tearDown;exit 0; }
+type dalvikvm &>/dev/null
+dalvik=$?
+type java &>/dev/null
+jvm=$?
+if [ $dalvik -eq 0 ]
+  then
+  if [ -e $proj.dex ] 
+    then
+    setUp
+    echo Main class: $main
+    dalvikvm -cp $proj.dex $main;
+    tearDown;
+    exit 0;
+  else
+    echo $proj.dex does not exist. Run build or buildall.
+    exit 1
+  fi
+fi
+if [ $jvm -eq 0 ]
+  then
+  if [ -e $proj.jar ]
+    then
+      setUp
+      echo Main class: $main
+      java -cp $proj.jar $main;
+      tearDown;
+      exit 0;
+    else
+      echo $proj.jar does not exist. Run build and buildall.
+    exit 1
+  fi
+fi
 usage ()
 {
   echo 'Usage: run <dir> <class>'
