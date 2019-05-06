@@ -23,7 +23,7 @@ else
     type dx &>/dev/null && dx --dex --output=$proj.dex $proj
     cd $proj
     type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
-    mv $proj.jar ..
+    [ -e $proj.jar ] && mv $proj.jar ..
     cd ..
 fi
 exit 0
