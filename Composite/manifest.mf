@@ -1,0 +1,3 @@
+Main-Class: com.javacodegeeks.patterns.compositepattern.TestCompositePattern
+Name: com.javacodegeeks.patterns.compositepattern
+Sealed: true

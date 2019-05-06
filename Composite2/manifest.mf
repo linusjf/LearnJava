@@ -1,0 +1,3 @@
+Main-Class: design.composite.Main
+Name: design.composite
+Sealed: true

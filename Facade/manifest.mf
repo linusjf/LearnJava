@@ -1,0 +1,3 @@
+Main-Class: com.javacodegeeks.pattern.facadepattern.TestFacade
+Name: com.javacodegeeks.pattern.facadepattern
+Sealed: true

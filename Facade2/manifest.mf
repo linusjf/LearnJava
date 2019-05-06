@@ -1,0 +1,4 @@
+Main-Class: com.javacodegeeks.client.Client
+Name: com.javacodegeeks
+Sealed: true
+

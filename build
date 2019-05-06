@@ -10,18 +10,20 @@
     usage() {
         echo "usage: build dir"
         exit 1
-    }
-if [ -z $1 ]
+}
+proj=$1
+ver=""
+if [ -z $proj ]
   then
     usage
 else
-    echo $1
-    ver=$(<$1/.ver)
-    ecj -$ver $1
-    type dx &>/dev/null && dx --dex --output=$1.dex $1
-    cd $1
-    type jar &>/dev/null && jar cfn $1.jar `find . -name "*.class" ! -path "*.git*" ! -type d` 
-    mv $1.jar ..
+    echo $proj
+    ver=$(<$proj/.ver)
+    ecj -$ver $proj
+    type dx &>/dev/null && dx --dex --output=$proj.dex $proj
+    cd $proj
+    type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
+    mv $proj.jar ..
     cd ..
 fi
 exit 0
