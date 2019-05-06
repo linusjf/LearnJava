@@ -7,9 +7,20 @@
 # @copyright: Copyright(c) Linus Fernandes
 ## @description: 
 ######################################################################
-    usage() {
+usage() {
         echo "usage: build dir"
         exit 1
+}
+createDex()
+{
+type dx &>/dev/null && dx --dex --output=$proj.dex $proj
+}
+createJar()
+{
+  cd $proj
+  type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
+  [ -e $proj.jar ] && mv $proj.jar ..
+  cd ..
 }
 proj=$1
 ver=""
@@ -23,11 +34,8 @@ else
     success=$?
     if [ $success -eq 0 ]
       then
-      type dx &>/dev/null && dx --dex --output=$proj.dex $proj
-      cd $proj
-      type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
-      [ -e $proj.jar ] && mv $proj.jar ..
-      cd ..
+      createDex
+      createJar
     fi
 fi
 exit 0
