@@ -14,11 +14,11 @@ public class Manager extends Employee {
 	}
 	@Override
 	public int teamSize() {
-/*	return managingEmployees.stream().mapToInt(employee -> employee.teamSize()).sum();*/
-int sum = 0;
+	return managingEmployees.stream().mapToInt(employee -> employee.teamSize()).sum();
+/*int sum = 0;
 for (Employee employee: managingEmployees)
   sum += employee.teamSize();
-return sum;
+return sum;*/
 	}
 	@Override
 	public void assignWork(Employee manager, Work work) {
@@ -48,9 +48,9 @@ return sum;
 	public void performWork() {
 		System.out.println(this + " is asking his/her managed employees to perform assigned work");
 		System.out.println();
-		/*managingEmployees.stream().forEach(employee -> employee.performWork());*/
-    for (Employee employee: managingEmployees)
-      employee.performWork();
+		managingEmployees.stream().forEach(employee -> employee.performWork());
+    /*for (Employee employee: managingEmployees)
+      employee.performWork();*/
 		System.out.println();
 		System.out.println(this + " has completed assigned work with the help of his/her managed employees");
 		System.out.println();

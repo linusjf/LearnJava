@@ -24,10 +24,10 @@ else
     if [ $success -eq 0 ]
       then
       type dx &>/dev/null && dx --dex --output=$proj.dex $proj
-      cd $proj
-      type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
-      [ -e $proj.jar ] && mv $proj.jar ..
-      cd ..
+      #cd $proj
+      type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find ./$proj -name "*.class" ! -path "*.git*" ! -type d` 
+      #[ -e $proj.jar ] && mv $proj.jar ..
+      #cd ..
     fi
 fi
 exit 0

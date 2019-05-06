@@ -14,6 +14,13 @@ then
 else
   main=$2
 fi
+usage ()
+{
+  echo 'Usage: run <dir> <class>'
+  echo 'dir - project directory'
+  echo 'class - full name including package name of the main class. Overrides contents of .main under project directory.'
+  exit 1
+}
 setUp ()
 {
 	cd $proj
@@ -64,6 +71,7 @@ runJVM()
     exit 1
   fi
 }
+
 isDalvik
 dalvik=$?
 if [ $dalvik -eq 0 ]
@@ -77,11 +85,5 @@ if [ $jvm -eq 0 ]
   then
     runJVM
 fi
-usage ()
-{
-  echo 'Usage: run <dir> <class>'
-  echo 'dir - project directory'
-  echo 'class - full name including package name of the main class. Overrides contents of .main under project directory.'
-  exit 1
-}
+
 usage
