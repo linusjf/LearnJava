@@ -6,39 +6,36 @@
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
-
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
-        <delete dir="${docs.dir}" />
+	    <delete>
+	        <fileset dir="." includes="**/*.class"/>
+	</delete>		
+	    <delete dir="${docs.dir}" />
         <delete dir="${dist.dir}" />
     </target>
-
     <!-- Creates the  build, docs and dist directory-->
     <target name="makedir">
         <mkdir dir="${docs.dir}" />
         <mkdir dir="${dist.dir}" />
     </target>
-
     <!-- Compiles the java code (including the usage of library for JUnit -->
     <target name="compile" depends="clean, makedir">
-        <javac srcdir="${src.dir}" destdir="${build.dir}">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
-
     </target>
-
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+        <javadoc packagenames="design.composite.*" sourcepath="${src.dir}" destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
              </fileset>
         </javadoc>
     </target>
-
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-        <jar destfile="${dist.dir}\Composite2.jar" basedir="${build.dir}">
+	    <jar destfile="${dist.dir}\Composite2.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
@@ -52,14 +49,20 @@
   <section name="design.composite">
     <attribute name="Sealed" value="true"/>
   </section>
-
-                <attribute name="Main-Class" value="design.composite.Main" />
-            </manifest>
-        </jar>
-    </target>
-
-    <target name="main" depends="compile, jar, docs">
+  <attribute name="Main-Class" value="design.composite.Main" />
+</manifest>
+</jar>
+</target>
+<target name="run" >
+<description>Run target</description>
+ <java classname="design.composite.Main">
+ <classpath>
+<pathelement location="${dist.dir}\Composite2.jar"/>
+<pathelement path="${java.class.path}"/>
+</classpath>
+</java>
+</target>
+<target name="main" depends="compile, jar, docs">
         <description>Main target</description>
     </target>
-
-  </project>
+</project>
