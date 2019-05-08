@@ -13,14 +13,18 @@ usage() {
 }
 createDex()
 {
-type dx &>/dev/null && dx --dex --output=$proj.dex $proj
+  rm -rf $proj/dist
+  type dx &>/dev/null && dx --dex --output=$proj.dex $proj && mkdir $proj/dist && cp $proj.dex $proj/dist && exit 0
 }
+
+
 createJar()
 {
   cd $proj
   type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
-  [ -e $proj.jar ] && mv $proj.jar ..
+  [ -e $proj.jar ] && cp $proj.jar .. && mkdir -p dist && mv $proj.jar dist
   cd ..
+  exit 0
 }
 proj=$1
 ver=""
@@ -38,4 +42,4 @@ else
       createJar
     fi
 fi
-exit 0
+exit $success

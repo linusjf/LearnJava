@@ -11,8 +11,10 @@
 rm -f *.dex
 rm -f *.jar
 find . -name "*.class" -type f ! -path "*.git*" -delete
-for dir in $(find . -maxdepth 1 -type d ! -path "*.git*" ! -path . ) 
-  do
-    ./build $dir
-  done
-exit 0
+#for dir in $(find . -maxdepth 1 -type d ! -path "*.git*" ! -path . ) 
+ #do
+  #  ./build $dir
+  #done
+find . -maxdepth 1 -type d ! -path "*git*" ! -path . | parallel -I% --max-args 1 ./build %
+exit $?
+
