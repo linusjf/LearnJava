@@ -9,26 +9,31 @@
 ######################################################################
 usage() {
         echo "usage: build dir"
+        echo "dir - Project directory, must exist"
         exit 1
 }
 createDex()
 {
   rm -rf $proj/dist
   type dx &>/dev/null && dx --dex --output=$proj.dex $proj && mkdir $proj/dist && cp $proj.dex $proj/dist && exit 0
+  dxRes=$?
 }
-
 
 createJar()
 {
   cd $proj
-  type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d` 
+  type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d`
+  jarRes=$?
   [ -e $proj.jar ] && cp $proj.jar .. && mkdir -p dist && mv $proj.jar dist
   cd ..
   exit 0
 }
+
 proj=$1
 ver=""
-if [ -z $proj ]
+dxRes=0
+jarRes=0
+if [ -z $proj -o ! -d $proj ]
   then
     usage
 else
@@ -42,4 +47,4 @@ else
       createJar
     fi
 fi
-exit $success
+exit `expr $success + $dxRes + $jarRes`
