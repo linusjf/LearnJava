@@ -12,17 +12,27 @@ usage() {
         echo "dir - Project directory, must exist"
         exit 1
 }
+isDX ()
+{
+  type dx &>/dev/null
+  return $?
+}
+isJVM ()
+{
+  type jar &>/dev/null
+  return $?
+}
 createDex()
 {
   rm -rf $proj/dist
-  type dx &>/dev/null && dx --dex --output=$proj.dex $proj && mkdir $proj/dist && cp $proj.dex $proj/dist && exit 0
+  dx --dex --output=$proj.dex $proj && mkdir $proj/dist && cp $proj.dex $proj/dist && exit 0
   dxRes=$?
 }
 
 createJar()
 {
   cd $proj
-  type jar &>/dev/null && jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d`
+  jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d`
   jarRes=$?
   [ -e $proj.jar ] && cp $proj.jar .. && mkdir -p dist && mv $proj.jar dist
   cd ..
@@ -31,6 +41,10 @@ createJar()
 
 proj=$1
 ver=""
+isDX
+dex=$?
+isJVM
+jvm=$?
 dxRes=0
 jarRes=0
 if [ -z $proj -o ! -d $proj ]
@@ -43,8 +57,14 @@ else
     success=$?
     if [ $success -eq 0 ]
       then
-      createDex
-      createJar
+      if [ $dex -eq 0 ]
+        then
+        createDex
+      fi
+      if [ $jvm -eq 0 ]
+        then
+        createJar
+      fi
     fi
 fi
 exit `expr $success + $dxRes + $jarRes`
