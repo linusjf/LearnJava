@@ -48,9 +48,11 @@ runDalvik()
   if [ -e $proj.dex ] 
     then
     setUp
-    echo Main class: $main
+    echo "Main class(es): $main"
+    echo
     echo "$main" | while read -r a; do 
       dalvikvm -cp $proj.dex $a;
+      echo
     done
     tearDown;
     exit 0;
@@ -75,7 +77,7 @@ runJVM()
     exit 1
   fi
 }
-
+echo $proj
 isDalvik
 dalvik=$?
 if [ $dalvik -eq 0 ]
