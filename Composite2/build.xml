@@ -54,13 +54,15 @@
 </jar>
 </target>
 <target name="run" >
-<description>Run target</description>
- <java classname="design.composite.Main">
+	<description>Run target</description>
+	<exec executable="./setup"/>
+<java classname="design.composite.Main" >
  <classpath>
 <pathelement location="${dist.dir}\Composite2.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
+<exec executable="./teardown"/>
 </target>
 <target name="main" depends="compile, jar, docs">
         <description>Main target</description>

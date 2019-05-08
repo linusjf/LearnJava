@@ -46,13 +46,13 @@
     <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
-  <attribute name="Main-Class" value="TestAdapterExample" />
+  <attribute name="Main-Class" value="RunAdapterExample" />
 </manifest>
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
- <java classname="TestAdapterExample">
+ <java classname="RunAdapterExample">
  <classpath>
 <pathelement location="${dist.dir}\Adapter.jar"/>
 <pathelement path="${java.class.path}"/>
