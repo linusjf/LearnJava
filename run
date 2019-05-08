@@ -50,8 +50,8 @@ runDalvik()
     setUp
     echo Main class: $main
     echo "$main" | while read -r a; do 
-    dalvikvm -cp $proj.dex $a;
-  done
+      dalvikvm -cp $proj.dex $a;
+    done
     tearDown;
     exit 0;
   else

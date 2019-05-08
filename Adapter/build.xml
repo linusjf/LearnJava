@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="Adapter" default="main" basedir=".">
+    <!-- Sets variables which can later be used. -->
+    <!-- The value of a property is accessed via ${} -->
+    <property name="src.dir" location="." />
+    <property name="build.dir" location="." />
+    <property name="dist.dir" location="dist" />
+    <property name="docs.dir" location="docs" />
+    <!-- Deletes the existing build, docs and dist directory-->
+    <target name="clean">
+	    <delete>
+	        <fileset dir="." includes="**/*.class"/>
+	</delete>		
+	    <delete dir="${docs.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+    <!-- Creates the  build, docs and dist directory-->
+    <target name="makedir">
+        <mkdir dir="${docs.dir}" />
+        <mkdir dir="${dist.dir}" />
+    </target>
+    <!-- Compiles the java code (including the usage of library for JUnit -->
+    <target name="compile" depends="clean, makedir">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
+        </javac>
+    </target>
+    <!-- Creates Javadoc -->
+    <target name="docs" depends="compile">
+        <javadoc sourcepath="${src.dir}" destdir="${docs.dir}">
+            <!-- Define which files / directory should get included, we include all -->
+             <fileset dir="${src.dir}">
+                <include name="*.java" />
+             </fileset>
+        </javadoc>
+    </target>
+    <!--Creates the deployable jar file  -->
+    <target name="jar" depends="compile">
+	    <jar destfile="${dist.dir}\Adapter.jar" basedir="${build.dir}" includes="**/*.class">
+          <manifest>
+  <attribute name="Built-By" value="${user.name}"/>
+  <section name="common">
+    <attribute name="Specification-Title" value="Composite2"/>
+    <attribute name="Specification-Version" value="${version}"/>
+    <attribute name="Specification-Vendor" value=""/>
+    <attribute name="Implementation-Title" value=""/>
+    <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
+    <attribute name="Implementation-Vendor" value=""/>
+  </section>
+  <attribute name="Main-Class" value="TestAdapterExample" />
+</manifest>
+</jar>
+</target>
+<target name="run" >
+<description>Run target</description>
+ <java classname="TestAdapterExample">
+ <classpath>
+<pathelement location="${dist.dir}\Adapter.jar"/>
+<pathelement path="${java.class.path}"/>
+</classpath>
+</java>
+</target>
+<target name="main" depends="compile, jar, docs">
+        <description>Main target</description>
+    </target>
+</project>
