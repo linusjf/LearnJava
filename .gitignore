@@ -3,3 +3,4 @@
 *.jar
 *.txt
 *docs*
+!lib/*.jar

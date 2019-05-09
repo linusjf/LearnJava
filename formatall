@@ -1,3 +1,6 @@
 #!/bin/bash
-find . -type f -name *.java | parallel -I% --maxargs 1 java -jar ~/lib/google-java-format-1.7-all-deps.jar -i %
+find . -type f -name *.java | \
+  parallel -I% --maxargs 1 \
+  java -jar \
+  lib/google-java-format-1.7-all-deps.jar -i %
 exit $?
