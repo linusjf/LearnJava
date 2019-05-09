@@ -12,29 +12,41 @@ usage() {
         echo "dir - Project directory, must exist"
         exit 1
 }
+
 isDX ()
 {
   type dx &>/dev/null
   return $?
 }
+
 isJVM ()
 {
   type jar &>/dev/null
   return $?
 }
+
 createDex()
 {
-  rm -rf $proj/dist
-  dx --dex --output=$proj.dex $proj && mkdir $proj/dist && cp $proj.dex $proj/dist && exit 0
+  rm -rf $proj/dist || \
+    { echo "Unable to delete folder $proj/dist"; }
+  dx --dex --output=$proj.dex $proj && \
+    mkdir $proj/dist && \
+    cp $proj.dex $proj/dist && exit 0 || \
+    { echo "Error creating dex output"; }
   dxRes=$?
 }
 
 createJar()
 {
-  cd $proj
-  jar cfnm $proj.jar manifest.mf `find . -name "*.class" ! -path "*.git*" ! -type d`
-  jarRes=$?
-  [ -e $proj.jar ] && cp $proj.jar .. && mkdir -p dist && mv $proj.jar dist
+  cd $proj || echo "cannot cd to $proj";
+  jar cfnm $proj.jar manifest.mf \
+    `find . -name "*.class" \
+    ! -path "*.git*" ! -type d` || \
+    { echo "Error creating jar output: $proj.jarRes"; }
+  jarRes=$? 
+  [ -e $proj.jar ] && cp $proj.jar .. \
+    && mkdir -p dist && mv $proj.jar dist || \
+    { echo "Error moving jar file to $proj/dist"; }
   cd ..
   exit 0
 }
@@ -47,13 +59,14 @@ isJVM
 jvm=$?
 dxRes=0
 jarRes=0
-if [ -z $proj -o ! -d $proj ]
+if [ -z $proj ] || [ ! -d $proj ]
   then
     usage
 else
     echo $proj
-    ver=$(<$proj/.ver)
-    ecj -$ver $proj
+    ver=$(<$proj/.ver) || \
+      echo "Unable to read $proj/.ver"
+    ecj -$ver $proj 
     success=$?
     if [ $success -eq 0 ]
       then
