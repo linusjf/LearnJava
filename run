@@ -7,17 +7,11 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
-proj=$1
-main=$2
-if [ -z $main ]
-then
-  main=$(cat $proj/.main) || \
-    { echo "Error reading $proj.main";exit 1; }
-fi
+
 usage ()
 {
   echo 'Usage: run <dir> <class>'
-  echo 'dir - project directory'
+  echo 'dir - project directory. Must exist'
   echo 'class - full name including package name of the main class. Overrides contents of .main under project directory.'
   exit 1
 }
@@ -94,6 +88,19 @@ runJVM()
     exit 1
   fi
 }
+
+
+proj=$1
+if [ -z $proj ]
+  then
+    usage
+fi
+main=$2
+if [ -z $main ]
+then
+  main=$(cat $proj/.main) || \
+    { echo "Error reading $proj.main";usage; }
+fi
 echo $proj
 isDalvik
 dalvik=$?
