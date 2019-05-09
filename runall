@@ -7,7 +7,6 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
-find . -maxdepth 1 -type d \
-  ! -path "*git*" ! -path . | \
+find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel -I% sh -c 'echo && ./run %'
 exit $?

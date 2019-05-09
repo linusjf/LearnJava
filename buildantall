@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-find . -maxdepth 1 -type d \
-  ! -path "*git*" ! -path . | \
+find . -maxdepth 1 -type d -name "[[:upper:]]*" \
   parallel -I% --max-args 1 \
   ant -buildfile %/build.xml

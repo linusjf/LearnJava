@@ -12,8 +12,7 @@ rm -f *.dex
 rm -f *.jar
 find . -name "*.class" -type f \
   ! -path "*.git*" -delete
-find . -maxdepth 1 -type d \
-  ! -path "*git*" ! -path . | \
+find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel -I% --max-args 1 ./build %
 exit $?
 
