@@ -8,11 +8,11 @@
 # @description : 
 ######################################################################
 proj=$1
-if [ -z $2 ]
+main=$2
+if [ -z $main ]
 then
-  main=$(<$proj/.main)
-else
-  main=$2
+  main=$(cat $proj/.main) || \
+    { echo "Error reading $proj.main";exit 1; }
 fi
 usage ()
 {
@@ -21,16 +21,33 @@ usage ()
   echo 'class - full name including package name of the main class. Overrides contents of .main under project directory.'
   exit 1
 }
+
 setUp ()
 {
-	cd $proj
-	[ -e setup ] && { ./setup; }
+	cd $proj || \
+    { echo "Unable to access folder $proj";exit 1;}
+	[ -e setup ] && \
+    { ./setup || \
+      { \
+        echo "Error running setup script";\
+        exit 1;\
+      }\
+    }
 	cd ..
 }
+
 tearDown ()
 {
-	cd $proj
-	[ -e teardown ] && { ./teardown; }
+	cd $proj || \
+    { echo "Unable to access folder $proj";exit 1;}
+	[ -e teardown ] && \
+    {\
+      ./teardown || \
+      {\
+        echo "Error running teardown script";\
+        exit 1;\
+      }\
+    }
 	cd ..
 }
 isDalvik ()

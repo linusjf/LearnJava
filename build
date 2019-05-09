@@ -52,7 +52,7 @@ createJar()
 }
 
 proj=$1
-ver=""
+ver="1.7"
 isDX
 dex=$?
 isJVM
@@ -64,8 +64,9 @@ if [ -z $proj ] || [ ! -d $proj ]
     usage
 else
     echo $proj
-    ver=$(<$proj/.ver) || \
-      echo "Unable to read $proj/.ver"
+    [ -e $proj/.ver ] && \
+      { ver=$(cat $proj/.ver) || \
+      echo "Unable to read $proj/.ver";}
     ecj -$ver $proj 
     success=$?
     if [ $success -eq 0 ]
