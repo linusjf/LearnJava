@@ -450,9 +450,9 @@
       <property name="allowUnknownTags" value="true"/>
     </module>
     <module name="JavadocVariable"/>
-    <module name="MissingJavadocMethod">
+    <!--module name="MissingJavadocMethod">
       <property name="allowMissingPropertyJavadoc" value="true"/>
-    </module>
+    </module-->
     <module name="MissingJavadocType"/>
     <module name="NonEmptyAtclauseDescription"/>
     <module name="SingleLineJavadoc"/>

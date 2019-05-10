@@ -7,6 +7,7 @@
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
+    <property name="main.class" value="Hello" />
     <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
          classpath="../lib/checkstyle-8.20-all.jar"/>
     <!-- Deletes the existing build, docs and dist directory-->
@@ -23,7 +24,7 @@
         <mkdir dir="${dist.dir}" />
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir">
+    <target name="compile" depends="clean, makedir,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
     </target>
@@ -38,26 +39,26 @@
     </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-	    <jar destfile="${dist.dir}\Hello.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
-    <attribute name="Specification-Title" value="Composite2"/>
+    <attribute name="Specification-Title" value="${ant.project.name}"/>
     <attribute name="Specification-Version" value="${version}"/>
     <attribute name="Specification-Vendor" value=""/>
     <attribute name="Implementation-Title" value=""/>
     <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
-  <attribute name="Main-Class" value="Hello" />
+  <attribute name="Main-Class" value="${main.class}" />
 </manifest>
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
- <java classname="Hello">
+<java classname="${main.class}">
  <classpath>
-<pathelement location="${dist.dir}\Hello.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
@@ -68,7 +69,7 @@
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
-  <formatter type="xml" toFile="checkstyle_errors.xml"/>
+  <formatter type="plain" toFile="checkstyle_errors.txt"/>
 </checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">

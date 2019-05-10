@@ -1,4 +1,15 @@
+/**
+ * Describe class <code>RunAdapterExample</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class RunAdapterExample {
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     // Object for Xpay
     Xpay xpay = new XpayImpl();
@@ -6,7 +17,7 @@ public class RunAdapterExample {
     xpay.setCustomerName("Max Warner");
     xpay.setCardExpMonth("09");
     xpay.setCardExpYear("25");
-    xpay.setCardCVVNo((short) 235);
+    xpay.setCardCvvNo((short) 235);
     xpay.setAmount(2565.23);
     PayD payD = new XpayToPayDAdapter(xpay);
     testPayD(payD);
@@ -16,7 +27,7 @@ public class RunAdapterExample {
     System.out.println(payD.getCardOwnerName());
     System.out.println(payD.getCustCardNo());
     System.out.println(payD.getCardExpMonthDate());
-    System.out.println(payD.getCVVNo());
+    System.out.println(payD.getCvvNo());
     System.out.println(payD.getTotalAmount());
   }
 }

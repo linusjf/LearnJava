@@ -3,7 +3,7 @@ public class XpayImpl implements Xpay {
   private String customerName;
   private String cardExpMonth;
   private String cardExpYear;
-  private Short cardCVVNo;
+  private Short cardCvvNo;
   private Double amount;
 
   @Override
@@ -27,8 +27,8 @@ public class XpayImpl implements Xpay {
   }
 
   @Override
-  public Short getCardCVVNo() {
-    return cardCVVNo;
+  public Short getCardCvvNo() {
+    return cardCvvNo;
   }
 
   @Override
@@ -57,8 +57,8 @@ public class XpayImpl implements Xpay {
   }
 
   @Override
-  public void setCardCVVNo(Short cardCVVNo) {
-    this.cardCVVNo = cardCVVNo;
+  public void setCardCvvNo(Short cardCvvNo) {
+    this.cardCvvNo = cardCvvNo;
   }
 
   @Override
