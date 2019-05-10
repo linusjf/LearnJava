@@ -31,9 +31,14 @@
     <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
     </module>
-
+    <module name="SuppressWarningsFilter" />
     <module name="TreeWalker">
-        <module name="OuterTypeFilename"/>
+    <module name="SuppressionCommentFilter">
+    <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+    <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+    <property name="checkFormat" value="$1"/>
+  </module>
+      <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
             <property name="format"
@@ -261,5 +266,8 @@
             <property name="exceptionVariableName" value="expected"/>
         </module>
         <module name="CommentsIndentation"/>
-    </module>
+        <!-- Make the @SuppressWarnings annotations available to Checkstyle -->
+        <module name="SuppressWarningsHolder" />
+      </module>
+         
   </module>
