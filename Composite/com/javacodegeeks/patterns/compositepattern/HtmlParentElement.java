@@ -3,12 +3,23 @@ package com.javacodegeeks.patterns.compositepattern;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describe class <code>HtmlParentElement</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class HtmlParentElement extends HtmlTag {
   private String tagName;
   private String startTag;
   private String endTag;
   private List<HtmlTag> childrenTag;
 
+  /**
+   * Creates a new <code>HtmlParentElement</code> instance.
+   *
+   * @param tagName a <code>String</code> value
+   */
   public HtmlParentElement(String tagName) {
     this.tagName = tagName;
     this.startTag = "";

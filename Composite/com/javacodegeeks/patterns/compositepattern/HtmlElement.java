@@ -1,11 +1,22 @@
 package com.javacodegeeks.patterns.compositepattern;
 
+/**
+ * Describe class <code>HtmlElement</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class HtmlElement extends HtmlTag {
   private String tagName;
   private String startTag;
   private String endTag;
   private String tagBody;
 
+  /**
+   * Creates a new <code>HtmlElement</code> instance.
+   *
+   * @param tagName a <code>String</code> value
+   */
   public HtmlElement(String tagName) {
     this.tagName = tagName;
     this.tagBody = "";
