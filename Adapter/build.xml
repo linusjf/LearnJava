@@ -29,7 +29,8 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc sourcepath="${src.dir}" destdir="${docs.dir}">
+      <javadoc additionalparam="-Xdoclint:none" sourcepath="${src.dir}" 
+        destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />

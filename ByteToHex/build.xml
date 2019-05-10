@@ -6,6 +6,9 @@
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
+    <property name="main.class" value="TestByteToHex" />
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+         classpath="../lib/checkstyle-8.20-all.jar"/>
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
 	    <delete>
@@ -20,22 +23,23 @@
         <mkdir dir="${dist.dir}" />
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir">
+    <target name="compile" depends="clean, makedir,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc sourcepath="${src.dir}" destdir="${docs.dir}">
-            <!-- Define which files / directory should get included, we include all -->
-             <fileset dir="${src.dir}">
+      <javadoc sourcepath="${src.dir}" destdir="${docs.dir}"
+        additionalparam="-Xdoclint:none">
+          <!-- Define which files / directory should get included, we include all -->
+                      <fileset dir="${src.dir}">
                 <include name="*.java" />
              </fileset>
         </javadoc>
     </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-	    <jar destfile="${dist.dir}\ByteToHex.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.main}.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
@@ -46,18 +50,27 @@
     <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
-  <attribute name="Main-Class" value="TestByteToHex" />
+  <attribute name="Main-Class" value="${main.class}" />
 </manifest>
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
- <java classname="TestByteToHex">
+<java classname="${main.class}">
  <classpath>
-<pathelement location="${dist.dir}\ByteToHex.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
+</target>
+<target name="checkstyle">
+  <checkstyle config="../google_checks.xml"
+    classpath="../lib/checkstyle-8.20-all.jar"
+    failOnViolation="false">
+  <fileset dir="${src.dir}" includes="**/*.java"/>
+  <formatter type="plain"/>
+  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+</checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">
         <description>Main target</description>
