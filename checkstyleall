@@ -1,7 +1,24 @@
 #!/bin/bash
+function usage()
+{
+  echo "usage: checkstyleall {rulesfile}"
+  echo "rulesfile: The xml file that lists the rules that checkstyle will use."
+  echo "google_checks.xml is the default rules file."
+  exit 1
+}
+rules_file="google_checks.xml"
+if [ ! -z $1 ]
+  then
+    rules_file=$1
+fi
+if [ ! -e $rules_file ]
+  then
+    echo "$rules_file cannot be found."
+    usage
+fi
 find . -type f -name *.java | \
   parallel -I% --maxargs 1 \
   java -jar \
   lib/checkstyle-8.20-all.jar \
-  -c google_checks.xml %
+  -c $rules_file %
 exit $?
