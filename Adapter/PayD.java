@@ -13,45 +13,45 @@ public interface PayD {
   public String getCustCardNo();
 
   /**
-  * Describe <code>getCardOwnerName</code> method here.
-  *
-  * @return a <code>String</code> value
-  */
+   * Describe <code>getCardOwnerName</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String getCardOwnerName();
 
   /**
-  * Describe <code>getCardExpMonthDate</code> method here.
-  *
-  * @return a <code>String</code> value
-  */
+   * Describe <code>getCardExpMonthDate</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String getCardExpMonthDate();
 
   /**
-  * Describe <code>getCvvNo</code> method here.
-  *
-  * @return an <code>Integer</code> value
-  */
+   * Describe <code>getCvvNo</code> method here.
+   *
+   * @return an <code>Integer</code> value
+   */
   public Integer getCvvNo();
 
   /**
-  * Describe <code>getTotalAmount</code> method here.
-  *
-  * @return a <code>Double</code> value
-  */
+   * Describe <code>getTotalAmount</code> method here.
+   *
+   * @return a <code>Double</code> value
+   */
   public Double getTotalAmount();
 
   /**
-  * Describe <code>setCustCardNo</code> method here.
-  *
-  * @param custCardNo a <code>String</code> value
-  */
+   * Describe <code>setCustCardNo</code> method here.
+   *
+   * @param custCardNo a <code>String</code> value
+   */
   public void setCustCardNo(String custCardNo);
 
   /**
-  * Describe <code>setCardOwnerName</code> method here.
-  *
-  * @param cardOwnerName a <code>String</code> value
-  */
+   * Describe <code>setCardOwnerName</code> method here.
+   *
+   * @param cardOwnerName a <code>String</code> value
+   */
   public void setCardOwnerName(String cardOwnerName);
 
   /**
@@ -62,10 +62,10 @@ public interface PayD {
   public void setCardExpMonthDate(String cardExpMonthDate);
 
   /**
-  * Describe <code>setCvvNo</code> method here.
-  *
-  * @param cvvNo an <code>Integer</code> value
-  */
+   * Describe <code>setCvvNo</code> method here.
+   *
+   * @param cvvNo an <code>Integer</code> value
+   */
   public void setCvvNo(Integer cvvNo);
 
   /**

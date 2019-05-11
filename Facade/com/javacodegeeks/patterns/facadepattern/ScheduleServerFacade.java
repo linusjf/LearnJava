@@ -8,10 +8,7 @@ package com.javacodegeeks.patterns.facadepattern;
  */
 public class ScheduleServerFacade {
 
-  /**
-   * Describe variable <code>scheduleServer</code> here.
-   *
-   */
+  /** Describe variable <code>scheduleServer</code> here. */
   private final ScheduleServer scheduleServer;
 
   /**
@@ -23,10 +20,7 @@ public class ScheduleServerFacade {
     this.scheduleServer = scheduleServer;
   }
 
-  /**
-   * Describe <code>startServer</code> method here.
-   *
-   */
+  /** Describe <code>startServer</code> method here. */
   public void startServer() {
     scheduleServer.startBooting();
     scheduleServer.readSystemConfigFile();
@@ -36,10 +30,7 @@ public class ScheduleServerFacade {
     scheduleServer.createSystemObjects();
   }
 
-  /**
-   * Describe <code>stopServer</code> method here.
-   *
-   */
+  /** Describe <code>stopServer</code> method here. */
   public void stopServer() {
     scheduleServer.releaseProcesses();
     scheduleServer.destroy();

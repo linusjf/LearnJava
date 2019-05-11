@@ -5,9 +5,6 @@
  * @copyright : Copyright (c) Linus Fernandes
  * @description :
  */
-
-
-
 public class TestByteToHex {
   /**
    * Describe <code>main</code> method here.
@@ -17,13 +14,13 @@ public class TestByteToHex {
   public static void main(String[] args) {
     final String byteString =
         "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
-        + "$123456789003356788990335688335678888"
-        + "))5778889===66://))*£&'/!!))))?:/!?"
-        + "?????!//!!!!!!!!!?????      dffvbbfrews"
-        + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
-        + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
-        + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
-        + "FDSSSGHIJJH";
+            + "$123456789003356788990335688335678888"
+            + "))5778889===66://))*£&'/!!))))?:/!?"
+            + "?????!//!!!!!!!!!?????      dffvbbfrews"
+            + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
+            + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
+            + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
+            + "FDSSSGHIJJH";
     final byte[] raw = byteString.getBytes();
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);

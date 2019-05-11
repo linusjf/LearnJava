@@ -9,7 +9,7 @@ public interface Xpay {
    * Describe <code>getCreditCardNo</code> method here.
    *
    * @return a <code>String</code> value
-  */
+   */
   public String getCreditCardNo();
 
   /**
@@ -42,6 +42,7 @@ public interface Xpay {
 
   /**
    * Describe <code>getAmount</code> method here.
+   *
    * @return a <code>Double</code> value
    */
   public Double getAmount();
@@ -87,4 +88,4 @@ public interface Xpay {
    * @param amount a <code>Double</code> value
    */
   public void setAmount(Double amount);
-} 
+}

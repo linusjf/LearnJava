@@ -29,8 +29,7 @@ public final class ByteToHex {
    */
   public static String getHex2(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
-    for (final byte b : raw) 
-      builder.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+    for (final byte b : raw) builder.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
     return builder.toString();
   }
 
@@ -42,8 +41,7 @@ public final class ByteToHex {
    */
   public static String getHex3(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
-    for (final byte b : raw)
-      builder.append(String.format("%02x", b));
+    for (final byte b : raw) builder.append(String.format("%02x", b));
     return builder.toString();
   }
 

@@ -16,9 +16,7 @@ if [ ! -e $rules_file ]
     echo "$rules_file cannot be found."
     usage
 fi
-find . -type f -name *.java | \
-  parallel -I% --maxargs 1 \
-  java -jar \
-  lib/checkstyle-8.20-all.jar \
-  -c $rules_file %
+java -jar \
+lib/checkstyle-8.20-all.jar \
+-c $rules_file `find . -type f -name *.java`
 exit $?

@@ -1,8 +1,8 @@
 package com.javacodegeeks.abk;
-//CHECKSTYLE OFF 
+
 import static com.javacodegeeks.abk.EncryptHelper.*;
 import static converter.ByteToHex.*;
-//CHECKSTYLE ON 
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

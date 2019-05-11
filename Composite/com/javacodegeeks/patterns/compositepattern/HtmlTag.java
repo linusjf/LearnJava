@@ -50,8 +50,7 @@ public abstract class HtmlTag {
   }
 
   /**
-   * Describe <code>removeChildTag</code> method 
-here.
+   * Describe <code>removeChildTag</code> method here.
    *
    * @param htmlTag a <code>HtmlTag</code> value
    */
@@ -68,9 +67,6 @@ here.
     throw new UnsupportedOperationException("Current operation is not support for this object.");
   }
 
-  /**
-   * Describe <code>generateHtml</code> method here.
-   *
-   */
+  /** Describe <code>generateHtml</code> method here. */
   public abstract void generateHtml();
 }
