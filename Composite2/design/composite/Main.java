@@ -1,6 +1,17 @@
 package design.composite;
 
+/**
+ * Describe class <code>Main</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Main {
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     final Engineer ajay = new Engineer(1001L, "Ajay", "Developer", Department.ENG);
     final Engineer vijay = new Engineer(1002L, "Vijay", "SR. Developer", Department.ENG);

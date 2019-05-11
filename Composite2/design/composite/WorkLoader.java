@@ -9,9 +9,20 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * Describe class <code>WorkLoader</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class WorkLoader {
   protected Properties properties = new Properties();
 
+  /**
+   * Creates a new <code>WorkLoader</code> instance.
+   *
+   * @param fileName a <code>String</code> value
+   */
   public WorkLoader(String fileName) {
     try (InputStream input = new FileInputStream(fileName)) {
       // load a properties file
@@ -22,6 +33,11 @@ public class WorkLoader {
     //	properties = PropertyLoader.loadProperties(fileName);
   }
 
+  /**
+   * Describe <code>getProperties</code> method here.
+   *
+   * @return a <code>Properties</code> value
+   */
   public Properties getProperties() {
     return properties;
   }

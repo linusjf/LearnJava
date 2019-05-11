@@ -3,9 +3,23 @@ package design.composite;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describe class <code>Engineer</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Engineer extends Employee {
   private List<Work> works = new ArrayList<Work>();
 
+  /**
+   * Creates a new <code>Engineer</code> instance.
+   *
+   * @param employeeId a <code>long</code> value
+   * @param employeeName a <code>String</code> value
+   * @param designation a <code>String</code> value
+   * @param department a <code>Department</code> value
+   */
   public Engineer(long employeeId, String employeeName, String designation, Department department) {
     super(employeeId, employeeName, designation, department);
   }

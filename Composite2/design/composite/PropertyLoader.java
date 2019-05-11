@@ -6,6 +6,12 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+/**
+ * Describe class <code>PropertyLoader</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public abstract class PropertyLoader {
   /**
    * * Looks up a resource named 'name' in the classpath. The resource must map * to a file with
