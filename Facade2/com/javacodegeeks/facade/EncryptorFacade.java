@@ -14,6 +14,12 @@ import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
 
+/**
+ * Describe class <code>EncryptorFacade</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class EncryptorFacade {
 
   public static enum EncryptionType {
@@ -31,6 +37,13 @@ public class EncryptorFacade {
     SHA512Salted
   }
 
+  /**
+   * Describe <code>encrypt</code> method here.
+   *
+   * @param type an <code>EncryptionType</code> value
+   * @param text a <code>String</code> value
+   * @return a <code>String</code> value
+   */
   public String encrypt(EncryptionType type, String text) {
     String hash = "";
     Encrypt e;

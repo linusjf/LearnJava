@@ -13,7 +13,18 @@ import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
 
+/**
+ * Describe class <code>Client2</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Client2 {
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     String myText = "Encrypt this text";
     System.out.println("Client2: " + myText);
