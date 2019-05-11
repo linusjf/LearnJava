@@ -12,7 +12,7 @@ public class MD5Encryptor implements Encrypt {
       MessageDigest msgDigest = MessageDigest.getInstance("MD5");
       msgDigest.update(text.getBytes());
 
-      byte textBytes[] = msgDigest.digest();
+      byte[] textBytes = msgDigest.digest();
       hash = getHex4(textBytes);
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();

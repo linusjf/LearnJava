@@ -13,7 +13,7 @@ public class MD5Salted implements Encrypt {
       MessageDigest msgDigest = MessageDigest.getInstance("MD5");
       byte[] salt = getSalt();
       msgDigest.update(salt);
-      byte textBytes[] = msgDigest.digest(text.getBytes());
+      byte[] textBytes = msgDigest.digest(text.getBytes());
       hash = getHex4(textBytes);
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();

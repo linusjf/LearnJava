@@ -29,7 +29,7 @@ public class EncryptorFacade {
     SHA384Salted,
     SHA512,
     SHA512Salted
-  };
+  }
 
   public String encrypt(EncryptionType type, String text) {
     String hash = "";

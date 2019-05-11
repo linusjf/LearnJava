@@ -58,6 +58,7 @@ public abstract class PropertyLoader {
         try {
           in.close();
         } catch (Throwable ignore) {
+          System.out.println("Ignoring ..." + ignore.getMessage());
         }
     }
     if (THROW_ON_LOAD_FAILURE && (result == null)) {
@@ -70,6 +71,7 @@ public abstract class PropertyLoader {
     }
     return result;
   }
+
   /**
    * * A convenience overload of {@link #loadProperties(String, ClassLoader)} * that uses the
    * current thread's context classloader.

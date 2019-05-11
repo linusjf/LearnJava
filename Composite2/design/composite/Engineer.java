@@ -24,13 +24,6 @@ public class Engineer extends Employee {
   @Override
   public void performWork() {
     System.out.println(this + " is performing work of '" + works + "'");
-    /*    for (Work work: works)
-        {
-          for ( String value: work.getWork())
-    {
-    				Calculator calculator = work.getWorkType();
-    				System.out.println(this + " has result of work of '" + work + "' as : " + calculator.calculate(value));
-    }*/
     works.stream()
         .forEach(
             work -> {

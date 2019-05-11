@@ -5,6 +5,7 @@ package converter;
  * @copyright   : Copyright (c) Linus Fernandes
  * @description :
  */
+
 public final class ByteToHex {
 
   private static final String HEXES = "0123456789abcdef";
