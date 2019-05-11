@@ -3,5 +3,4 @@
 *.jar
 *.txt
 *docs*
-*errors.xml
 !lib/*.jar
