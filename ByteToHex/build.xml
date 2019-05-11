@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <project name="ByteToHex" default="main" basedir=".">
-    <!-- Sets variables which can later be used. -->
+  <property file = "build.properties"/>
+  <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
-    <property name="main.class" value="TestByteToHex" />
     <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
          classpath="../lib/checkstyle-8.20-all.jar"/>
     <!-- Deletes the existing build, docs and dist directory-->
@@ -39,7 +39,7 @@
     </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-      <jar destfile="${dist.dir}\${ant.project.main}.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
