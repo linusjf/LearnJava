@@ -57,8 +57,9 @@
 <target name="run" >
 	<description>Run target</description>
 	<exec executable="./setup"/>
-  <java fork="true" jar="${dist.dir}/${ant.project.name}.jar" >
+  <java classname="${main.class}">
  <classpath>
+   <pathelement path="${dist.dir}/${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
