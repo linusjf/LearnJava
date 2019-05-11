@@ -3,17 +3,43 @@ package design.composite;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describe class <code>Manager</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Manager extends Employee {
   List<Employee> managingEmployees = new ArrayList<Employee>();
 
+  /**
+   * Creates a new <code>Manager</code> instance.
+   *
+   * @param employeeId a <code>long</code> value
+   * @param employeeName a <code>String</code> value
+   * @param designation a <code>String</code> value
+   * @param department a <code>Department</code> value
+   */
   public Manager(long employeeId, String employeeName, String designation, Department department) {
     super(employeeId, employeeName, designation, department);
   }
 
+  /**
+   * Describe <code>manages</code> method here.
+   *
+   * @param employee an <code>Employee</code> value
+   * @return a <code>boolean</code> value
+   */
   public boolean manages(Employee employee) {
     return managingEmployees.add(employee);
   }
 
+  /**
+   * Describe <code>stopManaging</code> method here.
+   *
+   * @param employee an <code>Employee</code> value
+   * @return a <code>boolean</code> value
+   */
   public boolean stopManaging(Employee employee) {
     return managingEmployees.remove(employee);
   }
