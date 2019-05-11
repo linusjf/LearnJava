@@ -30,7 +30,6 @@ public class WorkLoader {
     } catch (IOException exp) {
       exp.printStackTrace();
     }
-    //	properties = PropertyLoader.loadProperties(fileName);
   }
 
   /**
