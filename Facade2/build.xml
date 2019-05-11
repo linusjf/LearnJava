@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <project name="Facade2" default="main" basedir=".">
+  <property file = "build.properties"/>
     <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
@@ -35,35 +36,35 @@
     </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-	    <jar destfile="${dist.dir}\Facade2.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
-    <attribute name="Specification-Title" value="Composite2"/>
+    <attribute name="Specification-Title" value="${ant.project.name}"/>
     <attribute name="Specification-Version" value="${version}"/>
     <attribute name="Specification-Vendor" value=""/>
     <attribute name="Implementation-Title" value=""/>
-    <attribute name="Implementation-Version" value="${version} ${TODAY}"/>
+    <attribute name="Implementation-Version" value="${build} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
   <section name="com.javacodegeeks">
     <attribute name="Sealed" value="true"/>
   </section>
-  <attribute name="Main-Class" value="com.javacodegeeks.client.Client" />
+  <attribute name="Main-Class" value="${main.class}"/>
 </manifest>
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
-<java classname="com.javacodegeeks.client.Client">
+<java classname="${main.class}">
  <classpath>
-<pathelement location="${dist.dir}\Facade2.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
-<java classname="com.javacodegeeks.client.Client2">
+<java classname="${main.class2}">
  <classpath>
-<pathelement location="${dist.dir}\Facade2.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
