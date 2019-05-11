@@ -10,6 +10,12 @@ public final class ByteToHex {
 
   private static final String HEXES = "0123456789abcdef";
 
+  /**
+   * Describe <code>getHex</code> method here.
+   *
+   * @param raw a <code>byte</code> value
+   * @return a <code>String</code> value
+   */
   public static String getHex(byte[] raw) {
     final StringBuilder hex = new StringBuilder(2 * raw.length);
     for (final byte b : raw) {
@@ -18,6 +24,12 @@ public final class ByteToHex {
     return hex.toString();
   }
 
+  /**
+   * Describe <code>getHex2</code> method here.
+   *
+   * @param raw a <code>byte</code> value
+   * @return a <code>String</code> value
+   */
   public static String getHex2(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
     for (final byte b : raw) builder.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
@@ -25,12 +37,24 @@ public final class ByteToHex {
     return builder.toString();
   }
 
+  /**
+   * Describe <code>getHex3</code> method here.
+   *
+   * @param raw a <code>byte</code> value
+   * @return a <code>String</code> value
+   */
   public static String getHex3(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
     for (final byte b : raw) builder.append(String.format("%02x", b));
     return builder.toString();
   }
 
+  /**
+   * Describe <code>getHex4</code> method here.
+   *
+   * @param raw a <code>byte</code> value
+   * @return a <code>String</code> value
+   */
   public static String getHex4(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
     for (final byte b : raw)
