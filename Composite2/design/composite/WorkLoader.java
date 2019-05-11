@@ -40,7 +40,12 @@ public class WorkLoader {
   public Properties getProperties() {
     return properties;
   }
-
+  
+  /**
+   * Describe <code>getWorkList</code> method here.
+   *
+   * @return a <code>List</code> object
+   */
   public List<Work> getWorkList() {
     List<Work> workList = new ArrayList<Work>();
     Set<Object> keys = properties.keySet();

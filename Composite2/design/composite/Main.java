@@ -42,9 +42,6 @@ public class Main {
             work -> {
               rachelle.assignWork(rachelle, work);
             });
-    /*for (Work work: workLoad.getWorkList())
-    rachelle.assignWork(rachelle,work);*/
-
     rachelle.performWork();
   }
 }

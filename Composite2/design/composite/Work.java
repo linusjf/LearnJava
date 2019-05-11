@@ -41,7 +41,11 @@ public class Work {
   public void setWorkType(Calculator workType) {
     this.workType = workType;
   }
-
+  /**
+   * Describe <code>getWork</code> method here.
+   *
+   * @return a <code>List</code> object
+   */
   public List<String> getWork() {
     return work;
   }
