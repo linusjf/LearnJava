@@ -41,6 +41,7 @@ public class Work {
   public void setWorkType(Calculator workType) {
     this.workType = workType;
   }
+
   /**
    * Describe <code>getWork</code> method here.
    *
