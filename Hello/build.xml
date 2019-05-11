@@ -66,7 +66,10 @@
 </java>
 </target>
 <target name="checkstyle">
-  <checkstyle config="../google_checks.xml"
+  <first id="checkstylefile">
+    <fileset dir=".." includes="**/google_checks.xml" />
+  </first>
+  <checkstyle config="${toString:checkstylefile}"
     classpath="../lib/checkstyle-8.20-all.jar"
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
