@@ -4,6 +4,10 @@
  * @created : Friday May 03, 2019 20:08:16 IST
  * @copyright : Copyright (c) Linus Fernandes
  * @description :
+ *
+ * Describe class <code>ByteToHex</code> here.
+ *
+ * @version 1.0
  */
 public class TestByteToHex {
   /**
