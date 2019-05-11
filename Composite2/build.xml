@@ -7,6 +7,8 @@
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+         classpath="../lib/checkstyle-8.20-all.jar"/>
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
 	    <delete>
@@ -21,7 +23,7 @@
         <mkdir dir="${dist.dir}" />
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir">
+    <target name="compile" depends="clean, makedir,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
     </target>
@@ -64,6 +66,18 @@
 </classpath>
 </java>
 <exec executable="./teardown"/>
+</target>
+<target name="checkstyle">
+  <first id="checkstylefile">
+    <fileset dir=".." includes="**/google_checks.xml" />
+  </first>
+  <checkstyle config="${toString:checkstylefile}"
+    classpath="../lib/checkstyle-8.20-all.jar"
+    failOnViolation="false">
+  <fileset dir="${src.dir}" includes="**/*.java"/>
+  <formatter type="plain"/>
+  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+</checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">
         <description>Main target</description>
