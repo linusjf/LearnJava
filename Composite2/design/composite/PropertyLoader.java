@@ -35,7 +35,8 @@ public abstract class PropertyLoader {
     Properties result = null;
     InputStream in = null;
     try {
-      if (loader == null) loader = ClassLoader.getSystemClassLoader();
+      if (loader == null)
+        loader = ClassLoader.getSystemClassLoader();
       if (LOAD_AS_RESOURCE_BUNDLE) {
         name = name.replace('/', '.');
         // Throws MissingResourceException on lookup failures:
