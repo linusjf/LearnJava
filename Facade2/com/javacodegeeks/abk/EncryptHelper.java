@@ -2,8 +2,19 @@ package com.javacodegeeks.abk;
 
 import java.security.SecureRandom;
 
+/**
+ * Describe class <code>EncryptHelper</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public final class EncryptHelper {
   // Add salt
+  /**
+   * Describe <code>getSalt</code> method here.
+   *
+   * @return a <code>byte[]</code> value
+   */
   public static byte[] getSalt() {
     // Always use a SecureRandom generator
     SecureRandom sr = new SecureRandom();
