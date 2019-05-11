@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="Composite2" default="main" basedir=".">
-    <!-- Sets variables which can later be used. -->
+ <property file = "build.properties"/>
+  <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
     <property name="build.dir" location="." />
@@ -35,11 +36,11 @@
     </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile">
-	    <jar destfile="${dist.dir}\Composite2.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
           <manifest>
   <attribute name="Built-By" value="${user.name}"/>
   <section name="common">
-    <attribute name="Specification-Title" value="Composite2"/>
+    <attribute name="Specification-Title" value="${ant.project.name}"/>
     <attribute name="Specification-Version" value="${version}"/>
     <attribute name="Specification-Vendor" value=""/>
     <attribute name="Implementation-Title" value=""/>
@@ -49,16 +50,15 @@
   <section name="design.composite">
     <attribute name="Sealed" value="true"/>
   </section>
-  <attribute name="Main-Class" value="design.composite.Main" />
+  <attribute name="Main-Class" value="${main.class}" />
 </manifest>
 </jar>
 </target>
 <target name="run" >
 	<description>Run target</description>
 	<exec executable="./setup"/>
-<java classname="design.composite.Main" >
+  <java fork="true" jar="${dist.dir}/${ant.project.name}.jar" >
  <classpath>
-<pathelement location="${dist.dir}\Composite2.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
