@@ -1,5 +1,6 @@
 /**
  * Describe class <code>ByteToHex</code> here.
+ *
  * @author : Linus Fernandes (linusfernandes@gmail.com)
  * @version 1.0
  * @file : TestByteToHex.java

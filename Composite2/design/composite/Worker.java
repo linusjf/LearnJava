@@ -15,9 +15,6 @@ public interface Worker {
    */
   void assignWork(Employee manager, Work work);
 
-  /**
-   * Describe <code>performWork</code> method here.
-   *
-   */
+  /** Describe <code>performWork</code> method here. */
   void performWork();
 }

@@ -51,10 +51,7 @@ public class Work {
     return work;
   }
 
-  /**
-   * Describe <code>setWork</code> method here.
-   *
-   */
+  /** Describe <code>setWork</code> method here. */
   public void setWork(List<String> work) {
     this.work = work;
   }

@@ -40,7 +40,7 @@ public class WorkLoader {
   public Properties getProperties() {
     return properties;
   }
-  
+
   /**
    * Describe <code>getWorkList</code> method here.
    *

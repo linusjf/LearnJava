@@ -53,9 +53,10 @@ public enum Calculator {
       return answer;
     }
   };
-  
+
   /**
    * Describe <code>calculate</code> method here.
+   *
    * @param value <code>String</code>
    * @return a <code>String</code> value
    */
