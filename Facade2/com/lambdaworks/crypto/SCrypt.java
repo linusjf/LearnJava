@@ -113,6 +113,16 @@ public class SCrypt {
     return derivedKey;
   }
 
+  /**
+   * Describe <code>smix</code> method here.
+   *
+   * @param B a <code>byte</code> value
+   * @param Bi an <code>int</code> value
+   * @param r an <code>int</code> value
+   * @param N an <code>int</code> value
+   * @param V a <code>byte</code> value
+   * @param XY a <code>byte</code> value
+   */
   @SuppressWarnings("parametername")
   public static void smix(byte[] B, int Bi, int r, int N, byte[] V, byte[] XY) {
     
@@ -138,6 +148,14 @@ public class SCrypt {
     arraycopy(XY, Xi, B, Bi, 128 * r);
   }
 
+  /**
+   * Describe <code>blockmix_salsa8</code> method here.
+   *
+   * @param BY a <code>byte</code> value
+   * @param Bi an <code>int</code> value
+   * @param Yi an <code>int</code> value
+   * @param r an <code>int</code> value
+   */
   @SuppressWarnings("parametername")
   public static void blockmix_salsa8(byte[] BY, int Bi, int Yi, int r) {
     
@@ -162,11 +180,23 @@ public class SCrypt {
   
   }
 
+  /**
+   * Describe <code>R</code> method here.
+   *
+   * @param a an <code>int</code> value
+   * @param b an <code>int</code> value
+   * @return an <code>int</code> value
+   */
   @SuppressWarnings("methodname")
   public static int R(int a, int b) {
     return (a << b) | (a >>> (32 - b));
   }
 
+  /**
+   * Describe <code>salsa20_8</code> method here.
+   *
+   * @param B a <code>byte</code> value
+   */
   @SuppressWarnings("parametername")
   public static void salsa20_8(byte[] B) {
     
@@ -230,6 +260,15 @@ public class SCrypt {
     }
   }
 
+  /**
+   * Describe <code>blockxor</code> method here.
+   *
+   * @param S a <code>byte</code> value
+   * @param Si an <code>int</code> value
+   * @param D a <code>byte</code> value
+   * @param Di an <code>int</code> value
+   * @param len an <code>int</code> value
+   */
   @SuppressWarnings("parametername")
   public static void blockxor(byte[] S, int Si, byte[] D, int Di, int len) {
     for (int i = 0; i < len; i++) 
@@ -237,6 +276,14 @@ public class SCrypt {
     
   }
 
+  /**
+   * Describe <code>integerify</code> method here.
+   *
+   * @param B a <code>byte</code> value
+   * @param Bi an <code>int</code> value
+   * @param r an <code>int</code> value
+   * @return an <code>int</code> value
+   */
   @SuppressWarnings("parametername")
   public static int integerify(byte[] B, int Bi, int r) {
     int n;

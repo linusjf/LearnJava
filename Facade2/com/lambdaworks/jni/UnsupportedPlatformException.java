@@ -11,6 +11,11 @@ public class UnsupportedPlatformException extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Creates a new <code>UnsupportedPlatformException</code> instance.
+   *
+   * @param s a <code>String</code> value
+   */
   public UnsupportedPlatformException(String s) {
     super(s);
   }
