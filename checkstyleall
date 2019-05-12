@@ -18,5 +18,6 @@ if [ ! -e $rules_file ]
 fi
 java -jar \
 lib/checkstyle-8.20-all.jar \
--c $rules_file `find . -mindepth 2 -type f -name *.java`
+-c $rules_file \
+`find . -mindepth 2 -type f -name "*.java"`
 exit $?

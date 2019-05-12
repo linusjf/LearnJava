@@ -1,5 +1,6 @@
 #!/bin/bash
 java -jar \
-lib/google-java-format-1.7-all-deps.jar -i \
-`find . -mindepth 2 -type f -name *.java`
+lib/google-java-format-1.7-all-deps.jar \
+--set-exit-if-changed -i \
+`find . -mindepth 2 -type f -name "*.java"`
 exit $?
