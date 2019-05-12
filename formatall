@@ -1,5 +1,5 @@
 #!/bin/bash
 java -jar \
 lib/google-java-format-1.7-all-deps.jar -i \
-`find . -type f -name *.java`
+`find . -mindepth 2 -type f -name *.java`
 exit $?

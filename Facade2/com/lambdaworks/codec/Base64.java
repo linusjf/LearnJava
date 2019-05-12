@@ -23,8 +23,7 @@ public class Base64 {
 
   static {
     Arrays.fill(decode, -1);
-    for (int i = 0; i < encode.length; i++) 
-      decode[encode[i]] = i;
+    for (int i = 0; i < encode.length; i++) decode[encode[i]] = i;
     decode[pad] = 0;
   }
 
@@ -49,8 +48,7 @@ public class Base64 {
   public static byte[] decode(char[] src, int[] table, char pad) {
     int len = src.length;
 
-    if (len == 0) 
-      return new byte[0];
+    if (len == 0) return new byte[0];
 
     int padCount = (src[len - 1] == pad ? (src[len - 2] == pad ? 2 : 1) : 0);
     int bytes = (len * 6 >> 3) - padCount;
@@ -75,13 +73,13 @@ public class Base64 {
       int n = 0;
       switch (len - si) {
         case 4:
-          n |= table[src[si + 3]];// fall through
+          n |= table[src[si + 3]]; // fall through
         case 3:
-          n |= table[src[si + 2]] << 6;// fall through
+          n |= table[src[si + 2]] << 6; // fall through
         case 2:
           n |= table[src[si + 1]] << 12; // fall through
         case 1:
-          n |= table[src[si]] << 18;// fall through
+          n |= table[src[si]] << 18; // fall through
         default:
       }
       for (int r = 16; di < bytes; r -= 8) {
@@ -91,7 +89,6 @@ public class Base64 {
 
     return dst;
   }
-
 
   /**
    * Encode bytes to base64 chars, with padding.
@@ -113,7 +110,7 @@ public class Base64 {
   public static char[] encode(byte[] bytes, boolean padded) {
     return encode(bytes, encode, padded ? pad : 0);
   }
-  
+
   /**
    * Encode bytes to base64 chars using the supplied encode table and with optional padding.
    *
@@ -125,14 +122,12 @@ public class Base64 {
   public static char[] encode(byte[] src, char[] table, char pad) {
     int len = src.length;
 
-    if (len == 0) 
-      return new char[0];
+    if (len == 0) return new char[0];
 
     int blocks = (len / 3) * 3;
     int chars = ((len - 1) / 3 + 1) << 2;
     int tail = len - blocks;
-    if (pad == 0 && tail > 0) 
-      chars -= 3 - tail;
+    if (pad == 0 && tail > 0) chars -= 3 - tail;
 
     char[] dst = new char[chars];
     int si = 0;
@@ -148,13 +143,11 @@ public class Base64 {
 
     if (tail > 0) {
       int n = (src[si] & 0xff) << 10;
-      if (tail == 2)
-        n |= (src[++si] & 0xff) << 2;
+      if (tail == 2) n |= (src[++si] & 0xff) << 2;
 
       dst[di++] = table[(n >>> 12) & 0x3f];
       dst[di++] = table[(n >>> 6) & 0x3f];
-      if (tail == 2) 
-        dst[di++] = table[n & 0x3f];
+      if (tail == 2) dst[di++] = table[n & 0x3f];
 
       if (pad != 0) {
         if (tail == 1) dst[di++] = pad;

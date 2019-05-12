@@ -88,12 +88,10 @@ public class SCryptUtil {
 
       byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, N, r, p, 32);
 
-      if (derived0.length != derived1.length) 
-        return false;
+      if (derived0.length != derived1.length) return false;
 
       int result = 0;
-      for (int i = 0; i < derived0.length; i++) 
-        result |= derived0[i] ^ derived1[i];
+      for (int i = 0; i < derived0.length; i++) result |= derived0[i] ^ derived1[i];
       return result == 0;
     } catch (UnsupportedEncodingException e) {
       throw new IllegalStateException("JVM doesn't support UTF-8?");

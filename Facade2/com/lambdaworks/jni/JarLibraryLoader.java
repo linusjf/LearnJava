@@ -5,7 +5,6 @@ package com.lambdaworks.jni;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +132,7 @@ public class JarLibraryLoader implements LibraryLoader {
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case linux:// falls through
+      case linux: // falls through
       case freebsd:
         candidates.add(sb + ".so");
         break;

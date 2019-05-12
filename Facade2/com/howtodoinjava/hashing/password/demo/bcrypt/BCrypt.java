@@ -360,6 +360,7 @@ public class BCrypt {
   // Expanded Blowfish key
   @SuppressWarnings("membername")
   private int[] P;
+
   @SuppressWarnings("membername")
   private int[] S;
 
@@ -406,7 +407,7 @@ public class BCrypt {
 
   /**
    * Look up the 3 bits base64-encoded by the specified character, range-checking againt conversion
-   * table. 
+   * table.
    *
    * @param x the base64-encoded value
    * @return the decoded value of x
@@ -427,32 +428,28 @@ public class BCrypt {
    */
   private static byte[] decode_base64(String s, int maxolen) throws IllegalArgumentException {
     StringBuffer rs = new StringBuffer();
-    int off = 0; 
-    int slen = s.length(); 
+    int off = 0;
+    int slen = s.length();
     int olen = 0;
     byte[] ret;
     @SuppressWarnings("checkstyle:multiplevariabledeclarations")
     byte c1, c2, c3, c4, o;
-    if (maxolen <= 0) 
-      throw new IllegalArgumentException("Invalid maxolen");
+    if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
 
     while (off < slen - 1 && olen < maxolen) {
       c1 = char64(s.charAt(off++));
       c2 = char64(s.charAt(off++));
-      if (c1 == -1 || c2 == -1) 
-        break;
+      if (c1 == -1 || c2 == -1) break;
       o = (byte) (c1 << 2);
       o |= (c2 & 0x30) >> 4;
       rs.append((char) o);
       if (++olen >= maxolen || off >= slen) break;
       c3 = char64(s.charAt(off++));
-      if (c3 == -1) 
-        break;
+      if (c3 == -1) break;
       o = (byte) ((c2 & 0x0f) << 4);
       o |= (c3 & 0x3c) >> 2;
       rs.append((char) o);
-      if (++olen >= maxolen || off >= slen) 
-        break;
+      if (++olen >= maxolen || off >= slen) break;
       c4 = char64(s.charAt(off++));
       o = (byte) ((c3 & 0x03) << 6);
       o |= c4;
@@ -461,8 +458,7 @@ public class BCrypt {
     }
 
     ret = new byte[olen];
-    for (off = 0; off < olen; off++) 
-      ret[off] = (byte) rs.charAt(off);
+    for (off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
     return ret;
   }
 
@@ -474,8 +470,8 @@ public class BCrypt {
    */
   private final void encipher(int[] lr, int off) {
     int i;
-    int n; 
-    int l = lr[off]; 
+    int n;
+    int l = lr[off];
     int r = lr[off + 1];
 
     l ^= P[0];
@@ -537,8 +533,7 @@ public class BCrypt {
     int plen = P.length;
     int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       encipher(lr, 0);
@@ -562,7 +557,7 @@ public class BCrypt {
    */
   private void ekskey(byte[] data, byte[] key) {
     int i;
-    int[] koffp = {0}; 
+    int[] koffp = {0};
     int[] doffp = {0};
     int[] lr = {0, 0};
     int plen = P.length;
@@ -600,8 +595,7 @@ public class BCrypt {
     int[] cdata = (int[]) bf_crypt_ciphertext.clone();
     int clen = cdata.length;
 
-    if (logRounds < 4 || logRounds > 31)
-      throw new IllegalArgumentException("Bad number of rounds");
+    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
     rounds = 1 << logRounds;
     if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
 
