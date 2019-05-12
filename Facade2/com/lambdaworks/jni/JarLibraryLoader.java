@@ -2,7 +2,10 @@ package com.lambdaworks.jni;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,10 +133,11 @@ public class JarLibraryLoader implements LibraryLoader {
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case linux:
+      case linux:// falls through
       case freebsd:
         candidates.add(sb + ".so");
         break;
+      default:
     }
 
     return candidates;

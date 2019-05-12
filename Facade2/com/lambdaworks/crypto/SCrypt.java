@@ -14,11 +14,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 
 /**
- * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt</a> key
- * derivation function. This class will attempt to load a native library containing the optimized C
- * implementation from <a
- * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to
- * the pure Java version if that fails.
+ * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a>
+ * key derivation function.
+ * This class will attempt to load a native library containing the optimized C implementation from
+ * <a href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to the pure Java version if that fails.
  *
  * @author Will Glozer
  */
@@ -31,7 +30,7 @@ public class SCrypt {
   }
 
   /**
-   * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt KDF</a>. Calls
+   * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
    * the native implementation {@link #scryptN} when the native library was successfully loaded,
    * otherwise calls {@link #scryptJ}.
    *
@@ -53,7 +52,7 @@ public class SCrypt {
   }
 
   /**
-   * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt
+   * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
    * KDF</a> using the code from <a
    * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>.
    *
@@ -69,7 +68,7 @@ public class SCrypt {
   public static native byte[] scryptN(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen);
 
   /**
-   * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt
+   * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
    * KDF</a>.
    *
    * @param passwd Password.
