@@ -53,8 +53,9 @@ public class PBKDF {
     if (dkLen > (Math.pow(2, 32) - 1) * hLen) {
       throw new GeneralSecurityException("Requested key length too long");
     }
-
+    @SuppressWarnings("localvariablename")
     byte[] U = new byte[hLen];
+    @SuppressWarnings("localvariablename")
     byte[] T = new byte[hLen];
     byte[] block1 = new byte[salt.length + 4];
 

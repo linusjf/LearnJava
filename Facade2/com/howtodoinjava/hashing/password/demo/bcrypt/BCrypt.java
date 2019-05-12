@@ -358,10 +358,10 @@ public class BCrypt {
   };
 
   // Expanded Blowfish key
-  //CHECKSTYLE.OFF
+  @SuppressWarnings("membername")
   private int[] P;
+  @SuppressWarnings("membername")
   private int[] S;
-  //CHECKSTYLE.ON
 
   /**
    * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
@@ -661,9 +661,8 @@ public class BCrypt {
     }
 
     byte[] saltb = decode_base64(realSalt, BCRYPT_SALT_LEN);
-    //CHECKSTYLE.OFF
+    @SuppressWarnings("localvariablename")
     BCrypt B = new BCrypt();
-    //CHECKSTYLE.ON
     final byte[] hashed = B.crypt_raw(passwordb, saltb, rounds);
 
     StringBuffer rs = new StringBuffer();

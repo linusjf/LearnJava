@@ -81,7 +81,7 @@ public class SCryptUtil {
       long params = Long.parseLong(parts[2], 16);
       byte[] salt = decode(parts[3].toCharArray());
       byte[] derived0 = decode(parts[4].toCharArray());
-
+      @SuppressWarnings("localvariablename")
       int N = (int) Math.pow(2, params >> 16 & 0xffff);
       int r = (int) params >> 8 & 0xff;
       int p = (int) params & 0xff;
