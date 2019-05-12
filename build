@@ -67,7 +67,7 @@ else
     [ -e $proj/.ver ] && \
       { ver=$(cat $proj/.ver) || \
       echo "Unable to read $proj/.ver";}
-    ecj -$ver $proj 
+    ecj -nowarn -$ver $proj 
     success=$?
     if [ $success -eq 0 ]
       then
