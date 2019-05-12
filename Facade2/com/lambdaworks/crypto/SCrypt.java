@@ -4,16 +4,20 @@ package com.lambdaworks.crypto;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.arraycopy;
 
-import com.lambdaworks.jni.*;
+import com.lambdaworks.jni.LibraryLoader;
+import com.lambdaworks.jni.LibraryLoaders;
+
 import java.security.GeneralSecurityException;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
 
 /**
  * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt</a> key
  * derivation function. This class will attempt to load a native library containing the optimized C
  * implementation from <a
- * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html<a> and fall back to
+ * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to
  * the pure Java version if that fails.
  *
  * @author Will Glozer
@@ -40,6 +44,7 @@ public class SCrypt {
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
+  @SuppressWarnings("parametername")
   public static byte[] scrypt(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
       throws GeneralSecurityException {
     return native_library_loaded
@@ -50,7 +55,7 @@ public class SCrypt {
   /**
    * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf"/>scrypt
    * KDF</a> using the code from <a
-   * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html<a>.
+   * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -60,6 +65,7 @@ public class SCrypt {
    * @param dkLen Intended length of the derived key.
    * @return The derived key.
    */
+  @SuppressWarnings("parametername")
   public static native byte[] scryptN(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen);
 
   /**
@@ -75,37 +81,45 @@ public class SCrypt {
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
+  @SuppressWarnings("parametername")
   public static byte[] scryptJ(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
       throws GeneralSecurityException {
     if (N < 2 || (N & (N - 1)) != 0)
       throw new IllegalArgumentException("N must be a power of 2 greater than 1");
 
-    if (N > MAX_VALUE / 128 / r) throw new IllegalArgumentException("Parameter N is too large");
-    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
+    if (N > MAX_VALUE / 128 / r) 
+      throw new IllegalArgumentException("Parameter N is too large");
+    if (r > MAX_VALUE / 128 / p) 
+      throw new IllegalArgumentException("Parameter r is too large");
 
     Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
 
-    byte[] DK = new byte[dkLen];
-
+    byte[] derivedKey = new byte[dkLen];
+    @SuppressWarnings("localvariablename")
     byte[] B = new byte[128 * r * p];
+    @SuppressWarnings("localvariablename")
     byte[] XY = new byte[256 * r];
+    @SuppressWarnings("localvariablename")
     byte[] V = new byte[128 * r * N];
     int i;
 
     PBKDF.pbkdf2(mac, salt, 1, B, p * 128 * r);
 
-    for (i = 0; i < p; i++) {
+    for (i = 0; i < p; i++) 
       smix(B, i * 128 * r, r, N, V, XY);
-    }
+  
+    PBKDF.pbkdf2(mac, B, 1, derivedKey, dkLen);
 
-    PBKDF.pbkdf2(mac, B, 1, DK, dkLen);
-
-    return DK;
+    return derivedKey;
   }
 
+  @SuppressWarnings("parametername")
   public static void smix(byte[] B, int Bi, int r, int N, byte[] V, byte[] XY) {
+    
+    @SuppressWarnings("localvariablename")
     int Xi = 0;
+    @SuppressWarnings("localvariablename")
     int Yi = 128 * r;
     int i;
 
@@ -125,7 +139,10 @@ public class SCrypt {
     arraycopy(XY, Xi, B, Bi, 128 * r);
   }
 
+  @SuppressWarnings("parametername")
   public static void blockmix_salsa8(byte[] BY, int Bi, int Yi, int r) {
+    
+    @SuppressWarnings("localvariablename")
     byte[] X = new byte[64];
     int i;
 
@@ -137,20 +154,24 @@ public class SCrypt {
       arraycopy(X, 0, BY, Yi + (i * 64), 64);
     }
 
-    for (i = 0; i < r; i++) {
+    for (i = 0; i < r; i++) 
       arraycopy(BY, Yi + (i * 2) * 64, BY, Bi + (i * 64), 64);
-    }
+    
 
-    for (i = 0; i < r; i++) {
+    for (i = 0; i < r; i++) 
       arraycopy(BY, Yi + (i * 2 + 1) * 64, BY, Bi + (i + r) * 64, 64);
-    }
+  
   }
 
+  @SuppressWarnings("methodname")
   public static int R(int a, int b) {
     return (a << b) | (a >>> (32 - b));
   }
 
+  @SuppressWarnings("parametername")
   public static void salsa20_8(byte[] B) {
+    
+    @SuppressWarnings("localvariablename")
     int[] B32 = new int[16];
     int[] x = new int[16];
     int i;
@@ -199,7 +220,8 @@ public class SCrypt {
       x[15] ^= R(x[14] + x[13], 18);
     }
 
-    for (i = 0; i < 16; ++i) B32[i] = x[i] + B32[i];
+    for (i = 0; i < 16; ++i) 
+      B32[i] = x[i] + B32[i];
 
     for (i = 0; i < 16; i++) {
       B[i * 4 + 0] = (byte) (B32[i] >> 0 & 0xff);
@@ -209,12 +231,14 @@ public class SCrypt {
     }
   }
 
+  @SuppressWarnings("parametername")
   public static void blockxor(byte[] S, int Si, byte[] D, int Di, int len) {
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) 
       D[Di + i] ^= S[Si + i];
-    }
+    
   }
 
+  @SuppressWarnings("parametername")
   public static int integerify(byte[] B, int Bi, int r) {
     int n;
 
