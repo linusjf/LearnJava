@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<project name="AnnoProc" default="main"
+  basedir=".">
+  <property file = "build.properties"/>
+  <property file = "${cs.properties}"/>
+    <!-- Sets variables which can later be used. -->
+    <!-- The value of a property is accessed via ${} -->
+    <property name="src.dir" location="." />
+    <property name="build.dir" location="." />
+    <property name="dist.dir" location="dist" />
+    <property name="docs.dir" location="docs" />
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+         classpath="../lib/checkstyle-8.20-all.jar"/>
+    <!-- Deletes the existing build, docs and dist directory-->
+    <target name="clean">
+	    <delete>
+	        <fileset dir="." includes="**/*.class"/>
+	</delete>		
+	    <delete dir="${docs.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+    <!-- Creates the  build, docs and dist directory-->
+    <target name="makedir">
+        <mkdir dir="${docs.dir}" />
+        <mkdir dir="${dist.dir}" />
+    </target>
+    <!-- Compiles the java code (including the usage of library for JUnit -->
+    <target name="compile" depends="clean, makedir,checkstyle">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
+        </javac>
+    </target>
+    <!-- Creates Javadoc -->
+    <target name="docs" depends="compile">
+      <javadoc  additionalparam="-Xdoclint:none" 
+        sourcepath="${src.dir}" 
+        destdir="${docs.dir}">
+            <!-- Define which files / directory should get included, we include all -->
+             <fileset dir="${src.dir}">
+                <include name="*.java" />
+             </fileset>
+        </javadoc>
+    </target>
+    <!--Creates the deployable jar file  -->
+    <target name="jar" depends="compile">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
+          <manifest>
+  <attribute name="Built-By" value="${user.name}"/>
+  <section name="common">
+    <attribute name="Specification-Title" value="${ant.project.name}"/>
+    <attribute name="Specification-Version" value="${version}"/>
+    <attribute name="Specification-Vendor" value=""/>
+    <attribute name="Implementation-Title" value=""/>
+    <attribute name="Implementation-Version" value="${build} ${TODAY}"/>
+    <attribute name="Implementation-Vendor" value=""/>
+  </section>
+</manifest>
+</jar>
+</target>
+<target name="run" >
+<description>Run target</description>
+</target>
+<target name="checkstyle">
+  <first id="checkstylefile">
+    <fileset dir=".." includes="${cs.config}"/>
+  </first>
+  <checkstyle config="${toString:checkstylefile}"
+    classpath="../lib/checkstyle-8.20-all.jar"
+    failOnViolation="false">
+  <fileset dir="${src.dir}" includes="**/*.java"/>
+  <formatter type="plain"/>
+  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+</checkstyle>
+</target>
+<target name="main" depends="compile, jar, docs">
+        <description>Main target</description>
+    </target>
+</project>
