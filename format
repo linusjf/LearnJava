@@ -1,0 +1,17 @@
+#!/bin/bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+java -jar \ 
+lib/google-java-format-1.7-all-deps.jar \
+--set-exit-if-changed -i \
+`find $1 -type f -name "*.java" \
+! -path "docs/**" ! -path "dist/**"`
+exit $?

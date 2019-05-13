@@ -5,7 +5,6 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-
 /**
  * Describe class <code>AnnoProc</code> here.
  *

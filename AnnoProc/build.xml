@@ -3,14 +3,15 @@
   basedir=".">
   <property file = "build.properties"/>
   <property file = "${cs.properties}"/>
+  <property file = "${gformat.properties}"/>
     <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
     <property name="build.dir" location="." />
     <property name="dist.dir" location="dist" />
     <property name="docs.dir" location="docs" />
-    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
-         classpath="../lib/checkstyle-8.20-all.jar"/>
+    <taskdef resource="${cs.taskdef.resource}"
+      classpath="../${cs.jar}"/>
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
 	    <delete>
@@ -25,7 +26,7 @@
         <mkdir dir="${dist.dir}" />
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir,checkstyle">
+    <target name="compile" depends="clean, makedir,gformat,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
     </target>
@@ -59,6 +60,20 @@
 <target name="run" >
 <description>Run target</description>
 </target>
+<target name="gformat">
+  <exec executable="find" dir="${basedir}"
+    failonerror="true" outputproperty="sources"> 
+            <arg line=" . -type f -name '*.java'"/>  
+          </exec>
+          <echo message="About to format ...: ${sources}"/>
+          <java classname="${gformat.main.class}">
+            <arg line=" -i ${sources}"/>
+ <classpath>
+   <pathelement location="../${gformat.jar}"/>
+<pathelement path="${java.class.path}"/>
+</classpath>
+</java>
+    </target>
 <target name="checkstyle">
   <first id="checkstylefile">
     <fileset dir=".." includes="${cs.config}"/>
