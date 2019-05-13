@@ -27,11 +27,11 @@ isJVM ()
 
 createDex()
 {
-  rm -rf $proj/dist || \
-    { echo "Unable to delete folder $proj/dist"; }
+  rm -rf $proj/$distDir || \
+    { echo "Unable to delete folder $proj/$distDir"; }
   dx --dex --output=$proj.dex $proj && \
-    mkdir $proj/dist && \
-    cp $proj.dex $proj/dist && exit 0 || \
+    mkdir $proj/$distDir && \
+    cp $proj.dex $proj/$distDir && exit 0 || \
     { echo "Error creating dex output"; }
   dxRes=$?
 }
@@ -39,20 +39,23 @@ createDex()
 createJar()
 {
   cd $proj || echo "cannot cd to $proj";
-  jar cfnm $proj.jar manifest.mf \
+  jar cfnm $proj.jar $manifestFile \
     `find . -name "*.class" \
     ! -path "*.git*" ! -type d` || \
     { echo "Error creating jar output: $proj.jarRes"; }
   jarRes=$? 
   [ -e $proj.jar ] && cp $proj.jar .. \
-    && mkdir -p dist && mv $proj.jar dist || \
-    { echo "Error moving jar file to $proj/dist"; }
+    && mkdir -p $distDir && mv $proj.jar $distDir || \
+    { echo "Error moving jar file to $proj/$distDir"; }
   cd ..
   exit 0
 }
 
 proj=$1
 ver="1.7"
+distDir="dist"
+manifestFile="manifest.mf"
+verFile=".ver"
 isDX
 dex=$?
 isJVM
@@ -64,9 +67,9 @@ if [ -z $proj ] || [ ! -d $proj ]
     usage
 else
     echo $proj
-    [ -e $proj/.ver ] && \
-      { ver=$(cat $proj/.ver) || \
-      echo "Unable to read $proj/.ver";}
+    [ -e $proj/$verFile ] && \
+      { ver=$(cat $proj/$verFile) || \
+      echo "Unable to read $proj/$verFile";}
     ecj -$ver $proj 
     success=$?
     if [ $success -eq 0 ]
