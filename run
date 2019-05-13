@@ -20,8 +20,8 @@ setUp ()
 {
 	cd $proj || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e setup ] && \
-    { ./setup || \
+	[ -e $setupScript ] && \
+    { ./$setupScript || \
       { \
         echo "Error running setup script";\
         exit 1;\
@@ -34,9 +34,9 @@ tearDown ()
 {
 	cd $proj || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e teardown ] && \
+	[ -e $teardownScript ] && \
     {\
-      ./teardown || \
+      ./$teardownScript || \
       {\
         echo "Error running teardown script";\
         exit 1;\
@@ -89,13 +89,16 @@ runJVM()
   fi
 }
 
-
+setupScript="setup"
+teardownScript="teardown"
+nomainFile=".nomain"
+mainFile=".main"
 proj=$1
 if [ -z $proj ]
   then
     usage
 fi
-if [ -e $proj/.nomain ]
+if [ -e $proj/$nomainFile ]
   then
     echo $proj
     echo "Not an executable project."
@@ -105,8 +108,8 @@ fi
 main=$2
 if [ -z $main ]
 then
-  main=$(cat $proj/.main) || \
-    { echo "Error reading $proj.main";usage; }
+  main=$(cat $proj/$mainFile) || \
+    { echo "Error reading $proj/$mainFile";usage; }
 fi
 echo $proj
 isDalvik
