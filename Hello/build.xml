@@ -3,6 +3,7 @@
   basedir=".">
   <property file = "build.properties"/>
   <property file = "${cs.properties}"/>
+  <property file = "${gformat.properties}"/>
     <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
@@ -72,10 +73,10 @@
             <arg line=" . -type f -name '*.java'"/>  
           </exec>
           <echo message="About to format ...: ${sources}"/>
-          <java classname="com.google.googlejavaformat.java.Main">
+          <java classname="${gformat.main.class}">
             <arg line=" -i ${sources}"/>
  <classpath>
-   <pathelement location="../lib/google-java-format-1.7-all-deps.jar"/>
+   <pathelement location="../${gformat.jar}"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
@@ -85,7 +86,7 @@
     <fileset dir=".." includes="${cs.config}"/>
   </first>
   <checkstyle config="${toString:checkstylefile}"
-    classpath="../lib/checkstyle-8.20-all.jar"
+    classpath="../${cs.jar}"
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
