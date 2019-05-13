@@ -1,6 +1,17 @@
 package com.javacodegeeks.patterns.bridgepattern;
 
+/**
+ * Describe class <code>TestBridgePattern</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class TestBridgePattern {
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     final Product product = new CentralLocking("Central Locking System");
     final Product product2 = new GearLocking("Gear Locking System");

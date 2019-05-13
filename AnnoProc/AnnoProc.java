@@ -5,11 +5,11 @@ import javax.lang.model.element.*;
 
 @SupportedAnnotationTypes("SuppressWarnings")
 public class AnnoProc extends AbstractProcessor {
-    public boolean process(Set<? extends TypeElement> elems, RoundEnvironment renv) {
-        return true;
-    }
+  public boolean process(Set<? extends TypeElement> elems, RoundEnvironment renv) {
+    return true;
+  }
 
-    public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.latest();
-    }
+  public SourceVersion getSupportedSourceVersion() {
+    return SourceVersion.latest();
+  }
 }
