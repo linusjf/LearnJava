@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="Adapter" default="main" basedir=".">
   <property file = "build.properties"/>
+  <property file = "${cs.properties}"/>
     <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
@@ -65,7 +66,7 @@
 </target>
 <target name="checkstyle">
   <first id="checkstylefile">
-    <fileset dir=".." includes="**/${checksfile}" />
+    <fileset  dir=".." includes="${cs.config}" />
   </first>
   <checkstyle config="${toString:checkstylefile}"
     classpath="../lib/checkstyle-8.20-all.jar"
