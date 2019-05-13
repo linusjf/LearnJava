@@ -7,6 +7,10 @@ function usage()
   exit 1
 }
 rules_file="google_checks.xml"
+properties_file="checkstyle.properties"
+output_file="cs.errors"
+libdir="lib"
+gitdir=".git"
 if [ ! -z $1 ]
   then
     rules_file=$1
@@ -16,8 +20,21 @@ if [ ! -e $rules_file ]
     echo "$rules_file cannot be found."
     usage
 fi
+
+if [ ! -e $properties_file ]
+  then
+    echo "$properties_file not found. Creating..."
+    touch $properties_file || \
+      echo "Unable to create $properties_file"
+    echo "Create/Modify $properties_file to configure checkstyle"
+fi
+
 java -jar \
 lib/checkstyle-8.20-all.jar \
 -c $rules_file \
+-p $properties_file \
+-o $output_file \
+-e $libdir \
+-e $gitdir \
 `find . -mindepth 2 -type f -name "*.java"`
 exit $?

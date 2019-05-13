@@ -1,3 +1,5 @@
+*.cache
+*.errors
 *.class
 *.dex
 *.jar
