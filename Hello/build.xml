@@ -25,7 +25,7 @@
         <mkdir dir="${dist.dir}" />
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir,checkstyle">
+    <target name="compile" depends="clean, makedir,gformat,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
         </javac>
     </target>
@@ -66,6 +66,20 @@
 </classpath>
 </java>
 </target>
+<target name="gformat">
+  <exec executable="find" dir="${basedir}"
+    failonerror="true" outputproperty="sources"> 
+            <arg line=" . -type f -name '*.java'"/>  
+          </exec>
+          <echo message="About to format ...: ${sources}"/>
+          <java classname="com.google.googlejavaformat.java.Main">
+            <arg line=" -i ${sources}"/>
+ <classpath>
+   <pathelement location="../lib/google-java-format-1.7-all-deps.jar"/>
+<pathelement path="${java.class.path}"/>
+</classpath>
+</java>
+    </target>
 <target name="checkstyle">
   <first id="checkstylefile">
     <fileset dir=".." includes="${cs.config}"/>
