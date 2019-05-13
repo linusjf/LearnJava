@@ -9,8 +9,9 @@ if [ "$#" -ne 1 ] || ! [ -d "$1" ];
 then
   usage
 fi
+jarFile="lib/google-java-format-1.7-all-deps.jar"
 java -jar \ 
-lib/google-java-format-1.7-all-deps.jar \
+$jarFile \
 --set-exit-if-changed -i \
 `find $1 -type f -name "*.java" \
 ! -path "docs/**" ! -path "dist/**"`
