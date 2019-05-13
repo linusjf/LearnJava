@@ -1,0 +1,3 @@
+Main-Class: com.javacodegeeks.pattern.bridgepattern.TestBridgePattern
+Name: com.javacodegeeks.pattern.bridgepattern
+Sealed: true

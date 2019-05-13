@@ -95,6 +95,13 @@ if [ -z $proj ]
   then
     usage
 fi
+if [ -e $proj/.nomain ]
+  then
+    echo $proj
+    echo "Not an executable project."
+    exit 1
+fi
+
 main=$2
 if [ -z $main ]
 then
