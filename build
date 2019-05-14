@@ -30,7 +30,7 @@ createDex()
   rm -rf $proj/$distDir || \
     { echo "Unable to delete folder $proj/$distDir"; }
   dx --dex --output=$proj.dex $proj && \
-    mkdir $proj/$distDir && \
+    mkdir -p $proj/$distDir && \
     cp $proj.dex $proj/$distDir && exit 0 || \
     { echo "Error creating dex output"; }
   dxRes=$?
@@ -41,8 +41,8 @@ createJar()
   cd $proj || echo "cannot cd to $proj";
   jar cfm $proj.jar $manifestFile \
     `find . -name "*.class" \
-    ! -path "*.git*" ! -type d` || \
-    { echo "Error creating jar output: $proj.jarRes"; }
+    ! -path "*.git*" -type f` || \
+    { echo "Error creating jar output: $proj.jar";exit 1; }
   jarRes=$? 
   [ -e $proj.jar ] && cp $proj.jar .. \
     && mkdir -p $distDir && mv $proj.jar $distDir || \
@@ -81,6 +81,11 @@ else
       if [ $jvm -eq 0 ]
         then
         createJar
+      fi
+      if [ $dex ] && [ $jvm ]
+         then
+           echo "Unable to create executable archive"
+           success=1
       fi
     fi
 fi

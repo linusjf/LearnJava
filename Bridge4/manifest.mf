@@ -1,0 +1,3 @@
+Main-Class: design.bridge.Main
+Name: design.bridge
+Sealed: true
