@@ -75,7 +75,7 @@
             <arg line=" . -type f -name '*.java'"/>  
           </exec>
           <echo message="About to format ...: ${sources}"/>
-          <java fork="true" classname="${gformat.main.class}">
+          <java classname="${gformat.main.class}">
             <arg line=" -i ${sources}"/>
  <classpath>
    <pathelement location="../${gformat.jar}"/>
