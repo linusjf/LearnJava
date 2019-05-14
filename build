@@ -56,12 +56,14 @@ ver="1.7"
 distDir="dist"
 manifestFile="manifest.mf"
 verFile=".ver"
+optionsFile=".options"
 isDX
 dex=$?
 isJVM
 jvm=$?
 dxRes=0
 jarRes=0
+options=""
 if [ -z $proj ] || [ ! -d $proj ]
   then
     usage
@@ -70,7 +72,9 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-    ecj -$ver $proj 
+    [ -e $proj/$optionsFile ] && \
+      options=$(cat $proj/$optionsFile)
+    ecj -$ver $options $proj
     success=$?
     if [ $success -eq 0 ]
       then
