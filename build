@@ -39,7 +39,7 @@ createDex()
 createJar()
 {
   cd $proj || echo "cannot cd to $proj";
-  jar cfnm $proj.jar $manifestFile \
+  jar cfm $proj.jar $manifestFile \
     `find . -name "*.class" \
     ! -path "*.git*" ! -type d` || \
     { echo "Error creating jar output: $proj.jarRes"; }

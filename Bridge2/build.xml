@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<project name="Composite2" default="main" basedir=".">
- <property file = "build.properties"/>
+<project name="Bridge2" default="main"
+  basedir=".">
+  <property file = "build.properties"/>
   <property file = "${cs.properties}"/>
   <property file = "${gformat.properties}"/>
-  <!-- Sets variables which can later be used. -->
+    <!-- Sets variables which can later be used. -->
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="." />
     <property name="build.dir" location="." />
@@ -31,7 +32,9 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc packagenames="design.composite.*" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <javadoc  additionalparam="-Xdoclint:none" 
+        sourcepath="${src.dir}" 
+        destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
@@ -51,23 +54,18 @@
     <attribute name="Implementation-Version" value="${build} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
-  <section name="design.composite">
-    <attribute name="Sealed" value="true"/>
-  </section>
   <attribute name="Main-Class" value="${main.class}" />
 </manifest>
 </jar>
 </target>
 <target name="run" >
-	<description>Run target</description>
-	<exec executable="./setup"/>
-  <java classname="${main.class}">
+<description>Run target</description>
+<java classname="${main.class}">
  <classpath>
-   <pathelement path="${dist.dir}/${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
-<exec executable="./teardown"/>
 </target>
 <target name="gformat">
   <exec executable="find" dir="${basedir}"
@@ -75,7 +73,7 @@
             <arg line=" . -type f -name '*.java'"/>  
           </exec>
           <echo message="About to format ...: ${sources}"/>
-          <java fork="true" classname="${gformat.main.class}">
+          <java classname="${gformat.main.class}">
             <arg line=" -i ${sources}"/>
  <classpath>
    <pathelement location="../${gformat.jar}"/>
@@ -85,14 +83,14 @@
     </target>
 <target name="checkstyle">
   <first id="checkstylefile">
-    <fileset dir=".." includes="${cs.config}" />
+    <fileset dir=".." includes="${cs.config}"/>
   </first>
   <checkstyle config="${toString:checkstylefile}"
-    classpath="../lib/checkstyle-8.20-all.jar"
+    classpath="../${cs.jar}"
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
-  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+  <formatter type="plain" toFile="${cs.output}"/>
 </checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">
