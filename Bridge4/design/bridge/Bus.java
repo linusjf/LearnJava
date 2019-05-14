@@ -1,5 +1,11 @@
 package design.bridge;
 
+/**
+ * Describe class <code>Bus</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Bus extends Vehicle {
 
   @Override

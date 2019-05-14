@@ -1,7 +1,18 @@
 package design.bridge;
 
+/**
+ * Describe class <code>Main</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Main {
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     Vehicle bike = new Bike();
     bike.joinWorkshop(new ProduceWorkShop());

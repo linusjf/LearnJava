@@ -2,7 +2,17 @@ package design.bridge;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Describe class <code>AssembleWorkShop</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class AssembleWorkShop extends WorkShop {
+  /**
+   * Creates a new <code>AssembleWorkShop</code> instance.
+   *
+   */
   public AssembleWorkShop() {
     super();
   }

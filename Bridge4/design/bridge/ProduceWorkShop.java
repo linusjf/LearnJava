@@ -2,8 +2,18 @@ package design.bridge;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Describe class <code>ProduceWorkShop</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class ProduceWorkShop extends WorkShop {
 
+  /**
+   * Creates a new <code>ProduceWorkShop</code> instance.
+   *
+   */
   public ProduceWorkShop() {
     super();
   }
