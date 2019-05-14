@@ -27,6 +27,7 @@
     <!-- Compiles the java code (including the usage of library for JUnit -->
     <target name="compile" depends="clean, makedir,gformat,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
+<compilerarg value="-Xlint:-options"/>
         </javac>
     </target>
     <!-- Creates Javadoc -->
@@ -93,7 +94,7 @@
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
-  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+  <formatter type="plain" toFile="${cs.output}"/>
 </checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">

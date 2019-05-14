@@ -28,6 +28,7 @@
     <!-- Compiles the java code (including the usage of library for JUnit -->
     <target name="compile" depends="clean, makedir,gformat,checkstyle">
         <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
+<compilerarg value="-Xlint:-options"/>
         </javac>
     </target>
     <!-- Creates Javadoc -->
