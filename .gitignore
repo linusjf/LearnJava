@@ -6,4 +6,4 @@
 *.txt
 *docs*
 !lib/*.jar
-!AnnoProc.class
+!./AnnoProc.class
