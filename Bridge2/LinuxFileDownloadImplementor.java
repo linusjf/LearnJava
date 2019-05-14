@@ -1,3 +1,9 @@
+/**
+ * Describe class <code>LinuxFileDownloadImplementor</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class LinuxFileDownloadImplementor implements FileDownloadImplementor {
   @Override
   public Object downloadFile(String path) {

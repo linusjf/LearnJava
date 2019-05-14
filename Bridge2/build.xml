@@ -87,7 +87,7 @@
     failOnViolation="false">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
-  <formatter type="plain" toFile="checkstyle_errors.txt"/>
+  <formatter type="plain" toFile="${cs.output}"/>
 </checkstyle>
 </target>
 <target name="main" depends="compile, jar, docs">
