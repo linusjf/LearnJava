@@ -40,6 +40,7 @@ public class Singleton implements Serializable{
     throw new CloneNotSupportedException("Singleton, cannot be cloned");
   }
 
+  @SuppressWarnings("unused")
   private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     if(classLoader == null)

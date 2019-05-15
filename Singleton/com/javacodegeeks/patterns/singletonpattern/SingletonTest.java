@@ -10,9 +10,9 @@ import java.io.ObjectOutputStream;
 
 import java.lang.AssertionError;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
@@ -30,6 +30,7 @@ public class SingletonTest {
       testSerializable();
       testCloneable();
       testReflection();
+      testState();
     }
     catch (Throwable t)
     {
@@ -89,13 +90,15 @@ public class SingletonTest {
 
     switch (instances.size()) {
       case 0:
-        assert false : "Expected one instance, but found none";
-        break;
+  //      assert false : "Expected one instance, but found none";
+          throw new AssertionError("Expected one instance, but found none");
+        
       case 1:
         System.out.println("Only one instance created and available.");
         break;
       default:
-        assert false : "Expected one instance, but found many";
+   //     assert false : "Expected one instance, but found many";
+          throw new AssertionError("Expected one instance, but found many");
     }
     System.out.println("Sequence in order in which inserted: ");
     for (final long value: generatedValues)
@@ -141,5 +144,27 @@ public class SingletonTest {
     } catch (Exception ew) {
       System.out.println(ew.getCause().getMessage());
     }
+  }
+
+  public static void testState() throws Throwable  {
+    resetSingleton();
+    Singleton singleton = Singleton.getInstance();
+    if ( singleton.getNextValue() != 0L)
+        throw new AssertionError("Next value should be zero.");
+    resetSingleton();
+    singleton = Singleton.getInstance();
+    singleton.getNextValue();
+    singleton.getNextValue();
+    singleton.getNextValue();
+    if ( singleton.getNextValue() != 3L) 
+        throw new AssertionError("Next value should be three.");
+    System.out.println("No assert errors. State validated.");
+  
+  }
+
+  private static void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+    Field instance = Singleton.class.getDeclaredField("instance");
+    instance.setAccessible(true);
+    instance.set(null, null);
   }
 }
