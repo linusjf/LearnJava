@@ -13,7 +13,7 @@ public class Singleton implements Serializable{
 
   private Singleton(){
     if( instance != null ){
-      throw new IllegalStateException("Already created.");
+      throw new IllegalStateException("Illegal access to constructor: Already instantiated.");
     }
   }
 

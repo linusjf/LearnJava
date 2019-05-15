@@ -1,6 +1,5 @@
 package com.javacodegeeks.patterns.singletonpattern;
 
-import java.lang.AssertionError;
 import java.io.FileInputStream;
 
 import java.io.FileOutputStream;
@@ -8,6 +7,9 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream; 
 import java.io.ObjectOutput; 
 import java.io.ObjectOutputStream; 
+
+import java.lang.AssertionError;
+import java.lang.reflect.Constructor;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,6 +28,7 @@ public class SingletonTest {
       testConcurrency();
       testSerializable();
       testCloneable();
+      testReflection();
     }
     catch (Throwable t)
     {
@@ -102,7 +105,7 @@ public class SingletonTest {
       = new ObjectOutputStream(new FileOutputStream("singleton.ser")); 
     out.writeObject(instance); 
     out.close(); 
-  
+
     // deserialize from file to object 
     ObjectInput in  
       = new ObjectInputStream(new FileInputStream("singleton.ser")); 
@@ -119,6 +122,19 @@ public class SingletonTest {
       obj.clone();
     } catch (CloneNotSupportedException e) {
       System.out.println(e.getMessage());
+    }
+  }
+
+  public static void testReflection()  {
+    try {
+      Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
+      for (Constructor<?> constructor : constructors) {
+        constructor.setAccessible(true);
+        Singleton obj = (Singleton) constructor.newInstance();
+        System.out.println("obj: Break through Reflection:" + obj);
+      }
+    } catch (Exception ew) {
+      System.out.println(ew.getCause().getMessage());
     }
   }
 }
