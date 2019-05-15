@@ -1,0 +1,3 @@
+Main-Class: com.javacodegeeks.pattern.singletonpattern.SingletonTest
+Name: com.javacodegeeks.pattern.singletonpattern
+Sealed: true
