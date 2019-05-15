@@ -1,3 +1,3 @@
-interface Workshop { 
-  public abstract void work(); 
-} 
+interface Workshop {
+  public abstract void work();
+}

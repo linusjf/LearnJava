@@ -1,9 +1,9 @@
-class Assemble implements Workshop { 
-  
-  @Override
-  public void work() { 
-    System.out.print(" And"); 
+class Assemble implements Workshop {
 
-    System.out.println(" Assembled."); 
-  } 
-} 
+  @Override
+  public void work() {
+    System.out.print(" And");
+
+    System.out.println(" Assembled.");
+  }
+}

@@ -13,10 +13,7 @@ public abstract class Vehicle {
   // assembly line for the workshops
   protected List<WorkShop> workshops = new ArrayList<WorkShop>();
 
-  /**
-   * Creates a new <code>Vehicle</code> instance.
-   *
-   */
+  /** Creates a new <code>Vehicle</code> instance. */
   public Vehicle() {
     super();
   }
@@ -31,10 +28,7 @@ public abstract class Vehicle {
     return workshops.add(workshop);
   }
 
-  /**
-   * Describe <code>manufacture</code> method here.
-   *
-   */
+  /** Describe <code>manufacture</code> method here. */
   public abstract void manufacture();
 
   /**
@@ -44,4 +38,3 @@ public abstract class Vehicle {
    */
   public abstract int minWorkTime();
 }
-

@@ -1,15 +1,15 @@
-class Car extends Vehicle { 
+class Car extends Vehicle {
 
-  public Car(Workshop workShop1, Workshop workShop2) { 
-    super(workShop1, workShop2); 
-  } 
-  
+  public Car(Workshop workShop1, Workshop workShop2) {
+    super(workShop1, workShop2);
+  }
+
   @Override
-  public void manufacture() { 
-    System.out.print("Car "); 
+  public void manufacture() {
+    System.out.print("Car ");
 
-    workShop1.work(); 
+    workShop1.work();
 
-    workShop2.work(); 
-  } 
-} 
+    workShop2.work();
+  }
+}

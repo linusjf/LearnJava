@@ -1,7 +1,7 @@
-class Produce implements Workshop { 
+class Produce implements Workshop {
 
   @Override
-  public void work()  { 
-    System.out.print("Produced"); 
-  } 
-} 
+  public void work() {
+    System.out.print("Produced");
+  }
+}
