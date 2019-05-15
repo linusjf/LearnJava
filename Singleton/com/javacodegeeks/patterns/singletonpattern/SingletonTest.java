@@ -13,6 +13,7 @@ import java.lang.reflect.Constructor;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class SingletonTest {
 
     final AtomicReference<Throwable> exception = new AtomicReference<>();
 
-    final Set<Long> generatedValues = new HashSet<>(size);
-
+    //final Set<Long> generatedValues = new HashSet<>(size);
+    final Set<Long> generatedValues = new LinkedHashSet<>(size);
     final Set<Singleton> instances = Collections
       .newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
 
@@ -96,6 +97,10 @@ public class SingletonTest {
       default:
         assert false : "Expected one instance, but found many";
     }
+    System.out.println("Sequence in order in which inserted: ");
+    for (final long value: generatedValues)
+      System.out.print(value + " ");
+    System.out.println();
   }
 
   public static void testSerializable() throws Throwable  { 
