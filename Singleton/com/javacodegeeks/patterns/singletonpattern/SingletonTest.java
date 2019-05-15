@@ -1,6 +1,14 @@
 package com.javacodegeeks.patterns.singletonpattern;
 
 import java.lang.AssertionError;
+import java.io.FileInputStream;
+
+import java.io.FileOutputStream;
+import java.io.ObjectInput; 
+import java.io.ObjectInputStream; 
+import java.io.ObjectOutput; 
+import java.io.ObjectOutputStream; 
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
@@ -14,15 +22,17 @@ import java.util.concurrent.atomic.AtomicReference;
 public class SingletonTest {
 
   public static void main(String[] args)  {
- try  {   
-    testConcurrency();
- }
- catch (Throwable t)
- {
-   t.printStackTrace();
- }
+    try  {   
+      testConcurrency();
+      testSerializable();
+      testCloneable();
+    }
+    catch (Throwable t)
+    {
+      t.printStackTrace();
+    }
   }
-  
+
   public static void testConcurrency() throws Throwable {
 
     final int size = 12;
@@ -85,5 +95,30 @@ public class SingletonTest {
     }
   }
 
+  public static void testSerializable() throws Throwable  { 
+    Singleton instance = Singleton.getInstance(); 
 
+    ObjectOutput out 
+      = new ObjectOutputStream(new FileOutputStream("singleton.ser")); 
+    out.writeObject(instance); 
+    out.close(); 
+  
+    // deserialize from file to object 
+    ObjectInput in  
+      = new ObjectInputStream(new FileInputStream("singleton.ser")); 
+    Singleton instance2 = (Singleton) in.readObject(); 
+
+    in.close(); 
+    System.out.println("instance hashCode:- " + instance.hashCode());
+    System.out.println("instance2 hashCode:- " + instance2.hashCode());
+  }
+
+  public static void testCloneable() {
+    Singleton obj = Singleton.getInstance();
+    try {
+      obj.clone();
+    } catch (CloneNotSupportedException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 }
