@@ -4,6 +4,7 @@
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.UseUtilityClass")
 public class RunAdapterExample {
   /**
    * Describe <code>main</code> method here.

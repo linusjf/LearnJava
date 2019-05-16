@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+rulesFile="pmdrules.xml"
+cacheFile="pmd.cache"
+errFile="pmd.errors"
+format="text"
+# run.sh must be in the search path
+run.sh pmd -d $1 -R $rulesFile -f $format \
+-cache $1/$cacheFile -reportfile $1/$errFile \
+|| { echo "Error running $0"; exit 1;} 
+exit $?
