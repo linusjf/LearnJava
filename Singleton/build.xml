@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Sungleton" default="main" basedir=".">
+<project name="Singleton" default="main" basedir=".">
   <property file = "build.properties"/>
   <property file = "${cs.properties}"/>
   <property file = "${gformat.properties}"/>
