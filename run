@@ -62,6 +62,7 @@ runDalvik()
     echo "Main class(es): $main"
     echo
     echo "$main" | while read -r a; do 
+      echo "Running $a...";echo
       dalvikvm -cp $proj.dex $a;
       echo
     done
@@ -79,6 +80,7 @@ runJVM()
       setUp
       echo Main class: $main
     echo "$main" | while read -r a; do 
+      echo "Running $a...";echo
       java -cp $proj.jar $a;
     done
       tearDown;
