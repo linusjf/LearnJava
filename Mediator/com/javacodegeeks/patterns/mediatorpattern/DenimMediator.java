@@ -1,5 +1,11 @@
 package com.javacodegeeks.patterns.mediatorpattern;
 
+/**
+ * Describe class <code>DenimMediator</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class DenimMediator implements MachineMediator {
 
   private final Machine machine;
@@ -9,6 +15,16 @@ public class DenimMediator implements MachineMediator {
   private final SoilRemoval soilRemoval;
   private final Valve valve;
 
+  /**
+   * Creates a new <code>DenimMediator</code> instance.
+   *
+   * @param machine a <code>Machine</code> value
+   * @param heater a <code>Heater</code> value
+   * @param motor a <code>Motor</code> value
+   * @param sensor a <code>Sensor</code> value
+   * @param soilRemoval a <code>SoilRemoval</code> value
+   * @param valve a <code>Valve</code> value
+   */
   public DenimMediator(
       Machine machine,
       Heater heater,

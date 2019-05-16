@@ -9,6 +9,16 @@ public class CottonMediator implements MachineMediator {
   private final SoilRemoval soilRemoval;
   private final Valve valve;
 
+  /**
+   * Creates a new <code>CottonMediator</code> instance.
+   *
+   * @param machine a <code>Machine</code> value
+   * @param heater a <code>Heater</code> value
+   * @param motor a <code>Motor</code> value
+   * @param sensor a <code>Sensor</code> value
+   * @param soilRemoval a <code>SoilRemoval</code> value
+   * @param valve a <code>Valve</code> value
+   */
   public CottonMediator(
       Machine machine,
       Heater heater,

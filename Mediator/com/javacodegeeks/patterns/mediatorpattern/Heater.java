@@ -1,5 +1,11 @@
 package com.javacodegeeks.patterns.mediatorpattern;
 
+/**
+ * Describe class <code>Heater</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Heater implements Colleague {
   private MachineMediator mediator;
 
@@ -8,6 +14,11 @@ public class Heater implements Colleague {
     this.mediator = mediator;
   }
 
+  /**
+   * Describe <code>on</code> method here.
+   *
+   * @param temp an <code>int</code> value
+   */
   public void on(int temp) {
     System.out.println("Heater is on...");
     if (mediator.checkTemperature(temp)) {
@@ -16,6 +27,10 @@ public class Heater implements Colleague {
     }
   }
 
+  /**
+   * Describe <code>off</code> method here.
+   *
+   */
   public void off() {
     System.out.println("Heater is off...");
     mediator.wash();

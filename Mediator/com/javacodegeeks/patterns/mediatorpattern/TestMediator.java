@@ -1,7 +1,18 @@
 package com.javacodegeeks.patterns.mediatorpattern;
 
+/**
+ * Describe class <code>TestMediator</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class TestMediator {
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
 
     MachineMediator mediator = null;
