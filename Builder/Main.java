@@ -1,18 +1,31 @@
+/**
+ * Describe class <code>Main</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Main {
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
-  
-    NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)
-.calories(100).sodium(35).carbohydrate(27).build();
+
+    NutritionFacts cocaCola =
+        new NutritionFacts.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build();
 
     System.out.println("Serving Coke: ");
     System.out.println(cocaCola);
-    NyPizza pizza = new NyPizza.Builder(NyPizza.Size.SMALL)
-.addTopping(Pizza.Topping.SAUSAGE).addTopping(Pizza.Topping.ONION).build();
+    NyPizza pizza =
+        new NyPizza.Builder(NyPizza.Size.SMALL)
+            .addTopping(Pizza.Topping.SAUSAGE)
+            .addTopping(Pizza.Topping.ONION)
+            .build();
 
     System.out.println("Serving Pizza 1: ");
     System.out.println(pizza);
-    Calzone calzone = new Calzone.Builder()
-.addTopping(Pizza.Topping.HAM).sauceInside().build();
+    Calzone calzone = new Calzone.Builder().addTopping(Pizza.Topping.HAM).sauceInside().build();
     System.out.println("Serving Pizza 2: ");
     System.out.println(calzone);
   }

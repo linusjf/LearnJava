@@ -1,0 +1,3 @@
+Main-Class: com.javacodegeeks.patterns.mediatorpattern.TestMediator
+Name: com.javacodegeeks.patterns.mediatorpattern
+Sealed: true
