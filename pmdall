@@ -5,6 +5,6 @@ for dir in $dirs
 	do
 	echo $dir
   ./pmd $dir
-  errs=$errs + $?
+  errs=`$errs+$?`
 done
 exit $errs
