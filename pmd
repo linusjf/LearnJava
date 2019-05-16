@@ -15,6 +15,7 @@ errFile="pmd.errors"
 format="text"
 # run.sh must be in the search path
 run.sh pmd -d $1 -R $rulesFile -f $format \
--cache $1/$cacheFile -reportfile $1/$errFile \
+-failOnViolation false -cache $1/$cacheFile \
+-reportfile $1/$errFile \
 || { echo "Error running $0"; exit 1;} 
 exit $?
