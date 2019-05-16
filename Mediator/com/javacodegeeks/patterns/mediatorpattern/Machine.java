@@ -5,16 +5,15 @@ public class Machine implements Colleague {
   private MachineMediator mediator;
 
   @Override
-  public void setMediator(MachineMediator mediator){
+  public void setMediator(MachineMediator mediator) {
     this.mediator = mediator;
   }
 
-  public void start(){
+  public void start() {
     mediator.open();
   }
 
-  public void wash(){
+  public void wash() {
     mediator.wash();
   }
 }
-

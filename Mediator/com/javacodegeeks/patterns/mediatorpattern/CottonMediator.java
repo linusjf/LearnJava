@@ -9,7 +9,13 @@ public class CottonMediator implements MachineMediator {
   private final SoilRemoval soilRemoval;
   private final Valve valve;
 
-  public CottonMediator(Machine machine,Heater heater,Motor motor,Sensor sensor,SoilRemoval soilRemoval,Valve valve) {
+  public CottonMediator(
+      Machine machine,
+      Heater heater,
+      Motor motor,
+      Sensor sensor,
+      SoilRemoval soilRemoval,
+      Valve valve) {
     this.machine = machine;
     this.heater = heater;
     this.motor = motor;
@@ -18,7 +24,7 @@ public class CottonMediator implements MachineMediator {
     this.valve = valve;
     System.out.println("Setting up for COTTON program");
   }
-  
+
   @Override
   public void start() {
     machine.start();
@@ -32,30 +38,29 @@ public class CottonMediator implements MachineMediator {
     soilRemoval.low();
     System.out.println("Adding softener");
   }
-  
+
   @Override
   public void open() {
     valve.open();
   }
-  
+
   @Override
   public void closed() {
     valve.closed();
   }
-  
+
   @Override
   public void on() {
     heater.on(40);
   }
-  
+
   @Override
   public void off() {
     heater.off();
   }
-  
+
   @Override
   public boolean checkTemperature(int temp) {
     return sensor.checkTemperature(temp);
   }
 }
-

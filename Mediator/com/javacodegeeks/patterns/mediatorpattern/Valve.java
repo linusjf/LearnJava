@@ -20,4 +20,3 @@ public class Valve implements Colleague {
     mediator.on();
   }
 }
-

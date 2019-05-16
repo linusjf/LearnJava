@@ -5,7 +5,7 @@ public class Button implements Colleague {
   private MachineMediator mediator;
 
   @Override
-  public void setMediator(MachineMediator mediator){
+  public void setMediator(MachineMediator mediator) {
     this.mediator = mediator;
   }
 

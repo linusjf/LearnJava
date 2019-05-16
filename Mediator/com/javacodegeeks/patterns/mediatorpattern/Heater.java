@@ -11,7 +11,7 @@ public class Heater implements Colleague {
   public void on(int temp) {
     System.out.println("Heater is on...");
     if (mediator.checkTemperature(temp)) {
-      System.out.println("Temperature is set to "+temp);
+      System.out.println("Temperature is set to " + temp);
       mediator.off();
     }
   }
@@ -21,4 +21,3 @@ public class Heater implements Colleague {
     mediator.wash();
   }
 }
-

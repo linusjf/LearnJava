@@ -16,4 +16,3 @@ public interface MachineMediator {
 
   public boolean checkTemperature(int temp);
 }
-
