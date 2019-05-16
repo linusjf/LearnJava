@@ -13,9 +13,9 @@ public class Singleton implements Serializable {
 
   private static final long serialVersionUID = -1093810940935189395L;
 
-  private static volatile Singleton instance = null;
+  private static transient volatile Singleton instance = null;
 
-  private long nextValue = 0;
+  private transient long nextValue = 0;
 
   private Singleton() {
     if (instance != null) {
