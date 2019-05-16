@@ -1,7 +1,18 @@
 package com.javacodegeeks.patterns.observerpattern;
 
+/**
+ * Describe class <code>Test</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Test {
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     CommentaryObjectObservable obj = new CommentaryObjectObservable("Soccer Match [2014AUG24]");
     SMSUsersObserver observer = new SMSUsersObserver(obj, "Adam Warner [New York]");

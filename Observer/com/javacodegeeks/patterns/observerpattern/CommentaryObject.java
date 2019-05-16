@@ -2,15 +2,26 @@ package com.javacodegeeks.patterns.observerpattern;
 
 import java.util.List;
 
-public class CommentaryObject implements Subject,Commentary{
+/**
+ * Describe class <code>CommentaryObject</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
+public class CommentaryObject implements Subject,Commentary {
 
-  private final List<Observer>observers;
+  private final List<Observer> observers;
 
   private String desc;
 
   private final String subjectDetails;
 
-  public CommentaryObject(List<Observer>observers,String subjectDetails){
+  /**
+   * Creates a new <code>CommentaryObject</code> instance.
+   *
+   * @param subjectDetails a <code>String</code> value
+   */
+  public CommentaryObject(List<Observer> observers,String subjectDetails) {
 
     this.observers = observers;
 
@@ -31,7 +42,7 @@ public class CommentaryObject implements Subject,Commentary{
   @Override
   public void notifyObservers() {
     System.out.println();
-    for(Observer observer : observers){
+    for (Observer observer : observers) {
       observer.update(desc);
     }
   }
