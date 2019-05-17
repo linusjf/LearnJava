@@ -19,7 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-public class SCrypt {
+public final class SCrypt {// NOPMD 
   private static final boolean native_library_loaded;
 
   static {
@@ -42,7 +42,7 @@ public class SCrypt {
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
   @SuppressWarnings({"parametername",
-      "FormalParameterNamingConventions"})
+      "PMD.FormalParameterNamingConventions"})
   public static byte[] scrypt(byte[] passwd, 
       byte[] salt, 
       int N, 
@@ -69,7 +69,7 @@ public class SCrypt {
    * @return The derived key.
    */
   @SuppressWarnings({"parametername", 
-      "FormalParameterNamingConventions"})
+      "PMD.FormalParameterNamingConventions"})
   public static native byte[] scryptN(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen);
 
   /**
@@ -86,7 +86,7 @@ public class SCrypt {
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
   @SuppressWarnings({"parametername",
-      "FormalParameterNamingConventions"})
+      "PMD.FormalParameterNamingConventions"})
   public static byte[] scryptJ(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
       throws GeneralSecurityException {
     if (N < 2 || (N & (N - 1)) != 0)
@@ -127,7 +127,7 @@ public class SCrypt {
    * @param XY a <code>byte</code> value
    */
   @SuppressWarnings({"parametername",
-      "FormalParameterNamingConventions"})
+      "PMD.FormalParameterNamingConventions"})
   public static void smix(byte[] B, int Bi, int r, int N, byte[] V, byte[] XY) {
 
     int xinitial = 0;

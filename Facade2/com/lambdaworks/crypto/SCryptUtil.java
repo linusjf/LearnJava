@@ -1,7 +1,7 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
-
-import static com.lambdaworks.codec.Base64.*;
+//@SuppressWarnings({"PMD.UnusedImports"})
+import static com.lambdaworks.codec.Base64.*;//NOPMD
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -29,7 +29,7 @@ import java.security.SecureRandom;
  *
  * @author Will Glozer
  */
-public class SCryptUtil {
+public final class SCryptUtil { //NOPMD
   /**
    * Hash the supplied plaintext password and generate output in the format described in {@link
    * SCryptUtil}.
@@ -81,12 +81,11 @@ public class SCryptUtil {
       long params = Long.parseLong(parts[2], 16);
       byte[] salt = decode(parts[3].toCharArray());
       byte[] derived0 = decode(parts[4].toCharArray());
-      @SuppressWarnings("localvariablename")
-      int N = (int) Math.pow(2, params >> 16 & 0xffff);
+      int letterN = (int) Math.pow(2, params >> 16 & 0xffff);
       int r = (int) params >> 8 & 0xff;
       int p = (int) params & 0xff;
 
-      byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, N, r, p, 32);
+      byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, letterN, r, p, 32);
 
       if (derived0.length != derived1.length) return false;
 
@@ -119,5 +118,8 @@ public class SCryptUtil {
       log += 2;
     }
     return log + (n >>> 1);
+  }
+
+  private SCryptUtil() {
   }
 }

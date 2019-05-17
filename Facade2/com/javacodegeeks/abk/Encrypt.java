@@ -23,7 +23,7 @@ public interface Encrypt {
    *
    * @return a <code>byte[]</code> value
    */
-  public static byte[] getSalt() {
+  static byte[] getSalt() {
     // Always use a SecureRandom generator
     SecureRandom sr = new SecureRandom();
     // Create array for salt

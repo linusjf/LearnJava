@@ -11,7 +11,7 @@ package com.lambdaworks.jni;
  *
  * @author Will Glozer
  */
-public class LibraryLoaders {
+public final class LibraryLoaders { //NOPMD
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -32,5 +32,8 @@ public class LibraryLoaders {
 
     String vmSpec = System.getProperty("java.vm.specification.name");
     return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
+  }
+
+  private LibraryLoaders() {
   }
 }

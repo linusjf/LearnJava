@@ -76,7 +76,9 @@ public class JarLibraryLoader implements LibraryLoader {
       } finally {
         jar.close();
       }
-    } catch (Throwable e) {
+    } catch (UnsatisfiedLinkError 
+        | NullPointerException
+        | SecurityException e) {
       loaded = false;
     }
 

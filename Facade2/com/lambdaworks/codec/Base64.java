@@ -15,7 +15,7 @@ import java.util.Arrays;
  *
  * @author Will Glozer
  */
-public class Base64 {
+public final class Base64 { //NOPMD
   private static final char[] encode =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
   private static final int[] decode = new int[128];
@@ -25,6 +25,9 @@ public class Base64 {
     Arrays.fill(decode, -1);
     for (int i = 0; i < encode.length; i++) decode[encode[i]] = i;
     decode[pad] = 0;
+  }
+
+  private Base64() {
   }
 
   /**
@@ -73,7 +76,8 @@ public class Base64 {
 
     if (di < bytes) {
       int n = 0;
-      switch (len - si) {
+//      @SuppressWarnings("PMD.MissingBreakInSwitch")
+      switch (len - si) { //NOPMD
         case 4:
           n |= table[src[si + 3]]; // fall through
         case 3:

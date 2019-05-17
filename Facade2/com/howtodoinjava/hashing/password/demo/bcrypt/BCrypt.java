@@ -432,7 +432,6 @@ public class BCrypt {
     int slen = s.length();
     int olen = 0;
     byte[] ret;
-    @SuppressWarnings("checkstyle:multiplevariabledeclarations")
     byte c1;
     byte  c2;
     byte c3;
