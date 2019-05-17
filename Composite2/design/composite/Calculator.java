@@ -2,7 +2,7 @@ package design.composite;
 
 import java.math.BigInteger;
 
-public enum Calculator {
+public enum Calculator implements ICalc {
   FACTORIAL {
     @Override
     public String calculate(String value) {
@@ -54,11 +54,4 @@ public enum Calculator {
     }
   };
 
-  /**
-   * Describe <code>calculate</code> method here.
-   *
-   * @param value <code>String</code>
-   * @return a <code>String</code> value
-   */
-  public abstract String calculate(String value);
 }
