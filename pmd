@@ -14,8 +14,11 @@ cacheFile="pmd.cache"
 errFile="pmd.errors"
 format="text"
 # run.sh must be in the search path
+echo "Start time :" `date +"%r"`
 run.sh pmd -d $1 -R $rulesFile -f $format \
 -failOnViolation false -cache $1/$cacheFile \
 -reportfile $1/$errFile \
-|| { echo "Error running $0"; exit 1;} 
-exit $?
+|| { echo "Error running $0"; exit 1;}
+res=$?
+echo "End time:" `date +"%r"`
+exit $res

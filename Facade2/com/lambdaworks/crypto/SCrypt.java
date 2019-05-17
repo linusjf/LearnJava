@@ -174,7 +174,7 @@ public class SCrypt {
 
     for (i = 0; i < 2 * r; i++) {
       blockxor(BY, i * 64, xBytes, 0, 64);
-      salsa20_8(xBytes);
+      salsa20Slash8(xBytes);
       arraycopy(xBytes, 0, BY, Yi + (i * 64), 64);
     }
 
@@ -198,26 +198,26 @@ public class SCrypt {
   }
 
   /**
-   * Describe <code>salsa20_8</code> method here.
+   * Describe <code>salsa20Slash8</code> method here.
    *
    * @param B a <code>byte</code> value
    */
   @SuppressWarnings("parametername")
-  public static void salsa20_8(byte[] B) {
+  public static void salsa20Slash8(byte[] bBytes) {
 
     @SuppressWarnings("localvariablename")
-    int[] B32 = new int[16];
+    int[] b32 = new int[16];
     int[] x = new int[16];
     int i;
 
     for (i = 0; i < 16; i++) {
-      B32[i] = (B[i * 4 + 0] & 0xff) << 0;
-      B32[i] |= (B[i * 4 + 1] & 0xff) << 8;
-      B32[i] |= (B[i * 4 + 2] & 0xff) << 16;
-      B32[i] |= (B[i * 4 + 3] & 0xff) << 24;
+      b32[i] = (bBytes[i * 4 + 0] & 0xff) << 0;
+      b32[i] |= (bBytes[i * 4 + 1] & 0xff) << 8;
+      b32[i] |= (bBytes[i * 4 + 2] & 0xff) << 16;
+      b32[i] |= (bBytes[i * 4 + 3] & 0xff) << 24;
     }
 
-    arraycopy(B32, 0, x, 0, 16);
+    arraycopy(b32, 0, x, 0, 16);
 
     for (i = 8; i > 0; i -= 2) {
       x[4] ^= R(x[0] + x[12], 7);
@@ -254,13 +254,14 @@ public class SCrypt {
       x[15] ^= R(x[14] + x[13], 18);
     }
 
-    for (i = 0; i < 16; ++i) B32[i] = x[i] + B32[i];
+    for (i = 0; i < 16; ++i)
+      b32[i] = x[i] + b32[i];
 
     for (i = 0; i < 16; i++) {
-      B[i * 4 + 0] = (byte) (B32[i] >> 0 & 0xff);
-      B[i * 4 + 1] = (byte) (B32[i] >> 8 & 0xff);
-      B[i * 4 + 2] = (byte) (B32[i] >> 16 & 0xff);
-      B[i * 4 + 3] = (byte) (B32[i] >> 24 & 0xff);
+      bBytes[i * 4 + 0] = (byte) (b32[i] >> 0 & 0xff);
+      bBytes[i * 4 + 1] = (byte) (b32[i] >> 8 & 0xff);
+      bBytes[i * 4 + 2] = (byte) (b32[i] >> 16 & 0xff);
+      bBytes[i * 4 + 3] = (byte) (b32[i] >> 24 & 0xff);
     }
   }
 

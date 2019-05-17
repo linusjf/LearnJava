@@ -6,5 +6,6 @@
 *.jar
 *.txt
 *docs*
+**/walkmod.xml
 !lib/*.jar
 !./AnnoProc.class

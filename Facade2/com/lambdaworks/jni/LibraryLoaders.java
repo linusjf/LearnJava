@@ -21,9 +21,12 @@ public class LibraryLoaders {
     String type = System.getProperty("com.lambdaworks.jni.loader");
 
     if (type != null) {
-      if (type.equals("sys")) return new SysLibraryLoader();
-      if (type.equals("nil")) return new NilLibraryLoader();
-      if (type.equals("jar")) return new JarLibraryLoader();
+      if ("sys".equals(type)) 
+        return new SysLibraryLoader();
+      if ("nil".equals(type)) 
+        return new NilLibraryLoader();
+      if ("jar".equals(type)) 
+        return new JarLibraryLoader();
       throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
     }
 

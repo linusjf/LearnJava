@@ -57,9 +57,9 @@ public class SCryptUtil {
 
       return sb.toString();
     } catch (UnsupportedEncodingException e) {
-      throw new IllegalStateException("JVM doesn't support UTF-8?");
+      throw new IllegalStateException("JVM doesn't support UTF-8?",e);
     } catch (GeneralSecurityException e) {
-      throw new IllegalStateException("JVM doesn't support SHA1PRNG or HMAC_SHA256?");
+      throw new IllegalStateException("JVM doesn't support SHA1PRNG or HMAC_SHA256?",e);
     }
   }
 
@@ -94,9 +94,9 @@ public class SCryptUtil {
       for (int i = 0; i < derived0.length; i++) result |= derived0[i] ^ derived1[i];
       return result == 0;
     } catch (UnsupportedEncodingException e) {
-      throw new IllegalStateException("JVM doesn't support UTF-8?");
+      throw new IllegalStateException("JVM doesn't support UTF-8?",e);
     } catch (GeneralSecurityException e) {
-      throw new IllegalStateException("JVM doesn't support SHA1PRNG or HMAC_SHA256?");
+      throw new IllegalStateException("JVM doesn't support SHA1PRNG or HMAC_SHA256?",e);
     }
   }
 

@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  *
  * @author Will Glozer
  */
-public class Platform {
+public final class Platform {
   public enum Arch {
     x86("x86|i386"),
     x86_64("x86_64|amd64");
