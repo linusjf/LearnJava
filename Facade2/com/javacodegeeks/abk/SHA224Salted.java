@@ -1,7 +1,7 @@
 package com.javacodegeeks.abk;
 
-import static com.javacodegeeks.abk.EncryptHelper.*;
-import static converter.ByteToHex.*;
+import static com.javacodegeeks.abk.Encrypt.getSalt;
+import static converter.ByteToHex.getHex4;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

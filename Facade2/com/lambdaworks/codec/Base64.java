@@ -51,8 +51,8 @@ public class Base64 {
     if (len == 0) 
       return new byte[0];
 
-    int padCount = src[len - 1] == pad ? 
-        src[len - 2] == pad ? 2 : 1 : 0;
+    int padCount = src[len - 1] == pad 
+      ? src[len - 2] == pad ? 2 : 1 : 0;
     int bytes = (len * 6 >> 3) - padCount;
     int blocks = (bytes / 3) * 3;
 

@@ -668,8 +668,8 @@ public class BCrypt {
     }
 
     byte[] saltb = decodeBase64(realSalt, BCRYPT_SALT_LEN);
-    BCrypt bCrypt = new BCrypt();
-    final byte[] hashed = bCrypt.cryptRaw(passwordb, saltb, rounds);
+    BCrypt crypt = new BCrypt();
+    final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);
 
     StringBuffer rs = new StringBuffer();
     rs.append("$2");

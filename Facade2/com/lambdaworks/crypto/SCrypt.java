@@ -41,8 +41,8 @@ public class SCrypt {
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  @SuppressWarnings("parametername")
-  @SuppressWarnings("FormalParameterNamingConventions")
+  @SuppressWarnings({"parametername",
+      "FormalParameterNamingConventions"})
   public static byte[] scrypt(byte[] passwd, 
       byte[] salt, 
       int N, 
@@ -68,8 +68,8 @@ public class SCrypt {
    * @param dkLen Intended length of the derived key.
    * @return The derived key.
    */
-  @SuppressWarnings("parametername")
-  @SuppressWarnings("FormalParameterNamingConventions")
+  @SuppressWarnings({"parametername", 
+      "FormalParameterNamingConventions"})
   public static native byte[] scryptN(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen);
 
   /**
@@ -85,8 +85,8 @@ public class SCrypt {
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  @SuppressWarnings("parametername")
-  @SuppressWarnings("FormalParameterNamingConventions")
+  @SuppressWarnings({"parametername",
+      "FormalParameterNamingConventions"})
   public static byte[] scryptJ(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
       throws GeneralSecurityException {
     if (N < 2 || (N & (N - 1)) != 0)
@@ -101,20 +101,17 @@ public class SCrypt {
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
 
     byte[] derivedKey = new byte[dkLen];
-    @SuppressWarnings("localvariablename")
-    byte[] bBytes = new byte[128 * r * p];
-    @SuppressWarnings("localvariablename")
+    byte[] bytes = new byte[128 * r * p];
     byte[] xyBytes = new byte[256 * r];
-    @SuppressWarnings("localvariablename")
-    byte[] vBytes = new byte[128 * r * N];
+    byte[] v = new byte[128 * r * N];
     int i;
 
-    PBKDF.pbkdf2(mac, salt, 1, bBytes, p * 128 * r);
+    PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
 
     for (i = 0; i < p; i++) 
-      smix(bBytes, i * 128 * r, r, N, vBytes, xyBytes);
+      smix(bytes, i * 128 * r, r, N, v, xyBytes);
 
-    PBKDF.pbkdf2(mac, bBytes, 1, derivedKey, dkLen);
+    PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
 
     return derivedKey;
   }
@@ -129,30 +126,28 @@ public class SCrypt {
    * @param V a <code>byte</code> value
    * @param XY a <code>byte</code> value
    */
-  @SuppressWarnings("parametername")
-  @SuppressWarnings("FormalParameterNamingConventions")
+  @SuppressWarnings({"parametername",
+      "FormalParameterNamingConventions"})
   public static void smix(byte[] B, int Bi, int r, int N, byte[] V, byte[] XY) {
 
-    @SuppressWarnings("localvariablename")
-    int xInitial = 0;
-    @SuppressWarnings("localvariablename")
-    int yInitial = 128 * r;
+    int xinitial = 0;
+    int yinitial = 128 * r;
     int i;
 
-    arraycopy(B, Bi, XY, xInitial, 128 * r);
+    arraycopy(B, Bi, XY, xinitial, 128 * r);
 
     for (i = 0; i < N; i++) {
-      arraycopy(XY, xInitial, V, i * (128 * r), 128 * r);
-      blockmixSalsa8(XY, xInitial, yInitial, r);
+      arraycopy(XY, xinitial, V, i * (128 * r), 128 * r);
+      blockmixSalsa8(XY, xinitial, yinitial, r);
     }
 
     for (i = 0; i < N; i++) {
-      int j = integerify(XY, xInitial, r) & (N - 1);
-      blockxor(V, j * (128 * r), XY, xInitial, 128 * r);
-      blockmixSalsa8(XY, xInitial, yInitial, r);
+      int j = integerify(XY, xinitial, r) & (N - 1);
+      blockxor(V, j * (128 * r), XY, xinitial, 128 * r);
+      blockmixSalsa8(XY, xinitial, yinitial, r);
     }
 
-    arraycopy(XY, xInitial, B, Bi, 128 * r);
+    arraycopy(XY, xinitial, B, Bi, 128 * r);
   }
 
   /**
@@ -166,16 +161,15 @@ public class SCrypt {
   @SuppressWarnings("parametername")
   public static void blockmixSalsa8(byte[] BY, int Bi, int Yi, int r) {
 
-    @SuppressWarnings("localvariablename")
-    byte[] xBytes = new byte[64];
+    byte[] x = new byte[64];
     int i;
 
-    arraycopy(BY, Bi + (2 * r - 1) * 64, xBytes, 0, 64);
+    arraycopy(BY, Bi + (2 * r - 1) * 64, x, 0, 64);
 
     for (i = 0; i < 2 * r; i++) {
-      blockxor(BY, i * 64, xBytes, 0, 64);
-      salsa20Slash8(xBytes);
-      arraycopy(xBytes, 0, BY, Yi + (i * 64), 64);
+      blockxor(BY, i * 64, x, 0, 64);
+      salsa20Slash8(x);
+      arraycopy(x, 0, BY, Yi + (i * 64), 64);
     }
 
     for (i = 0; i < r; i++) 
@@ -200,21 +194,19 @@ public class SCrypt {
   /**
    * Describe <code>salsa20Slash8</code> method here.
    *
-   * @param B a <code>byte</code> value
+   * @param bytes a <code>byte</code> value
    */
-  @SuppressWarnings("parametername")
-  public static void salsa20Slash8(byte[] bBytes) {
+  public static void salsa20Slash8(byte[] bytes) {
 
-    @SuppressWarnings("localvariablename")
     int[] b32 = new int[16];
     int[] x = new int[16];
     int i;
 
     for (i = 0; i < 16; i++) {
-      b32[i] = (bBytes[i * 4 + 0] & 0xff) << 0;
-      b32[i] |= (bBytes[i * 4 + 1] & 0xff) << 8;
-      b32[i] |= (bBytes[i * 4 + 2] & 0xff) << 16;
-      b32[i] |= (bBytes[i * 4 + 3] & 0xff) << 24;
+      b32[i] = (bytes[i * 4 + 0] & 0xff) << 0;
+      b32[i] |= (bytes[i * 4 + 1] & 0xff) << 8;
+      b32[i] |= (bytes[i * 4 + 2] & 0xff) << 16;
+      b32[i] |= (bytes[i * 4 + 3] & 0xff) << 24;
     }
 
     arraycopy(b32, 0, x, 0, 16);
@@ -258,10 +250,10 @@ public class SCrypt {
       b32[i] = x[i] + b32[i];
 
     for (i = 0; i < 16; i++) {
-      bBytes[i * 4 + 0] = (byte) (b32[i] >> 0 & 0xff);
-      bBytes[i * 4 + 1] = (byte) (b32[i] >> 8 & 0xff);
-      bBytes[i * 4 + 2] = (byte) (b32[i] >> 16 & 0xff);
-      bBytes[i * 4 + 3] = (byte) (b32[i] >> 24 & 0xff);
+      bytes[i * 4 + 0] = (byte) (b32[i] >> 0 & 0xff);
+      bytes[i * 4 + 1] = (byte) (b32[i] >> 8 & 0xff);
+      bytes[i * 4 + 2] = (byte) (b32[i] >> 16 & 0xff);
+      bytes[i * 4 + 3] = (byte) (b32[i] >> 24 & 0xff);
     }
   }
 
