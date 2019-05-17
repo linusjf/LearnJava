@@ -1,3 +1,5 @@
+package bridge;
+
 /**
  * Describe class <code>BridgePattern</code> here.
  *

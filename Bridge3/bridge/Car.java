@@ -1,3 +1,5 @@
+package bridge;
+
 class Car extends Vehicle {
 
   public Car(Workshop workShop1, Workshop workShop2) {

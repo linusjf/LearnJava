@@ -1,3 +1,5 @@
+package bridge;
+
 class Assemble implements Workshop {
 
   @Override

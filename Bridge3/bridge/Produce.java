@@ -1,3 +1,5 @@
+package bridge;
+
 class Produce implements Workshop {
 
   @Override

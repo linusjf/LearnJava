@@ -52,6 +52,8 @@
     <attribute name="Implementation-Version" value="${buildversion} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
   </section>
+  <section name="bridge">
+    <attribute name="Sealed" value="false"/>
   <attribute name="Main-Class" value="${main.class}" />
 </manifest>
 </jar>
