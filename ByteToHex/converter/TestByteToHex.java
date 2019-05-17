@@ -1,3 +1,4 @@
+package converter;
 /**
  * Describe class <code>ByteToHex</code> here.
  *
@@ -8,7 +9,8 @@
  * @copyright : Copyright (c) Linus Fernandes
  * @description :
  */
-public class TestByteToHex {
+public enum TestByteToHex {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
@@ -24,6 +26,7 @@ public class TestByteToHex {
             + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
             + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
             + "FDSSSGHIJJH";
+    
     final byte[] raw = byteString.getBytes();
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);
@@ -48,6 +51,8 @@ public class TestByteToHex {
     end = System.nanoTime();
     elapsed = end - start;
     System.out.println("getHex4: " + elapsed);
-    assert ((hex == hex2) && (hex2 == hex3) && (hex3 == hex4));
+    assert (hex.equals(hex2) 
+        && hex2.equals(hex3) 
+        && hex3.equals(hex4));
   }
 }

@@ -1,9 +1,11 @@
+package converter;
 /**
  * Describe class <code>ByteToHex</code> here.
  *
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("ClassNamingConventions")
 public final class ByteToHex {
 
   private static final String HEXES = "0123456789abcdef";
@@ -29,7 +31,8 @@ public final class ByteToHex {
    */
   public static String getHex2(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
-    for (final byte b : raw) builder.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+    for (final byte b : raw)
+      builder.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
     return builder.toString();
   }
 
@@ -41,7 +44,8 @@ public final class ByteToHex {
    */
   public static String getHex3(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
-    for (final byte b : raw) builder.append(String.format("%02x", b));
+    for (final byte b : raw)
+      builder.append(String.format("%02x", b));
     return builder.toString();
   }
 
@@ -55,8 +59,8 @@ public final class ByteToHex {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
     for (final byte b : raw)
       builder
-          .append(Character.forDigit((b >> 4) & 0xF, 16))
-          .append(Character.forDigit((b & 0xF), 16));
+          .append(Character.forDigit(b >> 4 & 0xF, 16))
+          .append(Character.forDigit(b & 0xF, 16));
     return builder.toString();
   }
 }
