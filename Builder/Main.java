@@ -1,10 +1,15 @@
+package builder;
+
+import static NyPizza.Size.*;
+import static Pizza.Topping.*;
 /**
  * Describe class <code>Main</code> here.
  *
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Main {
+public enum Main {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
@@ -18,14 +23,14 @@ public class Main {
     System.out.println("Serving Coke: ");
     System.out.println(cocaCola);
     NyPizza pizza =
-        new NyPizza.Builder(NyPizza.Size.SMALL)
-            .addTopping(Pizza.Topping.SAUSAGE)
-            .addTopping(Pizza.Topping.ONION)
+        new NyPizza.Builder(SMALL)
+            .addTopping(SAUSAGE)
+            .addTopping(ONION)
             .build();
 
     System.out.println("Serving Pizza 1: ");
     System.out.println(pizza);
-    Calzone calzone = new Calzone.Builder().addTopping(Pizza.Topping.HAM).sauceInside().build();
+    Calzone calzone = new Calzone.Builder().addTopping(HAM).sauceInside().build();
     System.out.println("Serving Pizza 2: ");
     System.out.println(calzone);
   }

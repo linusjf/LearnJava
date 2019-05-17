@@ -1,3 +1,5 @@
+package builder;
+
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;

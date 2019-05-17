@@ -86,7 +86,17 @@
     <!-- <rule ref="category/java/codestyle.xml/CallSuperInConstructor" /> -->
     <!-- <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier" /> -->
     <!-- <rule ref="category/java/codestyle.xml/ConfusingTernary" /> -->
-    <rule ref="category/java/codestyle.xml/ControlStatementBraces"/>
+    <rule ref="category/java/codestyle.xml/ControlStatementBraces">
+      <properties>
+        <property name="checkIfElseStmt" value="false" />
+        <property name="checkSingleIfStmt" value="false" />
+        <property name="checkWhileStmt" value="false" />
+        <property name="checkForStmt" value="false" />
+        <property name="checkDoWhileStmt" value="false" />
+        <property name="checkCaseStmt" value="false" />
+        <property name="allowEmptyLoop" value="false" />
+    </properties>
+  </rule>
     <!--<rule ref="category/java/codestyle.xml/DefaultPackage"/>-->
     <rule ref="category/java/codestyle.xml/DontImportJavaLang"/>
     <rule ref="category/java/codestyle.xml/DuplicateImports"/>
