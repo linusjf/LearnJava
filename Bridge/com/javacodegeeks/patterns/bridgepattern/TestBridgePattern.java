@@ -6,7 +6,8 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class TestBridgePattern {
+public enum TestBridgePattern {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
