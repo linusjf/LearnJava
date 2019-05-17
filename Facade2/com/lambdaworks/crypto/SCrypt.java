@@ -42,7 +42,13 @@ public class SCrypt {
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
   @SuppressWarnings("parametername")
-  public static byte[] scrypt(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
+  @SuppressWarnings("FormalParameterNamingConventions")
+  public static byte[] scrypt(byte[] passwd, 
+      byte[] salt, 
+      int N, 
+      int r, 
+      int p, 
+      int dkLen)
       throws GeneralSecurityException {
     return native_library_loaded
         ? scryptN(passwd, salt, N, r, p, dkLen)
@@ -63,6 +69,7 @@ public class SCrypt {
    * @return The derived key.
    */
   @SuppressWarnings("parametername")
+  @SuppressWarnings("FormalParameterNamingConventions")
   public static native byte[] scryptN(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen);
 
   /**
@@ -79,31 +86,35 @@ public class SCrypt {
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
   @SuppressWarnings("parametername")
+  @SuppressWarnings("FormalParameterNamingConventions")
   public static byte[] scryptJ(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
       throws GeneralSecurityException {
     if (N < 2 || (N & (N - 1)) != 0)
       throw new IllegalArgumentException("N must be a power of 2 greater than 1");
 
-    if (N > MAX_VALUE / 128 / r) throw new IllegalArgumentException("Parameter N is too large");
-    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
+    if (N > MAX_VALUE / 128 / r)
+      throw new IllegalArgumentException("Parameter N is too large");
+    if (r > MAX_VALUE / 128 / p)
+      throw new IllegalArgumentException("Parameter r is too large");
 
     Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
 
     byte[] derivedKey = new byte[dkLen];
     @SuppressWarnings("localvariablename")
-    byte[] B = new byte[128 * r * p];
+    byte[] bBytes = new byte[128 * r * p];
     @SuppressWarnings("localvariablename")
-    byte[] XY = new byte[256 * r];
+    byte[] xyBytes = new byte[256 * r];
     @SuppressWarnings("localvariablename")
-    byte[] V = new byte[128 * r * N];
+    byte[] vBytes = new byte[128 * r * N];
     int i;
 
-    PBKDF.pbkdf2(mac, salt, 1, B, p * 128 * r);
+    PBKDF.pbkdf2(mac, salt, 1, bBytes, p * 128 * r);
 
-    for (i = 0; i < p; i++) smix(B, i * 128 * r, r, N, V, XY);
+    for (i = 0; i < p; i++) 
+      smix(bBytes, i * 128 * r, r, N, vBytes, xyBytes);
 
-    PBKDF.pbkdf2(mac, B, 1, derivedKey, dkLen);
+    PBKDF.pbkdf2(mac, bBytes, 1, derivedKey, dkLen);
 
     return derivedKey;
   }
@@ -119,32 +130,33 @@ public class SCrypt {
    * @param XY a <code>byte</code> value
    */
   @SuppressWarnings("parametername")
+  @SuppressWarnings("FormalParameterNamingConventions")
   public static void smix(byte[] B, int Bi, int r, int N, byte[] V, byte[] XY) {
 
     @SuppressWarnings("localvariablename")
-    int Xi = 0;
+    int xInitial = 0;
     @SuppressWarnings("localvariablename")
-    int Yi = 128 * r;
+    int yInitial = 128 * r;
     int i;
 
-    arraycopy(B, Bi, XY, Xi, 128 * r);
+    arraycopy(B, Bi, XY, xInitial, 128 * r);
 
     for (i = 0; i < N; i++) {
-      arraycopy(XY, Xi, V, i * (128 * r), 128 * r);
-      blockmix_salsa8(XY, Xi, Yi, r);
+      arraycopy(XY, xInitial, V, i * (128 * r), 128 * r);
+      blockmixSalsa8(XY, xInitial, yInitial, r);
     }
 
     for (i = 0; i < N; i++) {
-      int j = integerify(XY, Xi, r) & (N - 1);
-      blockxor(V, j * (128 * r), XY, Xi, 128 * r);
-      blockmix_salsa8(XY, Xi, Yi, r);
+      int j = integerify(XY, xInitial, r) & (N - 1);
+      blockxor(V, j * (128 * r), XY, xInitial, 128 * r);
+      blockmixSalsa8(XY, xInitial, yInitial, r);
     }
 
-    arraycopy(XY, Xi, B, Bi, 128 * r);
+    arraycopy(XY, xInitial, B, Bi, 128 * r);
   }
 
   /**
-   * Describe <code>blockmix_salsa8</code> method here.
+   * Describe <code>blockmixSalsa8</code> method here.
    *
    * @param BY a <code>byte</code> value
    * @param Bi an <code>int</code> value
@@ -152,23 +164,25 @@ public class SCrypt {
    * @param r an <code>int</code> value
    */
   @SuppressWarnings("parametername")
-  public static void blockmix_salsa8(byte[] BY, int Bi, int Yi, int r) {
+  public static void blockmixSalsa8(byte[] BY, int Bi, int Yi, int r) {
 
     @SuppressWarnings("localvariablename")
-    byte[] X = new byte[64];
+    byte[] xBytes = new byte[64];
     int i;
 
-    arraycopy(BY, Bi + (2 * r - 1) * 64, X, 0, 64);
+    arraycopy(BY, Bi + (2 * r - 1) * 64, xBytes, 0, 64);
 
     for (i = 0; i < 2 * r; i++) {
-      blockxor(BY, i * 64, X, 0, 64);
-      salsa20_8(X);
-      arraycopy(X, 0, BY, Yi + (i * 64), 64);
+      blockxor(BY, i * 64, xBytes, 0, 64);
+      salsa20_8(xBytes);
+      arraycopy(xBytes, 0, BY, Yi + (i * 64), 64);
     }
 
-    for (i = 0; i < r; i++) arraycopy(BY, Yi + (i * 2) * 64, BY, Bi + (i * 64), 64);
+    for (i = 0; i < r; i++) 
+      arraycopy(BY, Yi + (i * 2) * 64, BY, Bi + (i * 64), 64);
 
-    for (i = 0; i < r; i++) arraycopy(BY, Yi + (i * 2 + 1) * 64, BY, Bi + (i + r) * 64, 64);
+    for (i = 0; i < r; i++)
+      arraycopy(BY, Yi + (i * 2 + 1) * 64, BY, Bi + (i + r) * 64, 64);
   }
 
   /**

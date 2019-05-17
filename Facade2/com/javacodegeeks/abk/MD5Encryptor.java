@@ -1,7 +1,6 @@
 package com.javacodegeeks.abk;
 
 import static converter.ByteToHex.*;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

@@ -48,9 +48,11 @@ public class Base64 {
   public static byte[] decode(char[] src, int[] table, char pad) {
     int len = src.length;
 
-    if (len == 0) return new byte[0];
+    if (len == 0) 
+      return new byte[0];
 
-    int padCount = (src[len - 1] == pad ? (src[len - 2] == pad ? 2 : 1) : 0);
+    int padCount = src[len - 1] == pad ? 
+        (src[len - 2] == pad ? 2 : 1) : 0;
     int bytes = (len * 6 >> 3) - padCount;
     int blocks = (bytes / 3) * 3;
 

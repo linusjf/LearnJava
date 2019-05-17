@@ -54,9 +54,9 @@ public class PBKDF {
       throw new GeneralSecurityException("Requested key length too long");
     }
     @SuppressWarnings("localvariablename")
-    byte[] U = new byte[hLen];
+    byte[] uBytes = new byte[hLen];
     @SuppressWarnings("localvariablename")
-    byte[] T = new byte[hLen];
+    byte[] tBytes = new byte[hLen];
     byte[] block1 = new byte[salt.length + 4];
 
     int l = (int) Math.ceil((double) dkLen / hLen);
@@ -71,19 +71,19 @@ public class PBKDF {
       block1[salt.length + 3] = (byte) (i >> 0 & 0xff);
 
       mac.update(block1);
-      mac.doFinal(U, 0);
-      arraycopy(U, 0, T, 0, hLen);
+      mac.doFinal(uBytes, 0);
+      arraycopy(uBytes, 0, tBytes, 0, hLen);
 
       for (int j = 1; j < c; j++) {
-        mac.update(U);
-        mac.doFinal(U, 0);
+        mac.update(uBytes);
+        mac.doFinal(uBytes, 0);
 
         for (int k = 0; k < hLen; k++) {
-          T[k] ^= U[k];
+          tBytes[k] ^= uBytes[k];
         }
       }
 
-      arraycopy(T, 0, derivedKey, (i - 1) * hLen, (i == l ? r : hLen));
+      arraycopy(tBytes, 0, derivedKey, (i - 1) * hLen, (i == l ? r : hLen));
     }
   }
 }

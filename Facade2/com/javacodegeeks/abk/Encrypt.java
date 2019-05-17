@@ -13,5 +13,5 @@ public interface Encrypt {
    * @param text a <code>String</code> value
    * @return a <code>String</code> value
    */
-  public String encrypt(String text);
+  String encrypt(String text);
 }

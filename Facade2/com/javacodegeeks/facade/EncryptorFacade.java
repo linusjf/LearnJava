@@ -22,7 +22,7 @@ import com.javacodegeeks.abk.SHASalted;
  */
 public class EncryptorFacade {
 
-  public static enum EncryptionType {
+  public enum EncryptionType {
     MD5,
     MD5Salted,
     SHA,

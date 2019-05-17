@@ -15,6 +15,7 @@ public final class EncryptHelper {
    *
    * @return a <code>byte[]</code> value
    */
+  @SuppressWarnings("Move this to Encrypt interface. Supported in Java 9.")
   public static byte[] getSalt() {
     // Always use a SecureRandom generator
     SecureRandom sr = new SecureRandom();

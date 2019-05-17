@@ -19,7 +19,8 @@ import com.javacodegeeks.abk.SHASalted;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Client2 {
+public enum Client2 {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
