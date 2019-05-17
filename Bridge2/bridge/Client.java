@@ -1,3 +1,4 @@
+package bridge;
 /**
  * Describe class <code>Client</code> here.
  *

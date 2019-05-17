@@ -32,7 +32,8 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc sourcepath="${src.dir}" destdir="${docs.dir}">
+      <javadoc packageNames="bridge"
+        sourcepath="${src.dir}" destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
@@ -51,6 +52,9 @@
     <attribute name="Implementation-Title" value=""/>
     <attribute name="Implementation-Version" value="${buildversion} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
+  </section>
+  <section name="bridge">
+    <attribute name="Sealed" value="false"/>
   </section>
   <attribute name="Main-Class" value="${main.class}" />
 </manifest>

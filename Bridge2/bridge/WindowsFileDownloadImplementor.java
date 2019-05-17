@@ -1,10 +1,11 @@
+package bridge;
 /**
- * Describe class <code>LinuxFileDownloadImplementor</code> here.
+ * Describe class <code>WindowsFileDownloadImplementor</code> here.
  *
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class LinuxFileDownloadImplementor implements FileDownloadImplementor {
+public class WindowsFileDownloadImplementor implements FileDownloadImplementor {
   @Override
   public Object downloadFile(String path) {
     return new Object();
@@ -12,7 +13,7 @@ public class LinuxFileDownloadImplementor implements FileDownloadImplementor {
 
   @Override
   public boolean storeFile(Object object) {
-    System.out.println("File downloaded successfully in LINUX !!");
+    System.out.println("File downloaded successfully in WINDOWS !!");
     return true;
   }
 }

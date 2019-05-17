@@ -1,3 +1,4 @@
+package bridge;
 /**
  * Describe interface <code>FileDownloaderAbstraction</code> here.
  *
