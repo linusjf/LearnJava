@@ -6,7 +6,8 @@ package com.javacodegeeks.patterns.compositepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class TestCompositePattern {
+public enum TestCompositePattern {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *

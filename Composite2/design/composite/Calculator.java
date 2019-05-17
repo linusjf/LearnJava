@@ -26,7 +26,7 @@ public enum Calculator implements ICalc {
     public String calculate(String value) {
       String answer = "false";
       if (value != null && !value.trim().isEmpty()) {
-        String reverse = (new StringBuilder(value).reverse().toString());
+        String reverse = new StringBuilder(value).reverse().toString();
         answer = Boolean.toString(reverse.equals(value));
       }
       return answer;

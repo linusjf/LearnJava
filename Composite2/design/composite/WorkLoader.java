@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
@@ -50,7 +51,9 @@ public class WorkLoader {
     List<Work> workList = new ArrayList<Work>();
     Set<Object> keys = properties.keySet();
     for (Object key : keys) {
-      String workType = key.toString().substring("Calculate".length() + 1).toUpperCase();
+      String workType = key.toString()
+        .substring("Calculate".length() + 1)
+        .toUpperCase(Locale.getDefault());
       System.out.println(workType);
       String values = properties.getProperty(key.toString());
       System.out.println(values);

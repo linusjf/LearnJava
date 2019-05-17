@@ -6,7 +6,8 @@ package design.composite;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Main {
+public enum Main {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
