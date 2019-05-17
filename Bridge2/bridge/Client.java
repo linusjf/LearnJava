@@ -5,7 +5,8 @@ package bridge;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Client {
+public enum Client {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *

@@ -5,14 +5,14 @@ package bridge;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public interface FileDownloaderAbstraction {
+interface FileDownloaderAbstraction {
   /**
    * Describe <code>download</code> method here.
    *
    * @param path a <code>String</code> value
    * @return an <code>Object</code> value
    */
-  public Object download(String path);
+  Object download(String path);
 
   /**
    * Describe <code>store</code> method here.
@@ -20,5 +20,5 @@ public interface FileDownloaderAbstraction {
    * @param object an <code>Object</code> value
    * @return a <code>boolean</code> value
    */
-  public boolean store(Object object);
+  boolean store(Object object);
 }
