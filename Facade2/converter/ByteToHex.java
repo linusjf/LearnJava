@@ -1,4 +1,5 @@
 package converter;
+
 /**
  * Describe class <code>ByteToHex</code> here.
  *
