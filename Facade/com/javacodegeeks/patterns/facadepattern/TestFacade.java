@@ -6,8 +6,8 @@ package com.javacodegeeks.patterns.facadepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class TestFacade {
-
+public enum TestFacade {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *

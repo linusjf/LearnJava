@@ -6,8 +6,8 @@ package com.javacodegeeks.patterns.facadepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class RunServer {
-
+public enum RunServer {
+  MAIN;
   /**
    * Describe <code>main</code> method here.
    *
