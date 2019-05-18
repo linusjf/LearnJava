@@ -250,33 +250,34 @@ public final class SCrypt {// NOPMD
   /**
    * Describe <code>blockXOR</code> method here.
    *
-   * @param S a <code>byte</code> value
+   * @param s a <code>byte</code> value
    * @param sInitial an <code>int</code> value
-   * @param D a <code>byte</code> value
+   * @param d a <code>byte</code> value
    * @param dInitial an <code>int</code> value
    * @param len an <code>int</code> value
    */
-  public static void blockXOR(byte[] S, int sInitial, byte[] D, int dInitial, int len) {
-    for (int i = 0; i < len; i++) D[dInitial + i] ^= S[sInitial + i];
+  public static void blockXOR(byte[] s, int sInitial, byte[] d, int dInitial, int len) {
+    for (int i = 0; i < len; i++)
+      s[dInitial + i] ^= s[sInitial + i];
   }
 
   /**
    * Describe <code>integerify</code> method here.
    *
-   * @param B a <code>byte</code> value
+   * @param b a <code>byte</code> value
    * @param initialB an <code>int</code> value
    * @param r an <code>int</code> value
    * @return an <code>int</code> value
    */
-  public static int integerify(byte[] B, int initialB, int r) {
+  public static int integerify(byte[] b, int initialB, int r) {
     int n;
 
     initialB += (2 * r - 1) * 64;
 
-    n = (B[initialB + 0] & 0xff) << 0;
-    n |= (B[initialB + 1] & 0xff) << 8;
-    n |= (B[initialB + 2] & 0xff) << 16;
-    n |= (B[initialB + 3] & 0xff) << 24;
+    n = (b[initialB + 0] & 0xff) << 0;
+    n |= (b[initialB + 1] & 0xff) << 8;
+    n |= (b[initialB + 2] & 0xff) << 16;
+    n |= (b[initialB + 3] & 0xff) << 24;
 
     return n;
   }

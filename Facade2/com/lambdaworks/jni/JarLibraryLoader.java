@@ -53,6 +53,7 @@ public class JarLibraryLoader implements LibraryLoader {
    * @param verify Verify the jar file if signed.
    * @return true if the library was successfully loaded.
    */
+  @Override
   public boolean load(String name, boolean verify) {
     boolean loaded = false;
 

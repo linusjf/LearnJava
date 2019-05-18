@@ -46,7 +46,7 @@ public class NyPizza extends Pizza {
 
   private NyPizza(Builder builder) {
     super(builder);
-    size = builder.size;
+    this.size = builder.size;
   }
 
   /**
