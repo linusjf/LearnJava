@@ -78,7 +78,8 @@ public class JarLibraryLoader implements LibraryLoader {
       }
     } catch (UnsatisfiedLinkError 
         | NullPointerException
-        | SecurityException e) {
+        | SecurityException 
+        | IOException e) {
       loaded = false;
     }
 

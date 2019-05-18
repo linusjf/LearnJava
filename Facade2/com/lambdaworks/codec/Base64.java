@@ -74,7 +74,7 @@ public final class Base64 { //NOPMD
     }
 
     if (di < bytes) {
-      int n = 0;
+      n = 0;
       switch (len - si) { //NOPMD
         case 4:
           n |= table[src[si + 3]]; // fall through
@@ -86,7 +86,7 @@ public final class Base64 { //NOPMD
           n |= table[src[si]] << 18; // fall through
         default:
           break;
-      }
+        }
       for (int r = 16; di < bytes; r -= 8) {
         dst[di++] = (byte) (n >> r);
       }
