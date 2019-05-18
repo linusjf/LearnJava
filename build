@@ -56,7 +56,7 @@ ver="1.7"
 distDir="dist"
 manifestFile="manifest.mf"
 verFile=".ver"
-optionsFile=".options"
+#optionsFile=".options"
 isDX
 dex=$?
 isJVM
@@ -72,9 +72,9 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-    [ -e $proj/$optionsFile ] && \
-      options=$(cat $proj/$optionsFile)
-    ecj -$ver $options $proj
+    #[ -e $proj/$optionsFile ] && \
+     # options=$(cat $proj/$optionsFile)
+    ecj -$ver -cp $proj $proj  
     success=$?
     if [ $success -eq 0 ]
       then
