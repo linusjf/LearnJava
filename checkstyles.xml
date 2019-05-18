@@ -3,6 +3,7 @@
           "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
           "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
+
 <module name="Checker">
   <!--
       If you set the basedir property below, then all reported file
@@ -12,13 +13,19 @@
       <property name="basedir" value="${basedir}"/>
   -->
 
+  <property name="charset" value="${cs.charset}"/>
+
+  <property name="severity" value="${cs.severity}"/>
+
+  <property name="fileExtensions" value="${cs.fileExtensions}"/>
+  <property name="cacheFile" value="${cs.cacheFile}"/>
+
   <metadata name="org.checkstyle.principle" value="Practice What You Preach"/>
   <metadata name="org.checkstyle.principle.description"
             value="In our config we should use all Checks that Checkstyle has"/>
 
-  <property name="cacheFile" value="${checkstyle.cache.file}"/>
+  <property name="cacheFile" value="${cs.cacheFile}"/-->
 
-  <property name="severity" value="error"/>
 
   <property name="fileExtensions" value="java, properties, xml, vm, g, g4, dtd"/>
 
@@ -34,7 +41,7 @@
     <property name="acceptOnMatch" value="false"/>
   </module>
   <module name="SuppressionFilter">
-    <property name="file" value="${checkstyle.suppressions.file}"/>
+    <property name="file" value="${cs.suppressions.file}"/>
   </module>
   <module name="SuppressWarningsFilter"/>
   <module name="SuppressWithPlainTextCommentFilter">
@@ -49,18 +56,19 @@
 
   <!-- Headers -->
   <module name="Header">
-    <property name="headerFile" value="${checkstyle.header.file}"/>
+    <property name="headerFile" value="${cs.header.file}"/>
     <property name="fileExtensions" value="java"/>
     <property name="id" value="header"/>
   </module>
   <module name="RegexpHeader">
-    <property name="headerFile" value="${checkstyle.regexp.header.file}"/>
+    <property name="headerFile" value="${cs.regexp.header.file}"/>
     <property name="fileExtensions" value="java"/>
   </module>
 
   <!-- Javadoc Comments -->
   <module name="JavadocPackage">
     <property name="allowLegacy" value="false"/>
+    <property name="fileExtensions" value=".java"/>
   </module>
 
   <!-- Miscellaneous -->
@@ -139,7 +147,7 @@
   </module>
 
   <module name="TreeWalker">
-    <property name="tabWidth" value="4"/>
+    <property name="tabWidth" value="2"/>
 
     <!-- Annotations -->
     <module name="AnnotationLocation">
@@ -355,7 +363,7 @@
       <property name="onCommentFormat" value="CSON\: .*"/>
     </module>
     <module name="SuppressionXpathFilter">
-      <property name="file" value="${checkstyle.suppressions-xpath.file}"/>
+      <property name="file" value="${cs.suppressions-xpath.file}"/>
     </module>
     <!-- Tone down the checking for test code -->
     <module name="SuppressionXpathSingleFilter">
@@ -415,12 +423,12 @@
     <module name="IllegalImport"/>
     <module name="ImportControl">
       <property name="id" value="ImportControlMain"/>
-      <property name="file" value="${checkstyle.importcontrol.file}"/>
+      <property name="file" value="${cs.importcontrol.file}"/>
       <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
     </module>
     <module name="ImportControl">
       <property name="id" value="ImportControlTest"/>
-      <property name="file" value="${checkstyle.importcontroltest.file}"/>
+      <property name="file" value="${cs.importcontroltest.file}"/>
       <property name="path" value="^.*[\\/]src[\\/]test[\\/].*$"/>
     </module>
     <module name="ImportOrder">
@@ -518,12 +526,14 @@
       -->
       <property name="severity" value="ignore"/>
     </module>
-    <module name="Indentation">
-      <property name="basicOffset" value="4"/>
-      <property name="braceAdjustment" value="0"/>
-      <property name="caseIndent" value="4"/>
-      <property name="throwsIndent" value="8"/>
-    </module>
+        <module name="Indentation">
+            <property name="basicOffset" value="2"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="2"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="lineWrappingIndentation" value="4"/>
+            <property name="arrayInitIndent" value="2"/>
+        </module>
     <module name="OuterTypeFilename"/>
     <module name="TodoComment">
       <property name="format" value="(TODO)|(FIXME)" />
@@ -548,8 +558,8 @@
 
     <!-- Naming Conventions -->
     <module name="AbbreviationAsWordInName">
-      <property name="ignoreFinal" value="false"/>
-      <property name="allowedAbbreviationLength" value="0"/>
+      <property name="ignoreFinal" value="true"/>
+      <property name="allowedAbbreviationLength" value="2"/>
       <property name="allowedAbbreviations" value="AST"/>
     </module>
     <module name="AbstractClassName"/>

@@ -23,9 +23,8 @@ public class SHA512 implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      MessageDigest digest = MessageDigest.getInstance("SHA-512");
-      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
-
+      final MessageDigest digest = MessageDigest.getInstance("SHA-512");
+      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = getHex4(textBytes);
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();

@@ -25,10 +25,10 @@ public interface Encrypt {
    */
   static byte[] getSalt() {
     // Always use a SecureRandom generator
-    SecureRandom sr = new SecureRandom();
+    final SecureRandom sr = new SecureRandom();
     // Create array for salt
     // 128 bit salt  more than enough to ensure uniqueness
-    byte[] salt = new byte[16];
+    final byte[] salt = new byte[16];
     // Get a random salt
     sr.nextBytes(salt);
     // return salt

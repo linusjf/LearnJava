@@ -6,7 +6,7 @@ function usage()
   echo "google_checks.xml is the default rules file."
   exit 1
 }
-rules_file="google_checks.xml"
+rules_file="checkstyles.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
 libdir="lib"

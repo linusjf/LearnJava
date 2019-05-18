@@ -12,16 +12,16 @@ import com.javacodegeeks.facade.EncryptorFacade;
  * @version 1.0
  */
 public enum Client {
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    String myText = "Encrypt this text";
+    final String myText = "Encrypt this text";
     System.out.println("Text to be encrypted: " + myText);
-    EncryptorFacade e = new EncryptorFacade();
+    final EncryptorFacade e = new EncryptorFacade();
     System.out.println("MD5 encryption");
     System.out.println(e.encrypt(MD5, myText));
     System.out.println("MD5 salted encryption");

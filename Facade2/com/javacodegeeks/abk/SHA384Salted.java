@@ -24,11 +24,10 @@ public class SHA384Salted implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      MessageDigest digest = MessageDigest.getInstance("SHA-384");
-      byte[] salt = getSalt();
+      final MessageDigest digest = MessageDigest.getInstance("SHA-384");
+      final byte[] salt = getSalt();
       digest.update(salt);
-      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
-
+      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = getHex4(textBytes);
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();
