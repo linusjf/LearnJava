@@ -1,7 +1,6 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
-//@SuppressWarnings({"PMD.UnusedImports"})
-import static com.lambdaworks.codec.Base64.*;//NOPMD
+import static com.lambdaworks.codec.Base64.*;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -35,20 +34,20 @@ public final class SCryptUtil { //NOPMD
    * SCryptUtil}.
    *
    * @param passwd Password.
-   * @param N CPU cost parameter.
-   * @param r Memory cost parameter.
+   * @param nCPUCost CPU cost parameter.
+   * @param rMemCost Memory cost parameter.
    * @param p Parallelization parameter.
    * @return The hashed password.
    */
-  @SuppressWarnings("parametername")
-  public static String scrypt(String passwd, int N, int r, int p) {
+  public static String scrypt(String passwd, 
+      int nCPUCost, int rMemCost, int p) {
     try {
       byte[] salt = new byte[16];
       SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
-      byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, N, r, p, 32);
+      byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, nCPUCost, rMemCost, p, 32);
 
-      String params = Long.toString(log2(N) << 16L | r << 8 | p, 16);
+      String params = Long.toString(log2(nCPUCost) << 16L | rMemCost << 8 | p, 16);
 
       StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
       sb.append("$s0$").append(params).append('$');
@@ -87,10 +86,12 @@ public final class SCryptUtil { //NOPMD
 
       byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, letterN, r, p, 32);
 
-      if (derived0.length != derived1.length) return false;
+      if (derived0.length != derived1.length) 
+        return false;
 
       int result = 0;
-      for (int i = 0; i < derived0.length; i++) result |= derived0[i] ^ derived1[i];
+      for (int i = 0; i < derived0.length; i++) 
+        result |= derived0[i] ^ derived1[i];
       return result == 0;
     } catch (UnsupportedEncodingException e) {
       throw new IllegalStateException("JVM doesn't support UTF-8?",e);
