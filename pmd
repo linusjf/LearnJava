@@ -12,12 +12,14 @@ fi
 rulesFile="pmdrules.xml"
 cacheFile="pmd.cache"
 errFile="pmd.errors"
-format="text"
+format="textcolor"
 # run.sh must be in the search path
 echo "Start time :" `date +"%r"`
 run.sh pmd -D -d $1 -R $rulesFile -f $format \
 -failOnViolation false -cache $1/$cacheFile \
 -reportfile $1/$errFile \
+-auxclasspath $1 \
+-t 5 \
 || { echo "Error running $0"; exit 1;}
 res=$?
 echo "End time:" `date +"%r"`
