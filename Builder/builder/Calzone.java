@@ -36,7 +36,7 @@ public class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    sauceInside = builder.sauceInside;
+    this.sauceInside = builder.sauceInside;
   }
 
   /**
