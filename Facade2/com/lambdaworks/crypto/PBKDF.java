@@ -28,9 +28,9 @@ public final class PBKDF { //NOPMD
    */
   public static byte[] pbkdf2(String alg, byte[] password, byte[] salt, int c, int dkLen)
       throws GeneralSecurityException {
-    Mac mac = Mac.getInstance(alg);
+    final Mac mac = Mac.getInstance(alg);
     mac.init(new SecretKeySpec(password, alg));
-    byte[] derivedKey = new byte[dkLen];
+    final byte[] derivedKey = new byte[dkLen];
     pbkdf2(mac, salt, c, derivedKey, dkLen);
     return derivedKey;
   }
@@ -47,20 +47,17 @@ public final class PBKDF { //NOPMD
    */
   public static void pbkdf2(Mac mac, byte[] salt, int c, byte[] derivedKey, int dkLen)
       throws GeneralSecurityException {
-    @SuppressWarnings("localvariablename")
-    int hLen = mac.getMacLength();
+    final int lengthH = mac.getMacLength();
 
-    if (dkLen > (Math.pow(2, 32) - 1) * hLen) {
+    if (dkLen > (Math.pow(2, 32) - 1) * lengthH) {
       throw new GeneralSecurityException("Requested key length too long");
     }
-    @SuppressWarnings("localvariablename")
-    byte[] uBytes = new byte[hLen];
-    @SuppressWarnings("localvariablename")
-    byte[] tBytes = new byte[hLen];
-    byte[] block1 = new byte[salt.length + 4];
+    final byte[] bytesU = new byte[lengthH];
+    final byte[] bytesT = new byte[lengthH];
+    final byte[] block1 = new byte[salt.length + 4];
 
-    int l = (int) Math.ceil((double) dkLen / hLen);
-    int r = dkLen - (l - 1) * hLen;
+    int l = (int) Math.ceil((double) dkLen / lengthH);
+    int r = dkLen - (l - 1) * lengthH;
 
     arraycopy(salt, 0, block1, 0, salt.length);
 
@@ -71,20 +68,20 @@ public final class PBKDF { //NOPMD
       block1[salt.length + 3] = (byte) (i >> 0 & 0xff);
 
       mac.update(block1);
-      mac.doFinal(uBytes, 0);
-      arraycopy(uBytes, 0, tBytes, 0, hLen);
+      mac.doFinal(bytesU, 0);
+      arraycopy(bytesU, 0, bytesT, 0, lengthH);
 
       for (int j = 1; j < c; j++) {
-        mac.update(uBytes);
-        mac.doFinal(uBytes, 0);
+        mac.update(bytesU);
+        mac.doFinal(bytesU, 0);
 
-        for (int k = 0; k < hLen; k++) {
-          tBytes[k] ^= uBytes[k];
+        for (int k = 0; k < lengthH; k++) {
+          bytesT[k] ^= bytesU[k];
         }
       }
 
-      arraycopy(tBytes, 0, derivedKey,
-          (i - 1) * hLen, i == l ? r : hLen);
+      arraycopy(bytesT, 0, derivedKey,
+          (i - 1) * lengthH, i == l ? r : lengthH);
     }
   }
 }

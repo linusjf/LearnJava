@@ -49,23 +49,22 @@ public final class Base64 { //NOPMD
    * @return Decoded bytes.
    */
   public static byte[] decode(char[] src, int[] table, char pad) {
-    int len = src.length;
+    final int len = src.length;
 
     if (len == 0) 
       return new byte[0];
 
-    int padCount = src[len - 1] == pad 
+    final int padCount = src[len - 1] == pad 
         ? src[len - 2] == pad ? 2 : 1 : 0;
-    int bytes = (len * 6 >> 3) - padCount;
-    int blocks = (bytes / 3) * 3;
+    final int bytes = (len * 6 >> 3) - padCount;
+    final int blocks = (bytes / 3) * 3;
 
-    byte[] dst = new byte[bytes];
+    final byte[] dst = new byte[bytes];
     int si = 0;
     int di = 0;
-
+    int n;
     while (di < blocks) {
-      int n =
-          table[src[si++]] << 18
+      n = table[src[si++]] << 18
               | table[src[si++]] << 12
               | table[src[si++]] << 6
               | table[src[si++]];
@@ -76,7 +75,6 @@ public final class Base64 { //NOPMD
 
     if (di < bytes) {
       int n = 0;
-//      @SuppressWarnings("PMD.MissingBreakInSwitch")
       switch (len - si) { //NOPMD
         case 4:
           n |= table[src[si + 3]]; // fall through
@@ -127,21 +125,25 @@ public final class Base64 { //NOPMD
    * @return Encoded chars.
    */
   public static char[] encode(byte[] src, char[] table, char pad) {
-    int len = src.length;
+    final int len = src.length;
 
-    if (len == 0) return new char[0];
+    if (len == 0)
+      return new char[0];
 
-    int blocks = (len / 3) * 3;
+    final int blocks = (len / 3) * 3;
     int chars = ((len - 1) / 3 + 1) << 2;
-    int tail = len - blocks;
-    if (pad == 0 && tail > 0) chars -= 3 - tail;
+    final int tail = len - blocks;
+    if (pad == 0 && tail > 0)
+      chars -= 3 - tail;
 
-    char[] dst = new char[chars];
+    final char[] dst = new char[chars];
     int si = 0;
     int di = 0;
-
+    int n;
     while (si < blocks) {
-      int n = (src[si++] & 0xff) << 16 | (src[si++] & 0xff) << 8 | (src[si++] & 0xff);
+      n = (src[si++] & 0xff) << 16
+          | (src[si++] & 0xff) << 8
+          | (src[si++] & 0xff);
       dst[di++] = table[(n >>> 18) & 0x3f];
       dst[di++] = table[(n >>> 12) & 0x3f];
       dst[di++] = table[(n >>> 6) & 0x3f];
@@ -149,12 +151,14 @@ public final class Base64 { //NOPMD
     }
 
     if (tail > 0) {
-      int n = (src[si] & 0xff) << 10;
-      if (tail == 2) n |= (src[++si] & 0xff) << 2;
+      n = (src[si] & 0xff) << 10;
+      if (tail == 2) 
+        n |= (src[++si] & 0xff) << 2;
 
       dst[di++] = table[(n >>> 12) & 0x3f];
       dst[di++] = table[(n >>> 6) & 0x3f];
-      if (tail == 2) dst[di++] = table[n & 0x3f];
+      if (tail == 2) 
+        dst[di++] = table[n & 0x3f];
 
       if (pad != 0) {
         if (tail == 1) dst[di++] = pad;

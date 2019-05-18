@@ -34,7 +34,7 @@ public class EncryptorFacade {
     SHA384,
     SHA384Salted,
     SHA512,
-    SHA512Salted
+    SHA512Salted,
   }
 
   /**
@@ -46,7 +46,7 @@ public class EncryptorFacade {
    */
   public String encrypt(EncryptionType type, String text) {
     String hash = "";
-    Encrypt e;
+    final Encrypt e;
     switch (type) {
       case MD5:
         e = new MD5Encryptor();
