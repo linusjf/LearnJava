@@ -1,7 +1,7 @@
 package builder;
 
-import static NyPizza.Size.*;
-import static Pizza.Topping.*;
+import static builder.NyPizza.Size.*;
+import static builder.Pizza.Topping.*;
 /**
  * Describe class <code>Main</code> here.
  *
@@ -9,7 +9,7 @@ import static Pizza.Topping.*;
  * @version 1.0
  */
 public enum Main {
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
