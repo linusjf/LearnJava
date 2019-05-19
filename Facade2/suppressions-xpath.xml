@@ -1308,3 +1308,4 @@
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']"/>
 </suppressions>
+Checkstyle ends with 326 errors.

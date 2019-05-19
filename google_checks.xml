@@ -33,9 +33,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>
   </module>
-  <module name="SuppressionFilter">
+  <!--module name="SuppressionFilter">
     <property name="file" value="${cs.suppressions.file}"/>
-  </module>
+  </module-->
+    <!--module name="SuppressionXpathFilter">
+      <property name="file" value="${cs.suppressions-xpath.file}"/>
+    </module-->
   <module name="SuppressWarningsFilter" />
   <module name="JavadocPackage">
     <property name="allowLegacy" value="false"/>
@@ -46,6 +49,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="TreeWalker">
+    <module name="SuppressionXpathSingleFilter">
+      <property name="files" value=".*[\\/](com)[\\/]"/>
+      <property name="checks" value="MagicNumber"/>
+    </module>
 <module name="SuppressWarningsHolder" />
 <module name="SingleSpaceSeparator">
   <property name="validateComments" value="false"/>
