@@ -107,6 +107,7 @@ public class NutritionFacts {
    *
    * @return a <code>String</code> value
    */
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("serving size = " + servingSize)

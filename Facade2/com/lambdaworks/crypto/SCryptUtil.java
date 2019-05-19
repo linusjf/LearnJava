@@ -1,5 +1,6 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
+
 import static com.lambdaworks.codec.Base64.*;
 
 import java.io.UnsupportedEncodingException;
@@ -34,22 +35,23 @@ public final class SCryptUtil { //NOPMD
    * SCryptUtil}.
    *
    * @param passwd Password.
-   * @param nCPUCost CPU cost parameter.
-   * @param rMemCost Memory cost parameter.
+   * @param enCPUCost CPU cost parameter.
+   * @param rmemCost Memory cost parameter.
    * @param p Parallelization parameter.
    * @return The hashed password.
    */
   public static String scrypt(String passwd, 
-      int nCPUCost, int rMemCost, int p) {
+      int enCPUCost, int rmemCost, int p) {
     try {
-      byte[] salt = new byte[16];
+      final byte[] salt = new byte[16];
       SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
-      byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, nCPUCost, rMemCost, p, 32);
+      final byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"),
+          salt, enCPUCost, rmemCost, p, 32);
 
-      String params = Long.toString(log2(nCPUCost) << 16L | rMemCost << 8 | p, 16);
+      final String params = Long.toString(log2(enCPUCost) << 16L | rmemCost << 8 | p, 16);
 
-      StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
+      final StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
       sb.append("$s0$").append(params).append('$');
       sb.append(encode(salt)).append('$');
       sb.append(encode(derived));
@@ -71,20 +73,20 @@ public final class SCryptUtil { //NOPMD
    */
   public static boolean check(String passwd, String hashed) {
     try {
-      String[] parts = hashed.split("\\$");
+      final String[] parts = hashed.split("\\$");
 
       if (parts.length != 5 || !parts[1].equals("s0")) {
         throw new IllegalArgumentException("Invalid hashed value");
       }
 
-      long params = Long.parseLong(parts[2], 16);
-      byte[] salt = decode(parts[3].toCharArray());
-      byte[] derived0 = decode(parts[4].toCharArray());
-      int letterN = (int) Math.pow(2, params >> 16 & 0xffff);
-      int r = (int) params >> 8 & 0xff;
-      int p = (int) params & 0xff;
+      final long params = Long.parseLong(parts[2], 16);
+      final byte[] salt = decode(parts[3].toCharArray());
+      final byte[] derived0 = decode(parts[4].toCharArray());
+      final int n = (int) Math.pow(2, params >> 16 & 0xffff);
+      final int r = (int) params >> 8 & 0xff;
+      final int p = (int) params & 0xff;
 
-      byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, letterN, r, p, 32);
+      final byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, n, r, p, 32);
 
       if (derived0.length != derived1.length) 
         return false;

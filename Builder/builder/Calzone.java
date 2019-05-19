@@ -42,6 +42,7 @@ public class Calzone extends Pizza {
   /**
    * returns object state as String.
    */
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("Sauce = " + sauceInside + System.lineSeparator());

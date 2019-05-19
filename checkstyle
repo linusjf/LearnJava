@@ -33,12 +33,12 @@ if [ ! -e $properties_file ]
       echo "Unable to create $properties_file"
     echo "Create/Modify $properties_file to configure checkstyle"
 fi
-
+(cd $1 && \
 java -jar \
-$jarFile \
--c $rules_file \
--p $properties_file \
--o $1/$output_file \
-`find $1 -type f -name "*.java" \
-! -path "docs/**" ! -path "dist/**"`
+../$jarFile \
+-c ../$rules_file \
+-p ../$properties_file \
+-o $output_file \
+`find . -type f -name "*.java" \
+! -path "docs/**" ! -path "dist/**"`)
 exit $?

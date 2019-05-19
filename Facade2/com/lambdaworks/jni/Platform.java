@@ -53,8 +53,8 @@ public final class Platform {
    * @throws UnsupportedPlatformException if the platform cannot be detected.
    */
   public static Platform detect() throws UnsupportedPlatformException {
-    String osArch = getProperty("os.arch");
-    String osName = getProperty("os.name");
+    final String osArch = getProperty("os.arch");
+    final String osName = getProperty("os.name");
 
     for (Arch arch : Arch.values()) {
       if (arch.pattern.matcher(osArch).matches()) {
@@ -66,7 +66,7 @@ public final class Platform {
       }
     }
 
-    String msg = String.format("Unsupported platform %s %s", osArch, osName);
+    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 }

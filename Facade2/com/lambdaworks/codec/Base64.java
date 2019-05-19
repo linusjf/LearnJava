@@ -86,7 +86,8 @@ public final class Base64 { //NOPMD
           n |= table[src[si]] << 18; // fall through
         default:
           break;
-        }
+      }
+     
       for (int r = 16; di < bytes; r -= 8) {
         dst[di++] = (byte) (n >> r);
       }

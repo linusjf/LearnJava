@@ -6,13 +6,13 @@ package converter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings("PMD.ClassNamingConventions")
 public final class ByteToHex {
 
   private static final String HEXES = "0123456789abcdef";
 
   private ByteToHex() {
   }
+
   /**
    * Describe <code>getHex</code> method here.
    *

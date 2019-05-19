@@ -18,7 +18,7 @@ public final class LibraryLoaders { //NOPMD
    * @return the loader.
    */
   public static LibraryLoader loader() {
-    String type = System.getProperty("com.lambdaworks.jni.loader");
+    final String type = System.getProperty("com.lambdaworks.jni.loader");
 
     if (type != null) {
       if ("sys".equals(type)) 
@@ -30,7 +30,7 @@ public final class LibraryLoaders { //NOPMD
       throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
     }
 
-    String vmSpec = System.getProperty("java.vm.specification.name");
+    final String vmSpec = System.getProperty("java.vm.specification.name");
     return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
   }
 

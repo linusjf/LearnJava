@@ -58,11 +58,11 @@ public class JarLibraryLoader implements LibraryLoader {
     boolean loaded = false;
 
     try {
-      Platform platform = Platform.detect();
-      JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify);
+      final Platform platform = Platform.detect();
+      final JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify);
       try {
         for (String path : libCandidates(platform, name)) {
-          JarEntry entry = jar.getJarEntry(path);
+          final JarEntry entry = jar.getJarEntry(path);
           if (entry == null) 
             continue;
           else {
@@ -96,11 +96,11 @@ public class JarLibraryLoader implements LibraryLoader {
    * @throws IOException when an IO error occurs.
    */
   private static File extract(String name, InputStream is) throws IOException {
-    byte[] buf = new byte[4096];
+    final byte[] buf = new byte[4096];
     int len;
 
-    File lib = File.createTempFile(name, "lib");
-    FileOutputStream os = new FileOutputStream(lib);
+    final File lib = File.createTempFile(name, "lib");
+    final FileOutputStream os = new FileOutputStream(lib);
 
     try {
       while ((len = is.read(buf)) > 0) {
@@ -113,7 +113,6 @@ public class JarLibraryLoader implements LibraryLoader {
       os.close();
       is.close();
     }
-
     return lib;
   }
 
@@ -126,8 +125,8 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return List of potential library names.
    */
   private List<String> libCandidates(Platform platform, String name) {
-    List<String> candidates = new ArrayList<String>();
-    StringBuilder sb = new StringBuilder();
+    final List<String> candidates = new ArrayList<String>();
+    final StringBuilder sb = new StringBuilder();
 
     sb.append(libraryPath).append("/");
     sb.append(platform.arch).append("/");

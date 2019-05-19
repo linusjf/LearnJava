@@ -56,8 +56,8 @@ public final class PBKDF { //NOPMD
     final byte[] bytesT = new byte[lengthH];
     final byte[] block1 = new byte[salt.length + 4];
 
-    int l = (int) Math.ceil((double) dkLen / lengthH);
-    int r = dkLen - (l - 1) * lengthH;
+    final int l = (int) Math.ceil((double) dkLen / lengthH);
+    final int r = dkLen - (l - 1) * lengthH;
 
     arraycopy(salt, 0, block1, 0, salt.length);
 

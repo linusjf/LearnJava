@@ -33,6 +33,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>
   </module>
+  <module name="SuppressionFilter">
+    <property name="file" value="${cs.suppressions.file}"/>
+  </module>
   <module name="SuppressWarningsFilter" />
   <module name="JavadocPackage">
     <property name="allowLegacy" value="false"/>

@@ -19,11 +19,11 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-public final class SCrypt {// NOPMD 
+public final class SCrypt {// NOPMD
   private static final boolean native_library_loaded;
 
   static {
-    LibraryLoader loader = LibraryLoaders.loader();
+    final LibraryLoader loader = LibraryLoaders.loader();
     native_library_loaded = loader.load("scrypt", true);
   }
 
@@ -34,7 +34,7 @@ public final class SCrypt {// NOPMD
    *
    * @param passwd Password.
    * @param salt Salt.
-   * @param nCPUCost CPU cost parameter.
+   * @param enCPUCost CPU cost parameter.
    * @param r Memory cost parameter.
    * @param p Parallelization parameter.
    * @param dkLen Intended length of the derived key.
@@ -43,14 +43,14 @@ public final class SCrypt {// NOPMD
    */
   public static byte[] scrypt(byte[] passwd, 
       byte[] salt, 
-      int nCPUCost, 
+      int enCPUCost, 
       int r, 
       int p, 
       int dkLen)
       throws GeneralSecurityException {
     return native_library_loaded
-        ? scryptN(passwd, salt, nCPUCost, r, p, dkLen)
-        : scryptJ(passwd, salt, nCPUCost, r, p, dkLen);
+        ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+        : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
   }
 
   /**
@@ -60,13 +60,15 @@ public final class SCrypt {// NOPMD
    *
    * @param passwd Password.
    * @param salt Salt.
-   * @param nCPUCost CPU cost parameter.
+   * @param enCPUCost CPU cost parameter.
    * @param r Memory cost parameter.
    * @param p Parallelization parameter.
    * @param dkLen Intended length of the derived key.
    * @return The derived key.
    */
-  public static native byte[] scryptN(byte[] passwd, byte[] salt, int nCPUCost, int r, int p, int dkLen);
+  @SuppressWarnings("checkstyle:IllegalToken")
+  public static native byte[] scryptN(byte[] passwd, byte[] salt, 
+      int enCPUCost, int r, int p, int dkLen);
 
   /**
    * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
@@ -74,36 +76,37 @@ public final class SCrypt {// NOPMD
    *
    * @param passwd Password.
    * @param salt Salt.
-   * @param nCPUCost CPU cost parameter.
+   * @param enCPUCost CPU cost parameter.
    * @param r Memory cost parameter.
    * @param p Parallelization parameter.
    * @param dkLen Intended length of the derived key.
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scryptJ(byte[] passwd, byte[] salt, int nCPUCost, int r, int p, int dkLen)
+  public static byte[] scryptJ(byte[] passwd, byte[] salt,
+      int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-    if (nCPUCost < 2 || (nCPUCost & (nCPUCost - 1)) != 0)
-      throw new IllegalArgumentException("nCPUCost must be a power of 2 greater than 1");
+    if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
+      throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
 
-    if (nCPUCost > MAX_VALUE / 128 / r)
+    if (enCPUCost > MAX_VALUE / 128 / r)
       throw new IllegalArgumentException("Parameter nCPUCost is too large");
     if (r > MAX_VALUE / 128 / p)
       throw new IllegalArgumentException("Parameter r is too large");
 
-    Mac mac = Mac.getInstance("HmacSHA256");
+    final Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
 
-    byte[] derivedKey = new byte[dkLen];
-    byte[] bytes = new byte[128 * r * p];
-    byte[] xyBytes = new byte[256 * r];
-    byte[] v = new byte[128 * r * nCPUCost];
+    final byte[] derivedKey = new byte[dkLen];
+    final byte[] bytes = new byte[128 * r * p];
+    final byte[] xyBytes = new byte[256 * r];
+    final byte[] v = new byte[128 * r * enCPUCost];
     int i;
 
     PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
 
     for (i = 0; i < p; i++) 
-      sMix(bytes, i * 128 * r, r, nCPUCost, v, xyBytes);
+      smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
 
     PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
 
@@ -111,63 +114,64 @@ public final class SCrypt {// NOPMD
   }
 
   /**
-   * Describe <code>sMix</code> method here.
+   * Describe <code>smix</code> method here.
    *
-   * @param bBytes a <code>byte</code> value
+   * @param bytes a <code>byte</code> value
    * @param initialB an <code>int</code> value
    * @param r an <code>int</code> value
-   * @param N an <code>int</code> value
-   * @param V a <code>byte</code> value
-   * @param XY a <code>byte</code> value
+   * @param n an <code>int</code> value
+   * @param v a <code>byte</code> value
+   * @param xy a <code>byte</code> value
    */
-  public static void sMix(byte[] bBytes, int initialB, int r, int n, byte[] v, byte[] xy) {
+  public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v, byte[] xy) {
 
-    int xinitial = 0;
-    int yinitial = 128 * r;
+    final int xinitial = 0;
+    final int yinitial = 128 * r;
     int i;
 
-    arraycopy(bBytes, initialB, xy, xinitial, 128 * r);
+    arraycopy(bytes, initialB, xy, xinitial, 128 * r);
 
     for (i = 0; i < n; i++) {
       arraycopy(xy, xinitial, v, i * (128 * r), 128 * r);
       blockmixSalsa8(xy, xinitial, yinitial, r);
     }
 
+    int j;
     for (i = 0; i < n; i++) {
-      int j = integerify(xy, xinitial, r) & (n - 1);
+      j = integerify(xy, xinitial, r) & (n - 1);
       blockXOR(v, j * (128 * r), xy, xinitial, 128 * r);
-  blockmixSalsa8(xy, xinitial, yinitial, r);
+      blockmixSalsa8(xy, xinitial, yinitial, r);
     }
 
-    arraycopy(xy, xinitial, bBytes, initialB, 128 * r);
+    arraycopy(xy, xinitial, bytes, initialB, 128 * r);
   }
 
   /**
    * Describe <code>blockmixSalsa8</code> method here.
    *
-   * @param bY a <code>byte</code> value
+   * @param bytes a <code>byte</code> value
    * @param initialB an <code>int</code> value
    * @param initialY an <code>int</code> value
    * @param r an <code>int</code> value
    */
-  public static void blockmixSalsa8(byte[] bY, int initialB, int initialY, int r) {
+  public static void blockmixSalsa8(byte[] bytes, int initialB, int initialY, int r) {
 
-    byte[] x = new byte[64];
+    final byte[] x = new byte[64];
     int i;
 
-    arraycopy(bY, initialB + (2 * r - 1) * 64, x, 0, 64);
+    arraycopy(bytes, initialB + (2 * r - 1) * 64, x, 0, 64);
 
     for (i = 0; i < 2 * r; i++) {
-      blockXOR(bY, i * 64, x, 0, 64);
+      blockXOR(bytes, i * 64, x, 0, 64);
       salsa20Slash8(x);
-      arraycopy(x, 0, bY, initialY + (i * 64), 64);
+      arraycopy(x, 0, bytes, initialY + (i * 64), 64);
     }
 
     for (i = 0; i < r; i++) 
-      arraycopy(bY, initialY + (i * 2) * 64, bY, initialB + (i * 64), 64);
+      arraycopy(bytes, initialY + (i * 2) * 64, bytes, initialB + (i * 64), 64);
 
     for (i = 0; i < r; i++)
-      arraycopy(bY, initialY + (i * 2 + 1) * 64, bY, initialB + (i + r) * 64, 64);
+      arraycopy(bytes, initialY + (i * 2 + 1) * 64, bytes, initialB + (i + r) * 64, 64);
   }
 
   /**
@@ -188,8 +192,8 @@ public final class SCrypt {// NOPMD
    */
   public static void salsa20Slash8(byte[] bytes) {
 
-    int[] b32 = new int[16];
-    int[] x = new int[16];
+    final int[] b32 = new int[16];
+    final int[] x = new int[16];
     int i;
 
     for (i = 0; i < 16; i++) {
@@ -251,14 +255,14 @@ public final class SCrypt {// NOPMD
    * Describe <code>blockXOR</code> method here.
    *
    * @param s a <code>byte</code> value
-   * @param sInitial an <code>int</code> value
+   * @param sinitial an <code>int</code> value
    * @param d a <code>byte</code> value
-   * @param dInitial an <code>int</code> value
+   * @param dinitial an <code>int</code> value
    * @param len an <code>int</code> value
    */
-  public static void blockXOR(byte[] s, int sInitial, byte[] d, int dInitial, int len) {
+  public static void blockXOR(byte[] s, int sinitial, byte[] d, int dinitial, int len) {
     for (int i = 0; i < len; i++)
-      s[dInitial + i] ^= s[sInitial + i];
+      s[dinitial + i] ^= s[sinitial + i];
   }
 
   /**

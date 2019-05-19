@@ -6,6 +6,7 @@
 
 <suppressions>
     <!--The Check generates too many violations, fixing them will make code unmanageable.-->
-    <suppress checks="MagicNumber" files="(ParseTreeTablePresentation|MainFrame)\.java"/>
+    <suppress checks="MagicNumber" files=".*(.*/)*.*\.java"/>
+    <suppress checks="IllegalCatch" files=".*(.*/)*(SysLibraryLoader|JarLibraryLoader)\.java"/>
 
   </suppressions>
