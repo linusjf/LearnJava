@@ -36,7 +36,7 @@ fi
 (cd $1 && \
 java -jar \
 ../$jarFile \
--c ../$rules_file \
+-c ../$rules_file -d \
 -p ../$properties_file \
 -o $output_file \
 `find . -type f -name "*.java" \
