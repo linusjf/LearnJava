@@ -5,8 +5,12 @@
 <module name = "Checker">
   <module name="TreeWalker">
 <module name="SuppressionXpathSingleFilter">
-      <property name="files" value=".*[\\/](com|converter)[\\/]"/>
+      <property name="files" value=".*[\\/](com|converter)[\\/].*\.java"/>
       <property name="checks" value="MagicNumber"/>
+</module>
+<module name="SuppressionXpathSingleFilter">
+      <property name="files" value=".*LibraryLoader\.java"/>
+      <property name="checks" value="IllegalCatch"/>
 </module>
 </module>
 </module>

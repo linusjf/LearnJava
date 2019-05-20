@@ -19,7 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-public final class SCrypt {// NOPMD
+public final class SCrypt { // NOPMD
   private static final boolean native_library_loaded;
 
   static {

@@ -66,7 +66,7 @@ public class JarLibraryLoader implements LibraryLoader {
           if (entry == null) 
             continue;
           else {
-            File lib = extract(name, jar.getInputStream(entry));
+            final File lib = extract(name, jar.getInputStream(entry));
             System.load(lib.getAbsolutePath());
             lib.delete();
 

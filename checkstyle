@@ -38,9 +38,9 @@ if [ -e $1/$suppressionsFile ]
   then
     if [ -e $xsltFile ]
     then
-    xsltproc --novalid -o $1.xml --stringparam \
-    with $1/$suppressionsFile $xsltFile $rules_file
-    rules_file=$1.xml
+      xsltproc --novalid -o $1.xml --stringparam \
+      with $1/$suppressionsFile $xsltFile $rules_file
+      rules_file=$1.xml
     else
       echo "$xsltFile does not exist."
       exit 1
