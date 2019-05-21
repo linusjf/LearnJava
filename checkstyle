@@ -17,6 +17,7 @@ output_file="cs.errors"
 jarFile="lib/checkstyle-8.20-all.jar"
 suppressionsFile="suppr.xml"
 xsltFile="merge.xslt"
+echo $1
 if [ ! -z $2 ]
   then
     rules_file=$2

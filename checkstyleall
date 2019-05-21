@@ -1,41 +1,4 @@
 #!/bin/bash
-function usage()
-{
-  echo "usage: checkstyleall {rulesfile}"
-  echo "rulesfile: The xml file that lists the rules that checkstyle will use."
-  echo "google_checks.xml is the default rules file."
-  exit 1
-}
-rules_file="checkstyles.xml"
-properties_file="checkstyle.properties"
-output_file="cs.errors"
-libdir="lib"
-gitdir=".git"
-jarFile="lib/checkstyle-8.20-all.jar" 
-if [ ! -z $1 ]
-  then
-    rules_file=$1
-fi
-if [ ! -e $rules_file ]
-  then
-    echo "$rules_file cannot be found."
-    usage
-fi
-
-if [ ! -e $properties_file ]
-  then
-    echo "$properties_file not found. Creating..."
-    touch $properties_file || \
-      echo "Unable to create $properties_file"
-    echo "Create/Modify $properties_file to configure checkstyle"
-fi
-
-java -jar \
-$jarFile \
--c $rules_file \
--p $properties_file \
--o $output_file \
--e $libdir \
--e $gitdir \
-`find . -mindepth 2 -type f -name "*.java"`
+find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
+  parallel -I% sh -c 'echo && ./checkstyle %'
 exit $?
