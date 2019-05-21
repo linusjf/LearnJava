@@ -15,16 +15,17 @@ public class TestMediator {
    */
   public static void main(String[] args) {
 
-    MachineMediator mediator = null;
-    Sensor sensor = new Sensor();
-    SoilRemoval soilRemoval = new SoilRemoval();
-    Motor motor = new Motor();
-    Machine machine = new Machine();
-    Heater heater = new Heater();
-    Valve valve = new Valve();
-    Button button = new Button();
+    final Sensor sensor = new Sensor();
+    final SoilRemoval soilRemoval = new SoilRemoval();
+    final Motor motor = new Motor();
+    final Machine machine = new Machine();
+    final Heater heater = new Heater();
+    final Valve valve = new Valve();
+    final Button button = new Button();
 
-    mediator = new CottonMediator(machine, heater, motor, sensor, soilRemoval, valve);
+    MachineMediator mediator = 
+        new CottonMediator(machine, heater, motor, 
+            sensor, soilRemoval, valve);
     button.setMediator(mediator);
     machine.setMediator(mediator);
     heater.setMediator(mediator);
