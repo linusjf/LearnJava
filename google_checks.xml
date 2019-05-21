@@ -321,7 +321,11 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="CommentsIndentation"/>
   <!-- Headers -->
-  <module name="MagicNumber"/>
+  <module name="MagicNumber">
+   <property name="ignoreFieldDeclaration" value="true"/>
+   <property name="ignoreAnnotation" value="true"/>
+   <property name="ignoreHashCodeMethod" value="true"/>
+ </module>
   <!-- Make the @SuppressWarnings annotations available to Checkstyle -->
 
   <module name="ArrayTrailingComma"/>
