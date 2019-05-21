@@ -341,9 +341,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="matchDirectoryStructure" value="true"/>
   </module>
   <module name="UnnecessaryParentheses"/>
-  <module name="FinalLocalVariable">
+  <!--module name="FinalLocalVariable">
    <property name="tokens" value="VARIABLE_DEF,PARAMETER_DEF"/>
    <property name="validateEnhancedForLoopVariable" value="true"/>
- </module>
+ </module-->
 </module>
       </module>
