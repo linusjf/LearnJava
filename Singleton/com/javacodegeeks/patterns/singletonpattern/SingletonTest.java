@@ -32,18 +32,14 @@ public class SingletonTest {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    try {
-      testConcurrency();
-      testSerializable();
-      testCloneable();
-      testReflection();
-      testState();
-    } catch (Throwable t) {
-      t.printStackTrace();
-    }
+    testConcurrency();
+    testSerializable();
+    testCloneable();
+    testReflection();
+    testState();
   }
 
-  private static void testConcurrency() throws Throwable {
+  private static void testConcurrency() {
 
     final int size = 12;
 
@@ -111,24 +107,24 @@ public class SingletonTest {
     System.out.println();
   }
 
-  private static void testSerializable() throws Throwable {
-    Singleton instance = Singleton.getInstance();
+  private static void testSerializable() {
+    final Singleton instance = Singleton.getInstance();
 
-    ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
+    final ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
     out.writeObject(instance);
     out.close();
 
     // deserialize from file to object
-    ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
-    Singleton instance2 = (Singleton) in.readObject();
-
+    final ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
+    final Singleton instance2 = (Singleton) in.readObject();
     in.close();
+
     System.out.println("instance hashCode:- " + instance.hashCode());
     System.out.println("instance2 hashCode:- " + instance2.hashCode());
   }
 
   private static void testCloneable() {
-    Singleton obj = Singleton.getInstance();
+    final Singleton obj = Singleton.getInstance();
     try {
       obj.clone();
     } catch (CloneNotSupportedException e) {
@@ -138,38 +134,41 @@ public class SingletonTest {
 
   private static void testReflection() {
     try {
-      Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
+      final Constructor<?>[] constructors = 
+        Singleton.class.getDeclaredConstructors();
       for (Constructor<?> constructor : constructors) {
         constructor.setAccessible(true);
-        Singleton obj = (Singleton) constructor.newInstance();
+        final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (Exception ew) {
-      System.out.println(ew.getCause().getMessage());
+    } catch (SecurityException se) {
+      System.out.println(se.getCause().getMessage());
     }
   }
 
-  private static void testState() throws Throwable {
+  private static void testState() {
     resetSingleton();
-    Singleton singleton = Singleton.getInstance();
+    final Singleton singleton = Singleton.getInstance();
     if (singleton.getNextValue() != 0L)
       throw new AssertionError("Next value should be zero.");
     resetSingleton();
-    singleton = Singleton.getInstance();
+    singleton = Singleton.getInstance()
+    @SuppressWarnings("checkstyle:magicnumber")
+    final long expectedValue = 3L;
     singleton.getNextValue();
     singleton.getNextValue();
     singleton.getNextValue();
-    if (singleton.getNextValue() != 3L)
+    if (singleton.getNextValue() != expectedValue)
       throw new AssertionError("Next value should be three.");
     System.out.println("No assert errors. State validated.");
   }
 
   private static void resetSingleton()
       throws SecurityException,
-           NoSuchFieldException,
-           IllegalArgumentException,
-           IllegalAccessException {
-    Field instance = Singleton.class.getDeclaredField("instance");
+                      NoSuchFieldException,
+                      IllegalArgumentException,
+                      IllegalAccessException {
+    final Field instance = Singleton.class.getDeclaredField("instance");
     instance.setAccessible(true);
     instance.set(null, null);
   }

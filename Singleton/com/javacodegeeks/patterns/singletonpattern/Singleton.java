@@ -13,6 +13,7 @@ public class Singleton implements Serializable {
 
   private static final long serialVersionUID = -1093810940935189395L;
 
+  @SuppressWarnings("checkstyle:illegaltoken")
   private static transient volatile Singleton instance = null;
 
   private transient long nextValue = 0;
@@ -60,8 +61,9 @@ public class Singleton implements Serializable {
   @SuppressWarnings("unused")
   private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null) classLoader = Singleton.class.getClassLoader();
-    return (classLoader.loadClass(classname));
+    if (classLoader == null) 
+      classLoader = Singleton.class.getClassLoader();
+    return classLoader.loadClass(classname);
   }
 
   /**
