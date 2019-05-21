@@ -1,8 +1,10 @@
 package design.composite;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -62,13 +64,14 @@ public abstract class PropertyLoader {
           // Can throw IOException
         }
       }
-    } catch (Exception e) {
+    } catch (MissingResourceException 
+          | IOException e) {
       result = null;
     } finally {
       if (in != null)
         try {
           in.close();
-        } catch (Throwable ignore) {
+        } catch (IOException ignore) {
           System.out.println("Ignoring ..." + ignore.getMessage());
         }
     }
