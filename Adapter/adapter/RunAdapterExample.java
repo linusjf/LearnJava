@@ -6,7 +6,8 @@ package adapter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class RunAdapterExample {
+public enum RunAdapterExample {
+  ;
   /**
    * Describe <code>main</code> method here.
    *

@@ -70,7 +70,7 @@ public class Manager extends Employee {
         employee.assignWork(this, new Work(work.getWorkType(), assignWork));
         fromIndex = toIndex;
       }
-      break;
+//      break;
     }
   }
 

@@ -6,7 +6,6 @@ package converter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings("ClassNamingConventions")
 public final class ByteToHex {
 
   private static final String HEXES = "0123456789abcdef";
@@ -67,5 +66,8 @@ public final class ByteToHex {
           .append(Character.forDigit(b >> 4 & 0xF, 16))
           .append(Character.forDigit(b & 0xF, 16));
     return builder.toString();
+  }
+
+  private ByteToHex() {
   }
 }

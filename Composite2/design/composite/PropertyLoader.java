@@ -75,7 +75,7 @@ public abstract class PropertyLoader {
           System.out.println("Ignoring ..." + ignore.getMessage());
         }
     }
-    if (THROW_ON_LOAD_FAILURE && (result == null)) {
+    if (THROW_ON_LOAD_FAILURE && result == null) {
       throw new IllegalArgumentException(
           "could not load ["
               + name
