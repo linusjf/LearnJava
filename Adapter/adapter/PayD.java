@@ -1,3 +1,5 @@
+package adapter;
+
 /**
  * Describe interface <code>PayD</code> here.
  *

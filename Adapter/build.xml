@@ -32,7 +32,7 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-      <javadoc additionalparam="-Xdoclint:none" sourcepath="${src.dir}" 
+      <javadoc packagenames="${packages}" additionalparam="-Xdoclint:none" sourcepath="${src.dir}" 
         destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">

@@ -1,10 +1,11 @@
+package adapter;
+
 /**
  * Describe class <code>RunAdapterExample</code> here.
  *
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings("PMD.UseUtilityClass")
 public class RunAdapterExample {
   /**
    * Describe <code>main</code> method here.
@@ -13,14 +14,14 @@ public class RunAdapterExample {
    */
   public static void main(String[] args) {
     // Object for Xpay
-    Xpay xpay = new XpayImpl();
+    final Xpay xpay = new XpayImpl();
     xpay.setCreditCardNo("4789565874102365");
     xpay.setCustomerName("Max Warner");
     xpay.setCardExpMonth("09");
     xpay.setCardExpYear("25");
     xpay.setCardCvvNo((short) 235);
-    xpay.setAmount(2565.23);
-    PayD payD = new XpayToPayDAdapter(xpay);
+    xpay.setAmount(2565.23D);
+    final PayD payD = new XpayToPayDAdapter(xpay);
     testPayD(payD);
   }
 

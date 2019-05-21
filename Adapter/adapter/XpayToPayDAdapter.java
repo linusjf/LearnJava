@@ -1,3 +1,5 @@
+package adapter;
+
 /**
  * Describe class <code>XpayToPayDAdapter</code> here.
  *

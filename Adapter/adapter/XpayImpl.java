@@ -1,3 +1,5 @@
+package adapter;
+
 public class XpayImpl implements Xpay {
   private String creditCardNo;
   private String customerName;
