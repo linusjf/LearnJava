@@ -7,14 +7,14 @@ package com.javacodegeeks.patterns.facadepattern;
  * @version 1.0
  */
 public enum RunServer {
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    ScheduleServer scheduleServer = new ScheduleServer();
+    final ScheduleServer scheduleServer = new ScheduleServer();
 
     scheduleServer.startBooting();
     scheduleServer.readSystemConfigFile();
