@@ -2,6 +2,7 @@ package builder;
 
 import static builder.NyPizza.Size.*;
 import static builder.Pizza.Topping.*;
+
 /**
  * Describe class <code>Main</code> here.
  *
@@ -15,10 +16,13 @@ public enum Main {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
 
     NutritionFacts cocaCola =
-        new NutritionFacts.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build();
+        new NutritionFacts.Builder(240, 8)
+        .calories(100).sodium(35)
+        .carbohydrate(27).build();
 
     System.out.println("Serving Coke: ");
     System.out.println(cocaCola);
