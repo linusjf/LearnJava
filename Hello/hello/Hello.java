@@ -1,8 +1,9 @@
 package hello;
+
 /** Describe class <code>Hello</code> here. */
 public enum Hello {
  
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
