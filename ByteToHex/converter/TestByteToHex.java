@@ -1,4 +1,5 @@
 package converter;
+
 /**
  * Describe class <code>ByteToHex</code> here.
  *
@@ -7,10 +8,10 @@ package converter;
  * @file : TestByteToHex.java
  * @created : Friday May 03, 2019 20:08:16 IST
  * @copyright : Copyright (c) Linus Fernandes
- * @description :
+* @description :
  */
 public enum TestByteToHex {
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
@@ -51,8 +52,9 @@ public enum TestByteToHex {
     end = System.nanoTime();
     elapsed = end - start;
     System.out.println("getHex4: " + elapsed);
-    assert (hex.equals(hex2) 
+    if (!(hex.equals(hex2) 
         && hex2.equals(hex3) 
-        && hex3.equals(hex4));
+        && hex3.equals(hex4)))
+        throw new AssertionError("Not all hex conversions are equal");
   }
 }
