@@ -1,0 +1,29 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : mvpackagedirs
+# @created     : Friday May 03, 2019 08:13:05 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : Creates package folders and moves java source to these directories.
+#                Behaviour unspecified if first line in file does not have package directive
+#                Use from directory containing source files.
+#                Also creates package-info.java if it does not exist already.
+######################################################################
+package=""
+pkgInfoFile="package-info.java"
+dir=""
+for file in $(find . -name "*.java" -type f -maxdepth 1 ! -path "*.git*" ! -path .)
+  do
+    package=$(head -1 $file | grep 'package' | awk '{print $2}' | sed 's/;//')
+  dir=$(mkpackagedirs $package)
+  mv $file $dir
+  if [ -e $dir/$pkgInfoFile ]
+  then
+    continue
+  else
+    echo "package $package;">$dir/$pkgInfoFile
+    echo "Created $dir/$pkgInfoFile"
+  fi
+done
+exit 0

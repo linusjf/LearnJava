@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : mkpackagedirs
+# @created     : Friday May 03, 2019 08:11:52 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : Makes package directories from specified package name.
+######################################################################
+
+usage ()
+{
+  echo 'Usage : mkpackagedirs <package>'
+  echo 'package - name of java package'
+  exit 1
+}
+if [ -z $1 ]
+  then
+  usage
+else
+  dir=$(echo $1 | sed -e 's/\./\//g')
+  echo $dir
+  mkdir -p $dir
+  exit $?
+fi
