@@ -35,7 +35,7 @@ public class CommentaryObject implements Subject,Commentary {
 
   @Override
   public void unSubscribeObserver(Observer observer) {
-    int index = observers.indexOf(observer);
+    final int index = observers.indexOf(observer);
     observers.remove(index);
   }
 

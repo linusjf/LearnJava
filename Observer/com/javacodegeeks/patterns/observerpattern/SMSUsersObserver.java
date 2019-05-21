@@ -33,7 +33,7 @@ public class SMSUsersObserver implements java.util.Observer {
    */
   public void subscribe() {
     System.out.println("Subscribing " + userInfo + " to " 
-        + ((CommentaryObjectObservable)(observable)).subjectDetails() + " ...");
+        + ((CommentaryObjectObservable)observable).subjectDetails() + " ...");
     this.observable.addObserver(this);
     System.out.println("Subscribed successfully.");
   }
@@ -44,7 +44,7 @@ public class SMSUsersObserver implements java.util.Observer {
    */
   public void unSubscribe() {
     System.out.println("Unsubscribing " + userInfo + " to " 
-        + ((CommentaryObjectObservable)(observable)).subjectDetails() + " ...");
+        + ((CommentaryObjectObservable)observable).subjectDetails() + " ...");
     this.observable.deleteObserver(this);
     System.out.println("Unsubscribed successfully.");
   }

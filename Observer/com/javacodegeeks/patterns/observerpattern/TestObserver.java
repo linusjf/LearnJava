@@ -16,13 +16,15 @@ public class TestObserver {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Subject subject = new CommentaryObject(new ArrayList<Observer>(), "Soccer Match [2014AUG24]");
-    Observer observer = new SMSUsers(subject, "Adam Warner [New York]");
+    final Subject subject = 
+        new CommentaryObject(new ArrayList<Observer>(), "Soccer Match [2014AUG24]");
+    final Observer observer = new SMSUsers(subject, "Adam Warner [New York]");
     observer.subscribe();
     System.out.println();
-    Observer observer2 = new SMSUsers(subject, "Tim Ronney [London]");
+    final Observer observer2 = new SMSUsers(subject, "Tim Ronney [London]");
     observer2.subscribe();
-    Commentary commentary = ((Commentary)subject);
+    final Commentary commentary = 
+        (Commentary)subject;
     commentary.setDesc("Welcome to live Soccer match");
     commentary.setDesc("Current score 0-0");
     System.out.println();
@@ -31,7 +33,7 @@ public class TestObserver {
     commentary.setDesc("It’s a goal!!");
     commentary.setDesc("Current score 1-0");
     System.out.println();
-    Observer observer3 = new SMSUsers(subject, "Marrie [Paris]");
+    final Observer observer3 = new SMSUsers(subject, "Marrie [Paris]");
     observer3.subscribe();
     System.out.println();
     commentary.setDesc("It’s another goal!!");

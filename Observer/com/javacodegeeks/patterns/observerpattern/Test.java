@@ -14,9 +14,10 @@ public class Test {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    CommentaryObjectObservable obj = new CommentaryObjectObservable("Soccer Match [2014AUG24]");
-    SMSUsersObserver observer = new SMSUsersObserver(obj, "Adam Warner [New York]");
-    SMSUsersObserver observer2 = new SMSUsersObserver(obj,"Tim Ronney [London]");
+    final CommentaryObjectObservable obj = 
+        new CommentaryObjectObservable("Soccer Match [2014AUG24]");
+    final SMSUsersObserver observer = new SMSUsersObserver(obj, "Adam Warner [New York]");
+    final SMSUsersObserver observer2 = new SMSUsersObserver(obj,"Tim Ronney [London]");
     observer.subscribe();
     observer2.subscribe();
     obj.setDesc("Welcome to live Soccer match");
