@@ -1,4 +1,5 @@
 package bridge;
+
 /**
  * Describe interface <code>FileDownloadImplementor</code> here.
  *

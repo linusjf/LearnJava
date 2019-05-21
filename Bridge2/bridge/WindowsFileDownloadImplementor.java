@@ -1,4 +1,5 @@
 package bridge;
+
 /**
  * Describe class <code>WindowsFileDownloadImplementor</code> here.
  *

@@ -1,4 +1,5 @@
 package bridge;
+
 /**
  * Describe class <code>Client</code> here.
  *
@@ -6,7 +7,7 @@ package bridge;
  * @version 1.0
  */
 public enum Client {
-  MAIN;
+  ;
   /**
    * Describe <code>main</code> method here.
    *
