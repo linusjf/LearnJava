@@ -8,11 +8,10 @@ public enum Calculator implements ICalc {
     public String calculate(String value) {
       String answer = "NA";
       try {
-        long longValue = Long.parseLong(value);
+        final long longValue = Long.parseLong(value);
         BigInteger factorialValue = BigInteger.valueOf(1);
-        for (long i = 1; i <= longValue; i++) {
+        for (long i = 1; i <= longValue; i++)
           factorialValue = factorialValue.multiply(BigInteger.valueOf(i));
-        }
         answer = factorialValue.toString();
       } catch (NumberFormatException exp) {
         System.out.println("Can't calculate factorial of " + value);
@@ -26,7 +25,7 @@ public enum Calculator implements ICalc {
     public String calculate(String value) {
       String answer = "false";
       if (value != null && !value.trim().isEmpty()) {
-        String reverse = new StringBuilder(value).reverse().toString();
+        final String reverse = new StringBuilder(value).reverse().toString();
         answer = Boolean.toString(reverse.equals(value));
       }
       return answer;
@@ -35,14 +34,16 @@ public enum Calculator implements ICalc {
 
   ARMSTRONG {
     @Override
+    @SuppressWarnings("checkstyle:magicnumber")
     public String calculate(String value) {
       String answer = "false";
       try {
-        long longValue = Long.parseLong(value);
+        final long longValue = Long.parseLong(value);
         long number = longValue;
         long armstrongValue = 0;
+        long temp;
         while (number != 0) {
-          long temp = number % 10;
+          temp = number % 10;
           armstrongValue = armstrongValue + temp * temp * temp;
           number /= 10;
         }
@@ -53,5 +54,4 @@ public enum Calculator implements ICalc {
       return answer;
     }
   };
-
 }
