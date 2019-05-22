@@ -2,12 +2,14 @@ package com.javacodegeeks.patterns.singletonpattern;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;
@@ -24,8 +26,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class SingletonTest {
-
+public enum SingletonTest {
+  ;
   /**
    * Describe <code>main</code> method here.
    *
@@ -50,7 +52,7 @@ public class SingletonTest {
     // final Set<Long> generatedValues = new HashSet<>(size);
     final Set<Long> generatedValues = new LinkedHashSet<>(size);
     final Set<Singleton> instances =
-        Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
+      Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
 
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
@@ -80,45 +82,54 @@ public class SingletonTest {
       thread.start();
       threads.add(thread);
     }
+    try {
+      for (final Thread thread : threads) 
+        thread.join();
 
-    for (final Thread thread : threads) {
-      thread.join();
+      if (exception.get() != null) 
+        throw exception.get();
+
+      switch (instances.size()) {
+        case 0:
+          throw new AssertionError("Expected one instance, but found none");
+
+        case 1:
+          System.out.println("Only one instance created and available.");
+          break;
+        default:
+          throw new AssertionError("Expected one instance, but found many");
+      }
+      System.out.println("Sequence in order in which inserted: ");
+      for (final long value : generatedValues) 
+        System.out.print(value + " ");
+      System.out.println();
     }
-
-    if (exception.get() != null) {
-      throw exception.get();
+    catch (Throwable throwable) {//NOPMD 
+      System.out.println(throwable.getMessage());
     }
-
-    switch (instances.size()) {
-      case 0:
-        throw new AssertionError("Expected one instance, but found none");
-
-      case 1:
-        System.out.println("Only one instance created and available.");
-        break;
-      default:
-        throw new AssertionError("Expected one instance, but found many");
-    }
-    System.out.println("Sequence in order in which inserted: ");
-    for (final long value : generatedValues) 
-      System.out.print(value + " ");
-    System.out.println();
   }
 
   private static void testSerializable() {
     final Singleton instance = Singleton.getInstance();
 
-    final ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
-    out.writeObject(instance);
-    out.close();
+    try {
+      final ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
+      out.writeObject(instance);
+      out.close();
 
-    // deserialize from file to object
-    final ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
-    final Singleton instance2 = (Singleton) in.readObject();
-    in.close();
+      // deserialize from file to object
+      final ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
+      final Singleton instance2 = (Singleton) in.readObject();
+      in.close();
+      System.out.println("instance hashCode:- " + instance.hashCode());
+      System.out.println("instance2 hashCode:- " + instance2.hashCode());
+    }
+    catch (IOException 
+        | ClassNotFoundException e) {
+      System.out.println(e.getMessage());
+        }
 
-    System.out.println("instance hashCode:- " + instance.hashCode());
-    System.out.println("instance2 hashCode:- " + instance2.hashCode());
+
   }
 
   private static void testCloneable() {
@@ -139,26 +150,36 @@ public class SingletonTest {
         final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (SecurityException se) {
-      System.out.println(se.getCause().getMessage());
-    }
+    } catch (SecurityException 
+        | InstantiationException 
+        | IllegalArgumentException 
+        | IllegalAccessException 
+        | InvocationTargetException e) {
+      System.out.println(e.getCause().getMessage());
+        }
   }
 
   private static void testState() {
-    resetSingleton();
-    final Singleton singleton = Singleton.getInstance();
-    if (singleton.getNextValue() != 0L)
-      throw new AssertionError("Next value should be zero.");
-    resetSingleton();
-    singleton = Singleton.getInstance()
-    @SuppressWarnings("checkstyle:magicnumber")
-    final long expectedValue = 3L;
-    singleton.getNextValue();
-    singleton.getNextValue();
-    singleton.getNextValue();
-    if (singleton.getNextValue() != expectedValue)
-      throw new AssertionError("Next value should be three.");
-    System.out.println("No assert errors. State validated.");
+    try {
+      resetSingleton();
+      Singleton singleton = Singleton.getInstance();
+      if (singleton.getNextValue() != 0L)
+        throw new AssertionError("Next value should be zero.");
+      resetSingleton();
+      singleton = Singleton.getInstance();
+      @SuppressWarnings("checkstyle:magicnumber")
+      final long expectedValue = 3L;
+      singleton.getNextValue();
+      singleton.getNextValue();
+      singleton.getNextValue();
+      if (singleton.getNextValue() != expectedValue)
+        throw new AssertionError("Next value should be three.");
+      System.out.println("No assert errors. State validated.");
+    }
+    catch (NoSuchFieldException
+        | IllegalAccessException e) {
+      System.out.println(e.getMessage());
+        }
   }
 
   private static void resetSingleton()
@@ -166,8 +187,8 @@ public class SingletonTest {
                       NoSuchFieldException,
                       IllegalArgumentException,
                       IllegalAccessException {
-    final Field instance = Singleton.class.getDeclaredField("instance");
-    instance.setAccessible(true);
-    instance.set(null, null);
+               final Field instance = Singleton.class.getDeclaredField("instance");
+               instance.setAccessible(true);
+               instance.set(null, null);
   }
 }

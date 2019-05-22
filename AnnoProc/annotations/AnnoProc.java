@@ -21,7 +21,7 @@ public class AnnoProc extends AbstractProcessor {
    * @param renv a <code>RoundEnvironment</code> value
    * @return a <code>boolean</code> value
    */
-  @overriddden
+  @Override
   public boolean process(Set<? extends TypeElement> elems, RoundEnvironment renv) {
     return true;
   }
@@ -31,7 +31,7 @@ public class AnnoProc extends AbstractProcessor {
    *
    * @return a <code>SourceVersion</code> value
    */
-  @overridden
+  @Override
   public SourceVersion getSupportedSourceVersion() {
     return SourceVersion.latest();
   }
