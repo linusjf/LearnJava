@@ -20,7 +20,7 @@ public class SMSUsers implements Observer {
    * @param subject a <code>Subject</code> value
    * @param userInfo a <code>String</code> value
    */
-  public SMSUsers(Subject subject,String userInfo) {
+  public SMSUsers(Subject subject, String userInfo) {
     if (subject == null) {
       throw new IllegalArgumentException("No Publisher found.");
     }
@@ -52,4 +52,3 @@ public class SMSUsers implements Observer {
     System.out.println("Unsubscribed successfully.");
   }
 }
-

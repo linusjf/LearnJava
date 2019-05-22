@@ -15,18 +15,12 @@ public class Machine implements Colleague {
     this.mediator = mediator;
   }
 
-  /**
-   * Describe <code>start</code> method here.
-   *
-   */
+  /** Describe <code>start</code> method here. */
   public void start() {
     mediator.open();
   }
 
-  /**
-   * Describe <code>wash</code> method here.
-   *
-   */
+  /** Describe <code>wash</code> method here. */
   public void wash() {
     mediator.wash();
   }

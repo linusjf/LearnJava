@@ -1,7 +1,7 @@
 package com.javacodegeeks.client;
 
-//@SuppressWarnings("PMD.UnusedImports")
-import static com.javacodegeeks.facade.EncryptorFacade.EncryptionType.*;//NOPMD
+// @SuppressWarnings("PMD.UnusedImports")
+import static com.javacodegeeks.facade.EncryptorFacade.EncryptionType.*; // NOPMD
 
 import com.javacodegeeks.facade.EncryptorFacade;
 

@@ -36,10 +36,7 @@ public abstract class Pizza {
     protected abstract T self();
   }
 
-  /**
-   * Creates a new <code>Pizza</code> instance.
-   *
-   */
+  /** Creates a new <code>Pizza</code> instance. */
   Pizza(Builder<?> builder) {
     toppings = builder.toppings.clone(); // See Item 50
   }

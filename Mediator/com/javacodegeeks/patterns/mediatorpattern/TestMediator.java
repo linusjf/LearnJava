@@ -23,9 +23,8 @@ public enum TestMediator {
     final Valve valve = new Valve();
     final Button button = new Button();
 
-    MachineMediator mediator = 
-        new CottonMediator(machine, heater, motor, 
-            sensor, soilRemoval, valve);
+    MachineMediator mediator =
+        new CottonMediator(machine, heater, motor, sensor, soilRemoval, valve);
     button.setMediator(mediator);
     machine.setMediator(mediator);
     heater.setMediator(mediator);

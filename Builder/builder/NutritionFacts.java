@@ -15,10 +15,7 @@ public class NutritionFacts {
   private final int sodium;
   private final int carbohydrate;
 
-  /**
-   * Describe class <code>Builder</code> here.
-   *
-   */
+  /** Describe class <code>Builder</code> here. */
   public static class Builder {
     // Required parameters
     private final int servingSize;

@@ -22,10 +22,7 @@ public interface Subject {
    */
   void unSubscribeObserver(Observer observer);
 
-  /**
-   * Describe <code>notifyObservers</code> method here.
-   *
-   */
+  /** Describe <code>notifyObservers</code> method here. */
   void notifyObservers();
 
   /**
@@ -35,4 +32,3 @@ public interface Subject {
    */
   String subjectDetails();
 }
-

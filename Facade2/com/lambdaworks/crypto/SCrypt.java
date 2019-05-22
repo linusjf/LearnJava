@@ -41,12 +41,7 @@ public final class SCrypt { // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scrypt(byte[] passwd, 
-      byte[] salt, 
-      int enCPUCost, 
-      int r, 
-      int p, 
-      int dkLen)
+  public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
     return native_library_loaded
         ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
@@ -67,8 +62,8 @@ public final class SCrypt { // NOPMD
    * @return The derived key.
    */
   @SuppressWarnings("checkstyle:IllegalToken")
-  public static native byte[] scryptN(byte[] passwd, byte[] salt, 
-      int enCPUCost, int r, int p, int dkLen);
+  public static native byte[] scryptN(
+      byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen);
 
   /**
    * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
@@ -83,16 +78,14 @@ public final class SCrypt { // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scryptJ(byte[] passwd, byte[] salt,
-      int enCPUCost, int r, int p, int dkLen)
+  public static byte[] scryptJ(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
     if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
       throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
 
     if (enCPUCost > MAX_VALUE / 128 / r)
       throw new IllegalArgumentException("Parameter nCPUCost is too large");
-    if (r > MAX_VALUE / 128 / p)
-      throw new IllegalArgumentException("Parameter r is too large");
+    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
 
     final Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
@@ -105,8 +98,7 @@ public final class SCrypt { // NOPMD
 
     PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
 
-    for (i = 0; i < p; i++) 
-      smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
+    for (i = 0; i < p; i++) smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
 
     PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
 
@@ -167,7 +159,7 @@ public final class SCrypt { // NOPMD
       arraycopy(x, 0, bytes, initialY + (i * 64), 64);
     }
 
-    for (i = 0; i < r; i++) 
+    for (i = 0; i < r; i++)
       arraycopy(bytes, initialY + (i * 2) * 64, bytes, initialB + (i * 64), 64);
 
     for (i = 0; i < r; i++)
@@ -240,8 +232,7 @@ public final class SCrypt { // NOPMD
       x[15] ^= leftRotate(x[14] + x[13], 18);
     }
 
-    for (i = 0; i < 16; ++i)
-      b32[i] = x[i] + b32[i];
+    for (i = 0; i < 16; ++i) b32[i] = x[i] + b32[i];
 
     for (i = 0; i < 16; i++) {
       bytes[i * 4 + 0] = (byte) (b32[i] >> 0 & 0xff);
@@ -261,8 +252,7 @@ public final class SCrypt { // NOPMD
    * @param len an <code>int</code> value
    */
   public static void blockXOR(byte[] s, int sinitial, byte[] d, int dinitial, int len) {
-    for (int i = 0; i < len; i++)
-      s[dinitial + i] ^= s[sinitial + i];
+    for (int i = 0; i < len; i++) s[dinitial + i] ^= s[sinitial + i];
   }
 
   /**

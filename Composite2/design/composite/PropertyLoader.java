@@ -31,17 +31,13 @@ public abstract class PropertyLoader {
    *     IllegalArgumentException if the resource was not found and * THROW_ON_LOAD_FAILURE is true
    */
   public static Properties loadProperties(String name, ClassLoader loader) {
-    if (name == null) 
-      throw new IllegalArgumentException("null input: name");
-    if (name.startsWith("/")) 
-      name = name.substring(1);
-    if (name.endsWith(SUFFIX)) 
-      name = name.substring(0, name.length() - SUFFIX.length());
+    if (name == null) throw new IllegalArgumentException("null input: name");
+    if (name.startsWith("/")) name = name.substring(1);
+    if (name.endsWith(SUFFIX)) name = name.substring(0, name.length() - SUFFIX.length());
     Properties result = null;
     InputStream in = null;
     try {
-      if (loader == null) 
-        loader = ClassLoader.getSystemClassLoader();
+      if (loader == null) loader = ClassLoader.getSystemClassLoader();
       if (LOAD_AS_RESOURCE_BUNDLE) {
         name = name.replace('/', '.');
         // Throws MissingResourceException on lookup failures:
@@ -54,8 +50,7 @@ public abstract class PropertyLoader {
         }
       } else {
         name = name.replace('.', '/');
-        if (!name.endsWith(SUFFIX)) 
-          name = name.concat(SUFFIX);
+        if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
         // Returns null on lookup failures:
         in = loader.getResourceAsStream(name);
         if (in != null) {
@@ -64,8 +59,7 @@ public abstract class PropertyLoader {
           // Can throw IOException
         }
       }
-    } catch (MissingResourceException 
-          | IOException e) {
+    } catch (MissingResourceException | IOException e) {
       result = null;
     } finally {
       if (in != null)

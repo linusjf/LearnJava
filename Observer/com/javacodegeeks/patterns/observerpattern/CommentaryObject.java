@@ -8,7 +8,7 @@ import java.util.List;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class CommentaryObject implements Subject,Commentary {
+public class CommentaryObject implements Subject, Commentary {
 
   private final List<Observer> observers;
 
@@ -21,7 +21,7 @@ public class CommentaryObject implements Subject,Commentary {
    *
    * @param subjectDetails a <code>String</code> value
    */
-  public CommentaryObject(List<Observer> observers,String subjectDetails) {
+  public CommentaryObject(List<Observer> observers, String subjectDetails) {
 
     this.observers = observers;
 

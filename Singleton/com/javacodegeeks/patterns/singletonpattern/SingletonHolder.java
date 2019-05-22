@@ -11,16 +11,12 @@ public class SingletonHolder { // NOPMD
   // Static member class member that holds only one instance of the
   // SingletonHolder class
   private static class Holder { // NOPMD
-    /**
-     * Describe variable <code>singletonInstance</code> here.
-     *
-     */
+    /** Describe variable <code>singletonInstance</code> here. */
     public static SingletonHolder singletonInstance = new SingletonHolder();
   }
-  
+
   // SingletonHolder prevents any other class from instantiating
-  private SingletonHolder() {
-  }
+  private SingletonHolder() {}
 
   // Providing Global point of access
   /**

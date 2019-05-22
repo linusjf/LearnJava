@@ -14,16 +14,10 @@ public interface Observer {
    * @param desc a <code>String</code> value
    */
   void update(String desc);
-  
-  /**
-   * Describe <code>subscribe</code> method here.
-   *
-   */
+
+  /** Describe <code>subscribe</code> method here. */
   void subscribe();
-  
-  /**
-   * Describe <code>unSubscribe</code> method here.
-   *
-   */
+
+  /** Describe <code>unSubscribe</code> method here. */
   void unSubscribe();
 }

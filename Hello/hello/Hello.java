@@ -2,7 +2,6 @@ package hello;
 
 /** Describe class <code>Hello</code> here. */
 public enum Hello {
- 
   ;
   /**
    * Describe <code>main</code> method here.

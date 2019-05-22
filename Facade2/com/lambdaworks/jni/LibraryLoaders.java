@@ -11,7 +11,7 @@ package com.lambdaworks.jni;
  *
  * @author Will Glozer
  */
-public final class LibraryLoaders { //NOPMD
+public final class LibraryLoaders { // NOPMD
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -21,12 +21,9 @@ public final class LibraryLoaders { //NOPMD
     final String type = System.getProperty("com.lambdaworks.jni.loader");
 
     if (type != null) {
-      if ("sys".equals(type)) 
-        return new SysLibraryLoader();
-      if ("nil".equals(type)) 
-        return new NilLibraryLoader();
-      if ("jar".equals(type)) 
-        return new JarLibraryLoader();
+      if ("sys".equals(type)) return new SysLibraryLoader();
+      if ("nil".equals(type)) return new NilLibraryLoader();
+      if ("jar".equals(type)) return new JarLibraryLoader();
       throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
     }
 
@@ -34,6 +31,5 @@ public final class LibraryLoaders { //NOPMD
     return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
   }
 
-  private LibraryLoaders() {
-  }
+  private LibraryLoaders() {}
 }

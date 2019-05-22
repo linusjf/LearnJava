@@ -16,7 +16,7 @@ public interface Encrypt {
    * @return a <code>String</code> value
    */
   String encrypt(String text);
-  
+
   // Add salt
   /**
    * Describe <code>getSalt</code> method here.

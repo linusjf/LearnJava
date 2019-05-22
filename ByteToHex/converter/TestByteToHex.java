@@ -8,7 +8,7 @@ package converter;
  * @file : TestByteToHex.java
  * @created : Friday May 03, 2019 20:08:16 IST
  * @copyright : Copyright (c) Linus Fernandes
-* @description :
+ * @description :
  */
 public enum TestByteToHex {
   ;
@@ -27,7 +27,7 @@ public enum TestByteToHex {
             + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
             + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
             + "FDSSSGHIJJH";
-    
+
     final byte[] raw = byteString.getBytes();
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);
@@ -52,9 +52,7 @@ public enum TestByteToHex {
     end = System.nanoTime();
     elapsed = end - start;
     System.out.println("getHex4: " + elapsed);
-    if (!(hex.equals(hex2) 
-        && hex2.equals(hex3) 
-        && hex3.equals(hex4)))
-        throw new AssertionError("Not all hex conversions are equal");
+    if (!(hex.equals(hex2) && hex2.equals(hex3) && hex3.equals(hex4)))
+      throw new AssertionError("Not all hex conversions are equal");
   }
 }

@@ -23,9 +23,7 @@ public class SysLibraryLoader implements LibraryLoader {
     try {
       System.loadLibrary(name);
       loaded = true;
-    } catch (UnsatisfiedLinkError 
-        | NullPointerException
-        | SecurityException e) {
+    } catch (UnsatisfiedLinkError | NullPointerException | SecurityException e) {
       loaded = false;
     }
 

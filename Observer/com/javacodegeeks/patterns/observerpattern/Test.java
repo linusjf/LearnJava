@@ -14,10 +14,10 @@ public enum Test {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    final CommentaryObjectObservable obj = 
+    final CommentaryObjectObservable obj =
         new CommentaryObjectObservable("Soccer Match [2014AUG24]");
     final SMSUsersObserver observer = new SMSUsersObserver(obj, "Adam Warner [New York]");
-    final SMSUsersObserver observer2 = new SMSUsersObserver(obj,"Tim Ronney [London]");
+    final SMSUsersObserver observer2 = new SMSUsersObserver(obj, "Tim Ronney [London]");
     observer.subscribe();
     observer2.subscribe();
     obj.setDesc("Welcome to live Soccer match");
@@ -27,4 +27,3 @@ public enum Test {
     obj.setDesc("Current score 1-0");
   }
 }
-

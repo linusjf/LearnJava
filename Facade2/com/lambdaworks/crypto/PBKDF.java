@@ -14,7 +14,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @author Will Glozer
  */
 @SuppressWarnings("checkstyle:abbreviationaswordinname")
-public final class PBKDF { //NOPMD
+public final class PBKDF { // NOPMD
   /**
    * Implementation of PBKDF2 (RFC2898).
    *
@@ -80,8 +80,7 @@ public final class PBKDF { //NOPMD
         }
       }
 
-      arraycopy(bytesT, 0, derivedKey,
-          (i - 1) * lengthH, i == l ? r : lengthH);
+      arraycopy(bytesT, 0, derivedKey, (i - 1) * lengthH, i == l ? r : lengthH);
     }
   }
 }

@@ -9,16 +9,12 @@ package builder;
 public class Calzone extends Pizza {
   private final boolean sauceInside;
 
-  /**
-   * Inner class that builds the Calzone object. 
-   */
+  /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
-    
+
     private boolean sauceInside = false; // Default
 
-    /**
-     * sets sauce.
-     */
+    /** sets sauce. */
     public Builder sauceInside() {
       sauceInside = true;
       return this;
@@ -40,9 +36,7 @@ public class Calzone extends Pizza {
     this.sauceInside = builder.sauceInside;
   }
 
-  /**
-   * returns object state as String.
-   */
+  /** returns object state as String. */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

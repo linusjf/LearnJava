@@ -15,10 +15,7 @@ public class Button implements Colleague {
     this.mediator = mediator;
   }
 
-  /**
-   * Describe <code>press</code> method here.
-   *
-   */
+  /** Describe <code>press</code> method here. */
   public void press() {
     System.out.println("Button pressed.");
     mediator.start();

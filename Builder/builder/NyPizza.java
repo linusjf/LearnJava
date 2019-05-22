@@ -18,17 +18,12 @@ public class NyPizza extends Pizza {
 
   private final Size size;
 
-  /** Builder class that builds the Pizza object
-   * using the Fluent API style.
-   */
-     
+  /** Builder class that builds the Pizza object using the Fluent API style. */
   public static class Builder extends Pizza.Builder<Builder> {
 
     private final Size size;
 
-    /**
-     * Constructor.
-     */
+    /** Constructor. */
     public Builder(Size size) {
       this.size = Objects.requireNonNull(size);
     }
@@ -49,16 +44,13 @@ public class NyPizza extends Pizza {
     this.size = builder.size;
   }
 
-  /**
-   * returns object state as string.
-  */
+  /** returns object state as string. */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("Size = " + size + System.lineSeparator());
     sb.append("Toppings: " + System.lineSeparator());
-    for (Topping t : toppings)
-      sb.append(t + System.lineSeparator());
+    for (Topping t : toppings) sb.append(t + System.lineSeparator());
     return sb.toString();
   }
 }

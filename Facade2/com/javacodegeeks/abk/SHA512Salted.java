@@ -4,7 +4,6 @@ import static com.javacodegeeks.abk.Encrypt.getSalt;
 import static converter.ByteToHex.getHex4;
 
 import java.nio.charset.StandardCharsets;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

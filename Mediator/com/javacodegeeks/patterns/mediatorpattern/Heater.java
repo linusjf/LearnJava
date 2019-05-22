@@ -27,10 +27,7 @@ public class Heater implements Colleague {
     }
   }
 
-  /**
-   * Describe <code>off</code> method here.
-   *
-   */
+  /** Describe <code>off</code> method here. */
   public void off() {
     System.out.println("Heater is off...");
     mediator.wash();

@@ -51,9 +51,8 @@ public class WorkLoader {
     List<Work> workList = new ArrayList<Work>();
     Set<Object> keys = properties.keySet();
     for (Object key : keys) {
-      String workType = key.toString()
-          .substring("Calculate".length() + 1)
-          .toUpperCase(Locale.getDefault());
+      String workType =
+          key.toString().substring("Calculate".length() + 1).toUpperCase(Locale.getDefault());
       System.out.println(workType);
       String values = properties.getProperty(key.toString());
       System.out.println(values);

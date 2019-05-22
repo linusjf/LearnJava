@@ -22,36 +22,38 @@ public class SMSUsersObserver implements java.util.Observer {
    * @param observable an <code>Observable</code> value
    * @param userInfo a <code>String</code> value
    */
-  public SMSUsersObserver(Observable observable,String userInfo) {
+  public SMSUsersObserver(Observable observable, String userInfo) {
     this.observable = observable;
     this.userInfo = userInfo;
   }
 
-  /**
-   * Describe <code>subscribe</code> method here.
-   *
-   */
+  /** Describe <code>subscribe</code> method here. */
   public void subscribe() {
-    System.out.println("Subscribing " + userInfo + " to " 
-        + ((CommentaryObjectObservable)observable).subjectDetails() + " ...");
+    System.out.println(
+        "Subscribing "
+            + userInfo
+            + " to "
+            + ((CommentaryObjectObservable) observable).subjectDetails()
+            + " ...");
     this.observable.addObserver(this);
     System.out.println("Subscribed successfully.");
   }
 
-  /**
-   * Describe <code>unSubscribe</code> method here.
-   *
-   */
+  /** Describe <code>unSubscribe</code> method here. */
   public void unSubscribe() {
-    System.out.println("Unsubscribing " + userInfo + " to " 
-        + ((CommentaryObjectObservable)observable).subjectDetails() + " ...");
+    System.out.println(
+        "Unsubscribing "
+            + userInfo
+            + " to "
+            + ((CommentaryObjectObservable) observable).subjectDetails()
+            + " ...");
     this.observable.deleteObserver(this);
     System.out.println("Unsubscribed successfully.");
   }
 
   @Override
   public void update(Observable o, Object arg) {
-    desc = (String)arg;
+    desc = (String) arg;
     display();
   }
 

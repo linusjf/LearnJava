@@ -8,40 +8,22 @@ package com.javacodegeeks.patterns.mediatorpattern;
  */
 public interface MachineMediator {
 
-  /**
-   * Describe <code>start</code> method here.
-   *
-   */
+  /** Describe <code>start</code> method here. */
   void start();
 
-  /**
-   * Describe <code>wash</code> method here.
-   *
-   */
+  /** Describe <code>wash</code> method here. */
   void wash();
-  
-  /**
-   * Describe <code>open</code> method here.
-   *
-   */
+
+  /** Describe <code>open</code> method here. */
   void open();
 
-  /**
-   * Describe <code>closed</code> method here.
-   *
-   */
+  /** Describe <code>closed</code> method here. */
   void closed();
 
-  /**
-   * Describe <code>on</code> method here.
-   *
-   */
+  /** Describe <code>on</code> method here. */
   void on();
 
-  /**
-   * Describe <code>off</code> method here.
-   *
-   */
+  /** Describe <code>off</code> method here. */
   void off();
 
   /**
