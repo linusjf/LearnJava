@@ -6,8 +6,8 @@ package design.bridge;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Main {
-
+public enum Main {
+  ;
   /**
    * Describe <code>main</code> method here.
    *

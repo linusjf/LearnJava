@@ -10,11 +10,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class RepairWorkShop extends WorkShop {
 
-  /** Creates a new <code>RepairWorkShop</code> instance. */
-  public RepairWorkShop() {
-    super();
-  }
-
   @Override
   public void work(Vehicle vehicle) {
     System.out.print("Repairing... ");

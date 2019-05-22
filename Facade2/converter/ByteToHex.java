@@ -6,7 +6,7 @@ package converter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class ByteToHex {
+public final class ByteToHex {// NOPMD
 
   private static final String HEXES = "0123456789abcdef";
 

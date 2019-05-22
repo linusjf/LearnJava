@@ -6,8 +6,8 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class TestMediator {
-
+public enum TestMediator {
+  ;
   /**
    * Describe <code>main</code> method here.
    *

@@ -13,5 +13,5 @@ public interface Colleague {
    *
    * @param mediator a <code>MachineMediator</code> value
    */
-  public void setMediator(MachineMediator mediator);
+  void setMediator(MachineMediator mediator);
 }

@@ -12,37 +12,37 @@ public interface MachineMediator {
    * Describe <code>start</code> method here.
    *
    */
-  public void start();
+  void start();
 
   /**
    * Describe <code>wash</code> method here.
    *
    */
-  public void wash();
+  void wash();
   
   /**
    * Describe <code>open</code> method here.
    *
    */
-  public void open();
+  void open();
 
   /**
    * Describe <code>closed</code> method here.
    *
    */
-  public void closed();
+  void closed();
 
   /**
    * Describe <code>on</code> method here.
    *
    */
-  public void on();
+  void on();
 
   /**
    * Describe <code>off</code> method here.
    *
    */
-  public void off();
+  void off();
 
   /**
    * Describe <code>checkTemperature</code> method here.
@@ -50,5 +50,5 @@ public interface MachineMediator {
    * @param temp an <code>int</code> value
    * @return a <code>boolean</code> value
    */
-  public boolean checkTemperature(int temp);
+  boolean checkTemperature(int temp);
 }

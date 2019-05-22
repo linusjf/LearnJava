@@ -144,7 +144,6 @@ public class JarLibraryLoader implements LibraryLoader {
         break;
       default:
     }
-
     return candidates;
   }
 }

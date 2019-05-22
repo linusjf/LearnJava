@@ -9,10 +9,6 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class PaintWorkShop extends WorkShop {
-  /** Creates a new <code>PaintWorkShop</code> instance. */
-  public PaintWorkShop() {
-    super();
-  }
 
   @Override
   public void work(Vehicle vehicle) {

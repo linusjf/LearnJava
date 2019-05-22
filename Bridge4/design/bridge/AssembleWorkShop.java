@@ -9,10 +9,6 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class AssembleWorkShop extends WorkShop {
-  /** Creates a new <code>AssembleWorkShop</code> instance. */
-  public AssembleWorkShop() {
-    super();
-  }
 
   @Override
   public void work(Vehicle vehicle) {
