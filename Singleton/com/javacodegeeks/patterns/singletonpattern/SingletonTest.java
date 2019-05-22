@@ -40,7 +40,8 @@ public enum SingletonTest {
     testReflection();
     testState();
   }
-
+  
+  @SuppressWarnings("checkstyle:IllegalCatch")
   private static void testConcurrency() {
 
     final int size = 12;
@@ -52,7 +53,7 @@ public enum SingletonTest {
     // final Set<Long> generatedValues = new HashSet<>(size);
     final Set<Long> generatedValues = new LinkedHashSet<>(size);
     final Set<Singleton> instances =
-      Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
+        Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
 
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
@@ -103,8 +104,7 @@ public enum SingletonTest {
       for (final long value : generatedValues) 
         System.out.print(value + " ");
       System.out.println();
-    }
-    catch (Throwable throwable) {//NOPMD 
+    } catch (Throwable throwable) { // NOPMD
       System.out.println(throwable.getMessage());
     }
   }
@@ -123,13 +123,10 @@ public enum SingletonTest {
       in.close();
       System.out.println("instance hashCode:- " + instance.hashCode());
       System.out.println("instance2 hashCode:- " + instance2.hashCode());
-    }
-    catch (IOException 
+    } catch (IOException 
         | ClassNotFoundException e) {
       System.out.println(e.getMessage());
-        }
-
-
+    }
   }
 
   private static void testCloneable() {
@@ -156,7 +153,7 @@ public enum SingletonTest {
         | IllegalAccessException 
         | InvocationTargetException e) {
       System.out.println(e.getCause().getMessage());
-        }
+    }
   }
 
   private static void testState() {
@@ -175,11 +172,10 @@ public enum SingletonTest {
       if (singleton.getNextValue() != expectedValue)
         throw new AssertionError("Next value should be three.");
       System.out.println("No assert errors. State validated.");
-    }
-    catch (NoSuchFieldException
+    } catch (NoSuchFieldException
         | IllegalAccessException e) {
       System.out.println(e.getMessage());
-        }
+    }
   }
 
   private static void resetSingleton()
@@ -187,8 +183,8 @@ public enum SingletonTest {
                       NoSuchFieldException,
                       IllegalArgumentException,
                       IllegalAccessException {
-               final Field instance = Singleton.class.getDeclaredField("instance");
-               instance.setAccessible(true);
-               instance.set(null, null);
+    final Field instance = Singleton.class.getDeclaredField("instance");
+    instance.setAccessible(true);
+    instance.set(null, null);
   }
 }
