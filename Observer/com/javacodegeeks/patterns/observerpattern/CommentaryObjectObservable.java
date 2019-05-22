@@ -10,7 +10,7 @@ import java.util.Observable;
  */
 public class CommentaryObjectObservable extends Observable implements Commentary {
 
-  private String desc;
+  private String desc;// NOPMD
 
   private final String subjectDetails;
 

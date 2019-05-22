@@ -13,6 +13,5 @@ public interface Commentary {
    *
    * @param desc a <code>String</code> value
    */
-  public void setDesc(String desc);
-
+  void setDesc(String desc);
 }

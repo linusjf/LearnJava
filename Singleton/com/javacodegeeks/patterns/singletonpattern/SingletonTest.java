@@ -91,14 +91,12 @@ public class SingletonTest {
 
     switch (instances.size()) {
       case 0:
-        //      assert false : "Expected one instance, but found none";
         throw new AssertionError("Expected one instance, but found none");
 
       case 1:
         System.out.println("Only one instance created and available.");
         break;
       default:
-        //     assert false : "Expected one instance, but found many";
         throw new AssertionError("Expected one instance, but found many");
     }
     System.out.println("Sequence in order in which inserted: ");

@@ -13,17 +13,17 @@ public interface Observer {
    *
    * @param desc a <code>String</code> value
    */
-  public void update(String desc);
+  void update(String desc);
   
   /**
    * Describe <code>subscribe</code> method here.
    *
    */
-  public void subscribe();
+  void subscribe();
   
   /**
    * Describe <code>unSubscribe</code> method here.
    *
    */
-  public void unSubscribe();
+  void unSubscribe();
 }

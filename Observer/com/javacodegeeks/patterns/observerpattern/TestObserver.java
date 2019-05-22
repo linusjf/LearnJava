@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class TestObserver {
-
+public enum TestObserver {
+  ;
   /**
    * Describe <code>main</code> method here.
    *
