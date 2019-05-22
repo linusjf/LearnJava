@@ -32,7 +32,7 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-      <javadoc packageNames="bridge"
+      <javadoc packagenames="${packages}" 
         sourcepath="${src.dir}" destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">

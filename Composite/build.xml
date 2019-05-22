@@ -33,7 +33,7 @@
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
       <javadoc additionalparam="-Xdoclint:none" 
-        packagenames="com.javacodegeeks.patterns.*"
+        packagenames="${packages}"
         sourcepath="${src.dir}" 
         destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
