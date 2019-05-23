@@ -1,1 +1,2 @@
 com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorClient
+com.javacodegeeks.patterns.proxypattern.virtualproxy.TestVirtualProxy

@@ -11,7 +11,9 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
 
   private static final long serialVersionUID = 3107413009881629428L;
 
-  protected ReportGeneratorImpl() throws RemoteException {}
+  protected ReportGeneratorImpl() throws RemoteException {
+    // Empty constructor.Not public.
+  }
 
   @Override
   public String generateDailyReport() throws RemoteException {
@@ -26,6 +28,11 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
     return sb.toString();
   }
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     try {
       ReportGeneratorImpl reportGenerator = new ReportGeneratorImpl();
