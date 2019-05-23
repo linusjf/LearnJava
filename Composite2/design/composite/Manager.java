@@ -57,12 +57,16 @@ public class Manager extends Employee {
     int fromIndex = 0;
     int toIndex = 0;
     int totalWork = work.getWork().size();
+    System.out.println("totalWork = "+totalWork);
     List<String> assignWork = null;
     while (toIndex < totalWork) {
       for (Employee employee : managingEmployees) {
-        System.out.println("Assigning to " + employee);
+        System.out.println("Assigning work from "+employee);
         int size = employee.teamSize();
         toIndex = fromIndex + size;
+        int listSize = work.getWork().size();
+        if (toIndex > listSize)
+          toIndex = listSize;
         assignWork = work.getWork().subList(fromIndex, toIndex);
         if (assignWork.isEmpty()) {
           return;
@@ -70,7 +74,6 @@ public class Manager extends Employee {
         employee.assignWork(this, new Work(work.getWorkType(), assignWork));
         fromIndex = toIndex;
       }
-      //      break;
     }
   }
 
