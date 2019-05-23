@@ -2,8 +2,8 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
 
 import java.util.List;
 
-public class TestVirtualProxy {
-
+public enum TestVirtualProxy {
+  ;
   /**
    * Describe <code>main</code> method here.
    *

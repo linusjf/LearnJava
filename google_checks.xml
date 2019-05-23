@@ -57,6 +57,11 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
 <module name="SingleSpaceSeparator">
   <property name="validateComments" value="false"/>
 </module>
+<module name="MissingOverride">
+  <property name="javaFiveCompatibility"
+    value="false"/>
+  <module name="HideUtilityClassConstructor"/>
+  </module>
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
       <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
