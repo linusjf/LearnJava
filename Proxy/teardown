@@ -8,3 +8,8 @@ ps -ef | grep \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+ps -ef | grep \
+  'stefano.lupo.Proxy' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?

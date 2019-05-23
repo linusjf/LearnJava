@@ -80,6 +80,12 @@
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
+<java classname="${main.class3}">
+ <classpath>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+<pathelement path="${java.class.path}"/>
+</classpath>
+</java>
 <exec executable="./teardown"/>
 </target>
 <target name="gformat">

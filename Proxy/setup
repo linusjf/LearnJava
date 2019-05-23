@@ -5,3 +5,6 @@ sleep 5
 java -cp . com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorImpl &
 echo "Sleeping for 5 seconds again after server start..."
 sleep 5
+java -cp . stefano.lupo.Proxy &
+echo "Sleeping for 5 seconds again after proxy start..."
+sleep 5
