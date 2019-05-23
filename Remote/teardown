@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-ps -ef | grep rmiregistry | \
-  awk '{print $2}' | head -1 | \
-  parallel -I% kill %
-ps -ef | grep java | \
-  awk '{print $2}' | head -1 | \
-  parallel -I% kill %
+ps -ef | grep 'rmiregistry' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
+ps -ef | grep \
+  'com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorImpl' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
