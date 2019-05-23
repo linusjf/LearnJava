@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+rmiregistry &
+echo "Sleeping for 5 seconds after rmiregistry..."
+sleep 5
+java -cp . com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorImpl &
+echo "Sleeping for 5 seconds again after server start..."
+sleep 5

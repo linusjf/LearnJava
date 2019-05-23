@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+ps -ef | grep rmiregistry | \
+  awk '{print $2}' | head -1 | \
+  parallel -I% kill %
+ps -ef | grep java | \
+  awk '{print $2}' | head -1 | \
+  parallel -I% kill %
