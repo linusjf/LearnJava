@@ -2,7 +2,16 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
 
 import java.util.List;
 
+/**
+ * Describe interface <code>ContactList</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public interface ContactList {
 
-  public List<Employee> getEmployeeList();
+  /** @return a <code>List<Employee></code> of employees.
+   *
+   */
+  List<Employee> getEmployeeList();
 }

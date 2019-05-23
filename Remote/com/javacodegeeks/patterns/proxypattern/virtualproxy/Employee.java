@@ -1,30 +1,67 @@
 package com.javacodegeeks.patterns.proxypattern.virtualproxy;
 
+/**
+ * Describe class <code>Employee</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Employee {
 
   private String employeeName;
   private double employeeSalary;
   private String employeeDesignation;
 
-  public Employee(String employeeName,double employeeSalary,String       employeeDesignation) {
+  /**
+   * Creates a new <code>Employee</code> instance.
+   *
+   * @param employeeName a <code>String</code> value
+   * @param employeeSalary a <code>double</code> value
+   * @param employeeDesignation a <code>String</code> value
+   */
+  public Employee(String employeeName,double employeeSalary,
+      String employeeDesignation) {
     this.employeeName = employeeName;
     this.employeeSalary = employeeSalary;
     this.employeeDesignation = employeeDesignation;
-      }
+  }
 
+  /**
+   * Describe <code>getEmployeeName</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String getEmployeeName() {
     return employeeName;
   }
 
+  /**
+   * Describe <code>getEmployeeSalary</code> method here.
+   *
+   * @return a <code>double</code> value
+   */
   public double getEmployeeSalary() {
     return employeeSalary;
   }
 
+  /**
+   * Describe <code>getEmployeeDesignation</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String getEmployeeDesignation() {
     return employeeDesignation;
   }
 
+  /**
+   * Describe <code>toString</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String toString() {
-    return "Employee Name: " + employeeName + ", EmployeeDesignation: " + employeeDesignation+", Employee Salary: "+employeeSalary;
+    return "Employee Name: " + employeeName 
+      + ", EmployeeDesignation: " 
+      + employeeDesignation + ", Employee Salary: "
+      + employeeSalary;
   }
 }

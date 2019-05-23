@@ -4,6 +4,11 @@ import java.util.List;
 
 public class TestVirtualProxy {
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   public static void main(String[] args) {
     ContactList contactList = new ContactListProxyImpl();
     Company company = new Company("ABC Company", "India", "+91-011-28458965", contactList);
