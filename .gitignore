@@ -10,3 +10,4 @@
 **/walkmod.xml
 !lib/*.jar
 !./AnnoProc.class
+!Proxy/urls.txt
