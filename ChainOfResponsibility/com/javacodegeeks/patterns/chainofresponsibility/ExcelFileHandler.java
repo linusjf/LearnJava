@@ -3,16 +3,16 @@ package com.javacodegeeks.patterns.chainofresponsibility;
 public class ExcelFileHandler implements Handler {
   private Handler handler;
   private String handlerName;
-  
+
   public ExcelFileHandler(String handlerName) {
     this.handlerName = handlerName;
   }
-  
+
   @Override
   public void setHandler(Handler handler) {
     this.handler = handler;
   }
-  
+
   @Override
   public void process(File file) {
     if (file.getFileType().equals("excel")) {
@@ -24,7 +24,7 @@ public class ExcelFileHandler implements Handler {
       System.out.println("File not supported");
     }
   }
-  
+
   @Override
   public String getHandlerName() {
     return handlerName;

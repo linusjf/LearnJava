@@ -2,7 +2,7 @@ package proxy.synchronicity;
 
 public interface IBlackBox {
 
-    void methodA();
+  void methodA();
 
-    void methodB();
+  void methodB();
 }

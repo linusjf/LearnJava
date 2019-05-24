@@ -1,7 +1,7 @@
 package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
 public class TestProtectionProxy {
-  
+
   public static void main(String[] args) {
     Owner owner = new Owner();
     ReportGeneratorProxy reportGenerator = new ReportGeneratorProtectionProxy(owner);

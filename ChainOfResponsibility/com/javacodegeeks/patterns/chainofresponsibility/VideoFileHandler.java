@@ -19,8 +19,7 @@ public class VideoFileHandler implements Handler {
     if (file.getFileType().equals("video")) {
       System.out.println("Process and saving video file... by " + handlerName);
     } else if (handler != null) {
-      System.out.println(handlerName + " forwards request to " + handler.
-          getHandlerName());
+      System.out.println(handlerName + " forwards request to " + handler.getHandlerName());
       handler.process(file);
     } else {
       System.out.println("File not supported");
