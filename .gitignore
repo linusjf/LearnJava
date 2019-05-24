@@ -6,6 +6,7 @@
 *.jar
 *.txt
 *.bak
+*.html
 *docs*
 **/walkmod.xml
 !lib/*.jar
