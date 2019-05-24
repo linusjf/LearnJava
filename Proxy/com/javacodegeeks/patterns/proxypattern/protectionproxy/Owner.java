@@ -17,11 +17,6 @@ public class Owner implements Staff {
   }
 
   public String generateDailyReport() {
-    try {
       return reportGenerator.generateDailyReport();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return "";
   }
 }
