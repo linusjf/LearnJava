@@ -268,27 +268,30 @@ public class Proxy implements Runnable{
   @Override
   public void run() {
     Scanner scanner = new Scanner(System.in);
-
-    String command;
+    String command = "";
+    System.out.println("Enter new site to block, or type "
+          + "\"blocked\" to see blocked sites, "
+          + "\"cached\" to see cached sites, or "
+          + "\"close\" to close server.");
     while (running) {
-      System.out.println("Enter new site to block, or type \"blocked\" to see blocked sites, \"cached\" to see cached sites, or \"close\" to close server.");
+      if (scanner.hasNext())
+      {
       command = scanner.nextLine();
-      if (command.toLowerCase().equals("blocked")){
+      if ("blocked".equals(command.toLowerCase())) {
         System.out.println("\nCurrently Blocked Sites");
         for (String key : blockedSites.keySet()) {
           System.out.println(key);
         }
         System.out.println();
       } 
-
-      else if(command.toLowerCase().equals("cached")) {
+      else if ("cached".equals(command.toLowerCase())) {
         System.out.println("\nCurrently Cached Sites");
-        for(String key : cache.keySet()) {
+        for (String key : cache.keySet()) {
           System.out.println(key);
         }
         System.out.println();
       }
-      else if(command.equals("close")) {
+      else if ("close".equals(command.toLowerCase())) {
         running = false;
         closeServer();
       }
@@ -296,7 +299,8 @@ public class Proxy implements Runnable{
         blockedSites.put(command, command);
         System.out.println("\n" + command + " blocked successfully \n");
       }
+      }
     }
     scanner.close();
-  } 
+  }
 }

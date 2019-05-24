@@ -2,7 +2,6 @@ package stefano.lupo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
 
 import java.net.InetSocketAddress;
@@ -24,11 +23,6 @@ public enum TestProxy {
 
 	public static void main(String[] args) {
 
-/**		System.setProperty("http.proxyHost","127.0.0.1");
-		System.setProperty("http.proxyPort","8085");
-		System.setProperty("https.proxyHost","127.0.0.1");
-		System.setProperty("https.proxyPort","8085");
-*/
 		String fileName = FILE;
 		if (args.length > 0)
 			fileName = args[0];
@@ -67,13 +61,7 @@ public enum TestProxy {
           proxy = new Proxy(Proxy.Type.HTTP,
               new InetSocketAddress(proxyHost, proxyPort));
 				URLConnection connection = url.openConnection(proxy);
-        BufferedReader in = new BufferedReader(
-            new InputStreamReader(
-            connection.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) 
-            System.out.println(inputLine);
-        in.close();
+        connection.getInputStream();
 			} catch (IOException e) {
 				System.err.println("Error creating HTTP(S) connection: " + e.getMessage());
 			}
