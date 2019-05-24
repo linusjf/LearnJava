@@ -1,11 +1,11 @@
 package stefano.lupo;
 
 /*
- * 	Student:		Stefano Lupo
- *  Student No:		14334933
- *  Degree:			JS Computer Engineering
- *  Course: 		3D3 Computer Networks
- *  Date:			02/04/2017
+ *  Student:    Stefano Lupo
+ *  Student No: 14334933
+ *  Degree:     JS Computer Engineering
+ *  Course:     3D3 Computer Networks
+ *  Date:       02/04/2017
  */
 
 import java.io.File;
@@ -20,7 +20,9 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Map;
 
 /**
  * The Proxy creates a Server Socket which will wait for connections on the specified port. Once a
@@ -43,6 +45,7 @@ import java.util.Scanner;
 public class Proxy implements Runnable {
 
   // Main method for the program
+  @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
     // Create an instance of Proxy and begin listening for connections
     Proxy myProxy = new Proxy(8085);
@@ -52,25 +55,26 @@ public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
+  @SuppressWarnings("checkstyle:IllegalToken")
   private volatile boolean running = true;
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
    * Value: File in storage associated with this key.
    */
-  static HashMap<String, File> cache;
+  static Map<String, File> cache;
 
   /**
    * Data structure for constant order lookup of blocked sites. Key: URL of page/image requested.
    * Value: URL of page/image requested.
    */
-  static HashMap<String, String> blockedSites;
+  static Map<String, String> blockedSites;
 
   /**
    * ArrayList of threads that are currently running and servicing requests. This list is required
-   * in order to join all threads on closing of server
+   * in order to join all threads on closing of server.
    */
-  static ArrayList<Thread> servicingThreads;
+  static List<Thread> servicingThreads;
 
   /**
    * Create the Proxy Server
@@ -125,15 +129,12 @@ public class Proxy implements Runnable {
     try {
       // Create the Server Socket for the Proxy
       serverSocket = new ServerSocket(port);
-
       // Set the timeout
-      // serverSocket.setSoTimeout(100000);	// debug
+      // serverSocket.setSoTimeout(100000);
+      // debug
       System.out.println("Waiting for client on port " + serverSocket.getLocalPort() + "..");
       running = true;
-    }
-
-    // Catch exceptions associated with opening socket
-    catch (SocketException se) {
+    } catch (SocketException se) {
       System.out.println("Socket Exception when connecting to client " + se.getMessage());
     } catch (SocketTimeoutException ste) {
       System.out.println("Timeout occured while connecting to client " + ste.getMessage());
