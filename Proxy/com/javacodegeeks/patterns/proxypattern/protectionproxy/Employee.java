@@ -16,6 +16,6 @@ public class Employee implements Staff {
   }
 
   public String generateDailyReport() {
-      return reportGenerator.generateDailyReport();
+    return reportGenerator.generateDailyReport();
   }
 }

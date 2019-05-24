@@ -14,15 +14,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * The Proxy creates a Server Socket which will wait for connections on the specified port. Once a
@@ -77,7 +79,7 @@ public class Proxy implements Runnable {
   static List<Thread> servicingThreads;
 
   /**
-   * Create the Proxy Server
+   * Create the Proxy Server.
    *
    * @param port Port number to run proxy server from.
    */
@@ -212,13 +214,13 @@ public class Proxy implements Runnable {
     try {
       System.out.println("Terminating Connection");
       serverSocket.close();
-    } catch (Exception e) {
+    } catch (IOException e) {
       System.out.println("Exception closing proxy's server socket " + e.getMessage());
     }
   }
 
   /**
-   * Looks for File in cache
+   * Looks for File in cache.
    *
    * @param url of requested file
    * @return File if file is cached, null otherwise
@@ -228,7 +230,7 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Adds a new page to the cache
+   * Adds a new page to the cache.
    *
    * @param urlString URL of webpage to cache
    * @param fileToCache File Object pointing to File put in cache
@@ -238,7 +240,7 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Check if a URL is blocked by the proxy
+   * Check if a URL is blocked by the proxy.
    *
    * @param url URL to check
    * @return true if URL is blocked, false otherwise
@@ -254,7 +256,7 @@ public class Proxy implements Runnable {
   /**
    * Creates a management interface which can dynamically update the proxy configurations blocked :
    * Lists currently blocked sites cached : Lists currently cached sites close : Closes the proxy
-   * server * : Adds * to the list of blocked sites
+   * server * : Adds * to the list of blocked sites.
    */
   @Override
   public void run() {

@@ -1,10 +1,12 @@
 package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
 import com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGenerator;
-import java.rmi.Naming;
-import java.rmi.RemoteException;
+
 import java.net.MalformedURLException;
+
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   ReportGenerator reportGenerator;
