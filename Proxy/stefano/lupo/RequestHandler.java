@@ -37,11 +37,6 @@ public class RequestHandler implements Runnable {
   /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
 
-  /**
-   * Thread that is used to transmit data read from client to server when using HTTPS Reference to
-   * this is required so it can be closed once completed.
-   */
-  private Thread httpsClientToServer;
 
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
@@ -107,8 +102,8 @@ public class RequestHandler implements Runnable {
         handleHTTPSRequest(urlString);
       } else {
         // Check if we have a cached copy
-        File file;
-        if ((file = Proxy.getCachedPage(urlString)) != null) {
+        File file = Proxy.getCachedPage(urlString);
+        if (file != null) {
           System.out.println("Cached Copy found for : " + urlString + "\n");
           sendCachedPageToClient(file);
         } else {
@@ -132,7 +127,7 @@ public class RequestHandler implements Runnable {
 
       // Response that will be sent to the server
       String response;
-      if ((fileExtension.contains(".png"))
+      if (fileExtension.contains(".png")
           || fileExtension.contains(".jpg")
           || fileExtension.contains(".jpeg")
           || fileExtension.contains(".gif")) {
@@ -374,7 +369,7 @@ public class RequestHandler implements Runnable {
           new ClientToServerHttpsTransmit(
               clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
 
-      httpsClientToServer = new Thread(clientToServerHttps);
+      Thread httpsClientToServer = new Thread(clientToServerHttps);
       httpsClientToServer.start();
 
       // Listen to remote server and relay to client

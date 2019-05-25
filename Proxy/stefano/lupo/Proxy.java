@@ -23,6 +23,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -62,7 +63,7 @@ public class Proxy implements Runnable {
 
   /** Semaphore for Proxy and Consolee Management System. */
   @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true;
+  private volatile boolean running = true; // NOPMD
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
@@ -82,19 +83,20 @@ public class Proxy implements Runnable {
    */
   static List<Thread> servicingThreads;
 
+  static {
+  
+    // Load in hash map containing previously cached sites and blocked Sites
+    cache = new HashMap<>();
+    blockedSites = new HashMap<>();
+    // Create array list to hold servicing threads
+    servicingThreads = new ArrayList<>();
+  }
   /**
    * Create the Proxy Server.
    *
    * @param port Port number to run proxy server from.
    */
   public Proxy(int port) {
-
-    // Load in hash map containing previously cached sites and blocked Sites
-    cache = new HashMap<>();
-    blockedSites = new HashMap<>();
-
-    // Create array list to hold servicing threads
-    servicingThreads = new ArrayList<>();
 
     // Start dynamic manager on a separate thread.
     new Thread(this).start(); // Starts overriden run() method at bottom
@@ -250,11 +252,7 @@ public class Proxy implements Runnable {
    * @return true if URL is blocked, false otherwise
    */
   public static boolean isBlocked(String url) {
-    if (blockedSites.get(url) != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return blockedSites.containsKey(url); 
   }
 
   /**
@@ -274,19 +272,22 @@ public class Proxy implements Runnable {
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();
-        if ("blocked".equals(command.toLowerCase())) {
+        if ("blocked".equals(command
+              .toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Blocked Sites");
           for (String key : blockedSites.keySet()) {
             System.out.println(key);
           }
           System.out.println();
-        } else if ("cached".equals(command.toLowerCase())) {
+        } else if ("cached".equals(command
+              .toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Cached Sites");
           for (String key : cache.keySet()) {
             System.out.println(key);
           }
           System.out.println();
-        } else if ("close".equals(command.toLowerCase())) {
+        } else if ("close".equals(command
+              .toLowerCase(Locale.getDefault()))) {
           running = false;
           closeServer();
         } else {
