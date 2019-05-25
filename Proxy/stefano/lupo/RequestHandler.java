@@ -336,10 +336,9 @@ public class RequestHandler implements Runnable {
     try {
       // Only first line of HTTPS request has been read at this point (CONNECT *)
       // Read (and throw away) the rest of the initial data on the stream
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 5; i++) 
         proxyToClientBr.readLine();
-      }
-
+      
       // Get actual IP associated with this URL through DNS
       InetAddress address = InetAddress.getByName(url);
 
@@ -373,7 +372,6 @@ public class RequestHandler implements Runnable {
       httpsClientToServer.start();
 
       // Listen to remote server and relay to client
-      try {
         byte[] buffer = new byte[4096];
         int read;
         do {
@@ -385,11 +383,6 @@ public class RequestHandler implements Runnable {
             }
           }
         } while (read >= 0);
-      } catch (SocketTimeoutException e) {
-        System.out.println(e.getMessage());
-      } catch (IOException e) {
-        System.out.println(e.getMessage());
-      }
 
       // Close Down Resources
       if (proxyToServerSocket != null) {
