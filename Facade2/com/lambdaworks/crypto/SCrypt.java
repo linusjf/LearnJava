@@ -27,6 +27,9 @@ public final class SCrypt { // NOPMD
     native_library_loaded = loader.load("scrypt", true);
   }
 
+  private SCrypt() {
+  }
+
   /**
    * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
    * the native implementation {@link #scryptN} when the native library was successfully loaded,
@@ -43,9 +46,9 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-      return native_library_loaded
-        ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-        : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+    return native_library_loaded
+      ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+      : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
   }
 
   /**
@@ -80,29 +83,29 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scryptJ(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-      if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
-        throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
+    if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
+      throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
 
-      if (enCPUCost > MAX_VALUE / 128 / r)
-        throw new IllegalArgumentException("Parameter nCPUCost is too large");
-      if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
+    if (enCPUCost > MAX_VALUE / 128 / r)
+      throw new IllegalArgumentException("Parameter nCPUCost is too large");
+    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
 
-      final Mac mac = Mac.getInstance("HmacSHA256");
-      mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
+    final Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
 
-      final byte[] derivedKey = new byte[dkLen];
-      final byte[] bytes = new byte[128 * r * p];
-      final byte[] xyBytes = new byte[256 * r];
-      final byte[] v = new byte[128 * r * enCPUCost];
-      int i;
+    final byte[] derivedKey = new byte[dkLen];
+    final byte[] bytes = new byte[128 * r * p];
+    final byte[] xyBytes = new byte[256 * r];
+    final byte[] v = new byte[128 * r * enCPUCost];
+    int i;
 
-      PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
+    PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
 
-      for (i = 0; i < p; i++) smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
+    for (i = 0; i < p; i++) smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
 
-      PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
+    PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
 
-      return derivedKey;
+    return derivedKey;
   }
 
   /**

@@ -376,35 +376,38 @@ public class BCrypt {
    */
   private static String encodeBase64(final byte[] d, final int len)
       throws IllegalArgumentException {
-      int off = 0;
-      final StringBuilder rs = new StringBuilder();
-      int c1;
-      int c2;
 
-      if (len <= 0 || len > d.length) throw new IllegalArgumentException("Invalid len");
+    int off = 0;
+    final StringBuilder rs = new StringBuilder();
+    int c1;
+    int c2;
 
-      while (off < len) {
-        c1 = d[off++] & 0xff;
-        rs.append(base64Code[(c1 >> 2) & 0x3f]);
-        c1 = (c1 & 0x03) << 4;
-        if (off >= len) {
-          rs.append(base64Code[c1 & 0x3f]);
-          break;
-        }
-        c2 = d[off++] & 0xff;
-        c1 |= (c2 >> 4) & 0x0f;
+    if (len <= 0 || len > d.length) throw new IllegalArgumentException("Invalid len");
+
+    while (off < len) {
+      c1 = d[off++] & 0xff;
+      rs.append(base64Code[(c1 >> 2) & 0x3f]);
+      c1 = (c1 & 0x03) << 4;
+      if (off >= len) {
         rs.append(base64Code[c1 & 0x3f]);
-        c1 = (c2 & 0x0f) << 2;
-        if (off >= len) {
-          rs.append(base64Code[c1 & 0x3f]);
-          break;
-        }
-        c2 = d[off++] & 0xff;
-        c1 |= (c2 >> 6) & 0x03;
-        rs.append(base64Code[c1 & 0x3f]);
-        rs.append(base64Code[c2 & 0x3f]);
+        break;
       }
-      return rs.toString();
+      c2 = d[off++] & 0xff;
+      c1 |= (c2 >> 4) & 0x0f;
+      rs.append(base64Code[c1 & 0x3f]);
+      c1 = (c2 & 0x0f) << 2;
+      
+      if (off >= len) {
+        rs.append(base64Code[c1 & 0x3f]);
+        break;
+      }
+      
+      c2 = d[off++] & 0xff;
+      c1 |= (c2 >> 6) & 0x03;
+      rs.append(base64Code[c1 & 0x3f]);
+      rs.append(base64Code[c2 & 0x3f]);
+    }
+    return rs.toString();
   }
 
   /**
@@ -429,42 +432,42 @@ public class BCrypt {
    * @throws IllegalArgumentException if maxolen is invalid
    */
   private static byte[] decodeBase64(final String s, final int maxolen)
-      throws IllegalArgumentException {
-      final StringBuilder rs = new StringBuilder();
-      int off = 0;
-      final int slen = s.length();
-      int olen = 0;
-      byte c1;
-      byte c2;
-      byte c3;
-      byte c4;
-      byte o;
-      if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
+    throws IllegalArgumentException {
+    final StringBuilder rs = new StringBuilder();
+    int off = 0;
+    final int slen = s.length();
+    int olen = 0;
+    byte c1;
+    byte c2;
+    byte c3;
+    byte c4;
+    byte o;
+    if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
 
-      while (off < slen - 1 && olen < maxolen) {
-        c1 = char64(s.charAt(off++));
-        c2 = char64(s.charAt(off++));
-        if (c1 == -1 || c2 == -1) break;
-        o = (byte) (c1 << 2);
-        o |= (c2 & 0x30) >> 4;
-        rs.append((char) o);
-        if (++olen >= maxolen || off >= slen) break;
-        c3 = char64(s.charAt(off++));
-        if (c3 == -1) break;
-        o = (byte) ((c2 & 0x0f) << 4);
-        o |= (c3 & 0x3c) >> 2;
-        rs.append((char) o);
-        if (++olen >= maxolen || off >= slen) break;
-        c4 = char64(s.charAt(off++));
-        o = (byte) ((c3 & 0x03) << 6);
-        o |= c4;
-        rs.append((char) o);
-        ++olen;
-      }
+    while (off < slen - 1 && olen < maxolen) {
+      c1 = char64(s.charAt(off++));
+      c2 = char64(s.charAt(off++));
+      if (c1 == -1 || c2 == -1) break;
+      o = (byte) (c1 << 2);
+      o |= (c2 & 0x30) >> 4;
+      rs.append((char) o);
+      if (++olen >= maxolen || off >= slen) break;
+      c3 = char64(s.charAt(off++));
+      if (c3 == -1) break;
+      o = (byte) ((c2 & 0x0f) << 4);
+      o |= (c3 & 0x3c) >> 2;
+      rs.append((char) o);
+      if (++olen >= maxolen || off >= slen) break;
+      c4 = char64(s.charAt(off++));
+      o = (byte) ((c3 & 0x03) << 6);
+      o |= c4;
+      rs.append((char) o);
+      ++olen;
+    }
 
-      final byte[] ret = new byte[olen];
-      for (off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
-      return ret;
+    final byte[] ret = new byte[olen];
+    for (off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
+    return ret;
   }
 
   /**

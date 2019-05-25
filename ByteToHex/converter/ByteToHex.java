@@ -64,5 +64,6 @@ public final class ByteToHex { // NOPMD
     return builder.toString();
   }
 
-  private ByteToHex() {}
+  private ByteToHex() {
+  }
 }

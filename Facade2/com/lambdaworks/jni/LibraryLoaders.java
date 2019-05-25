@@ -31,5 +31,6 @@ public final class LibraryLoaders { // NOPMD
     return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
   }
 
-  private LibraryLoaders() {}
+  private LibraryLoaders() {
+  }
 }
