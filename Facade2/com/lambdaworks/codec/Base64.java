@@ -17,7 +17,7 @@ import java.util.Arrays;
  */
 public final class Base64 { // NOPMD
   private static final char[] encode =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
   private static final int[] decode = new int[128];
   private static final char pad = '=';
 
@@ -62,10 +62,10 @@ public final class Base64 { // NOPMD
     int n;
     while (di < blocks) {
       n =
-          table[src[si++]] << 18
-              | table[src[si++]] << 12
-              | table[src[si++]] << 6
-              | table[src[si++]];
+        table[src[si++]] << 18
+        | table[src[si++]] << 12
+        | table[src[si++]] << 6
+        | table[src[si++]];
       dst[di++] = (byte) (n >> 16);
       dst[di++] = (byte) (n >> 8);
       dst[di++] = (byte) n;
