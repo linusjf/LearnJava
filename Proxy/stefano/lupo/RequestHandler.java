@@ -352,9 +352,6 @@ public class RequestHandler implements Runnable {
       proxyToClientBw.write(line);
       proxyToClientBw.flush();
 
-      // Client and Remote will both start sending data to proxy at this point
-      // Proxy needs to asynchronously read data from each party and send it to the other party
-
       // Create a Buffered Writer betwen proxy and remote
       final BufferedWriter proxyToServerBW =
           new BufferedWriter(new OutputStreamWriter(proxyToServerSocket.getOutputStream()));
@@ -378,28 +375,23 @@ public class RequestHandler implements Runnable {
           read = proxyToServerSocket.getInputStream().read(buffer);
           if (read > 0) {
             clientSocket.getOutputStream().write(buffer, 0, read);
-            if (proxyToServerSocket.getInputStream().available() < 1) {
+            if (proxyToServerSocket.getInputStream().available() < 1) 
               clientSocket.getOutputStream().flush();
-            }
           }
         } while (read >= 0);
 
       // Close Down Resources
-      if (proxyToServerSocket != null) {
+      if (proxyToServerSocket != null) 
         proxyToServerSocket.close();
-      }
 
-      if (proxyToServerBR != null) {
+      if (proxyToServerBR != null) 
         proxyToServerBR.close();
-      }
 
-      if (proxyToServerBW != null) {
+      if (proxyToServerBW != null) 
         proxyToServerBW.close();
-      }
-
-      if (proxyToClientBw != null) {
+      
+      if (proxyToClientBw != null) 
         proxyToClientBw.close();
-      }
 
     } catch (SocketTimeoutException e) {
       String line =
@@ -448,9 +440,8 @@ public class RequestHandler implements Runnable {
           read = proxyToClientIS.read(buffer);
           if (read > 0) {
             proxyToServerOS.write(buffer, 0, read);
-            if (proxyToClientIS.available() < 1) {
+            if (proxyToClientIS.available() < 1) 
               proxyToServerOS.flush();
-            }
           }
         } while (read >= 0);
       } catch (SocketTimeoutException ste) {
