@@ -234,7 +234,7 @@ public class RequestHandler implements Runnable {
       }
 
       // Check if file is an image
-      if ((fileExtension.contains(".png"))
+      if (fileExtension.contains(".png")
           || fileExtension.contains(".jpg")
           || fileExtension.contains(".jpeg")
           || fileExtension.contains(".gif")) {

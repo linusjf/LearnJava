@@ -90,16 +90,7 @@ public class Proxy implements Runnable {
     blockedSites = new HashMap<>();
     // Create array list to hold servicing threads
     servicingThreads = new ArrayList<>();
-  }
-  /**
-   * Create the Proxy Server.
-   *
-   * @param port Port number to run proxy server from.
-   */
-  public Proxy(int port) {
 
-    // Start dynamic manager on a separate thread.
-    new Thread(this).start(); // Starts overriden run() method at bottom
 
     try {
       // Load in cached sites from file
@@ -133,6 +124,16 @@ public class Proxy implements Runnable {
       System.out.println(
           "Class not found loading in preivously cached sites file : " + e.getMessage());
     }
+  }
+  /**
+   * Create the Proxy Server.
+   *
+   * @param port Port number to run proxy server from.
+   */
+  public Proxy(int port) {
+
+    // Start dynamic manager on a separate thread.
+    new Thread(this).start(); // Starts overriden run() method at bottom
 
     try {
       // Create the Server Socket for the Proxy
