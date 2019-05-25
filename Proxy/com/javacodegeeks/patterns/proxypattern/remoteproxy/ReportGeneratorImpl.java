@@ -8,10 +8,21 @@ import java.rmi.server.UnicastRemoteObject;
 
 import java.util.Date;
 
+/**
+ * Describe class <code>ReportGeneratorImpl</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGenerator {
 
   private static final long serialVersionUID = 3107413009881629428L;
 
+  /**
+   * Creates a new <code>ReportGeneratorImpl</code> instance.
+   *
+   * @exception RemoteException if an error occurs
+   */
   protected ReportGeneratorImpl() throws RemoteException {
     // Empty constructor.Not public.
   }

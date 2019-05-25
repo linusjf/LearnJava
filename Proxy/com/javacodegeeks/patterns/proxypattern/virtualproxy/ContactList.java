@@ -10,6 +10,9 @@ import java.util.List;
  */
 public interface ContactList {
 
-  /** @return a <code>List</code> of employees. */
+  /** 
+   * Function to return a list of employees.
+   * @return a <code>List</code> of employees.
+   * */
   List<Employee> getEmployeeList();
 }

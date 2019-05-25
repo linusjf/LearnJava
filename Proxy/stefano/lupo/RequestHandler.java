@@ -18,15 +18,23 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
+/**
+ * Describe class <code>RequestHandler</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class RequestHandler implements Runnable {
 
-  /** Socket connected to client passed by Proxy server */
+  /** 
+   * Socket connected to client passed by Proxy server.
+   */
   Socket clientSocket;
 
-  /** Read data client sends to proxy */
+  /** Read data client sends to proxy. */
   BufferedReader proxyToClientBr;
 
-  /** Send data from proxy to client */
+  /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
 
   /**
@@ -36,7 +44,7 @@ public class RequestHandler implements Runnable {
   private Thread httpsClientToServer;
 
   /**
-   * Creates a ReuqestHandler object capable of servicing HTTP(S) GET requests
+   * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
    *
    * @param clientSocket socket connected to the client
    */
@@ -412,11 +420,11 @@ public class RequestHandler implements Runnable {
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
       } catch (IOException ioe) {
-        ioe.printStackTrace();
+        System.err.println(ioe.getMessage());
       }
-    } catch (Exception e) {
-      System.out.println("Error on HTTPS : " + urlString);
-      e.printStackTrace();
+    } catch (IOException e) {
+      System.out.println("Error on HTTPS : "
+          + urlString + e.getMessage());
     }
   }
 
@@ -431,7 +439,7 @@ public class RequestHandler implements Runnable {
     OutputStream proxyToServerOS;
 
     /**
-     * Creates Object to Listen to Client and Transmit that data to the server
+     * Creates Object to Listen to Client and Transmit that data to the server.
      *
      * @param proxyToClientIS Stream that proxy uses to receive data from client
      * @param proxyToServerOS Stream that proxy uses to transmit data to remote server
@@ -442,6 +450,7 @@ public class RequestHandler implements Runnable {
     }
 
     @Override
+    @SuppressWarnings("checkstyle:magicnumber")
     public void run() {
       try {
         // Read byte by byte from client and send directly to server

@@ -1,6 +1,12 @@
 package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
 
+/**
+ * Describe class <code>Employee</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Employee implements Staff {
 
   private ReportGeneratorProxy reportGenerator;
@@ -15,6 +21,11 @@ public class Employee implements Staff {
     return false;
   }
 
+  /**
+   * Describe <code>generateDailyReport</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
   public String generateDailyReport() {
     return reportGenerator.generateDailyReport();
   }

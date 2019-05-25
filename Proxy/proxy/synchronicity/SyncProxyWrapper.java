@@ -9,10 +9,21 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
   private final T wrappableImpl;
   private final Object lockObject = new Object();
 
+  /**
+   * Constructor.
+   * @param wrappableImpl the wrappable class
+   */
   public SyncProxyWrapper(T wrappableImpl) {
     this.wrappableImpl = wrappableImpl;
   }
 
+  /**
+   * Invoke the specified method on the wrapped implementation.
+   * @return Object holds the result of the method invokation.
+   * @param proxy the proxy object 
+   * @param method the method to be invoked
+   * @param args array of arguments
+   */
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     synchronized (lockObject) {
@@ -21,6 +32,12 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
     }
   }
 
+  /**
+   * Wrap the implementor with your synchronous wrapper.
+   * @return T any template object
+   * @param wrappableClass the interface
+   * @param wrappableImpl the interface implementation
+   */
   @SuppressWarnings("unchecked")
   public static <T> T wrap(Class<T> wrappableClass, T wrappableImpl) {
     return (T)

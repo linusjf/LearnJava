@@ -3,6 +3,10 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 public enum TestProtectionProxy {
   ;
 
+  /**
+   * Main function.
+   * @param args String[] array of String arguments
+   */
   public static void main(String[] args) {
     Owner owner = new Owner();
     ReportGeneratorProxy reportGenerator = new ReportGeneratorProtectionProxy(owner);

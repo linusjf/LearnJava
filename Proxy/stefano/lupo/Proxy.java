@@ -46,7 +46,11 @@ import java.util.Scanner;
  */
 public class Proxy implements Runnable {
 
-  // Main method for the program
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
   @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
     // Create an instance of Proxy and begin listening for connections

@@ -1,5 +1,11 @@
 package proxy.synchronicity;
 
+/**
+ * Describe class <code>BlackBox</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class BlackBox implements IBlackBox {
 
   @Override

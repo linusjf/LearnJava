@@ -8,10 +8,21 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+/**
+ * Describe class <code>ReportGeneratorProtectionProxy</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   ReportGenerator reportGenerator;
   Staff staff;
 
+  /**
+   * Creates a new <code>ReportGeneratorProtectionProxy</code> instance.
+   *
+   * @param staff a <code>Staff</code> value
+   */
   public ReportGeneratorProtectionProxy(Staff staff) {
     this.staff = staff;
   }
