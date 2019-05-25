@@ -38,7 +38,7 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
           | RemoteException
           | NotBoundException e) {
         System.err.println(e.getMessage());
-      }
+          }
       return "";
     } else {
       return "Not Authorized to view report.";

@@ -60,10 +60,10 @@ public class Employee {
   @Override
   public String toString() {
     return "Employee Name: "
-        + employeeName
-        + ", EmployeeDesignation: "
-        + employeeDesignation
-        + ", Employee Salary: "
-        + employeeSalary;
+      + employeeName
+      + ", EmployeeDesignation: "
+      + employeeDesignation
+      + ", Employee Salary: "
+      + employeeSalary;
   }
 }

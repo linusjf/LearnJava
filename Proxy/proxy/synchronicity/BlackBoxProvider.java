@@ -7,10 +7,10 @@ package proxy.synchronicity;
  * @version 1.0
  */
 public final class BlackBoxProvider { // NOPMD
- 
+
   private BlackBoxProvider() {
   }
-  
+
   /**
    * Describe <code>getBlackBox</code> method here.
    *

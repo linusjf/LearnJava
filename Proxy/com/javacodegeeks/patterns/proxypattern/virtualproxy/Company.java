@@ -28,7 +28,7 @@ public class Company {
     this.companyContactNo = companyContactNo;
     this.contactList = contactList;
     System.out.println("Company object created...");
-  }
+      }
 
   /**
    * Describe <code>getCompanyName</code> method here.

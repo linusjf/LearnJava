@@ -147,7 +147,7 @@ public class RequestHandler implements Runnable {
         }
       } else {
         final BufferedReader cachedFileBufferedReader =
-            new BufferedReader(new InputStreamReader(new FileInputStream(cachedFile)));
+          new BufferedReader(new InputStreamReader(new FileInputStream(cachedFile)));
 
         response = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
         proxyToClientBw.write(response);
@@ -275,7 +275,7 @@ public class RequestHandler implements Runnable {
 
         // Create Buffered Reader from remote Server
         BufferedReader proxyToServerBR =
-            new BufferedReader(new InputStreamReader(proxyToServerCon.getInputStream()));
+          new BufferedReader(new InputStreamReader(proxyToServerCon.getInputStream()));
 
         // Send success code to client
         String line = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
@@ -338,7 +338,7 @@ public class RequestHandler implements Runnable {
       // Read (and throw away) the rest of the initial data on the stream
       for (int i = 0; i < 5; i++) 
         proxyToClientBr.readLine();
-      
+
       // Get actual IP associated with this URL through DNS
       InetAddress address = InetAddress.getByName(url);
 
@@ -348,37 +348,37 @@ public class RequestHandler implements Runnable {
 
       // Send Connection established to the client
       String line =
-          "HTTP/1.0 200 Connection established\r\n" + "Proxy-Agent: ProxyServer/1.0\r\n" + "\r\n";
+        "HTTP/1.0 200 Connection established\r\n" + "Proxy-Agent: ProxyServer/1.0\r\n" + "\r\n";
       proxyToClientBw.write(line);
       proxyToClientBw.flush();
 
       // Create a Buffered Writer betwen proxy and remote
       final BufferedWriter proxyToServerBW =
-          new BufferedWriter(new OutputStreamWriter(proxyToServerSocket.getOutputStream()));
+        new BufferedWriter(new OutputStreamWriter(proxyToServerSocket.getOutputStream()));
 
       // Create Buffered Reader from proxy and remote
       final BufferedReader proxyToServerBR =
-          new BufferedReader(new InputStreamReader(proxyToServerSocket.getInputStream()));
+        new BufferedReader(new InputStreamReader(proxyToServerSocket.getInputStream()));
 
       // Create a new thread to listen to client and transmit to server
       ClientToServerHttpsTransmit clientToServerHttps =
-          new ClientToServerHttpsTransmit(
-              clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
+        new ClientToServerHttpsTransmit(
+            clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
 
       Thread httpsClientToServer = new Thread(clientToServerHttps);
       httpsClientToServer.start();
 
       // Listen to remote server and relay to client
-        byte[] buffer = new byte[4096];
-        int read;
-        do {
-          read = proxyToServerSocket.getInputStream().read(buffer);
-          if (read > 0) {
-            clientSocket.getOutputStream().write(buffer, 0, read);
-            if (proxyToServerSocket.getInputStream().available() < 1) 
-              clientSocket.getOutputStream().flush();
-          }
-        } while (read >= 0);
+      byte[] buffer = new byte[4096];
+      int read;
+      do {
+        read = proxyToServerSocket.getInputStream().read(buffer);
+        if (read > 0) {
+          clientSocket.getOutputStream().write(buffer, 0, read);
+          if (proxyToServerSocket.getInputStream().available() < 1) 
+            clientSocket.getOutputStream().flush();
+        }
+      } while (read >= 0);
 
       // Close Down Resources
       if (proxyToServerSocket != null) 
@@ -389,13 +389,13 @@ public class RequestHandler implements Runnable {
 
       if (proxyToServerBW != null) 
         proxyToServerBW.close();
-      
+
       if (proxyToClientBw != null) 
         proxyToClientBw.close();
 
     } catch (SocketTimeoutException e) {
       String line =
-          "HTTP/1.0 504 Timeout Occured after 10s\n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
+        "HTTP/1.0 504 Timeout Occured after 10s\n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
       try {
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
@@ -459,7 +459,7 @@ public class RequestHandler implements Runnable {
   private void blockedSiteRequested() {
     try {
       BufferedWriter bufferedWriter =
-          new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+        new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
       String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
       bufferedWriter.write(line);
       bufferedWriter.flush();

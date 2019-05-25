@@ -84,7 +84,7 @@ public class Proxy implements Runnable {
   static List<Thread> servicingThreads;
 
   static {
-  
+
     // Load in hash map containing previously cached sites and blocked Sites
     cache = new HashMap<>();
     blockedSites = new HashMap<>();
@@ -267,9 +267,9 @@ public class Proxy implements Runnable {
     String command = "";
     System.out.println(
         "Enter new site to block, or type "
-            + "\"blocked\" to see blocked sites, "
-            + "\"cached\" to see cached sites, or "
-            + "\"close\" to close server.");
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();
