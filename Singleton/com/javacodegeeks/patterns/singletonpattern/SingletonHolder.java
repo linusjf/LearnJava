@@ -6,7 +6,7 @@ package com.javacodegeeks.patterns.singletonpattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class SingletonHolder { // NOPMD
+public final class SingletonHolder { // NOPMD
 
   // Static member class member that holds only one instance of the
   // SingletonHolder class
@@ -16,7 +16,8 @@ public class SingletonHolder { // NOPMD
   }
 
   // SingletonHolder prevents any other class from instantiating
-  private SingletonHolder() {}
+  private SingletonHolder() {
+  }
 
   // Providing Global point of access
   /**
