@@ -1,9 +1,20 @@
 package com.javacodegeeks.patterns.chainofresponsibility;
 
+/**
+ * Describe class <code>ImageFileHandler</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class ImageFileHandler implements Handler {
   private Handler handler;
   private String handlerName;
 
+  /**
+   * Creates a new <code>ImageFileHandler</code> instance.
+   *
+   * @param handlerName a <code>String</code> value
+   */
   public ImageFileHandler(String handlerName) {
     this.handlerName = handlerName;
   }

@@ -1,9 +1,20 @@
 package com.javacodegeeks.patterns.chainofresponsibility;
 
+/**
+ * Describe class <code>DocFileHandler</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class DocFileHandler implements Handler {
   private Handler handler;
   private String handlerName;
 
+  /**
+   * Creates a new <code>DocFileHandler</code> instance.
+   *
+   * @param handlerName a <code>String</code> value
+   */
   public DocFileHandler(String handlerName) {
     this.handlerName = handlerName;
   }

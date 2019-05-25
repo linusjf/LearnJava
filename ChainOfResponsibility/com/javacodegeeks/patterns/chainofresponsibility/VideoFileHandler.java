@@ -1,10 +1,21 @@
 package com.javacodegeeks.patterns.chainofresponsibility;
 
+/**
+ * Describe class <code>VideoFileHandler</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class VideoFileHandler implements Handler {
 
   private Handler handler;
   private String handlerName;
 
+  /**
+   * Creates a new <code>VideoFileHandler</code> instance.
+   *
+   * @param handlerName a <code>String</code> value
+   */
   public VideoFileHandler(String handlerName) {
     this.handlerName = handlerName;
   }
