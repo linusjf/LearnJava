@@ -344,7 +344,7 @@ public class RequestHandler implements Runnable {
 
       // Open a socket to the remote server
       Socket proxyToServerSocket = new Socket(address, port);
-      proxyToServerSocket.setSoTimeout(5000);
+      proxyToServerSocket.setSoTimeout(60*1000);
 
       // Send Connection established to the client
       String line =
@@ -445,7 +445,7 @@ public class RequestHandler implements Runnable {
           }
         } while (read >= 0);
       } catch (SocketTimeoutException ste) {
-        System.err.println(ste.getMessage());
+        System.err.println("Socket time out : " + ste.getMessage());
       } catch (IOException e) {
         System.out.println("Proxy to client HTTPS read timed out" + e.getMessage());
       }

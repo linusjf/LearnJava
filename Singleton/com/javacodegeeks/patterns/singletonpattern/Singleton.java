@@ -35,7 +35,11 @@ public final class Singleton implements Serializable, Cloneable {
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
         if (instance == null) {
-          instance = new Singleton();
+          synchronized (Singleton.class) {
+            if (instance == null) {
+              instance = new Singleton();
+            }
+          }
         }
       }
     }

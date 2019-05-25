@@ -8,6 +8,7 @@
 *.bak
 *.html
 *docs*
+Proxy/cached/*.*
 **/walkmod.xml
 !lib/*.jar
 !./AnnoProc.class

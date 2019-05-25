@@ -8,6 +8,7 @@ import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.List;
 
 public enum TestProxy {
@@ -62,8 +63,11 @@ public enum TestProxy {
           proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
         URLConnection connection = url.openConnection(proxy);
         connection.getInputStream();
+        TimeUnit.SECONDS.sleep(1);
       } catch (IOException e) {
         System.err.println("Error creating HTTP(S) connection: " + e.getMessage());
+      } catch (InterruptedException e) {
+        System.err.println("Error delaying next loop : " + e.getMessage());
       }
     }
   }
