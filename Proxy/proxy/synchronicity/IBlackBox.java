@@ -8,15 +8,9 @@ package proxy.synchronicity;
  */
 public interface IBlackBox {
 
-  /**
-   * Describe <code>methodA</code> method here.
-   *
-   */
+  /** Describe <code>methodA</code> method here. */
   void methodA();
 
-  /**
-   * Describe <code>methodB</code> method here.
-   *
-   */
+  /** Describe <code>methodB</code> method here. */
   void methodB();
 }

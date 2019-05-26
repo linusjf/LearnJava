@@ -5,6 +5,7 @@ public enum TestProtectionProxy {
 
   /**
    * Main function.
+   *
    * @param args String[] array of String arguments
    */
   public static void main(String[] args) {

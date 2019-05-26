@@ -1,9 +1,7 @@
 package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
 import com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGenerator;
-
 import java.net.MalformedURLException;
-
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -34,9 +32,7 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
       try {
         reportGenerator = (ReportGenerator) Naming.lookup("rmi://127.0.0.1/PizzaCoRemoteGenerator");
         return reportGenerator.generateDailyReport();
-      } catch (MalformedURLException 
-          | RemoteException
-          | NotBoundException e) {
+      } catch (MalformedURLException | RemoteException | NotBoundException e) {
         System.err.println(e.getMessage());
       }
       return "";

@@ -18,7 +18,8 @@ public final class Server {
   }
 
   public static void main(final String[] args) throws Exception {
-    try (final Selector selector = Selector.open(); final ServerSocketChannel serverSocket = ServerSocketChannel.open();) {
+    try (final Selector selector = Selector.open();
+        final ServerSocketChannel serverSocket = ServerSocketChannel.open(); ) {
       final InetSocketAddress hostAddress = new InetSocketAddress(Constants.HOST, Constants.PORT);
       serverSocket.bind(hostAddress);
       serverSocket.configureBlocking(false);
@@ -33,7 +34,9 @@ public final class Server {
     }
   }
 
-  private static void handleSelectionKeys(final Set<SelectionKey> selectionKeys, final ServerSocketChannel serverSocket) throws IOException {
+  private static void handleSelectionKeys(
+      final Set<SelectionKey> selectionKeys, final ServerSocketChannel serverSocket)
+      throws IOException {
     assert !Objects.isNull(selectionKeys) && !Objects.isNull(serverSocket);
 
     final Iterator<SelectionKey> selectionKeyIterator = selectionKeys.iterator();
@@ -52,7 +55,8 @@ public final class Server {
     }
   }
 
-  private static void acceptClientSocket(final SelectionKey key, final ServerSocketChannel serverSocket) throws IOException {
+  private static void acceptClientSocket(
+      final SelectionKey key, final ServerSocketChannel serverSocket) throws IOException {
     assert !Objects.isNull(key) && !Objects.isNull(serverSocket);
 
     final SocketChannel client = serverSocket.accept();
@@ -75,6 +79,5 @@ public final class Server {
     } else {
       System.out.println(String.format("Request data: %s", new String(buffer.array())));
     }
-
   }
 }

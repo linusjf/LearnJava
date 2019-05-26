@@ -26,9 +26,7 @@ import javax.imageio.ImageIO;
  */
 public class RequestHandler implements Runnable {
 
-  /** 
-   * Socket connected to client passed by Proxy server.
-   */
+  /** Socket connected to client passed by Proxy server. */
   Socket clientSocket;
 
   /** Read data client sends to proxy. */
@@ -36,7 +34,6 @@ public class RequestHandler implements Runnable {
 
   /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
-
 
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
@@ -325,7 +322,7 @@ public class RequestHandler implements Runnable {
    *
    * @param urlString desired file to be transmitted over https
    */
-  @SuppressWarnings({"checkstyle:abbreviationaswordinname","checkstyle:magicnumber"})
+  @SuppressWarnings({"checkstyle:abbreviationaswordinname", "checkstyle:magicnumber"})
   private void handleHTTPSRequest(String urlString) {
     // Extract the URL and port of remote
     String url = urlString.substring(7);
@@ -336,15 +333,14 @@ public class RequestHandler implements Runnable {
     try {
       // Only first line of HTTPS request has been read at this point (CONNECT *)
       // Read (and throw away) the rest of the initial data on the stream
-      for (int i = 0; i < 5; i++) 
-        proxyToClientBr.readLine();
+      for (int i = 0; i < 5; i++) proxyToClientBr.readLine();
 
       // Get actual IP associated with this URL through DNS
       InetAddress address = InetAddress.getByName(url);
 
       // Open a socket to the remote server
       Socket proxyToServerSocket = new Socket(address, port);
-      proxyToServerSocket.setSoTimeout(60*1000);
+      proxyToServerSocket.setSoTimeout(60 * 1000);
 
       // Send Connection established to the client
       String line =
@@ -363,7 +359,7 @@ public class RequestHandler implements Runnable {
       // Create a new thread to listen to client and transmit to server
       ClientToServerHttpsTransmit clientToServerHttps =
           new ClientToServerHttpsTransmit(
-            clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
+              clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
 
       Thread httpsClientToServer = new Thread(clientToServerHttps);
       httpsClientToServer.start();
@@ -375,23 +371,19 @@ public class RequestHandler implements Runnable {
         read = proxyToServerSocket.getInputStream().read(buffer);
         if (read > 0) {
           clientSocket.getOutputStream().write(buffer, 0, read);
-          if (proxyToServerSocket.getInputStream().available() < 1) 
+          if (proxyToServerSocket.getInputStream().available() < 1)
             clientSocket.getOutputStream().flush();
         }
       } while (read >= 0);
 
       // Close Down Resources
-      if (proxyToServerSocket != null) 
-        proxyToServerSocket.close();
+      if (proxyToServerSocket != null) proxyToServerSocket.close();
 
-      if (proxyToServerBR != null) 
-        proxyToServerBR.close();
+      if (proxyToServerBR != null) proxyToServerBR.close();
 
-      if (proxyToServerBW != null) 
-        proxyToServerBW.close();
+      if (proxyToServerBW != null) proxyToServerBW.close();
 
-      if (proxyToClientBw != null) 
-        proxyToClientBw.close();
+      if (proxyToClientBw != null) proxyToClientBw.close();
 
     } catch (SocketTimeoutException e) {
       String line =
@@ -403,8 +395,7 @@ public class RequestHandler implements Runnable {
         System.err.println(ioe.getMessage());
       }
     } catch (IOException e) {
-      System.out.println("Error on HTTPS : "
-          + urlString + e.getMessage());
+      System.out.println("Error on HTTPS : " + urlString + e.getMessage());
     }
   }
 
@@ -440,8 +431,7 @@ public class RequestHandler implements Runnable {
           read = proxyToClientIS.read(buffer);
           if (read > 0) {
             proxyToServerOS.write(buffer, 0, read);
-            if (proxyToClientIS.available() < 1) 
-              proxyToServerOS.flush();
+            if (proxyToClientIS.available() < 1) proxyToServerOS.flush();
           }
         } while (read >= 0);
       } catch (SocketTimeoutException ste) {

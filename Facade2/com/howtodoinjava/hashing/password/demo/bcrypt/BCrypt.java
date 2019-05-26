@@ -396,12 +396,12 @@ public class BCrypt {
       c1 |= (c2 >> 4) & 0x0f;
       rs.append(base64Code[c1 & 0x3f]);
       c1 = (c2 & 0x0f) << 2;
-      
+
       if (off >= len) {
         rs.append(base64Code[c1 & 0x3f]);
         break;
       }
-      
+
       c2 = d[off++] & 0xff;
       c1 |= (c2 >> 6) & 0x03;
       rs.append(base64Code[c1 & 0x3f]);
@@ -432,7 +432,7 @@ public class BCrypt {
    * @throws IllegalArgumentException if maxolen is invalid
    */
   private static byte[] decodeBase64(final String s, final int maxolen)
-    throws IllegalArgumentException {
+      throws IllegalArgumentException {
     final StringBuilder rs = new StringBuilder();
     int off = 0;
     final int slen = s.length();

@@ -10,8 +10,7 @@ public final class ByteToHex { // NOPMD
 
   private static final String HEXES = "0123456789abcdef";
 
-  private ByteToHex() {
-  }
+  private ByteToHex() {}
 
   /**
    * Describe <code>getHex</code> method here.

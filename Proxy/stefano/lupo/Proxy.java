@@ -14,12 +14,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,7 +89,6 @@ public class Proxy implements Runnable {
     // Create array list to hold servicing threads
     servicingThreads = new ArrayList<>();
 
-
     try {
       // Load in cached sites from file
       File cachedSites = new File("cachedSites.txt");
@@ -125,7 +122,7 @@ public class Proxy implements Runnable {
           "Class not found loading in preivously cached sites file : " + e.getMessage());
     }
   }
- 
+
   /**
    * Create the Proxy Server.
    *
@@ -254,7 +251,7 @@ public class Proxy implements Runnable {
    * @return true if URL is blocked, false otherwise
    */
   public static boolean isBlocked(String url) {
-    return blockedSites.containsKey(url); 
+    return blockedSites.containsKey(url);
   }
 
   /**
@@ -268,28 +265,25 @@ public class Proxy implements Runnable {
     String command = "";
     System.out.println(
         "Enter new site to block, or type "
-        + "\"blocked\" to see blocked sites, "
-        + "\"cached\" to see cached sites, or "
-        + "\"close\" to close server.");
+            + "\"blocked\" to see blocked sites, "
+            + "\"cached\" to see cached sites, or "
+            + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();
-        if ("blocked".equals(command
-              .toLowerCase(Locale.getDefault()))) {
+        if ("blocked".equals(command.toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Blocked Sites");
           for (String key : blockedSites.keySet()) {
             System.out.println(key);
           }
           System.out.println();
-        } else if ("cached".equals(command
-              .toLowerCase(Locale.getDefault()))) {
+        } else if ("cached".equals(command.toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Cached Sites");
           for (String key : cache.keySet()) {
             System.out.println(key);
           }
           System.out.println();
-        } else if ("close".equals(command
-              .toLowerCase(Locale.getDefault()))) {
+        } else if ("close".equals(command.toLowerCase(Locale.getDefault()))) {
           running = false;
           closeServer();
         } else {

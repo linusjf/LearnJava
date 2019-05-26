@@ -27,8 +27,7 @@ public final class SCrypt { // NOPMD
     native_library_loaded = loader.load("scrypt", true);
   }
 
-  private SCrypt() {
-  }
+  private SCrypt() {}
 
   /**
    * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
@@ -47,8 +46,8 @@ public final class SCrypt { // NOPMD
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
     return native_library_loaded
-      ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-      : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+        ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+        : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
   }
 
   /**

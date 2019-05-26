@@ -46,7 +46,7 @@ public final class SCryptUtil { // NOPMD
       SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
       final byte[] derived =
-        SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, enCPUCost, rmemCost, p, 32);
+          SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, enCPUCost, rmemCost, p, 32);
 
       final String params = Long.toString(log2(enCPUCost) << 16L | rmemCost << 8 | p, 16);
 
@@ -120,6 +120,5 @@ public final class SCryptUtil { // NOPMD
     return log + (n >>> 1);
   }
 
-  private SCryptUtil() {
-  }
+  private SCryptUtil() {}
 }

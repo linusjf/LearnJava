@@ -1,6 +1,5 @@
 package com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
-
 /**
  * Describe class <code>Employee</code> here.
  *

@@ -16,8 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 @SuppressWarnings("checkstyle:abbreviationaswordinname")
 public final class PBKDF { // NOPMD
 
-  private PBKDF() {
-  }
+  private PBKDF() {}
 
   /**
    * Implementation of PBKDF2 (RFC2898).
@@ -57,24 +56,23 @@ public final class PBKDF { // NOPMD
       throw new GeneralSecurityException("Requested key length too long");
     }
     final byte[] bytesU = new byte[lengthH];
-    
+
     final byte[] bytesT = new byte[lengthH];
-    
+
     final byte[] block1 = new byte[salt.length + 4];
 
-    
     final int l = (int) Math.ceil((double) dkLen / lengthH);
-    
+
     final int r = dkLen - (l - 1) * lengthH;
 
     arraycopy(salt, 0, block1, 0, salt.length);
 
     for (int i = 1; i <= l; i++) {
-    
+
       block1[salt.length + 0] = (byte) (i >> 24 & 0xff);
-      
+
       block1[salt.length + 1] = (byte) (i >> 16 & 0xff);
-      
+
       block1[salt.length + 2] = (byte) (i >> 8 & 0xff);
       block1[salt.length + 3] = (byte) (i >> 0 & 0xff);
 

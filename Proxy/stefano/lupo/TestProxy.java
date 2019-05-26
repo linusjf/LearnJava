@@ -8,8 +8,8 @@ import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public enum TestProxy {
   ;
@@ -23,6 +23,7 @@ public enum TestProxy {
 
   /**
    * Main program.
+   *
    * @param args list of String arguments
    */
   public static void main(String[] args) {

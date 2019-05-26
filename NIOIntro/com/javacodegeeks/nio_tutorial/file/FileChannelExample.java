@@ -9,11 +9,16 @@ import java.nio.channels.FileChannel;
 public interface FileChannelExample {
 
   public static enum FileOperation {
-    READ, WRITE;
+    READ,
+    WRITE;
   }
 
-  default FileChannel createChannel(String path, FileOperation fileOperation) throws FileNotFoundException {
-    final File file = new File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
-    return fileOperation == FileOperation.READ ? new FileInputStream(file).getChannel() : new FileOutputStream(file).getChannel();
+  default FileChannel createChannel(String path, FileOperation fileOperation)
+      throws FileNotFoundException {
+    final File file =
+        new File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
+    return fileOperation == FileOperation.READ
+        ? new FileInputStream(file).getChannel()
+        : new FileOutputStream(file).getChannel();
   }
 }

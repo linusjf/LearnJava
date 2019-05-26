@@ -5,6 +5,7 @@ public enum TestChainOfResponsibility {
 
   /**
    * Main program.
+   *
    * @param args array of String arguments.
    */
   public static void main(String[] args) {

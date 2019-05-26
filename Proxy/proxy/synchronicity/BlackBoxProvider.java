@@ -8,8 +8,7 @@ package proxy.synchronicity;
  */
 public final class BlackBoxProvider { // NOPMD
 
-  private BlackBoxProvider() {
-  }
+  private BlackBoxProvider() {}
 
   /**
    * Describe <code>getBlackBox</code> method here.

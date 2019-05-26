@@ -11,6 +11,7 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
 
   /**
    * Constructor.
+   *
    * @param wrappableImpl the wrappable class
    */
   public SyncProxyWrapper(T wrappableImpl) {
@@ -19,8 +20,9 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
 
   /**
    * Invoke the specified method on the wrapped implementation.
+   *
    * @return Object holds the result of the method invokation.
-   * @param proxy the proxy object 
+   * @param proxy the proxy object
    * @param method the method to be invoked
    * @param args array of arguments
    */
@@ -34,6 +36,7 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
 
   /**
    * Wrap the implementor with your synchronous wrapper.
+   *
    * @return T any template object
    * @param wrappableClass the interface
    * @param wrappableImpl the interface implementation
@@ -41,9 +44,9 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
   @SuppressWarnings("unchecked")
   public static <T> T wrap(Class<T> wrappableClass, T wrappableImpl) {
     return (T)
-      Proxy.newProxyInstance(
-          SyncProxyWrapper.class.getClassLoader(),
-          new Class[] {wrappableClass},
-          new SyncProxyWrapper<>(wrappableImpl));
+        Proxy.newProxyInstance(
+            SyncProxyWrapper.class.getClassLoader(),
+            new Class[] {wrappableClass},
+            new SyncProxyWrapper<>(wrappableImpl));
   }
 }
