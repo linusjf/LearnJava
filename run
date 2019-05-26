@@ -81,7 +81,7 @@ runJVM()
       echo Main class: $main
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      java -cp $proj.jar $a 
+      java -cp $proj.jar:$proj $a 
     done
       tearDown;
       exit 0;

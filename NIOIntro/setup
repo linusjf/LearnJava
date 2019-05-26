@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -cp . com.javacodegeeks.nio_tutorial.server.Server &
