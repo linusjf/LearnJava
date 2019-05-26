@@ -72,8 +72,6 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-    #[ -e $proj/$optionsFile ] && \
-     # options=$(cat $proj/$optionsFile)
     ecj -$ver -cp $proj $proj  
     success=$?
     if [ $success -eq 0 ]
