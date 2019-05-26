@@ -53,6 +53,7 @@ createJar()
 
 proj=$1
 ver="1.7"
+ecjSupportedVer="8"
 distDir="dist"
 manifestFile="manifest.mf"
 verFile=".ver"
@@ -72,7 +73,7 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-          if [ 1 -eq $(echo "$ver <= 1.8" | bc) ]
+          if [ 1 -eq $(echo "${ver:2} <= $ecjSupportedVer" | bc) ]
       then
       ecj -$ver -cp $proj $proj
     else
