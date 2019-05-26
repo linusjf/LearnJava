@@ -22,9 +22,7 @@ public final class Client {
 
         while (buffer.hasRemaining()) {
           client.write(buffer);
-          System.out.println("Written " + (i+1)
-              + " : " 
-              + new String(buffer.array()));
+          System.out.println("Written " + (i + 1) + " : " + new String(buffer.array()));
         }
       } catch (IOException e) {
         System.err.println("Error with client writing " + e.getMessage());
