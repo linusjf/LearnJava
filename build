@@ -72,7 +72,14 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-    ecj -$ver -cp $proj $proj  
+          if [ 1 -eq $(echo "$ver <= 1.8" | bc) ]
+      then
+      ecj -$ver -cp $proj $proj
+    else
+      javac -source $ver -target $ver \
+      -cp $proj \
+      `find $proj -name "*.java" -type f`
+    fi
     success=$?
     if [ $success -eq 0 ]
       then
