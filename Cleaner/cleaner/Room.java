@@ -3,6 +3,12 @@ package cleaner;
 import java.lang.ref.Cleaner;
 
 // An autocloseable class using a cleaner as a safety net
+/**
+ * Describe class <code>Room</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public class Room implements AutoCloseable {
 
   private static final Cleaner cleaner = Cleaner.create();
@@ -11,7 +17,12 @@ public class Room implements AutoCloseable {
   private static class State implements Runnable {
     int numJunkPiles; // Number of junk piles in this room
 
-    State(int numJunkPiles) {
+      /**
+       * Creates a new <code>State</code> instance.
+       *
+       * @param numJunkPiles an <code>int</code> value
+       */
+      State(int numJunkPiles) {
       this.numJunkPiles = numJunkPiles;
     }
 
@@ -28,7 +39,12 @@ public class Room implements AutoCloseable {
   // Our cleanable. Cleans the room when it’s eligible for gc
   private final Cleaner.Cleanable cleanable;
 
-  public Room(int numJunkPiles) {
+    /**
+     * Creates a new <code>Room</code> instance.
+     *
+     * @param numJunkPiles an <code>int</code> value
+     */
+    public Room(int numJunkPiles) {
     state = new State(numJunkPiles);
     cleanable = cleaner.register(this, state);
   }

@@ -2,13 +2,13 @@
 
 #######################################################################
 #@author: Linus Fernandes(linusfernandes @gmail.com)
-# @file: build
+# @file: buildj
 ## @created: Friday May 03, 2019 21: 20: 25 IST
 # @copyright: Copyright(c) Linus Fernandes
 ## @description: 
 ######################################################################
 usage() {
-        echo "usage: build dir"
+        echo "usage: buildj dir"
         echo "dir - Project directory, must exist"
         exit 1
 }
@@ -72,7 +72,9 @@ else
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
       echo "Unable to read $proj/$verFile";}
-    ecj -$ver -cp $proj $proj
+    javac -source $ver -target $ver \
+    -cp $proj -Xlint:all \
+    `find $proj -name "*.java" -type f`
     success=$?
     if [ $success -eq 0 ]
       then
