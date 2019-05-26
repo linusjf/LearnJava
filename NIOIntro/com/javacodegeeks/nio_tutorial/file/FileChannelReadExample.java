@@ -10,6 +10,7 @@ public final class FileChannelReadExample implements FileChannelExample {
   private static final int BYTE_BUFFER_LENGTH = 1024;
 
   public static void main(final String[] args) {
+    System.out.println("Reading...");
     System.out.println(new FileChannelReadExample().readFile());
   }
 

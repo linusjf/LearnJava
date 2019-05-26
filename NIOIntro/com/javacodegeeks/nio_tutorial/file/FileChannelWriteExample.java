@@ -13,6 +13,7 @@ public class FileChannelWriteExample implements FileChannelExample {
           + "vestibulum sed nunc in, faucibus posuere quam. Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
 
   public static void main(final String[] args) {
+    System.out.println("Writing...");
     new FileChannelWriteExample().writeFile();
   }
 

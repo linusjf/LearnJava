@@ -61,7 +61,8 @@
 </target>
 <target name="run" >
 <description>Run target</description>
-<exec executable="./setup"/>
+<exec executable="./setup"> 
+</exec>
 <java classname="${main.class}">
  <classpath>
    <pathelement location="${dist.dir}\${ant.project.name}.jar"/>

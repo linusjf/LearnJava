@@ -12,6 +12,7 @@ public final class Client {
   }
 
   public static void main(final String[] args) {
+    System.out.println("Starting client...");
     final InetSocketAddress hostAddress = new InetSocketAddress(Constants.HOST, Constants.PORT);
 
     for (int i = 0; i < 10; i++) {
@@ -21,9 +22,12 @@ public final class Client {
 
         while (buffer.hasRemaining()) {
           client.write(buffer);
+          System.out.println("Written " + (i+1)
+              + " : " 
+              + new String(buffer.array()));
         }
       } catch (IOException e) {
-        e.printStackTrace();
+        System.err.println("Error with client writing " + e.getMessage());
       }
     }
   }
