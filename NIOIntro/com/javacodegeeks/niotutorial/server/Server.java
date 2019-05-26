@@ -1,4 +1,4 @@
-package com.javacodegeeks.nio_tutorial.server;
+package com.javacodegeeks.niotutorial.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -11,12 +11,24 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Describe class <code>Server</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public final class Server {
 
   private Server() {
     throw new IllegalStateException("Instantiation not allowed");
   }
 
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   * @exception Exception if an error occurs
+   */
   public static void main(final String[] args) throws Exception {
     System.out.println("Starting server...");
     try (final Selector selector = Selector.open();
@@ -38,7 +50,9 @@ public final class Server {
   private static void handleSelectionKeys(
       final Set<SelectionKey> selectionKeys, final ServerSocketChannel serverSocket)
       throws IOException {
-    assert !Objects.isNull(selectionKeys) && !Objects.isNull(serverSocket);
+    if (Objects.isNull(selectionKeys) 
+        || Objects.isNull(serverSocket))
+      throw new AssertionError("selectionKeys and/or serverSocket null.");
 
     final Iterator<SelectionKey> selectionKeyIterator = selectionKeys.iterator();
     while (selectionKeyIterator.hasNext()) {
@@ -58,7 +72,9 @@ public final class Server {
 
   private static void acceptClientSocket(
       final SelectionKey key, final ServerSocketChannel serverSocket) throws IOException {
-    assert !Objects.isNull(key) && !Objects.isNull(serverSocket);
+    if (Objects.isNull(key) 
+        || Objects.isNull(serverSocket))
+      throw new AssertionError("key and/or serverSocket null.");
 
     final SocketChannel client = serverSocket.accept();
     client.configureBlocking(false);
@@ -68,7 +84,8 @@ public final class Server {
   }
 
   private static void readRequest(final SelectionKey key) throws IOException {
-    assert !Objects.isNull(key);
+    if (Objects.isNull(key)) 
+      throw new AssertionError("key null.");
 
     final SocketChannel client = (SocketChannel) key.channel();
     final ByteBuffer buffer = ByteBuffer.allocate(Constants.CLIENT_BYTE_BUFFER_CAPACITY);

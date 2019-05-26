@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ps -ef | grep \
-  'com.javacodegeeks.nio_tutorial.server.Server' | \
+  'com.javacodegeeks.niotutorial.server.Server' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?

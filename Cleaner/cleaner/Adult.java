@@ -13,16 +13,15 @@ public class Adult {
       IllegalStateException("Private constructor.");
   }
 
-  @SuppressWarnings("checkstyle:magicnumber")
   /**
    * Describe <code>main</code> method here.
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
 
     try (Room myRoom = new Room(7)) {
-
       System.out.println("Goodbye");
     }
   }

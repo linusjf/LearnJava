@@ -1,4 +1,4 @@
-package com.javacodegeeks.nio_tutorial.file;
+package com.javacodegeeks.niotutorial.file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,6 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 
+/**
+ * Describe interface <code>FileChannelExample</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public interface FileChannelExample {
 
   public static enum FileOperation {
@@ -13,6 +19,13 @@ public interface FileChannelExample {
     WRITE;
   }
 
+  /**
+   * Default method in interface to create channel.
+   * @param path file path
+   * @param fileOperation File operation type  as enum
+   * @return <code>FileChannel</code> object based on fileOperation parameter
+   *
+   */
   default FileChannel createChannel(String path, FileOperation fileOperation)
       throws FileNotFoundException {
     final File file =

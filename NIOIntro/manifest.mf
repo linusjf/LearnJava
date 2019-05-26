@@ -1,2 +1,2 @@
-Main-Class: com.javacodegeeks.nio_tutorial.server.Client
+Main-Class: com.javacodegeeks.niotutorial.server.Client
 

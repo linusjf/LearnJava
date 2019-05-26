@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-java -cp . com.javacodegeeks.nio_tutorial.server.Server &
+java -cp . com.javacodegeeks.niotutorial.server.Server &
 echo "Sleeping for five seconds to let server be ready..."
 sleep 5
