@@ -76,17 +76,17 @@ public class Car {
 		sb.append("--------------"+carType+"--------------------- \\n");
 		sb.append(" Body: ");
 		sb.append(bodyStyle);
-		sb.append("\\n Power: ");
+		sb.append("\n Power: ");
 		sb.append(power);
-		sb.append("\\n Engine: ");
+		sb.append("\n Engine: ");
 		sb.append(engine);
-		sb.append("\\n Brakes: ");
+		sb.append("\n Brakes: ");
 		sb.append(brakes);
-		sb.append("\\n Seats: ");
+		sb.append("\n Seats: ");
 		sb.append(seats);
-		sb.append("\\n Windows: ");
+		sb.append("\n Windows: ");
 		sb.append(windows);
-		sb.append("\\n Fuel Type: ");
+		sb.append("\n Fuel Type: ");
 		sb.append(fuelType);
 		return sb.toString();
 	}
