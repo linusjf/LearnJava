@@ -11,7 +11,7 @@ import java.lang.ref.Cleaner;
  */
 public class Room implements AutoCloseable {
 
-  private static final Cleaner cleaner = Cleaner.create();
+  private static final Cleaner cleanr = Cleaner.create();
 
   // Resource that requires cleaning. Must not refer to Room!
   private static class State implements Runnable {
@@ -46,7 +46,7 @@ public class Room implements AutoCloseable {
    */
   public Room(int numJunkPiles) {
     state = new State(numJunkPiles);// NOPMD
-    cleanable = this.cleaner.register(this, state);
+    cleanable = cleanr.register(this, state);
   }
 
   @Override
