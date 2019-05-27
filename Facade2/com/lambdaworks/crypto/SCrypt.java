@@ -27,7 +27,9 @@ public final class SCrypt { // NOPMD
     native_library_loaded = loader.load("scrypt", true);
   }
 
-  private SCrypt() {}
+  private SCrypt() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   /**
    * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls

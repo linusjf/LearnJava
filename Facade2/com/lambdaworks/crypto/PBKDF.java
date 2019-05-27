@@ -16,7 +16,9 @@ import javax.crypto.spec.SecretKeySpec;
 @SuppressWarnings("checkstyle:abbreviationaswordinname")
 public final class PBKDF { // NOPMD
 
-  private PBKDF() {}
+  private PBKDF() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   /**
    * Implementation of PBKDF2 (RFC2898).

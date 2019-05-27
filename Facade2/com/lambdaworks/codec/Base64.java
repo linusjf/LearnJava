@@ -27,7 +27,9 @@ public final class Base64 { // NOPMD
     decode[pad] = 0;
   }
 
-  private Base64() {}
+  private Base64() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   /**
    * Decode base64 chars to bytes.

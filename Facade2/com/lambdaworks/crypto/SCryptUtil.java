@@ -120,5 +120,7 @@ public final class SCryptUtil { // NOPMD
     return log + (n >>> 1);
   }
 
-  private SCryptUtil() {}
+  private SCryptUtil() {
+    throw new IllegalStateException("Private constructor");
+  }
 }
