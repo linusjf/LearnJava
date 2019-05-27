@@ -91,13 +91,13 @@ public class NutritionFacts {
     }
   }
 
-  private NutritionFacts(Builder builder) {
-    servingSize = builder.servingSize;
-    servings = builder.servings;
-    calories = builder.calories;
-    fat = builder.fat;
-    sodium = builder.sodium;
-    carbohydrate = builder.carbohydrate;
+  private NutritionFacts(Builder bilder) {
+    servingSize = bilder.servingSize;
+    servings = bilder.servings;
+    calories = bilder.calories;
+    fat = bilder.fat;
+    sodium = bilder.sodium;
+    carbohydrate = bilder.carbohydrate;
   }
 
   /**

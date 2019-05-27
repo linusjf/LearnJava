@@ -54,6 +54,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="checks" value="MagicNumber"/>
     </module-->
 <module name="SuppressWarningsHolder" />
+<module name="RedundantModifier"/>
 <module name="SingleSpaceSeparator">
   <property name="validateComments" value="false"/>
 </module>

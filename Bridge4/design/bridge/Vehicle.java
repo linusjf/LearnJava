@@ -13,11 +13,6 @@ public abstract class Vehicle {
   // assembly line for the workshops
   protected List<WorkShop> workshops = new ArrayList<WorkShop>();
 
-  /** Creates a new <code>Vehicle</code> instance. */
-  public Vehicle() {
-    super();
-  }
-
   /**
    * Describe <code>joinWorkshop</code> method here.
    *

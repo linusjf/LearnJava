@@ -40,7 +40,7 @@ public class FileChannelWriteExample implements FileChannelExample {
    *
    */
   public void writeFile() {
-    try (final FileChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
+    try (FileChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
 
       final ByteBuffer buffer = createBuffer(CONTENTS.getBytes().length);
       buffer.put(CONTENTS.getBytes());

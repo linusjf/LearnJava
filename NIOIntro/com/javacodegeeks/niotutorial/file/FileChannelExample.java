@@ -14,7 +14,7 @@ import java.nio.channels.FileChannel;
  */
 public interface FileChannelExample {
 
-  public static enum FileOperation {
+  enum FileOperation {
     READ,
     WRITE;
   }

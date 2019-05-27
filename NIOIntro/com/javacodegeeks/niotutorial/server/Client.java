@@ -28,7 +28,7 @@ public final class Client {
     final InetSocketAddress hostAddress = new InetSocketAddress(Constants.HOST, Constants.PORT);
 
     for (int i = 0; i < 10; i++) {
-      try (final SocketChannel client = SocketChannel.open(hostAddress)) {
+      try (SocketChannel client = SocketChannel.open(hostAddress)) {
 
         final ByteBuffer buffer = ByteBuffer.wrap(Constants.TEXT_FIRST_SEGMENT.getBytes());
 

@@ -33,7 +33,7 @@ public class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    this.sauceInside = builder.sauceInside;
+    this.sauceInside = builder.sauceInside; // NOPMD
   }
 
   /** returns object state as String. */

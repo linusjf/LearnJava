@@ -41,7 +41,7 @@ public class NyPizza extends Pizza {
 
   private NyPizza(Builder builder) {
     super(builder);
-    this.size = builder.size;
+    this.size = builder.size; // NOPMD
   }
 
   /** returns object state as string. */

@@ -6,7 +6,7 @@ package cleaner;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Adult {
+public final class Adult {
 
   private Adult() {
     throw new 

@@ -31,8 +31,8 @@ public final class Server {
    */
   public static void main(final String[] args) throws Exception {
     System.out.println("Starting server...");
-    try (final Selector selector = Selector.open();
-        final ServerSocketChannel serverSocket = ServerSocketChannel.open(); ) {
+    try (Selector selector = Selector.open();
+        ServerSocketChannel serverSocket = ServerSocketChannel.open(); ) {
       final InetSocketAddress hostAddress = new InetSocketAddress(Constants.HOST, Constants.PORT);
       serverSocket.bind(hostAddress);
       serverSocket.configureBlocking(false);

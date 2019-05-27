@@ -6,7 +6,7 @@ package com.javacodegeeks.niotutorial.server;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class Constants {
+public final class Constants {// NOPMD
 
   /**
    * Describe constant <code>CLIENT_BYTE_BUFFER_CAPACITY</code> here.

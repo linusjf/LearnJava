@@ -6,7 +6,7 @@ package cleaner;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Teenager {
+public final class Teenager {
   
   private Teenager() {
     throw new 

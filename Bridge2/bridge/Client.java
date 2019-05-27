@@ -28,6 +28,7 @@ public enum Client {
 
       default:
         System.out.println("OS not supported !!");
+        break;
     }
 
     Object fileContent = downloader.download("some path");
