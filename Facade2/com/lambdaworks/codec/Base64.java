@@ -47,6 +47,7 @@ public final class Base64 { // NOPMD
    * @param pad Padding character.
    * @return Decoded bytes.
    */
+  @SuppressWarnings("fallthrough")
   public static byte[] decode(char[] src, int[] table, char pad) {
     final int len = src.length;
 

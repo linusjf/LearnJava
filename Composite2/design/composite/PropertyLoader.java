@@ -44,7 +44,7 @@ public abstract class PropertyLoader {
         final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
         result = new Properties();
         for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
-          final String key = (String) keys.nextElement();
+          final String key = keys.nextElement();
           final String value = rb.getString(key);
           result.put(key, value);
         }

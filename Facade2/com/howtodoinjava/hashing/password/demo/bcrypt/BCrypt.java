@@ -525,8 +525,8 @@ public class BCrypt {
 
   /** Initialise the Blowfish key schedule. */
   private void initKey() {
-    P = (int[]) origP.clone();
-    S = (int[]) origS.clone();
+    P = origP.clone();
+    S = origS.clone();
   }
 
   /**
@@ -599,7 +599,7 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   private byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
-    final int[] cdata = (int[]) bfCryptCipherText.clone();
+    final int[] cdata = bfCryptCipherText.clone();
     final int clen = cdata.length;
 
     if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
