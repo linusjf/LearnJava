@@ -16,7 +16,9 @@ public final class SingletonHolder { // NOPMD
   }
 
   // SingletonHolder prevents any other class from instantiating
-  private SingletonHolder() {}
+  private SingletonHolder() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   // Providing Global point of access
   /**
