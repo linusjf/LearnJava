@@ -91,42 +91,42 @@ public class Proxy implements Runnable {
     loadCaches();
   }
 
-    @SuppressWarnings("unchecked")
-    private static void loadCaches() {
-      try {
-        // Load in cached sites from file
-        File cachedSites = new File("cachedSites.txt");
-        if (!cachedSites.exists()) {
-          System.out.println("No cached sites found - creating new file");
-          cachedSites.createNewFile();
-        } else {
-          FileInputStream fileInputStream = new FileInputStream(cachedSites);
-          ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+  @SuppressWarnings("unchecked")
+  private static void loadCaches() {
+    try {
+      // Load in cached sites from file
+      File cachedSites = new File("cachedSites.txt");
+      if (!cachedSites.exists()) {
+        System.out.println("No cached sites found - creating new file");
+        cachedSites.createNewFile();
+      } else {
+        FileInputStream fileInputStream = new FileInputStream(cachedSites);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-          cache = (HashMap<String, File>) objectInputStream.readObject();
-          fileInputStream.close();
-          objectInputStream.close();
-        }
-
-        // Load in blocked sites from file
-        File blockedSitesTxtFile = new File("blockedSites.txt");
-        if (!blockedSitesTxtFile.exists()) {
-          System.out.println("No blocked sites found - creating new file");
-          blockedSitesTxtFile.createNewFile();
-        } else {
-          FileInputStream fileInputStream = new FileInputStream(blockedSitesTxtFile);
-          ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-          blockedSites = (HashMap<String, String>) objectInputStream.readObject();
-          fileInputStream.close();
-          objectInputStream.close();
-        }
-      } catch (IOException e) {
-        System.out.println("Error loading previously cached sites file :" + e.getMessage());
-      } catch (ClassNotFoundException e) {
-        System.out.println(
-            "Class not found loading in preivously cached sites file : " + e.getMessage());
+        cache = (HashMap<String, File>) objectInputStream.readObject();
+        fileInputStream.close();
+        objectInputStream.close();
       }
+
+      // Load in blocked sites from file
+      File blockedSitesTxtFile = new File("blockedSites.txt");
+      if (!blockedSitesTxtFile.exists()) {
+        System.out.println("No blocked sites found - creating new file");
+        blockedSitesTxtFile.createNewFile();
+      } else {
+        FileInputStream fileInputStream = new FileInputStream(blockedSitesTxtFile);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        blockedSites = (HashMap<String, String>) objectInputStream.readObject();
+        fileInputStream.close();
+        objectInputStream.close();
+      }
+    } catch (IOException e) {
+      System.out.println("Error loading previously cached sites file :" + e.getMessage());
+    } catch (ClassNotFoundException e) {
+      System.out.println(
+          "Class not found loading in previously cached sites file : " + e.getMessage());
     }
+  }
 
   /**
    * Create the Proxy Server.
