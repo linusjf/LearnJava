@@ -10,7 +10,7 @@ public class PenFactory {
 
     Pen pen = pensMap.get(key);
 
-    if(pen != null) {
+    if (pen != null) {
       return pen;
     } else {
       pen = new ThickPen();
@@ -25,7 +25,7 @@ public class PenFactory {
 
     Pen pen = pensMap.get(key);
 
-    if(pen != null) {
+    if (pen != null) {
       return pen;
     } else {
       pen = new ThinPen();
@@ -35,13 +35,12 @@ public class PenFactory {
     return pen;
   }
 
-  public static Pen getMediumPen(String color) 
-  {
+  public static Pen getMediumPen(String color) {
     String key = color + "-MEDIUM";
 
     Pen pen = pensMap.get(key);
 
-    if(pen != null) {
+    if (pen != null) {
       return pen;
     } else {
       pen = new MediumPen();

@@ -5,27 +5,26 @@ import java.util.Map;
 
 public final class PlatformFactory {
 
-  private static Map<String, Platform> map 
-    = new HashMap<>();
+  private static Map<String, Platform> map = new HashMap<>();
 
   private PlatformFactory() {
     throw new AssertionError("Cannot instantiate the class");
   }
 
-  public static synchronized Platform getPlatformInstance(String platformType){
+  public static synchronized Platform getPlatformInstance(String platformType) {
     Platform platform = map.get(platformType);
     if (platform == null) {
       switch (platformType) {
-        case "C" : 
+        case "C":
           platform = new CPlatform();
           break;
-        case "CPP" : 
+        case "CPP":
           platform = new CPPPlatform();
           break;
-        case "JAVA" : 
+        case "JAVA":
           platform = new JavaPlatform();
           break;
-        case "RUBY" : 
+        case "RUBY":
           platform = new RubyPlatform();
           break;
       }

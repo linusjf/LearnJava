@@ -2,7 +2,7 @@ package com.javacodegeeks.patterns.flyweightpattern;
 
 public enum TestFlyweight {
   ;
-  
+
   public static void main(String[] args) {
     Code code = new Code();
     code.setCode("C Code...");

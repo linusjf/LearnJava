@@ -1,9 +1,7 @@
 package flyweight;
 
-interface Player 
-{ 
-    public void assignWeapon(String weapon); 
+interface Player {
+  public void assignWeapon(String weapon);
 
-    public void mission(); 
-} 
-
+  public void mission();
+}

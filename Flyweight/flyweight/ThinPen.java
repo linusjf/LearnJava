@@ -3,7 +3,7 @@ package flyweight;
 public class ThinPen implements Pen {
 
   final BrushSize brushSize = BrushSize.THIN;
-  private String color = null; 
+  private String color = null;
 
   public void setColor(String color) {
     this.color = color;

@@ -2,7 +2,7 @@ package com.javacodegeeks.patterns.builderpattern;
 
 public enum TestBuilderPattern {
   ;
-  
+
   public static void main(String[] args) {
     CarBuilder carBuilder = new SedanCarBuilder();
     CarDirector director = new CarDirector(carBuilder);

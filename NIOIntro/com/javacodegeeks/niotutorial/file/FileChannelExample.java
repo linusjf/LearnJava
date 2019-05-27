@@ -21,10 +21,10 @@ public interface FileChannelExample {
 
   /**
    * Default method in interface to create channel.
-   * @param path file path
-   * @param fileOperation File operation type  as enum
-   * @return <code>FileChannel</code> object based on fileOperation parameter
    *
+   * @param path file path
+   * @param fileOperation File operation type as enum
+   * @return <code>FileChannel</code> object based on fileOperation parameter
    */
   default FileChannel createChannel(String path, FileOperation fileOperation)
       throws FileNotFoundException {

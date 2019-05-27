@@ -50,8 +50,7 @@ public final class Server {
   private static void handleSelectionKeys(
       final Set<SelectionKey> selectionKeys, final ServerSocketChannel serverSocket)
       throws IOException {
-    if (Objects.isNull(selectionKeys) 
-        || Objects.isNull(serverSocket))
+    if (Objects.isNull(selectionKeys) || Objects.isNull(serverSocket))
       throw new AssertionError("selectionKeys and/or serverSocket null.");
 
     final Iterator<SelectionKey> selectionKeyIterator = selectionKeys.iterator();
@@ -72,8 +71,7 @@ public final class Server {
 
   private static void acceptClientSocket(
       final SelectionKey key, final ServerSocketChannel serverSocket) throws IOException {
-    if (Objects.isNull(key) 
-        || Objects.isNull(serverSocket))
+    if (Objects.isNull(key) || Objects.isNull(serverSocket))
       throw new AssertionError("key and/or serverSocket null.");
 
     final SocketChannel client = serverSocket.accept();
@@ -84,8 +82,7 @@ public final class Server {
   }
 
   private static void readRequest(final SelectionKey key) throws IOException {
-    if (Objects.isNull(key)) 
-      throw new AssertionError("key null.");
+    if (Objects.isNull(key)) throw new AssertionError("key null.");
 
     final SocketChannel client = (SocketChannel) key.channel();
     final ByteBuffer buffer = ByteBuffer.allocate(Constants.CLIENT_BYTE_BUFFER_CAPACITY);

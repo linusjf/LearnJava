@@ -60,29 +60,29 @@ public enum SingletonTest {
       final Thread thread =
           new Thread(
               new Runnable() {
-            
-            @Override
-            public void run() {
-              try {
-                cyclicBarrier.await();
-              } catch (InterruptedException | BrokenBarrierException e) {
-                exception.compareAndSet(null, e);
-                return;
-              }
 
-              final Singleton singleton = Singleton.getInstance();
-              final long value = singleton.getNextValue();
+                @Override
+                public void run() {
+                  try {
+                    cyclicBarrier.await();
+                  } catch (InterruptedException | BrokenBarrierException e) {
+                    exception.compareAndSet(null, e);
+                    return;
+                  }
 
-              // Synchronise the access as the collections used are not thread-safe
-              synchronized (SingletonTest.class) {
-                if (!generatedValues.add(value)) {
-                  exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
-                  return;
+                  final Singleton singleton = Singleton.getInstance();
+                  final long value = singleton.getNextValue();
+
+                  // Synchronise the access as the collections used are not thread-safe
+                  synchronized (SingletonTest.class) {
+                    if (!generatedValues.add(value)) {
+                      exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+                      return;
+                    }
+                    instances.add(singleton);
+                  }
                 }
-                instances.add(singleton);
-              }
-            }
-        });
+              });
       thread.start();
       threads.add(thread);
     }

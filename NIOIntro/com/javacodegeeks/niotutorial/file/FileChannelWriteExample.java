@@ -15,8 +15,8 @@ public class FileChannelWriteExample implements FileChannelExample {
   private static final String OUTPUT_FILE_PATH = "file/output.txt";
   private static final String CONTENTS =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      + " Phasellus efficitur auctor risus, non tristique erat finibus nec."
-      + " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. "
+          + " Phasellus efficitur auctor risus, non tristique erat finibus nec."
+          + " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. "
           + "In hac habitasse platea dictumst. "
           + "Nulla vehicula lacus dapibus semper eleifend."
           + " Morbi eget malesuada lorem. Mauris mattis quam vel turpis mollis rutrum."
@@ -35,10 +35,7 @@ public class FileChannelWriteExample implements FileChannelExample {
     new FileChannelWriteExample().writeFile();
   }
 
-  /**
-   * Describe <code>writeFile</code> method here.
-   *
-   */
+  /** Describe <code>writeFile</code> method here. */
   public void writeFile() {
     try (FileChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
 

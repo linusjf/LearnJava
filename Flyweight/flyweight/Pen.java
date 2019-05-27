@@ -1,10 +1,13 @@
 package flyweight;
 
-public interface Pen 
-{ 
+public interface Pen {
   enum BrushSize {
-    THIN, MEDIUM, THICK,
+    THIN,
+    MEDIUM,
+    THICK,
   }
+
   void setColor(String color);
-  void draw(String content); 
+
+  void draw(String content);
 }

@@ -40,9 +40,9 @@ public enum Main {
 
     workLoad.getWorkList().stream()
         .forEach(
-          work -> {
-            rachelle.assignWork(rachelle, work);
-          });
+            work -> {
+              rachelle.assignWork(rachelle, work);
+            });
     rachelle.performWork();
   }
 }

@@ -9,8 +9,7 @@ package proxy.synchronicity;
 public final class BlackBoxProvider { // NOPMD
 
   private BlackBoxProvider() {
-    throw 
-      new IllegalStateException("Constructor private.");
+    throw new IllegalStateException("Constructor private.");
   }
 
   /**

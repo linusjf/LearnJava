@@ -6,30 +6,18 @@ package com.javacodegeeks.niotutorial.server;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class Constants { //NOPMD
+public final class Constants { // NOPMD
 
-  /**
-   * Describe constant <code>CLIENT_BYTE_BUFFER_CAPACITY</code> here.
-   *
-   */
+  /** Describe constant <code>CLIENT_BYTE_BUFFER_CAPACITY</code> here. */
   public static final int CLIENT_BYTE_BUFFER_CAPACITY = 1024;
-  
-  /**
-   * Describe constant <code>HOST</code> here.
-   *
-   */
+
+  /** Describe constant <code>HOST</code> here. */
   public static final String HOST = "localhost";
-  
-  /**
-   * Describe constant <code>PORT</code> here.
-   *
-   */
+
+  /** Describe constant <code>PORT</code> here. */
   public static final int PORT = 9999;
 
-  /**
-   * Describe constant <code>TEXT_FIRST_SEGMENT</code> here.
-   *
-   */
+  /** Describe constant <code>TEXT_FIRST_SEGMENT</code> here. */
   public static final String TEXT_FIRST_SEGMENT =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna augue, "
           + "porta vitae erat quis, tempus dignissim urna."
@@ -44,12 +32,9 @@ public final class Constants { //NOPMD
           + " eu pharetra lectus sapien vitae turpis. "
           + "Ut tincidunt consequat urna sed dignissim.";
 
-  /**
-   * Describe constant <code>TEXT_SECOND_SEGMENT</code> here.
-   *
-   */
+  /** Describe constant <code>TEXT_SECOND_SEGMENT</code> here. */
   public static final String TEXT_SECOND_SEGMENT =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna augue, "
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna augue, "
           + "porta vitae erat quis, tempus dignissim urna."
           + " Maecenas ornare vel nibh eget fringilla. "
           + "Quisque ac ullamcorper diam."

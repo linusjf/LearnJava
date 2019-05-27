@@ -9,8 +9,7 @@ package cleaner;
 public final class Adult {
 
   private Adult() {
-    throw new 
-      IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor.");
   }
 
   /**
@@ -18,11 +17,11 @@ public final class Adult {
    *
    * @param args a <code>String</code> value
    */
-  @SuppressWarnings({"checkstyle:magicnumber","checkstyle:illegaltoken"})
+  @SuppressWarnings({"checkstyle:magicnumber", "checkstyle:illegaltoken"})
   public static void main(String[] args) {
 
     try (Room myRoom = new Room(7)) {
-     assert myRoom != null;
+      assert myRoom != null;
 
       System.out.println("Goodbye");
     }

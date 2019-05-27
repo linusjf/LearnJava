@@ -415,8 +415,7 @@ public class RequestHandler implements Runnable {
      * @param proxyToClientIS Stream that proxy uses to receive data from client
      * @param proxyToServerOS Stream that proxy uses to transmit data to remote server
      */
-    ClientToServerHttpsTransmit(InputStream proxyToClientIS,
-        OutputStream proxyToServerOS) {
+    ClientToServerHttpsTransmit(InputStream proxyToClientIS, OutputStream proxyToServerOS) {
       this.proxyToClientIS = proxyToClientIS;
       this.proxyToServerOS = proxyToServerOS;
     }

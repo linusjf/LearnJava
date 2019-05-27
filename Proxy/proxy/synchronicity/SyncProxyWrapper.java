@@ -41,7 +41,7 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
    * @param wrappableClass the interface
    * @param wrappableImpl the interface implementation
    */
-  @SuppressWarnings({"unchecked","rawtypes"})
+  @SuppressWarnings({"unchecked", "rawtypes"})
   public static <T> T wrap(Class<T> wrappableClass, T wrappableImpl) {
     return (T)
         Proxy.newProxyInstance(
