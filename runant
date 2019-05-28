@@ -9,5 +9,5 @@ if [ "$#" -ne 1 ] || ! [ -d "$1" ];
 then
   usage
 fi
-ant -buildfile $1/build.xml run
+(cd $1 && ant run)
 exit $?
