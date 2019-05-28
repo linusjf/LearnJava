@@ -9,7 +9,7 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class PenFactory {
+public final class PenFactory { //NOPMD
   private static final Map<String, Pen> pensMap = new HashMap<>();
 
   /**

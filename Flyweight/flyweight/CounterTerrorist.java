@@ -27,6 +27,7 @@ class CounterTerrorist implements Player {
    *
    * @param weapon a <code>String</code> value
    */
+  @Override
   public void assignWeapon(String weapon) {
     this.weapon = weapon;
   }
@@ -35,6 +36,7 @@ class CounterTerrorist implements Player {
    * Describe <code>mission</code> method here.
    *
    */
+  @Override
   public void mission() {
     System.out.println("Counter Terrorist with weapon " + weapon + "|"
         + " Task is " + TASK);

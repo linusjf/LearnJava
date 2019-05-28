@@ -26,6 +26,7 @@ class Terrorist implements Player {
    *
    * @param weapon a <code>String</code> value
    */
+  @Override
   public void assignWeapon(String weapon) {
     // Assign a weapon
     this.weapon = weapon;
@@ -35,6 +36,7 @@ class Terrorist implements Player {
    * Describe <code>mission</code> method here.
    *
    */
+  @Override
   public void mission() {
     // Work on the Mission
     System.out.println("Terrorist with weapon " + weapon + "|"

@@ -9,6 +9,7 @@ public class ThinPen implements Pen {
    *
    * @param color a <code>String</code> value
    */
+  @Override
   public void setColor(String color) {
     this.color = color;
   }
