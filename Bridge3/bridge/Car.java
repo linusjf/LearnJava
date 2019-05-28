@@ -2,7 +2,7 @@ package bridge;
 
 class Car extends Vehicle {
 
-  public Car(Workshop workShop1, Workshop workShop2) {
+  Car(Workshop workShop1, Workshop workShop2) {
     super(workShop1, workShop2);
   }
 
