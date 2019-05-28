@@ -91,7 +91,7 @@
   </first>
   <checkstyle config="${toString:checkstylefile}"
     classpath="../lib/checkstyle-8.20-all.jar"
-    failOnViolation="false">
+    failOnViolation="false" properties="${cs.properties}">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
   <formatter type="plain" toFile="${cs.output}"/>

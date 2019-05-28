@@ -47,9 +47,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="TreeWalker">
-    <!--module name="SuppressionXpathFilter">
-      <property name="file" value="${cs.suppressions-xpath.file}"/>
-    </module-->
+    <module name="SuppressionXpathFilter">
+    <property name="optional" value="true"/>
+    <property name="file" value="${cs.suppressions-xpath.file}"/>
+    </module>
 <module name="SuppressWarningsHolder" />
 <module name="RedundantModifier"/>
 <module name="SingleSpaceSeparator">

@@ -38,7 +38,9 @@ public enum Main {
 
     final WorkLoader workLoad = new WorkLoader("work.properties");
 
-    workLoad.getWorkList().stream().forEach(work -> { rachelle.assignWork(rachelle, work); });
+    workLoad.getWorkList().stream().forEach(work -> { 
+      rachelle.assignWork(rachelle, work); 
+    });
     rachelle.performWork();
   }
 }

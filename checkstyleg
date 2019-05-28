@@ -1,0 +1,59 @@
+#!/bin/bash
+usage()
+{
+  echo "Usage: $0 dir rulesfile"
+  echo "dir - Project directory"
+  echo "rulesfile - Rules file"
+  exit 1
+}
+if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+rules_file="google_checks.xml"
+properties_file="checkstyle.properties"
+output_file="cs.errors"
+jarFile="lib/checkstyle-8.20-all.jar"
+#suppressionsFile="suppr.xml"
+#xsltFile="merge.xslt"
+echo $1
+if [ ! -z $2 ]
+  then
+    rules_file=$2
+fi
+if [ ! -e $rules_file ]
+  then
+    echo "$rules_file cannot be found."
+    usage
+fi
+
+if [ ! -e $properties_file ]
+  then
+    echo "$properties_file not found. Creating..."
+    touch $properties_file || \
+      echo "Unable to create $properties_file"
+    echo "Create/Modify $properties_file to configure checkstyle"
+fi
+#if [ -e $1/$suppressionsFile ] 
+ # then
+  #  if [ -e $xsltFile ]
+   # then
+    #  xsltproc --novalid -o $1.xml --stringparam \
+     # with $1/$suppressionsFile $xsltFile $rules_file
+      #rules_file=$1.xml
+    #else
+     # echo "$xsltFile does not exist."
+      #exit 1
+   # fi
+#fi
+(cd $1 && \
+java -jar \
+../$jarFile \
+-c ../$rules_file -d \
+-p ../$properties_file \
+-o $output_file -g \
+`find . -type f -name "*.java" \
+! -path "docs/**" ! -path "dist/**"`)
+[ -e $1.xml ] && rm $1.xml
+exit $?
