@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public interface Colleague {
-
   /**
    * Describe <code>setMediator</code> method here.
    *

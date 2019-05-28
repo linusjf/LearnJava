@@ -7,7 +7,6 @@ package design.composite;
  * @version 1.0
  */
 public abstract class Employee implements Worker {
-
   protected long employeeId;
   protected String employeeName;
   protected String designation;
@@ -115,8 +114,7 @@ public abstract class Employee implements Worker {
    */
   public String fullDetails() {
     StringBuilder builder = new StringBuilder();
-    builder
-        .append("Employee [")
+    builder.append("Employee [")
         .append(employeeId)
         .append(", ")
         .append(employeeName)

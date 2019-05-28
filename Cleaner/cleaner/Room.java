@@ -10,7 +10,6 @@ import java.lang.ref.Cleaner;
  * @version 1.0
  */
 public class Room implements AutoCloseable {
-
   private static final Cleaner cleanr = Cleaner.create();
 
   // Resource that requires cleaning. Must not refer to Room!

@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.chainofresponsibility;
  * @version 1.0
  */
 public interface Handler {
-
   /**
    * Describe <code>setHandler</code> method here.
    *

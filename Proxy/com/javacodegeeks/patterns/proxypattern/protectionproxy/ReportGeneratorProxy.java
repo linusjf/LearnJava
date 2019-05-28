@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  * @version 1.0
  */
 public interface ReportGeneratorProxy {
-
   /**
    * Describe <code>generateDailyReport</code> method here.
    *

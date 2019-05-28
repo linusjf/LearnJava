@@ -9,7 +9,6 @@ import java.util.List;
  * @version 1.0
  */
 public class CommentaryObject implements Subject, Commentary {
-
   private final List<Observer> observers;
 
   private String desc;
@@ -22,7 +21,6 @@ public class CommentaryObject implements Subject, Commentary {
    * @param subjectDetails a <code>String</code> value
    */
   public CommentaryObject(List<Observer> observers, String subjectDetails) {
-
     this.observers = observers;
 
     this.subjectDetails = subjectDetails;

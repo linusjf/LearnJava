@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @version 1.0
  */
 public class CentralLocking implements Product {
-
   private final String productName;
 
   /**

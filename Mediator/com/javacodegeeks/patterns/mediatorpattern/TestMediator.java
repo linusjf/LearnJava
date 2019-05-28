@@ -14,7 +14,6 @@ public enum TestMediator {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-
     final Sensor sensor = new Sensor();
     final SoilRemoval soilRemoval = new SoilRemoval();
     final Motor motor = new Motor();

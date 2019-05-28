@@ -9,7 +9,6 @@ import java.util.List;
  * @version 1.0
  */
 public class ContactListProxyImpl implements ContactList {
-
   private ContactList contactList;
 
   @Override

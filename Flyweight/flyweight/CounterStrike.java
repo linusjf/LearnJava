@@ -12,7 +12,6 @@ public class CounterStrike {
 
   // Driver code
   public static void main(String args[]) {
-
     /* Assume that we have a total of 10 players
      * in the game.
      */

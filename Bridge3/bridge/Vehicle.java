@@ -1,7 +1,6 @@
 package bridge;
 
 abstract class Vehicle {
-
   protected Workshop workShop1;
 
   protected Workshop workShop2;

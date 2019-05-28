@@ -70,7 +70,6 @@ public final class PBKDF { // NOPMD
     arraycopy(salt, 0, block1, 0, salt.length);
 
     for (int i = 1; i <= l; i++) {
-
       block1[salt.length + 0] = (byte) (i >> 24 & 0xff);
 
       block1[salt.length + 1] = (byte) (i >> 16 & 0xff);

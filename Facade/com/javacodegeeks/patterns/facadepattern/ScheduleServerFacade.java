@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.facadepattern;
  * @version 1.0
  */
 public class ScheduleServerFacade {
-
   /** Describe variable <code>scheduleServer</code> here. */
   private final ScheduleServer scheduleServer;
 

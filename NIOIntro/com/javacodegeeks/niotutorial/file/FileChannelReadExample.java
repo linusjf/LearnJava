@@ -11,7 +11,6 @@ import java.nio.channels.FileChannel;
  * @version 1.0
  */
 public final class FileChannelReadExample implements FileChannelExample {
-
   private static final String INPUT_FILE_PATH = "file/input.txt";
   private static final int BYTE_BUFFER_LENGTH = 1024;
 
@@ -33,10 +32,8 @@ public final class FileChannelReadExample implements FileChannelExample {
   public String readFile() {
     final StringBuilder contents = new StringBuilder();
     try (FileChannel fileChannel = createChannel(INPUT_FILE_PATH, FileOperation.READ)) {
-
       final ByteBuffer buffer = createBuffer();
       while (fileChannel.read(buffer) != -1) {
-
         contents.append(new String(buffer.array()));
         buffer.clear();
       }

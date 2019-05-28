@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.observerpattern;
  * @version 1.0
  */
 public class SMSUsers implements Observer {
-
   private final Subject subject;
 
   private String desc;

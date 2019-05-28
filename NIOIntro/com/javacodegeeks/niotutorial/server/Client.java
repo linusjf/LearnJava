@@ -12,7 +12,6 @@ import java.nio.channels.SocketChannel;
  * @version 1.0
  */
 public final class Client {
-
   private Client() {
     throw new IllegalStateException("Instantiation not allowed");
   }
@@ -29,7 +28,6 @@ public final class Client {
 
     for (int i = 0; i < 10; i++) {
       try (SocketChannel client = SocketChannel.open(hostAddress)) {
-
         final ByteBuffer buffer = ByteBuffer.wrap(Constants.TEXT_FIRST_SEGMENT.getBytes());
 
         while (buffer.hasRemaining()) {

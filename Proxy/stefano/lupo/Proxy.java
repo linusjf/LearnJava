@@ -44,7 +44,6 @@ import java.util.Scanner;
  * meaning that cached and blocked sites are maintained.
  */
 public class Proxy implements Runnable {
-
   /**
    * Describe <code>main</code> method here.
    *
@@ -60,8 +59,7 @@ public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true; // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
@@ -82,7 +80,6 @@ public class Proxy implements Runnable {
   static List<Thread> servicingThreads;
 
   static {
-
     // Load in hash map containing previously cached sites and blocked Sites
     cache = new HashMap<>();
     blockedSites = new HashMap<>();
@@ -134,7 +131,6 @@ public class Proxy implements Runnable {
    * @param port Port number to run proxy server from.
    */
   public Proxy(int port) {
-
     // Start dynamic manager on a separate thread.
     new Thread(this).start(); // Starts overriden run() method at bottom
 
@@ -160,7 +156,6 @@ public class Proxy implements Runnable {
    * and passes it the socket connection and continues listening.
    */
   public void listen() {
-
     while (running) {
       try {
         // serverSocket.accpet() Blocks until a connection is made
@@ -268,11 +263,10 @@ public class Proxy implements Runnable {
   public void run() {
     Scanner scanner = new Scanner(System.in);
     String command = "";
-    System.out.println(
-        "Enter new site to block, or type "
-            + "\"blocked\" to see blocked sites, "
-            + "\"cached\" to see cached sites, or "
-            + "\"close\" to close server.");
+    System.out.println("Enter new site to block, or type "
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();

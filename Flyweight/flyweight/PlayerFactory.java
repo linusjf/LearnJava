@@ -7,7 +7,6 @@ import java.util.HashMap;
 // Else creates a new player and returns it.
 
 class PlayerFactory {
-
   /* HashMap stores the reference to the object
   of Terrorist(TS) or CounterTerrorist(CT).  */
   private static HashMap<String, Player> hm = new HashMap<String, Player>();
@@ -18,7 +17,8 @@ class PlayerFactory {
     /* If an object for TS or CT has already been
     created simply return its reference */
 
-    if (hm.containsKey(type)) p = hm.get(type);
+    if (hm.containsKey(type))
+      p = hm.get(type);
     else {
       /* create an object of TS/CT  */
       switch (type) {

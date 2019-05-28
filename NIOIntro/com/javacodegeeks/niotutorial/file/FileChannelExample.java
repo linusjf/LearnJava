@@ -13,7 +13,6 @@ import java.nio.channels.FileChannel;
  * @version 1.0
  */
 public interface FileChannelExample {
-
   enum FileOperation {
     READ,
     WRITE;
@@ -30,8 +29,7 @@ public interface FileChannelExample {
       throws FileNotFoundException {
     final File file =
         new File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
-    return fileOperation == FileOperation.READ
-        ? new FileInputStream(file).getChannel()
-        : new FileOutputStream(file).getChannel();
+    return fileOperation == FileOperation.READ ? new FileInputStream(file).getChannel()
+                                               : new FileOutputStream(file).getChannel();
   }
 }

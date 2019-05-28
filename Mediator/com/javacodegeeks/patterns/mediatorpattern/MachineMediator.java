@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public interface MachineMediator {
-
   /** Describe <code>start</code> method here. */
   void start();
 

@@ -1,7 +1,6 @@
 package flyweight;
 
 public class MediumPen implements Pen {
-
   final BrushSize brushSize = BrushSize.MEDIUM;
   private String color = null;
 

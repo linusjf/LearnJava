@@ -12,7 +12,6 @@ import java.rmi.registry.Registry;
  * @version 1.0
  */
 public class ReportGeneratorClient {
-
   /**
    * Describe <code>main</code> method here.
    *

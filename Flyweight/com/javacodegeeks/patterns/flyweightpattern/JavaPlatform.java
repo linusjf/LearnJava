@@ -1,7 +1,6 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
 public class JavaPlatform implements Platform {
-
   public JavaPlatform() {
     System.out.println("JavaPlatform object created");
   }

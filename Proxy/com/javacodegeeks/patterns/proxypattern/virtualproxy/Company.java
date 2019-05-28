@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
  * @version 1.0
  */
 public class Company {
-
   private String companyName;
   private String companyAddress;
   private String companyContactNo;

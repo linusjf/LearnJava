@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @version 1.0
  */
 public abstract class Car {
-
   private final Product product;
 
   private final String carType;

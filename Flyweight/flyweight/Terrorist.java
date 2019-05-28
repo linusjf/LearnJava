@@ -18,6 +18,7 @@ class Terrorist implements Player {
 
   public void mission() {
     // Work on the Mission
-    System.out.println("Terrorist with weapon " + weapon + "|" + " Task is " + TASK);
+    System.out.println("Terrorist with weapon " + weapon + "|"
+        + " Task is " + TASK);
   }
 }

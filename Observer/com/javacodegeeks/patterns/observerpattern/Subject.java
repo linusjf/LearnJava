@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.observerpattern;
  * @version 1.0
  */
 public interface Subject {
-
   /**
    * Describe <code>subscribeObserver</code> method here.
    *

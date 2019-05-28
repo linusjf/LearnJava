@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.chainofresponsibility;
  * @version 1.0
  */
 public class VideoFileHandler implements Handler {
-
   private Handler handler;
   private String handlerName;
 

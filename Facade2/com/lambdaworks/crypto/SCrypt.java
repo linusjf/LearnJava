@@ -120,7 +120,6 @@ public final class SCrypt { // NOPMD
    * @param xy a <code>byte</code> value
    */
   public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v, byte[] xy) {
-
     final int xinitial = 0;
     final int yinitial = 128 * r;
     int i;
@@ -151,7 +150,6 @@ public final class SCrypt { // NOPMD
    * @param r an <code>int</code> value
    */
   public static void blockmixSalsa8(byte[] bytes, int initialB, int initialY, int r) {
-
     final byte[] x = new byte[64];
     int i;
 
@@ -187,7 +185,6 @@ public final class SCrypt { // NOPMD
    * @param bytes a <code>byte</code> value
    */
   public static void salsa20Slash8(byte[] bytes) {
-
     final int[] b32 = new int[16];
     final int[] x = new int[16];
     int i;

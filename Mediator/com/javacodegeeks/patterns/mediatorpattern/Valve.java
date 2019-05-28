@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public class Valve implements Colleague {
-
   private MachineMediator mediator;
 
   @Override

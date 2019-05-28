@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  * @version 1.0
  */
 public class Owner implements Staff {
-
   private boolean isOwner = true;
 
   private ReportGeneratorProxy reportGenerator;

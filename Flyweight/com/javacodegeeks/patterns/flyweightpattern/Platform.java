@@ -1,6 +1,3 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
-public interface Platform {
-
-  public void execute(Code code);
-}
+public interface Platform { public void execute(Code code); }

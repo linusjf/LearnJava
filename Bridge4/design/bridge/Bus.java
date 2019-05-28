@@ -7,7 +7,6 @@ package design.bridge;
  * @version 1.0
  */
 public class Bus extends Vehicle {
-
   @Override
   public void manufacture() {
     System.out.println("Manufacturing Bus");

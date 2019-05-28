@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
  * @version 1.0
  */
 public class Employee {
-
   private String employeeName;
   private double employeeSalary;
   private String employeeDesignation;
@@ -59,11 +58,7 @@ public class Employee {
    */
   @Override
   public String toString() {
-    return "Employee Name: "
-        + employeeName
-        + ", EmployeeDesignation: "
-        + employeeDesignation
-        + ", Employee Salary: "
-        + employeeSalary;
+    return "Employee Name: " + employeeName + ", EmployeeDesignation: " + employeeDesignation
+        + ", Employee Salary: " + employeeSalary;
   }
 }

@@ -10,7 +10,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 public final class Singleton implements Serializable, Cloneable {
-
   private static final long serialVersionUID = -1093810940935189395L;
 
   @SuppressWarnings("checkstyle:illegaltoken")
@@ -70,7 +69,8 @@ public final class Singleton implements Serializable, Cloneable {
   @SuppressWarnings("unused")
   private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null) classLoader = Singleton.class.getClassLoader();
+    if (classLoader == null)
+      classLoader = Singleton.class.getClassLoader();
     return classLoader.loadClass(classname);
   }
 

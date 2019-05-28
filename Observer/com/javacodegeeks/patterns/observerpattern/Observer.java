@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.observerpattern;
  * @version 1.0
  */
 public interface Observer {
-
   /**
    * Describe <code>update</code> method here.
    *

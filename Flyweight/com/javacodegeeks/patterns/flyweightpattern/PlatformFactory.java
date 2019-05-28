@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class PlatformFactory {
-
   private static Map<String, Platform> map = new HashMap<>();
 
   private PlatformFactory() {

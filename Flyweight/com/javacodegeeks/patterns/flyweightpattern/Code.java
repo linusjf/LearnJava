@@ -1,7 +1,6 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
 public class Code {
-
   private String code;
 
   public String getCode() {

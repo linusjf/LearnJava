@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
  * @version 1.0
  */
 public interface ReportGenerator extends Remote {
-
   /**
    * Describe <code>generateDailyReport</code> method here.
    *

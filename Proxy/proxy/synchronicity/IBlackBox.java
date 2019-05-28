@@ -7,7 +7,6 @@ package proxy.synchronicity;
  * @version 1.0
  */
 public interface IBlackBox {
-
   /** Describe <code>methodA</code> method here. */
   void methodA();
 

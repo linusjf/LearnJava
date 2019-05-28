@@ -1,7 +1,6 @@
 package design.composite;
 
 public interface ICalc {
-
   /**
    * Describe <code>calculate</code> method here.
    *

@@ -9,18 +9,12 @@ import java.util.Objects;
  * @version 1.0
  */
 public class NyPizza extends Pizza {
-
-  public enum Size {
-    SMALL,
-    MEDIUM,
-    LARGE
-  }
+  public enum Size { SMALL, MEDIUM, LARGE }
 
   private final Size size;
 
   /** Builder class that builds the Pizza object using the Fluent API style. */
   public static class Builder extends Pizza.Builder<Builder> {
-
     private final Size size;
 
     /** Constructor. */

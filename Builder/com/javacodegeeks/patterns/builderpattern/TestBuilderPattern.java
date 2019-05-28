@@ -2,7 +2,10 @@ package com.javacodegeeks.patterns.builderpattern;
 
 public enum TestBuilderPattern {
   ;
-
+  /**
+   * Main program.
+   * @param args <code>String</code> arguments.
+   */
   public static void main(String[] args) {
     CarBuilder carBuilder = new SedanCarBuilder();
     CarDirector director = new CarDirector(carBuilder);

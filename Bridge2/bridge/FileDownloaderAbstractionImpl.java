@@ -7,7 +7,6 @@ package bridge;
  * @version 1.0
  */
 public class FileDownloaderAbstractionImpl implements FileDownloaderAbstraction {
-
   private FileDownloadImplementor provider = null;
 
   /**

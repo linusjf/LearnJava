@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class TestWorkShop extends WorkShop {
-
   @Override
   public void work(Vehicle vehicle) {
     System.out.print("Testing... ");

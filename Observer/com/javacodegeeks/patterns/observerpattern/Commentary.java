@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.observerpattern;
  * @version 1.0
  */
 public interface Commentary {
-
   /**
    * Describe <code>setDesc</code> method here.
    *

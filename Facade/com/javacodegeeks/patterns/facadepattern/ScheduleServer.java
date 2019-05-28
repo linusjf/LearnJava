@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.facadepattern;
  * @version 1.0
  */
 public class ScheduleServer {
-
   /** Describe <code>startBooting</code> method here. */
   public void startBooting() {
     System.out.println("Starts booting...");

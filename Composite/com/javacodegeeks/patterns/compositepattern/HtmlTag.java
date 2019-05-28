@@ -9,7 +9,6 @@ import java.util.List;
  * @version 1.0
  */
 public abstract class HtmlTag {
-
   /**
    * Describe <code>getTagName</code> method here.
    *

@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.chainofresponsibility;
  * @version 1.0
  */
 public class AudioFileHandler implements Handler {
-
   private Handler handler;
   private String handlerName;
 

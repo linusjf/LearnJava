@@ -31,26 +31,31 @@ public abstract class PropertyLoader {
    *     IllegalArgumentException if the resource was not found and * THROW_ON_LOAD_FAILURE is true
    */
   public static Properties loadProperties(String name, ClassLoader loader) {
-    if (name == null) throw new IllegalArgumentException("null input: name");
-    if (name.startsWith("/")) name = name.substring(1);
-    if (name.endsWith(SUFFIX)) name = name.substring(0, name.length() - SUFFIX.length());
+    if (name == null)
+      throw new IllegalArgumentException("null input: name");
+    if (name.startsWith("/"))
+      name = name.substring(1);
+    if (name.endsWith(SUFFIX))
+      name = name.substring(0, name.length() - SUFFIX.length());
     Properties result = null;
     InputStream in = null;
     try {
-      if (loader == null) loader = ClassLoader.getSystemClassLoader();
+      if (loader == null)
+        loader = ClassLoader.getSystemClassLoader();
       if (LOAD_AS_RESOURCE_BUNDLE) {
         name = name.replace('/', '.');
         // Throws MissingResourceException on lookup failures:
         final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
         result = new Properties();
-        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
+        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
           final String key = keys.nextElement();
           final String value = rb.getString(key);
           result.put(key, value);
         }
       } else {
         name = name.replace('.', '/');
-        if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
+        if (!name.endsWith(SUFFIX))
+          name = name.concat(SUFFIX);
         // Returns null on lookup failures:
         in = loader.getResourceAsStream(name);
         if (in != null) {
@@ -70,12 +75,8 @@ public abstract class PropertyLoader {
         }
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException(
-          "could not load ["
-              + name
-              + "]"
-              + " as "
-              + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
+      throw new IllegalArgumentException("could not load [" + name + "]"
+          + " as " + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
     }
     return result;
   }
