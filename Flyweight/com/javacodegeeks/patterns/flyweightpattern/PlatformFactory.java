@@ -3,6 +3,12 @@ package com.javacodegeeks.patterns.flyweightpattern;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Describe class <code>PlatformFactory</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 public final class PlatformFactory {
   private static Map<String, Platform> map = new HashMap<>();
 
@@ -10,6 +16,12 @@ public final class PlatformFactory {
     throw new AssertionError("Cannot instantiate the class");
   }
 
+  /**
+   * Describe <code>getPlatformInstance</code> method here.
+   *
+   * @param platformType a <code>String</code> value
+   * @return a <code>Platform</code> value
+   */
   public static synchronized Platform getPlatformInstance(String platformType) {
     Platform platform = map.get(platformType);
     if (platform == null) {
@@ -25,6 +37,8 @@ public final class PlatformFactory {
           break;
         case "RUBY":
           platform = new RubyPlatform();
+          break;
+        default:
           break;
       }
       map.put(platformType, platform);

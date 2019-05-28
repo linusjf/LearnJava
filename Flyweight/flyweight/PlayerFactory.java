@@ -6,12 +6,24 @@ import java.util.HashMap;
 // an existing player if a player of given type exists.
 // Else creates a new player and returns it.
 
-class PlayerFactory {
+/**
+ * Describe class <code>PlayerFactory</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
+final class PlayerFactory {
   /* HashMap stores the reference to the object
   of Terrorist(TS) or CounterTerrorist(CT).  */
-  private static HashMap<String, Player> hm = new HashMap<String, Player>();
+  private static Map<String, Player> hm = new HashMap<String, Player>();
 
   // Method to get a player
+  /**
+   * Describe <code>getPlayer</code> method here.
+   *
+   * @param type a <code>String</code> value
+   * @return a <code>Player</code> value
+   */
   public static Player getPlayer(String type) {
     Player p = null;
     /* If an object for TS or CT has already been
@@ -40,5 +52,9 @@ class PlayerFactory {
       hm.put(type, p);
     }
     return p;
+  }
+
+  private PlayerFactory() {
+    throw new IllegalStateException("Private constructor");
   }
 }

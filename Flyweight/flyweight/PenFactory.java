@@ -1,10 +1,23 @@
 package flyweight;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class PenFactory {
-  private static final HashMap<String, Pen> pensMap = new HashMap<>();
+/**
+ * Describe class <code>PenFactory</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
+public final class PenFactory {
+  private static final Map<String, Pen> pensMap = new HashMap<>();
 
+  /**
+   * Describe <code>getThickPen</code> method here.
+   *
+   * @param color a <code>String</code> value
+   * @return a <code>Pen</code> value
+   */
   public static Pen getThickPen(String color) {
     String key = color + "-THICK";
 
@@ -20,6 +33,12 @@ public class PenFactory {
     return pen;
   }
 
+  /**
+   * Describe <code>getThinPen</code> method here.
+   *
+   * @param color a <code>String</code> value
+   * @return a <code>Pen</code> value
+   */
   public static Pen getThinPen(String color) {
     String key = color + "-THIN";
 
@@ -35,6 +54,12 @@ public class PenFactory {
     return pen;
   }
 
+  /**
+   * Describe <code>getMediumPen</code> method here.
+   *
+   * @param color a <code>String</code> value
+   * @return a <code>Pen</code> value
+   */
   public static Pen getMediumPen(String color) {
     String key = color + "-MEDIUM";
 
@@ -48,5 +73,9 @@ public class PenFactory {
       pensMap.put(key, pen);
     }
     return pen;
+  }
+
+  private PenFactory() {
+    throw new IllegalStateException("Private constructor");
   }
 }

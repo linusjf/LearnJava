@@ -1,21 +1,40 @@
 package flyweight;
 
 // CounterTerrorist must have weapon and mission
+/**
+ * Describe class <code>CounterTerrorist</code> here.
+ *
+ * @author <a href="mailto:root@localhost"></a>
+ * @version 1.0
+ */
 class CounterTerrorist implements Player {
   // Intrinsic Attribute
-  private final String TASK;
+  @SuppressWarnings("checkstyle:membername") private final String TASK;
 
   // Extrinsic Attribute
   private String weapon;
 
-  public CounterTerrorist() {
+  /**
+   * Creates a new <code>CounterTerrorist</code> instance.
+   *
+   */
+  CounterTerrorist() {
     TASK = "DEFUSE BOMB";
   }
 
+  /**
+   * Describe <code>assignWeapon</code> method here.
+   *
+   * @param weapon a <code>String</code> value
+   */
   public void assignWeapon(String weapon) {
     this.weapon = weapon;
   }
 
+  /**
+   * Describe <code>mission</code> method here.
+   *
+   */
   public void mission() {
     System.out.println("Counter Terrorist with weapon " + weapon + "|"
         + " Task is " + TASK);

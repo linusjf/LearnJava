@@ -1,6 +1,7 @@
 package flyweight;
 
-public class PaintBrushClient {
+public enum PaintBrushClient {
+  ;
   public static void main(String[] args) {
     Pen yellowThinPen1 = PenFactory.getThickPen("YELLOW"); // created new pen
     yellowThinPen1.draw("Hello World !!");

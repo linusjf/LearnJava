@@ -10,6 +10,6 @@ then
   usage
 fi
 
-clang-format -i -style=Google \
+clang-format -i -style=Google -sort-includes \
 `find $1 -type f -name "*.java"`
 exit $?

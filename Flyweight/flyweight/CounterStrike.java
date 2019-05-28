@@ -3,7 +3,8 @@ package flyweight;
 import java.util.Random;
 
 // Driver class
-public class CounterStrike {
+public enum CounterStrike {
+  ;
   // All player types and weopons (used by getRandPlayerType()
   // and getRandWeapon()
   private static String[] playerType = {"Terrorist", "CounterTerrorist"};
@@ -11,7 +12,8 @@ public class CounterStrike {
   private static String[] weapons = {"AK-47", "Maverick", "Gut Knife", "Desert Eagle"};
 
   // Driver code
-  public static void main(String args[]) {
+  @SuppressWarnings("checkstyle:magicnumber")
+  public static void main(String[] args) {
     /* Assume that we have a total of 10 players
      * in the game.
      */
