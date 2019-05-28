@@ -39,24 +39,25 @@
              </fileset>
         </javadoc>
     </target>
-    <!--Creates the deployable jar file  -->
-    <target name="jar" depends="compile">
-      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
-          <manifest>
+      <target name="manifest">
+        <tstamp/>
+      <manifest file="manifest.mf">
   <attribute name="Built-By" value="${user.name}"/>
-  <section name="common">
+<section name="common">
     <attribute name="Specification-Title" value="${ant.project.name}"/>
     <attribute name="Specification-Version" value="${version}"/>
     <attribute name="Specification-Vendor" value=""/>
     <attribute name="Implementation-Title" value=""/>
-    <attribute name="Implementation-Version" value="${buildversion} ${TODAY}"/>
+    <attribute name="Implementation-Version" value="${build} ${TODAY}"/>
     <attribute name="Implementation-Vendor" value=""/>
-  </section>
-  <section name="com.javacodegeeks.patterns.bridgepattern">
-    <attribute name="Sealed" value="true"/>
   </section>
   <attribute name="Main-Class" value="${main.class}" />
 </manifest>
+</target>
+    <!--Creates the deployable jar file  -->
+    <target name="jar" depends="compile,manifest">
+      <jar manifest="manifest.mf"
+        destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
 </jar>
 </target>
 <target name="run" >

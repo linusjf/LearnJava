@@ -1,1 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
 Main-Class: adapter.RunAdapterExample
+
+Name: common
+Specification-Title: Adapter
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: ${build} May 28 2019
+Implementation-Vendor: 
+
