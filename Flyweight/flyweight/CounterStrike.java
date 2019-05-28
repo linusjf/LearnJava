@@ -2,7 +2,9 @@ package flyweight;
 
 import java.util.Random;
 
-// Driver class
+/**
+ * Driver class.
+ */
 public enum CounterStrike {
   ;
   // All player types and weopons (used by getRandPlayerType()
@@ -11,7 +13,10 @@ public enum CounterStrike {
 
   private static String[] weapons = {"AK-47", "Maverick", "Gut Knife", "Desert Eagle"};
 
-  // Driver code
+  /**
+   * Driver code.
+   * @param args <code>String</code> array.
+   */
   @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
     /* Assume that we have a total of 10 players
@@ -31,8 +36,10 @@ public enum CounterStrike {
     }
   }
 
-  // Utility methods to get a random player type and
-  // weapon
+  /** Utility methods to get a random player type an
+   * weapon.
+   * @return <code>String</code>
+   */
   public static String getRandPlayerType() {
     Random r = new Random();
     // Will return an integer between [0,2)
@@ -41,6 +48,9 @@ public enum CounterStrike {
     return playerType[randInt];
   }
 
+  /** Return a weapon randomly.
+   * @return weapon as <code>String</code>
+   */
   public static String getRandWeapon() {
     Random r = new Random();
     // Will return an integer between [0,5)

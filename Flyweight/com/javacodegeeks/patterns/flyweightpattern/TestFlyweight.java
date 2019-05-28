@@ -1,8 +1,15 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
+/***
+ * <p>Main class to test the flyweight pattern.</p>
+ */
 public enum TestFlyweight {
   ;
 
+  /**
+   * Main class.
+   * @param args <code>String</code> array of arguments.
+   */
   public static void main(String[] args) {
     Code code = new Code();
     code.setCode("C Code...");
