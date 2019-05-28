@@ -6,7 +6,5 @@
 
 <suppressions>
     <!--The Check generates too many violations, fixing them will make code unmanageable.-->
-    <suppress checks="MagicNumber" files=".*[\\/](com|converter)[\\/].*\.java"/>
-    <suppress checks="IllegalCatch" files=".*LibraryLoader\.java"/>
-
+    <suppress checks="MagicNumber" files=".*[\\/]bridge[\\/].*\.java"/>
   </suppressions>

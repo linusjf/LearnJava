@@ -15,8 +15,8 @@ rules_file="google_checks.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
 jarFile="lib/checkstyle-8.20-all.jar"
-suppressionsFile="suppr.xml"
-xsltFile="merge.xslt"
+#suppressionsFile="suppr.xml"
+#xsltFile="merge.xslt"
 echo $1
 if [ ! -z $2 ]
   then
@@ -35,18 +35,18 @@ if [ ! -e $properties_file ]
       echo "Unable to create $properties_file"
     echo "Create/Modify $properties_file to configure checkstyle"
 fi
-if [ -e $1/$suppressionsFile ] 
-  then
-    if [ -e $xsltFile ]
-    then
-      xsltproc --novalid -o $1.xml --stringparam \
-      with $1/$suppressionsFile $xsltFile $rules_file
-      rules_file=$1.xml
-    else
-      echo "$xsltFile does not exist."
-      exit 1
-    fi
-fi
+#if [ -e $1/$suppressionsFile ] 
+ # then
+  #  if [ -e $xsltFile ]
+   # then
+    #  xsltproc --novalid -o $1.xml --stringparam \
+     # with $1/$suppressionsFile $xsltFile $rules_file
+      #rules_file=$1.xml
+    #else
+     # echo "$xsltFile does not exist."
+      #exit 1
+   # fi
+#fi
 (cd $1 && \
 java -jar \
 ../$jarFile \
