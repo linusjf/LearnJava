@@ -60,7 +60,7 @@
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile,manifest">
       <jar manifest="manifest.mf"
-        destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
+        destfile="${dist.dir}\${ant.project.name}-${version}.jar" basedir="${build.dir}" includes="**/*.class">
 </jar>
 </target>
 <target name="run" >

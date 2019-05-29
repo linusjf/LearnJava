@@ -61,14 +61,14 @@
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile,manifest">
       <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class"
-        manifest="manifest.mf">
+        manifest="${jar.manifest}">
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
 <java classname="${main.class}">
 <classpath>
-<pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
