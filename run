@@ -56,39 +56,48 @@ isJVM ()
 }
 runDalvik()
 {
-  if [ -e $proj.dex ] 
+  dexFile=$proj-$version.dex
+  if [ -e $dexFile ] 
     then
     setUp
     echo "Main class(es): $main"
     echo
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      dalvikvm -cp $proj.dex $a;
+      dalvikvm -cp $dexFile $a;
       echo
     done
     tearDown;
     exit 0;
   else
-    echo $proj.dex does not exist. Run build or buildall.
+    echo $dexFile does not exist. Run build or buildall.
     exit 1
   fi
 }
 runJVM()
 {
-  if [ -e $proj.jar ]
+  jarFile="$proj-$version.jar"
+  if [ -e $jarFile ]
     then
       setUp
       echo Main class: $main
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      java -cp $proj.jar:$proj $a 
+      java -cp $jarFile:$proj $a 
     done
       tearDown;
       exit 0;
     else
-      echo $proj.jar does not exist. Run build and buildall.
+      echo $jarFile does not exist. Run build and buildall.
     exit 1
   fi
+}
+
+readVersion()
+{
+  [ -e $versionFile ] && \
+      { version=$(cat $versionFile) || \
+      echo "Unable to read $versionFile";}
 }
 
 setupScript="setup"
@@ -107,6 +116,8 @@ if [ -e $proj/$nomainFile ]
     exit 1
 fi
 
+versionFile=".version"
+version="0.0.0"
 main=$2
 if [ -z $main ]
 then
@@ -114,6 +125,7 @@ then
     { echo "Error reading $proj/$mainFile";usage; }
 fi
 echo $proj
+readVersion
 isDalvik
 dalvik=$?
 if [ $dalvik -eq 0 ]

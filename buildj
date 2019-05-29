@@ -27,11 +27,12 @@ isJVM ()
 
 createDex()
 {
+  dexFile=$proj-$version.dex
   rm -rf $proj/$distDir || \
     { echo "Unable to delete folder $proj/$distDir"; }
-  dx --dex --output=$proj.dex $proj && \
+  dx --dex --output=$dexFile $proj && \
     mkdir -p $proj/$distDir && \
-    cp $proj.dex $proj/$distDir && exit 0 || \
+    cp $dexFile $proj/$distDir && exit 0 || \
     { echo "Error creating dex output"; }
   dxRes=$?
 }
@@ -39,24 +40,34 @@ createDex()
 createJar()
 {
   cd $proj || echo "cannot cd to $proj";
-  jar cfm $proj.jar $manifestFile \
+  jarFile="$proj-$version.jar"
+  jar cfm $jarFile $manifestFile \
     `find . -name "*.class" \
     ! -path "*.git*" -type f` || \
-    { echo "Error creating jar output: $proj.jar";exit 1; }
+    { echo "Error creating jar output: $jarFile";exit 1; }
   jarRes=$? 
-  [ -e $proj.jar ] && cp $proj.jar .. \
-    && mkdir -p $distDir && mv $proj.jar $distDir || \
+  [ -e $jarFile ] && cp $jarFile .. \
+    && mkdir -p $distDir && mv $jarFile $distDir || \
     { echo "Error moving jar file to $proj/$distDir"; }
   cd ..
   exit 0
 }
 
+readVersion()
+{
+  [ -e $versionFile ] && \
+      { version=$(cat $versionFile) || \
+      echo "Unable to read $versionFile";}
+}
+
 proj=$1
 ver="1.7"
+version="0.0.0"
 distDir="dist"
 manifestFile="manifest.mf"
 verFile=".ver"
-#optionsFile=".options"
+versionFile=".version"
+
 isDX
 dex=$?
 isJVM
@@ -78,6 +89,7 @@ else
     success=$?
     if [ $success -eq 0 ]
       then
+        readVersion
       if [ $dex -eq 0 ]
         then
         createDex
