@@ -33,9 +33,10 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-      <javadoc  packagenames="${packages}" additionalparam="-Xdoclint:none" 
+      <javadoc  packagenames="${packages}" 
+        additionalparam="${html.version}" 
         sourcepath="${src.dir}" 
-        destdir="${docs.dir}">
+        destdir="${docs.dir}"> 
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
@@ -66,14 +67,14 @@
 <target name="run" >
 <description>Run target</description>
 <java classname="${main.class}">
- <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+<classpath>
+<pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
 <java classname="${main.class1}">
- <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+<classpath>
+<pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
