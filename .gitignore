@@ -13,3 +13,4 @@ Proxy/cached/*.*
 !lib/*.jar
 !./AnnoProc.class
 !Proxy/urls.txt
+!NIOIntro/file/*put.txt
