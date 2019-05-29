@@ -1,6 +1,7 @@
 package flyweight;
 
 import java.util.HashMap;
+import java.util.Map;
 
 // Class used to get a player using HashMap (Returns
 // an existing player if a player of given type exists.

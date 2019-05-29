@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project name="Observer" default="main" basedir=".">
+<project name="Observer" default="main"
+  basedir=".">
   <property file = "build.properties"/>
   <property file = "${cs.properties}"/>
   <property file = "${gformat.properties}"/>
@@ -32,14 +33,15 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-      <echo message="${packages}"/>
-        <javadoc packagenames="${packages}" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <javadoc  packagenames="${packages}" additionalparam="-Xdoclint:none" 
+        sourcepath="${src.dir}" 
+        destdir="${docs.dir}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
              </fileset>
         </javadoc>
-    </target>
+      </target>
       <target name="manifest">
         <tstamp/>
       <manifest file="manifest.mf">
@@ -57,21 +59,15 @@
 </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile,manifest">
-      <jar manifest="manifest.mf"
-        destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class">
+      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class"
+        manifest="manifest.mf">
 </jar>
 </target>
 <target name="run" >
 <description>Run target</description>
 <java classname="${main.class}">
  <classpath>
-   <pathelement location="${dist.dir}/${ant.project.name}.jar"/>
-<pathelement path="${java.class.path}"/>
-</classpath>
-</java>
-<java classname="${main.class1}">
- <classpath>
-   <pathelement location="${dist.dir}/${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
@@ -92,10 +88,10 @@
     </target>
 <target name="checkstyle">
   <first id="checkstylefile">
-    <fileset dir=".." includes="${cs.config}" />
+    <fileset dir=".." includes="${cs.config}"/>
   </first>
   <checkstyle config="${toString:checkstylefile}"
-    classpath="../lib/checkstyle-8.20-all.jar"
+    classpath="../${cs.jar}"
     failOnViolation="false" properties="${cs.properties}">
   <fileset dir="${src.dir}" includes="**/*.java"/>
   <formatter type="plain"/>
