@@ -17,6 +17,7 @@ public class Work {
    * Creates a new <code>Work</code> instance.
    *
    * @param workType a <code>Calculator</code> value
+   * @param work list of tasks
    */
   public Work(Calculator workType, List<String> work) {
     super();
@@ -51,7 +52,9 @@ public class Work {
     return work;
   }
 
-  /** Describe <code>setWork</code> method here. */
+  /** Describe <code>setWork</code> method here. 
+   *  @param work list of tasks.
+   */
   public void setWork(List<String> work) {
     this.work = work;
   }

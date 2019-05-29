@@ -21,13 +21,14 @@ public abstract class PropertyLoader {
    * package segment separation with an * optional leading "/" and optional ".properties" suffix.
    * Thus, the * following names refer to the same resource: *
    *
-   * <p>some.pkg.Resource * some.pkg.Resource.properties * some/pkg/Resource *
-   * some/pkg/Resource.properties * /some/pkg/Resource * /some/pkg/Resource.properties * * @param
-   * name classpath resource name [may not be null] *
+   * <p>some.pkg.Resource * some.pkg.Resource.properties some/pkg/Resource 
+   * some/pkg/Resource.properties  /some/pkg/Resource /some/pkg/Resource.properties 
+   * @param name classpath resource name [may not be null] *
    *
    * @param loader classloader through which to load the resource [null * is equivalent to the
-   *     application loader] * * @return resource converted to java.util.Properties [may be null if
-   *     the * resource was not found and THROW_ON_LOAD_FAILURE is false] * @throws
+   *     application loader]
+   *  @return resource converted to java.util.Properties [may be null if
+   *     the resource was not found and THROW_ON_LOAD_FAILURE is false] * @throws
    *     IllegalArgumentException if the resource was not found and * THROW_ON_LOAD_FAILURE is true
    */
   public static Properties loadProperties(String name, ClassLoader loader) {
@@ -82,8 +83,11 @@ public abstract class PropertyLoader {
   }
 
   /**
-   * * A convenience overload of {@link #loadProperties(String, ClassLoader)} * that uses the
-   * current thread's context classloader.
+   * A convenience overload of 
+   * {@link #loadProperties(String, ClassLoader)} 
+   * that uses the current thread's context classloader
+   * @param name path of property resource
+   * @return Properties object
    */
   public static Properties loadProperties(final String name) {
     return loadProperties(name, Thread.currentThread().getContextClassLoader());

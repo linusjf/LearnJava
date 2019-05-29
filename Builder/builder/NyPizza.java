@@ -17,7 +17,9 @@ public class NyPizza extends Pizza {
   public static class Builder extends Pizza.Builder<Builder> {
     private final Size size;
 
-    /** Constructor. */
+    /** Constructor.
+     * @param size Size of pizza.
+     */
     public Builder(Size size) {
       this.size = Objects.requireNonNull(size);
     }
