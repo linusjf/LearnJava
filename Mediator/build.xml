@@ -32,16 +32,19 @@
     </target>
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
-        <javadoc packagenames="${packages}" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <javadoc  packagenames="${packages}" 
+        sourcepath="${src.dir}" 
+        destdir="${docs.dir}"
+        additionalparam="${html.version}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
              </fileset>
         </javadoc>
-    </target>
+      </target>
       <target name="manifest">
         <tstamp/>
-      <manifest file="manifest.mf">
+        <manifest file="${jar.manifest}">
   <attribute name="Built-By" value="${user.name}"/>
 <section name="common">
     <attribute name="Specification-Title" value="${ant.project.name}"/>
