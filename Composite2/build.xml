@@ -68,7 +68,7 @@
 	<exec executable="./setup"/>
   <java classname="${main.class}">
  <classpath>
-   <pathelement path="${dist.dir}/${ant.project.name}.jar"/>
+   <pathelement path="${dist.dir}/${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>

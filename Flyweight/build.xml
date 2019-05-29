@@ -60,7 +60,7 @@
 </target>
     <!--Creates the deployable jar file  -->
     <target name="jar" depends="compile,manifest">
-      <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}" includes="**/*.class"
+      <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar" basedir="${build.dir}" includes="**/*.class"
         manifest="${jar.manifest}">
 </jar>
 </target>
@@ -74,13 +74,13 @@
 </java>
 <java classname="${main.class1}">
 <classpath>
-<pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>
 <java classname="${main.class2}">
  <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 </classpath>
 </java>

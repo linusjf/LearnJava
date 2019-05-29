@@ -70,21 +70,21 @@
 </exec>
 <java classname="${main.class}">
  <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 <pathelement path="${basedir}"/>
 </classpath>
 </java>
 <java classname="${main.class1}">
  <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 <pathelement path="${basedir}"/>
 </classpath>
 </java>
 <java classname="${main.class2}">
  <classpath>
-   <pathelement location="${dist.dir}\${ant.project.name}.jar"/>
+   <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
 <pathelement path="${java.class.path}"/>
 <pathelement path="${basedir}"/>
 </classpath>
