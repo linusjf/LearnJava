@@ -1,6 +1,6 @@
 package com.javacodegeeks.abk;
 
-import static converter.ByteToHex.getHex4;
+import static com.lambdaworks.codec.Base64.encode;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +26,7 @@ public class MD5Encryptor implements Encrypt {
       msgDigest.update(text.getBytes());
 
       final byte[] textBytes = msgDigest.digest();
-      hash = getHex4(textBytes);
+      hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();
     }

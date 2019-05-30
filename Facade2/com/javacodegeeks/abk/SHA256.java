@@ -1,6 +1,6 @@
 package com.javacodegeeks.abk;
 
-import static converter.ByteToHex.getHex4;
+import static com.lambdaworks.codec.Base64.encode;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -25,7 +25,7 @@ public class SHA256 implements Encrypt {
     try {
       final MessageDigest digest = MessageDigest.getInstance("SHA-256");
       final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
-      hash = getHex4(textBytes);
+      hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();
     }

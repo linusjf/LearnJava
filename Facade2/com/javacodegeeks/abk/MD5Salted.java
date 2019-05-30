@@ -1,7 +1,7 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-import static converter.ByteToHex.getHex4;
+import static com.lambdaworks.codec.Base64.encode;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,7 +27,7 @@ public class MD5Salted implements Encrypt {
       final byte[] salt = getSalt();
       msgDigest.update(salt);
       final byte[] textBytes = msgDigest.digest(text.getBytes());
-      hash = getHex4(textBytes);
+      hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();
     }

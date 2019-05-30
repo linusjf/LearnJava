@@ -1,7 +1,7 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-import static converter.ByteToHex.getHex4;
+import static com.lambdaworks.codec.Base64.encode;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -28,7 +28,7 @@ public class SHA384Salted implements Encrypt {
       final byte[] salt = getSalt();
       digest.update(salt);
       final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
-      hash = getHex4(textBytes);
+      hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
       e.printStackTrace();
     }
