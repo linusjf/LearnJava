@@ -34,6 +34,8 @@ public class EncryptorFacade {
     SHA384Salted,
     SHA512,
     SHA512Salted,
+    SCrypt,
+    BCrypt,
   }
 
   /**
@@ -105,6 +107,12 @@ public class EncryptorFacade {
       case SHA512Salted:
         e = new SHA512Salted();
         hash = e.encrypt(text);
+        break;
+      
+      case SCrypt:
+        break;
+        
+      case BCrypt:
         break;
 
       default:

@@ -51,7 +51,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="optional" value="true"/>
     <property name="file" value="${cs.suppressions-xpath.file}"/>
     </module>
-<module name="SuppressWarningsHolder" />
+    <module name="SuppressWarningsHolder" />
+    <module name="RegexpSinglelineJava">
+        <property name="format" value="\.printStackTrace\(\)"/>
+        <property name="ignoreComments" value="true"/>
+        <property name="message" value="Using e.printStackTrace() is forbidden. Rethrow, log or handle the exception."/>
+    </module>
 <module name="RedundantModifier"/>
 <module name="SingleSpaceSeparator">
   <property name="validateComments" value="false"/>
