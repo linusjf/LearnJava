@@ -24,7 +24,7 @@ public interface FileChannelExample {
    * @param path file path
    * @param fileOperation File operation type as enum
    * @return <code>FileChannel</code> object based on fileOperation parameter
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the file path does not point to a file.
    */
   default FileChannel createChannel(String path, FileOperation fileOperation)
       throws FileNotFoundException {
