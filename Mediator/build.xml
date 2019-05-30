@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="Mediator" default="main" basedir=".">
   <property file = "build.properties"/>
+  <property file = "../globalbuild.properties"/>
   <property file = "${cs.properties}"/>
   <property file = "${gformat.properties}"/>
     <!-- Sets variables which can later be used. -->
