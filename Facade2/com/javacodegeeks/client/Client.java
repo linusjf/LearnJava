@@ -46,5 +46,9 @@ public enum Client {
     System.out.println(e.encrypt(SHA512, myText));
     System.out.println("SHA512Salted encryption");
     System.out.println(e.encrypt(SHA512Salted, myText));
+    System.out.println("BCrypt encryption");
+    System.out.println(e.encrypt(BCrypt, myText));
+    System.out.println("SCrypt encryption");
+    System.out.println(e.encrypt(SCrypt, myText));
   }
 }

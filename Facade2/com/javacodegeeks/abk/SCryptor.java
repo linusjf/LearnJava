@@ -2,8 +2,7 @@ package com.javacodegeeks.abk;
 
 import static converter.ByteToHex.getHex4;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.lambdaworks.crypto.SCryptUtil;
 
 /**
  * Describe class <code>SCryptor</code> here.
@@ -22,13 +21,9 @@ public class SCryptor implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
-      msgDigest.update(text.getBytes());
-
-      final byte[] textBytes = msgDigest.digest();
-      hash = getHex4(textBytes);
-    } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm missing: " 
+      hash = SCryptUtil.scrypt(text, 16, 16, 16);
+    } catch (IllegalStateException e) {
+      System.err.println("Illegal state : " 
           + e.getMessage());
     }
     return hash;

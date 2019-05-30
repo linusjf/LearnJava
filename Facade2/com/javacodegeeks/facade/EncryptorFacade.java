@@ -13,6 +13,8 @@ import com.javacodegeeks.abk.SHA384Salted;
 import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
+import com.javacodegeeks.abk.BCryptor;
+import com.javacodegeeks.abk.SCryptor;
 
 /**
  * Describe class <code>EncryptorFacade</code> here.
@@ -110,9 +112,13 @@ public class EncryptorFacade {
         break;
       
       case SCrypt:
+        e = new SCryptor();
+        hash = e.encrypt(text);
         break;
         
       case BCrypt:
+        e = new BCryptor();
+        hash = e.encrypt(text);
         break;
 
       default:

@@ -2,8 +2,7 @@ package com.javacodegeeks.abk;
 
 import static converter.ByteToHex.getHex4;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.howtodoinjava.hashing.password.demo.bcrypt.BCrypt;
 
 /**
  * Describe class <code>BCryptor</code> here.
@@ -22,13 +21,10 @@ public class BCryptor implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
-      msgDigest.update(text.getBytes());
-
-      final byte[] textBytes = msgDigest.digest();
-      hash = getHex4(textBytes);
-    } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm missing: " +
+      hash = BCrypt.hashpw(text, 
+          BCrypt.gensalt(12));
+    } catch (IllegalArgumentException e) {
+      System.err.println("Illegal Argument: " +
           e.getMessage());
     }
     return hash;

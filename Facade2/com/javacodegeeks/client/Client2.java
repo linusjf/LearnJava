@@ -12,6 +12,8 @@ import com.javacodegeeks.abk.SHA384Salted;
 import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
+import com.javacodegeeks.abk.BCryptor;
+import com.javacodegeeks.abk.SCryptor;
 
 /**
  * Describe class <code>Client2</code> here.
@@ -65,5 +67,11 @@ public enum Client2 {
     final SHA512Salted s512salted = new SHA512Salted();
     System.out.println("SHA512 Salted encryption");
     System.out.println(s512salted.encrypt(myText));
+    final SCryptor scryptor = new SCryptor();
+    System.out.println("SCrypt encryption");
+    System.out.println(scryptor.encrypt(myText));
+    final BCryptor bcryptor = new BCryptor();
+    System.out.println("BCrypt encryption");
+    System.out.println(bcryptor.encrypt(myText));
   }
 }
