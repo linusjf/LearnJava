@@ -8,7 +8,11 @@ import java.io.InputStreamReader;
 public enum BillGenerator {
   ;
 
-  public static void main(String args[]) {
+  /**
+   * Main method.
+   * @param args command line arguments
+   */
+  public static void main(String[] args) {
     if (args.length < 1) {
       System.out.println("Specify path to file as argument.");
       System.exit(1);

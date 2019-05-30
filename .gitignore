@@ -14,3 +14,4 @@ Proxy/cached/*.*
 !./AnnoProc.class
 !Proxy/urls.txt
 !NIOIntro/file/*put.txt
+!FactoryMethod/bill.txt
