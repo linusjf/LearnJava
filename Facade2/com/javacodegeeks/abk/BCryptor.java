@@ -23,6 +23,7 @@ public class BCryptor implements Encrypt {
     try {
       hash = BCrypt.hashpw(text, 
           BCrypt.gensalt(12));
+      hash = hash.substring(hash.lastIndexOf("$",hash.length())+1); 
     } catch (IllegalArgumentException e) {
       System.err.println("Illegal Argument: " +
           e.getMessage());

@@ -1451,6 +1451,7 @@ public class BCrypt {
     rs.append(Integer.toString(rounds));
     rs.append("$");
     rs.append(encodeBase64(saltb, saltb.length));
+    rs.append("$");
     rs.append(encodeBase64(hashed, bfCryptCipherText.length * 4 - 1));
     return rs.toString();
   }
