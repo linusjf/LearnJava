@@ -30,8 +30,7 @@ public class SHA224Salted implements Encrypt {
       final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm not found : "
-          + e.getMessage());
+      System.err.println("Algorithm not found : " + e.getMessage());
     }
     return hash;
   }

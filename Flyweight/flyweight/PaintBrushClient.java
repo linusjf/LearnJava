@@ -2,7 +2,7 @@ package flyweight;
 
 public enum PaintBrushClient {
   ;
-  
+
   /**
    * Main program.
    * @param args <code>String</code>

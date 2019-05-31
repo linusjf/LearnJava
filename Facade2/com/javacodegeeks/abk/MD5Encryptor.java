@@ -28,8 +28,7 @@ public class MD5Encryptor implements Encrypt {
       final byte[] textBytes = msgDigest.digest();
       hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm not found : "
-          + e.getMessage());
+      System.err.println("Algorithm not found : " + e.getMessage());
     }
     return hash;
   }

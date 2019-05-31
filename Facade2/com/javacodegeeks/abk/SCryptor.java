@@ -20,11 +20,9 @@ public class SCryptor implements Encrypt {
     String hash = "";
     try {
       hash = SCryptUtil.scrypt(text, 16, 16, 16);
-      hash = hash.substring(hash
-          .lastIndexOf("$",hash.length()) + 1); 
+      hash = hash.substring(hash.lastIndexOf("$", hash.length()) + 1);
     } catch (IllegalStateException e) {
-      System.err.println("Illegal state : " 
-          + e.getMessage());
+      System.err.println("Illegal state : " + e.getMessage());
     }
     return hash;
   }

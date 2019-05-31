@@ -19,13 +19,10 @@ public class BCryptor implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      hash = BCrypt.hashpw(text, 
-          BCrypt.gensalt(12));
-      hash = hash.substring(hash
-          .lastIndexOf("$",hash.length()) + 1); 
+      hash = BCrypt.hashpw(text, BCrypt.gensalt(12));
+      hash = hash.substring(hash.lastIndexOf("$", hash.length()) + 1);
     } catch (IllegalArgumentException e) {
-      System.err.println("Illegal Argument: " 
-          + e.getMessage());
+      System.err.println("Illegal Argument: " + e.getMessage());
     }
     return hash;
   }

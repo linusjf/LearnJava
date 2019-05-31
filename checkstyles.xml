@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE module PUBLIC
-          "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-          "https://checkstyle.org/dtds/configuration_1_3.dtd">
-
-
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
 <module name="Checker">
   <!--
       If you set the basedir property below, then all reported file
@@ -12,28 +8,16 @@
 
       <property name="basedir" value="${basedir}"/>
   -->
-
   <property name="charset" value="${cs.charset}"/>
-
   <property name="severity" value="${cs.severity}"/>
-
   <property name="fileExtensions" value="${cs.fileExtensions}"/>
   <property name="cacheFile" value="${cs.cacheFile}"/>
-
   <metadata name="org.checkstyle.principle" value="Practice What You Preach"/>
-  <metadata name="org.checkstyle.principle.description"
-            value="In our config we should use all Checks that Checkstyle has"/>
-
-  <property name="cacheFile" value="${cs.cacheFile}"/-->
-
-
-  <property name="fileExtensions" value="java, properties, xml, vm, g, g4, dtd"/>
-
+  <metadata name="org.checkstyle.principle.description" value="In our config we should use all Checks that Checkstyle has"/>
   <!-- BeforeExecutionFileFilters is required for sources that are based on java9 -->
   <module name="BeforeExecutionExclusionFileFilter">
-    <property name="fileNamePattern" value="module\-info\.java$" />
+    <property name="fileNamePattern" value="module\-info\.java$"/>
   </module>
-
   <!-- Filters -->
   <module name="SeverityMatchFilter">
     <!-- report all violations except ignore -->
@@ -53,7 +37,6 @@
     <property name="offCommentFormat" value="CSOFF\: .*"/>
     <property name="onCommentFormat" value="CSON\: .*"/>
   </module>
-
   <!-- Headers -->
   <module name="Header">
     <property name="headerFile" value="${cs.header.file}"/>
@@ -64,20 +47,17 @@
     <property name="headerFile" value="${cs.regexp.header.file}"/>
     <property name="fileExtensions" value="java"/>
   </module>
-
   <!-- Javadoc Comments -->
   <module name="JavadocPackage">
     <property name="allowLegacy" value="false"/>
     <property name="fileExtensions" value=".java"/>
   </module>
-
   <!-- Miscellaneous -->
   <module name="NewlineAtEndOfFile"/>
   <module name="Translation">
     <property name="requiredTranslations" value="de, fr, fi, es, pt, ja, tr, zh"/>
   </module>
   <module name="UniqueProperties"/>
-
   <!-- Regexp -->
   <module name="RegexpMultiline"/>
   <module name="RegexpMultiline">
@@ -86,10 +66,9 @@
     <property name="message" value="Unnecessary consecutive lines"/>
   </module>
   <module name="RegexpMultiline">
-      <property name="format" value="/\*\*\W+\* +\p{javaLowerCase}"/>
-      <property name="fileExtensions" value="java"/>
-      <property name="message"
-                value="First sentence in a comment should start with a capital letter"/>
+    <property name="format" value="/\*\*\W+\* +\p{javaLowerCase}"/>
+    <property name="fileExtensions" value="java"/>
+    <property name="message" value="First sentence in a comment should start with a capital letter"/>
   </module>
   <module name="RegexpSingleline">
     <property name="format" value="\s+$"/>
@@ -97,10 +76,9 @@
     <property name="maximum" value="0"/>
   </module>
   <module name="RegexpSingleline">
-      <property name="format" value="/\*\* +\p{javaLowerCase}"/>
-      <property name="fileExtensions" value="java"/>
-      <property name="message"
-                value="First sentence in a comment should start with a capital letter"/>
+    <property name="format" value="/\*\* +\p{javaLowerCase}"/>
+    <property name="fileExtensions" value="java"/>
+    <property name="message" value="First sentence in a comment should start with a capital letter"/>
   </module>
   <module name="RegexpSingleline">
     <property name="format" value="^(?!(.*http|import)).{101,}$"/>
@@ -112,43 +90,35 @@
     <property name="fileExtensions" value="xml, vm"/>
     <property name="message" value="Line should not be longer than 100 symbols"/>
   </module>
-  <module name="RegexpOnFilename" />
+  <module name="RegexpOnFilename"/>
   <module name="RegexpOnFilename">
-      <property name="folderPattern" value="[\\/]src[\\/]\w+[\\/]java[\\/]"/>
-      <property name="fileNamePattern" value="\.java$"/>
-      <property name="match" value="false"/>
-      <message key="regexp.filepath.mismatch"
-               value="Only java files should be located in the ''src/*/java'' folders."/>
+    <property name="folderPattern" value="[\\/]src[\\/]\w+[\\/]java[\\/]"/>
+    <property name="fileNamePattern" value="\.java$"/>
+    <property name="match" value="false"/>
+    <message key="regexp.filepath.mismatch" value="Only java files should be located in the ''src/*/java'' folders."/>
   </module>
   <module name="RegexpOnFilename">
-      <property name="folderPattern" value="[\\/]src[\\/]xdocs[\\/]"/>
-      <property name="fileNamePattern" value="\.(xml)|(vm)$"/>
-      <property name="match" value="false"/>
-      <message key="regexp.filepath.mismatch"
-        value="All files in the ''src/xdocs'' folder should have the ''xml'' or ''vm'' extension."/>
+    <property name="folderPattern" value="[\\/]src[\\/]xdocs[\\/]"/>
+    <property name="fileNamePattern" value="\.(xml)|(vm)$"/>
+    <property name="match" value="false"/>
+    <message key="regexp.filepath.mismatch" value="All files in the ''src/xdocs'' folder should have the ''xml'' or ''vm'' extension."/>
   </module>
   <module name="RegexpOnFilename">
-      <property name="folderPattern" value="[\\/]src[\\/]it[\\/]java[\\/]"/>
-      <property name="fileNamePattern" value="^((\w+Test)|(\w+TestSupport)|(Abstract\w+))\.java$"/>
-      <property name="match" value="false"/>
-      <message key="regexp.filepath.mismatch"
-               value="All files in the ''src/it/java'' folder
-                      should be named ''*Test.java'' or ''Abstract*.java''."/>
+    <property name="folderPattern" value="[\\/]src[\\/]it[\\/]java[\\/]"/>
+    <property name="fileNamePattern" value="^((\w+Test)|(\w+TestSupport)|(Abstract\w+))\.java$"/>
+    <property name="match" value="false"/>
+    <message key="regexp.filepath.mismatch" value="All files in the ''src/it/java'' folder                       should be named ''*Test.java'' or ''Abstract*.java''."/>
   </module>
-
   <!-- Size Violations -->
   <module name="FileLength">
     <property name="fileExtensions" value="java"/>
   </module>
-
   <!-- Whitespace -->
   <module name="FileTabCharacter">
     <property name="eachLine" value="false"/>
   </module>
-
   <module name="TreeWalker">
     <property name="tabWidth" value="2"/>
-
     <!-- Annotations -->
     <module name="AnnotationLocation">
       <property name="tokens" value="ANNOTATION_DEF"/>
@@ -185,17 +155,10 @@
     <module name="MissingOverride"/>
     <module name="PackageAnnotation"/>
     <module name="SuppressWarnings">
-        <property name="format" value="^((?!unchecked|deprecation|rawtypes|resource).)*$"/>
-        <message key="suppressed.warning.not.allowed"
-             value="The warning ''{0}'' cannot be suppressed at this location.
-             Only few javac warnings are allowed to suppress.
-             If try to suppress checkstyle/pmd/..... violation please do this in their config file.
-             If you try to suppress IntelliJ IDEA inspection,
-             please use javadoc block tag @noinspection"
-             />
+      <property name="format" value="^((?!unchecked|deprecation|rawtypes|resource).)*$"/>
+      <message key="suppressed.warning.not.allowed" value="The warning ''{0}'' cannot be suppressed at this location.              Only few javac warnings are allowed to suppress.              If try to suppress checkstyle/pmd/..... violation please do this in their config file.              If you try to suppress IntelliJ IDEA inspection,              please use javadoc block tag @noinspection"/>
     </module>
     <module name="SuppressWarningsHolder"/>
-
     <!-- Block Checks -->
     <module name="AvoidNestedBlocks">
       <property name="allowInSwitchCase" value="true"/>
@@ -244,11 +207,9 @@
       <property name="tokens" value="LITERAL_DO"/>
       <property name="option" value="same"/>
     </module>
-
     <!-- Class Design -->
     <module name="DesignForExtension">
-      <property name="ignoredAnnotations"
-                value="Override, Test, Before, After, BeforeClass, AfterClass"/>
+      <property name="ignoredAnnotations" value="Override, Test, Before, After, BeforeClass, AfterClass"/>
     </module>
     <module name="FinalClass"/>
     <module name="HideUtilityClassConstructor"/>
@@ -260,7 +221,6 @@
       <property name="max" value="2"/>
     </module>
     <module name="VisibilityModifier"/>
-
     <!-- Coding -->
     <module name="ArrayTrailingComma"/>
     <module name="AvoidInlineConditionals"/>
@@ -274,32 +234,22 @@
     <module name="FallThrough"/>
     <module name="FinalLocalVariable"/>
     <module name="HiddenField">
-        <property name="ignoreConstructorParameter" value="true"/>
-        <property name="ignoreSetter" value="true"/>
-        <property name="setterCanReturnItsClass" value="true"/>
+      <property name="ignoreConstructorParameter" value="true"/>
+      <property name="ignoreSetter" value="true"/>
+      <property name="setterCanReturnItsClass" value="true"/>
     </module>
     <module name="IllegalCatch">
-        <property name="illegalClassNames"
-                  value="java.lang.Exception,
-                         java.lang.Throwable,
-                         java.lang.RuntimeException,
-                         java.lang.NullPointerException"/>
+      <property name="illegalClassNames" value="java.lang.Exception,                          java.lang.Throwable,                          java.lang.RuntimeException,                          java.lang.NullPointerException"/>
     </module>
     <module name="IllegalInstantiation">
-        <property name="classes"
-                  value="org.xml.sax.SAXException, org.xml.sax.SAXParseException,
-                         org.apache.commons.beanutils.ConversionException,
-                         org.antlr.v4.runtime.misc.ParseCancellationException,
-                         antlr.RecognitionException, antlr.TokenStreamException,
-                         antlr.TokenStreamRecognitionException, antlr.ANTLRException,
-                         java.lang.StringBuffer"/>
+      <property name="classes" value="org.xml.sax.SAXException, org.xml.sax.SAXParseException,                          org.apache.commons.beanutils.ConversionException,                          org.antlr.v4.runtime.misc.ParseCancellationException,                          antlr.RecognitionException, antlr.TokenStreamException,                          antlr.TokenStreamRecognitionException, antlr.ANTLRException,                          java.lang.StringBuffer"/>
     </module>
     <module name="IllegalThrows"/>
     <module name="IllegalToken">
-        <property name="tokens" value="LABELED_STAT"/>
-        <property name="tokens" value="LITERAL_NATIVE"/>
-        <property name="tokens" value="LITERAL_VOLATILE"/>
-        <property name="tokens" value="LITERAL_ASSERT"/>
+      <property name="tokens" value="LABELED_STAT"/>
+      <property name="tokens" value="LITERAL_NATIVE"/>
+      <property name="tokens" value="LITERAL_VOLATILE"/>
+      <property name="tokens" value="LITERAL_ASSERT"/>
     </module>
     <module name="IllegalTokenText">
       <property name="tokens" value="STRING_LITERAL"/>
@@ -307,11 +257,7 @@
       <property name="ignoreCase" value="true"/>
     </module>
     <module name="IllegalType">
-      <property name="illegalClassNames"
-                value="java.util.HashSet, HashSet, java.util.LinkedHashMap, LinkedHashMap,
-                       java.util.TreeMap, TreeMap, java.util.HashMap, HashMap,
-                       java.util.LinkedHashSet, LinkedHashSet, java.util.TreeSet, TreeSet,
-                       java.lang.StringBuffer, StringBuffer"/>
+      <property name="illegalClassNames" value="java.util.HashSet, HashSet, java.util.LinkedHashMap, LinkedHashMap,                        java.util.TreeMap, TreeMap, java.util.HashMap, HashMap,                        java.util.LinkedHashSet, LinkedHashSet, java.util.TreeSet, TreeSet,                        java.lang.StringBuffer, StringBuffer"/>
     </module>
     <module name="InnerAssignment"/>
     <module name="MagicNumber"/>
@@ -351,7 +297,6 @@
     <module name="SuperFinalize"/>
     <module name="UnnecessaryParentheses"/>
     <module name="VariableDeclarationUsageDistance"/>
-
     <!-- Filters-->
     <module name="SuppressionCommentFilter">
       <!--
@@ -404,18 +349,15 @@
       <property name="checks" value="MultipleStringLiterals"/>
     </module>
     <module name="SuppressWithNearbyCommentFilter">
-      <property name="commentFormat"
-                value="-@cs\[(\w{8,}(\|\w{8,})*)\] \w[\(\)\-\.\'\`\,\:\;\w ]{10,}"/>
+      <property name="commentFormat" value="-@cs\[(\w{8,}(\|\w{8,})*)\] \w[\(\)\-\.\'\`\,\:\;\w ]{10,}"/>
       <property name="checkFormat" value="$1"/>
       <property name="influenceFormat" value="3"/>
     </module>
-
     <!-- Imports -->
     <module name="AvoidStarImport"/>
     <module name="AvoidStaticImport"/>
     <module name="CustomImportOrder">
-      <property name="customImportOrderRules"
-                value="STATIC###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS"/>
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS"/>
       <property name="specialImportsRegExp" value="^org\."/>
       <property name="sortImportsInGroupAlphabetically" value="true"/>
       <property name="separateLineBetweenGroups" value="true"/>
@@ -440,7 +382,6 @@
     </module>
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
-
     <!-- Javadoc Comments -->
     <module name="AtclauseOrder"/>
     <module name="JavadocMethod">
@@ -466,51 +407,24 @@
     <module name="SingleLineJavadoc"/>
     <module name="WriteTag"/>
     <module name="SummaryJavadoc"/>
-
     <!-- Metrics -->
     <module name="BooleanExpressionComplexity">
       <property name="max" value="7"/>
     </module>
     <module name="ClassDataAbstractionCoupling">
-        <!-- Default classes are also listed-->
-        <property name="excludedClasses"
-                  value="boolean, byte, char, double, float, int, long, short, void,
-                         Boolean, Byte, Character, Double, Float, Integer, Long, Short, Void,
-                         Object, Class, String, StringBuffer, StringBuilder,
-                         ArrayIndexOutOfBoundsException, Exception, RuntimeException,
-                         IllegalArgumentException, IllegalStateException,
-                         IndexOutOfBoundsException, NullPointerException, Throwable,
-                         SecurityException, UnsupportedOperationException, List, ArrayList,
-                         Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map,
-                         HashMap, SortedMap, TreeMap, DetailsAST, CheckstyleException,
-                         UnsupportedEncodingException, BuildException, ConversionException,
-                         FileNotFoundException, TestException"/>
+      <!-- Default classes are also listed-->
+      <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short, void,                          Boolean, Byte, Character, Double, Float, Integer, Long, Short, Void,                          Object, Class, String, StringBuffer, StringBuilder,                          ArrayIndexOutOfBoundsException, Exception, RuntimeException,                          IllegalArgumentException, IllegalStateException,                          IndexOutOfBoundsException, NullPointerException, Throwable,                          SecurityException, UnsupportedOperationException, List, ArrayList,                          Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map,                          HashMap, SortedMap, TreeMap, DetailsAST, CheckstyleException,                          UnsupportedEncodingException, BuildException, ConversionException,                          FileNotFoundException, TestException"/>
     </module>
     <module name="ClassFanOutComplexity">
-        <property name="max" value="25"/>
-        <!-- Default classes are also listed-->
-        <property name="excludedClasses"
-                  value="boolean, byte, char, double, float, int, long, short,
-                         void, Boolean, Byte, Character, Double, Float, Integer,
-                         Long, Short, Void, Object, Class, String, StringBuffer,
-                         StringBuilder, ArrayIndexOutOfBoundsException, Exception,
-                         RuntimeException, IllegalArgumentException, IllegalStateException,
-                         IndexOutOfBoundsException, NullPointerException, Throwable,
-                         SecurityException, UnsupportedOperationException, List, ArrayList,
-                         Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map,
-                         HashMap, SortedMap, TreeMap, DetailsAST, CheckstyleException,
-                         UnsupportedEncodingException, BuildException, ConversionException,
-                         FileNotFoundException, TestException, Log, Sets, Multimap,
-                         TokenStreamRecognitionException, RecognitionException,
-                         TokenStreamException, IOException, Override, Deprecated, SafeVarargs,
-                         SuppressWarnings, FunctionalInterface"/>
+      <property name="max" value="25"/>
+      <!-- Default classes are also listed-->
+      <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short,                          void, Boolean, Byte, Character, Double, Float, Integer,                          Long, Short, Void, Object, Class, String, StringBuffer,                          StringBuilder, ArrayIndexOutOfBoundsException, Exception,                          RuntimeException, IllegalArgumentException, IllegalStateException,                          IndexOutOfBoundsException, NullPointerException, Throwable,                          SecurityException, UnsupportedOperationException, List, ArrayList,                          Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map,                          HashMap, SortedMap, TreeMap, DetailsAST, CheckstyleException,                          UnsupportedEncodingException, BuildException, ConversionException,                          FileNotFoundException, TestException, Log, Sets, Multimap,                          TokenStreamRecognitionException, RecognitionException,                          TokenStreamException, IOException, Override, Deprecated, SafeVarargs,                          SuppressWarnings, FunctionalInterface"/>
     </module>
     <module name="CyclomaticComplexity">
       <property name="switchBlockAsSingleDecisionPoint" value="true"/>
     </module>
     <module name="JavaNCSS"/>
     <module name="NPathComplexity"/>
-
     <!-- Misc -->
     <module name="ArrayTypeStyle"/>
     <module name="AvoidEscapedUnicodeCharacters">
@@ -526,24 +440,23 @@
       -->
       <property name="severity" value="ignore"/>
     </module>
-        <module name="Indentation">
-            <property name="basicOffset" value="2"/>
-            <property name="braceAdjustment" value="0"/>
-            <property name="caseIndent" value="2"/>
-            <property name="throwsIndent" value="4"/>
-            <property name="lineWrappingIndentation" value="4"/>
-            <property name="arrayInitIndent" value="2"/>
-        </module>
+    <module name="Indentation">
+      <property name="basicOffset" value="2"/>
+      <property name="braceAdjustment" value="0"/>
+      <property name="caseIndent" value="2"/>
+      <property name="throwsIndent" value="4"/>
+      <property name="lineWrappingIndentation" value="4"/>
+      <property name="arrayInitIndent" value="2"/>
+    </module>
     <module name="OuterTypeFilename"/>
     <module name="TodoComment">
-      <property name="format" value="(TODO)|(FIXME)" />
+      <property name="format" value="(TODO)|(FIXME)"/>
     </module>
     <module name="TrailingComment"/>
     <module name="UncommentedMain">
       <property name="excludedClasses" value="\.(Main|JavadocPropertiesGenerator)$"/>
     </module>
     <module name="UpperEll"/>
-
     <!-- Modifiers -->
     <module name="ClassMemberImpliedModifier">
       <!-- effectively the opposite of RedundantModifier, so output must be ignored -->
@@ -555,7 +468,6 @@
     </module>
     <module name="ModifierOrder"/>
     <module name="RedundantModifier"/>
-
     <!-- Naming Conventions -->
     <module name="AbbreviationAsWordInName">
       <property name="ignoreFinal" value="true"/>
@@ -591,7 +503,6 @@
       <property name="format" value="^(id)|([a-z][a-z0-9][a-zA-Z0-9]+)$"/>
     </module>
     <module name="TypeName"/>
-
     <!-- Regexp -->
     <module name="Regexp"/>
     <module name="RegexpSinglelineJava"/>
@@ -599,11 +510,10 @@
       <property name="format" value="[^\p{ASCII}]"/>
       <property name="ignoreComments" value="true"/>
     </module>
-
     <!-- Size Violations -->
     <module name="AnonInnerLength"/>
     <module name="ExecutableStatementCount">
-        <property name="max" value="30"/>
+      <property name="max" value="30"/>
     </module>
     <module name="LineLength">
       <property name="max" value="100"/>
@@ -615,7 +525,6 @@
     <module name="MethodLength"/>
     <module name="OuterTypeNumber"/>
     <module name="ParameterNumber"/>
-
     <!-- Whitespace -->
     <module name="EmptyForInitializerPad"/>
     <module name="EmptyForIteratorPad"/>
@@ -709,7 +618,5 @@
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
     <module name="WhitespaceAround"/>
-
   </module>
-
 </module>

@@ -21,8 +21,8 @@ public abstract class PropertyLoader {
    * package segment separation with an * optional leading "/" and optional ".properties" suffix.
    * Thus, the * following names refer to the same resource: *
    *
-   * <p>some.pkg.Resource * some.pkg.Resource.properties some/pkg/Resource 
-   * some/pkg/Resource.properties  /some/pkg/Resource /some/pkg/Resource.properties 
+   * <p>some.pkg.Resource * some.pkg.Resource.properties some/pkg/Resource
+   * some/pkg/Resource.properties  /some/pkg/Resource /some/pkg/Resource.properties
    * @param name classpath resource name [may not be null] *
    *
    * @param loader classloader through which to load the resource [null * is equivalent to the
@@ -82,8 +82,9 @@ public abstract class PropertyLoader {
     return result;
   }
 
-  /** An overloaded LoadProperties. 
-   * A convenience overload of {@link #loadProperties(String, ClassLoader)} 
+  /**
+   * An overloaded LoadProperties.
+   * A convenience overload of {@link #loadProperties(String, ClassLoader)}
    * that uses the current thread's context classloader
    * @param name path of property resource
    * @return Properties object

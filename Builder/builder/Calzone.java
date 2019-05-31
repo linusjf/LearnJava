@@ -13,7 +13,8 @@ public class Calzone extends Pizza {
   public static class Builder extends Pizza.Builder<Builder> {
     private boolean sauceInside = false; // Default
 
-    /** sets sauce.
+    /**
+     * sets sauce.
      * @return Calzone object
      */
     public Builder sauceInside() {

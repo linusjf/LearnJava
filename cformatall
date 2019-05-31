@@ -1,4 +1,4 @@
 #!/bin/bash
-clang-format -i -style=Google \
+clang-format -i -style=Google -sort-includes \
 `find . -mindepth 2 -type f -name "*.java"`
 exit $?

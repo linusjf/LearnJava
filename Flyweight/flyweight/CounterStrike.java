@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Driver class.
  */
-public enum CounterStrike { //NOMPMD
+public enum CounterStrike { // NOMPMD
   ;
   // All player types and weopons (used by getRandPlayerType()
   // and getRandWeapon()
@@ -36,7 +36,8 @@ public enum CounterStrike { //NOMPMD
     }
   }
 
-  /** Utility methods to get a random player type an
+  /**
+   * Utility methods to get a random player type an
    * weapon.
    * @return <code>String</code>
    */
@@ -48,7 +49,8 @@ public enum CounterStrike { //NOMPMD
     return playerType[randInt];
   }
 
-  /** Return a weapon randomly.
+  /**
+   * Return a weapon randomly.
    * @return weapon as <code>String</code>
    */
   public static String getRandWeapon() {

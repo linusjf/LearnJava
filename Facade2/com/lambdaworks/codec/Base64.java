@@ -53,7 +53,8 @@ public final class Base64 { // NOPMD
   public static byte[] decode(char[] src, int[] table, char pad) {
     final int len = src.length;
 
-    if (len == 0) return new byte[0];
+    if (len == 0)
+      return new byte[0];
 
     final int padCount = src[len - 1] == pad ? src[len - 2] == pad ? 2 : 1 : 0;
     final int bytes = (len * 6 >> 3) - padCount;
@@ -64,11 +65,8 @@ public final class Base64 { // NOPMD
     int di = 0;
     int n;
     while (di < blocks) {
-      n =
-          table[src[si++]] << 18
-              | table[src[si++]] << 12
-              | table[src[si++]] << 6
-              | table[src[si++]];
+      n = table[src[si++]] << 18 | table[src[si++]] << 12 | table[src[si++]] << 6
+          | table[src[si++]];
       dst[di++] = (byte) (n >> 16);
       dst[di++] = (byte) (n >> 8);
       dst[di++] = (byte) n;
@@ -129,12 +127,14 @@ public final class Base64 { // NOPMD
   public static char[] encode(byte[] src, char[] table, char pad) {
     final int len = src.length;
 
-    if (len == 0) return new char[0];
+    if (len == 0)
+      return new char[0];
 
     final int blocks = (len / 3) * 3;
     int chars = ((len - 1) / 3 + 1) << 2;
     final int tail = len - blocks;
-    if (pad == 0 && tail > 0) chars -= 3 - tail;
+    if (pad == 0 && tail > 0)
+      chars -= 3 - tail;
 
     final char[] dst = new char[chars];
     int si = 0;
@@ -150,14 +150,17 @@ public final class Base64 { // NOPMD
 
     if (tail > 0) {
       n = (src[si] & 0xff) << 10;
-      if (tail == 2) n |= (src[++si] & 0xff) << 2;
+      if (tail == 2)
+        n |= (src[++si] & 0xff) << 2;
 
       dst[di++] = table[(n >>> 12) & 0x3f];
       dst[di++] = table[(n >>> 6) & 0x3f];
-      if (tail == 2) dst[di++] = table[n & 0x3f];
+      if (tail == 2)
+        dst[di++] = table[n & 0x3f];
 
       if (pad != 0) {
-        if (tail == 1) dst[di++] = pad;
+        if (tail == 1)
+          dst[di++] = pad;
         dst[di] = pad;
       }
     }
