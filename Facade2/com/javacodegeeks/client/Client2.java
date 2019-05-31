@@ -14,6 +14,7 @@ import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
 import com.javacodegeeks.abk.BCryptor;
 import com.javacodegeeks.abk.SCryptor;
+import com.javacodegeeks.abk.PBKDFEncryptor;
 
 /**
  * Describe class <code>Client2</code> here.
@@ -73,5 +74,8 @@ public enum Client2 {
     final BCryptor bcryptor = new BCryptor();
     System.out.println("BCrypt encryption");
     System.out.println(bcryptor.encrypt(myText));
+    final PBKDFEncryptor pbkdf = new PBKDFEncryptor();
+    System.out.println("PBKDF encryption");
+    System.out.println(pbkdf.encrypt(myText));
   }
 }

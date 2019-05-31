@@ -50,5 +50,7 @@ public enum Client {
     System.out.println(e.encrypt(BCrypt, myText));
     System.out.println("SCrypt encryption");
     System.out.println(e.encrypt(SCrypt, myText));
+    System.out.println("PBKDF encryption");
+    System.out.println(e.encrypt(PBKDF, myText));
   }
 }

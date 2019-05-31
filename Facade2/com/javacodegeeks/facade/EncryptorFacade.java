@@ -15,6 +15,7 @@ import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
 import com.javacodegeeks.abk.BCryptor;
 import com.javacodegeeks.abk.SCryptor;
+import com.javacodegeeks.abk.PBKDFEncryptor;
 
 /**
  * Describe class <code>EncryptorFacade</code> here.
@@ -38,6 +39,7 @@ public class EncryptorFacade {
     SHA512Salted,
     SCrypt,
     BCrypt,
+    PBKDF,
   }
 
   /**
@@ -120,6 +122,13 @@ public class EncryptorFacade {
         e = new BCryptor();
         hash = e.encrypt(text);
         break;
+      
+      case PBKDF:
+        e = new PBKDFEncryptor();
+        hash = e.encrypt(text);
+        break;
+
+
 
       default:
         break;
