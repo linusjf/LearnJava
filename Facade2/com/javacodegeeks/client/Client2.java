@@ -1,7 +1,10 @@
 package com.javacodegeeks.client;
 
+import com.javacodegeeks.abk.BCryptor;
 import com.javacodegeeks.abk.MD5Encryptor;
 import com.javacodegeeks.abk.MD5Salted;
+import com.javacodegeeks.abk.PBKDFEncryptor;
+import com.javacodegeeks.abk.SCryptor;
 import com.javacodegeeks.abk.SHA;
 import com.javacodegeeks.abk.SHA224;
 import com.javacodegeeks.abk.SHA224Salted;
@@ -12,9 +15,6 @@ import com.javacodegeeks.abk.SHA384Salted;
 import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
-import com.javacodegeeks.abk.BCryptor;
-import com.javacodegeeks.abk.SCryptor;
-import com.javacodegeeks.abk.PBKDFEncryptor;
 
 /**
  * Describe class <code>Client2</code> here.

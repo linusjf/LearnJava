@@ -29,7 +29,8 @@ public class WorkLoader {
       // load a properties file
       properties.load(input);
     } catch (IOException exp) {
-      exp.printStackTrace();
+      System.err.println("Error reading properties file: 
+          + exp.getMessage());
     }
   }
 

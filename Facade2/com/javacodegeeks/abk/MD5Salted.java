@@ -29,7 +29,8 @@ public class MD5Salted implements Encrypt {
       final byte[] textBytes = msgDigest.digest(text.getBytes());
       hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
-      e.printStackTrace();
+      System.err.println("Algorithm not found : "
+          + e.getMessage());
     }
     return hash;
   }

@@ -27,7 +27,8 @@ public class SHA224 implements Encrypt {
       final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = String.valueOf(encode(textBytes));
     } catch (NoSuchAlgorithmException e) {
-      e.printStackTrace();
+      System.err.println("Algorithm not found : "
+          + e.getMessage());
     }
     return hash;
   }
