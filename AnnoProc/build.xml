@@ -46,6 +46,11 @@
     </target>
       <target name="manifest">
         <tstamp/>
+        <exec executable="bash"
+          outputproperty="build">
+    <arg value="-c"/>
+    <arg value="git log --pretty=format:'%h' | head -1"/>
+  </exec>
         <manifest file="${jar.manifest}" mode="update">
   <attribute name="Built-By" value="${user.name}"/>
 <section name="common">
