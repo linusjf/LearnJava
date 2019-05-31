@@ -34,7 +34,7 @@
     <!-- Creates Javadoc -->
     <target name="docs" depends="compile">
       <javadoc  packagenames="${packages}" 
-        additionalparam="${html.version}" 
+        additionalparam="${javadoc.params}" 
         sourcepath="${src.dir}" 
         destdir="${docs.dir}"> 
             <!-- Define which files / directory should get included, we include all -->

@@ -37,7 +37,7 @@
       <javadoc packagenames="${packages}" 
         sourcepath="${src.dir}" 
         destdir="${docs.dir}"
-        additionalparam="${html.version}">
+        additionalparam="${javadoc.params}">
             <!-- Define which files / directory should get included, we include all -->
              <fileset dir="${src.dir}">
                 <include name="*.java" />
