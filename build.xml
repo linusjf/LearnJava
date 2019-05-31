@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="LearnJava" default="main" basedir=".">
+  <property file="globalbuild.properties"/>
+  <property file="checkstyle.properties"/>
+  <property file="gformat.properties"/>
+  <!-- Sets variables which can later be used. -->
+  <!-- The value of a property is accessed via ${} -->
+  <property name="lib.dir" value="lib"/>
+  <path id="lib.path.id">
+    <fileset dir="${lib.dir}"/>
+  </path>
+  <target name="resolve" description="--&gt; retreive dependencies with ivy">
+    <ivy:retrieve/>
+  </target>
+  <!-- =================================
+          target: report
+         ================================= -->
+  <target name="report" depends="resolve" description="--&gt; generates a report of dependencies">
+    <ivy:report todir="."/>
+  </target>
+  <target name="main" depends="resolve">
+    <description>Main target</description>
+  </target>
+  <!-- =================================
+          target: clean-cache
+         ================================= -->
+  <target name="clean-cache" description="--&gt; clean the ivy cache">
+    <ivy:cleancache/>
+  </target>
+</project>
