@@ -1,7 +1,5 @@
 package com.javacodegeeks.abk;
 
-import static com.lambdaworks.codec.Base64.encode;
-
 import com.howtodoinjava.hashing.password.demo.bcrypt.BCrypt;
 
 /**

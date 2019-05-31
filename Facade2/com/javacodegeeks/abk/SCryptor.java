@@ -1,7 +1,5 @@
 package com.javacodegeeks.abk;
 
-import static com.lambdaworks.codec.Base64.encode;
-
 import com.lambdaworks.crypto.SCryptUtil;
 
 /**
