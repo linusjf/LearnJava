@@ -10,7 +10,10 @@
     <fileset dir="${lib.dir}"/>
   </path>
   <target name="resolve" description="--&gt; retreive dependencies with ivy">
-    <ivy:retrieve/>
+    <ivy:retrieve pathid="checkstyle.path" conf="checkstyle"/>
+    <ivy:retrieve pathid="gformat.path" conf="gformat"/>
+    <echo message="${toString:checkstyle.path}"/>
+    <echo message="${toString:gformat.path}"/>
   </target>
   <!-- =================================
           target: report
