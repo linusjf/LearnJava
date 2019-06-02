@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="LearnJava" default="main" basedir=".">
-  <property file="globalbuild.properties"/>
-  <property file="checkstyle.properties"/>
-  <property file="gformat.properties"/>
+  <property file="${LearnJava.basedir}/globalbuild.properties"/>
+  <property file="${LearnJava.basedir}/checkstyle.properties"/>
+  <property file="${LearnJava.basedir}/gformat.properties"/>
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
-  <property name="lib.dir" value="lib"/>
+  <property name="lib.dir" value="${LearnJava.basedir}/lib"/>
   <path id="lib.path.id">
     <fileset dir="${lib.dir}"/>
   </path>
