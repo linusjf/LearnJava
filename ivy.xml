@@ -20,13 +20,15 @@
 <ivy-module version="2.0">
   <info organisation="linus" module="LearnJava"/>
   <configurations>
-    <conf name="checkstyle" description="checkstyle dependencies"/>
-    <conf name="gformat" description="google java format dependencies"/>
+    <conf name="checkstyle.main" description="checkstyle dependencies"/>
+    <conf name="gformat.main" description="google java format dependencies"/>
+    <conf name="checkstyle.lib" description="checkstyle dependencies"/>
+    <conf name="gformat.lib" description="google java format dependencies"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
-    <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat-&gt;master;gformat-&gt;runtime"/>
+    <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat.main-&gt;master;gformat.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
-    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.21" conf="checkstyle-&gt;master;checkstyle-&gt;runtime"/>
+    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.21" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
   </dependencies>
 </ivy-module>

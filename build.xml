@@ -10,10 +10,10 @@
     <fileset dir="${lib.dir}"/>
   </path>
   <target name="resolve" description="--&gt; retreive dependencies with ivy">
-    <ivy:retrieve pathid="checkstyle.path" conf="checkstyle"/>
-    <ivy:retrieve pathid="gformat.path" conf="gformat"/>
-    <echo message="${toString:checkstyle.path}"/>
-    <echo message="${toString:gformat.path}"/>
+    <ivy:retrieve setid="checkstyle.main.fs" pathid="checkstyle.main.path" conf="checkstyle.main"/>
+    <ivy:retrieve setid="gformat.main.fs" pathid="gformat.main.path" conf="gformat.main"/>
+    <ivy:retrieve setid="checkstyle.lib.fs" pathid="checkstyle.lib.path" conf="checkstyle.lib"/>
+    <ivy:retrieve setid="gformat.lib.fs" pathid="gformat.lib.path" conf="gformat.lib"/>
   </target>
   <!-- =================================
           target: report
@@ -21,7 +21,7 @@
   <target name="report" depends="resolve" description="--&gt; generates a report of dependencies">
     <ivy:report todir="."/>
   </target>
-  <target name="main" depends="resolve">
+  <target name="main" depends="resolve,createjars">
     <description>Main target</description>
   </target>
   <!-- =================================
