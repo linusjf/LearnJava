@@ -10,6 +10,8 @@
   <property name="build.dir" location="."/>
   <property name="dist.dir" location="dist"/>
   <property name="docs.dir" location="docs"/>
+  <!-- including parent build file -->
+  <include file="../build.xml"/>
   <taskdef resource="${cs.taskdef.resource}" classpath="../${cs.jar}"/>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">

@@ -21,7 +21,7 @@
   <target name="report" depends="resolve" description="--&gt; generates a report of dependencies">
     <ivy:report todir="."/>
   </target>
-  <target name="main" depends="resolve,createjars">
+  <target name="main" depends="resolve">
     <description>Main target</description>
   </target>
   <!-- =================================
