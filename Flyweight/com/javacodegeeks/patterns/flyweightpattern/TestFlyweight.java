@@ -1,13 +1,16 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
-/***
- * <p>Main class to test the flyweight pattern.</p>
+/**
+ * *
+ *
+ * <p>Main class to test the flyweight pattern.
  */
 public enum TestFlyweight {
   ;
 
   /**
    * Main class.
+   *
    * @param args <code>String</code> array of arguments.
    */
   public static void main(String[] args) {

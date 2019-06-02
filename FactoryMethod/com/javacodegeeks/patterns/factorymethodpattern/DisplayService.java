@@ -7,10 +7,7 @@ package com.javacodegeeks.patterns.factorymethodpattern;
  * @version 1.0
  */
 public abstract class DisplayService {
-  /**
-   * Describe <code>display</code> method here.
-   *
-   */
+  /** Describe <code>display</code> method here. */
   public void display() {
     XMLParser parser = getParser();
     String msg = parser.parse();

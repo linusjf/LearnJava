@@ -8,15 +8,13 @@ package flyweight;
  */
 class Terrorist implements Player {
   // Intrinsic Attribute
-  @SuppressWarnings("checkstyle:membername") private final String TASK;
+  @SuppressWarnings("checkstyle:membername")
+  private final String TASK;
 
   // Extrinsic Attribute
   private String weapon;
 
-  /**
-   * Creates a new <code>Terrorist</code> instance.
-   *
-   */
+  /** Creates a new <code>Terrorist</code> instance. */
   Terrorist() {
     TASK = "PLANT A BOMB";
   }
@@ -32,14 +30,10 @@ class Terrorist implements Player {
     this.weapon = weapon;
   }
 
-  /**
-   * Describe <code>mission</code> method here.
-   *
-   */
+  /** Describe <code>mission</code> method here. */
   @Override
   public void mission() {
     // Work on the Mission
-    System.out.println("Terrorist with weapon " + weapon + "|"
-        + " Task is " + TASK);
+    System.out.println("Terrorist with weapon " + weapon + "|" + " Task is " + TASK);
   }
 }

@@ -42,7 +42,10 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
    */
   @SuppressWarnings({"unchecked", "rawtypes"})
   public static <T> T wrap(Class<T> wrappableClass, T wrappableImpl) {
-    return (T) Proxy.newProxyInstance(SyncProxyWrapper.class.getClassLoader(),
-        new Class[] {wrappableClass}, new SyncProxyWrapper<>(wrappableImpl));
+    return (T)
+        Proxy.newProxyInstance(
+            SyncProxyWrapper.class.getClassLoader(),
+            new Class[] {wrappableClass},
+            new SyncProxyWrapper<>(wrappableImpl));
   }
 }

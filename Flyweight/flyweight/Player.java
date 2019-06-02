@@ -14,9 +14,6 @@ interface Player {
    */
   void assignWeapon(String weapon);
 
-  /**
-   * Describe <code>mission</code> method here.
-   *
-   */
+  /** Describe <code>mission</code> method here. */
   void mission();
 }

@@ -26,10 +26,7 @@ public class Form {
   private String securityQuestion;
   private String securityAnswer;
 
-  /**
-   * Describe class <code>FormBuilder</code> here.
-   *
-   */
+  /** Describe class <code>FormBuilder</code> here. */
   public static class FormBuilder {
     private String firstName;
     private String lastName;
@@ -294,11 +291,12 @@ public class Form {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Form form = new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
-                    .passwordHint("MyName")
-                    .city("NY")
-                    .language("English")
-                    .build();
+    Form form =
+        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+            .passwordHint("MyName")
+            .city("NY")
+            .language("English")
+            .build();
     System.out.println(form);
   }
 }

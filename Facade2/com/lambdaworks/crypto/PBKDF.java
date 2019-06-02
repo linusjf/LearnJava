@@ -13,7 +13,8 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-@SuppressWarnings("checkstyle:abbreviationaswordinname") public final class PBKDF { // NOPMD
+@SuppressWarnings("checkstyle:abbreviationaswordinname")
+public final class PBKDF { // NOPMD
 
   private PBKDF() {
     throw new IllegalStateException("Private constructor");

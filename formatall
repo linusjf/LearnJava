@@ -1,5 +1,7 @@
 #!/bin/bash
+classpathFile="gformat.cp"
+mainClass="com.google.googlejavaformat.java.Main"
 jarFile="lib/google-java-format-1.7-all-deps.jar"
-java -jar $jarFile --set-exit-if-changed -i \
+java -cp @$classpathFile $mainClass --set-exit-if-changed -i \
 `find . -mindepth 2 -type f -name "*.java"`
 exit $?

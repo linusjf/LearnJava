@@ -2,9 +2,7 @@ package flyweight;
 
 import java.util.Random;
 
-/**
- * Driver class.
- */
+/** Driver class. */
 public enum CounterStrike { // NOMPMD
   ;
   // All player types and weopons (used by getRandPlayerType()
@@ -15,6 +13,7 @@ public enum CounterStrike { // NOMPMD
 
   /**
    * Driver code.
+   *
    * @param args <code>String</code> array.
    */
   @SuppressWarnings("checkstyle:magicnumber")
@@ -37,8 +36,8 @@ public enum CounterStrike { // NOMPMD
   }
 
   /**
-   * Utility methods to get a random player type an
-   * weapon.
+   * Utility methods to get a random player type an weapon.
+   *
    * @return <code>String</code>
    */
   public static String getRandPlayerType() {
@@ -51,6 +50,7 @@ public enum CounterStrike { // NOMPMD
 
   /**
    * Return a weapon randomly.
+   *
    * @return weapon as <code>String</code>
    */
   public static String getRandWeapon() {

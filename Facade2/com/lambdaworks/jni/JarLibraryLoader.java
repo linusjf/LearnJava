@@ -63,8 +63,7 @@ public class JarLibraryLoader implements LibraryLoader {
       try {
         for (String path : libCandidates(platform, name)) {
           final JarEntry entry = jar.getJarEntry(path);
-          if (entry == null)
-            continue;
+          if (entry == null) continue;
           else {
             final File lib = extract(name, jar.getInputStream(entry));
             System.load(lib.getAbsolutePath());

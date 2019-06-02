@@ -18,10 +18,7 @@ public class CarDirector {
     this.carBuilder = carBuilder;
   }
 
-  /**
-   * Describe <code>build</code> method here.
-   *
-   */
+  /** Describe <code>build</code> method here. */
   public void build() {
     carBuilder.buildBodyStyle();
     carBuilder.buildPower();

@@ -4,6 +4,7 @@ public enum TestBuilderPattern {
   ;
   /**
    * Main program.
+   *
    * @param args <code>String</code> arguments.
    */
   public static void main(String[] args) {

@@ -87,8 +87,7 @@ public final class SCryptUtil { // NOPMD
 
       final byte[] derived1 = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, n, r, p, 32);
 
-      if (derived0.length != derived1.length)
-        return false;
+      if (derived0.length != derived1.length) return false;
 
       int result = 0;
       for (int i = 0; i < derived0.length; i++) result |= derived0[i] ^ derived1[i];

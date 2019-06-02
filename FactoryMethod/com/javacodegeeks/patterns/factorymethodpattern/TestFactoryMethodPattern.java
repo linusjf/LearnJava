@@ -5,6 +5,7 @@ public enum TestFactoryMethodPattern {
 
   /**
    * Main method.
+   *
    * @param args Array of command line arguments
    */
   public static void main(String[] args) {

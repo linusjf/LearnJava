@@ -54,7 +54,8 @@ public class Work {
 
   /**
    * Describe <code>setWork</code> method here.
-   *  @param work list of tasks.
+   *
+   * @param work list of tasks.
    */
   public void setWork(List<String> work) {
     this.work = work;

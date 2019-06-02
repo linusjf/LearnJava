@@ -7,46 +7,25 @@ package com.javacodegeeks.patterns.builderpattern;
  * @version 1.0
  */
 public interface CarBuilder {
-  /**
-   * Describe <code>buildBodyStyle</code> method here.
-   *
-   */
+  /** Describe <code>buildBodyStyle</code> method here. */
   void buildBodyStyle();
 
-  /**
-   * Describe <code>buildPower</code> method here.
-   *
-   */
+  /** Describe <code>buildPower</code> method here. */
   void buildPower();
 
-  /**
-   * Describe <code>buildEngine</code> method here.
-   *
-   */
+  /** Describe <code>buildEngine</code> method here. */
   void buildEngine();
 
-  /**
-   * Describe <code>buildBrakes</code> method here.
-   *
-   */
+  /** Describe <code>buildBrakes</code> method here. */
   void buildBrakes();
 
-  /**
-   * Describe <code>buildSeats</code> method here.
-   *
-   */
+  /** Describe <code>buildSeats</code> method here. */
   void buildSeats();
 
-  /**
-   * Describe <code>buildWindows</code> method here.
-   *
-   */
+  /** Describe <code>buildWindows</code> method here. */
   void buildWindows();
 
-  /**
-   * Describe <code>buildFuelType</code> method here.
-   *
-   */
+  /** Describe <code>buildFuelType</code> method here. */
   void buildFuelType();
 
   /**

@@ -5,6 +5,7 @@ public enum PaintBrushClient {
 
   /**
    * Main program.
+   *
    * @param args <code>String</code>
    */
   public static void main(String[] args) {
