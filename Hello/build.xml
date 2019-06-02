@@ -74,32 +74,31 @@
       </classpath>
     </java>
   </target>
-  <target name="gformat" depends="LearnJava.resolve">
+  <target name="gformat">
     <exec executable="find" dir="${basedir}" failonerror="true" outputproperty="sources">
       <arg line=" . -type f -name '*.java'"/>
     </exec>
+    <loadfile property="gformat.cp" srcFile="../${gformat.classpath.file}"/>
     <echo message="About to format ...: ${sources}"/>
     <java classname="${gformat.main.class}">
       <arg line=" -i ${sources}"/>
       <classpath>
-    <!-- <pathelement location="../${gformat.jar}"/> -->
-    <path refid="gformat.main.path"/>
-    <path refid="gformat.lib.path"/>
+        <pathelement path="${gformat.cp}"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
   </target>
-  <target name="checkstyle" depends="LearnJava.resolve">
+  <target name="checkstyle">
     <first id="checkstylefile">
       <fileset dir=".." includes="${cs.config}"/>
     </first>
+    <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
     <checkstyle config="${toString:checkstylefile}" failOnViolation="false" properties="${cs.properties}">
       <fileset dir="${src.dir}" includes="**/*.java"/>
       <formatter type="plain"/>
       <formatter type="plain" toFile="${cs.output}"/>
       <classpath>
-    <path refid="cs.main.path"/>
-    <path refid="cs.lib.path"/>
+        <pathelement path="${cs.cp}"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
     </checkstyle>

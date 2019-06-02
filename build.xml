@@ -15,10 +15,12 @@
       <fileset dir="${LearnJava.basedir}" includes="ivy.xml"/>
     </first>
     <ivy:resolve file="${toString:ivyfile}"/>
-    <ivy:retrieve  pathid="cs.main.path" conf="checkstyle.main"/>
-    <ivy:retrieve  pathid="gformat.main.path" conf="gformat.main"/>
-    <ivy:retrieve  pathid="cs.lib.path" conf="checkstyle.lib"/>
-    <ivy:retrieve  pathid="gformat.lib.path" conf="gformat.lib"/>
+    <ivy:retrieve pathid="cs.main.path" conf="checkstyle.main"/>
+    <ivy:retrieve pathid="gformat.main.path" conf="gformat.main"/>
+    <ivy:retrieve pathid="cs.lib.path" conf="checkstyle.lib"/>
+    <ivy:retrieve pathid="gformat.lib.path" conf="gformat.lib"/>
+    <echo file="${cs.classpath.file}" message="${toString:cs.main.path}:${toString:cs.lib.path}"/>
+    <echo file="${gformat.classpath.file}" message="${toString:gformat.main.path}:${toString:gformat.lib.path}"/>
   </target>
   <!-- =================================
           target: report
