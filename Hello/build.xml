@@ -74,7 +74,7 @@
       </classpath>
     </java>
   </target>
-  <target name="gformat">
+  <target name="gformat" depends="LearnJava.resolve">
     <exec executable="find" dir="${basedir}" failonerror="true" outputproperty="sources">
       <arg line=" . -type f -name '*.java'"/>
     </exec>
@@ -82,19 +82,26 @@
     <java classname="${gformat.main.class}">
       <arg line=" -i ${sources}"/>
       <classpath>
-        <pathelement location="../${gformat.jar}"/>
+    <!-- <pathelement location="../${gformat.jar}"/> -->
+    <path refid="gformat.main.path"/>
+    <path refid="gformat.lib.path"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle" depends="LearnJava.resolve">
     <first id="checkstylefile">
       <fileset dir=".." includes="${cs.config}"/>
     </first>
-    <checkstyle config="${toString:checkstylefile}" classpath="../${cs.jar}" failOnViolation="false" properties="${cs.properties}">
+    <checkstyle config="${toString:checkstylefile}" failOnViolation="false" properties="${cs.properties}">
       <fileset dir="${src.dir}" includes="**/*.java"/>
       <formatter type="plain"/>
       <formatter type="plain" toFile="${cs.output}"/>
+      <classpath>
+    <path refid="cs.main.path"/>
+    <path refid="cs.lib.path"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
     </checkstyle>
   </target>
   <target name="main" depends="compile, jar, docs">

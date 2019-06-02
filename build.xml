@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="LearnJava" default="main" basedir=".">
+  <dirname property="LearnJava.basedir" file="${ant.file.LearnJava}"/>
   <property file="${LearnJava.basedir}/globalbuild.properties"/>
   <property file="${LearnJava.basedir}/checkstyle.properties"/>
   <property file="${LearnJava.basedir}/gformat.properties"/>
@@ -10,10 +11,14 @@
     <fileset dir="${lib.dir}"/>
   </path>
   <target name="resolve" description="--&gt; retreive dependencies with ivy">
-    <ivy:retrieve setid="checkstyle.main.fs" pathid="checkstyle.main.path" conf="checkstyle.main"/>
-    <ivy:retrieve setid="gformat.main.fs" pathid="gformat.main.path" conf="gformat.main"/>
-    <ivy:retrieve setid="checkstyle.lib.fs" pathid="checkstyle.lib.path" conf="checkstyle.lib"/>
-    <ivy:retrieve setid="gformat.lib.fs" pathid="gformat.lib.path" conf="gformat.lib"/>
+    <first id="ivyfile">
+      <fileset dir="${LearnJava.basedir}" includes="ivy.xml"/>
+    </first>
+    <ivy:resolve file="${toString:ivyfile}"/>
+    <ivy:retrieve  pathid="cs.main.path" conf="checkstyle.main"/>
+    <ivy:retrieve  pathid="gformat.main.path" conf="gformat.main"/>
+    <ivy:retrieve  pathid="cs.lib.path" conf="checkstyle.lib"/>
+    <ivy:retrieve  pathid="gformat.lib.path" conf="gformat.lib"/>
   </target>
   <!-- =================================
           target: report
