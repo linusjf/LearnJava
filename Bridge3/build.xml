@@ -10,7 +10,8 @@
   <property name="build.dir" location="."/>
   <property name="dist.dir" location="dist"/>
   <property name="docs.dir" location="docs"/>
-  <taskdef resource="${cs.taskdef.resource}" classpath="../${cs.jar}"/>
+  <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
+  <taskdef resource="${cs.taskdef.resource}" classpath="${cs.cp}"/>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -90,7 +91,6 @@
     <first id="checkstylefile">
       <fileset dir=".." includes="${cs.config}"/>
     </first>
-    <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
     <checkstyle config="${toString:checkstylefile}" failOnViolation="false" properties="${cs.properties}">
       <fileset dir="${src.dir}" includes="**/*.java"/>
       <formatter type="plain"/>

@@ -9,7 +9,7 @@ import java.beans.PropertyChangeSupport;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class CommentaryObjectObservable   implements Commentary {
+public class CommentaryObjectObservable implements Commentary {
   private String desc; // NOPMD
 
   private final String subjectDetails;
@@ -42,10 +42,20 @@ public class CommentaryObjectObservable   implements Commentary {
     return subjectDetails;
   }
 
+  /**
+   * Describe <code>addPropertyChangeListener</code> method here.
+   *
+   * @param listener a <code>PropertyChangeListener</code> value
+   */
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     this.pcs.addPropertyChangeListener(listener);
   }
 
+  /**
+   * Describe <code>removePropertyChangeListener</code> method here.
+   *
+   * @param listener a <code>PropertyChangeListener</code> value
+   */
   public void removePropertyChangeListener(PropertyChangeListener listener) {
     this.pcs.removePropertyChangeListener(listener);
   }
