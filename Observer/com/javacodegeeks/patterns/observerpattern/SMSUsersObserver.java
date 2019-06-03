@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.observerpattern;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
 
 /**
  * Describe class <code>SMSUsersObserver</code> here.
