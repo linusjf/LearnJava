@@ -2,17 +2,16 @@
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
-# @file        : buildall
-# @created     : Thursday May 02, 2019 17:40:19 IST
+# @file        : buildecjall
+# @created     : Monday June 03, 2019 17:40:19 IST
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
 
-rm -f *.dex
 rm -f *.jar
 find . -mindepth 2 -name "*.class" -type f \
   ! -path "*.git*" -delete
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel -I% --max-args 1 ./build %
+  parallel -I% --max-args 1 ./buildecj %
 exit $?
 
