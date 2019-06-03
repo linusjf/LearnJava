@@ -15,6 +15,9 @@ import java.util.ResourceBundle;
  * @version 1.0
  */
 public abstract class PropertyLoader {
+  private static final boolean THROW_ON_LOAD_FAILURE = true;
+  private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
+  private static final String SUFFIX = ".properties";
   /**
    * * Looks up a resource named 'name' in the classpath. The resource must map * to a file with
    * .properties extention. The name is assumed to be absolute * and can use either "/" or "." for
@@ -32,55 +35,68 @@ public abstract class PropertyLoader {
    *     not found and * THROW_ON_LOAD_FAILURE is true
    */
   public static Properties loadProperties(String name, ClassLoader loader) {
-    if (name == null) throw new IllegalArgumentException("null input: name");
-    if (name.startsWith("/")) name = name.substring(1);
-    if (name.endsWith(SUFFIX)) name = name.substring(0, name.length() - SUFFIX.length());
+    name = normalizeName(name);
     Properties result = null;
-    InputStream in = null;
     try {
-      if (loader == null) loader = ClassLoader.getSystemClassLoader();
+      if (loader == null)
+        loader = ClassLoader.getSystemClassLoader();
       if (LOAD_AS_RESOURCE_BUNDLE) {
-        name = name.replace('/', '.');
-        // Throws MissingResourceException on lookup failures:
-        final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
-        result = new Properties();
-        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
-          final String key = keys.nextElement();
-          final String value = rb.getString(key);
-          result.put(key, value);
-        }
+        result = loadAsResourceBundle(loader, name);
       } else {
-        name = name.replace('.', '/');
-        if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
-        // Returns null on lookup failures:
-        in = loader.getResourceAsStream(name);
-        if (in != null) {
-          result = new Properties();
-          result.load(in);
-          // Can throw IOException
+        result = loadAsStream(loader,name);
         }
-      }
-    } catch (MissingResourceException | IOException e) {
+      } catch (MissingResourceException e) {
+      System.err.println("Error locating resource "+ name + " : " + e.getMessage());
       result = null;
-    } finally {
-      if (in != null)
-        try {
-          in.close();
-        } catch (IOException ignore) {
-          System.out.println("Ignoring ..." + ignore.getMessage());
-        }
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException(
-          "could not load ["
-              + name
-              + "]"
-              + " as "
-              + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
+      throw new IllegalArgumentException("could not load [" + name + "]"
+          + " as " + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
     }
     return result;
   }
 
+  private static Properties loadAsStream(ClassLoader loader,String name) {
+    name = name.replace('.', '/');
+    if (!name.endsWith(SUFFIX))
+      name = name.concat(SUFFIX);
+    Properties result = null;
+    try (InputStream in = loader.getResourceAsStream(name))
+    {
+      if (in != null) {
+        result = new Properties();
+        result.load(in);
+      }
+    }
+    catch (IOException ioe) {
+      System.err.println("Error reading from resource " + name + " : " + ioe.getMessage());
+    }
+    return result;
+  }
+  
+  
+  private static Properties loadAsResourceBundle(ClassLoader loader, String name)
+      throws MissingResourceException, NullPointerException {
+    name = name.replace('/', '.');
+    final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
+    Properties result = new Properties();
+    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
+      final String key = keys.nextElement();
+      final String value = rb.getString(key);
+      result.put(key, value);
+    }
+    return result;
+  }
+
+  private static String normalizeName(String name) throws IllegalArgumentException {
+    if (name == null)
+      throw new IllegalArgumentException("null input: name");
+    if (name.startsWith("/"))
+      name = name.substring(1);
+    if (name.endsWith(SUFFIX))
+      name = name.substring(0, name.length() - SUFFIX.length());
+    return name;
+  }
   /**
    * An overloaded LoadProperties. A convenience overload of {@link #loadProperties(String,
    * ClassLoader)} that uses the current thread's context classloader
@@ -91,8 +107,4 @@ public abstract class PropertyLoader {
   public static Properties loadProperties(final String name) {
     return loadProperties(name, Thread.currentThread().getContextClassLoader());
   }
-
-  private static final boolean THROW_ON_LOAD_FAILURE = true;
-  private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
-  private static final String SUFFIX = ".properties";
 }
