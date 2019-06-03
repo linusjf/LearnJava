@@ -41,6 +41,11 @@ createJar()
 {
   cd $proj || echo "cannot cd to $proj";
   jarFile="$proj-$version.jar"
+  if [ ! -e $manifestFile ] 
+  then
+    echo "$manifestFile does not exist. Run ant manifest in $proj."
+    exit 1
+  fi
   jar cfm $jarFile $manifestFile \
     `find . -name "*.class" \
     ! -path "*.git*" -type f` || \
