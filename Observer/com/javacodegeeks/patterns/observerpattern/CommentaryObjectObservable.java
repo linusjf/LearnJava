@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.observerpattern;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
 
 /**
  * Describe class <code>CommentaryObjectObservable</code> here.
@@ -10,7 +9,7 @@ import java.util.Observable;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class CommentaryObjectObservable extends Observable implements Commentary {
+public class CommentaryObjectObservable   implements Commentary {
   private String desc; // NOPMD
 
   private final String subjectDetails;
@@ -31,8 +30,6 @@ public class CommentaryObjectObservable extends Observable implements Commentary
   public void setDesc(String desc) {
     final String oldValue = this.desc;
     this.desc = desc;
-    setChanged();
-    notifyObservers(desc);
     pcs.firePropertyChange("desc", oldValue, desc);
   }
 

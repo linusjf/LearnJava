@@ -10,7 +10,7 @@ import java.util.Observable;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class SMSUsersObserver implements java.util.Observer, PropertyChangeListener {
+public class SMSUsersObserver implements PropertyChangeListener {
   private String desc;
 
   private final String userInfo;
@@ -31,7 +31,6 @@ public class SMSUsersObserver implements java.util.Observer, PropertyChangeListe
   /** Describe <code>subscribe</code> method here. */
   public void subscribe() {
     System.out.println("Subscribing " + userInfo + " to " + observable.subjectDetails() + " ...");
-    this.observable.addObserver(this);
     this.observable.addPropertyChangeListener(this);
     System.out.println("Subscribed successfully.");
   }
@@ -39,15 +38,8 @@ public class SMSUsersObserver implements java.util.Observer, PropertyChangeListe
   /** Describe <code>unSubscribe</code> method here. */
   public void unSubscribe() {
     System.out.println("Unsubscribing " + userInfo + " to " + observable.subjectDetails() + " ...");
-    this.observable.deleteObserver(this);
     this.observable.removePropertyChangeListener(this);
     System.out.println("Unsubscribed successfully.");
-  }
-
-  @Override
-  public void update(Observable o, Object arg) {
-    desc = (String) arg;
-    display();
   }
 
   private void display() {
