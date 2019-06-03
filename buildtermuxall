@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : buildtermuxall
+# @created     : Thursday May 03, 2019 17:40:19 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : 
+######################################################################
+rm -f *.dex
+find . -mindepth 2 -name "*.class" -type f \
+  ! -path "*.git*" -delete
+find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
+  parallel -I% --maxargs 1 -j 4 ./buildtermux %
+exit $?
+

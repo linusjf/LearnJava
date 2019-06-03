@@ -1,0 +1,76 @@
+#! /usr/bin/env bash
+
+#######################################################################
+#@author: Linus Fernandes(linusfernandes @gmail.com)
+# @file: buildtermux
+## @created: Friday June 03, 2019 21: 20: 25 IST
+# @copyright: Copyright(c) Linus Fernandes
+## @description: 
+######################################################################
+
+usage() {
+  echo "usage: $0 dir"
+  echo "dir - Project directory, must exist"
+  exit 1
+}
+
+isDX () {
+  type dx &>/dev/null
+  return $?
+}
+
+createDex() {
+  dexFile=$proj-$version.dex
+  rm -rf $proj/$distDir || { 
+    echo "Unable to delete folder $proj/$distDir"; \
+  }
+  dx --dex --output=$dexFile $proj && \
+  mkdir -p $proj/$distDir && \
+  cp $dexFile $proj/$distDir && exit 0 || { \
+  echo "Error creating dex output"; \
+  }
+  dxRes=$?
+}
+
+readVersion() {
+  [ -e $versionFile ] && { \
+    version=$(cat $versionFile) || \
+    echo "Unable to read $versionFile";
+  }
+}
+
+proj=$1
+ver="1.7"
+version="0.0.0"
+distDir="dist"
+verFile=".ver"
+versionFile=".version"
+
+isDX
+dex=$?
+dxRes=0
+
+if [ -z $proj ] || [ ! -d $proj ]
+then
+  usage
+else
+  echo $proj
+  [ -e $proj/$verFile ] && { \
+    ver=$(cat $proj/$verFile) || \
+    echo "Unable to read $proj/$verFile"; \
+  }
+  ecj -$ver -cp $proj $proj
+  success=$?
+  if [ $success -eq 0 ]
+  then
+    readVersion
+    if [ $dex -eq 0 ]
+    then
+      createDex
+    else
+      echo "Unable to create executable archive"
+      success=1
+    fi
+  fi
+fi
+exit `expr $success + $dxRes`
