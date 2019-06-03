@@ -49,7 +49,6 @@ public enum SingletonTest {
 
     final AtomicReference<Throwable> exception = new AtomicReference<>();
 
-    // final Set<Long> generatedValues = new HashSet<>(size);
     final Set<Long> generatedValues = new LinkedHashSet<>(size);
     final Set<Singleton> instances =
         Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
@@ -96,6 +95,7 @@ public enum SingletonTest {
         case 1:
           System.out.println("Only one instance created and available.");
           break;
+    
         default:
           throw new AssertionError("Expected one instance, but found many");
       }

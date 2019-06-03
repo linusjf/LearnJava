@@ -33,13 +33,8 @@ public final class Singleton implements Serializable, Cloneable {
       // the pmd warning emitted ignores the volatile modufier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
-        if (instance == null) {
-          synchronized (Singleton.class) {
-            if (instance == null) {
-              instance = new Singleton();
-            }
-          }
-        }
+        if (instance == null) 
+          instance = new Singleton();
       }
     }
     return instance;
