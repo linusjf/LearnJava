@@ -7,7 +7,7 @@ package flyweight;
  * @version 1.0
  */
 public class ThickPen implements Pen {
-  final BrushSize brushSize = BrushSize.THICK; // intrinsic state - shareable
+  private final BrushSize brushSize = BrushSize.THICK; // NOPMD
   private String color = null;
   // extrinsic state - supplied by client
 

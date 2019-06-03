@@ -51,7 +51,7 @@
   <!-- <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean" /> -->
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions"/>
-  <!--<rule ref="category/java/codestyle.xml/FieldNamingConventions" />-->
+  <rule ref="category/java/codestyle.xml/FieldNamingConventions" />
   <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions"/>
   <rule ref="category/java/codestyle.xml/GenericsNaming"/>
   <!-- <rule ref="category/java/codestyle.xml/LinguisticNaming" /> -->
@@ -89,7 +89,7 @@
       <property name="allowEmptyLoop" value="false"/>
     </properties>
   </rule>
-  <rule ref="category/java/codestyle.xml/DefaultPackage"/>
+  <!--<rule ref="category/java/codestyle.xml/DefaultPackage"/>-->
   <rule ref="category/java/codestyle.xml/DontImportJavaLang"/>
   <rule ref="category/java/codestyle.xml/DuplicateImports"/>
   <!-- <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract" /> -->

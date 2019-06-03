@@ -7,7 +7,7 @@ package flyweight;
  * @version 1.0
  */
 public class MediumPen implements Pen {
-  final BrushSize brushSize = BrushSize.MEDIUM;
+  private final BrushSize brushSize = BrushSize.MEDIUM; // NOPMD
   private String color = null;
 
   /**

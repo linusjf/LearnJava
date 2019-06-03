@@ -1,7 +1,7 @@
 package flyweight;
 
 public class ThinPen implements Pen {
-  final BrushSize brushSize = BrushSize.THIN;
+  private final BrushSize brushSize = BrushSize.THIN; // NOPMD
   private String color = null;
 
   /**

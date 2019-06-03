@@ -221,6 +221,12 @@ public class Form {
     this.securityAnswer = formBuilder.securityAnswer;
   }
 
+  private String toString(String label,Object value) {
+    return value != null ?
+      " " + label + ":  " + value.toString():
+      " " + label + ":  " + "";
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -232,55 +238,32 @@ public class Form {
     sb.append(userName);
     sb.append("\n Password: ");
     sb.append(password);
+    sb.append("\n");
 
-    if (this.address != null) {
-      sb.append("\n Address: ");
-      sb.append(address);
-    }
-    if (this.dob != null) {
-      sb.append("\n DOB: ");
-      sb.append(dob);
-    }
-    if (this.email != null) {
-      sb.append("\n Email: ");
-      sb.append(email);
-    }
-    if (this.backupEmail != null) {
-      sb.append("\n Backup Email: ");
-      sb.append(backupEmail);
-    }
-    if (this.spouseName != null) {
-      sb.append("\n Spouse Name: ");
-      sb.append(spouseName);
-    }
-    if (this.city != null) {
-      sb.append("\n City: ");
-      sb.append(city);
-    }
-    if (this.state != null) {
-      sb.append("\n State: ");
-      sb.append(state);
-    }
-    if (this.country != null) {
-      sb.append("\n Country: ");
-      sb.append(country);
-    }
-    if (this.language != null) {
-      sb.append("\n Language: ");
-      sb.append(language);
-    }
-    if (this.passwordHint != null) {
-      sb.append("\n Password Hint: ");
-      sb.append(passwordHint);
-    }
-    if (this.securityQuestion != null) {
-      sb.append("\n Security Question: ");
-      sb.append(securityQuestion);
-    }
-    if (this.securityAnswer != null) {
-      sb.append("\n Security Answer: ");
-      sb.append(securityAnswer);
-    }
+    sb.append(toString("Address",address));
+    sb.append("\n");
+   
+    sb.append(toString("DOB",dob));
+    sb.append("\n");
+    sb.append(toString("Email",email));
+    sb.append("\n");
+    sb.append(toString("Backup Email",backupEmail));
+    sb.append("\n");
+    sb.append(toString("Spouse Name",spouseName));
+    sb.append("\n");
+    sb.append(toString("City",city));
+    sb.append("\n");
+    sb.append(toString("State",state));
+    sb.append("\n");
+    sb.append(toString("Country",country));
+    sb.append("\n");
+    sb.append(toString("Language",language));
+    sb.append("\n");
+    sb.append(toString("Password Hint",passwordHint));
+    sb.append("\n");
+    sb.append(toString("Security Question",securityQuestion));
+    sb.append("\n");
+    sb.append(toString("Security Answer",securityAnswer));
 
     return sb.toString();
   }

@@ -10,7 +10,7 @@ import java.lang.ref.Cleaner;
  * @version 1.0
  */
 public class Room implements AutoCloseable {
-  private static final Cleaner cleanr = Cleaner.create();
+  private static final Cleaner CLEANER = Cleaner.create();
 
   // The state of this room, shared with our cleanable
   private final State state; // NOPMD
@@ -45,7 +45,7 @@ public class Room implements AutoCloseable {
    */
   public Room(int numJunkPiles) {
     state = new State(numJunkPiles); // NOPMD
-    cleanable = cleanr.register(this, state);
+    cleanable = CLEANER.register(this, state);
   }
 
   @Override
