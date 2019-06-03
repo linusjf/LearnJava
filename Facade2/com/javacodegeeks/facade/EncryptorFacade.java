@@ -26,19 +26,19 @@ import com.javacodegeeks.abk.SHASalted;
 public class EncryptorFacade {
   public enum EncryptionType {
     MD5,
-    MD5Salted,
+    MD5SALTED,
     SHA,
-    SHASalted,
+    SHASALTED,
     SHA224,
-    SHA224Salted,
+    SHA224SALTED,
     SHA256,
-    SHA256Salted,
+    SHA256SALTED,
     SHA384,
-    SHA384Salted,
+    SHA384SALTED,
     SHA512,
-    SHA512Salted,
-    SCrypt,
-    BCrypt,
+    SHA512SALTED,
+    SCRYPT,
+    BCRYPT,
     PBKDF,
   }
 
@@ -58,7 +58,7 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case MD5Salted:
+      case MD5SALTED:
         e = new MD5Salted();
         hash = e.encrypt(text);
         break;
@@ -68,7 +68,7 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case SHASalted:
+      case SHASALTED:
         e = new SHASalted();
         hash = e.encrypt(text);
         break;
@@ -78,7 +78,7 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case SHA224Salted:
+      case SHA224SALTED:
         e = new SHA224Salted();
         hash = e.encrypt(text);
         break;
@@ -88,7 +88,7 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case SHA256Salted:
+      case SHA256SALTED:
         e = new SHA256Salted();
         hash = e.encrypt(text);
         break;
@@ -98,7 +98,7 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case SHA384Salted:
+      case SHA384SALTED:
         e = new SHA384Salted();
         hash = e.encrypt(text);
         break;
@@ -108,17 +108,17 @@ public class EncryptorFacade {
         hash = e.encrypt(text);
         break;
 
-      case SHA512Salted:
+      case SHA512SALTED:
         e = new SHA512Salted();
         hash = e.encrypt(text);
         break;
 
-      case SCrypt:
+      case SCRYPT:
         e = new SCryptor();
         hash = e.encrypt(text);
         break;
 
-      case BCrypt:
+      case BCRYPT:
         e = new BCryptor();
         hash = e.encrypt(text);
         break;
