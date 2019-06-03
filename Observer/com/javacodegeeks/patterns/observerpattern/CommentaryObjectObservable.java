@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.observerpattern;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Observable;
 
 /**
@@ -13,6 +15,8 @@ public class CommentaryObjectObservable extends Observable implements Commentary
 
   private final String subjectDetails;
 
+  private PropertyChangeSupport pcs;
+
   /**
    * Creates a new <code>CommentaryObjectObservable</code> instance.
    *
@@ -24,9 +28,11 @@ public class CommentaryObjectObservable extends Observable implements Commentary
 
   @Override
   public void setDesc(String desc) {
+    final String oldValue = this.desc;
     this.desc = desc;
     setChanged();
     notifyObservers(desc);
+    pcs.firePropertyChange("desc", oldValue, desc);
   }
 
   /**
@@ -36,5 +42,13 @@ public class CommentaryObjectObservable extends Observable implements Commentary
    */
   public String subjectDetails() {
     return subjectDetails;
+  }
+
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    this.pcs.addPropertyChangeListener(listener);
+  }
+
+  public void removePropertyChangeListener(PropertyChangeListener listener) {
+    this.pcs.removePropertyChangeListener(listener);
   }
 }

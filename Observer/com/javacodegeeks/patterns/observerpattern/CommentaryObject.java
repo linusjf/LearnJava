@@ -17,7 +17,7 @@ public class CommentaryObject implements Subject, Commentary {
 
   /**
    * Creates a new <code>CommentaryObject</code> instance.
-   *
+   * @param observers <code>List</code> list of observers
    * @param subjectDetails a <code>String</code> value
    */
   public CommentaryObject(List<Observer> observers, String subjectDetails) {
