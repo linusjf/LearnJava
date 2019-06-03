@@ -14,7 +14,9 @@ fi
 rules_file="google_checks.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
-jarFile="lib/checkstyle-8.20-all.jar"
+#jarFile="lib/checkstyle-8.20-all.jar"
+classpathFile="cs.cp"
+mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
 #xsltFile="merge.xslt"
 echo $1
@@ -25,6 +27,12 @@ fi
 if [ ! -e $rules_file ]
   then
     echo "$rules_file cannot be found."
+    usage
+fi
+
+if [ ! -e $classpathFile ]
+  then
+    echo "$classpathFile cannot be found. Run ant in root directory to generate file."
     usage
 fi
 
@@ -48,8 +56,8 @@ fi
    # fi
 #fi
 (cd $1 && \
-java -jar \
-../$jarFile \
+java -cp @../$classpathFile \
+$mainClass \
 -c ../$rules_file -d \
 -p ../$properties_file \
 -o $output_file -g \
