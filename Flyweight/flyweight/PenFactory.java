@@ -10,7 +10,7 @@ import java.util.Map;
  * @version 1.0
  */
 public final class PenFactory { // NOPMD
-  private static final Map<String, Pen> pensMap = new HashMap<>();
+  private static final Map<String, Pen> PENSMAP = new HashMap<>();
 
   /**
    * Describe <code>getThickPen</code> method here.
@@ -21,14 +21,14 @@ public final class PenFactory { // NOPMD
   public static Pen getThickPen(String color) {
     String key = color + "-THICK";
 
-    Pen pen = pensMap.get(key);
+    Pen pen = PENSMAP.get(key);
 
     if (pen != null) {
       return pen;
     } else {
       pen = new ThickPen();
       pen.setColor(color);
-      pensMap.put(key, pen);
+      PENSMAP.put(key, pen);
     }
     return pen;
   }
@@ -42,14 +42,14 @@ public final class PenFactory { // NOPMD
   public static Pen getThinPen(String color) {
     String key = color + "-THIN";
 
-    Pen pen = pensMap.get(key);
+    Pen pen = PENSMAP.get(key);
 
     if (pen != null) {
       return pen;
     } else {
       pen = new ThinPen();
       pen.setColor(color);
-      pensMap.put(key, pen);
+      PENSMAP.put(key, pen);
     }
     return pen;
   }
@@ -63,14 +63,14 @@ public final class PenFactory { // NOPMD
   public static Pen getMediumPen(String color) {
     String key = color + "-MEDIUM";
 
-    Pen pen = pensMap.get(key);
+    Pen pen = PENSMAP.get(key);
 
     if (pen != null) {
       return pen;
     } else {
       pen = new MediumPen();
       pen.setColor(color);
-      pensMap.put(key, pen);
+      PENSMAP.put(key, pen);
     }
     return pen;
   }

@@ -9,7 +9,7 @@ package flyweight;
 class Terrorist implements Player {
   // Intrinsic Attribute
   @SuppressWarnings("checkstyle:membername")
-  private final String TASK;
+  private final String TASK;// NOPMD
 
   // Extrinsic Attribute
   private String weapon;
