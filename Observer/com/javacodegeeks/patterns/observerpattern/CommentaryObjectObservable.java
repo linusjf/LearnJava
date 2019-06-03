@@ -24,6 +24,7 @@ public class CommentaryObjectObservable extends Observable implements Commentary
    */
   public CommentaryObjectObservable(String subjectDetails) {
     this.subjectDetails = subjectDetails;
+    this.pcs = new PropertyChangeSupport(this);
   }
 
   @Override
