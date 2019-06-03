@@ -8,7 +8,6 @@
 # @description : 
 ######################################################################
 
-rm -f *.dex
 rm -f *.jar
 find . -mindepth 2 -name "*.class" -type f \
   ! -path "*.git*" -delete

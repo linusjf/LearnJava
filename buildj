@@ -13,28 +13,11 @@ usage() {
         exit 1
 }
 
-isDX ()
-{
-  type dx &>/dev/null
-  return $?
-}
 
 isJVM ()
 {
   type jar &>/dev/null
   return $?
-}
-
-createDex()
-{
-  dexFile=$proj-$version.dex
-  rm -rf $proj/$distDir || \
-    { echo "Unable to delete folder $proj/$distDir"; }
-  dx --dex --output=$dexFile $proj && \
-    mkdir -p $proj/$distDir && \
-    cp $dexFile $proj/$distDir && exit 0 || \
-    { echo "Error creating dex output"; }
-  dxRes=$?
 }
 
 createJar()
@@ -73,13 +56,9 @@ manifestFile="manifest.mf"
 verFile=".ver"
 versionFile=".version"
 
-isDX
-dex=$?
 isJVM
 jvm=$?
-dxRes=0
 jarRes=0
-options=""
 if [ -z $proj ] || [ ! -d $proj ]
   then
     usage
@@ -95,19 +74,15 @@ else
     if [ $success -eq 0 ]
       then
         readVersion
-      if [ $dex -eq 0 ]
-        then
-        createDex
-      fi
       if [ $jvm -eq 0 ]
         then
         createJar
       fi
-      if [ $dex ] && [ $jvm ]
+      if [ $jvm ]
          then
            echo "Unable to create executable archive"
            success=1
       fi
     fi
 fi
-exit `expr $success + $dxRes + $jarRes`
+exit `expr $success + $jarRes`
