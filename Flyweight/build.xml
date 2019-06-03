@@ -88,11 +88,12 @@
     <exec executable="find" dir="${basedir}" failonerror="true" outputproperty="sources">
       <arg line=" . -type f -name '*.java'"/>
     </exec>
+    <loadfile property="gformat.cp" srcFile="../${gformat.classpath.file}"/>
     <echo message="About to format ...: ${sources}"/>
     <java classname="${gformat.main.class}">
       <arg line=" -i ${sources}"/>
       <classpath>
-        <pathelement location="../${gformat.jar}"/>
+        <pathelement path="${gformat.cp}"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
@@ -101,10 +102,15 @@
     <first id="checkstylefile">
       <fileset dir=".." includes="${cs.config}"/>
     </first>
-    <checkstyle config="${toString:checkstylefile}" classpath="../${cs.jar}" failOnViolation="false" properties="${cs.properties}">
+    <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
+    <checkstyle config="${toString:checkstylefile}" failOnViolation="false" properties="${cs.properties}">
       <fileset dir="${src.dir}" includes="**/*.java"/>
       <formatter type="plain"/>
       <formatter type="plain" toFile="${cs.output}"/>
+      <classpath>
+        <pathelement path="${cs.cp}"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
     </checkstyle>
   </target>
   <target name="main" depends="compile, jar, docs">
