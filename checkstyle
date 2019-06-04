@@ -11,7 +11,7 @@ then
   usage
 fi
 
-rules_file="google_checks.xml"
+rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
 #jarFile="lib/checkstyle-8.20-all.jar"
