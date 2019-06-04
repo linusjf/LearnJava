@@ -1209,9 +1209,11 @@ public class BCrypt {
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
-  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity"})
+  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity","PMD.CyclomaticComplexity"})
   private static byte[] decodeBase64(final String s, final int maxolen)
       throws IllegalArgumentException {
+    checkMaxLengthParameter(maxolen);
+      
     final StringBuilder rs = new StringBuilder();
     int off = 0;
     final int slen = s.length();
@@ -1221,7 +1223,6 @@ public class BCrypt {
     byte c3;
     byte c4;
     byte o;
-    if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
 
     while (off < slen - 1 && olen < maxolen) {
       c1 = char64(s.charAt(off++));
@@ -1244,10 +1245,20 @@ public class BCrypt {
       ++olen;
     }
 
-    final byte[] ret = new byte[olen];
-    for (off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
-    return ret;
+    return convertToBytes(rs,olen);
   }
+    
+  private static boolean checkMaxLengthParameter(int maxolen) {  
+  if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
+    return true;
+  }
+
+  private static byte[] convertToBytes(StringBuilder rs,
+      int olen) {
+  final byte[] ret = new byte[olen];
+    for (int off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
+    return ret;
+}
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
