@@ -9,17 +9,16 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public enum TestProxy {
   ;
 
-  private static String FILE = "urls.txt";
+  final private static String FILE = "urls.txt";// NOPMD
 
-  private static String proxyHost = "localhost";
+  final private static String PROXY_HOST = "localhost";
 
   @SuppressWarnings("checkstyle:magicnumber")
-  private static int proxyPort = 8085;
+  final private static int PROXY_PORT = 8085;
 
   /**
    * Main program.
@@ -59,15 +58,13 @@ public enum TestProxy {
         Proxy proxy = null;
         URL url = new URL(strUrl);
         System.out.println("Connecting to ..." + strUrl);
-        if (strUrl.startsWith("http"))
-          proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
+        if (strUrl.startsWith("http")) {
+          proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT));
         URLConnection connection = url.openConnection(proxy);
         connection.getInputStream();
-        TimeUnit.SECONDS.sleep(1);
+        }
       } catch (IOException e) {
         System.err.println("Error creating HTTP(S) connection: " + e.getMessage());
-      } catch (InterruptedException e) {
-        System.err.println("Error delaying next loop : " + e.getMessage());
       }
     }
   }

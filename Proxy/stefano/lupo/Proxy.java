@@ -44,23 +44,10 @@ import java.util.Scanner;
  * meaning that cached and blocked sites are maintained.
  */
 public class Proxy implements Runnable {
-  /**
-   * Describe <code>main</code> method here.
-   *
-   * @param args a <code>String</code> value
-   */
-  @SuppressWarnings("checkstyle:magicnumber")
-  public static void main(String[] args) {
-    // Create an instance of Proxy and begin listening for connections
-    Proxy myProxy = new Proxy(8085);
-    myProxy.listen();
-  }
-
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true; // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
@@ -127,6 +114,18 @@ public class Proxy implements Runnable {
   }
 
   /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
+  @SuppressWarnings("checkstyle:magicnumber")
+  public static void main(String[] args) {
+    // Create an instance of Proxy and begin listening for connections
+    Proxy myProxy = new Proxy(8085);
+    myProxy.listen();
+  }
+
+  /**
    * Create the Proxy Server.
    *
    * @param port Port number to run proxy server from.
@@ -161,19 +160,17 @@ public class Proxy implements Runnable {
       try {
         // serverSocket.accpet() Blocks until a connection is made
         Socket socket = serverSocket.accept();
-
+        socket.setSoTimeout(60 * 1000);
         // Create new Thread and pass it Runnable RequestHandler
         Thread thread = new Thread(new RequestHandler(socket));
-
         // Key a reference to each thread so they can be joined later if necessary
         servicingThreads.add(thread);
-
         thread.start();
       } catch (SocketException e) {
         // Socket exception is triggered by management system to shut down the proxy
-        System.out.println("Server closed : " + e.getMessage());
+        System.out.println("Socket error : " + e.getMessage());
       } catch (IOException e) {
-        System.out.println(e.getMessage());
+        System.out.println("IO error : " + e.getMessage());
       }
     }
   }
@@ -264,11 +261,10 @@ public class Proxy implements Runnable {
   public void run() {
     Scanner scanner = new Scanner(System.in);
     String command = "";
-    System.out.println(
-        "Enter new site to block, or type "
-            + "\"blocked\" to see blocked sites, "
-            + "\"cached\" to see cached sites, or "
-            + "\"close\" to close server.");
+    System.out.println("Enter new site to block, or type "
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();

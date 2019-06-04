@@ -26,7 +26,7 @@ import javax.imageio.ImageIO;
  */
 public class RequestHandler implements Runnable {
   /** Socket connected to client passed by Proxy server. */
-  Socket clientSocket;
+  final Socket clientSocket;
 
   /** Read data client sends to proxy. */
   BufferedReader proxyToClientBr;
@@ -34,48 +34,21 @@ public class RequestHandler implements Runnable {
   /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
 
+  final private static String IMG_REGEX 
+    = "\\.(png|jpg|jpeg|gif)";
+
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
    *
    * @param clientSocket socket connected to the client
    */
-  @SuppressWarnings("checkstyle:magicnumber")
   public RequestHandler(Socket clientSocket) {
     this.clientSocket = clientSocket;
-    System.out.println(clientSocket);
-    try {
-      this.clientSocket.setSoTimeout(2000);
-      proxyToClientBr = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-      proxyToClientBw = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-    } catch (IOException e) {
-      System.out.println(e.getMessage());
-    }
   }
 
-  /**
-   * Reads and examines the requestString and calls the appropriate method based on the request
-   * type.
-   */
-  @Override
-  public void run() {
-    // Get Request from client
-    String requestString;
-    try {
-      do {
-        requestString = proxyToClientBr.readLine();
-      } while (requestString == null);
-    } catch (IOException e) {
-      System.out.println("Error reading request from client " + e.getMessage());
-      return;
-    }
-
-    // Parse out URL
-    System.out.println("Request Received " + requestString);
-
-    if (requestString != null) {
-      // Get the Request type
-      final String request = requestString.substring(0, requestString.indexOf(' '));
-      // remove request type and space
+  private String extractURL(String requestString) {    
+  // remove request type and space
+  System.out.println("Request = " + requestString);
       String urlString = requestString.substring(requestString.indexOf(' ') + 1);
       // Remove everything past next space
       urlString = urlString.substring(0, urlString.indexOf(' '));
@@ -84,6 +57,31 @@ public class RequestHandler implements Runnable {
         String temp = "http://";
         urlString = temp + urlString;
       }
+      return urlString;
+  }
+  /**
+   * Reads and examines the requestString and calls the appropriate method based on the request
+   * type.
+   */
+  @Override
+  public void run() {
+    // Get Request from client
+    String requestString;
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
+BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));) {
+      proxyToClientBr = br;
+      proxyToClientBw = bw;
+      do {
+        requestString = proxyToClientBr.readLine();
+      } while (requestString == null);
+    // Parse out URL
+    System.out.println("Request Received " + requestString);
+
+    if (requestString != null) {
+      // Get the Request type
+      final String request = requestString.substring(0, requestString.indexOf(' '));
+      // remove request type and space
+      String urlString = extractURL(requestString);
       // Check if site is blocked
       if (Proxy.isBlocked(urlString)) {
         System.out.println("Blocked site requested : " + urlString);
@@ -105,7 +103,11 @@ public class RequestHandler implements Runnable {
           System.out.println("HTTP GET for : " + urlString + "\n");
           sendNonCachedToClient(urlString);
         }
-      }
+    }
+  } 
+  } catch (IOException ioe) { 
+      System.out.println("IO error : " 
+          + ioe.getMessage());
     }
   }
 
@@ -122,10 +124,7 @@ public class RequestHandler implements Runnable {
 
       // Response that will be sent to the server
       String response;
-      if (fileExtension.contains(".png")
-          || fileExtension.contains(".jpg")
-          || fileExtension.contains(".jpeg")
-          || fileExtension.contains(".gif")) {
+      if (fileExtension.matches(IMG_REGEX)) {
         // Read in image from storage
         BufferedImage image = ImageIO.read(cachedFile);
 
@@ -169,31 +168,25 @@ public class RequestHandler implements Runnable {
       System.out.println("Error Sending Cached file to client " + e.getMessage());
     }
   }
+  
+  private String computeLogicalFilePrefix(String urlString) {
+      int fileExtensionIndex = urlString.lastIndexOf(".");
+      // Get the initial file name
+      String fileName = urlString.substring(0, fileExtensionIndex);
+      // Trim off http://www. as no need for it in file name
+      fileName = fileName.substring(fileName.indexOf('.') + 1);
+      // Remove any illegal characters from file name
+      fileName = fileName.replace("/", "__");
+      fileName = fileName.replace('.', '_');
+      return fileName;
+  }
 
-  /**
-   * Sends the contents of the file specified by the urlString to the client.
-   *
-   * @param urlString URL ofthe file requested
-   */
-  private void sendNonCachedToClient(String urlString) {
-    try {
-      // Compute a logical file name as per schema
-      // This allows the files on stored on disk to resemble that of the URL it was taken from
+  private String computeLogicalFileExtension(String urlString) {
       int fileExtensionIndex = urlString.lastIndexOf(".");
       String fileExtension;
 
       // Get the type of file
       fileExtension = urlString.substring(fileExtensionIndex, urlString.length());
-
-      // Get the initial file name
-      String fileName = urlString.substring(0, fileExtensionIndex);
-
-      // Trim off http://www. as no need for it in file name
-      fileName = fileName.substring(fileName.indexOf('.') + 1);
-
-      // Remove any illegal characters from file name
-      fileName = fileName.replace("/", "__");
-      fileName = fileName.replace('.', '_');
 
       // Trailing / result in index.html of that directory being fetched
       if (fileExtension.contains("/")) {
@@ -201,36 +194,48 @@ public class RequestHandler implements Runnable {
         fileExtension = fileExtension.replace('.', '_');
         fileExtension += ".html";
       }
+      return fileExtension;
+  }
 
-      fileName = fileName + fileExtension;
+  private File getCacheFile(String fileName) { 
+    File fileToCache = new File("cached/" + fileName);
+    try {
+      if (!fileToCache.exists()) {
+        String parent = fileToCache.getParent();
+        File parentPath = new File(parent);
+        parentPath.mkdirs();
+        fileToCache.createNewFile();
+      }
+    } catch (IOException | SecurityException e) {
+      System.err.println("Error creating cache file: " + e.getMessage());
+    }
+    return fileToCache;
+  }
 
+  /**
+   * Sends the contents of the file specified by the urlString to the client.
+   *
+   * @param urlString URL ofthe file requested
+   */
+  private void sendNonCachedToClient(String urlString) {
+      // Compute a logical file name as per schema
+      // This allows the files on stored on disk to resemble that of the URL it was taken from
+      String fileExtension = computeLogicalFileExtension(urlString);
+      String fileName = computeLogicalFilePrefix(urlString)
+       + fileExtension;
       // Attempt to create File to cache to
       boolean caching = true;
       File fileToCache = null;
       BufferedWriter fileToCacheBW = null;
 
       try {
-        // Create File to cache
-        fileToCache = new File("cached/" + fileName);
-
-        if (!fileToCache.exists()) {
-          String parent = fileToCache.getParent();
-          File parentPath = new File(parent);
-          parentPath.mkdirs();
-          fileToCache.createNewFile();
-        }
+        fileToCache = getCacheFile(urlString);
+        caching = fileToCache.exists();
         // Create Buffered output stream to write to cached copy of file
         fileToCacheBW = new BufferedWriter(new FileWriter(fileToCache));
-      } catch (IOException e) {
-        System.out.println("Couldn't cache: " + fileName + e.getMessage());
-        caching = false;
-      }
 
       // Check if file is an image
-      if (fileExtension.contains(".png")
-          || fileExtension.contains(".jpg")
-          || fileExtension.contains(".jpeg")
-          || fileExtension.contains(".gif")) {
+      if (fileExtension.matches(IMG_REGEX)) {
         // Create the URL
         URL remoteURL = new URL(urlString);
         BufferedImage image = ImageIO.read(remoteURL);
@@ -309,8 +314,10 @@ public class RequestHandler implements Runnable {
         proxyToClientBw.close();
       }
     } catch (IOException e) {
-      System.out.println(e.getMessage());
-    }
+        System.err.println("Error sending " 
+            + urlString
+            + " to client : " + e.getMessage());
+      }
   }
 
   /**
@@ -442,10 +449,11 @@ public class RequestHandler implements Runnable {
    * forbidden message back to the client
    */
   private void blockedSiteRequested() {
-    try {
-      BufferedWriter bufferedWriter =
-          new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-      String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
+    try (BufferedWriter bufferedWriter =
+          new BufferedWriter(
+            new OutputStreamWriter(
+              clientSocket.getOutputStream()))) {
+            String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
       bufferedWriter.write(line);
       bufferedWriter.flush();
     } catch (IOException e) {
