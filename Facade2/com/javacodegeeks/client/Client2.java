@@ -22,6 +22,7 @@ import com.javacodegeeks.abk.SHASalted;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("checkstyle:classdataabstractioncoupling")
 public enum Client2 {
   ;
   /**

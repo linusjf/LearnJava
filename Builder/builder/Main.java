@@ -1,6 +1,6 @@
 package builder;
 
-import static builder.NyPizza.Size.*; // NOPMD 
+import static builder.NyPizza.Size.*; // NOPMD
 import static builder.Pizza.Topping.*; // NOPMD
 
 /**

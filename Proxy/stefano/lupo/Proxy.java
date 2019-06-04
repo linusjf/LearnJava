@@ -155,6 +155,7 @@ public class Proxy implements Runnable {
    * Listens to port and accepts new socket connections. Creates a new thread to handle the request
    * and passes it the socket connection and continues listening.
    */
+  @SuppressWarnings("checkstyle:magicnumber")
   public void listen() {
     while (running) {
       try {

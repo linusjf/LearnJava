@@ -221,10 +221,10 @@ public class Form {
     this.securityAnswer = formBuilder.securityAnswer;
   }
 
-  private String toString(String label,Object value) {
-    return value != null ?
-      " " + label + ":  " + value.toString():
-      " " + label + ":  " + "";
+  private String toString(String label, Object value) {
+    return value != null ? " " + label + ":  " + value.toString()
+                         : " " + label + ":  "
+            + "";
   }
 
   @Override
@@ -240,30 +240,30 @@ public class Form {
     sb.append(password);
     sb.append("\n");
 
-    sb.append(toString("Address",address));
+    sb.append(toString("Address", address));
     sb.append("\n");
-   
-    sb.append(toString("DOB",dob));
+
+    sb.append(toString("DOB", dob));
     sb.append("\n");
-    sb.append(toString("Email",email));
+    sb.append(toString("Email", email));
     sb.append("\n");
-    sb.append(toString("Backup Email",backupEmail));
+    sb.append(toString("Backup Email", backupEmail));
     sb.append("\n");
-    sb.append(toString("Spouse Name",spouseName));
+    sb.append(toString("Spouse Name", spouseName));
     sb.append("\n");
-    sb.append(toString("City",city));
+    sb.append(toString("City", city));
     sb.append("\n");
-    sb.append(toString("State",state));
+    sb.append(toString("State", state));
     sb.append("\n");
-    sb.append(toString("Country",country));
+    sb.append(toString("Country", country));
     sb.append("\n");
-    sb.append(toString("Language",language));
+    sb.append(toString("Language", language));
     sb.append("\n");
-    sb.append(toString("Password Hint",passwordHint));
+    sb.append(toString("Password Hint", passwordHint));
     sb.append("\n");
-    sb.append(toString("Security Question",securityQuestion));
+    sb.append(toString("Security Question", securityQuestion));
     sb.append("\n");
-    sb.append(toString("Security Answer",securityAnswer));
+    sb.append(toString("Security Answer", securityAnswer));
 
     return sb.toString();
   }
@@ -274,12 +274,11 @@ public class Form {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Form form =
-        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
-            .passwordHint("MyName")
-            .city("NY")
-            .language("English")
-            .build();
+    Form form = new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+                    .passwordHint("MyName")
+                    .city("NY")
+                    .language("English")
+                    .build();
     System.out.println(form);
   }
 }

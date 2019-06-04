@@ -1,5 +1,3 @@
 package design.composite;
 
-public enum Department {
-  ENG
-}
+public enum Department { ENG }

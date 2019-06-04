@@ -1,22 +1,19 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
 public class TWParserFactory implements AbstractParserFactory {
-
   @Override
   public XMLParser getParserInstance(String parserType) {
-
-    switch(parserType) {
-
-      case "TWERROR": 
+    switch (parserType) {
+      case "TWERROR":
         return new TWErrorXMLParser();
 
-      case "TWFEEDBACK": 
+      case "TWFEEDBACK":
         return new TWFeedbackXMLParser();
 
-      case "TWORDER": 
+      case "TWORDER":
         return new TWOrderXMLParser();
 
-      case "TWRESPONSE": 
+      case "TWRESPONSE":
         return new TWResponseXMLParser();
     }
     return null;

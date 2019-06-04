@@ -34,8 +34,7 @@ public class RequestHandler implements Runnable {
   /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
 
-  final private static String IMG_REGEX 
-    = "\\.(png|jpg|jpeg|gif)";
+  final private static String IMG_REGEX = "\\.(png|jpg|jpeg|gif)";
 
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
@@ -46,18 +45,18 @@ public class RequestHandler implements Runnable {
     this.clientSocket = clientSocket;
   }
 
-  private String extractURL(String requestString) {    
-  // remove request type and space
-  System.out.println("Request = " + requestString);
-      String urlString = requestString.substring(requestString.indexOf(' ') + 1);
-      // Remove everything past next space
-      urlString = urlString.substring(0, urlString.indexOf(' '));
-      // Prepend http:// if necessary to create correct URL
-      if (!urlString.startsWith("http")) {
-        String temp = "http://";
-        urlString = temp + urlString;
-      }
-      return urlString;
+  private String extractURL(String requestString) {
+    // remove request type and space
+    System.out.println("Request = " + requestString);
+    String urlString = requestString.substring(requestString.indexOf(' ') + 1);
+    // Remove everything past next space
+    urlString = urlString.substring(0, urlString.indexOf(' '));
+    // Prepend http:// if necessary to create correct URL
+    if (!urlString.startsWith("http")) {
+      String temp = "http://";
+      urlString = temp + urlString;
+    }
+    return urlString;
   }
   /**
    * Reads and examines the requestString and calls the appropriate method based on the request
@@ -67,47 +66,48 @@ public class RequestHandler implements Runnable {
   public void run() {
     // Get Request from client
     String requestString;
-    try (BufferedReader br = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));) {
+    try (BufferedReader br =
+             new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
+         BufferedWriter bw =
+             new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));) {
       proxyToClientBr = br;
       proxyToClientBw = bw;
       do {
         requestString = proxyToClientBr.readLine();
       } while (requestString == null);
-    // Parse out URL
-    System.out.println("Request Received " + requestString);
+      // Parse out URL
+      System.out.println("Request Received " + requestString);
 
-    if (requestString != null) {
-      // Get the Request type
-      final String request = requestString.substring(0, requestString.indexOf(' '));
-      // remove request type and space
-      String urlString = extractURL(requestString);
-      // Check if site is blocked
-      if (Proxy.isBlocked(urlString)) {
-        System.out.println("Blocked site requested : " + urlString);
-        blockedSiteRequested();
-        return;
-      }
-
-      // Check request type
-      if ("CONNECT".equals(request)) {
-        System.out.println("HTTPS Request for : " + urlString + "\n");
-        handleHTTPSRequest(urlString);
-      } else {
-        // Check if we have a cached copy
-        File file = Proxy.getCachedPage(urlString);
-        if (file != null) {
-          System.out.println("Cached Copy found for : " + urlString + "\n");
-          sendCachedPageToClient(file);
-        } else {
-          System.out.println("HTTP GET for : " + urlString + "\n");
-          sendNonCachedToClient(urlString);
+      if (requestString != null) {
+        // Get the Request type
+        final String request = requestString.substring(0, requestString.indexOf(' '));
+        // remove request type and space
+        String urlString = extractURL(requestString);
+        // Check if site is blocked
+        if (Proxy.isBlocked(urlString)) {
+          System.out.println("Blocked site requested : " + urlString);
+          blockedSiteRequested();
+          return;
         }
-    }
-  } 
-  } catch (IOException ioe) { 
-      System.out.println("IO error : " 
-          + ioe.getMessage());
+
+        // Check request type
+        if ("CONNECT".equals(request)) {
+          System.out.println("HTTPS Request for : " + urlString + "\n");
+          handleHTTPSRequest(urlString);
+        } else {
+          // Check if we have a cached copy
+          File file = Proxy.getCachedPage(urlString);
+          if (file != null) {
+            System.out.println("Cached Copy found for : " + urlString + "\n");
+            sendCachedPageToClient(file);
+          } else {
+            System.out.println("HTTP GET for : " + urlString + "\n");
+            sendNonCachedToClient(urlString);
+          }
+        }
+      }
+    } catch (IOException ioe) {
+      System.out.println("IO error : " + ioe.getMessage());
     }
   }
 
@@ -130,11 +130,15 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
 
         if (image == null) {
           System.out.println("Image " + cachedFile.getName() + " was null");
-          response = "HTTP/1.0 404 NOT FOUND \n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+          response = "HTTP/1.0 404 NOT FOUND \n"
+              + "Proxy-agent: ProxyServer/1.0\n"
+              + "\r\n";
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
         } else {
-          response = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+          response = "HTTP/1.0 200 OK\n"
+              + "Proxy-agent: ProxyServer/1.0\n"
+              + "\r\n";
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
           ImageIO.write(image, fileExtension.substring(1), clientSocket.getOutputStream());
@@ -143,7 +147,9 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
         final BufferedReader cachedFileBufferedReader =
             new BufferedReader(new InputStreamReader(new FileInputStream(cachedFile)));
 
-        response = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+        response = "HTTP/1.0 200 OK\n"
+            + "Proxy-agent: ProxyServer/1.0\n"
+            + "\r\n";
         proxyToClientBw.write(response);
         proxyToClientBw.flush();
 
@@ -168,36 +174,36 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
       System.out.println("Error Sending Cached file to client " + e.getMessage());
     }
   }
-  
+
   private String computeLogicalFilePrefix(String urlString) {
-      int fileExtensionIndex = urlString.lastIndexOf(".");
-      // Get the initial file name
-      String fileName = urlString.substring(0, fileExtensionIndex);
-      // Trim off http://www. as no need for it in file name
-      fileName = fileName.substring(fileName.indexOf('.') + 1);
-      // Remove any illegal characters from file name
-      fileName = fileName.replace("/", "__");
-      fileName = fileName.replace('.', '_');
-      return fileName;
+    int fileExtensionIndex = urlString.lastIndexOf(".");
+    // Get the initial file name
+    String fileName = urlString.substring(0, fileExtensionIndex);
+    // Trim off http://www. as no need for it in file name
+    fileName = fileName.substring(fileName.indexOf('.') + 1);
+    // Remove any illegal characters from file name
+    fileName = fileName.replace("/", "__");
+    fileName = fileName.replace('.', '_');
+    return fileName;
   }
 
   private String computeLogicalFileExtension(String urlString) {
-      int fileExtensionIndex = urlString.lastIndexOf(".");
-      String fileExtension;
+    int fileExtensionIndex = urlString.lastIndexOf(".");
+    String fileExtension;
 
-      // Get the type of file
-      fileExtension = urlString.substring(fileExtensionIndex, urlString.length());
+    // Get the type of file
+    fileExtension = urlString.substring(fileExtensionIndex, urlString.length());
 
-      // Trailing / result in index.html of that directory being fetched
-      if (fileExtension.contains("/")) {
-        fileExtension = fileExtension.replace("/", "__");
-        fileExtension = fileExtension.replace('.', '_');
-        fileExtension += ".html";
-      }
-      return fileExtension;
+    // Trailing / result in index.html of that directory being fetched
+    if (fileExtension.contains("/")) {
+      fileExtension = fileExtension.replace("/", "__");
+      fileExtension = fileExtension.replace('.', '_');
+      fileExtension += ".html";
+    }
+    return fileExtension;
   }
 
-  private File getCacheFile(String fileName) { 
+  private File getCacheFile(String fileName) {
     File fileToCache = new File("cached/" + fileName);
     try {
       if (!fileToCache.exists()) {
@@ -218,21 +224,20 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
    * @param urlString URL ofthe file requested
    */
   private void sendNonCachedToClient(String urlString) {
-      // Compute a logical file name as per schema
-      // This allows the files on stored on disk to resemble that of the URL it was taken from
-      String fileExtension = computeLogicalFileExtension(urlString);
-      String fileName = computeLogicalFilePrefix(urlString)
-       + fileExtension;
-      // Attempt to create File to cache to
-      boolean caching = true;
-      File fileToCache = null;
-      BufferedWriter fileToCacheBW = null;
+    // Compute a logical file name as per schema
+    // This allows the files on stored on disk to resemble that of the URL it was taken from
+    String fileExtension = computeLogicalFileExtension(urlString);
+    String fileName = computeLogicalFilePrefix(urlString) + fileExtension;
+    // Attempt to create File to cache to
+    boolean caching = true;
+    File fileToCache = null;
+    BufferedWriter fileToCacheBW = null;
 
-      try {
-        fileToCache = getCacheFile(urlString);
-        caching = fileToCache.exists();
-        // Create Buffered output stream to write to cached copy of file
-        fileToCacheBW = new BufferedWriter(new FileWriter(fileToCache));
+    try {
+      fileToCache = getCacheFile(urlString);
+      caching = fileToCache.exists();
+      // Create Buffered output stream to write to cached copy of file
+      fileToCacheBW = new BufferedWriter(new FileWriter(fileToCache));
 
       // Check if file is an image
       if (fileExtension.matches(IMG_REGEX)) {
@@ -245,7 +250,9 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
           ImageIO.write(image, fileExtension.substring(1), fileToCache);
 
           // Send response code to client
-          String line = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+          String line = "HTTP/1.0 200 OK\n"
+              + "Proxy-agent: ProxyServer/1.0\n"
+              + "\r\n";
           proxyToClientBw.write(line);
           proxyToClientBw.flush();
 
@@ -256,7 +263,9 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
         } else {
           System.out.println(
               "Sending 404 to client as image wasn't received from server" + fileName);
-          String error = "HTTP/1.0 404 NOT FOUND\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+          String error = "HTTP/1.0 404 NOT FOUND\n"
+              + "Proxy-agent: ProxyServer/1.0\n"
+              + "\r\n";
           proxyToClientBw.write(error);
           proxyToClientBw.flush();
           return;
@@ -276,7 +285,9 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
             new BufferedReader(new InputStreamReader(proxyToServerCon.getInputStream()));
 
         // Send success code to client
-        String line = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+        String line = "HTTP/1.0 200 OK\n"
+            + "Proxy-agent: ProxyServer/1.0\n"
+            + "\r\n";
         proxyToClientBw.write(line);
 
         // Read from input stream between proxy and remote server
@@ -314,10 +325,8 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
         proxyToClientBw.close();
       }
     } catch (IOException e) {
-        System.err.println("Error sending " 
-            + urlString
-            + " to client : " + e.getMessage());
-      }
+      System.err.println("Error sending " + urlString + " to client : " + e.getMessage());
+    }
   }
 
   /**
@@ -346,8 +355,9 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
       proxyToServerSocket.setSoTimeout(60 * 1000);
 
       // Send Connection established to the client
-      String line =
-          "HTTP/1.0 200 Connection established\r\n" + "Proxy-Agent: ProxyServer/1.0\r\n" + "\r\n";
+      String line = "HTTP/1.0 200 Connection established\r\n"
+          + "Proxy-Agent: ProxyServer/1.0\r\n"
+          + "\r\n";
       proxyToClientBw.write(line);
       proxyToClientBw.flush();
 
@@ -360,9 +370,8 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
           new BufferedReader(new InputStreamReader(proxyToServerSocket.getInputStream()));
 
       // Create a new thread to listen to client and transmit to server
-      ClientToServerHttpsTransmit clientToServerHttps =
-          new ClientToServerHttpsTransmit(
-              clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
+      ClientToServerHttpsTransmit clientToServerHttps = new ClientToServerHttpsTransmit(
+          clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
 
       Thread httpsClientToServer = new Thread(clientToServerHttps);
       httpsClientToServer.start();
@@ -380,17 +389,22 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
       } while (read >= 0);
 
       // Close Down Resources
-      if (proxyToServerSocket != null) proxyToServerSocket.close();
+      if (proxyToServerSocket != null)
+        proxyToServerSocket.close();
 
-      if (proxyToServerBR != null) proxyToServerBR.close();
+      if (proxyToServerBR != null)
+        proxyToServerBR.close();
 
-      if (proxyToServerBW != null) proxyToServerBW.close();
+      if (proxyToServerBW != null)
+        proxyToServerBW.close();
 
-      if (proxyToClientBw != null) proxyToClientBw.close();
+      if (proxyToClientBw != null)
+        proxyToClientBw.close();
 
     } catch (SocketTimeoutException e) {
-      String line =
-          "HTTP/1.0 504 Timeout Occured after 10s\n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
+      String line = "HTTP/1.0 504 Timeout Occured after 10s\n"
+          + "User-Agent: ProxyServer/1.0\n"
+          + "\r\n";
       try {
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
@@ -433,7 +447,8 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
           read = proxyToClientIS.read(buffer);
           if (read > 0) {
             proxyToServerOS.write(buffer, 0, read);
-            if (proxyToClientIS.available() < 1) proxyToServerOS.flush();
+            if (proxyToClientIS.available() < 1)
+              proxyToServerOS.flush();
           }
         } while (read >= 0);
       } catch (SocketTimeoutException ste) {
@@ -450,10 +465,10 @@ BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(this.clientSocket.
    */
   private void blockedSiteRequested() {
     try (BufferedWriter bufferedWriter =
-          new BufferedWriter(
-            new OutputStreamWriter(
-              clientSocket.getOutputStream()))) {
-            String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
+             new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+      String line = "HTTP/1.0 403 Access Forbidden \n"
+          + "User-Agent: ProxyServer/1.0\n"
+          + "\r\n";
       bufferedWriter.write(line);
       bufferedWriter.flush();
     } catch (IOException e) {

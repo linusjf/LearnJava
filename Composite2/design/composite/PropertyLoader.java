@@ -18,6 +18,18 @@ public abstract class PropertyLoader {
   private static final boolean THROW_ON_LOAD_FAILURE = true;
   private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
   private static final String SUFFIX = ".properties";
+  
+  /**
+   * An overloaded LoadProperties. A convenience overload of {@link #loadProperties(String,
+   * ClassLoader)} that uses the current thread's context classloader
+   *
+   * @param name path of property resource
+   * @return Properties object
+   */
+  public static Properties loadProperties(final String name) {
+    return loadProperties(name, Thread.currentThread().getContextClassLoader());
+  }
+  
   /**
    * * Looks up a resource named 'name' in the classpath. The resource must map * to a file with
    * .properties extention. The name is assumed to be absolute * and can use either "/" or "." for
@@ -43,10 +55,10 @@ public abstract class PropertyLoader {
       if (LOAD_AS_RESOURCE_BUNDLE) {
         result = loadAsResourceBundle(loader, name);
       } else {
-        result = loadAsStream(loader,name);
-        }
-      } catch (MissingResourceException e) {
-      System.err.println("Error locating resource "+ name + " : " + e.getMessage());
+        result = loadAsStream(loader, name);
+      }
+    } catch (MissingResourceException e) {
+      System.err.println("Error locating resource " + name + " : " + e.getMessage());
       result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
@@ -56,25 +68,22 @@ public abstract class PropertyLoader {
     return result;
   }
 
-  private static Properties loadAsStream(ClassLoader loader,String name) {
+  private static Properties loadAsStream(ClassLoader loader, String name) {
     name = name.replace('.', '/');
     if (!name.endsWith(SUFFIX))
       name = name.concat(SUFFIX);
     Properties result = null;
-    try (InputStream in = loader.getResourceAsStream(name))
-    {
+    try (InputStream in = loader.getResourceAsStream(name)) {
       if (in != null) {
         result = new Properties();
         result.load(in);
       }
-    }
-    catch (IOException ioe) {
+    } catch (IOException ioe) {
       System.err.println("Error reading from resource " + name + " : " + ioe.getMessage());
     }
     return result;
   }
-  
-  
+
   private static Properties loadAsResourceBundle(ClassLoader loader, String name)
       throws MissingResourceException, NullPointerException {
     name = name.replace('/', '.');
@@ -97,14 +106,5 @@ public abstract class PropertyLoader {
       name = name.substring(0, name.length() - SUFFIX.length());
     return name;
   }
-  /**
-   * An overloaded LoadProperties. A convenience overload of {@link #loadProperties(String,
-   * ClassLoader)} that uses the current thread's context classloader
-   *
-   * @param name path of property resource
-   * @return Properties object
-   */
-  public static Properties loadProperties(final String name) {
-    return loadProperties(name, Thread.currentThread().getContextClassLoader());
-  }
+  
 }

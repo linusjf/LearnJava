@@ -40,6 +40,14 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="TreeWalker">
+    <module name="CyclomaticComplexity">
+  <property name="max" value="10"/>
+</module>
+<module name="BooleanExpressionComplexity"/>
+        <module name="ClassDataAbstractionCoupling"/>
+        <module name="ClassFanOutComplexity"/>
+        <module name="JavaNCSS"/>
+        <module name="NPathComplexity"/>
     <module name="SuppressionXpathFilter">
       <property name="optional" value="true"/>
       <property name="file" value="${cs.suppressions-xpath.file}"/>

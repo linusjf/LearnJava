@@ -49,7 +49,7 @@ public final class Base64 { // NOPMD
    * @param pad Padding character.
    * @return Decoded bytes.
    */
-  @SuppressWarnings("fallthrough")
+  @SuppressWarnings({"fallthrough", "checkstyle:cyclomaticcomplexity", "checkstyle:javancss"})
   public static byte[] decode(char[] src, int[] table, char pad) {
     final int len = src.length;
 
@@ -93,7 +93,6 @@ public final class Base64 { // NOPMD
         dst[di++] = (byte) (n >> r);
       }
     }
-
     return dst;
   }
 
@@ -126,6 +125,7 @@ public final class Base64 { // NOPMD
    * @param pad Padding character, or 0 for no padding.
    * @return Encoded chars.
    */
+  @SuppressWarnings("checkstyle:booleanexpressioncomplexity")
   public static char[] encode(byte[] src, char[] table, char pad) {
     final int len = src.length;
 

@@ -1209,6 +1209,7 @@ public class BCrypt {
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
+  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity"})
   private static byte[] decodeBase64(final String s, final int maxolen)
       throws IllegalArgumentException {
     final StringBuilder rs = new StringBuilder();
@@ -1442,7 +1443,10 @@ public class BCrypt {
     final byte[] saltb = decodeBase64(realSalt, BCRYPT_SALT_LEN);
     final BCrypt crypt = new BCrypt();
     final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);
+    return getHashedPassword(minor, rounds, saltb, hashed);
+  }
 
+  private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= 'a') rs.append(minor);
