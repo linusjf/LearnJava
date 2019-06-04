@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
  */
 public final class Platform {
   public enum Arch {
-    x86("x86|i386"),
-    x86_64("x86_64|amd64"),
-    aarch64("aarch64");
+    X86("x86|i386"),
+    X86_64("x86_64|amd64"),
+    AARCH64("aarch64");
 
     Pattern pattern;
 
@@ -28,9 +28,9 @@ public final class Platform {
   }
 
   public enum OS {
-    darwin("darwin|mac os x"),
-    freebsd("freebsd"),
-    linux("linux");
+    DARWIN("darwin|mac os x"),
+    FREEBSD("freebsd"),
+    LINUX("linux");
 
     Pattern pattern;
 

@@ -66,7 +66,7 @@ public class BCrypt {
   private static final int BLOWFISH_NUM_ROUNDS = 16;
 
   // Initial contents of key schedule
-  private static final int[] origP = {
+  private static final int[] ORIGP = {
     0x243f6a88,
     0x85a308d3,
     0x13198a2e,
@@ -87,7 +87,7 @@ public class BCrypt {
     0x8979fb1b,
   };
 
-  private static final int[] origS = {
+  private static final int[] ORIGS = {
     0xd1310ba6,
     0x98dfb5ac,
     0x2ffd72db,
@@ -1115,12 +1115,12 @@ public class BCrypt {
   };
 
   // bcrypt IV: "OrpheanBeholderScryDoubt"
-  private static final int[] bfCryptCipherText = {
+  private static final int[] BFCRYPTCIPHERTEXT = {
     0x4f727068, 0x65616e42, 0x65686f6c, 0x64657253, 0x63727944, 0x6f756274,
   };
 
   // Table for Base64 encoding
-  private static final char[] base64Code = {
+  private static final char[] BASE64CODE = {
     '.', '/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
     'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
     'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2',
@@ -1128,7 +1128,7 @@ public class BCrypt {
   };
 
   // Table for Base64 decoding
-  private static final byte[] index64 = {
+  private static final byte[] INDEX64 = {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1,
     54, 55, 56, 57, 58, 59, 60, 61, 62, 63, -1, -1, -1, -1, -1, -1, -1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -1139,10 +1139,10 @@ public class BCrypt {
 
   // Expanded Blowfish key
   @SuppressWarnings("membername")
-  private int[] P;
+  private int[] P;// NOPMD
 
   @SuppressWarnings("membername")
-  private int[] S;
+  private int[] S;// NOPMD
 
   /**
    * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
@@ -1164,26 +1164,26 @@ public class BCrypt {
 
     while (off < len) {
       c1 = d[off++] & 0xff;
-      rs.append(base64Code[(c1 >> 2) & 0x3f]);
+      rs.append(BASE64CODE[(c1 >> 2) & 0x3f]);
       c1 = (c1 & 0x03) << 4;
       if (off >= len) {
-        rs.append(base64Code[c1 & 0x3f]);
+        rs.append(BASE64CODE[c1 & 0x3f]);
         break;
       }
       c2 = d[off++] & 0xff;
       c1 |= (c2 >> 4) & 0x0f;
-      rs.append(base64Code[c1 & 0x3f]);
+      rs.append(BASE64CODE[c1 & 0x3f]);
       c1 = (c2 & 0x0f) << 2;
 
       if (off >= len) {
-        rs.append(base64Code[c1 & 0x3f]);
+        rs.append(BASE64CODE[c1 & 0x3f]);
         break;
       }
 
       c2 = d[off++] & 0xff;
       c1 |= (c2 >> 6) & 0x03;
-      rs.append(base64Code[c1 & 0x3f]);
-      rs.append(base64Code[c2 & 0x3f]);
+      rs.append(BASE64CODE[c1 & 0x3f]);
+      rs.append(BASE64CODE[c2 & 0x3f]);
     }
     return rs.toString();
   }
@@ -1196,8 +1196,8 @@ public class BCrypt {
    * @return the decoded value of x
    */
   private static byte char64(final char x) {
-    if ((int) x < 0 || (int) x > index64.length) return -1;
-    return index64[(int) x];
+    if ((int) x < 0 || (int) x > INDEX64.length) return -1;
+    return INDEX64[(int) x];
   }
 
   /**
@@ -1304,8 +1304,8 @@ public class BCrypt {
 
   /** Initialise the Blowfish key schedule. */
   private void initKey() {
-    P = origP.clone();
-    S = origS.clone();
+    P = ORIGP.clone();
+    S = ORIGS.clone();
   }
 
   /**
@@ -1378,7 +1378,7 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   private byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
-    final int[] cdata = bfCryptCipherText.clone();
+    final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
 
     if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
@@ -1456,7 +1456,7 @@ public class BCrypt {
     rs.append("$");
     rs.append(encodeBase64(saltb, saltb.length));
     rs.append("$");
-    rs.append(encodeBase64(hashed, bfCryptCipherText.length * 4 - 1));
+    rs.append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
     return rs.toString();
   }
 

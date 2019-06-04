@@ -130,12 +130,12 @@ public class JarLibraryLoader implements LibraryLoader {
     sb.append("lib").append(name);
 
     switch (platform.os) {
-      case darwin:
+      case DARWIN:
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case linux: // falls through
-      case freebsd:
+      case LINUX: // falls through
+      case FREEBSD:
         candidates.add(sb + ".so");
         break;
       default:

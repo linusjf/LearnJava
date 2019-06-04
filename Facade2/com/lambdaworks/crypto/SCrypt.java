@@ -20,11 +20,11 @@ import javax.crypto.spec.SecretKeySpec;
  * @author Will Glozer
  */
 public final class SCrypt { // NOPMD
-  private static final boolean native_library_loaded;
+  private static final boolean NATIVE_LIBRARY_LOADED;
 
   static {
     final LibraryLoader loader = LibraryLoaders.loader();
-    native_library_loaded = loader.load("scrypt", true);
+    NATIVE_LIBRARY_LOADED = loader.load("scrypt", true);
   }
 
   private SCrypt() {
@@ -47,7 +47,7 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-    return native_library_loaded
+    return NATIVE_LIBRARY_LOADED
         ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
         : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
   }

@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * High-performance base64 codec based on the algorithm used in Mikael Grev's MiG Base64. This
  * implementation is designed to handle base64 without line splitting and with optional padding.
- * Alternative character tables may be supplied to the {@code encode} and {@code decode} methods to
+ * Alternative character tables may be supplied to the {@code ENCODE} and {@code decode} methods to
  * implement modified base64 schemes.
  *
  * <p>Decoding assumes correct input, the caller is responsible for ensuring that the input contains
@@ -16,15 +16,15 @@ import java.util.Arrays;
  * @author Will Glozer
  */
 public final class Base64 { // NOPMD
-  private static final char[] encode =
+  private static final char[] ENCODE =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
-  private static final int[] decode = new int[128];
-  private static final char pad = '=';
+  private static final int[] DECODE = new int[128];
+  private static final char PAD = '=';
 
   static {
-    Arrays.fill(decode, -1);
-    for (int i = 0; i < encode.length; i++) decode[encode[i]] = i;
-    decode[pad] = 0;
+    Arrays.fill(DECODE, -1);
+    for (int i = 0; i < ENCODE.length; i++) DECODE[ENCODE[i]] = i;
+    DECODE[PAD] = 0;
   }
 
   private Base64() {
@@ -38,7 +38,7 @@ public final class Base64 { // NOPMD
    * @return Decoded bytes.
    */
   public static byte[] decode(char[] chars) {
-    return decode(chars, decode, pad);
+    return decode(chars, DECODE, PAD);
   }
 
   /**
@@ -103,7 +103,7 @@ public final class Base64 { // NOPMD
    * @return Encoded chars.
    */
   public static char[] encode(byte[] bytes) {
-    return encode(bytes, encode, pad);
+    return encode(bytes, ENCODE, PAD);
   }
 
   /**
@@ -114,7 +114,7 @@ public final class Base64 { // NOPMD
    * @return Encoded chars.
    */
   public static char[] encode(byte[] bytes, boolean padded) {
-    return encode(bytes, encode, padded ? pad : 0);
+    return encode(bytes, ENCODE, padded ? PAD : 0);
   }
 
   /**
