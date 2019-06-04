@@ -25,6 +25,9 @@ import javax.imageio.ImageIO;
  * @version 1.0
  */
 public class RequestHandler implements Runnable {
+  
+  private static final String IMG_REGEX = "\\.(png|jpg|jpeg|gif)";
+  
   /** Socket connected to client passed by Proxy server. */
   final Socket clientSocket;
 
@@ -33,8 +36,6 @@ public class RequestHandler implements Runnable {
 
   /** Send data from proxy to client. */
   BufferedWriter proxyToClientBw;
-
-  final private static String IMG_REGEX = "\\.(png|jpg|jpeg|gif)";
 
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
@@ -58,6 +59,7 @@ public class RequestHandler implements Runnable {
     }
     return urlString;
   }
+  
   /**
    * Reads and examines the requestString and calls the appropriate method based on the request
    * type.

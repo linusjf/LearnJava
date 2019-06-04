@@ -13,11 +13,12 @@ import java.util.List;
 public enum TestProxy {
   ;
 
-  final private static String FILE = "urls.txt"; // NOPMD
+  private static final String FILE = "urls.txt"; // NOPMD
 
-  final private static String PROXY_HOST = "localhost";
+  private static final String PROXY_HOST = "localhost";
 
-  @SuppressWarnings("checkstyle:magicnumber") final private static int PROXY_PORT = 8085;
+  @SuppressWarnings("checkstyle:magicnumber") 
+  private static final int PROXY_PORT = 8085;
 
   /**
    * Main program.
