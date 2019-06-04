@@ -40,6 +40,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="TreeWalker">
+    <module name="ConstantName"/>
+    <module name="NestedIfDepth"/>
     <module name="CyclomaticComplexity">
       <property name="max" value="10"/>
     </module>
@@ -293,9 +295,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
     <module name="ArrayTrailingComma"/>
     <module name="EqualsAvoidNull"/>
-    <module name="IllegalCatch">
-      <property name="illegalClassNames" value="java.lang.Exception,       java.lang.Throwable,       java.lang.RuntimeException,       java.lang.NullPointerException"/>
-    </module>
+    <module name="IllegalCatch"/>
     <module name="PackageDeclaration">
       <property name="matchDirectoryStructure" value="true"/>
     </module>
