@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.function.Supplier; 
+
 /**
  * Describe class <code>EncryptorFacade</code> here.
  *
@@ -86,6 +87,15 @@ public final class EncryptorFacade {
       = Collections.unmodifiableMap(encryptors); 
   }
 
+  public Encrypt supplyEncryptor(EncryptionType type) {
+    Supplier<Encrypt> supplier 
+      = ENCRYPTOR_SUPPLIER.get(type);
+    if (supplier == null)
+      throw new IllegalArgumentException("No encryptor exists for " 
+          + type); 
+    return supplier.get();   
+  }
+  
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -94,87 +104,7 @@ public final class EncryptorFacade {
    * @return a <code>String</code> value
    */
   public String encrypt(EncryptionType type, String text) {
-    String hash = "";
-    final Encrypt e;
-    switch (type) {
-      case MD5:
-        e = new MD5Encryptor();
-        hash = e.encrypt(text);
-        break;
-
-      case MD5SALTED:
-        e = new MD5Salted();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA:
-        e = new SHA();
-        hash = e.encrypt(text);
-        break;
-
-      case SHASALTED:
-        e = new SHASalted();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA224:
-        e = new SHA224();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA224SALTED:
-        e = new SHA224Salted();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA256:
-        e = new SHA256();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA256SALTED:
-        e = new SHA256Salted();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA384:
-        e = new SHA384();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA384SALTED:
-        e = new SHA384Salted();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA512:
-        e = new SHA512();
-        hash = e.encrypt(text);
-        break;
-
-      case SHA512SALTED:
-        e = new SHA512Salted();
-        hash = e.encrypt(text);
-        break;
-
-      case SCRYPT:
-        e = new SCryptor();
-        hash = e.encrypt(text);
-        break;
-
-      case BCRYPT:
-        e = new BCryptor();
-        hash = e.encrypt(text);
-        break;
-
-      case PBKDF:
-        e = new PBKDFEncryptor();
-        hash = e.encrypt(text);
-        break;
-
-      default:
-        break;
-    }
-    return hash;
+    final Encrypt e = supplyEncryptor(type);
+    return e.encrypt(text);
   }
 }
