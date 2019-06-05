@@ -17,13 +17,17 @@ import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.function.Supplier; 
 /**
  * Describe class <code>EncryptorFacade</code> here.
  *
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class EncryptorFacade {
+public final class EncryptorFacade {
   public enum EncryptionType {
     MD5,
     MD5SALTED,
@@ -40,6 +44,16 @@ public class EncryptorFacade {
     SCRYPT,
     BCRYPT,
     PBKDF,
+  }
+
+  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
+
+  static {      
+    final Map<EncryptionType,
+          Supplier<Encrypt>> encryptors 
+            = new HashMap<>();
+    ENCRYPTOR_SUPPLIER 
+      = Collections.unmodifiableMap(encryptors); 
   }
 
   /**
