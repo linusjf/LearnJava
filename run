@@ -88,7 +88,7 @@ runJVM()
       tearDown;
       exit 0;
     else
-      echo $jarFile does not exist. Run build and buildall.
+      echo $jarFile does not exist. Run buildj or buildjall.
     exit 1
   fi
 }
