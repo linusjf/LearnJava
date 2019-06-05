@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
-public class TestAbstractFactoryPattern {
+public enum TestAbstractFactoryPattern {
+  ;
 
   public static void main(String[] args) {
     AbstractParserFactory parserFactory = ParserFactoryProducer.getFactory("NYFactory");
