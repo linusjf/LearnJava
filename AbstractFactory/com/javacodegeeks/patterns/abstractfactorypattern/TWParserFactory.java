@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
 public class TWParserFactory implements AbstractParserFactory {
+  
   @Override
   public XMLParser getParserInstance(String parserType) {
     switch (parserType) {
@@ -15,6 +16,9 @@ public class TWParserFactory implements AbstractParserFactory {
 
       case "TWRESPONSE":
         return new TWResponseXMLParser();
+
+      default:
+        break;
     }
     return null;
   }
