@@ -6,7 +6,7 @@ public enum TestAbstractFactoryPattern {
   public static void main(String[] args) {
     AbstractParserFactory parserFactory = ParserFactoryProducer.getFactory("NYFactory");
     XMLParser parser = parserFactory.getParserInstance("NYORDER");
-    String msg="";
+    String msg = "";
     msg = parser.parse();
     System.out.println(msg);
     System.out.println("************************************");
