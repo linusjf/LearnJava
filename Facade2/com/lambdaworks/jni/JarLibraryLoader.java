@@ -56,30 +56,28 @@ public class JarLibraryLoader implements LibraryLoader {
   @Override
   public boolean load(String name, boolean verify) {
     boolean loaded = false;
+    File lib = null;
 
-    try {
+    try (JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)) {
       final Platform platform = Platform.detect();
-      final JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify);
-      try {
-        for (String path : libCandidates(platform, name)) {
-          final JarEntry entry = jar.getJarEntry(path);
-          if (entry == null) continue;
-          else {
-            final File lib = extract(name, jar.getInputStream(entry));
-            System.load(lib.getAbsolutePath());
-            lib.delete();
-
-            loaded = true;
-            break;
-          }
+      for (String path : libCandidates(platform, name)) {
+        final JarEntry entry = jar.getJarEntry(path);
+        if (entry == null)
+          continue;
+        else {
+          lib = extract(name, jar.getInputStream(entry));
+          SecurityManager sm = System.getSecurityManager();
+          sm.checkLink(lib.getAbsolutePath());
+          System.load(lib.getAbsolutePath());
+          lib.delete();
+          loaded = true;
+          break;
         }
-      } finally {
-        jar.close();
       }
-    } catch (UnsatisfiedLinkError | NullPointerException | SecurityException | IOException e) {
+    } catch (SecurityException | IOException e) {
+      System.err.println("Unable to load library : " + lib);
       loaded = false;
     }
-
     return loaded;
   }
 
@@ -96,19 +94,13 @@ public class JarLibraryLoader implements LibraryLoader {
     int len;
 
     final File lib = File.createTempFile(name, "lib");
-    final FileOutputStream os = new FileOutputStream(lib);
+    lib.deleteOnExit();
 
-    try {
-      while ((len = is.read(buf)) > 0) {
-        os.write(buf, 0, len);
-      }
-    } catch (IOException e) {
-      lib.delete();
-      throw e;
-    } finally {
-      os.close();
-      is.close();
+    FileOutputStream os = new FileOutputStream(lib);
+    while ((len = is.read(buf)) > 0) {
+      os.write(buf, 0, len);
     }
+
     return lib;
   }
 

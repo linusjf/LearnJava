@@ -14,10 +14,10 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
+
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
-
-import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme described in "A
@@ -133,7 +133,8 @@ public class BCrypt {
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
-  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity","PMD.CyclomaticComplexity"})
+  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity",
+    "PMD.CyclomaticComplexity"})
   private static byte[] decodeBase64(final String s, final int maxolen)
       throws IllegalArgumentException {
     checkMaxLengthParameter(maxolen);
@@ -168,21 +169,19 @@ public class BCrypt {
       rs.append((char) o);
       ++olen;
     }
-
     return convertToBytes(rs,olen);
   }
     
-  private static boolean checkMaxLengthParameter(int maxolen) {  
-  if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
-    return true;
+  private static void checkMaxLengthParameter(int maxolen) {  
+    if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
   }
 
   private static byte[] convertToBytes(StringBuilder rs,
       int olen) {
-  final byte[] ret = new byte[olen];
+    final byte[] ret = new byte[olen];
     for (int off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
     return ret;
-}
+  }
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.

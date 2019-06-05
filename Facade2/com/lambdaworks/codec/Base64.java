@@ -125,7 +125,9 @@ public final class Base64 { // NOPMD
    * @param pad Padding character, or 0 for no padding.
    * @return Encoded chars.
    */
-  @SuppressWarnings("checkstyle:booleanexpressioncomplexity")
+  @SuppressWarnings({"checkstyle:booleanexpressioncomplexity",
+    "PMD.NPathComplexity","checkstyle:cyclomaticcomplexity",
+    "checkstyle:npathcomplexity"})
   public static char[] encode(byte[] src, char[] table, char pad) {
     final int len = src.length;
 
@@ -156,10 +158,10 @@ public final class Base64 { // NOPMD
       dst[di++] = table[(n >>> 6) & 0x3f];
       if (tail == 2) dst[di++] = table[n & 0x3f];
 
-      if (pad != 0) {
-        if (tail == 1) dst[di++] = pad;
+      if (pad != 0 && tail == 1)
+        dst[di++] = pad;
+      if (pad != 0)
         dst[di] = pad;
-      }
     }
     return dst;
   }
