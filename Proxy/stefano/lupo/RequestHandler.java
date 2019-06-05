@@ -97,19 +97,23 @@ public class RequestHandler implements Runnable {
           System.out.println("HTTPS Request for : " + urlString + "\n");
           handleHTTPSRequest(urlString);
         } else {
-          // Check if we have a cached copy
-          File file = Proxy.getCachedPage(urlString);
-          if (file != null) {
-            System.out.println("Cached Copy found for : " + urlString + "\n");
-            sendCachedPageToClient(file);
-          } else {
-            System.out.println("HTTP GET for : " + urlString + "\n");
-            sendNonCachedToClient(urlString);
-          }
+          handleForCaching(urlString);
         }
       }
     } catch (IOException ioe) {
       System.out.println("IO error : " + ioe.getMessage());
+    }
+  }
+          
+  private void handleForCaching(String urlString) {
+    // Check if we have a cached copy
+    File file = Proxy.getCachedPage(urlString);
+    if (file != null) {
+      System.out.println("Cached Copy found for : " + urlString + "\n");
+      sendCachedPageToClient(file);
+    } else {
+      System.out.println("HTTP GET for : " + urlString + "\n");
+      sendNonCachedToClient(urlString);
     }
   }
 

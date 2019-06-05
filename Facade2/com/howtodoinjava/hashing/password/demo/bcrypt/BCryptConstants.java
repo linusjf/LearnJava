@@ -3,10 +3,6 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 @SuppressWarnings({"PMD.ExcessiveClassLength","PMD.ClassNamingConventions"})
 public final class BCryptConstants {
   
-  private BCryptConstants() {
-    throw new IllegalStateException("Private constructor"); 
-  }
-  
   // BCrypt parameters
   static final int GENSALT_DEFAULT_LOG2_ROUNDS = 10;
   
@@ -889,4 +885,8 @@ public final class BCryptConstants {
     53, -1, -1, -1, -1, -1,
   };
 
+  private BCryptConstants() {
+    throw new IllegalStateException("Private constructor"); 
+  }
+  
 }
