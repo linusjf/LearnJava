@@ -50,7 +50,11 @@
   <!-- <rule ref="category/java/bestpractices.xml/UseVarargs" /> -->
   <!-- <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean" /> -->
   <!-- NAMING CONVENTIONS -->
-  <rule ref="category/java/codestyle.xml/ClassNamingConventions"/>
+<rule ref="category/java/codestyle.xml/ClassNamingConventions">
+  <properties>
+    <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+"/>
+  </properties>
+</rule>
   <rule ref="category/java/codestyle.xml/FieldNamingConventions" />
   <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions"/>
   <rule ref="category/java/codestyle.xml/GenericsNaming"/>

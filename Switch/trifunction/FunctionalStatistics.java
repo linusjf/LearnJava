@@ -6,12 +6,12 @@ import java.util.Map;
 import player.TennisPlayer;
 
 public final class FunctionalStatistics {
+  private static final Map<String, TriFunction<TennisPlayer, Period, String, String>> STATISTICS =
+      new HashMap<>();
+  
   private FunctionalStatistics() {
     throw new AssertionError();
   }
-
-  private static final Map<String, TriFunction<TennisPlayer, Period, String, String>> STATISTICS =
-      new HashMap<>();
 
   static {
     STATISTICS.put("SERVE", Statistics::computeServeTrend);
@@ -26,7 +26,6 @@ public final class FunctionalStatistics {
     if (function == null) {
       throw new IllegalArgumentException("Invalid trend type: " + trend);
     }
-
     return function.apply(tennisPlayer, period, owner);
   }
 }

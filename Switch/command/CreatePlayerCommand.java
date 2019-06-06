@@ -38,11 +38,11 @@ public class CreatePlayerCommand {
   }
 
   public Player createPlayer(String playerType) {
-    Command command = PLAYERS.get(playerType);
+    Command cmd = PLAYERS.get(playerType);
 
-    if (command == null) {
+    if (cmd == null) {
       throw new IllegalArgumentException("Invalid player type: " + playerType);
     }
-    return command.create();
+    return cmd.create();
   }
 }
