@@ -9,14 +9,14 @@ public final class Statistics {
   }
 
   public static String computeBackhandTrend(TennisPlayer player, Period period, String owner) {
-    return "";
+    return "Backhand trend...";
   }
 
   public static String computeForehandTrend(TennisPlayer player, Period period, String owner) {
-    return "";
+    return "Forehand trend...";
   }
 
   public static String computeServeTrend(TennisPlayer player, Period period, String owner) {
-    return "";
+    return "Serve trend...";
   }
 }
