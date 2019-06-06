@@ -77,11 +77,9 @@ else
       if [ $jvm -eq 0 ]
         then
         createJar
-      fi
-      if [ $jvm ]
-         then
-           echo "Unable to create executable archive"
-           success=1
+      else
+        echo "Unable to create executable archive"
+        success=1
       fi
     fi
 fi
