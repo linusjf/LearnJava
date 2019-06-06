@@ -1,12 +1,11 @@
 package strategy;
 
-import player.Player;
-import player.TennisPlayer;
-import player.SnookerPlayer;
 import player.FootballPlayer;
+import player.Player;
+import player.SnookerPlayer;
+import player.TennisPlayer;
 
-public enum PlayerTypes { 
-
+public enum PlayerTypes {
   TENNIS {
     @Override
     public Player createPlayer() {

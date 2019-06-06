@@ -1,4 +1,3 @@
 package player;
 
-public interface Player {
-}
+public interface Player {}
