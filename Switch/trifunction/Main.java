@@ -1,7 +1,7 @@
 package trifunction;
 
-import player.TennisPlayer;
 import java.time.Period;
+import player.TennisPlayer;
 
 public enum Main {
   ;
