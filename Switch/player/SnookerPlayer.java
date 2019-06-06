@@ -1,6 +1,6 @@
 package player;
 
-public SnookerPlayer implements Player {
+public class SnookerPlayer implements Player {
   
   @Override
   public String toString() {

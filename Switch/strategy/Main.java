@@ -1,5 +1,9 @@
 package strategy;
 
+import player.Player;
+import player.TennisPlayer;
+import player.FootballPlayer;
+
 public enum Main {
   ;
 

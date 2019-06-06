@@ -1,5 +1,6 @@
 package strategy;
 
+import player.Player;
 import player.TennisPlayer;
 import player.SnookerPlayer;
 import player.FootballPlayer;

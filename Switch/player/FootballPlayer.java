@@ -1,6 +1,6 @@
 package player;
 
-public FootballPlayer implements Player {
+public class FootballPlayer implements Player {
   
   @Override
   public String toString() {

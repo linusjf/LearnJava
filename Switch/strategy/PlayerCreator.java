@@ -1,5 +1,10 @@
 package strategy;
 
+import player.Player;
+import player.TennisPlayer;
+import player.FootballPlayer;
+import player.SnookerPlayer;
+
 public class PlayerCreator {
   
   public Player createPlayer(PlayerTypes playerType) {
