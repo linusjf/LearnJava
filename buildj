@@ -55,6 +55,9 @@ distDir="dist"
 manifestFile="manifest.mf"
 verFile=".ver"
 versionFile=".version"
+verErrMsg="Unable to read $proj/$verFile"
+archiveErrMsg="Unable to create executable archive"
+declare -i SUCCESS=0
 
 isJVM
 jvm=$?
@@ -66,19 +69,19 @@ else
     echo $proj
     [ -e $proj/$verFile ] && \
       { ver=$(cat $proj/$verFile) || \
-      echo "Unable to read $proj/$verFile";}
+      echo $verErrMsg;}
     javac -source $ver -target $ver \
     -cp $proj -Xlint:all \
     `find $proj -name "*.java" -type f`
     success=$?
-    if [ $success -eq 0 ]
+    if [[ $success -eq SUCCESS ]]
       then
         readVersion
-      if [ $jvm -eq 0 ]
+      if [[ $jvm -eq SUCCESS ]]
         then
         createJar
       else
-        echo "Unable to create executable archive"
+        echo $archiveErrMsg
         success=1
       fi
     fi
