@@ -8,7 +8,7 @@ import player.TennisPlayer;
 public final class FunctionalStatistics {
   private static final Map<String, TriFunction<TennisPlayer, Period, String, String>> STATISTICS =
       new HashMap<>();
-  
+
   private FunctionalStatistics() {
     throw new AssertionError();
   }
