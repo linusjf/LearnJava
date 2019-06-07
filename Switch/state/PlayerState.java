@@ -1,7 +1,6 @@
 package state;
 
 public interface PlayerState {
-
-   void register();
-   void unregister();
+  void register();
+  void unregister();
 }
