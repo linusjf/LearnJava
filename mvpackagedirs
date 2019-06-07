@@ -13,7 +13,7 @@
 package=""
 pkgInfoFile="package-info.java"
 dir=""
-for file in $(find . -name "*.java" -type f -maxdepth 1 ! -path "*.git*" ! -path .)
+for file in $(find . -maxdepth 1 -name "*.java" -type f  ! -path "*.git*" ! -path .)
   do
     package=$(head -1 $file | grep 'package' | awk '{print $2}' | sed 's/;//')
   dir=$(mkpackagedirs $package)
