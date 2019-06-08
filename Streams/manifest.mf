@@ -5,10 +5,10 @@ Built-By: root
 Main-Class: gen.GenChars
 
 Name: common
-Specification-Title: OutputStream
+Specification-Title: Streams
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 24d1f5c June 8 2019
+Implementation-Version: 7f8a2c0 June 8 2019
 Implementation-Vendor: 
 
