@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="GenChars.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/VARIABLE_DEF[./IDENT[@text='firstPrintableCharacter']]/ASSIGN/EXPR/NUM_INT[@text='33']"/>
+<suppress-xpath
+       files="GenChars.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/VARIABLE_DEF[./IDENT[@text='numberOfPrintableCharacters']]/ASSIGN/EXPR/NUM_INT[@text='94']"/>
+<suppress-xpath
+       files="GenChars.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/VARIABLE_DEF[./IDENT[@text='numberOfCharactersPerLine']]/ASSIGN/EXPR/NUM_INT[@text='72']"/>
+<suppress-xpath
+       files="GenChars.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/LITERAL_WHILE/SLIST/EXPR/ASSIGN/INDEX_OP[./IDENT[@text='line']]/EXPR/NUM_INT[@text='72']"/>
+<suppress-xpath
+       files="GenChars.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/LITERAL_WHILE/SLIST/EXPR/ASSIGN/INDEX_OP[./IDENT[@text='line']]/EXPR/NUM_INT[@text='73']"/>
+</suppressions>
