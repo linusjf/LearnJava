@@ -25,12 +25,12 @@ public class ListDirectoryWithFilter {
     if (dir.isDirectory()) {
       // List only files that meet the filtering criteria
       //  programmed in accept() method of FilenameFilter.
-      String[] files = dir.list(new FilenameFilter() {
+      File[] files = dir.listFiles(new FilenameFilter() {
         public boolean accept(File dir, String file) {
           return file.endsWith(".java");
         }
       }); // an anonymous inner class as FilenameFilter
-      for (String file : files) System.out.println(file);
+      for (File file : files) System.out.println(file);
     }
   }
 }
