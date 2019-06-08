@@ -9,6 +9,6 @@ Specification-Title: OutputStream
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f36f047 June 8 2019
+Implementation-Version: 24d1f5c June 8 2019
 Implementation-Vendor: 
 
