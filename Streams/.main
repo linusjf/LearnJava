@@ -1,2 +1,3 @@
 gen.GenChars
 gen.ListDirectoryRecursive
+gen.ListDirectoryWithFilter
