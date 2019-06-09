@@ -21,13 +21,11 @@ public class SysLibraryLoader implements LibraryLoader {
     boolean loaded;
 
     try {
-      System.getSecurityManager()
-        .checkLink(name);
+      System.getSecurityManager().checkLink(name);
       System.loadLibrary(name);
       loaded = true;
     } catch (SecurityException e) {
-      System.err.println("Error loading system library " + name
-          + " : " + e.getMessage());
+      System.err.println("Error loading system library " + name + " : " + e.getMessage());
       loaded = false;
     }
     return loaded;

@@ -62,8 +62,7 @@ public class JarLibraryLoader implements LibraryLoader {
       final Platform platform = Platform.detect();
       for (String path : libCandidates(platform, name)) {
         final JarEntry entry = jar.getJarEntry(path);
-        if (entry == null)
-          continue;
+        if (entry == null) continue;
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();

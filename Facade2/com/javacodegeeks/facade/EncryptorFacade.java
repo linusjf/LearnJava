@@ -16,7 +16,6 @@ import com.javacodegeeks.abk.SHA384Salted;
 import com.javacodegeeks.abk.SHA512;
 import com.javacodegeeks.abk.SHA512Salted;
 import com.javacodegeeks.abk.SHASalted;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,8 +70,7 @@ public final class EncryptorFacade {
 
   public Encrypt supplyEncryptor(EncryptionType type) {
     Supplier<Encrypt> supplier = ENCRYPTOR_SUPPLIER.get(type);
-    if (supplier == null)
-      throw new IllegalArgumentException("No encryptor exists for " + type);
+    if (supplier == null) throw new IllegalArgumentException("No encryptor exists for " + type);
     return supplier.get();
   }
 

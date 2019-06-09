@@ -60,13 +60,13 @@ import java.security.SecureRandom;
  * @version 0.2
  */
 public class BCrypt {
-  
+
   // Expanded Blowfish key
   @SuppressWarnings("membername")
-  private int[] P;// NOPMD
+  private int[] P; // NOPMD
 
   @SuppressWarnings("membername")
-  private int[] S;// NOPMD
+  private int[] S; // NOPMD
 
   /**
    * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
@@ -133,12 +133,15 @@ public class BCrypt {
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
-  @SuppressWarnings({"checkstyle:cyclomaticcomplexity","checkstyle:npathcomplexity",
-    "PMD.CyclomaticComplexity"})
+  @SuppressWarnings({
+    "checkstyle:cyclomaticcomplexity",
+    "checkstyle:npathcomplexity",
+    "PMD.CyclomaticComplexity"
+  })
   private static byte[] decodeBase64(final String s, final int maxolen)
       throws IllegalArgumentException {
     checkMaxLengthParameter(maxolen);
-      
+
     final StringBuilder rs = new StringBuilder();
     int off = 0;
     final int slen = s.length();
@@ -169,15 +172,14 @@ public class BCrypt {
       rs.append((char) o);
       ++olen;
     }
-    return convertToBytes(rs,olen);
+    return convertToBytes(rs, olen);
   }
-    
-  private static void checkMaxLengthParameter(int maxolen) {  
+
+  private static void checkMaxLengthParameter(int maxolen) {
     if (maxolen <= 0) throw new IllegalArgumentException("Invalid maxolen");
   }
 
-  private static byte[] convertToBytes(StringBuilder rs,
-      int olen) {
+  private static byte[] convertToBytes(StringBuilder rs, int olen) {
     final byte[] ret = new byte[olen];
     for (int off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
     return ret;
