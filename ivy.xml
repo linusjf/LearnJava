@@ -20,15 +20,19 @@
 <ivy-module version="2.0">
   <info organisation="linus" module="LearnJava"/>
   <configurations>
-    <conf name="checkstyle.main" description="checkstyle dependencies"/>
-    <conf name="gformat.main" description="google java format dependencies"/>
+    <conf name="checkstyle.main" description="checkstyle main jar"/>
+    <conf name="gformat.main" description="google java format main jar"/>
     <conf name="checkstyle.lib" description="checkstyle dependencies"/>
     <conf name="gformat.lib" description="google java format dependencies"/>
+    <conf name="pmd.default" description="pmd jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat.main-&gt;master;gformat.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.21" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
+    <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
+    <dependency org="net.sourceforge.pmd" name="pmd" rev="6.15.0" conf="pmd.default-&gt;*">
+</dependency>
   </dependencies>
 </ivy-module>

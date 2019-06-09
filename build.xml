@@ -4,6 +4,7 @@
   <property file="${LearnJava.basedir}/globalbuild.properties"/>
   <property file="${LearnJava.basedir}/checkstyle.properties"/>
   <property file="${LearnJava.basedir}/gformat.properties"/>
+  <property file="${LearnJava.basedir}/pmd.properties"/>
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir" value="${LearnJava.basedir}/lib"/>
@@ -19,8 +20,10 @@
     <ivy:retrieve pathid="gformat.main.path" conf="gformat.main"/>
     <ivy:retrieve pathid="cs.lib.path" conf="checkstyle.lib"/>
     <ivy:retrieve pathid="gformat.lib.path" conf="gformat.lib"/>
+    <ivy:retrieve pathid="pmd.default.path" conf="pmd.default"/>
     <echo file="${cs.classpath.file}" message="${toString:cs.main.path}:${toString:cs.lib.path}"/>
     <echo file="${gformat.classpath.file}" message="${toString:gformat.main.path}:${toString:gformat.lib.path}"/>
+    <echo file="${pmd.classpath.file}" message="${toString:pmd.default.path}"/>
   </target>
   <!-- =================================
           target: report
