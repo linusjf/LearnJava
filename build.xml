@@ -20,10 +20,13 @@
     <ivy:retrieve pathid="gformat.main.path" conf="gformat.main"/>
     <ivy:retrieve pathid="cs.lib.path" conf="checkstyle.lib"/>
     <ivy:retrieve pathid="gformat.lib.path" conf="gformat.lib"/>
-    <ivy:retrieve pathid="pmd.default.path" conf="pmd.default"/>
+    <ivy:retrieve pathid="pmd-core.main.path" conf="pmd-core.main"/>
+    <ivy:retrieve pathid="pmd-java.main.path" conf="pmd-java.main"/>
+    <ivy:retrieve pathid="pmd-core.lib.path" conf="pmd-core.lib"/>
+    <ivy:retrieve pathid="pmd-java.lib.path" conf="pmd-java.lib"/>
     <echo file="${cs.classpath.file}" message="${toString:cs.main.path}:${toString:cs.lib.path}"/>
     <echo file="${gformat.classpath.file}" message="${toString:gformat.main.path}:${toString:gformat.lib.path}"/>
-    <echo file="${pmd.classpath.file}" message="${toString:pmd.default.path}"/>
+    <echo file="${pmd.classpath.file}" message="${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}"/>
   </target>
   <!-- =================================
           target: report
