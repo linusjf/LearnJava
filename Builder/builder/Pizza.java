@@ -12,7 +12,13 @@ import java.util.Set;
  * @version 1.0
  */
 public abstract class Pizza {
-  public enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
+  public enum Topping {
+    HAM,
+    MUSHROOM,
+    ONION,
+    PEPPER,
+    SAUSAGE
+  }
 
   final Set<Topping> toppings;
 

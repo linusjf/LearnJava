@@ -1,6 +1,6 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
-public interface XMLParser { 
-  
+public interface XMLParser {
+
   String parse();
 }

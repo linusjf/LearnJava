@@ -1,9 +1,5 @@
 package player;
 
-import player.FootballPlayer;
-import player.Player;
-import player.SnookerPlayer;
-import player.TennisPlayer;
 
 public enum Type {
   INIT {

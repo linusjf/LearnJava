@@ -74,9 +74,6 @@
     </java>
   </target>
   <target name="gformat">
-    <!-- <exec executable="find" dir="${basedir}" failonerror="true" outputproperty="sources">
-      <arg line=" . -type f -name '*.java'"/>
-    </exec> -->
     <fileset dir="${basedir}" id="javasrcs">
       <include name="**/*.java" />
     </fileset>

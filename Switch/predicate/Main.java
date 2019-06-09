@@ -10,6 +10,6 @@ public enum Main {
     Player footballPlayer = PlayerSupplier.supplyPlayer("FOOTBALL", 6);
     System.out.println(footballPlayer);
     Player snookerPlayer = PlayerTypes.supplyPlayer("SNOOKER", 10);
-		System.out.println(snookerPlayer);
+    System.out.println(snookerPlayer);
   }
 }

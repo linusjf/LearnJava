@@ -18,7 +18,7 @@ public abstract class PropertyLoader {
   private static final boolean THROW_ON_LOAD_FAILURE = true;
   private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
   private static final String SUFFIX = ".properties";
-  
+
   /**
    * An overloaded LoadProperties. A convenience overload of {@link #loadProperties(String,
    * ClassLoader)} that uses the current thread's context classloader
@@ -29,7 +29,7 @@ public abstract class PropertyLoader {
   public static Properties loadProperties(final String name) {
     return loadProperties(name, Thread.currentThread().getContextClassLoader());
   }
-  
+
   /**
    * * Looks up a resource named 'name' in the classpath. The resource must map * to a file with
    * .properties extention. The name is assumed to be absolute * and can use either "/" or "." for
@@ -106,5 +106,4 @@ public abstract class PropertyLoader {
       name = name.substring(0, name.length() - SUFFIX.length());
     return name;
   }
-  
 }

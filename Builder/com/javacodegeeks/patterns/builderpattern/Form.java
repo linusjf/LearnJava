@@ -222,9 +222,7 @@ public class Form {
   }
 
   private String toString(String label, Object value) {
-    return value != null ? " " + label + ":  " + value.toString()
-                         : " " + label + ":  "
-            + "";
+    return value != null ? " " + label + ":  " + value.toString() : " " + label + ":  " + "";
   }
 
   @Override
@@ -274,11 +272,12 @@ public class Form {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Form form = new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
-                    .passwordHint("MyName")
-                    .city("NY")
-                    .language("English")
-                    .build();
+    Form form =
+        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+            .passwordHint("MyName")
+            .city("NY")
+            .language("English")
+            .build();
     System.out.println(form);
   }
 }
