@@ -129,10 +129,11 @@
   <rule ref="category/java/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
   <!-- <rule ref="category/java/design.xml/CollapsibleIfStatements"/>-->
   <rule ref="category/java/design.xml/CouplingBetweenObjects" />
-  <rule ref="category/apex/design.xml/CyclomaticComplexity">
+  <rule ref="category/java/design.xml/CyclomaticComplexity">
     <properties>
-        <property name="classReportLevel" value="41" />
-        <property name="methodReportLevel" value="11" />
+        <property name="classReportLevel" value="80" />
+        <property name="methodReportLevel" value="10" />
+        <property name="cycloOptions" value="" />
     </properties>
   </rule>
   <!-- <rule ref="category/java/design.xml/DataClass" /> -->

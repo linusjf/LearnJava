@@ -14,7 +14,6 @@ fi
 rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
-#jarFile="lib/checkstyle-8.20-all.jar"
 classpathFile="cs.cp"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
