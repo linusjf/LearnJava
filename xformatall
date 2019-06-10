@@ -1,4 +1,4 @@
 #!/bin/bash
-find . -type f -maxdepth 2 -name "*.xml" ! -path "**/.git/**" \
-  | parallel -I% xmllint --output % --format %
+find . -maxdepth 2 -type f -name "*.xml" ! -path "**/.git/**" \
+  | parallel -j 5 -I% xmllint --output % --format %
 exit $?

@@ -75,9 +75,9 @@
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
-      <include name="**/*.java" />
+      <include name="**/*.java"/>
     </fileset>
-    <pathconvert property="sources" refid="javasrcs" pathsep=" " />
+    <pathconvert property="sources" refid="javasrcs" pathsep=" "/>
     <loadfile property="gformat.cp" srcFile="../${gformat.classpath.file}"/>
     <echo message="About to format ...: ${sources}"/>
     <java classname="${gformat.main.class}">

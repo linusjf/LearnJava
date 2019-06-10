@@ -9,9 +9,8 @@ if [ "$#" -ne 1 ] || ! [ -d "$1" ];
 then
   usage
 fi
-jarFile="lib/google-java-format-1.7-all-deps.jar"
-classpathFile="gformat.cp"
-mainClass="com.google.googlejavaformat.java.Main"
+declare -r classpathFile="gformat.cp"
+declare -r mainClass="com.google.googlejavaformat.java.Main"
 
 if [ ! -e $classpathFile ]
   then

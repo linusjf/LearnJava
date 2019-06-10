@@ -60,7 +60,6 @@ import java.security.SecureRandom;
  * @version 0.2
  */
 public class BCrypt {
-
   // Expanded Blowfish key
   @SuppressWarnings("membername")
   private int[] P; // NOPMD

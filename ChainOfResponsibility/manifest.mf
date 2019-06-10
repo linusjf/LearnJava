@@ -10,6 +10,6 @@ Specification-Title: ChainOfResponsibility
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 2254e9e June 9 2019
+Implementation-Version: 2981639 June 10 2019
 Implementation-Vendor: 
 

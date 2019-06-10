@@ -15,7 +15,8 @@ public class ListDirectoryWithFilter {
       listFiles(dir);
       File[] items = dir.listFiles();
       for (File item : items) {
-        if (item.isDirectory()) listRecursiveFiles(item); // Recursive call
+        if (item.isDirectory())
+          listRecursiveFiles(item); // Recursive call
       }
     }
   }
@@ -24,13 +25,11 @@ public class ListDirectoryWithFilter {
     if (dir.isDirectory()) {
       // List only files that meet the filtering criteria
       //  programmed in accept() method of FilenameFilter.
-      File[] files =
-          dir.listFiles(
-              new FilenameFilter() {
-                public boolean accept(File dir, String file) {
-                  return file.endsWith(".java");
-                }
-              }); // an anonymous inner class as FilenameFilter
+      File[] files = dir.listFiles(new FilenameFilter() {
+        public boolean accept(File dir, String file) {
+          return file.endsWith(".java");
+        }
+      }); // an anonymous inner class as FilenameFilter
       for (File file : files) System.out.println(file);
     }
   }

@@ -1,6 +1,5 @@
 package player;
 
-
 public enum Type {
   INIT {
     @Override

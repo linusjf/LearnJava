@@ -11,6 +11,6 @@ rm -f *.dex
 find . -mindepth 2 -name "*.class" -type f \
   ! -path "*.git*" -delete
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel -I% --maxargs 1 -j 4 ./buildtermux %
+  parallel -j 5 -I% --maxargs 1 -j 4 ./buildtermux %
 exit $?
 

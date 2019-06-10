@@ -47,8 +47,7 @@ public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true; // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
@@ -263,11 +262,10 @@ public class Proxy implements Runnable {
   public void run() {
     Scanner scanner = new Scanner(System.in);
     String command = "";
-    System.out.println(
-        "Enter new site to block, or type "
-            + "\"blocked\" to see blocked sites, "
-            + "\"cached\" to see cached sites, or "
-            + "\"close\" to close server.");
+    System.out.println("Enter new site to block, or type "
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();

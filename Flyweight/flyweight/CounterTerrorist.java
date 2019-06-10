@@ -9,8 +9,7 @@ package flyweight;
  */
 class CounterTerrorist implements Player {
   // Intrinsic Attribute
-  @SuppressWarnings("checkstyle:membername")
-  private final String TASK; // NOPMD
+  @SuppressWarnings("checkstyle:membername") private final String TASK; // NOPMD
 
   // Extrinsic Attribute
   private String weapon;
@@ -33,6 +32,7 @@ class CounterTerrorist implements Player {
   /** Describe <code>mission</code> method here. */
   @Override
   public void mission() {
-    System.out.println("Counter Terrorist with weapon " + weapon + "|" + " Task is " + TASK);
+    System.out.println("Counter Terrorist with weapon " + weapon + "|"
+        + " Task is " + TASK);
   }
 }

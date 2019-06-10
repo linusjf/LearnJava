@@ -50,12 +50,12 @@
   <!-- <rule ref="category/java/bestpractices.xml/UseVarargs" /> -->
   <!-- <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean" /> -->
   <!-- NAMING CONVENTIONS -->
-<rule ref="category/java/codestyle.xml/ClassNamingConventions">
-  <properties>
-    <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+"/>
-  </properties>
-</rule>
-  <rule ref="category/java/codestyle.xml/FieldNamingConventions" />
+  <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+    <properties>
+      <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
   <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions"/>
   <rule ref="category/java/codestyle.xml/GenericsNaming"/>
   <!-- <rule ref="category/java/codestyle.xml/LinguisticNaming" /> -->
@@ -128,18 +128,18 @@
   <!-- <rule ref="category/java/design.xml/AvoidUncheckedExceptionsInSignatures" /> -->
   <rule ref="category/java/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
   <!-- <rule ref="category/java/design.xml/CollapsibleIfStatements"/>-->
-  <rule ref="category/java/design.xml/CouplingBetweenObjects" />
+  <rule ref="category/java/design.xml/CouplingBetweenObjects"/>
   <rule ref="category/java/design.xml/CyclomaticComplexity">
     <properties>
-        <property name="classReportLevel" value="80" />
-        <property name="methodReportLevel" value="10" />
-        <property name="cycloOptions" value="" />
+      <property name="classReportLevel" value="80"/>
+      <property name="methodReportLevel" value="10"/>
+      <property name="cycloOptions" value=""/>
     </properties>
   </rule>
   <!-- <rule ref="category/java/design.xml/DataClass" /> -->
   <rule ref="category/java/design.xml/DoNotExtendJavaLangError"/>
   <!-- <rule ref="category/java/design.xml/ExceptionAsFlowControl" /> -->
-   <rule ref="category/java/design.xml/ExcessiveClassLength" /> 
+  <rule ref="category/java/design.xml/ExcessiveClassLength"/>
   <!-- <rule ref="category/java/design.xml/ExcessiveImports" /> -->
   <rule ref="category/java/design.xml/ExcessiveMethodLength"/>
   <!-- <rule ref="category/java/design.xml/ExcessiveParameterList" /> -->
@@ -155,8 +155,8 @@
   <!--         <property name="classes" value="org.sample.SampleInterface,org.sample2.SampleInterface" /> -->
   <!--     </properties> -->
   <!-- </rule> -->
-  <rule ref="category/java/design.xml/NcssCount" />
-  <rule ref="category/java/design.xml/NPathComplexity" /> 
+  <rule ref="category/java/design.xml/NcssCount"/>
+  <rule ref="category/java/design.xml/NPathComplexity"/>
   <!-- <rule ref="category/java/design.xml/SignatureDeclareThrowsException" /> -->
   <rule ref="category/java/design.xml/SimplifiedTernary"/>
   <!-- <rule ref="category/java/design.xml/SimplifyBooleanAssertion" /> -->
@@ -187,8 +187,8 @@
   <rule ref="category/java/errorprone.xml/AvoidAccessibilityAlteration"/>
   <!-- <rule ref="category/java/errorprone.xml/AvoidAssertAsIdentifier" /> -->
   <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
-  <rule ref="category/java/errorprone.xml/AvoidCallingFinalize" />
-  <rule ref="category/java/errorprone.xml/AvoidCatchingNPE" />
+  <rule ref="category/java/errorprone.xml/AvoidCallingFinalize"/>
+  <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
   <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
   <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
   <!-- <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals" /> -->

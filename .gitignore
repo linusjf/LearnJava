@@ -9,7 +9,7 @@
 *.html
 *.dot
 *docs*
-Proxy/cached/*.*
+Proxy/cached/**/*.*
 **/walkmod.xml
 !./AnnoProc.class
 !Proxy/urls.txt

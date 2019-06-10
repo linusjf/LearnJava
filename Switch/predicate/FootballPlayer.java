@@ -1,7 +1,6 @@
 package predicate;
 
 public class FootballPlayer implements Player {
-
   private String name;
 
   public FootballPlayer(String name) {

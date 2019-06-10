@@ -27,8 +27,7 @@
     <ivy:retrieve pathid="saxon.main.path" conf="saxon"/>
     <echo file="${cs.classpath.file}" message="${toString:cs.main.path}:${toString:cs.lib.path}"/>
     <echo file="${gformat.classpath.file}" message="${toString:gformat.main.path}:${toString:gformat.lib.path}"/>
-    <echo file="${pmd.classpath.file}"
-      message="${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}"/>
+    <echo file="${pmd.classpath.file}" message="${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}"/>
   </target>
   <!-- =================================
           target: report
