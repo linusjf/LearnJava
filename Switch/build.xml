@@ -4,6 +4,7 @@
   <property file="../globalbuild.properties"/>
   <property file="${cs.properties}"/>
   <property file="${gformat.properties}"/>
+  <property file="../pmd.properties"/>
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir" location="."/>
@@ -11,6 +12,7 @@
   <property name="dist.dir" location="dist"/>
   <property name="docs.dir" location="docs"/>
   <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
+  <loadfile property="pmd.cp" srcFile="../${pmd.classpath.file}"/>
   <taskdef resource="${cs.taskdef.resource}" classpath="${cs.cp}"/>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
@@ -34,10 +36,6 @@
   <!-- Creates Javadoc -->
   <target name="docs" depends="compile">
     <javadoc packagenames="${packages}" sourcepath="${src.dir}" destdir="${docs.dir}" additionalparam="${javadoc.params}">
-      <!-- Define which files / directory should get included, we include all -->
-      <fileset dir="${src.dir}">
-        <include name="*.java"/>
-      </fileset>
     </javadoc>
   </target>
   <target name="manifest">
