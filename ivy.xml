@@ -36,9 +36,10 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.21" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
-    <dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.15.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime">
-</dependency>
-    <dependency org="net.sourceforge.pmd" name="pmd-java" rev="6.15.0" conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime">
+    <!--dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.15.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime">
+    </dependency-->
+    <dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.15.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile"></dependency>
+    <dependency org="net.sourceforge.pmd" name="pmd-java" rev="6.15.0" conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
     </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
     <dependency org="net.sourceforge.saxon" name="saxon" rev="9.1.0.8" conf="saxon-&gt;master"/>
