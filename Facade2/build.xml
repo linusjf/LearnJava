@@ -108,7 +108,18 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="main" depends="compile, jar, docs">
+  <target name="pmd">
+    <pmd cacheLocation="${pmd.cacheFile}" minimumPriority="${pmd.minimumPriority}" suppressMarker="${pmd.suppressMarker}">
+      <sourceLanguage name="java" version="${ant.build.javac.source}"/>
+      <ruleset>../${pmd.config}</ruleset>
+      <formatter type="${pmd.reportFormat}" toFile="${pmd.output}" toConsole="${pmd.toConsole}">
+        </formatter>
+      <fileset dir="${basedir}">
+        <include name="**/*.java"/>
+      </fileset>
+    </pmd>
+  </target>
+  <target name="main" depends="compile, jar, docs,pmd">
     <description>Main target</description>
   </target>
 </project>

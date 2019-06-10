@@ -22,7 +22,7 @@ public enum BillGenerator {
     PlanFactory planFactory = new PlanFactory();
 
     try (BufferedReader br =
-             new BufferedReader(new InputStreamReader(new FileInputStream(args[0])))) {
+        new BufferedReader(new InputStreamReader(new FileInputStream(args[0])))) {
       String planName = br.readLine();
       int units = Integer.parseInt(br.readLine());
 

@@ -9,6 +9,8 @@ Specification-Title: Builder
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 2981639 June 10 2019
+Implementation-Version: cdf9841
+head: 'standard input': cannot seek to
+  relative offset -7: Illegal seek June 10 2019
 Implementation-Vendor: 
 

@@ -42,7 +42,8 @@ public enum SingletonTest {
     testState();
   }
 
-  @SuppressWarnings("checkstyle:IllegalCatch") private static void testConcurrency() { // NOPMD
+  @SuppressWarnings("checkstyle:IllegalCatch")
+  private static void testConcurrency() { // NOPMD
     final int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
@@ -55,37 +56,38 @@ public enum SingletonTest {
 
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
-      final Thread thread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-          try {
-            cyclicBarrier.await();
-          } catch (InterruptedException | BrokenBarrierException e) {
-            exception.compareAndSet(null, e);
-            return;
-          }
+      final Thread thread =
+          new Thread(
+              new Runnable() {
+                @Override
+                public void run() {
+                  try {
+                    cyclicBarrier.await();
+                  } catch (InterruptedException | BrokenBarrierException e) {
+                    exception.compareAndSet(null, e);
+                    return;
+                  }
 
-          final Singleton singleton = Singleton.getInstance();
-          final long value = singleton.getNextValue();
+                  final Singleton singleton = Singleton.getInstance();
+                  final long value = singleton.getNextValue();
 
-          // Synchronise the access as the collections used are not thread-safe
-          synchronized (SingletonTest.class) {
-            if (!generatedValues.add(value)) {
-              exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
-              return;
-            }
-            instances.add(singleton);
-          }
-        }
-      });
+                  // Synchronise the access as the collections used are not thread-safe
+                  synchronized (SingletonTest.class) {
+                    if (!generatedValues.add(value)) {
+                      exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+                      return;
+                    }
+                    instances.add(singleton);
+                  }
+                }
+              });
       thread.start();
       threads.add(thread);
     }
     try {
       for (final Thread thread : threads) thread.join();
 
-      if (exception.get() != null)
-        throw exception.get();
+      if (exception.get() != null) throw exception.get();
 
       switch (instances.size()) {
         case 0:
@@ -142,8 +144,11 @@ public enum SingletonTest {
         final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (SecurityException | InstantiationException | IllegalArgumentException
-        | IllegalAccessException | InvocationTargetException e) {
+    } catch (SecurityException
+        | InstantiationException
+        | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
       System.out.println(e.getCause().getMessage());
     }
   }
@@ -152,11 +157,11 @@ public enum SingletonTest {
     try {
       resetSingleton();
       Singleton singleton = Singleton.getInstance();
-      if (singleton.getNextValue() != 0L)
-        throw new AssertionError("Next value should be zero.");
+      if (singleton.getNextValue() != 0L) throw new AssertionError("Next value should be zero.");
       resetSingleton();
       singleton = Singleton.getInstance();
-      @SuppressWarnings("checkstyle:magicnumber") final long expectedValue = 3L;
+      @SuppressWarnings("checkstyle:magicnumber")
+      final long expectedValue = 3L;
       singleton.getNextValue();
       singleton.getNextValue();
       singleton.getNextValue();
@@ -168,8 +173,9 @@ public enum SingletonTest {
     }
   }
 
-  private static void resetSingleton() throws SecurityException, NoSuchFieldException,
-                                              IllegalArgumentException, IllegalAccessException {
+  private static void resetSingleton()
+      throws SecurityException, NoSuchFieldException, IllegalArgumentException,
+          IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");
     instance.setAccessible(true);
     instance.set(null, null);

@@ -65,8 +65,7 @@ public class Manager extends Employee {
         int size = employee.teamSize();
         toIndex = fromIndex + size;
         int listSize = work.getWork().size();
-        if (toIndex > listSize)
-          toIndex = listSize;
+        if (toIndex > listSize) toIndex = listSize;
         assignWork = work.getWork().subList(fromIndex, toIndex);
         if (assignWork.isEmpty()) {
           return;

@@ -17,7 +17,8 @@ public enum TestProxy {
 
   private static final String PROXY_HOST = "localhost";
 
-  @SuppressWarnings("checkstyle:magicnumber") private static final int PROXY_PORT = 8085;
+  @SuppressWarnings("checkstyle:magicnumber")
+  private static final int PROXY_PORT = 8085;
 
   /**
    * Main program.
@@ -26,8 +27,7 @@ public enum TestProxy {
    */
   public static void main(String[] args) {
     String fileName = FILE;
-    if (args.length > 0)
-      fileName = args[0];
+    if (args.length > 0) fileName = args[0];
 
     String[] urls = readURLsFromFile(fileName);
     testURLs(urls);
