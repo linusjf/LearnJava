@@ -14,6 +14,8 @@
   <loadfile property="cs.cp" srcFile="../${cs.classpath.file}"/>
   <loadfile property="pmd.cp" srcFile="../${pmd.classpath.file}"/>
   <taskdef resource="${cs.taskdef.resource}" classpath="${cs.cp}"/>
+  <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"
+    classpath="${pmd.cp}"/>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
