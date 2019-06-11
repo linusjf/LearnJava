@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+find . -name cs.errors \
+       | xargs -i wc -l {} \
+       | awk '$1 > 2'
+exit $?
