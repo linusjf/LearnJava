@@ -23,7 +23,7 @@ public final class PlayerSupplier {
     final Map<Predicate<Integer>, Supplier<Player>> footballPlayers = new HashMap<>();
     footballPlayers.put(rank -> rank == 1 || rank == 2, () -> new FootballPlayer("Lionel Messsi"));
     footballPlayers.put(
-        rank -> rank > 2 && rank <= 10, () -> new FootballPlayer("Cristiano Ronaldo"));
+      rank -> rank > 2 && rank <= 10, () -> new FootballPlayer("Cristiano Ronaldo"));
     final Map<Predicate<Integer>, Supplier<Player>> snookerPlayers = new HashMap<>();
     snookerPlayers.put(rank -> rank == 1, () -> new SnookerPlayer("Ronnie O'Sullivan"));
     snookerPlayers.put(rank -> rank == 2, () -> new SnookerPlayer("Mark Selby"));
@@ -35,7 +35,7 @@ public final class PlayerSupplier {
     PLAYER_CREATOR = Collections.unmodifiableMap(playerCreator);
   }
 
-  public static final Player supplyPlayer(String playerType, int rank) {
+  public static Player supplyPlayer(String playerType, int rank) {
     if (rank < 1 || rank > 10) {
       throw new IllegalArgumentException("Invalid rank: " + rank);
     }
