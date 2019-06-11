@@ -7,4 +7,5 @@ for dir in $dirs
   ./pmd $dir
   errs="$errs+$?"
 done
+./findpmderrors
 exit $errs
