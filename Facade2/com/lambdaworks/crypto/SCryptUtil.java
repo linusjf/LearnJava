@@ -1,7 +1,8 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-import static com.lambdaworks.codec.Base64.*;
+import static com.lambdaworks.codec.Base64.decode;
+import static com.lambdaworks.codec.Base64.encode;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -70,6 +71,7 @@ public final class SCryptUtil { // NOPMD
    * @param hashed scrypt hashed password.
    * @return true if passwd matches hashed value.
    */
+  @SuppressWarnings("PMD.CyclomaticComplexity")
   public static boolean check(String passwd, String hashed) {
     try {
       final String[] parts = hashed.split("\\$");
