@@ -39,12 +39,21 @@ readVersion() {
   }
 }
 
+readOptions()
+{
+  [ -e $proj/$optionsFile ] && \
+      { options=$(cat $proj/$optionsFile) || \
+      echo "Unable to read $proj/$optionsFile";}
+}
+
 proj=$1
 ver="1.7"
 version="0.0.0"
-distDir="dist"
-verFile=".ver"
-versionFile=".version"
+declare -r distDir="dist"
+declare -r verFile=".ver"
+declare -r versionFile=".version"
+declare -r optionsFile=".options"
+options=""
 
 isDX
 dex=$?
@@ -59,7 +68,8 @@ else
     ver=$(cat $proj/$verFile) || \
     echo "Unable to read $proj/$verFile"; \
   }
-  ecj -$ver -cp $proj $proj
+  readOptions
+  ecj $options -$ver -cp $proj $proj
   success=$?
   if [ $success -eq 0 ]
   then
