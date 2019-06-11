@@ -3,7 +3,12 @@ package gen;
 // Recursively list the contents of a directory (Unix's "ls -r" command).
 import java.io.File;
 
-public class ListDirectoryRecursive {
+public final class ListDirectoryRecursive {
+  
+  private ListDirectoryRecursive() {
+    throw new AssertionError("Private constructor");
+  }
+
   public static void main(String[] args) {
     File dir = new File(".");
     listRecursive(dir);

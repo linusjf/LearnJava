@@ -4,7 +4,11 @@ package gen;
 import java.io.File;
 import java.io.FilenameFilter;
 
-public class ListDirectoryWithFilter {
+public final class ListDirectoryWithFilter {
+  private ListDirectoryWithFilter() {
+    throw new AssertionError("Private constructor");
+  }
+  
   public static void main(String[] args) {
     File dir = new File(".");
     listRecursiveFiles(dir);
