@@ -4,23 +4,23 @@ public class Player implements PlayerState {
   private PlayerState registered;
   private PlayerState unregistered;
 
-  private PlayerState state;
+  private PlayerState playerState;
 
   public Player() {
     this.registered = new PlayerRegister(this);
     this.unregistered = new PlayerUnregister(this);
 
-    this.state = this.unregistered;
+    this.playerState = this.unregistered;
   }
 
   @Override
   public void register() {
-    state.register();
+    playerState.register();
   }
 
   @Override
   public void unregister() {
-    state.unregister();
+    playerState.unregister();
   }
 
   public PlayerState getRegistered() {
@@ -40,10 +40,10 @@ public class Player implements PlayerState {
   }
 
   public PlayerState getState() {
-    return state;
+    return playerState;
   }
 
-  public void setState(PlayerState state) {
-    this.state = state;
+  public void setState(PlayerState playerState) {
+    this.playerState = playerState;
   }
 }

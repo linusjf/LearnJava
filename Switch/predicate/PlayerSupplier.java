@@ -8,12 +8,9 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public final class PlayerSupplier {
-  private PlayerSupplier() {
-    throw new AssertionError();
-  }
-
+  
   private static final Map<String, Map<Predicate<Integer>, Supplier<Player>>> PLAYER_CREATOR;
-
+  
   static {
     final Map<String, Map<Predicate<Integer>, Supplier<Player>>> playerCreator = new HashMap<>();
     final Map<Predicate<Integer>, Supplier<Player>> tennisPlayers = new HashMap<>();
@@ -34,7 +31,11 @@ public final class PlayerSupplier {
     playerCreator.put("SNOOKER", snookerPlayers);
     PLAYER_CREATOR = Collections.unmodifiableMap(playerCreator);
   }
-
+  
+  private PlayerSupplier() {
+    throw new AssertionError("Private constructor");
+  }
+  
   public static Player supplyPlayer(String playerType, int rank) {
     if (rank < 1 || rank > 10) {
       throw new IllegalArgumentException("Invalid rank: " + rank);

@@ -31,6 +31,7 @@ public final class ListDirectoryWithFilter {
       File[] files =
           dir.listFiles(
               new FilenameFilter() {
+                @Override
                 public boolean accept(File dir, String file) {
                   return file.endsWith(".java");
                 }

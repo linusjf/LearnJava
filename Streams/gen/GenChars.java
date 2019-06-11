@@ -45,7 +45,7 @@ public enum GenChars {
       line[73] = (byte) '\n'; // line feed
       out.write(line);
       start =
-          ((start + 1) - firstPrintableCharacter) % numberOfPrintableCharacters
+          (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters
               + firstPrintableCharacter;
       iterCount++;
     }
