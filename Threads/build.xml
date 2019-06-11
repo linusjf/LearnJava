@@ -31,7 +31,7 @@
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile" depends="clean, makedir,gformat,checkstyle">
     <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
-      <compilerarg value="-Xlint:-options"/>
+      <compilerarg line="-Xlint:-options --add-modules java.se.ee"/>
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -65,11 +65,13 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}" fork="true" clonevm="true">
+      <jvmarg line="--add-modules java.se.ee"/>
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
+      <arg file="java.header"/>
     </java>
   </target>
   <target name="gformat">

@@ -64,7 +64,7 @@ runDalvik()
     echo
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      dalvikvm -cp $dexFile $a;
+      dalvikvm $runOptions -cp $dexFile $a;
       echo
     done
     tearDown;
@@ -83,7 +83,7 @@ runJVM()
       echo Main class: $main
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      java -cp $jarFile:$proj $a 
+      java $runOptions -cp $jarFile:$proj $a 
     done
       tearDown;
       exit 0;
@@ -98,6 +98,13 @@ readVersion()
   [ -e $versionFile ] && \
       { version=$(cat $versionFile) || \
       echo "Unable to read $versionFile";}
+}
+
+readRunOptions()
+{
+  [ -e $proj/$runOptionsFile ] && \
+      { runOptions=$(cat $proj/$runOptionsFile) || \
+      echo "Unable to read $proj/$runOptionsFile";}
 }
 
 setupScript="setup"
@@ -116,7 +123,9 @@ if [ -e $proj/$nomainFile ]
     exit 1
 fi
 
-versionFile=".version"
+declare -r versionFile=".version"
+declare -r runOptionsFile=".runoptions"
+runOptions=""
 version="0.0.0"
 main=$2
 if [ -z $main ]
@@ -126,6 +135,7 @@ then
 fi
 echo $proj
 readVersion
+readRunOptions
 isDalvik
 dalvik=$?
 if [ $dalvik -eq 0 ]
