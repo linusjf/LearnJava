@@ -64,7 +64,19 @@
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar" basedir="${build.dir}" includes="**/*.class" manifest="${jar.manifest}">
 </jar>
   </target>
-  <target name="run2">
+  <target name="run3">
+    <description>Run3 target</description>
+    <java classname="${main.class2}" fork="true" clonevm="true">
+      <jvmarg line="--add-modules java.se.ee"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+      <arg file="java.header"/>
+      <arg file="java_regexp.header"/>
+    </java>
+  </target>
+  <target name="run2" depends="run3">
     <description>Run2 target</description>
     <java classname="${main.class1}" fork="true" clonevm="true">
       <jvmarg line="--add-modules java.se.ee"/>
