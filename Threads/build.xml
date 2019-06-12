@@ -37,6 +37,7 @@
   <!-- Creates Javadoc -->
   <target name="docs" depends="compile">
     <javadoc packagenames="${packages}" sourcepath="${src.dir}" destdir="${docs.dir}" additionalparam="${javadoc.params}">
+      <arg line="--add-modules java.se.ee"/>
     </javadoc>
   </target>
   <target name="manifest">
