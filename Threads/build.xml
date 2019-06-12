@@ -74,6 +74,14 @@
       </classpath>
       <arg file="java.header"/>
     </java>
+    <java classname="${main.class1}" fork="true" clonevm="true">
+      <jvmarg line="--add-modules java.se.ee"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+      <arg file="java.header"/>
+    </java>
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
