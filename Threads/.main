@@ -1,2 +1,3 @@
-threads.DigestThread java.header
-threads.DigestRunnable java.header
+threads.DigestThread java.header java_regexp.header
+threads.DigestRunnable java.header java_regexp.header
+
