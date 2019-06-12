@@ -3,5 +3,6 @@ threads.DigestRunnable java.header java_regexp.header
 threads.CallbackDigestUserInterface java.header java_regexp.header
 threads.InstanceCallbackDigestUserInterface java.header java_regexp.header
 threads.MultithreadedMaxFinder
+com.example.thread.callable.ParallelAdder
 
 
