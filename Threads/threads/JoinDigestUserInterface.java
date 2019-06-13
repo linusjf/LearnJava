@@ -18,7 +18,7 @@ public class JoinDigestUserInterface {
         StringBuffer result = new StringBuffer(args[i]);
         result.append(": ");
         byte[] digest = digestThreads[i].getDigest();
-        result.append(DatatypeConverter.printHexBinary(digest));
+        result.append(DatatypeConverter.printBase64Binary(digest));
         System.out.println(result);
       } catch (InterruptedException ex) {
         System.err.println("Thread Interrupted before completion");
