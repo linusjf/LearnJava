@@ -40,6 +40,16 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="TreeWalker">
+    <module name="InnerTypeLast"/>
+    <module name="InterfaceIsType"/>
+    <module name="MutableException"/>
+    <module name="FinalClass"/>
+    <module name="ThrowsCount">
+      <property name="max" value="4"/>
+      <property name="ignorePrivateMethods" value="true"/>
+    </module>
+    <module name="VisibilityModifier"/>
+    <!--module name="DesignForExtension"/-->
     <module name="ConstantName"/>
     <module name="NestedIfDepth"/>
     <module name="CyclomaticComplexity">
