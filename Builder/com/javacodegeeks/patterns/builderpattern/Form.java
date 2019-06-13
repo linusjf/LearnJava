@@ -8,7 +8,7 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Form {
+public final class Form {
   private String firstName;
   private String lastName;
   private String userName;
@@ -25,6 +25,85 @@ public class Form {
   private String passwordHint;
   private String securityQuestion;
   private String securityAnswer;
+
+  private Form(FormBuilder formBuilder) {
+    this.firstName = formBuilder.firstName;
+    this.lastName = formBuilder.lastName;
+    this.userName = formBuilder.userName;
+    this.password = formBuilder.password;
+    this.address = formBuilder.address;
+    this.dob = formBuilder.dob;
+    this.email = formBuilder.email;
+    this.backupEmail = formBuilder.backupEmail;
+    this.spouseName = formBuilder.spouseName;
+    this.city = formBuilder.city;
+    this.state = formBuilder.state;
+    this.country = formBuilder.country;
+    this.language = formBuilder.language;
+    this.passwordHint = formBuilder.passwordHint;
+    this.securityQuestion = formBuilder.securityQuestion;
+    this.securityAnswer = formBuilder.securityAnswer;
+  }
+
+  private String toString(String label, Object value) {
+    return value != null ? " " + label + ":  " + value.toString() : " " + label + ":  " + "";
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(" First Name: ");
+    sb.append(firstName);
+    sb.append("\n Last Name: ");
+    sb.append(lastName);
+    sb.append("\n User Name: ");
+    sb.append(userName);
+    sb.append("\n Password: ");
+    sb.append(password);
+    sb.append("\n");
+
+    sb.append(toString("Address", address));
+    sb.append("\n");
+
+    sb.append(toString("DOB", dob));
+    sb.append("\n");
+    sb.append(toString("Email", email));
+    sb.append("\n");
+    sb.append(toString("Backup Email", backupEmail));
+    sb.append("\n");
+    sb.append(toString("Spouse Name", spouseName));
+    sb.append("\n");
+    sb.append(toString("City", city));
+    sb.append("\n");
+    sb.append(toString("State", state));
+    sb.append("\n");
+    sb.append(toString("Country", country));
+    sb.append("\n");
+    sb.append(toString("Language", language));
+    sb.append("\n");
+    sb.append(toString("Password Hint", passwordHint));
+    sb.append("\n");
+    sb.append(toString("Security Question", securityQuestion));
+    sb.append("\n");
+    sb.append(toString("Security Answer", securityAnswer));
+
+    return sb.toString();
+  }
+
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
+  public static void main(String[] args) {
+    Form form =
+        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+            .passwordHint("MyName")
+            .city("NY")
+            .language("English")
+            .build();
+    System.out.println(form);
+  }
 
   /** Describe class <code>FormBuilder</code> here. */
   public static class FormBuilder {
@@ -200,84 +279,5 @@ public class Form {
     public Form build() {
       return new Form(this);
     }
-  }
-
-  private Form(FormBuilder formBuilder) {
-    this.firstName = formBuilder.firstName;
-    this.lastName = formBuilder.lastName;
-    this.userName = formBuilder.userName;
-    this.password = formBuilder.password;
-    this.address = formBuilder.address;
-    this.dob = formBuilder.dob;
-    this.email = formBuilder.email;
-    this.backupEmail = formBuilder.backupEmail;
-    this.spouseName = formBuilder.spouseName;
-    this.city = formBuilder.city;
-    this.state = formBuilder.state;
-    this.country = formBuilder.country;
-    this.language = formBuilder.language;
-    this.passwordHint = formBuilder.passwordHint;
-    this.securityQuestion = formBuilder.securityQuestion;
-    this.securityAnswer = formBuilder.securityAnswer;
-  }
-
-  private String toString(String label, Object value) {
-    return value != null ? " " + label + ":  " + value.toString() : " " + label + ":  " + "";
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(" First Name: ");
-    sb.append(firstName);
-    sb.append("\n Last Name: ");
-    sb.append(lastName);
-    sb.append("\n User Name: ");
-    sb.append(userName);
-    sb.append("\n Password: ");
-    sb.append(password);
-    sb.append("\n");
-
-    sb.append(toString("Address", address));
-    sb.append("\n");
-
-    sb.append(toString("DOB", dob));
-    sb.append("\n");
-    sb.append(toString("Email", email));
-    sb.append("\n");
-    sb.append(toString("Backup Email", backupEmail));
-    sb.append("\n");
-    sb.append(toString("Spouse Name", spouseName));
-    sb.append("\n");
-    sb.append(toString("City", city));
-    sb.append("\n");
-    sb.append(toString("State", state));
-    sb.append("\n");
-    sb.append(toString("Country", country));
-    sb.append("\n");
-    sb.append(toString("Language", language));
-    sb.append("\n");
-    sb.append(toString("Password Hint", passwordHint));
-    sb.append("\n");
-    sb.append(toString("Security Question", securityQuestion));
-    sb.append("\n");
-    sb.append(toString("Security Answer", securityAnswer));
-
-    return sb.toString();
-  }
-
-  /**
-   * Describe <code>main</code> method here.
-   *
-   * @param args a <code>String</code> value
-   */
-  public static void main(String[] args) {
-    Form form =
-        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
-            .passwordHint("MyName")
-            .city("NY")
-            .language("English")
-            .build();
-    System.out.println(form);
   }
 }

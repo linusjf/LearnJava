@@ -17,6 +17,21 @@ public class Room implements AutoCloseable {
   // Our cleanable. Cleans the room when it’s eligible for gc
   private final Cleaner.Cleanable cleanable;
 
+  /**
+   * Creates a new <code>Room</code> instance.
+   *
+   * @param numJunkPiles an <code>int</code> value
+   */
+  public Room(int numJunkPiles) {
+    state = new State(numJunkPiles); // NOPMD
+    cleanable = CLEANER.register(this, state);
+  }
+
+  @Override
+  public void close() {
+    cleanable.clean();
+  }
+
   // Resource that requires cleaning. Must not refer to Room!
   private static class State implements Runnable {
     private int numJunkPiles; // Number of junk piles in this room
@@ -36,20 +51,5 @@ public class Room implements AutoCloseable {
       System.out.println("Cleaning room");
       numJunkPiles = 0;
     }
-  }
-
-  /**
-   * Creates a new <code>Room</code> instance.
-   *
-   * @param numJunkPiles an <code>int</code> value
-   */
-  public Room(int numJunkPiles) {
-    state = new State(numJunkPiles); // NOPMD
-    cleanable = CLEANER.register(this, state);
-  }
-
-  @Override
-  public void close() {
-    cleanable.clean();
   }
 }

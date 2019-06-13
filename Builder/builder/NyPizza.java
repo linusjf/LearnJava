@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class NyPizza extends Pizza {
+public final class NyPizza extends Pizza {
   public enum Size {
     SMALL,
     MEDIUM,
@@ -16,6 +16,21 @@ public class NyPizza extends Pizza {
   }
 
   private final Size size;
+
+  private NyPizza(Builder builder) {
+    super(builder);
+    this.size = builder.size; // NOPMD
+  }
+
+  /** returns object state as string. */
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Size = " + size + System.lineSeparator());
+    sb.append("Toppings: " + System.lineSeparator());
+    for (Topping t : toppings) sb.append(t + System.lineSeparator());
+    return sb.toString();
+  }
 
   /** Builder class that builds the Pizza object using the Fluent API style. */
   public static class Builder extends Pizza.Builder<Builder> {
@@ -39,20 +54,5 @@ public class NyPizza extends Pizza {
     protected Builder self() {
       return this;
     }
-  }
-
-  private NyPizza(Builder builder) {
-    super(builder);
-    this.size = builder.size; // NOPMD
-  }
-
-  /** returns object state as string. */
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Size = " + size + System.lineSeparator());
-    sb.append("Toppings: " + System.lineSeparator());
-    for (Topping t : toppings) sb.append(t + System.lineSeparator());
-    return sb.toString();
   }
 }

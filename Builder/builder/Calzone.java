@@ -6,8 +6,23 @@ package builder;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class Calzone extends Pizza {
+public final class Calzone extends Pizza {
   private final boolean sauceInside;
+
+  private Calzone(Builder builder) {
+    super(builder);
+    this.sauceInside = builder.sauceInside; // NOPMD
+  }
+
+  /** returns object state as String. */
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Sauce = " + sauceInside + System.lineSeparator());
+    sb.append("Toppings: " + System.lineSeparator());
+    for (Topping t : toppings) sb.append(t + System.lineSeparator());
+    return sb.toString();
+  }
 
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
@@ -32,20 +47,5 @@ public class Calzone extends Pizza {
     protected Builder self() {
       return this;
     }
-  }
-
-  private Calzone(Builder builder) {
-    super(builder);
-    this.sauceInside = builder.sauceInside; // NOPMD
-  }
-
-  /** returns object state as String. */
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Sauce = " + sauceInside + System.lineSeparator());
-    sb.append("Toppings: " + System.lineSeparator());
-    for (Topping t : toppings) sb.append(t + System.lineSeparator());
-    return sb.toString();
   }
 }

@@ -8,13 +8,6 @@ package com.javacodegeeks.patterns.singletonpattern;
  */
 public final class SingletonHolder { // NOPMD
 
-  // Static member class member that holds only one instance of the
-  // SingletonHolder class
-  private static class Holder { // NOPMD
-    /** Describe variable <code>singletonInstance</code> here. */
-    public static SingletonHolder singletonInstance = new SingletonHolder();
-  }
-
   // SingletonHolder prevents any other class from instantiating
   private SingletonHolder() {
     throw new IllegalStateException("Private constructor.");
@@ -27,6 +20,15 @@ public final class SingletonHolder { // NOPMD
    * @return a <code>SingletonHolder</code> value
    */
   public static SingletonHolder getSingletonInstance() {
-    return Holder.singletonInstance;
+    return Holder.INSTANCE;
   }
+  
+  // Static member class member that holds only one instance of the
+  // SingletonHolder class
+  private static class Holder { // NOPMD
+    /** Describe variable <code>singletonInstance</code> here. */
+    public static final SingletonHolder INSTANCE 
+      = new SingletonHolder();
+  }
+
 }

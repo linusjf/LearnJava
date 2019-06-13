@@ -7,13 +7,39 @@ package builder;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class NutritionFacts {
+public final class NutritionFacts {
   private final int servingSize;
   private final int servings;
   private final int calories;
   private final int fat;
   private final int sodium;
   private final int carbohydrate;
+
+  private NutritionFacts(Builder bilder) {
+    servingSize = bilder.servingSize;
+    servings = bilder.servings;
+    calories = bilder.calories;
+    fat = bilder.fat;
+    sodium = bilder.sodium;
+    carbohydrate = bilder.carbohydrate;
+  }
+
+  /**
+   * Describe <code>toString</code> method here.
+   *
+   * @return a <code>String</code> value
+   */
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("serving size = " + servingSize)
+        .append(", servings = " + servings)
+        .append(", calories = " + calories)
+        .append(", fat = " + fat)
+        .append(", sodium = " + sodium)
+        .append(", carbohydrates = " + carbohydrate);
+    return sb.toString();
+  }
 
   /** Describe class <code>Builder</code> here. */
   public static class Builder {
@@ -89,31 +115,5 @@ public class NutritionFacts {
     public NutritionFacts build() {
       return new NutritionFacts(this);
     }
-  }
-
-  private NutritionFacts(Builder bilder) {
-    servingSize = bilder.servingSize;
-    servings = bilder.servings;
-    calories = bilder.calories;
-    fat = bilder.fat;
-    sodium = bilder.sodium;
-    carbohydrate = bilder.carbohydrate;
-  }
-
-  /**
-   * Describe <code>toString</code> method here.
-   *
-   * @return a <code>String</code> value
-   */
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("serving size = " + servingSize)
-        .append(", servings = " + servings)
-        .append(", calories = " + calories)
-        .append(", fat = " + fat)
-        .append(", sodium = " + sodium)
-        .append(", carbohydrates = " + carbohydrate);
-    return sb.toString();
   }
 }

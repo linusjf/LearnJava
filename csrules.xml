@@ -48,7 +48,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="max" value="4"/>
       <property name="ignorePrivateMethods" value="true"/>
     </module>
-    <module name="VisibilityModifier"/>
+    <module name="VisibilityModifier">
+      <property name="packageAllowed" value="true"/>
+      <property name="protectedAllowed" value="true"/>
+      <property name="allowPublicImmutableFields" value="true"/>
+      <property name="allowPublicFinalFields" value="true"/>
+    </module>
     <!--module name="DesignForExtension"/-->
     <module name="ConstantName"/>
     <module name="NestedIfDepth"/>
