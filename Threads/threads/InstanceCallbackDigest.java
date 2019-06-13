@@ -16,6 +16,7 @@ public class InstanceCallbackDigest implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
       FileInputStream in = new FileInputStream(filename);

@@ -14,6 +14,7 @@ public class CallbackDigest implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
       FileInputStream in = new FileInputStream(filename);
@@ -23,9 +24,7 @@ public class CallbackDigest implements Runnable {
       din.close();
       byte[] digest = sha.digest();
       CallbackDigestUserInterface.receiveDigest(digest, filename);
-    } catch (IOException ex) {
-      System.err.println(ex);
-    } catch (NoSuchAlgorithmException ex) {
+    } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }
   }

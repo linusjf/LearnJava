@@ -9,9 +9,10 @@ import java.util.concurrent.Future;
 
 public class ParallelAdder {
   private static final int NUM_COUNT = 100;
+  private static final int NUM_THREADS = 10;
 
   public Integer parallelSum() {
-    ExecutorService executor = Executors.newFixedThreadPool(10);
+    ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     List<Future<Integer>> list = new ArrayList<Future<Integer>>();
     int count = 1;
     int prev = 0;
@@ -30,9 +31,7 @@ public class ParallelAdder {
     for (Future<Integer> fut : list) {
       try {
         totsum = totsum + fut.get();
-      } catch (InterruptedException e) {
-        System.err.println(e.getMessage());
-      } catch (ExecutionException e) {
+      } catch (InterruptedException | ExecutionException e) {
         System.err.println(e.getMessage());
       }
     }
@@ -50,9 +49,9 @@ public class ParallelAdder {
 
   public static void main(String[] args) {
     ParallelAdder adder = new ParallelAdder();
-    int pSum = adder.parallelSum();
-    int sSum = adder.sequentialSum();
+    int parllSum = adder.parallelSum();
+    int seqSum = adder.sequentialSum();
     System.out.println("parallel Sum equals  Sequential Sum ? ");
-    System.out.println("Answer is :: " + (pSum == sSum));
+    System.out.println("Answer is :: " + (parllSum == seqSum));
   }
 }

@@ -5,7 +5,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class MultithreadedMaxFinder {
+public final class MultithreadedMaxFinder {
+  private static int[] data =
+      new int[] {
+        12, 23, 45, 46, 56, 76, 87, 98, 78, 123, 45, 56, 76, 98, 90, 900, 567, 456, 24, 45, 43, 45,
+        23, 1000, 456, 678, 1002, 12345, 567, 567,
+      };
+
+  private MultithreadedMaxFinder() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static int max(int[] data) throws InterruptedException, ExecutionException {
     if (data.length == 1) {
       return data[0];
@@ -24,12 +34,6 @@ public class MultithreadedMaxFinder {
     service.shutdown();
     return Math.max(val, val2);
   }
-
-  private static int[] data =
-      new int[] {
-        12, 23, 45, 46, 56, 76, 87, 98, 78, 123, 45, 56, 76, 98, 90, 900, 567, 456, 24, 45, 43, 45,
-        23, 1000, 456, 678, 1002, 12345, 567, 567,
-      };
 
   public static void main(String[] args) {
     try {

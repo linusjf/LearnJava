@@ -16,6 +16,7 @@ public class DigestRunnable implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
       FileInputStream in = new FileInputStream(filename);
@@ -28,9 +29,7 @@ public class DigestRunnable implements Runnable {
       result.append(": ");
       result.append(DatatypeConverter.printBase64Binary(digest));
       System.out.println(result);
-    } catch (IOException ex) {
-      System.err.println(ex);
-    } catch (NoSuchAlgorithmException ex) {
+    } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }
   }

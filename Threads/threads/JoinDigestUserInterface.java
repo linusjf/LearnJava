@@ -2,7 +2,11 @@ package threads;
 
 import javax.xml.bind.DatatypeConverter;
 
-public class JoinDigestUserInterface {
+public final class JoinDigestUserInterface {
+
+  private JoinDigestUserInterface() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     ReturnDigest[] digestThreads = new ReturnDigest[args.length];
@@ -15,7 +19,7 @@ public class JoinDigestUserInterface {
       try {
         digestThreads[i].join();
         // Now print the result
-        StringBuffer result = new StringBuffer(args[i]);
+        StringBuilder result = new StringBuilder(args[i]);
         result.append(": ");
         byte[] digest = digestThreads[i].getDigest();
         result.append(DatatypeConverter.printBase64Binary(digest));

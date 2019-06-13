@@ -13,6 +13,7 @@ class FindMaxTask implements Callable<Integer> {
     this.end = end;
   }
 
+  @Override
   public Integer call() {
     int max = Integer.MIN_VALUE;
     for (int i = start; i < end; i++) {

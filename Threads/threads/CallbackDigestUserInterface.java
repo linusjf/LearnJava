@@ -4,7 +4,12 @@ import javax.xml.bind.DatatypeConverter;
 
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 
-public class CallbackDigestUserInterface {
+public final class CallbackDigestUserInterface {
+
+  private CallbackDigestUserInterface() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void receiveDigest(byte[] digest, String name) {
     StringBuilder result = new StringBuilder(name);
     result.append(": ");

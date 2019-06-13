@@ -15,6 +15,7 @@ public class ReturnDigest extends Thread {
   }
 
   @Override
+  @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
       FileInputStream in = new FileInputStream(filename);
@@ -23,9 +24,7 @@ public class ReturnDigest extends Thread {
       while (din.read() != -1) ; // read entire file
       din.close();
       digest = sha.digest();
-    } catch (IOException ex) {
-      System.err.println(ex);
-    } catch (NoSuchAlgorithmException ex) {
+    } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }
   }
