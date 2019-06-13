@@ -3,7 +3,12 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class OReillyByName {
+public final class OReillyByName {
+
+  private OReillyByName() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       InetAddress[] addresses = InetAddress.getAllByName("www.oreilly.com");

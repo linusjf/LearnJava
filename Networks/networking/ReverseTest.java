@@ -3,7 +3,12 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class ReverseTest {
+@SuppressWarnings("PMD.AvoidUsingHardCodedIP")
+public final class ReverseTest {
+  private ReverseTest() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       InetAddress ia = InetAddress.getByName("208.201.239.100");
