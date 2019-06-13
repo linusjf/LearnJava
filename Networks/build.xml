@@ -83,6 +83,13 @@
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
+    <java classname="${main.class3}">
+      <arg line="127.0.0.1 192.168.254.32 www.oreilly.com 224.0.2.1 FF01:0:0:0:0:0:0:1 FF05:0:0:0:0:0:0:101 0::1"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
