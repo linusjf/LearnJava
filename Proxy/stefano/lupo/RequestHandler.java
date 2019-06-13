@@ -405,6 +405,21 @@ public class RequestHandler implements Runnable {
   }
 
   /**
+   * This method is called when user requests a page that is blocked by the proxy. Sends an access
+   * forbidden message back to the client
+   */
+  private void blockedSiteRequested() {
+    try (BufferedWriter bufferedWriter =
+        new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+      String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
+      bufferedWriter.write(line);
+      bufferedWriter.flush();
+    } catch (IOException e) {
+      System.out.println("Error writing to client when requested a blocked site" + e.getMessage());
+    }
+  }
+
+  /**
    * Listen to data from client and transmits it to server. This is done on a separate thread as
    * must be done asynchronously to reading data from server and transmitting that data to the
    * client.
@@ -443,21 +458,6 @@ public class RequestHandler implements Runnable {
       } catch (IOException e) {
         System.out.println("Proxy to client HTTPS read timed out" + e.getMessage());
       }
-    }
-  }
-
-  /**
-   * This method is called when user requests a page that is blocked by the proxy. Sends an access
-   * forbidden message back to the client
-   */
-  private void blockedSiteRequested() {
-    try (BufferedWriter bufferedWriter =
-        new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
-      String line = "HTTP/1.0 403 Access Forbidden \n" + "User-Agent: ProxyServer/1.0\n" + "\r\n";
-      bufferedWriter.write(line);
-      bufferedWriter.flush();
-    } catch (IOException e) {
-      System.out.println("Error writing to client when requested a blocked site" + e.getMessage());
     }
   }
 }
