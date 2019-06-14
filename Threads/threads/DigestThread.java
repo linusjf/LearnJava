@@ -15,6 +15,7 @@ public class DigestThread extends Thread {
     this.filename = filename;
   }
 
+  // CPD-OFF
   @Override
   @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
@@ -33,6 +34,7 @@ public class DigestThread extends Thread {
       System.err.println(ex);
     }
   }
+  // CPD-ON
 
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
