@@ -9,3 +9,4 @@ networking.WebLog Networks/web.log
 networking.PooledWebLog Networks/web.log
 networking.ProtocolTester
 networking.SourceViewer https://www.spamhaus.org/
+networking.ContentGetter http://www.oreilly.com/ http://www.oreilly.com/graphics_new/animation.gif http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au

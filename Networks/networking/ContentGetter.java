@@ -12,7 +12,7 @@ public class ContentGetter {
         try {
           URL u = new URL(arg);
           Object o = u.getContent();
-          System.out.println("I got a " + o.getClass().getName());
+          System.out.println("I got a " + o.getClass().getName() + " for " + arg);
         } catch (MalformedURLException ex) {
           System.err.println(args[0] + " is not a parseable URL");
         } catch (IOException ex) {

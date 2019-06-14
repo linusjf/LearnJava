@@ -136,6 +136,13 @@
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
+    <java classname="${main.class11}">
+      <arg line="http://www.oreilly.com/ http://www.oreilly.com/graphics_new/animation.gif http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
