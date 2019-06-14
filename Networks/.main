@@ -6,3 +6,4 @@ networking.InterfaceLister
 networking.IPCharacteristics 127.0.0.1 192.168.254.32 www.oreilly.com 224.0.2.1 FF01:0:0:0:0:0:0:1 FF05:0:0:0:0:0:0:101 0::1
 #networking.SpamCheck 207.34.56.23 125.12.32.4 130.130.130.130 213.120.105.146 82.243.67.85 171.13.31.172 46.229.168.139
 networking.WebLog Networks/web.log
+networking.PooledWebLog Networks/web.log
