@@ -3,15 +3,12 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/** This program no longer works as-is.
- * It does not produce the desired results
- */
+/** This program no longer works as-is. It does not produce the desired results */
 public class SpamCheck {
   public static final String SPAM_LISTER = "sbl.spamhaus.org";
   public static final String POLICY_LISTER = "pbl.spamhaus.org";
   public static final String EXPLOIT_LISTER = "xbl.spamhaus.org";
-  public static final String LOOKUP 
-    = "https://www.spamhaus.org/query/ip/";
+  public static final String LOOKUP = "https://www.spamhaus.org/query/ip/";
 
   public static void main(String[] args) {
     for (String arg : args) {
