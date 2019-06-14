@@ -14,7 +14,6 @@ fi
 rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
-#jarFile="lib/checkstyle-8.20-all.jar"
 classpathFile="cs.cp"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
@@ -62,6 +61,6 @@ $mainClass \
 -p ../$properties_file \
 -o $output_file -g \
 `find . -type f -name "*.java" \
-! -path "docs/**" ! -path "dist/**"`)
-[ -e $1.xml ] && rm $1.xml
+! -path "docs/**" ! -path "dist/**"` \
+| tee $1-xpath.xml)
 exit $?
