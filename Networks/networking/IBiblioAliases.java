@@ -3,8 +3,13 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class IBiblioAliases {
-  public static void main(String args[]) {
+public final class IBiblioAliases {
+
+  private IBiblioAliases() {
+    throw new IllegalStateException("Private constructor");
+  }
+
+  public static void main(String[] args) {
     try {
       InetAddress ibiblio = InetAddress.getByName("www.ibiblio.org");
       InetAddress helios = InetAddress.getByName("ibiblio.org");

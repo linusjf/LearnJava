@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="AddressTests.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="AddressTests.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="AddressTests.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="AddressTests.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='6']"/>
+<suppress-xpath
+       files="SpamCheck.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isSpammer']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='unsignedByte']]/ASSIGN/EXPR/QUESTION[./IDENT[@text='octet']]/PLUS[./IDENT[@text='octet']]/NUM_INT[@text='256']"/>
+</suppressions>

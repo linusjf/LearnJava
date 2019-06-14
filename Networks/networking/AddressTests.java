@@ -2,7 +2,12 @@ package networking;
 
 import java.net.InetAddress;
 
-public class AddressTests {
+public final class AddressTests {
+
+  private AddressTests() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static int getVersion(InetAddress ia) {
     byte[] address = ia.getAddress();
     if (address.length == 4) return 4;

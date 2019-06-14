@@ -11,8 +11,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class PooledWebLog {
+public final class PooledWebLog {
   private static final int NUM_THREADS = 4;
+
+  private PooledWebLog() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) throws IOException {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);

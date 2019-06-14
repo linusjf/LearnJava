@@ -3,7 +3,12 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class IPCharacteristics {
+public final class IPCharacteristics {
+
+  private IPCharacteristics() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   private static void handleWildcardAddress(InetAddress address) {
     if (address.isAnyLocalAddress()) {
       System.out.println(address + " is a wildcard address.");

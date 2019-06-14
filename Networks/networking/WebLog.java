@@ -8,7 +8,12 @@ import java.io.Reader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class WebLog {
+public final class WebLog {
+
+  private WebLog() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     String entry = null;
     try (FileInputStream fin = new FileInputStream(args[0]);

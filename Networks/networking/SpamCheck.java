@@ -4,11 +4,15 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /** This program no longer works as-is. It does not produce the desired results */
-public class SpamCheck {
+public final class SpamCheck {
   public static final String SPAM_LISTER = "sbl.spamhaus.org";
   public static final String POLICY_LISTER = "pbl.spamhaus.org";
   public static final String EXPLOIT_LISTER = "xbl.spamhaus.org";
   public static final String LOOKUP = "https://www.spamhaus.org/query/ip/";
+
+  private SpamCheck() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     for (String arg : args) {
@@ -42,10 +46,8 @@ public class SpamCheck {
       int unsignedByte = octet < 0 ? octet + 256 : octet;
       query = unsignedByte + "." + query;
     }
-    boolean val =
-        isValidAddress(query, SPAM_LISTER)
-            || isValidAddress(query, POLICY_LISTER)
-            || isValidAddress(query, EXPLOIT_LISTER);
-    return val;
+    return isValidAddress(query, SPAM_LISTER)
+        || isValidAddress(query, POLICY_LISTER)
+        || isValidAddress(query, EXPLOIT_LISTER);
   }
 }
