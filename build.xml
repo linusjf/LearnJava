@@ -39,7 +39,7 @@
   <loadfile property="pmd.cp" srcFile="${pmd.classpath.file}"/>
   <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" classpath="${pmd.cp}"/>
           <cpd minimumTokenCount="100" 
-            language="java" format="text" outputFile="cpd.errors">
+            language="java" format="text" outputFile="${cpd.output}">
             <fileset dir="/${LearnJava.basedir}">
                 <include name="**/*.java"/>
             </fileset>
