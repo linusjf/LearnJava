@@ -1,0 +1,17 @@
+#! /usr/bin/env bash
+declare -r errFile="cpd.errors"
+declare -r format="text"
+declare -r language="java"
+declare -r classpathFile="pmd.cp"
+declare -r mainClass="net.sourceforge.pmd.cpd.CPD"
+
+java -cp @$classpathFile \
+$mainClass \
+--minimum-tokens 100 \
+--format $format \
+--language $language \
+--files . \
+| tee $errFile \
+|| { echo "Error running $0"; exit 1;}
+res=$?
+exit $res
