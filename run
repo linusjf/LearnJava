@@ -82,6 +82,10 @@ runJVM()
       setUp
       echo Main class: $main
     echo "$main" | while read -r a; do 
+      if [[ "$a" =~ ^#.* ]]
+      then 
+        continue
+      fi
       echo "Running $a...";echo
       java $runOptions -cp $jarFile:$proj $a 
     done
