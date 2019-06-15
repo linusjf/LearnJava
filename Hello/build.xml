@@ -105,10 +105,9 @@
     <pmd cacheLocation="${pmd.cacheFile}" minimumPriority="${pmd.minimumPriority}" suppressMarker="${pmd.suppressMarker}">
       <sourceLanguage name="java" version="${ant.build.javac.source}"/>
       <ruleset>../${pmd.config}</ruleset>
-        <auxclasspath>
-          <fileset dir="${basedir}" 
-            includes="**/*.class"/>
-        </auxclasspath>
+      <auxclasspath>
+        <pathelement path="${basedir}" />
+      </auxclasspath>
       <formatter type="${pmd.reportFormat}" toFile="${pmd.output}" toConsole="${pmd.toConsole}">
         </formatter>
       <fileset dir="${basedir}">
