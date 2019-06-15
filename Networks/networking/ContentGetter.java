@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ContentGetter {
+public final class ContentGetter {
+
+  private ContentGetter() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     if (args.length > 0) {
       // Open the URLs for reading

@@ -304,6 +304,11 @@ public class BCrypt {
     }
   }
 
+  private void checkCryptParameters(int logRounds, byte[] salt) throws IllegalArgumentException {
+    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
+    if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
+  }
+
   /**
    * Perform the central password hashing step in the bcrypt scheme.
    *
@@ -313,13 +318,12 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   private byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
+
+    checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
 
-    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
     final int rounds = 1 << logRounds;
-    if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
-
     initKey();
     ekskey(salt, password);
     int i;
@@ -342,15 +346,9 @@ public class BCrypt {
     return ret;
   }
 
-  /**
-   * Hash a password using the OpenBSD bcrypt scheme.
-   *
-   * @param password the password to hash
-   * @param salt the salt to hash with (perhaps generated using BCrypt.gensalt)
-   * @return the hashed password
-   */
-  public static String hashpw(final String password, final String salt) {
-    final byte[] passwordb;
+  /** Consider using regex. Match the initial salt and match the minor and offset values. */
+  private static String[] retrieveOffsetMinor(String salt) throws IllegalArgumentException {
+
     char minor = (char) 0;
     int off = 0;
 
@@ -366,6 +364,25 @@ public class BCrypt {
 
     // Extract number of rounds
     if (salt.charAt(off + 2) > '$') throw new IllegalArgumentException("Missing salt rounds");
+
+    return new String[] {String.valueOf(minor), String.valueOf(off)};
+  }
+
+  /**
+   * Hash a password using the OpenBSD bcrypt scheme.
+   *
+   * @param password the password to hash
+   * @param salt the salt to hash with (perhaps generated using BCrypt.gensalt)
+   * @return the hashed password
+   */
+  public static String hashpw(final String password, final String salt) {
+
+    String[] vals = retrieveOffsetMinor(salt);
+
+    char minor = vals[0].charAt(0);
+    int off = Integer.parseInt(vals[1]);
+
+    final byte[] passwordb;
     final int rounds = Integer.parseInt(salt.substring(off, off + 2));
 
     final String realSalt = salt.substring(off + 3, off + 25);

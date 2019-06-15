@@ -3,7 +3,12 @@ package networking;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ProtocolTester {
+public final class ProtocolTester {
+
+  private ProtocolTester() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     // hypertext transfer protocol
     testProtocol("http://www.adc.org");

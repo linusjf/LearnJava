@@ -3,7 +3,12 @@ package networking;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class URLEquality {
+public final class URLEquality {
+
+  private URLEquality() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       URL www = new URL("http://www.ibiblio.org/");
