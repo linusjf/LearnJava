@@ -9,6 +9,7 @@
 *.html
 *.dot
 *.gz
+*.log
 *docs*
 Proxy/cached/**/*.*
 **/walkmod.xml
@@ -16,3 +17,4 @@ Proxy/cached/**/*.*
 !Proxy/urls.txt
 !NIOIntro/file/*put.txt
 !FactoryMethod/bill.txt
+!Networks/web.log

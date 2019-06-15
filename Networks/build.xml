@@ -143,6 +143,13 @@
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
+    <java classname="${main.class12}">
+      <arg line="ftp://mp3:mp3@138.247.121.61:21000/c%3a/ http://www.oreilly.com http://www.ibiblio.org/nywc/compositions.phtml?category=Piano http://admin@www.blackstar.com:8080"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
