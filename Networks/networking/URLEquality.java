@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class URLEquality {
-
   private URLEquality() {
     throw new IllegalStateException("Private constructor");
   }

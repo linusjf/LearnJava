@@ -30,8 +30,7 @@ public interface FileChannelExample {
       throws FileNotFoundException {
     final File file =
         new File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
-    return fileOperation == FileOperation.READ
-        ? new FileInputStream(file).getChannel()
-        : new FileOutputStream(file).getChannel();
+    return fileOperation == FileOperation.READ ? new FileInputStream(file).getChannel()
+                                               : new FileOutputStream(file).getChannel();
   }
 }

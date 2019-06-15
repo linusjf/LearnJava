@@ -3,10 +3,10 @@ package networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/** This program no longer works as-is. 
- * It does not produce the desired results.
- * Using the LOOKUP url and the reversed ip lists
- * produces different results. */
+/**
+ * This program no longer works as-is. It does not produce the desired results. Using the LOOKUP url
+ * and the reversed ip lists produces different results.
+ */
 public final class SpamCheck {
   public static final String SPAM_LISTER = "sbl.spamhaus.org";
   public static final String POLICY_LISTER = "pbl.spamhaus.org";
@@ -49,8 +49,7 @@ public final class SpamCheck {
       int unsignedByte = octet < 0 ? octet + 256 : octet;
       query = unsignedByte + "." + query;
     }
-    return isValidAddress(query, SPAM_LISTER)
-        || isValidAddress(query, POLICY_LISTER)
+    return isValidAddress(query, SPAM_LISTER) || isValidAddress(query, POLICY_LISTER)
         || isValidAddress(query, EXPLOIT_LISTER);
   }
 }

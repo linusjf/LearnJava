@@ -318,7 +318,6 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   private byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
-
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -348,7 +347,6 @@ public class BCrypt {
 
   /** Consider using regex. Match the initial salt and match the minor and offset values. */
   private static String[] retrieveOffsetMinor(String salt) throws IllegalArgumentException {
-
     char minor = (char) 0;
     int off = 0;
 
@@ -376,7 +374,6 @@ public class BCrypt {
    * @return the hashed password
    */
   public static String hashpw(final String password, final String salt) {
-
     String[] vals = retrieveOffsetMinor(salt);
 
     char minor = vals[0].charAt(0);

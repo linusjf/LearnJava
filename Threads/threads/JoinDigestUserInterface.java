@@ -3,7 +3,6 @@ package threads;
 import javax.xml.bind.DatatypeConverter;
 
 public final class JoinDigestUserInterface {
-
   private JoinDigestUserInterface() {
     throw new IllegalStateException("Private constructor");
   }

@@ -1,7 +1,7 @@
 package predicate;
 
 public class PlayerCreator {
-  @SuppressWarnings({"PMD.CyclomaticComplexity","checkstyle:cyclomaticcomplexity"})
+  @SuppressWarnings({"PMD.CyclomaticComplexity", "checkstyle:cyclomaticcomplexity"})
   public Player createPlayer(String playerType, int rank) {
     switch (playerType) {
       case "TENNIS":

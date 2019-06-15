@@ -22,13 +22,11 @@ public final class SingletonHolder { // NOPMD
   public static SingletonHolder getSingletonInstance() {
     return Holder.INSTANCE;
   }
-  
+
   // Static member class member that holds only one instance of the
   // SingletonHolder class
   private static class Holder { // NOPMD
     /** Describe variable <code>singletonInstance</code> here. */
-    public static final SingletonHolder INSTANCE 
-      = new SingletonHolder();
+    public static final SingletonHolder INSTANCE = new SingletonHolder();
   }
-
 }

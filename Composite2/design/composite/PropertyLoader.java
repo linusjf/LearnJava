@@ -50,7 +50,8 @@ public abstract class PropertyLoader {
     name = normalizeName(name);
     Properties result = null;
     try {
-      if (loader == null) loader = ClassLoader.getSystemClassLoader();
+      if (loader == null)
+        loader = ClassLoader.getSystemClassLoader();
       if (LOAD_AS_RESOURCE_BUNDLE) {
         result = loadAsResourceBundle(loader, name);
       } else {
@@ -61,19 +62,16 @@ public abstract class PropertyLoader {
       result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException(
-          "could not load ["
-              + name
-              + "]"
-              + " as "
-              + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
+      throw new IllegalArgumentException("could not load [" + name + "]"
+          + " as " + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
     }
     return result;
   }
 
   private static Properties loadAsStream(ClassLoader loader, String name) {
     name = name.replace('.', '/');
-    if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
+    if (!name.endsWith(SUFFIX))
+      name = name.concat(SUFFIX);
     Properties result = null;
     try (InputStream in = loader.getResourceAsStream(name)) {
       if (in != null) {
@@ -91,7 +89,7 @@ public abstract class PropertyLoader {
     name = name.replace('/', '.');
     final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
     Properties result = new Properties();
-    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
+    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
       final String key = keys.nextElement();
       final String value = rb.getString(key);
       result.put(key, value);
@@ -100,9 +98,12 @@ public abstract class PropertyLoader {
   }
 
   private static String normalizeName(String name) throws IllegalArgumentException {
-    if (name == null) throw new IllegalArgumentException("null input: name");
-    if (name.startsWith("/")) name = name.substring(1);
-    if (name.endsWith(SUFFIX)) name = name.substring(0, name.length() - SUFFIX.length());
+    if (name == null)
+      throw new IllegalArgumentException("null input: name");
+    if (name.startsWith("/"))
+      name = name.substring(1);
+    if (name.endsWith(SUFFIX))
+      name = name.substring(0, name.length() - SUFFIX.length());
     return name;
   }
 }

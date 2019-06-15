@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public final class IBiblioAliases {
-
   private IBiblioAliases() {
     throw new IllegalStateException("Private constructor");
   }

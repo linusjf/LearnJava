@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public final class MyAddress {
-
   private MyAddress() {
     throw new IllegalStateException("Private constructor");
   }

@@ -4,7 +4,6 @@ package gen;
 import java.io.File;
 
 public final class ListDirectoryRecursive {
-  
   private ListDirectoryRecursive() {
     throw new AssertionError("Private constructor");
   }
@@ -19,7 +18,8 @@ public final class ListDirectoryRecursive {
       File[] items = dir.listFiles();
       for (File item : items) {
         System.out.println(item.getAbsoluteFile());
-        if (item.isDirectory()) listRecursive(item); // Recursive call
+        if (item.isDirectory())
+          listRecursive(item); // Recursive call
       }
     }
   }

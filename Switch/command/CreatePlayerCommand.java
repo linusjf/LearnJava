@@ -13,32 +13,26 @@ public class CreatePlayerCommand {
 
   static {
     final Map<String, Command> players = new HashMap<>();
-    players.put(
-        "TENNIS",
-        new Command() {
-          @Override
-          public Player create() {
-            return new TennisPlayer();
-          }
-        });
+    players.put("TENNIS", new Command() {
+      @Override
+      public Player create() {
+        return new TennisPlayer();
+      }
+    });
 
-    players.put(
-        "FOOTBALL",
-        new Command() {
-          @Override
-          public Player create() {
-            return new FootballPlayer();
-          }
-        });
+    players.put("FOOTBALL", new Command() {
+      @Override
+      public Player create() {
+        return new FootballPlayer();
+      }
+    });
 
-    players.put(
-        "SNOOKER",
-        new Command() {
-          @Override
-          public Player create() {
-            return new SnookerPlayer();
-          }
-        });
+    players.put("SNOOKER", new Command() {
+      @Override
+      public Player create() {
+        return new SnookerPlayer();
+      }
+    });
 
     PLAYERS = Collections.unmodifiableMap(players);
   }
