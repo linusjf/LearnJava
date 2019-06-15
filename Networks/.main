@@ -11,4 +11,6 @@ networking.ProtocolTester
 networking.SourceViewer https://www.spamhaus.org/
 networking.ContentGetter http://www.oreilly.com/ http://www.oreilly.com/graphics_new/animation.gif http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au
 networking.URLSplitter ftp://mp3:mp3@138.247.121.61:21000/c%3a/ http://www.oreilly.com http://www.ibiblio.org/nywc/compositions.phtml?category=Piano http://admin@www.blackstar.com:8080
-networking.URLEquality  
+networking.URLEquality
+networking.EncoderTest
+networking.QueryString
