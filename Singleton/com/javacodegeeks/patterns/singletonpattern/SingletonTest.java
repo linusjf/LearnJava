@@ -42,7 +42,8 @@ public enum SingletonTest {
     testState();
   }
 
-  @SuppressWarnings("checkstyle:IllegalCatch") private static void testConcurrency() { // NOPMD
+  @SuppressWarnings("checkstyle:IllegalCatch")
+  private static void testConcurrency() { // NOPMD
     final int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
