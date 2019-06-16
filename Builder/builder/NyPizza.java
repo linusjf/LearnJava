@@ -9,7 +9,11 @@ import java.util.Objects;
  * @version 1.0
  */
 public final class NyPizza extends Pizza {
-  public enum Size { SMALL, MEDIUM, LARGE }
+  public enum Size {
+    SMALL,
+    MEDIUM,
+    LARGE
+  }
 
   private final Size size;
 
