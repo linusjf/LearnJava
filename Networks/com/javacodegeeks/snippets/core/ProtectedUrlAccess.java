@@ -1,8 +1,8 @@
 package com.javacodegeeks.snippets.core;
 
-import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Authenticator;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
@@ -25,15 +25,14 @@ public class ProtectedUrlAccess {
           new URL(
               "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
                   + rnd);
+      byte[] b = new byte[1];
 
-      // read text returned by server
-      BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-      String line;
-      while ((line = in.readLine()) != null) {
-        System.out.println(line);
-      }
-      in.close();
+      DataInputStream di = new DataInputStream(url.openStream());
+      FileOutputStream fo = new FileOutputStream(rnd + ".gif");
+      while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
+      di.close();
+      fo.close();
+      System.out.println("Saved url as " + rnd + ".gif");
 
     } catch (MalformedURLException e) {
       System.out.println("Malformed URL: " + e.getMessage());
