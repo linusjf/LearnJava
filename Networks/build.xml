@@ -175,6 +175,12 @@
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
+    <java classname="${main.class17}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
   </target>
   <target name="gformat">
     <fileset dir="${basedir}" id="javasrcs">
