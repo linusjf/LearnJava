@@ -22,7 +22,7 @@ public final class PooledWebLog {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     Queue<LogEntry> results = new LinkedList<LogEntry>();
     try (BufferedReader in =
-             new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8"));) {
+        new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8")); ) {
       for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);

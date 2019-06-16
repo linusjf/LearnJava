@@ -40,8 +40,8 @@ public enum Main {
       = new WorkLoader("work.properties");
 
     workLoad.getWorkList()
-      .stream().
-      forEach(work -> { 
+      .stream()
+      .forEach(work -> { 
         rachelle.assignWork(rachelle, work);
       });
     rachelle.performWork();

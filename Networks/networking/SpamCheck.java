@@ -49,7 +49,8 @@ public final class SpamCheck {
       int unsignedByte = octet < 0 ? octet + 256 : octet;
       query = unsignedByte + "." + query;
     }
-    return isValidAddress(query, SPAM_LISTER) || isValidAddress(query, POLICY_LISTER)
+    return isValidAddress(query, SPAM_LISTER)
+        || isValidAddress(query, POLICY_LISTER)
         || isValidAddress(query, EXPLOIT_LISTER);
   }
 }
