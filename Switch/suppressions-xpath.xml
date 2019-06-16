@@ -123,16 +123,4 @@
        files="PlayerTypes.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='supplyPlayer']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="CreatePlayerCommand.java"
-       checks="DescendantTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL"/>
-<suppress-xpath
-       files="CreatePlayerCommand.java"
-       checks="DescendantTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL"/>
-<suppress-xpath
-       files="CreatePlayerCommand.java"
-       checks="DescendantTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL"/>
 </suppressions>
