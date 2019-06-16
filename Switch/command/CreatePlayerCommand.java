@@ -15,30 +15,21 @@ public class CreatePlayerCommand {
     final Map<String, Command> players = new HashMap<>();
     players.put(
         "TENNIS",
-        new Command() {
-          @Override
-          public Player create() {
-            return new TennisPlayer();
-          }
-        });
+      () -> {
+        return new TennisPlayer();
+      });
 
     players.put(
         "FOOTBALL",
-        new Command() {
-          @Override
-          public Player create() {
-            return new FootballPlayer();
-          }
-        });
+      () -> {
+        return new FootballPlayer();
+      });
 
     players.put(
         "SNOOKER",
-        new Command() {
-          @Override
-          public Player create() {
-            return new SnookerPlayer();
-          }
-        });
+      () -> {
+        return new SnookerPlayer();
+      });
 
     PLAYERS = Collections.unmodifiableMap(players);
   }
