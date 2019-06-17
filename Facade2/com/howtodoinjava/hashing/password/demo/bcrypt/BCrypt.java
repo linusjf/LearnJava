@@ -20,23 +20,25 @@ import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 
 /**
- * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme described in "A
- * Future-Adaptable Password Scheme" by Niels Provos and David Mazieres.
+ * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
+ * described in "A Future-Adaptable Password Scheme" by Niels Provos and David
+ * Mazieres.
  *
- * <p>This password hashing system tries to thwart off-line password cracking using a
- * computationally-intensive hashing algorithm, based on Bruce Schneier's Blowfish cipher. The work
- * factor of the algorithm is parameterised, so it can be increased as computers get faster.
+ * <p>This password hashing system tries to thwart off-line password cracking
+ * using a computationally-intensive hashing algorithm, based on Bruce
+ * Schneier's Blowfish cipher. The work factor of the algorithm is
+ * parameterised, so it can be increased as computers get faster.
  *
- * <p>Usage is really simple. To hash a password for the first time, call the hashpw method with a
- * random salt, like this:
+ * <p>Usage is really simple. To hash a password for the first time, call the
+ * hashpw method with a random salt, like this:
  *
  * <p><code>
  * String pw_hash = BCrypt.hashpw(plain_password, BCrypt.gensalt());
  *
  * </code>
  *
- * <p>To check whether a plaintext password matches one that has been hashed previously, use the
- * checkpw method:
+ * <p>To check whether a plaintext password matches one that has been hashed
+ * previously, use the checkpw method:
  *
  * <p><code>
  * if (BCrypt.checkpw(candidate_password, stored_hash))
@@ -45,31 +47,31 @@ import java.security.SecureRandom;
  * &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("It does not match");
  * </code>
  *
- * <p>The gensalt() method takes an optional parameter (log_rounds) that determines the
- * computational complexity of the hashing:
+ * <p>The gensalt() method takes an optional parameter (log_rounds) that
+ * determines the computational complexity of the hashing:
  *
  * <p><code>
  * String strong_salt = BCrypt.gensalt(10)
  * String stronger_salt = BCrypt.gensalt(12)
  * </code>
  *
- * <p>The amount of work increases exponentially (2**log_rounds), so each increment is twice as much
- * work. The default log_rounds is 10, and the valid range is 4 to 31.
+ * <p>The amount of work increases exponentially (2**log_rounds), so each
+ * increment is twice as much work. The default log_rounds is 10, and the valid
+ * range is 4 to 31.
  *
  * @author Damien Miller
  * @version 0.2
  */
 public class BCrypt {
   // Expanded Blowfish key
-  @SuppressWarnings("membername")
-  private int[] P; // NOPMD
+  @SuppressWarnings("membername") private int[] P;  // NOPMD
 
-  @SuppressWarnings("membername")
-  private int[] S; // NOPMD
+  @SuppressWarnings("membername") private int[] S;  // NOPMD
 
   /**
-   * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
-   * *not* compatible with the standard MIME-base64 encoding.
+   * Encode a byte array using bcrypt's slightly-modified base64 encoding
+   * scheme. Note that this is *not* compatible with the standard MIME-base64
+   * encoding.
    *
    * @param d the byte array to encode
    * @param len the number of bytes to encode
@@ -82,7 +84,8 @@ public class BCrypt {
     int c1;
     int c2;
 
-    if (len <= 0 || len > d.length) throw new IllegalArgumentException("Invalid len");
+    if (len <= 0 || len > d.length)
+      throw new IllegalArgumentException("Invalid len");
 
     while (off < len) {
       c1 = d[off++] & 0xff;
@@ -111,31 +114,28 @@ public class BCrypt {
   }
 
   /**
-   * Look up the 3 bits base64-encoded by the specified character, range-checking againt conversion
-   * table.
+   * Look up the 3 bits base64-encoded by the specified character,
+   * range-checking againt conversion table.
    *
    * @param x the base64-encoded value
    * @return the decoded value of x
    */
   private static byte char64(final char x) {
-    if ((int) x < 0 || (int) x > INDEX64.length) return -1;
-    return INDEX64[(int) x];
+    if ((int)x < 0 || (int)x > INDEX64.length) return -1;
+    return INDEX64[(int)x];
   }
 
   /**
-   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note that this is *not*
-   * compatible with the standard MIME-base64 encoding.
+   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note
+   * that this is *not* compatible with the standard MIME-base64 encoding.
    *
    * @param s the string to decode
    * @param maxolen the maximum number of bytes to decode
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
-  @SuppressWarnings({
-    "checkstyle:cyclomaticcomplexity",
-    "checkstyle:npathcomplexity",
-    "PMD.CyclomaticComplexity"
-  })
+  @SuppressWarnings({"checkstyle:cyclomaticcomplexity",
+                     "checkstyle:npathcomplexity", "PMD.CyclomaticComplexity"})
   private static byte[] decodeBase64(final String s, final int maxolen) {
     checkMaxLengthParameter(maxolen);
 
@@ -153,20 +153,20 @@ public class BCrypt {
       c1 = char64(s.charAt(off++));
       c2 = char64(s.charAt(off++));
       if (c1 == -1 || c2 == -1) break;
-      o = (byte) (c1 << 2);
+      o = (byte)(c1 << 2);
       o |= (c2 & 0x30) >> 4;
-      rs.append((char) o);
+      rs.append((char)o);
       if (++olen >= maxolen || off >= slen) break;
       c3 = char64(s.charAt(off++));
       if (c3 == -1) break;
-      o = (byte) ((c2 & 0x0f) << 4);
+      o = (byte)((c2 & 0x0f) << 4);
       o |= (c3 & 0x3c) >> 2;
-      rs.append((char) o);
+      rs.append((char)o);
       if (++olen >= maxolen || off >= slen) break;
       c4 = char64(s.charAt(off++));
-      o = (byte) ((c3 & 0x03) << 6);
+      o = (byte)((c3 & 0x03) << 6);
       o |= c4;
-      rs.append((char) o);
+      rs.append((char)o);
       ++olen;
     }
     return convertToBytes(rs, olen);
@@ -178,7 +178,7 @@ public class BCrypt {
 
   private static byte[] convertToBytes(StringBuilder rs, int olen) {
     final byte[] ret = new byte[olen];
-    for (int off = 0; off < olen; off++) ret[off] = (byte) rs.charAt(off);
+    for (int off = 0; off < olen; off++) ret[off] = (byte)rs.charAt(off);
     return ret;
   }
 
@@ -195,7 +195,7 @@ public class BCrypt {
     int r = lr[off + 1];
 
     l ^= P[0];
-    for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2; ) {
+    for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;) {
       // Feistel substitution on left word
       n = S[(l >> 24) & 0xff];
       n += S[0x100 | ((l >> 16) & 0xff)];
@@ -218,7 +218,8 @@ public class BCrypt {
    * Cycically extract a word of key material.
    *
    * @param data the string to extract the data from
-   * @param offp a "pointer" (as a one-entry array) to the current offset into data
+   * @param offp a "pointer" (as a one-entry array) to the current offset into
+   *   data
    * @return the next word of material from data
    */
   @SuppressWarnings("PMD.UseVarargs")
@@ -270,8 +271,9 @@ public class BCrypt {
   }
 
   /**
-   * Perform the "enhanced key schedule" step described by Provos and Mazieres in "A
-   * Future-Adaptable Password Scheme" http://www.openbsd.org/papers/bcrypt-paper.ps.
+   * Perform the "enhanced key schedule" step described by Provos and Mazieres
+   * in "A Future-Adaptable Password Scheme"
+   * http://www.openbsd.org/papers/bcrypt-paper.ps.
    *
    * @param data salt information
    * @param key password information
@@ -304,8 +306,10 @@ public class BCrypt {
   }
 
   private void checkCryptParameters(int logRounds, byte[] salt) {
-    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
-    if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
+    if (logRounds < 4 || logRounds > 31)
+      throw new IllegalArgumentException("Bad number of rounds");
+    if (salt.length != BCRYPT_SALT_LEN)
+      throw new IllegalArgumentException("Bad salt length");
   }
 
   /**
@@ -313,10 +317,12 @@ public class BCrypt {
    *
    * @param password the password to hash
    * @param salt the binary salt to hash with the password
-   * @param logRounds the binary logarithm of the number of rounds of hashing to apply
+   * @param logRounds the binary logarithm of the number of rounds of hashing to
+   *   apply
    * @return an array containing the binary hashed password
    */
-  private byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
+  private byte[] cryptRaw(final byte[] password, final byte[] salt,
+                          final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -336,22 +342,26 @@ public class BCrypt {
 
     final byte[] ret = new byte[clen * 4];
     for (i = 0, j = 0; i < clen; i++) {
-      ret[j++] = (byte) ((cdata[i] >> 24) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 16) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 8) & 0xff);
-      ret[j++] = (byte) (cdata[i] & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
+      ret[j++] = (byte)(cdata[i] & 0xff);
     }
     return ret;
   }
 
-  /** Consider using regex. Match the initial salt and match the minor and offset values. */
+  /**
+   * Consider using regex. Match the initial salt and match the minor and
+   * offset values.
+   */
   private static String[] retrieveOffsetMinor(String salt) {
-    char minor = (char) 0;
+    char minor = (char)0;
     int off = 0;
 
     if (salt.charAt(0) != '$' || salt.charAt(1) != '2')
       throw new IllegalArgumentException("Invalid salt version");
-    if (salt.charAt(2) == '$') off = 3;
+    if (salt.charAt(2) == '$')
+      off = 3;
     else {
       minor = salt.charAt(2);
       if (minor != 'a' || salt.charAt(3) != '$')
@@ -360,7 +370,8 @@ public class BCrypt {
     }
 
     // Extract number of rounds
-    if (salt.charAt(off + 2) > '$') throw new IllegalArgumentException("Missing salt rounds");
+    if (salt.charAt(off + 2) > '$')
+      throw new IllegalArgumentException("Missing salt rounds");
 
     return new String[] {String.valueOf(minor), String.valueOf(off)};
   }
@@ -394,24 +405,26 @@ public class BCrypt {
     return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
-  private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
+  private static String getHashedPassword(char minor, int rounds, byte[] saltb,
+                                          byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= 'a') rs.append(minor);
     rs.append('$');
     if (rounds < 10) rs.append('0');
     rs.append(Integer.toString(rounds))
-        .append('$')
-        .append(encodeBase64(saltb, saltb.length))
-        .append('$')
-        .append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
+      .append('$')
+      .append(encodeBase64(saltb, saltb.length))
+      .append('$')
+      .append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
     return rs.toString();
   }
 
   /**
    * Generate a salt for use with the BCrypt.hashpw() method
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the
+   *   work factor
    *     therefore increases as 2**log_rounds.
    * @param random an instance of SecureRandom to use
    * @return an encoded salt value
@@ -423,14 +436,17 @@ public class BCrypt {
     random.nextBytes(rnd);
     rs.append("$2a$");
     if (logRounds < 10) rs.append('0');
-    rs.append(Integer.toString(logRounds)).append('$').append(encodeBase64(rnd, rnd.length));
+    rs.append(Integer.toString(logRounds))
+      .append('$')
+      .append(encodeBase64(rnd, rnd.length));
     return rs.toString();
   }
 
   /**
    * Generate a salt for use with the BCrypt.hashpw() method
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the
+   *   work factor
    *     therefore increases as 2**log_rounds.
    * @return an encoded salt value
    */
@@ -439,8 +455,8 @@ public class BCrypt {
   }
 
   /**
-   * Generate a salt for use with the BCrypt.hashpw() method, selecting a reasonable default for the
-   * number of hashing rounds to apply.
+   * Generate a salt for use with the BCrypt.hashpw() method, selecting a
+   * reasonable default for the number of hashing rounds to apply.
    *
    * @return an encoded salt value
    */
