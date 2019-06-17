@@ -28,12 +28,14 @@ public class TextFileHandler implements Handler {
   public void process(File file) {
     if (file.getFileType().equals("text")) {
       System.out.println("Process and saving text file... by " + handlerName);
-    } else if (handler != null) {
+      return;
+    }
+    if (handler != null) {
       System.out.println(handlerName + " fowards request to " + handler.getHandlerName());
       handler.process(file);
-    } else {
-      System.out.println("File not supported");
+      return;
     }
+    System.out.println("File not supported");
   }
 
   @Override

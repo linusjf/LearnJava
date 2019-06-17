@@ -1,7 +1,5 @@
 package com.javacodegeeks.patterns.singletonpattern;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
@@ -10,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;
@@ -42,9 +42,9 @@ public enum SingletonTest {
     testState();
   }
 
-  @SuppressWarnings("checkstyle:IllegalCatch")
+  @SuppressWarnings({"checkstyle:IllegalCatch", "PMD.AvoidInstantiatingObjectsInLoops"})
   private static void testConcurrency() { // NOPMD
-    final int size = 12;
+    int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
 
@@ -56,37 +56,38 @@ public enum SingletonTest {
 
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
-      final Thread thread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-          try {
-            cyclicBarrier.await();
-          } catch (InterruptedException | BrokenBarrierException e) {
-            exception.compareAndSet(null, e);
-            return;
-          }
+      final Thread thread =
+          new Thread(
+              new Runnable() {
+                @Override
+                public void run() {
+                  try {
+                    cyclicBarrier.await();
+                  } catch (InterruptedException | BrokenBarrierException e) {
+                    exception.compareAndSet(null, e);
+                    return;
+                  }
 
-          final Singleton singleton = Singleton.getInstance();
-          final long value = singleton.getNextValue();
+                  final Singleton singleton = Singleton.getInstance();
+                  final long value = singleton.getNextValue();
 
-          // Synchronise the access as the collections used are not thread-safe
-          synchronized (SingletonTest.class) {
-            if (!generatedValues.add(value)) {
-              exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
-              return;
-            }
-            instances.add(singleton);
-          }
-        }
-      });
+                  // Synchronise the access as the collections used are not thread-safe
+                  synchronized (SingletonTest.class) {
+                    if (!generatedValues.add(value)) {
+                      exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+                      return;
+                    }
+                    instances.add(singleton);
+                  }
+                }
+              });
       thread.start();
       threads.add(thread);
     }
     try {
       for (final Thread thread : threads) thread.join();
 
-      if (exception.get() != null)
-        throw exception.get();
+      if (exception.get() != null) throw exception.get();
 
       switch (instances.size()) {
         case 0:
@@ -111,12 +112,14 @@ public enum SingletonTest {
     final Singleton instance = Singleton.getInstance();
 
     try {
-      final ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
+      final ObjectOutput out =
+          new ObjectOutputStream(Files.newOutputStream(Paths.get("singleton.ser")));
       out.writeObject(instance);
       out.close();
 
       // deserialize from file to object
-      final ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
+      final ObjectInput in =
+          new ObjectInputStream(Files.newInputStream(Paths.get("singleton.ser")));
       final Singleton instance2 = (Singleton) in.readObject();
       in.close();
       System.out.println("instance hashCode:- " + instance.hashCode());
@@ -143,8 +146,11 @@ public enum SingletonTest {
         final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (SecurityException | InstantiationException | IllegalArgumentException
-        | IllegalAccessException | InvocationTargetException e) {
+    } catch (SecurityException
+        | InstantiationException
+        | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
       System.out.println(e.getCause().getMessage());
     }
   }
@@ -153,24 +159,20 @@ public enum SingletonTest {
     try {
       resetSingleton();
       Singleton singleton = Singleton.getInstance();
-      if (singleton.getNextValue() != 0L)
-        throw new AssertionError("Next value should be zero.");
+      if (singleton.getNextValue() != 0L) throw new AssertionError("Next value should be zero.");
       resetSingleton();
       singleton = Singleton.getInstance();
-      @SuppressWarnings("checkstyle:magicnumber") final long expectedValue = 3L;
       singleton.getNextValue();
       singleton.getNextValue();
       singleton.getNextValue();
-      if (singleton.getNextValue() != expectedValue)
-        throw new AssertionError("Next value should be three.");
+      if (singleton.getNextValue() != 3L) throw new AssertionError("Next value should be three.");
       System.out.println("No assert errors. State validated.");
     } catch (NoSuchFieldException | IllegalAccessException e) {
       System.out.println(e.getMessage());
     }
   }
 
-  private static void resetSingleton() throws SecurityException, NoSuchFieldException,
-                                              IllegalArgumentException, IllegalAccessException {
+  private static void resetSingleton() throws NoSuchFieldException, IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");
     instance.setAccessible(true);
     instance.set(null, null);

@@ -28,12 +28,14 @@ public class DocFileHandler implements Handler {
   public void process(File file) {
     if (file.getFileType().equals("doc")) {
       System.out.println("Process and saving doc file... by " + handlerName);
-    } else if (handler != null) {
+      return;
+    }
+    if (handler != null) {
       System.out.println(handlerName + " forwards request to " + handler.getHandlerName());
       handler.process(file);
-    } else {
-      System.out.println("File not supported");
+      return;
     }
+    System.out.println("File not supported");
   }
 
   @Override

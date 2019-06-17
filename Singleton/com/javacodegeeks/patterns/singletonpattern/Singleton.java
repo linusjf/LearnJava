@@ -15,7 +15,7 @@ public final class Singleton implements Serializable, Cloneable {
   @SuppressWarnings("checkstyle:illegaltoken")
   private static transient volatile Singleton instance; // NOPMD
 
-  private transient long nextValue = 0;
+  private transient long nextValue;
 
   private Singleton() {
     if (instance != null) {
@@ -33,8 +33,7 @@ public final class Singleton implements Serializable, Cloneable {
       // the pmd warning emitted ignores the volatile modufier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
-        if (instance == null)
-          instance = new Singleton();
+        if (instance == null) instance = new Singleton();
       }
     }
     return instance;
@@ -64,8 +63,7 @@ public final class Singleton implements Serializable, Cloneable {
   @SuppressWarnings("unused")
   private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null)
-      classLoader = Singleton.class.getClassLoader();
+    if (classLoader == null) classLoader = Singleton.class.getClassLoader();
     return classLoader.loadClass(classname);
   }
 

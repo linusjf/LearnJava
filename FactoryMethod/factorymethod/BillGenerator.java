@@ -1,9 +1,10 @@
 package factorymethod;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public enum BillGenerator {
   ;
@@ -22,7 +23,7 @@ public enum BillGenerator {
     PlanFactory planFactory = new PlanFactory();
 
     try (BufferedReader br =
-             new BufferedReader(new InputStreamReader(new FileInputStream(args[0])))) {
+        new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(args[0]))))) {
       String planName = br.readLine();
       int units = Integer.parseInt(br.readLine());
 
