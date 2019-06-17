@@ -3,6 +3,7 @@ package networking;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+@SuppressWarnings("PMD.AvoidStringBufferField")
 public class QueryString {
   private StringBuilder query;
 
@@ -21,7 +22,7 @@ public class QueryString {
       query.append('=');
       query.append(URLEncoder.encode(value, "UTF-8"));
     } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException("Broken VM does not support UTF-8");
+      throw new RuntimeException("Broken VM does not support UTF-8", ex);
     }
   }
 

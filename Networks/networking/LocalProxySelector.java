@@ -12,6 +12,7 @@ import java.util.List;
 public class LocalProxySelector extends ProxySelector {
   private List<URI> failed = new ArrayList<URI>();
 
+  @Override
   public List<Proxy> select(URI uri) {
     List<Proxy> result = new ArrayList<Proxy>();
     if (failed.contains(uri) || !"http".equalsIgnoreCase(uri.getScheme())) {
@@ -24,6 +25,7 @@ public class LocalProxySelector extends ProxySelector {
     return result;
   }
 
+  @Override
   public void connectFailed(URI uri, SocketAddress address, IOException ex) {
     failed.add(uri);
   }

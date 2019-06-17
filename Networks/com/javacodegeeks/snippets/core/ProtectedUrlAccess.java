@@ -10,7 +10,12 @@ import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.util.Scanner;
 
-public class ProtectedUrlAccess {
+public final class ProtectedUrlAccess {
+
+  private ProtectedUrlAccess() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       // Sets the authenticator that will be used by the networking code
@@ -43,12 +48,18 @@ public class ProtectedUrlAccess {
 
   public static class CustomAuthenticator extends Authenticator {
     // Called when password authorization is needed
+    @Override
     protected PasswordAuthentication getPasswordAuthentication() {
       // Get information about the request
       String prompt = getRequestingPrompt();
       String hostname = getRequestingHost();
       InetAddress ipaddr = getRequestingSite();
       int port = getRequestingPort();
+
+      System.out.println("Prompt: " + prompt);
+      System.out.println("Hostname: " + hostname);
+      System.out.println("Ip Address: " + ipaddr);
+      System.out.println("Port: " + port);
 
       Scanner scanner = new Scanner(System.in);
 

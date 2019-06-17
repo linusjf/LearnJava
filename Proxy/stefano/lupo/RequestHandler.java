@@ -311,14 +311,8 @@ public class RequestHandler implements Runnable {
         Proxy.addCachedPage(urlString, fileToCache);
       }
 
-      // Close down resources
-      if (fileToCacheBW != null) {
-        fileToCacheBW.close();
-      }
+      closeResources(fileToCacheBW, proxyToClientBw);
 
-      if (proxyToClientBw != null) {
-        proxyToClientBw.close();
-      }
     } catch (IOException e) {
       System.err.println("Error sending " + urlString + " to client : " + e.getMessage());
     }
@@ -411,6 +405,17 @@ public class RequestHandler implements Runnable {
     if (proxyToServerBW != null) proxyToServerBW.close();
 
     if (proxyToClientBw != null) proxyToClientBw.close();
+  }
+
+  private void closeResources(Writer fileToCacheBW, Writer proxyToClientBw) throws IOException {
+    // Close down resources
+    if (fileToCacheBW != null) {
+      fileToCacheBW.close();
+    }
+
+    if (proxyToClientBw != null) {
+      proxyToClientBw.close();
+    }
   }
 
   /**

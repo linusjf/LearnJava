@@ -3,7 +3,11 @@ package networking;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class EncoderTest {
+public final class EncoderTest {
+  private EncoderTest() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       System.out.println(URLEncoder.encode("This string has spaces", "UTF-8"));
@@ -20,7 +24,7 @@ public class EncoderTest {
       System.out.println(URLEncoder.encode("This&string&has&ampersands", "UTF-8"));
       System.out.println(URLEncoder.encode("Thiséstringéhasé non-ASCII characters", "UTF-8"));
     } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException("Broken VM does not support UTF-8");
+      throw new RuntimeException("Broken VM does not support UTF-8", ex);
     }
   }
 }

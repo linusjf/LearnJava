@@ -8,13 +8,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-/** Set user-agent property ** */
-public class GoogleSearch {
+/** Set user-agent property. ** */
+public final class GoogleSearch {
+
+  private GoogleSearch() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     String target = "";
-    for (int i = 0; i < args.length; i++) {
-      target += args[i] + " ";
-    }
+    for (String arg : args)
+      target += arg + " ";
     target = target.trim();
     QueryString query = new QueryString();
     query.add("q", target);
@@ -27,8 +31,11 @@ public class GoogleSearch {
       URLConnection connection = u.openConnection();
       connection.setRequestProperty(
           "User-Agent",
-          "Mozilla/5.0 (Linux; Android 7.1.2; Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36");
-      try (InputStream in = new BufferedInputStream(connection.getInputStream())) {
+          "Mozilla/5.0 (Linux; Android 7.1.2;"
+          + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
+          + "Mobile Safari/537.36");
+      try (InputStream in = 
+          new BufferedInputStream(connection.getInputStream())) {
         InputStreamReader theHTML = new InputStreamReader(in);
         int c;
         while ((c = theHTML.read()) != -1) {
