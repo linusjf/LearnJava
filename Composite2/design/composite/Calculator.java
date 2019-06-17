@@ -22,6 +22,7 @@ public enum Calculator implements ICalc {
 
   PALINDROME {
     @Override
+    @SuppressWarnings("PMD.InefficientEmptyStringCheck")
     public String calculate(String value) {
       String answer = "false";
       if (value != null && !value.trim().isEmpty()) {

@@ -1,8 +1,9 @@
 package design.composite;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +26,7 @@ public class WorkLoader {
    * @param fileName a <code>String</code> value
    */
   public WorkLoader(String fileName) {
-    try (InputStream input = new FileInputStream(fileName)) {
+    try (InputStream input = Files.newInputStream(Paths.get(fileName))) {
       // load a properties file
       properties.load(input);
     } catch (IOException exp) {
@@ -48,7 +49,7 @@ public class WorkLoader {
    * @return a <code>List</code> object
    */
   public List<Work> getWorkList() {
-    List<Work> workList = new ArrayList<Work>();
+    List<Work> workList = new ArrayList<>();
     Set<Object> keys = properties.keySet();
     for (Object key : keys) {
       String workType =

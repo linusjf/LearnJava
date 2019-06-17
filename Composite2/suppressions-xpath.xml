@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="Employee.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Employee']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='fullDetails']]/SLIST/VARIABLE_DEF[./IDENT[@text='builder']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='48']"/>
+<suppress-xpath
+       files="Work.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Work']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/VARIABLE_DEF[./IDENT[@text='builder']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='46']"/>
+</suppressions>

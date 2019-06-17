@@ -14,10 +14,14 @@ import java.util.ResourceBundle;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public abstract class PropertyLoader {
+public final class PropertyLoader {
   private static final boolean THROW_ON_LOAD_FAILURE = true;
   private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
   private static final String SUFFIX = ".properties";
+
+  private PropertyLoader() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   /**
    * An overloaded LoadProperties. A convenience overload of {@link #loadProperties(String,
@@ -39,39 +43,42 @@ public abstract class PropertyLoader {
    * <p>some.pkg.Resource * some.pkg.Resource.properties some/pkg/Resource
    * some/pkg/Resource.properties /some/pkg/Resource /some/pkg/Resource.properties
    *
-   * @param name classpath resource name [may not be null] *
+   * @param nome classpath resource name [may not be null] *
    * @param loader classloader through which to load the resource [null * is equivalent to the
    *     application loader]
    * @return resource converted to java.util.Properties [may be null if the resource was not found
    *     and THROW_ON_LOAD_FAILURE is false] * @throws IllegalArgumentException if the resource was
    *     not found and * THROW_ON_LOAD_FAILURE is true
    */
-  public static Properties loadProperties(String name, ClassLoader loader) {
-    name = normalizeName(name);
+  public static Properties loadProperties(String nome, ClassLoader loader) {
+    String name = normalizeName(nome);
     Properties result = null;
     try {
-      if (loader == null)
-        loader = ClassLoader.getSystemClassLoader();
+      ClassLoader cl = (loader == null) ? ClassLoader.getSystemClassLoader() : loader;
+
       if (LOAD_AS_RESOURCE_BUNDLE) {
-        result = loadAsResourceBundle(loader, name);
+        result = loadAsResourceBundle(cl, name);
       } else {
-        result = loadAsStream(loader, name);
+        result = loadAsStream(cl, name);
       }
     } catch (MissingResourceException e) {
       System.err.println("Error locating resource " + name + " : " + e.getMessage());
       result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException("could not load [" + name + "]"
-          + " as " + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
+      throw new IllegalArgumentException(
+          "could not load ["
+              + name
+              + "]"
+              + " as "
+              + (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle" : "a classloader resource"));
     }
     return result;
   }
 
-  private static Properties loadAsStream(ClassLoader loader, String name) {
-    name = name.replace('.', '/');
-    if (!name.endsWith(SUFFIX))
-      name = name.concat(SUFFIX);
+  private static Properties loadAsStream(ClassLoader loader, String nome) {
+    String name = nome.replace('.', '/');
+    if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
     Properties result = null;
     try (InputStream in = loader.getResourceAsStream(name)) {
       if (in != null) {
@@ -84,12 +91,11 @@ public abstract class PropertyLoader {
     return result;
   }
 
-  private static Properties loadAsResourceBundle(ClassLoader loader, String name)
-      throws MissingResourceException, NullPointerException {
-    name = name.replace('/', '.');
+  private static Properties loadAsResourceBundle(ClassLoader loader, String nome) {
+    String name = nome.replace('/', '.');
     final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
     Properties result = new Properties();
-    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
+    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
       final String key = keys.nextElement();
       final String value = rb.getString(key);
       result.put(key, value);
@@ -97,13 +103,11 @@ public abstract class PropertyLoader {
     return result;
   }
 
-  private static String normalizeName(String name) throws IllegalArgumentException {
-    if (name == null)
-      throw new IllegalArgumentException("null input: name");
-    if (name.startsWith("/"))
-      name = name.substring(1);
-    if (name.endsWith(SUFFIX))
-      name = name.substring(0, name.length() - SUFFIX.length());
+  private static String normalizeName(String nome) {
+    if (nome == null) throw new IllegalArgumentException("null input: name");
+    String name = nome;
+    if (name.charAt(0) == '/') name = name.substring(1);
+    if (name.endsWith(SUFFIX)) name = name.substring(0, name.length() - SUFFIX.length());
     return name;
   }
 }

@@ -113,8 +113,9 @@ public abstract class Employee implements Worker {
    * @return a <code>String</code> value
    */
   public String fullDetails() {
-    StringBuilder builder = new StringBuilder();
-    builder.append("Employee [")
+    StringBuilder builder = new StringBuilder(48);
+    builder
+        .append("Employee [")
         .append(employeeId)
         .append(", ")
         .append(employeeName)
@@ -124,7 +125,7 @@ public abstract class Employee implements Worker {
         .append(department)
         .append(", Team=")
         .append(teamSize())
-        .append("]");
+        .append(']');
     return builder.toString();
   }
 
@@ -135,7 +136,7 @@ public abstract class Employee implements Worker {
    */
   public String shortDetails() {
     StringBuilder builder = new StringBuilder();
-    builder.append("'").append(employeeName).append("'");
+    builder.append('"').append(employeeName).append('"');
     return builder.toString();
   }
 

@@ -36,14 +36,13 @@ public enum Main {
     rachelle.manages(robert);
     rachelle.manages(niels);
 
-    final WorkLoader workLoad 
-      = new WorkLoader("work.properties");
+    final WorkLoader workLoad = new WorkLoader("work.properties");
 
-    workLoad.getWorkList()
-      .stream()
-      .forEach(work -> { 
-        rachelle.assignWork(rachelle, work);
-      });
+    workLoad.getWorkList().stream()
+        .forEach(
+            work -> {
+              rachelle.assignWork(rachelle, work);
+            });
     rachelle.performWork();
   }
 }

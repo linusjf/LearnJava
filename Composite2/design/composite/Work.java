@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Work {
   private Calculator workType;
-  private List<String> work = new ArrayList<String>();
+  private List<String> work = new ArrayList<>();
 
   /**
    * Creates a new <code>Work</code> instance.
@@ -63,8 +63,8 @@ public class Work {
 
   @Override
   public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append("Work [workType=").append(workType).append(", work=").append(work).append("]");
+    StringBuilder builder = new StringBuilder(46);
+    builder.append("Work [workType=").append(workType).append(", work=").append(work).append(']');
     return builder.toString();
   }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Engineer extends Employee {
-  private List<Work> works = new ArrayList<Work>();
+  private List<Work> works = new ArrayList<>();
 
   /**
    * Creates a new <code>Engineer</code> instance.
@@ -38,13 +38,21 @@ public class Engineer extends Employee {
   @Override
   public void performWork() {
     System.out.println(this + " is performing work of '" + works + "'");
-    works.stream().forEach(work -> {
-      work.getWork().stream().forEach(value -> {
-        Calculator calculator = work.getWorkType();
-        System.out.println(
-            this + " has result of work of '" + work + "' as : " + calculator.calculate(value));
-      });
-    });
+    works.stream()
+        .forEach(
+            work -> {
+              work.getWork().stream()
+                  .forEach(
+                      value -> {
+                        Calculator calculator = work.getWorkType();
+                        System.out.println(
+                            this
+                                + " has result of work of '"
+                                + work
+                                + "' as : "
+                                + calculator.calculate(value));
+                      });
+            });
     works.clear();
   }
 }

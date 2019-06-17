@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Manager extends Employee {
-  List<Employee> managingEmployees = new ArrayList<Employee>();
+  List<Employee> managingEmployees = new ArrayList<>();
 
   /**
    * Creates a new <code>Manager</code> instance.
@@ -50,6 +50,7 @@ public class Manager extends Employee {
   }
 
   @Override
+  @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
   public void assignWork(Employee manager, Work work) {
     System.out.println(this + " has been assigned work of '" + work + "' by manager " + manager);
     System.out.println();
@@ -65,8 +66,7 @@ public class Manager extends Employee {
         int size = employee.teamSize();
         toIndex = fromIndex + size;
         int listSize = work.getWork().size();
-        if (toIndex > listSize)
-          toIndex = listSize;
+        if (toIndex > listSize) toIndex = listSize;
         assignWork = work.getWork().subList(fromIndex, toIndex);
         if (assignWork.isEmpty()) {
           return;
