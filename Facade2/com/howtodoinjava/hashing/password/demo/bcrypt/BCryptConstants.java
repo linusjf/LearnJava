@@ -1,6 +1,6 @@
 package com.howtodoinjava.hashing.password.demo.bcrypt;
 
-@SuppressWarnings({"PMD.ExcessiveClassLength", "PMD.ClassNamingConventions"})
+@SuppressWarnings("PMD.ClassNamingConventions")
 public final class BCryptConstants {
   // BCrypt parameters
   static final int GENSALT_DEFAULT_LOG2_ROUNDS = 10;
