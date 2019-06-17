@@ -76,8 +76,7 @@ public class BCrypt {
    * @return base64-encoded string
    * @exception IllegalArgumentException if the length is invalid
    */
-  private static String encodeBase64(final byte[] d, final int len)
-      throws IllegalArgumentException {
+  private static String encodeBase64(final byte[] d, final int len) {
     int off = 0;
     final StringBuilder rs = new StringBuilder();
     int c1;
@@ -137,8 +136,7 @@ public class BCrypt {
     "checkstyle:npathcomplexity",
     "PMD.CyclomaticComplexity"
   })
-  private static byte[] decodeBase64(final String s, final int maxolen)
-      throws IllegalArgumentException {
+  private static byte[] decodeBase64(final String s, final int maxolen) {
     checkMaxLengthParameter(maxolen);
 
     final StringBuilder rs = new StringBuilder();
@@ -223,6 +221,7 @@ public class BCrypt {
    * @param offp a "pointer" (as a one-entry array) to the current offset into data
    * @return the next word of material from data
    */
+  @SuppressWarnings("PMD.UseVarargs")
   private static int streamtoword(final byte[] data, final int[] offp) {
     int i;
     int word = 0;
@@ -304,7 +303,7 @@ public class BCrypt {
     }
   }
 
-  private void checkCryptParameters(int logRounds, byte[] salt) throws IllegalArgumentException {
+  private void checkCryptParameters(int logRounds, byte[] salt) {
     if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
     if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
   }
@@ -346,7 +345,7 @@ public class BCrypt {
   }
 
   /** Consider using regex. Match the initial salt and match the minor and offset values. */
-  private static String[] retrieveOffsetMinor(String salt) throws IllegalArgumentException {
+  private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char) 0;
     int off = 0;
 
@@ -379,10 +378,10 @@ public class BCrypt {
     char minor = vals[0].charAt(0);
     int off = Integer.parseInt(vals[1]);
 
-    final byte[] passwordb;
+    byte[] passwordb;
     final int rounds = Integer.parseInt(salt.substring(off, off + 2));
 
-    final String realSalt = salt.substring(off + 3, off + 25);
+    String realSalt = salt.substring(off + 3, off + 25);
     try {
       passwordb = (password + (minor >= 'a' ? "\000" : "")).getBytes("UTF-8");
     } catch (final UnsupportedEncodingException uee) {
@@ -399,13 +398,13 @@ public class BCrypt {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= 'a') rs.append(minor);
-    rs.append("$");
-    if (rounds < 10) rs.append("0");
-    rs.append(Integer.toString(rounds));
-    rs.append("$");
-    rs.append(encodeBase64(saltb, saltb.length));
-    rs.append("$");
-    rs.append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
+    rs.append('$');
+    if (rounds < 10) rs.append('0');
+    rs.append(Integer.toString(rounds))
+        .append('$')
+        .append(encodeBase64(saltb, saltb.length))
+        .append('$')
+        .append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
     return rs.toString();
   }
 
@@ -422,12 +421,9 @@ public class BCrypt {
     final byte[] rnd = new byte[BCRYPT_SALT_LEN];
 
     random.nextBytes(rnd);
-
     rs.append("$2a$");
-    if (logRounds < 10) rs.append("0");
-    rs.append(Integer.toString(logRounds));
-    rs.append("$");
-    rs.append(encodeBase64(rnd, rnd.length));
+    if (logRounds < 10) rs.append('0');
+    rs.append(Integer.toString(logRounds)).append('$').append(encodeBase64(rnd, rnd.length));
     return rs.toString();
   }
 

@@ -31,7 +31,7 @@ public final class Server {
   public static void main(final String[] args) throws Exception {
     System.out.println("Starting server...");
     try (Selector selector = Selector.open();
-         ServerSocketChannel serverSocket = ServerSocketChannel.open();) {
+        ServerSocketChannel serverSocket = ServerSocketChannel.open(); ) {
       final InetSocketAddress hostAddress = new InetSocketAddress(Constants.HOST, Constants.PORT);
       serverSocket.bind(hostAddress);
       serverSocket.configureBlocking(false);
@@ -46,8 +46,9 @@ public final class Server {
     }
   }
 
-  private static void handleSelectionKeys(final Set<SelectionKey> selectionKeys,
-      final ServerSocketChannel serverSocket) throws IOException {
+  private static void handleSelectionKeys(
+      final Set<SelectionKey> selectionKeys, final ServerSocketChannel serverSocket)
+      throws IOException {
     if (Objects.isNull(selectionKeys) || Objects.isNull(serverSocket))
       throw new AssertionError("selectionKeys and/or serverSocket null.");
 
@@ -80,8 +81,7 @@ public final class Server {
   }
 
   private static void readRequest(final SelectionKey key) throws IOException {
-    if (Objects.isNull(key))
-      throw new AssertionError("key null.");
+    if (Objects.isNull(key)) throw new AssertionError("key null.");
 
     final SocketChannel client = (SocketChannel) key.channel();
     final ByteBuffer buffer = ByteBuffer.allocate(Constants.CLIENT_BYTE_BUFFER_CAPACITY);

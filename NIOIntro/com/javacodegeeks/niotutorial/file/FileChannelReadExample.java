@@ -2,7 +2,7 @@ package com.javacodegeeks.niotutorial.file;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import java.nio.channels.SeekableByteChannel;
 
 /**
  * Describe class <code>FileChannelReadExample</code> here.
@@ -31,7 +31,7 @@ public final class FileChannelReadExample implements FileChannelExample {
    */
   public String readFile() {
     final StringBuilder contents = new StringBuilder();
-    try (FileChannel fileChannel = createChannel(INPUT_FILE_PATH, FileOperation.READ)) {
+    try (SeekableByteChannel fileChannel = createChannel(INPUT_FILE_PATH, FileOperation.READ)) {
       final ByteBuffer buffer = createBuffer();
       while (fileChannel.read(buffer) != -1) {
         contents.append(new String(buffer.array()));

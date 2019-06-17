@@ -53,7 +53,7 @@ public final class Platform {
    * @return The current platform.
    * @throws UnsupportedPlatformException if the platform cannot be detected.
    */
-  public static Platform detect() throws UnsupportedPlatformException {
+  public static Platform detect() {
     final String osArch = getProperty("os.arch");
     final String osName = getProperty("os.name");
 

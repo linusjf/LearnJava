@@ -7,6 +7,7 @@ import static java.lang.System.arraycopy;
 import com.lambdaworks.jni.LibraryLoader;
 import com.lambdaworks.jni.LibraryLoaders;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -47,9 +48,11 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-    return NATIVE_LIBRARY_LOADED
-        ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-        : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+    byte[] derived =
+        NATIVE_LIBRARY_LOADED
+            ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+            : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+    return Arrays.copyOf(derived, derived.length);
   }
 
   /**
@@ -120,7 +123,7 @@ public final class SCrypt { // NOPMD
    * @param xy a <code>byte</code> value
    */
   public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v, byte[] xy) {
-    final int xinitial = 0;
+    int xinitial = 0;
     final int yinitial = 128 * r;
     int i;
 
@@ -260,13 +263,14 @@ public final class SCrypt { // NOPMD
    * Describe <code>integerify</code> method here.
    *
    * @param b a <code>byte</code> value
-   * @param initialB an <code>int</code> value
+   * @param initB an <code>int</code> value
    * @param r an <code>int</code> value
    * @return an <code>int</code> value
    */
-  public static int integerify(byte[] b, int initialB, int r) {
+  public static int integerify(byte[] b, int initB, int r) {
     int n;
 
+    int initialB = initB;
     initialB += (2 * r - 1) * 64;
 
     n = (b[initialB + 0] & 0xff) << 0;

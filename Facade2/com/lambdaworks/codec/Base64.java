@@ -37,6 +37,7 @@ public final class Base64 { // NOPMD
    * @param chars Chars to encode.
    * @return Decoded bytes.
    */
+  @SuppressWarnings("PMD.UseVarargs")
   public static byte[] decode(char[] chars) {
     return decode(chars, DECODE, PAD);
   }

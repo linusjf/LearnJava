@@ -19,7 +19,7 @@ public enum Client {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    final String myText = "Encrypt this text";
+    String myText = "Encrypt this text";
     System.out.println("Text to be encrypted: " + myText);
     final EncryptorFacade e = new EncryptorFacade();
     System.out.println("MD5 encryption");

@@ -52,9 +52,12 @@ public final class SCryptUtil { // NOPMD
       final String params = Long.toString(log2(enCPUCost) << 16L | rmemCost << 8 | p, 16);
 
       final StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
-      sb.append("$s0$").append(params).append('$');
-      sb.append(encode(salt)).append('$');
-      sb.append(encode(derived));
+      sb.append("$s0$")
+          .append(params)
+          .append('$')
+          .append(encode(salt))
+          .append('$')
+          .append(encode(derived));
 
       return sb.toString();
     } catch (UnsupportedEncodingException e) {
@@ -101,8 +104,9 @@ public final class SCryptUtil { // NOPMD
     }
   }
 
-  private static int log2(int n) {
+  private static int log2(int m) {
     int log = 0;
+    int n = m;
     if ((n & 0xffff0000) != 0) {
       n >>>= 16;
       log = 16;

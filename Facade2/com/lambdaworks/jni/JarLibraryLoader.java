@@ -3,9 +3,11 @@ package com.lambdaworks.jni;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +97,7 @@ public class JarLibraryLoader implements LibraryLoader {
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
 
-    FileOutputStream os = new FileOutputStream(lib);
+    OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()));
     while ((len = is.read(buf)) > 0) {
       os.write(buf, 0, len);
     }
@@ -112,13 +114,16 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return List of potential library names.
    */
   private List<String> libCandidates(Platform platform, String name) {
-    final List<String> candidates = new ArrayList<String>();
+    final List<String> candidates = new ArrayList<>();
     final StringBuilder sb = new StringBuilder();
 
-    sb.append(libraryPath).append("/");
-    sb.append(platform.arch).append("/");
-    sb.append(platform.os).append("/");
-    sb.append("lib").append(name);
+    sb.append(libraryPath)
+        .append('/')
+        .append(platform.arch)
+        .append('/')
+        .append(platform.os)
+        .append("/lib")
+        .append(name);
 
     switch (platform.os) {
       case DARWIN:

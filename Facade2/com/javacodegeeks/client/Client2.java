@@ -31,7 +31,7 @@ public enum Client2 {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    final String myText = "Encrypt this text";
+    String myText = "Encrypt this text";
     System.out.println("Client2: " + myText);
     final MD5Encryptor e = new MD5Encryptor();
     System.out.println("MD5 encryption");

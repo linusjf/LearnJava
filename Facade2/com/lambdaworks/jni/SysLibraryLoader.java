@@ -17,6 +17,7 @@ public class SysLibraryLoader implements LibraryLoader {
    * @return true if the library was successfully loaded.
    */
   @Override
+  @SuppressWarnings("PMD.AvoidUsingNativeCode")
   public boolean load(String name, boolean verify) {
     boolean loaded;
 
