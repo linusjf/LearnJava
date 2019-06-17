@@ -46,46 +46,44 @@ public final class Form {
   }
 
   private String toString(String label, Object value) {
-    return value != null ? " " + label + ":  " + value.toString() : " " + label + ":  " + "";
+    return value == null ? " " + label + ":  " : " " + label + ":  " + value.toString();
   }
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(" First Name: ");
-    sb.append(firstName);
-    sb.append("\n Last Name: ");
-    sb.append(lastName);
-    sb.append("\n User Name: ");
-    sb.append(userName);
-    sb.append("\n Password: ");
-    sb.append(password);
-    sb.append("\n");
-
-    sb.append(toString("Address", address));
-    sb.append("\n");
-
-    sb.append(toString("DOB", dob));
-    sb.append("\n");
-    sb.append(toString("Email", email));
-    sb.append("\n");
-    sb.append(toString("Backup Email", backupEmail));
-    sb.append("\n");
-    sb.append(toString("Spouse Name", spouseName));
-    sb.append("\n");
-    sb.append(toString("City", city));
-    sb.append("\n");
-    sb.append(toString("State", state));
-    sb.append("\n");
-    sb.append(toString("Country", country));
-    sb.append("\n");
-    sb.append(toString("Language", language));
-    sb.append("\n");
-    sb.append(toString("Password Hint", passwordHint));
-    sb.append("\n");
-    sb.append(toString("Security Question", securityQuestion));
-    sb.append("\n");
-    sb.append(toString("Security Answer", securityAnswer));
+    StringBuilder sb = new StringBuilder(100);
+    sb.append(" First Name: ")
+        .append(firstName)
+        .append("\n Last Name: ")
+        .append(lastName)
+        .append("\n User Name: ")
+        .append(userName)
+        .append("\n Password: ")
+        .append(password)
+        .append(System.lineSeparator())
+        .append(toString("Address", address))
+        .append(System.lineSeparator())
+        .append(toString("DOB", dob))
+        .append(System.lineSeparator())
+        .append(toString("Email", email))
+        .append(System.lineSeparator())
+        .append(toString("Backup Email", backupEmail))
+        .append(System.lineSeparator())
+        .append(toString("Spouse Name", spouseName))
+        .append(System.lineSeparator())
+        .append(toString("City", city))
+        .append(System.lineSeparator())
+        .append(toString("State", state))
+        .append(System.lineSeparator())
+        .append(toString("Country", country))
+        .append(System.lineSeparator())
+        .append(toString("Language", language))
+        .append(System.lineSeparator())
+        .append(toString("Password Hint", passwordHint))
+        .append(System.lineSeparator())
+        .append(toString("Security Question", securityQuestion))
+        .append(System.lineSeparator())
+        .append(toString("Security Answer", securityAnswer));
 
     return sb.toString();
   }

@@ -31,13 +31,19 @@ public final class NutritionFacts {
    */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("serving size = " + servingSize)
-        .append(", servings = " + servings)
-        .append(", calories = " + calories)
-        .append(", fat = " + fat)
-        .append(", sodium = " + sodium)
-        .append(", carbohydrates = " + carbohydrate);
+    StringBuilder sb = new StringBuilder(100);
+    sb.append("serving size = ")
+        .append(servingSize)
+        .append(", servings = ")
+        .append(servings)
+        .append(", calories = ")
+        .append(calories)
+        .append(", fat = ")
+        .append(fat)
+        .append(", sodium = ")
+        .append(sodium)
+        .append(", carbohydrates = ")
+        .append(carbohydrate);
     return sb.toString();
   }
 
@@ -46,11 +52,10 @@ public final class NutritionFacts {
     // Required parameters
     private final int servingSize;
     private final int servings;
-    // Optional parameters - initialized to default values
-    private int calories = 0;
-    private int fat = 0;
-    private int sodium = 0;
-    private int carbohydrate = 0;
+    private int calories;
+    private int fat;
+    private int sodium;
+    private int carbohydrate;
 
     /**
      * Creates a new <code>Builder</code> instance.

@@ -11,7 +11,8 @@ import java.util.List;
  */
 public abstract class Vehicle {
   // assembly line for the workshops
-  protected List<WorkShop> workshops = new ArrayList<WorkShop>();
+  protected List<WorkShop> workshops = 
+    new ArrayList<>();
 
   /**
    * Describe <code>joinWorkshop</code> method here.

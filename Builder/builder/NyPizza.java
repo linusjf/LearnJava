@@ -25,10 +25,13 @@ public final class NyPizza extends Pizza {
   /** returns object state as string. */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Size = " + size + System.lineSeparator());
-    sb.append("Toppings: " + System.lineSeparator());
-    for (Topping t : toppings) sb.append(t + System.lineSeparator());
+    StringBuilder sb = new StringBuilder(36);
+    sb.append("Size = ")
+        .append(size)
+        .append(System.lineSeparator())
+        .append("Toppings: ")
+        .append(System.lineSeparator());
+    for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }
 

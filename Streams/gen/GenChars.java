@@ -1,8 +1,9 @@
 package gen;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public enum GenChars {
   ;
@@ -17,7 +18,7 @@ public enum GenChars {
   }
 
   private static void writeToFile() {
-    try (OutputStream out = new FileOutputStream("/tmp/data.txt")) {
+    try (OutputStream out = Files.newOutputStream(Paths.get("/tmp/data.txt"))) {
       generateCharacters(out);
     } catch (IOException ex) {
       System.err.println(ex.getMessage());

@@ -17,16 +17,19 @@ public final class Calzone extends Pizza {
   /** returns object state as String. */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Sauce = " + sauceInside + System.lineSeparator());
-    sb.append("Toppings: " + System.lineSeparator());
-    for (Topping t : toppings) sb.append(t + System.lineSeparator());
+    StringBuilder sb = new StringBuilder(30);
+    sb.append("Sauce = ")
+        .append(sauceInside)
+        .append(System.lineSeparator())
+        .append("Toppings: ")
+        .append(System.lineSeparator());
+    for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }
 
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
-    private boolean sauceInside = false; // Default
+    private boolean sauceInside; // Default
 
     /**
      * sets sauce.

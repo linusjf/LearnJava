@@ -153,22 +153,23 @@ public class Car {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("--------------" + carType + "--------------------- \\n");
-    sb.append(" Body: ");
-    sb.append(bodyStyle);
-    sb.append("\n Power: ");
-    sb.append(power);
-    sb.append("\n Engine: ");
-    sb.append(engine);
-    sb.append("\n Brakes: ");
-    sb.append(brakes);
-    sb.append("\n Seats: ");
-    sb.append(seats);
-    sb.append("\n Windows: ");
-    sb.append(windows);
-    sb.append("\n Fuel Type: ");
-    sb.append(fuelType);
+    StringBuilder sb = new StringBuilder(150);
+    sb.append("--------------")
+        .append(carType)
+        .append("--------------------- \\n Body: ")
+        .append(bodyStyle)
+        .append("\n Power: ")
+        .append(power)
+        .append("\n Engine: ")
+        .append(engine)
+        .append("\n Brakes: ")
+        .append(brakes)
+        .append("\n Seats: ")
+        .append(seats)
+        .append("\n Windows: ")
+        .append(windows)
+        .append("\n Fuel Type: ")
+        .append(fuelType);
     return sb.toString();
   }
 }
