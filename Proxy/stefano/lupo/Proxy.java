@@ -9,15 +9,17 @@ package stefano.lupo;
  */
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,11 +84,9 @@ public class Proxy implements Runnable {
     try {
       // Load in cached sites from file
       File cachedSites = new File("cachedSites.txt");
-      if (!cachedSites.exists()) {
-        System.out.println("No cached sites found - creating new file");
-        cachedSites.createNewFile();
-      } else {
-        FileInputStream fileInputStream = new FileInputStream(cachedSites);
+      if (!cachedSites.createNewFile()) {
+        InputStream fileInputStream =
+            Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         cache = (HashMap<String, File>) objectInputStream.readObject();
@@ -96,11 +96,9 @@ public class Proxy implements Runnable {
 
       // Load in blocked sites from file
       File blockedSitesTxtFile = new File("blockedSites.txt");
-      if (!blockedSitesTxtFile.exists()) {
-        System.out.println("No blocked sites found - creating new file");
-        blockedSitesTxtFile.createNewFile();
-      } else {
-        FileInputStream fileInputStream = new FileInputStream(blockedSitesTxtFile);
+      if (!blockedSitesTxtFile.createNewFile()) {
+        InputStream fileInputStream =
+            Files.newInputStream(Paths.get(blockedSitesTxtFile.getAbsolutePath()));
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         blockedSites = (HashMap<String, String>) objectInputStream.readObject();
         fileInputStream.close();
@@ -185,7 +183,7 @@ public class Proxy implements Runnable {
     System.out.println("\nClosing Server..");
     running = false;
     try {
-      FileOutputStream fileOutputStream = new FileOutputStream("cachedSites.txt");
+      OutputStream fileOutputStream = Files.newOutputStream(Paths.get("cachedSites.txt"));
       ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
       objectOutputStream.writeObject(cache);
@@ -193,7 +191,7 @@ public class Proxy implements Runnable {
       fileOutputStream.close();
       System.out.println("Cached Sites written");
 
-      FileOutputStream fileOutputStream2 = new FileOutputStream("blockedSites.txt");
+      OutputStream fileOutputStream2 = Files.newOutputStream(Paths.get("blockedSites.txt"));
       ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(fileOutputStream2);
       objectOutputStream2.writeObject(blockedSites);
       objectOutputStream2.close();

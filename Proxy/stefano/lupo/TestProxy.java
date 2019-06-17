@@ -1,12 +1,13 @@
 package stefano.lupo;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public enum TestProxy {
    *
    * @param args list of String arguments
    */
-  public static void main(String[] args) {
+  public static void main(String... args) {
     String fileName = FILE;
     if (args.length > 0) fileName = args[0];
 
@@ -36,8 +37,8 @@ public enum TestProxy {
   private static String[] readURLsFromFile(String fileName) {
     String[] data = new String[] {};
     try {
-      BufferedReader reader = new BufferedReader(new FileReader(fileName));
-      List<String> lines = new ArrayList<String>();
+      BufferedReader reader = Files.newBufferedReader(Paths.get(fileName));
+      List<String> lines = new ArrayList<>();
 
       String line = reader.readLine();
       while (line != null) {
@@ -52,7 +53,7 @@ public enum TestProxy {
     return data;
   }
 
-  private static void testURLs(String[] urls) {
+  private static void testURLs(String... urls) {
     for (String strUrl : urls) {
       try {
         Proxy proxy = null;

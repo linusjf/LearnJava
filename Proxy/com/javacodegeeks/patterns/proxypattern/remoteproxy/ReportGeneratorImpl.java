@@ -27,14 +27,21 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
 
   @Override
   public String generateDailyReport() throws RemoteException {
-    StringBuilder sb = new StringBuilder();
-    sb.append("********************Location X Daily Report********************");
-    sb.append("\\n Location ID: 012");
-    sb.append("\\n Today’s Date: " + new Date());
-    sb.append("\\n Total Pizza’s Sell: 112");
-    sb.append("\\n Total Price: $2534");
-    sb.append("\\n Net Profit: $1985");
-    sb.append("\\n*****************************" + "**********************************");
+    StringBuilder sb = new StringBuilder(250);
+    sb.append("********************Location X Daily Report********************")
+        .append(System.lineSeparator())
+        .append(" Location ID: 012")
+        .append(System.lineSeparator())
+        .append("Today’s Date: ")
+        .append(new Date())
+        .append(System.lineSeparator())
+        .append(" Total Pizza’s Sell: 112")
+        .append(System.lineSeparator())
+        .append(" Total Price: $2534")
+        .append(System.lineSeparator())
+        .append(" Net Profit: $1985")
+        .append(System.lineSeparator())
+        .append("***************************************************************");
     return sb.toString();
   }
 

@@ -4,8 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,6 +16,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 
 /**
@@ -54,11 +54,7 @@ public class RequestHandler implements Runnable {
     // Remove everything past next space
     urlString = urlString.substring(0, urlString.indexOf(' '));
     // Prepend http:// if necessary to create correct URL
-    if (!urlString.startsWith("http")) {
-      String temp = "http://";
-      urlString = temp + urlString;
-    }
-    return urlString;
+    return urlString.startsWith("http") ? urlString : "http://" + urlString;
   }
 
   /**
@@ -112,10 +108,10 @@ public class RequestHandler implements Runnable {
     if (file != null) {
       System.out.println("Cached Copy found for : " + urlString + "\n");
       sendCachedPageToClient(file);
-    } else {
-      System.out.println("HTTP GET for : " + urlString + "\n");
-      sendNonCachedToClient(urlString);
+      return;
     }
+    System.out.println("HTTP GET for : " + urlString + "\n");
+    sendNonCachedToClient(urlString);
   }
 
   /**
@@ -148,7 +144,7 @@ public class RequestHandler implements Runnable {
         }
       } else {
         final BufferedReader cachedFileBufferedReader =
-            new BufferedReader(new InputStreamReader(new FileInputStream(cachedFile)));
+            Files.newBufferedReader(Paths.get(cachedFile.getAbsolutePath()));
 
         response = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
         proxyToClientBw.write(response);
@@ -177,7 +173,7 @@ public class RequestHandler implements Runnable {
   }
 
   private String computeLogicalFilePrefix(String urlString) {
-    int fileExtensionIndex = urlString.lastIndexOf(".");
+    int fileExtensionIndex = urlString.lastIndexOf('.');
     // Get the initial file name
     String fileName = urlString.substring(0, fileExtensionIndex);
     // Trim off http://www. as no need for it in file name
@@ -189,7 +185,7 @@ public class RequestHandler implements Runnable {
   }
 
   private String computeLogicalFileExtension(String urlString) {
-    int fileExtensionIndex = urlString.lastIndexOf(".");
+    int fileExtensionIndex = urlString.lastIndexOf('.');
     String fileExtension;
 
     // Get the type of file
@@ -199,7 +195,7 @@ public class RequestHandler implements Runnable {
     if (fileExtension.contains("/")) {
       fileExtension = fileExtension.replace("/", "__");
       fileExtension = fileExtension.replace('.', '_');
-      fileExtension += ".html";
+      fileExtension = fileExtension.concat(".html");
     }
     return fileExtension;
   }
@@ -238,7 +234,7 @@ public class RequestHandler implements Runnable {
       fileToCache = getCacheFile(urlString);
       caching = fileToCache.exists();
       // Create Buffered output stream to write to cached copy of file
-      fileToCacheBW = new BufferedWriter(new FileWriter(fileToCache));
+      fileToCacheBW = Files.newBufferedWriter(Paths.get(fileToCache.getAbsolutePath()));
 
       // Check if file is an image
       if (fileExtension.matches(IMG_REGEX)) {
@@ -246,20 +242,7 @@ public class RequestHandler implements Runnable {
         URL remoteURL = new URL(urlString);
         BufferedImage image = ImageIO.read(remoteURL);
 
-        if (image != null) {
-          // Cache the image to disk
-          ImageIO.write(image, fileExtension.substring(1), fileToCache);
-
-          // Send response code to client
-          String line = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
-          proxyToClientBw.write(line);
-          proxyToClientBw.flush();
-
-          // Send them the image data
-          ImageIO.write(image, fileExtension.substring(1), clientSocket.getOutputStream());
-
-          // No image received from remote server
-        } else {
+        if (image == null) {
           System.out.println(
               "Sending 404 to client as image wasn't received from server" + fileName);
           String error = "HTTP/1.0 404 NOT FOUND\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
@@ -267,6 +250,17 @@ public class RequestHandler implements Runnable {
           proxyToClientBw.flush();
           return;
         }
+        // Cache the image to disk
+        ImageIO.write(image, fileExtension.substring(1), fileToCache);
+
+        // Send response code to client
+        String line = "HTTP/1.0 200 OK\n" + "Proxy-agent: ProxyServer/1.0\n" + "\r\n";
+        proxyToClientBw.write(line);
+        proxyToClientBw.flush();
+
+        // Send them the image data
+        ImageIO.write(image, fileExtension.substring(1), clientSocket.getOutputStream());
+
       } else {
         // Create the URL
         URL remoteURL = new URL(urlString);
