@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 class FindMaxTask implements Callable<Integer> {
@@ -8,7 +9,7 @@ class FindMaxTask implements Callable<Integer> {
   private int end;
 
   FindMaxTask(int[] data, int start, int end) {
-    this.data = data;
+    this.data = Arrays.copyOf(data, data.length);
     this.start = start;
     this.end = end;
   }

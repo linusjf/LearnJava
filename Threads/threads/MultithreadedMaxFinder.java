@@ -16,7 +16,7 @@ public final class MultithreadedMaxFinder {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static int max(int[] data) throws InterruptedException, ExecutionException {
+  public static int max(int... data) throws InterruptedException, ExecutionException {
     if (data.length == 1) {
       return data[0];
     } else if (data.length == 0) {

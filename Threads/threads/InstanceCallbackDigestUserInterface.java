@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.Arrays;
 import javax.xml.bind.DatatypeConverter;
 
 public class InstanceCallbackDigestUserInterface {
@@ -17,7 +18,7 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   void receiveDigest(byte[] digest) {
-    this.digest = digest;
+    this.digest = Arrays.copyOf(digest, digest.length);
     System.out.println(this);
   }
 
@@ -25,10 +26,10 @@ public class InstanceCallbackDigestUserInterface {
   public String toString() {
     String result = filename + ": ";
     if (digest != null) {
-      result += DatatypeConverter.printBase64Binary(digest);
-    } else {
-      result += "digest not available";
+      result = result.concat(DatatypeConverter.printBase64Binary(digest));
+      return result;
     }
+    result = result.concat("digest not available");
     return result;
   }
 
