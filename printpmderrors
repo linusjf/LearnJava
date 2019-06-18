@@ -1,0 +1,5 @@
+#!/bin/bash
+./findpmderrors \
+    | awk '{print $2}' \
+    | xargs -i cat {}
+exit $?

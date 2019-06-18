@@ -1,13 +1,15 @@
 package com.javacodegeeks.snippets.core;
 
 import java.io.DataInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Authenticator;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public final class ProtectedUrlAccess {
@@ -31,7 +33,7 @@ public final class ProtectedUrlAccess {
       byte[] b = new byte[1];
 
       DataInputStream di = new DataInputStream(url.openStream());
-      FileOutputStream fo = new FileOutputStream(random + ".gif");
+      OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"));
       while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
       di.close();
       fo.close();

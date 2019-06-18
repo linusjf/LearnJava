@@ -22,7 +22,7 @@ public class QueryString {
       query.append('=');
       query.append(URLEncoder.encode(value, "UTF-8"));
     } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException("Broken VM does not support UTF-8", ex);
+      throw new EncodingException("Broken VM does not support UTF-8", ex);
     }
   }
 

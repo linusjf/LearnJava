@@ -24,7 +24,7 @@ public final class EncoderTest {
       System.out.println(URLEncoder.encode("This&string&has&ampersands", "UTF-8"));
       System.out.println(URLEncoder.encode("Thiséstringéhasé non-ASCII characters", "UTF-8"));
     } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException("Broken VM does not support UTF-8", ex);
+      throw new EncodingException("Broken VM does not support UTF-8", ex);
     }
   }
 }
