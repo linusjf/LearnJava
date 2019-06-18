@@ -55,7 +55,6 @@ public final class ProtectedUrlAccess {
       InetAddress ipaddr = getRequestingSite();
       int port = getRequestingPort();
 
-      Scanner scanner = new Scanner(System.in);
       System.out.println("Hostname: " + hostname);
       System.out.println("Ip Address: " + ipaddr);
       System.out.println("Port: " + port);
@@ -63,11 +62,14 @@ public final class ProtectedUrlAccess {
 
       System.out.println("Enter username (use httpwatch): ");
 
-      String username = scanner.nextLine();
+      Scanner scanner = new Scanner(System.in);
+      String username = "httpwatch";
+      if (scanner.hasNext()) username = scanner.nextLine();
 
       System.out.println("Enter password : ");
 
-      String password = scanner.nextLine();
+      String password = String.valueOf(Math.random());
+      if (scanner.hasNext()) password = scanner.nextLine();
 
       // Return the information (a data holder that is used by Authenticator)
       return new PasswordAuthentication(username, password.toCharArray());

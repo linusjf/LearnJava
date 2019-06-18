@@ -15,13 +15,12 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * A native library loader that will extract and load a shared library contained
- * in a jar. This loader will attempt to detect the {@link Platform platform}
- * (CPU architecture and OS) it is running on and load the appropriate shared
- * library.
+ * A native library loader that will extract and load a shared library contained in a jar. This
+ * loader will attempt to detect the {@link Platform platform} (CPU architecture and OS) it is
+ * running on and load the appropriate shared library.
  *
- * <p>Given a library path and name this loader looks for a native library with
- * path [libraryPath]/[arch]/[os]/lib[name].[ext]
+ * <p>Given a library path and name this loader looks for a native library with path
+ * [libraryPath]/[arch]/[os]/lib[name].[ext]
  *
  * @author Will Glozer
  */
@@ -30,16 +29,16 @@ public class JarLibraryLoader implements LibraryLoader {
   private final String libraryPath;
 
   /**
-   * Initialize a new instance that looks for shared libraries located in the
-   * same jar as this class and with a path starting with {@code lib}.
+   * Initialize a new instance that looks for shared libraries located in the same jar as this class
+   * and with a path starting with {@code lib}.
    */
   public JarLibraryLoader() {
     this(JarLibraryLoader.class.getProtectionDomain().getCodeSource(), "lib");
   }
 
   /**
-   * Initialize a new instance that looks for shared libraries located in the
-   * specified directory of the supplied code source.
+   * Initialize a new instance that looks for shared libraries located in the specified directory of
+   * the supplied code source.
    *
    * @param codeSource Code source containing shared libraries.
    * @param libraryPath Path prefix of shared libraries.
@@ -61,13 +60,11 @@ public class JarLibraryLoader implements LibraryLoader {
     boolean loaded = false;
     File lib = null;
 
-    try (JarFile jar =
-             new JarFile(codeSource.getLocation().getPath(), verify)) {
+    try (JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)) {
       final Platform platform = Platform.detect();
       for (String path : libCandidates(platform, name)) {
         final JarEntry entry = jar.getJarEntry(path);
-        if (entry == null)
-          continue;
+        if (entry == null) continue;
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
@@ -109,8 +106,8 @@ public class JarLibraryLoader implements LibraryLoader {
   }
 
   /**
-   * Generate a list of candidate libraries for the supplied library name and
-   * suitable for the current platform.
+   * Generate a list of candidate libraries for the supplied library name and suitable for the
+   * current platform.
    *
    * @param platform Current platform.
    * @param name Library name.
@@ -133,7 +130,7 @@ public class JarLibraryLoader implements LibraryLoader {
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case LINUX:  // falls through
+      case LINUX: // falls through
       case FREEBSD:
         candidates.add(sb + ".so");
         break;
