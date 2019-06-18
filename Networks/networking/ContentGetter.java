@@ -14,9 +14,7 @@ public final class ContentGetter {
       // Open the URLs for reading
       for (String arg : args) {
         try {
-          URL u = new URL(arg);
-          Object o = u.getContent();
-          System.out.println("I got a " + o.getClass().getName() + " for " + arg);
+          processUrl(arg);
         } catch (MalformedURLException ex) {
           System.err.println(args[0] + " is not a parseable URL");
         } catch (IOException ex) {
@@ -24,5 +22,11 @@ public final class ContentGetter {
         }
       }
     }
+  }
+
+  private static void processUrl(String url) throws MalformedURLException, IOException {
+    URL u = new URL(url);
+    Object o = u.getContent();
+    System.out.println("I got a " + o.getClass().getName() + " for " + url);
   }
 }

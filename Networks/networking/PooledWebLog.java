@@ -1,9 +1,10 @@
 package networking;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ExecutionException;
@@ -20,9 +21,9 @@ public final class PooledWebLog {
 
   public static void main(String[] args) throws IOException {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
-    Queue<LogEntry> results = new LinkedList<LogEntry>();
+    Queue<LogEntry> results = new LinkedList<>();
     try (BufferedReader in =
-        new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8")); ) {
+        Files.newBufferedReader(Paths.get(args[0]), Charset.forName("UTF-8")); ) {
       for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);

@@ -19,10 +19,8 @@ public final class URLSplitter {
         if (host != null) {
           int atSign = host.indexOf('@');
           if (atSign != -1) host = host.substring(atSign + 1);
-          System.out.println("The host is " + host);
-        } else {
-          System.out.println("The host is null.");
         }
+        System.out.println("The host is " + host);
         System.out.println("The port is " + u.getPort());
         System.out.println("The path is " + u.getPath());
         System.out.println("The ref is " + u.getRef());

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocalProxySelector extends ProxySelector {
-  private List<URI> failed = new ArrayList<URI>();
+  private List<URI> failed = new ArrayList<>();
 
   @Override
   public List<Proxy> select(URI uri) {
-    List<Proxy> result = new ArrayList<Proxy>();
+    List<Proxy> result = new ArrayList<>();
     if (failed.contains(uri) || !"http".equalsIgnoreCase(uri.getScheme())) {
       result.add(Proxy.NO_PROXY);
     } else {

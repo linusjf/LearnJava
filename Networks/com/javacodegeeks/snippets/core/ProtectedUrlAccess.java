@@ -24,21 +24,18 @@ public final class ProtectedUrlAccess {
 
       double random = Math.random();
 
-      String rnd = Double.valueOf(random).toString();
-
       URL url =
           new URL(
               "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
-                  + rnd);
+                  + random);
       byte[] b = new byte[1];
 
       DataInputStream di = new DataInputStream(url.openStream());
-      FileOutputStream fo = new FileOutputStream(rnd + ".gif");
+      FileOutputStream fo = new FileOutputStream(random + ".gif");
       while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
       di.close();
       fo.close();
-      System.out.println("Saved url as " + rnd + ".gif");
-
+      System.out.println("Saved url as " + random + ".gif");
     } catch (MalformedURLException e) {
       System.out.println("Malformed URL: " + e.getMessage());
     } catch (IOException e) {
@@ -56,12 +53,11 @@ public final class ProtectedUrlAccess {
       InetAddress ipaddr = getRequestingSite();
       int port = getRequestingPort();
 
-      System.out.println("Prompt: " + prompt);
+      Scanner scanner = new Scanner(System.in);
       System.out.println("Hostname: " + hostname);
       System.out.println("Ip Address: " + ipaddr);
       System.out.println("Port: " + port);
-
-      Scanner scanner = new Scanner(System.in);
+      System.out.println("Prompt: " + prompt);
 
       System.out.println("Enter username (use httpwatch): ");
 

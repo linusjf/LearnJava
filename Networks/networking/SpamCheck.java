@@ -47,7 +47,7 @@ public final class SpamCheck {
     String query = "";
     for (byte octet : quad) {
       int unsignedByte = octet < 0 ? octet + 256 : octet;
-      query = unsignedByte + "." + query;
+      query = String.valueOf(unsignedByte).concat(".").concat(query);
     }
     return isValidAddress(query, SPAM_LISTER)
         || isValidAddress(query, POLICY_LISTER)
