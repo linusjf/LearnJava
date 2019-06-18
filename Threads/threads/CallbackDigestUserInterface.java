@@ -11,8 +11,7 @@ public final class CallbackDigestUserInterface {
 
   public static void receiveDigest(byte[] digest, String name) {
     StringBuilder result = new StringBuilder(name);
-    result.append(": ");
-    result.append(DatatypeConverter.printBase64Binary(digest));
+    result.append(": ").append(DatatypeConverter.printBase64Binary(digest));
     System.out.println(result);
   }
 

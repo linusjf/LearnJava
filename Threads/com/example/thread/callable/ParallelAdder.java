@@ -13,7 +13,7 @@ public class ParallelAdder {
 
   public Integer parallelSum() {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
-    List<Future<Integer>> list = new ArrayList<Future<Integer>>();
+    List<Future<Integer>> list = new ArrayList<>();
     int count = 1;
     int prev = 0;
     for (int i = 0; i < NUM_COUNT; i++) {

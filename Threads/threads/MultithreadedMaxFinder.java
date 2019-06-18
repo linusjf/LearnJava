@@ -9,7 +9,7 @@ public final class MultithreadedMaxFinder {
   private static int[] data =
       new int[] {
         12, 23, 45, 46, 56, 76, 87, 98, 78, 123, 45, 56, 76, 98, 90, 900, 567, 456, 24, 45, 43, 45,
-        23, 1000, 456, 678, 1002, 12345, 567, 567,
+        23, 1000, 456, 678, 1002, 12_345, 567, 567,
       };
 
   private MultithreadedMaxFinder() {

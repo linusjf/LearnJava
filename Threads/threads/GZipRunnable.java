@@ -3,11 +3,11 @@ package threads;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.zip.GZIPOutputStream;
 
 public class GZipRunnable implements Runnable {
@@ -23,9 +23,12 @@ public class GZipRunnable implements Runnable {
     if (!input.getName().endsWith(".gz")) {
       File output = new File(input.getParent(), input.getName() + ".gz");
       if (!output.exists()) {
-        try (InputStream in = new BufferedInputStream(new FileInputStream(input));
+        try (InputStream in =
+                new BufferedInputStream(Files.newInputStream(Paths.get(input.getAbsolutePath())));
             OutputStream out =
-                new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(output))); ) {
+                new BufferedOutputStream(
+                    new GZIPOutputStream(
+                        Files.newOutputStream(Paths.get(output.getAbsolutePath())))); ) {
           int b;
           while ((b = in.read()) != -1) out.write(b);
           out.flush();
