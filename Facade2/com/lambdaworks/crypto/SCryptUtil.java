@@ -39,14 +39,14 @@ public final class SCryptUtil {  // NOPMD
    * @param p Parallelization parameter.
    * @return The hashed password.
    */
-  public static String scrypt(
-      String passwd, int enCPUCost, int rmemCost, int p) {
+  public static String scrypt(String passwd, int enCPUCost, int rmemCost,
+                              int p) {
     try {
       final byte[] salt = new byte[16];
       SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
-      final byte[] derived = SCrypt.scrypt(
-          passwd.getBytes("UTF-8"), salt, enCPUCost, rmemCost, p, 32);
+      final byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt,
+                                           enCPUCost, rmemCost, p, 32);
 
       final String params =
           Long.toString(log2(enCPUCost) << 16L | rmemCost << 8 | p, 16);

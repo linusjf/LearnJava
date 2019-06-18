@@ -136,7 +136,7 @@ public class BCrypt {
    * @throws IllegalArgumentException if maxolen is invalid
    */
   @SuppressWarnings({"checkstyle:cyclomaticcomplexity",
-      "checkstyle:npathcomplexity", "PMD.CyclomaticComplexity"})
+                     "checkstyle:npathcomplexity", "PMD.CyclomaticComplexity"})
   private static byte[] decodeBase64(final String s, final int maxolen) {
     checkMaxLengthParameter(maxolen);
 
@@ -330,8 +330,8 @@ public class BCrypt {
    *     apply
    * @return an array containing the binary hashed password
    */
-  private byte[] cryptRaw(
-      final byte[] password, final byte[] salt, final int logRounds) {
+  private byte[] cryptRaw(final byte[] password, final byte[] salt,
+                          final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -415,8 +415,8 @@ public class BCrypt {
     return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
-  private static String getHashedPassword(
-      char minor, int rounds, byte[] saltb, byte[] hashed) {
+  private static String getHashedPassword(char minor, int rounds, byte[] saltb,
+                                          byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= 'a')
