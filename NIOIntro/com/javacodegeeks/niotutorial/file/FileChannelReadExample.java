@@ -38,7 +38,7 @@ public final class FileChannelReadExample implements FileChannelExample {
         buffer.clear();
       }
     } catch (IOException e) {
-      throw new RuntimeException("Unable to read file", e);
+      throw new NIORuntimeException("Unable to read file", e);
     }
 
     return contents.toString();

@@ -45,7 +45,7 @@ public class FileChannelWriteExample implements FileChannelExample {
         fileChannel.write(buffer);
       }
     } catch (IOException e) {
-      throw new RuntimeException("Unable to write to file", e);
+      throw new NIORuntimeException("Unable to write to file", e);
     }
   }
 
