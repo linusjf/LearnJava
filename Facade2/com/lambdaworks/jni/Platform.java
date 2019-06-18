@@ -8,9 +8,8 @@ import static java.util.regex.Pattern.CASE_INSENSITIVE;
 import java.util.regex.Pattern;
 
 /**
- * A platform is a unique combination of CPU architecture and operating system.
- * This class attempts to determine the platform it is executing on by examining
- * and normalizing the <code>os.arch
+ * A platform is a unique combination of CPU architecture and operating system. This class attempts
+ * to determine the platform it is executing on by examining and normalizing the <code>os.arch
  * </code> and <code>os.name</code> system properties.
  *
  * @author Will Glozer
@@ -68,8 +67,7 @@ public final class Platform {
       }
     }
 
-    final String msg =
-      String.format("Unsupported platform %s %s", osArch, osName);
+    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 }

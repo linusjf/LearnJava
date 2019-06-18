@@ -15,5 +15,7 @@ public class UnsupportedPlatformException extends RuntimeException {
    *
    * @param s a <code>String</code> value
    */
-  public UnsupportedPlatformException(String s) { super(s); }
+  public UnsupportedPlatformException(String s) {
+    super(s);
+  }
 }

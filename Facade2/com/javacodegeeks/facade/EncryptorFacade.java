@@ -46,8 +46,7 @@ public final class EncryptorFacade {
     PBKDF,
   }
 
-  private static final Map<EncryptionType, Supplier<Encrypt>>
-    ENCRYPTOR_SUPPLIER;
+  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
 
   static {
     final Map<EncryptionType, Supplier<Encrypt>> encryptors = new HashMap<>();
@@ -71,8 +70,7 @@ public final class EncryptorFacade {
 
   public Encrypt supplyEncryptor(EncryptionType type) {
     Supplier<Encrypt> supplier = ENCRYPTOR_SUPPLIER.get(type);
-    if (supplier == null)
-      throw new IllegalArgumentException("No encryptor exists for " + type);
+    if (supplier == null) throw new IllegalArgumentException("No encryptor exists for " + type);
     return supplier.get();
   }
 
