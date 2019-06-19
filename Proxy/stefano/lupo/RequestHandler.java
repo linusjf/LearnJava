@@ -225,6 +225,14 @@ public class RequestHandler implements Runnable {
     return fileToCache;
   }
 
+  private void sendErrorMsgToClient(Writer proxyToClientBw) throws IOException {
+    String error = "HTTP/1.0 404 NOT FOUND\n"
+                   + "Proxy-agent: ProxyServer/1.0\n"
+                   + "\r\n";
+    proxyToClientBw.write(error);
+    proxyToClientBw.flush();
+  }
+
   /**
    * Sends the contents of the file specified by the urlString to the client.
    *
@@ -258,11 +266,8 @@ public class RequestHandler implements Runnable {
           System.out.println(
               "Sending 404 to client as image wasn't received from server"
               + fileName);
-          String error = "HTTP/1.0 404 NOT FOUND\n"
-                         + "Proxy-agent: ProxyServer/1.0\n"
-                         + "\r\n";
-          proxyToClientBw.write(error);
-          proxyToClientBw.flush();
+          sendErrorMsgToClient(proxyToClientBw);
+          closeResources(fileToCacheBW, proxyToClientBw);
           return;
         }
         // Cache the image to disk
@@ -307,18 +312,16 @@ public class RequestHandler implements Runnable {
           proxyToClientBw.write(line);
 
           // Write to our cached copy of the file
-          if (caching) {
+          if (caching)
             fileToCacheBW.write(line);
-          }
         }
 
         // Ensure all data is sent by this point
         proxyToClientBw.flush();
 
         // Close Down Resources
-        if (proxyToServerBR != null) {
+        if (proxyToServerBR != null)
           proxyToServerBR.close();
-        }
       }
 
       if (caching) {
@@ -326,9 +329,7 @@ public class RequestHandler implements Runnable {
         fileToCacheBW.flush();
         Proxy.addCachedPage(urlString, fileToCache);
       }
-
       closeResources(fileToCacheBW, proxyToClientBw);
-
     } catch (IOException e) {
       System.err.println("Error sending " + urlString
                          + " to client : " + e.getMessage());
