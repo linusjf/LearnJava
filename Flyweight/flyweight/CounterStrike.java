@@ -3,13 +3,14 @@ package flyweight;
 import java.util.Random;
 
 /** Driver class. */
-public enum CounterStrike { // NOMPMD
+public enum CounterStrike {  // NOMPMD
   ;
   // All player types and weopons (used by getRandPlayerType()
   // and getRandWeapon()
   private static String[] playerType = {"Terrorist", "CounterTerrorist"};
 
-  private static String[] weapons = {"AK-47", "Maverick", "Gut Knife", "Desert Eagle"};
+  private static String[] weapons = {"AK-47", "Maverick", "Gut Knife",
+                                     "Desert Eagle"};
 
   /**
    * Driver code.

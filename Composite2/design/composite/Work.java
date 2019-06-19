@@ -64,7 +64,11 @@ public class Work {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder(46);
-    builder.append("Work [workType=").append(workType).append(", work=").append(work).append(']');
+    builder.append("Work [workType=")
+        .append(workType)
+        .append(", work=")
+        .append(work)
+        .append(']');
     return builder.toString();
   }
 }

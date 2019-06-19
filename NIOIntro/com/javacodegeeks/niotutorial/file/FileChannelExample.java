@@ -25,16 +25,21 @@ public interface FileChannelExample {
    *
    * @param path file path
    * @param fileOperation File operation type as enum
-   * @return <code>SeekableByteChannel</code> object based on fileOperation parameter
+   * @return <code>SeekableByteChannel</code> object based on fileOperation
+   *     parameter
    * @throws FileNotFoundException if the file path does not point to a file.
    */
-  default SeekableByteChannel createChannel(String path, FileOperation fileOperation)
+  default SeekableByteChannel createChannel(String path,
+                                            FileOperation fileOperation)
       throws FileNotFoundException, IOException {
-    final File file =
-        new File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
+    final File file = new File(FileChannelReadExample.class.getClassLoader()
+                                   .getResource(path)
+                                   .getFile());
     return fileOperation == FileOperation.READ
-        ? Files.newByteChannel(Paths.get(file.getAbsolutePath()), StandardOpenOption.READ)
-        : Files.newByteChannel(
-            Paths.get(file.getAbsolutePath()), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+        ? Files.newByteChannel(Paths.get(file.getAbsolutePath()),
+                               StandardOpenOption.READ)
+        : Files.newByteChannel(Paths.get(file.getAbsolutePath()),
+                               StandardOpenOption.CREATE,
+                               StandardOpenOption.WRITE);
   }
 }

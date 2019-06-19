@@ -11,7 +11,7 @@ public final class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    this.sauceInside = builder.sauceInside; // NOPMD
+    this.sauceInside = builder.sauceInside;  // NOPMD
   }
 
   /** returns object state as String. */
@@ -23,13 +23,14 @@ public final class Calzone extends Pizza {
         .append(System.lineSeparator())
         .append("Toppings: ")
         .append(System.lineSeparator());
-    for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
+    for (Topping t : toppings)
+      sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }
 
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
-    private boolean sauceInside; // Default
+    private boolean sauceInside;  // Default
 
     /**
      * sets sauce.

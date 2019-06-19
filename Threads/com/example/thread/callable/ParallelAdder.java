@@ -17,7 +17,7 @@ public class ParallelAdder {
     int count = 1;
     int prev = 0;
     for (int i = 0; i < NUM_COUNT; i++) {
-      if (count % 2 == 0) { // grouping
+      if (count % 2 == 0) {  // grouping
         System.out.println("Prev :" + prev + " current: " + i);
         Future<Integer> future = executor.submit(new CallableAdder(prev, i));
         list.add(future);
@@ -42,7 +42,8 @@ public class ParallelAdder {
 
   public int sequentialSum() {
     Integer totsum = 0;
-    for (int i = 0; i < NUM_COUNT; i++) totsum = totsum + i;
+    for (int i = 0; i < NUM_COUNT; i++)
+      totsum = totsum + i;
     System.out.println("sequentialSum Total Sum is " + totsum);
     return totsum;
   }

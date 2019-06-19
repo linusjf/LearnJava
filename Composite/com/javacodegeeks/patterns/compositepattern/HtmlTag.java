@@ -36,7 +36,8 @@ public abstract class HtmlTag {
    * @param tagBody a <code>String</code> value
    */
   public void setTagBody(String tagBody) {
-    throw new UnsupportedOperationException("Current operation is not support for this object.");
+    throw new UnsupportedOperationException(
+        "Current operation is not support for this object.");
   }
 
   /**
@@ -45,7 +46,8 @@ public abstract class HtmlTag {
    * @param htmlTag a <code>HtmlTag</code> value
    */
   public void addChildTag(HtmlTag htmlTag) {
-    throw new UnsupportedOperationException("Current operation is not support for this object.");
+    throw new UnsupportedOperationException(
+        "Current operation is not support for this object.");
   }
 
   /**
@@ -54,7 +56,8 @@ public abstract class HtmlTag {
    * @param htmlTag a <code>HtmlTag</code> value
    */
   public void removeChildTag(HtmlTag htmlTag) {
-    throw new UnsupportedOperationException("Current operation is not support for this object.");
+    throw new UnsupportedOperationException(
+        "Current operation is not support for this object.");
   }
 
   /**
@@ -63,7 +66,8 @@ public abstract class HtmlTag {
    * @return a <code>List</code> object
    */
   public List<HtmlTag> getChildren() {
-    throw new UnsupportedOperationException("Current operation is not support for this object.");
+    throw new UnsupportedOperationException(
+        "Current operation is not support for this object.");
   }
 
   /** Describe <code>generateHtml</code> method here. */

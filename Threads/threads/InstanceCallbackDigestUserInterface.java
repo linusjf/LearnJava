@@ -36,7 +36,8 @@ public class InstanceCallbackDigestUserInterface {
   public static void main(String[] args) {
     for (String filename : args) {
       // Calculate the digest
-      InstanceCallbackDigestUserInterface d = new InstanceCallbackDigestUserInterface(filename);
+      InstanceCallbackDigestUserInterface d =
+          new InstanceCallbackDigestUserInterface(filename);
       d.calculateDigest();
     }
   }

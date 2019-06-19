@@ -23,7 +23,7 @@ public class CallbackDigest implements Runnable {
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
       while (din.read() != -1)
-        ; // read entire file
+        ;  // read entire file
       din.close();
       byte[] digest = sha.digest();
       CallbackDigestUserInterface.receiveDigest(digest, filename);

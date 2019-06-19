@@ -15,7 +15,8 @@ public enum TestFacade {
    */
   public static void main(String[] args) {
     final ScheduleServer scheduleServer = new ScheduleServer();
-    final ScheduleServerFacade facadeServer = new ScheduleServerFacade(scheduleServer);
+    final ScheduleServerFacade facadeServer =
+        new ScheduleServerFacade(scheduleServer);
     facadeServer.startServer();
     System.out.println("Start working......");
     System.out.println("After work done.........");

@@ -22,8 +22,8 @@ public final class PooledWebLog {
   public static void main(String[] args) throws IOException {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     Queue<LogEntry> results = new LinkedList<>();
-    try (BufferedReader in =
-             Files.newBufferedReader(Paths.get(args[0]), Charset.forName("UTF-8"));) {
+    try (BufferedReader in = Files.newBufferedReader(
+             Paths.get(args[0]), Charset.forName("UTF-8"));) {
       for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);

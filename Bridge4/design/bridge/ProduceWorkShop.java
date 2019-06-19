@@ -14,7 +14,7 @@ public class ProduceWorkShop extends WorkShop {
     System.out.print("Producing... ");
     long timeToTake = 300 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake); // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake);  // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }

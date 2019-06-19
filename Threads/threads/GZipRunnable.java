@@ -23,12 +23,14 @@ public class GZipRunnable implements Runnable {
     if (!input.getName().endsWith(".gz")) {
       File output = new File(input.getParent(), input.getName() + ".gz");
       if (!output.exists()) {
-        try (InputStream in =
-                 new BufferedInputStream(Files.newInputStream(Paths.get(input.getAbsolutePath())));
-             OutputStream out = new BufferedOutputStream(new GZIPOutputStream(
-                 Files.newOutputStream(Paths.get(output.getAbsolutePath()))));) {
+        try (
+            InputStream in = new BufferedInputStream(
+                Files.newInputStream(Paths.get(input.getAbsolutePath())));
+            OutputStream out = new BufferedOutputStream(new GZIPOutputStream(
+                Files.newOutputStream(Paths.get(output.getAbsolutePath()))));) {
           int b;
-          while ((b = in.read()) != -1) out.write(b);
+          while ((b = in.read()) != -1)
+            out.write(b);
           out.flush();
         } catch (IOException ex) {
           System.err.println(ex);

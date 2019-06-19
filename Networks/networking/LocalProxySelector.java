@@ -18,7 +18,8 @@ public class LocalProxySelector extends ProxySelector {
     if (failed.contains(uri) || !"http".equalsIgnoreCase(uri.getScheme())) {
       result.add(Proxy.NO_PROXY);
     } else {
-      SocketAddress proxyAddress = new InetSocketAddress("proxy.example.com", 8000);
+      SocketAddress proxyAddress =
+          new InetSocketAddress("proxy.example.com", 8000);
       Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddress);
       result.add(proxy);
     }

@@ -32,7 +32,8 @@ public final class ProtectedUrlAccess {
 
       DataInputStream di = new DataInputStream(url.openStream());
       OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"));
-      while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
+      while (-1 != di.read(b, 0, 1))
+        fo.write(b, 0, 1);
       di.close();
       fo.close();
       System.out.println("Saved url as " + random + ".gif");

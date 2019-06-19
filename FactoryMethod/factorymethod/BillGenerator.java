@@ -22,15 +22,16 @@ public enum BillGenerator {
 
     PlanFactory planFactory = new PlanFactory();
 
-    try (BufferedReader br =
-             new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(args[0]))))) {
+    try (BufferedReader br = new BufferedReader(
+             new InputStreamReader(Files.newInputStream(Paths.get(args[0]))))) {
       String planName = br.readLine();
       int units = Integer.parseInt(br.readLine());
 
       Plan p = planFactory.getPlan(planName);
       // call getRate() method and calculateBill()method of DomesticPaln.
 
-      System.out.print("Bill amount for " + planName + " of  " + units + " units is: ");
+      System.out.print("Bill amount for " + planName + " of  " + units
+                       + " units is: ");
       p.getRate();
       p.calculateBill(units);
     } catch (IOException | NumberFormatException e) {

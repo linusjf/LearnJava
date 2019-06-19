@@ -42,8 +42,10 @@ public enum SingletonTest {
     testState();
   }
 
-  @SuppressWarnings({"checkstyle:IllegalCatch", "PMD.AvoidInstantiatingObjectsInLoops"})
-  private static void testConcurrency() { // NOPMD
+  @SuppressWarnings({"checkstyle:IllegalCatch",
+                     "PMD.AvoidInstantiatingObjectsInLoops"})
+  private static void
+  testConcurrency() {  // NOPMD
     int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
@@ -72,7 +74,8 @@ public enum SingletonTest {
           // Synchronise the access as the collections used are not thread-safe
           synchronized (SingletonTest.class) {
             if (!generatedValues.add(value)) {
-              exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+              exception.compareAndSet(
+                  null, new AssertionError("Duplicate value " + value));
               return;
             }
             instances.add(singleton);
@@ -83,7 +86,8 @@ public enum SingletonTest {
       threads.add(thread);
     }
     try {
-      for (final Thread thread : threads) thread.join();
+      for (final Thread thread : threads)
+        thread.join();
 
       if (exception.get() != null)
         throw exception.get();
@@ -100,9 +104,10 @@ public enum SingletonTest {
           throw new AssertionError("Expected one instance, but found many");
       }
       System.out.println("Sequence in order in which inserted: ");
-      for (final long value : generatedValues) System.out.print(value + " ");
+      for (final long value : generatedValues)
+        System.out.print(value + " ");
       System.out.println();
-    } catch (Throwable throwable) { // NOPMD
+    } catch (Throwable throwable) {  // NOPMD
       System.out.println(throwable.getMessage());
     }
   }
@@ -111,15 +116,15 @@ public enum SingletonTest {
     final Singleton instance = Singleton.getInstance();
 
     try {
-      final ObjectOutput out =
-          new ObjectOutputStream(Files.newOutputStream(Paths.get("singleton.ser")));
+      final ObjectOutput out = new ObjectOutputStream(
+          Files.newOutputStream(Paths.get("singleton.ser")));
       out.writeObject(instance);
       out.close();
 
       // deserialize from file to object
-      final ObjectInput in =
-          new ObjectInputStream(Files.newInputStream(Paths.get("singleton.ser")));
-      final Singleton instance2 = (Singleton) in.readObject();
+      final ObjectInput in = new ObjectInputStream(
+          Files.newInputStream(Paths.get("singleton.ser")));
+      final Singleton instance2 = (Singleton)in.readObject();
       in.close();
       System.out.println("instance hashCode:- " + instance.hashCode());
       System.out.println("instance2 hashCode:- " + instance2.hashCode());
@@ -139,14 +144,16 @@ public enum SingletonTest {
 
   private static void testReflection() {
     try {
-      final Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
+      final Constructor<?>[] constructors =
+          Singleton.class.getDeclaredConstructors();
       for (Constructor<?> constructor : constructors) {
         constructor.setAccessible(true);
-        final Singleton obj = (Singleton) constructor.newInstance();
+        final Singleton obj = (Singleton)constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (SecurityException | InstantiationException | IllegalArgumentException
-        | IllegalAccessException | InvocationTargetException e) {
+    } catch (SecurityException | InstantiationException
+             | IllegalArgumentException | IllegalAccessException
+             | InvocationTargetException e) {
       System.out.println(e.getCause().getMessage());
     }
   }
@@ -170,7 +177,8 @@ public enum SingletonTest {
     }
   }
 
-  private static void resetSingleton() throws NoSuchFieldException, IllegalAccessException {
+  private static void resetSingleton()
+      throws NoSuchFieldException, IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");
     instance.setAccessible(true);
     instance.set(null, null);

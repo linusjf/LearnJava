@@ -18,8 +18,8 @@ public class CottonMediator implements MachineMediator {
    * @param soilRemoval a <code>SoilRemoval</code> value
    * @param valve a <code>Valve</code> value
    */
-  public CottonMediator(Machine machine, Heater heater, Motor motor, Sensor sensor,
-      SoilRemoval soilRemoval, Valve valve) {
+  public CottonMediator(Machine machine, Heater heater, Motor motor,
+                        Sensor sensor, SoilRemoval soilRemoval, Valve valve) {
     this.machine = machine;
     this.heater = heater;
     this.motor = motor;

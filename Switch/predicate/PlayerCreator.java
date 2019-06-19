@@ -1,8 +1,10 @@
 package predicate;
 
 public class PlayerCreator {
-  @SuppressWarnings({"PMD.CyclomaticComplexity", "checkstyle:cyclomaticcomplexity"})
-  public Player createPlayer(String playerType, int rank) {
+  @SuppressWarnings({"PMD.CyclomaticComplexity",
+                     "checkstyle:cyclomaticcomplexity"})
+  public Player
+  createPlayer(String playerType, int rank) {
     switch (playerType) {
       case "TENNIS":
         if (rank == 1) {
@@ -41,7 +43,8 @@ public class PlayerCreator {
         break;
 
       default:
-        throw new IllegalArgumentException("Invalid player type: " + playerType);
+        throw new IllegalArgumentException("Invalid player type: "
+                                           + playerType);
     }
     return null;
   }

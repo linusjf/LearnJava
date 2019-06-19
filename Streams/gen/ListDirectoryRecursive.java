@@ -19,7 +19,7 @@ public final class ListDirectoryRecursive {
       for (File item : items) {
         System.out.println(item.getAbsoluteFile());
         if (item.isDirectory())
-          listRecursive(item); // Recursive call
+          listRecursive(item);  // Recursive call
       }
     }
   }

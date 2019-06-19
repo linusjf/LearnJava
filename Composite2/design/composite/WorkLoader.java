@@ -52,12 +52,14 @@ public class WorkLoader {
     List<Work> workList = new ArrayList<>();
     Set<Object> keys = properties.keySet();
     for (Object key : keys) {
-      String workType =
-          key.toString().substring("Calculate".length() + 1).toUpperCase(Locale.getDefault());
+      String workType = key.toString()
+                            .substring("Calculate".length() + 1)
+                            .toUpperCase(Locale.getDefault());
       System.out.println(workType);
       String values = properties.getProperty(key.toString());
       System.out.println(values);
-      Work work = new Work(Calculator.valueOf(workType), Arrays.asList(values.split(",")));
+      Work work = new Work(Calculator.valueOf(workType),
+                           Arrays.asList(values.split(",")));
       workList.add(work);
     }
     return workList;
