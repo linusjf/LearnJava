@@ -51,7 +51,7 @@ public final class ProtectedUrlAccess {
     public CustomAuthenticator(String randomString) {
       this.password = randomString;
     }
-    
+
     // Called when password authorization is needed
     @Override
     protected PasswordAuthentication getPasswordAuthentication() {

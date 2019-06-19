@@ -175,7 +175,11 @@
         <pathelement path="${java.class.path}"/>
       </classpath>
     </java>
+    <exec executable="bash" outputproperty="random">
+      <arg line="../generaterandom"/>
+    </exec>
     <java classname="${main.class17}">
+      <arg line="${random}"/>
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
