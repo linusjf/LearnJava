@@ -15,4 +15,5 @@ networking.URLEquality
 networking.EncoderTest
 networking.QueryString
 networking.GoogleSearch Bill and Melinda Gates
-com.javacodegeeks.snippets.core.ProtectedUrlAccess
+com.javacodegeeks.snippets.core.ProtectedUrlAccess `../generaterandom`
+networking.SourceViewer2 https://www.spamhaus.org/

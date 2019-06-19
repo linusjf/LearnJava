@@ -21,7 +21,8 @@ public final class ProtectedUrlAccess {
     try {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
-      Authenticator.setDefault(new CustomAuthenticator());
+      Authenticator.setDefault(
+          new CustomAuthenticator(args.length > 0 ? args[0] : null));
 
       double random = Math.random();
 
@@ -45,6 +46,12 @@ public final class ProtectedUrlAccess {
   }
 
   public static class CustomAuthenticator extends Authenticator {
+    private String password;
+
+    public CustomAuthenticator(String randomString) {
+      this.password = randomString;
+    }
+    
     // Called when password authorization is needed
     @Override
     protected PasswordAuthentication getPasswordAuthentication() {
@@ -59,18 +66,19 @@ public final class ProtectedUrlAccess {
       System.out.println("Port: " + port);
       System.out.println("Prompt: " + prompt);
 
-      System.out.println("Enter username (use httpwatch): ");
-
-      Scanner scanner = new Scanner(System.in);
       String username = "httpwatch";
-      if (scanner.hasNext())
-        username = scanner.nextLine();
+      if (password == null) {
+        System.out.println("Enter username (use httpwatch): ");
 
-      System.out.println("Enter password : ");
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNext())
+          username = scanner.nextLine();
 
-      String password = String.valueOf(Math.random());
-      if (scanner.hasNext())
-        password = scanner.nextLine();
+        System.out.println("Enter password : ");
+
+        if (scanner.hasNext())
+          password = scanner.nextLine();
+      }
 
       // Return the information (a data holder that is used by Authenticator)
       return new PasswordAuthentication(username, password.toCharArray());
