@@ -8,6 +8,10 @@
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Employee']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='fullDetails']]/SLIST/VARIABLE_DEF[./IDENT[@text='builder']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='48']"/>
 <suppress-xpath
+       files="Main.java"
+       checks="LeftCurlyCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='work']]/SLIST"/>
+<suppress-xpath
        files="Work.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Work']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/VARIABLE_DEF[./IDENT[@text='builder']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='46']"/>
