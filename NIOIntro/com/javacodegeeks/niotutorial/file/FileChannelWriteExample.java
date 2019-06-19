@@ -12,17 +12,16 @@ import java.nio.channels.SeekableByteChannel;
  */
 public class FileChannelWriteExample implements FileChannelExample {
   private static final String OUTPUT_FILE_PATH = "file/output.txt";
-  private static final String CONTENTS =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          + " Phasellus efficitur auctor risus, non tristique erat finibus nec."
-          + " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. "
-          + "In hac habitasse platea dictumst. "
-          + "Nulla vehicula lacus dapibus semper eleifend."
-          + " Morbi eget malesuada lorem. Mauris mattis quam vel turpis mollis rutrum."
-          + " Etiam hendrerit tortor sed purus congue volutpat."
-          + " Aenean tellus nunc, "
-          + "vestibulum sed nunc in, faucibus posuere quam."
-          + " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
+  private static final String CONTENTS = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      + " Phasellus efficitur auctor risus, non tristique erat finibus nec."
+      + " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. "
+      + "In hac habitasse platea dictumst. "
+      + "Nulla vehicula lacus dapibus semper eleifend."
+      + " Morbi eget malesuada lorem. Mauris mattis quam vel turpis mollis rutrum."
+      + " Etiam hendrerit tortor sed purus congue volutpat."
+      + " Aenean tellus nunc, "
+      + "vestibulum sed nunc in, faucibus posuere quam."
+      + " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
 
   /**
    * Describe <code>main</code> method here.

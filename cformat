@@ -12,6 +12,6 @@ fi
 
 #clang-format -i -style=Google -sort-includes \
 
-clang-format -i -style=file -sort-includes \
+clang-format -i -assume-filename=.clang-format -style=file -sort-includes \
 `find $1 -type f -name "*.java"`
 exit $?

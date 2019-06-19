@@ -18,7 +18,8 @@ public final class ListDirectoryWithFilter {
       listFiles(dir);
       File[] items = dir.listFiles();
       for (File item : items) {
-        if (item.isDirectory()) listRecursiveFiles(item); // Recursive call
+        if (item.isDirectory())
+          listRecursiveFiles(item); // Recursive call
       }
     }
   }
@@ -27,11 +28,7 @@ public final class ListDirectoryWithFilter {
     if (dir.isDirectory()) {
       // List only files that meet the filtering criteria
       //  programmed in accept() method of FilenameFilter.
-      File[] files =
-          dir.listFiles(
-              (d, file) -> {
-                return file.endsWith(".java");
-              });
+      File[] files = dir.listFiles((d, file) -> { return file.endsWith(".java"); });
       for (File file : files) System.out.println(file);
     }
   }

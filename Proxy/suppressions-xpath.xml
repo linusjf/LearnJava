@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="ReportGeneratorImpl.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ReportGeneratorImpl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateDailyReport']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='250']"/>
+</suppressions>
