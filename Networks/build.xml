@@ -20,6 +20,9 @@
     <delete>
       <fileset dir="." includes="**/*.class"/>
     </delete>
+    <delete>
+      <fileset dir="." includes="**/*.gif"/>
+    </delete>
     <delete dir="${docs.dir}"/>
     <delete dir="${dist.dir}"/>
   </target>
