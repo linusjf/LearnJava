@@ -29,7 +29,7 @@
     <mkdir dir="${dist.dir}"/>
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
-  <target name="compile" depends="clean, makedir,gformat,checkstyle">
+  <target name="compile" depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
       <compilerarg value="-Xlint:-options"/>
     </javac>
@@ -84,7 +84,7 @@
       </classpath>
     </java>
   </target>
-  <target name="gformat">
+  <target name="format">
     <fileset dir="${basedir}" id="javasrcs">
       <include name="**/*.java"/>
     </fileset>
