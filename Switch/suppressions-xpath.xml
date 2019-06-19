@@ -1,126 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Main.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='snookerPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']"/>
-<suppress-xpath
-       files="Main.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tennisPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="Main.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='footballPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
-<suppress-xpath
-       files="Main.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='snookerPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerCreator.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerSupplier.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='supplyPlayer']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='FOOTBALL']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="PlayerTypes.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='supplyPlayer']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="Main.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='snookerPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']"/>
+  <suppress-xpath files="Main.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tennisPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+  <suppress-xpath files="Main.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='footballPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
+  <suppress-xpath files="Main.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='snookerPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerCreator.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createPlayer']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_IF/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerSupplier.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='PlayerSupplier']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='supplyPlayer']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='TENNIS']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='FOOTBALL']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GT[./IDENT[@text='rank']]/NUM_INT[@text='3']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LT[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/GE[./IDENT[@text='rank']]/NUM_INT[@text='7']"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='SNOOKER']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='rank']]/EXPR/LAND/LE[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="CreatePlayerCommand.java" checks="LeftCurlyCheck" query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST"/>
+  <suppress-xpath files="CreatePlayerCommand.java" checks="LeftCurlyCheck" query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST"/>
+  <suppress-xpath files="CreatePlayerCommand.java" checks="LeftCurlyCheck" query="/CLASS_DEF[./IDENT[@text='CreatePlayerCommand']]/OBJBLOCK/STATIC_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST"/>
+  <suppress-xpath files="PlayerTypes.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='PlayerTypes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='supplyPlayer']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='rank']]/NUM_INT[@text='10']"/>
 </suppressions>

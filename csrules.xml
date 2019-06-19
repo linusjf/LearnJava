@@ -41,11 +41,11 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="TreeWalker">
     <module name="DescendantToken">
-  <property name="tokens" value="METHOD_CALL"/>
-  <property name="limitedTokens" value="METHOD_DEF"/>
-  <property name="maximumNumber" value="0"/>
-  <property name="maximumMessage" value="Use Java 8 Lambdas!"/>
-</module>
+      <property name="tokens" value="METHOD_CALL"/>
+      <property name="limitedTokens" value="METHOD_DEF"/>
+      <property name="maximumNumber" value="0"/>
+      <property name="maximumMessage" value="Use Java 8 Lambdas!"/>
+    </module>
     <module name="InnerTypeLast"/>
     <module name="InterfaceIsType"/>
     <module name="MutableException"/>

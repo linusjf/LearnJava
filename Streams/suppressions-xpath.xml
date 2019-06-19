@@ -6,4 +6,5 @@
   <suppress-xpath files="GenChars.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/VARIABLE_DEF[./IDENT[@text='numberOfCharactersPerLine']]/ASSIGN/EXPR/NUM_INT[@text='72']"/>
   <suppress-xpath files="GenChars.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/LITERAL_WHILE/SLIST/EXPR/ASSIGN/INDEX_OP[./IDENT[@text='line']]/EXPR/NUM_INT[@text='72']"/>
   <suppress-xpath files="GenChars.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/LITERAL_WHILE/SLIST/EXPR/ASSIGN/INDEX_OP[./IDENT[@text='line']]/EXPR/NUM_INT[@text='73']"/>
+  <suppress-xpath files="ListDirectoryWithFilter.java" checks="LeftCurlyCheck" query="/CLASS_DEF[./IDENT[@text='ListDirectoryWithFilter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='listFiles']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='files']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST"/>
 </suppressions>
