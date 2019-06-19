@@ -82,6 +82,9 @@
     <exec executable="bash">
       <arg line="../cformat ${basedir}"/>
     </exec>
+    <exec executable="bash">
+      <arg line="../xformatall ${basedir}"/>
+    </exec>
   </target>
   <target name="checkstyle">
     <first id="checkstylefile">

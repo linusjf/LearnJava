@@ -86,6 +86,9 @@
       </classpath>
     </java>
     <exec executable="bash">
+      <arg line="../xformatall ${basedir}"/>
+    </exec>
+    <exec executable="bash">
       <arg line="../cformat ${basedir}"/>
     </exec>
   </target>
