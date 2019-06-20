@@ -1,6 +1,7 @@
 *.au
 *.ser
 *.gif
+*.png
 *.cache
 *.errors
 *.class

@@ -18,10 +18,7 @@
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
-      <fileset dir="." includes="**/*.class"/>
-    </delete>
-    <delete>
-      <fileset dir="." includes="**/*.gif"/>
+      <fileset dir="." includes="**/*.class,**/*.gif,**/*.png,**/*.au"/>
     </delete>
     <delete dir="${docs.dir}"/>
     <delete dir="${dist.dir}"/>
@@ -197,6 +194,13 @@
     </java>
     <java classname="${main.class19}">
       <arg line="https://www.spamhaus.org/ https://www.google.com"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
+    <java classname="${main.class20}">
+      <arg line="https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au"/>
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
