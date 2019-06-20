@@ -18,3 +18,4 @@ networking.GoogleSearch Bill and Melinda Gates
 com.javacodegeeks.snippets.core.ProtectedUrlAccess `../generaterandom`
 networking.SourceViewer2 https://www.spamhaus.org/
 networking.EncodingAwareSourceViewer https://www.spamhaus.org/ https://www.google.com
+networking.BinarySaver https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au

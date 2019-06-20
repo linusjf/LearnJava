@@ -29,7 +29,7 @@ public class BinarySaver {
     String contentType = uc.getContentType();
     int contentLength = uc.getContentLength();
     if (contentType.startsWith("text/") || contentLength == -1) {
-      throw new IOException("This is not a binary file.");
+      throw new IOException(u + " is not a binary file.");
     }
     try (InputStream raw = uc.getInputStream()) {
       InputStream in = new BufferedInputStream(raw);
@@ -42,7 +42,7 @@ public class BinarySaver {
         offset += bytesRead;
       }
       if (offset != contentLength) {
-        throw new IOException("Only read " + offset + " bytes; Expected "
+        throw new IOException(u + ": Only read " + offset + " bytes; Expected "
                               + contentLength + " bytes");
       }
       String filename = u.getFile();
