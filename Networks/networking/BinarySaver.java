@@ -10,7 +10,11 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class BinarySaver {
+public final class BinarySaver {
+  private BinarySaver() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     for (String arg : args) {
       try {

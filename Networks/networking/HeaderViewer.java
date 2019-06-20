@@ -6,7 +6,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
 
-public class HeaderViewer {
+public final class HeaderViewer {
+  private HeaderViewer() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     for (String arg : args) {
       try {

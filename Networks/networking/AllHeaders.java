@@ -7,7 +7,9 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
-public class AllHeaders {
+public enum AllHeaders {
+  ;
+
   public static void main(String[] args) {
     for (String arg : args) {
       try {
