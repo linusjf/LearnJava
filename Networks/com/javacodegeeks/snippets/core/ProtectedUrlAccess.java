@@ -21,10 +21,9 @@ public final class ProtectedUrlAccess {
     try {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
-      Authenticator.setDefault(
-          args.length > 0 ? 
-          new CustomAuthenticator(args[0]) 
-          : new CustomAuthenticator());
+      Authenticator.setDefault(args.length > 0
+                                   ? new CustomAuthenticator(args[0])
+                                   : new CustomAuthenticator());
 
       double random = Math.random();
 
@@ -53,7 +52,7 @@ public final class ProtectedUrlAccess {
     public CustomAuthenticator(String randomString) {
       this.password = randomString;
     }
-    
+
     public CustomAuthenticator() {
       this.password = String.valueOf(Math.random());
     }

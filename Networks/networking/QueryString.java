@@ -12,9 +12,9 @@ public class QueryString {
   }
 
   public void add(String name, String value) {
-    synchronized(QueryString.class) {
-    query.append('&');
-    encode(name, value);
+    synchronized (query) {
+      query.append('&');
+      encode(name, value);
     }
   }
 
@@ -29,8 +29,8 @@ public class QueryString {
   }
 
   public String getQuery() {
-    synchronized(Query.class) {
-    return query.toString();
+    synchronized (query) {
+      return query.toString();
     }
   }
 

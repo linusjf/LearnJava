@@ -23,8 +23,9 @@ public final class PlatformFactory {  // NOPMD
    * @return a <code>Platform</code> value
    */
   public static Platform getPlatformInstance(String platformType) {
-    synchronized (Platform.class) {
-      Platform platform = map.get(platformType);
+    Platform platform;
+    synchronized (map) {
+      platform = map.get(platformType);
       if (platform == null) {
         switch (platformType) {
           case "C":
