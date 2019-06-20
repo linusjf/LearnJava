@@ -9,6 +9,10 @@ import java.util.List;
  * @version 1.0
  */
 public abstract class HtmlTag {
+  
+  private static final String UNSUPPORTED_OPERATION =
+    "Current operation is not support for this object.";
+  
   /**
    * Describe <code>getTagName</code> method here.
    *
@@ -37,7 +41,7 @@ public abstract class HtmlTag {
    */
   public void setTagBody(String tagBody) {
     throw new UnsupportedOperationException(
-        "Current operation is not support for this object.");
+        UNSUPPORTED_OPERATION);
   }
 
   /**
@@ -47,7 +51,7 @@ public abstract class HtmlTag {
    */
   public void addChildTag(HtmlTag htmlTag) {
     throw new UnsupportedOperationException(
-        "Current operation is not support for this object.");
+        UNSUPPORTED_OPERATION);
   }
 
   /**
@@ -57,7 +61,7 @@ public abstract class HtmlTag {
    */
   public void removeChildTag(HtmlTag htmlTag) {
     throw new UnsupportedOperationException(
-        "Current operation is not support for this object.");
+        UNSUPPORTED_OPERATION);
   }
 
   /**
@@ -67,7 +71,7 @@ public abstract class HtmlTag {
    */
   public List<HtmlTag> getChildren() {
     throw new UnsupportedOperationException(
-        "Current operation is not support for this object.");
+        UNSUPPORTED_OPERATION);
   }
 
   /** Describe <code>generateHtml</code> method here. */

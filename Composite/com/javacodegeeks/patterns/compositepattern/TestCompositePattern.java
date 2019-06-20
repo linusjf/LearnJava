@@ -13,6 +13,7 @@ public enum TestCompositePattern {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
   public static void main(String[] args) {
     HtmlTag parentTag = new HtmlParentElement("<html>");
     parentTag.setStartTag("<html>");
