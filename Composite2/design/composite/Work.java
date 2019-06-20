@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Work {
   private Calculator workType;
-  private List<String> work = new ArrayList<>();
+  private List<String> jobs = new ArrayList<>();
 
   /**
    * Creates a new <code>Work</code> instance.
@@ -22,7 +22,7 @@ public class Work {
   public Work(Calculator workType, List<String> work) {
     super();
     this.workType = workType;
-    this.work = work;
+    this.jobs = work;
   }
 
   /**
@@ -49,7 +49,7 @@ public class Work {
    * @return a <code>List</code> object
    */
   public List<String> getWork() {
-    return work;
+    return jobs;
   }
 
   /**
@@ -58,7 +58,7 @@ public class Work {
    * @param work list of tasks.
    */
   public void setWork(List<String> work) {
-    this.work = work;
+    this.jobs = work;
   }
 
   @Override
@@ -67,7 +67,7 @@ public class Work {
     builder.append("Work [workType=")
         .append(workType)
         .append(", work=")
-        .append(work)
+        .append(jobs)
         .append(']');
     return builder.toString();
   }

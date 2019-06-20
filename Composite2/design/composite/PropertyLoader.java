@@ -69,7 +69,7 @@ public final class PropertyLoader {
     } catch (MissingResourceException e) {
       System.err.println("Error locating resource " + name + " : "
                          + e.getMessage());
-      result = null;
+      // result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
       throw new IllegalArgumentException("could not load [" + name + "]"
@@ -116,7 +116,7 @@ public final class PropertyLoader {
     if (nome == null)
       throw new IllegalArgumentException("null input: name");
     String name = nome;
-    if (name.charAt(0) == '/')
+    if (name.charAt(0) == '/')  // NOPMD
       name = name.substring(1);
     if (name.endsWith(SUFFIX))
       name = name.substring(0, name.length() - SUFFIX.length());
