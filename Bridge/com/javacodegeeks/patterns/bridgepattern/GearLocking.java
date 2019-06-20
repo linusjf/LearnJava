@@ -7,7 +7,7 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @version 1.0
  */
 public class GearLocking implements Product {
-  private final String productName;
+  private final String prodName;
 
   /**
    * Creates a new <code>GearLocking</code> instance.
@@ -15,12 +15,12 @@ public class GearLocking implements Product {
    * @param productName a <code>String</code> value
    */
   public GearLocking(String productName) {
-    this.productName = productName;
+    this.prodName = productName;
   }
 
   @Override
   public String productName() {
-    return productName;
+    return prodName;
   }
 
   @Override

@@ -31,18 +31,18 @@ public final class Form {
     this.lastName = formBuilder.lastName;
     this.userName = formBuilder.userName;
     this.password = formBuilder.password;
-    this.address = formBuilder.address;
-    this.dob = formBuilder.dob;
-    this.email = formBuilder.email;
-    this.backupEmail = formBuilder.backupEmail;
-    this.spouseName = formBuilder.spouseName;
-    this.city = formBuilder.city;
-    this.state = formBuilder.state;
-    this.country = formBuilder.country;
-    this.language = formBuilder.language;
-    this.passwordHint = formBuilder.passwordHint;
-    this.securityQuestion = formBuilder.securityQuestion;
-    this.securityAnswer = formBuilder.securityAnswer;
+    this.address = formBuilder.addr;
+    this.dob = formBuilder.dateOfBirth;
+    this.email = formBuilder.emailAddress;
+    this.backupEmail = formBuilder.backupEmailAddress;
+    this.spouseName = formBuilder.spouse;
+    this.city = formBuilder.cityName;
+    this.state = formBuilder.stateName;
+    this.country = formBuilder.countryName;
+    this.language = formBuilder.lang;
+    this.passwordHint = formBuilder.hint;
+    this.securityQuestion = formBuilder.securityQuery;
+    this.securityAnswer = formBuilder.securityReply;
   }
 
   private String toString(String label, Object value) {
@@ -110,18 +110,18 @@ public final class Form {
     private String lastName;
     private String userName;
     private String password;
-    private String address;
-    private Date dob;
-    private String email;
-    private String backupEmail;
-    private String spouseName;
-    private String city;
-    private String state;
-    private String country;
-    private String language;
-    private String passwordHint;
-    private String securityQuestion;
-    private String securityAnswer;
+    private String addr;
+    private Date dateOfBirth;
+    private String emailAddress;
+    private String backupEmailAddress;
+    private String spouse;
+    private String cityName;
+    private String stateName;
+    private String countryName;
+    private String lang;
+    private String hint;
+    private String securityQuery;
+    private String securityReply;
 
     /**
      * Creates a new <code>FormBuilder</code> instance.
@@ -146,7 +146,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder address(String address) {
-      this.address = address;
+      this.addr = address;
       return this;
     }
 
@@ -157,7 +157,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder dob(Date dob) {
-      this.dob = dob;
+      this.dateOfBirth = dob;
       return this;
     }
 
@@ -168,7 +168,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder email(String email) {
-      this.email = email;
+      this.emailAddress = email;
       return this;
     }
 
@@ -179,7 +179,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder backupEmail(String backupEmail) {
-      this.backupEmail = backupEmail;
+      this.backupEmailAddress = backupEmail;
       return this;
     }
 
@@ -190,7 +190,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder spouseName(String spouseName) {
-      this.spouseName = spouseName;
+      this.spouse = spouseName;
       return this;
     }
 
@@ -201,7 +201,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder city(String city) {
-      this.city = city;
+      this.cityName = city;
       return this;
     }
 
@@ -212,7 +212,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder state(String state) {
-      this.state = state;
+      this.stateName = state;
       return this;
     }
 
@@ -223,7 +223,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder country(String country) {
-      this.country = country;
+      this.countryName = country;
       return this;
     }
 
@@ -234,7 +234,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder language(String language) {
-      this.language = language;
+      this.lang = language;
       return this;
     }
 
@@ -245,7 +245,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder passwordHint(String passwordHint) {
-      this.passwordHint = passwordHint;
+      this.hint = passwordHint;
       return this;
     }
 
@@ -256,7 +256,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder securityQuestion(String securityQuestion) {
-      this.securityQuestion = securityQuestion;
+      this.securityQuery = securityQuestion;
       return this;
     }
 
@@ -267,7 +267,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder securityAnswer(String securityAnswer) {
-      this.securityAnswer = securityAnswer;
+      this.securityReply = securityAnswer;
       return this;
     }
 

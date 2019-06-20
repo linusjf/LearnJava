@@ -18,10 +18,10 @@ public final class NutritionFacts {
   private NutritionFacts(Builder bilder) {
     servingSize = bilder.servingSize;
     servings = bilder.servings;
-    calories = bilder.calories;
-    fat = bilder.fat;
-    sodium = bilder.sodium;
-    carbohydrate = bilder.carbohydrate;
+    calories = bilder.cals;
+    fat = bilder.fats;
+    sodium = bilder.sod;
+    carbohydrate = bilder.carbs;
   }
 
   /**
@@ -52,10 +52,10 @@ public final class NutritionFacts {
     // Required parameters
     private final int servingSize;
     private final int servings;
-    private int calories;
-    private int fat;
-    private int sodium;
-    private int carbohydrate;
+    private int cals;
+    private int fats;
+    private int sod;
+    private int carbs;
 
     /**
      * Creates a new <code>Builder</code> instance.
@@ -75,7 +75,7 @@ public final class NutritionFacts {
      * @return a <code>Builder</code> value
      */
     public Builder calories(int val) {
-      calories = val;
+      cals = val;
       return this;
     }
 
@@ -86,7 +86,7 @@ public final class NutritionFacts {
      * @return a <code>Builder</code> value
      */
     public Builder fat(int val) {
-      fat = val;
+      fats = val;
       return this;
     }
 
@@ -97,7 +97,7 @@ public final class NutritionFacts {
      * @return a <code>Builder</code> value
      */
     public Builder sodium(int val) {
-      sodium = val;
+      sod = val;
       return this;
     }
 
@@ -108,7 +108,7 @@ public final class NutritionFacts {
      * @return a <code>Builder</code> value
      */
     public Builder carbohydrate(int val) {
-      carbohydrate = val;
+      carbs = val;
       return this;
     }
 

@@ -32,7 +32,11 @@
   <rule ref="category/java/bestpractices.xml/LooseCoupling"/>
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray"/>
   <rule ref="category/java/bestpractices.xml/MissingOverride"/>
-  <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine"/>
+  <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
+    <properties>
+        <property name="strictMode" value="false" />
+    </properties>
+  </rule>
   <rule ref="category/java/bestpractices.xml/PositionLiteralsFirstInCaseInsensitiveComparisons"/>
   <rule ref="category/java/bestpractices.xml/PositionLiteralsFirstInComparisons"/>
   <rule ref="category/java/bestpractices.xml/PreserveStackTrace"/>
@@ -190,26 +194,26 @@
   </rule>
   <rule ref="category/java/errorprone.xml/AssignmentToNonFinalStatic"/>
   <rule ref="category/java/errorprone.xml/AvoidAccessibilityAlteration"/>
-  <!-- <rule ref="category/java/errorprone.xml/AvoidAssertAsIdentifier" /> -->
+   <rule ref="category/java/errorprone.xml/AvoidAssertAsIdentifier" />
   <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
   <rule ref="category/java/errorprone.xml/AvoidCallingFinalize"/>
   <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
   <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
   <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
-  <!-- <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/AvoidEnumAsIdentifier" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName" /> -->
+  <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals" /> 
+  <rule ref="category/java/errorprone.xml/AvoidEnumAsIdentifier" /> 
+   <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName" /> 
+  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName" /> 
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause"/>
-  <!-- <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/AvoidLosingExceptionInformation" /> -->
+  <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition" /> 
+   <rule ref="category/java/errorprone.xml/AvoidLosingExceptionInformation" /> 
   <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators"/>
   <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues"/>
   <rule ref="category/java/errorprone.xml/BadComparison"/>
   <!-- <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" /> -->
   <rule ref="category/java/errorprone.xml/BrokenNullCheck"/>
-  <!-- <rule ref="category/java/errorprone.xml/CallSuperFirst" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/CallSuperLast" /> -->
+   <rule ref="category/java/errorprone.xml/CallSuperFirst" /> 
+   <rule ref="category/java/errorprone.xml/CallSuperLast" /> 
   <rule ref="category/java/errorprone.xml/CheckSkipResult"/>
   <rule ref="category/java/errorprone.xml/ClassCastExceptionWithToArray"/>
   <rule ref="category/java/errorprone.xml/CloneMethodMustBePublic"/>
@@ -222,10 +226,10 @@
   <!-- <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" /> -->
   <!-- <rule ref="category/java/errorprone.xml/DetachedTestCase" /> -->
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly"/>
-  <!-- <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" /> -->
+  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" /> 
   <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable"/>
   <!-- <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally" /> -->
+  <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally" /> 
   <rule ref="category/java/errorprone.xml/DontImportSun"/>
   <rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices"/>
   <rule ref="category/java/errorprone.xml/EqualsNull"/>
@@ -249,7 +253,7 @@
   <!-- <rule ref="category/java/errorprone.xml/MoreThanOneLogger" /> -->
   <rule ref="category/java/errorprone.xml/NonCaseLabelInSwitchStatement"/>
   <rule ref="category/java/errorprone.xml/NonStaticInitializer"/>
-  <!-- <rule ref="category/java/errorprone.xml/NullAssignment" /> -->
+  <rule ref="category/java/errorprone.xml/NullAssignment" /> 
   <rule ref="category/java/errorprone.xml/OverrideBothEqualsAndHashcode"/>
   <rule ref="category/java/errorprone.xml/ProperCloneImplementation"/>
   <rule ref="category/java/errorprone.xml/ProperLogger"/>
@@ -286,15 +290,15 @@
   <rule ref="category/java/errorprone.xml/EmptySynchronizedBlock"/>
   <rule ref="category/java/errorprone.xml/EmptyTryBlock"/>
   <rule ref="category/java/errorprone.xml/EmptyWhileStmt"/>
-  <!-- <rule ref="category/java/multithreading.xml/AvoidSynchronizedAtMethodLevel" /> -->
+  <rule ref="category/java/multithreading.xml/AvoidSynchronizedAtMethodLevel" />
   <rule ref="category/java/multithreading.xml/AvoidThreadGroup"/>
   <rule ref="category/java/multithreading.xml/AvoidUsingVolatile"/>
-  <!-- <rule ref="category/java/multithreading.xml/DoNotUseThreads" /> -->
+  <rule ref="category/java/multithreading.xml/DoNotUseThreads" />
   <rule ref="category/java/multithreading.xml/DontCallThreadRun"/>
   <rule ref="category/java/multithreading.xml/DoubleCheckedLocking"/>
   <rule ref="category/java/multithreading.xml/NonThreadSafeSingleton"/>
   <rule ref="category/java/multithreading.xml/UnsynchronizedStaticFormatter"/>
-  <!-- <rule ref="category/java/multithreading.xml/UseConcurrentHashMap" /> -->
+   <rule ref="category/java/multithreading.xml/UseConcurrentHashMap" />
   <rule ref="category/java/multithreading.xml/UseNotifyAllInsteadOfNotify"/>
   <rule ref="category/java/performance.xml/AddEmptyString"/>
   <rule ref="category/java/performance.xml/AppendCharacterWithChar"/>

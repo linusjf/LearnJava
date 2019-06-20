@@ -11,7 +11,7 @@ public final class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    this.sauceInside = builder.sauceInside;  // NOPMD
+    this.sauceInside = builder.sauce;  // NOPMD
   }
 
   /** returns object state as String. */
@@ -30,7 +30,7 @@ public final class Calzone extends Pizza {
 
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
-    private boolean sauceInside;  // Default
+    private boolean sauce;  // Default
 
     /**
      * sets sauce.
@@ -38,7 +38,7 @@ public final class Calzone extends Pizza {
      * @return Calzone object
      */
     public Builder sauceInside() {
-      sauceInside = true;
+      sauce = true;
       return this;
     }
 
