@@ -77,7 +77,9 @@ public final class Singleton implements Serializable, Cloneable {
    *
    * @return a <code>long</code> value
    */
-  public synchronized long getNextValue() {
+  public long getNextValue() {
+    synchronized (instance) {
     return nextValue++;
+    }
   }
 }

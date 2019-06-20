@@ -22,26 +22,28 @@ public final class PlatformFactory {  // NOPMD
    * @param platformType a <code>String</code> value
    * @return a <code>Platform</code> value
    */
-  public static synchronized Platform getPlatformInstance(String platformType) {
-    Platform platform = map.get(platformType);
-    if (platform == null) {
-      switch (platformType) {
-        case "C":
-          platform = new CPlatform();
-          break;
-        case "CPP":
-          platform = new CPPPlatform();
-          break;
-        case "JAVA":
-          platform = new JavaPlatform();
-          break;
-        case "RUBY":
-          platform = new RubyPlatform();
-          break;
-        default:
-          break;
+  public static Platform getPlatformInstance(String platformType) {
+    synchronized (Platform.class) {
+      Platform platform = map.get(platformType);
+      if (platform == null) {
+        switch (platformType) {
+          case "C":
+            platform = new CPlatform();
+            break;
+          case "CPP":
+            platform = new CPPPlatform();
+            break;
+          case "JAVA":
+            platform = new JavaPlatform();
+            break;
+          case "RUBY":
+            platform = new RubyPlatform();
+            break;
+          default:
+            break;
+        }
+        map.put(platformType, platform);
       }
-      map.put(platformType, platform);
     }
     return platform;
   }

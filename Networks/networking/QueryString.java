@@ -11,12 +11,14 @@ public class QueryString {
     query = new StringBuilder();
   }
 
-  public synchronized void add(String name, String value) {
+  public void add(String name, String value) {
+    synchronized(QueryString.class) {
     query.append('&');
     encode(name, value);
+    }
   }
 
-  private synchronized void encode(String name, String value) {
+  private void encode(String name, String value) {
     try {
       query.append(URLEncoder.encode(name, "UTF-8"));
       query.append('=');
@@ -26,8 +28,10 @@ public class QueryString {
     }
   }
 
-  public synchronized String getQuery() {
+  public String getQuery() {
+    synchronized(Query.class) {
     return query.toString();
+    }
   }
 
   @Override
