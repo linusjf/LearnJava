@@ -200,7 +200,7 @@
   <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
   <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
   <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
-  <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
+<!--<rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
     <properties>
       <property name="separator" value=","/>
       <property name="maxDuplicateLiterals" value="4"/>
@@ -208,12 +208,12 @@
       <property name="skipAnnotations" value="true"/>
       <property name="exceptionList" value=""/>
     </properties>
-  </rule>
+  </rule> -->
   <rule ref="category/java/errorprone.xml/AvoidEnumAsIdentifier"/>
-  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName"/>
-  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName"/>
+  <!--  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName"/> -->
+  <!-- <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName"/> -->
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause"/>
-  <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition"/>
+  <!-- <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition"/> -->
   <rule ref="category/java/errorprone.xml/AvoidLosingExceptionInformation"/>
   <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators"/>
   <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues"/>
@@ -234,7 +234,7 @@
   <!-- <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" /> -->
   <!-- <rule ref="category/java/errorprone.xml/DetachedTestCase" /> -->
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly"/>
-  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit"/>
+  <!--  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit"/> -->
   <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable"/>
   <!-- <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" /> -->
   <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally"/>
@@ -306,7 +306,7 @@
   <rule ref="category/java/multithreading.xml/DoubleCheckedLocking"/>
   <rule ref="category/java/multithreading.xml/NonThreadSafeSingleton"/>
   <rule ref="category/java/multithreading.xml/UnsynchronizedStaticFormatter"/>
-  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/>
+  <!--  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/> -->
   <rule ref="category/java/multithreading.xml/UseNotifyAllInsteadOfNotify"/>
   <rule ref="category/java/performance.xml/AddEmptyString"/>
   <rule ref="category/java/performance.xml/AppendCharacterWithChar"/>
