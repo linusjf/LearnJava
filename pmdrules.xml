@@ -6,7 +6,12 @@
   <!-- <rule ref="category/java/bestpractices.xml/AccessorMethodGeneration" /> -->
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly"/>
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace"/>
-  <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables"/>
+<rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+    <properties>
+        <property name="foreachReassign" value="firstOnly" />
+        <property name="forReassign" value="skip" />
+    </properties>
+  </rule>
   <rule ref="category/java/bestpractices.xml/AvoidReassigningParameters"/>
   <rule ref="category/java/bestpractices.xml/AvoidStringBufferField"/>
   <rule ref="category/java/bestpractices.xml/AvoidUsingHardCodedIP"/>
