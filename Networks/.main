@@ -17,3 +17,4 @@ networking.QueryString
 networking.GoogleSearch Bill and Melinda Gates
 com.javacodegeeks.snippets.core.ProtectedUrlAccess `../generaterandom`
 networking.SourceViewer2 https://www.spamhaus.org/
+networking.EncodingAwareSourceViewer https://www.spamhaus.org/ https://www.google.com
