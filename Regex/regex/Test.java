@@ -19,12 +19,18 @@ public final class Test {
 
     String secondTest = "$2$12$dfghhjjhggg";
 
+    String thirdTest = "$2a$12$3PJIlsPnJBgPNr4qNcZPke";
+
     Matcher matcher = passwordPattern.matcher(firstTest);
 
     System.out.println(matcher.matches());
     System.out.println(matcher.end(1));
 
     matcher = passwordPattern.matcher(secondTest);
+
+    System.out.println(matcher.matches());
+      System.out.println(matcher.end(1));
+    matcher = passwordPattern.matcher(thirdTest);
 
     System.out.println(matcher.matches());
       System.out.println(matcher.end(1));

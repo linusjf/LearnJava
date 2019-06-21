@@ -18,6 +18,8 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
@@ -63,10 +65,15 @@ import java.security.SecureRandom;
  * @version 0.2
  */
 public class BCrypt {
-  // Expanded Blowfish key
-  @SuppressWarnings("membername") private int[] P;  // NOPMD
+  private static final Pattern PASSWORD_PATTERN =
+      Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
-  @SuppressWarnings("membername") private int[] S;  // NOPMD
+  // Expanded Blowfish key
+  @SuppressWarnings("membername")
+  private int[] P;  // NOPMD
+
+  @SuppressWarnings("membername")
+  private int[] S;  // NOPMD
 
   /**
    * Encode a byte array using bcrypt's slightly-modified base64 encoding
@@ -367,22 +374,25 @@ public class BCrypt {
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char)0;
     int off = 0;
-
-    if (salt.charAt(0) != DOLLAR || salt.charAt(1) != '2')
-      throw new IllegalArgumentException("Invalid salt version");
-    if (salt.charAt(2) == DOLLAR)
-      off = 3;
-    else {
-      minor = salt.charAt(2);
-      if (minor != LOWER_CASE_A || salt.charAt(3) != DOLLAR)
-        throw new IllegalArgumentException("Invalid salt revision");
-      off = 4;
-    }
+    System.out.println(salt);
+    Matcher matcher = PASSWORD_PATTERN.matcher(salt);
+    if (matcher.matches()) {
+      off = matcher.end(1);
+      if (off == 4)
+        minor = 'a';
+    } else
+      throw new IllegalArgumentException("Invalid salt:" + salt);
+    /**
+     * if (salt.charAt(0) != DOLLAR || salt.charAt(1) != '2') throw new
+     * IllegalArgumentException("Invalid salt version"); if (salt.charAt(2) ==
+     * DOLLAR) off = 3; else { minor = salt.charAt(2); if (minor != LOWER_CASE_A
+     * || salt.charAt(3) != DOLLAR) throw new IllegalArgumentException("Invalid
+     * salt revision"); off = 4; }
+     */
 
     // Extract number of rounds
     if (salt.charAt(off + 2) > DOLLAR)
       throw new IllegalArgumentException("Missing salt rounds");
-
     return new String[] {String.valueOf(minor), String.valueOf(off)};
   }
 

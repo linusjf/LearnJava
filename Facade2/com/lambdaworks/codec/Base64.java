@@ -20,8 +20,7 @@ public final class Base64 {  // NOPMD
   private static final char[] TOKENS =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
           .toCharArray();
-  private static final int[] INDEX = 
-    new int[128];
+  private static final int[] INDEX = new int[128];
   private static final char PAD = '=';
   private static final int TWO = 2;
 
