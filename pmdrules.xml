@@ -200,7 +200,7 @@
   <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
   <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
   <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
-<!--<rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
+  <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
     <properties>
       <property name="separator" value=","/>
       <property name="maxDuplicateLiterals" value="4"/>
@@ -208,14 +208,14 @@
       <property name="skipAnnotations" value="true"/>
       <property name="exceptionList" value=""/>
     </properties>
-  </rule> -->
+  </rule>
   <rule ref="category/java/errorprone.xml/AvoidEnumAsIdentifier"/>
   <!--  <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName"/> -->
   <!-- <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName"/> -->
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause"/>
   <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
     <properties>
-        <property name="ignoreMagicNumbers" value="-1,0,1" />
+      <property name="ignoreMagicNumbers" value="-1,0,1"/>
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/AvoidLosingExceptionInformation"/>

@@ -29,6 +29,12 @@ import javax.imageio.ImageIO;
 public class RequestHandler implements Runnable {
   private static final String IMG_REGEX = "\\.(png|jpg|jpeg|gif)";
 
+  private static final String PROXY_AGENT_STR =
+      "Proxy-agent: ProxyServer/1.0" + System.lineSeparator();
+
+  private static final String HTTP_OK =
+      "HTTP/1.0 200 OK" + System.lineSeparator();
+
   /** Socket connected to client passed by Proxy server. */
   final Socket clientSocket;
 
@@ -135,15 +141,12 @@ public class RequestHandler implements Runnable {
 
         if (image == null) {
           System.out.println("Image " + cachedFile.getName() + " was null");
-          response = "HTTP/1.0 404 NOT FOUND \n"
-                     + "Proxy-agent: ProxyServer/1.0\n"
-                     + "\r\n";
+          response = "HTTP/1.0 404 NOT FOUND \n" + PROXY_AGENT_STR
+                     + System.lineSeparator();
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
         } else {
-          response = "HTTP/1.0 200 OK\n"
-                     + "Proxy-agent: ProxyServer/1.0\n"
-                     + "\r\n";
+          response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
           ImageIO.write(image, fileExtension.substring(1),
@@ -153,9 +156,7 @@ public class RequestHandler implements Runnable {
         final BufferedReader cachedFileBufferedReader =
             Files.newBufferedReader(Paths.get(cachedFile.getAbsolutePath()));
 
-        response = "HTTP/1.0 200 OK\n"
-                   + "Proxy-agent: ProxyServer/1.0\n"
-                   + "\r\n";
+        response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
         proxyToClientBw.write(response);
         proxyToClientBw.flush();
 
@@ -226,9 +227,8 @@ public class RequestHandler implements Runnable {
   }
 
   private void sendErrorMsgToClient(Writer proxyToClientBw) throws IOException {
-    String error = "HTTP/1.0 404 NOT FOUND\n"
-                   + "Proxy-agent: ProxyServer/1.0\n"
-                   + "\r\n";
+    String error =
+        "HTTP/1.0 404 NOT FOUND\n" + PROXY_AGENT_STR + System.lineSeparator();
     proxyToClientBw.write(error);
     proxyToClientBw.flush();
   }
@@ -274,9 +274,7 @@ public class RequestHandler implements Runnable {
         ImageIO.write(image, fileExtension.substring(1), fileToCache);
 
         // Send response code to client
-        String line = "HTTP/1.0 200 OK\n"
-                      + "Proxy-agent: ProxyServer/1.0\n"
-                      + "\r\n";
+        String line = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
 
@@ -301,9 +299,7 @@ public class RequestHandler implements Runnable {
             new InputStreamReader(proxyToServerCon.getInputStream()));
 
         // Send success code to client
-        String line = "HTTP/1.0 200 OK\n"
-                      + "Proxy-agent: ProxyServer/1.0\n"
-                      + "\r\n";
+        String line = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
         proxyToClientBw.write(line);
 
         // Read from input stream between proxy and remote server
@@ -365,9 +361,8 @@ public class RequestHandler implements Runnable {
       proxyToServerSocket.setSoTimeout(60 * 1000);
 
       // Send Connection established to the client
-      String line = "HTTP/1.0 200 Connection established\r\n"
-                    + "Proxy-Agent: ProxyServer/1.0\r\n"
-                    + "\r\n";
+      String line = "HTTP/1.0 200 Connection established\r\n" + PROXY_AGENT_STR
+                    + System.lineSeparator();
       proxyToClientBw.write(line);
       proxyToClientBw.flush();
 
@@ -403,8 +398,7 @@ public class RequestHandler implements Runnable {
                      proxyToClientBw);
     } catch (SocketTimeoutException e) {
       String line = "HTTP/1.0 504 Timeout Occured after 10s\n"
-                    + "User-Agent: ProxyServer/1.0\n"
-                    + "\r\n";
+                    + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       try {
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
@@ -453,8 +447,7 @@ public class RequestHandler implements Runnable {
     try (BufferedWriter bufferedWriter = new BufferedWriter(
              new OutputStreamWriter(clientSocket.getOutputStream()))) {
       String line = "HTTP/1.0 403 Access Forbidden \n"
-                    + "User-Agent: ProxyServer/1.0\n"
-                    + "\r\n";
+                    + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       bufferedWriter.write(line);
       bufferedWriter.flush();
     } catch (IOException e) {
