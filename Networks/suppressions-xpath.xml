@@ -12,4 +12,8 @@
   <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='maxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']"/>
   <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='secondsInTheFuture']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']"/>
   <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sharedMaxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="MemoryCache.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='MemoryCache']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='MemoryCache']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
 </suppressions>

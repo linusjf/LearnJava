@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MemoryCache extends ResponseCache {
   private final Map<URI, SimpleCacheResponse> responses =
-      new ConcurrentHashMap<URI, SimpleCacheResponse>();
+      new ConcurrentHashMap<>();
   private final int maxEntries;
 
   public MemoryCache() {
@@ -51,11 +51,10 @@ public class MemoryCache extends ResponseCache {
       // check expiration date
       if (response != null && response.isExpired()) {
         responses.remove(response);
-        response = null;
+        return null;
       }
       return response;
-    } else {
-      return null;
     }
+    return null;
   }
 }

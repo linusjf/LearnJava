@@ -374,11 +374,10 @@ public class BCrypt {
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char)0;
     int off = 0;
-    System.out.println(salt);
     Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (matcher.matches()) {
       off = matcher.end(1);
-      if (off == 4)
+      if (off == OFFSET_4)
         minor = 'a';
     } else
       throw new IllegalArgumentException("Invalid salt:" + salt);

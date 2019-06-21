@@ -13,6 +13,8 @@ public final class BCryptConstants {
 
   static final int TEN = 10;
 
+  static final int OFFSET_4 = 4;
+
   // Blowfish parameters
   static final int BLOWFISH_NUM_ROUNDS = 16;
 
