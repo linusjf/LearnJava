@@ -10,6 +10,6 @@ Specification-Title: Proxy
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ee218e4 June 19 2019
+Implementation-Version: ca9ff48 June 21 2019
 Implementation-Vendor: 
 

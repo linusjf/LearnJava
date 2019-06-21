@@ -22,6 +22,7 @@ public final class Base64 {  // NOPMD
           .toCharArray();
   private static final int[] DECODE = new int[128];
   private static final char PAD = '=';
+  private static final int TWO = 2;
 
   static {
     Arrays.fill(DECODE, -1);
@@ -160,12 +161,12 @@ public final class Base64 {  // NOPMD
 
     if (tail > 0) {
       n = (src[si] & 0xff) << 10;
-      if (tail == 2)
+      if (tail == TWO)
         n |= (src[++si] & 0xff) << 2;
 
       dst[di++] = table[(n >>> 12) & 0x3f];
       dst[di++] = table[(n >>> 6) & 0x3f];
-      if (tail == 2)
+      if (tail == TWO)
         dst[di++] = table[n & 0x3f];
 
       if (pad != 0 && tail == 1)

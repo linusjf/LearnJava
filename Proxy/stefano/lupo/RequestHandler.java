@@ -395,7 +395,7 @@ public class RequestHandler implements Runnable {
         read = proxyToServerSocket.getInputStream().read(buffer);
         if (read > 0) {
           clientSocket.getOutputStream().write(buffer, 0, read);
-          if (proxyToServerSocket.getInputStream().available() < 1)
+          if (proxyToServerSocket.getInputStream().available() == 0)
             clientSocket.getOutputStream().flush();
         }
       } while (read >= 0);
@@ -496,7 +496,7 @@ public class RequestHandler implements Runnable {
           read = proxyToClientIS.read(buffer);
           if (read > 0) {
             proxyToServerOS.write(buffer, 0, read);
-            if (proxyToClientIS.available() < 1)
+            if (proxyToClientIS.available() == 0)
               proxyToServerOS.flush();
           }
         } while (read >= 0);

@@ -7,6 +7,12 @@ public final class BCryptConstants {
 
   static final int BCRYPT_SALT_LEN = 16;
 
+  static final char DOLLAR = '$';
+
+  static final char LOWER_CASE_A = 'a';
+
+  static final int TEN = 10;
+
   // Blowfish parameters
   static final int BLOWFISH_NUM_ROUNDS = 16;
 

@@ -368,19 +368,19 @@ public class BCrypt {
     char minor = (char)0;
     int off = 0;
 
-    if (salt.charAt(0) != '$' || salt.charAt(1) != '2')
+    if (salt.charAt(0) != DOLLAR || salt.charAt(1) != '2')
       throw new IllegalArgumentException("Invalid salt version");
-    if (salt.charAt(2) == '$')
+    if (salt.charAt(2) == DOLLAR)
       off = 3;
     else {
       minor = salt.charAt(2);
-      if (minor != 'a' || salt.charAt(3) != '$')
+      if (minor != LOWER_CASE_A || salt.charAt(3) != DOLLAR)
         throw new IllegalArgumentException("Invalid salt revision");
       off = 4;
     }
 
     // Extract number of rounds
-    if (salt.charAt(off + 2) > '$')
+    if (salt.charAt(off + 2) > DOLLAR)
       throw new IllegalArgumentException("Missing salt rounds");
 
     return new String[] {String.valueOf(minor), String.valueOf(off)};
@@ -404,7 +404,8 @@ public class BCrypt {
 
     String realSalt = salt.substring(off + 3, off + 25);
     try {
-      passwordb = (password + (minor >= 'a' ? "\000" : "")).getBytes("UTF-8");
+      passwordb =
+          (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
     } catch (final UnsupportedEncodingException uee) {
       throw new AssertionError("UTF-8 is not supported", uee);
     }
@@ -419,15 +420,15 @@ public class BCrypt {
                                           byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
-    if (minor >= 'a')
+    if (minor >= LOWER_CASE_A)
       rs.append(minor);
-    rs.append('$');
-    if (rounds < 10)
+    rs.append(DOLLAR);
+    if (rounds < TEN)
       rs.append('0');
     rs.append(Integer.toString(rounds))
-        .append('$')
+        .append(DOLLAR)
         .append(encodeBase64(saltb, saltb.length))
-        .append('$')
+        .append(DOLLAR)
         .append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
     return rs.toString();
   }
@@ -446,10 +447,10 @@ public class BCrypt {
 
     random.nextBytes(rnd);
     rs.append("$2a$");
-    if (logRounds < 10)
+    if (logRounds < TEN)
       rs.append('0');
     rs.append(Integer.toString(logRounds))
-        .append('$')
+        .append(DOLLAR)
         .append(encodeBase64(rnd, rnd.length));
     return rs.toString();
   }

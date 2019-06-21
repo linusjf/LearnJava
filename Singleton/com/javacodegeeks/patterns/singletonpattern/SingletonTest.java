@@ -158,6 +158,7 @@ public enum SingletonTest {
     }
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   private static void testState() {
     try {
       resetSingleton();

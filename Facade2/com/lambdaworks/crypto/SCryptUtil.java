@@ -110,6 +110,7 @@ public final class SCryptUtil {  // NOPMD
     }
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   private static int log2(int m) {
     int log = 0;
     int n = m;
