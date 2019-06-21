@@ -25,9 +25,9 @@ public interface Subject {
   void notifyObservers();
 
   /**
-   * Describe <code>subjectDetails</code> method here.
+   * Describe <code>getSubjectDetails</code> method here.
    *
    * @return a <code>String</code> value
    */
-  String subjectDetails();
+  String getSubjectDetails();
 }

@@ -7,7 +7,7 @@ package com.javacodegeeks.patterns.flyweightpattern;
  * @version 1.0
  */
 public class Code {
-  private String code;
+  private String sourceCode;
 
   /**
    * Describe <code>getCode</code> method here.
@@ -15,7 +15,7 @@ public class Code {
    * @return a <code>String</code> value
    */
   public String getCode() {
-    return code;
+    return sourceCode;
   }
 
   /**
@@ -24,6 +24,6 @@ public class Code {
    * @param code a <code>String</code> value
    */
   public void setCode(String code) {
-    this.code = code;
+    this.sourceCode = code;
   }
 }

@@ -17,18 +17,19 @@ import java.util.Arrays;
  * @author Will Glozer
  */
 public final class Base64 {  // NOPMD
-  private static final char[] ENCODE =
+  private static final char[] TOKENS =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
           .toCharArray();
-  private static final int[] DECODE = new int[128];
+  private static final int[] INDEX = 
+    new int[128];
   private static final char PAD = '=';
   private static final int TWO = 2;
 
   static {
-    Arrays.fill(DECODE, -1);
-    for (int i = 0; i < ENCODE.length; i++)
-      DECODE[ENCODE[i]] = i;
-    DECODE[PAD] = 0;
+    Arrays.fill(INDEX, -1);
+    for (int i = 0; i < TOKENS.length; i++)
+      INDEX[TOKENS[i]] = i;
+    INDEX[PAD] = 0;
   }
 
   private Base64() {
@@ -43,7 +44,7 @@ public final class Base64 {  // NOPMD
    */
   @SuppressWarnings("PMD.UseVarargs")
   public static byte[] decode(char[] chars) {
-    return decode(chars, DECODE, PAD);
+    return decode(chars, INDEX, PAD);
   }
 
   /**
@@ -108,7 +109,7 @@ public final class Base64 {  // NOPMD
    * @return Encoded chars.
    */
   public static char[] encode(byte[] bytes) {
-    return encode(bytes, ENCODE, PAD);
+    return encode(bytes, TOKENS, PAD);
   }
 
   /**
@@ -119,7 +120,7 @@ public final class Base64 {  // NOPMD
    * @return Encoded chars.
    */
   public static char[] encode(byte[] bytes, boolean padded) {
-    return encode(bytes, ENCODE, padded ? PAD : 0);
+    return encode(bytes, TOKENS, padded ? PAD : 0);
   }
 
   /**

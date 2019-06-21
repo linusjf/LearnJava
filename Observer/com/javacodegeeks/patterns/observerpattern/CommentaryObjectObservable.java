@@ -34,11 +34,11 @@ public class CommentaryObjectObservable implements Commentary {
   }
 
   /**
-   * Describe <code>subjectDetails</code> method here.
+   * Describe <code>getSubjectDetails</code> method here.
    *
    * @return a <code>String</code> value
    */
-  public String subjectDetails() {
+  public String getSubjectDetails() {
     return subjectDetails;
   }
 

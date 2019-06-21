@@ -4,8 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public final class EncoderTest {
-
-private static final String UTF8 = "UTF-8";
+  private static final String UTF8 = "UTF-8";
 
   private EncoderTest() {
     throw new IllegalStateException("Private constructor");
@@ -14,8 +13,7 @@ private static final String UTF8 = "UTF-8";
   public static void main(String[] args) {
     try {
       System.out.println(URLEncoder.encode("This string has spaces", UTF8));
-      System.out.println(
-          URLEncoder.encode("This*string*has*asterisks", UTF8));
+      System.out.println(URLEncoder.encode("This*string*has*asterisks", UTF8));
       System.out.println(
           URLEncoder.encode("This%string%has%percent%signs", UTF8));
       System.out.println(URLEncoder.encode("This+string+has+pluses", UTF8));
@@ -29,8 +27,7 @@ private static final String UTF8 = "UTF-8";
       System.out.println(URLEncoder.encode("This.string.has.periods", UTF8));
       System.out.println(
           URLEncoder.encode("This=string=has=equals=signs", UTF8));
-      System.out.println(
-          URLEncoder.encode("This&string&has&ampersands", UTF8));
+      System.out.println(URLEncoder.encode("This&string&has&ampersands", UTF8));
       System.out.println(
           URLEncoder.encode("Thiséstringéhasé non-ASCII characters", UTF8));
     } catch (UnsupportedEncodingException ex) {

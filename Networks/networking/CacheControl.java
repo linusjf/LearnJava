@@ -54,27 +54,27 @@ public class CacheControl {
     return sharedMaxAge;
   }
 
-  public boolean mustRevalidate() {
+  public boolean isMustRevalidate() {
     return mustRevalidate;
   }
 
-  public boolean proxyRevalidate() {
+  public boolean isProxyRevalidate() {
     return proxyRevalidate;
   }
 
-  public boolean noStore() {
+  public boolean isNoStore() {
     return noStore;
   }
 
-  public boolean noCache() {
+  public boolean isNoCache() {
     return noCache;
   }
 
-  public boolean publicCache() {
+  public boolean isPublicCache() {
     return publicCache;
   }
 
-  public boolean privateCache() {
+  public boolean isPrivateCache() {
     return privateCache;
   }
 }

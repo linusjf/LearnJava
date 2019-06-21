@@ -40,7 +40,7 @@ public class SMSUsers implements Observer {
   @Override
   public void subscribe() {
     System.out.println("Subscribing " + userInfo + " to "
-                       + subject.subjectDetails() + " ...");
+                       + subject.getSubjectDetails() + " ...");
     this.subject.subscribeObserver(this);
     System.out.println("Subscribed successfully.");
   }
@@ -48,7 +48,7 @@ public class SMSUsers implements Observer {
   @Override
   public void unSubscribe() {
     System.out.println("Unsubscribing " + userInfo + " to "
-                       + subject.subjectDetails() + " ...");
+                       + subject.getSubjectDetails() + " ...");
     this.subject.unSubscribeObserver(this);
     System.out.println("Unsubscribed successfully.");
   }

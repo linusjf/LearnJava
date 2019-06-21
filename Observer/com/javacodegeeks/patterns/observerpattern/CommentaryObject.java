@@ -53,7 +53,7 @@ public class CommentaryObject implements Subject, Commentary {
   }
 
   @Override
-  public String subjectDetails() {
+  public String getSubjectDetails() {
     return subjectDetails;
   }
 }

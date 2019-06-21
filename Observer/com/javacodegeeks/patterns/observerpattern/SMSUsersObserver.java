@@ -31,7 +31,7 @@ public class SMSUsersObserver implements PropertyChangeListener {
   /** Describe <code>subscribe</code> method here. */
   public void subscribe() {
     System.out.println("Subscribing " + userInfo + " to "
-                       + observable.subjectDetails() + " ...");
+                       + observable.getSubjectDetails() + " ...");
     this.observable.addPropertyChangeListener(this);
     System.out.println("Subscribed successfully.");
   }
@@ -39,7 +39,7 @@ public class SMSUsersObserver implements PropertyChangeListener {
   /** Describe <code>unSubscribe</code> method here. */
   public void unSubscribe() {
     System.out.println("Unsubscribing " + userInfo + " to "
-                       + observable.subjectDetails() + " ...");
+                       + observable.getSubjectDetails() + " ...");
     this.observable.removePropertyChangeListener(this);
     System.out.println("Unsubscribed successfully.");
   }
