@@ -41,11 +41,12 @@ public class PlayerCreator {
     return null;
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   private Player handleSnookerPlayer(int rank) {
     if (rank == 1) {
       return new SnookerPlayer("Ronnie O'Sullivan");
     }
-    if (rank == 2) {
+    if (rank == 2) { 
       return new SnookerPlayer("Mark Selby");
     }
     if (rank > 3 && rank < 7) {
