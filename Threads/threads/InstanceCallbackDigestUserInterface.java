@@ -11,12 +11,6 @@ public class InstanceCallbackDigestUserInterface {
     this.filename = filename;
   }
 
-  public void calculateDigest() {
-    InstanceCallbackDigest cb = new InstanceCallbackDigest(filename, this);
-    Thread t = new Thread(cb);
-    t.start();
-  }
-
   void receiveDigest(byte[] digest) {
     this.digest = Arrays.copyOf(digest, digest.length);
     System.out.println(this);
@@ -33,12 +27,22 @@ public class InstanceCallbackDigestUserInterface {
     return result;
   }
 
+  public void calculateDigest() {
+    InstanceCallbackDigest cb = new InstanceCallbackDigest(filename, this);
+    Thread t = new Thread(cb);
+    t.start();
+  }
+
+  private static void calculateDigest(String filename) {
+    InstanceCallbackDigestUserInterface d =
+        new InstanceCallbackDigestUserInterface(filename);
+    d.calculateDigest();
+  }
+
   public static void main(String[] args) {
     for (String filename : args) {
       // Calculate the digest
-      InstanceCallbackDigestUserInterface d =
-          new InstanceCallbackDigestUserInterface(filename);
-      d.calculateDigest();
+      calculateDigest(filename);
     }
   }
 }

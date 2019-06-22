@@ -17,10 +17,14 @@ public final class CallbackDigestUserInterface {
 
   public static void main(String[] args) {
     for (String filename : args) {
-      // Calculate the digest
-      CallbackDigest cb = new CallbackDigest(filename);
-      Thread t = new Thread(cb);
-      t.start();
+      spinOffCallback(filename);
     }
+  }
+
+  private static void spinOffCallback(String filename) {
+    // Calculate the digest
+    CallbackDigest cb = new CallbackDigest(filename);
+    Thread t = new Thread(cb);
+    t.start();
   }
 }

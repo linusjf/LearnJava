@@ -19,7 +19,7 @@ public class ParallelAdder {
     for (int i = 0; i < NUM_COUNT; i++) {
       if (count % 2 == 0) {  // grouping
         System.out.println("Prev :" + prev + " current: " + i);
-        Future<Integer> future = executor.submit(new CallableAdder(prev, i));
+        Future<Integer> future = submitNumbers(prev, i, executor);
         list.add(future);
         count = 1;
         continue;
@@ -38,6 +38,11 @@ public class ParallelAdder {
     executor.shutdown();
     System.out.println("Total Sum is " + totsum);
     return totsum;
+  }
+
+  private Future<Integer> submitNumbers(int prev, int i,
+                                        ExecutorService executor) {
+    return executor.submit(new CallableAdder(prev, i));
   }
 
   public int sequentialSum() {

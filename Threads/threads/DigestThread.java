@@ -42,8 +42,12 @@ public class DigestThread extends Thread {
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
     for (String filename : args) {
-      Thread t = new DigestThread(filename);
-      t.start();
+      runDigestThread(filename);
     }
+  }
+
+  private static void runDigestThread(String filename) {
+    Thread t = new DigestThread(filename);
+    t.start();
   }
 }

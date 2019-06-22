@@ -4,7 +4,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-/** @param <T> Type parameter */
+/** 
+ * SyncProxyWrapper class.
+ * @param <T> Type parameter
+ * */
 public class SyncProxyWrapper<T> implements InvocationHandler {
   private final T wrappableImpl;
   private final Object lockObject = new Object();
