@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+/** @param <T> Type parameter */
 public class SyncProxyWrapper<T> implements InvocationHandler {
   private final T wrappableImpl;
   private final Object lockObject = new Object();
@@ -37,8 +38,8 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
   /**
    * Wrap the implementor with your synchronous wrapper.
    *
-   * @return T any template object
-   * @param wrappableClass the interface
+   * @return any template object
+   * @param wrappableClass Class the interface
    * @param wrappableImpl the interface implementation
    */
   @SuppressWarnings({"unchecked", "rawtypes"})

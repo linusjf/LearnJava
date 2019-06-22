@@ -26,9 +26,8 @@ public final class Server {
    * Describe <code>main</code> method here.
    *
    * @param args a <code>String</code> value
-   * @exception Exception if an error occurs
    */
-  public static void main(final String[] args) throws Exception {
+  public static void main(final String[] args) {
     System.out.println("Starting server...");
     try (Selector selector = Selector.open();
          ServerSocketChannel serverSocket = ServerSocketChannel.open();) {
@@ -44,6 +43,8 @@ public final class Server {
           handleSelectionKeys(selector.selectedKeys(), serverSocket);
         }
       }
+    } catch (IOException ioe) {
+      System.err.println(ioe.getMessage());
     }
   }
 

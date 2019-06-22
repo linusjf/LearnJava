@@ -58,10 +58,13 @@ public class WorkLoader {
       System.out.println(workType);
       String values = properties.getProperty(key.toString());
       System.out.println(values);
-      Work work = new Work(Calculator.valueOf(workType),
-                           Arrays.asList(values.split(",")));
-      workList.add(work);
+      addWorkToList(workList, workType, values);
     }
     return workList;
+  }
+
+  private void addWorkToList(List workList, String workType, String values) {
+    workList.add(new Work(Calculator.valueOf(workType),
+                          Arrays.asList(values.split(","))));
   }
 }

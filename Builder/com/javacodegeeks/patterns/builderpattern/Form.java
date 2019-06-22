@@ -8,7 +8,7 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings("PMD.ShortClassName")
+@SuppressWarnings({"PMD.ShortClassName","PMD.TooManyFields"})
 public final class Form {
   private String firstName;
   private String lastName;
@@ -106,6 +106,7 @@ public final class Form {
   }
 
   /** Describe class <code>FormBuilder</code> here. */
+  @SuppressWarnings({"PMD.TooManyMethods","PMD.TooManyFields"})
   public static class FormBuilder {
     private String firstName;
     private String lastName;

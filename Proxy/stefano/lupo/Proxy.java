@@ -173,12 +173,7 @@ public class Proxy implements Runnable {
         // serverSocket.accpet() Blocks until a connection is made
         Socket socket = serverSocket.accept();
         socket.setSoTimeout(60 * 1000);
-        // Create new Thread and pass it Runnable RequestHandler
-        Thread thread = new Thread(new RequestHandler(socket));
-        // Key a reference to each thread so they can be joined later if
-        // necessary
-        servicingThreads.add(thread);
-        thread.start();
+        spinOffRequest(socket);
       } catch (SocketException e) {
         // Socket exception is triggered by management system to shut down the
         // proxy
@@ -187,6 +182,15 @@ public class Proxy implements Runnable {
         System.out.println("IO error : " + e.getMessage());
       }
     }
+  }
+
+  private void spinOffRequest(Socket socket) {
+    // Create new Thread and pass it Runnable RequestHandler
+    Thread thread = new Thread(new RequestHandler(socket));
+    // Key a reference to each thread so they can be joined later if
+    // necessary
+    servicingThreads.add(thread);
+    thread.start();
   }
 
   /**

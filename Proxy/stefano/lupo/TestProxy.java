@@ -57,19 +57,22 @@ public enum TestProxy {
   private static void testURLs(String... urls) {
     for (String strUrl : urls) {
       try {
-        Proxy proxy = null;
-        URL url = new URL(strUrl);
-        System.out.println("Connecting to ..." + strUrl);
-        if (strUrl.startsWith("http")) {
-          proxy = new Proxy(Proxy.Type.HTTP,
-                            new InetSocketAddress(PROXY_HOST, PROXY_PORT));
-          URLConnection connection = url.openConnection(proxy);
-          connection.getInputStream();
-        }
+        connect(strUrl);
       } catch (IOException e) {
         System.err.println("Error creating HTTP(S) connection: "
                            + e.getMessage());
       }
+    }
+  }
+
+  private static void connect(String strUrl) throws IOException {
+    URL url = new URL(strUrl);
+    System.out.println("Connecting to ..." + strUrl);
+    if (strUrl.startsWith("http")) {
+      Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                              new InetSocketAddress(PROXY_HOST, PROXY_PORT));
+      URLConnection connection = url.openConnection(proxy);
+      connection.getInputStream();
     }
   }
 }

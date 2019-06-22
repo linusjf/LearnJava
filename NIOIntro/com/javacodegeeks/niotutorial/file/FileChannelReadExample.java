@@ -35,14 +35,17 @@ public final class FileChannelReadExample implements FileChannelExample {
              createChannel(INPUT_FILE_PATH, FileOperation.READ)) {
       final ByteBuffer buffer = createBuffer();
       while (fileChannel.read(buffer) != -1) {
-        contents.append(new String(buffer.array()));
+        contents.append(convertBytesToString(buffer.array()));
         buffer.clear();
       }
     } catch (IOException e) {
       throw new NIORuntimeException("Unable to read file", e);
     }
-
     return contents.toString();
+  }
+
+  private String convertBytesToString(byte[] bytes) {
+    return new String(bytes);
   }
 
   private ByteBuffer createBuffer() {

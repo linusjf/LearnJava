@@ -6,6 +6,7 @@ package com.javacodegeeks.patterns.facadepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.TooManyMethods")
 public class ScheduleServer {
   /** Describe <code>startBooting</code> method here. */
   public void startBooting() {
