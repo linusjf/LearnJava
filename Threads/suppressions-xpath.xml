@@ -1,38 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='23']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='45']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='46']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='123']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='56']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='76']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='98']]"/>
-<suppress-xpath
-       files="MultithreadedMaxFinder.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='90']]"/>
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='23']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='45']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='46']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='123']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='56']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='76']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='98']]" />
+  <suppress-xpath files="MultithreadedMaxFinder.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='90']]" />
 </suppressions>

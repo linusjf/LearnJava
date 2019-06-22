@@ -111,10 +111,10 @@ readRunOptions()
       echo "Unable to read $proj/$runOptionsFile";}
 }
 
-setupScript="setup"
-teardownScript="teardown"
-nomainFile=".nomain"
-mainFile=".main"
+declare -r setupScript="setup"
+declare -r teardownScript="teardown"
+declare -r nomainFile=".nomain"
+declare -r mainFile=".main"
 proj=$1
 if [ -z $proj ]
   then

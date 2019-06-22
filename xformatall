@@ -1,4 +1,7 @@
 #!/bin/bash
-find . -maxdepth 2 -type f -name "*.xml" ! -path "**/.git/**" \
-  | parallel -j 5 -I% xmllint --output % --format %
+declare -r configFile="tidy.config"
+find . -maxdepth 2 -type f -name "*.xml" \
+  ! -path "**/.git/**" \
+  | parallel -j 5 -I% tidy -config $configFile \
+  -quiet -xml -m %
 exit $?

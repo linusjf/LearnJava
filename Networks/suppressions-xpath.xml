@@ -1,19 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="AddressTests.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='4']"/>
-  <suppress-xpath files="AddressTests.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='4']"/>
-  <suppress-xpath files="AddressTests.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='16']"/>
-  <suppress-xpath files="AddressTests.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='6']"/>
-  <suppress-xpath files="SpamCheck.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isSpammer']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='unsignedByte']]/ASSIGN/EXPR/QUESTION[./IDENT[@text='octet']]/PLUS[./IDENT[@text='octet']]/NUM_INT[@text='256']"/>
-  <suppress-xpath files="LocalProxySelector.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='LocalProxySelector']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='select']]/SLIST/LITERAL_IF/LITERAL_ELSE/SLIST/VARIABLE_DEF[./IDENT[@text='proxyAddress']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='InetSocketAddress']]/ELIST/EXPR/NUM_INT[@text='8000']"/>
-  <suppress-xpath files="EncodingAwareSourceViewer.java" checks="MagicNumberCheck" query="/ENUM_DEF[./IDENT[@text='EncodingAwareSourceViewer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='encoding']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='encodingStart']]/NUM_INT[@text='8']"/>
-  <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='secondsInTheFuture']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']"/>
-  <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='maxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']"/>
-  <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='secondsInTheFuture']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']"/>
-  <suppress-xpath files="CacheControl.java" checks="MagicNumberCheck" query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sharedMaxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="MemoryCache.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='MemoryCache']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='MemoryCache']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+  <suppress-xpath files="AddressTests.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='4']" />
+  <suppress-xpath files="AddressTests.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="AddressTests.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='16']" />
+  <suppress-xpath files="AddressTests.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="SpamCheck.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isSpammer']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='unsignedByte']]/ASSIGN/EXPR/QUESTION[./IDENT[@text='octet']]/PLUS[./IDENT[@text='octet']]/NUM_INT[@text='256']" />
+  <suppress-xpath files="LocalProxySelector.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LocalProxySelector']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='select']]/SLIST/LITERAL_IF/LITERAL_ELSE/SLIST/VARIABLE_DEF[./IDENT[@text='proxyAddress']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='InetSocketAddress']]/ELIST/EXPR/NUM_INT[@text='8000']" />
+  <suppress-xpath files="EncodingAwareSourceViewer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='EncodingAwareSourceViewer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='encoding']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='encodingStart']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="CacheControl.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='secondsInTheFuture']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']" />
+  <suppress-xpath files="CacheControl.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='maxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="CacheControl.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='secondsInTheFuture']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
+  <suppress-xpath files="CacheControl.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sharedMaxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="MemoryCache.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MemoryCache']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='MemoryCache']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
 </suppressions>

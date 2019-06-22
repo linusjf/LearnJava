@@ -1,56 +1,85 @@
 <?xml version="1.0"?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="LearnJava" default="main" basedir=".">
-  <dirname property="LearnJava.basedir" file="${ant.file.LearnJava}"/>
-  <property file="${LearnJava.basedir}/globalbuild.properties"/>
-  <property file="${LearnJava.basedir}/checkstyle.properties"/>
-  <property file="${LearnJava.basedir}/gformat.properties"/>
-  <property file="${LearnJava.basedir}/pmd.properties"/>
+<project xmlns:ivy="antlib:org.apache.ivy.ant"
+         name="LearnJava"
+         default="main"
+         basedir=".">
+  <dirname property="LearnJava.basedir"
+           file="${ant.file.LearnJava}" />
+  <property file="${LearnJava.basedir}/globalbuild.properties" />
+  <property file="${LearnJava.basedir}/checkstyle.properties" />
+  <property file="${LearnJava.basedir}/gformat.properties" />
+  <property file="${LearnJava.basedir}/pmd.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
-  <property name="lib.dir" value="${LearnJava.basedir}/lib"/>
+  <property name="lib.dir"
+            value="${LearnJava.basedir}/lib" />
   <path id="lib.path.id">
-    <fileset dir="${lib.dir}"/>
+    <fileset dir="${lib.dir}" />
   </path>
-  <target name="resolve" description="--&gt; retreive dependencies with ivy">
+  <target name="resolve"
+          description="--&gt; retreive dependencies with ivy">
     <first id="ivyfile">
-      <fileset dir="${LearnJava.basedir}" includes="ivy.xml"/>
+      <fileset dir="${LearnJava.basedir}"
+               includes="ivy.xml" />
     </first>
-    <ivy:resolve file="${toString:ivyfile}"/>
-    <ivy:retrieve pathid="cs.main.path" conf="checkstyle.main"/>
-    <ivy:retrieve pathid="gformat.main.path" conf="gformat.main"/>
-    <ivy:retrieve pathid="cs.lib.path" conf="checkstyle.lib"/>
-    <ivy:retrieve pathid="gformat.lib.path" conf="gformat.lib"/>
-    <ivy:retrieve pathid="pmd-core.main.path" conf="pmd-core.main"/>
-    <ivy:retrieve pathid="pmd-java.main.path" conf="pmd-java.main"/>
-    <ivy:retrieve pathid="pmd-core.lib.path" conf="pmd-core.lib"/>
-    <ivy:retrieve pathid="pmd-java.lib.path" conf="pmd-java.lib"/>
-    <ivy:retrieve pathid="saxon.main.path" conf="saxon"/>
-    <echo file="${cs.classpath.file}" message="${toString:cs.main.path}:${toString:cs.lib.path}"/>
-    <echo file="${gformat.classpath.file}" message="${toString:gformat.main.path}:${toString:gformat.lib.path}"/>
-    <echo file="${pmd.classpath.file}" message="${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}"/>
+    <ivy:resolve file="${toString:ivyfile}" />
+    <ivy:retrieve pathid="cs.main.path"
+                  conf="checkstyle.main" />
+    <ivy:retrieve pathid="gformat.main.path"
+                  conf="gformat.main" />
+    <ivy:retrieve pathid="cs.lib.path"
+                  conf="checkstyle.lib" />
+    <ivy:retrieve pathid="gformat.lib.path"
+                  conf="gformat.lib" />
+    <ivy:retrieve pathid="pmd-core.main.path"
+                  conf="pmd-core.main" />
+    <ivy:retrieve pathid="pmd-java.main.path"
+                  conf="pmd-java.main" />
+    <ivy:retrieve pathid="pmd-core.lib.path"
+                  conf="pmd-core.lib" />
+    <ivy:retrieve pathid="pmd-java.lib.path"
+                  conf="pmd-java.lib" />
+    <ivy:retrieve pathid="saxon.main.path"
+                  conf="saxon" />
+    <echo file="${cs.classpath.file}"
+          message="${toString:cs.main.path}:${toString:cs.lib.path}" />
+    <echo file="${gformat.classpath.file}"
+          message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
+    <echo file="${pmd.classpath.file}"
+          message="${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
   </target>
   <!-- =================================
           target: report
          ================================= -->
-  <target name="report" depends="resolve" description="--&gt; generates a report of dependencies">
-    <ivy:report todir="."/>
+  <target name="report"
+          depends="resolve"
+          description="--&gt; generates a report of dependencies">
+    <ivy:report todir="." />
   </target>
   <target name="cpd">
-    <loadfile property="pmd.cp" srcFile="${pmd.classpath.file}"/>
-    <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" classpath="${pmd.cp}"/>
-    <cpd minimumTokenCount="100" language="java" format="text" outputFile="${cpd.output}">
+    <loadfile property="pmd.cp"
+              srcFile="${pmd.classpath.file}" />
+    <taskdef name="cpd"
+             classname="net.sourceforge.pmd.cpd.CPDTask"
+             classpath="${pmd.cp}" />
+    <cpd minimumTokenCount="100"
+         language="java"
+         format="text"
+         outputFile="${cpd.output}">
       <fileset dir="/${LearnJava.basedir}">
-        <include name="**/*.java"/>
+        <include name="**/*.java" />
       </fileset>
     </cpd>
   </target>
-  <target name="main" depends="resolve">
+  <target name="main"
+          depends="resolve">
     <description>Main target</description>
   </target>
   <!-- =================================
           target: clean-cache
          ================================= -->
-  <target name="clean-cache" description="--&gt; clean the ivy cache">
-    <ivy:cleancache/>
+  <target name="clean-cache"
+          description="--&gt; clean the ivy cache">
+    <ivy:cleancache />
   </target>
 </project>
