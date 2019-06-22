@@ -2,7 +2,7 @@ package factorymethod;
 
 class DomesticPlan extends Plan {
   @Override
-  public void getRate() {
+  public void allotRate() {
     rate = 3.50;
   }
 }

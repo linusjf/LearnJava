@@ -12,7 +12,6 @@
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
-
     <properties>
       <property name="foreachReassign"
                 value="firstOnly" />
@@ -41,7 +40,6 @@
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray" />
   <rule ref="category/java/bestpractices.xml/MissingOverride" />
   <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
-
     <properties>
       <property name="strictMode"
                 value="false" />
@@ -78,7 +76,21 @@
   <rule ref="category/java/codestyle.xml/FieldNamingConventions" />
   <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions" />
   <rule ref="category/java/codestyle.xml/GenericsNaming" />
-  <!-- <rule ref="category/java/codestyle.xml/LinguisticNaming" /> -->
+  <rule ref="category/java/codestyle.xml/LinguisticNaming">
+    <properties>
+        <property name="ignoredAnnotations" value="java.lang.Override" />
+        <property name="checkBooleanMethod" value="true" />
+        <property name="checkGetters" value="true" />
+        <property name="checkSetters" value="true" />
+        <property name="checkPrefixedTransformMethods" value="true" />
+        <property name="checkTransformMethods" value="false" />
+        <property name="booleanMethodPrefixes" value="is|has|can|have|will|should" />
+        <property name="transformMethodNames" value="to|as" />
+        <property name="checkFields" value="true" />
+        <property name="checkVariables" value="true" />
+        <property name="booleanFieldPrefixes" value="is|has|can|have|will|should" />
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions" />
   <!-- <rule ref="category/java/codestyle.xml/LongVariable" /> -->
   <rule ref="category/java/codestyle.xml/MethodNamingConventions" />

@@ -28,11 +28,10 @@ public enum BillGenerator {
       int units = Integer.parseInt(br.readLine());
 
       Plan p = planFactory.getPlan(planName);
-      // call getRate() method and calculateBill()method of DomesticPaln.
 
       System.out.print("Bill amount for " + planName + " of  " + units
                        + " units is: ");
-      p.getRate();
+      p.allotRate();
       p.calculateBill(units);
     } catch (IOException | NumberFormatException e) {
       System.out.println("Input error: " + e.getMessage());
