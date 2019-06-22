@@ -7,7 +7,7 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  * @version 1.0
  */
 public class Owner implements Staff {
-  private boolean owner = true;
+  private boolean owning = true;
 
   private ReportGeneratorProxy reportGenerator;
 
@@ -18,7 +18,7 @@ public class Owner implements Staff {
 
   @Override
   public boolean isOwner() {
-    return owner;
+    return owning;
   }
 
   /**

@@ -6,6 +6,7 @@ package com.javacodegeeks.patterns.chainofresponsibility;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class File {
   private final String fileName;
   private final String fileType;

@@ -42,6 +42,7 @@ public final class NyPizza extends Pizza {
      * @param size Size of pizza.
      */
     public Builder(Size size) {
+      super();
       this.size = Objects.requireNonNull(size);
     }
 

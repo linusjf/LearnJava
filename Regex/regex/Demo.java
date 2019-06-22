@@ -5,6 +5,7 @@ package regex;
 
 import java.util.regex.Pattern;
 
+@SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
   private Demo() {
     throw new IllegalStateException("Private constructor");

@@ -23,7 +23,7 @@ public class ReportGeneratorImpl
    * @exception RemoteException if an error occurs
    */
   protected ReportGeneratorImpl() throws RemoteException {
-    // Empty constructor.Not public.
+    super();
   }
 
   @Override

@@ -6,6 +6,7 @@ package com.javacodegeeks.patterns.builderpattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class Car {
   private String bodyStyle;
   private String power;

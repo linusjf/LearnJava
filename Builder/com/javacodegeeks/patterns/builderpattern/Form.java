@@ -8,6 +8,7 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public final class Form {
   private String firstName;
   private String lastName;

@@ -6,6 +6,7 @@ package adapter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public interface PayD {
   /**
    * Describe <code>getCustCardNo</code> method here.

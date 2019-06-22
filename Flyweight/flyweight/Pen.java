@@ -6,6 +6,7 @@ package flyweight;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public interface Pen {
   enum BrushSize {
     THIN,

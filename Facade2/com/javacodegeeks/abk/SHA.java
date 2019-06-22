@@ -12,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class SHA implements Encrypt {
   /**
    * Describe <code>encrypt</code> method here.

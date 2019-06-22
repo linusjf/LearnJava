@@ -1,5 +1,6 @@
 package factorymethod;
 
+@SuppressWarnings("PMD.ShortClassName")
 abstract class Plan {
   protected double rate;
 

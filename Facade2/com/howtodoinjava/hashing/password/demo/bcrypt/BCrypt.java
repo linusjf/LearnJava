@@ -86,14 +86,13 @@ public class BCrypt {
    * @exception IllegalArgumentException if the length is invalid
    */
   private static String encodeBase64(final byte[] d, final int len) {
-    int off = 0;
-    final StringBuilder rs = new StringBuilder();
-    int c1;
-    int c2;
-
     if (len <= 0 || len > d.length)
       throw new IllegalArgumentException("Invalid len");
 
+    final StringBuilder rs = new StringBuilder();
+    int c1;
+    int c2;
+    int off = 0;
     while (off < len) {
       c1 = d[off++] & 0xff;
       rs.append(BASE64CODE[(c1 >> 2) & 0x3f]);
@@ -406,12 +405,8 @@ public class BCrypt {
     String[] vals = retrieveOffsetMinor(salt);
 
     char minor = vals[0].charAt(0);
-    int off = Integer.parseInt(vals[1]);
 
     byte[] passwordb;
-    final int rounds = Integer.parseInt(salt.substring(off, off + 2));
-
-    String realSalt = salt.substring(off + 3, off + 25);
     try {
       passwordb =
           (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
@@ -419,6 +414,10 @@ public class BCrypt {
       throw new AssertionError("UTF-8 is not supported", uee);
     }
 
+    int off = Integer.parseInt(vals[1]);
+    final int rounds = Integer.parseInt(salt.substring(off, off + 2));
+
+    String realSalt = salt.substring(off + 3, off + 25);
     final byte[] saltb = decodeBase64(realSalt, BCRYPT_SALT_LEN);
     final BCrypt crypt = new BCrypt();
     final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);

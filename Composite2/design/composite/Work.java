@@ -9,6 +9,7 @@ import java.util.List;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class Work {
   private Calculator workType;
   private List<String> jobs = new ArrayList<>();

@@ -84,9 +84,6 @@ public class RequestHandler implements Runnable {
       System.out.println("Request Received " + requestString);
 
       if (requestString != null) {
-        // Get the Request type
-        final String request =
-            requestString.substring(0, requestString.indexOf(' '));
         // remove request type and space
         String urlString = extractURL(requestString);
         // Check if site is blocked
@@ -96,6 +93,9 @@ public class RequestHandler implements Runnable {
           return;
         }
 
+        // Get the Request type
+        final String request =
+            requestString.substring(0, requestString.indexOf(' '));
         // Check request type
         if ("CONNECT".equals(request)) {
           System.out.println("HTTPS Request for : " + urlString + "\n");

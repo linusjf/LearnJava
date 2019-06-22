@@ -21,6 +21,7 @@ public class HtmlParentElement extends HtmlTag {
    * @param tagName a <code>String</code> value
    */
   public HtmlParentElement(String tagName) {
+    super();
     this.tagName = tagName;
     this.startTag = "";
     this.endTag = "";

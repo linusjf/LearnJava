@@ -6,6 +6,7 @@ package design.bridge;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class Bike extends Vehicle {
   @Override
   public void manufacture() {

@@ -6,6 +6,7 @@ package regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("PMD.ShortClassName")
 public final class Test {
   private static final Pattern PASSWORD_PATTERN =
       Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");

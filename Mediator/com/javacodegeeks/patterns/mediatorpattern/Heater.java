@@ -19,6 +19,7 @@ public class Heater implements Colleague {
    *
    * @param temp an <code>int</code> value
    */
+  @SuppressWarnings("PMD.ShortMethodName")
   public void on(int temp) {
     System.out.println("Heater is on...");
     if (mediator.checkTemperature(temp)) {

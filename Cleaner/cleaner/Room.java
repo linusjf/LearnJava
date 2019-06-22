@@ -9,6 +9,7 @@ import java.lang.ref.Cleaner;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.ShortClassName")
 public class Room implements AutoCloseable {
   private static final Cleaner CLEANER = Cleaner.create();
 

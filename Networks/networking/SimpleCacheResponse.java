@@ -18,6 +18,7 @@ public class SimpleCacheResponse extends CacheResponse {
 
   public SimpleCacheResponse(SimpleCacheRequest request, URLConnection uc,
                              CacheControl control) throws IOException {
+    super();
     this.request = request;
     this.control = control;
     this.expires = new Date(uc.getExpiration());

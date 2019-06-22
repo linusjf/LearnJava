@@ -54,6 +54,7 @@ public class CottonMediator implements MachineMediator {
   }
 
   @Override
+  @SuppressWarnings("PMD.ShortMethodName")
   public void on() {
     heater.on(40);
   }
