@@ -74,7 +74,6 @@ public final class SpamCheck {
   }
 
   private static boolean isIpFlagged(String content, String ip) {
-    System.out.println(content);
     String[] params = new String[] {ip};
     String sblString = SPAM_LISTER.format(params);
     System.out.println(sblString);
