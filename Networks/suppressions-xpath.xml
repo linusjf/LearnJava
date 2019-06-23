@@ -39,20 +39,16 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="MemoryCache.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='MemoryCache']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='MemoryCache']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
-<suppress-xpath
-       files="Last24.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='60']]/STAR/NUM_INT[@text='24']"/>
-<suppress-xpath
-       files="Last24.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='60']]/STAR[./NUM_INT[@text='24']]/NUM_INT[@text='60']"/>
-<suppress-xpath
-       files="Last24.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR/NUM_INT[@text='60']"/>
-<suppress-xpath
-       files="Last24.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR/NUM_INT[@text='1000']"/>
+  <suppress-xpath files="Last24.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='60']]/STAR/NUM_INT[@text='24']" />
+  <suppress-xpath files="Last24.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='60']]/STAR[./NUM_INT[@text='24']]/NUM_INT[@text='60']" />
+  <suppress-xpath files="Last24.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1000']]/STAR/NUM_INT[@text='60']" />
+  <suppress-xpath files="Last24.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Last24']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='millisecondsPerDay']]/ASSIGN/EXPR/STAR/NUM_INT[@text='1000']" />
 </suppressions>
