@@ -21,3 +21,6 @@ networking.EncodingAwareSourceViewer https://www.spamhaus.org/ https://www.googl
 networking.BinarySaver https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au
 networking.HeaderViewer https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au
 networking.AllHeaders https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au
+networking.URLPrinter
+networking.Last24 https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png  http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au
+networking.FormPoster
