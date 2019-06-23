@@ -6,16 +6,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.io.IOException;
 
 public class Cookies {
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
+    try {
     URL url = new URL("https://www.spamhaus.org");
     URLConnection conn = url.openConnection();
 
     Map<String, List<String>> headers = conn.getHeaderFields();
     Map<String,List<String>> copyHeaders = new HashMap<>();
     copyHeaders.putAll(headers);
-    copyHeaders.remove(null);
+    copyHeaders.put("NULL",copyHeaders.remove(null));
     Map<String, List<String>> headersTree =
         new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     headersTree.putAll(copyHeaders);
@@ -62,6 +64,9 @@ public class Cookies {
       System.out.println("secure:" + secure);
 
       System.out.println("*****************************************");
+    }
+    } catch (IOException ioe) {
+      System.err.println(ioe.getMessage());
     }
   }
 }
