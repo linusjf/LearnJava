@@ -26,7 +26,7 @@ public final class SpamCheck {
   private static final MessageFormat EXPLOIT_LISTER =
       new MessageFormat("{0} is listed in the XBL");
   private static final String LOOKUP = "https://www.spamhaus.org/lookup/ip/?";
-  private static final String SPAMHAUS = "https://www.spamhaus.org";
+  private static final String SPAMHAUS = "https://www.spamhaus.org/lookup";
   private static String cookies;
 
   private SpamCheck() {
@@ -40,7 +40,7 @@ public final class SpamCheck {
 
   private static String getCookies() throws MalformedURLException, IOException {
     if (cookies == null) {
-      URL url = new URL(SPAMHAUS);
+      /**URL url = new URL(SPAMHAUS);
       URLConnection conn = url.openConnection();
 
       Map<String, List<String>> headers = conn.getHeaderFields();
@@ -57,8 +57,10 @@ public final class SpamCheck {
       StringBuilder sb = new StringBuilder();
     for (String headerValue : headerFieldValue) {
       String[] fields = headerValue.split(";\\s*");
-      sb.append(fields[0]).append("; ");
-    }
+      //sb.append(fields[0]).append("; ");
+    }*/
+    StringBuilder sb = new StringBuilder();
+    sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; _ga=GA1.2.258026625.1560481121; _gid=GA1.2.1507765202.1561264155; cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
     cookies = sb.toString();
     }
     return cookies;
