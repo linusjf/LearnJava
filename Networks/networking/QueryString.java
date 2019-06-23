@@ -13,8 +13,8 @@ public class QueryString {
 
   public void add(String name, String value) {
     synchronized (query) {
-      query.append('&');
       encode(name, value);
+      query.append('&');
     }
   }
 
