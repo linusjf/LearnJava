@@ -20,6 +20,16 @@ import java.text.MessageFormat;
  * Networking book to work as expected. I have looked at other spam listers but
  * none of them list the two spammer ips Ive used as input as spammers. Spamhaus
  * appears to be the most authoriative list.
+ * Using SourceViewer4, I had a look at the 503 page returned.
+ * The challenge form embedded in the page is submitted via javascript
+ * after a delay of 4 seconds. The algorithm to fill up
+ * one of the fields is mixed up,no two javascript functions are the same.
+ * That nixes simply porting and explains why the Python script
+ * uses Node.js. However,that's not the surprising part.
+ * The Jacascript function lists its variables as:
+ * s,t,o,p,b,r,e,a,k,i,n,g,f.
+ * What the bloody hell is that? Hardly subliminal,is it?
+ * Who the hell is this message directed at?
  */
 public final class SpamCheck {
   private static final MessageFormat SPAM_LISTER =
