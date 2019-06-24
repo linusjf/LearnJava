@@ -17,6 +17,7 @@ public class SourceViewer4 {
       try (InputStream raw = uc.getInputStream()) {
         printFromStream(raw);
       } catch (IOException ex) {
+        System.err.println(uc.getURL());
         printFromStream(uc.getErrorStream());
       }
     } catch (MalformedURLException ex) {
