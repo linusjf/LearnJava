@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Cookies {
+public final class Cookies {
+  private Cookies() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       URL url = new URL("https://www.spamhaus.org");

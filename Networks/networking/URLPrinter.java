@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class URLPrinter {
+public final class URLPrinter {
+  private URLPrinter() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       URL u = new URL("http://www.oreilly.com/");

@@ -9,7 +9,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
 
-public class Last24 {
+public final class Last24 {
+  private Last24() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     // Initialize a Date object with the current date and time
     Date today = new Date();

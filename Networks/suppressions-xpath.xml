@@ -59,8 +59,7 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
                   query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isIpFlagged']]/SLIST/VARIABLE_DEF[./IDENT[@text='sblString']] | 
 /CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isIpFlagged']]/SLIST/VARIABLE_DEF[./IDENT[@text='xblString']] | 
 /CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isIpFlagged']]/SLIST/VARIABLE_DEF[./IDENT[@text='pblString']]" />
-<suppress-xpath
-       files="SpamCheck.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='constructCookieString']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='200']"/>
+  <suppress-xpath files="SpamCheck.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='constructCookieString']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='200']" />
 </suppressions>

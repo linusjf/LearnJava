@@ -6,7 +6,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
-public class LastModified {
+public final class LastModified {
+  private LastModified() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     for (String arg : args) {
       try {
