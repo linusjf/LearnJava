@@ -44,7 +44,8 @@ public class MemoryCache extends ResponseCache {
   }
 
   @Override
-  public CacheResponse get(URI uri, String requestMethod,
+  public CacheResponse get(URI uri,
+                           String requestMethod,
                            Map<String, List<String>> requestHeaders)
       throws IOException {
     if ("GET".equals(requestMethod)) {

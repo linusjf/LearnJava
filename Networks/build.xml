@@ -133,13 +133,13 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-      <java classname="${main.class6}">
-      <arg line="207.34.56.23 125.12.32.4 130.130.130.130 213.120.105.146 82.243.67.85 171.13.31.172 46.229.168.139"/>
+    <java classname="${main.class6}">
+      <arg line="207.34.56.23 125.12.32.4 130.130.130.130 213.120.105.146 82.243.67.85 171.13.31.172 46.229.168.139" />
       <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
-        <pathelement path="${java.class.path}"/>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
       </classpath>
-      </java>
+    </java>
     <java classname="${main.class7}">
       <arg file="web.log" />
       <classpath>

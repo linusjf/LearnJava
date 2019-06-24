@@ -41,7 +41,6 @@
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray" />
   <rule ref="category/java/bestpractices.xml/MissingOverride" />
   <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
-
     <properties>
       <property name="strictMode"
                 value="false" />

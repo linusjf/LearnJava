@@ -8,23 +8,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * This program no longer works as-is. It does not produce the desired results.
  * Using the LOOKUP url returns a HTTP 503 error. Is this SpamHaus throttling
  * non-browser queries? Upon investigating further,the cookies are from
  * Cloudflare and its DDOS challenge question.cf_clearance expires every hour.
- * It has to be renewed via the browser. There is a Python module on Github
- * that bypasses Cloudflare but I'm not going to port that just to get this
- * working. I have simply tried to get the original SpamCheck program from the
- * Java Networking book to work as expected. I have looked at other spam listers
- * but none of them list the two spammer ips Ive used as input as spammers.
- * Spamhaus appears to be the most authoriative list.
- *
+ * It has to be renewed via the browser. There is a Python module on Github that
+ * bypasses Cloudflare but I'm not going to port that just to get this working.
+ * I have simply tried to get the original SpamCheck program from the Java
+ * Networking book to work as expected. I have looked at other spam listers but
+ * none of them list the two spammer ips Ive used as input as spammers. Spamhaus
+ * appears to be the most authoriative list.
  */
 public final class SpamCheck {
   private static final MessageFormat SPAM_LISTER =
@@ -34,43 +29,32 @@ public final class SpamCheck {
   private static final MessageFormat EXPLOIT_LISTER =
       new MessageFormat("{0} is listed in the XBL");
   private static final String LOOKUP = "https://www.spamhaus.org/lookup/ip/?";
-  private static final String SPAMHAUS = "https://www.spamhaus.org/lookup/ip/?ip=175.21.56.65";
   private static String cookies;
+
+  static {
+    constructCookieString();
+  }
+
+  @SuppressWarnings("PMD.ConsecutiveLiteralAppends")
+  private static void constructCookieString() {
+    StringBuilder sb = new StringBuilder(200);
+    sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; ")
+        .append("_ga=GA1.2.258026625.1560481121; ")
+        .append("_gid=GA1.2.1507765202.1561264155; ")
+        .append(
+            "cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
+    cookies = sb.toString();
+  }
 
   private SpamCheck() {
     throw new IllegalStateException("Private constructor");
   }
 
   private static QueryString getQueryString() {
-    QueryString query = new QueryString();
-    return query;
+    return new QueryString();
   }
 
-  private static String getCookies() throws MalformedURLException, IOException {
-    if (cookies == null) {
-      /**URL url = new URL(SPAMHAUS);
-      URLConnection conn = url.openConnection();
-
-      Map<String, List<String>> headers = conn.getHeaderFields();
-      Map<String, List<String>> copyHeaders = new HashMap<>();
-      copyHeaders.putAll(headers);
-      copyHeaders.put("NULL", copyHeaders.remove(null));
-      Map<String, List<String>> headersTree =
-          new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-      headersTree.putAll(copyHeaders);
-
-      List<String> headerFieldValue = 
-        headersTree.get("Set-Cookie");
-
-      StringBuilder sb = new StringBuilder();
-    for (String headerValue : headerFieldValue) {
-      String[] fields = headerValue.split(";\\s*");
-      sb.append(fields[0]).append("; ");
-    }*/
-    StringBuilder sb = new StringBuilder();
-    sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; _ga=GA1.2.258026625.1560481121; _gid=GA1.2.1507765202.1561264155; cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
-    cookies = sb.toString();
-    }
+  private static String getCookies() {
     return cookies;
   }
 
@@ -103,15 +87,7 @@ public final class SpamCheck {
         "Mozilla/5.0 (Linux; Android 7.1.2;"
             + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
             + "Mobile Safari/537.36");
-    /**connection.setRequestProperty(
-        "Cookie",
-        "__cfduid=d1c401e353768541acd788ffac40686911560481116;"
-            + " _ga=GA1.2.258026625.1560481121;"
-            + " _gid=GA1.2.1507765202.1561264155;"
-            + " cf_clearance=b9c0ecb320d62c27fbd34500c22377ec054c3760-1561272641-28800-150");*/
-      connection.setRequestProperty(
-        "Cookie",getCookies());
-      System.out.println(getCookies());
+    connection.setRequestProperty("Cookie", getCookies());
     StringBuilder sb = new StringBuilder();
     InputStream in = new BufferedInputStream(connection.getInputStream());
     InputStreamReader theHTML = new InputStreamReader(in);
@@ -122,11 +98,15 @@ public final class SpamCheck {
     return isIpFlagged(sb.toString(), ip);
   }
 
+  @SuppressWarnings("PMD.OneDeclarationPerLine")
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};
-    String sblString = SPAM_LISTER.format(params);
-    String xblString = EXPLOIT_LISTER.format(params);
-    String pblString = POLICY_LISTER.format(params);
+    String sblString, xblString, pblString;
+    synchronized (params) {
+      sblString = SPAM_LISTER.format(params);
+      xblString = EXPLOIT_LISTER.format(params);
+      pblString = POLICY_LISTER.format(params);
+    }
     return content.contains(sblString) || content.contains(xblString)
         || content.contains(pblString);
   }

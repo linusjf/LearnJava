@@ -8,13 +8,16 @@ import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Locale;
 
 public class FormPoster {
   private URL url;
   private QueryString query = new QueryString();
 
   public FormPoster(URL url) {
-    if (!url.getProtocol().toLowerCase().startsWith("http")) {
+    if (!url.getProtocol()
+             .toLowerCase(Locale.getDefault())
+             .startsWith("http")) {
       throw new IllegalArgumentException("Posting only works for http URLs");
     }
     this.url = url;

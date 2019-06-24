@@ -22,7 +22,7 @@ public class Last24 {
         System.out.println("Original if modified since: "
                            + new Date(uc.getIfModifiedSince()));
         uc.setIfModifiedSince(
-            (new Date(today.getTime() - millisecondsPerDay)).getTime());
+            new Date(today.getTime() - millisecondsPerDay).getTime());
         System.out.println("Will retrieve file if it's modified since "
                            + new Date(uc.getIfModifiedSince()));
         try (InputStream in = new BufferedInputStream(uc.getInputStream())) {
