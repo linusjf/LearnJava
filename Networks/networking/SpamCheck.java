@@ -16,7 +16,15 @@ import java.util.TreeMap;
 /**
  * This program no longer works as-is. It does not produce the desired results.
  * Using the LOOKUP url returns a HTTP 503 error. Is this SpamHaus throttling
- * non-browser queries? Spamhaus API available?
+ * non-browser queries? Upon investigating further,the cookies are from
+ * Cloudflare and its DDOS challenge question.cf_clearance expires every hour.
+ * It has to be renewed via the browser. There is a Python module on Github
+ * that bypasses Cloudflare but I'm not going to port that just to get this
+ * working. I have simply tried to get the original SpamCheck program from the
+ * Java Networking book to work as expected. I have looked at other spam listers
+ * but none of them list the two spammer ips Ive used as input as spammers.
+ * Spamhaus appears to be the most authoriative list.
+ *
  */
 public final class SpamCheck {
   private static final MessageFormat SPAM_LISTER =
@@ -26,7 +34,7 @@ public final class SpamCheck {
   private static final MessageFormat EXPLOIT_LISTER =
       new MessageFormat("{0} is listed in the XBL");
   private static final String LOOKUP = "https://www.spamhaus.org/lookup/ip/?";
-  private static final String SPAMHAUS = "https://www.spamhaus.org/lookup";
+  private static final String SPAMHAUS = "https://www.spamhaus.org/lookup/ip/?ip=175.21.56.65";
   private static String cookies;
 
   private SpamCheck() {
@@ -57,7 +65,7 @@ public final class SpamCheck {
       StringBuilder sb = new StringBuilder();
     for (String headerValue : headerFieldValue) {
       String[] fields = headerValue.split(";\\s*");
-      //sb.append(fields[0]).append("; ");
+      sb.append(fields[0]).append("; ");
     }*/
     StringBuilder sb = new StringBuilder();
     sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; _ga=GA1.2.258026625.1560481121; _gid=GA1.2.1507765202.1561264155; cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
