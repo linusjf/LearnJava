@@ -32,3 +32,4 @@ networking.DayTimeClient
 networking.Time
 networking.DictClient gold silver bronze platinum
 networking.ListDicts
+networking.LowPortScanner 192.168.0.1 localhost
