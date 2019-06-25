@@ -29,3 +29,6 @@ networking.LastModified https://www.spamhaus.org/ https://www.thehindu.com/stati
 networking.SourceViewer3 https://www.spamhaus.org/
 networking.SourceViewer4 https://www.spamhaus.org/lookup/ip/?ip=172.43.56.67
 networking.DayTimeClient
+networking.Time
+networking.DictClient gold silver bronze platinum
+networking.ListDicts
