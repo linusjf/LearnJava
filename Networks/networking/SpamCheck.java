@@ -108,7 +108,11 @@ public final class SpamCheck {
   @SuppressWarnings("PMD.OneDeclarationPerLine")
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};
-    String sblString, xblString, pblString;
+    // clang-format off
+    String sblString, 
+           xblString, 
+           pblString;
+    // clang-format on
     synchronized (params) {
       sblString = SPAM_LISTER.format(params);
       xblString = EXPLOIT_LISTER.format(params);
