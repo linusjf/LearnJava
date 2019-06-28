@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.strategypattern.TestStrategyPat
+ tern
+
+Name: common
+Specification-Title: Strategy
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 7073d72 June 28 2019
+Implementation-Vendor: 
+

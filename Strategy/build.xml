@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<project name="Strategy"
+         default="main"
+         basedir=".">
+  <property file="build.properties" />
+  <property file="../globalbuild.properties" />
+  <property file="${cs.properties}" />
+  <property file="${gformat.properties}" />
+  <property file="../pmd.properties" />
+  <!-- Sets variables which can later be used. -->
+  <!-- The value of a property is accessed via ${} -->
+  <property name="src.dir"
+            location="." />
+  <property name="build.dir"
+            location="." />
+  <property name="dist.dir"
+            location="dist" />
+  <property name="docs.dir"
+            location="docs" />
+  <loadfile property="cs.cp"
+            srcFile="../${cs.classpath.file}" />
+  <loadfile property="pmd.cp"
+            srcFile="../${pmd.classpath.file}" />
+  <taskdef resource="${cs.taskdef.resource}"
+           classpath="${cs.cp}" />
+  <taskdef name="pmd"
+           classname="net.sourceforge.pmd.ant.PMDTask"
+           classpath="${pmd.cp}" />
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete>
+      <fileset dir="."
+               includes="**/*.class" />
+    </delete>
+    <delete dir="${docs.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${docs.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+  <!-- Compiles the java code (including the usage of library for JUnit -->
+  <target name="compile"
+          depends="clean, makedir,format,checkstyle">
+    <javac includeantruntime="false"
+           srcdir="${src.dir}"
+           destdir="${build.dir}">
+      <compilerarg value="-Xlint:-options" />
+    </javac>
+  </target>
+  <!-- Creates Javadoc -->
+  <target name="docs"
+          depends="compile">
+    <javadoc packagenames="${packages}"
+             sourcepath="${src.dir}"
+             destdir="${docs.dir}"
+             additionalparam="${javadoc.params}"></javadoc>
+  </target>
+  <target name="manifest">
+    <tstamp />
+    <exec executable="bash"
+          outputproperty="build">
+      <arg value="-c" />
+      <arg value="git log --pretty=format:'%h' | head -1" />
+    </exec>
+    <manifest mode="update"
+              file="${jar.manifest}">
+      <attribute name="Built-By"
+                 value="${user.name}" />
+      <section name="common">
+        <attribute name="Specification-Title"
+                   value="${ant.project.name}" />
+        <attribute name="Specification-Version"
+                   value="${version}" />
+        <attribute name="Specification-Vendor"
+                   value="" />
+        <attribute name="Implementation-Title"
+                   value="" />
+        <attribute name="Implementation-Version"
+                   value="${build} ${TODAY}" />
+        <attribute name="Implementation-Vendor"
+                   value="" />
+      </section>
+      <attribute name="Main-Class"
+                 value="${main.class}" />
+    </manifest>
+  </target>
+  <!--Creates the deployable jar file  -->
+  <target name="jar"
+          depends="compile,manifest">
+    <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
+         basedir="${build.dir}"
+         includes="**/*.class"
+         manifest="${jar.manifest}"></jar>
+  </target>
+  <target name="run">
+    <description>Run target</description>
+    <java classname="${main.class}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="format">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="gformat.cp"
+              srcFile="../${gformat.classpath.file}" />
+    <java classname="${gformat.main.class}">
+      <arg line="-i ${sources}" />
+      <classpath>
+        <pathelement path="${gformat.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <exec executable="bash">
+      <arg line="../cformat ${basedir}" />
+    </exec>
+    <exec executable="bash">
+      <arg line="../xformatall ${basedir}" />
+    </exec>
+  </target>
+  <target name="checkstyle">
+    <first id="checkstylefile">
+      <fileset dir=".."
+               includes="${cs.config}" />
+    </first>
+    <checkstyle config="${toString:checkstylefile}"
+                failOnViolation="false"
+                properties="${cs.properties}">
+      <fileset dir="${src.dir}"
+               includes="**/*.java" />
+      <formatter type="plain" />
+      <formatter type="plain"
+                 toFile="${cs.output}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </checkstyle>
+  </target>
+  <target name="pmd">
+    <pmd cacheLocation="${pmd.cacheFile}"
+         minimumPriority="${pmd.minimumPriority}"
+         suppressMarker="${pmd.suppressMarker}">
+      <sourceLanguage name="java"
+                      version="${ant.build.javac.source}" />
+      <ruleset>../${pmd.config}</ruleset>
+      <auxclasspath>
+        <pathelement path="${basedir}" />
+      </auxclasspath>
+      <formatter type="${pmd.reportFormat}"
+                 toFile="${pmd.output}"
+                 toConsole="${pmd.toConsole}"></formatter>
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
+    </pmd>
+  </target>
+  <target name="main"
+          depends="compile, jar, docs,pmd">
+    <description>Main target</description>
+  </target>
+</project>
