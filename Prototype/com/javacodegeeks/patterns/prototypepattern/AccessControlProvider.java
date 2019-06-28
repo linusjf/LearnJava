@@ -3,9 +3,8 @@ package com.javacodegeeks.patterns.prototypepattern;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccessControlProvider {
-  private static Map<String, AccessControl> map =
-      new HashMap<String, AccessControl>();
+public final class AccessControlProvider {
+  private static Map<String, AccessControl> map = new HashMap<>();
 
   static {
     System.out.println(
@@ -16,12 +15,17 @@ public class AccessControlProvider {
     map.put("VP", new AccessControl("VP", "MODIFY REPORTS"));
   }
 
-  public static AccessControl getAccessControlObject(String controlLevel) {
+  public static AccessControl getAccessControlObject(String controlLevel)
+      throws CloneNotSupportedException {
     AccessControl ac = null;
     ac = map.get(controlLevel);
     if (ac != null) {
       return ac.clone();
     }
     return null;
+  }
+
+  private AccessControlProvider() {
+    throw new IllegalStateException("Private constructor");
   }
 }

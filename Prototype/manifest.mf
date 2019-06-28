@@ -10,6 +10,6 @@ Specification-Title: Prototype
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: d821e78 June 28 2019
+Implementation-Version: 24a880f June 28 2019
 Implementation-Vendor: 
 
