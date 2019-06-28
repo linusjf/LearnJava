@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="Originator.java"
+                  checks="MemberNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='xCoord']" />
+  <suppress-xpath files="Originator.java"
+                  checks="MemberNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='yCoord']" />
+  <suppress-xpath files="Originator.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='Originator']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='xCoord']" />
+  <suppress-xpath files="Originator.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='Originator']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='yCoord']" />
+  <suppress-xpath files="Originator.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setX']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='xCoord']" />
+  <suppress-xpath files="Originator.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Originator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setY']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='yCoord']" />
+  <suppress-xpath files="Memento.java"
+                  checks="MemberNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Memento']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='xCoord']" />
+  <suppress-xpath files="Memento.java"
+                  checks="MemberNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Memento']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='yCoord']" />
+  <suppress-xpath files="Memento.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Memento']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='Memento']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='xCoord']" />
+  <suppress-xpath files="Memento.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Memento']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='Memento']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='yCoord']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='originator']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Originator']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='originator']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Originator']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='51']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/NUM_INT[@text='22']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS/NUM_INT[@text='30']" />
+  <suppress-xpath files="TestMementoPattern.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestMementoPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/NUM_INT[@text='22']" />
+</suppressions>
