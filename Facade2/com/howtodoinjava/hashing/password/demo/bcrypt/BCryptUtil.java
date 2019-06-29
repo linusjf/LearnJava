@@ -26,11 +26,10 @@ public final class BCryptUtil {
 
   private static final Pattern PASSWORD_PATTERN =
       Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
-  
+
   private BCryptUtil() {
     throw new IllegalStateException("Private constructor");
   }
-
 
   /**
    * Encode a byte array using bcrypt's slightly-modified base64 encoding
@@ -56,7 +55,7 @@ public final class BCryptUtil {
   private static byte[] decodeBase64(final String s) {
     return Base64.getDecoder().decode(s);
   }
-  
+
   /**
    * Cylically extract a word of key material.
    *
@@ -79,10 +78,9 @@ public final class BCryptUtil {
     offp[0] = off;
     return word;
   }
-  
+
   /**
-   * Using regex. Match the initial salt and match the minor and
-   * offset values.
+   * Using regex. Match the initial salt and match the minor and offset values.
    */
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char)0;
@@ -130,7 +128,10 @@ public final class BCryptUtil {
     return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
-  private static String getHashedPassword(char minor,int rounds,byte[] saltb,byte[] hashed) {
+  private static String getHashedPassword(char minor,
+                                          int rounds,
+                                          byte[] saltb,
+                                          byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= LOWER_CASE_A)
@@ -199,5 +200,4 @@ public final class BCryptUtil {
   public static boolean checkpw(final String plaintext, final String hashed) {
     return hashed.compareTo(hashpw(plaintext, hashed)) == 0;
   }
-
 }

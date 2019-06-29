@@ -16,11 +16,6 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamtoword;
-import java.io.UnsupportedEncodingException;
-import java.security.SecureRandom;
-import java.util.Base64;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
@@ -73,7 +68,6 @@ public class BCrypt {
 
   @SuppressWarnings("membername")
   private int[] S;  // NOPMD
-
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
@@ -194,8 +188,8 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   byte[] cryptRaw(final byte[] password,
-                          final byte[] salt,
-                          final int logRounds) {
+                  final byte[] salt,
+                  final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -223,5 +217,4 @@ public class BCrypt {
     }
     return ret;
   }
-
 }

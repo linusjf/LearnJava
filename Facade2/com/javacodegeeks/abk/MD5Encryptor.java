@@ -1,8 +1,8 @@
 package com.javacodegeeks.abk;
 
-import java.util.Base64;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 /**
  * Describe class <code>MD5Encryptor</code> here.

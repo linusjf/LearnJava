@@ -1,9 +1,10 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-import java.util.Base64;
+
 import com.lambdaworks.crypto.PBKDF;
 import java.security.GeneralSecurityException;
+import java.util.Base64;
 
 /**
  * Describe class <code>PBKDFEncryptor</code> here.

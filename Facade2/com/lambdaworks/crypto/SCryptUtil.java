@@ -1,10 +1,10 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-import java.util.Base64;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 /**
  * Simple {@link SCrypt} interface for hashing passwords using the <a
@@ -86,8 +86,7 @@ public final class SCryptUtil {  // NOPMD
       }
 
       final long params = Long.parseLong(parts[2], 16);
-      final byte[] salt = 
-        Base64.getDecoder().decode(parts[3]);
+      final byte[] salt = Base64.getDecoder().decode(parts[3]);
       final byte[] derived0 = Base64.getDecoder().decode(parts[4]);
       final int n = (int)Math.pow(2, params >> 16 & 0xffff);
       final int r = (int)params >> 8 & 0xff;
