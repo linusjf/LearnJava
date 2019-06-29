@@ -20,9 +20,24 @@ public final class BCryptConstants {
 
   // Initial contents of key schedule
   static final int[] ORIGP = {
-      0x243f6a88, 0x85a308d3, 0x13198a2e, 0x03707344, 0xa4093822, 0x299f31d0,
-      0x082efa98, 0xec4e6c89, 0x452821e6, 0x38d01377, 0xbe5466cf, 0x34e90c6c,
-      0xc0ac29b7, 0xc97c50dd, 0x3f84d5b5, 0xb5470917, 0x9216d5d9, 0x8979fb1b,
+      0x243f6a88,
+      0x85a308d3,
+      0x13198a2e,
+      0x03707344,
+      0xa4093822,
+      0x299f31d0,
+      0x082efa98,
+      0xec4e6c89,
+      0x452821e6,
+      0x38d01377,
+      0xbe5466cf,
+      0x34e90c6c,
+      0xc0ac29b7,
+      0xc97c50dd,
+      0x3f84d5b5,
+      0xb5470917,
+      0x9216d5d9,
+      0x8979fb1b,
   };
 
   static final int[] ORIGS = {
@@ -201,28 +216,12 @@ public final class BCryptConstants {
 
   // bcrypt IV: "OrpheanBeholderScryDoubt"
   static final int[] BFCRYPTCIPHERTEXT = {
-      0x4f727068, 0x65616e42, 0x65686f6c, 0x64657253, 0x63727944, 0x6f756274,
-  };
-
-  // Table for Base64 encoding
-  static final char[] BASE64CODE = {
-      '.', '/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-      'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-      'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-      'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-      'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-  };
-
-  // Table for Base64 decoding
-  static final byte[] INDEX64 = {
-      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0,  1,
-      54, 55, 56, 57, 58, 59, 60, 61, 62, 63, -1, -1, -1, -1, -1, -1,
-      -1, 2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16,
-      17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, -1, -1, -1, -1, -1,
-      -1, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
-      43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, -1, -1, -1, -1, -1,
+      0x4f727068,
+      0x65616e42,
+      0x65686f6c,
+      0x64657253,
+      0x63727944,
+      0x6f756274,
   };
 
   private BCryptConstants() {

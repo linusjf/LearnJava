@@ -18,6 +18,7 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -81,55 +82,11 @@ public class BCrypt {
    * encoding.
    *
    * @param d the byte array to encode
-   * @param len the number of bytes to encode
    * @return base64-encoded string
    * @exception IllegalArgumentException if the length is invalid
    */
-  private static String encodeBase64(final byte[] d, final int len) {
-    if (len <= 0 || len > d.length)
-      throw new IllegalArgumentException("Invalid len");
-
-    final StringBuilder rs = new StringBuilder();
-    int c1;
-    int c2;
-    int off = 0;
-    while (off < len) {
-      c1 = d[off++] & 0xff;
-      rs.append(BASE64CODE[(c1 >> 2) & 0x3f]);
-      c1 = (c1 & 0x03) << 4;
-      if (off >= len) {
-        rs.append(BASE64CODE[c1 & 0x3f]);
-        break;
-      }
-      c2 = d[off++] & 0xff;
-      c1 |= (c2 >> 4) & 0x0f;
-      rs.append(BASE64CODE[c1 & 0x3f]);
-      c1 = (c2 & 0x0f) << 2;
-
-      if (off >= len) {
-        rs.append(BASE64CODE[c1 & 0x3f]);
-        break;
-      }
-
-      c2 = d[off++] & 0xff;
-      c1 |= (c2 >> 6) & 0x03;
-      rs.append(BASE64CODE[c1 & 0x3f]);
-      rs.append(BASE64CODE[c2 & 0x3f]);
-    }
-    return rs.toString();
-  }
-
-  /**
-   * Look up the 3 bits base64-encoded by the specified character,
-   * range-checking againt conversion table.
-   *
-   * @param x the base64-encoded value
-   * @return the decoded value of x
-   */
-  private static byte char64(final char x) {
-    if ((int)x < 0 || (int)x > INDEX64.length)
-      return -1;
-    return INDEX64[(int)x];
+  private static String encodeBase64(final byte[] d) {
+    return Base64.getEncoder().encodeToString(d);
   }
 
   /**
@@ -137,62 +94,11 @@ public class BCrypt {
    * that this is *not* compatible with the standard MIME-base64 encoding.
    *
    * @param s the string to decode
-   * @param maxolen the maximum number of bytes to decode
    * @return an array containing the decoded bytes
    * @throws IllegalArgumentException if maxolen is invalid
    */
-  @SuppressWarnings({"checkstyle:cyclomaticcomplexity",
-                     "checkstyle:npathcomplexity", "PMD.CyclomaticComplexity"})
-  private static byte[] decodeBase64(final String s, final int maxolen) {
-    checkMaxLengthParameter(maxolen);
-
-    final StringBuilder rs = new StringBuilder();
-    int off = 0;
-    final int slen = s.length();
-    int olen = 0;
-    byte c1;
-    byte c2;
-    byte c3;
-    byte c4;
-    byte o;
-
-    while (off < slen - 1 && olen < maxolen) {
-      c1 = char64(s.charAt(off++));
-      c2 = char64(s.charAt(off++));
-      if (c1 == -1 || c2 == -1)
-        break;
-      o = (byte)(c1 << 2);
-      o |= (c2 & 0x30) >> 4;
-      rs.append((char)o);
-      if (++olen >= maxolen || off >= slen)
-        break;
-      c3 = char64(s.charAt(off++));
-      if (c3 == -1)
-        break;
-      o = (byte)((c2 & 0x0f) << 4);
-      o |= (c3 & 0x3c) >> 2;
-      rs.append((char)o);
-      if (++olen >= maxolen || off >= slen)
-        break;
-      c4 = char64(s.charAt(off++));
-      o = (byte)((c3 & 0x03) << 6);
-      o |= c4;
-      rs.append((char)o);
-      ++olen;
-    }
-    return convertToBytes(rs, olen);
-  }
-
-  private static void checkMaxLengthParameter(int maxolen) {
-    if (maxolen <= 0)
-      throw new IllegalArgumentException("Invalid maxolen");
-  }
-
-  private static byte[] convertToBytes(StringBuilder rs, int olen) {
-    final byte[] ret = new byte[olen];
-    for (int off = 0; off < olen; off++)
-      ret[off] = (byte)rs.charAt(off);
-    return ret;
+  private static byte[] decodeBase64(final String s) {
+    return Base64.getDecoder().decode(s);
   }
 
   /**
@@ -336,7 +242,8 @@ public class BCrypt {
    *     apply
    * @return an array containing the binary hashed password
    */
-  private byte[] cryptRaw(final byte[] password, final byte[] salt,
+  private byte[] cryptRaw(final byte[] password,
+                          final byte[] salt,
                           final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
@@ -418,13 +325,15 @@ public class BCrypt {
     final int rounds = Integer.parseInt(salt.substring(off, off + 2));
 
     String realSalt = salt.substring(off + 3, off + 25);
-    final byte[] saltb = decodeBase64(realSalt, BCRYPT_SALT_LEN);
+    final byte[] saltb = decodeBase64(realSalt);
     final BCrypt crypt = new BCrypt();
     final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);
     return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
-  private static String getHashedPassword(char minor, int rounds, byte[] saltb,
+  private static String getHashedPassword(char minor,
+                                          int rounds,
+                                          byte[] saltb,
                                           byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
@@ -435,9 +344,9 @@ public class BCrypt {
       rs.append('0');
     rs.append(Integer.toString(rounds))
         .append(DOLLAR)
-        .append(encodeBase64(saltb, saltb.length))
+        .append(encodeBase64(saltb))
         .append(DOLLAR)
-        .append(encodeBase64(hashed, BFCRYPTCIPHERTEXT.length * 4 - 1));
+        .append(encodeBase64(hashed));
     return rs.toString();
   }
 
@@ -459,7 +368,7 @@ public class BCrypt {
       rs.append('0');
     rs.append(Integer.toString(logRounds))
         .append(DOLLAR)
-        .append(encodeBase64(rnd, rnd.length));
+        .append(encodeBase64(rnd));
     return rs.toString();
   }
 

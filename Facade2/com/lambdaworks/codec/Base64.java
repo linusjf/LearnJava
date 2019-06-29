@@ -55,8 +55,10 @@ public final class Base64 {  // NOPMD
    * @param pad Padding character.
    * @return Decoded bytes.
    */
-  @SuppressWarnings({"fallthrough", "checkstyle:cyclomaticcomplexity",
-                     "checkstyle:javancss", "PMD.CyclomaticComplexity"})
+  @SuppressWarnings({"fallthrough",
+                     "checkstyle:cyclomaticcomplexity",
+                     "checkstyle:javancss",
+                     "PMD.CyclomaticComplexity"})
   public static byte[] decode(char[] src, int[] table, char pad) {
     final int len = src.length;
 
@@ -132,8 +134,10 @@ public final class Base64 {  // NOPMD
    * @return Encoded chars.
    */
   @SuppressWarnings({"checkstyle:booleanexpressioncomplexity",
-                     "PMD.NPathComplexity", "checkstyle:cyclomaticcomplexity",
-                     "checkstyle:npathcomplexity", "PMD.CyclomaticComplexity"})
+                     "PMD.NPathComplexity",
+                     "checkstyle:cyclomaticcomplexity",
+                     "checkstyle:npathcomplexity",
+                     "PMD.CyclomaticComplexity"})
   public static char[] encode(byte[] src, char[] table, char pad) {
     final int len = src.length;
 

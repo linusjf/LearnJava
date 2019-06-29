@@ -48,9 +48,12 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r,
-                              int p, int dkLen)
-      throws GeneralSecurityException {
+  public static byte[] scrypt(byte[] passwd,
+                              byte[] salt,
+                              int enCPUCost,
+                              int r,
+                              int p,
+                              int dkLen) throws GeneralSecurityException {
     byte[] derived = NATIVE_LIBRARY_LOADED
                          ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
                          : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
@@ -72,8 +75,12 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    */
   @SuppressWarnings("checkstyle:IllegalToken")
-  public static native byte[] scryptN(byte[] passwd, byte[] salt, int enCPUCost,
-                                      int r, int p, int dkLen);
+  public static native byte[] scryptN(byte[] passwd,
+                                      byte[] salt,
+                                      int enCPUCost,
+                                      int r,
+                                      int p,
+                                      int dkLen);
 
   /**
    * Pure Java implementation of the <a
@@ -88,9 +95,12 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scryptJ(byte[] passwd, byte[] salt, int enCPUCost, int r,
-                               int p, int dkLen)
-      throws GeneralSecurityException {
+  public static byte[] scryptJ(byte[] passwd,
+                               byte[] salt,
+                               int enCPUCost,
+                               int r,
+                               int p,
+                               int dkLen) throws GeneralSecurityException {
     if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
       throw new IllegalArgumentException(
           "enCPUCost must be a power of 2 greater than 1");
@@ -129,7 +139,11 @@ public final class SCrypt {  // NOPMD
    * @param v a <code>byte</code> value
    * @param xy a <code>byte</code> value
    */
-  public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v,
+  public static void smix(byte[] bytes,
+                          int initialB,
+                          int r,
+                          int n,
+                          byte[] v,
                           byte[] xy) {
     int xinitial = 0;
     final int yinitial = 128 * r;
@@ -160,7 +174,9 @@ public final class SCrypt {  // NOPMD
    * @param initialY an <code>int</code> value
    * @param r an <code>int</code> value
    */
-  public static void blockmixSalsa8(byte[] bytes, int initialB, int initialY,
+  public static void blockmixSalsa8(byte[] bytes,
+                                    int initialB,
+                                    int initialY,
                                     int r) {
     final byte[] x = new byte[64];
     int i;
@@ -177,8 +193,11 @@ public final class SCrypt {  // NOPMD
       arraycopy(bytes, initialY + (i * 2) * 64, bytes, initialB + (i * 64), 64);
 
     for (i = 0; i < r; i++)
-      arraycopy(bytes, initialY + (i * 2 + 1) * 64, bytes,
-                initialB + (i + r) * 64, 64);
+      arraycopy(bytes,
+                initialY + (i * 2 + 1) * 64,
+                bytes,
+                initialB + (i + r) * 64,
+                64);
   }
 
   /**
@@ -266,7 +285,10 @@ public final class SCrypt {  // NOPMD
    * @param dinitial an <code>int</code> value
    * @param len an <code>int</code> value
    */
-  public static void blockXOR(byte[] s, int sinitial, byte[] d, int dinitial,
+  public static void blockXOR(byte[] s,
+                              int sinitial,
+                              byte[] d,
+                              int dinitial,
                               int len) {
     for (int i = 0; i < len; i++)
       s[dinitial + i] ^= s[sinitial + i];
