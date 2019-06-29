@@ -1,7 +1,6 @@
 package com.javacodegeeks.abk;
 
-import static com.lambdaworks.codec.Base64.encode;
-
+import java.util.Base64;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -26,7 +25,7 @@ public class MD5Encryptor implements Encrypt {
       msgDigest.update(text.getBytes());
 
       final byte[] textBytes = msgDigest.digest();
-      hash = String.valueOf(encode(textBytes));
+      hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());
     }

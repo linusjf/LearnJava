@@ -1,10 +1,9 @@
 package com.javacodegeeks.abk;
 
-import static com.lambdaworks.codec.Base64.encode;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 /**
  * Describe class <code>SHA256</code> here.
@@ -26,7 +25,7 @@ public class SHA256 implements Encrypt {
       final MessageDigest digest = MessageDigest.getInstance("SHA-256");
       final byte[] textBytes =
           digest.digest(text.getBytes(StandardCharsets.UTF_8));
-      hash = String.valueOf(encode(textBytes));
+      hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());
     }

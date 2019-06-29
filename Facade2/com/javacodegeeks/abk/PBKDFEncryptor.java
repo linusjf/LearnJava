@@ -1,8 +1,7 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-import static com.lambdaworks.codec.Base64.encode;
-
+import java.util.Base64;
 import com.lambdaworks.crypto.PBKDF;
 import java.security.GeneralSecurityException;
 
@@ -30,7 +29,7 @@ public class PBKDFEncryptor implements Encrypt {
       int sizeKey = 64 * 8;
       byte[] derived =
           PBKDF.pbkdf2("HmacSHA512", textBytes, salt, iterationCount, sizeKey);
-      hash = String.valueOf(encode(derived));
+      hash = Base64.getEncoder().encodeToString(derived);
     } catch (GeneralSecurityException e) {
       System.out.println("Error generating derived key: " + e.getMessage());
     }

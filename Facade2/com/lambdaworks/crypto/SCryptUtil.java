@@ -1,9 +1,7 @@
 package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-import static com.lambdaworks.codec.Base64.decode;
-import static com.lambdaworks.codec.Base64.encode;
-
+import java.util.Base64;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
@@ -58,9 +56,9 @@ public final class SCryptUtil {  // NOPMD
       sb.append("$s0$")
           .append(params)
           .append('$')
-          .append(encode(salt))
+          .append(Base64.getEncoder().encodeToString(salt))
           .append('$')
-          .append(encode(derived));
+          .append(Base64.getEncoder().encodeToString(derived));
 
       return sb.toString();
     } catch (UnsupportedEncodingException e) {
@@ -88,8 +86,9 @@ public final class SCryptUtil {  // NOPMD
       }
 
       final long params = Long.parseLong(parts[2], 16);
-      final byte[] salt = decode(parts[3].toCharArray());
-      final byte[] derived0 = decode(parts[4].toCharArray());
+      final byte[] salt = 
+        Base64.getDecoder().decode(parts[3]);
+      final byte[] derived0 = Base64.getDecoder().decode(parts[4]);
       final int n = (int)Math.pow(2, params >> 16 & 0xffff);
       final int r = (int)params >> 8 & 0xff;
       final int p = (int)params & 0xff;
