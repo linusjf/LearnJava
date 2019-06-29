@@ -1,6 +1,6 @@
 package com.javacodegeeks.abk;
 
-import com.howtodoinjava.hashing.password.demo.bcrypt.BCrypt;
+import com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil;
 
 /**
  * Describe class <code>BCryptor</code> here.
@@ -19,7 +19,7 @@ public class BCryptor implements Encrypt {
   public String encrypt(String text) {
     String hash = "";
     try {
-      hash = BCrypt.hashpw(text, BCrypt.gensalt(12));
+      hash = BCryptUtil.hashpw(text, BCryptUtil.gensalt(12));
       hash = hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
     } catch (IllegalArgumentException e) {
       System.err.println("Illegal Argument: " + e.getMessage());
