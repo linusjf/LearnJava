@@ -9,4 +9,7 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="SingletonTest.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='SingletonTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testState']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/NOT_EQUAL/NUM_LONG[@text='3L']" />
+  <suppress-xpath files="SingletonTest.java"
+                  checks="IllegalCatchCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SingletonTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testForSingleton']]/SLIST/LITERAL_TRY/LITERAL_CATCH" />
 </suppressions>

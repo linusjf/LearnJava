@@ -42,10 +42,7 @@ public enum SingletonTest {
     testState();
   }
 
-  @SuppressWarnings({"checkstyle:IllegalCatch",
-                     "PMD.AvoidInstantiatingObjectsInLoops"})
-  private static void
-  testConcurrency() {  // NOPMD
+  private static void testConcurrency() {
     int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
@@ -85,6 +82,14 @@ public enum SingletonTest {
       thread.start();
       threads.add(thread);
     }
+    testForSingleton(threads, generatedValues, instances, exception);
+  }
+
+  private static void testForSingleton(List<Thread> threads,
+                                       Set<Long> generatedValues,
+                                       Set<Singleton> instances,
+                                       AtomicReference<Throwable> exception) {
+
     try {
       for (final Thread thread : threads)
         thread.join();
@@ -103,13 +108,17 @@ public enum SingletonTest {
         default:
           throw new AssertionError("Expected one instance, but found many");
       }
-      System.out.println("Sequence in order in which inserted: ");
-      for (final long value : generatedValues)
-        System.out.print(value + " ");
-      System.out.println();
-    } catch (Throwable throwable) {  // NOPMD
-      System.out.println(throwable.getMessage());
+      printValues(generatedValues);
+    } catch (Throwable e) { // NO PMD
+      System.out.println(e.getMessage());
     }
+  }
+
+  private static void printValues(Set<Long> generatedValues) {
+    System.out.println("Sequence in order in which inserted: ");
+    for (final long value : generatedValues)
+      System.out.print(value + " ");
+    System.out.println();
   }
 
   private static void testSerializable() {
