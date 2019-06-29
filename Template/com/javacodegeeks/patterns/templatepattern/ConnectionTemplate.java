@@ -54,8 +54,12 @@ public abstract class ConnectionTemplate {
     System.out.println("Destroying connection objects...");
   }
 
-  public boolean disableLogging() {
-    return true;
+  public void disableLogging() {
+    isLoggingEnabled = false;
+  }
+
+  public void enableLogging() {
+    isLoggingEnabled = true;
   }
 
   private void logging(String msg) {
