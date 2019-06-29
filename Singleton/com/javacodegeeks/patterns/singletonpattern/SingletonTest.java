@@ -109,7 +109,7 @@ public enum SingletonTest {
           throw new AssertionError("Expected one instance, but found many");
       }
       printValues(generatedValues);
-    } catch (Throwable e) { // NO PMD
+    } catch (Throwable e) { // NOPMD
       System.out.println(e.getMessage());
     }
   }

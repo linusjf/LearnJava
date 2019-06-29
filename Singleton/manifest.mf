@@ -9,6 +9,6 @@ Specification-Title: Singleton
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 871f15c June 29 2019
+Implementation-Version: 66c40b5 June 29 2019
 Implementation-Vendor: 
 

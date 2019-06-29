@@ -18,7 +18,8 @@ public class Employee {
    * @param employeeSalary a <code>double</code> value
    * @param employeeDesignation a <code>String</code> value
    */
-  public Employee(String employeeName, double employeeSalary,
+  public Employee(String employeeName,
+                  double employeeSalary,
                   String employeeDesignation) {
     this.employeeName = employeeName;
     this.employeeSalary = employeeSalary;

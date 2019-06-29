@@ -1,5 +1,7 @@
 package stefano.lupo;
 
+import static stefano.lupo.RequestHandlerUtils.*;
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -53,14 +55,21 @@ public class RequestHandler implements Runnable {
     this.clientSocket = clientSocket;
   }
 
-  private String extractURL(String requestString) {
-    // remove request type and space
-    System.out.println("Request = " + requestString);
-    String urlString = requestString.substring(requestString.indexOf(' ') + 1);
-    // Remove everything past next space
-    urlString = urlString.substring(0, urlString.indexOf(' '));
-    // Prepend http:// if necessary to create correct URL
-    return urlString.startsWith("http") ? urlString : "http://" + urlString;
+  /**
+   * This method is called when user requests a page that is blocked by the
+   * proxy. Sends an access forbidden message back to the client
+   */
+  private void blockedSiteRequested() {
+    try (BufferedWriter bufferedWriter = new BufferedWriter(
+             new OutputStreamWriter(clientSocket.getOutputStream()))) {
+      String line = "HTTP/1.0 403 Access Forbidden \n"
+                    + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
+      bufferedWriter.write(line);
+      bufferedWriter.flush();
+    } catch (IOException e) {
+      System.out.println("Error writing to client when requested a blocked site"
+                         + e.getMessage());
+    }
   }
 
   /**
@@ -149,7 +158,8 @@ public class RequestHandler implements Runnable {
           response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
-          ImageIO.write(image, fileExtension.substring(1),
+          ImageIO.write(image,
+                        fileExtension.substring(1),
                         clientSocket.getOutputStream());
         }
       } else {
@@ -181,34 +191,6 @@ public class RequestHandler implements Runnable {
       System.out.println("Error Sending Cached file to client "
                          + e.getMessage());
     }
-  }
-
-  private String computeLogicalFilePrefix(String urlString) {
-    int fileExtensionIndex = urlString.lastIndexOf('.');
-    // Get the initial file name
-    String fileName = urlString.substring(0, fileExtensionIndex);
-    // Trim off http://www. as no need for it in file name
-    fileName = fileName.substring(fileName.indexOf('.') + 1);
-    // Remove any illegal characters from file name
-    fileName = fileName.replace("/", "__");
-    fileName = fileName.replace('.', '_');
-    return fileName;
-  }
-
-  private String computeLogicalFileExtension(String urlString) {
-    int fileExtensionIndex = urlString.lastIndexOf('.');
-    String fileExtension;
-
-    // Get the type of file
-    fileExtension = urlString.substring(fileExtensionIndex, urlString.length());
-
-    // Trailing / result in index.html of that directory being fetched
-    if (fileExtension.contains("/")) {
-      fileExtension = fileExtension.replace("/", "__");
-      fileExtension = fileExtension.replace('.', '_');
-      fileExtension = fileExtension.concat(".html");
-    }
-    return fileExtension;
   }
 
   private File getCacheFile(String fileName) {
@@ -279,8 +261,8 @@ public class RequestHandler implements Runnable {
         proxyToClientBw.flush();
 
         // Send them the image data
-        ImageIO.write(image, fileExtension.substring(1),
-                      clientSocket.getOutputStream());
+        ImageIO.write(
+            image, fileExtension.substring(1), clientSocket.getOutputStream());
 
       } else {
         // Create the URL
@@ -394,7 +376,9 @@ public class RequestHandler implements Runnable {
             clientSocket.getOutputStream().flush();
         }
       } while (read >= 0);
-      closeResources(proxyToServerSocket, proxyToServerBR, proxyToServerBW,
+      closeResources(proxyToServerSocket,
+                     proxyToServerBR,
+                     proxyToServerBW,
                      proxyToClientBw);
     } catch (SocketTimeoutException e) {
       String line = "HTTP/1.0 504 Timeout Occured after 10s\n"
@@ -411,7 +395,8 @@ public class RequestHandler implements Runnable {
   }
 
   private void closeResources(Socket proxyToServerSocket,
-                              Reader proxyToServerBR, Writer proxyToServerBW,
+                              Reader proxyToServerBR,
+                              Writer proxyToServerBW,
                               Writer proxyToClientBw) throws IOException {
     // Close Down Resources
     if (proxyToServerSocket != null)
@@ -436,23 +421,6 @@ public class RequestHandler implements Runnable {
 
     if (proxyToClientBw != null) {
       proxyToClientBw.close();
-    }
-  }
-
-  /**
-   * This method is called when user requests a page that is blocked by the
-   * proxy. Sends an access forbidden message back to the client
-   */
-  private void blockedSiteRequested() {
-    try (BufferedWriter bufferedWriter = new BufferedWriter(
-             new OutputStreamWriter(clientSocket.getOutputStream()))) {
-      String line = "HTTP/1.0 403 Access Forbidden \n"
-                    + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
-      bufferedWriter.write(line);
-      bufferedWriter.flush();
-    } catch (IOException e) {
-      System.out.println("Error writing to client when requested a blocked site"
-                         + e.getMessage());
     }
   }
 
