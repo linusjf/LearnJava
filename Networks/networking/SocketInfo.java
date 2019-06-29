@@ -5,7 +5,12 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-public class SocketInfo {
+public final class SocketInfo {
+
+  private SocketInfo() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     for (String host : args) {
       try {

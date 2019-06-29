@@ -11,10 +11,14 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.Socket;
 
-public class ListDicts {
+public final class ListDicts {
   public static final String SERVER = "dict.org";
   public static final int PORT = 2628;
-  public static final int TIMEOUT = 15000;
+  public static final int TIMEOUT = 15_000;
+
+  private ListDicts() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try (Socket socket = new Socket(SERVER, PORT);

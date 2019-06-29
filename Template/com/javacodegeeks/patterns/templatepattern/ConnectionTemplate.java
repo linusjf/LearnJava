@@ -3,10 +3,10 @@ package com.javacodegeeks.patterns.templatepattern;
 import java.util.Date;
 
 public abstract class ConnectionTemplate {
-  private boolean isLoggingEnabled = true;
+  private boolean isLoggingEnabled;
 
   public ConnectionTemplate() {
-    isLoggingEnabled = disableLogging();
+    isLoggingEnabled = true;
   }
 
   public final void run() {
@@ -15,7 +15,7 @@ public abstract class ConnectionTemplate {
     setCredentials();
     logging("Credentails set [" + new Date() + "]");
     connect();
-    logging("Conencted");
+    logging("Connected");
     prepareStatement();
     logging("Statement prepared [" + new Date() + "]");
     setData();
@@ -23,9 +23,9 @@ public abstract class ConnectionTemplate {
     insert();
     logging("Inserted [" + new Date() + "]");
     close();
-    logging("Conenctions closed [" + new Date() + "]");
+    logging("Connections closed [" + new Date() + "]");
     destroy();
-    logging("Object destoryed [" + new Date() + "]");
+    logging("Object destroyed [" + new Date() + "]");
   }
 
   public abstract void setDBDriver();

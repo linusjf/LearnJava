@@ -9,7 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SourceViewer4 {
+public final class SourceViewer4 {
+
+  private SourceViewer4() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       URL u = new URL(args[0]);

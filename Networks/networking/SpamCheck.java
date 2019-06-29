@@ -109,9 +109,7 @@ public final class SpamCheck {
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};
     // clang-format off
-    String sblString, 
-           xblString, 
-           pblString;
+    String sblString, xblString, pblString;
     // clang-format on
     synchronized (params) {
       sblString = SPAM_LISTER.format(params);

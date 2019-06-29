@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class LowPortScanner {
+public final class LowPortScanner {
+
+  private LowPortScanner() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     String[] hosts = args.length > 0 ? args : new String[] {"localhost"};
     for (String host : hosts) {
@@ -17,6 +22,7 @@ public class LowPortScanner {
           System.err.println(ex);
           break;
         } catch (IOException ex) {
+          System.err.println(ex.getMessage());
           // must not be a server on this port
         }
       }

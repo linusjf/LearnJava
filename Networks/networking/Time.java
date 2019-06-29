@@ -7,8 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class Time {
+@SuppressWarnings("PMD.ShortClassName")
+public final class Time {
   private static final String HOSTNAME = "time.nist.gov";
+
+  private Time() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try {
@@ -34,7 +39,7 @@ public class Time {
     long differenceInMS = epoch1970ms - epoch1900ms;
     long differenceBetweenEpochs = differenceInMS / 1000;
     Socket socket = new Socket(HOSTNAME, 37);
-    socket.setSoTimeout(15000);
+    socket.setSoTimeout(15_000);
     InputStream raw = socket.getInputStream();
 
     long secondsSince1900 = 0;
@@ -43,7 +48,6 @@ public class Time {
     }
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
     long msSince1970 = secondsSince1970 * 1000;
-    Date time = new Date(msSince1970);
-    return time;
+    return new Date(msSince1970);
   }
 }

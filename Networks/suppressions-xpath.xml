@@ -92,4 +92,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="SpamCheck.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SpamCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='constructCookieString']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='200']" />
+  <suppress-xpath files="SocketInfo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketInfo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='theSocket']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Socket']]/ELIST/EXPR/NUM_INT[@text='80']" />
+  <suppress-xpath files="LowPortScanner.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LowPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1024']" />
 </suppressions>

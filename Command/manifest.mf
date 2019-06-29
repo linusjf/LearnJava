@@ -10,6 +10,6 @@ Specification-Title: Command
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 7720fc4 June 29 2019
+Implementation-Version: af400dc June 29 2019
 Implementation-Vendor: 
 

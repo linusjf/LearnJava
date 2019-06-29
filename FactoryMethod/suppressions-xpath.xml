@@ -3,13 +3,16 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="CommercialPlan.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='CommercialPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='7.50']" />
-  <suppress-xpath files="DomesticPlan.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='DomesticPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='3.50']" />
-  <suppress-xpath files="InstitutionalPlan.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='InstitutionalPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='5.50']" />
+<suppress-xpath
+       files="CommercialPlan.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CommercialPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='allotRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='7.50']"/>
+<suppress-xpath
+       files="DomesticPlan.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='DomesticPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='allotRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='3.50']"/>
+<suppress-xpath
+       files="InstitutionalPlan.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='InstitutionalPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='allotRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='5.50']"/>
 </suppressions>
