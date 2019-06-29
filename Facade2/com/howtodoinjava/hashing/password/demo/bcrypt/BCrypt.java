@@ -274,7 +274,7 @@ public class BCrypt {
   }
 
   /**
-   * Consider using regex. Match the initial salt and match the minor and
+   * Using regex. Match the initial salt and match the minor and
    * offset values.
    */
   private static String[] retrieveOffsetMinor(String salt) {
@@ -287,14 +287,6 @@ public class BCrypt {
         minor = 'a';
     } else
       throw new IllegalArgumentException("Invalid salt:" + salt);
-    /**
-     * if (salt.charAt(0) != DOLLAR || salt.charAt(1) != '2') throw new
-     * IllegalArgumentException("Invalid salt version"); if (salt.charAt(2) ==
-     * DOLLAR) off = 3; else { minor = salt.charAt(2); if (minor != LOWER_CASE_A
-     * || salt.charAt(3) != DOLLAR) throw new IllegalArgumentException("Invalid
-     * salt revision"); off = 4; }
-     */
-
     // Extract number of rounds
     if (salt.charAt(off + 2) > DOLLAR)
       throw new IllegalArgumentException("Missing salt rounds");
@@ -331,10 +323,7 @@ public class BCrypt {
     return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
-  private static String getHashedPassword(char minor,
-                                          int rounds,
-                                          byte[] saltb,
-                                          byte[] hashed) {
+  private static String getHashedPassword(char minor,int rounds,byte[] saltb,byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= LOWER_CASE_A)
