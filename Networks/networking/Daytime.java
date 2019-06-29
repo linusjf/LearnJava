@@ -32,7 +32,8 @@ public final class Daytime {
   static Date parseDate(String s) throws ParseException {
     String[] pieces = s.split(" ");
     String dateTime = pieces[1] + " " + pieces[2] + " UTC";
-    DateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss z",Locale.getDefault());
+    DateFormat format =
+        new SimpleDateFormat("yy-MM-dd hh:mm:ss z", Locale.getDefault());
     return format.parse(dateTime);
   }
 }
