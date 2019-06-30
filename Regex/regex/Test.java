@@ -11,6 +11,9 @@ public final class Test {
   private static final Pattern PASSWORD_PATTERN =
       Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
+  private static final Pattern SEARCHFOR_PATTERN = Pattern.compile(
+      "^(((Any)|(Network)|(Person)|(Host)|(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$");
+
   private Test() {
     throw new IllegalStateException("Private constructor");
   }
@@ -33,5 +36,24 @@ public final class Test {
 
     System.out.println(matcher.matches());
     System.out.println(matcher.end(1));
+    testSearchForPattern();
+  }
+
+  private static void testSearchForPattern() {
+
+    String firstTest = "all";
+
+    Matcher matcher = SEARCHFOR_PATTERN.matcher(firstTest);
+
+    System.out.println(matcher.matches());
+
+    String secondTest = "ASN";
+    matcher = SEARCHFOR_PATTERN.matcher(secondTest);
+
+    System.out.println(matcher.matches());
+    String thirdTest = "Irg";
+    matcher = SEARCHFOR_PATTERN.matcher(thirdTest);
+
+    System.out.println(matcher.matches());
   }
 }

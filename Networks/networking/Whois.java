@@ -8,6 +8,8 @@ import java.io.Writer;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.EnumSet;
+import java.util.regex.Pattern;
 
 public class Whois {
   public static final int DEFAULT_PORT = 43;
@@ -53,6 +55,18 @@ public class Whois {
     private SearchFor(String label) {
       this.label = label;
     }
+
+    public static Pattern getRegexPattern() {
+
+      StringBuilder pattern = new StringBuilder();
+      pattern.append("(?i)^((");
+      EnumSet.allOf(SearchFor.class)
+          .forEach(
+              searchfor -> pattern.append('(').append(searchfor).append(")|"));
+      pattern.deleteCharAt(pattern.length() - 1);
+      pattern.append("){1})$");
+      return Pattern.compile(pattern.toString());
+    }
   }
 
   // Categories to search in
@@ -65,6 +79,18 @@ public class Whois {
 
     private SearchIn(String label) {
       this.label = label;
+    }
+
+    public static Pattern getRegexPattern() {
+
+      StringBuilder pattern = new StringBuilder();
+      pattern.append("(?i)^((");
+      EnumSet.allOf(SearchIn.class)
+          .forEach(
+              searchin -> pattern.append('(').append(searchin).append(")|"));
+      pattern.deleteCharAt(pattern.length() - 1);
+      pattern.append("){1})$");
+      return Pattern.compile(pattern.toString());
     }
   }
 

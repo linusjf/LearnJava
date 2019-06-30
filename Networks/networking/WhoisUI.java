@@ -2,6 +2,7 @@ package networking;
 
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class WhoisUI {
 
@@ -27,27 +28,48 @@ public class WhoisUI {
 
   private void getWhoisInput(Scanner scanner) {
     System.out.println("Enter entity name for whois record: ");
-    whois = scanner.next().trim();
+    if (scanner.hasNext())
+      whois = scanner.next().trim();
   }
 
   private void getSearchForInput(Scanner scanner) {
     System.out.println("Enter entity type to search for: ");
-    searchFor = scanner.next().trim();
+    Pattern pattern = Whois.SearchFor.getRegexPattern();
+    System.out.println(pattern);
+    do {
+      if (scanner.hasNext()) {
+        searchFor = scanner.next();
+      } else {
+        scanner.next();
+      }
+    } while (!searchFor.matches(pattern.toString()));
+    System.out.println(searchFor);
   }
 
   private void getSearchAtInput(Scanner scanner) {
     System.out.println("Enter name of registry server to search at: ");
-    searchAt = scanner.next().trim();
+    if (scanner.hasNext())
+      searchAt = scanner.next().trim();
   }
 
   private void getSearchInInput(Scanner scanner) {
     System.out.println("Enter records to search in: ");
-    searchIn = scanner.next().trim();
+    Pattern pattern = Whois.SearchIn.getRegexPattern();
+    System.out.println(pattern);
+    do {
+      if (scanner.hasNext()) {
+        searchIn = scanner.next();
+      } else {
+        scanner.next();
+      }
+    } while (!searchIn.matches(pattern.toString()));
+    System.out.println(searchIn);
   }
 
   private void getExactMatchInput(Scanner scanner) {
     System.out.println("Is search to be an exact match?");
-    exactMatch = scanner.nextBoolean();
+    if (scanner.hasNextBoolean())
+      exactMatch = scanner.nextBoolean();
   }
 
   public static void main(String[] args) {

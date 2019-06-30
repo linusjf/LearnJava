@@ -9,6 +9,6 @@ Specification-Title: Scanner
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ecd26be June 30 2019
+Implementation-Version: 9692e05 June 30 2019
 Implementation-Vendor: 
 
