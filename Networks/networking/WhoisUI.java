@@ -1,6 +1,7 @@
 package networking;
 
-import java.net.UnknownHostException;
+import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,6 +16,13 @@ public class WhoisUI {
 
   public WhoisUI(Whois server) {
     this.server = server;
+  }
+
+  public WhoisUI() {
+  }
+
+  public void setServer(Whois whois) {
+    this.server = whois;
   }
 
   public void getUserInput(String... args) {
@@ -74,11 +82,17 @@ public class WhoisUI {
 
   public static void main(String[] args) {
     try {
-      Whois server = new Whois();
-      WhoisUI ui = new WhoisUI(server);
+      WhoisUI ui = new WhoisUI();
       ui.getUserInput(args);
-    } catch (UnknownHostException uhe) {
-      System.err.println(uhe.getMessage());
+      Whois server = new Whois(ui.searchAt);
+      server.lookUpNames(
+          ui.whois,
+          Whois.SearchFor.valueOf(
+              ui.searchFor.toUpperCase(Locale.getDefault())),
+          Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())),
+          ui.exactMatch);
+    } catch (IOException e) {
+      System.err.println(e.getMessage());
     }
   }
 }
