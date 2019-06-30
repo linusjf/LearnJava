@@ -1,7 +1,15 @@
 package networking;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Whois {
   public final static int DEFAULT_PORT = 43;
@@ -70,13 +78,10 @@ public class Whois {
       suffix = ".";
     String prefix = category.label + " " + group.label;
     String query = prefix + target + suffix;
-    Socket socket = new Socket();
-    try {
-      SocketAddress address = new InetSocketAddress(host, port);
-      socket.connect(address);
-      Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
-      BufferedReader in = new BufferedReader(
-          new InputStreamReader(socket.getInputStream(), "ASCII"));
+    try (Socket socket = new Socket(host,port);
+         Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
+         BufferedReader in = new BufferedReader(
+             new InputStreamReader(socket.getInputStream(), "ASCII"));) {
       out.write(query + "\r\n");
       out.flush();
       StringBuilder response = new StringBuilder();
@@ -86,8 +91,6 @@ public class Whois {
         response.append("\r\n");
       }
       return response.toString();
-    } finally {
-      socket.close();
     }
   }
 
