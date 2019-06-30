@@ -6,14 +6,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Whois {
-  public final static int DEFAULT_PORT = 43;
-  public final static String DEFAULT_HOST = "whois.internic.net";
+  public static final int DEFAULT_PORT = 43;
+  public static final String DEFAULT_HOST = "whois.internic.net";
   private int port = DEFAULT_PORT;
   private InetAddress host;
 
@@ -64,6 +62,7 @@ public class Whois {
     MAILBOX("Mailbox"),
     HANDLE("!");
     private String label;
+
     private SearchIn(String label) {
       this.label = label;
     }
@@ -78,7 +77,7 @@ public class Whois {
       suffix = ".";
     String prefix = category.label + " " + group.label;
     String query = prefix + target + suffix;
-    try (Socket socket = new Socket(host,port);
+    try (Socket socket = new Socket(host, port);
          Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
          BufferedReader in = new BufferedReader(
              new InputStreamReader(socket.getInputStream(), "ASCII"));) {

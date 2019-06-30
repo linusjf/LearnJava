@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.10.6
 Created-By: 10.0.2+13 (Oracle Corporation)
 Built-By: root
-Main-Class: networking.OReillyByName
+Main-Class: scan.ScannerDemo1
 
 Name: common
-Specification-Title: Networks
+Specification-Title: Scanner
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 

@@ -332,6 +332,14 @@
       </classpath>
     </java>
   </target>
+  <target name="whois">
+    <java classname="${main.class35}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">

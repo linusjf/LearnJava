@@ -34,3 +34,4 @@ networking.DictClient gold silver bronze platinum
 networking.ListDicts
 networking.LowPortScanner 192.168.0.1 localhost
 networking.SocketInfo www.google.com www.spamhaus.org
+networking.WhoisUI
