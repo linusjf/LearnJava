@@ -2,7 +2,11 @@ package scan;
 
 import java.util.Scanner;
 
-public class ScannerDemo1 {
+public final class ScannerDemo1 {
+
+  private ScannerDemo1() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
 
