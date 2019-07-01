@@ -15,28 +15,24 @@ public final class Time {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"fallthrough", "PMD.MissingBreakInSwitch"})
+  @SuppressWarnings("fallthrough")
   public static void main(String[] args) {
     try {
       Date d;
       switch (args.length) {
         case 0:
           d = Time.getDateFromNetwork();
-          System.out.println("It is " + d);
-          System.exit(0);
+          break;
 
         case 1:
           d = Time.getDateFromNetwork(args[0], 37);
-          System.out.println("It is " + d);
-          System.exit(0);
-
-        case 2:
+          break;
+        
 
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
-          System.out.println("It is " + d);
-          System.exit(0);
       }
+      System.out.println("It is " + d);
     } catch (IOException e) {
       System.err.println(e.getMessage());
     }
