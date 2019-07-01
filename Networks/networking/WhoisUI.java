@@ -7,40 +7,28 @@ import java.util.regex.Pattern;
 
 public class WhoisUI {
 
-  private Whois server;
   private String searchFor;
   private String searchAt;
   private boolean exactMatch;
   private String whois;
   private String searchIn;
 
-  public WhoisUI(Whois server) {
-    this.server = server;
-  }
-
-  public WhoisUI() {
-  }
-
-  public void setServer(Whois whois) {
-    this.server = whois;
-  }
-
-  public void getUserInput(String... args) {
+  public void inputWhoisFields(String... args) {
     Scanner scanner = new Scanner(System.in);
-    getWhoisInput(scanner);
-    getExactMatchInput(scanner);
-    getSearchForInput(scanner);
-    getSearchInInput(scanner);
-    getSearchAtInput(scanner);
+    inputWhois(scanner);
+    inputExactMatch(scanner);
+    inputSearchFor(scanner);
+    inputSearchIn(scanner);
+    inputSearchAt(scanner);
   }
 
-  private void getWhoisInput(Scanner scanner) {
+  private void inputWhois(Scanner scanner) {
     System.out.println("Enter entity name for whois record: ");
     if (scanner.hasNext())
       whois = scanner.next().trim();
   }
 
-  private void getSearchForInput(Scanner scanner) {
+  private void inputSearchFor(Scanner scanner) {
     System.out.println("Enter entity type to search for: ");
     Pattern pattern = Whois.SearchFor.getRegexPattern();
     System.out.println(pattern);
@@ -54,13 +42,13 @@ public class WhoisUI {
     System.out.println(searchFor);
   }
 
-  private void getSearchAtInput(Scanner scanner) {
+  private void inputSearchAt(Scanner scanner) {
     System.out.println("Enter name of registry server to search at: ");
     if (scanner.hasNext())
       searchAt = scanner.next().trim();
   }
 
-  private void getSearchInInput(Scanner scanner) {
+  private void inputSearchIn(Scanner scanner) {
     System.out.println("Enter records to search in: ");
     Pattern pattern = Whois.SearchIn.getRegexPattern();
     System.out.println(pattern);
@@ -74,7 +62,7 @@ public class WhoisUI {
     System.out.println(searchIn);
   }
 
-  private void getExactMatchInput(Scanner scanner) {
+  private void inputExactMatch(Scanner scanner) {
     System.out.println("Is search to be an exact match?");
     if (scanner.hasNextBoolean())
       exactMatch = scanner.nextBoolean();
@@ -83,7 +71,7 @@ public class WhoisUI {
   public static void main(String[] args) {
     try {
       WhoisUI ui = new WhoisUI();
-      ui.getUserInput(args);
+      ui.inputWhoisFields(args);
       Whois server = new Whois(ui.searchAt);
       server.lookUpNames(
           ui.whois,

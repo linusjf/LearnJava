@@ -98,4 +98,61 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="Time.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Time']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getDateFromNetwork']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15_000']" />
+  <suppress-xpath files="DayTimeClient.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DayTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='time']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='13']" />
+  <suppress-xpath files="Time.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Time']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='37']" />
+  <suppress-xpath files="Time.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Time']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getDateFromNetwork']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='getDateFromNetwork']]/ELIST/EXPR/NUM_INT[@text='37']" />
+  <suppress-xpath files="WhoisQuery.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='WhoisQuery']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='performWhoisQuery']]/ELIST/EXPR/NUM_INT[@text='43']" />
+  <suppress-xpath files="WhoisQuery.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='WhoisQuery']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='performWhoisQuery']]/ELIST/EXPR/NUM_INT[@text='43']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='differenceBetweenEpochs']]/ASSIGN/EXPR/NUM_LONG[@text='2208988800L']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='secondsSince1970']]/ASSIGN/EXPR/DIV[./IDENT[@text='msSince1970']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='time']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR[./NUM_INT[@text='24']]/BAND[./IDENT[@text='secondsSince1900']]/NUM_LONG[@text='0x00000000FF000000L']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR/NUM_INT[@text='24']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR[./NUM_INT[@text='16']]/BAND[./IDENT[@text='secondsSince1900']]/NUM_LONG[@text='0x0000000000FF0000L']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR/NUM_INT[@text='16']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR[./NUM_INT[@text='8']]/BAND[./IDENT[@text='secondsSince1900']]/NUM_LONG[@text='0x000000000000FF00L']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/SR/NUM_INT[@text='8']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/INDEX_OP[./IDENT[@text='time']]/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN/TYPECAST/BAND[./IDENT[@text='secondsSince1900']]/NUM_LONG[@text='0x00000000000000FFL']" />
+  <suppress-xpath files="PooledDaytimeServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='PooledDaytimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='pool']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='50']" />
+  <suppress-xpath files="EchoServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EchoServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="LocalPortScanner.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LocalPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='port']]/NUM_INT[@text='65535']" />
 </suppressions>

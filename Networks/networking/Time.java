@@ -15,7 +15,7 @@ public final class Time {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("fallthrough")
+  @SuppressWarnings({"fallthrough","PMD.MissingBreakInSwitch"})
   public static void main(String[] args) {
     try {
       Date d;
@@ -30,7 +30,7 @@ public final class Time {
           System.out.println("It is " + d);
           System.exit(0);
 
-        case 2:  // fall through
+        case 2:
 
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));

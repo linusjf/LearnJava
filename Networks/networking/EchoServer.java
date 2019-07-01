@@ -1,21 +1,35 @@
 package networking;
 
 import java.io.IOException;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.util.*;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Set;
 
-public class EchoServer {
-  public static int DEFAULT_PORT = 7;
+public final class EchoServer {
+  public static final int DEFAULT_PORT = 7;
 
-  public static void main(String[] args) {
+  private EchoServer() {
+    throw new IllegalStateException("Private constructor");
+  }
+
+  private static int getPort(String... args) {
     int port;
     try {
       port = Integer.parseInt(args[0]);
-    } catch (RuntimeException ex) {
+    } catch (NumberFormatException ex) {
       port = DEFAULT_PORT;
     }
+    return port;
+  }
+
+  public static void main(String[] args) {
+    int port = getPort(args);
     System.out.println("Listening for connections on port " + port);
     ServerSocketChannel serverChannel;
     Selector selector;
@@ -28,14 +42,14 @@ public class EchoServer {
       selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
-      ex.printStackTrace();
+      System.err.println(ex.getMessage());
       return;
     }
     while (true) {
       try {
         selector.select();
       } catch (IOException ex) {
-        ex.printStackTrace();
+        System.err.println(ex.getMessage());
         break;
       }
       Set<SelectionKey> readyKeys = selector.selectedKeys();
@@ -71,6 +85,7 @@ public class EchoServer {
           try {
             key.channel().close();
           } catch (IOException cex) {
+            System.err.println(cex.getMessage());
           }
         }
       }

@@ -3,7 +3,12 @@ package networking;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class RandomPort {
+public final class RandomPort {
+
+  private RandomPort() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static void main(String[] args) {
     try {
       ServerSocket server = new ServerSocket(0);

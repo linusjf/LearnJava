@@ -7,9 +7,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-public class MultithreadedDaytimeServer {
+public final class MultithreadedDaytimeServer {
   public static final int PORT = 1331;
+
+  private MultithreadedDaytimeServer() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try (ServerSocket server = new ServerSocket(PORT)) {
@@ -31,6 +36,7 @@ public class MultithreadedDaytimeServer {
     private Socket connection;
 
     DaytimeThread(Socket connection) {
+      super();
       this.connection = connection;
     }
 
@@ -39,7 +45,8 @@ public class MultithreadedDaytimeServer {
       try {
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         Date now = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
+        SimpleDateFormat format =
+            new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
         out.write(ProcessHandle.current().pid() + " " + format.format(now)
                   + "\\r\\n");
         out.flush();

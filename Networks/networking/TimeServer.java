@@ -6,15 +6,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class TimeServer {
+public final class TimeServer {
 
   public static final int PORT = 3737;
+
+  private TimeServer() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     // The time protocol sets the epoch at 1900,
     // the Date class at 1970. This number
     // converts between them.
-    long differenceBetweenEpochs = 2208988800L;
+    long differenceBetweenEpochs = 2_208_988_800L;
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
         try (Socket connection = server.accept();

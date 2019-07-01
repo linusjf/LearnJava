@@ -7,9 +7,15 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class EchoClient {
+public final class EchoClient {
+
+  private EchoClient() {
+    throw new IllegalStateException("Private constructor");
+  }
+
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) throws IOException {
-    if (args.length != 2) {
+    if (args.length < 2) {
       System.err.println("Usage: java EchoClient <host name> <port number>");
       System.exit(1);
     }

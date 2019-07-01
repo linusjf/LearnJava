@@ -52,7 +52,7 @@ public class Whois {
 
     private String label;
 
-    private SearchFor(String label) {
+    SearchFor(String label) {
       this.label = label;
     }
 
@@ -77,7 +77,7 @@ public class Whois {
     HANDLE("!");
     private String label;
 
-    private SearchIn(String label) {
+    SearchIn(String label) {
       this.label = label;
     }
 

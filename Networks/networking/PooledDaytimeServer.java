@@ -7,12 +7,17 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PooledDaytimeServer {
+public final class PooledDaytimeServer {
   public static final int PORT = 3131;
+
+  private PooledDaytimeServer() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(50);
@@ -44,7 +49,8 @@ public class PooledDaytimeServer {
       try {
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         Date now = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
+        SimpleDateFormat format =
+            new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
         out.write(ProcessHandle.current().pid() + " " + format.format(now)
                   + "\\r\\n");
         out.flush();
