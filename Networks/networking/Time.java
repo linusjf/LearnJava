@@ -15,7 +15,7 @@ public final class Time {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"fallthrough","PMD.MissingBreakInSwitch"})
+  @SuppressWarnings({"fallthrough", "PMD.MissingBreakInSwitch"})
   public static void main(String[] args) {
     try {
       Date d;
