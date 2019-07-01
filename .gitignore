@@ -21,3 +21,4 @@ Proxy/cached/**/*.*
 !NIOIntro/file/*put.txt
 !FactoryMethod/bill.txt
 !Networks/web.log
+!Networks/echo.txt

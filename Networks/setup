@@ -11,7 +11,11 @@ sleep 5
 java -cp . networking.PooledDaytimeServer &
 echo "Sleeping for 5 seconds again after server start..."
 sleep 5
+java -cp . networking.EchoServer 7777 &
+echo "Sleeping for 5 seconds again after server start..."
+sleep 5
 java -cp . networking.DayTimeClient localhost 1313
 java -cp . networking.DayTimeClient localhost 1331
 java -cp . networking.DayTimeClient localhost 3131
 java -cp . networking.Time localhost 3737
+java -cp . networking.EchoClient localhost 7777 < echo.txt
