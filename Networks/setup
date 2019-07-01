@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+java -cp . networking.DaytimeServer &
+echo "Sleeping for 5 seconds again after server start..."
+sleep 5
+java -cp . networking.DayTimeClient localhost 1313

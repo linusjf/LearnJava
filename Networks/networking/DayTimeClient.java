@@ -11,8 +11,20 @@ public final class DayTimeClient {
 
   public static void main(String[] args) {
     try {
-      Date time = Daytime.getDateFromNetwork();
+      if (args.length == 0) {
+        Date time = Daytime.getDateFromNetwork();
+        System.out.println(time);
+        System.exit(0);
+      }
+      if (args.length == 1) {
+        Date time = Daytime.getDateFromNetwork(args[0], 13);
+        System.out.println(time);
+        System.exit(0);
+      }
+      Date time =
+          Daytime.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
       System.out.println(time);
+      System.exit(0);
     } catch (IOException | ParseException ex) {
       System.err.println(ex);
     }

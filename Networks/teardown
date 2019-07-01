@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ps -ef | grep \
+  'networking.DaytimeServer' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?

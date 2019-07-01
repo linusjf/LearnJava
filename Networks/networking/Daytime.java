@@ -28,6 +28,19 @@ public final class Daytime {
       return parseDate(time.toString());
     }
   }
+  
+  public static Date getDateFromNetwork(String hostname,int port) throws IOException, ParseException {
+    try (Socket socket = new Socket(hostname, port)) {
+      socket.setSoTimeout(15_000);
+      InputStream in = socket.getInputStream();
+      StringBuilder time = new StringBuilder();
+      InputStreamReader reader = new InputStreamReader(in, "ASCII");
+      for (int c = reader.read(); c != -1; c = reader.read()) {
+        time.append((char)c);
+      }
+      return parseDate(time.toString());
+    }
+  }
 
   static Date parseDate(String s) throws ParseException {
     String[] pieces = s.split(" ");
