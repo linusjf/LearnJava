@@ -15,16 +15,39 @@ public final class Time {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("fallthrough")
   public static void main(String[] args) {
     try {
-      Date d = Time.getDateFromNetwork();
-      System.out.println("It is " + d);
+      Date d;
+      switch (args.length) {
+        case 0:
+          d = Time.getDateFromNetwork();
+          System.out.println("It is " + d);
+          System.exit(0);
+
+        case 1:
+          d = Time.getDateFromNetwork(args[0], 37);
+          System.out.println("It is " + d);
+          System.exit(0);
+
+        case 2: // fall through
+
+        default:
+          d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
+          System.out.println("It is " + d);
+          System.exit(0);
+      }
     } catch (IOException e) {
       System.err.println(e.getMessage());
     }
   }
 
   public static Date getDateFromNetwork() throws IOException {
+    return getDateFromNetwork(HOSTNAME, 37);
+  }
+
+  public static Date getDateFromNetwork(String host, int port)
+      throws IOException {
     // The time protocol sets the epoch at 1900,
     // the Java Date class at 1970. This number
     // converts between them.
@@ -38,7 +61,7 @@ public final class Time {
     long epoch1970ms = epoch1970.getTime().getTime();
     long differenceInMS = epoch1970ms - epoch1900ms;
     long differenceBetweenEpochs = differenceInMS / 1000;
-    Socket socket = new Socket(HOSTNAME, 37);
+    Socket socket = new Socket(host, port);
     socket.setSoTimeout(15_000);
     InputStream raw = socket.getInputStream();
 
