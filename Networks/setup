@@ -19,3 +19,4 @@ java -cp . networking.DayTimeClient localhost 1331
 java -cp . networking.DayTimeClient localhost 3131
 java -cp . networking.Time localhost 3737
 java -cp . networking.EchoClient localhost 7777 < echo.txt
+java -cp . networking.LocalPortScanner
