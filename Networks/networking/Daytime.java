@@ -28,8 +28,9 @@ public final class Daytime {
       return parseDate(time.toString());
     }
   }
-  
-  public static Date getDateFromNetwork(String hostname,int port) throws IOException, ParseException {
+
+  public static Date getDateFromNetwork(String hostname, int port)
+      throws IOException, ParseException {
     try (Socket socket = new Socket(hostname, port)) {
       socket.setSoTimeout(15_000);
       InputStream in = socket.getInputStream();

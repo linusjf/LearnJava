@@ -5,11 +5,11 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MultithreadedDaytimeServer {
-  public final static int PORT = 1331;
+  public static final int PORT = 1331;
 
   public static void main(String[] args) {
     try (ServerSocket server = new ServerSocket(PORT)) {
@@ -39,11 +39,9 @@ public class MultithreadedDaytimeServer {
       try {
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         Date now = new Date();
-        SimpleDateFormat format =
-            new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
-        out.write(ProcessHandle.current().pid()
-              + " " + format.format(now) +
-              "\\r\\n");
+        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
+        out.write(ProcessHandle.current().pid() + " " + format.format(now)
+                  + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
         System.err.println(ex);

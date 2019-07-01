@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PooledDaytimeServer {
-  public final static int PORT = 3131;
+  public static final int PORT = 3131;
 
   public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(50);
@@ -44,11 +44,9 @@ public class PooledDaytimeServer {
       try {
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         Date now = new Date();
-        SimpleDateFormat format =
-            new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
-        out.write(ProcessHandle.current().pid()
-              + " " + format.format(now) +
-              "\\r\\n");
+        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z");
+        out.write(ProcessHandle.current().pid() + " " + format.format(now)
+                  + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
         System.err.println(ex);

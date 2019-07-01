@@ -30,7 +30,7 @@ public final class Time {
           System.out.println("It is " + d);
           System.exit(0);
 
-        case 2: // fall through
+        case 2:  // fall through
 
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));

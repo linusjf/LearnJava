@@ -1,15 +1,15 @@
 package networking;
 
-import java.io.OutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
 public class TimeServer {
-  
-  public final static int PORT = 3737;
-  
+
+  public static final int PORT = 3737;
+
   public static void main(String[] args) {
     // The time protocol sets the epoch at 1900,
     // the Date class at 1970. This number
@@ -17,7 +17,8 @@ public class TimeServer {
     long differenceBetweenEpochs = 2208988800L;
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
-        try (Socket connection = server.accept();OutputStream out = connection.getOutputStream();) {
+        try (Socket connection = server.accept();
+             OutputStream out = connection.getOutputStream();) {
           Date now = new Date();
           long msSince1970 = now.getTime();
           long secondsSince1970 = msSince1970 / 1000;

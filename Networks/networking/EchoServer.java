@@ -1,10 +1,10 @@
 package networking;
 
+import java.io.IOException;
+import java.net.*;
 import java.nio.*;
 import java.nio.channels.*;
-import java.net.*;
 import java.util.*;
-import java.io.IOException;
 
 public class EchoServer {
   public static int DEFAULT_PORT = 7;
@@ -45,7 +45,7 @@ public class EchoServer {
         iterator.remove();
         try {
           if (key.isAcceptable()) {
-            ServerSocketChannel server = (ServerSocketChannel) key.channel();
+            ServerSocketChannel server = (ServerSocketChannel)key.channel();
             SocketChannel client = server.accept();
             System.out.println("Accepted connection from " + client);
             client.configureBlocking(false);
@@ -55,13 +55,13 @@ public class EchoServer {
             clientKey.attach(buffer);
           }
           if (key.isReadable()) {
-            SocketChannel client = (SocketChannel) key.channel();
-            ByteBuffer output = (ByteBuffer) key.attachment();
+            SocketChannel client = (SocketChannel)key.channel();
+            ByteBuffer output = (ByteBuffer)key.attachment();
             client.read(output);
           }
           if (key.isWritable()) {
-            SocketChannel client = (SocketChannel) key.channel();
-            ByteBuffer output = (ByteBuffer) key.attachment();
+            SocketChannel client = (SocketChannel)key.channel();
+            ByteBuffer output = (ByteBuffer)key.attachment();
             output.flip();
             client.write(output);
             output.compact();
@@ -70,7 +70,8 @@ public class EchoServer {
           key.cancel();
           try {
             key.channel().close();
-          } catch (IOException cex) {}
+          } catch (IOException cex) {
+          }
         }
       }
     }
