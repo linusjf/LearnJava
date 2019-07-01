@@ -14,3 +14,8 @@ ps -ef | grep \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+ps -ef | grep \
+  'networking.PooledDaytimeServer' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
