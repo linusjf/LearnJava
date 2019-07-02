@@ -25,6 +25,7 @@ public final class Daytime {
       for (int c = reader.read(); c != -1; c = reader.read()) {
         time.append((char)c);
       }
+      System.out.println(time);
       return parseDate(time.toString());
     }
   }
