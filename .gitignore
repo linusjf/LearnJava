@@ -12,7 +12,7 @@
 *.html
 *.dot
 *.gz
-*.log
+*.log*
 *docs*
 Proxy/cached/**/*.*
 **/walkmod.xml

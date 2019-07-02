@@ -17,6 +17,9 @@ sleep 5
 java -cp . networking.RandomPort &
 echo "Sleeping for 5 seconds again after server start..."
 sleep 5
+java -Djava.util.logging.config.file=logging.properties -cp . networking.LoggingDaytimeServer 4141 &
+echo "Sleeping for 5 seconds again after server start..."
+sleep 5
 java -cp . networking.DayTimeClient localhost 1313
 java -cp . networking.DayTimeClient localhost 1331
 java -cp . networking.DayTimeClient localhost 3131
