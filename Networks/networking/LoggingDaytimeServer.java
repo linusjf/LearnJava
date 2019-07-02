@@ -63,7 +63,8 @@ public final class LoggingDaytimeServer {
       try {
         Date now = new Date();
         // write the log entry first in case the client disconnects
-        AUDIT_LOGGER.info(now + " " + connection.getRemoteSocketAddress());
+        if (AUDIT_LOGGER.isLoggable(Level.INFO))
+          AUDIT_LOGGER.info(now + " " + connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
@@ -71,12 +72,15 @@ public final class LoggingDaytimeServer {
                   + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
-        // client disconnected; ignore;
+
+        if (AUDIT_LOGGER.isLoggable(Level.WARNING))
+          AUDIT_LOGGER.warning(ex.getMessage());
       } finally {
         try {
           connection.close();
         } catch (IOException ex) {
-          // ignore;
+          if (AUDIT_LOGGER.isLoggable(Level.WARNING))
+            AUDIT_LOGGER.warning(ex.getMessage());
         }
       }
       return null;

@@ -39,7 +39,7 @@ public class SingleFileHttpServer {
                               String encoding,
                               String mimeType,
                               int port) {
-    this.content = data;
+    this.content = data.clone();
     this.port = port;
     this.encoding = encoding;
     String header = "HTTP/1.0 200 OK\r\n"
@@ -53,32 +53,40 @@ public class SingleFileHttpServer {
   public void start() {
     ExecutorService pool = Executors.newFixedThreadPool(100);
     try (ServerSocket server = new ServerSocket(this.port)) {
-      LOGGER.info("Accepting connections on port " + server.getLocalPort());
-      LOGGER.info("Data to be sent:");
-      LOGGER.info(new String(this.content, encoding));
+      if (LOGGER.isLoggable(Level.INFO)) {
+        LOGGER.info("Accepting connections on port " + server.getLocalPort());
+        LOGGER.info("Data to be sent:");
+        LOGGER.info(new String(this.content, encoding));
+      }
       while (true) {
         try {
           Socket connection = server.accept();
           pool.submit(new HttpHandler(connection));
         } catch (IOException ex) {
-          LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
+          if (LOGGER.isLoggable(Level.WARNING))
+            LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
         }
       }
     } catch (IOException ex) {
-      LOGGER.log(Level.SEVERE, "Could not start server", ex);
+      if (LOGGER.isLoggable(Level.WARNING))
+        LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
     }
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     // set the port to listen on
-    int port;
+    int port = 80;
     try {
-      port = Integer.parseInt(args[1]);
-      if (port < 1 || port > 65_535)
-        port = 80;
+      if (args.length > 1) {
+        port = Integer.parseInt(args[1]);
+        if (port < 1 || port > 65_535)
+          port = 80;
+      }
     } catch (NumberFormatException ex) {
       port = 80;
     }
+
     String encoding = "UTF-8";
     if (args.length > 2)
       encoding = args[2];
@@ -94,7 +102,8 @@ public class SingleFileHttpServer {
       System.out.println(
           "Usage: java SingleFileHttpServer filename port encoding");
     } catch (IOException ex) {
-      LOGGER.severe(ex.getMessage());
+      if (LOGGER.isLoggable(Level.SEVERE))
+        LOGGER.severe(ex.getMessage());
     }
   }
 
@@ -126,7 +135,8 @@ public class SingleFileHttpServer {
         out.write(content);
         out.flush();
       } catch (IOException ex) {
-        LOGGER.log(Level.WARNING, "Error writing to client", ex);
+        if (LOGGER.isLoggable(Level.WARNING))
+          LOGGER.log(Level.WARNING, "Error writing to client", ex);
       } finally {
         connection.close();
       }
