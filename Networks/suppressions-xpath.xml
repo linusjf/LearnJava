@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="SingleFileHttpServer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='80']"/>
-<suppress-xpath
-       files="SingleFileHttpServer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65_535']"/>
-<suppress-xpath
-       files="SingleFileHttpServer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']"/>
+  <suppress-xpath files="SingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='80']" />
+  <suppress-xpath files="SingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65_535']" />
+  <suppress-xpath files="SingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']" />
   <suppress-xpath files="SingleFileHttpServer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HttpHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='request']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='80']" />

@@ -85,11 +85,10 @@ public class Redirector {
 
     @Override
     public void run() {
-      try {
-        Writer out = new BufferedWriter(
-            new OutputStreamWriter(connection.getOutputStream(), "US-ASCII"));
-        Reader in = new InputStreamReader(
-            new BufferedInputStream(connection.getInputStream()));
+      try (Writer out = new BufferedWriter(new OutputStreamWriter(
+               connection.getOutputStream(), "US-ASCII"));
+           Reader in = new InputStreamReader(
+               new BufferedInputStream(connection.getInputStream()));) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {

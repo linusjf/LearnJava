@@ -13,14 +13,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logging.FormatLogger;
 
 public final class LoggingDaytimeServer {
 
   public static final int PORT = 13;
 
-  private static final Logger AUDIT_LOGGER = Logger.getLogger("requests");
+  private static final FormatLogger AUDIT_LOGGER = 
+    new FormatLogger(Logger.getLogger("requests"));
 
-  private static final Logger ERROR_LOGGER = Logger.getLogger("errors");
+  private static final FormatLogger ERROR_LOGGER = 
+    new FormatLogger(Logger.getLogger("errors"));
 
   private LoggingDaytimeServer() {
     throw new IllegalStateException("Private constructor");
@@ -42,11 +45,11 @@ public final class LoggingDaytimeServer {
           Callable<Void> task = new DaytimeTask(connection);
           pool.submit(task);
         } catch (IOException ex) {
-          ERROR_LOGGER.log(Level.SEVERE, "accept error", ex);
+          ERROR_LOGGER.severe("accept error %s", ex.getMessage());
         }
       }
     } catch (IOException ex) {
-      ERROR_LOGGER.log(Level.SEVERE, "Couldn't start server", ex);
+      ERROR_LOGGER.severe("Couldn't start server: %s", ex.getMessage());
     }
   }
 
@@ -63,8 +66,8 @@ public final class LoggingDaytimeServer {
       try {
         Date now = new Date();
         // write the log entry first in case the client disconnects
-        if (AUDIT_LOGGER.isLoggable(Level.INFO))
-          AUDIT_LOGGER.info(now + " " + connection.getRemoteSocketAddress());
+          AUDIT_LOGGER.info("%s %s",
+              (Object)now,(Object)connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
@@ -72,14 +75,11 @@ public final class LoggingDaytimeServer {
                   + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
-
-        if (AUDIT_LOGGER.isLoggable(Level.WARNING))
           AUDIT_LOGGER.warning(ex.getMessage());
       } finally {
         try {
           connection.close();
         } catch (IOException ex) {
-          if (AUDIT_LOGGER.isLoggable(Level.WARNING))
             AUDIT_LOGGER.warning(ex.getMessage());
         }
       }
