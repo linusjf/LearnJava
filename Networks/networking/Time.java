@@ -30,6 +30,7 @@ public final class Time {
 
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
+          break;
       }
       System.out.println("It is " + d);
     } catch (IOException e) {

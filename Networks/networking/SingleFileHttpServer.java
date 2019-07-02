@@ -10,7 +10,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,7 +21,7 @@ import java.util.logging.Logger;
 
 public class SingleFileHttpServer {
 
-  private static final Logger logger = Logger.getLogger("SingleFileHTTPServer");
+  private static final Logger LOGGER = Logger.getLogger("SingleFileHTTPServer");
 
   private final byte[] content;
   private final byte[] header;
@@ -51,28 +53,55 @@ public class SingleFileHttpServer {
   public void start() {
     ExecutorService pool = Executors.newFixedThreadPool(100);
     try (ServerSocket server = new ServerSocket(this.port)) {
-      logger.info("Accepting connections on port " + server.getLocalPort());
-      logger.info("Data to be sent:");
-      logger.info(new String(this.content, encoding));
+      LOGGER.info("Accepting connections on port " + server.getLocalPort());
+      LOGGER.info("Data to be sent:");
+      LOGGER.info(new String(this.content, encoding));
       while (true) {
         try {
           Socket connection = server.accept();
-          pool.submit(new HTTPHandler(connection));
+          pool.submit(new HttpHandler(connection));
         } catch (IOException ex) {
-          logger.log(Level.WARNING, "Exception accepting connection", ex);
-        } catch (RuntimeException ex) {
-          logger.log(Level.SEVERE, "Unexpected error", ex);
+          LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
         }
       }
     } catch (IOException ex) {
-      logger.log(Level.SEVERE, "Could not start server", ex);
+      LOGGER.log(Level.SEVERE, "Could not start server", ex);
     }
   }
 
-  private class HTTPHandler implements Callable<Void> {
+  public static void main(String[] args) {
+    // set the port to listen on
+    int port;
+    try {
+      port = Integer.parseInt(args[1]);
+      if (port < 1 || port > 65_535)
+        port = 80;
+    } catch (NumberFormatException ex) {
+      port = 80;
+    }
+    String encoding = "UTF-8";
+    if (args.length > 2)
+      encoding = args[2];
+    try {
+      Path path = Paths.get(args[0]);
+      byte[] data = Files.readAllBytes(path);
+      String contentType =
+          URLConnection.getFileNameMap().getContentTypeFor(args[0]);
+      SingleFileHttpServer server =
+          new SingleFileHttpServer(data, encoding, contentType, port);
+      server.start();
+    } catch (ArrayIndexOutOfBoundsException ex) {
+      System.out.println(
+          "Usage: java SingleFileHttpServer filename port encoding");
+    } catch (IOException ex) {
+      LOGGER.severe(ex.getMessage());
+    }
+  }
+
+  private class HttpHandler implements Callable<Void> {
     private final Socket connection;
 
-    HTTPHandler(Socket connection) {
+    HttpHandler(Socket connection) {
       this.connection = connection;
     }
 
@@ -97,41 +126,11 @@ public class SingleFileHttpServer {
         out.write(content);
         out.flush();
       } catch (IOException ex) {
-        logger.log(Level.WARNING, "Error writing to client", ex);
+        LOGGER.log(Level.WARNING, "Error writing to client", ex);
       } finally {
         connection.close();
       }
       return null;
-    }
-  }
-
-  public static void main(String[] args) {
-    // set the port to listen on
-    int port;
-    try {
-      port = Integer.parseInt(args[1]);
-      if (port < 1 || port > 65535)
-        port = 80;
-    } catch (RuntimeException ex) {
-      port = 80;
-    }
-    String encoding = "UTF-8";
-    if (args.length > 2)
-      encoding = args[2];
-    try {
-      Path path = Paths.get(args[0]);
-      ;
-      byte[] data = Files.readAllBytes(path);
-      String contentType =
-          URLConnection.getFileNameMap().getContentTypeFor(args[0]);
-      SingleFileHttpServer server =
-          new SingleFileHttpServer(data, encoding, contentType, port);
-      server.start();
-    } catch (ArrayIndexOutOfBoundsException ex) {
-      System.out.println(
-          "Usage: java SingleFileHttpServer filename port encoding");
-    } catch (IOException ex) {
-      logger.severe(ex.getMessage());
     }
   }
 }

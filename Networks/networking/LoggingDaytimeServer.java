@@ -14,13 +14,17 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoggingDaytimeServer {
+public final class LoggingDaytimeServer {
 
   public static final int PORT = 13;
 
-  private static final Logger auditLogger = Logger.getLogger("requests");
+  private static final Logger AUDIT_LOGGER = Logger.getLogger("requests");
 
-  private static final Logger errorLogger = Logger.getLogger("errors");
+  private static final Logger ERROR_LOGGER = Logger.getLogger("errors");
+
+  private LoggingDaytimeServer() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     int port;
@@ -38,17 +42,11 @@ public class LoggingDaytimeServer {
           Callable<Void> task = new DaytimeTask(connection);
           pool.submit(task);
         } catch (IOException ex) {
-          errorLogger.log(Level.SEVERE, "accept error", ex);
-        } catch (RuntimeException ex) {
-          errorLogger.log(
-              Level.SEVERE, "unexpected error " + ex.getMessage(), ex);
+          ERROR_LOGGER.log(Level.SEVERE, "accept error", ex);
         }
       }
     } catch (IOException ex) {
-      errorLogger.log(Level.SEVERE, "Couldn't start server", ex);
-    } catch (RuntimeException ex) {
-      errorLogger.log(
-          Level.SEVERE, "Couldn't start server: " + ex.getMessage(), ex);
+      ERROR_LOGGER.log(Level.SEVERE, "Couldn't start server", ex);
     }
   }
 
@@ -65,7 +63,7 @@ public class LoggingDaytimeServer {
       try {
         Date now = new Date();
         // write the log entry first in case the client disconnects
-        auditLogger.info(now + " " + connection.getRemoteSocketAddress());
+        AUDIT_LOGGER.info(now + " " + connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
