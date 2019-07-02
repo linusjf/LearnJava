@@ -1,10 +1,18 @@
 package networking;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Date;
-import java.util.concurrent.*;
-import java.util.logging.*;
+import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.text.SimpleDateFormat;
 
 public class LoggingDaytimeServer {
 
@@ -57,7 +65,10 @@ public class LoggingDaytimeServer {
         // write the log entry first in case the client disconnects
         auditLogger.info(now + " " + connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream());
-        out.write(now.toString() +"\r\n");
+        SimpleDateFormat format =
+            new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
+        out.write(ProcessHandle.current().pid() + " " + format.format(now)
+                  + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
         // client disconnected; ignore;
