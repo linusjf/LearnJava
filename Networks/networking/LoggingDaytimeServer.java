@@ -5,31 +5,30 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
-import java.util.logging.Logger;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
-import java.text.SimpleDateFormat;
+import java.util.logging.Logger;
 
 public class LoggingDaytimeServer {
 
-  public final static int PORT = 13;
+  public static final int PORT = 13;
 
-  private final static Logger auditLogger = Logger.getLogger("requests");
+  private static final Logger auditLogger = Logger.getLogger("requests");
 
-  private final static Logger errorLogger = Logger.getLogger("errors");
+  private static final Logger errorLogger = Logger.getLogger("errors");
 
   public static void main(String[] args) {
-  int port;
+    int port;
     try {
-   port = Integer.parseInt(args[0]);
-   } catch (NumberFormatException nfe)
-   {
-   port = PORT;
-   }
+      port = Integer.parseInt(args[0]);
+    } catch (NumberFormatException nfe) {
+      port = PORT;
+    }
 
     ExecutorService pool = Executors.newFixedThreadPool(50);
     try (ServerSocket server = new ServerSocket(port)) {
@@ -41,19 +40,22 @@ public class LoggingDaytimeServer {
         } catch (IOException ex) {
           errorLogger.log(Level.SEVERE, "accept error", ex);
         } catch (RuntimeException ex) {
-          errorLogger.log(Level.SEVERE, "unexpected error " + ex.getMessage(), ex);
+          errorLogger.log(
+              Level.SEVERE, "unexpected error " + ex.getMessage(), ex);
         }
       }
     } catch (IOException ex) {
       errorLogger.log(Level.SEVERE, "Couldn't start server", ex);
     } catch (RuntimeException ex) {
-      errorLogger.log(Level.SEVERE, "Couldn't start server: " + ex.getMessage(), ex);
+      errorLogger.log(
+          Level.SEVERE, "Couldn't start server: " + ex.getMessage(), ex);
     }
   }
-  
+
   private static class DaytimeTask implements Callable<Void> {
-  
+
     private Socket connection;
+
     DaytimeTask(Socket connection) {
       this.connection = connection;
     }

@@ -27,7 +27,6 @@ public final class Time {
         case 1:
           d = Time.getDateFromNetwork(args[0], 37);
           break;
-        
 
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
