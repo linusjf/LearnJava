@@ -11,11 +11,12 @@ import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+import logging.FormatLogger;
 
 public class Redirector {
-  private static final Logger LOGGER = Logger.getLogger("Redirector");
+  private static final FormatLogger LOGGER =
+      new FormatLogger(Logger.getLogger("Redirector"));
   private final int port;
   private final String newSite;
 
@@ -26,25 +27,22 @@ public class Redirector {
 
   public void start() {
     try (ServerSocket server = new ServerSocket(port)) {
-      if (LOGGER.isLoggable(Level.INFO))
-        LOGGER.info("Redirecting connections on port " + server.getLocalPort()
-                    + " to " + newSite);
+      LOGGER.info("Redirecting connections on port %d to %s",
+                  server.getLocalPort(),
+                  newSite);
       while (true) {
         try {
           Socket s = server.accept();
           Thread t = new RedirectThread(s);
           t.start();
         } catch (IOException ex) {
-          if (LOGGER.isLoggable(Level.WARNING))
-            LOGGER.warning("Exception accepting connection");
+          LOGGER.warning("Exception accepting connection: %s", ex.getMessage());
         }
       }
     } catch (BindException ex) {
-      if (LOGGER.isLoggable(Level.SEVERE))
-        LOGGER.log(Level.SEVERE, "Could not start server.", ex);
+      LOGGER.severe("Could not start server: %s", ex.getMessage());
     } catch (IOException ex) {
-      if (LOGGER.isLoggable(Level.SEVERE))
-        LOGGER.log(Level.SEVERE, "Error opening server socket", ex);
+      LOGGER.severe("Error opening server socket: %s", ex.getMessage());
     }
   }
 
@@ -65,9 +63,7 @@ public class Redirector {
       try {
         thePort = Integer.parseInt(args[1]);
       } catch (NumberFormatException ex) {
-        if (LOGGER.isLoggable(Level.WARNING))
-          LOGGER.warning("Using port 80. Port cannot be parsed from "
-                         + args[1]);
+        LOGGER.warning("Using port 80. Port cannot be parsed from %s", args[1]);
       }
     }
 
@@ -119,22 +115,18 @@ public class Redirector {
                   + "</A>.\r\n Please update your bookmarks<P>");
         out.write("</BODY></HTML>\r\n");
         out.flush();
-        if (LOGGER.isLoggable(Level.INFO))
-          LOGGER.log(Level.INFO,
-                     "Redirected " + connection.getRemoteSocketAddress());
+        LOGGER.info("Redirected %s", connection.getRemoteSocketAddress());
       } catch (IOException ex) {
-        if (LOGGER.isLoggable(Level.WARNING))
-          LOGGER.log(Level.WARNING,
-                     "Error talking to " + connection.getRemoteSocketAddress(),
-                     ex);
+        LOGGER.warning("Error talking to %s: %s",
+                       connection.getRemoteSocketAddress(),
+                       ex.getMessage());
       } finally {
         try {
           connection.close();
         } catch (IOException ex) {
-          if (LOGGER.isLoggable(Level.WARNING))
-            LOGGER.log(Level.WARNING,
-                       "Error closing " + connection.getRemoteSocketAddress(),
-                       ex);
+          LOGGER.warning("Error closing %s: %s",
+                         connection.getRemoteSocketAddress(),
+                         ex.getMessage());
         }
       }
     }

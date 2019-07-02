@@ -11,7 +11,6 @@ import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import logging.FormatLogger;
 
@@ -19,11 +18,11 @@ public final class LoggingDaytimeServer {
 
   public static final int PORT = 13;
 
-  private static final FormatLogger AUDIT_LOGGER = 
-    new FormatLogger(Logger.getLogger("requests"));
+  private static final FormatLogger AUDIT_LOGGER =
+      new FormatLogger(Logger.getLogger("requests"));
 
-  private static final FormatLogger ERROR_LOGGER = 
-    new FormatLogger(Logger.getLogger("errors"));
+  private static final FormatLogger ERROR_LOGGER =
+      new FormatLogger(Logger.getLogger("errors"));
 
   private LoggingDaytimeServer() {
     throw new IllegalStateException("Private constructor");
@@ -66,8 +65,8 @@ public final class LoggingDaytimeServer {
       try {
         Date now = new Date();
         // write the log entry first in case the client disconnects
-          AUDIT_LOGGER.info("%s %s",
-              (Object)now,(Object)connection.getRemoteSocketAddress());
+        AUDIT_LOGGER.info(
+            "%s %s", (Object)now, (Object)connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
@@ -75,12 +74,12 @@ public final class LoggingDaytimeServer {
                   + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
-          AUDIT_LOGGER.warning(ex.getMessage());
+        AUDIT_LOGGER.warning(ex.getMessage());
       } finally {
         try {
           connection.close();
         } catch (IOException ex) {
-            AUDIT_LOGGER.warning(ex.getMessage());
+          AUDIT_LOGGER.warning(ex.getMessage());
         }
       }
       return null;
