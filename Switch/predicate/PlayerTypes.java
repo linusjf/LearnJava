@@ -13,17 +13,20 @@ public enum PlayerTypes {
                            ()
                                -> new TennisPlayer("Roger Federer"),
                            () -> new TennisPlayer("Andy Murray"))),
-         Collections.unmodifiableList(Arrays.asList(
-             rank
-             -> rank == 1,
-             rank -> rank > 1 && rank < 5, rank -> rank >= 5 && rank <= 10))),
-  FOOTBALL(
-      Collections.unmodifiableList(
-          Arrays.asList(()
-                            -> new FootballPlayer("Lionel Messi"),
-                        () -> new FootballPlayer("Cristiano Ronaldo"))),
-      Collections.unmodifiableList(Arrays.asList(
-          rank -> rank == 1 || rank == 2, rank -> rank > 2 && rank <= 10))),
+         Collections.unmodifiableList(
+             Arrays.asList(rank
+                           -> rank == 1,
+                           rank
+                           -> rank > 1 && rank < 5,
+                           rank -> rank >= 5 && rank <= 10))),
+  FOOTBALL(Collections.unmodifiableList(
+               Arrays.asList(()
+                                 -> new FootballPlayer("Lionel Messi"),
+                             () -> new FootballPlayer("Cristiano Ronaldo"))),
+           Collections.unmodifiableList(
+               Arrays.asList(rank
+                             -> rank == 1 || rank == 2,
+                             rank -> rank > 2 && rank <= 10))),
   SNOOKER(Collections.unmodifiableList(
               Arrays.asList(()
                                 -> new SnookerPlayer("Ronnie O'Sullivan"),
@@ -32,12 +35,14 @@ public enum PlayerTypes {
                             ()
                                 -> new SnookerPlayer("John Higgins"),
                             () -> new SnookerPlayer("Neil Robertson"))),
-          Collections.unmodifiableList(Arrays.asList(
-              rank
-              -> rank == 1,
-              rank
-              -> rank == 2,
-              rank -> rank > 3 && rank < 7, rank -> rank >= 7 && rank <= 10)));
+          Collections.unmodifiableList(
+              Arrays.asList(rank
+                            -> rank == 1,
+                            rank
+                            -> rank == 2,
+                            rank
+                            -> rank > 3 && rank < 7,
+                            rank -> rank >= 7 && rank <= 10)));
 
   private final List<Supplier<Player>> names;
   private final List<Predicate<Integer>> conditions;

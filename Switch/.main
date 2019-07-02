@@ -5,3 +5,4 @@ trifunction.Main
 player.Main
 state.Main
 predicate.Main
+pmdtest.ThrowSwitch

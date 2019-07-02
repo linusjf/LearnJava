@@ -6,9 +6,9 @@ import java.util.Map;
 import player.TennisPlayer;
 
 public final class FunctionalStatistics {
-  private static final Map<
-      String, TriFunction<TennisPlayer, Period, String, String>> STATISTICS =
-      new HashMap<>();
+  private static final
+      Map<String, TriFunction<TennisPlayer, Period, String, String>>
+          STATISTICS = new HashMap<>();
 
   private FunctionalStatistics() {
     throw new AssertionError();
@@ -20,8 +20,10 @@ public final class FunctionalStatistics {
     STATISTICS.put("BACKHAND", Statistics::computeBackhandTrend);
   }
 
-  public static String computeTrend(TennisPlayer tennisPlayer, Period period,
-                                    String owner, String trend) {
+  public static String computeTrend(TennisPlayer tennisPlayer,
+                                    Period period,
+                                    String owner,
+                                    String trend) {
     TriFunction<TennisPlayer, Period, String, String> function =
         STATISTICS.get(trend);
 
