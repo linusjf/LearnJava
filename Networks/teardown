@@ -1,36 +1,55 @@
 #!/usr/bin/env bash
+echo "Killing DaytimeServer..."
 ps -ef | grep \
   'networking.DaytimeServer' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing TimeServer..."
 ps -ef | grep \
   'networking.TimeServer' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing MultithreadedDaytimeServer..."
 ps -ef | grep \
   'networking.MultithreadedDaytimeServer' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing PooledDaytimeServer..."
 ps -ef | grep \
   'networking.PooledDaytimeServer' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing EchoServer..."
 ps -ef | grep \
   'networking.EchoServer' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing RandomPort..."
 ps -ef | grep \
   'networking.RandomPort' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing LoggingDaytimeServer..."
 ps -ef | grep \
   'networking.LoggingDaytimeServer' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
+echo "Killing SingleFileHttpServer..."
+ps -ef | grep \
+  'networking.SingleFileHttpServer' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
+echo "Killing Redirector..."
+ps -ef | grep \
+  'networking.Redirector' | \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?

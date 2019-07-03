@@ -1,33 +1,46 @@
 #!/usr/bin/env bash
 java -cp . networking.DaytimeServer &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after DaytimeServer start..."
 sleep 5
 java -cp . networking.TimeServer &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after TimeServer start..."
 sleep 5
 java -cp . networking.MultithreadedDaytimeServer &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after MultithreadedDaytimeServer start..."
 sleep 5
 java -cp . networking.PooledDaytimeServer &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after PooledDaytimeServer start..."
 sleep 5
 java -cp . networking.EchoServer 7777 &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after EchoServer start..."
 sleep 5
 java -cp . networking.RandomPort &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after RandomPort server start..."
 sleep 5
 java -Djava.util.logging.config.file=logging.properties -cp . networking.LoggingDaytimeServer 4141 &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after LoggingDaytimeServer start..."
 sleep 5
 java -Djava.util.logging.config.file=logging.properties -cp . networking.SingleFileHttpServer web.log 8080 &
-echo "Sleeping for 5 seconds again after server start..."
+echo "Sleeping for 5 seconds again after SingleFileHttpServer start..."
 sleep 5
+java -Djava.util.logging.config.file=logging.properties -cp . networking.Redirector http://www.maketimeforsports.com/ 8081 &
+echo "Sleeping for 5 seconds again after Redirector start..."
+sleep 5
+echo "Running DayTimeClient to port 1313"
 java -cp . networking.DayTimeClient localhost 1313
+echo "Running DayTimeClient to port 1331"
 java -cp . networking.DayTimeClient localhost 1331
+echo "Running DayTimeClient to port 3131"
 java -cp . networking.DayTimeClient localhost 3131
+echo "Running DayTimeClient to port 4141"
 java -cp . networking.DayTimeClient localhost 4141
+echo "Running Time to port 3737"
 java -cp . networking.Time localhost 3737
+echo "Running EchoClient to port 7777"
 java -cp . networking.EchoClient localhost 7777 < echo.txt
+echo "Running LocalPortScanner..."
 java -cp . networking.LocalPortScanner
+echo "Running curl to port 8080"
 curl --url http://localhost:8080
+echo "Running curl to port 8081"
+curl --url http://localhost:8081
