@@ -41,11 +41,13 @@ echo "Running Time to port 3737"
 java -cp . networking.Time localhost 3737
 echo "Running EchoClient to port 7777"
 java -cp . networking.EchoClient localhost 7777 < echo.txt
-echo "Running LocalPortScanner..."
-java -cp . networking.LocalPortScanner
 echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Running curl to port 8081"
 curl --url http://localhost:8081
 echo "Running curl to port 8082"
 curl --url http://localhost:8082/web.log
+echo "Running curl head request to port 8082"
+curl -v -I http://localhost:8082/web.log
+echo "Running wget head request to port 8082"
+wget -S --spider http://localhost:8082/web.log

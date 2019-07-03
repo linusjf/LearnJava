@@ -64,7 +64,7 @@ public class RequestProcessor implements Runnable {
       if ("GET".equals(method)) {
         handleGet(tokens, raw, out);
       } else {  // method does not equal "GET"
-        String version = tokens[1];
+        String version = tokens[2];
         String body =
             new StringBuilder("<HTML>\r\n")
                 .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
@@ -81,6 +81,9 @@ public class RequestProcessor implements Runnable {
         }
         out.write(body);
         out.flush();
+        LOGGER.info("Method not supported: %s %s",
+                    connection.getRemoteSocketAddress(),
+                    get);
       }
     } catch (IOException ex) {
       LOGGER.warning("Error talking to %s: %s",
