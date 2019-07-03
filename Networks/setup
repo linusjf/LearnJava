@@ -26,6 +26,9 @@ sleep 5
 java -Djava.util.logging.config.file=logging.properties -cp . networking.Redirector http://www.maketimeforsports.com/ 8081 &
 echo "Sleeping for 5 seconds again after Redirector start..."
 sleep 5
+java -Djava.util.logging.config.file=logging.properties -cp . networking.JHttp . 8082 &
+echo "Sleeping for 5 seconds again after JHttp start..."
+sleep 5
 echo "Running DayTimeClient to port 1313"
 java -cp . networking.DayTimeClient localhost 1313
 echo "Running DayTimeClient to port 1331"
@@ -44,3 +47,5 @@ echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Running curl to port 8081"
 curl --url http://localhost:8081
+echo "Running curl to port 8082"
+curl --url http://localhost:8082/web.log
