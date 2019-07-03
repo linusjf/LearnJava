@@ -4,10 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 import logging.FormatLogger;
 
 public class JHttp {
@@ -26,24 +25,24 @@ public class JHttp {
     this.rootDirectory = rootDirectory;
     this.port = port;
   }
-  
+
   public void start() throws IOException {
     ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
     try (ServerSocket server = new ServerSocket(port)) {
-      LOGGER.info("Accepting connections on port %d.",server.getLocalPort());
-      LOGGER.info("Document Root: %s",rootDirectory);
+      LOGGER.info("Accepting connections on port %d.", server.getLocalPort());
+      LOGGER.info("Document Root: %s", rootDirectory);
       while (true) {
         try {
           Socket request = server.accept();
           Runnable r = new RequestProcessor(rootDirectory, INDEX_FILE, request);
           pool.submit(r);
         } catch (IOException ex) {
-          LOGGER.warning("Error accepting connection: %s",ex.getMessage());
+          LOGGER.warning("Error accepting connection: %s", ex.getMessage());
         }
       }
     }
   }
-  
+
   public static void main(String[] args) {
     // get the Document root
     File docroot;
@@ -57,9 +56,9 @@ public class JHttp {
     int port;
     try {
       port = Integer.parseInt(args[1]);
-      if (port < 0 || port > 65535)
+      if (port < 0 || port > 65_535)
         port = 80;
-    } catch (RuntimeException ex) {
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = 80;
     }
     try {

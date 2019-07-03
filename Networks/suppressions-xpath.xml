@@ -3,6 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="JHttp.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JHttp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']" />
+  <suppress-xpath files="JHttp.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JHttp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65_535']" />
+  <suppress-xpath files="JHttp.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JHttp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']" />
   <suppress-xpath files="SingleFileHttpServer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='80']" />
