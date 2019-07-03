@@ -35,3 +35,5 @@ networking.ListDicts
 networking.LowPortScanner localhost
 networking.SocketInfo www.google.com www.spamhaus.org
 networking.WhoisQuery
+networking.LocalPortScanner
+networking.HttpsClient www.google.com

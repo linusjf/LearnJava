@@ -319,7 +319,7 @@
       </classpath>
     </java>
     <java classname="${main.class33}">
-      <arg line="192.168.0.1 localhost" />
+      <arg line="localhost" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -333,6 +333,19 @@
       </classpath>
     </java>
     <java classname="${main.class36}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class37}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class38}">
+      <arg line="www.google.com" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
