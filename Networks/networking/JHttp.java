@@ -1,0 +1,72 @@
+package networking;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import logging.FormatLogger;
+
+public class JHttp {
+  private static final FormatLogger LOGGER =
+      new FormatLogger(Logger.getLogger(JHttp.class.getCanonicalName()));
+
+  private static final int NUM_THREADS = 50;
+  private static final String INDEX_FILE = "index.html";
+  private final File rootDirectory;
+  private final int port;
+
+  public JHttp(File rootDirectory, int port) throws IOException {
+    if (!rootDirectory.isDirectory()) {
+      throw new IOException(rootDirectory + " does not exist as a directory");
+    }
+    this.rootDirectory = rootDirectory;
+    this.port = port;
+  }
+  
+  public void start() throws IOException {
+    ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
+    try (ServerSocket server = new ServerSocket(port)) {
+      LOGGER.info("Accepting connections on port %d.",server.getLocalPort());
+      LOGGER.info("Document Root: %s",rootDirectory);
+      while (true) {
+        try {
+          Socket request = server.accept();
+          Runnable r = new RequestProcessor(rootDirectory, INDEX_FILE, request);
+          pool.submit(r);
+        } catch (IOException ex) {
+          LOGGER.warning("Error accepting connection: %s",ex.getMessage());
+        }
+      }
+    }
+  }
+  
+  public static void main(String[] args) {
+    // get the Document root
+    File docroot;
+    try {
+      docroot = new File(args[0]);
+    } catch (ArrayIndexOutOfBoundsException ex) {
+      System.out.println("Usage: java JHttp docroot port");
+      return;
+    }
+    // set the port to listen on
+    int port;
+    try {
+      port = Integer.parseInt(args[1]);
+      if (port < 0 || port > 65535)
+        port = 80;
+    } catch (RuntimeException ex) {
+      port = 80;
+    }
+    try {
+      JHttp webserver = new JHttp(docroot, port);
+      webserver.start();
+    } catch (IOException ex) {
+      LOGGER.severe("Server could not start: %s", ex.getMessage());
+    }
+  }
+}
