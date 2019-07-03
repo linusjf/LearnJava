@@ -28,14 +28,10 @@ public final class EchoServer {
     return port;
   }
 
-  public static void main(String[] args) {
-    int port = getPort(args);
-    System.out.println("Listening for connections on port " + port);
-    ServerSocketChannel serverChannel;
-    Selector selector;
-    try {
-      serverChannel = ServerSocketChannel.open();
-      ServerSocket ss = serverChannel.socket();
+  private static Selector initSelector(int port) {
+    Selector selector = null;
+    try (ServerSocketChannel serverChannel = ServerSocketChannel.open();
+         ServerSocket ss = serverChannel.socket();) {
       InetSocketAddress address = new InetSocketAddress(port);
       ss.bind(address);
       serverChannel.configureBlocking(false);
@@ -43,8 +39,17 @@ public final class EchoServer {
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
       System.err.println(ex.getMessage());
-      return;
+      throw new AssertionError("Unable to initialize selector", ex);
     }
+    return selector;
+  }
+
+  public static void main(String[] args) {
+    int port = getPort(args);
+    System.out.println("Listening for connections on port " + port);
+
+    Selector selector = initSelector(port);
+
     while (true) {
       try {
         selector.select();
