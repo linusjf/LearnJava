@@ -30,15 +30,15 @@
     <conf name="gformat.lib"
           description="google java format dependencies" />
     <conf name="pmd-core.main"
-          description="pmd main jars" />
+          description="pmd core main jars" />
     <conf name="pmd-core.lib"
-          description="pmd dependent jars" />
+          description="pmd core dependent jars" />
     <conf name="pmd-java.main"
-          description="pmd main jars" />
+          description="pmd java main jars" />
     <conf name="pmd-java.lib"
-          description="pmd dependent jars" />
+          description="pmd java dependent jars" />
     <conf name="saxon"
-          description="saxon dependent jars" />
+          description="saxon jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
