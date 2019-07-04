@@ -96,7 +96,8 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
-      (java $runOptions -cp $jarFile:$proj $a)
+      printf -v cmdPrefix '%q ' java $runOptions -cp $jarFile:$proj 
+      eval "$cmdPrefix $a"
     done
     tearDown;
       exit 0;
