@@ -85,8 +85,8 @@ runJVM()
     then
       setUp
       echo Main class: $main
-   printf %q "$IFS"
-      echo "$main" | while IFS= read -r a; do
+     for a in "${main[@]}";
+     do
       if [[ -z $a ]]
       then
         continue
@@ -96,9 +96,9 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
+      set -s
       java $runOptions -cp $jarFile:$proj $a
     done
-    printf %q "$IFS"  
     tearDown;
       exit 0;
     else
@@ -125,6 +125,7 @@ declare -r setupScript="setup"
 declare -r teardownScript="teardown"
 declare -r nomainFile=".nomain"
 declare -r mainFile=".main"
+declare -a main
 proj=$1
 if [ -z $proj ]
   then
@@ -141,10 +142,10 @@ declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
 runOptions=""
 version="0.0.0"
-main=$2
-if [ -z $main ]
+main[0]=$2
+if [ -z $2 ]
 then
-  main=$(cat $proj/$mainFile) || \
+  mapfile -t main < $proj/$mainFile || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
 echo $proj
