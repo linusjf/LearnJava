@@ -44,16 +44,19 @@ tearDown ()
     }
 	cd ..
 }
+
 isDalvik ()
 {
   type dalvikvm &>/dev/null
   return $?
 }
+
 isJVM ()
 {
   type java &>/dev/null
   return $?
 }
+
 runDalvik()
 {
   dexFile=$proj-$version.dex
@@ -74,6 +77,7 @@ runDalvik()
     exit 1
   fi
 }
+
 runJVM()
 {
   jarFile="$proj-$version.jar"
@@ -81,9 +85,9 @@ runJVM()
     then
       setUp
       echo Main class: $main
-    echo "$main" | while IFS= read -r a; do 
+   echo "$main" | while IFS= read -r a; do
       if [[ "$a" =~ ^#.* ]]
-      then 
+      then
         continue
       fi
       echo "Running $a...";echo
