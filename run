@@ -85,7 +85,6 @@ runJVM()
     then
       setUp
       echo Main class: $main
-   printf %q "$IFS"
       echo "$main" | while IFS= read -r a; do
       if [[ -z $a ]]
       then
@@ -98,7 +97,6 @@ runJVM()
       echo "Running $a...";echo
       java $runOptions -cp $jarFile:$proj $a
     done
-    printf %q "$IFS"  
     tearDown;
       exit 0;
     else

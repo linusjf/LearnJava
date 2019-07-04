@@ -84,7 +84,7 @@ runJVM()
   if [ -e $jarFile ]
     then
       setUp
-      echo Main class: $main
+      echo "Main class(es): $main"
      for a in "${main[@]}";
      do
       if [[ -z $a ]]
@@ -96,7 +96,6 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
-      set -s
       java $runOptions -cp $jarFile:$proj $a
     done
     tearDown;
@@ -145,9 +144,14 @@ version="0.0.0"
 main[0]=$2
 if [ -z $2 ]
 then
-  mapfile -t main < $proj/$mainFile || \
+  main=()
+  contents=$(<$proj/$mainFile)
+	echo "$contents" | while IFS= read -r line; do
+  main+=$line
+done || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
+echo "main = $main"
 echo $proj
 readVersion
 readRunOptions
@@ -162,6 +166,7 @@ isJVM
 jvm=$?
 if [ $jvm -eq 0 ]
   then
+    echo $main
     runJVM
 fi
 
