@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="Facebook.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Facebook']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='simulateNetworkLatency']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2500']" />
+  <suppress-xpath files="LinkedIn.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LinkedIn']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='simulateNetworkLatency']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2500']" />
+</suppressions>
