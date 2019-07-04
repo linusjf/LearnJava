@@ -96,7 +96,7 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
-      java $runOptions -cp $jarFile:$proj $a
+      (java $runOptions -cp $jarFile:$proj $a)
     done
     tearDown;
       exit 0;
@@ -144,14 +144,9 @@ version="0.0.0"
 main[0]=$2
 if [ -z $2 ]
 then
-  main=()
-  contents=$(<$proj/$mainFile)
-	echo "$contents" | while IFS= read -r line; do
-  main+=$line
-done || \
+  readarray main < $proj/$mainFile || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
-echo "main = $main"
 echo $proj
 readVersion
 readRunOptions
