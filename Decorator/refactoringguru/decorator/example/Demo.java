@@ -1,21 +1,30 @@
 package refactoringguru.decorator.example;
 
-import refactoringguru.decorator.example.decorators.*;
+import refactoringguru.decorator.example.decorators.CompressionDecorator;
+import refactoringguru.decorator.example.decorators.DataSource;
+import refactoringguru.decorator.example.decorators.DataSourceDecorator;
+import refactoringguru.decorator.example.decorators.EncryptionDecorator;
+import refactoringguru.decorator.example.decorators.FileDataSource;
 
-public class Demo {
-    public static void main(String[] args) {
-        String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
-        DataSourceDecorator encoded = new CompressionDecorator(
-                                         new EncryptionDecorator(
-                                             new FileDataSource("out/OutputDemo.txt")));
-        encoded.writeData(salaryRecords);
-        DataSource plain = new FileDataSource("out/OutputDemo.txt");
+@SuppressWarnings("PMD.ShortClassName")
+public final class Demo {
 
-        System.out.println("- Input ----------------");
-        System.out.println(salaryRecords);
-        System.out.println("- Encoded --------------");
-        System.out.println(plain.readData());
-        System.out.println("- Decoded --------------");
-        System.out.println(encoded.readData());
-    }
+  private Demo() {
+    throw new IllegalStateException("Private constructor");
+  }
+
+  public static void main(String[] args) {
+    String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
+    DataSourceDecorator encoded = new CompressionDecorator(
+        new EncryptionDecorator(new FileDataSource("OutputDemo.txt")));
+    encoded.writeData(salaryRecords);
+    DataSource plain = new FileDataSource("OutputDemo.txt");
+
+    System.out.println("- Input ----------------");
+    System.out.println(salaryRecords);
+    System.out.println("- Encoded --------------");
+    System.out.println(plain.readData());
+    System.out.println("- Decoded --------------");
+    System.out.println(encoded.readData());
+  }
 }

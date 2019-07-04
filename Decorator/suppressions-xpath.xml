@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="CompressionDecorator.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CompressionDecorator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compress']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='bout']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ByteArrayOutputStream']]/ELIST/EXPR/NUM_INT[@text='512']" />
+  <suppress-xpath files="CompressionDecorator.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CompressionDecorator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='decompress']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='bout']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ByteArrayOutputStream']]/ELIST/EXPR/NUM_INT[@text='512']" />
+</suppressions>
