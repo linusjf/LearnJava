@@ -2,15 +2,15 @@
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
-# @file        : buildall
+# @file        : buildjall
 # @created     : Thursday May 02, 2019 17:40:19 IST
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
 
-rm -f *.jar
+rm -f ./*.jar
 find . -mindepth 2 -name "*.class" -type f \
-  ! -path "*.git*" -delete
+  ! -path "**/.git/**" -delete
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel -j 5 -I% --max-args 1 ./buildj %
 exit $?
