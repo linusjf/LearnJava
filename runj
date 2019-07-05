@@ -72,7 +72,7 @@ runJVM()
       fi
       echo "Running $a...";echo
       cd "$proj"
-      printf -v cmdPrefix '%q ' java $runOptions -cp ../$jarFile:. 
+      printf -v cmdPrefix '%q ' java ${runOptions[@]} -cp ../$jarFile:. 
       eval "$cmdPrefix $a"
       cd ..
     done
@@ -94,7 +94,7 @@ readVersion()
 readRunOptions()
 {
   [ -e "$proj/$runOptionsFile" ] && \
-      { runOptions=$(cat "$proj"/"$runOptionsFile") || \
+      { readarray -t runOptions < <(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
 
@@ -117,7 +117,7 @@ fi
 
 declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
-runOptions=""
+declare -a runOptions
 version="0.0.0"
 main[0]="$2"
 if [ -z "$2" ]
