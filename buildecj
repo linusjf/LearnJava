@@ -26,9 +26,10 @@ createJar() {
       echo "$manifestFile does not exist. Run ant manifest in $proj."
       exit 1
     fi
+    readarray -t args < <(find . -name "*.class" \
+      ! -path "**/git/**" -type f)
     jar cfm "$jarFile $manifestFile" \
-    $(find . -name "*.class" \
-    ! -path "*.git*" -type f) || { \
+    "${args[@]}" || { \
     echo "Error creating jar output: $jarFile";
         exit 1;
       }
