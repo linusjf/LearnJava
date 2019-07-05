@@ -18,10 +18,10 @@ usage ()
 
 setUp ()
 {
-	cd $proj || \
+	cd "$proj" || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e $setupScript ] && \
-    { ./$setupScript || \
+	[ -e "$setupScript" ] && \
+    { ./"$setupScript" || \
       { \
         echo "Error running setup script";\
         exit 1;\
@@ -32,11 +32,11 @@ setUp ()
 
 tearDown ()
 {
-	cd $proj || \
+	cd "$proj" || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e $teardownScript ] && \
+	[ -e "$teardownScript" ] && \
     {\
-      ./$teardownScript || \
+      ./"$teardownScript" || \
       {\
         echo "Error running teardown script";\
         exit 1;\
@@ -59,21 +59,24 @@ isJVM ()
 
 runDalvik()
 {
-  dexFile=$proj-$version.dex
-  if [ -e $dexFile ] 
+  dexFile="$proj-$version.dex"
+  if [ -e "$dexFile" ] 
     then
     setUp
     echo "Main class(es): $main"
     echo
-    echo "$main" | while read -r a; do 
+     for a in "${main[@]}"; do 
       echo "Running $a...";echo
-      dalvikvm $runOptions -cp $dexFile $a;
+      cd "$proj"
+      printf -v cmdPrefix '%q ' dalvikvm $runOptions -cp ../$dexFile 
+      eval "$cmdPrefix $a"
+      cd ..
       echo
     done
     tearDown;
     exit 0;
   else
-    echo $dexFile does not exist. Run build or buildall.
+    echo "$dexFile does not exist. Run build or buildall."
     exit 1
   fi
 }
@@ -81,12 +84,13 @@ runDalvik()
 runJVM()
 {
   jarFile="$proj-$version.jar"
-  if [ -e $jarFile ]
+  if [ -e "$jarFile" ]
     then
       setUp
-      echo Main class: $main
-      echo "$main" | while IFS= read -r a; do
-      if [[ -z $a ]]
+      echo "Main class(es): $main"
+     for a in "${main[@]}";
+     do
+      if [[ -z "$a" ]]
       then
         continue
       fi
@@ -95,27 +99,30 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
-      java $runOptions -cp $jarFile:$proj $a
+      cd "$proj"
+      printf -v cmdPrefix '%q ' java $runOptions -cp ../$jarFile:. 
+      eval "$cmdPrefix $a"
+      cd ..
     done
     tearDown;
       exit 0;
     else
-      echo $jarFile does not exist. Run buildj or buildjall.
+      echo "$jarFile does not exist. Run buildj or buildjall."
     exit 1
   fi
 }
 
 readVersion()
 {
-  [ -e $versionFile ] && \
-      { version=$(cat $versionFile) || \
+  [ -e "$versionFile" ] && \
+      { version=$(cat "$versionFile") || \
       echo "Unable to read $versionFile";}
 }
 
 readRunOptions()
 {
-  [ -e $proj/$runOptionsFile ] && \
-      { runOptions=$(cat $proj/$runOptionsFile) || \
+  [ -e "$proj/$runOptionsFile" ] && \
+      { runOptions=$(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
 
@@ -123,14 +130,15 @@ declare -r setupScript="setup"
 declare -r teardownScript="teardown"
 declare -r nomainFile=".nomain"
 declare -r mainFile=".main"
-proj=$1
-if [ -z $proj ]
+declare -a main
+proj="$1"
+if [ -z "$proj" ]
   then
     usage
 fi
-if [ -e $proj/$nomainFile ]
+if [ -e "$proj/$nomainFile" ]
   then
-    echo $proj
+    echo "$proj"
     echo "Not an executable project."
     exit 1
 fi
@@ -139,13 +147,13 @@ declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
 runOptions=""
 version="0.0.0"
-main=$2
-if [ -z $main ]
+main[0]="$2"
+if [ -z "$2" ]
 then
-  main=$(cat $proj/$mainFile) || \
+  readarray main < "$proj"/"$mainFile" || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
-echo $proj
+echo "$proj"
 readVersion
 readRunOptions
 isDalvik
@@ -159,6 +167,7 @@ isJVM
 jvm=$?
 if [ $jvm -eq 0 ]
   then
+    printf '%s\n' "${main[@]}"
     runJVM
 fi
 
