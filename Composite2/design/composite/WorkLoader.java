@@ -63,7 +63,7 @@ public class WorkLoader {
     return workList;
   }
 
-  private void addWorkToList(List workList, String workType, String values) {
+  private void addWorkToList(List<Work> workList, String workType, String values) {
     workList.add(new Work(Calculator.valueOf(workType),
                           Arrays.asList(values.split(","))));
   }
