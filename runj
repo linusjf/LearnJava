@@ -18,9 +18,9 @@ usage ()
 
 setUp ()
 {
-	cd $proj || \
+	cd "$proj" || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e $setupScript ] && \
+	[ -e "$setupScript" ] && \
     { ./$setupScript || \
       { \
         echo "Error running setup script";\
@@ -32,9 +32,9 @@ setUp ()
 
 tearDown ()
 {
-	cd $proj || \
+	cd "$proj" || \
     { echo "Unable to access folder $proj";exit 1;}
-	[ -e $teardownScript ] && \
+	[ -e "$teardownScript" ] && \
     {\
       ./$teardownScript || \
       {\
@@ -67,13 +67,13 @@ runDalvik()
     echo
     echo "$main" | while read -r a; do 
       echo "Running $a...";echo
-      dalvikvm $runOptions -cp $dexFile $a;
+      dalvikvm "$runOptions" -cp "$dexFile $a";
       echo
     done
     tearDown;
     exit 0;
   else
-    echo $dexFile does not exist. Run build or buildall.
+    echo "$dexFile does not exist. Run build or buildall."
     exit 1
   fi
 }
@@ -81,13 +81,13 @@ runDalvik()
 runJVM()
 {
   jarFile="$proj-$version.jar"
-  if [ -e $jarFile ]
+  if [ -e "$jarFile" ]
     then
       setUp
       echo "Main class(es): $main"
      for a in "${main[@]}";
      do
-      if [[ -z $a ]]
+      if [[ -z "$a" ]]
       then
         continue
       fi
@@ -102,21 +102,21 @@ runJVM()
     tearDown;
       exit 0;
     else
-      echo $jarFile does not exist. Run buildj or buildjall.
+      echo "$jarFile does not exist. Run buildj or buildjall."
     exit 1
   fi
 }
 
 readVersion()
 {
-  [ -e $versionFile ] && \
+  [ -e "$versionFile" ] && \
       { version=$(cat $versionFile) || \
       echo "Unable to read $versionFile";}
 }
 
 readRunOptions()
 {
-  [ -e $proj/$runOptionsFile ] && \
+  [ -e "$proj/$runOptionsFile" ] && \
       { runOptions=$(cat $proj/$runOptionsFile) || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
@@ -126,14 +126,14 @@ declare -r teardownScript="teardown"
 declare -r nomainFile=".nomain"
 declare -r mainFile=".main"
 declare -a main
-proj=$1
-if [ -z $proj ]
+proj="$1"
+if [ -z "$proj" ]
   then
     usage
 fi
-if [ -e $proj/$nomainFile ]
+if [ -e "$proj/$nomainFile" ]
   then
-    echo $proj
+    echo "$proj"
     echo "Not an executable project."
     exit 1
 fi
@@ -142,13 +142,13 @@ declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
 runOptions=""
 version="0.0.0"
-main[0]=$2
-if [ -z $2 ]
+main[0]="$2"
+if [ -z "$2" ]
 then
   readarray main < $proj/$mainFile || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
-echo $proj
+echo "$proj"
 readVersion
 readRunOptions
 isDalvik
@@ -162,7 +162,7 @@ isJVM
 jvm=$?
 if [ $jvm -eq 0 ]
   then
-    echo $main
+    echo "$main"
     runJVM
 fi
 
