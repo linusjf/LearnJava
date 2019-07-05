@@ -3,8 +3,8 @@ package com.lambdaworks.jni;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
 /**
- * A native library loader that simply invokes {@link System#loadLibrary}. The
- * shared library path and filename are platform specific.
+ * A native library loader that simply invokes {@link System#loadLibrary}. The shared library path
+ * and filename are platform specific.
  *
  * @author Will Glozer
  */

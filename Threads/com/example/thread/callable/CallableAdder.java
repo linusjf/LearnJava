@@ -13,8 +13,14 @@ public class CallableAdder implements Callable<Integer> {
 
   @Override
   public Integer call() throws Exception {
-    System.out.println(Thread.currentThread().getName() + " says : partial Sum for " + operand1
-        + " and " + operand2 + " is " + (operand1 + operand2));
+    System.out.println(
+        Thread.currentThread().getName()
+            + " says : partial Sum for "
+            + operand1
+            + " and "
+            + operand2
+            + " is "
+            + (operand1 + operand2));
     return operand1 + operand2;
   }
 }

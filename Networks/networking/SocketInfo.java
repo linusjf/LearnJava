@@ -14,10 +14,15 @@ public final class SocketInfo {
     for (String host : args) {
       try {
         Socket theSocket = new Socket(host, 80);
-        System.out.println("Connected to " + theSocket.getInetAddress()
-                           + " on port " + theSocket.getPort() + " from port "
-                           + theSocket.getLocalPort() + " of "
-                           + theSocket.getLocalAddress());
+        System.out.println(
+            "Connected to "
+                + theSocket.getInetAddress()
+                + " on port "
+                + theSocket.getPort()
+                + " from port "
+                + theSocket.getLocalPort()
+                + " of "
+                + theSocket.getLocalAddress());
       } catch (UnknownHostException ex) {
         System.err.println("I can't find " + host);
       } catch (SocketException ex) {

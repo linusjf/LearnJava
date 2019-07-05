@@ -23,8 +23,7 @@ public final class PenFactory { // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new ThickPen();
     pen.setColor(color);
@@ -44,8 +43,7 @@ public final class PenFactory { // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new ThinPen();
     pen.setColor(color);
@@ -65,8 +63,7 @@ public final class PenFactory { // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new MediumPen();
     pen.setColor(color);

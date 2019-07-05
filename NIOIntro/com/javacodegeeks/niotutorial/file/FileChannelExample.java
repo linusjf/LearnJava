@@ -25,8 +25,7 @@ public interface FileChannelExample {
    *
    * @param path file path
    * @param fileOperation File operation type as enum
-   * @return <code>SeekableByteChannel</code> object based on fileOperation
-   *     parameter
+   * @return <code>SeekableByteChannel</code> object based on fileOperation parameter
    * @throws FileNotFoundException if the file path does not point to a file.
    */
   default SeekableByteChannel createChannel(String path, FileOperation fileOperation)

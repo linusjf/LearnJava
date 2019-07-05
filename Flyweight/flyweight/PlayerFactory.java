@@ -30,8 +30,7 @@ final class PlayerFactory { // NOPMD
     /* If an object for TS or CT has already been
     created simply return its reference */
 
-    if (hm.containsKey(type))
-      p = hm.get(type);
+    if (hm.containsKey(type)) p = hm.get(type);
     else {
       /* create an object of TS/CT  */
       switch (type) {

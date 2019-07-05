@@ -13,11 +13,23 @@ public class CreatePlayerCommand {
 
   static {
     final Map<String, Command> players = new HashMap<>();
-    players.put("TENNIS", () -> { return new TennisPlayer(); });
+    players.put(
+        "TENNIS",
+        () -> {
+          return new TennisPlayer();
+        });
 
-    players.put("FOOTBALL", () -> { return new FootballPlayer(); });
+    players.put(
+        "FOOTBALL",
+        () -> {
+          return new FootballPlayer();
+        });
 
-    players.put("SNOOKER", () -> { return new SnookerPlayer(); });
+    players.put(
+        "SNOOKER",
+        () -> {
+          return new SnookerPlayer();
+        });
 
     PLAYERS = Collections.unmodifiableMap(players);
   }

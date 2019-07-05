@@ -18,7 +18,8 @@ if [ ! -e "$classpathFile" ]
     usage
 fi
 
+readarray -t args < <(find "$1" -type f -name "*.java")
 java -cp @"$classpathFile" "$mainClass" \
   --set-exit-if-changed -i \
-  $(find "$1" -type f -name "*.java")
+  "${args[@]}"
 exit $?

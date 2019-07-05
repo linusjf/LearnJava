@@ -30,9 +30,8 @@ public final class BCryptUtil {
   }
 
   /**
-   * Encode a byte array using bcrypt's slightly-modified base64 encoding
-   * scheme. Note that this is *not* compatible with the standard MIME-base64
-   * encoding.
+   * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
+   * *not* compatible with the standard MIME-base64 encoding.
    *
    * @param d the byte array to encode
    * @return base64-encoded string
@@ -43,8 +42,8 @@ public final class BCryptUtil {
   }
 
   /**
-   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note
-   * that this is *not* compatible with the standard MIME-base64 encoding.
+   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note that this is *not*
+   * compatible with the standard MIME-base64 encoding.
    *
    * @param s the string to decode
    * @return an array containing the decoded bytes
@@ -58,8 +57,7 @@ public final class BCryptUtil {
    * Cylically extract a word of key material.
    *
    * @param data the string to extract the data from
-   * @param offp a "pointer" (as a one-entry array) to the current offset into
-   *     data
+   * @param offp a "pointer" (as a one-entry array) to the current offset into data
    * @return the next word of material from data
    */
   @SuppressWarnings("PMD.UseVarargs")
@@ -77,22 +75,17 @@ public final class BCryptUtil {
     return word;
   }
 
-  /**
-   * Using regex. Match the initial salt and match the minor and offset values.
-   */
+  /** Using regex. Match the initial salt and match the minor and offset values. */
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char) 0;
     int off = 0;
     Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (matcher.matches()) {
       off = matcher.end(1);
-      if (off == OFFSET_4)
-        minor = 'a';
-    } else
-      throw new IllegalArgumentException("Invalid salt:" + salt);
+      if (off == OFFSET_4) minor = 'a';
+    } else throw new IllegalArgumentException("Invalid salt:" + salt);
     // Extract number of rounds
-    if (salt.charAt(off + 2) > DOLLAR)
-      throw new IllegalArgumentException("Missing salt rounds");
+    if (salt.charAt(off + 2) > DOLLAR) throw new IllegalArgumentException("Missing salt rounds");
     return new String[] {String.valueOf(minor), String.valueOf(off)};
   }
 
@@ -128,11 +121,9 @@ public final class BCryptUtil {
   private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
-    if (minor >= LOWER_CASE_A)
-      rs.append(minor);
+    if (minor >= LOWER_CASE_A) rs.append(minor);
     rs.append(DOLLAR);
-    if (rounds < TEN)
-      rs.append('0');
+    if (rounds < TEN) rs.append('0');
     rs.append(Integer.toString(rounds))
         .append(DOLLAR)
         .append(encodeBase64(saltb))
@@ -144,8 +135,8 @@ public final class BCryptUtil {
   /**
    * Generate a salt for use with the BCrypt.hashpw() method
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the
-   *     work factor therefore increases as 2**log_rounds.
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   *     therefore increases as 2**log_rounds.
    * @param random an instance of SecureRandom to use
    * @return an encoded salt value
    */
@@ -155,8 +146,7 @@ public final class BCryptUtil {
 
     random.nextBytes(rnd);
     rs.append("$2a$");
-    if (logRounds < TEN)
-      rs.append('0');
+    if (logRounds < TEN) rs.append('0');
     rs.append(Integer.toString(logRounds)).append(DOLLAR).append(encodeBase64(rnd));
     return rs.toString();
   }
@@ -164,8 +154,8 @@ public final class BCryptUtil {
   /**
    * Generate a salt for use with the BCrypt.hashpw() method
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the
-   *     work factor therefore increases as 2**log_rounds.
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   *     therefore increases as 2**log_rounds.
    * @return an encoded salt value
    */
   public static String gensalt(final int logRounds) {
@@ -173,8 +163,8 @@ public final class BCryptUtil {
   }
 
   /**
-   * Generate a salt for use with the BCrypt.hashpw() method, selecting a
-   * reasonable default for the number of hashing rounds to apply.
+   * Generate a salt for use with the BCrypt.hashpw() method, selecting a reasonable default for the
+   * number of hashing rounds to apply.
    *
    * @return an encoded salt value
    */

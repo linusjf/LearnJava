@@ -9,12 +9,12 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * An implementation of the Password-Based Key Derivation Function as specified
- * in RFC 2898.
+ * An implementation of the Password-Based Key Derivation Function as specified in RFC 2898.
  *
  * @author Will Glozer
  */
-@SuppressWarnings("checkstyle:abbreviationaswordinname") public final class PBKDF { // NOPMD
+@SuppressWarnings("checkstyle:abbreviationaswordinname")
+public final class PBKDF { // NOPMD
 
   private PBKDF() {
     throw new IllegalStateException("Private constructor");

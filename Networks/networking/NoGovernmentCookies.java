@@ -8,10 +8,7 @@ import java.util.Locale;
 public class NoGovernmentCookies implements CookiePolicy {
   @Override
   public boolean shouldAccept(URI uri, HttpCookie cookie) {
-    return !(
-        uri.getAuthority().toLowerCase(Locale.getDefault()).endsWith(".gov")
-        || cookie.getDomain()
-               .toLowerCase(Locale.getDefault())
-               .endsWith(".gov"));
+    return !(uri.getAuthority().toLowerCase(Locale.getDefault()).endsWith(".gov")
+        || cookie.getDomain().toLowerCase(Locale.getDefault()).endsWith(".gov"));
   }
 }

@@ -20,7 +20,8 @@ public interface MachineMediator {
   void closed();
 
   /** Describe <code>on</code> method here. */
-  @SuppressWarnings("PMD.ShortMethodName") void on();
+  @SuppressWarnings("PMD.ShortMethodName")
+  void on();
 
   /** Describe <code>off</code> method here. */
   void off();

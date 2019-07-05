@@ -28,47 +28,45 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * The Proxy creates a Server Socket which will wait for connections on the
- * specified port. Once a connection arrives and a socket is accepted, the Proxy
- * creates a RequestHandler object on a new thread and passes the socket to it
- * to be handled. This allows the Proxy to continue accept further connections
- * while others are being handled.
+ * The Proxy creates a Server Socket which will wait for connections on the specified port. Once a
+ * connection arrives and a socket is accepted, the Proxy creates a RequestHandler object on a new
+ * thread and passes the socket to it to be handled. This allows the Proxy to continue accept
+ * further connections while others are being handled.
  *
- * <p>The Proxy class is also responsible for providing the dynamic management
- * of the proxy through the console and is run on a separate thread in order to
- * not interrupt the acceptance of socket connections. This allows the
- * administrator to dynamically block web sites in real time.
+ * <p>The Proxy class is also responsible for providing the dynamic management of the proxy through
+ * the console and is run on a separate thread in order to not interrupt the acceptance of socket
+ * connections. This allows the administrator to dynamically block web sites in real time.
  *
- * <p>The Proxy server is also responsible for maintaining cached copies of the
- * any websites that are requested by clients and this includes the HTML markup,
- * images, css and js files associated with each webpage.
+ * <p>The Proxy server is also responsible for maintaining cached copies of the any websites that
+ * are requested by clients and this includes the HTML markup, images, css and js files associated
+ * with each webpage.
  *
- * <p>Upon closing the proxy server, the HashMaps which hold cached items and
- * blocked sites are serialized and written to a file and are loaded back in
- * when the proxy is started once more, meaning that cached and blocked sites
- * are maintained.
+ * <p>Upon closing the proxy server, the HashMaps which hold cached items and blocked sites are
+ * serialized and written to a file and are loaded back in when the proxy is started once more,
+ * meaning that cached and blocked sites are maintained.
  */
 public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken")
+  private volatile boolean running = true; // NOPMD
 
   /**
-   * Data structure for constant order lookup of cache items. Key: URL of
-   * page/image requested. Value: File in storage associated with this key.
+   * Data structure for constant order lookup of cache items. Key: URL of page/image requested.
+   * Value: File in storage associated with this key.
    */
   static Map<String, File> cache;
 
   /**
-   * Data structure for constant order lookup of blocked sites. Key: URL of
-   * page/image requested. Value: URL of page/image requested.
+   * Data structure for constant order lookup of blocked sites. Key: URL of page/image requested.
+   * Value: URL of page/image requested.
    */
   static Map<String, String> blockedSites;
 
   /**
-   * ArrayList of threads that are currently running and servicing requests.
-   * This list is required in order to join all threads on closing of server.
+   * ArrayList of threads that are currently running and servicing requests. This list is required
+   * in order to join all threads on closing of server.
    */
   static List<Thread> servicingThreads;
 
@@ -153,9 +151,8 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Listens to port and accepts new socket connections. Creates a new thread to
-   * handle the request and passes it the socket connection and continues
-   * listening.
+   * Listens to port and accepts new socket connections. Creates a new thread to handle the request
+   * and passes it the socket connection and continues listening.
    */
   @SuppressWarnings("checkstyle:magicnumber")
   public void listen() {
@@ -185,9 +182,8 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Saves the blocked and cached sites to a file so they can be re loaded at a
-   * later time. Also joins all of the RequestHandler threads currently
-   * servicing requests.
+   * Saves the blocked and cached sites to a file so they can be re loaded at a later time. Also
+   * joins all of the RequestHandler threads currently servicing requests.
    */
   private void closeServer() {
     System.out.println("\nClosing Server..");
@@ -263,19 +259,19 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Creates a management interface which can dynamically update the proxy
-   * configurations blocked : Lists currently blocked sites cached : Lists
-   * currently cached sites close : Closes the proxy server * : Adds * to the
-   * list of blocked sites.
+   * Creates a management interface which can dynamically update the proxy configurations blocked :
+   * Lists currently blocked sites cached : Lists currently cached sites close : Closes the proxy
+   * server * : Adds * to the list of blocked sites.
    */
   @Override
   public void run() {
     Scanner scanner = new Scanner(System.in);
     String command = "";
-    System.out.println("Enter new site to block, or type "
-        + "\"blocked\" to see blocked sites, "
-        + "\"cached\" to see cached sites, or "
-        + "\"close\" to close server.");
+    System.out.println(
+        "Enter new site to block, or type "
+            + "\"blocked\" to see blocked sites, "
+            + "\"cached\" to see cached sites, or "
+            + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();

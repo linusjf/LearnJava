@@ -11,8 +11,7 @@ public class Facebook implements SocialNetwork {
 
   public Facebook(List<Profile> cache) {
     this.profiles = cache;
-    if (this.profiles == null)
-      this.profiles = new ArrayList<>();
+    if (this.profiles == null) this.profiles = new ArrayList<>();
   }
 
   public Profile requestProfileFromFacebook(String profileEmail) {
@@ -31,8 +30,12 @@ public class Facebook implements SocialNetwork {
     // Instead, we emulates long network connection, which you would expect
     // in the real life...
     simulateNetworkLatency();
-    System.out.println("Facebook: Loading '" + contactType + "' list of '" + profileEmail
-        + "' over the network...");
+    System.out.println(
+        "Facebook: Loading '"
+            + contactType
+            + "' list of '"
+            + profileEmail
+            + "' over the network...");
 
     // ...and return test data.
     Profile profile = findProfile(profileEmail);

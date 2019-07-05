@@ -114,7 +114,8 @@ public abstract class Employee implements Worker {
    */
   public String fullDetails() {
     StringBuilder builder = new StringBuilder(48);
-    builder.append("Employee [")
+    builder
+        .append("Employee [")
         .append(employeeId)
         .append(", ")
         .append(employeeName)

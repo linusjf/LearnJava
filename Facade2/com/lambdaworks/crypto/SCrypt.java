@@ -12,12 +12,11 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * An implementation of the <a
- * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key derivation
- * function. This class will attempt to load a native library containing the
- * optimized C implementation from <a
- * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>
- * and fall back to the pure Java version if that fails.
+ * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key
+ * derivation function. This class will attempt to load a native library containing the optimized C
+ * implementation from <a
+ * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to
+ * the pure Java version if that fails.
  *
  * @author Will Glozer
  */
@@ -34,10 +33,9 @@ public final class SCrypt { // NOPMD
   }
 
   /**
-   * Implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls the
-   * native implementation {@link #scryptN} when the native library was
-   * successfully loaded, otherwise calls {@link #scryptJ}.
+   * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
+   * the native implementation {@link #scryptN} when the native library was successfully loaded,
+   * otherwise calls {@link #scryptJ}.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -50,15 +48,16 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-    byte[] derived = NATIVE_LIBRARY_LOADED ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-                                           : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+    byte[] derived =
+        NATIVE_LIBRARY_LOADED
+            ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+            : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
     return Arrays.copyOf(derived, derived.length);
   }
 
   /**
-   * Native C implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a> using the
-   * code from <a
+   * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a> using the code from <a
    * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>.
    *
    * @param passwd Password.
@@ -74,8 +73,8 @@ public final class SCrypt { // NOPMD
       byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen);
 
   /**
-   * Pure Java implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>.
+   * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a>.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -93,8 +92,7 @@ public final class SCrypt { // NOPMD
 
     if (enCPUCost > MAX_VALUE / 128 / r)
       throw new IllegalArgumentException("Parameter nCPUCost is too large");
-    if (r > MAX_VALUE / 128 / p)
-      throw new IllegalArgumentException("Parameter r is too large");
+    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
 
     final Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
