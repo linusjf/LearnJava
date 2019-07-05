@@ -17,13 +17,13 @@ declare -i threads=5
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.PMD"
 
-java -cp @$classpathFile \
-$mainClass \
--d $1 -R $rulesFile -f $format \
--failOnViolation false -cache $1/$cacheFile \
--reportfile $1/$errFile \
--auxclasspath $1 \
--t $threads \
+java -cp @"$classpathFile" \
+"$mainClass" \
+-d "$1" -R "$rulesFile" -f "$format" \
+-failOnViolation false -cache "$1"/"$cacheFile" \
+-reportfile "$1"/"$errFile" \
+-auxclasspath "$1" \
+-t "$threads" \
 || { echo "Error running $0"; exit 1;}
 res=$?
 exit $res

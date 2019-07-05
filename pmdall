@@ -1,10 +1,10 @@
 #! /usr/bin/env bash
 declare -i errs=0
-dirs=`find . -maxdepth 1 -type d -name "[[:upper:]]*"`
+dirs=$(find . -maxdepth 1 -type d -name "[[:upper:]]*")
 for dir in $dirs
 	do
-	echo $dir
-  ./pmd $dir
+	echo "$dir"
+  ./pmd "$dir"
   errs="$errs+$?"
 done
 ./findpmderrors

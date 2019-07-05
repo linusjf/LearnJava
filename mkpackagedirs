@@ -14,12 +14,12 @@ usage ()
   echo 'package - name of java package'
   exit 1
 }
-if [ -z $1 ]
+if [ -z "$1" ]
   then
   usage
 else
-  dir=$(echo $1 | sed -e 's/\./\//g')
-  echo $dir
-  mkdir -p $dir
+  dir=$(echo "$1" | sed -e 's/\./\//g')
+  echo "$dir"
+  mkdir -p "$dir"
   exit $?
 fi

@@ -15,14 +15,14 @@ pkgInfoFile="package-info.java"
 dir=""
 for file in $(find . -maxdepth 1 -name "*.java" -type f  ! -path "*.git*" ! -path .)
   do
-    package=$(head -1 $file | grep 'package' | awk '{print $2}' | sed 's/;//')
-  dir=$(mkpackagedirs $package)
-  mv $file $dir
-  if [ -e $dir/$pkgInfoFile ]
+    package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
+  dir=$(mkpackagedirs "$package")
+  mv "$file" "$dir"
+  if [ -e "$dir"/"$pkgInfoFile" ]
   then
     continue
   else
-    echo "package $package;">$dir/$pkgInfoFile
+    echo "package $package;">"$dir/$pkgInfoFile"
     echo "Created $dir/$pkgInfoFile"
   fi
 done
