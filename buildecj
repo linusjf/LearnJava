@@ -34,7 +34,7 @@ createJar() {
       }
     jarRes=$? 
     [ -e "$jarFile" ] && cp "$jarFile" .. \
-    && mkdir -p "$distDir" && mv "$jarFile $distDir" || { \
+    && mkdir -p "$distDir" && mv "$jarFile" "$distDir" || { \
     echo "Error moving jar file to $proj/$distDir"; 
   }
   cd ..
@@ -63,6 +63,8 @@ declare -r manifestFile="manifest.mf"
 declare -r verFile=".ver"
 declare -r versionFile=".version"
 declare -r optionsFile=".options"
+declare -i success
+declare -i jarRes
 options=""
 
 isJVM
@@ -93,5 +95,4 @@ else
     fi
   fi
 fi
-exit $(expr $success + $jarRes)
-
+exit $((success+jarRes))
