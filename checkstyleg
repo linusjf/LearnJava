@@ -18,27 +18,27 @@ classpathFile="cs.cp"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
 #xsltFile="merge.xslt"
-echo $1
-if [ ! -z $2 ]
+echo "$1"
+if [ -n "$2" ]
   then
     rules_file=$2
 fi
-if [ ! -e $rules_file ]
+if [ ! -e "$rules_file" ]
   then
     echo "$rules_file cannot be found."
     usage
 fi
 
-if [ ! -e $classpathFile ]
+if [ ! -e "$classpathFile" ]
   then
     echo "$classpathFile cannot be found. Run ant in root directory to generate file."
     usage
 fi
 
-if [ ! -e $properties_file ]
+if [ ! -e "$properties_file" ]
   then
     echo "$properties_file not found. Creating..."
-    touch $properties_file || \
+    touch "$properties_file" || \
       echo "Unable to create $properties_file"
     echo "Create/Modify $properties_file to configure checkstyle"
 fi
@@ -54,13 +54,13 @@ fi
       #exit 1
    # fi
 #fi
-(cd $1 && \
-java -cp @../$classpathFile \
-$mainClass \
--c ../$rules_file -d \
--p ../$properties_file \
--o $output_file -g \
-`find . -type f -name "*.java" \
-! -path "docs/**" ! -path "dist/**"` \
-| tee $1-xpath.xml)
+(cd "$1" && \
+java -cp @../"$classpathFile" \
+"$mainClass" \
+-c ../"$rules_file" -d \
+-p ../"$properties_file" \
+-o "$output_file" -g \
+$(find . -type f -name "*.java" \
+! -path "docs/**" ! -path "dist/**") \
+| tee "$1"-xpath.xml)
 exit $?
