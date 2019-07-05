@@ -12,13 +12,13 @@ fi
 declare -r classpathFile="gformat.cp"
 declare -r mainClass="com.google.googlejavaformat.java.Main"
 
-if [ ! -e $classpathFile ]
+if [ ! -e "$classpathFile" ]
   then
     echo "$classpathFile cannot be found. Run ant in root directory to generate file."
     usage
 fi
 
-java -cp @$classpathFile $mainClass \
+java -cp @"$classpathFile" "$mainClass" \
   --set-exit-if-changed -i \
-`find $1 -type f -name "*.java"`
+  $(find "$1" -type f -name "*.java")
 exit $?
