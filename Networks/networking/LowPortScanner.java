@@ -10,6 +10,7 @@ public final class LowPortScanner {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.EmptyCatchBlock")
   public static void main(String[] args) {
     String[] hosts = args.length > 0 ? args : new String[] {"localhost"};
     for (String host : hosts) {
@@ -21,8 +22,7 @@ public final class LowPortScanner {
         } catch (UnknownHostException ex) {
           System.err.println(ex);
           break;
-        } catch (IOException ex) {
-          System.err.println(ex.getMessage());
+        } catch (IOException ex) {  
           // must not be a server on this port
         }
       }

@@ -1,2 +1,2 @@
-refactoringguru.iterator.example.Demo < `find . -maxdepth 2 -name "one.test"`
-refactoringguru.iterator.example.Demo < `find . -maxdepth 2 -name "two.test"`
+refactoringguru.iterator.example.Demo < one.test
+refactoringguru.iterator.example.Demo < two.test
