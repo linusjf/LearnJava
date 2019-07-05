@@ -4,7 +4,7 @@ networking.ReverseTest
 networking.IBiblioAliases
 networking.InterfaceLister
 networking.IPCharacteristics 127.0.0.1 192.168.254.32 www.oreilly.com 224.0.2.1 FF01:0:0:0:0:0:0:1 FF05:0:0:0:0:0:0:101 0::1
-networking.WebLog Networks/web.log
+networking.WebLog web.log
 networking.PooledWebLog web.log
 networking.ProtocolTester
 networking.SourceViewer https://www.spamhaus.org/
