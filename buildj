@@ -52,7 +52,7 @@ readVersion()
 readOptions()
 {
   [ -e "$proj"/"$optionsFile" ] && \
-      { options=$(cat "$proj"/"$optionsFile") || \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
       echo "Unable to read $proj/$optionsFile";}
 }
 
@@ -60,7 +60,7 @@ proj=$1
 ver="1.7"
 version="0.0.0"
 declare -r optionsFile=".options"
-options=""
+declare -a options
 declare -r distDir="dist"
 declare -r manifestFile="manifest.mf"
 declare -r verFile=".ver"
@@ -82,7 +82,7 @@ else
     readOptions
     readarray -t javasrcs \
       < <(find "$proj" -name "*.java" -type f)
-    javac $options -source "$ver" -target "$ver" \
+    javac ${options[@]} -source "$ver" -target "$ver" \
     -cp "$proj" \
     "${javasrcs[@]}"
     success=$?
