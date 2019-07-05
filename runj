@@ -162,7 +162,7 @@ isJVM
 jvm=$?
 if [ $jvm -eq 0 ]
   then
-    echo "$main"
+    printf '%s\n' "${main[@]}"
     runJVM
 fi
 

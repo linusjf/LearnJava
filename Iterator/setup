@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-java -cp . refactoringguru.iterator.example.Demo < one.test
-java -cp . refactoringguru.iterator.example.Demo < two.test
