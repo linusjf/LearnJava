@@ -1,6 +1,6 @@
 #!/bin/bash
 declare -r classpathFile="gformat.cp"
 declare -r mainClass="com.google.googlejavaformat.java.Main"
-java -cp @$classpathFile $mainClass --set-exit-if-changed -i \
-`find . -mindepth 2 -type f -name "*.java"`
+java -cp @"$classpathFile" "$mainClass" --set-exit-if-changed -i \
+  $(find . -mindepth 2 -type f -name "*.java")
 exit $?
