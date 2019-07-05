@@ -21,7 +21,7 @@ public final class PrototypeFactory {
 
   public static PrototypeCapable getInstance(final String s)
       throws CloneNotSupportedException {
-    return ((PrototypeCapable)prototypes.get(s)).clone();
+    return prototypes.get(s).clone();
   }
 
   public static class ModelType {
