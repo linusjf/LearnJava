@@ -68,8 +68,7 @@ public final class Platform {
       }
     }
 
-    final String msg =
-        String.format("Unsupported platform %s %s", osArch, osName);
+    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 }

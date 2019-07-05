@@ -38,8 +38,7 @@ public class CompressionDecorator extends DataSourceDecorator {
     byte[] data = stringData.getBytes();
     try {
       ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-      DeflaterOutputStream dos =
-          new DeflaterOutputStream(bout, new Deflater(compLevel));
+      DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));
       dos.write(data);
       dos.close();
       bout.close();

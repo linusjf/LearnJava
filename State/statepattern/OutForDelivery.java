@@ -4,8 +4,7 @@ public final class OutForDelivery implements PackageState {
   // Singleton
   private static OutForDelivery instance = new OutForDelivery();
 
-  private OutForDelivery() {
-  }
+  private OutForDelivery() {}
 
   public static OutForDelivery getInstance() {
     return instance;

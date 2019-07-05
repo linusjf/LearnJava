@@ -12,7 +12,7 @@ package com.lambdaworks.jni;
  *
  * @author Will Glozer
  */
-public final class LibraryLoaders {  // NOPMD
+public final class LibraryLoaders { // NOPMD
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -28,13 +28,11 @@ public final class LibraryLoaders {  // NOPMD
         return new NilLibraryLoader();
       if ("jar".equals(type))
         return new JarLibraryLoader();
-      throw new IllegalStateException(
-          "Illegal value for com.lambdaworks.jni.loader: " + type);
+      throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
     }
 
     final String vmSpec = System.getProperty("java.vm.specification.name");
-    return vmSpec.startsWith("Java") ? new JarLibraryLoader()
-                                     : new SysLibraryLoader();
+    return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
   }
 
   private LibraryLoaders() {

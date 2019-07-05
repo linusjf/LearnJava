@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class WhoisUI {
-
   private String searchFor;
   private String searchAt;
   private boolean exactMatch;

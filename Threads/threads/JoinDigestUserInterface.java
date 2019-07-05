@@ -7,8 +7,7 @@ public final class JoinDigestUserInterface {
     throw new IllegalStateException("Private constructor");
   }
 
-  private static void startThread(int index, ReturnDigest[] digestThreads,
-                                  String arg) {
+  private static void startThread(int index, ReturnDigest[] digestThreads, String arg) {
     digestThreads[index] = new ReturnDigest(arg);
     digestThreads[index].start();
   }

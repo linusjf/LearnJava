@@ -6,7 +6,7 @@ package proxy.synchronicity;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class BlackBoxProvider {  // NOPMD
+public final class BlackBoxProvider { // NOPMD
 
   private BlackBoxProvider() {
     throw new IllegalStateException("Constructor private.");

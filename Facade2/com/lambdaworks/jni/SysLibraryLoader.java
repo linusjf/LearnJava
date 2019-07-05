@@ -26,8 +26,7 @@ public class SysLibraryLoader implements LibraryLoader {
       System.loadLibrary(name);
       loaded = true;
     } catch (SecurityException e) {
-      System.err.println("Error loading system library " + name + " : "
-                         + e.getMessage());
+      System.err.println("Error loading system library " + name + " : " + e.getMessage());
       loaded = false;
     }
     return loaded;

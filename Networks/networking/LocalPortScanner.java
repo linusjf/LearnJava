@@ -6,7 +6,6 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
 public final class LocalPortScanner {
-
   private LocalPortScanner() {
     throw new IllegalStateException("Private constructor");
   }

@@ -13,8 +13,7 @@ public enum TestInterpreterPattern {
       if (ExpressionUtils.isOperator(s)) {
         Expression rightExpression = stack.pop();
         Expression leftExpression = stack.pop();
-        Expression operator =
-            ExpressionUtils.getOperator(s, leftExpression, rightExpression);
+        Expression operator = ExpressionUtils.getOperator(s, leftExpression, rightExpression);
         int result = operator.interpret();
         stack.push(new Number(result));
       } else {

@@ -6,7 +6,6 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public final class SocketInfo {
-
   private SocketInfo() {
     throw new IllegalStateException("Private constructor");
   }

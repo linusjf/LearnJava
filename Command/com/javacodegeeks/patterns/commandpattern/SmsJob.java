@@ -9,8 +9,7 @@ public class SmsJob implements Job {
 
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing sms jobs.");
+    System.out.println("Job ID: " + Thread.currentThread().getId() + " executing sms jobs.");
     if (sms != null) {
       sms.sendSms();
     }

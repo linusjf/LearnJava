@@ -61,13 +61,10 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamto
  * @version 0.2
  */
 public class BCrypt {
-
   // Expanded Blowfish key
-  @SuppressWarnings("membername")
-  private int[] P;  // NOPMD
+  @SuppressWarnings("membername") private int[] P; // NOPMD
 
-  @SuppressWarnings("membername")
-  private int[] S;  // NOPMD
+  @SuppressWarnings("membername") private int[] S; // NOPMD
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
@@ -119,8 +116,7 @@ public class BCrypt {
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       encipher(lr, 0);
@@ -151,8 +147,7 @@ public class BCrypt {
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       lr[0] ^= streamtoword(data, doffp);
@@ -187,9 +182,7 @@ public class BCrypt {
    *     apply
    * @return an array containing the binary hashed password
    */
-  byte[] cryptRaw(final byte[] password,
-                  final byte[] salt,
-                  final int logRounds) {
+  byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -204,16 +197,15 @@ public class BCrypt {
     }
     int j;
     for (i = 0; i < 64; i++) {
-      for (j = 0; j < (clen >> 1); j++)
-        encipher(cdata, j << 1);
+      for (j = 0; j < (clen >> 1); j++) encipher(cdata, j << 1);
     }
 
     final byte[] ret = new byte[clen * 4];
     for (i = 0, j = 0; i < clen; i++) {
-      ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
-      ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
-      ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
-      ret[j++] = (byte)(cdata[i] & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 24) & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 16) & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 8) & 0xff);
+      ret[j++] = (byte) (cdata[i] & 0xff);
     }
     return ret;
   }

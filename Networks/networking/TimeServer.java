@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.util.Date;
 
 public final class TimeServer {
-
   public static final int PORT = 3737;
 
   private TimeServer() {

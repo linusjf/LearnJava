@@ -4,8 +4,7 @@ public final class Acknowledged implements PackageState {
   // Singleton
   private static Acknowledged instance = new Acknowledged();
 
-  private Acknowledged() {
-  }
+  private Acknowledged() {}
 
   public static Acknowledged getInstance() {
     return instance;

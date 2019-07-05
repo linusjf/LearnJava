@@ -10,7 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class SourceViewer4 {
-
   private SourceViewer4() {
     throw new IllegalStateException("Private constructor");
   }

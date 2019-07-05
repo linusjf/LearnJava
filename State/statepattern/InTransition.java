@@ -4,8 +4,7 @@ public final class InTransition implements PackageState {
   // Singleton
   private static InTransition instance = new InTransition();
 
-  private InTransition() {
-  }
+  private InTransition() {}
 
   public static InTransition getInstance() {
     return instance;

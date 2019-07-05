@@ -29,7 +29,7 @@ public class FileDataSource implements DataSource {
     char[] buffer = null;
     File file = new File(name);
     try (Reader reader = Files.newBufferedReader(Paths.get(file.getPath()))) {
-      buffer = new char[(int)file.length()];
+      buffer = new char[(int) file.length()];
       reader.read(buffer);
     } catch (IOException ex) {
       System.out.println(ex.getMessage());

@@ -1,4 +1,5 @@
 #!/bin/bash
+readarray -t args < <(find . -mindepth 2 -type f -name "*.java")
 clang-format -i -style=Google -sort-includes \
-  $(find . -mindepth 2 -type f -name "*.java")
+  "${args[@]}"
 exit $?

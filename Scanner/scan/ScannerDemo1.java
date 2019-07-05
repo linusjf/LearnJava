@@ -3,13 +3,11 @@ package scan;
 import java.util.Scanner;
 
 public final class ScannerDemo1 {
-
   private ScannerDemo1() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-
     // Declare the object and initialize with
 
     // predefined standard input object

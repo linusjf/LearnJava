@@ -57,7 +57,6 @@ public class Whois {
     }
 
     public static Pattern getRegexPattern() {
-
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
       EnumSet.allOf(SearchFor.class)
@@ -82,7 +81,6 @@ public class Whois {
     }
 
     public static Pattern getRegexPattern() {
-
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
       EnumSet.allOf(SearchIn.class)

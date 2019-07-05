@@ -4,8 +4,7 @@ public final class Delivered implements PackageState {
   // Singleton
   private static Delivered instance = new Delivered();
 
-  private Delivered() {
-  }
+  private Delivered() {}
 
   public static Delivered getInstance() {
     return instance;

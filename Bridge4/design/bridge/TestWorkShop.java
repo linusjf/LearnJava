@@ -14,7 +14,7 @@ public class TestWorkShop extends WorkShop {
     System.out.print("Testing... ");
     long timeToTake = 50 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake);  // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake); // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }

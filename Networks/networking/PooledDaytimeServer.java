@@ -37,7 +37,6 @@ public final class PooledDaytimeServer {
   }
 
   private static class DaytimeTask implements Callable<Void> {
-
     private Socket connection;
 
     DaytimeTask(Socket connection) {

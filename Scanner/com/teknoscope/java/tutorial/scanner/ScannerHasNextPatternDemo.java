@@ -12,13 +12,11 @@ import java.util.regex.Pattern;
  */
 
 public final class ScannerHasNextPatternDemo {
-
   private ScannerHasNextPatternDemo() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-
     // Initialize Scanner object
     Scanner scan = new Scanner("Vince1    Gandhi    Albert   ");
     // declare the delimiter to be used by Scanner object

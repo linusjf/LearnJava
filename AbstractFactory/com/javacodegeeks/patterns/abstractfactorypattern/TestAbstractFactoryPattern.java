@@ -4,8 +4,7 @@ public enum TestAbstractFactoryPattern {
   ;
 
   public static void main(String[] args) {
-    AbstractParserFactory parserFactory =
-        ParserFactoryProducer.getFactory("NYFactory");
+    AbstractParserFactory parserFactory = ParserFactoryProducer.getFactory("NYFactory");
     XMLParser parser = parserFactory.getParserInstance("NYORDER");
     String msg = "";
     msg = parser.parse();

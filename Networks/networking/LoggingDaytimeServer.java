@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import logging.FormatLogger;
 
 public final class LoggingDaytimeServer {
-
   public static final int PORT = 13;
 
   private static final FormatLogger AUDIT_LOGGER =
@@ -53,7 +52,6 @@ public final class LoggingDaytimeServer {
   }
 
   private static class DaytimeTask implements Callable<Void> {
-
     private Socket connection;
 
     DaytimeTask(Socket connection) {

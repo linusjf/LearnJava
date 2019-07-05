@@ -46,8 +46,7 @@ public final class EncryptorFacade {
     PBKDF,
   }
 
-  private static final Map<EncryptionType, Supplier<Encrypt>>
-      ENCRYPTOR_SUPPLIER;
+  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
 
   static {
     final Map<EncryptionType, Supplier<Encrypt>> encryptors = new HashMap<>();

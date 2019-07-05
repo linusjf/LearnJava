@@ -9,8 +9,7 @@ public class EmailJob implements Job {
 
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing email jobs.");
+    System.out.println("Job ID: " + Thread.currentThread().getId() + " executing email jobs.");
     if (email != null) {
       email.sendEmail();
     }

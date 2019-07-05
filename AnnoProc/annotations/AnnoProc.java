@@ -22,8 +22,7 @@ public class AnnoProc extends AbstractProcessor {
    * @return a <code>boolean</code> value
    */
   @Override
-  public boolean process(Set<? extends TypeElement> elems,
-                         RoundEnvironment renv) {
+  public boolean process(Set<? extends TypeElement> elems, RoundEnvironment renv) {
     return true;
   }
 

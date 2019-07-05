@@ -10,6 +10,8 @@ then
   usage
 fi
 
-clang-format -i -assume-filename=.clang-format -style=file -sort-includes \
-  $(find $1 -type f -name "*.java")
+readarray -t args < <(find $1 -type f -name "*.java")
+clang-format -i -assume-filename=.clang-format \
+  -style=file -sort-includes \
+  "${args[@]}"
 exit $?

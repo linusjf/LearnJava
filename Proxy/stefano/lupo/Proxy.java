@@ -52,8 +52,7 @@ public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true;  // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
 
   /**
    * Data structure for constant order lookup of cache items. Key: URL of
@@ -90,10 +89,9 @@ public class Proxy implements Runnable {
       if (!cachedSites.createNewFile()) {
         InputStream fileInputStream =
             Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
-        ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-        cache = (HashMap<String, File>)objectInputStream.readObject();
+        cache = (HashMap<String, File>) objectInputStream.readObject();
         fileInputStream.close();
         objectInputStream.close();
       }
@@ -101,21 +99,18 @@ public class Proxy implements Runnable {
       // Load in blocked sites from file
       File blockedSitesTxtFile = new File("blockedSites.txt");
       if (!blockedSitesTxtFile.createNewFile()) {
-        InputStream fileInputStream = Files.newInputStream(
-            Paths.get(blockedSitesTxtFile.getAbsolutePath()));
-        ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream);
-        blockedSites = (HashMap<String, String>)objectInputStream.readObject();
+        InputStream fileInputStream =
+            Files.newInputStream(Paths.get(blockedSitesTxtFile.getAbsolutePath()));
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        blockedSites = (HashMap<String, String>) objectInputStream.readObject();
         fileInputStream.close();
         objectInputStream.close();
       }
     } catch (IOException e) {
-      System.out.println("Error loading previously cached sites file :"
-                         + e.getMessage());
+      System.out.println("Error loading previously cached sites file :" + e.getMessage());
     } catch (ClassNotFoundException e) {
       System.out.println(
-          "Class not found loading in previously cached sites file : "
-          + e.getMessage());
+          "Class not found loading in previously cached sites file : " + e.getMessage());
     }
   }
 
@@ -138,7 +133,7 @@ public class Proxy implements Runnable {
    */
   public Proxy(int port) {
     // Start dynamic manager on a separate thread.
-    new Thread(this).start();  // Starts overriden run() method at bottom
+    new Thread(this).start(); // Starts overriden run() method at bottom
 
     try {
       // Create the Server Socket for the Proxy
@@ -146,18 +141,14 @@ public class Proxy implements Runnable {
       // Set the timeout
       // serverSocket.setSoTimeout(100000);
       // debug
-      System.out.println("Waiting for client on port "
-                         + serverSocket.getLocalPort() + "..");
+      System.out.println("Waiting for client on port " + serverSocket.getLocalPort() + "..");
       running = true;
     } catch (SocketException se) {
-      System.out.println("Socket Exception when connecting to client "
-                         + se.getMessage());
+      System.out.println("Socket Exception when connecting to client " + se.getMessage());
     } catch (SocketTimeoutException ste) {
-      System.out.println("Timeout occured while connecting to client "
-                         + ste.getMessage());
+      System.out.println("Timeout occured while connecting to client " + ste.getMessage());
     } catch (IOException io) {
-      System.out.println("IO exception when connecting to client "
-                         + io.getMessage());
+      System.out.println("IO exception when connecting to client " + io.getMessage());
     }
   }
 
@@ -202,20 +193,16 @@ public class Proxy implements Runnable {
     System.out.println("\nClosing Server..");
     running = false;
     try {
-      OutputStream fileOutputStream =
-          Files.newOutputStream(Paths.get("cachedSites.txt"));
-      ObjectOutputStream objectOutputStream =
-          new ObjectOutputStream(fileOutputStream);
+      OutputStream fileOutputStream = Files.newOutputStream(Paths.get("cachedSites.txt"));
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
       objectOutputStream.writeObject(cache);
       objectOutputStream.close();
       fileOutputStream.close();
       System.out.println("Cached Sites written");
 
-      OutputStream fileOutputStream2 =
-          Files.newOutputStream(Paths.get("blockedSites.txt"));
-      ObjectOutputStream objectOutputStream2 =
-          new ObjectOutputStream(fileOutputStream2);
+      OutputStream fileOutputStream2 = Files.newOutputStream(Paths.get("blockedSites.txt"));
+      ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(fileOutputStream2);
       objectOutputStream2.writeObject(blockedSites);
       objectOutputStream2.close();
       fileOutputStream2.close();
@@ -241,8 +228,7 @@ public class Proxy implements Runnable {
       System.out.println("Terminating Connection");
       serverSocket.close();
     } catch (IOException e) {
-      System.out.println("Exception closing proxy's server socket "
-                         + e.getMessage());
+      System.out.println("Exception closing proxy's server socket " + e.getMessage());
     }
   }
 
@@ -287,9 +273,9 @@ public class Proxy implements Runnable {
     Scanner scanner = new Scanner(System.in);
     String command = "";
     System.out.println("Enter new site to block, or type "
-                       + "\"blocked\" to see blocked sites, "
-                       + "\"cached\" to see cached sites, or "
-                       + "\"close\" to close server.");
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();

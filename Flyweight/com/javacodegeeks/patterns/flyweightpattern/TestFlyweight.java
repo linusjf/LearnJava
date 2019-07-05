@@ -8,8 +8,7 @@ package com.javacodegeeks.patterns.flyweightpattern;
 public enum TestFlyweight {
   ;
 
-  private static final String ASTERIXES =
-    "*************************";
+  private static final String ASTERIXES = "*************************";
 
   /**
    * Main class.

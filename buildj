@@ -80,11 +80,11 @@ else
       { ver=$(cat "$proj"/"$verFile") || \
       echo "$verErrMsg";}
     readOptions
-    readarray -t args \
+    readarray -t javasrcs \
       < <(find "$proj" -name "*.java" -type f)
     javac $options -source "$ver" -target "$ver" \
     -cp "$proj" \
-    "${args[@]}"
+    "${javasrcs[@]}"
     success=$?
     if [[ $success -eq SUCCESS ]]
       then

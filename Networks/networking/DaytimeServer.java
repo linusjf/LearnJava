@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public final class DaytimeServer {
-
   public static final int PORT = 1313;
 
   private DaytimeServer() {

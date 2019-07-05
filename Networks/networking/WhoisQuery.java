@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public final class WhoisQuery {
-
   private WhoisQuery() {
     throw new IllegalStateException("Private constructor");
   }

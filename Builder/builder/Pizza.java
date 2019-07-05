@@ -32,6 +32,6 @@ public abstract class Pizza {
 
   /** Creates a new <code>Pizza</code> instance. */
   Pizza(Builder<?> builder) {
-    toppings = builder.toppings.clone();  // See Item 50
+    toppings = builder.toppings.clone(); // See Item 50
   }
 }

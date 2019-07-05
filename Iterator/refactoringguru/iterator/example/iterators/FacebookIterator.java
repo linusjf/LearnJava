@@ -21,8 +21,7 @@ public class FacebookIterator implements ProfileIterator {
 
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> profiles =
-          facebook.requestProfileFriendsFromFacebook(this.email, this.type);
+      List<String> profiles = facebook.requestProfileFriendsFromFacebook(this.email, this.type);
       for (String profile : profiles) {
         this.emails.add(profile);
         this.profiles.add(null);

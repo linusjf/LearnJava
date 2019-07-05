@@ -9,7 +9,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 public final class HttpsClient {
-
   private HttpsClient() {
     throw new IllegalStateException("Private constructor");
   }
