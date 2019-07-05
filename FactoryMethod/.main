@@ -1,2 +1,2 @@
 com.javacodegeeks.patterns.factorymethodpattern.TestFactoryMethodPattern
-factorymethod.BillGenerator FactoryMethod/bill.txt
+factorymethod.BillGenerator bill.txt
