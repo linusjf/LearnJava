@@ -21,7 +21,7 @@ setUp ()
 	cd "$proj" || \
     { echo "Unable to access folder $proj";exit 1;}
 	[ -e "$setupScript" ] && \
-    { ./$setupScript || \
+    { ./"$setupScript" || \
       { \
         echo "Error running setup script";\
         exit 1;\
@@ -36,7 +36,7 @@ tearDown ()
     { echo "Unable to access folder $proj";exit 1;}
 	[ -e "$teardownScript" ] && \
     {\
-      ./$teardownScript || \
+      ./"$teardownScript" || \
       {\
         echo "Error running teardown script";\
         exit 1;\
@@ -59,8 +59,8 @@ isJVM ()
 
 runDalvik()
 {
-  dexFile=$proj-$version.dex
-  if [ -e $dexFile ] 
+  dexFile="$proj-$version.dex"
+  if [ -e "$dexFile" ] 
     then
     setUp
     echo "Main class(es): $main"
@@ -110,14 +110,14 @@ runJVM()
 readVersion()
 {
   [ -e "$versionFile" ] && \
-      { version=$(cat $versionFile) || \
+      { version=$(cat "$versionFile") || \
       echo "Unable to read $versionFile";}
 }
 
 readRunOptions()
 {
   [ -e "$proj/$runOptionsFile" ] && \
-      { runOptions=$(cat $proj/$runOptionsFile) || \
+      { runOptions=$(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
 
@@ -145,7 +145,7 @@ version="0.0.0"
 main[0]="$2"
 if [ -z "$2" ]
 then
-  readarray main < $proj/$mainFile || \
+  readarray main < "$proj"/"$mainFile" || \
     { echo "Error reading $proj/$mainFile";usage; }
 fi
 echo "$proj"
