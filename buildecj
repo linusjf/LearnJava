@@ -19,22 +19,22 @@ isJVM () {
 }
 
 createJar() {
-  cd $proj || echo "cannot cd to $proj";
+  cd "$proj" || echo "cannot cd to $proj";
   jarFile="$proj-$version.jar"
-  if [ ! -e $manifestFile ] 
+  if [ ! -e "$manifestFile" ] 
     then
       echo "$manifestFile does not exist. Run ant manifest in $proj."
       exit 1
     fi
-    jar cfm $jarFile $manifestFile \
-    `find . -name "*.class" \
-    ! -path "*.git*" -type f` || { \
+    jar cfm "$jarFile $manifestFile" \
+    $(find . -name "*.class" \
+    ! -path "*.git*" -type f) || { \
     echo "Error creating jar output: $jarFile";
         exit 1;
       }
     jarRes=$? 
-    [ -e $jarFile ] && cp $jarFile .. \
-    && mkdir -p $distDir && mv $jarFile $distDir || { \
+    [ -e "$jarFile" ] && cp "$jarFile" .. \
+    && mkdir -p "$distDir" && mv "$jarFile $distDir" || { \
     echo "Error moving jar file to $proj/$distDir"; 
   }
   cd ..
@@ -42,16 +42,16 @@ createJar() {
 }
 
 readVersion() {
-  [ -e $versionFile ] && { \
-    version=$(cat $versionFile) || \
+  [ -e "$versionFile" ] && { \
+    version=$(cat "$versionFile") || \
     echo "Unable to read $versionFile";
   }
 }
 
 readOptions()
 {
-  [ -e $proj/$optionsFile ] && \
-      { options=$(cat $proj/$optionsFile) || \
+  [ -e "$proj/$optionsFile" ] && \
+      { options=$(cat "$proj/$optionsFile") || \
       echo "Unable to read $proj/$optionsFile";}
 }
 
@@ -69,17 +69,17 @@ isJVM
 jvm=$?
 jarRes=0
 
-if [ -z $proj ] || [ ! -d $proj ]
+if [ -z "$proj" ] || [ ! -d "$proj" ]
 then
   usage
 else
-  echo $proj
-  [ -e $proj/$verFile ] && { \
-    ver=$(cat $proj/$verFile) || \
+  echo "$proj"
+  [ -e "$proj/$verFile" ] && { \
+    ver=$(cat "$proj/$verFile") || \
     echo "Unable to read $proj/$verFile";
   }
   readOptions
-  ecj $options -$ver -cp $proj $proj
+  ecj $options -"$ver" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
@@ -93,5 +93,5 @@ else
     fi
   fi
 fi
-exit `expr $success + $jarRes`
+exit $(expr $success + $jarRes)
 
