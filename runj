@@ -65,9 +65,12 @@ runDalvik()
     setUp
     echo "Main class(es): $main"
     echo
-    echo "$main" | while read -r a; do 
+     for a in "${main[@]}"; do 
       echo "Running $a...";echo
-      dalvikvm "$runOptions" -cp "$dexFile $a";
+      cd "$proj"
+      printf -v cmdPrefix '%q ' dalvikvm $runOptions -cp ../$dexFile 
+      eval "$cmdPrefix $a"
+      cd ..
       echo
     done
     tearDown;
