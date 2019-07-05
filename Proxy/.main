@@ -1,5 +1,5 @@
 com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorClient
 com.javacodegeeks.patterns.proxypattern.virtualproxy.TestVirtualProxy
 com.javacodegeeks.patterns.proxypattern.protectionproxy.TestProtectionProxy
-stefano.lupo.TestProxy Proxy/urls.txt
+stefano.lupo.TestProxy urls.txt
 proxy.synchronicity.TestBlackBox
