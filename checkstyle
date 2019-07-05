@@ -55,12 +55,14 @@ fi
    # fi
 #fi
 (cd "$1" && \
+readarray -t args \
+  < <(find . -type f -name "*.java" \
+  ! -path "docs/**" ! -path "dist/**") && \
 java -cp @../"$classpathFile" \
 "$mainClass" \
 -c ../"$rules_file" -d \
 -p ../"$properties_file" \
 -o "$output_file" \
-$(find . -type f -name "*.java" \
-! -path "docs/**" ! -path "dist/**"))
-[ -e "$1".xml ] && rm "$1".xml
+"${args[@]}")
+[ -e "$1".xml ] && rm "$1".xml ]
 exit $?
