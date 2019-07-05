@@ -29,12 +29,9 @@ import java.text.MessageFormat;
  * subliminal,is it? Who the hell is this message directed at?
  */
 public final class SpamCheck {
-  private static final MessageFormat SPAM_LISTER =
-      new MessageFormat("{0} is listed in the SBL");
-  private static final MessageFormat POLICY_LISTER =
-      new MessageFormat("{0} is listed in the PBL");
-  private static final MessageFormat EXPLOIT_LISTER =
-      new MessageFormat("{0} is listed in the XBL");
+  private static final String SPAM_LISTER = "{0} is listed in the SBL";
+  private static final String POLICY_LISTER = "{0} is listed in the PBL";
+  private static final String EXPLOIT_LISTER = "{0} is listed in the XBL";
   private static final String LOOKUP = "https://www.spamhaus.org/lookup/ip/?";
   private static String cookies;
 
@@ -109,12 +106,17 @@ public final class SpamCheck {
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};
     // clang-format off
-    String sblString, xblString, pblString;
+    String sblString, 
+           xblString, 
+           pblString;
     // clang-format on
     synchronized (params) {
-      sblString = SPAM_LISTER.format(params);
-      xblString = EXPLOIT_LISTER.format(params);
-      pblString = POLICY_LISTER.format(params);
+      MessageFormat formatter = new MessageFormat(SPAM_LISTER);
+      sblString = formatter.format(params);
+      formatter = new MessageFormat(POLICY_LISTER);
+      pblString = formatter.format(params);
+      formatter = new MessageFormat(EXPLOIT_LISTER);
+      xblString = formatter.format(params);
     }
     return content.contains(sblString) || content.contains(xblString)
         || content.contains(pblString);

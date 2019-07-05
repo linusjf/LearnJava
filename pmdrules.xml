@@ -285,7 +285,14 @@
   <rule ref="category/java/errorprone.xml/CloneMethodMustImplementCloneable" />
   <rule ref="category/java/errorprone.xml/CloneMethodReturnTypeMustMatchClassName" />
   <rule ref="category/java/errorprone.xml/CloneThrowsCloneNotSupportedException" />
-  <rule ref="category/java/errorprone.xml/CloseResource" />
+  <rule ref="category/java/errorprone.xml/CloseResource">
+    <properties>
+        <property name="closeTargets" value="" />
+        <property name="types" value="java.sql.Connection,java.sql.Statement,java.sql.ResultSet" />
+        <property name="closeAsDefaultTarget" value="true" />
+        <property name="allowedResourceTypes" value="java.io.ByteArrayOutputStream|java.io.StringWriter" />
+    </properties>
+  </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals" />
   <rule ref="category/java/errorprone.xml/ConstructorCallsOverridableMethod" />
   <!-- <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" /> -->
