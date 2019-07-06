@@ -52,7 +52,7 @@ readVersion() {
 readOptions()
 {
   [ -e "$proj/$optionsFile" ] && \
-      { options=$(cat "$proj/$optionsFile") || \
+      { readarray -t options < <(cat "$proj/$optionsFile") || \
       echo "Unable to read $proj/$optionsFile";}
 }
 
@@ -66,7 +66,7 @@ declare -r versionFile=".version"
 declare -r optionsFile=".options"
 declare -i success
 declare -i jarRes
-options=""
+declare -a options
 
 isJVM
 jvm=$?
@@ -82,7 +82,7 @@ else
     echo "Unable to read $proj/$verFile";
   }
   readOptions
-  ecj $options -"$ver" -cp "$proj" "$proj"
+  ecj ${options[@]} -"$ver" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
