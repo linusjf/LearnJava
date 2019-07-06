@@ -18,8 +18,8 @@ public enum AllHeaders {
         Map<String, List<String>> headers = uc.getHeaderFields();
         System.out.println("Headers for " + arg);
         for (Map.Entry<String, List<String>> entry : headers.entrySet())
-          System.out.println(
-              "Header Key = " + entry.getKey() + ", Header Values = " + entry.getValue());
+          System.out.println("Header Key = " + entry.getKey()
+                             + ", Header Values = " + entry.getValue());
       } catch (MalformedURLException ex) {
         System.err.println(arg + " is not a URL I understand.");
       } catch (IOException ex) {

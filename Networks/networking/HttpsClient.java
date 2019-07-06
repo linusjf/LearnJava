@@ -18,10 +18,10 @@ public final class HttpsClient {
       System.out.println("Usage: java HttpsClient host");
       return;
     }
-    int port = 443; // default https port
+    int port = 443;  // default https port
     String host = args[0];
-    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-    try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+    SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+    try (SSLSocket socket = (SSLSocket)factory.createSocket(host, port)) {
       // enable all the suites
       String[] supported = socket.getSupportedCipherSuites();
       socket.setEnabledCipherSuites(supported);
@@ -32,7 +32,8 @@ public final class HttpsClient {
       out.write("\r\n");
       out.flush();
       // read response
-      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      BufferedReader in =
+          new BufferedReader(new InputStreamReader(socket.getInputStream()));
       // read the header
       String s;
       while (!(s = in.readLine()).equals("")) {

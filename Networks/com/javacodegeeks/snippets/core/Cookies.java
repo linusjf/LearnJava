@@ -22,7 +22,8 @@ public final class Cookies {
       Map<String, List<String>> copyHeaders = new HashMap<>();
       copyHeaders.putAll(headers);
       copyHeaders.put("NULL", copyHeaders.remove(null));
-      Map<String, List<String>> headersTree = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+      Map<String, List<String>> headersTree =
+          new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
       headersTree.putAll(copyHeaders);
 
       List<String> headerFieldValue = headersTree.get("Set-Cookie");

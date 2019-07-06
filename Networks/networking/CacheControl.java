@@ -15,7 +15,7 @@ public class CacheControl {
 
   public CacheControl(String s) {
     if (s == null || !s.contains(":")) {
-      return; // default policy
+      return;  // default policy
     }
     String value = s.split(":")[1].trim();
     String[] components = value.toLowerCase(Locale.US).split(",");

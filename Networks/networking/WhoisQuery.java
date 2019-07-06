@@ -24,7 +24,8 @@ public final class WhoisQuery {
 
   public static void performWhoisQuery(String host, int port, String query)
       throws UnknownHostException, IOException {
-    System.out.println("**** Performing whois query for '" + query + "' at " + host + ":" + port);
+    System.out.println("**** Performing whois query for '" + query + "' at "
+                       + host + ":" + port);
 
     Socket socket = new Socket(host, port);
 
