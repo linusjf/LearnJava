@@ -20,29 +20,29 @@ isDX () {
 }
 
 createDex() {
-  dexFile=$proj-$version.dex
-  rm -rf $proj/$distDir || { 
+  dexFile="$proj"-"$version".dex
+  rm -rf "$proj"/"$distDir" || { 
     echo "Unable to delete folder $proj/$distDir"; \
   }
-  dx --dex --output=$dexFile $proj && \
-  mkdir -p $proj/$distDir && \
-  cp $dexFile $proj/$distDir && exit 0 || { \
+  dx --dex --output="$dexFile" "$proj" && \
+  mkdir -p "$proj"/"$distDir" && \
+  cp "$dexFile" "$proj"/"$distDir" && exit 0 || { \
   echo "Error creating dex output"; \
   }
   dxRes=$?
 }
 
 readVersion() {
-  [ -e $versionFile ] && { \
-    version=$(cat $versionFile) || \
+  [ -e "$versionFile" ] && { \
+    version="$(cat $versionFile)" || \
     echo "Unable to read $versionFile";
   }
 }
 
 readOptions()
 {
-  [ -e $proj/$optionsFile ] && \
-      { options=$(cat $proj/$optionsFile) || \
+  [ -e "$proj"/"$optionsFile" ] && \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
       echo "Unable to read $proj/$optionsFile";}
 }
 
@@ -53,23 +53,23 @@ declare -r distDir="dist"
 declare -r verFile=".ver"
 declare -r versionFile=".version"
 declare -r optionsFile=".options"
-options=""
-
+declare -a options
+declare -i dxRes=0
+declare -i success
 isDX
 dex=$?
-dxRes=0
 
-if [ -z $proj ] || [ ! -d $proj ]
+if [ -z "$proj" ] || [ ! -d "$proj" ]
 then
   usage
 else
-  echo $proj
-  [ -e $proj/$verFile ] && { \
-    ver=$(cat $proj/$verFile) || \
+  echo "$proj"
+  [ -e "$proj"/"$verFile" ] && { \
+    ver=$(cat "$proj"/"$verFile") || \
     echo "Unable to read $proj/$verFile"; \
   }
   readOptions
-  ecj $options -$ver -cp $proj $proj
+  ecj ${options[@]} -"$ver" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
@@ -83,4 +83,4 @@ else
     fi
   fi
 fi
-exit `expr $success + $dxRes`
+exit $((success+dxRes))

@@ -62,7 +62,7 @@ runDalvik()
      for a in "${main[@]}"; do 
       echo "Running $a...";echo
       cd "$proj"
-      printf -v cmdPrefix '%q ' dalvikvm $runOptions -cp ../$dexFile 
+      printf -v cmdPrefix '%q ' dalvikvm ${runOptions[@]} -cp ../$dexFile 
       eval "$cmdPrefix $a"
       cd ..
       echo
@@ -85,7 +85,7 @@ readVersion()
 readRunOptions()
 {
   [ -e "$proj/$runOptionsFile" ] && \
-      { runOptions=$(cat "$proj"/"$runOptionsFile") || \
+      { readarray -t runOptions < <(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
 
@@ -108,7 +108,7 @@ fi
 
 declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
-runOptions=""
+declare -a runOptions
 version="0.0.0"
 main[0]="$2"
 if [ -z "$2" ]
