@@ -305,10 +305,10 @@
   <rule ref="category/java/errorprone.xml/DontImportSun" />
   <rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices" />
   <rule ref="category/java/errorprone.xml/EqualsNull" />
-  <!-- <rule ref="category/java/errorprone.xml/FinalizeDoesNotCallSuperFinalize" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/FinalizeOnlyCallsSuperFinalize" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/FinalizeOverloaded" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/FinalizeShouldBeProtected" /> -->
+   <rule ref="category/java/errorprone.xml/FinalizeDoesNotCallSuperFinalize" /> 
+  <rule ref="category/java/errorprone.xml/FinalizeOnlyCallsSuperFinalize" /> 
+   <rule ref="category/java/errorprone.xml/FinalizeOverloaded" /> 
+   <rule ref="category/java/errorprone.xml/FinalizeShouldBeProtected" /> 
   <rule ref="category/java/errorprone.xml/IdempotentOperations" />
   <rule ref="category/java/errorprone.xml/ImportFromSamePackage" />
   <rule ref="category/java/errorprone.xml/InstantiationToGetClass" />
