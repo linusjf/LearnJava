@@ -29,6 +29,9 @@ sleep 5
 java -Djava.util.logging.config.file=logging.properties -cp . networking.JHttp . 8082 &
 echo "Sleeping for 5 seconds again after JHttp start..."
 sleep 5
+java networking.SecureOrderTaker &
+echo "Sleeping for 5 seconds again after SecureOrderTaker start..."
+sleep 5
 echo "Running DayTimeClient to port 1313"
 java -cp . networking.DayTimeClient localhost 1313
 echo "Running DayTimeClient to port 1331"

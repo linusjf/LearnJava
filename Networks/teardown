@@ -59,3 +59,9 @@ ps -ef | grep \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing SecureOrderTaker..."
+ps -ef | grep \
+  'networking.SecureOrderTaker' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
