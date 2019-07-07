@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="testant"
+         basedir=".">
+  <property file="build.properties" />
+  <target name="manifest">
+    <tstamp />
+    <manifest mode="update"
+              file="manifest.mf">
+      <attribute name="Built-By"
+                 value="${user.name}" />
+      <section name="common">
+        <attribute name="Specification-Title"
+                   value="${ant.project.name}" />
+        <attribute name="Specification-Version"
+                   value="1.0.0" />
+        <attribute name="Specification-Vendor"
+                   value="" />
+        <attribute name="Implementation-Title"
+                   value="" />
+        <attribute name="Implementation-Version"
+                   value="${TODAY}" />
+        <attribute name="Implementation-Vendor"
+                   value="" />
+      </section>
+      <attribute name="Main-Class"
+                 value="${main.class}" />
+    </manifest>
+  </target>
+</project>

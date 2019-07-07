@@ -1,0 +1,544 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: adapter.RunAdapterExample
+
+Name: common
+Specification-Title: Adapter
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+
+Name: common
+Specification-Title: AnnoProc
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.bridgepattern.TestBridgePattern
+
+Name: common
+Specification-Title: Bridge
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: bridge.Client
+
+Name: common
+Specification-Title: Bridge2
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: bridge.BridgePattern
+
+Name: common
+Specification-Title: Bridge3
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: design.bridge.Main
+
+Name: common
+Specification-Title: Bridge4
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: builder.Main
+
+Name: common
+Specification-Title: Builder
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: f5d0592 June 22 2019
+head: 'standard input': cannot seek to relative offset -7: Illegal see
+ k June 10 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: converter.TestByteToHex
+
+Name: common
+Specification-Title: ByteToHex
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.chainofresponsibility.TestChain
+ OfResponsibility
+
+Name: common
+Specification-Title: ChainOfResponsibility
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: cleaner.Adult
+
+Name: common
+Specification-Title: Cleaner
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.compositepattern.TestCompositeP
+ attern
+
+Name: common
+Specification-Title: Composite
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: design.composite.Main
+
+Name: common
+Specification-Title: Composite2
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 4f8afbd June 22 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.facadepattern.TestFacade
+
+Name: common
+Specification-Title: Facade
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.client.Client
+
+Name: common
+Specification-Title: Facade2
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 0d7b7f0 June 29 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.flyweightpattern.TestFlyweight
+
+Name: common
+Specification-Title: Flyweight
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 01aa055 June 20 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: hello.Hello
+
+Name: common
+Specification-Title: Hello
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 46839a6 June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.mediatorpattern.TestMediator
+
+Name: common
+Specification-Title: Mediator
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.niotutorial.file.FileChannelWriteExample
+
+Name: common
+Specification-Title: NIOIntro
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 4f8afbd June 22 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.observerpattern.TestObserver
+
+Name: common
+Specification-Title: Observer
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: a74a2ea June 21 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.proxypattern.remoteproxy.Report
+ GeneratorClient
+
+Name: common
+Specification-Title: Proxy
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 66c40b5 June 29 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.singletonpattern.SingletonTest
+
+Name: common
+Specification-Title: Singleton
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 66c40b5 June 29 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: strategy.Main
+
+Name: common
+Specification-Title: Switch
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 09b8ddf July 2 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: regex.Demo
+
+Name: common
+Specification-Title: Regex
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 9692e05 June 30 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.abstractfactorypattern.TestAbst
+ ractFactoryPattern
+
+Name: common
+Specification-Title: AbstractFactory
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: gen.GenChars
+
+Name: common
+Specification-Title: Streams
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 872d36c June 19 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: threads.DigestThread
+
+Name: common
+Specification-Title: Threads
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 465b635 June 22 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.factorymethodpattern.TestFactor
+ yMethodPattern
+
+Name: common
+Specification-Title: FactoryMethod
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 6831771 June 22 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: networking.OReillyByName
+
+Name: common
+Specification-Title: Networks
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: scan.ScannerDemo1
+
+Name: common
+Specification-Title: Scanner
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 1b62f2b July 1 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: refactoringguru.decorator.example.Demo
+
+Name: common
+Specification-Title: Decorator
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 2d02ff6 July 4 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: refactoringguru.iterator.example.Demo
+
+Name: common
+Specification-Title: Iterator
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: a698c51 July 4 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.prototypepattern.TestPrototypeP
+ attern
+
+Name: common
+Specification-Title: Prototype
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 796f401 June 28 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.mementopattern.TestMementoPatte
+ rn
+
+Name: common
+Specification-Title: Memento
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: b452ae8 June 28 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.templatepattern.TestTemplatePat
+ tern
+
+Name: common
+Specification-Title: Template
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 5b07c97 June 29 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: statepattern.Main
+
+Name: common
+Specification-Title: State
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: ef248d0 June 28 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.strategypattern.TestStrategyPat
+ tern
+
+Name: common
+Specification-Title: Strategy
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e88fc5e July 7 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.commandpattern.TestCommandPatte
+ rn
+
+Name: common
+Specification-Title: Command
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: af400dc June 29 2019
+Implementation-Vendor: 
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: com.javacodegeeks.patterns.interpreterpattern.TestInterpre
+ terPattern
+
+Name: common
+Specification-Title: Interpreter
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 2a81b07 June 29 2019
+Implementation-Vendor: 
+

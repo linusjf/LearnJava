@@ -82,8 +82,6 @@
         <attribute name="Implementation-Vendor"
                    value="" />
       </section>
-      <attribute name="Main-Class"
-                 value="${main.class}" />
     </manifest>
   </target>
   <!--Creates the deployable jar file  -->
