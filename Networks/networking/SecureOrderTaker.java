@@ -27,7 +27,6 @@ public final class SecureOrderTaker {
 
   public static void main(String[] args) {
     try {
-      SSLContext context = SSLContext.getInstance(ALGORITHM);
       // The reference implementation only supports X.509 keys
       KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
       // Oracle's default kind of key store
@@ -37,10 +36,10 @@ public final class SecureOrderTaker {
       // it from disk. The passphrase is stored as a char[] array
       // so it can be wiped from memory quickly rather than
       // waiting for a garbage collector.
-      System.out.println("About to enter password");
-      char[] password = System.console().readPassword("Password: ");
+      char[] password = "2andnotafnord".toCharArray();
       ks.load(Files.newInputStream(Paths.get("jnp4e.keys")), password);
       kmf.init(ks, password);
+      SSLContext context = SSLContext.getInstance(ALGORITHM);
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLServerSocketFactory factory = context.getServerSocketFactory();
