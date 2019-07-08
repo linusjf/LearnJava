@@ -32,7 +32,11 @@ sleep 5
 java -cp . networking.SecureOrderTaker &
 echo "Sleeping for 5 seconds again after SecureOrderTaker start..."
 sleep 5
-java -cp . networking.MainClass &
+java -Djavax.net.ssl.keyStore=serverkeystore.jks \
+  -Djavax.net.ssl.keyStorePassword=password \
+  -Djavax.net.ssl.trustStore=servertruststore.jks \
+  -Djavax.net.ssl.trustStorePassword=password \
+  -cp . networking.MainClass &
 echo "Sleeping for 5 seconds again after MainClass start..."
 sleep 5
 echo "Running DayTimeClient to port 1313"
@@ -48,7 +52,11 @@ java -cp . networking.Time localhost 3737
 echo "Running EchoClient to port 7777"
 java -cp . networking.EchoClient localhost 7777 < echo.txt
 echo "Running SocketClientDemo to port 5432"
-java -cp . networking.SocketClientDemo
+java -Djavax.net.ssl.keyStore=clientkeystore.jks \
+	-Djavax.net.ssl.keyStorePassword=password \
+	-Djavax.net.ssl.trustStore=clienttruststore.jks \
+	-Djavax.net.ssl.trustStorePassword=password \
+	-cp . networking.SocketClientDemo
 echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Running curl to port 8081"

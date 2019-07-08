@@ -49,7 +49,6 @@ public final class EchoServer {
     System.out.println("Listening for connections on port " + port);
 
     Selector selector = initSelector(port);
-
     while (true) {
       try {
         selector.select();
@@ -72,7 +71,8 @@ public final class EchoServer {
                 selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
             ByteBuffer buffer = ByteBuffer.allocate(100);
             clientKey.attach(buffer);
-          }
+          } else
+            System.err.println("key not acceptable");
           if (key.isReadable()) {
             SocketChannel client = (SocketChannel)key.channel();
             ByteBuffer output = (ByteBuffer)key.attachment();

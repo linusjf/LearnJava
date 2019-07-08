@@ -33,10 +33,9 @@ public final class EchoClient {
       }
     } catch (UnknownHostException e) {
       System.err.println("Don't know about host " + hostName);
-      System.exit(1);
     } catch (IOException e) {
-      System.err.println("Couldn't get I/O for the connection to " + hostName);
-      System.exit(1);
+      System.err.println("Couldn't get I/O for the connection to " + hostName
+                         + ": " + e.getMessage());
     }
   }
 }

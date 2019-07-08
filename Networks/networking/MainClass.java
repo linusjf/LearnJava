@@ -1,9 +1,9 @@
 package networking;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.net.ServerSocket;
+import java.io.PrintWriter;
 import java.net.Socket;
+import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
 public final class MainClass {
@@ -16,13 +16,15 @@ public final class MainClass {
     try {
       SSLServerSocketFactory ssf =
           (SSLServerSocketFactory)SSLServerSocketFactory.getDefault();
-      ServerSocket ss = ssf.createServerSocket(5432);
+      SSLServerSocket ss = (SSLServerSocket)ssf.createServerSocket(5432);
+      ss.setNeedClientAuth(true);
+      ss.setEnabledCipherSuites(
+          new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
+      ss.setEnabledProtocols(new String[] {"TLSv1.2"});
       while (true) {
-        Socket s = ss.accept();
-        PrintStream out = new PrintStream(s.getOutputStream());
-        out.println("Hi");
-        out.close();
-        s.close();
+        Socket socket = ss.accept();
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        out.println("Hello World!");
       }
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
