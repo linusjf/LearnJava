@@ -29,8 +29,11 @@ sleep 5
 java -Djava.util.logging.config.file=logging.properties -cp . networking.JHttp . 8082 &
 echo "Sleeping for 5 seconds again after JHttp start..."
 sleep 5
-java networking.SecureOrderTaker &
+java -cp . networking.SecureOrderTaker &
 echo "Sleeping for 5 seconds again after SecureOrderTaker start..."
+sleep 5
+java -cp . networking.MainClass &
+echo "Sleeping for 5 seconds again after MainClass start..."
 sleep 5
 echo "Running DayTimeClient to port 1313"
 java -cp . networking.DayTimeClient localhost 1313
@@ -44,6 +47,8 @@ echo "Running Time to port 3737"
 java -cp . networking.Time localhost 3737
 echo "Running EchoClient to port 7777"
 java -cp . networking.EchoClient localhost 7777 < echo.txt
+echo "Running SocketClientDemo to port 5432"
+java -cp . networking.SocketClientDemo
 echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Running curl to port 8081"

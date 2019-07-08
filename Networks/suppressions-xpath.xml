@@ -3,6 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="MainClass.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MainClass']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='ss']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5432']" />
+  <suppress-xpath files="SocketClientDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketClientDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5432']" />
   <suppress-xpath files="HttpsClient.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='HttpsClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='443']" />

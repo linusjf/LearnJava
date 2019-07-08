@@ -65,3 +65,9 @@ ps -ef | grep \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+echo "Killing MainClass..."
+ps -ef | grep \
+  'networking.MainClass' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?
