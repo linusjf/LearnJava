@@ -56,21 +56,14 @@ public final class SecureOrderTaker {
        * String[] anonCipherSuitesSupported = new String[supported.length]; int
        * numAnonCipherSuitesSupported = 0;*
        */
-      for (String instance : supported) {
+      for (String instance: supported) {
         if (instance.indexOf("_anon_") > 0) {
           anonCiphers.add(instance);
         }
       }
-      /**
-       * String[] oldEnabled = server.getEnabledCipherSuites(); String[]
-       * newEnabled = new String[oldEnabled.length +
-       * numAnonCipherSuitesSupported]; System.arraycopy(oldEnabled, 0,
-       * newEnabled, 0, oldEnabled.length);
-       * System.arraycopy(anonCipherSuitesSupported, 0, newEnabled,
-       * oldEnabled.length, numAnonCipherSuitesSupported);
-       * server.setEnabledCipherSuites(newEnabled);*
-       */
-      String[] enabled = anonCiphers.stream().toArray(String[] ::new);
+      // clang-format off
+      String[] enabled = anonCiphers.stream().toArray(String[]::new);
+      // clang-format on
       server.setEnabledCipherSuites(enabled);
       System.out.println("Ready to accept connections...");
       // Now all the set up is complete and we can focus

@@ -29,7 +29,7 @@ public final class Cookies {
       List<String> headerFieldValue = headersTree.get("Set-Cookie");
       System.out.println(headerFieldValue);
 
-      for (String headerValue : headerFieldValue) {
+      for (String headerValue: headerFieldValue) {
         System.out.println("Cookie Found...");
         String[] fields = headerValue.split(";\\s*");
         String cookieValue = fields[0];

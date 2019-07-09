@@ -14,7 +14,7 @@ public enum EncodingAwareSourceViewer {
   ;
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         // set default encoding
         String encoding = "ISO-8859-1";

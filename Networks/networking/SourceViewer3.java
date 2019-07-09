@@ -15,7 +15,7 @@ public final class SourceViewer3 {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         // Open the URLConnection for reading
         URL u = new URL(arg);

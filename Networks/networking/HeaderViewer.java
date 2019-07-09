@@ -12,7 +12,7 @@ public final class HeaderViewer {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();

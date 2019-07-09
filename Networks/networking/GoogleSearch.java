@@ -16,7 +16,7 @@ public final class GoogleSearch {
 
   public static void main(String[] args) {
     String target = "";
-    for (String arg : args)
+    for (String arg: args)
       target = target.concat(arg).concat(" ");
     target = target.trim();
     QueryString query = new QueryString();

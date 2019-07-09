@@ -63,7 +63,7 @@ public final class SpamCheck {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         if (isInSpammerLists(arg)) {
           System.out.println(arg + " is a known spammer.");

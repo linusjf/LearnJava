@@ -16,7 +16,7 @@ public final class BinarySaver {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         URL root = new URL(arg);
         saveBinaryFile(root);

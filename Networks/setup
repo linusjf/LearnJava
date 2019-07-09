@@ -74,3 +74,7 @@ java -cp . networking.ServerEcho 7007 &
 echo "Sleeping for 5 seconds again after ServerEcho start..."
 sleep 5
 java -cp . networking.ClientEcho 7007 < echo.txt
+java -cp . networking.ChargenServer 1991 &
+echo "Sleeping for 5 seconds again after ChargenServer start..."
+sleep 5
+java -cp . networking.ChargenClient 1991

@@ -32,7 +32,7 @@ public final class PooledWebLog {
       }
     }
     // Start printing the results. This blocks each time a result isn't ready.
-    for (LogEntry result : results) {
+    for (LogEntry result: results) {
       try {
         System.out.println(result.future.get());
       } catch (InterruptedException | ExecutionException ex) {

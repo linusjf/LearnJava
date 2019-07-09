@@ -18,7 +18,7 @@ public final class Last24 {
     // Initialize a Date object with the current date and time
     Date today = new Date();
     long millisecondsPerDay = 24 * 60 * 60 * 1000;
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         System.out.println("Retrieving ...." + arg);
         URL u = new URL(arg);

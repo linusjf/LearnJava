@@ -53,7 +53,7 @@ public final class IPCharacteristics {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         InetAddress address = InetAddress.getByName(arg);
         handleWildcardAddress(address);

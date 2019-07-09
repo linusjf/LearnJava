@@ -19,7 +19,7 @@ public class CacheControl {
     }
     String value = s.split(":")[1].trim();
     String[] components = value.toLowerCase(Locale.US).split(",");
-    for (String component : components) {
+    for (String component: components) {
       component = component.trim();
       parseValues(component);
     }

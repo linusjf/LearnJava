@@ -9,7 +9,7 @@ public final class URLSplitter {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         URL u = new URL(arg);
         System.out.println("The URL is " + u);

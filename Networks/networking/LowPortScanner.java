@@ -12,7 +12,7 @@ public final class LowPortScanner {
   @SuppressWarnings("PMD.EmptyCatchBlock")
   public static void main(String[] args) {
     String[] hosts = args.length > 0 ? args : new String[] {"localhost"};
-    for (String host : hosts) {
+    for (String host: hosts) {
       for (int i = 1; i < 1024; i++) {
         try {
           Socket s = new Socket(host, i);

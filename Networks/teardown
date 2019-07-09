@@ -83,3 +83,17 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+echo "Killing ServerEcho..."
+ps -ef | grep \
+  'networking.ServerEcho' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
+echo "Killing ChargenServer..."
+ps -ef | grep \
+  'networking.ChargenServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

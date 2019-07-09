@@ -12,7 +12,7 @@ public final class ContentGetter {
   public static void main(String[] args) {
     if (args.length > 0) {
       // Open the URLs for reading
-      for (String arg : args) {
+      for (String arg: args) {
         try {
           processUrl(arg);
         } catch (MalformedURLException ex) {

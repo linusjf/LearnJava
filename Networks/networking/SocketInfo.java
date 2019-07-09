@@ -11,7 +11,7 @@ public final class SocketInfo {
   }
 
   public static void main(String[] args) {
-    for (String host : args) {
+    for (String host: args) {
       try {
         Socket theSocket = new Socket(host, 80);
         System.out.println("Connected to " + theSocket.getInetAddress()
