@@ -40,7 +40,6 @@ public final class ChargenClient {
       }
     } catch (IOException ex) {
       System.err.println("Error writing to server: " + ex.getMessage());
-      ex.printStackTrace();
     }
   }
 }

@@ -4,7 +4,9 @@ public final class Shipped implements PackageState {
   // Singleton
   private static Shipped instance = new Shipped();
 
-  private Shipped() {}
+  private Shipped() {
+  // empty constructor
+  }
 
   public static Shipped getInstance() {
     return instance;
