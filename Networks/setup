@@ -70,3 +70,7 @@ java -Djavax.net.ssl.keyStore=clientkeystore.jks \
 	-Djavax.net.ssl.trustStore=clienttruststore.jks \
 	-Djavax.net.ssl.trustStorePassword=password \
 	-cp . networking.SocketClientDemo
+java -cp . networking.ServerEcho 7007 &
+echo "Sleeping for 5 seconds again after ServerEcho start..."
+sleep 5
+java -cp . networking.ClientEcho 7007 < echo.txt
