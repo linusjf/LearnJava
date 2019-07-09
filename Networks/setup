@@ -77,4 +77,11 @@ java -cp . networking.ClientEcho 7007 < echo.txt
 java -cp . networking.ChargenServer 1991 &
 echo "Sleeping for 5 seconds again after ChargenServer start..."
 sleep 5
-java -cp . networking.ChargenClient 1991
+java -cp . networking.ChargenClient localhost 1991 &
+sleep 1
+ps -ef | grep \
+  'networking.ChargenClient' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

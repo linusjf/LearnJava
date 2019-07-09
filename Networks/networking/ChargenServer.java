@@ -28,14 +28,21 @@ public final class ChargenServer {
     return port;
   }
 
-  public static void main(String[] args) {
-    int port = getPort(args);
-    System.out.println("Listening for connections on port " + port);
+  @SuppressWarnings("checkstyle:magicnumber")
+  private static byte[] constructRotatingArray() {
     byte[] rotation = new byte[95 * 2];
     for (byte i = ' '; i <= '~'; i++) {
       rotation[i - ' '] = i;
       rotation[i + 95 - ' '] = i;
     }
+    return rotation;
+  }
+
+  public static void main(String[] args) {
+    // get port value from command line
+    // parameters or default value
+    int port = getPort(args);
+    System.out.println("Listening for connections on port " + port);
     ServerSocketChannel serverChannel;
     Selector selector;
     try {
@@ -47,14 +54,17 @@ public final class ChargenServer {
       selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
-      System.err.println(ex.getMessage());
+      System.err.println("Error with server socket channel: "
+                         + ex.getMessage());
       return;
     }
+    // fill up byte array with ascii characters
+    byte[] rotation = constructRotatingArray();
     while (true) {
       try {
         selector.select();
       } catch (IOException ex) {
-        System.err.println(ex.getMessage());
+        System.err.println("Error selecting: " + ex.getMessage());
         break;
       }
       Set<SelectionKey> readyKeys = selector.selectedKeys();
@@ -103,7 +113,7 @@ public final class ChargenServer {
           try {
             key.channel().close();
           } catch (IOException cex) {
-            System.err.println(cex.getMessage());
+            System.err.println("Error closing channel: " + cex.getMessage());
           }
         }
       }

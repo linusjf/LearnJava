@@ -29,15 +29,18 @@ public final class ChargenClient {
     try {
       SocketAddress address = new InetSocketAddress(args[0], port);
       SocketChannel client = SocketChannel.open(address);
+      System.out.println("clinent readt");
       ByteBuffer buffer = ByteBuffer.allocate(74);
       WritableByteChannel out = Channels.newChannel(System.out);
+      System.out.println("out ready");
       while (client.read(buffer) != -1) {
         buffer.flip();
         out.write(buffer);
         buffer.clear();
       }
     } catch (IOException ex) {
-      System.err.println(ex.getMessage());
+      System.err.println("Error writing to server: " + ex.getMessage());
+      ex.printStackTrace();
     }
   }
 }
