@@ -11,6 +11,7 @@
 *.bak
 *.html
 *.dot
+*.out
 *.gz
 *.log*
 *docs*
