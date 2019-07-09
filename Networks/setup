@@ -57,6 +57,8 @@ java -Djavax.net.ssl.keyStore=clientkeystore.jks \
 	-Djavax.net.ssl.trustStore=clienttruststore.jks \
 	-Djavax.net.ssl.trustStorePassword=password \
 	-cp . networking.SocketClientDemo
+echo "Running SecureOrderPlacer to port 7000"
+java -cp . networking.SecureOrderPlacer
 echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Running curl to port 8081"

@@ -13,8 +13,16 @@ public final class SocketClientDemo {
 
   public static void main(String... args) {
     try {
+      int port = 5432;
+      if (args.length > 0) {
+        try {
+          port = Integer.parseInt(args[0]);
+        } catch (NumberFormatException nfe) {
+          port = 5432;
+        }
+      }
       SSLSocketFactory ssf = (SSLSocketFactory)SSLSocketFactory.getDefault();
-      SSLSocket s = (SSLSocket)ssf.createSocket("localhost", 5432);
+      SSLSocket s = (SSLSocket)ssf.createSocket("localhost", port);
       s.setEnabledCipherSuites(
           new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
       s.setEnabledProtocols(new String[] {"TLSv1.2"});

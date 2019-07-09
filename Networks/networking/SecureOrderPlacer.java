@@ -1,10 +1,7 @@
 package networking;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.Socket;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyManagementException;
@@ -18,14 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
-public final class SecureOrderTaker {
+public final class SecureOrderPlacer {
   public static final int PORT = 7000;
   public static final String ALGORITHM = "SSL";
 
-  private SecureOrderTaker() {
+  private SecureOrderPlacer() {
     throw new IllegalStateException("Private constructor");
   }
 
@@ -46,11 +43,10 @@ public final class SecureOrderTaker {
       SSLContext context = SSLContext.getInstance(ALGORITHM);
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
-      SSLServerSocketFactory factory = context.getServerSocketFactory();
-      SSLServerSocket server =
-          (SSLServerSocket)factory.createServerSocket(PORT);
+      SSLSocketFactory ssf = (SSLSocketFactory)context.getSocketFactory();
+      SSLSocket s = (SSLSocket)ssf.createSocket("localhost", PORT);
       // add anonymous (non-authenticated) cipher suites
-      String[] supported = server.getSupportedCipherSuites();
+      String[] supported = ssf.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
       /**
        * String[] anonCipherSuitesSupported = new String[supported.length]; int
@@ -71,25 +67,14 @@ public final class SecureOrderTaker {
        * server.setEnabledCipherSuites(newEnabled);*
        */
       String[] enabled = anonCiphers.stream().toArray(String[] ::new);
-      server.setEnabledCipherSuites(enabled);
-      System.out.println("Ready to accept connections...");
+      s.setEnabledCipherSuites(enabled);
+      System.out.println("about to connect...");
       // Now all the set up is complete and we can focus
       // on the actual communication.
-      while (true) {
-        // This socket will be secure,
-        // but there's no indication of that in the code!
-        try (Socket theConnection = server.accept()) {
-          System.out.println("Connection accepted");
-          InputStream in = theConnection.getInputStream();
-          InputStreamReader isr = new InputStreamReader(in);
-          BufferedReader br = new BufferedReader(isr);
-          String msg = br.readLine();
-          System.out.println("Message received: " + msg);
 
-        } catch (IOException ex) {
-          System.err.println(ex.getMessage());
-        }
-      }
+      OutputStream out = s.getOutputStream();
+      out.write("Let's place an order".getBytes());
+      out.flush();
     } catch (IOException | KeyManagementException | KeyStoreException
              | NoSuchAlgorithmException | CertificateException
              | UnrecoverableKeyException ex) {
