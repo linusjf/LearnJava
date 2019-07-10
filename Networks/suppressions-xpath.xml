@@ -3,6 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="Ping.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Ping']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="Ping.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Ping']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Connector']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='shutdown']]/MODIFIERS/LITERAL_VOLATILE" />
   <suppress-xpath files="SocketEchoServer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SocketEchoServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SocketEchoServer']]/ELIST/EXPR/NUM_INT[@text='9999']" />
