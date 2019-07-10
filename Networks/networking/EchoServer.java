@@ -2,7 +2,6 @@ package networking;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -28,32 +27,62 @@ public final class EchoServer {
     return port;
   }
 
-  private static Selector initSelector(int port) {
-    Selector selector = null;
-    try (ServerSocketChannel serverChannel = ServerSocketChannel.open();
-         ServerSocket ss = serverChannel.socket();) {
-      InetSocketAddress address = new InetSocketAddress(port);
-      ss.bind(address);
-      serverChannel.configureBlocking(false);
-      selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+  @SuppressWarnings("checkstyle:magicnumber")
+  private static void handleChannels(SelectionKey key, Selector selector) {
+    try {
+      if (key.isAcceptable()) {
+        ServerSocketChannel server = (ServerSocketChannel)key.channel();
+        SocketChannel client = server.accept();
+        System.out.println("Accepted connection from " + client);
+        client.configureBlocking(false);
+        SelectionKey clientKey = client.register(
+            selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
+        ByteBuffer buffer = ByteBuffer.allocate(100);
+        clientKey.attach(buffer);
+      }
+      if (key.isReadable()) {
+        SocketChannel client = (SocketChannel)key.channel();
+        ByteBuffer output = (ByteBuffer)key.attachment();
+        client.read(output);
+      }
+      if (key.isWritable()) {
+        SocketChannel client = (SocketChannel)key.channel();
+        ByteBuffer output = (ByteBuffer)key.attachment();
+        output.flip();
+        client.write(output);
+        output.compact();
+      }
     } catch (IOException ex) {
-      System.err.println(ex.getMessage());
-      throw new AssertionError("Unable to initialize selector", ex);
+      key.cancel();
+      try {
+        key.channel().close();
+      } catch (IOException cex) {
+        System.err.println("Error closing channel: " + cex.getMessage());
+      }
     }
-    return selector;
   }
 
   public static void main(String[] args) {
     int port = getPort(args);
-    System.out.println("Listening for connections on port " + port);
 
-    Selector selector = initSelector(port);
+    Selector selector = null;
+    try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
+      InetSocketAddress address = new InetSocketAddress(port);
+      serverChannel.bind(address);
+      serverChannel.configureBlocking(false);
+      selector = Selector.open();
+      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+      System.out.println("selector registered");
+    } catch (IOException ex) {
+      System.err.println("Error with server channel: " + ex.getMessage());
+      return;
+    }
     while (true) {
       try {
+        System.out.println("about to select...");
         selector.select();
       } catch (IOException ex) {
-        System.err.println(ex.getMessage());
+        System.err.println("Error selecting channel: " + ex.getMessage());
         break;
       }
       Set<SelectionKey> readyKeys = selector.selectedKeys();
@@ -61,38 +90,8 @@ public final class EchoServer {
       while (iterator.hasNext()) {
         SelectionKey key = iterator.next();
         iterator.remove();
-        try {
-          if (key.isAcceptable()) {
-            ServerSocketChannel server = (ServerSocketChannel)key.channel();
-            SocketChannel client = server.accept();
-            System.out.println("Accepted connection from " + client);
-            client.configureBlocking(false);
-            SelectionKey clientKey = client.register(
-                selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
-            ByteBuffer buffer = ByteBuffer.allocate(100);
-            clientKey.attach(buffer);
-          } else
-            System.err.println("key not acceptable");
-          if (key.isReadable()) {
-            SocketChannel client = (SocketChannel)key.channel();
-            ByteBuffer output = (ByteBuffer)key.attachment();
-            client.read(output);
-          }
-          if (key.isWritable()) {
-            SocketChannel client = (SocketChannel)key.channel();
-            ByteBuffer output = (ByteBuffer)key.attachment();
-            output.flip();
-            client.write(output);
-            output.compact();
-          }
-        } catch (IOException ex) {
-          key.cancel();
-          try {
-            key.channel().close();
-          } catch (IOException cex) {
-            System.err.println(cex.getMessage());
-          }
-        }
+        System.out.println("About to handle key...");
+        handleChannels(key, selector);
       }
     }
   }

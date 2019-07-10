@@ -19,12 +19,12 @@ echo "Sleeping for 5 seconds again after PooledDaytimeServer start..."
 sleep 5
 echo "Running DayTimeClient to port 3131"
 java -cp . networking.DayTimeClient localhost 3131
-echo "Running EchoServer to port 7777"
-java -cp . networking.EchoServer 7777 &
-echo "Sleeping for 5 seconds again after EchoServer start..."
+echo "Running SocketEchoServer to port 9999"
+java -cp . networking.SocketEchoServer &
+echo "Sleeping for 5 seconds again after SocketEchoServer start..."
 sleep 5
-echo "Running EchoClient to port 7777"
-java -cp . networking.EchoClient localhost 7777 < echo.txt
+echo "Running EchoClient to port 9999"
+java -cp . networking.EchoClient localhost 9999 < echo.txt
 java -cp . networking.RandomPort &
 echo "Sleeping for 5 seconds again after RandomPort server start..."
 sleep 5
@@ -78,9 +78,19 @@ java -cp . networking.ChargenServer 1991 &
 echo "Sleeping for 5 seconds again after ChargenServer start..."
 sleep 5
 java -cp . networking.ChargenClient localhost 1991 > chargen.out &
+echo "Running ChargenClient for 0.1 seconds only..."
 sleep 0.1
 ps -ef | grep \
   'networking.ChargenClient' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
+java -cp . networking.SocketServerExample &
+echo "Running SocketServerExample for 5 seconds only..."
+sleep 5
+ps -ef | grep \
+  'networking.SocketServerExample' | \
   grep -v grep | \
   awk '{print $2}' \
   | parallel -I% kill %

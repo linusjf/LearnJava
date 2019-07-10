@@ -212,4 +212,16 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="ChargenServer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='ChargenServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/LITERAL_IF/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='72']" />
+  <suppress-xpath files="SocketClientExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketClientExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='hostAddress']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='InetSocketAddress']]/ELIST/EXPR/NUM_INT[@text='8090']" />
+  <suppress-xpath files="SocketClientExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketClientExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startClient']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']" />
+  <suppress-xpath files="SocketServerExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketServerExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='server']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='startServer']]/LITERAL_NEW[./IDENT[@text='SocketServerExample']]/ELIST/EXPR/NUM_INT[@text='8090']" />
+  <suppress-xpath files="SocketServerExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketServerExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='read']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1024']" />
 </suppressions>
