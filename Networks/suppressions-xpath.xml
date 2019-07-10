@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="SocketEchoServer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SocketEchoServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SocketEchoServer']]/ELIST/EXPR/NUM_INT[@text='9999']"/>
+  <suppress-xpath files="SocketEchoServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketEchoServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SocketEchoServer']]/ELIST/EXPR/NUM_INT[@text='9999']" />
   <suppress-xpath files="AddressTests.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='AddressTests']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getVersion']]/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_INT[@text='4']" />
