@@ -37,3 +37,4 @@ networking.SocketInfo www.google.com www.spamhaus.org
 networking.WhoisQuery
 networking.LocalPortScanner
 networking.HttpsClient www.google.com
+networking.Ping time-a-g.nist.gov time-b-g.nist.gov time-c-g.nist.gov time-d-g.nist.gov time-e-g.nist.gov
