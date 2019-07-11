@@ -30,7 +30,7 @@
   <target name="clean">
     <delete>
       <fileset dir="."
-               includes="**/*.class,**/*.gif,**/*.png,**/*.au" />
+        includes="**/*.class,**/*.gif,**/*.png,**/*.au,**/*.out" />
     </delete>
     <delete dir="${docs.dir}" />
     <delete dir="${dist.dir}" />
