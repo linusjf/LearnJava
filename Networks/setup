@@ -103,3 +103,15 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.IntgenServer &
+echo "Sleeping for 5 seconds again after IntgenServer start..."
+sleep 5
+java -cp . networking.IntgenClient localhost > intgen.out &
+echo "Running IntgenClient for 0.1 seconds only..."
+sleep 0.1
+ps -ef | grep \
+  'networking.IntgenClient' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

@@ -97,3 +97,10 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+echo "Killing IntgenServer..."
+ps -ef | grep \
+  'networking.IntgenServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

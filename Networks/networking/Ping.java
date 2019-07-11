@@ -169,6 +169,7 @@ public final class Ping {
 
   // Thread for connecting to all targets in parallel via a single selector
   //
+  @SuppressWarnings("PMD.AvoidUsingVolatile")
   static class Connector extends Thread {
     Selector sel;
     Printer printer;
