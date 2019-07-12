@@ -1,6 +1,8 @@
 package container;
 
-public class Main {
+@SuppressWarnings("PMD.ShortClassName")
+public enum Main {
+  ;
 
   public static void main(String... args) {
 
