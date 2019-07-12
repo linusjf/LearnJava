@@ -11,7 +11,7 @@ public abstract class PropertyContainerImpl
   protected Map<String, Object> ivProperties = new Hashtable<>();
 
   public static final long serialVersionUID = 1L;
-  
+
   /**
    * Add a property associated with a token name. If the token already exists,
    * the value will be replaced. If the token does not exist, it will be added
@@ -75,5 +75,16 @@ public abstract class PropertyContainerImpl
   @Override
   public Collection<Object> values() {
     return ivProperties.values();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null)
+      return false;
+    if (o == this)
+      return true;
+    if (o instanceof PropertyContainerImpl)
+      return ivProperties.equals((PropertyContainerImpl)o.ivProperties);
+    return false;
   }
 }
