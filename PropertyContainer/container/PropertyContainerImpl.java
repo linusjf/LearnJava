@@ -84,7 +84,7 @@ public abstract class PropertyContainerImpl
     if (o == this)
       return true;
     if (o instanceof PropertyContainerImpl)
-      return ivProperties.equals((PropertyContainerImpl)o.ivProperties);
+      return ivProperties.equals(((PropertyContainerImpl)o).ivProperties);
     return false;
   }
 }
