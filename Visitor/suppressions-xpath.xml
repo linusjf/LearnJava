@@ -3,6 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Person']]/ELIST/EXPR/NUM_FLOAT[@text='12.4f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_FLOAT[@text='24.5f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_FLOAT[@text='10.9f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_INT[@text='5']" />
   <suppress-xpath files="XmlExportVisitor.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='XmlExportVisitor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='export']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='50']" />
