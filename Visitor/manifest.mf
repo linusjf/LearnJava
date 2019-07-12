@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.6
+Created-By: 10.0.2+13 (Oracle Corporation)
+Built-By: root
+Main-Class: refactoringguru.visitor.example.Demo
+
+Name: common
+Specification-Title: Visitor
+Specification-Version: 1.0.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: e698b4d July 12 2019
+Implementation-Vendor: 
+
