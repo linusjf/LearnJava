@@ -9,6 +9,6 @@ Specification-Title: Visitor
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: e698b4d July 12 2019
+Implementation-Version: 8b773b9 July 12 2019
 Implementation-Vendor: 
 

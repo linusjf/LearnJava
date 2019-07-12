@@ -7,7 +7,13 @@ import refactoringguru.visitor.example.shapes.Rectangle;
 import refactoringguru.visitor.example.shapes.Shape;
 import refactoringguru.visitor.example.visitor.XmlExportVisitor;
 
-public class Demo {
+@SuppressWarnings("PMD.ShortClassName")
+public final class Demo {
+
+  private Demo() {
+    throw new IllegalStateException("Private constructor.");
+  }
+
   public static void main(String[] args) {
     Dot dot = new Dot(1, 10, 55);
     Circle circle = new Circle(2, 23, 15, 10);
