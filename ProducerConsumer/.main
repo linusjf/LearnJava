@@ -1,2 +1,3 @@
 producerconsumer.ClassicProducerConsumerExample
 producerconsumer.ProducerConsumerExample
+producerconsumer.ProducerConsumerBlockingQueue
