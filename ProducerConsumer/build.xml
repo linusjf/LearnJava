@@ -96,7 +96,15 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class1}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
