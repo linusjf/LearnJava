@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ClassicProducerConsumerExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='terminatorThread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
   <suppress-xpath files="ClassicProducerConsumerExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Buffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='produce']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
