@@ -5,7 +5,7 @@ public final class Shipped implements PackageState {
   private static Shipped instance = new Shipped();
 
   private Shipped() {
-  // empty constructor
+    // empty constructor
   }
 
   public static Shipped getInstance() {

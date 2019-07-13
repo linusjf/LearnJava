@@ -5,7 +5,7 @@ public final class InTransition implements PackageState {
   private static InTransition instance = new InTransition();
 
   private InTransition() {
-  // empty constructor
+    // empty constructor
   }
 
   public static InTransition getInstance() {

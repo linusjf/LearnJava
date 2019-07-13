@@ -5,7 +5,7 @@ public final class Delivered implements PackageState {
   private static Delivered instance = new Delivered();
 
   private Delivered() {
-  // empty constructor
+    // empty constructor
   }
 
   public static Delivered getInstance() {

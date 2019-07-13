@@ -5,7 +5,7 @@ public final class Acknowledged implements PackageState {
   private static Acknowledged instance = new Acknowledged();
 
   private Acknowledged() {
-  // empty constructor
+    // empty constructor
   }
 
   public static Acknowledged getInstance() {
