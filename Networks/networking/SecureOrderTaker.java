@@ -25,6 +25,7 @@ public final class SecureOrderTaker {
   public static final int PORT = 7000;
   public static final String ALGORITHM = "SSL";
 
+// CPD-OFF
   private SecureOrderTaker() {
     throw new IllegalStateException("Private constructor");
   }
@@ -50,12 +51,9 @@ public final class SecureOrderTaker {
       SSLServerSocket server =
           (SSLServerSocket)factory.createServerSocket(PORT);
       // add anonymous (non-authenticated) cipher suites
+      // CPD-ON
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
-      /**
-       * String[] anonCipherSuitesSupported = new String[supported.length]; int
-       * numAnonCipherSuitesSupported = 0;*
-       */
       for (String instance: supported) {
         if (instance.indexOf("_anon_") > 0) {
           anonCiphers.add(instance);
