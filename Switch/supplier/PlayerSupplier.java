@@ -3,6 +3,7 @@ package supplier;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
 import player.FootballPlayer;
 import player.Player;
@@ -22,11 +23,10 @@ public class PlayerSupplier {
   }
 
   public Player supplyPlayer(String playerType) {
-    Supplier<Player> player = PLAYER_SUPPLIER.get(playerType);
-
-    if (player == null) {
-      throw new IllegalArgumentException("Invalid player type: " + playerType);
-    }
+    Supplier<Player> player =
+      Objects.requireNonNull(
+          PLAYER_SUPPLIER.get(playerType),
+        "Invalid player type: " + playerType);
     return player.get();
   }
 }

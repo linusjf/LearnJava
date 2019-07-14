@@ -3,6 +3,7 @@ package trifunction;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import player.TennisPlayer;
 
 public final class FunctionalStatistics {
@@ -21,11 +22,8 @@ public final class FunctionalStatistics {
 
   public static String computeTrend(
       TennisPlayer tennisPlayer, Period period, String owner, String trend) {
-    TriFunction<TennisPlayer, Period, String, String> function = STATISTICS.get(trend);
-
-    if (function == null) {
-      throw new IllegalArgumentException("Invalid trend type: " + trend);
-    }
+    TriFunction<TennisPlayer, Period, String, String> function = Objects.requireNonNull(STATISTICS.get(trend),
+        "Invalid trend type: " + trend);
     return function.apply(tennisPlayer, period, owner);
   }
 }

@@ -3,6 +3,7 @@ package command;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import player.FootballPlayer;
 import player.Player;
 import player.SnookerPlayer;
@@ -35,11 +36,11 @@ public class CreatePlayerCommand {
   }
 
   public Player createPlayer(String playerType) {
-    Command cmd = PLAYERS.get(playerType);
-
-    if (cmd == null) {
-      throw new IllegalArgumentException("Invalid player type: " + playerType);
-    }
+    Command cmd 
+      = Objects.requireNonNull(
+          PLAYERS.get(playerType),
+          "Invalid player type: " 
+          + playerType);
     return cmd.create();
   }
 }

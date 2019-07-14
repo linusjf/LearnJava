@@ -19,6 +19,7 @@ import com.javacodegeeks.abk.SHASalted;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
@@ -69,8 +70,10 @@ public final class EncryptorFacade {
   }
 
   public Encrypt supplyEncryptor(EncryptionType type) {
-    Supplier<Encrypt> supplier = ENCRYPTOR_SUPPLIER.get(type);
-    if (supplier == null) throw new IllegalArgumentException("No encryptor exists for " + type);
+    Supplier<Encrypt> supplier = 
+      Objects.requireNonNull(
+          ENCRYPTOR_SUPPLIER.get(type),
+    "No encryptor exists for " + type);
     return supplier.get();
   }
 
