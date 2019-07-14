@@ -40,11 +40,15 @@ public class LinkedIn implements SocialNetwork {
             + "' over the network...");
 
     // ...and return test data.
-    Profile profile = findContact(profileEmail);
+    /**Profile profile = findContact(profileEmail);
     if (profile != null) {
       return profile.getContacts(contactType);
     }
-    return null;
+    return null;**/
+    Optional<Profile> profile 
+      = Optional.ofNullable(findContact(profileEmail));
+
+    return profile.isPresent() ? profile.get().getContacts(contactType):null;
   }
 
   private Profile findContact(String profileEmail) {
