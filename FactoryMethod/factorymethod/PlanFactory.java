@@ -1,11 +1,11 @@
 package factorymethod;
 
+import java.util.Objects;
+
 class PlanFactory {
   // use getPlan method to get object of type Plan
   public Plan getPlan(String planType) {
-    if (planType == null) {
-      return null;
-    }
+    Objects.requireNonNull(planType,"Plan type cannot be null.");
     if ("DOMESTICPLAN".equalsIgnoreCase(planType)) {
       return new DomesticPlan();
     } else if ("COMMERCIALPLAN".equalsIgnoreCase(planType)) {
@@ -13,6 +13,7 @@ class PlanFactory {
     } else if ("INSTITUTIONALPLAN".equalsIgnoreCase(planType)) {
       return new InstitutionalPlan();
     }
-    return null;
+    throw new IllegalArgumentException(planType +
+        ": Inavalid parameter.");
   }
 }

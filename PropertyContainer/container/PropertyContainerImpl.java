@@ -25,9 +25,7 @@ public abstract class PropertyContainerImpl
   public void addPropertyBy(Object value, String token) {
     if (value == null || token == null)
       return;
-    if (ivProperties.containsKey(token)) {
-      ivProperties.remove(token);
-    }
+    ivProperties.remove(token);
     ivProperties.put(token, value);
   }
 
@@ -39,9 +37,7 @@ public abstract class PropertyContainerImpl
    */
   @Override
   public Object getPropertyBy(String token) {
-    if (token == null)
-      return null;
-    return ivProperties.get(token);
+    return token == null ? null : ivProperties.get(token);
   }
 
   /**
