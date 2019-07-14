@@ -10,29 +10,35 @@ public enum ProducerConsumerBlockingQueue {
     try {
       BlockingQueue<Integer> blockingQueue = new LinkedBlockingDeque<>(2);
 
-      Thread producerThread = new Thread(() -> {
+      ThreadGroup group = new ThreadGroup("PCBQ");
+
+      Thread producerThread = new Thread(group,() -> {
         try {
           int value = 0;
-          while (true) {
+          while (!Thread.interrupted()) {
             blockingQueue.put(value);
             System.out.println("Produced " + value);
             value++;
             Thread.sleep(1000);
           }
         } catch (InterruptedException e) {
-          System.err.println(e);
+          System.err.println("Producer thread: " 
+              + e.getMessage());
+          return;
         }
       });
 
-      Thread consumerThread = new Thread(() -> {
+      Thread consumerThread = new Thread(group,() -> {
         try {
-          while (true) {
+          while (!Thread.interrupted()) {
             int value = blockingQueue.take();
             System.out.println("Consumed " + value);
             Thread.sleep(1000);
           }
         } catch (InterruptedException e) {
-          System.err.println(e);
+          System.err.println("Consumer thread: " 
+              + e.getMessage());
+          return;
         }
       });
 
@@ -40,7 +46,7 @@ public enum ProducerConsumerBlockingQueue {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
-          System.exit(0);
+          group.interrupt();
         } catch (InterruptedException e) {
           System.err.println(e);
         }
