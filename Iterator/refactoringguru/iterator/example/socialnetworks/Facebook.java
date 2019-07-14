@@ -37,16 +37,10 @@ public class Facebook implements SocialNetwork {
                        + profileEmail + "' over the network...");
 
     // ...and return test data.
-   // Profile profile = findProfile(profileEmail);
     Optional<Profile> profile 
       = Optional.ofNullable(findProfile(profileEmail));
 
     return profile.isPresent() ? profile.get().getContacts(contactType):null;
-    //if (profile != null) {
-      //return profile.getContacts(contactType);
-    //}
-    //return null;
-//    return contacts.get();
   }
 
   private Profile findProfile(String profileEmail) {
