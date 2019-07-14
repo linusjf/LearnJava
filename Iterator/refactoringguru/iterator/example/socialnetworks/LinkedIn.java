@@ -5,13 +5,14 @@ import java.util.List;
 import refactoringguru.iterator.example.iterators.LinkedInIterator;
 import refactoringguru.iterator.example.iterators.ProfileIterator;
 import refactoringguru.iterator.example.profile.Profile;
+import java.util.Optional;
 
 public class LinkedIn implements SocialNetwork {
   private List<Profile> contacts;
 
   public LinkedIn(List<Profile> cache) {
-    this.contacts = cache;
-    if (this.contacts == null) this.contacts = new ArrayList<>();
+    Optional<List<Profile>> list = Optional.ofNullable(cache);
+    this.contacts = list.orElse(new ArrayList<Profile>());
   }
 
   public Profile requestContactInfoFromLinkedInAPI(String profileEmail) {
