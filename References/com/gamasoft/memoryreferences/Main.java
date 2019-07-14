@@ -8,11 +8,11 @@ import java.util.Set;
 
 public class Main {
 
-  public static final int HOW_MANY = 500_000;
+  public static final int HOW_MANY = 50_000;
 
   public static void main(String[] args) {
 
-    // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096m
+    // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096mlex 
     // try with
     // -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75
     // -XX:G1NewSizePercent=50 -XX:+UseG1GC or with
