@@ -6,6 +6,8 @@ import java.util.Queue;
 public enum ProducerConsumerExample {
   ;
 
+  static volatile boolean shutdown = false;
+
   public static void main(String[] args) {
 
     try {
@@ -14,7 +16,7 @@ public enum ProducerConsumerExample {
       Thread producerThread = new Thread(() -> {
         try {
           int value = 0;
-          while (true) {
+          while (!shutdown) {
             buffer.add(value);
             System.out.println("Produced " + value);
             value++;
@@ -27,7 +29,7 @@ public enum ProducerConsumerExample {
 
       Thread consumerThread = new Thread(() -> {
         try {
-          while (true) {
+          while (!shutdown) {
             int value = buffer.poll();
             System.out.println("Consumed " + value);
             Thread.sleep(1000);
@@ -41,7 +43,8 @@ public enum ProducerConsumerExample {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
-          System.exit(0);
+         // System.exit(0);
+         shutdown = true;
         } catch (InterruptedException e) {
           System.out.println(e);
         }
