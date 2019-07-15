@@ -20,6 +20,7 @@ public enum StreamBuilders {
     filterStream();
     filterStreamToArray();
     coreStream();
+    parallelStream();
   }
 
   public static void streamOf() {
@@ -96,11 +97,11 @@ public enum StreamBuilders {
     memberNames.add("Yana");
     memberNames.add("Lokesh");
     memberNames.stream()
-        .filter(s -> s.startsWith("A"))
+        .filter(s -> s.charAt(0) == 'A')
         .forEach(System.out::println);
 
     memberNames.stream()
-        .filter(s -> s.startsWith("A"))
+        .filter(s -> s.charAt(0) == 'A')
         .map(String::toUpperCase)
         .forEach(System.out::println);
 
@@ -116,20 +117,20 @@ public enum StreamBuilders {
     System.out.print(memNamesInUppercase);
 
     boolean matchedResult =
-        memberNames.stream().anyMatch(s -> s.startsWith("A"));
+        memberNames.stream().anyMatch(s -> s.charAt(0) == 'A');
 
     System.out.println(matchedResult);
 
-    matchedResult = memberNames.stream().allMatch(s -> s.startsWith("A"));
+    matchedResult = memberNames.stream().allMatch(s -> s.charAt(0) == 'A');
 
     System.out.println(matchedResult);
 
-    matchedResult = memberNames.stream().noneMatch(s -> s.startsWith("A"));
+    matchedResult = memberNames.stream().noneMatch(s -> s.charAt(0) == 'A');
 
     System.out.println(matchedResult);
 
     long totalMatched =
-        memberNames.stream().filter(s -> s.startsWith("A")).count();
+        memberNames.stream().filter(s -> s.charAt(0) == 'A').count();
 
     System.out.println(totalMatched);
 
@@ -139,8 +140,20 @@ public enum StreamBuilders {
     reduced.ifPresent(System.out::println);
 
     String firstMatchedName =
-        memberNames.stream().filter(s -> s.startsWith("L")).findFirst().get();
+        memberNames.stream().filter(s -> s.charAt(0) == 'L').findFirst().get();
 
     System.out.println(firstMatchedName);
+  }
+
+  private static void parallelStream() {
+    List<Integer> list = new ArrayList<Integer>();
+    for (int i = 1; i < 10; i++)
+      list.add(i);
+    // Here creating a parallel stream
+    Stream<Integer> stream = list.parallelStream();
+    // clang-format off
+    Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
+    for (Integer num : evenNumbersArr) System.out.println(num);
+    // clang-format on
   }
 }
