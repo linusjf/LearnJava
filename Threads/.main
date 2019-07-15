@@ -6,3 +6,4 @@ threads.MultithreadedMaxFinder
 com.example.thread.callable.ParallelAdder
 threads.JoinDigestUserInterface java.header java_regexp.header
 threads.GZipAllFiles build.xml build.properties
+threads.CountDownLatchDemo

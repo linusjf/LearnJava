@@ -3,6 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="CountDownLatchDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="CountDownLatchDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="CountDownLatchDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run3']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="CountDownLatchDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run4']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="CountDownLatchDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run5']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
   <suppress-xpath files="MultithreadedMaxFinder.java"
                   checks="SingleSpaceSeparatorCheck"
                   query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='23']]" />
