@@ -16,7 +16,7 @@ public enum ProducerConsumerExecutorService {
     Runnable producerTask = () -> {
       try {
         int value = 0;
-        while (true) {
+        while (!executor.isShutdown()) {
           blockingQueue.put(value);
           System.out.println("Produced " + value);
           value++;
@@ -29,7 +29,7 @@ public enum ProducerConsumerExecutorService {
 
     Runnable consumerTask = () -> {
       try {
-        while (true) {
+        while (!executor.isShutdown()) {
           int value = blockingQueue.take();
           System.out.println("Consumed " + value);
           Thread.sleep(1000);
@@ -41,10 +41,12 @@ public enum ProducerConsumerExecutorService {
 
     Runnable terminatorTask = () -> {
       try {
+        Thread.sleep(10_000);
         executor.shutdown();
+        System.out.println("Blocking for 10 seconds...");
         executor.awaitTermination(10, TimeUnit.SECONDS);
         System.out.println("Closing executor service...");
-        executor.shutdownNow();
+      //  executor.shutdownNow();
       } catch (InterruptedException e) {
         System.err.println(e);
       }

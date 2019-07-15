@@ -43,8 +43,8 @@ public enum ProducerConsumerExample {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
-         // System.exit(0);
-         shutdown = true;
+          // System.exit(0);
+          shutdown = true;
         } catch (InterruptedException e) {
           System.out.println(e);
         }

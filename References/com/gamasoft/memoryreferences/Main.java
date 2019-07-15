@@ -6,13 +6,14 @@ import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Main {
-
+public enum Main {
+  ;
   public static final int HOW_MANY = 50_000;
 
+  @SuppressWarnings("PMD.DoNotCallGarbageCollectionExplicitly")
   public static void main(String[] args) {
 
-    // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096mlex 
+    // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096mlex
     // try with
     // -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75
     // -XX:G1NewSizePercent=50 -XX:+UseG1GC or with
@@ -21,16 +22,15 @@ public class Main {
 
     System.out.println("Start!");
 
-    ReferenceQueue<HeavyList> queue = new ReferenceQueue();
-
-    Set<Reference<HeavyList>> references = new HashSet<>();
-
     printMem();
     System.out.println("Press ^C to break!");
     System.out.println("\n\nUsed mem");
 
     long start = System.currentTimeMillis();
 
+    ReferenceQueue<HeavyList> queue = new ReferenceQueue();
+
+    Set<Reference<HeavyList>> references = new HashSet<>();
     allocationLoop(queue, references, 100);
     System.out.println("Total time " + (System.currentTimeMillis() - start));
 
@@ -41,6 +41,7 @@ public class Main {
                        + removed + "   left " + references.size());
   }
 
+  @SuppressWarnings("PMD.NullAssignment")
   private static void allocationLoop(ReferenceQueue<HeavyList> queue,
                                      Set<Reference<HeavyList>> references,
                                      int howManyTimes) {
@@ -48,7 +49,7 @@ public class Main {
     HeavyList oldTail = head;
     for (int i = 0; i < howManyTimes; i++) {
 
-      HeavyList newTail = allocate(HOW_MANY, oldTail);
+      final HeavyList newTail = allocate(HOW_MANY, oldTail);
 
       HeavyList curr = oldTail.next;
       while (curr != null) {
@@ -82,7 +83,7 @@ public class Main {
   }
 
   private static int removeRefs(ReferenceQueue queue,
-                                Set<Reference<HeavyList>> references) {
+                           Set<Reference<HeavyList>> references) {
     int removed = 0;
     while (true) {
       Reference r = queue.poll();
@@ -90,7 +91,7 @@ public class Main {
         break;
       references.remove(r);
       removed++;
-    };
+    }
     return removed;
   }
 
@@ -147,9 +148,9 @@ public class Main {
   private static class HeavyList {
 
     byte[] mega = new byte[1000];
-    private HeavyList next = null;
+    private HeavyList next;
 
-    public HeavyList(int number, HeavyList prev) {
+    HeavyList(int number, HeavyList prev) {
       for (int i = 0; i < mega.length; i++) {
         mega[i] = (byte)(number % 256);
       }

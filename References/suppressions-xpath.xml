@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='allocationLoop']]/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HeavyList']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='HeavyList']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/TYPECAST/MOD[./IDENT[@text='number']]/NUM_INT[@text='256']"/>
+</suppressions>
+Checkstyle ends with 2 errors.

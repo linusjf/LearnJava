@@ -12,7 +12,7 @@ public enum ProducerConsumerBlockingQueue {
 
       ThreadGroup group = new ThreadGroup("PCBQ");
 
-      Thread producerThread = new Thread(group,() -> {
+      Thread producerThread = new Thread(group, () -> {
         try {
           int value = 0;
           while (!Thread.interrupted()) {
@@ -22,13 +22,12 @@ public enum ProducerConsumerBlockingQueue {
             Thread.sleep(1000);
           }
         } catch (InterruptedException e) {
-          System.err.println("Producer thread: " 
-              + e.getMessage());
+          System.err.println("Producer thread: " + e.getMessage());
           return;
         }
       });
 
-      Thread consumerThread = new Thread(group,() -> {
+      Thread consumerThread = new Thread(group, () -> {
         try {
           while (!Thread.interrupted()) {
             int value = blockingQueue.take();
@@ -36,8 +35,7 @@ public enum ProducerConsumerBlockingQueue {
             Thread.sleep(1000);
           }
         } catch (InterruptedException e) {
-          System.err.println("Consumer thread: " 
-              + e.getMessage());
+          System.err.println("Consumer thread: " + e.getMessage());
           return;
         }
       });
