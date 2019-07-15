@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ProducerConsumerExecutorService.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ProducerConsumerExecutorService']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='terminatorTask']]/ASSIGN/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ProducerConsumerExample.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='ProducerConsumerExample']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='shutdown']]/MODIFIERS/LITERAL_VOLATILE"/>
   <suppress-xpath files="ProducerConsumerExecutorService.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ProducerConsumerExecutorService']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='producerTask']]/ASSIGN/LAMBDA/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
