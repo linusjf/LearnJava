@@ -96,14 +96,16 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}" input="one.test">
+    <java classname="${main.class}"
+          input="one.test">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class}" input="two.test">
-      <arg line=" &lt; two.test"/>
+    <java classname="${main.class}"
+          input="two.test">
+      <arg line=" &lt; two.test" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

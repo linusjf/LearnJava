@@ -13,7 +13,7 @@ class PlanFactory {
     } else if ("INSTITUTIONALPLAN".equalsIgnoreCase(planType)) {
       return new InstitutionalPlan();
     }
-    throw new IllegalArgumentException(planType +
-        ": Inavalid parameter.");
+    throw new IllegalArgumentException(planType
+        + ": Invalid parameter.");
   }
 }

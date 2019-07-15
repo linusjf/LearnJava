@@ -3,22 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ThrowSwitch.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="ThrowSwitch.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="ThrowSwitch.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="ThrowSwitch.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getSimulatedErrorCode']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
+  <suppress-xpath files="ThrowSwitch.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="ThrowSwitch.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="ThrowSwitch.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ThrowSwitch.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getSimulatedErrorCode']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']" />
   <suppress-xpath files="Main.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='snookerPlayer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']" />

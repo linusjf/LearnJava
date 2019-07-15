@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public enum ProducerConsumerBlockingQueue {
   ;
 
+  @SuppressWarnings("PMD.AvoidThreadGroup")
   public static void main(String[] args) {
     try {
       BlockingQueue<Integer> blockingQueue = new LinkedBlockingDeque<>(2);
@@ -44,7 +45,9 @@ public enum ProducerConsumerBlockingQueue {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
+          synchronized(group) {
           group.interrupt();
+          }
         } catch (InterruptedException e) {
           System.err.println(e);
         }

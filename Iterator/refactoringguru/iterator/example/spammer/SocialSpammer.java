@@ -31,6 +31,7 @@ public class SocialSpammer {
   }
 
   public void sendMessage(String email, String message) {
-    System.out.println("Sent message to: '" + email + "'. Message body: '" + message + "'");
+    System.out.println("Sent message to: '" + email + "'. Message body: '"
+                       + message + "'");
   }
 }

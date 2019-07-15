@@ -19,7 +19,7 @@ public final class AccessControlProvider {
       throws CloneNotSupportedException {
     AccessControl ac = null;
     ac = map.get(controlLevel);
-    return ac != null ? ac.clone():null;
+    return ac == null ? null : ac.clone();
   }
 
   private AccessControlProvider() {

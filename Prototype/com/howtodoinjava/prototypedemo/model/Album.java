@@ -16,7 +16,7 @@ public class Album implements PrototypeCapable {
   @Override
   public Album clone() throws CloneNotSupportedException {
     System.out.println("Cloning Album object..");
-    return (Album) super.clone();
+    return (Album)super.clone();
   }
 
   @Override

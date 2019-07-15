@@ -3,10 +3,11 @@ package producerconsumer;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("PMD.AvoidUsingVolatile")
 public enum ProducerConsumerExample {
   ;
 
-  static volatile boolean shutdown = false;
+  static volatile boolean shutdown;
 
   public static void main(String[] args) {
 
@@ -43,7 +44,6 @@ public enum ProducerConsumerExample {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
-          // System.exit(0);
           shutdown = true;
         } catch (InterruptedException e) {
           System.out.println(e);

@@ -25,7 +25,7 @@ public final class SecureOrderTaker {
   public static final int PORT = 7000;
   public static final String ALGORITHM = "SSL";
 
-// CPD-OFF
+  // CPD-OFF
   private SecureOrderTaker() {
     throw new IllegalStateException("Private constructor");
   }

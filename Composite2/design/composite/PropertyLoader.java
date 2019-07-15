@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.Objects;
 
 /**
  * Describe class <code>PropertyLoader</code> here.
@@ -114,7 +114,7 @@ public final class PropertyLoader {
   }
 
   private static String normalizeName(String nome) {
-    Objects.requireNonNull(nome,"null input: name");
+    Objects.requireNonNull(nome, "null input: name");
     String name = nome;
     if (name.charAt(0) == '/')  // NOPMD
       name = name.substring(1);

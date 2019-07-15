@@ -1,5 +1,3 @@
 package predicate;
 
-public interface Player {
-  String getName();
-}
+public interface Player { String getName(); }

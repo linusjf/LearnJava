@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="IntgenClient.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='IntgenClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
+  <suppress-xpath files="IntgenClient.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='IntgenClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
   <suppress-xpath files="Ping.java"
                   checks="IllegalTokenCheck"
                   query="/CLASS_DEF[./IDENT[@text='Ping']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Connector']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='isShutdown']]/MODIFIERS/LITERAL_VOLATILE" />

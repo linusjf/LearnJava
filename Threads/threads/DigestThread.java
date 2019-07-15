@@ -26,7 +26,8 @@ public class DigestThread extends Thread {
       InputStream in = Files.newInputStream(Paths.get(filename));
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
-      while (din.read() != -1) ;
+      while (din.read() != -1)
+        ;
       din.close();
       byte[] digest = sha.digest();
       StringBuilder result = new StringBuilder(filename);
@@ -40,7 +41,7 @@ public class DigestThread extends Thread {
 
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
-    for (String filename : args) {
+    for (String filename: args) {
       runDigestThread(filename);
     }
   }
