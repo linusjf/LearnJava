@@ -3,6 +3,54 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='8']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='7']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='8']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='arrayOf']]/SLIST/VARIABLE_DEF[./IDENT[@text='stream']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='9']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='listStream']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="StreamBuilders.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StreamBuilders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='streamGenerate']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='forEach']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='50']" />
   <suppress-xpath files="GenChars.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='GenChars']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateCharacters']]/SLIST/VARIABLE_DEF[./IDENT[@text='firstPrintableCharacter']]/ASSIGN/EXPR/NUM_INT[@text='33']" />
