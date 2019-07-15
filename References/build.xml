@@ -68,7 +68,29 @@
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
       </classpath>
-      <jvmarg line="-XX:+HeapDumpOnOutOfMemoryError -Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75 -XX:G1NewSizePercent=50 -XX:+UseG1GC -XX:+CMSParallelRemarkEnabled -XX:ParallelGCThreads=8 -XX:SurvivorRatio=25">
+      <jvmarg line="-XX:+HeapDumpOnOutOfMemoryError -Xmx4096m">
+      </jvmarg>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Run target</description>
+    <java classname="${main.class}" fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+      <jvmarg line="-XX:+HeapDumpOnOutOfMemoryError -Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75 -XX:G1NewSizePercent=50 -XX:+UseG1GC">
+      </jvmarg>
+    </java>
+  </target>
+  <target name="run3">
+    <description>Run target</description>
+    <java classname="${main.class}" fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+      <jvmarg line="-XX:+HeapDumpOnOutOfMemoryError -Xmx4096m -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:SurvivorRatio=25">
       </jvmarg>
     </java>
   </target>

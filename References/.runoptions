@@ -4,6 +4,3 @@
 -XX:G1MaxNewSizePercent=75 
 -XX:G1NewSizePercent=50 
 -XX:+UseG1GC
--XX:+CMSParallelRemarkEnabled 
--XX:ParallelGCThreads=8
--XX:SurvivorRatio=25
