@@ -63,7 +63,7 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}" output="run.out" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
@@ -74,7 +74,7 @@
   </target>
   <target name="run2">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}" output="run2.out" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
@@ -85,7 +85,7 @@
   </target>
   <target name="run3">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}" output="run3.out" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar"/>
         <pathelement path="${java.class.path}"/>
