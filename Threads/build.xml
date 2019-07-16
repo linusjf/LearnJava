@@ -96,6 +96,27 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run12">
+    <description>Run12 target</description>
+    <java classname="${main.class11}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <arg line="5" />
+    </java>
+  </target>
+  <target name="run11">
+    <description>Run11 target</description>
+    <java classname="${main.class10}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <arg line="5" />
+    </java>
+  </target>
   <target name="run10">
     <description>Run10 target</description>
     <exec executable="./setup" />
@@ -201,7 +222,8 @@
     </java>
   </target>
   <target name="run"
-          depends="run10,run9,run8,run7,run6,run5,run4,run3,run2">
+          depends="run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
+
     <description>Run target</description>
     <java classname="${main.class}"
           fork="true"

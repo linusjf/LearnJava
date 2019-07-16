@@ -45,8 +45,8 @@ public enum ProducerConsumerBlockingQueue {
         try {
           Thread.sleep(10_000);
           System.err.println("Exiting program...");
-          synchronized(group) {
-          group.interrupt();
+          synchronized (group) {
+            group.interrupt();
           }
         } catch (InterruptedException e) {
           System.err.println(e);
