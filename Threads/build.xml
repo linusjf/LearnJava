@@ -98,6 +98,7 @@
   </target>
   <target name="run10">
     <description>Run10 target</description>
+    <exec executable="./setup"/> 
     <java classname="${main.class9}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
