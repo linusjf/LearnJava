@@ -3,6 +3,35 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MultipleVariableDeclarationsCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='rt']] | 
+/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gt']] | 
+/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='bt']]" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR[./NUM_INT[@text='16']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x00ff0000']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR/NUM_INT[@text='16']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR[./NUM_INT[@text='8']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x0000ff00']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR/NUM_INT[@text='8']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='bt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR[./NUM_INT[@text='0']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x000000ff']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/BOR/NUM_INT[@text='0xff000000']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/BOR[./NUM_INT[@text='0xff000000']]/SL/NUM_INT[@text='16']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/SL/NUM_INT[@text='8']" />
   <suppress-xpath files="CountDownLatchDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
