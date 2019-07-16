@@ -32,6 +32,7 @@ package threads;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import javax.imageio.ImageIO;
@@ -53,7 +54,13 @@ public class ForkBlur extends RecursiveAction {
   private int[] mDestination;
   private int mBlurWidth = 15;  // Processing window size, should be odd.
 
-  public ForkBlur(int[] src, int start, int length, int[] dst) {
+  protected static int sThreshold = 10_000;
+
+  public static final long serialVersionUID = 1L;
+
+  @SuppressWarnings("PMD.ArrayIsStoredDirectly")
+  public ForkBlur(final int[] src, int start, int length, final int... dst) {
+    super();
     mSource = src;
     mStart = start;
     mLength = length;
@@ -65,7 +72,9 @@ public class ForkBlur extends RecursiveAction {
     int sidePixels = (mBlurWidth - 1) / 2;
     for (int index = mStart; index < mStart + mLength; index++) {
       // Calculate average.
-      float rt = 0, gt = 0, bt = 0;
+      // clang-format off
+      float rt = 0, gt = 0, bt = 0; // NOPMD
+      // clang-format on
       for (int mi = -sidePixels; mi <= sidePixels; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
@@ -80,8 +89,6 @@ public class ForkBlur extends RecursiveAction {
       mDestination[index] = dpixel;
     }
   }
-
-  protected static int sThreshold = 10000;
 
   @Override
   protected void compute() {
@@ -98,23 +105,27 @@ public class ForkBlur extends RecursiveAction {
   }
 
   // Plumbing follows.
-  public static void main(String[] args) throws Exception {
-    String srcName = "Red_Tulips.jpg";
-    File srcFile = new File(srcName);
-    BufferedImage image = ImageIO.read(srcFile);
+  public static void main(String... args) {
+    try {
+      String srcName = "Red_Tulips.jpg";
+      File srcFile = new File(srcName);
+      BufferedImage image = ImageIO.read(srcFile);
 
-    System.out.println("Source image: " + srcName);
+      System.out.println("Source image: " + srcName);
 
-    BufferedImage blurredImage = blur(image);
+      BufferedImage blurredImage = blur(image);
 
-    String dstName = "blurred-tulips.jpg";
-    File dstFile = new File(dstName);
-    System.out.println(image);
-    System.out.println(blurredImage);
-    System.out.println(dstFile);
-    ImageIO.write(blurredImage, "jpeg", dstFile);
+      String dstName = "blurred-tulips.jpg";
+      File dstFile = new File(dstName);
+      System.out.println(image);
+      System.out.println(blurredImage);
+      System.out.println(dstFile);
+      ImageIO.write(blurredImage, "jpeg", dstFile);
 
-    System.out.println("Output image: " + dstName);
+      System.out.println("Output image: " + dstName);
+    } catch (IOException ioe) {
+      System.err.println(ioe);
+    }
   }
 
   public static BufferedImage blur(BufferedImage srcImage) {
@@ -129,7 +140,7 @@ public class ForkBlur extends RecursiveAction {
 
     int processors = Runtime.getRuntime().availableProcessors();
     System.out.println(Integer.toString(processors) + " processor"
-                       + (processors != 1 ? "s are " : " is ") + "available");
+                       + (processors > 1 ? "s are " : " is ") + "available");
 
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
 
@@ -142,10 +153,9 @@ public class ForkBlur extends RecursiveAction {
     System.out.println("Image blur took " + (endTime - startTime)
                        + " milliseconds.");
 
-//    BufferedImage dstImage =
-  //      new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-    BufferedImage dstImage =
-        new BufferedImage(w, h, srcImage.getType());
+    //    BufferedImage dstImage =
+    //      new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+    BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
     dstImage.setRGB(0, 0, w, h, dst, 0, w);
 
     return dstImage;
