@@ -3,6 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="Deadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Deadlock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='start']]/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']" />
   <suppress-xpath files="SimpleThreads.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MessageLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4000']" />

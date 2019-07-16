@@ -36,34 +36,24 @@ public enum Deadlock {
   public static void main(String[] args) {
     final Friend alphonse = new Friend("Alphonse");
     final Friend gaston = new Friend("Gaston");
-    new Thread(new Runnable() {
-      @Override
-      public void run() {
-        alphonse.bow(gaston);
-      }
-    }).start();
-    new Thread(new Runnable() {
-      public void run() {
-        gaston.bow(alphonse);
-      }
-    }).start();
-    new Thread(new Runnable() {
-      public void run() {
-        try {
-          Thread.sleep(10_000);
-          System.out.println("10 seconds of deadlock. That's enough...");
-          System.exit(0);
-        } catch (InterruptedException ie) {
-          System.err.println(ie);
-        }
+    new Thread(() -> alphonse.bow(gaston)).start();
+    new Thread(() -> gaston.bow(alphonse)).start();
+    new Thread(() -> {
+      try {
+        Thread.sleep(10_000);
+        System.out.println("10 seconds of deadlock. That's enough...");
+        System.exit(0);
+      } catch (InterruptedException ie) {
+        System.err.println(ie);
       }
     }).start();
   }
 
+  @SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel")
   static class Friend {
     private final String name;
 
-    public Friend(String name) {
+    Friend(String name) {
       this.name = name;
     }
 
