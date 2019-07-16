@@ -96,6 +96,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run13">
+    <description>Run13 target</description>
+    <java classname="${main.class12}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run12">
     <description>Run12 target</description>
     <java classname="${main.class11}"
@@ -104,7 +113,6 @@
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
-      <arg line="5" />
     </java>
   </target>
   <target name="run11">
@@ -222,7 +230,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
+          depends="run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
 
     <description>Run target</description>
     <java classname="${main.class}"
