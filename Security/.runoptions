@@ -1,0 +1,2 @@
+-Djava.security.manager
+-Djava.security.policy=test.policy
