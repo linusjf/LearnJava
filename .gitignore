@@ -16,6 +16,7 @@
 *.log*
 *docs*
 Proxy/cached/**/*.*
+Threads/*.jpg
 **/walkmod.xml
 !./AnnoProc.class
 !Proxy/urls.txt
