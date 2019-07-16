@@ -146,7 +146,7 @@ public enum StreamBuilders {
   }
 
   private static void parallelStream() {
-    List<Integer> list = new ArrayList<Integer>();
+    List<Integer> list = new ArrayList<>();
     for (int i = 1; i < 10; i++)
       list.add(i);
     // Here creating a parallel stream
