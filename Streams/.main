@@ -2,3 +2,4 @@ gen.GenChars
 gen.ListDirectoryRecursive
 gen.ListDirectoryWithFilter
 gen.StreamBuilders
+gen.RosterTest
