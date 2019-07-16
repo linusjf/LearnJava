@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="HelperClass.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WakingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="IllegalMonitorStateNotifyExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateNotifyExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
   <suppress-xpath files="Consumer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']" />
