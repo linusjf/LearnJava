@@ -28,12 +28,14 @@ package threads;
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
-public class ProducerConsumerExample {
-    public static void main(String[] args) {
-        Drop drop = new Drop();
-        (new Thread(new Producer(drop))).start();
-        (new Thread(new Consumer(drop))).start();
-    }
+public enum ProducerConsumerExample {
+  ;
+
+  public static void main(String[] args) {
+    Drop drop = new Drop();
+    (new Thread(new Producer(drop))).start();
+    (new Thread(new Consumer(drop))).start();
+  }
 }

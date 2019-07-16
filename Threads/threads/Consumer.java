@@ -28,26 +28,28 @@ package threads;
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 import java.util.Random;
 
 public class Consumer implements Runnable {
-    private Drop drop;
+  private Drop drop;
 
-    public Consumer(Drop drop) {
-        this.drop = drop;
-    }
+  public Consumer(Drop drop) {
+    this.drop = drop;
+  }
 
-    public void run() {
-        Random random = new Random();
-        for (String message = drop.take();
-             ! message.equals("DONE");
-             message = drop.take()) {
-            System.out.format("MESSAGE RECEIVED: %s%n", message);
-            try {
-                Thread.sleep(random.nextInt(5000));
-            } catch (InterruptedException e) {}
-        }
+  @Override
+  public void run() {
+    Random random = new Random();
+    for (String message = drop.take(); !"DONE".equals(message);
+         message = drop.take()) {
+      System.out.format("MESSAGE RECEIVED: %s%n", message);
+      try {
+        Thread.sleep(random.nextInt(5000));
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      }
     }
+  }
 }

@@ -28,34 +28,33 @@ package threads;
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 import java.util.Random;
 
 public class Producer implements Runnable {
-    private Drop drop;
+  private Drop drop;
 
-    public Producer(Drop drop) {
-        this.drop = drop;
+  public Producer(Drop drop) {
+    this.drop = drop;
+  }
+
+  @Override
+  public void run() {
+    String[] importantInfo = {"Mares eat oats",
+                              "Does eat oats",
+                              "Little lambs eat ivy",
+                              "A kid will eat ivy too"};
+    Random random = new Random();
+
+    for (String info: importantInfo) {
+      drop.put(info);
+      try {
+        Thread.sleep(random.nextInt(5000));
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      }
     }
-
-    public void run() {
-        String importantInfo[] = {
-            "Mares eat oats",
-            "Does eat oats",
-            "Little lambs eat ivy",
-            "A kid will eat ivy too"
-        };
-        Random random = new Random();
-
-        for (int i = 0;
-             i < importantInfo.length;
-             i++) {
-            drop.put(importantInfo[i]);
-            try {
-                Thread.sleep(random.nextInt(5000));
-            } catch (InterruptedException e) {}
-        }
-        drop.put("DONE");
-    }
+    drop.put("DONE");
+  }
 }
