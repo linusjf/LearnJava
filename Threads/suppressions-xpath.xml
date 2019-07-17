@@ -3,14 +3,69 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="HelperClass.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WakingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="IllegalMonitorStateNotifyExample.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateNotifyExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="BooleanExpressionComplexityCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="BooleanExpressionComplexityCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='red']]/NUM_INT[@text='16']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='green']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/LOR/LOR/GT[./IDENT[@text='red']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/GT[./IDENT[@text='green']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="ImmutableRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='blue']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='red']]/NUM_INT[@text='16']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='green']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='red']]/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='green']]/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='blue']]/MINUS/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/LOR/LOR/GT[./IDENT[@text='red']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/GT[./IDENT[@text='green']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="SynchronizedRGB.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='blue']]/NUM_INT[@text='255']" />
+  <suppress-xpath files="HelperClass.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WaitingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="HelperClass.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WakingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="IllegalMonitorStateNotifyExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateNotifyExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
   <suppress-xpath files="Consumer.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']" />

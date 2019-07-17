@@ -16,7 +16,8 @@ public enum HelperClass {
           System.out.println("[WaitingThread]: Waiting for another thread "
                              + "to notify me or timing out in 10 seconds...");
           OBJ.wait(10_000);
-          System.out.println("[WaitingThread]: Successfully notified or timed out!");
+          System.out.println(
+              "[WaitingThread]: Successfully notified or timed out!");
         } catch (InterruptedException ex) {
           System.err.println(
               "[WaitingThread]: An InterruptedException was caught: "
