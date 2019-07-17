@@ -10,6 +10,7 @@ threads.CountDownLatchDemo
 threads.ForkBlur
 threads.SimpleThreads 5
 threads.Deadlock
+threads.FixDeadlock
 threads.ProducerConsumerExample
 threads.IllegalMonitorStateNotifyExample
 threads.IllegalMonitorStateWaitExample
