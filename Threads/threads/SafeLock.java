@@ -44,7 +44,7 @@ public enum SafeLock {
     new Thread(new BowLoop(gaston, alphonse)).start();
     new Thread(() -> {
       try {
-        int sleepTime = (new Random()).nextInt(10_000);
+        int sleepTime = new Random().nextInt(10_000);
       Thread.sleep(sleepTime);
       System.out.println("Exiting after "
           + sleepTime + " milliseconds.");
