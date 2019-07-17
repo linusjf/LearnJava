@@ -16,3 +16,4 @@ threads.IllegalMonitorStateNotifyExample
 threads.IllegalMonitorStateWaitExample
 threads.RunningExample
 threads.SafeLock &> safelock.out
+threads.ThreadLocalExample
