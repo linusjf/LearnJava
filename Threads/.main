@@ -11,3 +11,6 @@ threads.ForkBlur
 threads.SimpleThreads 5
 threads.Deadlock
 threads.ProducerConsumerExample
+threads.IllegalMonitorStateNotifyExample
+threads.IllegalMonitorStateWaitExample
+threads.RunningExample

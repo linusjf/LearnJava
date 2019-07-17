@@ -19,6 +19,12 @@ public enum IllegalMonitorStateNotifyExample {
       // Try to notify the waiting thread without owning the synchronization
       // object. The following statement results in an
       // IllegalMonitorStateException.
+      System.out.println("Checking for lock...");
+      if (Thread.holdsLock(HelperClass.OBJ))
+        HelperClass.OBJ.notifyAll();
+      System.out.println("No exception since lock checked...");
+
+      System.out.println("Caring a damn for lock ...");
       HelperClass.OBJ.notifyAll();
 
       // Wait for all threads to terminate.
@@ -26,6 +32,7 @@ public enum IllegalMonitorStateNotifyExample {
     } catch (InterruptedException ex) {
       System.err.println("An InterruptedException was caught: "
                          + ex.getMessage());
+      return;
     }
   }
 }
