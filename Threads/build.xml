@@ -98,7 +98,7 @@
   </target>
   <target name="run14">
     <description>Run14 target</description>
-    <java classname="${main.class13}">
+    <java classname="${main.class13}" fork="true" output="safelock.out">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

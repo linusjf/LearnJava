@@ -14,4 +14,4 @@ threads.ProducerConsumerExample
 threads.IllegalMonitorStateNotifyExample
 threads.IllegalMonitorStateWaitExample
 threads.RunningExample
-threads.SafeLock
+threads.SafeLock &> safelock.out
