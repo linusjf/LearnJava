@@ -96,6 +96,17 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run17">
+    <description>Run17 target</description>
+    <java classname="${main.class16}"
+          fork="true"
+          output="localone.out">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run16">
     <description>Run16 target</description>
     <java classname="${main.class15}">
