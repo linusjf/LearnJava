@@ -12,4 +12,3 @@
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HeavyList']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='HeavyList']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/TYPECAST/MOD[./IDENT[@text='number']]/NUM_INT[@text='256']"/>
 </suppressions>
-Checkstyle ends with 2 errors.
