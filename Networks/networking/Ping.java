@@ -59,45 +59,50 @@ public final class Ping {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void main(String[] args)
-      throws InterruptedException, IOException {
+  public static void main(String[] args) {
     if (args.length < 1) {
       System.err.println("Usage: java Ping [port] host...");
       return;
     }
     int firstArg = 0;
 
-    // If the first argument is a string of digits then we take that
-    // to be the port number to use
-    if (Pattern.matches("[0-9]+", args[0])) {
-      port = Integer.parseInt(args[0]);
-      firstArg = 1;
-    }
+    try {
 
-    // Create the threads and start them up
-    Printer printer = new Printer();
-    printer.start();
-    Connector connector = new Connector(printer);
-    connector.start();
+      // If the first argument is a string of digits then we take that
+      // to be the port number to use
+      if (Pattern.matches("[0-9]+", args[0])) {
+        port = Integer.parseInt(args[0]);
+        firstArg = 1;
+      }
 
-    // Create the targets and add them to the connector
-    List<Target> targets = new LinkedList<>();
-    for (int i = firstArg; i < args.length; i++) {
-      Target t = new Target(args[i]);
-      targets.add(t);
-      connector.add(t);
-    }
+      // Create the threads and start them up
+      Printer printer = new Printer();
+      printer.start();
+      Connector connector = new Connector(printer);
+      connector.start();
 
-    // Wait for everything to finish
-    Thread.sleep(2000);
-    connector.shutDown();
-    connector.join();
+      // Create the targets and add them to the connector
+      List<Target> targets = new LinkedList<>();
+      for (int i = firstArg; i < args.length; i++) {
+        Target t = new Target(args[i]);
+        targets.add(t);
+        connector.add(t);
+      }
 
-    // Print status of targets that have not yet been shown
-    for (Target t: targets) {
-      // Target t = (Target)i.next();
-      if (!t.shown)
-        t.show();
+      // Wait for everything to finish
+      Thread.sleep(2000);
+      connector.shutDown();
+      System.err.println("shutting down....");
+      connector.join();
+
+      // Print status of targets that have not yet been shown
+      for (Target t: targets) {
+        // Target t = (Target)i.next();
+        if (!t.shown)
+          t.show();
+      }
+    } catch (IOException | InterruptedException ex) {
+      System.err.println(ex);
     }
   }
 
@@ -198,25 +203,26 @@ public final class Ping {
         // Open the channel, set it to non-blocking, initiate connect
         sc = SocketChannel.open();
         sc.configureBlocking(false);
+        if (t.address != null) {
+          boolean connected = sc.connect(t.address);
 
-        boolean connected = sc.connect(t.address);
+          // Record the time we started
+          t.channel = sc;
+          t.connectStart = System.currentTimeMillis();
 
-        // Record the time we started
-        t.channel = sc;
-        t.connectStart = System.currentTimeMillis();
+          if (connected) {
+            t.connectFinish = t.connectStart;
+            sc.close();
+            printer.add(t);
+          } else {
+            // Add the new channel to the pending list
+            synchronized (pending) {
+              pending.add(t);
+            }
 
-        if (connected) {
-          t.connectFinish = t.connectStart;
-          sc.close();
-          printer.add(t);
-        } else {
-          // Add the new channel to the pending list
-          synchronized (pending) {
-            pending.add(t);
+            // Nudge the selector so that it will process the pending list
+            sel.wakeup();
           }
-
-          // Nudge the selector so that it will process the pending list
-          sel.wakeup();
         }
       } catch (IOException x) {
         if (sc != null) {
