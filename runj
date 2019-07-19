@@ -30,6 +30,20 @@ setUp ()
 	cd ..
 }
 
+tests ()
+{
+	cd "$proj" || \
+    { echo "Unable to access folder $proj";exit 1;}
+	[ -e "$testsScript" ] && \
+    { ./"$testsScript" || \
+      { \
+        echo "Error running tests script";\
+        exit 1;\
+      }\
+    }
+	cd ..
+}
+
 tearDown ()
 {
 	cd "$proj" || \
@@ -77,6 +91,7 @@ runJVM()
       cd ..
     done
     tearDown;
+    tests;
       exit 0;
     else
       echo "$jarFile does not exist. Run buildj or buildjall."
@@ -99,6 +114,7 @@ readRunOptions()
 }
 
 declare -r setupScript="setup"
+declare -r testsScript="tests"
 declare -r teardownScript="teardown"
 declare -r nomainFile=".nomain"
 declare -r mainFile=".main"
