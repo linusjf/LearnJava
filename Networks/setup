@@ -115,3 +115,15 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.NonblockingSingleFileHttpServer build.xml 8084 &
+echo "Sleeping for 5 seconds again after NonblockingSingleFileHttpServer start..."
+sleep 5
+curl -v http://localhost:8084/
+echo "Sleeping for 5 seconds after request to NonblockingSingleFileHttpServer..."
+sleep 5
+ps -ef | grep \
+  'networking.NonblockingSingleFileHttpServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
