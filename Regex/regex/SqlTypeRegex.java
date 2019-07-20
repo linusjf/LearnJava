@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public enum SqlTypeRegex {
   ;
+
   public static void main(String... args) {
 
     String sqlType = "NUMBER(10,2)";
@@ -26,7 +27,7 @@ public enum SqlTypeRegex {
                                         String pattern,
                                         int group) {
     Matcher m = Pattern.compile(pattern).matcher(value);
-    if (m.matches() && (group >= 0) && (group <= m.groupCount())) {
+    if (m.matches() && group >= 0 && group <= m.groupCount()) {
       return m.group(group);
     } else
       return null;
