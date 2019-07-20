@@ -59,13 +59,11 @@ tearDown ()
 	cd ..
 }
 
-
 isJVM ()
 {
   type java &>/dev/null
   return $?
 }
-
 
 runJVM()
 {
