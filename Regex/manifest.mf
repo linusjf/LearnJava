@@ -9,6 +9,6 @@ Specification-Title: Regex
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f4fabe5 July 20 2019
+Implementation-Version: 3403a6d July 20 2019
 Implementation-Vendor: 
 
