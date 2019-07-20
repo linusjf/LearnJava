@@ -96,7 +96,6 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <exec executable="./setup" />
     <java classname="${main.class}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -364,7 +363,7 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <exec executable="./teardown" />
+    <exec executable="./tests" />
   </target>
   <target name="whois">
     <java classname="${main.class35}">
