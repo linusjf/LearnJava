@@ -3,3 +3,4 @@ regex.Test
 regex.SimpleRegexTest
 regex.ScannerRegex
 regex.TypeNameRegex
+regex.SqlTypeRegex
