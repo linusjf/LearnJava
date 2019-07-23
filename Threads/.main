@@ -18,3 +18,4 @@ threads.RunningExample
 threads.SafeLock &> safelock.out
 threads.ThreadLocalExample
 threads.ThreadLocalOne &> localone.out
+threads.CyclicBarrierExample
