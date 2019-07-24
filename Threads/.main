@@ -25,3 +25,4 @@ threads.Loaders
 threads.CleanerDaemon
 threads.ExceptionTask
 threads.ReentrantLockExample
+threads.ReadWriteLockExample
