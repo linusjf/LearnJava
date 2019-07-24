@@ -30,7 +30,7 @@ public enum Loaders {
       try {
         TimeUnit.SECONDS.sleep(4);
       } catch (InterruptedException e) {
-      System.err.println(e);
+        System.err.println(e);
       }
       System.out.printf("Data sources loading has finished: %s\n", new Date());
     }
@@ -44,7 +44,7 @@ public enum Loaders {
       try {
         TimeUnit.SECONDS.sleep(6);
       } catch (InterruptedException e) {
-      System.err.println(e);
+        System.err.println(e);
       }
       System.out.printf("Network connections loading has finished: %s\n",
                         new Date());
