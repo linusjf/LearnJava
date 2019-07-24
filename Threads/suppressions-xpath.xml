@@ -3,10 +3,24 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="CleanerDaemon.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_WHILE/EXPR/LAND/GT[./IDENT[@text='difference']]/NUM_INT[@text='10_000']"/>
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' seconds']]/PLUS/DIV[./IDENT[@text='duration']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="CleanerDaemon.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_WHILE/EXPR/LAND/GT[./IDENT[@text='difference']]/NUM_INT[@text='10_000']" />
   <suppress-xpath files="CleanerDaemon.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
