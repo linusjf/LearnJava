@@ -2,6 +2,7 @@ package threads;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.Random;
 
 public enum ReentrantLockExample {
   ;
@@ -13,10 +14,14 @@ public enum ReentrantLockExample {
       thread[i] = new Thread(new Job(printQueue), "Thread " + i);
     for (int i = 0; i < 10; i++)
       thread[i].start();
+    System.out.println("Using fair lock: "
+        + printQueue.usingFair());  
   }
 
   static class PrintQueue {
-    private final Lock queueLock = new ReentrantLock();
+
+    private final Lock queueLock 
+      = new ReentrantLock(new Random().nextBoolean());
 
     public void printJob(Object document) {
       queueLock.lock();
@@ -31,6 +36,10 @@ public enum ReentrantLockExample {
       } finally {
         queueLock.unlock();
       }
+    }
+
+    public boolean usingFair() {
+      return ((ReentrantLock)queueLock).isFair();
     }
   }
 
