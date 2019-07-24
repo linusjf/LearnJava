@@ -4,13 +4,19 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="Main.java"
+       files="Loaders.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DataSourcesLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
 <suppress-xpath
-       files="Main.java"
+       files="Loaders.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='NetworkConnectionsLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
+  <suppress-xpath files="Main.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="Main.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
   <suppress-xpath files="Calculator.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Calculator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='i']]/NUM_INT[@text='10']" />
