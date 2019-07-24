@@ -9,6 +9,6 @@ Specification-Title: Threads
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a206b81 July 24 2019
+Implementation-Version: 289c814 July 24 2019
 Implementation-Vendor: 
 

@@ -96,10 +96,20 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run23">
+    <description>Run23 target</description>
+    <java classname="${main.class22}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run22">
     <description>Run22 target</description>
     <java classname="${main.class21}"
-      fork="true" output="cleaner.out">
+          fork="true"
+          output="cleaner.out">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -316,7 +326,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
+          depends="run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
 
     <description>Run target</description>
     <java classname="${main.class}"

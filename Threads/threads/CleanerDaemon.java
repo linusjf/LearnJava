@@ -43,6 +43,7 @@ public enum CleanerDaemon {
 
   static class WriterTask implements Runnable {
     private Deque<Event> deque;
+
     WriterTask(Deque<Event> deque) {
       this.deque = deque;
     }
@@ -54,9 +55,9 @@ public enum CleanerDaemon {
         event.setDate(new Date());
         event.setEvent(String.format("The thread %s has generated an event",
                                      Thread.currentThread().getId()));
-      synchronized(deque) {
-        deque.addFirst(event);
-      }
+        synchronized (deque) {
+          deque.addFirst(event);
+        }
         try {
           TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -96,13 +97,13 @@ public enum CleanerDaemon {
       boolean delete = false;
       Event e = deque.getLast();
       long difference = date.getTime() - e.getDate().getTime();
-      while (difference > 10_000 && !deque.isEmpty())  {
-          System.out.printf("Cleaner: %s\n", e.getEvent());
-          deque.removeLast();
-          delete = true;
-          e = deque.getLast();
-      difference = date.getTime() - e.getDate().getTime();
-        }
+      while (difference > 10_000 && !deque.isEmpty()) {
+        System.out.printf("Cleaner: %s\n", e.getEvent());
+        deque.removeLast();
+        delete = true;
+        e = deque.getLast();
+        difference = date.getTime() - e.getDate().getTime();
+      }
       if (delete) {
         System.out.printf("Cleaner: Size of the queue: %d\n", deque.size());
       }

@@ -6,19 +6,19 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 <suppress-xpath
        files="CleanerDaemon.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="CleanerDaemon.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WriterTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="CleanerDaemon.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_DO/SLIST/LITERAL_IF/EXPR/GT[./IDENT[@text='difference']]/NUM_INT[@text='10000']"/>
-<suppress-xpath
-       files="CleanerDaemon.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_DO/EXPR/GT[./IDENT[@text='difference']]/NUM_INT[@text='10000']"/>
+       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_WHILE/EXPR/LAND/GT[./IDENT[@text='difference']]/NUM_INT[@text='10_000']"/>
+  <suppress-xpath files="CleanerDaemon.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="CleanerDaemon.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WriterTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="CleanerDaemon.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_DO/SLIST/LITERAL_IF/EXPR/GT[./IDENT[@text='difference']]/NUM_INT[@text='10000']" />
+  <suppress-xpath files="CleanerDaemon.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_DO/EXPR/GT[./IDENT[@text='difference']]/NUM_INT[@text='10000']" />
   <suppress-xpath files="Loaders.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DataSourcesLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
