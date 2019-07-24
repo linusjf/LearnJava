@@ -13,6 +13,7 @@ import java.util.logging.Logger;
  */
 public enum CyclicBarrierExample {
   ;
+
   public static void main(String[] args) {
 
     // creating CyclicBarrier with 3 parties i.e. 3 Threads needs to call
@@ -53,8 +54,7 @@ public enum CyclicBarrierExample {
         barrier.await();
         System.out.println(Thread.currentThread().getName()
                            + " has crossed the barrier");
-      } catch (InterruptedException  |
-          BrokenBarrierException ex) {
+      } catch (InterruptedException | BrokenBarrierException ex) {
         Logger.getLogger(CyclicBarrierExample.class.getName())
             .log(Level.SEVERE, null, ex);
       }
