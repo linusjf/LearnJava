@@ -20,3 +20,6 @@ threads.ThreadLocalExample
 threads.ThreadLocalOne &> localone.out
 threads.CyclicBarrierExample
 threads.CyclicBarrierDemo
+threads.Main
+threads.Loaders
+threads.CleanerDaemon
