@@ -28,3 +28,4 @@ threads.ReentrantLockExample
 threads.ReadWriteLockExample
 threads.LockProducerConsumer
 threads.PhaserDemo
+threads.CustomPhaserDemo
