@@ -26,3 +26,4 @@ threads.CleanerDaemon
 threads.ExceptionTask
 threads.ReentrantLockExample
 threads.ReadWriteLockExample
+threads.LockProducerConsumer

@@ -3,6 +3,36 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="ReentrantLockExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='mock']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FileMock']]/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='mock']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FileMock']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Buffer']]/ELIST/EXPR/NUM_INT[@text='20']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threadConsumers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='consumers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Consumer']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='FileMock']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='FileMock']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='indice']]/ASSIGN/EXPR/STAR/NUM_INT[@text='255']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='processLine']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
   <suppress-xpath files="ReadWriteLockExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='readers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Reader']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
