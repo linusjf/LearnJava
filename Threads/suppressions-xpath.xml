@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="PhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='phaser']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Phaser']]/ELIST/EXPR/NUM_INT[@text='3']"/>
   <suppress-xpath files="SemaphoreExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='SemaphoreExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
