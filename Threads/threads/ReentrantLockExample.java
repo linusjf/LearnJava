@@ -1,8 +1,8 @@
 package threads;
 
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.Random;
 
 public enum ReentrantLockExample {
   ;
@@ -12,25 +12,40 @@ public enum ReentrantLockExample {
     Thread[] thread = new Thread[10];
     for (int i = 0; i < 10; i++)
       thread[i] = new Thread(new Job(printQueue), "Thread " + i);
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) {
       thread[i].start();
-    System.out.println("Using fair lock: "
-        + printQueue.usingFair());  
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      }
+    }
+    System.out.println("Using fair lock: " + printQueue.usingFair());
   }
 
   static class PrintQueue {
 
-    private final Lock queueLock 
-      = new ReentrantLock(new Random().nextBoolean());
+    private final Lock queueLock =
+        new ReentrantLock(new Random().nextBoolean());
 
     public void printJob(Object document) {
       queueLock.lock();
       try {
-        Long duration = (long)(Math.random() * 10_000);
+        Long duration = (long)(Math.random() * 10000);
         System.out.println(Thread.currentThread().getName()
-                           + ": PrintQueue: Printing a Job utilizing "
+                           + ": PrintQueue: Printing a Job during "
                            + (duration / 1000) + " seconds");
         Thread.sleep(duration);
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      } finally {
+        queueLock.unlock();
+      }
+      queueLock.lock();
+      try {
+        Long duration = (long)(Math.random() * 10000);
+ System.out.println(Thread.currentThread().getName()+": PrintQueue: Printing a Job during "+(duration/1000)+" seconds");
+ Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       } finally {
