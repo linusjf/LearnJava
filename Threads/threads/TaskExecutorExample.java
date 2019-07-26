@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public enum TaskExecutorExample {
   ;
 
+  // CPD-OFF
   public static void main(String[] args) {
     Server server = new Server();
     for (int i = 0; i < 100; i++) {
@@ -54,6 +55,7 @@ public enum TaskExecutorExample {
     }
   }
 
+  // CPD-ON
   static class Server {
 
     private ThreadPoolExecutor executor;
