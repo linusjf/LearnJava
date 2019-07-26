@@ -31,3 +31,4 @@ threads.PhaserDemo
 threads.CustomPhaserDemo
 threads.ExchangerDemo
 threads.TaskExecutorExample
+threads.CallableExecutorExample
