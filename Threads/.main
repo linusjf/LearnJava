@@ -33,3 +33,4 @@ threads.ExchangerDemo
 threads.TaskExecutorExample
 threads.CallableExecutorExample
 threads.InvokeAnyExecutor
+threads.InvokeAllExecutor
