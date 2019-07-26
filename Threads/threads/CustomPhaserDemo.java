@@ -1,11 +1,12 @@
 package threads;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.Phaser;
 import java.util.Date;
+import java.util.concurrent.Phaser;
+import java.util.concurrent.TimeUnit;
 
 public enum CustomPhaserDemo {
   ;
+
   public static void main(String[] args) {
     MyPhaser phaser = new MyPhaser();
     Student[] students = new Student[5];
@@ -48,8 +49,7 @@ public enum CustomPhaserDemo {
     }
 
     private boolean studentsArrived() {
-      System.out.printf(
-          "Phaser: Exams are starting. Students are ready.\n");
+      System.out.printf("Phaser: Exams are starting. Students are ready.\n");
       System.out.printf("Phaser: We have %d students.\n",
                         getRegisteredParties());
       return false;
@@ -78,10 +78,11 @@ public enum CustomPhaserDemo {
 
   static class Student implements Runnable {
     private Phaser phaser;
-    
+
     Student(Phaser phaser) {
       this.phaser = phaser;
     }
+
     @Override
     public void run() {
       System.out.printf("%s: Has arrived to take the exam. %s\n",
@@ -119,7 +120,7 @@ public enum CustomPhaserDemo {
         long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-      System.err.println(e);
+        System.err.println(e);
       }
     }
 
@@ -128,7 +129,7 @@ public enum CustomPhaserDemo {
         long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-      System.err.println(e);
+        System.err.println(e);
       }
     }
 
@@ -137,7 +138,7 @@ public enum CustomPhaserDemo {
         long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-      System.err.println(e);
+        System.err.println(e);
       }
     }
   }

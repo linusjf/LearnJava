@@ -29,3 +29,5 @@ threads.ReadWriteLockExample
 threads.LockProducerConsumer
 threads.PhaserDemo
 threads.CustomPhaserDemo
+threads.ExchangerDemo
+threads.TaskExecutorExample

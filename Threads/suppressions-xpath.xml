@@ -3,6 +3,27 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="TaskExecutorExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaskExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="TaskExecutorExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaskExecutorExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExchangerDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExchangerDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExchangerDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='message']]/ASSIGN/EXPR/PLUS[./STRING_LITERAL[@text='Event ']]/PLUS[./IDENT[@text='j']]/STAR[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExchangerDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExchangerDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='10']" />
   <suppress-xpath files="CustomPhaserDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Student']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExercise1']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
