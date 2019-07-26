@@ -3,6 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="InvokeAnyExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InvokeAnyExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='UserValidator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='validate']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
   <suppress-xpath files="FixedSizeExecutorExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='FixedSizeExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
