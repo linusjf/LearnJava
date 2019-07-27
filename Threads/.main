@@ -38,3 +38,4 @@ threads.DelayedExecutor
 threads.PeriodicExecutor
 threads.CancelledExecutor
 threads.CompletionServiceDemo
+threads.RejectedExecutor

@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="RejectedExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="RejectedExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
        files="CompletionServiceDemo.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
