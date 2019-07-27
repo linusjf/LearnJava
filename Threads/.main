@@ -37,3 +37,4 @@ threads.InvokeAllExecutor
 threads.DelayedExecutor
 threads.PeriodicExecutor
 threads.CancelledExecutor
+threads.CompletionServiceDemo
