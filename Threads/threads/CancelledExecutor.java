@@ -27,6 +27,7 @@ public enum CancelledExecutor {
     System.out.printf("Main: The executor has finished\n");
   }
 
+  @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
     @Override
     public void run() {

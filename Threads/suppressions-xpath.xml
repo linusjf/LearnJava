@@ -4,6 +4,22 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='resultTasks']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ResultTask']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ExecutableTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
        files="CancelledExecutor.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='CancelledExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
