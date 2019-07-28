@@ -40,3 +40,4 @@ threads.CancelledExecutor
 threads.CompletionServiceDemo
 threads.RejectedExecutor
 threads.ForkJoinPoolDemo
+threads.ForkJoinPoolRunnableDemo
