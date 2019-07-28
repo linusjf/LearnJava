@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.TimeUnit;
 
 public enum ForkJoinPoolRunnableDemo {
   ;
-  private final static int EXPECTED_PRICE = 12;
-  private final static int BATCH_SIZE = 10;
-
+  private static final int EXPECTED_PRICE = 12;
+  private static final int BATCH_SIZE = 10;
 
   public static void main(String[] args) {
     ProductListGenerator generator = new ProductListGenerator();
@@ -96,7 +94,7 @@ public enum ForkJoinPoolRunnableDemo {
     }
 
     void setForkedTask(ForkJoinTask t) {
-    this.t = t;
+      this.t = t;
     }
 
     @Override

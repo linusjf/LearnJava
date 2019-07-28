@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 public enum ForkJoinPoolDemo {
   ;
-  private final static int EXPECTED_PRICE = 12;
-  private final static int BATCH_SIZE = 10;
+  private static final int EXPECTED_PRICE = 12;
+  private static final int BATCH_SIZE = 10;
 
   public static void main(String[] args) {
     ProductListGenerator generator = new ProductListGenerator();
@@ -93,9 +93,9 @@ public enum ForkJoinPoolDemo {
 
     @Override
     protected void compute() {
-      if (last - first < BATCH_SIZE) 
+      if (last - first < BATCH_SIZE)
         updatePrices();
-        else {
+      else {
         int middle = (last + first) / 2;
         System.out.printf("Task: Pending tasks: %s\n", getQueuedTaskCount());
         Task t1 = new Task(products, first, middle + 1, increment);
