@@ -4,41 +4,56 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="RejectedExecutor.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='products']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
 <suppress-xpath
-       files="RejectedExecutor.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Task']]/ELIST/EXPR/NUM_FLOAT[@text='0.20']"/>
 <suppress-xpath
-       files="CompletionServiceDemo.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_DO/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
 <suppress-xpath
-       files="CompletionServiceDemo.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/NOT_EQUAL/NUM_INT[@text='12']"/>
 <suppress-xpath
-       files="ControllingExecutor.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='resultTasks']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ResultTask']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ProductListGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generate']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
 <suppress-xpath
-       files="ControllingExecutor.java"
+       files="ForkJoinPoolDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="ControllingExecutor.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="ControllingExecutor.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ExecutableTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="CancelledExecutor.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='CancelledExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/EXPR/LT/NUM_INT[@text='10']"/>
+  <suppress-xpath files="RejectedExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="RejectedExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="CompletionServiceDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="CompletionServiceDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20']" />
+  <suppress-xpath files="ControllingExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='resultTasks']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ResultTask']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ControllingExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="ControllingExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ControllingExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ExecutableTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="CancelledExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelledExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
   <suppress-xpath files="PeriodicExecutor.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='PeriodicExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />

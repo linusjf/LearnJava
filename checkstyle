@@ -64,5 +64,4 @@ java -cp @../"$classpathFile" \
 -p ../"$properties_file" \
 -o "$output_file" \
 "${args[@]}")
-[ -e "$1".xml ] && rm "$1".xml ]
 exit $?
