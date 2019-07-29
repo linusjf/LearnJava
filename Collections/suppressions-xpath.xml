@@ -4,6 +4,30 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='LinkedBlockingDeque']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='300']"/>
+<suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="LinkedBlockingDequeueDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='5']"/>
+<suppress-xpath
        files="ConcurrentLinkedDequeDemo.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='alternateMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
