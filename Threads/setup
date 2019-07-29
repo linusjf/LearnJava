@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-wget -nc https://upload.wikimedia.org/wikipedia/commons/2/23/Red_Tulips.jpg
-exit $?
