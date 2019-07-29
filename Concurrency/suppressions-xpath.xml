@@ -3,6 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="ExceptionalForkJoin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='array']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ExceptionalForkJoin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Task']]/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ExceptionalForkJoin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/EXPR/LT/NUM_INT[@text='10']" />
+  <suppress-xpath files="ExceptionalForkJoin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LAND/GT/NUM_INT[@text='3']" />
+  <suppress-xpath files="ExceptionalForkJoin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LAND/LT/NUM_INT[@text='3']" />
   <suppress-xpath files="AsynchronousExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='AsynchronousExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='FolderProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/GT/NUM_INT[@text='50']" />
