@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 declare -r errFile="cpd.errors"
 declare -r format="text"
 declare -r language="java"

@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 find . -name pmd.errors \
        | xargs -i wc -l {} \
        | awk '$1 > 0'
