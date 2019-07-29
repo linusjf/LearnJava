@@ -3,6 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="CancelForkJoinPool.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SearchNumberTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/EXPR/GT/NUM_INT[@text='10']" />
+  <suppress-xpath files="CancelForkJoinPool.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='array']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="CancelForkJoinPool.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SearchNumberTask']]/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="CancelForkJoinPool.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SearchNumberTask']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="CancelForkJoinPool.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ArrayGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateArray']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
   <suppress-xpath files="ExceptionalForkJoin.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='array']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />

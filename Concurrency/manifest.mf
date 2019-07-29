@@ -9,6 +9,6 @@ Specification-Title: Concurrency
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a925885 July 29 2019
+Implementation-Version: 7f13ed9 July 29 2019
 Implementation-Vendor: 
 
