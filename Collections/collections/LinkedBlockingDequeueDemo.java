@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum LinkedBlockingDequeueDemo {
   ;
+
   public static void main(String[] args) {
     try {
       LinkedBlockingDeque<String> list = new LinkedBlockingDeque<>(3);
@@ -41,7 +42,7 @@ public enum LinkedBlockingDequeueDemo {
       for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 5; j++) {
           StringBuilder request = new StringBuilder();
-          request.append(i).append(":").append(j);
+          request.append(i).append(':').append(j);
           try {
             requestList.put(request.toString());
           } catch (InterruptedException e) {
