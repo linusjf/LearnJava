@@ -49,7 +49,7 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-                rev="8.22"
+                rev="8.23"
                 conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
