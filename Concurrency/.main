@@ -47,3 +47,4 @@ threads.ExceptionalForkJoin
 threads.CancelForkJoinPool
 custom.CustomExecutor
 custom.CustomTask
+custom.CustomThreadFactory
