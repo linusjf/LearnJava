@@ -2,6 +2,8 @@ package custom;
 
 import java.util.Date;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class CustomThreadFactory implements ThreadFactory {
@@ -17,12 +19,22 @@ public class CustomThreadFactory implements ThreadFactory {
       Thread thread = myFactory.newThread(task);
       thread.start();
       thread.join();
-      System.out.printf("Main: Thread information.\n");
-      System.out.printf("%s\n", thread);
       System.out.printf("Main: End of the example.\n");
+      alternateMain();
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
+  }
+
+  public static void alternateMain() throws InterruptedException {
+    CustomThreadFactory threadFactory =
+        new CustomThreadFactory("CustomThreadFactory-alternate");
+    ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
+    CustomTask task = new CustomTask();
+    executor.submit(task);
+    executor.shutdown();
+if (executor.awaitTermination(1, TimeUnit.DAYS))
+	System.out.printf("Alternate Main: End of the program.\n");
   }
 
   public CustomThreadFactory(String prefix) {
@@ -52,6 +64,8 @@ public class CustomThreadFactory implements ThreadFactory {
       setStartDate();
       super.run();
       setFinishDate();
+      System.out.printf("%s: Thread information.\n",getName());
+      System.out.printf("%s\n", this);
     }
 
     public void setStartDate() {
