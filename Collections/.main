@@ -2,3 +2,4 @@ collections.ConcurrentLinkedDequeDemo
 collections.LinkedBlockingDequeueDemo
 collections.PriorityQueueDemo
 collections.DelayedQueueDemo
+collections.TaskLocalRandom
