@@ -45,3 +45,5 @@ threads.ForkJoinResultDemo
 threads.AsynchronousExample
 threads.ExceptionalForkJoin
 threads.CancelForkJoinPool
+custom.CustomExecutor
+custom.CustomTask

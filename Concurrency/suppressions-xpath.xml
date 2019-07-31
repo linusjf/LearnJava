@@ -3,6 +3,46 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myExecutor']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CustomExecutor']]/ELIST/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myExecutor']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CustomExecutor']]/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="CustomThreadFactory.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomThreadFactory']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CustomThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='50']"/>
   <suppress-xpath files="AtomicAssignment.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']" />
