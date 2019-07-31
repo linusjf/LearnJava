@@ -26,7 +26,7 @@ public class FutureDemo {
     FactorialCalculator task = new FactorialCalculator(10);
     System.out.println("Submitting Task ...");
 
-    Future future = threadpool.submit(task);
+    Future<Long> future = threadpool.submit(task);
 
     System.out.println("Task is submitted");
 
@@ -42,7 +42,7 @@ public class FutureDemo {
     threadpool.shutdown();
   }
 
-  private static class FactorialCalculator implements Callable {
+  private static class FactorialCalculator implements Callable<Long> {
 
     private final int number;
 
@@ -56,7 +56,7 @@ public class FutureDemo {
       try {
         output = factorial(number);
       } catch (InterruptedException ex) {
-        Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FutureDemo.class.getName()).log(Level.SEVERE, null, ex);
       }
       return output;
     }
