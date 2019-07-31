@@ -3,3 +3,4 @@ collections.LinkedBlockingDequeueDemo
 collections.PriorityQueueDemo
 collections.DelayedQueueDemo
 collections.TaskLocalRandom
+collections.AtomicArrayDemo
