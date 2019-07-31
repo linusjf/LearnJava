@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum DelayedQueueDemo {
   ;
+
   public static void main(String[] args) {
     try {
       DelayQueue<Event> queue = new DelayQueue<>();

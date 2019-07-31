@@ -4,17 +4,30 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="DelayedQueueDemo.java"
+       files="ConcurrentSkipListMapDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='25']"/>
 <suppress-xpath
-       files="DelayedQueueDemo.java"
+       files="ConcurrentSkipListMapDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_INT[@text='1000']"/>
+       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='25']"/>
 <suppress-xpath
-       files="DelayedQueueDemo.java"
+       files="ConcurrentSkipListMapDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="ConcurrentSkipListMapDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='contact']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Contact']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='i']]/NUM_INT[@text='1000']"/>
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
   <suppress-xpath files="PriorityQueueDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='taskThreads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
