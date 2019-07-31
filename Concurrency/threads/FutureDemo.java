@@ -15,38 +15,40 @@ import java.util.logging.Logger;
  *
  * @author Javin
  */
-public class FutureDemo {
-
-  private static final ExecutorService threadpool =
+public enum FutureDemo {
+  ;
+  private static final ExecutorService THREAD_POOL =
       Executors.newFixedThreadPool(3);
 
-  public static void main(String args[])
-      throws InterruptedException, ExecutionException {
+  public static void main(String[] args) {
+    try {
+      FactorialCalculator task = new FactorialCalculator(10);
+      System.out.println("Submitting Task ...");
 
-    FactorialCalculator task = new FactorialCalculator(10);
-    System.out.println("Submitting Task ...");
+      Future<Long> future = THREAD_POOL.submit(task);
 
-    Future<Long> future = threadpool.submit(task);
+      System.out.println("Task is submitted");
 
-    System.out.println("Task is submitted");
+      while (!future.isDone()) {
+        System.out.println("Task is not completed yet....");
+        Thread.sleep(1);  // sleep for 1 millisecond before checking again
+      }
 
-    while (!future.isDone()) {
-      System.out.println("Task is not completed yet....");
-      Thread.sleep(1);  // sleep for 1 millisecond before checking again
+      System.out.println("Task is completed, let's check result");
+      long factorial = future.get();
+      System.out.println("Factorial of 1000000 is : " + factorial);
+
+      THREAD_POOL.shutdown();
+    } catch (InterruptedException | ExecutionException e) {
+      System.err.println(e);
     }
-
-    System.out.println("Task is completed, let's check result");
-    long factorial = future.get();
-    System.out.println("Factorial of 1000000 is : " + factorial);
-
-    threadpool.shutdown();
   }
 
   private static class FactorialCalculator implements Callable<Long> {
 
     private final int number;
 
-    public FactorialCalculator(int number) {
+    FactorialCalculator(int number) {
       this.number = number;
     }
 
@@ -56,7 +58,8 @@ public class FutureDemo {
       try {
         output = factorial(number);
       } catch (InterruptedException ex) {
-        Logger.getLogger(FutureDemo.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FutureDemo.class.getName())
+            .log(Level.SEVERE, null, ex);
       }
       return output;
     }

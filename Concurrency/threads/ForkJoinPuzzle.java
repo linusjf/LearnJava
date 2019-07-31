@@ -3,7 +3,9 @@ package threads;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
-public class ForkJoinPuzzle {
+public enum ForkJoinPuzzle {
+  ;
+
   public static void main(String... args) {
     System.out.println("Forkjoin pool size: "
                        + ForkJoinPool.getCommonPoolParallelism());
