@@ -18,53 +18,34 @@
    under the License.
 -->
 <ivy-module version="2.0">
-  <info organisation="linus"
-        module="LearnJava" />
+  <info organisation="linus" module="LearnJava"/>
   <configurations>
-    <conf name="checkstyle.main"
-          description="checkstyle main jar" />
-    <conf name="gformat.main"
-          description="google java format main jar" />
-    <conf name="checkstyle.lib"
-          description="checkstyle dependencies" />
-    <conf name="gformat.lib"
-          description="google java format dependencies" />
-    <conf name="pmd-core.main"
-          description="pmd core main jars" />
-    <conf name="pmd-core.lib"
-          description="pmd core dependent jars" />
-    <conf name="pmd-java.main"
-          description="pmd java main jars" />
-    <conf name="pmd-java.lib"
-          description="pmd java dependent jars" />
-    <conf name="saxon"
-          description="saxon jars" />
+    <conf name="checkstyle.main" description="checkstyle main jar"/>
+    <conf name="gformat.main" description="google java format main jar"/>
+    <conf name="checkstyle.lib" description="checkstyle dependencies"/>
+    <conf name="gformat.lib" description="google java format dependencies"/>
+    <conf name="pmd-core.main" description="pmd core main jars"/>
+    <conf name="pmd-core.lib" description="pmd core dependent jars"/>
+    <conf name="pmd-java.main" description="pmd java main jars"/>
+    <conf name="pmd-java.lib" description="pmd java dependent jars"/>
+    <conf name="log4j-core.main" description="log4j core main jars"/>
+    <conf name="log4j-core.lib" description="log4j core dependent jars"/>
+    <conf name="log4j-api.main" description="log4j api main jars"/>
+    <conf name="log4j-api.lib" description="log4j api dependent jars"/>
+    <conf name="saxon" description="saxon jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
-    <dependency org="com.google.googlejavaformat"
-                name="google-java-format"
-                rev="1.7"
-                conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
+    <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat.main-&gt;master;gformat.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
-    <dependency org="com.puppycrawl.tools"
-                name="checkstyle"
-                rev="8.23"
-                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
+    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.23" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
-    <dependency org="net.sourceforge.pmd"
-                name="pmd-core"
-                rev="6.16.0"
-                conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
-    <dependency org="net.sourceforge.pmd"
-                name="pmd-java"
-                rev="6.16.0"
-                conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
+    <dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.16.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile"/>
+    <dependency org="net.sourceforge.pmd" name="pmd-java" rev="6.16.0" conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
     </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
-    <dependency org="net.sourceforge.saxon"
-                name="saxon"
-                rev="9.1.0.8"
-                conf="saxon-&gt;master" />
-  </dependencies>
+    <dependency org="net.sourceforge.saxon" name="saxon" rev="9.1.0.8" conf="saxon-&gt;master"/>
+      <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.12.0" conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile"/>
+      <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.12.0" conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile"/>
+    </dependencies>
 </ivy-module>
