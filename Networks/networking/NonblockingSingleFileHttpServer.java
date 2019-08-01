@@ -5,14 +5,14 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.URLConnection;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.FileSystems;
 import java.nio.channels.SelectionKey;
-import java.nio.channels.SocketChannel;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Iterator;
 
 public class NonblockingSingleFileHttpServer {
@@ -79,7 +79,7 @@ public class NonblockingSingleFileHttpServer {
           try {
             key.channel().close();
           } catch (IOException cex) {
-System.err.println(cex);
+            System.err.println(cex);
           }
         }
       }
@@ -105,8 +105,7 @@ System.err.println(cex);
         port = Integer.parseInt(args[1]);
         if (port < 1 || port > 65535)
           port = 80;
-      } catch (NumberFormatException |
-ArrayIndexOutOfBoundsException ex) {
+      } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
         port = 80;
       }
       String encoding = "UTF-8";

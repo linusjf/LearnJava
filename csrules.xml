@@ -225,7 +225,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <message key="ws.notPreceded"
                value="WhitespaceAround: ''{0}'' is not preceded with whitespace." />
     </module>
-    <module name="OneStatementPerLine" />
+    <module name="OneStatementPerLine">
+      <property name="treatTryResourcesAsStatement"
+                value="true" />
+    </module>
     <module name="MultipleVariableDeclarations" />
     <module name="ArrayTypeStyle" />
     <module name="MissingSwitchDefault" />
@@ -394,6 +397,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="forbiddenSummaryFragments"
                 value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )" />
     </module>
+    <module name="InvalidJavadocPosition" />
     <module name="JavadocParagraph" />
     <module name="AtclauseOrder">
       <property name="tagOrder"
@@ -437,6 +441,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignoreAnnotation"
                 value="true" />
       <property name="ignoreHashCodeMethod"
+                value="true" />
+      <property name="ignoreAnnotationElementDefaults"
                 value="true" />
     </module>
     <module name="ArrayTrailingComma" />

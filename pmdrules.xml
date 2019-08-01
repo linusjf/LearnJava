@@ -41,6 +41,7 @@
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray" />
   <rule ref="category/java/bestpractices.xml/MissingOverride" />
   <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
+
     <properties>
       <property name="strictMode"
                 value="false" />
@@ -108,7 +109,7 @@
   <rule ref="category/java/codestyle.xml/MethodNamingConventions" />
   <rule ref="category/java/codestyle.xml/PackageCase" />
   <rule ref="category/java/codestyle.xml/ShortClassName" />
-  <rule ref="category/java/codestyle.xml/ShortMethodName" /> 
+  <rule ref="category/java/codestyle.xml/ShortMethodName" />
   <!-- <rule ref="category/java/codestyle.xml/ShortVariable" /> -->
   <!-- <rule ref="category/java/codestyle.xml/LocalHomeNamingConvention" /> -->
   <!-- <rule ref="category/java/codestyle.xml/LocalInterfaceSessionNamingConvention" /> -->
@@ -197,7 +198,7 @@
   <rule ref="category/java/design.xml/ExcessiveParameterList" />
   <rule ref="category/java/design.xml/ExcessivePublicCount" />
   <rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
-  <rule ref="category/java/design.xml/GodClass" /> 
+  <rule ref="category/java/design.xml/GodClass" />
   <!--  <rule ref="category/java/design.xml/ImmutableField" /> -->
   <!-- <rule ref="category/java/design.xml/LawOfDemeter" /> -->
   <rule ref="category/java/design.xml/LogicInversion" />
@@ -209,18 +210,18 @@
   </rule> -->
   <rule ref="category/java/design.xml/NcssCount" />
   <rule ref="category/java/design.xml/NPathComplexity" />
-  <rule ref="category/java/design.xml/SignatureDeclareThrowsException" /> 
+  <rule ref="category/java/design.xml/SignatureDeclareThrowsException" />
   <rule ref="category/java/design.xml/SimplifiedTernary" />
   <!-- <rule ref="category/java/design.xml/SimplifyBooleanAssertion" /> -->
   <!-- <rule ref="category/java/design.xml/SimplifyBooleanExpressions" /> -->
   <rule ref="category/java/design.xml/SimplifyBooleanReturns" />
   <rule ref="category/java/design.xml/SimplifyConditional" />
   <rule ref="category/java/design.xml/SingularField" />
-  <rule ref="category/java/design.xml/SwitchDensity" /> 
-   <rule ref="category/java/design.xml/TooManyFields" />
-   <rule ref="category/java/design.xml/TooManyMethods" /> 
+  <rule ref="category/java/design.xml/SwitchDensity" />
+  <rule ref="category/java/design.xml/TooManyFields" />
+  <rule ref="category/java/design.xml/TooManyMethods" />
   <rule ref="category/java/design.xml/UselessOverridingMethod" />
-  <rule ref="category/java/design.xml/UseObjectForClearerAPI" /> 
+  <rule ref="category/java/design.xml/UseObjectForClearerAPI" />
   <rule ref="category/java/design.xml/UseUtilityClass" />
   <!-- <rule ref="category/java/documentation.xml/CommentContent" /> -->
   <!-- <rule ref="category/java/documentation.xml/CommentRequired" /> -->
@@ -266,6 +267,7 @@
   <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName" />
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause" />
   <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+
     <properties>
       <property name="ignoreMagicNumbers"
                 value="-1,0,1" />
@@ -287,10 +289,14 @@
   <rule ref="category/java/errorprone.xml/CloneThrowsCloneNotSupportedException" />
   <rule ref="category/java/errorprone.xml/CloseResource">
     <properties>
-        <property name="closeTargets" value="" />
-        <property name="types" value="java.sql.Connection,java.sql.Statement,java.sql.ResultSet" />
-        <property name="closeAsDefaultTarget" value="true" />
-        <property name="allowedResourceTypes" value="java.io.ByteArrayOutputStream|java.io.StringWriter" />
+      <property name="closeTargets"
+                value="" />
+      <property name="types"
+                value="java.sql.Connection,java.sql.Statement,java.sql.ResultSet" />
+      <property name="closeAsDefaultTarget"
+                value="true" />
+      <property name="allowedResourceTypes"
+                value="java.io.ByteArrayOutputStream|java.io.StringWriter" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals" />
@@ -305,10 +311,10 @@
   <rule ref="category/java/errorprone.xml/DontImportSun" />
   <rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices" />
   <rule ref="category/java/errorprone.xml/EqualsNull" />
-   <rule ref="category/java/errorprone.xml/FinalizeDoesNotCallSuperFinalize" /> 
-  <rule ref="category/java/errorprone.xml/FinalizeOnlyCallsSuperFinalize" /> 
-   <rule ref="category/java/errorprone.xml/FinalizeOverloaded" /> 
-   <rule ref="category/java/errorprone.xml/FinalizeShouldBeProtected" /> 
+  <rule ref="category/java/errorprone.xml/FinalizeDoesNotCallSuperFinalize" />
+  <rule ref="category/java/errorprone.xml/FinalizeOnlyCallsSuperFinalize" />
+  <rule ref="category/java/errorprone.xml/FinalizeOverloaded" />
+  <rule ref="category/java/errorprone.xml/FinalizeShouldBeProtected" />
   <rule ref="category/java/errorprone.xml/IdempotentOperations" />
   <rule ref="category/java/errorprone.xml/ImportFromSamePackage" />
   <rule ref="category/java/errorprone.xml/InstantiationToGetClass" />
@@ -331,7 +337,7 @@
   <rule ref="category/java/errorprone.xml/ProperLogger" />
   <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull" />
   <rule ref="category/java/errorprone.xml/ReturnFromFinallyBlock" />
-  <rule ref="category/java/errorprone.xml/SimpleDateFormatNeedsLocale" /> 
+  <rule ref="category/java/errorprone.xml/SimpleDateFormatNeedsLocale" />
   <rule ref="category/java/errorprone.xml/SingleMethodSingleton" />
   <rule ref="category/java/errorprone.xml/SingletonClassReturningNewInstance" />
   <!-- <rule ref="category/java/errorprone.xml/StaticEJBFieldShouldBeFinal" /> -->
@@ -345,7 +351,7 @@
   <rule ref="category/java/errorprone.xml/UnnecessaryCaseChange" />
   <rule ref="category/java/errorprone.xml/UnnecessaryConversionTemporary" />
   <rule ref="category/java/errorprone.xml/UnusedNullCheckInEquals" />
-  <rule ref="category/java/errorprone.xml/UseCorrectExceptionLogging" /> 
+  <rule ref="category/java/errorprone.xml/UseCorrectExceptionLogging" />
   <rule ref="category/java/errorprone.xml/UseEqualsToCompareStrings" />
   <rule ref="category/java/errorprone.xml/UselessOperationOnImmutable" />
   <rule ref="category/java/errorprone.xml/UseLocaleWithCaseConversions" />
@@ -353,7 +359,8 @@
   <!-- Empty rules -->
   <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
     <properties>
-        <property name="allowCommentedBlocks" value="true" />
+      <property name="allowCommentedBlocks"
+                value="true" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/EmptyCatchBlock" />
@@ -407,7 +414,7 @@
   <rule ref="category/java/performance.xml/UselessStringValueOf" />
   <rule ref="category/java/performance.xml/UseStringBufferForStringAppends" />
   <rule ref="category/java/performance.xml/UseStringBufferLength" />
-  <rule ref="category/java/security.xml/HardCodedCryptoKey" /> 
+  <rule ref="category/java/security.xml/HardCodedCryptoKey" />
   <rule ref="category/java/security.xml/InsecureCryptoIv" />
   <rule ref="category/java/bestpractices.xml/DoubleBraceInitialization" />
 </ruleset>

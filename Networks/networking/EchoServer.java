@@ -21,8 +21,7 @@ public final class EchoServer {
     int port;
     try {
       port = Integer.parseInt(args[0]);
-    } catch (NumberFormatException |
-        ArrayIndexOutOfBoundsException ex) {
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
     }
     return port;

@@ -36,7 +36,7 @@ public enum FutureDemo {
 
       System.out.println("Task is completed, let's check result");
       long factorial = future.get();
-      System.out.println("Factorial of 1000000 is : " + factorial);
+      System.out.println("Factorial of 10 is : " + factorial);
 
       THREAD_POOL.shutdown();
     } catch (InterruptedException | ExecutionException e) {
@@ -68,11 +68,12 @@ public enum FutureDemo {
       if (number < 0) {
         throw new IllegalArgumentException("Number must be greater than zero");
       }
+      int num = number;
       long result = 1;
-      while (number > 0) {
+      while (num > 0) {
         Thread.sleep(1);  // adding delay for example
-        result = result * number;
-        number--;
+        result = result * num;
+        num--;
       }
       return result;
     }

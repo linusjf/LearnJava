@@ -3,6 +3,24 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="Ping.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Ping']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="NonblockingSingleFileHttpServer.java"
+                  checks="ParameterNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='MIMEType']" />
+  <suppress-xpath files="NonblockingSingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4096']" />
+  <suppress-xpath files="NonblockingSingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65535']" />
+  <suppress-xpath files="NonblockingSingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']" />
+  <suppress-xpath files="NonblockingSingleFileHttpServer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST/EXPR/ASSIGN[./IDENT[@text='port']]/NUM_INT[@text='80']" />
   <suppress-xpath files="IntgenClient.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='IntgenClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
