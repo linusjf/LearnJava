@@ -527,9 +527,7 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
                   query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
   <suppress-xpath files="ForkBlur.java"
                   checks="MultipleVariableDeclarationsCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='rt']] | 
-/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gt']] | 
-/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='bt']]" />
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='rt']] | /CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gt']] | /CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='bt']]" />
   <suppress-xpath files="ForkBlur.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='mBlurWidth']]/TYPECAST/SR[./NUM_INT[@text='16']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x00ff0000']" />

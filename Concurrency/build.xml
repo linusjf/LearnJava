@@ -587,7 +587,7 @@
       <arg line="../cformat ${basedir}" />
     </exec>
     <exec executable="bash">
-      <arg line="../xformatall ${basedir}" />
+      <arg line="../xformatall" />
     </exec>
   </target>
   <target name="checkstyle">

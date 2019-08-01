@@ -1,6 +1,8 @@
 #!/bin/bash
 declare -r configFileName="tidy.config"
-configFilePath="$(find .. -maxdepth 2 -type f -name "$configFileName" ! -path "**/.git/**" -path "**/LearnJava/**")"
+configFilePath="$(find .. -maxdepth 2 \
+-type f -name "$configFileName" ! -path \
+"**/.git/**" | head -n 1)"
 find . -maxdepth 2 -type f -name "*.xml" \
   ! -path "**/.git/**" \
   | parallel -j 5 -I% tidy -config "$configFilePath" \

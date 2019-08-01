@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 
 public enum CommonPoolTest {
   ;
+
   public static void main(String[] args) {
     System.out.println("CPU Core: "
                        + Runtime.getRuntime().availableProcessors());
