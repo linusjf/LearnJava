@@ -21,13 +21,13 @@ public class NonblockingSingleFileHttpServer {
 
   public NonblockingSingleFileHttpServer(ByteBuffer data,
                                          String encoding,
-                                         String MIMEType,
+                                         String mimeType,
                                          int port) {
     this.port = port;
     String header = "HTTP/1.0 200 OK\r\n"
                     + "Server: NonblockingSingleFileHTTPServer\r\n"
                     + "Content-length: " + data.limit() + "\r\n"
-                    + "Content-type: " + MIMEType + "\r\n\r\n";
+                    + "Content-type: " + mimeType + "\r\n\r\n";
     byte[] headerData = header.getBytes(Charset.forName("US-ASCII"));
     ByteBuffer buffer = ByteBuffer.allocate(data.limit() + headerData.length);
     buffer.put(headerData);

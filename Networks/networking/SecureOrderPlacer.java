@@ -48,10 +48,9 @@ public final class SecureOrderPlacer {
       // add anonymous (non-authenticated) cipher suites
       String[] supported = ssf.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
-      /**
-       * String[] anonCipherSuitesSupported = new String[supported.length]; int
-       * numAnonCipherSuitesSupported = 0;*
-       */
+      // String[] anonCipherSuitesSupported = new String[supported.length];
+      // int numAnonCipherSuitesSupported = 0;
+
       for (String instance: supported) {
         if (instance.indexOf("_anon_") > 0) {
           anonCiphers.add(instance);

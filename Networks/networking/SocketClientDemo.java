@@ -27,11 +27,10 @@ public final class SocketClientDemo {
           new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
       s.setEnabledProtocols(new String[] {"TLSv1.2"});
 
-      /**
-       * SSLParameters sslParams = new SSLParameters();
-       * sslParams.setEndpointIdentificationAlgorithm("HTTPS");
-       * s.setSSLParameters(sslParams);*
-       */
+      // SSLParameters sslParams = new SSLParameters();
+      // sslParams.setEndpointIdentificationAlgorithm("HTTPS");
+      // s.setSSLParameters(sslParams);
+
       BufferedReader input =
           new BufferedReader(new InputStreamReader(s.getInputStream()));
       System.out.println(input.readLine());

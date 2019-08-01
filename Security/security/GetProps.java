@@ -33,7 +33,7 @@ package security;
 public enum GetProps {
   ;
 
-  private final static String NOT_SPECIFIED =
+  private static final String NOT_SPECIFIED =
     "not specified";
 
   public static void main(String[] args) {
