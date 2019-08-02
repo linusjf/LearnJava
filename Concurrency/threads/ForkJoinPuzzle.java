@@ -6,10 +6,12 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public enum ForkJoinPuzzle {
   ;
-  private static int counter;
+  private static AtomicInteger counter =
+    new AtomicInteger();
   private static Map<String, Integer> processorsCount =
       new ConcurrentHashMap<>();
 
@@ -29,7 +31,7 @@ public enum ForkJoinPuzzle {
                        + Runtime.getRuntime().availableProcessors());
     // sequentialStream().forEach(val -> process());
     parallelStream().forEach(val -> process());
-    System.out.println("counter = " + counter);
+    System.out.println("counter = " + counter.get());
     // printProcessorCount();
   }
 
@@ -48,10 +50,13 @@ public enum ForkJoinPuzzle {
       String processor = Thread.currentThread().getName();
       System.out.println("Processing: " + processor);
       Runnable updateTask = () -> parallelStream().forEach(value -> {
+      System.out.printf("Active thread count: %d\n",
+          Thread.activeCount());
         System.out.println("Updating: " + Thread.currentThread().getName()
                            + " value = " + value + " "
                            + ForkJoinPool.commonPool());
-        counter++;
+        counter.incrementAndGet();
+        System.out.printf("Thread %s\n",Thread.currentThread());
       });
       Thread thread = new Thread(updateTask, "Worker for " + processor);
       thread.start();

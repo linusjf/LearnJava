@@ -49,3 +49,9 @@ custom.CustomExecutor
 custom.CustomTask
 custom.CustomThreadFactory
 custom.CustomScheduledTask
+threads.ForkJoinPuzzle
+threads.TestFjDeadlock
+threads.CommonForkJoinPoolExample
+threads.CommonForkJoinPoolThreads 
+threads.ForkJoinPoolExample 
+threads.CommonPoolTest
