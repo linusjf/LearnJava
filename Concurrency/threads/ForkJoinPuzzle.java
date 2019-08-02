@@ -1,12 +1,17 @@
 package threads;
 
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
 public enum ForkJoinPuzzle {
   ;
   private static int counter = 0;
+  private static Map<String, Integer> processorsCount =
+      new ConcurrentHashMap<>();
 
   public static void main(String... args) {
 
@@ -22,8 +27,20 @@ public enum ForkJoinPuzzle {
                        + ForkJoinPool.getCommonPoolParallelism());
     System.out.println("No. of processors: "
                        + Runtime.getRuntime().availableProcessors());
+    // sequentialStream().forEach(val -> process());
     parallelStream().forEach(val -> process());
     System.out.println("counter = " + counter);
+    // printProcessorCount();
+  }
+
+  private static void printProcessorCount() {
+    Set<Map.Entry<String, Integer>> mapEntries = processorsCount.entrySet();
+    synchronized (System.out) {
+      System.out.println("***********''***********************'");
+      for (Map.Entry<String, Integer> entry: mapEntries)
+        System.out.println(entry.getKey() + " : " + entry.getValue());
+      System.out.println("***********''***********************'");
+    }
   }
 
   private static void process() {
@@ -39,7 +56,14 @@ public enum ForkJoinPuzzle {
       Thread thread = new Thread(updateTask, "Worker for " + processor);
       thread.start();
       System.out.println("Waiting: " + processor);
+      Integer count = processorsCount.get(processor);
+      if (count == null)
+        processorsCount.put(processor, 1);
+      else
+        processorsCount.put(processor, ++count);
       thread.join();
+      System.out.println("Ended: " + processor);
+      printProcessorCount();
     } catch (InterruptedException e) {
       System.err.println(e);
       Thread.currentThread().interrupt();
@@ -49,5 +73,10 @@ public enum ForkJoinPuzzle {
   private static IntStream parallelStream() {
     return IntStream.range(0, Runtime.getRuntime().availableProcessors())
         .parallel();
+  }
+
+  private static IntStream sequentialStream() {
+    return IntStream.range(0, Runtime.getRuntime().availableProcessors())
+        .sequential();
   }
 }
