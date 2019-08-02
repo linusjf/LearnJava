@@ -5,43 +5,51 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
-public class ForkJoinPoolExample {
-  public static void main(String args[]) throws InterruptedException {
-    List<Integer> numbers = buildIntRange();
-    ForkJoinPool forkJoinPool = new ForkJoinPool(4);
-    Thread t1 =
-        new Thread(()
-                       -> forkJoinPool
-                              .submit(() -> {
-                                numbers.parallelStream().forEach(n -> {
-                                  try {
-                                    Thread.sleep(5);
-                                    System.out.println(
-                                        "Loop 1 : " + Thread.currentThread());
-                                  } catch (InterruptedException e) {
-                                  }
-                                });
-                              })
-                              .invoke());
-    ForkJoinPool forkJoinPool2 = new ForkJoinPool(4);
-    Thread t2 =
-        new Thread(()
-                       -> forkJoinPool2
-                              .submit(() -> {
-                                numbers.parallelStream().forEach(n -> {
-                                  try {
-                                    Thread.sleep(5);
-                                    System.out.println(
-                                        "Loop 2 : " + Thread.currentThread());
-                                  } catch (InterruptedException e) {
-                                  }
-                                });
-                              })
-                              .invoke());
-    t1.start();
-    t2.start();
-    t1.join();
-    t2.join();
+public enum ForkJoinPoolExample {
+  ;
+
+  public static void main(String[] args) {
+    try {
+      List<Integer> numbers = buildIntRange();
+      ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+      Thread t1 =
+          new Thread(()
+                         -> forkJoinPool
+                                .submit(() -> {
+                                  numbers.parallelStream().forEach(n -> {
+                                    try {
+                                      Thread.sleep(5);
+                                      System.out.println(
+                                          "Loop 1 : " + Thread.currentThread());
+                                    } catch (InterruptedException e) {
+                                      System.err.println(e);
+                                    }
+                                  });
+                                })
+                                .invoke());
+      ForkJoinPool forkJoinPool2 = new ForkJoinPool(4);
+      Thread t2 =
+          new Thread(()
+                         -> forkJoinPool2
+                                .submit(() -> {
+                                  numbers.parallelStream().forEach(n -> {
+                                    try {
+                                      Thread.sleep(5);
+                                      System.out.println(
+                                          "Loop 2 : " + Thread.currentThread());
+                                    } catch (InterruptedException e) {
+                                      System.err.println(e);
+                                    }
+                                  });
+                                })
+                                .invoke());
+      t1.start();
+      t2.start();
+      t1.join();
+      t2.join();
+    } catch (InterruptedException ie) {
+      System.err.println(ie);
+    }
   }
 
   private static List<Integer> buildIntRange() {

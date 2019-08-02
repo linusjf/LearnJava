@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public enum ForkJoinPuzzle {
   ;
-  private static int counter = 0;
+  private static int counter;
   private static Map<String, Integer> processorsCount =
       new ConcurrentHashMap<>();
 

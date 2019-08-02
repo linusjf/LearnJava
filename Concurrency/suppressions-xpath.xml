@@ -3,6 +3,78 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='RecursiveIterate']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_FOR/FOR_ITERATOR/ELIST/EXPR/PLUS_ASSIGN[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="CommonPoolTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonPoolTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='futures']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='mapToObj']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="CommonPoolTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonPoolTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='blockingOperation']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="CommonForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="CommonForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getNumbers']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="CommonForkJoinPoolThreads.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="CommonForkJoinPoolThreads.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="CommonForkJoinPoolThreads.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getNumbers']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="CommonForkJoinPoolThreads.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getNumbers']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='forkJoinPool']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ForkJoinPool']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='forkJoinPool2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ForkJoinPool']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='buildIntRange']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ForkJoinPoolExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='buildIntRange']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="TestFjDeadlock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='RecursiveIterate']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_FOR/FOR_ITERATOR/ELIST/EXPR/PLUS_ASSIGN[./IDENT[@text='i']]/NUM_INT[@text='3']" />
   <suppress-xpath files="FutureDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='FutureDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FactorialCalculator']]/ELIST/EXPR/NUM_INT[@text='10']" />

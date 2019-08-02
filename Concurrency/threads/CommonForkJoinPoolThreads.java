@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CommonForkJoinPoolThreads {
+public enum CommonForkJoinPoolThreads {
+  ;
+
   public static void main(String[] args) {
     final List<Integer> numbers = getNumbers();
     Thread t1 = new Thread(() -> numbers.parallelStream().forEach(n -> {
