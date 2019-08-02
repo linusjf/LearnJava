@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ForkJoinPuzzle.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelism']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
   <suppress-xpath files="TestFjDeadlock.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />

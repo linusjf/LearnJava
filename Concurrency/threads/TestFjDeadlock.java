@@ -34,6 +34,7 @@ public final class TestFjDeadlock {
 
   private static class RecursiveIterate extends RecursiveAction {
 
+    private static final long serialVersionUID = 1L;
     final int start;
     final int end;
 
