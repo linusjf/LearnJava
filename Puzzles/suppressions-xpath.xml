@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddModulo']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddAnd']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddModulo']]/ELIST/EXPR/UNARY_MINUS[./NUM_INT[@text='5']]"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddAnd']]/ELIST/EXPR/UNARY_MINUS[./NUM_INT[@text='5']]"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddModulo']]/ELIST/EXPR/UNARY_MINUS[./NUM_INT[@text='10']]"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddAnd']]/ELIST/EXPR/UNARY_MINUS[./NUM_INT[@text='10']]"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MOD[./NUM_INT[@text='2']]/UNARY_MINUS[./NUM_INT[@text='10']]"/>
+<suppress-xpath
+       files="Odd.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MOD[./NUM_INT[@text='2']]/UNARY_MINUS[./NUM_INT[@text='15']]"/>
+</suppressions>
