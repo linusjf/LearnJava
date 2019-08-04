@@ -94,8 +94,17 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run">
-    <description>Run target</description>
+  <target name="run1">
+    <description>Change target</description>
+    <java classname="${main.class1}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run" depends="run1">
+    <description>Odd target</description>
     <java classname="${main.class}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />

@@ -23,7 +23,7 @@ public final class Odd {
 
     System.out.println(isOddModulo(-10) == isOddAnd(-10));
 
-    System.out.printf("-10 %% 2 = %d\n",-10 % 2);
-    System.out.printf("-15 %% 2 = %d\n",-15 % 2);
+    System.out.printf("-10 %% 2 = %d\n", -10 % 2);
+    System.out.printf("-15 %% 2 = %d\n", -15 % 2);
   }
 }
