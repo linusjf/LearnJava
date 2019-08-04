@@ -15,7 +15,7 @@ public enum Multicast {
     i = (int)b;
     System.out.println(i);
     // sign extension all 16 bits set
-    char c = (char) b;
+    char c = (char)b;
     System.out.println(c);
     // sign extension not performed
     i = c;
