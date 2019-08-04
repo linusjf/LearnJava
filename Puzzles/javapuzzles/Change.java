@@ -2,6 +2,7 @@ package javapuzzles;
 
 import java.math.BigDecimal;
 
+@SuppressWarnings("PMD")
 public enum Change {
   ;
 
