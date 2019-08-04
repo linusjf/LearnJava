@@ -3,26 +3,33 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Change.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./NUM_FLOAT[@text='2.00']]/NUM_FLOAT[@text='1.10']"/>
-<suppress-xpath
-       files="Change.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./NUM_FLOAT[@text='2.00']]/NUM_FLOAT[@text='1.10']"/>
-<suppress-xpath
-       files="Change.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' cents']]/MINUS/NUM_INT[@text='200']"/>
-<suppress-xpath
-       files="Change.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' cents']]/MINUS[./NUM_INT[@text='200']]/NUM_INT[@text='110']"/>
-<suppress-xpath
-       files="Change.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='BigDecimal']]/ELIST/EXPR/NUM_FLOAT[@text='1.10']"/>
+  <suppress-xpath files="JoyOfHex.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='JoyOfHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/NUM_LONG[@text='0x100000000L']" />
+  <suppress-xpath files="JoyOfHex.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='JoyOfHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_LONG[@text='0x100000000L']]/NUM_INT[@text='0xcafebabe']" />
+  <suppress-xpath files="JoyOfHex.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='JoyOfHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/NUM_LONG[@text='0x100000000L']" />
+  <suppress-xpath files="JoyOfHex.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='JoyOfHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_LONG[@text='0x100000000L']]/NUM_LONG[@text='0xcafebabeL']" />
+  <suppress-xpath files="Change.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./NUM_FLOAT[@text='2.00']]/NUM_FLOAT[@text='1.10']" />
+  <suppress-xpath files="Change.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./NUM_FLOAT[@text='2.00']]/NUM_FLOAT[@text='1.10']" />
+  <suppress-xpath files="Change.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' cents']]/MINUS/NUM_INT[@text='200']" />
+  <suppress-xpath files="Change.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' cents']]/MINUS[./NUM_INT[@text='200']]/NUM_INT[@text='110']" />
+  <suppress-xpath files="Change.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Change']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='BigDecimal']]/ELIST/EXPR/NUM_FLOAT[@text='1.10']" />
   <suppress-xpath files="Odd.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Odd']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/EQUAL/METHOD_CALL[./IDENT[@text='isOddModulo']]/ELIST/EXPR/NUM_INT[@text='10']" />

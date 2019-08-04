@@ -94,6 +94,24 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run3">
+    <description>Joy Of Hex target</description>
+    <java classname="${main.class3}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Long Division target</description>
+    <java classname="${main.class2}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run1">
     <description>Change target</description>
     <java classname="${main.class1}">
@@ -103,7 +121,8 @@
       </classpath>
     </java>
   </target>
-  <target name="run" depends="run1">
+  <target name="run"
+          depends="run3,run2,run1">
     <description>Odd target</description>
     <java classname="${main.class}">
       <classpath>
