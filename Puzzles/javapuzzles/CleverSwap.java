@@ -34,8 +34,7 @@ public enum CleverSwap {
     System.out.println("x = " + x + "; y = " + y);
     x = 1984;  // (0x7c0)
     y = 2001;  // (0x7d1)
-    y = (x ^= (y ^= x)) ^ y;
+    y = (x ^= y ^= x) ^ y;
     System.out.println("x = " + x + "; y = " + y);
-
   }
 }

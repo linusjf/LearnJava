@@ -3,6 +3,50 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Multicast.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Multicast']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xffff']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/NUM_INT[@text='1984']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR/NUM_INT[@text='2001']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='x']]/NUM_INT[@text='1984']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='y']]/NUM_INT[@text='2001']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='x']]/NUM_INT[@text='1984']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='y']]/NUM_INT[@text='2001']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='x']]/NUM_INT[@text='1984']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='y']]/NUM_INT[@text='2001']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='x']]/NUM_INT[@text='1984']"/>
+<suppress-xpath
+       files="CleverSwap.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='y']]/NUM_INT[@text='2001']"/>
   <suppress-xpath files="JoyOfHex.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='JoyOfHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/NUM_LONG[@text='0x100000000L']" />
