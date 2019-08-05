@@ -13,12 +13,14 @@ public enum StringCheese {
       for (int i = 0; i < 256; i++)
         bytes[i] = (byte)i;
       String str = new String(bytes);
-      for (int i = 0, n = str.length(); i < n; i++)
+      int n = str.length();
+      for (int i = 0; i < n; i++)
         System.out.print((int)str.charAt(i) + " ");
       System.out.printf("%n");
       System.out.println("Charset: ISO-8859-1");
       str = new String(bytes, "ISO-8859-1");
-      for (int i = 0, n = str.length(); i < n; i++)
+      n = str.length();
+      for (int i = 0; i < n; i++)
         System.out.print((int)str.charAt(i) + " ");
       System.out.printf("%n");
     } catch (UnsupportedEncodingException uee) {
