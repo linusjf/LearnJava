@@ -5,10 +5,21 @@ usage()
   echo "dir - Project directory"
   exit 1
 }
+
+readOptions()
+{
+  [ -e "$proj"/"$optionsFile" ] && \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
+      echo "Unable to read $proj/$optionsFile";}
+}
+
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
   usage
 fi
+proj=$1
+declare -r optionsFile=".formatoptions"
+declare -a options
 declare -r classpathFile="gformat.cp"
 declare -r mainClass="com.google.googlejavaformat.java.Main"
 
@@ -18,7 +29,9 @@ if [ ! -e "$classpathFile" ]
     usage
 fi
 
-readarray -t args < <(find "$1" -type f -name "*.java")
+readOptions
+printf -v findCmd '%q ' find $1 -type f -name '*.java' ${options[@]}
+readarray -t args < <(eval $findCmd)
 java -cp @"$classpathFile" "$mainClass" \
   --set-exit-if-changed -i \
   "${args[@]}"
