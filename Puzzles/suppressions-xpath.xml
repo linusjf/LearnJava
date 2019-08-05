@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="StringCheese.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='StringCheese']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='bytes']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='256']"/>
+<suppress-xpath
+       files="StringCheese.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='StringCheese']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='256']"/>
   <suppress-xpath files="DosEquis.java"
                   checks="NPathComplexityCheck"
                   query="/ENUM_DEF[./IDENT[@text='DosEquis']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />

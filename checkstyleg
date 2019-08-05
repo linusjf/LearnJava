@@ -6,11 +6,22 @@ usage()
   echo "rulesfile - Rules file"
   exit 1
 }
+
+readOptions()
+{
+  [ -e "$proj"/"$optionsFile" ] && \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
+      echo "Unable to read $proj/$optionsFile";}
+}
+
 if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
 then
   usage
 fi
 
+proj=$1
+declare -r optionsFile=".csoptions"
+declare -a options
 rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
@@ -54,12 +65,14 @@ fi
       #exit 1
    # fi
 #fi
+readOptions
 (cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
 java -cp @../"$classpathFile" \
 "$mainClass" \
+${options[@]} \
 -c ../"$rules_file" -d \
 -p ../"$properties_file" \
 -o "$output_file" -g \
