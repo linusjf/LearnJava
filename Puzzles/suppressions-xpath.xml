@@ -4,37 +4,61 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="Increment.java"
+       files="Shifty.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+       query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='1']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]"/>
 <suppress-xpath
-       files="Increment.java"
+       files="Shifty.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="Increment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="Increment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BigDelight.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='b']]/NUM_INT[@text='0x90']"/>
-<suppress-xpath
-       files="BigDelight.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='b']]/TYPECAST/NUM_INT[@text='0x90']"/>
-<suppress-xpath
-       files="BigDelight.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0x90']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xff']"/>
-<suppress-xpath
-       files="BigDelight.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='0x90']"/>
+       query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='32']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]"/>
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='i']]/NUM_INT[@text='33']" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='1']]/UNARY_MINUS[./NUM_INT[@text='2147483648']]" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='30']]/UNARY_MINUS[./NUM_INT[@text='2147483648']]" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL/NUM_INT[@text='30']" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='31']]/UNARY_MINUS[./NUM_INT[@text='2147483648']]" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL/NUM_INT[@text='31']" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='32']]/UNARY_MINUS[./NUM_INT[@text='2147483648']]" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL/NUM_INT[@text='32']" />
+  <suppress-xpath files="Increment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="Increment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="Increment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="Increment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Increment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="BigDelight.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='b']]/NUM_INT[@text='0x90']" />
+  <suppress-xpath files="BigDelight.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='b']]/TYPECAST/NUM_INT[@text='0x90']" />
+  <suppress-xpath files="BigDelight.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0x90']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xff']" />
+  <suppress-xpath files="BigDelight.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='BigDelight']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='0x90']" />
   <suppress-xpath files="Rhymes.java"
                   checks="FallThroughCheck"
                   query="/ENUM_DEF[./IDENT[@text='Rhymes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP[./LITERAL_CASE/EXPR/NUM_INT[@text='2']]" />
