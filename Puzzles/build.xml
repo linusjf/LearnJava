@@ -94,6 +94,24 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run11">
+    <description>Ugly target</description>
+    <java classname="${main.class11}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run10">
+    <description>EscapeRout target</description>
+    <java classname="${main.class10}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run9">
     <description>AnimalFarm target</description>
     <java classname="${main.class9}">
@@ -176,7 +194,8 @@
     </java>
   </target>
   <target name="run"
-          depends="run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          
     <description>Odd target</description>
     <java classname="${main.class}">
       <classpath>
@@ -189,6 +208,8 @@
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/Ugly.java" />
+      <exclude name="**/EscapeRout.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -218,7 +239,8 @@
                 failOnViolation="false"
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
-               includes="**/*.java" />
+               includes="**/*.java"
+               excludes="**/Ugly.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
