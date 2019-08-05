@@ -33,8 +33,7 @@ package security;
 public enum GetProps {
   ;
 
-  private static final String NOT_SPECIFIED =
-    "not specified";
+  private static final String NOT_SPECIFIED = "not specified";
 
   public static void main(String[] args) {
 
@@ -56,7 +55,7 @@ public enum GetProps {
 
       System.out.println("About to get user.home property value");
 
-      s = System.getProperty("user.home",NOT_SPECIFIED);
+      s = System.getProperty("user.home", NOT_SPECIFIED);
       System.out.println("  Your user home directory is: " + s);
 
       System.out.println("About to get java.home property value");
@@ -64,8 +63,7 @@ public enum GetProps {
       s = System.getProperty("java.home", NOT_SPECIFIED);
       System.out.println("  Your JRE installation directory is: " + s);
 
-    } catch (SecurityException
-             | IllegalArgumentException e) {
+    } catch (SecurityException | IllegalArgumentException e) {
       System.err.println("Caught exception " + e.toString());
     }
   }

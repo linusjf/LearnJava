@@ -10,23 +10,20 @@ import java.net.URLConnection;
 import java.text.MessageFormat;
 
 /**
- * This program no longer works as-is. It does not produce the desired results.
- * Using the LOOKUP url returns a HTTP 503 error. Is this SpamHaus throttling
- * non-browser queries? Upon investigating further,the cookies are from
- * Cloudflare and its DDOS challenge question.cf_clearance expires every hour.
- * It has to be renewed via the browser. There is a Python module on Github that
- * bypasses Cloudflare but I'm not going to port that just to get this working.
- * I have simply tried to get the original SpamCheck program from the Java
- * Networking book to work as expected. I have looked at other spam listers but
- * none of them list the two spammer ips Ive used as input as spammers. Spamhaus
- * appears to be the most authoriative list. Using SourceViewer4, I had a look
- * at the 503 page returned. The challenge form embedded in the page is
- * submitted via javascript after a delay of 4 seconds. The algorithm to fill up
- * one of the fields is mixed up,no two javascript functions are the same. That
- * nixes simply porting and explains why the Python script uses Node.js.
- * However,that's not the surprising part. The Jacascript function lists its
- * variables as: s,t,o,p,b,r,e,a,k,i,n,g,f. What the bloody hell is that? Hardly
- * subliminal,is it? Who the hell is this message directed at?
+ * This program no longer works as-is. It does not produce the desired results. Using the LOOKUP url
+ * returns a HTTP 503 error. Is this SpamHaus throttling non-browser queries? Upon investigating
+ * further,the cookies are from Cloudflare and its DDOS challenge question.cf_clearance expires
+ * every hour. It has to be renewed via the browser. There is a Python module on Github that
+ * bypasses Cloudflare but I'm not going to port that just to get this working. I have simply tried
+ * to get the original SpamCheck program from the Java Networking book to work as expected. I have
+ * looked at other spam listers but none of them list the two spammer ips Ive used as input as
+ * spammers. Spamhaus appears to be the most authoriative list. Using SourceViewer4, I had a look at
+ * the 503 page returned. The challenge form embedded in the page is submitted via javascript after
+ * a delay of 4 seconds. The algorithm to fill up one of the fields is mixed up,no two javascript
+ * functions are the same. That nixes simply porting and explains why the Python script uses
+ * Node.js. However,that's not the surprising part. The Jacascript function lists its variables as:
+ * s,t,o,p,b,r,e,a,k,i,n,g,f. What the bloody hell is that? Hardly subliminal,is it? Who the hell is
+ * this message directed at?
  */
 public final class SpamCheck {
   private static final String SPAM_LISTER = "{0} is listed in the SBL";
@@ -45,8 +42,7 @@ public final class SpamCheck {
     sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; ")
         .append("_ga=GA1.2.258026625.1560481121; ")
         .append("_gid=GA1.2.1507765202.1561264155; ")
-        .append(
-            "cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
+        .append("cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
     cookies = sb.toString();
   }
 
@@ -63,7 +59,7 @@ public final class SpamCheck {
   }
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         if (isInSpammerLists(arg)) {
           System.out.println(arg + " is a known spammer.");
@@ -78,8 +74,7 @@ public final class SpamCheck {
     }
   }
 
-  private static boolean isInSpammerLists(String ip)
-      throws IOException, MalformedURLException {
+  private static boolean isInSpammerLists(String ip) throws IOException, MalformedURLException {
     QueryString query = getQueryString();
     query.add("ip", ip);
 
@@ -97,7 +92,7 @@ public final class SpamCheck {
     InputStreamReader theHTML = new InputStreamReader(in);
     int c;
     while ((c = theHTML.read()) != -1) {
-      sb.append((char)c);
+      sb.append((char) c);
     }
     return isIpFlagged(sb.toString(), ip);
   }
@@ -116,7 +111,8 @@ public final class SpamCheck {
       formatter = new MessageFormat(EXPLOIT_LISTER);
       xblString = formatter.format(params);
     }
-    return content.contains(sblString) || content.contains(xblString)
+    return content.contains(sblString)
+        || content.contains(xblString)
         || content.contains(pblString);
   }
 }

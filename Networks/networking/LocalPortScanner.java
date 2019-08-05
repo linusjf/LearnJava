@@ -12,7 +12,7 @@ public final class LocalPortScanner {
 
   public static void main(String[] args) {
     for (int port = 1; port <= 65_535; port++) {
-      try (ServerSocket server = new ServerSocket();) {
+      try (ServerSocket server = new ServerSocket(); ) {
         server.bind(new InetSocketAddress(port));
       } catch (BindException ex) {
         if (ex.getMessage().startsWith("Address already in use"))

@@ -13,25 +13,25 @@ public class DeliveryContext {
 
     Optional<PackageState> pkgState = Optional.ofNullable(currentState);
     this.currentState = pkgState.orElse(Acknowledged.getInstance());
-}
+  }
 
-public PackageState getCurrentState() {
-  return currentState;
-}
+  public PackageState getCurrentState() {
+    return currentState;
+  }
 
-public void setCurrentState(PackageState currentState) {
-  this.currentState = currentState;
-}
+  public void setCurrentState(PackageState currentState) {
+    this.currentState = currentState;
+  }
 
-public String getPackageId() {
-  return packageId;
-}
+  public String getPackageId() {
+    return packageId;
+  }
 
-public void setPackageId(String packageId) {
-  this.packageId = packageId;
-}
+  public void setPackageId(String packageId) {
+    this.packageId = packageId;
+  }
 
-public void update() {
-  currentState.updateState(this);
-}
+  public void update() {
+    currentState.updateState(this);
+  }
 }

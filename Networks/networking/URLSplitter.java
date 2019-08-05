@@ -9,7 +9,7 @@ public final class URLSplitter {
   }
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         URL u = new URL(arg);
         System.out.println("The URL is " + u);
@@ -18,8 +18,7 @@ public final class URLSplitter {
         String host = u.getHost();
         if (host != null) {
           int atSign = host.indexOf('@');
-          if (atSign != -1)
-            host = host.substring(atSign + 1);
+          if (atSign != -1) host = host.substring(atSign + 1);
         }
         System.out.println("The host is " + host);
         System.out.println("The port is " + u.getPort());

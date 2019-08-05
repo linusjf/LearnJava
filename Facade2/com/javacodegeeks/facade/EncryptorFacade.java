@@ -70,10 +70,8 @@ public final class EncryptorFacade {
   }
 
   public Encrypt supplyEncryptor(EncryptionType type) {
-    Supplier<Encrypt> supplier = 
-      Objects.requireNonNull(
-          ENCRYPTOR_SUPPLIER.get(type),
-    "No encryptor exists for " + type);
+    Supplier<Encrypt> supplier =
+        Objects.requireNonNull(ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
     return supplier.get();
   }
 

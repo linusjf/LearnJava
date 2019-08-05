@@ -38,17 +38,17 @@ import java.util.List;
 
 public class Person {
 
-  public enum Sex { MALE, FEMALE }
+  public enum Sex {
+    MALE,
+    FEMALE
+  }
 
   String name;
   LocalDate birthday;
   Sex gender;
   String emailAddress;
 
-  Person(String nameArg,
-         LocalDate birthdayArg,
-         Sex genderArg,
-         String emailArg) {
+  Person(String nameArg, LocalDate birthdayArg, Sex genderArg, String emailArg) {
     name = nameArg;
     birthday = birthdayArg;
     gender = genderArg;
@@ -86,22 +86,24 @@ public class Person {
   public static List<Person> createRoster() {
 
     List<Person> roster = new ArrayList<>();
-    roster.add(new Person("Fred",
-                          IsoChronology.INSTANCE.date(1980, 6, 20),
-                          Person.Sex.MALE,
-                          "fred@example.com"));
-    roster.add(new Person("Jane",
-                          IsoChronology.INSTANCE.date(1990, 7, 15),
-                          Person.Sex.FEMALE,
-                          "jane@example.com"));
-    roster.add(new Person("George",
-                          IsoChronology.INSTANCE.date(1991, 8, 13),
-                          Person.Sex.MALE,
-                          "george@example.com"));
-    roster.add(new Person("Bob",
-                          IsoChronology.INSTANCE.date(2000, 9, 12),
-                          Person.Sex.MALE,
-                          "bob@example.com"));
+    roster.add(
+        new Person(
+            "Fred", IsoChronology.INSTANCE.date(1980, 6, 20), Person.Sex.MALE, "fred@example.com"));
+    roster.add(
+        new Person(
+            "Jane",
+            IsoChronology.INSTANCE.date(1990, 7, 15),
+            Person.Sex.FEMALE,
+            "jane@example.com"));
+    roster.add(
+        new Person(
+            "George",
+            IsoChronology.INSTANCE.date(1991, 8, 13),
+            Person.Sex.MALE,
+            "george@example.com"));
+    roster.add(
+        new Person(
+            "Bob", IsoChronology.INSTANCE.date(2000, 9, 12), Person.Sex.MALE, "bob@example.com"));
 
     return roster;
   }

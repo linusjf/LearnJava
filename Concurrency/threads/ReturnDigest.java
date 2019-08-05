@@ -25,8 +25,7 @@ public class ReturnDigest extends Thread {
       InputStream in = Files.newInputStream(Paths.get(filename));
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
-      while (din.read() != -1)
-        ;  // read entire file
+      while (din.read() != -1) ; // read entire file
       din.close();
       digest = sha.digest();
     } catch (IOException | NoSuchAlgorithmException ex) {

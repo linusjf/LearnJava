@@ -23,8 +23,7 @@ public enum ForkJoinResultDemo {
     do {
       System.out.printf("******************************************\n");
       System.out.printf("Main: Parallelism: %d\n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d\n",
-                        pool.getActiveThreadCount());
+      System.out.printf("Main: Active Threads: %d\n", pool.getActiveThreadCount());
       System.out.printf("Main: Task Count: %d\n", pool.getQueuedTaskCount());
       System.out.printf("Main: Steal Count: %d\n", pool.getStealCount());
       System.out.printf("******************************************\n");
@@ -42,29 +41,19 @@ public enum ForkJoinResultDemo {
     }
     try {
       System.out.printf(
-          "Main: The word '" + WORD + "' appears %d times in the document.",
-          task.get());
+          "Main: The word '" + WORD + "' appears %d times in the document.", task.get());
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
   }
 
   static class DocumentMock {
-    private String[] words = {"the",
-                              "hello",
-                              "goodbye",
-                              "packt",
-                              "java",
-                              "thread",
-                              "pool",
-                              "random",
-                              "class",
-                              "main"};
+    private String[] words = {
+      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main"
+    };
 
     @SuppressWarnings("PMD.AvoidArrayLoops")
-    public String[][] generateDocument(int numLines,
-                                       int numWords,
-                                       String word) {
+    public String[][] generateDocument(int numLines, int numWords, String word) {
       int counter = 0;
       String[][] document = new String[numLines][numWords];
       Random random = new Random();
@@ -78,8 +67,8 @@ public enum ForkJoinResultDemo {
           }
         }
       }
-      System.out.println("DocumentMock: The word '" + word + "' appears "
-                         + counter + " times in the document");
+      System.out.println(
+          "DocumentMock: The word '" + word + "' appears " + counter + " times in the document");
       return document;
     }
   }
@@ -119,10 +108,7 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
-    private Integer processLines(String[][] document,
-                                 int start,
-                                 int end,
-                                 String word) {
+    private Integer processLines(String[][] document, int start, int end, String word) {
       List<LineTask> tasks = new ArrayList<>();
       for (int i = start; i < end; i++) {
         LineTask task = new LineTask(document[i], 0, document[i].length, word);
@@ -130,7 +116,7 @@ public enum ForkJoinResultDemo {
       }
       invokeAll(tasks);
       int result = 0;
-      for (LineTask task: tasks) {
+      for (LineTask task : tasks) {
         try {
           result = result + task.get();
         } catch (InterruptedException | ExecutionException e) {

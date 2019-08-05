@@ -5,7 +5,8 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public enum AtomicArrayDemo {
   ;
 
-    private final static int THREADS = 100;
+  private static final int THREADS = 100;
+
   public static void main(String[] args) {
     AtomicIntegerArray vector = new AtomicIntegerArray(1000);
     Incrementer incrementer = new Incrementer(vector);
@@ -46,8 +47,7 @@ public enum AtomicArrayDemo {
 
     @Override
     public void run() {
-      for (int i = 0; i < vector.length(); i++)
-        vector.getAndIncrement(i);
+      for (int i = 0; i < vector.length(); i++) vector.getAndIncrement(i);
     }
   }
 
@@ -60,8 +60,7 @@ public enum AtomicArrayDemo {
 
     @Override
     public void run() {
-      for (int i = 0; i < vector.length(); i++)
-        vector.getAndDecrement(i);
+      for (int i = 0; i < vector.length(); i++) vector.getAndDecrement(i);
     }
   }
 }

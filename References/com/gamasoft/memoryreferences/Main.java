@@ -37,14 +37,18 @@ public enum Main {
     System.gc();
     int removed = removeRefs(queue, references);
 
-    System.out.println("Final used mem " + getUsedMem() + "    Refs removed "
-                       + removed + "   left " + references.size());
+    System.out.println(
+        "Final used mem "
+            + getUsedMem()
+            + "    Refs removed "
+            + removed
+            + "   left "
+            + references.size());
   }
 
   @SuppressWarnings("PMD.NullAssignment")
-  private static void allocationLoop(ReferenceQueue<HeavyList> queue,
-                                     Set<Reference<HeavyList>> references,
-                                     int howManyTimes) {
+  private static void allocationLoop(
+      ReferenceQueue<HeavyList> queue, Set<Reference<HeavyList>> references, int howManyTimes) {
     HeavyList head = new HeavyList(0, null);
     HeavyList oldTail = head;
     for (int i = 0; i < howManyTimes; i++) {
@@ -68,8 +72,13 @@ public enum Main {
       int removed = removeRefs(queue, references);
 
       //  System.gc();   //uncomment this line to comparing with forced gc
-      System.out.println("used mem " + getUsedMem() + "    Refs removed "
-                         + removed + "   left " + references.size());
+      System.out.println(
+          "used mem "
+              + getUsedMem()
+              + "    Refs removed "
+              + removed
+              + "   left "
+              + references.size());
 
       oldTail = newTail;
     }
@@ -78,17 +87,14 @@ public enum Main {
   }
 
   private static long getUsedMem() {
-    return Runtime.getRuntime().totalMemory()
-        - Runtime.getRuntime().freeMemory();
+    return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
   }
 
-  private static int removeRefs(ReferenceQueue queue,
-                           Set<Reference<HeavyList>> references) {
+  private static int removeRefs(ReferenceQueue queue, Set<Reference<HeavyList>> references) {
     int removed = 0;
     while (true) {
       Reference r = queue.poll();
-      if (r == null)
-        break;
+      if (r == null) break;
       references.remove(r);
       removed++;
     }
@@ -106,23 +112,20 @@ public enum Main {
 
   private static void printMem() {
     /* Total number of processors or cores available to the JVM */
-    System.out.println("Available processors (cores): "
-                       + Runtime.getRuntime().availableProcessors());
+    System.out.println(
+        "Available processors (cores): " + Runtime.getRuntime().availableProcessors());
 
     /* Total amount of free memory available to the JVM */
-    System.out.println("Free memory (bytes): "
-                       + Runtime.getRuntime().freeMemory());
+    System.out.println("Free memory (bytes): " + Runtime.getRuntime().freeMemory());
 
     /* This will return Long.MAX_VALUE if there is no preset limit */
     long maxMemory = Runtime.getRuntime().maxMemory();
     /* Maximum amount of memory the JVM will attempt to use */
     System.out.println(
-        "Maximum memory (bytes): "
-        + (maxMemory == Long.MAX_VALUE ? "no limit" : maxMemory));
+        "Maximum memory (bytes): " + (maxMemory == Long.MAX_VALUE ? "no limit" : maxMemory));
 
     /* Total memory currently in use by the JVM */
-    System.out.println("Total memory (bytes): "
-                       + Runtime.getRuntime().totalMemory());
+    System.out.println("Total memory (bytes): " + Runtime.getRuntime().totalMemory());
   }
 
   private static HeavyList allocate(int howMany, HeavyList startFrom) {
@@ -152,7 +155,7 @@ public enum Main {
 
     HeavyList(int number, HeavyList prev) {
       for (int i = 0; i < mega.length; i++) {
-        mega[i] = (byte)(number % 256);
+        mega[i] = (byte) (number % 256);
       }
       if (prev != null) {
         prev.next = this;
@@ -164,8 +167,7 @@ public enum Main {
     }
 
     public HeavyList dropNext() {
-      if (next == null || next.next == null)
-        return null;
+      if (next == null || next.next == null) return null;
       HeavyList res = next;
       next = next.next;
       return res;

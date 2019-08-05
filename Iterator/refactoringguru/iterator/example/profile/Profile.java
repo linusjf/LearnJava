@@ -15,7 +15,7 @@ public class Profile {
     this.name = name;
 
     // Parse contact list from a set of "friend:email@gmail.com" pairs.
-    for (String contact: contacts) {
+    for (String contact : contacts) {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;

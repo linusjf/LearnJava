@@ -1,10 +1,12 @@
 #!/bin/bash
-declare -r classpathFile="gformat.cp"
-declare -r mainClass="com.google.googlejavaformat.java.Main"
-readarray -t args \
-  < <(find . -mindepth 2 \
-  -type f -name "*.java")
-java -cp @"$classpathFile" "$mainClass" \
-  --set-exit-if-changed -i \
-  "${args[@]}"
-exit $?
+declare -i errs=0
+readarray -t dirs < <\
+(find . -maxdepth 1 \
+-type d -name "[[:upper:]]*")
+for dir in "${dirs[@]}"
+	do
+	echo "$dir"
+  ./format "$dir"
+  errs="$errs+$?"
+done
+exit $errs

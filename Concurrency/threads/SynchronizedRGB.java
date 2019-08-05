@@ -39,8 +39,7 @@ public class SynchronizedRGB {
   private String name;
 
   private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
-        || blue > 255) {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
       throw new IllegalArgumentException();
     }
   }

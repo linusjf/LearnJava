@@ -16,8 +16,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
   private ConcurrentHashMap<String, Date> startTimes;
 
   public static void main(String[] args) {
-    CustomExecutor myExecutor = new CustomExecutor(
-        2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
+    CustomExecutor myExecutor =
+        new CustomExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
     List<Future<String>> results = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
       SleepTwoSecondsTask task = new SleepTwoSecondsTask();
@@ -49,11 +49,12 @@ public class CustomExecutor extends ThreadPoolExecutor {
     System.out.printf("Main: End of the program.\n");
   }
 
-  public CustomExecutor(int corePoolSize,
-                        int maximumPoolSize,
-                        long keepAliveTime,
-                        TimeUnit unit,
-                        BlockingQueue<Runnable> workQueue) {
+  public CustomExecutor(
+      int corePoolSize,
+      int maximumPoolSize,
+      long keepAliveTime,
+      TimeUnit unit,
+      BlockingQueue<Runnable> workQueue) {
     super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     startTimes = new ConcurrentHashMap<>();
   }
@@ -61,8 +62,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @Override
   public void shutdown() {
     System.out.printf("CustomExecutor: Going to shutdown.\n");
-    System.out.printf("CustomExecutor: Executed tasks: %d\n",
-                      getCompletedTaskCount());
+    System.out.printf("CustomExecutor: Executed tasks: %d\n", getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d\n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d\n", getQueue().size());
     super.shutdown();
@@ -71,8 +71,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @Override
   public List<Runnable> shutdownNow() {
     System.out.printf("CustomExecutor: Going to immediately shutdown.\n");
-    System.out.printf("CustomExecutor: Executed tasks: %d\n",
-                      getCompletedTaskCount());
+    System.out.printf("CustomExecutor: Executed tasks: %d\n", getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d\n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d\n", getQueue().size());
     return super.shutdownNow();
@@ -80,15 +79,13 @@ public class CustomExecutor extends ThreadPoolExecutor {
 
   @Override
   protected void beforeExecute(Thread t, Runnable r) {
-    System.out.printf("CustomExecutor: A task is beginning: %s : %s\n",
-                      t.getName(),
-                      r.hashCode());
+    System.out.printf("CustomExecutor: A task is beginning: %s : %s\n", t.getName(), r.hashCode());
     startTimes.put(String.valueOf(r.hashCode()), new Date());
   }
 
   @Override
   protected void afterExecute(Runnable r, Throwable t) {
-    Future<?> result = (Future<?>)r;
+    Future<?> result = (Future<?>) r;
     try {
       System.out.printf("*********************************\n");
       System.out.printf("CustomExecutor: A task is finishing.\n");

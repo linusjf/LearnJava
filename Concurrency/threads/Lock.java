@@ -18,8 +18,7 @@ public class Lock {
   public void unlock() {
     synchronized (this) {
       if (this.lockingThread != Thread.currentThread()) {
-        throw new IllegalMonitorStateException(
-            "Calling thread has not locked this lock");
+        throw new IllegalMonitorStateException("Calling thread has not locked this lock");
       }
       isLocked = false;
       notifyAll();

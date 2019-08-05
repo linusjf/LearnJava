@@ -11,10 +11,9 @@ public class TaskLocalRandom implements Runnable {
   public void run() {
     String name = Thread.currentThread().getName();
     for (int i = 0; i < 10; i++) {
-      System.out.printf("%s with priority %d: %d \n",
-                        name,
-                        Thread.currentThread().getPriority(),
-                        ThreadLocalRandom.current().nextInt(10));
+      System.out.printf(
+          "%s with priority %d: %d \n",
+          name, Thread.currentThread().getPriority(), ThreadLocalRandom.current().nextInt(10));
     }
   }
 
@@ -25,7 +24,6 @@ public class TaskLocalRandom implements Runnable {
       threads[i] = new Thread(task);
       threads[i].setPriority(ThreadLocalRandom.current().nextInt(10) + 1);
     }
-    for (Thread thread: threads)
-      thread.start();
+    for (Thread thread : threads) thread.start();
   }
 }

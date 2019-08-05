@@ -14,7 +14,7 @@ public class PaintWorkShop extends WorkShop {
     System.out.print("Painting... ");
     long timeToTake = 100 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake);  // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake); // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }

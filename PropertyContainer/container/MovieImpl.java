@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MovieImpl
-    extends PropertyContainerImpl implements Movie, Serializable {
+public class MovieImpl extends PropertyContainerImpl implements Movie, Serializable {
 
   public static final long serialVersionUID = 1L;
 
@@ -81,8 +80,7 @@ public class MovieImpl
   public int hashCode() {
     List<Object> fields = new ArrayList<>(values());
     String[] keys = getPropertyKeys();
-    for (String key: keys)
-      fields.add(key);
+    for (String key : keys) fields.add(key);
     fields.add(id);
     fields.add(title);
     fields.add(available);
@@ -94,17 +92,16 @@ public class MovieImpl
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (!(o instanceof MovieImpl))
-      return false;
-    MovieImpl obj = (MovieImpl)o;
+    if (this == o) return true;
+    if (!(o instanceof MovieImpl)) return false;
+    MovieImpl obj = (MovieImpl) o;
     if (super.equals(obj))
       return Objects.equals(available, obj.available)
           && Objects.equals(price, obj.price)
           && Objects.equals(description, obj.description)
           && Objects.equals(rating, obj.rating)
-          && Objects.equals(title, obj.title) && Objects.equals(id, obj.id);
+          && Objects.equals(title, obj.title)
+          && Objects.equals(id, obj.id);
     return false;
   }
 }
