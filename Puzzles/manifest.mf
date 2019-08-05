@@ -9,6 +9,6 @@ Specification-Title: Puzzles
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 72445a1 August 4 2019
+Implementation-Version: 6277229 August 5 2019
 Implementation-Vendor: 
 
