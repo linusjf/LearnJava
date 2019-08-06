@@ -39,6 +39,8 @@ public enum HelloGoodbye {
   }
 
   public static void haltMain(String... args) {
+    Runtime.getRuntime().addShutdownHook(new Thread(() ->
+        System.out.println("Shutdown Hook: Goodbye world")));
     System.out.println("Halting...Hello world");
     Runtime.getRuntime().halt(1);
   }
