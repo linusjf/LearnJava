@@ -37,6 +37,7 @@ public enum UnwelcomeGuest {
 @SuppressWarnings("checkstyle:onetoplevelclass")
 class IdUnavailableException extends Exception {
   private static final long serialVersionUID = 1L;
+
   IdUnavailableException(String msg) {
     super(msg);
   }

@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="HelloGoodbye.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='HelloGoodbye']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='which']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
        files="UnwelcomeGuest.java"
        checks="OuterTypeNumberCheck"
        query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
