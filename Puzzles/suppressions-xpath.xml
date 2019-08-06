@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="UnwelcomeGuest.java"
+       checks="OuterTypeNumberCheck"
+       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
+<suppress-xpath
        files="Arcane.java"
        checks="OuterTypeNumberCheck"
        query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
