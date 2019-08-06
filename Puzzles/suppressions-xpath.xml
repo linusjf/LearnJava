@@ -4,6 +4,18 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Reluctant.java"
+       checks="IllegalCatchCheck"
+       query="/CLASS_DEF[./IDENT[@text='Reluctant']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
+<suppress-xpath
+       files="Reluctant.java"
+       checks="IllegalCatchCheck"
+       query="/CLASS_DEF[./IDENT[@text='Reluctant']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
+<suppress-xpath
+       files="Reluctant.java"
+       checks="OperatorWrapCheck"
+       query="/CLASS_DEF[./IDENT[@text='Reluctant']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='StackOverflowError caught: ']]"/>
+<suppress-xpath
        files="HelloGoodbye.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='HelloGoodbye']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='which']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
