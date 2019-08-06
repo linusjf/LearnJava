@@ -4,13 +4,47 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="Shifty.java"
+       files="Count.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='1']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]"/>
+       query="/ENUM_DEF[./IDENT[@text='Count']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='f']]/PLUS[./IDENT[@text='start']]/NUM_INT[@text='50']"/>
 <suppress-xpath
-       files="Shifty.java"
+       files="Count.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='32']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]"/>
+       query="/ENUM_DEF[./IDENT[@text='Count']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='f']]/PLUS[./IDENT[@text='start']]/NUM_INT[@text='64']"/>
+<suppress-xpath
+       files="Count.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Count']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='f']]/PLUS[./IDENT[@text='START']]/NUM_INT[@text='50']"/>
+<suppress-xpath
+       files="Count.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Count']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='f']]/PLUS[./IDENT[@text='START']]/NUM_INT[@text='64']"/>
+<suppress-xpath
+       files="Clock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='ms']]/STAR[./NUM_INT[@text='1000']]/STAR/NUM_INT[@text='60']"/>
+<suppress-xpath
+       files="Clock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='ms']]/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='60']"/>
+<suppress-xpath
+       files="Clock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='ms']]/STAR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="Clock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/STAR[./NUM_INT[@text='1000']]/MOD[./IDENT[@text='ms']]/NUM_INT[@text='60']"/>
+<suppress-xpath
+       files="Clock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/STAR/NUM_INT[@text='1000']"/>
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='1']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]" />
+  <suppress-xpath files="Shifty.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/SL[./NUM_INT[@text='32']]/UNARY_MINUS[./NUM_INT[@text='2_147_483_648']]" />
   <suppress-xpath files="Shifty.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Shifty']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='i']]/NUM_INT[@text='33']" />
