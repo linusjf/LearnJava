@@ -4,6 +4,30 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Arcane.java"
+       checks="OuterTypeNumberCheck"
+       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
+<suppress-xpath
+       files="Arcane.java"
+       checks="EmptyBlockCheck"
+       query="/ENUM_DEF[./IDENT[@text='Arcane']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST"/>
+<suppress-xpath
+       files="Arcane.java"
+       checks="IllegalCatchCheck"
+       query="/ENUM_DEF[./IDENT[@text='Arcane']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
+<suppress-xpath
+       files="Arcane.java"
+       checks="MethodNameCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='Type1']]/OBJBLOCK/METHOD_DEF/IDENT[@text='f']"/>
+<suppress-xpath
+       files="Arcane.java"
+       checks="MethodNameCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='Type2']]/OBJBLOCK/METHOD_DEF/IDENT[@text='f']"/>
+<suppress-xpath
+       files="Arcane.java"
+       checks="MethodNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='Arcane3']]/OBJBLOCK/METHOD_DEF/IDENT[@text='f']"/>
+<suppress-xpath
        files="Count.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='Count']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='f']]/PLUS[./IDENT[@text='start']]/NUM_INT[@text='50']"/>
