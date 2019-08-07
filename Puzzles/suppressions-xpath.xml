@@ -4,6 +4,70 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='6']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='thirdElementIsThree']]/SLIST/LITERAL_RETURN/EXPR/LAND/GE/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='thirdElementIsThree']]/SLIST/LITERAL_RETURN/EXPR/LAND/EQUAL/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='6']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="Loop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='altMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='tests']]/ASSIGN/ARRAY_INIT/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
        files="Reluctant.java"
        checks="IllegalCatchCheck"
        query="/CLASS_DEF[./IDENT[@text='Reluctant']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
