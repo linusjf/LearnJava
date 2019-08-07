@@ -6,16 +6,10 @@ public enum UnwelcomeGuest {
   //  private static final long USER_ID;
   private static final long USER_ID = getUserIdOrGuest();
   /**
-    static {
-      try {
-        USER_ID = getUserIdFromEnvironment();
-      } catch (IdUnavailableException e) {
-        USER_ID = GUEST_USER_ID;
-        System.out.println("Logging in as guest");
-      }
-    }*
-  */
-
+   * static { try { USER_ID = getUserIdFromEnvironment(); } catch
+   * (IdUnavailableException e) { USER_ID = GUEST_USER_ID;
+   * System.out.println("Logging in as guest"); } }*
+   */
   private static long getUserIdOrGuest() {
     try {
       return getUserIdFromEnvironment();

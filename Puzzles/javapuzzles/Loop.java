@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Loop {
   ;
+
   public static void main(String[] args) {
     int[][] tests = {{6, 5, 4, 3, 2, 1}, {1, 2}, {1, 2, 3}, {1, 2, 3, 4}, {1}};
     int successCount = 0;
