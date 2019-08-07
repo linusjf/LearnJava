@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Creator.java"
-       checks="OuterTypeNumberCheck"
-       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
-<suppress-xpath
-       files="Creator.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Creator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="Creator.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='Creature']]"/>
+  <suppress-xpath files="Creator.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
+  <suppress-xpath files="Creator.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Creator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="Creator.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Creature']]" />
   <suppress-xpath files="Client.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />

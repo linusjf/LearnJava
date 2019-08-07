@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Creator {
   ;
+
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++)
       //      Creature creature = new Creature();
@@ -10,7 +11,7 @@ public enum Creator {
   }
 }
 
-@SuppressWarnings({"checkstyle:onetoplevelclass","PMD"})
+@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD"})
 class Creature {
   private static long numCreated;
 
