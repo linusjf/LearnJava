@@ -25,7 +25,7 @@ public class Name {
   public int hashCode() {
     return 37 * first.hashCode() + last.hashCode();
   }
-  
+
   public static void main(String[] args) {
     Set<Name> s = new HashSet<>();
     s.add(new Name("Mickey", "Mouse"));
