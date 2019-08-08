@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Overflow.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/UNARY_MINUS[./NUM_INT[@text='2_000_000_000']]"/>
+<suppress-xpath
+       files="Overflow.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='z']]/ASSIGN/EXPR/NUM_INT[@text='2_000_000_000']"/>
+<suppress-xpath
        files="MoreNames.java"
        checks="MethodNameCheck"
        query="/CLASS_DEF[./IDENT[@text='MoreNames']]/OBJBLOCK/METHOD_DEF/IDENT[@text='MoreNames']"/>

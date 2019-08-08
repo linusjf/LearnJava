@@ -27,7 +27,6 @@ public enum Mod {
   }
 
   public static void altMain(String... args) {
-    final int MODULUS = 3;
     int[] histogram = new int[MODULUS];
     // Iterate over all ints (Idiom from Puzzle 26)
     int i = Integer.MIN_VALUE;
