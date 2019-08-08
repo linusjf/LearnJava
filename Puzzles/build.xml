@@ -94,6 +94,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run37">
+    <description>NameGame target</description>
+    <java classname="${main.class37}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run36">
     <description>DatingGame target</description>
     <java classname="${main.class36}">
