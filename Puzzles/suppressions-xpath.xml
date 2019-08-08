@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="MoreNames.java"
+       checks="MethodNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='MoreNames']]/OBJBLOCK/METHOD_DEF/IDENT[@text='MoreNames']"/>
+<suppress-xpath
+       files="MoreNames.java"
+       checks="MethodNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='MoreNames']]/OBJBLOCK/METHOD_DEF/IDENT[@text='MoreNames']"/>
   <suppress-xpath files="DatingGame.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='DatingGame']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1999']" />
