@@ -4,6 +4,18 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="SuspiciousSort.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SuspiciousSort']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='arr']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="SuspiciousSort.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SuspiciousSort']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='collectionsMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='arr']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="SuspiciousSort.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SuspiciousSort']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='refactoredMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='arr']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
        files="Overflow.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/UNARY_MINUS[./NUM_INT[@text='2_000_000_000']]"/>
