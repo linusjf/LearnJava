@@ -5,6 +5,7 @@ import java.util.Map;
 
 public enum NameGame {
   ;
+
   public static void main(String... args) {
     Map<String, String> m = new IdentityHashMap<>();
     m.put("Mickey", "Mouse");

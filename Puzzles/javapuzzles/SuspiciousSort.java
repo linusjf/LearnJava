@@ -8,11 +8,12 @@ import java.util.Random;
 public enum SuspiciousSort {
   ;
 
-  enum Order { 
-    ASCENDING, 
-    DESCENDING, 
-    CONSTANT, 
-    UNORDERED, }
+  enum Order {
+    ASCENDING,
+    DESCENDING,
+    CONSTANT,
+    UNORDERED,
+  }
 
   public static void main(String[] args) {
     Random rnd = new Random();
