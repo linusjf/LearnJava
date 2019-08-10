@@ -3,6 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="PrivateMatter.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
+  <suppress-xpath files="PrivateMatter.java"
+                  checks="VisibilityModifierCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Base']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='className']" />
   <suppress-xpath files="SuspiciousSort.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='SuspiciousSort']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='arr']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
