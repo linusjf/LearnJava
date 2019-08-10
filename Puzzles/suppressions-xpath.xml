@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="StrungOut.java"
+       checks="OuterTypeNumberCheck"
+       query="/PACKAGE_DEF[./IDENT[@text='stringpuzzle']]"/>
   <suppress-xpath files="PrivateMatter.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
