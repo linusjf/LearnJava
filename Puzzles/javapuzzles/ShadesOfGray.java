@@ -10,7 +10,7 @@ public enum ShadesOfGray {
   }
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 enum X {
   ;
   // clang-format off
@@ -21,7 +21,7 @@ enum X {
   static C Y = new C();
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 enum Ex {
   ;
   static See y = new See();
@@ -33,12 +33,12 @@ enum Ex {
   // clang-format on
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 class See {
   String z = "White";
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 class C {
   String Z = "White";
 }

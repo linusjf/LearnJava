@@ -10,7 +10,7 @@ public enum StrungOut {
   }
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 class String {
   private final java.lang.String s;
 

@@ -9,12 +9,12 @@ public enum PrivateMatter {
   }
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 class Base {
   public String className = "Base";
 }
 
-@SuppressWarnings("checkstyle:onetoplevelclass")
+@SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})
 class Derived extends Base {
   private String className = "Derived";
 }
