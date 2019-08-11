@@ -1,12 +1,12 @@
 package javapuzzlers;
 
-import java.util.Random;
 import java.util.Locale;
+import java.util.Random;
 
 public enum Coin {
   HEADS,
   TAILS;
-  
+
   private static Random rnd = new Random();
 
   @Override
