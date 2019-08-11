@@ -4,7 +4,7 @@ public enum PingPong {
   ;
   @SuppressWarnings("PMD.DontCallThreadRun")
   public static void main(String[] a) {
-    synchronized(PingPong.class) {
+    synchronized (PingPong.class) {
     Thread t = new Thread() {
       @Override
       public void run() {
@@ -19,7 +19,7 @@ public enum PingPong {
   }
 
   static void pong() {
-    synchronized(PingPong.class) {
+    synchronized (PingPong.class) {
     System.out.printf("Pong%n");
     }
   }
