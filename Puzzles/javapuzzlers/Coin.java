@@ -1,6 +1,7 @@
 package javapuzzlers;
 
 import java.util.Random;
+import java.util.Locale;
 
 public enum Coin {
   HEADS,
@@ -8,8 +9,9 @@ public enum Coin {
   
   private static Random rnd = new Random();
 
+  @Override
   public String toString() {
-    return name().toLowerCase();
+    return name().toLowerCase(Locale.getDefault());
   }
 
   public static Coin flip() {
