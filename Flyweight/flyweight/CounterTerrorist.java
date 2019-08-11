@@ -25,6 +25,7 @@ class CounterTerrorist implements Player {
    *
    * @param weapon a <code>String</code> value
    */
+  @SuppressWarnings("checkstyle:hiddenfield")
   @Override
   public void assignWeapon(String weapon) {
     this.weapon = weapon;

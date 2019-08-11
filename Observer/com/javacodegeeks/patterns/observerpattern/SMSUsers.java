@@ -27,6 +27,7 @@ public class SMSUsers implements Observer {
     this.userInfo = userInfo;
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   @Override
   public void update(String desc) {
     this.desc = desc;

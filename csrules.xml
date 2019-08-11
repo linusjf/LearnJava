@@ -54,6 +54,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
               value="java" />
   </module>
   <module name="TreeWalker">
+    <module name="HiddenField">
+      <property name="ignoreSetter" value="true" />
+    <property name="ignoreConstructorParameter" value="true" />
+  </module>
     <module name="DescendantToken">
       <property name="tokens"
                 value="METHOD_CALL" />
