@@ -23,7 +23,7 @@ public class Rectangle implements Shape {
   }
 
   @Override
-  public void move(int x, int y) {
+  public void move(int xcoord, int ycoord) {
     // move shape
   }
 

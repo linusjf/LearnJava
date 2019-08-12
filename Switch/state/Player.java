@@ -43,6 +43,7 @@ public class Player implements PlayerState {
     return playerState;
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public void setState(PlayerState playerState) {
     this.playerState = playerState;
   }

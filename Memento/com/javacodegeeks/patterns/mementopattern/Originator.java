@@ -21,10 +21,12 @@ public class Originator {
     return yCoord;
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public void setX(double xCoord) {
     this.xCoord = xCoord;
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public void setY(double yCoord) {
     this.yCoord = yCoord;
   }

@@ -36,7 +36,7 @@ public class SingleFileHttpServer {
     this.content = data.clone();
     this.port = port;
     this.encoding = encoding;
-    String header =
+    String headerString =
         "HTTP/1.0 200 OK\r\n"
             + "Server: OneFile 2.0\r\n"
             + "Content-length: "
@@ -47,7 +47,7 @@ public class SingleFileHttpServer {
             + "; charset="
             + encoding
             + "\r\n\r\n";
-    this.header = header.getBytes(Charset.forName("US-ASCII"));
+    this.header = headerString.getBytes(Charset.forName("US-ASCII"));
   }
 
   public void start() {
