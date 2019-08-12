@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="CyclicBarrierArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/EXPR/LT/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CyclicBarrierArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/VARIABLE_DEF[./IDENT[@text='randomSleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10000']"/>
+<suppress-xpath
        files="CountDownLatchExample.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='CountDownLatchExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='randomSleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20_000']"/>
