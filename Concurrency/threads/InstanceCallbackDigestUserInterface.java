@@ -11,6 +11,7 @@ public class InstanceCallbackDigestUserInterface {
     this.filename = filename;
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   void receiveDigest(byte[] digest) {
     this.digest = Arrays.copyOf(digest, digest.length);
     System.out.println(this);

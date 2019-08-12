@@ -61,6 +61,7 @@ public class Drop {
     }
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public void put(String message) {
     synchronized (this) {
       // Wait until message has

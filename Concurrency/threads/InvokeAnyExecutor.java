@@ -43,14 +43,15 @@ public enum InvokeAnyExecutor {
       this.name = name;
     }
 
+    @SuppressWarnings("checkstyle:hiddenfield")
     public boolean validate(String name, String password) {
       try {
         long duration = (long) (Math.random() * 10);
         System.out.printf(
-            "Validator %s: Validating a user utilizing %d seconds\n", this.name, duration);
+            "Validator %s: Validating a user utilizing %d seconds\n", name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-        System.err.printf("%s: %s:- Returning false...\n", this.name, e.getMessage());
+        System.err.printf("%s: %s:- Returning false...\n", name, e.getMessage());
         return false;
       }
       return new Random().nextBoolean();

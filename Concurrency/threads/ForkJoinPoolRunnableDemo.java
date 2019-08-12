@@ -91,6 +91,7 @@ public enum ForkJoinPoolRunnableDemo {
       this.increment = increment;
     }
 
+    @SuppressWarnings("checkstyle:hiddenfield")
     void setForkedTask(ForkJoinTask t) {
       this.t = t;
     }

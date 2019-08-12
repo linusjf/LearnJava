@@ -49,7 +49,7 @@ public enum ForkJoinResultDemo {
 
   static class DocumentMock {
     private String[] words = {
-      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main"
+      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main",
     };
 
     @SuppressWarnings("PMD.AvoidArrayLoops")
@@ -108,10 +108,11 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
-    private Integer processLines(String[][] document, int start, int end, String word) {
+    @SuppressWarnings("checkstyle:hiddenfield")
+    private Integer processLines(String[][] doc, int start, int end, String word) {
       List<LineTask> tasks = new ArrayList<>();
       for (int i = start; i < end; i++) {
-        LineTask task = new LineTask(document[i], 0, document[i].length, word);
+        LineTask task = new LineTask(doc[i], 0, doc[i].length, word);
         tasks.add(task);
       }
       invokeAll(tasks);
@@ -168,6 +169,7 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
+    @SuppressWarnings("checkstyle:hiddenfield")
     private Integer count(String[] line, int start, int end, String word) {
       int counter;
       counter = 0;

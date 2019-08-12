@@ -16,6 +16,7 @@ public final class MultithreadedMaxFinder {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public static int max(int... data) throws InterruptedException, ExecutionException {
     if (data.length == 1) {
       return data[0];

@@ -17,9 +17,12 @@ public class CyclicBarrierDemo {
   private int numWorkers;
   private CountDownLatch latch;
 
-  public void runSimulation(int numWorkers, int numberOfPartialResults) {
-    numPartialResults = numberOfPartialResults;
+  public CyclicBarrierDemo(int numWorkers) {
     this.numWorkers = numWorkers;
+  }
+
+  public void runSimulation(int numberOfPartialResults) {
+    numPartialResults = numberOfPartialResults;
     latch = new CountDownLatch(numWorkers + 1);
 
     cyclicBarrier = new CyclicBarrier(numWorkers, new AggregatorThread());
@@ -53,8 +56,8 @@ public class CyclicBarrierDemo {
   }
 
   public static void main(String[] args) {
-    CyclicBarrierDemo demo = new CyclicBarrierDemo();
-    demo.runSimulation(5, 3);
+    CyclicBarrierDemo demo = new CyclicBarrierDemo(5);
+    demo.runSimulation(3);
   }
 
   class NumberCruncherThread implements Runnable {
