@@ -57,3 +57,4 @@ threads.ForkJoinPoolExample
 threads.CommonPoolTest
 threads.SemaphoreArchetype
 threads.CountDownLatchExample
+threads.CyclicBarrierArchetype
