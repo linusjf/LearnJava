@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="CountDownLatchExample.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CountDownLatchExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='randomSleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20_000']"/>
+<suppress-xpath
        files="CyclicBarrierDemo.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='CyclicBarrierDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='demo']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CyclicBarrierDemo']]/ELIST/EXPR/NUM_INT[@text='5']"/>
