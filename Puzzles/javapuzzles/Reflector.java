@@ -8,6 +8,7 @@ import java.util.Set;
 
 public enum Reflector {
   ;
+
   public static void main(String[] args) {
     try {
       Set<String> s = new HashSet<>();

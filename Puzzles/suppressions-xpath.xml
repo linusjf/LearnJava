@@ -3,26 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Pet.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Pet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='live']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='start']]/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="Pet.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Pet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
-<suppress-xpath
-       files="Obscure.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='Obscure']]"/>
-<suppress-xpath
-       files="CoinSide.java"
-       checks="OuterTypeNumberCheck"
-       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
-<suppress-xpath
-       files="CoinSide.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='CoinSide']]"/>
+  <suppress-xpath files="Pet.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Pet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='live']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='start']]/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="Pet.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Pet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']" />
+  <suppress-xpath files="Obscure.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Obscure']]" />
+  <suppress-xpath files="CoinSide.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
+  <suppress-xpath files="CoinSide.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CoinSide']]" />
   <suppress-xpath files="DoubleJeopardy.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
