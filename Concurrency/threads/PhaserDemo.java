@@ -12,9 +12,12 @@ public enum PhaserDemo {
 
   public static void main(String[] args) {
     Phaser phaser = new Phaser(3);
-    FileSearch system = new FileSearch("/data/data/com.termux/files/home/LearnJava", "log", phaser);
-    FileSearch apps = new FileSearch("/data/data/com.termux/files/home/LearnNodeJS", "log", phaser);
-    FileSearch documents = new FileSearch("/data/data/com.termux/files/home/", "log", phaser);
+    FileSearch system = new FileSearch(
+        "/data/data/com.termux/files/home/LearnJava", "log", phaser);
+    FileSearch apps = new FileSearch(
+        "/data/data/com.termux/files/home/LearnNodeJS", "log", phaser);
+    FileSearch documents =
+        new FileSearch("/data/data/com.termux/files/home/", "log", phaser);
     Thread systemThread = new Thread(system, "System");
     systemThread.start();
     Thread appsThread = new Thread(apps, "Apps");
@@ -47,7 +50,7 @@ public enum PhaserDemo {
     private void directoryProcess(File file) {
       File[] list = file.listFiles();
       if (list != null) {
-        for (File f : list) {
+        for (File f: list) {
           if (f.isDirectory()) {
             directoryProcess(f);
           } else {
@@ -66,11 +69,12 @@ public enum PhaserDemo {
     private void filterResults() {
       List<String> newResults = new ArrayList<>();
       long actualDate = new Date().getTime();
-      for (String fileName : results) {
+      for (String fileName: results) {
         File file = new File(fileName);
         long fileDate = file.lastModified();
 
-        if (actualDate - fileDate < TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)) {
+        if (actualDate - fileDate
+            < TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)) {
           newResults.add(fileName);
         }
       }
@@ -79,25 +83,30 @@ public enum PhaserDemo {
 
     private boolean checkResults() {
       if (results.isEmpty()) {
-        System.out.printf(
-            "%s: Phase %d: 0 results.\n", Thread.currentThread().getName(), phaser.getPhase());
-        System.out.printf(
-            "%s: Phase %d: End.\n", Thread.currentThread().getName(), phaser.getPhase());
+        System.out.printf("%s: Phase %d: 0 results.\n",
+                          Thread.currentThread().getName(),
+                          phaser.getPhase());
+        System.out.printf("%s: Phase %d: End.\n",
+                          Thread.currentThread().getName(),
+                          phaser.getPhase());
         phaser.arriveAndDeregister();
         return false;
       } else {
-        System.out.printf(
-            "%s: Phase %d: %d results.\n",
-            Thread.currentThread().getName(), phaser.getPhase(), results.size());
+        System.out.printf("%s: Phase %d: %d results.\n",
+                          Thread.currentThread().getName(),
+                          phaser.getPhase(),
+                          results.size());
         phaser.arriveAndAwaitAdvance();
         return true;
       }
     }
 
     private void showInfo() {
-      for (String fileName : results) {
+      for (String fileName: results) {
         File file = new File(fileName);
-        System.out.printf("%s: %s\n", Thread.currentThread().getName(), file.getAbsolutePath());
+        System.out.printf("%s: %s\n",
+                          Thread.currentThread().getName(),
+                          file.getAbsolutePath());
       }
       phaser.arriveAndAwaitAdvance();
     }
@@ -120,7 +129,8 @@ public enum PhaserDemo {
       }
       showInfo();
       phaser.arriveAndDeregister();
-      System.out.printf("%s: Work completed.\n", Thread.currentThread().getName());
+      System.out.printf("%s: Work completed.\n",
+                        Thread.currentThread().getName());
     }
   }
 }

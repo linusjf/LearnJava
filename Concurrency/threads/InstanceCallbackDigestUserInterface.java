@@ -32,12 +32,13 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   private static void calculateDigest(String filename) {
-    InstanceCallbackDigestUserInterface d = new InstanceCallbackDigestUserInterface(filename);
+    InstanceCallbackDigestUserInterface d =
+        new InstanceCallbackDigestUserInterface(filename);
     d.calculateDigest();
   }
 
   public static void main(String[] args) {
-    for (String filename : args) {
+    for (String filename: args) {
       // Calculate the digest
       calculateDigest(filename);
     }

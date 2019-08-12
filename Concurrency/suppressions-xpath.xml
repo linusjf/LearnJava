@@ -4,9 +4,24 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="ForkJoinPuzzle.java"
+       files="CyclicBarrierDemo.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ForkJoinPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelism']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='demo']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CyclicBarrierDemo']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="SemaphoreArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SemaphoreArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='executorService']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="SemaphoreArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SemaphoreArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="SemaphoreArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SemaphoreArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_IF/EXPR/GT[./IDENT[@text='counterValue']]/NUM_INT[@text='3']"/>
+  <suppress-xpath files="ForkJoinPuzzle.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ForkJoinPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelism']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
   <suppress-xpath files="TestFjDeadlock.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']" />
