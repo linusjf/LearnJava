@@ -58,3 +58,4 @@ threads.CommonPoolTest
 threads.SemaphoreArchetype
 threads.CountDownLatchExample
 threads.CyclicBarrierArchetype
+threads.ReduceLockDuration

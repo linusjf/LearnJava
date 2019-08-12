@@ -3,6 +3,22 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="ConstantNameCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='map']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OrigThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OrigThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_SYNCHRONIZED/SLIST/VARIABLE_DEF[./IDENT[@text='value']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReducedThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
   <suppress-xpath files="CyclicBarrierArchetype.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='CyclicBarrierArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/EXPR/LT/NUM_INT[@text='3']" />
