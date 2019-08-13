@@ -1,8 +1,9 @@
 package javapuzzles;
 
 class LinkedList<E> {
-  private Node<E> head = null;
+  private Node<E> head;
 
+  @SuppressWarnings("PMD.ShortClassName")
   private static class Node<T> {
     T value;
     Node<T> next;
@@ -14,7 +15,7 @@ class LinkedList<E> {
   }
 
   public void add(E e) {
-    head = new Node<E>(e, head);
+    head = new Node<>(e, head);
   }
 
   public void dump() {
@@ -23,7 +24,7 @@ class LinkedList<E> {
   }
 
   public static void main(String[] args) {
-    LinkedList<String> list = new LinkedList<String>();
+    LinkedList<String> list = new LinkedList<>();
     list.add("world");
     list.add("Hello");
     list.dump();

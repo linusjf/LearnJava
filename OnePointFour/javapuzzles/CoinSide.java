@@ -2,7 +2,7 @@ package javapuzzles;
 
 import java.util.Random;
 
-public abstract class CoinSide {
+public abstract class CoinSide { //NOPMD
   private static Random rnd = new Random();
   
   public static CoinSide flip() {
@@ -21,7 +21,7 @@ final class Heads extends CoinSide {
     super();
   }
   
-  public String toString() {
+  public String toString() { //NOPMD
     return "heads";
   }
 }
@@ -33,7 +33,7 @@ final class Tails extends CoinSide {
     super();
   }
 
-  public String toString() {
+  public String toString() { //NOPMD
     return "tails";
   }
 }

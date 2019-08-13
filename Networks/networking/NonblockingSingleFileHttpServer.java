@@ -19,6 +19,7 @@ public class NonblockingSingleFileHttpServer {
   private ByteBuffer contentBuffer;
   private int port = 80;
 
+  @SuppressWarnings("PMD.UnusedFormalParameter")
   public NonblockingSingleFileHttpServer(
       ByteBuffer data, String encoding, String mimeType, int port) {
     this.port = port;
@@ -89,6 +90,7 @@ public class NonblockingSingleFileHttpServer {
     }
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Usage: java NonblockingSingleFileHTTPServer file port encoding");
@@ -104,7 +106,7 @@ public class NonblockingSingleFileHttpServer {
       int port;
       try {
         port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65535) port = 80;
+        if (port < 1 || port > 65_535) port = 80;
       } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
         port = 80;
       }
