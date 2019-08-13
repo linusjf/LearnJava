@@ -12,7 +12,7 @@ public class Lazy {
     t.start();
     try {
       // t.join() causes program to hang
-      t.join(5000);
+      t.join();
     } catch (InterruptedException e) {
       throw new AssertionError(e);
     }
