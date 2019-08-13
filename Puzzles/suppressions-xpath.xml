@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Pair.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Pair']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='p']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Pair']]/ELIST/EXPR/NUM_INT[@text='23']"/>
+<suppress-xpath
        files="BeerBlast.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='BeerBlast']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_IF/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='99']"/>

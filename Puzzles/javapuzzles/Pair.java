@@ -3,6 +3,7 @@ package javapuzzles;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("PMD")
 public class Pair<T> {
   private final T first;
   private final T second;
@@ -25,7 +26,7 @@ public class Pair<T> {
   }
 
   public static void main(String[] args) {
-    Pair<Object> p = new Pair<Object>(23, "skidoo");
+    Pair<Object> p = new Pair<>(23, "skidoo");
     System.out.println(p.first() + " " + p.second());
     for (String s: p.stringList())
       System.out.print(s + " ");

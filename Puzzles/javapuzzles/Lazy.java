@@ -1,10 +1,12 @@
 package javapuzzles;
 
-public class Lazy {
-  private static boolean initialized = false;
+public enum Lazy {
+  ;
+  private static boolean initialized;
   
   static {
     Thread t = new Thread(new Runnable() {
+      @Override
       public void run() {
         initialized = true;
       }

@@ -3,7 +3,7 @@ package javapuzzles;
 public enum Transitive {
   ;
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     long x = Long.MAX_VALUE;
     double y = (double)Long.MAX_VALUE;
     long z = Long.MAX_VALUE - 1;
