@@ -4,6 +4,38 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="FindMin.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='FindMin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='r']]/ASSIGN/EXPR/BAND[./NUM_INT[@text='0xFF']]/SR[./IDENT[@text='rgb']]/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='r']]/ASSIGN/EXPR/BAND/NUM_INT[@text='0xFF']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='g']]/ASSIGN/EXPR/BAND[./NUM_INT[@text='0xFF']]/SR[./IDENT[@text='rgb']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='g']]/ASSIGN/EXPR/BAND/NUM_INT[@text='0xFF']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR/BAND[./IDENT[@text='rgb']]/NUM_INT[@text='0xFF']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/PLUS/STAR/NUM_FLOAT[@text='0.2126']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/PLUS/STAR/NUM_FLOAT[@text='0.7152']"/>
+<suppress-xpath
        files="ReduceLockDuration.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReducedThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='value']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
