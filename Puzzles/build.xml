@@ -94,6 +94,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run63">
+    <description>Shuffle target</description>
+    <java classname="${main.class63}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run62">
     <description>Twisted target</description>
     <java classname="${main.class62}">
