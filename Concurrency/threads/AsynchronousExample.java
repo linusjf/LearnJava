@@ -20,6 +20,7 @@ public enum AsynchronousExample {
         "/data/data/com.termux/files/home/LearnJava", "log");
     pool.execute(system);
     pool.execute(apps);
+    // CPD-OFF
     pool.execute(documents);
     do {
       System.out.printf("******************************************\n");
@@ -35,6 +36,7 @@ public enum AsynchronousExample {
         System.err.println(e);
       }
     } while (!system.isDone() || !apps.isDone() || !documents.isDone());
+    // CPD-ON
     pool.shutdown();
     List<String> results;
 

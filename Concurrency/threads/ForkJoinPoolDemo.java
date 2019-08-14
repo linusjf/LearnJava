@@ -29,6 +29,7 @@ public enum ForkJoinPoolDemo {
       }
     } while (!task.isDone());
     pool.shutdown();
+    // CPD-OFF
     if (task.isCompletedNormally()) {
       System.out.printf("Main: The process has completed normally.\n");
     }
@@ -74,6 +75,7 @@ public enum ForkJoinPoolDemo {
       return ret;
     }
   }
+  // CPD-ON
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task extends RecursiveAction {
