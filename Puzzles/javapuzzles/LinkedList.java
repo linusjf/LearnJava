@@ -3,17 +3,6 @@ package javapuzzles;
 class LinkedList<E> {
   private Node<E> head;
 
-  @SuppressWarnings("PMD.ShortClassName")
-  private static class Node<T> {
-    T value;
-    Node<T> next;
-
-    Node(T value, Node<T> next) {
-      this.value = value;
-      this.next = next;
-    }
-  }
-
   public void add(E e) {
     head = new Node<>(e, head);
   }
@@ -29,4 +18,16 @@ class LinkedList<E> {
     list.add("Hello");
     list.dump();
   }
+  
+  @SuppressWarnings("PMD.ShortClassName")
+  private static class Node<T> {
+    T value;
+    Node<T> next;
+
+    Node(T value, Node<T> next) {
+      this.value = value;
+      this.next = next;
+    }
+  }
+
 }

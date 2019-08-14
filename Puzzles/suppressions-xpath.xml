@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="SerialKiller.java"
+       checks="OuterTypeNumberCheck"
+       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
+<suppress-xpath
+       files="SerialKiller.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SerialKiller']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sub']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Sub']]/ELIST/EXPR/NUM_INT[@text='666']"/>
+<suppress-xpath
        files="Pair.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Pair']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='p']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Pair']]/ELIST/EXPR/NUM_INT[@text='23']"/>
