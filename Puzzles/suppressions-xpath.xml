@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Twisted.java"
+       checks="DescendantTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='Twisted']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='reproduce']]/SLIST/EXPR/METHOD_CALL"/>
+<suppress-xpath
+       files="Twisted.java"
+       checks="DescendantTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='Twisted']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='reiterate']]/SLIST/EXPR/METHOD_CALL"/>
+<suppress-xpath
        files="SerialKiller.java"
        checks="OuterTypeNumberCheck"
        query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/>
