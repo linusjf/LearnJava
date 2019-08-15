@@ -34,9 +34,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.imageio.ImageIO;
 
 /**
@@ -59,7 +58,7 @@ public class ForkBlur extends RecursiveAction {
   protected static int sThreshold = 10_000;
 
   public static final long serialVersionUID = 1L;
-private static AtomicInteger taskCount = new AtomicInteger(0);
+  private static AtomicInteger taskCount = new AtomicInteger(0);
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public ForkBlur(final int[] src, int start, int length, final int... dst) {
@@ -115,9 +114,8 @@ private static AtomicInteger taskCount = new AtomicInteger(0);
       File srcFile = new File(srcName);
       BufferedImage image = ImageIO.read(srcFile);
 
-      BufferedImage img = new BufferedImage(image.getWidth(),
-                                            image.getHeight(),
-                                            BufferedImage.TYPE_3BYTE_BGR);
+      BufferedImage img = new BufferedImage(
+          image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
       img.getGraphics().drawImage(image, 0, 0, null);
       System.out.println("Source image: " + srcName);
 
@@ -158,9 +156,9 @@ private static AtomicInteger taskCount = new AtomicInteger(0);
 
     System.out.println("Image blur took " + (endTime - startTime)
                        + " milliseconds.");
-System.out.println("Task count: " + taskCount.get());
+    System.out.println("Task count: " + taskCount.get());
     BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
-      dstImage.getGraphics().drawImage(srcImage, 0, 0, null);
+    dstImage.getGraphics().drawImage(srcImage, 0, 0, null);
     dstImage.setRGB(0, 0, w, h, dst, 0, w);
 
     return dstImage;
