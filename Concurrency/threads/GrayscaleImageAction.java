@@ -44,12 +44,16 @@ public class GrayscaleImageAction extends RecursiveAction {
                                             BufferedImage.TYPE_3BYTE_BGR);
       img.getGraphics().drawImage(bufferedImage, 0, 0, null);
       int height = bufferedImage.getHeight();
+    long startTime = System.currentTimeMillis();
       for (int row = 0; row < height; row++) {
         GrayscaleImageAction action = new GrayscaleImageAction(row, img);
         pool.execute(action);
       }
       pool.shutdown();
       pool.awaitTermination(1, TimeUnit.DAYS);
+    long endTime = System.currentTimeMillis();
+    System.out.println("Image graying took " + (endTime - startTime)
+                       + " milliseconds.");
       ImageIO.write(img, "jpg", new File(args[1]));
     } catch (IOException | InterruptedException ioe) {
       System.err.println(ioe);

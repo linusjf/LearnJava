@@ -34,6 +34,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.RecursiveAction;
 import javax.imageio.ImageIO;
 
@@ -57,6 +59,7 @@ public class ForkBlur extends RecursiveAction {
   protected static int sThreshold = 10_000;
 
   public static final long serialVersionUID = 1L;
+private static AtomicInteger taskCount = new AtomicInteger(0);
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public ForkBlur(final int[] src, int start, int length, final int... dst) {
@@ -92,6 +95,7 @@ public class ForkBlur extends RecursiveAction {
 
   @Override
   protected void compute() {
+    taskCount.getAndIncrement();
     if (mLength < sThreshold) {
       computeDirectly();
       return;
@@ -111,15 +115,16 @@ public class ForkBlur extends RecursiveAction {
       File srcFile = new File(srcName);
       BufferedImage image = ImageIO.read(srcFile);
 
+      BufferedImage img = new BufferedImage(image.getWidth(),
+                                            image.getHeight(),
+                                            BufferedImage.TYPE_3BYTE_BGR);
+      img.getGraphics().drawImage(image, 0, 0, null);
       System.out.println("Source image: " + srcName);
 
-      BufferedImage blurredImage = blur(image);
+      BufferedImage blurredImage = blur(img);
 
       String dstName = "blurred-tulips.jpg";
       File dstFile = new File(dstName);
-      System.out.println(image);
-      System.out.println(blurredImage);
-      System.out.println(dstFile);
       ImageIO.write(blurredImage, "jpeg", dstFile);
 
       System.out.println("Output image: " + dstName);
@@ -148,14 +153,14 @@ public class ForkBlur extends RecursiveAction {
 
     long startTime = System.currentTimeMillis();
     pool.invoke(fb);
+    pool.shutdown();
     long endTime = System.currentTimeMillis();
 
     System.out.println("Image blur took " + (endTime - startTime)
                        + " milliseconds.");
-
-    //    BufferedImage dstImage =
-    //      new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+System.out.println("Task count: " + taskCount.get());
     BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
+      dstImage.getGraphics().drawImage(srcImage, 0, 0, null);
     dstImage.setRGB(0, 0, w, h, dst, 0, w);
 
     return dstImage;
