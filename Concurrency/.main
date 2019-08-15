@@ -63,3 +63,4 @@ threads.LockSplitting
 threads.FindMin
 threads.GrayscaleImageAction Red_Tulips.jpg Gray_Tulips.jpg
 threads.FindMinTask
+threads.BlockingThread
