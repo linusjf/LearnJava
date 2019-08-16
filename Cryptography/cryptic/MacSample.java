@@ -39,7 +39,7 @@ public enum MacSample {
       System.out.println("Mac result:");
       System.out.println(new String(macResult));
       System.out.println("Base64: ");
-      System.out.println(Base64.getEncoder().encode(macResult));
+      System.out.println(Base64.getEncoder().encodeToString(macResult));
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
       System.err.println(e);
     }
