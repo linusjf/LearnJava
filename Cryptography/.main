@@ -1,1 +1,5 @@
 cryptic.MessageDigestExample < echo.txt
+cryptic.MacSample
+cryptic.StoringIntoKeyStore
+cryptic.RetrievingFromKeyStore
+
