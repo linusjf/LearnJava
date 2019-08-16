@@ -9,6 +9,6 @@ Specification-Title: Cryptography
 Specification-Version: 1.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a7c525e August 16 2019
+Implementation-Version: 7d38061 August 16 2019
 Implementation-Vendor: 
 

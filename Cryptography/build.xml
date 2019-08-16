@@ -94,6 +94,16 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run6">
+    <description>DigitalSignature target</description>
+    <java classname="${main.class6}"
+          input="echo.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run5">
     <description>KeyPairGeneratorExample target</description>
     <java classname="${main.class5}">
@@ -140,7 +150,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run5,run4,run3,run2,run1">
+          depends="run6,run5,run4,run3,run2,run1">
     <description>Run target</description>
     <java classname="${main.class}"
           input="echo.txt">
