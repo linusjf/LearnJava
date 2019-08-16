@@ -1,15 +1,15 @@
 package cryptic;
 
-import java.security.Key;
 import java.security.InvalidKeyException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
-import java.security.NoSuchAlgorithmException;
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 
 public enum KeyGeneratorExample {
   ;
@@ -38,10 +38,9 @@ public enum KeyGeneratorExample {
       System.out.println(bytes);
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(bytes));
-    } catch (BadPaddingException |
-        NoSuchPaddingException |
-        IllegalBlockSizeException |
-        NoSuchAlgorithmException | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException
+             | IllegalBlockSizeException | NoSuchAlgorithmException
+             | InvalidKeyException e) {
       System.err.println(e);
     }
   }
