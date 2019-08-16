@@ -13,6 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 
 public enum KeyGeneratorExample {
   ;
+
   public static void main(String... args) {
 
     try {
