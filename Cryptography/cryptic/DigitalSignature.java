@@ -30,13 +30,13 @@ public enum DigitalSignature {
       // Generate the pair of keys
       KeyPair pair = keyPairGen.generateKeyPair();
 
-       //Getting the private key from the key pair
+      // Getting the private key from the key pair
       PrivateKey privKey = pair.getPrivate();
-      
-      //Creating a Signature object
+
+      // Creating a Signature object
       Signature sign = Signature.getInstance("SHA256withDSA");
-      
-      //Initialize the signature
+
+      // Initialize the signature
       sign.initSign(privKey);
 
       byte[] bytes = msg.getBytes();
