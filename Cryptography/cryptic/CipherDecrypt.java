@@ -6,7 +6,6 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
-import java.security.Signature;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -14,6 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 
 public enum CipherDecrypt {
   ;
+
   public static void main(String... args) {
     try {
 
