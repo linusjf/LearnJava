@@ -5,4 +5,5 @@ cryptic.RetrievingFromKeyStore
 cryptic.KeyGeneratorExample
 cryptic.KeyPairGeneratorExample
 cryptic.DigitalSignature < echo.txt
+cryptic.SignatureVerification
 

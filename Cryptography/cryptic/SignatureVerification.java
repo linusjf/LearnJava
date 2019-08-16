@@ -7,10 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.SignatureException;
-import java.util.Base64;
 
 public enum SignatureVerification {
   ;
+
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -45,13 +45,13 @@ public enum SignatureVerification {
       // Verifying the signature
       boolean bool = sign.verify(signature);
 
-      if (bool) 
+      if (bool)
         System.out.println("Signature verified");
-      else 
+      else
         System.out.println("Signature failed");
-      
-    } catch (SignatureException
-             | NoSuchAlgorithmException | InvalidKeyException ex) {
+
+    } catch (SignatureException | NoSuchAlgorithmException
+             | InvalidKeyException ex) {
       System.err.println(ex);
     }
   }
