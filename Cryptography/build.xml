@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Scanner"
+<project name="Cryptography"
          default="main"
          basedir=".">
   <property file="build.properties" />
@@ -96,13 +96,7 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}" input="input.stdin">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class1}" >
+    <java classname="${main.class}" input="echo.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
