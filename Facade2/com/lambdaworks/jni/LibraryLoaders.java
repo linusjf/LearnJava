@@ -3,15 +3,16 @@ package com.lambdaworks.jni;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
 /**
- * {@code LibraryLoaders} will create the appropriate {@link LibraryLoader} for the VM it is running
- * on.
+ * {@code LibraryLoaders} will create the appropriate {@link LibraryLoader} for
+ * the VM it is running on.
  *
- * <p>The system property {@code com.lambdaworks.jni.loader} may be used to override loader
- * auto-detection, or to disable loading native libraries entirely via use of the nil loader.
+ * <p>The system property {@code com.lambdaworks.jni.loader} may be used to
+ * override loader auto-detection, or to disable loading native libraries
+ * entirely via use of the nil loader.
  *
  * @author Will Glozer
  */
-public final class LibraryLoaders { // NOPMD
+public final class LibraryLoaders {  // NOPMD
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -27,11 +28,13 @@ public final class LibraryLoaders { // NOPMD
         return new NilLibraryLoader();
       if ("jar".equals(type))
         return new JarLibraryLoader();
-      throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
+      throw new IllegalStateException(
+          "Illegal value for com.lambdaworks.jni.loader: " + type);
     }
 
     final String vmSpec = System.getProperty("java.vm.specification.name");
-    return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
+    return vmSpec.startsWith("Java") ? new JarLibraryLoader()
+                                     : new SysLibraryLoader();
   }
 
   private LibraryLoaders() {
