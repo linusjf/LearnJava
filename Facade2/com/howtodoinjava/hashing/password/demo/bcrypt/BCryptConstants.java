@@ -40,6 +40,7 @@ public final class BCryptConstants {
       0x8979fb1b,
   };
 
+  // clang-format off
   static final int[] ORIGS = {
       0xd1310ba6, 0x98dfb5ac, 0x2ffd72db, 0xd01adfb7, 0xb8e1afed, 0x6a267e96,
       0xba7c9045, 0xf12c7f99, 0x24a19947, 0xb3916cf7, 0x0801f2e2, 0x858efc16,
@@ -213,7 +214,8 @@ public final class BCryptConstants {
       0x01c36ae4, 0xd6ebe1f9, 0x90d4f869, 0xa65cdea0, 0x3f09252d, 0xc208e69f,
       0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6,
   };
-
+  // clang-format on
+  
   // bcrypt IV: "OrpheanBeholderScryDoubt"
   static final int[] BFCRYPTCIPHERTEXT = {
       0x4f727068,
