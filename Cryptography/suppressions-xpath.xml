@@ -4,6 +4,22 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="DHThreeWay.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>
+<suppress-xpath
+       files="DHThreeWay.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']"/>
+<suppress-xpath
+       files="DHThreeWay.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="DHThreeWay.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='low']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0f']"/>
+<suppress-xpath
        files="DHKeyAgreement.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='initAliceKey']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>

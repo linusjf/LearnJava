@@ -33,12 +33,12 @@ public final class DHThreeWay {
       System.out.println("BOB: Generate DH keypair ...");
       KeyPairGenerator bobKpairGen = KeyPairGenerator.getInstance("DH");
       bobKpairGen.initialize(dhParamShared);
-      KeyPair bobKpair = bobKpairGen.generateKeyPair();
+      final KeyPair bobKpair = bobKpairGen.generateKeyPair();
       // Carol creates her own DH key pair using the same params
       System.out.println("CAROL: Generate DH keypair ...");
       KeyPairGenerator carolKpairGen = KeyPairGenerator.getInstance("DH");
       carolKpairGen.initialize(dhParamShared);
-      KeyPair carolKpair = carolKpairGen.generateKeyPair();
+      final KeyPair carolKpair = carolKpairGen.generateKeyPair();
       // Alice initialize
       System.out.println("ALICE: Initialize ...");
       KeyAgreement aliceKeyAgree = KeyAgreement.getInstance("DH");
@@ -89,7 +89,7 @@ public final class DHThreeWay {
   /*
    * Converts a byte to hex digit and writes to the supplied buffer
    */
-  private static void byte2hex(byte b, StringBuffer buf) {
+  private static void byte2hex(byte b, StringBuilder buf) {
     char[] hexChars = {'0',
                        '1',
                        '2',
@@ -116,7 +116,7 @@ public final class DHThreeWay {
    * Converts a byte array to hex string
    */
   private static String toHexString(byte[] block) {
-    StringBuffer buf = new StringBuffer();
+    StringBuilder buf = new StringBuilder();
     int len = block.length;
     for (int i = 0; i < len; i++) {
       byte2hex(block[i], buf);
