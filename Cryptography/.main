@@ -9,4 +9,5 @@ cryptic.SignatureVerification
 cryptic.CipherSample
 cryptic.CipherDecrypt
 cryptic.BlowFishKey
+cryptic.DHKeyAgreement
 

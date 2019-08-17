@@ -94,6 +94,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run11">
+    <description>DHKeyAgreement target</description>
+    <java classname="${main.class11}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run10">
     <description>BlowFishKey target</description>
     <java classname="${main.class10}">
@@ -186,8 +195,8 @@
     </java>
   </target>
   <target name="run"
-          depends="run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
-          
+          depends="run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+
     <description>Run target</description>
     <java classname="${main.class}"
           input="echo.txt">
