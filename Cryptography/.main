@@ -10,4 +10,5 @@ cryptic.CipherSample
 cryptic.CipherDecrypt
 cryptic.BlowFishKey
 cryptic.DHKeyAgreement
+cryptic.DHThreeWay
 
