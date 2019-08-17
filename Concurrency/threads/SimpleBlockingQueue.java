@@ -1,7 +1,7 @@
 package threads;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 public class SimpleBlockingQueue<T> {
   private List<T> queue = new LinkedList<T>();

@@ -14,8 +14,7 @@ public enum CallableExecutorExample {
   ;
 
   public static void main(String[] args) {
-    ThreadPoolExecutor executor =
-        (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+    ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
     List<Future<Integer>> resultList = new ArrayList<>();
     Random random = new Random();
     for (int i = 0; i < 10; i++) {
@@ -25,8 +24,7 @@ public enum CallableExecutorExample {
       resultList.add(result);
     }
     do {
-      System.out.printf("Main: Number of Completed Tasks: %d\n",
-                        executor.getCompletedTaskCount());
+      System.out.printf("Main: Number of Completed Tasks: %d\n", executor.getCompletedTaskCount());
       for (int i = 0; i < resultList.size(); i++) {
         Future<Integer> result = resultList.get(i);
         System.out.printf("Main: Task %d completed: %s\n", i, result.isDone());
@@ -69,10 +67,8 @@ public enum CallableExecutorExample {
           TimeUnit.MILLISECONDS.sleep(20);
         }
       }
-      System.out.printf("%s: Factorial %d:  %d\n",
-                        Thread.currentThread().getName(),
-                        number,
-                        result);
+      System.out.printf(
+          "%s: Factorial %d:  %d\n", Thread.currentThread().getName(), number, result);
       return result;
     }
   }

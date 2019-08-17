@@ -48,12 +48,13 @@ public enum DigitalSignature {
       byte[] signature = sign.sign();
 
       // Printing the signature
-      System.out.println("Digital signature for given text: "
-                         + new String(signature, "UTF8"));
+      System.out.println("Digital signature for given text: " + new String(signature, "UTF8"));
 
       System.out.println(Base64.getEncoder().encodeToString(signature));
-    } catch (UnsupportedEncodingException | SignatureException
-             | NoSuchAlgorithmException | InvalidKeyException ex) {
+    } catch (UnsupportedEncodingException
+        | SignatureException
+        | NoSuchAlgorithmException
+        | InvalidKeyException ex) {
       System.err.println(ex);
     }
   }

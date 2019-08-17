@@ -19,7 +19,7 @@ public enum BeerBlast {
         System.out.println();
       }
     } else {
-      try {  // Master
+      try { // Master
         Process process = Runtime.getRuntime().exec(COMMAND);
         drainInBackground(process.getInputStream());
         int exitValue = process.waitFor();
@@ -31,18 +31,20 @@ public enum BeerBlast {
   }
 
   static void drainInBackground(final InputStream is) {
-    new Thread(() -> {
-      try {
-        BufferedReader bri = new BufferedReader(new InputStreamReader(is));
-        StringBuilder result = new StringBuilder();
-        String line;
-        while ((line = bri.readLine()) != null)
-          result.append(line).append(System.lineSeparator());
-        System.out.println(result.toString());
-      } catch (IOException e) {
-        // return on IOException
-        return;
-      }
-    }).start();
+    new Thread(
+            () -> {
+              try {
+                BufferedReader bri = new BufferedReader(new InputStreamReader(is));
+                StringBuilder result = new StringBuilder();
+                String line;
+                while ((line = bri.readLine()) != null)
+                  result.append(line).append(System.lineSeparator());
+                System.out.println(result.toString());
+              } catch (IOException e) {
+                // return on IOException
+                return;
+              }
+            })
+        .start();
   }
 }

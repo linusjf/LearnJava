@@ -4,8 +4,7 @@ package javapuzzles;
 public final class Dog extends Exception {
   public static final Dog INSTANCE = new Dog();
 
-  private Dog() {
-  }
+  private Dog() {}
 
   public String toString() {
     return "Woof";

@@ -3,14 +3,16 @@ package javapuzzles;
 public enum Lazy {
   ;
   private static boolean initialized;
-  
+
   static {
-    Thread t = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        initialized = true;
-      }
-    });
+    Thread t =
+        new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                initialized = true;
+              }
+            });
     t.start();
     try {
       // t.join() causes program to hang

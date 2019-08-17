@@ -8,6 +8,6 @@ public enum Null {
   }
 
   public static void main(String[] args) {
-    ((Null)null).greet();
+    ((Null) null).greet();
   }
 }

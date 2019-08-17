@@ -7,15 +7,15 @@ public class Twisted {
   Twisted(String name) {
     this.name = name;
   }
-  
+
   private String name() {
     return name;
   }
-  
+
   String getName() {
     return name;
   }
-  
+
   private void reproduce() {
     new Twisted("reproduce") {
       void printName() {
@@ -23,7 +23,7 @@ public class Twisted {
       }
     }.printName();
   }
-  
+
   private void reiterate() {
     new Twisted("reiterate") {
       void printName() {

@@ -16,8 +16,7 @@ public enum Reflector {
       Iterator it = s.iterator();
       Method m = it.getClass().getMethod("hasNext");
       System.out.println(m.invoke(it));
-    } catch (IllegalAccessException | InvocationTargetException
-             | NoSuchMethodException iae) {
+    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {
       System.err.println(iae);
     }
     altMain(args);
@@ -30,8 +29,7 @@ public enum Reflector {
       Iterator it = s.iterator();
       Method m = Iterator.class.getMethod("hasNext");
       System.out.println(m.invoke(it));
-    } catch (IllegalAccessException | InvocationTargetException
-             | NoSuchMethodException iae) {
+    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {
       System.err.println(iae);
     }
   }
