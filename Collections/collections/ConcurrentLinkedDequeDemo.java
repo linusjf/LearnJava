@@ -41,7 +41,6 @@ public enum ConcurrentLinkedDequeDemo {
   }
 
   private static void alternateMain() {
-
     Random random = new Random();
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];

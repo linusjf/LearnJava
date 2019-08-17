@@ -82,10 +82,13 @@ public final class BCryptUtil {
     Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (matcher.matches()) {
       off = matcher.end(1);
-      if (off == OFFSET_4) minor = 'a';
-    } else throw new IllegalArgumentException("Invalid salt:" + salt);
+      if (off == OFFSET_4)
+        minor = 'a';
+    } else
+      throw new IllegalArgumentException("Invalid salt:" + salt);
     // Extract number of rounds
-    if (salt.charAt(off + 2) > DOLLAR) throw new IllegalArgumentException("Missing salt rounds");
+    if (salt.charAt(off + 2) > DOLLAR)
+      throw new IllegalArgumentException("Missing salt rounds");
     return new String[] {String.valueOf(minor), String.valueOf(off)};
   }
 
@@ -121,9 +124,11 @@ public final class BCryptUtil {
   private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
-    if (minor >= LOWER_CASE_A) rs.append(minor);
+    if (minor >= LOWER_CASE_A)
+      rs.append(minor);
     rs.append(DOLLAR);
-    if (rounds < TEN) rs.append('0');
+    if (rounds < TEN)
+      rs.append('0');
     rs.append(Integer.toString(rounds))
         .append(DOLLAR)
         .append(encodeBase64(saltb))
@@ -146,7 +151,8 @@ public final class BCryptUtil {
 
     random.nextBytes(rnd);
     rs.append("$2a$");
-    if (logRounds < TEN) rs.append('0');
+    if (logRounds < TEN)
+      rs.append('0');
     rs.append(Integer.toString(logRounds)).append(DOLLAR).append(encodeBase64(rnd));
     return rs.toString();
   }

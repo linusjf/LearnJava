@@ -12,7 +12,6 @@ public enum Main {
 
   @SuppressWarnings("PMD.DoNotCallGarbageCollectionExplicitly")
   public static void main(String[] args) {
-
     // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096mlex
     // try with
     // -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75
@@ -37,13 +36,8 @@ public enum Main {
     System.gc();
     int removed = removeRefs(queue, references);
 
-    System.out.println(
-        "Final used mem "
-            + getUsedMem()
-            + "    Refs removed "
-            + removed
-            + "   left "
-            + references.size());
+    System.out.println("Final used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
+        + references.size());
   }
 
   @SuppressWarnings("PMD.NullAssignment")
@@ -52,7 +46,6 @@ public enum Main {
     HeavyList head = new HeavyList(0, null);
     HeavyList oldTail = head;
     for (int i = 0; i < howManyTimes; i++) {
-
       final HeavyList newTail = allocate(HOW_MANY, oldTail);
 
       HeavyList curr = oldTail.next;
@@ -72,13 +65,8 @@ public enum Main {
       int removed = removeRefs(queue, references);
 
       //  System.gc();   //uncomment this line to comparing with forced gc
-      System.out.println(
-          "used mem "
-              + getUsedMem()
-              + "    Refs removed "
-              + removed
-              + "   left "
-              + references.size());
+      System.out.println("used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
+          + references.size());
 
       oldTail = newTail;
     }
@@ -94,7 +82,8 @@ public enum Main {
     int removed = 0;
     while (true) {
       Reference r = queue.poll();
-      if (r == null) break;
+      if (r == null)
+        break;
       references.remove(r);
       removed++;
     }
@@ -129,7 +118,6 @@ public enum Main {
   }
 
   private static HeavyList allocate(int howMany, HeavyList startFrom) {
-
     HeavyList curr = startFrom;
     for (int i = 0; i < howMany; i++) {
       curr = new HeavyList(i, curr);
@@ -138,7 +126,6 @@ public enum Main {
   }
 
   private static int count(HeavyList list) {
-
     HeavyList curr = list;
     int tot = 0;
     while (curr != null) {
@@ -149,7 +136,6 @@ public enum Main {
   }
 
   private static class HeavyList {
-
     byte[] mega = new byte[1000];
     private HeavyList next;
 
@@ -167,7 +153,8 @@ public enum Main {
     }
 
     public HeavyList dropNext() {
-      if (next == null || next.next == null) return null;
+      if (next == null || next.next == null)
+        return null;
       HeavyList res = next;
       next = next.next;
       return res;

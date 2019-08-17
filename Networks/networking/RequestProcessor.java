@@ -33,7 +33,8 @@ public class RequestProcessor implements Runnable {
     } catch (IOException ex) {
       LOGGER.info("Error getting canonical root directory: %s", ex.getMessage());
     }
-    if (indexFileName != null) this.indexFileName = indexFileName;
+    if (indexFileName != null)
+      this.indexFileName = indexFileName;
     this.connection = connection;
   }
 
@@ -47,7 +48,8 @@ public class RequestProcessor implements Runnable {
       StringBuilder requestLine = new StringBuilder();
       while (true) {
         int c = in.read();
-        if (c == '\r' || c == '\n') break;
+        if (c == '\r' || c == '\n')
+          break;
         requestLine.append((char) c);
       }
       String get = requestLine.toString();
@@ -59,14 +61,13 @@ public class RequestProcessor implements Runnable {
         handleGet(tokens, raw, out);
       } else { // method does not equal "GET"
         String version = tokens[2];
-        String body =
-            new StringBuilder("<HTML>\r\n")
-                .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
-                .append("</HEAD>\r\n")
-                .append("<BODY>")
-                .append("<H1>HTTP Error 501: Not Implemented</H1>\r\n")
-                .append("</BODY></HTML>\r\n")
-                .toString();
+        String body = new StringBuilder("<HTML>\r\n")
+                          .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
+                          .append("</HEAD>\r\n")
+                          .append("<BODY>")
+                          .append("<H1>HTTP Error 501: Not Implemented</H1>\r\n")
+                          .append("</BODY></HTML>\r\n")
+                          .toString();
         if (version.startsWith("HTTP/")) { // send a MIME header
           sendHeader(
               out, "HTTP/1.0 501 Not Implemented", "text/html; charset=utf-8", body.length());
@@ -91,7 +92,8 @@ public class RequestProcessor implements Runnable {
   private void handleGet(String[] tokens, OutputStream raw, Writer out) throws IOException {
     String version = "";
     String fileName = tokens[1];
-    if (fileName.endsWith("/")) fileName = fileName.concat(indexFileName);
+    if (fileName.endsWith("/"))
+      fileName = fileName.concat(indexFileName);
     String contentType = URLConnection.getFileNameMap().getContentTypeFor(fileName);
     if (tokens.length > 2) {
       version = tokens[2];
@@ -110,14 +112,13 @@ public class RequestProcessor implements Runnable {
       raw.write(theData);
       raw.flush();
     } else { // can't find the file
-      String body =
-          new StringBuilder("<HTML>\r\n")
-              .append("<HEAD><TITLE>File Not Found</TITLE>\r\n")
-              .append("</HEAD>\r\n")
-              .append("<BODY>")
-              .append("<H1>HTTP Error 404: File Not Found</H1>\r\n")
-              .append("</BODY></HTML>\r\n")
-              .toString();
+      String body = new StringBuilder("<HTML>\r\n")
+                        .append("<HEAD><TITLE>File Not Found</TITLE>\r\n")
+                        .append("</HEAD>\r\n")
+                        .append("<BODY>")
+                        .append("<H1>HTTP Error 404: File Not Found</H1>\r\n")
+                        .append("</BODY></HTML>\r\n")
+                        .toString();
       if (version.startsWith("HTTP/")) { // send a MIME header
         sendHeader(out, "HTTP/1.0 404 File Not Found", "text/html; charset=utf-8", body.length());
       }

@@ -36,7 +36,6 @@ public enum InvokeAnyExecutor {
   }
 
   static class UserValidator {
-
     private String name;
 
     UserValidator(String name) {

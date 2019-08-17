@@ -31,12 +31,8 @@ public class Facebook implements SocialNetwork {
     // Instead, we emulates long network connection, which you would expect
     // in the real life...
     simulateNetworkLatency();
-    System.out.println(
-        "Facebook: Loading '"
-            + contactType
-            + "' list of '"
-            + profileEmail
-            + "' over the network...");
+    System.out.println("Facebook: Loading '" + contactType + "' list of '" + profileEmail
+        + "' over the network...");
 
     // ...and return test data.
     Optional<Profile> profile = Optional.ofNullable(findProfile(profileEmail));

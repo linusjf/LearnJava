@@ -21,11 +21,10 @@ public final class DictClient {
   }
 
   public static void main(String[] args) {
-    try (Socket socket = new Socket(SERVER, PORT);
-        OutputStream out = socket.getOutputStream();
-        Writer writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-        InputStream in = socket.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8")); ) {
+    try (Socket socket = new Socket(SERVER, PORT); OutputStream out = socket.getOutputStream();
+         Writer writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+         InputStream in = socket.getInputStream();
+         BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
       for (String word : args) {
         define(word, writer, reader);
       }
@@ -48,8 +47,10 @@ public final class DictClient {
         System.out.println("No definition found for " + word);
         return;
       }
-      if (line.matches("\\d\\d\\d .*")) continue;
-      if (line.trim().equals(".")) continue;
+      if (line.matches("\\d\\d\\d .*"))
+        continue;
+      if (line.trim().equals("."))
+        continue;
       System.out.println(line);
     }
   }

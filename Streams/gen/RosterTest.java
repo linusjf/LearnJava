@@ -37,7 +37,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public final class RosterTest {
-
   private static final String SELECTIVE_SERVICE = "Persons who are eligible for Selective Service ";
 
   private RosterTest() {
@@ -102,11 +101,8 @@ public final class RosterTest {
 
   // Approach 7, second example
 
-  public static void processPersonsWithFunction(
-      List<Person> roster,
-      Predicate<Person> tester,
-      Function<Person, String> mapper,
-      Consumer<String> block) {
+  public static void processPersonsWithFunction(List<Person> roster, Predicate<Person> tester,
+      Function<Person, String> mapper, Consumer<String> block) {
     for (Person p : roster) {
       if (tester.test(p)) {
         String data = mapper.apply(p);
@@ -129,7 +125,6 @@ public final class RosterTest {
 
   @SuppressWarnings("PMD.ExcessiveMethodLength")
   public static void main(String... args) {
-
     List<Person> roster = Person.createRoster();
 
     for (Person p : roster) {
@@ -168,14 +163,12 @@ public final class RosterTest {
 
     System.out.println(SELECTIVE_SERVICE + "(anonymous class):");
 
-    printPersons(
-        roster,
-        new CheckPerson() {
-          @Override
-          public boolean test(Person p) {
-            return p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
-          }
-        });
+    printPersons(roster, new CheckPerson() {
+      @Override
+      public boolean test(Person p) {
+        return p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
+      }
+    });
 
     System.out.println();
 
@@ -183,8 +176,7 @@ public final class RosterTest {
 
     System.out.println(SELECTIVE_SERVICE + "(lambda expression):");
 
-    printPersons(
-        roster,
+    printPersons(roster,
         (Person p) -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25);
 
     System.out.println();
@@ -203,9 +195,9 @@ public final class RosterTest {
 
     System.out.println(SELECTIVE_SERVICE + "(with Predicate and Consumer parameters):");
 
-    processPersons(
-        roster,
-        p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+    processPersons(roster,
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
         p -> p.printPerson());
 
     System.out.println();
@@ -214,11 +206,10 @@ public final class RosterTest {
 
     System.out.println(SELECTIVE_SERVICE + "(with Predicate, Function, and Consumer parameters):");
 
-    processPersonsWithFunction(
-        roster,
-        p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
-        p -> p.getEmailAddress(),
-        email -> System.out.println(email));
+    processPersonsWithFunction(roster,
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+        p -> p.getEmailAddress(), email -> System.out.println(email));
 
     System.out.println();
 
@@ -226,11 +217,10 @@ public final class RosterTest {
 
     System.out.println(SELECTIVE_SERVICE + "(generic version):");
 
-    processElements(
-        roster,
-        p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
-        p -> p.getEmailAddress(),
-        email -> System.out.println(email));
+    processElements(roster,
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+        p -> p.getEmailAddress(), email -> System.out.println(email));
 
     System.out.println();
 

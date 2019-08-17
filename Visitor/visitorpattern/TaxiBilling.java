@@ -7,7 +7,6 @@ public enum TaxiBilling {
   ;
 
   public static void main(String[] args) {
-
     List<Transportable> list = new ArrayList<>();
 
     list.add(new Person(12.4f, 1));

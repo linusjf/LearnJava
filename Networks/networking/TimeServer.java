@@ -21,7 +21,7 @@ public final class TimeServer {
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
         try (Socket connection = server.accept();
-            OutputStream out = connection.getOutputStream(); ) {
+             OutputStream out = connection.getOutputStream();) {
           Date now = new Date();
           long msSince1970 = now.getTime();
           long secondsSince1970 = msSince1970 / 1000;

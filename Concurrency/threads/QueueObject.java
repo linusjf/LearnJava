@@ -3,7 +3,6 @@ package threads;
 import java.util.Objects;
 
 public class QueueObject {
-
   private boolean isNotified;
 
   public void doWait() throws InterruptedException {

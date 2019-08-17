@@ -28,7 +28,6 @@ public enum LinkedBlockingDequeueDemo {
   }
 
   static class Client implements Runnable {
-
     private LinkedBlockingDeque<String> requestList;
 
     Client(LinkedBlockingDeque<String> requestList) {

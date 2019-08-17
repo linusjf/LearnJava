@@ -67,12 +67,8 @@ public final class SecureOrderPlacer {
       OutputStream out = s.getOutputStream();
       out.write("Let's place an order".getBytes());
       out.flush();
-    } catch (IOException
-        | KeyManagementException
-        | KeyStoreException
-        | NoSuchAlgorithmException
-        | CertificateException
-        | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException
+        | CertificateException | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

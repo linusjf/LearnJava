@@ -16,7 +16,6 @@ public enum ForkJoinPuzzle {
   private static Map<String, Integer> processorsCount = new ConcurrentHashMap<>();
 
   public static void main(String... args) {
-
     int parallelism = ThreadLocalRandom.current().nextInt(1, 3);
 
     System.setProperty(
@@ -52,28 +51,21 @@ public enum ForkJoinPuzzle {
     try {
       String processor = Thread.currentThread().getName();
       System.out.println("Processing: " + processor);
-      Runnable updateTask =
-          () ->
-              parallelStream()
-                  .forEach(
-                      value -> {
-                        System.out.printf("Active thread count: %d\n", Thread.activeCount());
-                        System.out.println(
-                            "Updating: "
-                                + Thread.currentThread().getName()
-                                + " value = "
-                                + value
-                                + " "
-                                + ForkJoinPool.commonPool());
-                        counter.incrementAndGet();
-                        System.out.printf("Thread %s\n", Thread.currentThread());
-                      });
+      Runnable updateTask = () -> parallelStream().forEach(value -> {
+        System.out.printf("Active thread count: %d\n", Thread.activeCount());
+        System.out.println("Updating: " + Thread.currentThread().getName() + " value = " + value
+            + " " + ForkJoinPool.commonPool());
+        counter.incrementAndGet();
+        System.out.printf("Thread %s\n", Thread.currentThread());
+      });
       Thread thread = new Thread(updateTask, "Worker for " + processor);
       thread.start();
       System.out.println("Waiting: " + processor);
       Integer count = processorsCount.get(processor);
-      if (count == null) processorsCount.put(processor, 1);
-      else processorsCount.put(processor, ++count);
+      if (count == null)
+        processorsCount.put(processor, 1);
+      else
+        processorsCount.put(processor, ++count);
       thread.join();
       System.out.println("Ended: " + processor);
       printProcessorCount();

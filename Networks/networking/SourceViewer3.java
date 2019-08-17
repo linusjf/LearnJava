@@ -23,10 +23,11 @@ public final class SourceViewer3 {
         int code = uc.getResponseCode();
         String response = uc.getResponseMessage();
         System.out.println("HTTP/1.x " + code + " " + response);
-        for (int j = 1; ; j++) {
+        for (int j = 1;; j++) {
           String header = uc.getHeaderField(j);
           String key = uc.getHeaderFieldKey(j);
-          if (header == null || key == null) break;
+          if (header == null || key == null)
+            break;
           System.out.println(key + ": " + header);
         }
         System.out.println();

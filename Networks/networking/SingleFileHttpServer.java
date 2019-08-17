@@ -36,17 +36,10 @@ public class SingleFileHttpServer {
     this.content = data.clone();
     this.port = port;
     this.encoding = encoding;
-    String headerString =
-        "HTTP/1.0 200 OK\r\n"
-            + "Server: OneFile 2.0\r\n"
-            + "Content-length: "
-            + this.content.length
-            + "\r\n"
-            + "Content-type: "
-            + mimeType
-            + "; charset="
-            + encoding
-            + "\r\n\r\n";
+    String headerString = "HTTP/1.0 200 OK\r\n"
+        + "Server: OneFile 2.0\r\n"
+        + "Content-length: " + this.content.length + "\r\n"
+        + "Content-type: " + mimeType + "; charset=" + encoding + "\r\n\r\n";
     this.header = headerString.getBytes(Charset.forName("US-ASCII"));
   }
 
@@ -80,14 +73,16 @@ public class SingleFileHttpServer {
     try {
       if (args.length > 1) {
         port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65_535) port = 80;
+        if (port < 1 || port > 65_535)
+          port = 80;
       }
     } catch (NumberFormatException ex) {
       port = 80;
     }
 
     String encoding = "UTF-8";
-    if (args.length > 2) encoding = args[2];
+    if (args.length > 2)
+      encoding = args[2];
     try {
       Path path = Paths.get(args[0]);
       byte[] data = Files.readAllBytes(path);
@@ -97,7 +92,8 @@ public class SingleFileHttpServer {
     } catch (ArrayIndexOutOfBoundsException ex) {
       System.out.println("Usage: java SingleFileHttpServer filename port encoding");
     } catch (IOException ex) {
-      if (LOGGER.isLoggable(Level.SEVERE)) LOGGER.severe(ex.getMessage());
+      if (LOGGER.isLoggable(Level.SEVERE))
+        LOGGER.severe(ex.getMessage());
     }
   }
 
@@ -117,7 +113,8 @@ public class SingleFileHttpServer {
         StringBuilder request = new StringBuilder(80);
         while (true) {
           int c = in.read();
-          if (c == '\r' || c == '\n' || c == -1) break;
+          if (c == '\r' || c == '\n' || c == -1)
+            break;
           request.append((char) c);
         }
         // If this is HTTP/1.0 or later send a MIME header

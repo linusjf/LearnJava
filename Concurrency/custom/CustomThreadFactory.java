@@ -7,7 +7,6 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 public class CustomThreadFactory implements ThreadFactory {
-
   private int counter;
   private String prefix;
 
@@ -81,8 +80,7 @@ public class CustomThreadFactory implements ThreadFactory {
     @Override
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
-      buffer
-          .append(getName())
+      buffer.append(getName())
           .append(":  Creation Date: ")
           .append(creationDate)
           .append(" : Running time: ")

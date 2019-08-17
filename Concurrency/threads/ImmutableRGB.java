@@ -31,7 +31,6 @@ package threads;
  */
 
 public final class ImmutableRGB {
-
   // Values must be between 0 and 255.
   private final int red;
   private final int green;

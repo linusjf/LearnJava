@@ -27,7 +27,6 @@ public enum LockProducerConsumer {
   }
 
   static class FileMock {
-
     private String[] content;
     private int index;
 

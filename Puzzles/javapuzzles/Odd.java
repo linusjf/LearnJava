@@ -2,7 +2,6 @@ package javapuzzles;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Odd {
-
   private Odd() {
     throw new IllegalStateException("Private constructor");
   }
@@ -16,7 +15,6 @@ public final class Odd {
   }
 
   public static void main(String... args) {
-
     System.out.println(isOddModulo(10) == isOddAnd(10));
 
     System.out.println(isOddModulo(-5) == isOddAnd(-5));

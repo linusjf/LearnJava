@@ -30,7 +30,6 @@ public enum CustomPhaserDemo {
   }
 
   static class MyPhaser extends Phaser {
-
     @Override
     protected boolean onAdvance(int phase, int registeredParties) {
       switch (phase) {
@@ -84,19 +83,16 @@ public enum CustomPhaserDemo {
       System.out.printf(
           "%s: Has arrived to take the exam. %s\n", Thread.currentThread().getName(), new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is about to start the first exercise. %s\n",
+      System.out.printf("%s: Is about to start the first exercise. %s\n",
           Thread.currentThread().getName(), new Date());
       doExercise1();
-      System.out.printf(
-          "%s: Has completed the first exercise. %s\n",
+      System.out.printf("%s: Has completed the first exercise. %s\n",
           Thread.currentThread().getName(), new Date());
       phaser.arriveAndAwaitAdvance();
       System.out.printf(
           "%s: Is starting the second exercise.%s\n", Thread.currentThread().getName(), new Date());
       doExercise2();
-      System.out.printf(
-          "%s: Has completed the second exercise. %s\n",
+      System.out.printf("%s: Has completed the second exercise. %s\n",
           Thread.currentThread().getName(), new Date());
       phaser.arriveAndAwaitAdvance();
       System.out.printf(

@@ -60,11 +60,9 @@ public class RequestHandler implements Runnable {
    */
   private void blockedSiteRequested() {
     try (BufferedWriter bufferedWriter =
-        new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
-      String line =
-          "HTTP/1.0 403 Access Forbidden \n"
-              + "User-Agent: ProxyServer/1.0\n"
-              + System.lineSeparator();
+             new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+      String line = "HTTP/1.0 403 Access Forbidden \n"
+          + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       bufferedWriter.write(line);
       bufferedWriter.flush();
     } catch (IOException e) {
@@ -81,9 +79,9 @@ public class RequestHandler implements Runnable {
     // Get Request from client
     String requestString;
     try (BufferedReader br =
-            new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-        BufferedWriter bw =
-            new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream())); ) {
+             new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
+         BufferedWriter bw =
+             new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));) {
       proxyToClientBr = br;
       proxyToClientBw = bw;
       do {
@@ -279,14 +277,16 @@ public class RequestHandler implements Runnable {
           proxyToClientBw.write(line);
 
           // Write to our cached copy of the file
-          if (caching) fileToCacheBW.write(line);
+          if (caching)
+            fileToCacheBW.write(line);
         }
 
         // Ensure all data is sent by this point
         proxyToClientBw.flush();
 
         // Close Down Resources
-        if (proxyToServerBR != null) proxyToServerBR.close();
+        if (proxyToServerBR != null)
+          proxyToServerBR.close();
       }
 
       if (caching) {
@@ -340,9 +340,8 @@ public class RequestHandler implements Runnable {
           new BufferedReader(new InputStreamReader(proxyToServerSocket.getInputStream()));
 
       // Create a new thread to listen to client and transmit to server
-      ClientToServerHttpsTransmit clientToServerHttps =
-          new ClientToServerHttpsTransmit(
-              clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
+      ClientToServerHttpsTransmit clientToServerHttps = new ClientToServerHttpsTransmit(
+          clientSocket.getInputStream(), proxyToServerSocket.getOutputStream());
 
       Thread httpsClientToServer = new Thread(clientToServerHttps);
       httpsClientToServer.start();
@@ -360,10 +359,8 @@ public class RequestHandler implements Runnable {
       } while (read >= 0);
       closeResources(proxyToServerSocket, proxyToServerBR, proxyToServerBW, proxyToClientBw);
     } catch (SocketTimeoutException e) {
-      String line =
-          "HTTP/1.0 504 Timeout Occured after 10s\n"
-              + "User-Agent: ProxyServer/1.0\n"
-              + System.lineSeparator();
+      String line = "HTTP/1.0 504 Timeout Occured after 10s\n"
+          + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       try {
         proxyToClientBw.write(line);
         proxyToClientBw.flush();
@@ -376,20 +373,20 @@ public class RequestHandler implements Runnable {
   }
 
   @SuppressWarnings("checkstyle:hiddenfield")
-  private void closeResources(
-      Socket proxyToServerSocket,
-      Reader proxyToServerBR,
-      Writer proxyToServerBW,
-      Writer proxyToClientBw)
-      throws IOException {
+  private void closeResources(Socket proxyToServerSocket, Reader proxyToServerBR,
+      Writer proxyToServerBW, Writer proxyToClientBw) throws IOException {
     // Close Down Resources
-    if (proxyToServerSocket != null) proxyToServerSocket.close();
+    if (proxyToServerSocket != null)
+      proxyToServerSocket.close();
 
-    if (proxyToServerBR != null) proxyToServerBR.close();
+    if (proxyToServerBR != null)
+      proxyToServerBR.close();
 
-    if (proxyToServerBW != null) proxyToServerBW.close();
+    if (proxyToServerBW != null)
+      proxyToServerBW.close();
 
-    if (proxyToClientBw != null) proxyToClientBw.close();
+    if (proxyToClientBw != null)
+      proxyToClientBw.close();
   }
 
   @SuppressWarnings("checkstyle:hiddenfield")
@@ -435,7 +432,8 @@ public class RequestHandler implements Runnable {
           read = proxyToClientIS.read(buffer);
           if (read > 0) {
             proxyToServerOS.write(buffer, 0, read);
-            if (proxyToClientIS.available() == 0) proxyToServerOS.flush();
+            if (proxyToClientIS.available() == 0)
+              proxyToServerOS.flush();
           }
         } while (read >= 0);
       } catch (SocketTimeoutException ste) {

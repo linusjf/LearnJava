@@ -3,7 +3,6 @@ package container;
 import java.util.Collection;
 
 public interface PropertyContainer {
-
   /**
    * Add a property associated with a token name. If the token already exists, the value will be
    * replaced. If the token does not exist, it will be added with the value.

@@ -57,8 +57,7 @@ public enum CompletionServiceDemo {
     public String call() throws Exception {
       try {
         Long duration = (long) (Math.random() * 10);
-        System.out.printf(
-            "%s_%s: ReportGenerator: Generating a report utilizing %d seconds\n",
+        System.out.printf("%s_%s: ReportGenerator: Generating a report utilizing %d seconds\n",
             this.sender, this.title, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {

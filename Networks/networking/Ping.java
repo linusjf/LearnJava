@@ -48,7 +48,6 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings("PMD.ShortClassName")
 public final class Ping {
-
   // The default daytime port
   static final int DAYTIME_PORT = 13;
 
@@ -67,7 +66,6 @@ public final class Ping {
     int firstArg = 0;
 
     try {
-
       // If the first argument is a string of digits then we take that
       // to be the port number to use
       if (Pattern.matches("[0-9]+", args[0])) {
@@ -98,7 +96,8 @@ public final class Ping {
       // Print status of targets that have not yet been shown
       for (Target t : targets) {
         // Target t = (Target)i.next();
-        if (!t.shown) t.show();
+        if (!t.shown)
+          t.show();
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);
@@ -108,7 +107,6 @@ public final class Ping {
   // Representation of a ping target
   //
   static class Target {
-
     InetSocketAddress address;
     SocketChannel channel;
     Exception failure;
@@ -126,8 +124,10 @@ public final class Ping {
 
     void show() {
       String result = "Timed out";
-      if (connectFinish > 0) result = Long.toString(connectFinish - connectStart) + "ms";
-      if (failure != null) result = failure.toString();
+      if (connectFinish > 0)
+        result = Long.toString(connectFinish - connectStart) + "ms";
+      if (failure != null)
+        result = failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -154,7 +154,7 @@ public final class Ping {
     @Override
     public void run() {
       try {
-        for (; ; ) {
+        for (;;) {
           Target t = null;
           synchronized (pending) {
             while (pending.isEmpty()) pending.wait();
@@ -195,7 +195,6 @@ public final class Ping {
     void add(Target t) {
       SocketChannel sc = null;
       try {
-
         // Open the channel, set it to non-blocking, initiate connect
         sc = SocketChannel.open();
         sc.configureBlocking(false);
@@ -240,7 +239,6 @@ public final class Ping {
         while (!pending.isEmpty()) {
           Target t = (Target) pending.remove(0);
           try {
-
             // Register the channel with the selector, indicating
             // interest in connection completion and attaching the
             // target object so that we can get the target back
@@ -249,7 +247,6 @@ public final class Ping {
             t.channel.register(sel, SelectionKey.OP_CONNECT, t);
 
           } catch (IOException x) {
-
             // Something went wrong, so close the channel and
             // record the failure
             t.channel.close();
@@ -263,8 +260,7 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator i = sel.selectedKeys().iterator(); i.hasNext(); ) {
-
+      for (Iterator i = sel.selectedKeys().iterator(); i.hasNext();) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = (SelectionKey) i.next();
         i.remove();
@@ -300,10 +296,11 @@ public final class Ping {
     //
     @Override
     public void run() {
-      for (; ; ) {
+      for (;;) {
         try {
           int n = sel.select();
-          if (n > 0) processSelectedKeys();
+          if (n > 0)
+            processSelectedKeys();
           processPendingTargets();
           if (isShutdown) {
             sel.close();

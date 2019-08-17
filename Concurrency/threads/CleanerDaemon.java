@@ -20,7 +20,6 @@ public enum CleanerDaemon {
   }
 
   static class Event {
-
     String evt;
     Date date;
 
@@ -90,7 +89,6 @@ public enum CleanerDaemon {
     }
 
     private void clean(Date date) {
-
       if (deque.size() == 0) {
         return;
       }

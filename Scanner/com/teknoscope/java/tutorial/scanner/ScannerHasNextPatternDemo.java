@@ -31,7 +31,8 @@ public final class ScannerHasNextPatternDemo {
       // check if the token consists of declared pattern
       if (scan.hasNext(pattern)) {
         System.out.println(scan.next());
-      } else scan.next();
+      } else
+        scan.next();
     }
     // closing the scanner stream
     scan.close();

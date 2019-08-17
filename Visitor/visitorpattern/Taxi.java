@@ -2,7 +2,6 @@ package visitorpattern;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class Taxi implements Visitor {
-
   private double totalFare;
 
   @Override

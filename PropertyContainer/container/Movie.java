@@ -1,7 +1,6 @@
 package container;
 
 public interface Movie {
-
   int getAvailable();
 
   void setAvailable(int available);

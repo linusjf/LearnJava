@@ -9,7 +9,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableScheduledFuture<V> {
-
   private RunnableScheduledFuture<V> task;
   private ScheduledThreadPoolExecutor executor;
   private long period;
@@ -34,10 +33,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
     }
   }
 
-  public CustomScheduledTask(
-      Runnable runnable,
-      V result,
-      RunnableScheduledFuture<V> task,
+  public CustomScheduledTask(Runnable runnable, V result, RunnableScheduledFuture<V> task,
       ScheduledThreadPoolExecutor executor) {
     super(runnable, result);
     this.task = task;
@@ -46,8 +42,10 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
 
   @Override
   public long getDelay(TimeUnit unit) {
-    if (!isPeriodic()) return task.getDelay(unit);
-    if (startDate == 0) return task.getDelay(unit);
+    if (!isPeriodic())
+      return task.getDelay(unit);
+    if (startDate == 0)
+      return task.getDelay(unit);
     else {
       Date now = new Date();
       long delay = startDate - now.getTime();

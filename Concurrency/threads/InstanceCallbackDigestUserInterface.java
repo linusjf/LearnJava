@@ -20,9 +20,8 @@ public class InstanceCallbackDigestUserInterface {
   @Override
   public String toString() {
     String result = filename + ": ";
-    return digest == null
-        ? result.concat("digest not available")
-        : result.concat(DatatypeConverter.printBase64Binary(digest));
+    return digest == null ? result.concat("digest not available")
+                          : result.concat(DatatypeConverter.printBase64Binary(digest));
   }
 
   public void calculateDigest() {

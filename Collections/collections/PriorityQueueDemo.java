@@ -49,8 +49,10 @@ public enum PriorityQueueDemo {
 
     @Override
     public int compareTo(Event e) {
-      if (this.priority > e.getPriority()) return -1;
-      if (this.priority < e.getPriority()) return 1;
+      if (this.priority > e.getPriority())
+        return -1;
+      if (this.priority < e.getPriority())
+        return 1;
       return 0;
     }
   }

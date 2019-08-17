@@ -52,7 +52,8 @@ public class SocketEchoServer {
         String line;
         do {
           line = r.readLine();
-          if (line != null) w.println("Got: " + line);
+          if (line != null)
+            w.println("Got: " + line);
         } while (!line.trim().equals("bye"));
         client.close();
       }

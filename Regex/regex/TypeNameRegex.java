@@ -14,7 +14,6 @@ public enum TypeNameRegex {
   }
 
   public static void main(String... args) {
-
     String typeName = "com.ociweb.regex.CapturingExample";
     String packageName = getTypenameComponent(typeName, 1);
     String className = getTypenameComponent(typeName, 2);

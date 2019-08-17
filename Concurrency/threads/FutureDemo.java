@@ -43,7 +43,6 @@ public enum FutureDemo {
   }
 
   private static class FactorialCalculator implements Callable<Long> {
-
     private final int number;
 
     FactorialCalculator(int number) {

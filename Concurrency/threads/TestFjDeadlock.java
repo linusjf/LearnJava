@@ -4,7 +4,6 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
 public final class TestFjDeadlock {
-
   private static final int[] INT_ARRAY = new int[256 * 1024];
   private static final float[] FLOAT_ARRAY = new float[256 * 1024];
 
@@ -17,7 +16,6 @@ public final class TestFjDeadlock {
   }
 
   public static void main(String[] args) {
-
     // Initialize the array
     for (int i = 0; i < INT_ARRAY.length; i++) INT_ARRAY[i] = i;
 
@@ -31,7 +29,6 @@ public final class TestFjDeadlock {
   }
 
   private static class RecursiveIterate extends RecursiveAction {
-
     private static final long serialVersionUID = 1L;
     final int start;
     final int end;

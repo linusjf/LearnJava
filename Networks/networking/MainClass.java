@@ -7,7 +7,6 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
 public final class MainClass {
-
   private MainClass() {
     throw new IllegalStateException("Private constructor");
   }

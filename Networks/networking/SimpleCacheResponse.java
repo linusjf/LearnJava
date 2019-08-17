@@ -41,8 +41,10 @@ public class SimpleCacheResponse extends CacheResponse {
 
   public boolean isExpired() {
     Date now = new Date();
-    if (control.getMaxAge().before(now)) return true;
-    if (expires != null && control.getMaxAge() != null) return expires.before(now);
+    if (control.getMaxAge().before(now))
+      return true;
+    if (expires != null && control.getMaxAge() != null)
+      return expires.before(now);
     return false;
   }
 }

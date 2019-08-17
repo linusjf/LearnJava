@@ -22,7 +22,8 @@ public enum EncodingAwareSourceViewer {
         URLConnection uc = u.openConnection();
         String contentType = uc.getContentType();
         int encodingStart = contentType.indexOf("charset=");
-        if (encodingStart != -1) encoding = contentType.substring(encodingStart + 8);
+        if (encodingStart != -1)
+          encoding = contentType.substring(encodingStart + 8);
         InputStream in = new BufferedInputStream(uc.getInputStream());
         Reader r = new InputStreamReader(in, encoding);
         int c;

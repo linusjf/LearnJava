@@ -40,7 +40,6 @@ public enum SimpleThreads {
   }
 
   public static void main(String... args) {
-
     // Delay, in milliseconds before
     // we interrupt MessageLoop
     // thread (default one hour).
@@ -91,7 +90,10 @@ public enum SimpleThreads {
     @Override
     public void run() {
       String[] importantInfo = {
-        "Mares eat oats", "Does eat oats", "Little lambs eat ivy", "A kid will eat ivy too",
+          "Mares eat oats",
+          "Does eat oats",
+          "Little lambs eat ivy",
+          "A kid will eat ivy too",
       };
       try {
         for (String info : importantInfo) {

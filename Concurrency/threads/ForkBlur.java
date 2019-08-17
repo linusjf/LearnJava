@@ -47,7 +47,6 @@ import javax.imageio.ImageIO;
  * the Fork/Join framework.
  */
 public class ForkBlur extends RecursiveAction {
-
   private int[] mSource;
   private int mStart;
   private int mLength;
@@ -100,8 +99,7 @@ public class ForkBlur extends RecursiveAction {
 
     int split = mLength / 2;
 
-    invokeAll(
-        new ForkBlur(mSource, mStart, split, mDestination),
+    invokeAll(new ForkBlur(mSource, mStart, split, mDestination),
         new ForkBlur(mSource, mStart + split, mLength - split, mDestination));
   }
 
@@ -140,11 +138,8 @@ public class ForkBlur extends RecursiveAction {
     System.out.println("Threshold is " + sThreshold);
 
     int processors = Runtime.getRuntime().availableProcessors();
-    System.out.println(
-        Integer.toString(processors)
-            + " processor"
-            + (processors > 1 ? "s are " : " is ")
-            + "available");
+    System.out.println(Integer.toString(processors) + " processor"
+        + (processors > 1 ? "s are " : " is ") + "available");
 
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
 

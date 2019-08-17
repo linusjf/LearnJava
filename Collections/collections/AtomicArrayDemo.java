@@ -38,7 +38,6 @@ public enum AtomicArrayDemo {
   }
 
   static class Incrementer implements Runnable {
-
     private AtomicIntegerArray vector;
 
     Incrementer(AtomicIntegerArray vector) {

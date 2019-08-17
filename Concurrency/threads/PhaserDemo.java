@@ -86,9 +86,8 @@ public enum PhaserDemo {
         phaser.arriveAndDeregister();
         return false;
       } else {
-        System.out.printf(
-            "%s: Phase %d: %d results.\n",
-            Thread.currentThread().getName(), phaser.getPhase(), results.size());
+        System.out.printf("%s: Phase %d: %d results.\n", Thread.currentThread().getName(),
+            phaser.getPhase(), results.size());
         phaser.arriveAndAwaitAdvance();
         return true;
       }
@@ -104,7 +103,6 @@ public enum PhaserDemo {
 
     @Override
     public void run() {
-
       phaser.arriveAndAwaitAdvance();
       System.out.printf("%s: Starting.\n", Thread.currentThread().getName());
       File file = new File(initPath);

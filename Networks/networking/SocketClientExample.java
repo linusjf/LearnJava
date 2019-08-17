@@ -6,9 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 public class SocketClientExample {
-
   public void startClient() throws IOException, InterruptedException {
-
     InetSocketAddress hostAddress = new InetSocketAddress("localhost", 8090);
     SocketChannel client = SocketChannel.open(hostAddress);
 

@@ -1,7 +1,6 @@
 package visitorpattern;
 
 public class Luggage implements Transportable {
-
   private double fare;
   private double weight;
 

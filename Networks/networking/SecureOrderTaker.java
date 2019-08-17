@@ -80,12 +80,8 @@ public final class SecureOrderTaker {
           System.err.println(ex.getMessage());
         }
       }
-    } catch (IOException
-        | KeyManagementException
-        | KeyStoreException
-        | NoSuchAlgorithmException
-        | CertificateException
-        | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException
+        | CertificateException | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

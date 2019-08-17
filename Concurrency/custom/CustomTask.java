@@ -19,9 +19,11 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public int compareTo(CustomTask o) {
-    if (this.getPriority() < o.getPriority()) return 1;
+    if (this.getPriority() < o.getPriority())
+      return 1;
 
-    if (this.getPriority() > o.getPriority()) return -1;
+    if (this.getPriority() > o.getPriority())
+      return -1;
 
     return 0;
   }

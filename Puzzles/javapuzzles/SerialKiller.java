@@ -51,7 +51,8 @@ final class Sub extends Super {
   }
 
   public void checkInvariant() {
-    if (!set.contains(this)) throw new AssertionError("invariant violated");
+    if (!set.contains(this))
+      throw new AssertionError("invariant violated");
   }
 
   @Override

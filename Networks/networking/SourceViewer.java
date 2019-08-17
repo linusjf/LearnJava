@@ -15,7 +15,7 @@ public final class SourceViewer {
   public static void main(String[] args) {
     if (args.length > 0) {
       try (Reader r =
-          new InputStreamReader(new BufferedInputStream(new URL(args[0]).openStream())); ) {
+               new InputStreamReader(new BufferedInputStream(new URL(args[0]).openStream()));) {
         int c;
         while ((c = r.read()) != -1) System.out.print((char) c);
       } catch (MalformedURLException ex) {

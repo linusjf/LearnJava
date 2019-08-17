@@ -1,7 +1,6 @@
 package visitorpattern;
 
 public class Animal implements Transportable {
-
   private double fare;
   private int numberOfAnimals;
 

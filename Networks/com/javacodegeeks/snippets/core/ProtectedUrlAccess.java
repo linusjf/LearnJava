@@ -26,10 +26,9 @@ public final class ProtectedUrlAccess {
 
       double random = Math.random();
 
-      URL url =
-          new URL(
-              "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
-                  + random);
+      URL url = new URL(
+          "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
+          + random);
       byte[] b = new byte[1];
 
       DataInputStream di = new DataInputStream(url.openStream());
@@ -77,11 +76,13 @@ public final class ProtectedUrlAccess {
         System.out.println("Enter username (use httpwatch): ");
 
         Scanner scanner = new Scanner(System.in);
-        if (scanner.hasNext()) username = scanner.nextLine();
+        if (scanner.hasNext())
+          username = scanner.nextLine();
 
         System.out.println("Enter password : ");
 
-        if (scanner.hasNext()) password = scanner.nextLine();
+        if (scanner.hasNext())
+          password = scanner.nextLine();
       }
 
       // Return the information (a data holder that is used by Authenticator)

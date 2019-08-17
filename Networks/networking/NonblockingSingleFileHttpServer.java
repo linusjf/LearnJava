@@ -23,15 +23,10 @@ public class NonblockingSingleFileHttpServer {
   public NonblockingSingleFileHttpServer(
       ByteBuffer data, String encoding, String mimeType, int port) {
     this.port = port;
-    String header =
-        "HTTP/1.0 200 OK\r\n"
-            + "Server: NonblockingSingleFileHTTPServer\r\n"
-            + "Content-length: "
-            + data.limit()
-            + "\r\n"
-            + "Content-type: "
-            + mimeType
-            + "\r\n\r\n";
+    String header = "HTTP/1.0 200 OK\r\n"
+        + "Server: NonblockingSingleFileHTTPServer\r\n"
+        + "Content-length: " + data.limit() + "\r\n"
+        + "Content-type: " + mimeType + "\r\n\r\n";
     byte[] headerData = header.getBytes(Charset.forName("US-ASCII"));
     ByteBuffer buffer = ByteBuffer.allocate(data.limit() + headerData.length);
     buffer.put(headerData);
@@ -106,12 +101,14 @@ public class NonblockingSingleFileHttpServer {
       int port;
       try {
         port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65_535) port = 80;
+        if (port < 1 || port > 65_535)
+          port = 80;
       } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
         port = 80;
       }
       String encoding = "UTF-8";
-      if (args.length > 2) encoding = args[2];
+      if (args.length > 2)
+        encoding = args[2];
       NonblockingSingleFileHttpServer server =
           new NonblockingSingleFileHttpServer(input, encoding, contentType, port);
       server.run();

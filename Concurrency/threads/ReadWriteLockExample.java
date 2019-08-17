@@ -74,7 +74,6 @@ public enum ReadWriteLockExample {
     @Override
     public void run() {
       for (int i = 0; i < 10; i++) {
-
         synchronized (System.out) {
           System.out.printf(
               "%s: Price 1: %f\n", Thread.currentThread().getName(), pricesInfo.getPrice1());

@@ -36,8 +36,7 @@ public enum MultiSemaphoreExample {
         semaphore.acquire();
         int assignedPrinter = getPrinter();
         long duration = (long) (Math.random() * 10);
-        System.out.printf(
-            "%s: PrintQueue: Printing a Job at %d utilizing %d seconds\n",
+        System.out.printf("%s: PrintQueue: Printing a Job at %d utilizing %d seconds\n",
             Thread.currentThread().getName(), assignedPrinter, duration);
         Thread.sleep(duration);
         freePrinters[assignedPrinter] = true;

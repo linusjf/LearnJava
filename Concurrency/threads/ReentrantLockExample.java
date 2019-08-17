@@ -23,18 +23,14 @@ public enum ReentrantLockExample {
   }
 
   static class PrintQueue {
-
     private final Lock queueLock = new ReentrantLock(new Random().nextBoolean());
 
     public void printJob(Object document) {
       queueLock.lock();
       try {
         Long duration = (long) (Math.random() * 10_000);
-        System.out.println(
-            Thread.currentThread().getName()
-                + ": PrintQueue: Printing a Job during "
-                + (duration / 1000)
-                + " seconds");
+        System.out.println(Thread.currentThread().getName() + ": PrintQueue: Printing a Job during "
+            + (duration / 1000) + " seconds");
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -44,11 +40,8 @@ public enum ReentrantLockExample {
       queueLock.lock();
       try {
         Long duration = (long) (Math.random() * 10_000);
-        System.out.println(
-            Thread.currentThread().getName()
-                + ": PrintQueue: Printing a Job during "
-                + (duration / 1000)
-                + " seconds");
+        System.out.println(Thread.currentThread().getName() + ": PrintQueue: Printing a Job during "
+            + (duration / 1000) + " seconds");
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -64,7 +57,6 @@ public enum ReentrantLockExample {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Job implements Runnable {
-
     private PrintQueue printQueue;
 
     Job(PrintQueue printQueue) {

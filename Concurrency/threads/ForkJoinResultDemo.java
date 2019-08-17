@@ -49,7 +49,16 @@ public enum ForkJoinResultDemo {
 
   static class DocumentMock {
     private String[] words = {
-      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main",
+        "the",
+        "hello",
+        "goodbye",
+        "packt",
+        "java",
+        "thread",
+        "pool",
+        "random",
+        "class",
+        "main",
     };
 
     @SuppressWarnings("PMD.AvoidArrayLoops")

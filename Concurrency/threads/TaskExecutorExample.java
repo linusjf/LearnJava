@@ -36,8 +36,7 @@ public enum TaskExecutorExample {
           "%s: Task %s: Started on: %s\n", Thread.currentThread().getName(), name, new Date());
       try {
         Long duration = (long) (Math.random() * 10);
-        System.out.printf(
-            "%s: Task %s: Doing a task utilizing %d seconds\n",
+        System.out.printf("%s: Task %s: Doing a task utilizing %d seconds\n",
             Thread.currentThread().getName(), name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
@@ -50,7 +49,6 @@ public enum TaskExecutorExample {
 
   // CPD-ON
   static class Server {
-
     private ThreadPoolExecutor executor;
 
     Server() {

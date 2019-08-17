@@ -7,7 +7,6 @@ public enum SqlTypeRegex {
   ;
 
   public static void main(String... args) {
-
     String sqlType = "NUMBER(10,2)";
     String type = getColumnDatatypeComponent(sqlType, 1);
     String length = getColumnDatatypeComponent(sqlType, 2);
@@ -27,6 +26,7 @@ public enum SqlTypeRegex {
     Matcher m = Pattern.compile(pattern).matcher(value);
     if (m.matches() && group >= 0 && group <= m.groupCount()) {
       return m.group(group);
-    } else return null;
+    } else
+      return null;
   }
 }

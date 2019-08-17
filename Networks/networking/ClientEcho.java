@@ -8,7 +8,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public final class ClientEcho {
-
   private static final int PORT = 7;
 
   private ClientEcho() {
@@ -16,7 +15,6 @@ public final class ClientEcho {
   }
 
   public static void main(String... args) {
-
     int port = PORT;
     if (args.length > 0) {
       try {

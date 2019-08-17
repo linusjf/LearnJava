@@ -25,7 +25,8 @@ public class MemoryCache extends ResponseCache {
 
   @Override
   public CacheRequest put(URI uri, URLConnection conn) throws IOException {
-    if (responses.size() >= maxEntries) return null;
+    if (responses.size() >= maxEntries)
+      return null;
     CacheControl control = new CacheControl(conn.getHeaderField("Cache-Control"));
     if (control.isNoStore()) {
       return null;

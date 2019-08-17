@@ -36,13 +36,11 @@ public enum GetProps {
   private static final String NOT_SPECIFIED = "not specified";
 
   public static void main(String[] args) {
-
     /* Test reading properties w & w/out security manager */
 
     String s;
 
     try {
-
       System.out.println("About to get os.name property value");
 
       s = System.getProperty("os.name", NOT_SPECIFIED);

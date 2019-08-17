@@ -79,14 +79,15 @@ public class Redirector {
     @Override
     public void run() {
       try (Writer out =
-              new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "US-ASCII"));
-          Reader in =
-              new InputStreamReader(new BufferedInputStream(connection.getInputStream())); ) {
+               new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "US-ASCII"));
+           Reader in =
+               new InputStreamReader(new BufferedInputStream(connection.getInputStream()));) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
           int c = in.read();
-          if (c == '\r' || c == '\n' || c == -1) break;
+          if (c == '\r' || c == '\n' || c == -1)
+            break;
           request.append((char) c);
         }
         String get = request.toString();
@@ -106,16 +107,8 @@ public class Redirector {
         // produce HTML that says where the document has moved to.
         out.write("<HTML><HEAD><TITLE>Document moved</TITLE></HEAD>\r\n");
         out.write("<BODY><H1>Document moved</H1>\r\n");
-        out.write(
-            "The document "
-                + theFile
-                + " has moved to\r\n<A HREF=\""
-                + newSite
-                + theFile
-                + "\">"
-                + newSite
-                + theFile
-                + "</A>.\r\n Please update your bookmarks<P>");
+        out.write("The document " + theFile + " has moved to\r\n<A HREF=\"" + newSite + theFile
+            + "\">" + newSite + theFile + "</A>.\r\n Please update your bookmarks<P>");
         out.write("</BODY></HTML>\r\n");
         out.flush();
         LOGGER.info("Redirected %s", connection.getRemoteSocketAddress());
