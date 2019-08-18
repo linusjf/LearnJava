@@ -129,6 +129,25 @@
       <arg line="../xformatall ${basedir}" />
     </exec>
   </target>
+  <target name="checkstyleg">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+            <java classname="${cs.main.class}" output="${ant.project.name}-xpath.xml"
+              logError="true">
+      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${cs.output} -g ${sources}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="checkstyle">
     <first id="checkstylefile">
       <fileset dir=".."
