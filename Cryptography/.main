@@ -11,4 +11,5 @@ cryptic.CipherDecrypt
 cryptic.BlowFishKey
 cryptic.DHKeyAgreement
 cryptic.DHThreeWay
+cryptic.GCD
 
