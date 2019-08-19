@@ -12,4 +12,5 @@ cryptic.BlowFishKey
 cryptic.DHKeyAgreement
 cryptic.DHThreeWay
 cryptic.GCD
+cryptic.Exponential
 
