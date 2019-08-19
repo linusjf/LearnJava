@@ -38,8 +38,9 @@ public enum KeyGeneratorExample {
       System.out.println(bytes);
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(bytes));
-    } catch (BadPaddingException | NoSuchPaddingException | IllegalBlockSizeException
-        | NoSuchAlgorithmException | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException
+             | IllegalBlockSizeException | NoSuchAlgorithmException
+             | InvalidKeyException e) {
       System.err.println(e);
     }
   }

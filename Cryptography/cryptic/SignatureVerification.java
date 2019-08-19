@@ -50,7 +50,8 @@ public enum SignatureVerification {
       else
         System.out.println("Signature failed");
 
-    } catch (SignatureException | NoSuchAlgorithmException | InvalidKeyException ex) {
+    } catch (SignatureException | NoSuchAlgorithmException
+             | InvalidKeyException ex) {
       System.err.println(ex);
     }
   }

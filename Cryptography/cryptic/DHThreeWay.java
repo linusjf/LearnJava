@@ -108,8 +108,7 @@ public final class DHThreeWay {
                        'F'};
     int high = (b & 0xf0) >> 4;
     int low = b & 0x0f;
-    buf.append(hexChars[high])
-       .append(hexChars[low]);
+    buf.append(hexChars[high]).append(hexChars[low]);
   }
 
   /*

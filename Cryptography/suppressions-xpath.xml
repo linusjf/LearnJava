@@ -4,53 +4,61 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="DHThreeWay.java"
+       files="GCD.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>
+       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='gcdKnuth']]/SLIST/VARIABLE_DEF[./IDENT[@text='u']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']"/>
 <suppress-xpath
-       files="DHThreeWay.java"
+       files="GCD.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']"/>
+       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='gcdKnuth']]/SLIST/VARIABLE_DEF[./IDENT[@text='v']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']"/>
 <suppress-xpath
-       files="DHThreeWay.java"
+       files="GCD.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR/NUM_INT[@text='4']"/>
+       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='gcdKnuth']]/SLIST/VARIABLE_DEF[./IDENT[@text='t']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']"/>
 <suppress-xpath
-       files="DHThreeWay.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='low']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0f']"/>
+       files="GCD.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/IDENT[@text='gcd']]"/>
 <suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='initAliceKey']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateAlicePublicEncodedKey']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='bobAesKey']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SecretKeySpec']]/ELIST/EXPR/NUM_INT[@text='16']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='aliceAesKey']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SecretKeySpec']]/ELIST/EXPR/NUM_INT[@text='16']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='low']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0f']"/>
-<suppress-xpath
-       files="DHKeyAgreement.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']"/>
+       files="GCD.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/PLUS/STAR/IDENT[@text='first']]"/>
+  <suppress-xpath files="DHThreeWay.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />
+  <suppress-xpath files="DHThreeWay.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']" />
+  <suppress-xpath files="DHThreeWay.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR/NUM_INT[@text='4']" />
+  <suppress-xpath files="DHThreeWay.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='low']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0f']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='initAliceKey']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateAlicePublicEncodedKey']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='bobAesKey']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SecretKeySpec']]/ELIST/EXPR/NUM_INT[@text='16']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='aliceAesKey']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SecretKeySpec']]/ELIST/EXPR/NUM_INT[@text='16']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR/NUM_INT[@text='4']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='low']]/ASSIGN/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0f']" />
+  <suppress-xpath files="DHKeyAgreement.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />
   <suppress-xpath files="CipherDecrypt.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='CipherDecrypt']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />
