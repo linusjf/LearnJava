@@ -1,6 +1,6 @@
 package threads;
 
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 
@@ -11,7 +11,7 @@ public final class CallbackDigestUserInterface {
 
   public static void receiveDigest(byte[] digest, String name) {
     StringBuilder result = new StringBuilder(name);
-    result.append(": ").append(DatatypeConverter.printBase64Binary(digest));
+    result.append(": ").append(Base64.getEncoder().encodeToString(digest));
     System.out.println(result);
   }
 

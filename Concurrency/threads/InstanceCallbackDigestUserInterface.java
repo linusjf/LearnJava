@@ -1,7 +1,7 @@
 package threads;
 
 import java.util.Arrays;
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 
 public class InstanceCallbackDigestUserInterface {
   private String filename;
@@ -21,7 +21,7 @@ public class InstanceCallbackDigestUserInterface {
   public String toString() {
     String result = filename + ": ";
     return digest == null ? result.concat("digest not available")
-                          : result.concat(DatatypeConverter.printBase64Binary(digest));
+                          : result.concat(Base64.getEncoder().encodeToString(digest));
   }
 
   public void calculateDigest() {

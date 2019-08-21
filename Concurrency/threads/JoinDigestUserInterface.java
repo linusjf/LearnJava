@@ -1,6 +1,6 @@
 package threads;
 
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 
 public final class JoinDigestUserInterface {
   private JoinDigestUserInterface() {
@@ -33,7 +33,7 @@ public final class JoinDigestUserInterface {
     StringBuilder result = new StringBuilder(arg);
     result.append(": ");
     byte[] digest = digestThread.getDigest();
-    result.append(DatatypeConverter.printBase64Binary(digest));
+    result.append(Base64.getEncoder().encodeToString(digest));
     System.out.println(result);
   }
 }

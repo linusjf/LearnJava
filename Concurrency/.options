@@ -1,2 +1,2 @@
---add-modules java.se.ee
 -deprecation
+-Xlint:unchecked

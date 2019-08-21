@@ -7,9 +7,8 @@ import java.nio.file.Paths;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 
-// for DatatypeConverter; requires Java 6 or JAXB 1.0
 public class DigestRunnable implements Runnable {
   private String filename;
 
@@ -29,7 +28,7 @@ public class DigestRunnable implements Runnable {
       din.close();
       byte[] digest = sha.digest();
       StringBuilder result = new StringBuilder(filename);
-      result.append(": ").append(DatatypeConverter.printBase64Binary(digest));
+      result.append(": ").append(Base64.getEncoder().encodeToString(digest));
       System.out.println(result);
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);

@@ -44,7 +44,7 @@ public class BlockingThread extends Thread {
   }
 
   static void testPutOnEmptyQueueBlocks() throws InterruptedException {
-    final SimpleBlockingQueue queue = new SimpleBlockingQueue();
+    final SimpleBlockingQueue<Object> queue = new SimpleBlockingQueue<>();
     BlockingThread blockingThread = new BlockingThread(queue);
     blockingThread.start();
     Thread.sleep(5000);
