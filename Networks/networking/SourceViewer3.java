@@ -15,11 +15,11 @@ public final class SourceViewer3 {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         // Open the URLConnection for reading
         URL u = new URL(arg);
-        HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+        HttpURLConnection uc = (HttpURLConnection)u.openConnection();
         int code = uc.getResponseCode();
         String response = uc.getResponseMessage();
         System.out.println("HTTP/1.x " + code + " " + response);
@@ -36,7 +36,7 @@ public final class SourceViewer3 {
           Reader r = new InputStreamReader(in);
           int c;
           while ((c = r.read()) != -1) {
-            System.out.print((char) c);
+            System.out.print((char)c);
           }
         }
       } catch (MalformedURLException ex) {

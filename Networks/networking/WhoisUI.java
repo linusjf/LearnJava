@@ -72,9 +72,12 @@ public class WhoisUI {
       WhoisUI ui = new WhoisUI();
       ui.inputWhoisFields(args);
       Whois server = new Whois(ui.searchAt);
-      server.lookUpNames(ui.whois,
-          Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
-          Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())), ui.exactMatch);
+      server.lookUpNames(
+          ui.whois,
+          Whois.SearchFor.valueOf(
+              ui.searchFor.toUpperCase(Locale.getDefault())),
+          Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())),
+          ui.exactMatch);
     } catch (IOException e) {
       System.err.println(e.getMessage());
     }

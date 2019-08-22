@@ -21,10 +21,13 @@ public final class ListDicts {
   }
 
   public static void main(String[] args) {
-    try (Socket socket = new Socket(SERVER, PORT); OutputStream out = socket.getOutputStream();
-         Writer writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+    try (Socket socket = new Socket(SERVER, PORT);
+         OutputStream out = socket.getOutputStream();
+         Writer writer =
+             new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
          InputStream in = socket.getInputStream();
-         BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
+         BufferedReader reader =
+             new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
       listDatabases(writer, reader);
       writer.write("quit\r\n");
       writer.flush();
@@ -37,11 +40,12 @@ public final class ListDicts {
       throws IOException, UnsupportedEncodingException {
     writer.write("SHOW DB\r\n");
     writer.flush();
-    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-      if (line.startsWith("250 ")) { // OK
+    for (String line = reader.readLine(); line != null;
+         line = reader.readLine()) {
+      if (line.startsWith("250 ")) {  // OK
         return;
       }
-      if (line.startsWith("501 ")) { // no match
+      if (line.startsWith("501 ")) {  // no match
         System.out.println(line);
         return;
       }

@@ -73,7 +73,7 @@ public class SocketServerExample {
       // work on selected keys
       Iterator keys = this.selector.selectedKeys().iterator();
       while (keys.hasNext()) {
-        SelectionKey key = (SelectionKey) keys.next();
+        SelectionKey key = (SelectionKey)keys.next();
 
         // this is necessary to prevent the same key from coming up
         // again the next time around.
@@ -94,7 +94,7 @@ public class SocketServerExample {
 
   // accept a connection made to this channel's socket
   private void accept(SelectionKey key) throws IOException {
-    ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
+    ServerSocketChannel serverChannel = (ServerSocketChannel)key.channel();
     SocketChannel channel = serverChannel.accept();
     channel.configureBlocking(false);
     Socket socket = channel.socket();
@@ -108,7 +108,7 @@ public class SocketServerExample {
 
   // read from the socket channel
   private void read(SelectionKey key) throws IOException {
-    SocketChannel channel = (SocketChannel) key.channel();
+    SocketChannel channel = (SocketChannel)key.channel();
     ByteBuffer buffer = ByteBuffer.allocate(1024);
     int numRead = -1;
     numRead = channel.read(buffer);

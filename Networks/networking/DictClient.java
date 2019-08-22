@@ -21,11 +21,14 @@ public final class DictClient {
   }
 
   public static void main(String[] args) {
-    try (Socket socket = new Socket(SERVER, PORT); OutputStream out = socket.getOutputStream();
-         Writer writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+    try (Socket socket = new Socket(SERVER, PORT);
+         OutputStream out = socket.getOutputStream();
+         Writer writer =
+             new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
          InputStream in = socket.getInputStream();
-         BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
-      for (String word : args) {
+         BufferedReader reader =
+             new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
+      for (String word: args) {
         define(word, writer, reader);
       }
       writer.write("quit\r\n");
@@ -39,11 +42,12 @@ public final class DictClient {
       throws IOException, UnsupportedEncodingException {
     writer.write("DEFINE fd-eng-lat " + word + "\r\n");
     writer.flush();
-    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-      if (line.startsWith("250 ")) { // OK
+    for (String line = reader.readLine(); line != null;
+         line = reader.readLine()) {
+      if (line.startsWith("250 ")) {  // OK
         return;
       }
-      if (line.startsWith("552 ")) { // no match
+      if (line.startsWith("552 ")) {  // no match
         System.out.println("No definition found for " + word);
         return;
       }

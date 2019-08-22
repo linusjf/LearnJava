@@ -237,3 +237,14 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.DaytimeUDPServer &
+echo "Sleeping for 5 seconds again after DaytimeUDPServer start..."
+sleep 5
+java -cp . networking.DaytimeUDPClient localhost 1313
+echo "Killing DaytimeUDPServer..."
+ps -ef | grep \
+  'networking.DaytimeUDPServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

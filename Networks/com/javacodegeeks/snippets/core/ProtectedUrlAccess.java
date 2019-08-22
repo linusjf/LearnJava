@@ -21,8 +21,9 @@ public final class ProtectedUrlAccess {
     try {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
-      Authenticator.setDefault(
-          args.length > 0 ? new CustomAuthenticator(args[0]) : new CustomAuthenticator());
+      Authenticator.setDefault(args.length > 0
+                                   ? new CustomAuthenticator(args[0])
+                                   : new CustomAuthenticator());
 
       double random = Math.random();
 
@@ -33,7 +34,8 @@ public final class ProtectedUrlAccess {
 
       DataInputStream di = new DataInputStream(url.openStream());
       OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"));
-      while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
+      while (-1 != di.read(b, 0, 1))
+        fo.write(b, 0, 1);
       di.close();
       fo.close();
       System.out.println("Saved url as " + random + ".gif");

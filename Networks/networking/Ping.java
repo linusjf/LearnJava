@@ -94,7 +94,7 @@ public final class Ping {
       connector.join();
 
       // Print status of targets that have not yet been shown
-      for (Target t : targets) {
+      for (Target t: targets) {
         // Target t = (Target)i.next();
         if (!t.shown)
           t.show();
@@ -157,8 +157,9 @@ public final class Ping {
         for (;;) {
           Target t = null;
           synchronized (pending) {
-            while (pending.isEmpty()) pending.wait();
-            t = (Target) pending.remove(0);
+            while (pending.isEmpty())
+              pending.wait();
+            t = (Target)pending.remove(0);
           }
           t.show();
         }
@@ -237,7 +238,7 @@ public final class Ping {
     void processPendingTargets() throws IOException {
       synchronized (pending) {
         while (!pending.isEmpty()) {
-          Target t = (Target) pending.remove(0);
+          Target t = (Target)pending.remove(0);
           try {
             // Register the channel with the selector, indicating
             // interest in connection completion and attaching the
@@ -262,12 +263,12 @@ public final class Ping {
     void processSelectedKeys() throws IOException {
       for (Iterator i = sel.selectedKeys().iterator(); i.hasNext();) {
         // Retrieve the next key and remove it from the set
-        SelectionKey sk = (SelectionKey) i.next();
+        SelectionKey sk = (SelectionKey)i.next();
         i.remove();
 
         // Retrieve the target and the channel
-        Target t = (Target) sk.attachment();
-        SocketChannel sc = (SocketChannel) sk.channel();
+        Target t = (Target)sk.attachment();
+        SocketChannel sc = (SocketChannel)sk.channel();
 
         // Attempt to complete the connection sequence
         try {
