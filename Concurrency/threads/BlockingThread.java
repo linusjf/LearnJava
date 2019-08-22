@@ -2,14 +2,17 @@ package threads;
 
 public class BlockingThread extends Thread {
   private SimpleBlockingQueue queue;
-  private boolean wasInterrupted = false;
-  private boolean reachedAfterGet = false;
+  private boolean wasInterrupted;
+  private boolean reachedAfterGet;
   private boolean throwableThrown;
 
   public BlockingThread(SimpleBlockingQueue queue) {
+    super();
     this.queue = queue;
   }
 
+  @SuppressWarnings("PMD.AvoidCatchingThrowable")
+  @Override
   public void run() {
     try {
       try {

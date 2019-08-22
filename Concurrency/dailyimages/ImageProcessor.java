@@ -92,7 +92,7 @@ public class ImageProcessor {
         date = date.minusDays(1);
       }
       latch.await();
-      
+
       executor2.shutdown();
       executor2.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException e) {

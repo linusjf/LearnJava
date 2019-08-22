@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SimpleBlockingQueue<T> {
-  private List<T> queue = new LinkedList<T>();
+  private List<T> queue = new LinkedList<>();
 
   public int getSize() {
     synchronized (queue) {
@@ -15,7 +15,7 @@ public class SimpleBlockingQueue<T> {
   public void put(T obj) {
     synchronized (queue) {
       queue.add(obj);
-      queue.notify();
+      queue.notifyAll();
     }
   }
 

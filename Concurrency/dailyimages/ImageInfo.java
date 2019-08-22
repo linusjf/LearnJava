@@ -21,12 +21,16 @@ abstract class ImageInfo {
     return imagePath;
   }
 
-  @SuppressWarnings("checkstyle:hiddenfield")
-  public ImageInfo setImageData(byte[] imageData) {
+  @SuppressWarnings({"checkstyle:hiddenfield",
+                     "PMD.LinguisticNaming",
+                     "PMD.ArrayIsStoredDirectly"})
+  public ImageInfo
+  setImageData(byte[] imageData) {
     this.imageData = imageData;
     return this;
   }
 
+  @SuppressWarnings({"checkstyle:hiddenfield", "PMD.MethodReturnsInternalArray"})
   public byte[] getImageData() {
     return imageData;
   }

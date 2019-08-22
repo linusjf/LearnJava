@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 class DilbertImageInfo extends ImageInfo {
+  @Override
   public DilbertImageInfo findImage(String body) {
     this.imagePath = findProperty(body, "image");
     return this;
@@ -21,6 +22,7 @@ class DilbertImageInfo extends ImageInfo {
                                                       + filter + "\""));
   }
 
+  @Override
   public String getUrlForDate(LocalDate date) {
     return "https://dilbert.com/strip/"
         + DateTimeFormatter.ISO_DATE.format(date);
