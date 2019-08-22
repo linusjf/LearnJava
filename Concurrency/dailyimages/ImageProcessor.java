@@ -16,11 +16,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.WindowConstants;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class ImageProcessor {
@@ -33,8 +31,8 @@ public class ImageProcessor {
       Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
   public boolean printMessage = true;
   public boolean saveFile = true;
-  public boolean showInFrame = true;
-  public Path imageDir = Paths.get("/tmp/images");
+  public AtomicInteger failureCount = new AtomicInteger(0);
+  public Path imageDir = Paths.get("tmp/images");
 
   private final HttpClient client =
       HttpClient.newBuilder()
@@ -68,9 +66,15 @@ public class ImageProcessor {
   }
 
   public void load(LocalDate date, ImageInfo info) {
-    findImageInfo(date, info)
+/**    findImageInfo(date, info)
         .thenCompose(this::findImageData)
-        .thenAccept(this::process);
+        .thenAccept(this::process);*/
+    findImageInfo(date, info)
+    .thenCompose(this::findImageData)
+    .thenAccept(this::process).
+    exceptionally(t -> { System.err.println(info.getUrlForDate(date) + " : " + t);
+      failureCount.incrementAndGet();return null; }).
+    thenAccept(t -> latch.countDown());
   }
 
   public void loadAll() {
@@ -89,12 +93,14 @@ public class ImageProcessor {
       }
       latch.await();
       executor2.shutdown();
+      executor2.awaitTermination(1,TimeUnit.DAYS);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
     } finally {
       time = System.nanoTime() - time;
       System.out.printf("time = %dms%n", (time / 1_000_000));
+      System.out.println(failureCount.get() + " failures downloading");
     }
   }
 
@@ -104,23 +110,13 @@ public class ImageProcessor {
       System.out.println("process called by " + Thread.currentThread()
                          + ", date: " + info.getDate());
     }
-    if (showInFrame) {
-      EventQueue.invokeLater(() -> {
-        JFrame frame = new JFrame(info.getDate());
-        frame.add(new JLabel(new ImageIcon(info.getImageData())));
-        frame.pack();
-        frame.setLocationByPlatform(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-      });
-    }
     if (saveFile)
       try {
         Files.createDirectories(imageDir);
         Files.write(imageDir.resolve(info.getDate() + ".jpg"),
                     info.getImageData());
       } catch (IOException ex) {
-        ex.printStackTrace();
+        System.err.println(ex);
       }
   }
 
