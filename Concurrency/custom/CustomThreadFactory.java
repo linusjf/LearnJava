@@ -12,7 +12,8 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory =
+          new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -25,7 +26,8 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   public static void alternateMain() throws InterruptedException {
-    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
+    CustomThreadFactory threadFactory =
+        new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     executor.submit(task);

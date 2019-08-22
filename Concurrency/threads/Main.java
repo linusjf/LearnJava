@@ -25,7 +25,8 @@ public enum Main {
     try (BufferedWriter file = Files.newBufferedWriter(Paths.get("./log.txt"));
          PrintWriter pw = new PrintWriter(file);) {
       for (int i = 0; i < 10; i++) {
-        pw.println("Main : Status of Thread " + i + " : " + threads[i].getState());
+        pw.println("Main : Status of Thread " + i + " : "
+                   + threads[i].getState());
         status[i] = threads[i].getState();
       }
 
@@ -38,7 +39,9 @@ public enum Main {
     }
   }
 
-  private static void logThreadState(Thread[] threads, Thread.State[] status, PrintWriter pw) {
+  private static void logThreadState(Thread[] threads,
+                                     Thread.State[] status,
+                                     PrintWriter pw) {
     boolean finish = false;
     while (!finish) {
       for (int i = 0; i < 10; i++) {
@@ -54,7 +57,9 @@ public enum Main {
     }
   }
 
-  private static void writeThreadInfo(PrintWriter pw, Thread thread, Thread.State state) {
+  private static void writeThreadInfo(PrintWriter pw,
+                                      Thread thread,
+                                      Thread.State state) {
     pw.printf("Main : Id %d - %s\n", thread.getId(), thread.getName());
     pw.printf("Main : Priority: %d\n", thread.getPriority());
     pw.printf("Main : Old State: %s\n", state);

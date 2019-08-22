@@ -21,7 +21,8 @@ public enum CommonForkJoinPoolExample {
 
   private static List<Integer> getNumbers() {
     List<Integer> numbers = new ArrayList<>();
-    for (int i = 0; i < 100; i++) numbers.add(i);
+    for (int i = 0; i < 100; i++)
+      numbers.add(i);
     return Collections.unmodifiableList(numbers);
   }
 }

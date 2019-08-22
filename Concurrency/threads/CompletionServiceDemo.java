@@ -13,9 +13,10 @@ public enum CompletionServiceDemo {
   ;
 
   public static void main(String[] args) {
-    ExecutorService executor = (ExecutorService) Executors.newCachedThreadPool();
+    ExecutorService executor = (ExecutorService)Executors.newCachedThreadPool();
 
-    CompletionService<String> service = new ExecutorCompletionService<>(executor);
+    CompletionService<String> service =
+        new ExecutorCompletionService<>(executor);
     ReportRequest faceRequest = new ReportRequest("Face", service);
     ReportRequest onlineRequest = new ReportRequest("Online", service);
     ReportProcessor processor = new ReportProcessor(service);
@@ -56,9 +57,12 @@ public enum CompletionServiceDemo {
     @Override
     public String call() throws Exception {
       try {
-        Long duration = (long) (Math.random() * 10);
-        System.out.printf("%s_%s: ReportGenerator: Generating a report utilizing %d seconds\n",
-            this.sender, this.title, duration);
+        Long duration = (long)(Math.random() * 10);
+        System.out.printf(
+            "%s_%s: ReportGenerator: Generating a report utilizing %d seconds\n",
+            this.sender,
+            this.title,
+            duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

@@ -46,7 +46,7 @@
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}">
-      <compilerarg line="-Xlint:-options --add-modules java.se.ee" />
+      <compilerarg line="-Xlint:-options" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -55,9 +55,7 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}">
-      <arg line="--add-modules java.se.ee" />
-    </javadoc>
+             additionalparam="${javadoc.params}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -628,7 +626,6 @@
     <java classname="${main.class6}"
           fork="true"
           clonevm="true">
-      <jvmarg line="--add-modules java.se.ee" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -660,7 +657,6 @@
     <java classname="${main.class3}"
           fork="true"
           clonevm="true">
-      <jvmarg line="--add-modules java.se.ee" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -674,7 +670,6 @@
     <java classname="${main.class2}"
           fork="true"
           clonevm="true">
-      <jvmarg line="--add-modules java.se.ee" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -688,7 +683,6 @@
     <java classname="${main.class1}"
           fork="true"
           clonevm="true">
-      <jvmarg line="--add-modules java.se.ee" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -704,7 +698,6 @@
     <java classname="${main.class}"
           fork="true"
           clonevm="true">
-      <jvmarg line="--add-modules java.se.ee" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -747,8 +740,9 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
-            <java classname="${cs.main.class}" output="${ant.project.name}-xpath.xml"
-              logError="true">
+    <java classname="${cs.main.class}"
+          output="${ant.project.name}-xpath.xml"
+          logError="true">
       <arg line="-c ../${cs.config} -p ${cs.properties} -o ${cs.output} -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />

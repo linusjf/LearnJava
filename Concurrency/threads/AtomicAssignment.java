@@ -63,13 +63,14 @@ public class AtomicAssignment implements Runnable {
       threads[i].start();
     }
     try {
-      for (Thread thread : threads) {
+      for (Thread thread: threads) {
         thread.join();
       }
       configThread.join();
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }
-    System.out.println("[" + Thread.currentThread().getName() + "] All threads have finished.");
+    System.out.println("[" + Thread.currentThread().getName()
+                       + "] All threads have finished.");
   }
 }

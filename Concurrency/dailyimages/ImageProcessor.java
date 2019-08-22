@@ -1,6 +1,5 @@
 package dailyimages;
 
-import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,13 +16,11 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/***
- * This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm
+/**
+ * * This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm
  */
-
 public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
   public static final int DELAY = 100;  // ms between requests
@@ -32,10 +29,10 @@ public class ImageProcessor {
       Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
       Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
-  public boolean printMessage = true;
-  public boolean saveFile = true;
-  public AtomicInteger failureCount = new AtomicInteger(0);
-  public Path imageDir = Paths.get("tmp/images");
+  private boolean printMessage = true;
+  private boolean saveFile = true;
+  private AtomicInteger failureCount = new AtomicInteger(0);
+  private Path imageDir = Paths.get("tmp/images");
 
   private final HttpClient client =
       HttpClient.newBuilder()
@@ -52,7 +49,7 @@ public class ImageProcessor {
                               .timeout(Duration.ofSeconds(30))
                               .build();
     return client.sendAsync(request, responseBodyHandler)
-        .thenApplyAsync(HttpResponse::body,executor2);
+        .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
@@ -69,15 +66,15 @@ public class ImageProcessor {
   }
 
   public void load(LocalDate date, ImageInfo info) {
-/**    findImageInfo(date, info)
-        .thenCompose(this::findImageData)
-        .thenAccept(this::process);*/
     findImageInfo(date, info)
-    .thenCompose(this::findImageData)
-    .thenAccept(this::process).
-    exceptionally(t -> { System.err.println(info.getUrlForDate(date) + " : " + t);
-      failureCount.incrementAndGet();return null; }).
-    thenAccept(t -> latch.countDown());
+        .thenCompose(this::findImageData)
+        .thenAccept(this::process)
+        .exceptionally(t -> {
+          System.err.println(info.getUrlForDate(date) + " : " + t);
+          failureCount.incrementAndGet();
+          return null;
+        })
+        .thenAccept(t -> latch.countDown());
   }
 
   public void loadAll() {
@@ -95,14 +92,15 @@ public class ImageProcessor {
         date = date.minusDays(1);
       }
       latch.await();
+      
       executor2.shutdown();
-      executor2.awaitTermination(1,TimeUnit.DAYS);
+      executor2.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
     } finally {
       time = System.nanoTime() - time;
-      System.out.printf("time = %dms%n", (time / 1_000_000));
+      System.out.printf("time = %dms%n", time / 1_000_000);
       System.out.println(failureCount.get() + " failures downloading");
     }
   }

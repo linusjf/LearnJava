@@ -19,7 +19,8 @@ public enum ForkJoinPoolExample {
                                   numbers.parallelStream().forEach(n -> {
                                     try {
                                       Thread.sleep(5);
-                                      System.out.println("Loop 1 : " + Thread.currentThread());
+                                      System.out.println(
+                                          "Loop 1 : " + Thread.currentThread());
                                     } catch (InterruptedException e) {
                                       System.err.println(e);
                                     }
@@ -34,7 +35,8 @@ public enum ForkJoinPoolExample {
                                   numbers.parallelStream().forEach(n -> {
                                     try {
                                       Thread.sleep(5);
-                                      System.out.println("Loop 2 : " + Thread.currentThread());
+                                      System.out.println(
+                                          "Loop 2 : " + Thread.currentThread());
                                     } catch (InterruptedException e) {
                                       System.err.println(e);
                                     }
@@ -52,7 +54,8 @@ public enum ForkJoinPoolExample {
 
   private static List<Integer> buildIntRange() {
     List<Integer> numbers = new ArrayList<>(5);
-    for (int i = 0; i < 100; i++) numbers.add(i);
+    for (int i = 0; i < 100; i++)
+      numbers.add(i);
     return Collections.unmodifiableList(numbers);
   }
 }

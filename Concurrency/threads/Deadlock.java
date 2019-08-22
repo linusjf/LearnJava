@@ -63,15 +63,17 @@ public enum Deadlock {
 
     public synchronized void bow(Friend bower) {
       System.out.format("%s: %s"
-              + "  has bowed to me!%n",
-          this.name, bower.getName());
+                            + "  has bowed to me!%n",
+                        this.name,
+                        bower.getName());
       bower.bowBack(this);
     }
 
     public synchronized void bowBack(Friend bower) {
       System.out.format("%s: %s"
-              + " has bowed back to me!%n",
-          this.name, bower.getName());
+                            + " has bowed back to me!%n",
+                        this.name,
+                        bower.getName());
     }
   }
 }

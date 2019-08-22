@@ -4,25 +4,64 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="GrayscaleImageAction.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/STAR/NUM_FLOAT[@text='0.0722']"/>
+       files="BlockingThread.java"
+       checks="IllegalCatchCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
 <suppress-xpath
-       files="GrayscaleImageAction.java"
+       files="BlockingThread.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='16']"/>
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
 <suppress-xpath
-       files="GrayscaleImageAction.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='8']"/>
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
 <suppress-xpath
-       files="FindMinTask.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']"/>
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
 <suppress-xpath
-       files="FindMinTask.java"
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
+<suppress-xpath
+       files="BlockingThread.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='executorService']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6400']"/>
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/LITERAL_ASSERT[./EXPR/EQUAL/METHOD_CALL/DOT/IDENT[@text='blockingThread']]"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsync']]/SLIST/VARIABLE_DEF[./IDENT[@text='request']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='30']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
+  <suppress-xpath files="GrayscaleImageAction.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/STAR/NUM_FLOAT[@text='0.0722']" />
+  <suppress-xpath files="GrayscaleImageAction.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='16']" />
+  <suppress-xpath files="GrayscaleImageAction.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="FindMinTask.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="FindMinTask.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='executorService']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6400']" />
   <suppress-xpath files="FindMin.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='FindMin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />

@@ -12,7 +12,8 @@ public class InstanceCallbackDigest implements Runnable {
   private String filename;
   private InstanceCallbackDigestUserInterface callback;
 
-  public InstanceCallbackDigest(String filename, InstanceCallbackDigestUserInterface callback) {
+  public InstanceCallbackDigest(String filename,
+                                InstanceCallbackDigestUserInterface callback) {
     this.filename = filename;
     this.callback = callback;
   }
@@ -25,7 +26,7 @@ public class InstanceCallbackDigest implements Runnable {
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
       while (din.read() != -1)
-        ; // read entire file
+        ;  // read entire file
       din.close();
       byte[] digest = sha.digest();
       callback.receiveDigest(digest);
