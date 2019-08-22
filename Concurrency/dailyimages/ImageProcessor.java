@@ -20,10 +20,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/***
+ * This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm
+ */
 
 public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
-  public static final int DELAY = 0;  // ms between requests
+  public static final int DELAY = 100;  // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
   private Executor executor1 =
       Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
@@ -49,7 +52,7 @@ public class ImageProcessor {
                               .timeout(Duration.ofSeconds(30))
                               .build();
     return client.sendAsync(request, responseBodyHandler)
-        .thenApply(HttpResponse::body);
+        .thenApplyAsync(HttpResponse::body,executor2);
   }
 
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
