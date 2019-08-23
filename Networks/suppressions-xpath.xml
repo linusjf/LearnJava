@@ -4,9 +4,16 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="DatagramExample.java"
+       files="UDPPortScanner.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DatagramExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='7']"/>
+       query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="UDPPortScanner.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='port']]/NUM_INT[@text='65_535']"/>
+  <suppress-xpath files="DatagramExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DatagramExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='7']" />
   <suppress-xpath files="DaytimeUDPClient.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='DaytimeUDPClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']" />
