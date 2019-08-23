@@ -39,3 +39,5 @@ networking.LocalPortScanner
 networking.HttpsClient www.google.com
 networking.Ping time-a-g.nist.gov time-b-g.nist.gov time-c-g.nist.gov time-d-g.nist.gov time-e-g.nist.gov
 networking.OptionSupport
+networking.DatagramExample
+networking.UDPPortScanner
