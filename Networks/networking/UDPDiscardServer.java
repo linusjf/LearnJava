@@ -1,17 +1,14 @@
 package networking;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
 
 public enum UDPDiscardServer {
   ;
-  public final static int PORT = 9;
-  public final static int MAX_PACKET_SIZE = 65507;
+  public static final int PORT = 9;
+  public static final int MAX_PACKET_SIZE = 65_507;
 
   private static int readPort(String portVal) {
     try {

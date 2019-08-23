@@ -1,15 +1,15 @@
 package networking;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public enum UDPDiscardClient {
   ;
-  private final static int PORT = 9;
+  private static final int PORT = 9;
 
   public static void main(String[] args) {
     String hostname = args.length > 0 ? args[0] : "localhost";
@@ -20,7 +20,7 @@ public enum UDPDiscardClient {
           new BufferedReader(new InputStreamReader(System.in));
       while (true) {
         String theLine = userInput.readLine();
-        if (theLine.equals("."))
+        if (".".equals(theLine))
           break;
         byte[] data = theLine.getBytes();
         DatagramPacket theOutput =

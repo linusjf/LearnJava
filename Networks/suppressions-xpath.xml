@@ -4,13 +4,27 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="UDPPortScanner.java"
+       files="UDPPoke.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='1024']"/>
+       query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPPoke']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65_535']"/>
 <suppress-xpath
-       files="UDPPortScanner.java"
+       files="UDPPoke.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='port']]/NUM_INT[@text='65_535']"/>
+       query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPPoke']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='30_000']"/>
+<suppress-xpath
+       files="UDPPoke.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPPoke']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='8192']"/>
+<suppress-xpath
+       files="UDPPoke.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPPoke']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='30_000']"/>
+  <suppress-xpath files="UDPPortScanner.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='1024']" />
+  <suppress-xpath files="UDPPortScanner.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='UDPPortScanner']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='port']]/NUM_INT[@text='65_535']" />
   <suppress-xpath files="DatagramExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='DatagramExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='port']]/ASSIGN/EXPR/NUM_INT[@text='7']" />

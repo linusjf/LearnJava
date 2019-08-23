@@ -41,3 +41,4 @@ networking.Ping time-a-g.nist.gov time-b-g.nist.gov time-c-g.nist.gov time-d-g.n
 networking.OptionSupport
 networking.DatagramExample
 networking.UDPPortScanner
+networking.UDPPoke time.nist.gov 37
