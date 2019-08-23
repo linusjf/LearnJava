@@ -30,7 +30,8 @@ abstract class ImageInfo {
     return this;
   }
 
-  @SuppressWarnings({"checkstyle:hiddenfield", "PMD.MethodReturnsInternalArray"})
+  @SuppressWarnings({"checkstyle:hiddenfield",
+                     "PMD.MethodReturnsInternalArray"})
   public byte[] getImageData() {
     return imageData;
   }

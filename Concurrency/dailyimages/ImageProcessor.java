@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
@@ -25,14 +26,15 @@ public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
   public static final int DELAY = 100;  // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  private Executor executor1 =
-      Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
+  private ExecutorService executor1 =
+      (ExecutorService)Executors.newCachedThreadPool(
+          new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
       Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
   private boolean printMessage = true;
   private boolean saveFile = true;
   private AtomicInteger failureCount = new AtomicInteger(0);
-  private Path imageDir = Paths.get("tmp/images");
+  private Path imageDir = Paths.get("/tmp/images");
 
   private final HttpClient client =
       HttpClient.newBuilder()
@@ -48,8 +50,13 @@ public class ImageProcessor {
                               .uri(URI.create(url))
                               .timeout(Duration.ofSeconds(30))
                               .build();
+    if (executor2.isShutdown())
+    return client.sendAsync(request, responseBodyHandler)
+        .thenApply(HttpResponse::body);
+    else
     return client.sendAsync(request, responseBodyHandler)
         .thenApplyAsync(HttpResponse::body, executor2);
+
   }
 
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
@@ -81,9 +88,15 @@ public class ImageProcessor {
     long time = System.nanoTime();
     try {
       LocalDate date = LocalDate.now();
+      Random random = new Random();
+      boolean isDilbert = random.nextBoolean();
+      System.out.println("isDilbert: " + isDilbert);
       for (int i = 0; i < NUMBER_TO_SHOW; i++) {
-        ImageInfo info = new DilbertImageInfo();
-        // ImageInfo info = new WikimediaImageInfo();
+        ImageInfo info;
+        if (isDilbert)
+          info = new DilbertImageInfo();
+        else
+          info = new WikimediaImageInfo();
         info.setDate(date.toString());
         System.out.println("Loading " + date);
         load(date, info);
@@ -93,8 +106,12 @@ public class ImageProcessor {
       }
       latch.await();
 
-      executor2.shutdown();
-      executor2.awaitTermination(1, TimeUnit.DAYS);
+        executor1.shutdown();
+        executor1.awaitTermination(1, TimeUnit.DAYS);
+        Thread.sleep(2000);
+        executor2.shutdown();
+        executor2.awaitTermination(1, TimeUnit.DAYS);
+      
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
