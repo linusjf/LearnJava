@@ -248,3 +248,14 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.UDPDiscardServer 9999 &
+echo "Sleeping for 5 seconds again after UDPDiscardServer start..."
+sleep 5
+java -cp . networking.UDPDiscardClient localhost 9999 < UDPEcho.txt
+echo "Killing UDPDiscardServer..."
+ps -ef | grep \
+  'networking.UDPDiscardServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
