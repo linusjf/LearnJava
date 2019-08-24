@@ -4,3 +4,4 @@ collections.PriorityQueueDemo
 collections.DelayedQueueDemo
 collections.TaskLocalRandom
 collections.AtomicArrayDemo
+collections.FootShootWithSafetyCatch
