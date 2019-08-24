@@ -31,12 +31,18 @@ public enum UDPEchoClient {
     try {
       InetAddress ia = InetAddress.getByName(hostname);
       DatagramSocket socket = new DatagramSocket();
+      socket.setSoTimeout(10_000);
       SenderThread sender = new SenderThread(socket, ia, port);
       sender.start();
-      Thread receiver = new ReceiverThread(socket);
+      ReceiverThread receiver = new ReceiverThread(socket);
       receiver.start();
+      sender.join();
+      Thread.sleep(1000);
+      receiver.halt();
+      receiver.join();
     } catch (UnknownHostException 
-        | SocketException ex) {
+        | SocketException |
+        InterruptedException ex) {
       System.err.println(ex);
     }
   }
@@ -68,7 +74,7 @@ public enum UDPEchoClient {
             return;
           String theLine = userInput.readLine();
           if (".".equals(theLine))
-            break;
+            return;
           byte[] data = theLine.getBytes("UTF-8");
           DatagramPacket output =
               new DatagramPacket(data, data.length, server, port);
