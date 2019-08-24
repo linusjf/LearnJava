@@ -12,6 +12,14 @@ public enum UDPEchoServerWithChannels {
   public final static int PORT = 7;
   public final static int MAX_PACKET_SIZE = 65507;
 
+  private static int readPort(String portVal) {
+    try {
+      return Integer.parseInt(portVal);
+    } catch (NumberFormatException nfe) {
+      return PORT;
+    }
+  }
+  
   public static void main(String[] args) {
     try {
       DatagramChannel channel = DatagramChannel.open();
