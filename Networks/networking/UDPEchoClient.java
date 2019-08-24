@@ -32,14 +32,16 @@ public enum UDPEchoClient {
     try {
       InetAddress ia = InetAddress.getByName(hostname);
       DatagramSocket socket = new DatagramSocket();
-      socket.setSoTimeout(10_000);
       SenderThread sender = new SenderThread(socket, ia, port);
       sender.start();
       ReceiverThread receiver = new ReceiverThread(socket);
       receiver.start();
       sender.join();
       Thread.sleep(1000);
+      // halt will not stop blocking call receive
       receiver.halt();
+      // explicitly call close to kill receiving thread
+      socket.close();
       receiver.join();
     } catch (UnknownHostException | SocketException | InterruptedException ex) {
       System.err.println(ex);
