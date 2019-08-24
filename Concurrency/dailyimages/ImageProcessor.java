@@ -108,7 +108,7 @@ public class ImageProcessor {
 
         executor1.shutdown();
         executor1.awaitTermination(1, TimeUnit.DAYS);
-        Thread.sleep(2000);
+    //    Thread.sleep(2000);
         executor2.shutdown();
         executor2.awaitTermination(1, TimeUnit.DAYS);
       
