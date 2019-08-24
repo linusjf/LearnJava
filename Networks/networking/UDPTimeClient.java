@@ -6,8 +6,9 @@ import java.util.Date;
 
 public enum UDPTimeClient {
   ;
-  public final static int PORT = 37;
-  public final static String DEFAULT_HOST = "time.nist.gov";
+  public static final int PORT = 37;
+  public static final String DEFAULT_HOST = "time.nist.gov";
+  public static final int NO_OF_BYTES_EXPECTED = 4;
 
   public static void main(String[] args) {
     InetAddress host;
@@ -26,7 +27,7 @@ public enum UDPTimeClient {
     if (response == null) {
       System.out.println("No response within allotted time");
       return;
-    } else if (response.length != 4) {
+    } else if (response.length != NO_OF_BYTES_EXPECTED) {
       System.out.println("Unrecognized response format");
       return;
     }
@@ -34,7 +35,7 @@ public enum UDPTimeClient {
     // The time protocol sets the epoch at 1900,
     // the Java Date class at 1970. This number
     // converts between them.
-    long differenceBetweenEpochs = 2208988800L;
+    long differenceBetweenEpochs = 2_208_988_800L;
     long secondsSince1900 = 0;
     for (int i = 0; i < 4; i++) {
       secondsSince1900 = (secondsSince1900 << 8) | (response[i] & 0x000000FF);

@@ -66,7 +66,7 @@ fi
    # fi
 #fi
 readOptions
-(cd "$1" && \
+(set -o pipefail; cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
@@ -76,5 +76,5 @@ ${options[@]} \
 -c ../"$rules_file" -d \
 -p ../"$properties_file" \
 -o "$output_file" -g \
-"${args[@]}" | tee "$1"-xpath.xml)
+"${args[@]}" | tee "$1"-xpath.xml );
 exit $?

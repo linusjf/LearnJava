@@ -9,9 +9,10 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+@SuppressWarnings("PMD.AvoidUsingVolatile")
 public enum UDPEchoClient {
   ;
-  public final static int PORT = 7;
+  public static final int PORT = 7;
 
   public static void main(String[] args) {
     String hostname = "localhost";
@@ -40,9 +41,7 @@ public enum UDPEchoClient {
       Thread.sleep(1000);
       receiver.halt();
       receiver.join();
-    } catch (UnknownHostException 
-        | SocketException |
-        InterruptedException ex) {
+    } catch (UnknownHostException | SocketException | InterruptedException ex) {
       System.err.println(ex);
     }
   }
@@ -51,9 +50,10 @@ public enum UDPEchoClient {
     private InetAddress server;
     private DatagramSocket socket;
     private int port;
-    private volatile boolean stopped = false;
+    private volatile boolean stopped;
 
     SenderThread(DatagramSocket socket, InetAddress address, int port) {
+      super();
       this.server = address;
       this.port = port;
       this.socket = socket;
@@ -89,9 +89,10 @@ public enum UDPEchoClient {
 
   static class ReceiverThread extends Thread {
     private DatagramSocket socket;
-    private volatile boolean stopped = false;
+    private volatile boolean stopped;
 
     ReceiverThread(DatagramSocket socket) {
+      super();
       this.socket = socket;
     }
 
@@ -101,7 +102,7 @@ public enum UDPEchoClient {
 
     @Override
     public void run() {
-      byte[] buffer = new byte[65507];
+      byte[] buffer = new byte[65_507];
       while (true) {
         if (stopped)
           return;

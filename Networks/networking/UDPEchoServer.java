@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 public class UDPEchoServer extends UDPServer {
-  public final static int DEFAULT_PORT = 7;
+  public static final int DEFAULT_PORT = 7;
 
   public UDPEchoServer() {
     super(DEFAULT_PORT);

@@ -6,6 +6,62 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 <suppress-xpath
        files="UDPPoke.java"
        checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='differenceBetweenEpochs']]/ASSIGN/EXPR/NUM_LONG[@text='2_208_988_800L']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='secondsSince1900']]/BOR/SL[./IDENT[@text='secondsSince1900']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='secondsSince1900']]/BOR/BAND/NUM_INT[@text='0x000000FF']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='msSince1970']]/ASSIGN/EXPR/STAR[./IDENT[@text='secondsSince1970']]/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="UDPServer.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPServer']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='isShutDown']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="UDPServer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPServer']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPServer']]/SLIST/CTOR_CALL/ELIST/EXPR/NUM_INT[@text='8192']"/>
+<suppress-xpath
+       files="UDPServer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="UDPEchoClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="UDPEchoClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="UDPEchoClient.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClient']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SenderThread']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='stopped']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="UDPEchoClient.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClient']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReceiverThread']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='stopped']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="UDPEchoClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClient']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReceiverThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='65_507']"/>
+<suppress-xpath
+       files="UDPPoke.java"
+       checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UDPPoke']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='port']]/NUM_INT[@text='65_535']"/>
 <suppress-xpath
        files="UDPPoke.java"

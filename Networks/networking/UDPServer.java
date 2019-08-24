@@ -1,20 +1,21 @@
 package networking;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.net.SocketException;
-import java.net.DatagramSocket;
 import java.net.DatagramPacket;
-import logging.FormatLogger;
-import java.util.logging.Logger;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import logging.FormatLogger;
 
+@SuppressWarnings("PMD.AvoidUsingVolatile")
 public abstract class UDPServer implements Runnable {
   private final int bufferSize;  // in bytes
   private final int port;
   private final FormatLogger logger =
       new FormatLogger(Logger.getLogger(UDPServer.class.getCanonicalName()));
-  private volatile boolean isShutDown = false;
+  private volatile boolean isShutDown;
 
   public UDPServer(int port, int bufferSize) {
     this.bufferSize = bufferSize;
@@ -29,7 +30,7 @@ public abstract class UDPServer implements Runnable {
   public void run() {
     byte[] buffer = new byte[bufferSize];
     try (DatagramSocket socket = new DatagramSocket(port)) {
-      socket.setSoTimeout(10000);  // check every 10 seconds for shutdown
+      socket.setSoTimeout(10_000);  // check every 10 seconds for shutdown
       while (true) {
         if (isShutDown)
           return;
@@ -41,11 +42,11 @@ public abstract class UDPServer implements Runnable {
           if (isShutDown)
             return;
         } catch (IOException ex) {
-          logger.log(Level.WARNING, "%s: %s",ex.getMessage(), ex);
+          logger.log(Level.WARNING, "%s: %s", ex.getMessage(), ex);
         }
       }  // end while
     } catch (SocketException ex) {
-      logger.log(Level.SEVERE, "Could not bind to port %d: %s",port, ex);
+      logger.log(Level.SEVERE, "Could not bind to port %d: %s", port, ex);
     }
   }
 
@@ -56,7 +57,7 @@ public abstract class UDPServer implements Runnable {
     this.isShutDown = true;
   }
 
-  protected static int readPort(String portVal,int defaultPort) {
+  protected static int readPort(String portVal, int defaultPort) {
     try {
       return Integer.parseInt(portVal);
     } catch (NumberFormatException nfe) {
