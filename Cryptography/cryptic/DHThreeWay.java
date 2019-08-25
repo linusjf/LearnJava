@@ -1,5 +1,7 @@
 package cryptic;
 
+import static cryptic.DHHelper.*;
+
 import java.security.GeneralSecurityException;
 import java.security.Key;
 import java.security.KeyPair;
@@ -8,8 +10,6 @@ import java.util.Base64;
 import javax.crypto.KeyAgreement;
 import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
-
-import static cryptic.DHHelper.*;
 
 /*
  * This program executes the Diffie-Hellman key agreement protocol between
