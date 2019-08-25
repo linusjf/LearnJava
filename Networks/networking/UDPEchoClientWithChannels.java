@@ -1,7 +1,6 @@
 package networking;
 
 import java.io.IOException;
-import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
@@ -13,8 +12,8 @@ import java.util.Set;
 
 public enum UDPEchoClientWithChannels {
   ;
-  public final static int PORT = 7;
-  private final static int LIMIT = 100;
+  public static final int PORT = 7;
+  private static final int LIMIT = 100;
 
   private static int readPort(String portVal) {
     try {
@@ -23,10 +22,10 @@ public enum UDPEchoClientWithChannels {
       return PORT;
     }
   }
-  
+
   public static void main(String[] args) {
-    String host = args.length > 0 ? args[0]:"localhost";
-    int port = args.length > 1 ? readPort(args[1]):PORT;
+    String host = args.length > 0 ? args[0] : "localhost";
+    int port = args.length > 1 ? readPort(args[1]) : PORT;
     SocketAddress remote = new InetSocketAddress(host, port);
     try (DatagramChannel channel = DatagramChannel.open()) {
       channel.configureBlocking(false);

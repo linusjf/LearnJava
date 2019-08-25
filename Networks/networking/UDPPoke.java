@@ -61,16 +61,16 @@ public class UDPPoke {
       System.out.println("Usage: java UDPPoke host port");
       return;
     }
-      UDPPoke poker = new UDPPoke(host, port);
-      byte[] response = poker.poke();
-      if (response == null) {
-        System.out.println("No response within allotted time");
-        return;
-      }
-System.out.println(Base64.getEncoder().encodeToString(response));
-StringBuilder sb = new StringBuilder(8);
-    for (byte b : response) {
-        sb.append(String.format("%02X ", b));
+    UDPPoke poker = new UDPPoke(host, port);
+    byte[] response = poker.poke();
+    if (response == null) {
+      System.out.println("No response within allotted time");
+      return;
+    }
+    System.out.println(Base64.getEncoder().encodeToString(response));
+    StringBuilder sb = new StringBuilder(8);
+    for (byte b: response) {
+      sb.append(String.format("%02X ", b));
     }
     System.out.println(sb.toString());
   }

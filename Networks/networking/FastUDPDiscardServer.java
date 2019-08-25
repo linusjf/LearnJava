@@ -23,6 +23,6 @@ public class FastUDPDiscardServer extends UDPServer {
 
   @Override
   public void respond(DatagramSocket socket, DatagramPacket request) {
-  // empty, do-nothing method
+    // empty, do-nothing method
   }
 }

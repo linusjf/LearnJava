@@ -10,9 +10,9 @@ import java.nio.channels.DatagramChannel;
 public enum UDPDiscardServerWithChannels {
   ;
 
-  public final static int PORT = 9;
+  public static final int PORT = 9;
 
-  public final static int MAX_PACKET_SIZE = 65_507;
+  public static final int MAX_PACKET_SIZE = 65_507;
 
   private static int readPort(String portVal) {
     try {

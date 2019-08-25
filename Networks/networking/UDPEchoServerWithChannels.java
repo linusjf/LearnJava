@@ -9,8 +9,8 @@ import java.nio.channels.DatagramChannel;
 
 public enum UDPEchoServerWithChannels {
   ;
-  public final static int PORT = 7;
-  public final static int MAX_PACKET_SIZE = 65507;
+  public static final int PORT = 7;
+  public static final int MAX_PACKET_SIZE = 65507;
 
   private static int readPort(String portVal) {
     try {
@@ -19,7 +19,7 @@ public enum UDPEchoServerWithChannels {
       return PORT;
     }
   }
-  
+
   public static void main(String[] args) {
     try {
       DatagramChannel channel = DatagramChannel.open();
