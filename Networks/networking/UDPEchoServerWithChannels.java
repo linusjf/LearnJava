@@ -10,7 +10,7 @@ import java.nio.channels.DatagramChannel;
 public enum UDPEchoServerWithChannels {
   ;
   public static final int PORT = 7;
-  public static final int MAX_PACKET_SIZE = 65507;
+  public static final int MAX_PACKET_SIZE = 65_507;
 
   private static int readPort(String portVal) {
     try {

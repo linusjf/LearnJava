@@ -27,6 +27,10 @@ public enum UDPEchoClientWithChannels {
     String host = args.length > 0 ? args[0] : "localhost";
     int port = args.length > 1 ? readPort(args[1]) : PORT;
     SocketAddress remote = new InetSocketAddress(host, port);
+    echoToServer(remote);
+  }
+
+  private static void echoToServer(SocketAddress remote) {
     try (DatagramChannel channel = DatagramChannel.open()) {
       channel.configureBlocking(false);
       channel.connect(remote);
@@ -58,17 +62,16 @@ public enum UDPEchoClientWithChannels {
               System.out.println("Read: " + echo);
               numbersRead++;
             }
-            if (key.isWritable()) {
+            if (key.isWritable() && n < LIMIT) {
               buffer.clear();
               buffer.putInt(n);
               buffer.flip();
               channel.write(buffer);
               System.out.println("Wrote: " + n);
               n++;
-              if (n == LIMIT) {
-                // All packets have been written; switch to read-only mode
-                key.interestOps(SelectionKey.OP_READ);
-              }
+            } else {
+              // All packets have been written; switch to read-only mode
+              key.interestOps(SelectionKey.OP_READ);
             }
           }
         }

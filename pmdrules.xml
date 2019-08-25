@@ -184,7 +184,7 @@
       <property name="classReportLevel"
                 value="80" />
       <property name="methodReportLevel"
-                value="10" />
+                value="11" />
       <property name="cycloOptions"
                 value="" />
     </properties>
