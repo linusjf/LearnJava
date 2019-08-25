@@ -46,7 +46,7 @@
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}">
-      <compilerarg line="-Xlint:-options" />
+      <compilerarg value="${javac.params}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->

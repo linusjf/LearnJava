@@ -82,7 +82,7 @@ else
     readOptions
     readarray -t javasrcs \
       < <(find "$proj" -name "*.java" -type f)
-    javac ${options[@]} -source "$ver" -target "$ver" \
+    javac -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
     -cp "$proj" \
     "${javasrcs[@]}"
     success=$?

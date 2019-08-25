@@ -81,7 +81,7 @@ else
     echo "Unable to read $proj/$verFile";
   }
   readOptions
-  ecj ${options[@]} -"$ver" -cp "$proj" "$proj"
+  ecj -Xlint:all ${options[@]} -"$ver" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
