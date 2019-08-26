@@ -261,7 +261,8 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext();) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator();
+           i.hasNext();) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = i.next();
         i.remove();

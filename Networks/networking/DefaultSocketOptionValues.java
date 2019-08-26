@@ -6,6 +6,7 @@ import java.nio.channels.DatagramChannel;
 
 public enum DefaultSocketOptionValues {
   ;
+
   public static void main(String[] args) {
     try (DatagramChannel channel = DatagramChannel.open()) {
       for (SocketOption<?> option: channel.supportedOptions()) {

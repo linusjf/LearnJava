@@ -35,8 +35,7 @@ public enum UDPDiscardServerWithChannels {
         buffer.flip();
         System.out.print(client + " says: ");
         while (buffer.hasRemaining()) {
-          byte b = buffer.get();
-          System.out.write(b);
+          System.out.write(buffer.get());
         }
         System.out.println();
         buffer.clear();

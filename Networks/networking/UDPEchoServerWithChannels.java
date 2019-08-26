@@ -21,7 +21,7 @@ public enum UDPEchoServerWithChannels {
   }
 
   public static void main(String[] args) {
-    int port = args.length > 0 ? readPort(args[0]):PORT;
+    int port = args.length > 0 ? readPort(args[0]) : PORT;
     try {
       DatagramChannel channel = DatagramChannel.open();
       DatagramSocket socket = channel.socket();
