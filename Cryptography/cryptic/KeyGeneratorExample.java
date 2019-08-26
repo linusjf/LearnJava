@@ -31,7 +31,7 @@ public enum KeyGeneratorExample {
       System.out.println(key);
 
       Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-      cipher.init(cipher.ENCRYPT_MODE, key);
+      cipher.init(Cipher.ENCRYPT_MODE, key);
 
       String msg = "Hi, how are you?";
       byte[] bytes = cipher.doFinal(msg.getBytes());

@@ -8,6 +8,7 @@ public enum Indecisive {
     System.out.println(decision());
   }
 
+  @SuppressWarnings("finally")
   static boolean decision() {
     try {
       return true;

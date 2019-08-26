@@ -7,6 +7,7 @@ public enum Rhymes {
   ;
   private static Random rnd = new Random();
 
+  @SuppressWarnings("fallthrough")
   public static void main(String[] args) {
     StringBuilder word = null;
     switch (rnd.nextInt(2)) {

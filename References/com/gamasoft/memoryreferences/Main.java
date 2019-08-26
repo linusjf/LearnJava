@@ -27,7 +27,7 @@ public enum Main {
 
     long start = System.currentTimeMillis();
 
-    ReferenceQueue<HeavyList> queue = new ReferenceQueue();
+    ReferenceQueue<HeavyList> queue = new ReferenceQueue<>();
 
     Set<Reference<HeavyList>> references = new HashSet<>();
     allocationLoop(queue, references, 100);
@@ -78,10 +78,10 @@ public enum Main {
     return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
   }
 
-  private static int removeRefs(ReferenceQueue queue, Set<Reference<HeavyList>> references) {
+  private static int removeRefs(ReferenceQueue<HeavyList> queue, Set<Reference<HeavyList>> references) {
     int removed = 0;
     while (true) {
-      Reference r = queue.poll();
+      Reference<? extends HeavyList> r = queue.poll();
       if (r == null)
         break;
       references.remove(r);

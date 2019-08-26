@@ -13,7 +13,7 @@ public enum Reflector {
     try {
       Set<String> s = new HashSet<>();
       s.add("foo");
-      Iterator it = s.iterator();
+      Iterator<String> it = s.iterator();
       Method m = it.getClass().getMethod("hasNext");
       System.out.println(m.invoke(it));
     } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {
@@ -26,7 +26,7 @@ public enum Reflector {
     try {
       Set<String> s = new HashSet<>();
       s.add("foo");
-      Iterator it = s.iterator();
+      Iterator<String> it = s.iterator();
       Method m = Iterator.class.getMethod("hasNext");
       System.out.println(m.invoke(it));
     } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {

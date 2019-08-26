@@ -36,13 +36,13 @@ public enum SerialKiller {
 class Super implements Serializable {
   final Set<Super> set = new HashSet<>();
 
-  private static long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 }
 
 @SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
 final class Sub extends Super {
   private int id;
-  private static long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   Sub(int id) {
     super();
