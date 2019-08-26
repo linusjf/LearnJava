@@ -43,3 +43,4 @@ networking.DatagramExample
 networking.UDPPortScanner
 networking.UDPPoke time.nist.gov 37
 networking.UDPTimeClient time.nist.gov
+networking.DefaultSocketOptionValues

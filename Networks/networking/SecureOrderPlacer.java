@@ -43,7 +43,7 @@ public final class SecureOrderPlacer {
       SSLContext context = SSLContext.getInstance(ALGORITHM);
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
-      SSLSocketFactory ssf = (SSLSocketFactory)context.getSocketFactory();
+      SSLSocketFactory ssf = context.getSocketFactory();
       SSLSocket s = (SSLSocket)ssf.createSocket("localhost", PORT);
       // add anonymous (non-authenticated) cipher suites
       String[] supported = ssf.getSupportedCipherSuites();

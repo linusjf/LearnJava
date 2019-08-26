@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class SocketServerExample {
   private Selector selector;
-  private Map<SocketChannel, List> dataMapper;
+  private Map<SocketChannel, List<?>> dataMapper;
   private InetSocketAddress listenAddress;
 
   public static void main(String[] args) {
@@ -71,9 +71,9 @@ public class SocketServerExample {
       System.out.println("Selected...");
 
       // work on selected keys
-      Iterator keys = this.selector.selectedKeys().iterator();
+      Iterator<SelectionKey> keys = this.selector.selectedKeys().iterator();
       while (keys.hasNext()) {
-        SelectionKey key = (SelectionKey)keys.next();
+        SelectionKey key = keys.next();
 
         // this is necessary to prevent the same key from coming up
         // again the next time around.
@@ -102,7 +102,7 @@ public class SocketServerExample {
     System.out.println("Connected to: " + remoteAddr);
 
     // register channel with selector for further IO
-    dataMapper.put(channel, new ArrayList());
+    dataMapper.put(channel, new ArrayList<>());
     channel.register(this.selector, SelectionKey.OP_READ);
   }
 

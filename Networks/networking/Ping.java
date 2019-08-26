@@ -159,7 +159,7 @@ public final class Ping {
           synchronized (pending) {
             while (pending.isEmpty())
               pending.wait();
-            t = (Target)pending.remove(0);
+            t = pending.remove(0);
           }
           t.show();
         }
@@ -238,7 +238,7 @@ public final class Ping {
     void processPendingTargets() throws IOException {
       synchronized (pending) {
         while (!pending.isEmpty()) {
-          Target t = (Target)pending.remove(0);
+          Target t = pending.remove(0);
           try {
             // Register the channel with the selector, indicating
             // interest in connection completion and attaching the
@@ -261,9 +261,9 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator i = sel.selectedKeys().iterator(); i.hasNext();) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext();) {
         // Retrieve the next key and remove it from the set
-        SelectionKey sk = (SelectionKey)i.next();
+        SelectionKey sk = i.next();
         i.remove();
 
         // Retrieve the target and the channel
