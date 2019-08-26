@@ -57,7 +57,7 @@ readOptions()
 }
 
 proj=$1
-ver="1.7"
+ver="1.8"
 version="0.0.0"
 declare -r optionsFile=".options"
 declare -a options
