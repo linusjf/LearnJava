@@ -13,7 +13,7 @@ import java.util.Set;
 public enum UDPEchoClientWithChannels {
   ;
   public static final int PORT = 7;
-  private static final int LIMIT = 100;
+  private static final int LIMIT = 200;
 
   private static int readPort(String portVal) {
     try {

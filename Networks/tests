@@ -281,3 +281,25 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.UDPDiscardServerWithChannels 9999 &
+echo "Sleeping for 5 seconds again after UDPDiscardServerWithChannels start..."
+sleep 5
+java -cp . networking.UDPEchoClientWithChannels localhost 9999
+echo "Killing UDPDiscardServerWithChannels..."
+ps -ef | grep \
+  'networking.UDPDiscardServerWithChannels' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
+java -cp . networking.UDPEchoServerWithChannels 7777 &
+echo "Sleeping for 5 seconds again after UDPEchoServerWithChannels start..."
+sleep 5
+java -cp . networking.UDPEchoClientWithChannels localhost 7777
+echo "Killing UDPEchoServerWithChannels..."
+ps -ef | grep \
+  'networking.UDPEchoServerWithChannels' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
