@@ -15,7 +15,7 @@ public enum ForkJoinPoolRunnableDemo {
     ProductListGenerator generator = new ProductListGenerator();
     List<Product> products = generator.generate(10_000);
     Task task = new Task(products, 0, products.size(), 0.20);
-    ForkJoinTask t = ForkJoinTask.adapt(task);
+    ForkJoinTask<?> t = ForkJoinTask.adapt(task);
     task.setForkedTask(t);
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(t);
@@ -83,7 +83,7 @@ public enum ForkJoinPoolRunnableDemo {
     private int first;
     private int last;
     private double increment;
-    private ForkJoinTask t;
+    private ForkJoinTask<?> t;
 
     Task(List<Product> products, int first, int last, double increment) {
       super();
@@ -94,7 +94,7 @@ public enum ForkJoinPoolRunnableDemo {
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
-    void setForkedTask(ForkJoinTask t) {
+    void setForkedTask(ForkJoinTask<?> t) {
       this.t = t;
     }
 
@@ -104,11 +104,11 @@ public enum ForkJoinPoolRunnableDemo {
         updatePrices();
       else {
         int middle = (last + first) / 2;
-        System.out.printf("Task: Pending tasks: %s\n", t.getQueuedTaskCount());
+        System.out.printf("Task: Pending tasks: %s\n", ForkJoinTask.getQueuedTaskCount());
         Task t1 = new Task(products, first, middle + 1, increment);
         Task t2 = new Task(products, middle + 1, last, increment);
-        ForkJoinTask task1 = ForkJoinTask.adapt(t1);
-        ForkJoinTask task2 = ForkJoinTask.adapt(t2);
+        ForkJoinTask<?> task1 = ForkJoinTask.adapt(t1);
+        ForkJoinTask<?> task2 = ForkJoinTask.adapt(t2);
         t1.setForkedTask(task1);
         t2.setForkedTask(task2);
         ForkJoinTask.invokeAll(task1, task2);

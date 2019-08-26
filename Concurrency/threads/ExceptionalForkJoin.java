@@ -27,7 +27,7 @@ public enum ExceptionalForkJoin {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task extends RecursiveTask<Integer> {
-    private static long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private static final int MIN_TASK_SIZE = 10;
     private int[] array;
     private int start;

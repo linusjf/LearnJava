@@ -28,7 +28,7 @@ public enum ForkJoinPuzzle {
     System.out.println("No. of processors: "
                        + Runtime.getRuntime().availableProcessors());
     ForkJoinPool forkJoinPool = new ForkJoinPool(2);
-    ForkJoinTask task =
+    ForkJoinTask<? extends Object> task =
         forkJoinPool.submit(() -> parallelStream().forEach(val -> process()));
     try {
       task.get();

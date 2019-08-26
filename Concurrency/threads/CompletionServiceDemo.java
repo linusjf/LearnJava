@@ -13,7 +13,7 @@ public enum CompletionServiceDemo {
   ;
 
   public static void main(String[] args) {
-    ExecutorService executor = (ExecutorService)Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
 
     CompletionService<String> service =
         new ExecutorCompletionService<>(executor);

@@ -11,7 +11,7 @@ public enum ControllingExecutor {
   ;
 
   public static void main(String[] args) {
-    ExecutorService executor = (ExecutorService)Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     ResultTask[] resultTasks = new ResultTask[5];
     for (int i = 0; i < 5; i++) {
       ExecutableTask executableTask = new ExecutableTask("Task " + i);

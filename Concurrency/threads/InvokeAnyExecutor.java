@@ -24,7 +24,7 @@ public enum InvokeAnyExecutor {
     List<TaskValidator> taskList = new ArrayList<>();
     taskList.add(ldapTask);
     taskList.add(dbTask);
-    ExecutorService executor = (ExecutorService)Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     String result;
     try {
       result = executor.invokeAny(taskList);

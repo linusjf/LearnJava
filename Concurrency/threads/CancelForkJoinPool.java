@@ -60,7 +60,7 @@ public enum CancelForkJoinPool {
   }
 
   static class SearchNumberTask extends RecursiveTask<Integer> {
-    private static long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private static final int TASK_SIZE_THRESHOLD = 10;
     private int[] numbers;
     private int start;

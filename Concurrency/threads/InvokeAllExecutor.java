@@ -13,7 +13,7 @@ public enum InvokeAllExecutor {
   ;
 
   public static void main(String[] args) {
-    ExecutorService executor = (ExecutorService)Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     List<Task> taskList = new ArrayList<>();
     for (int i = 0; i < 3; i++) {
       Task task = new Task("Task " + i);

@@ -26,8 +26,7 @@ public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
   public static final int DELAY = 100;  // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  private ExecutorService executor1 =
-      (ExecutorService)Executors.newCachedThreadPool(
+  private ExecutorService executor1 = Executors.newCachedThreadPool(
           new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
       Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
