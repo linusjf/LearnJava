@@ -13,6 +13,7 @@ public final class MulticastSender {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     InetAddress ia = null;
     int port = 0;
@@ -39,9 +40,7 @@ public final class MulticastSender {
         ms.send(dp);
       }
       ms.leaveGroup(ia);
-    } catch (SocketException ex) {
-      System.err.println(ex);
-    } catch (IOException ex) {
+    } catch (SocketException | IOException ex) {
       System.err.println(ex);
     }
   }

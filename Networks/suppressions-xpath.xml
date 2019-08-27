@@ -4,17 +4,22 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="UDPEchoClientWithChannels.java"
+       files="MulticastSender.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
+       query="/CLASS_DEF[./IDENT[@text='MulticastSender']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
 <suppress-xpath
-       files="UDPEchoClientWithChannels.java"
+       files="MulticastSniffer.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='60_000']"/>
-<suppress-xpath
-       files="UDPEchoClientWithChannels.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='%']]/PLUS[./STRING_LITERAL[@text='Success rate: ']]/DIV[./IDENT[@text='LIMIT']]/STAR/NUM_FLOAT[@text='100.0']"/>
+       query="/CLASS_DEF[./IDENT[@text='MulticastSniffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='8192']"/>
+  <suppress-xpath files="UDPEchoClientWithChannels.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="UDPEchoClientWithChannels.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='60_000']" />
+  <suppress-xpath files="UDPEchoClientWithChannels.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='%']]/PLUS[./STRING_LITERAL[@text='Success rate: ']]/DIV[./IDENT[@text='LIMIT']]/STAR/NUM_FLOAT[@text='100.0']" />
   <suppress-xpath files="UDPPoke.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UDPPoke']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='8']" />
