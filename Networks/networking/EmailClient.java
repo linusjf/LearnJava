@@ -41,6 +41,8 @@ public enum EmailClient {
     String response;
     do {
       Socket link = new Socket(host,PORT);
+      networkInput = new Scanner(link.getInputStream());
+networkOutput = new PrintWriter(link.getOutputStream(),true);
       /******************************************************
        CREATE A SOCKET, SET UP INPUT AND OUTPUT STREAMS,
        ACCEPT THE USER'S REQUEST, CALL UP THE APPROPRIATE
@@ -72,5 +74,14 @@ public enum EmailClient {
     /*********************************
     BODY OF THIS METHOD REQUIRED
     *********************************/
+    networkOutput.println(name);
+    networkOutput.println("read");
+    int numMessages = networkInput.nextInt();
+    // clear line separator
+    networkInput.nextLine();
+    System.out.println(numMessages + " messages.");
+    while (numMessages > 0) {
+    System.out.println(networkInput.nextLine());
+    }
   }
 }

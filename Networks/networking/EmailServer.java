@@ -100,7 +100,7 @@ public enum EmailServer {
     read messages from other client's message box and
     then send those messages to the first client.
     */
-    System.out.println("\nSending " + messagesInBox + " message(s).\n");
+    System.out.println("\nReading " + messagesInBox + " message(s).\n");
     output.println(messagesInBox);
     for (int i = 0; i < messagesInBox; i++)
       output.println(mailbox[i]);
