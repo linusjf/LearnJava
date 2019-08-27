@@ -6,7 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class EmailServer {
+public enum EmailServer {
+  ;
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
   private static final String client1 = "Dave";
