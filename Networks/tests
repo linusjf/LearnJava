@@ -303,3 +303,14 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.MulticastSniffer 239.255.255.250 1900 &
+echo "Sleeping for 5 seconds again after MulticastSniffer start..."
+sleep 5
+java -cp . networking.MulticastSender all-systems.mcast.net 4000 
+echo "Killing MulticastSniffer..."
+ps -ef | grep \
+  'networking.MulticastSniffer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
