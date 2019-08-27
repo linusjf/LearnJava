@@ -395,13 +395,14 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class46} input="domain.txt">
+    <java classname="${main.class46}"
+          input="domain.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class47}>
+    <java classname="${main.class47}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

@@ -314,3 +314,14 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.TCPEchoServer &
+echo "Sleeping for 5 seconds again after TCPEchoServer start..."
+sleep 5
+java -cp . networking.TCPEchoClient < TCPEcho.txt 
+echo "Killing TCPEchoServer..."
+ps -ef | grep \
+  'networking.TCPEchoServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

@@ -13,7 +13,7 @@ import java.util.Set;
 public enum UDPEchoClientWithChannels {
   ;
   public static final int PORT = 7;
-  private static final int LIMIT = 200;
+  private static final int LIMIT = 100;
 
   private static int readPort(String portVal) {
     try {
@@ -70,7 +70,8 @@ public enum UDPEchoClientWithChannels {
               System.out.println("Wrote: " + n);
               n++;
             } else {
-              // All packets have been written; switch to read-only mode
+              // All packets have been written;
+              // switch to read-only mode
               key.interestOps(SelectionKey.OP_READ);
             }
           }
