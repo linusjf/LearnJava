@@ -395,6 +395,12 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <java classname="${main.class46} input="domain.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
     <exec executable="./tests" />
   </target>
   <target name="whois">
