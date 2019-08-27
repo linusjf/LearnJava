@@ -40,7 +40,7 @@ public final class MulticastSender {
         ms.send(dp);
       }
       ms.leaveGroup(ia);
-    } catch (SocketException | IOException ex) {
+    } catch (IOException ex) {
       System.err.println(ex);
     }
   }
