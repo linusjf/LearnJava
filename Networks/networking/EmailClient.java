@@ -12,7 +12,8 @@ public enum EmailClient {
   private static InetAddress host;
   private static final int PORT = 1234;
   private static String name;
-  private static Scanner networkInput, userEntry;
+  private static Scanner networkInput;
+  private static Scanner userEntry;
   private static PrintWriter networkOutput;
 
   public static void main(String[] args) {
@@ -32,7 +33,6 @@ public enum EmailClient {
 
   private static void talkToServer() {
     String option = "y";
-    String message;
     String response;
     do {
       try (Socket link = new Socket(host, PORT)) {

@@ -22,7 +22,7 @@ public enum TCPEchoServer {
       System.out.println("Unable to attach to port!");
       System.exit(1);
     }
-    while (true) 
+    while (true)
       handleClient();
   }
 

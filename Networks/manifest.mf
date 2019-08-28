@@ -9,6 +9,6 @@ Specification-Title: Networks
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 986cbe6 August 27 2019
+Implementation-Version: acdb8fa August 28 2019
 Implementation-Vendor: 
 

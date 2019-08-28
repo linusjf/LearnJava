@@ -10,13 +10,13 @@ public enum EmailServer {
   ;
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
-  private static final String client1 = "Dave";
-  private static final String client2 = "Karen";
+  private static final String CLIENT1 = "Dave";
+  private static final String CLIENT2 = "Karen";
   private static final int MAX_MESSAGES = 10;
   private static String[] mailbox1 = new String[MAX_MESSAGES];
   private static String[] mailbox2 = new String[MAX_MESSAGES];
-  private static int messagesInBox1 = 0;
-  private static int messagesInBox2 = 0;
+  private static int messagesInBox1;
+  private static int messagesInBox2;
 
   public static void main(String[] args) {
     System.out.println("Opening connection…\n");
@@ -26,41 +26,28 @@ public enum EmailServer {
       System.out.println("Unable to attach to port!");
       System.exit(1);
     }
-    do {
+    while(true) {
       try {
         runService();
-      } catch (InvalidClientException icException) {
-        System.out.println("Error: " + icException);
-      } catch (InvalidRequestException irException) {
-        System.out.println("Error: " + irException);
+      } catch (InvalidClientException  |
+          InvalidRequestException iException) {
+        System.out.println("Error: " + iException);
       }
-    } while (true);
+    }
   }
 
-  private static void runService()
-      throws InvalidClientException, InvalidRequestException {
-    try {
-      Socket link = serverSocket.accept();
-      Scanner input = new Scanner(link.getInputStream());
-      PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-      String name = input.nextLine();
-      String sendRead = input.nextLine();
-      if (!name.equals(client1) && !name.equals(client2))
-        throw new InvalidClientException();
-      if (!"send".equals(sendRead) && !"read".equals(sendRead))
-        throw new InvalidRequestException();
-      System.out.println("\n" + name + " " + sendRead + "ing mail…");
-      if (name.equals(client1)) {
-        if ("send".equals(sendRead)) {
-          doSend(mailbox2, messagesInBox2, input);
-          if (messagesInBox2 < MAX_MESSAGES)
-            messagesInBox2++;
-        } else {
-          doRead(mailbox1, messagesInBox1, output);
-          messagesInBox1 = 0;
-        }
-      } else  // From client2.
-      {
+  private static void handleClient1(String sendRead,Scanner input,PrintWriter output) {
+    if ("send".equals(sendRead)) {
+      doSend(mailbox2, messagesInBox2, input);
+      messagesInBox2 =
+          messagesInBox2 < MAX_MESSAGES ? messagesInBox2 + 1 : messagesInBox2;
+    } else {
+      doRead(mailbox1, messagesInBox1, output);
+      messagesInBox1 = 0;
+    }
+  }
+
+  private static void handleClient2(String sendRead,Scanner input,PrintWriter output) {
         if ("send".equals(sendRead)) {
           doSend(mailbox1, messagesInBox1, input);
           if (messagesInBox1 < MAX_MESSAGES)
@@ -69,6 +56,25 @@ public enum EmailServer {
           doRead(mailbox2, messagesInBox2, output);
           messagesInBox2 = 0;
         }
+  }
+
+  private static void runService()
+      throws InvalidClientException, InvalidRequestException {
+    try {
+      Socket link = serverSocket.accept();
+      Scanner input = new Scanner(link.getInputStream());
+      String name = input.nextLine();
+      if (!name.equals(CLIENT1) && !name.equals(CLIENT2))
+        throw new InvalidClientException();
+      String sendRead = input.nextLine();
+      if (!"send".equals(sendRead) && !"read".equals(sendRead))
+        throw new InvalidRequestException();
+      System.out.println("\n" + name + " " + sendRead + "ing mail…");
+      PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+      if (name.equals(CLIENT1)) {
+        handleClient1(sendRead,input,output);
+      } else {  // from client 2
+        handleClient2(sendRead,input,output);
       }
       link.close();
     } catch (IOException ioEx) {
@@ -110,11 +116,11 @@ public enum EmailServer {
 
     private static final long serialVersionUID = 1L;
 
-    public InvalidClientException() {
+    InvalidClientException() {
       super("Invalid client name!");
     }
 
-    public InvalidClientException(String message) {
+    InvalidClientException(String message) {
       super(message);
     }
   }
@@ -122,12 +128,12 @@ public enum EmailServer {
   static class InvalidRequestException extends Exception {
 
     private static final long serialVersionUID = 1L;
-    
-    public InvalidRequestException() {
+
+    InvalidRequestException() {
       super("Invalid request!");
     }
 
-    public InvalidRequestException(String message) {
+    InvalidRequestException(String message) {
       super(message);
     }
   }
