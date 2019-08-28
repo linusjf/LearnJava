@@ -65,3 +65,7 @@ threads.GrayscaleImageAction Red_Tulips.jpg Gray_Tulips.jpg
 threads.FindMinTask
 threads.BlockingThread
 dailyimages.ImageProcessor
+threads.ThreadHelloCount
+threads.ThreadShowName
+threads.RunnableHelloCount
+threads.RunnableShowName
