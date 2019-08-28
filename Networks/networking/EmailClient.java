@@ -1,7 +1,7 @@
 package networking;
 
-import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -27,38 +27,33 @@ public enum EmailClient {
       System.out.print("\nEnter name ('Dave' or 'Karen'): ");
       name = userEntry.nextLine();
     } while (!"Dave".equals(name) && !"Karen".equals(name));
-    try {
     talkToServer();
-  } catch (IOException ioe) {
-    System.err.println(ioe);
-  }
-  
   }
 
-  private static void talkToServer() throws IOException {
+  private static void talkToServer() {
     String option = "y";
     String message;
     String response;
     do {
-      Socket link = new Socket(host,PORT);
-      networkInput = new Scanner(link.getInputStream());
-networkOutput = new PrintWriter(link.getOutputStream(),true);
-      /******************************************************
-       CREATE A SOCKET, SET UP INPUT AND OUTPUT STREAMS,
-       ACCEPT THE USER'S REQUEST, CALL UP THE APPROPRIATE
-       METHOD (doSend OR doRead), CLOSE THE LINK AND THEN
-       ASK IF USER WANTS TO DO ANOTHER READ/SEND.
-      ******************************************************/
-      do {
-      System.out.print("\nsend or read? :");
-      response = userEntry.nextLine();
-      } while (!"read".equals(response) && !"send".equals(response));
-      if ("read".equals(response))
-        doRead();
-      else
-        doSend();
-      System.out.print("\nDo you wish to send or read another (y/n): ");
-      option = userEntry.nextLine();
+      try (Socket link = new Socket(host, PORT)) {
+
+        networkInput = new Scanner(link.getInputStream());
+        networkOutput = new PrintWriter(link.getOutputStream(), true);
+        do {
+          System.out.print("\nsend or read? :");
+          response = userEntry.nextLine();
+        } while (!"read".equals(response) && !"send".equals(response));
+        if ("read".equals(response))
+          doRead();
+        else
+          doSend();
+        System.out.print("\nDo you wish to send or read another (y/n): ");
+        option = userEntry.nextLine();
+        networkInput.close();
+        networkOutput.close();
+      } catch (IOException ioe) {
+        System.err.println(ioe);
+      }
     } while (!"n".equals(option));
   }
 
@@ -70,18 +65,19 @@ networkOutput = new PrintWriter(link.getOutputStream(),true);
     networkOutput.println(message);
   }
 
-  private static void doRead()  {
-    /*********************************
-    BODY OF THIS METHOD REQUIRED
-    *********************************/
+  private static void doRead() {
     networkOutput.println(name);
     networkOutput.println("read");
-    int numMessages = networkInput.nextInt();
-    // clear line separator
-    networkInput.nextLine();
-    System.out.println(numMessages + " messages.");
-    while (numMessages > 0) {
-    System.out.println(networkInput.nextLine());
+    int numMessages = 0;
+    if (networkInput.hasNext()) {
+      numMessages = networkInput.nextInt();
+      // clear line separator
+      networkInput.nextLine();
+      System.out.println(numMessages + " messages.");
+      while (numMessages > 0) {
+        System.out.println(networkInput.nextLine());
+        numMessages--;
+      }
     }
   }
 }
