@@ -27,16 +27,16 @@ public enum ResourceServer {
     producer.start();
     do {
       try {
-      // Wait for a client to make connection…
-      Socket client = serverSocket.accept();
-      System.out.println("\nNew client accepted.\n");
-      // Create a ClientThread thread to handle all
-      // subsequent dialogue with the client, passing
-      // references to both the client's socket and
-      // the Resource object…
-      ClientThread handler = new ClientThread(client, item);
-      // Start the ClientThread thread running…
-      handler.start();
+        // Wait for a client to make connection…
+        Socket client = serverSocket.accept();
+        System.out.println("\nNew client accepted.\n");
+        // Create a ClientThread thread to handle all
+        // subsequent dialogue with the client, passing
+        // references to both the client's socket and
+        // the Resource object…
+        ClientThread handler = new ClientThread(client, item);
+        // Start the ClientThread thread running…
+        handler.start();
       } catch (IOException ioe) {
         System.err.println(ioe);
       }

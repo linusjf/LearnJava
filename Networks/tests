@@ -348,3 +348,14 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.ResourceServer &
+echo "Sleeping for 5 seconds again after ResourceServer start..."
+sleep 5
+java -cp . networking.ConsumerClient < MultiOne.txt
+echo "Killing ResourceServer..."
+ps -ef | grep \
+  'networking.ResourceServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?

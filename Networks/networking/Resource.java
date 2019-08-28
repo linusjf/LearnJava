@@ -17,7 +17,7 @@ class Resource {
       while (numResources >= MAX)
         wait();
       numResources++;
-      //'Wake up' any waiting consumer…
+      // 'Wake up' any waiting consumer…
       notifyAll();
     } catch (InterruptedException interruptEx) {
       System.out.println(interruptEx);
@@ -31,7 +31,7 @@ class Resource {
       while (numResources == 0)
         wait();
       numResources--;
-      //'Wake up' waiting producer…
+      // 'Wake up' waiting producer…
       notifyAll();
     } catch (InterruptedException interruptEx) {
       System.out.println(interruptEx);

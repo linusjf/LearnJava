@@ -19,7 +19,7 @@ public enum MultiEchoServer {
       System.exit(1);
     }
 
-    while(true) {
+    while (true) {
       try {
         Socket client = serverSocket.accept();
         System.out.println("\nNew client accepted.\n");

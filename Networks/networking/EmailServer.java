@@ -26,17 +26,18 @@ public enum EmailServer {
       System.out.println("Unable to attach to port!");
       System.exit(1);
     }
-    while(true) {
+    while (true) {
       try {
         runService();
-      } catch (InvalidClientException  |
-          InvalidRequestException iException) {
+      } catch (InvalidClientException | InvalidRequestException iException) {
         System.out.println("Error: " + iException);
       }
     }
   }
 
-  private static void handleClient1(String sendRead,Scanner input,PrintWriter output) {
+  private static void handleClient1(String sendRead,
+                                    Scanner input,
+                                    PrintWriter output) {
     if ("send".equals(sendRead)) {
       doSend(mailbox2, messagesInBox2, input);
       messagesInBox2 =
@@ -47,15 +48,17 @@ public enum EmailServer {
     }
   }
 
-  private static void handleClient2(String sendRead,Scanner input,PrintWriter output) {
-        if ("send".equals(sendRead)) {
-          doSend(mailbox1, messagesInBox1, input);
-          if (messagesInBox1 < MAX_MESSAGES)
-            messagesInBox1++;
-        } else {
-          doRead(mailbox2, messagesInBox2, output);
-          messagesInBox2 = 0;
-        }
+  private static void handleClient2(String sendRead,
+                                    Scanner input,
+                                    PrintWriter output) {
+    if ("send".equals(sendRead)) {
+      doSend(mailbox1, messagesInBox1, input);
+      if (messagesInBox1 < MAX_MESSAGES)
+        messagesInBox1++;
+    } else {
+      doRead(mailbox2, messagesInBox2, output);
+      messagesInBox2 = 0;
+    }
   }
 
   private static void runService()
@@ -72,9 +75,9 @@ public enum EmailServer {
       System.out.println("\n" + name + " " + sendRead + "ing mail…");
       PrintWriter output = new PrintWriter(link.getOutputStream(), true);
       if (name.equals(CLIENT1)) {
-        handleClient1(sendRead,input,output);
+        handleClient1(sendRead, input, output);
       } else {  // from client 2
-        handleClient2(sendRead,input,output);
+        handleClient2(sendRead, input, output);
       }
       link.close();
     } catch (IOException ioEx) {
