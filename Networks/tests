@@ -325,3 +325,26 @@ ps -ef | grep \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
+java -cp . networking.EmailServer &
+echo "Sleeping for 5 seconds again after EmailServer start..."
+sleep 5
+java -cp . networking.EmailClient < Dave.txt 
+java -cp . networking.EmailClient < Karen.txt
+echo "Killing EmailServer..."
+ps -ef | grep \
+  'networking.EmailServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
+java -cp . networking.MultiEchoServer &
+echo "Sleeping for 5 seconds again after MultiEchoServer start..."
+sleep 5
+java -cp . networking.MultiEchoClient < MultiEcho.txt
+echo "Killing MultiEchoServer..."
+ps -ef | grep \
+  'networking.MultiEchoServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
