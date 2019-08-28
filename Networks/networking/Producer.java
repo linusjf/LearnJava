@@ -3,11 +3,12 @@ package networking;
 class Producer extends Thread {
   private Resource item;
 
-  public Producer(Resource resource) {
+  Producer(Resource resource) {
     super();
     item = resource;
   }
 
+  @Override
   public void run() {
     int pause;
     int newLevel;

@@ -25,7 +25,7 @@ public enum ResourceServer {
     Producer producer = new Producer(item);
     // Start the Producer thread running…
     producer.start();
-    do {
+    while(true) {
       try {
         // Wait for a client to make connection…
         Socket client = serverSocket.accept();
@@ -40,6 +40,6 @@ public enum ResourceServer {
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
-    } while (true);  // Server will run indefinitely.
+    }  // Server will run indefinitely.
   }
 }

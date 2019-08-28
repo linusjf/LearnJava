@@ -3,6 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ConsumerClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ConsumerClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendMessages']]/SLIST/LITERAL_TRY/SLIST/LITERAL_DO/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="Producer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="ResourceServer.java"
+       checks="WhitespaceAroundCheck"
+       query="/ENUM_DEF[./IDENT[@text='ResourceServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE"/>
   <suppress-xpath files="MulticastSender.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='MulticastSender']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />

@@ -4,7 +4,7 @@ class Resource {
   private int numResources;
   private static final int MAX = 5;
 
-  public Resource(int startLevel) {
+  Resource(int startLevel) {
     numResources = startLevel;
   }
 
@@ -12,13 +12,15 @@ class Resource {
     return numResources;
   }
 
-  public synchronized int addOne() {
+  public int addOne() {
     try {
-      while (numResources >= MAX)
-        wait();
-      numResources++;
-      // 'Wake up' any waiting consumer…
-      notifyAll();
+      synchronized (this) {
+        while (numResources >= MAX)
+          wait();
+        numResources++;
+        // 'Wake up' any waiting consumer…
+        notifyAll();
+      }
     } catch (InterruptedException interruptEx) {
       System.out.println(interruptEx);
       Thread.currentThread().interrupt();
@@ -26,13 +28,15 @@ class Resource {
     return numResources;
   }
 
-  public synchronized int takeOne() {
+  public int takeOne() {
     try {
-      while (numResources == 0)
-        wait();
-      numResources--;
-      // 'Wake up' waiting producer…
-      notifyAll();
+      synchronized (this) {
+        while (numResources == 0)
+          wait();
+        numResources--;
+        // 'Wake up' waiting producer…
+        notifyAll();
+      }
     } catch (InterruptedException interruptEx) {
       System.out.println(interruptEx);
       Thread.currentThread().interrupt();

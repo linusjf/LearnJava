@@ -11,7 +11,7 @@ class ClientThread extends Thread {
   private Scanner input;
   private PrintWriter output;
 
-  public ClientThread(Socket socket, Resource resource) {
+  ClientThread(Socket socket, Resource resource) {
     super();
     client = socket;
     item = resource;
@@ -25,18 +25,19 @@ class ClientThread extends Thread {
     }
   }
 
+  @Override
   public void run() {
     String request = "";
     do {
       request = input.nextLine();
-      if (request.equals("1")) {
+      if ("1".equals(request)) {
         item.takeOne();  // If none available,
         // wait until resource(s)
         // available (and thread is
         // at front of thread queue).
         output.println("Request granted.");
       }
-    } while (!request.equals("0"));
+    } while (!"0".equals(request));
     try {
       System.out.println("Closing down connection…");
       client.close();

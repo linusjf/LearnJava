@@ -29,8 +29,8 @@ public enum EmailServer {
     while (true) {
       try {
         runService();
-      } catch (InvalidClientException | InvalidRequestException iException) {
-        System.out.println("Error: " + iException);
+      } catch (InvalidClientException | InvalidRequestException exc) {
+        System.out.println("Error: " + exc);
       }
     }
   }
