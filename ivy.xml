@@ -33,6 +33,8 @@
     <conf name="log4j-api.main" description="log4j api main jars"/>
     <conf name="log4j-api.lib" description="log4j api dependent jars"/>
     <conf name="saxon" description="saxon jars"/>
+    <conf name="sevntu-check.main" description="sevntu-check main jars"/>
+    <conf name="sevntu-check.lib" description="sevntu-check dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -47,5 +49,8 @@
     <dependency org="net.sourceforge.saxon" name="saxon" rev="9.1.0.8" conf="saxon-&gt;master"/>
       <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.12.0" conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile"/>
       <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.12.0" conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile"/>
+    <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
+    <dependency org="com.github.sevntu-checkstyle" name="sevntu-checks" rev="1.35.0"
+      conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile"/>
     </dependencies>
 </ivy-module>
