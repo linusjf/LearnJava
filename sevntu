@@ -1,0 +1,87 @@
+#!/bin/bash
+usage()
+{
+  echo "Usage: $0 dir rulesfile"
+  echo "dir - Project directory"
+  echo "rulesfile - Rules file"
+  exit 1
+}
+
+readOptions()
+{
+  [ -e "$proj"/"$optionsFile" ] && \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
+      echo "Unable to read $proj/$optionsFile";}
+}
+
+if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+proj=$1
+declare -r optionsFile=".csoptions"
+declare -a options
+rules_file="sevntu-checks.xml"
+properties_file="sevntu-check.properties"
+output_file="sevntu.errors"
+classpathFile="cs.cp"
+classpathFile2="sevntu-check.cp"
+mainClass="com.puppycrawl.tools.checkstyle.Main"
+#suppressionsFile="suppr.xml"
+#xsltFile="merge.xslt"
+echo "$1"
+if [ -n "$2" ]
+  then
+    rules_file=$2
+fi
+if [ ! -e "$rules_file" ]
+  then
+    echo "$rules_file cannot be found."
+    usage
+fi
+
+if [ ! -e "$classpathFile" ]
+  then
+    echo "$classpathFile cannot be found. Run ant in root directory to generate file."
+    usage
+fi
+
+if [ ! -e "$classpathFile2" ]
+  then
+    echo "$classpathFile2 cannot be found. Run ant in root directory to generate file."
+    usage
+fi
+
+if [ ! -e "$properties_file" ]
+  then
+    echo "$properties_file not found. Creating..."
+    touch "$properties_file" || \
+      echo "Unable to create $properties_file"
+    echo "Create/Modify $properties_file to configure checkstyle"
+fi
+#if [ -e $1/$suppressionsFile ] 
+ # then
+  #  if [ -e $xsltFile ]
+   # then
+    #  xsltproc --novalid -o $1.xml --stringparam \
+     # with $1/$suppressionsFile $xsltFile $rules_file
+      #rules_file=$1.xml
+    #else
+     # echo "$xsltFile does not exist."
+      #exit 1
+   # fi
+#fi
+readOptions
+(cd "$1" && \
+readarray -t args \
+  < <(find . -type f -name "*.java" \
+  ! -path "docs/**" ! -path "dist/**") && \
+java -cp @../"$classpathFile"@../"$classpathFile2"\
+"$mainClass" \
+${options[@]} \
+-c ../"$rules_file" -d \
+-p ../"$properties_file" \
+-o "$output_file" \
+"${args[@]}")
+exit $?
