@@ -5,7 +5,9 @@
 
   <!-- Filters -->
   <module name="SuppressionFilter">
-    <property name="file" value="sevntu-suppressions.xml"/>
+    <property name="file" value="${sevntu.suppressions.file}" />
+    <property name="optional"
+              value="true" />
   </module>
 
   <module name="TreeWalker">

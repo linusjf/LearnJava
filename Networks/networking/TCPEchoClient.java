@@ -28,14 +28,18 @@ public enum TCPEchoClient {
          PrintWriter output = new PrintWriter(link.getOutputStream(), true);) {
       // Set up stream for keyboard entry…
       Scanner userEntry = new Scanner(System.in);
-      String message;
+      String message = "";
       String response;
       do {
-        System.out.print("Enter message: ");
-        message = userEntry.nextLine();
-        output.println(message);
-        response = input.nextLine();
-        System.out.println("\nSERVER> " + response);
+        System.out.print("Enter message (***CLOSE*** to end): ");
+        if (userEntry.hasNext()) {
+          message = userEntry.nextLine();
+          output.println(message);
+        }
+        if (input.hasNext()) {
+          response = input.nextLine();
+          System.out.println("\nSERVER> " + response);
+        }
       } while (!"***CLOSE***".equals(message));
     } catch (IOException ioEx) {
       System.err.println(ioEx);

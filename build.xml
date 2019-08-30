@@ -64,7 +64,7 @@
     <echo file="${log4j.classpath.file}"
           message="${toString:log4j-core.main.path}:${toString:log4j-api.main.path}" />
     <echo file="${sevntu-check.classpath.file}"
-          message="${toString:sevntu-check.main.path}:${toString:sevntu-check.lib.path}" />
+          message="${toString:cs.main.path}:${toString:cs.lib.path}:${toString:sevntu-check.main.path}:${toString:sevntu-check.lib.path}" />
   </target>
   <!-- =================================
           target: report

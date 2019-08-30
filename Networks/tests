@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
+java -cp . networking.MultiEchoServerNIO &
+echo "Sleeping for 5 seconds again after MultiEchoServerNIO start..."
+sleep 5
+java -cp . networking.TCPEchoClient < TCPEcho.txt &
+java -cp . networking.MultiEchoClient < MultiEcho.txt &
+java -cp . networking.TCPEchoClient < TCPEcho.txt &
+java -cp . networking.MultiEchoClient < MultiEcho.txt &
+echo "Killing MultiEchoServerNIO in 5 seconds..."
+sleep 5
+ps -ef | grep \
+  'networking.MultiEchoServerNIO' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
 java -cp . networking.DaytimeServer &
 echo "Sleeping for 5 seconds again after DaytimeServer start..."
 sleep 5
@@ -307,6 +322,8 @@ java -cp . networking.MulticastSniffer 239.255.255.250 1900 &
 echo "Sleeping for 5 seconds again after MulticastSniffer start..."
 sleep 5
 java -cp . networking.MulticastSender all-systems.mcast.net 4000 
+echo "Wait  for 30 seconds again after MulticastSender..."
+sleep 30
 echo "Killing MulticastSniffer..."
 ps -ef | grep \
   'networking.MulticastSniffer' | \

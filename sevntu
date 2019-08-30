@@ -25,8 +25,7 @@ declare -a options
 rules_file="sevntu-checks.xml"
 properties_file="sevntu-check.properties"
 output_file="sevntu.errors"
-classpathFile="cs.cp"
-classpathFile2="sevntu-check.cp"
+classpathFile="sevntu-check.cp"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
 #xsltFile="merge.xslt"
@@ -44,12 +43,6 @@ fi
 if [ ! -e "$classpathFile" ]
   then
     echo "$classpathFile cannot be found. Run ant in root directory to generate file."
-    usage
-fi
-
-if [ ! -e "$classpathFile2" ]
-  then
-    echo "$classpathFile2 cannot be found. Run ant in root directory to generate file."
     usage
 fi
 
@@ -77,7 +70,7 @@ readOptions
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
-java -cp @../"$classpathFile"@../"$classpathFile2"\
+java -cp @../"$classpathFile" \
 "$mainClass" \
 ${options[@]} \
 -c ../"$rules_file" -d \

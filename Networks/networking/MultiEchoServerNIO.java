@@ -1,21 +1,27 @@
 package networking;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.ConcurrentModificationException;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MultiEchoServerNIO {
+public final class MultiEchoServerNIO {
   private static ServerSocketChannel serverSocketChannel;
   private static final int PORT = 1234;
   private static Selector selector;
+
+  private MultiEchoServerNIO() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   /*
   Above Selector used both for detecting new
@@ -49,14 +55,14 @@ public class MultiEchoServerNIO {
       // for receiving incoming connections…
       serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ioEx) {
-      ioEx.printStackTrace();
+      System.err.println(ioEx);
       System.exit(1);
     }
     processConnections();
   }
-  
+
   private static void processConnections() {
-    do {
+    while(true) {
       try {
         // Get number of events (new connection(s)
         // and/or data transmissions from existing
@@ -68,7 +74,9 @@ public class MultiEchoServerNIO {
           Set<SelectionKey> eventKeys = selector.selectedKeys();
           // Set up Iterator to cycle though set
           // of events…
-          Iterator<SelectionKey> keyCycler = eventKeys.iterator();
+          Set<SelectionKey> copyEventKeys = new HashSet<>(eventKeys);
+          Iterator<SelectionKey> keyCycler = copyEventKeys.iterator();
+
           while (keyCycler.hasNext()) {
             SelectionKey key = keyCycler.next();
             // Retrieve set of ready ops for
@@ -85,20 +93,18 @@ public class MultiEchoServerNIO {
             }
           }
         }
-      } catch (IOException ioEx) {
-        ioEx.printStackTrace();
+      } catch (IOException | ConcurrentModificationException ioEx) {
+        System.err.println(ioEx);
         System.exit(1);
       }
-    } while (true);
+    }
   }
-  
+
   private static void acceptConnection(SelectionKey key)
       throws IOException {  // Accept incoming connection and add to list.
-    SocketChannel socketChannel;
-    Socket socket;
-    socketChannel = serverSocketChannel.accept();
+    SocketChannel socketChannel = serverSocketChannel.accept();
     socketChannel.configureBlocking(false);
-    socket = socketChannel.socket();
+    Socket socket = socketChannel.socket();
     System.out.println("Connection on " + socket + ".");
     // Register SocketChannel for receiving data…
     socketChannel.register(selector, SelectionKey.OP_READ);
@@ -106,24 +112,21 @@ public class MultiEchoServerNIO {
     // were a new one (next time through loop)…
     selector.selectedKeys().remove(key);
   }
-  
+
   private static void acceptData(SelectionKey key)
       throws IOException {  // Accept data from existing connection.
-    SocketChannel socketChannel;
-    Socket socket;
     ByteBuffer buffer = ByteBuffer.allocate(2048);
     // Above used for reading/writing data from/to
     // SocketChannel.
-    socketChannel = (SocketChannel)key.channel();
+    SocketChannel socketChannel = (SocketChannel)key.channel();
     buffer.clear();
     int numBytes = socketChannel.read(buffer);
     System.out.println(numBytes + " bytes read.");
-    socket = socketChannel.socket();
-    if (numBytes == -1)
-    // OP_READ event also triggered by closure of
-    // connection or error of some kind. In either
-    // case, numBytes = -1.
-    {
+    Socket socket = socketChannel.socket();
+    if (numBytes == -1) {
+      // OP_READ event also triggered by closure of
+      // connection or error of some kind. In either
+      // case, numBytes = -1.
       // Request that registration of this key's
       // channel with its selector be cancelled…
       key.cancel();

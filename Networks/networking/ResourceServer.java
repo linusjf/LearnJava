@@ -25,7 +25,7 @@ public enum ResourceServer {
     Producer producer = new Producer(item);
     // Start the Producer thread running…
     producer.start();
-    while(true) {
+    while (true) {
       try {
         // Wait for a client to make connection…
         Socket client = serverSocket.accept();
