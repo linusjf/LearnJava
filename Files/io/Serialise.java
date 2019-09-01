@@ -1,30 +1,30 @@
 package io;
 
 import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public enum Serialise {
   ;
 
   public static void main(String[] args) {
 
-    try (ObjectOutputStream outStream =
-             new ObjectOutputStream(new FileOutputStream("personnel.dat"))) {
-      Personnel[] staff = {new Personnel(123456, "Smith", "John"),
-                           new Personnel(234567, "Jones", "Sally Ann"),
-                           new Personnel(999999, "Black", "James Paul")};
+    try (ObjectOutputStream outStream = new ObjectOutputStream(
+             Files.newOutputStream(Paths.get("personnel.dat")))) {
+      Personnel[] staff = {new Personnel(123_456, "Smith", "John"),
+                           new Personnel(234_567, "Jones", "Sally Ann"),
+                           new Personnel(999_999, "Black", "James Paul")};
       for (Personnel person: staff)
         outStream.writeObject(person);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }
 
-    try (ObjectInputStream inStream =
-             new ObjectInputStream(new FileInputStream("personnel.dat"))) {
+    try (ObjectInputStream inStream = new ObjectInputStream(
+             Files.newInputStream(Paths.get("personnel.dat")))) {
       int staffCount = 0;
 
       while (staffCount < 3) {

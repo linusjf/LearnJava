@@ -6,19 +6,27 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 <suppress-xpath
        files="Serialise.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123456']"/>
+       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123_456']"/>
 <suppress-xpath
        files="Serialise.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='234567']"/>
+       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='234_567']"/>
 <suppress-xpath
        files="Serialise.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='999999']"/>
-<suppress-xpath
-       files="Serialise.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/EXPR/LT[./IDENT[@text='staffCount']]/NUM_INT[@text='3']"/>
+       query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='999_999']"/>
+  <suppress-xpath files="Serialise.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123456']" />
+  <suppress-xpath files="Serialise.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='234567']" />
+  <suppress-xpath files="Serialise.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='999999']" />
+  <suppress-xpath files="Serialise.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Serialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/EXPR/LT[./IDENT[@text='staffCount']]/NUM_INT[@text='3']" />
   <suppress-xpath files="RanFile2.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='RanFile2']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_DO/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./IDENT[@text='currentPos']]/NUM_INT[@text='4']" />

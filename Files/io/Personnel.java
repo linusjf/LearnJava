@@ -11,7 +11,7 @@ class Personnel implements Serializable {
   Personnel(long payNum, String surName, String firstNames) {
     payrollNum = payNum;
     surname = surName;
-    firstNames = firstNames;
+    this.firstNames = firstNames;
   }
 
   public long getPayNum() {
