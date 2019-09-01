@@ -8,10 +8,10 @@ class Personnel implements Serializable {
   private String surname;
   private String firstNames;
 
-  public Personnel(long payNum, String sName, String fNames) {
+  Personnel(long payNum, String surName, String firstNames) {
     payrollNum = payNum;
-    surname = sName;
-    firstNames = fNames;
+    surname = surName;
+    firstNames = firstNames;
   }
 
   public long getPayNum() {
@@ -26,7 +26,7 @@ class Personnel implements Serializable {
     return firstNames;
   }
 
-  public void setSurname(String sName) {
-    surname = sName;
+  public void setSurname(String surName) {
+    surname = surName;
   }
 }

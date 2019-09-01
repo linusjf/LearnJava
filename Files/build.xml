@@ -94,9 +94,20 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run6" depends="run5">
+  <target name="run7">
     <description>Run target</description>
-    <java classname="${main.class6}" input="accupdate.txt">
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run6"
+          depends="run5">
+    <description>Run target</description>
+    <java classname="${main.class6}"
+          input="accupdate.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -105,7 +116,8 @@
   </target>
   <target name="run5">
     <description>Run target</description>
-    <java classname="${main.class5}" input="accdata.txt">
+    <java classname="${main.class5}"
+          input="accdata.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -153,7 +165,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run6,run4,run3,run2,run1">
+          depends="run7,run6,run4,run3,run2,run1">
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>

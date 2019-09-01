@@ -1,14 +1,15 @@
 package io;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.EOFException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public enum Serialise {
   ;
+
   public static void main(String[] args) {
 
     try (ObjectOutputStream outStream =
