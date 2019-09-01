@@ -96,7 +96,7 @@
   </target>
   <target name="run6" depends="run5">
     <description>Run target</description>
-    <java classname="${main.class6}">
+    <java classname="${main.class6}" input="accupdate.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -105,7 +105,7 @@
   </target>
   <target name="run5">
     <description>Run target</description>
-    <java classname="${main.class5}">
+    <java classname="${main.class5}" input="accdata.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

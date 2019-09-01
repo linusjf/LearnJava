@@ -3,5 +3,5 @@ io.FileTest2 < marks.txt
 io.FileTest3
 io.FileMethods < files.txt
 io.Copy files.txt dest.txt
-io.RanFile1
-io.RanFile2
+io.RanFile1 < accdata.txt
+io.RanFile2 < accupdate.txt

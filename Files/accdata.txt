@@ -1,0 +1,16 @@
+John Fitzgerald Kennedy
+JFK
+1000000
+y
+Lyndon Johnson
+LJ
+12345678
+y
+Richard Nixon
+RN
+56789056
+y
+Jackie Onassis Kennedy
+JOK
+45678907
+n
