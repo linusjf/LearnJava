@@ -1,2 +1,4 @@
 io.FileTest1
 io.FileTest2 < marks.txt
+io.FileTest3
+io.FileMethods < files.txt
