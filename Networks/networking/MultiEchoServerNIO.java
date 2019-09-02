@@ -62,7 +62,7 @@ public final class MultiEchoServerNIO {
   }
 
   private static void processConnections() {
-    while(true) {
+    while (true) {
       try {
         // Get number of events (new connection(s)
         // and/or data transmissions from existing
