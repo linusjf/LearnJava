@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+java -cp . networking.PersonnelServer &
+echo "Sleeping for 5 seconds again after PersonnelServer start..."
+sleep 5
+java -cp . networking.PersonnelClient
+echo "Killing PersonnelServer in 5 seconds..."
+sleep 5
+ps -ef | grep \
+  'networking.PersonnelServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
 java -cp . networking.MultiEchoServerNIO &
 echo "Sleeping for 5 seconds again after MultiEchoServerNIO start..."
 sleep 5
