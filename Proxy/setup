@@ -8,3 +8,6 @@ sleep 5
 java -cp . stefano.lupo.Proxy &
 echo "Sleeping for 5 seconds again after proxy start..."
 sleep 5
+java -cp . remote.HelloServer &
+echo "Sleeping for 5 seconds again after HelloServer start..."
+sleep 5

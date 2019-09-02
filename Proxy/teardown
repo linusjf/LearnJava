@@ -13,3 +13,8 @@ ps -ef | grep \
   awk '{print $2}' | head -1 \
   | parallel -I% kill %
 echo $?
+ps -ef | grep \
+  'remote.HelloServer' | \
+  awk '{print $2}' | head -1 \
+  | parallel -I% kill %
+echo $?

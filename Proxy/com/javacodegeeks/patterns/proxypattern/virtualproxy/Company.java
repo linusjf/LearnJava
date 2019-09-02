@@ -20,8 +20,10 @@ public class Company {
    * @param companyContactNo a <code>String</code> value
    * @param contactList a <code>ContactList</code> value
    */
-  public Company(
-      String companyName, String companyAddress, String companyContactNo, ContactList contactList) {
+  public Company(String companyName,
+                 String companyAddress,
+                 String companyContactNo,
+                 ContactList contactList) {
     this.companyName = companyName;
     this.companyAddress = companyAddress;
     this.companyContactNo = companyContactNo;

@@ -3,3 +3,4 @@ com.javacodegeeks.patterns.proxypattern.virtualproxy.TestVirtualProxy
 com.javacodegeeks.patterns.proxypattern.protectionproxy.TestProtectionProxy
 stefano.lupo.TestProxy urls.txt
 proxy.synchronicity.TestBlackBox
+remote.HelloClient
