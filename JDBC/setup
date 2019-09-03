@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java org.apache.derby.tools.ij AccountsScript.sql
