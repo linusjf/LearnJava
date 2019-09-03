@@ -1,0 +1,3 @@
+grant codeBase "file:///data/data/com.termux/files/home/LearnJava/Proxy/dist/helloserver-2.0.0.jar" {
+    permission java.security.AllPermission;
+};

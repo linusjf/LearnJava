@@ -8,9 +8,10 @@ sleep 5
 java -cp . stefano.lupo.Proxy &
 echo "Sleeping for 5 seconds again after proxy start..."
 sleep 5
-java -Djava.rmi.server.codebase=http://java.shu.ac.uk/rmi -cp . remote.HelloServer &
+java -Djava.rmi.server.codebase=https://www.dropbox.com/s/8q1s6k5im6r4fzr/server.jar -cp . remote.HelloServer &
 echo "Sleeping for 5 seconds again after HelloServer start..."
 sleep 5
+rm ./remote/Hello.class ./remote/HelloImpl.class ./remote/HelloServer.class
 java -cp . remote.Bank1Server &
 echo "Sleeping for 5 seconds again after Bank1Server start..."
 sleep 5

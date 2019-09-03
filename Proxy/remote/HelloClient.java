@@ -29,7 +29,7 @@ public final class HelloClient {
       System.out.println("Unable to bind to naming server!");
       System.exit(1);
     } catch (RemoteException rme) {
-      System.out.println(rme);
+      System.err.println(rme);
       System.exit(1);
     } catch (MalformedURLException mue) {
       System.out.println("Malformed url: " + mue);
