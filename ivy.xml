@@ -35,6 +35,8 @@
     <conf name="saxon" description="saxon jars"/>
     <conf name="sevntu-check.main" description="sevntu-check main jars"/>
     <conf name="sevntu-check.lib" description="sevntu-check dependent jars"/>
+    <conf name="jacorb.main" description="jacorb main jars"/>
+    <conf name="jacorb.lib" description="jacorb dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -52,5 +54,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle" name="sevntu-checks" rev="1.35.0"
       conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile"/>
-    </dependencies>
+  <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
+  <dependency org="org.jacorb" name="jacorb" rev="3.9" conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile"/>
+  </dependencies>
 </ivy-module>
