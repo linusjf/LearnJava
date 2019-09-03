@@ -17,6 +17,7 @@
 *.gz
 *.log*
 *docs*
+JDBC/Finances/**/*.*
 Proxy/cached/**/*.*
 Concurrency/**/*.jpg
 **/walkmod.xml
