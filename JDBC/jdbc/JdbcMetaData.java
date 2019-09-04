@@ -19,14 +19,8 @@ public final class JdbcMetaData {
 
   public static void main(String[] args) {
     try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver")
-          .getDeclaredConstructor()
-          .newInstance();
       // Step 1…
       connection = DriverManager.getConnection("jdbc:derby:Finances", "", "");
-    } catch (ReflectiveOperationException roe) {
-      System.err.println(roe);
-      System.exit(1);
     } catch (SQLException sqlEx) {
       System.err.println("* Cannot connect to database! *");
       System.exit(1);
@@ -66,6 +60,9 @@ public final class JdbcMetaData {
             System.out.println(results.getString(i));
             break;
           case Types.NUMERIC:
+            System.out.printf("%.2f %n%n", results.getFloat(i));
+            break;
+          case Types.REAL:
             System.out.printf("%.2f %n%n", results.getFloat(i));
             break;
           default:
