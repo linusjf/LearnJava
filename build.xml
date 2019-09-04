@@ -86,7 +86,7 @@
     <echo file="${jacorb.classpath.file}"
           message="${toString:jacorb.main.path}:${toString:jacorb.lib.path}" />
     <echo file="${derby.classpath.file}"
-          message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}:${toString:derbyshared.lib.path}"/>
+          message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}"/>
   </target>
   <!-- =================================
           target: report
