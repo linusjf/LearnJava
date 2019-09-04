@@ -1,4 +1,5 @@
 connect 'jdbc:derby:Finances;create=true';
+drop table Accounts;
 create table Accounts(acctNum int primary key, surname 
 varchar(15), firstNames varchar(25), balance real);
 insert into Accounts values(123456, 'Black', 'James 
