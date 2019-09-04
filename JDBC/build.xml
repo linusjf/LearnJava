@@ -100,16 +100,20 @@
   <target name="run">
     <description>Run target</description>
     <exec executable="bash">
-      <arg value="./setup"/>
+      <arg value="./setup" />
     </exec>
-    <java classname="${main.class}" fork="true">
-      <jvmarg line="-Djava.security.policy=derby.policy"/>
+    <java classname="${main.class}"
+          fork="true">
+      <jvmarg line="-Djava.security.policy=derby.policy" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${derby.cp}" />
-        <pathelement path="${java.class.path}" />
+        <!--  <pathelement path="${java.class.path}" />-->
       </classpath>
     </java>
+    <exec executable="bash">
+      <arg value="./teardown" />
+    </exec>
   </target>
   <target name="format">
     <fileset dir="${basedir}"

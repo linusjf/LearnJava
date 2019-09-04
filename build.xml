@@ -65,6 +65,14 @@
                   conf="derby.lib" />
     <ivy:retrieve pathid="derby.main.path"
                   conf="derby.main" />
+    <ivy:retrieve pathid="derbytools.lib.path"
+                  conf="derbytools.lib" />
+    <ivy:retrieve pathid="derbytools.main.path"
+                  conf="derbytools.main" />
+    <ivy:retrieve pathid="derbyshared.lib.path"
+                  conf="derbyshared.lib" />
+    <ivy:retrieve pathid="derbyshared.main.path"
+                  conf="derbyshared.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -78,7 +86,7 @@
     <echo file="${jacorb.classpath.file}"
           message="${toString:jacorb.main.path}:${toString:jacorb.lib.path}" />
     <echo file="${derby.classpath.file}"
-          message="${toString:derby.main.path}:${toString:derby.lib.path}"/>
+          message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}:${toString:derbyshared.lib.path}"/>
   </target>
   <!-- =================================
           target: report

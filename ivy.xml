@@ -39,6 +39,10 @@
     <conf name="jacorb.lib" description="jacorb dependent jars"/>
     <conf name="derby.main" description="derby main jars"/>
     <conf name="derby.lib" description="derby dependent jars"/>
+    <conf name="derbytools.main" description="derbytools main jars"/>
+    <conf name="derbytools.lib" description="derbytools dependent jars"/>
+    <conf name="derbyshared.main" description="derbyshared main jars"/>
+    <conf name="derbyshared.lib" description="derbyshared dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -60,5 +64,9 @@
   <dependency org="org.jacorb" name="jacorb" rev="3.9" conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile"/>
   <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
 <dependency org="org.apache.derby" name="derby" rev="10.15.1.3" conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile"/>
-  </dependencies>
+<!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
+<dependency org="org.apache.derby" name="derbytools" rev="10.15.1.3" conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+<dependency org="org.apache.derby" name="derbyshared" rev="10.15.1.3" conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
+</dependencies>
 </ivy-module>

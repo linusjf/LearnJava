@@ -71,6 +71,7 @@ runJVM()
   if [ -e "$jarFile" ]
     then
       setUp
+      readAuxClassPath
       echo "Main class(es): $main"
      for a in "${main[@]}";
      do
@@ -84,7 +85,7 @@ runJVM()
       fi
       echo "Running $a...";echo
       cd "$proj"
-      printf -v cmdPrefix '%q ' java ${runOptions[@]} -cp ../$jarFile:. 
+      printf -v cmdPrefix '%q ' java ${runOptions[@]} -cp $auxClasspath../$jarFile:. 
       eval "$cmdPrefix $a"
       cd ..
     done
@@ -105,6 +106,13 @@ readVersion()
   [ -e "$versionFile" ] && \
       { version=$(cat "$versionFile") || \
       echo "Unable to read $versionFile";}
+}
+
+readAuxClassPath()
+{
+  [ -e "$proj/$runClasspathFile" ] && \
+      { auxClasspath=$(cat "$proj/$runClasspathFile") || \
+      echo "Unable to read $proj/$runClasspathFile";}
 }
 
 readRunOptions()
@@ -134,8 +142,10 @@ fi
 
 declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
+declare -r runClasspathFile="run.cp"
 declare -a runOptions
 version="0.0.0"
+auxClasspath=""
 if [ "$#" -ge 2 ]
 then
   printf -v params "%s " "${@:2}"
