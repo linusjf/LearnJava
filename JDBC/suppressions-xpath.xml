@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="JdbcScrollableSelect.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/PLUS[./STRING_LITERAL[@text='Account holder: ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="JdbcScrollableSelect.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
+</suppressions>
+Checkstyle ends with 2 errors.

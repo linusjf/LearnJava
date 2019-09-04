@@ -34,7 +34,6 @@ public final class JdbcMetaData {
       results = statement.executeQuery(select);
       // Start of step 4…
       ResultSetMetaData metaData = results.getMetaData();
-      int numFields = metaData.getColumnCount();
       // Check that record has been found…
       boolean found = results.next();
       if (!found) {
@@ -43,6 +42,9 @@ public final class JdbcMetaData {
         connection.close();
         return;
       }
+      
+      int numFields = metaData.getColumnCount();
+      
       // Cycle through the database fields, displaying
       // meta data about each one…
       for (int i = 1; i <= numFields; i++) {
@@ -67,6 +69,7 @@ public final class JdbcMetaData {
             break;
           default:
             System.out.println("Unknown");
+            break;
         }
       }
       // End of step 4.

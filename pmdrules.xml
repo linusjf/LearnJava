@@ -212,8 +212,8 @@
   <rule ref="category/java/design.xml/NPathComplexity" />
   <rule ref="category/java/design.xml/SignatureDeclareThrowsException" />
   <rule ref="category/java/design.xml/SimplifiedTernary" />
-  <!-- <rule ref="category/java/design.xml/SimplifyBooleanAssertion" /> -->
-  <!-- <rule ref="category/java/design.xml/SimplifyBooleanExpressions" /> -->
+  <rule ref="category/java/design.xml/SimplifyBooleanAssertion" />
+  <rule ref="category/java/design.xml/SimplifyBooleanExpressions" />
   <rule ref="category/java/design.xml/SimplifyBooleanReturns" />
   <rule ref="category/java/design.xml/SimplifyConditional" />
   <rule ref="category/java/design.xml/SingularField" />
@@ -322,19 +322,24 @@
   <rule ref="category/java/errorprone.xml/JumbledIncrementer" />
   <!-- <rule ref="category/java/errorprone.xml/JUnitSpelling" /> -->
   <!-- <rule ref="category/java/errorprone.xml/JUnitStaticSuite" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/LoggerIsNotStaticFinal" /> -->
   <rule ref="category/java/errorprone.xml/MethodWithSameNameAsEnclosingClass" />
   <rule ref="category/java/errorprone.xml/MisplacedNullCheck" />
   <rule ref="category/java/errorprone.xml/MissingBreakInSwitch" />
   <rule ref="category/java/errorprone.xml/MissingSerialVersionUID" />
   <rule ref="category/java/errorprone.xml/MissingStaticMethodInNonInstantiatableClass" />
-  <!-- <rule ref="category/java/errorprone.xml/MoreThanOneLogger" /> -->
+  <rule ref="category/java/errorprone.xml/MoreThanOneLogger" />
   <rule ref="category/java/errorprone.xml/NonCaseLabelInSwitchStatement" />
   <rule ref="category/java/errorprone.xml/NonStaticInitializer" />
   <rule ref="category/java/errorprone.xml/NullAssignment" />
   <rule ref="category/java/errorprone.xml/OverrideBothEqualsAndHashcode" />
   <rule ref="category/java/errorprone.xml/ProperCloneImplementation" />
-  <rule ref="category/java/errorprone.xml/ProperLogger" />
+  <rule ref="category/java/errorprone.xml/ProperLogger">
+    <properties>
+        <property name="staticLoggerName" value="LOG" />
+        <property name="loggerName" value="log" />
+        <property name="loggerClass" value="Log" />
+    </properties>
+  </rule>
   <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull" />
   <rule ref="category/java/errorprone.xml/ReturnFromFinallyBlock" />
   <rule ref="category/java/errorprone.xml/SimpleDateFormatNeedsLocale" />
@@ -355,7 +360,7 @@
   <rule ref="category/java/errorprone.xml/UseEqualsToCompareStrings" />
   <rule ref="category/java/errorprone.xml/UselessOperationOnImmutable" />
   <rule ref="category/java/errorprone.xml/UseLocaleWithCaseConversions" />
-  <!-- <rule ref="category/java/errorprone.xml/UseProperClassLoader" /> -->
+   <rule ref="category/java/errorprone.xml/UseProperClassLoader" />
   <!-- Empty rules -->
   <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
     <properties>
