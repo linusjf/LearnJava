@@ -108,7 +108,22 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${derby.cp}" />
-        <!--  <pathelement path="${java.class.path}" />-->
+      </classpath>
+    </java>
+    <java classname="${main.class1}"
+          fork="true">
+      <jvmarg line="-Djava.security.policy=derby.policy" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${derby.cp}" />
+      </classpath>
+    </java>
+    <java classname="${main.class2}"
+          fork="true">
+      <jvmarg line="-Djava.security.policy=derby.policy" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${derby.cp}" />
       </classpath>
     </java>
     <exec executable="bash">

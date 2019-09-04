@@ -28,9 +28,8 @@ public final class JdbcScrollableSelect {
   private static void executeQuery() {
     try {
       // clang-format off
-      statement = connection.createStatement(
-          ResultSet.TYPE_SCROLL_SENSITIVE,
-          ResultSet.CONCUR_READ_ONLY);
+      statement =
+          connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
       // clang-format on
       results = statement.executeQuery("SELECT * FROM Accounts");
     } catch (SQLException sqlEx) {
