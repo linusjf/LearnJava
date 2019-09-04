@@ -37,6 +37,8 @@
     <conf name="sevntu-check.lib" description="sevntu-check dependent jars"/>
     <conf name="jacorb.main" description="jacorb main jars"/>
     <conf name="jacorb.lib" description="jacorb dependent jars"/>
+    <conf name="derby.main" description="derby main jars"/>
+    <conf name="derby.lib" description="derby dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -56,5 +58,7 @@
       conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile"/>
   <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
   <dependency org="org.jacorb" name="jacorb" rev="3.9" conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile"/>
+  <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
+<dependency org="org.apache.derby" name="derby" rev="10.15.1.3" conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile"/>
   </dependencies>
 </ivy-module>

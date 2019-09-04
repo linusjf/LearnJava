@@ -12,6 +12,7 @@
   <property file="${LearnJava.basedir}/log4j.properties" />
   <property file="${LearnJava.basedir}/sevntu-check.properties" />
   <property file="${LearnJava.basedir}/jacorb.properties" />
+  <property file="${LearnJava.basedir}/derby.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -60,6 +61,10 @@
                   conf="jacorb.lib" />
     <ivy:retrieve pathid="jacorb.main.path"
                   conf="jacorb.main" />
+    <ivy:retrieve pathid="derby.lib.path"
+                  conf="derby.lib" />
+    <ivy:retrieve pathid="derby.main.path"
+                  conf="derby.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -72,6 +77,8 @@
           message="${toString:cs.main.path}:${toString:cs.lib.path}:${toString:sevntu-check.main.path}:${toString:sevntu-check.lib.path}" />
     <echo file="${jacorb.classpath.file}"
           message="${toString:jacorb.main.path}:${toString:jacorb.lib.path}" />
+    <echo file="${derby.classpath.file}"
+          message="${toString:derby.main.path}:${toString:derby.lib.path}"/>
   </target>
   <!-- =================================
           target: report
