@@ -97,6 +97,12 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
   <target name="run">
     <description>Run target</description>
     <exec executable="bash">
@@ -126,9 +132,6 @@
         <pathelement path="${derby.cp}" />
       </classpath>
     </java>
-    <exec executable="bash">
-      <arg value="./teardown" />
-    </exec>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
