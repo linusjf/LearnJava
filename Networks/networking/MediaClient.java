@@ -59,8 +59,6 @@ public final class MediaClient {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
     byte[] byteArray = (byte[])inStream.readObject();
-    System.out.println(byteArray.length);
-    System.out.println(fileType);
     OutputStream mediaStream;
     if ("IMAGE".equalsIgnoreCase(fileType))
       // Step 5…
@@ -72,5 +70,7 @@ public final class MediaClient {
     // Step 6…
     mediaStream.write(byteArray);
     mediaStream.flush();
+    mediaStream.close();
+    System.out.println("File written successfully");
   }
 }

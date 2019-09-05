@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
-./setup
+if ! [ -f beesting.jpg ]; then
+  curl --silent -o beesting.jpg https://upload.wikimedia.org/wikipedia/commons/3/3a/Bee-sting-abeille-dard-2.jpg
+fi
+if ! [ -f cuckoo.wav ]; then
+  curl --silent -o cuckoo.wav http://bruitages.free.fr/horloges/6_coucous.wav
+fi
 java -cp . networking.MediaServer &
 echo "Sleeping for 5 seconds again after MediaServer start..."
 sleep 5
 java -cp . networking.MediaClient < mediacommands.txt
-echo "Killing MediaServer in 1 minute..."
-sleep 60
+java -cp . networking.MediaClient < mediacommands1.txt
+echo "Killing MediaServer in 5 seconds..."
+sleep 5
 ps -ef | grep \
   'networking.MediaServer' | \
   grep -v grep | \
