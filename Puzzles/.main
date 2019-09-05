@@ -64,4 +64,5 @@ javapuzzles.Twisted
 javapuzzles.Shuffle 
 javapuzzles.ApplePie 
 javapuzzles.BananaBread 
-javapuzzles.ChocolateCake 
+javapuzzles.ChocolateCake
+org.programming.mitra.exercises.IntegerCacheExample
