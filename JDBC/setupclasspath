@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cp ../derby.cp run.cp
