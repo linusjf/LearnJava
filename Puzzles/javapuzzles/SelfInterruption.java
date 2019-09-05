@@ -15,8 +15,10 @@ public enum SelfInterruption {
   public static void altMain(String... args) {
     Thread.currentThread().interrupt();
     if (Thread.currentThread().isInterrupted())
-      System.out.println("Interrupted: " + Thread.currentThread().isInterrupted());
+      System.out.println("Interrupted: "
+                         + Thread.currentThread().isInterrupted());
     else
-      System.out.println("Not interrupted: " + Thread.currentThread().isInterrupted());
+      System.out.println("Not interrupted: "
+                         + Thread.currentThread().isInterrupted());
   }
 }

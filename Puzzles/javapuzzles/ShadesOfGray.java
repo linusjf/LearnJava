@@ -16,7 +16,7 @@ enum X {
   // clang-format off
   static class Y {
     static String Z = "Black";
-  } // clang-format on
+  }  // clang-format on
 
   static C Y = new C();
 }

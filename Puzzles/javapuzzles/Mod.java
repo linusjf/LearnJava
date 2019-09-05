@@ -13,7 +13,8 @@ public enum Mod {
       do {
         histogram[Math.abs(i) % MODULUS]++;
       } while (i++ != Integer.MAX_VALUE);
-      for (int j = 0; j < MODULUS; j++) System.out.print(histogram[j] + " ");
+      for (int j = 0; j < MODULUS; j++)
+        System.out.print(histogram[j] + " ");
     } catch (ArrayIndexOutOfBoundsException e) {
       System.err.println(e);
     }
@@ -32,6 +33,7 @@ public enum Mod {
     do {
       histogram[mod(i, MODULUS)]++;
     } while (i++ != Integer.MAX_VALUE);
-    for (int j = 0; j < MODULUS; j++) System.out.print(histogram[j] + " ");
+    for (int j = 0; j < MODULUS; j++)
+      System.out.print(histogram[j] + " ");
   }
 }

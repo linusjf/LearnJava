@@ -1,43 +1,55 @@
 package org.programming.mitra.exercises;
 
 /**
+ * <b>IntegerCacheExample.</b>
+ *
+ * @see Annotation
+ *
  * @author Naresh Joshi
- *
- * See complete article on below link
- *
- * https://www.programmingmitra.com/2018/11/java-integer-cache.html
+ * <br/>
+ * <p>See complete article on below link.</p>
+ * <br/>
+ * <p>https://www.programmingmitra.com/2018/11/java-integer-cache.html</p>
  */
-public class IntegerCacheExample
-{
-    public static void main(String[] args)
-    {
-        int a = 127;
-        int b = 127;
+public enum IntegerCacheExample {
+  ;
+  @SuppressWarnings("PMD.CompareObjectsWithEquals")
+  public static void main(String[] args) {
+    int a = 127;
+    int b = 127;
 
-        System.out.println(a == b); // Output -- true
+    System.out.println(a == b);  // Output -- true
 
-        Integer cObj = 127; // Auto boxing example, compiler converts it to Integer c = Integer.valueOf(127);
-        Integer dObj = 127; // Compiler converts it to Integer d = Integer.valueOf(127);
+    Integer objC = 127;  
+    // Auto boxing example, compiler converts it to Integer
+    // c = Integer.valueOf(127);
+    Integer objD = 127;  
+    // Compiler converts it to Integer d = Integer.valueOf(127);
 
-        int e = cObj; // Auto unboxing example, Compiler converts this line to int e = c.intValue();
+    int e = objC;  
+    // Auto unboxing example, Compiler converts this line to int
+    // e = c.intValue();
 
+    System.out.println("e = " + e); 
+    
+    // Output of below line is true because Integer class cache integer objects
+    // which falls in range -128 to 127, and returns same object for every
+    // autoboxing invocation
+    System.out.println(objC == objD);  // Output -- true
 
-        // Output of below line is true because Integer class cache integer objects which falls in range -128 to 127,
-        // and returns same object for every autoboxing invocation
-        System.out.println(cObj == dObj); // Output -- true
+    System.out.println(objC.equals(objD));  // Output -- true
 
-        System.out.println(cObj.equals(dObj)); // Output -- true
+    a = 128;
+    b = 128;
 
-        a = 128;
-        b = 128;
+    System.out.println(a == b);  // Output -- true
 
-        System.out.println(a == b); // Output -- true
+    objC = 128;
+    objD = 128;
 
-        cObj = 128;
-        dObj = 128;
+    System.out.println(objC == objD);  
+    // Output -- false
 
-        System.out.println(cObj == dObj); // Output -- false
-
-        System.out.println(cObj.equals(dObj)); // Output -- true
-    }
+    System.out.println(objC.equals(objD));  // Output -- true
+  }
 }

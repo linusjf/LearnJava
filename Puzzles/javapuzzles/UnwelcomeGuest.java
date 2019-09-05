@@ -6,8 +6,9 @@ public enum UnwelcomeGuest {
   //  private static final long USER_ID;
   private static final long USER_ID = getUserIdOrGuest();
   /**
-   * static { try { USER_ID = getUserIdFromEnvironment(); } catch (IdUnavailableException e) {
-   * USER_ID = GUEST_USER_ID; System.out.println("Logging in as guest"); } }*
+   * static { try { USER_ID = getUserIdFromEnvironment(); } catch
+   * (IdUnavailableException e) { USER_ID = GUEST_USER_ID;
+   * System.out.println("Logging in as guest"); } }*
    */
   private static long getUserIdOrGuest() {
     try {
@@ -19,7 +20,7 @@ public enum UnwelcomeGuest {
   }
 
   private static long getUserIdFromEnvironment() throws IdUnavailableException {
-    throw new IdUnavailableException("ID Unavailable"); // Simulate an error
+    throw new IdUnavailableException("ID Unavailable");  // Simulate an error
   }
 
   public static void main(String[] args) {
