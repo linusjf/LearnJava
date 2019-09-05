@@ -6,9 +6,9 @@ Main-Class: com.javacodegeeks.niotutorial.file.FileChannelWriteExample
 
 Name: common
 Specification-Title: NIOIntro
-Specification-Version: 1.0.0
+Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 4f8afbd June 22 2019
+Implementation-Version: d102562 September 5 2019
 Implementation-Vendor: 
 
