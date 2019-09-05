@@ -14,10 +14,10 @@ public enum Shuffle {
     Integer[] nums = new Integer[100];
     for (int i = 0; i < 100; i++)
       nums[i] = rnd.nextInt(100);
-    shuffle(nums);
+    shuffle((Object)nums);
   }
 
-  public static void shuffle(Object[] a) {
+  public static void shuffle(Object... a) {
     rnd = new Random(1);
     for (int i = 0; i < a.length; i++) {
       int shuffleTo = rnd.nextInt(a.length);

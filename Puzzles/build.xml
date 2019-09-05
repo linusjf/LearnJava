@@ -738,9 +738,9 @@
   </target>
   <target name="checkstyleg">
     <fileset dir="${basedir}"
-             id="javasrcs">
-      <include name="**/*.java" />
-    </fileset>
+             id="javasrcs"
+             includes="**/*.java"
+               excludes="**/Ugly.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
