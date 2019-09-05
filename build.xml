@@ -13,6 +13,7 @@
   <property file="${LearnJava.basedir}/sevntu-check.properties" />
   <property file="${LearnJava.basedir}/jacorb.properties" />
   <property file="${LearnJava.basedir}/derby.properties" />
+  <property file="${LearnJava.basedir}/tomcat.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -73,6 +74,10 @@
                   conf="derbyshared.lib" />
     <ivy:retrieve pathid="derbyshared.main.path"
                   conf="derbyshared.main" />
+    <ivy:retrieve pathid="tomcat-embed-core.lib.path"
+                  conf="tomcat-embed-core.lib" />
+    <ivy:retrieve pathid="tomcat-embed-core.main.path"
+                  conf="tomcat-embed-core.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -87,6 +92,8 @@
           message="${toString:jacorb.main.path}:${toString:jacorb.lib.path}" />
     <echo file="${derby.classpath.file}"
           message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}"/>
+    <echo file="${tomcat.classpath.file}"
+          message="${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}"/>
   </target>
   <!-- =================================
           target: report
