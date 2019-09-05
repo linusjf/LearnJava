@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="PersonnelServer.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123_456']"/>
-<suppress-xpath
-       files="PersonnelServer.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='234_567']"/>
-<suppress-xpath
-       files="PersonnelServer.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='999_999']"/>
+  <suppress-xpath files="PersonnelServer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123_456']" />
+  <suppress-xpath files="PersonnelServer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='234_567']" />
+  <suppress-xpath files="PersonnelServer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='999_999']" />
   <suppress-xpath files="MultiEchoServerNIO.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='MultiEchoServerNIO']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='acceptData']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2048']" />

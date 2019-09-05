@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if ! [ -f beesting.jpg ]; then
+  curl --silent -o beesting.jpg https://upload.wikimedia.org/wikipedia/commons/3/3a/Bee-sting-abeille-dard-2.jpg
+fi
+if ! [ -f cuckoo.wav ]; then
+  curl --silent -o cuckoo.wav http://bruitages.free.fr/horloges/6_coucous.wav
+fi

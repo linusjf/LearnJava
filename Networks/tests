@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+./setup
+java -cp . networking.MediaServer &
+echo "Sleeping for 5 seconds again after MediaServer start..."
+sleep 5
+java -cp . networking.MediaClient < mediacommands.txt
+echo "Killing MediaServer in 1 minute..."
+sleep 60
+ps -ef | grep \
+  'networking.MediaServer' | \
+  grep -v grep | \
+  awk '{print $2}' \
+  | parallel -I% kill %
+echo $?
 java -cp . networking.PersonnelServer &
 echo "Sleeping for 5 seconds again after PersonnelServer start..."
 sleep 5
