@@ -1,8 +1,10 @@
 *.dat
 *.jks
 *.au
+*.wav
 *.ser
 *.gif
+*.jpg
 *.png
 *.cache
 *.errors

@@ -28,13 +28,6 @@ public final class MediaClient {
     }
     try {
       String message;
-      Socket connection = new Socket(host, PORT);
-      // Step 1…
-      ObjectInputStream inStream =
-          new ObjectInputStream(connection.getInputStream());
-      // Step 1 (cont'd)…
-      PrintWriter outStream =
-          new PrintWriter(connection.getOutputStream(), true);
       // Set up stream for keyboard entry…
       Scanner userEntry = new Scanner(System.in);
       System.out.print("Enter request (IMAGE/SOUND): ");
@@ -45,16 +38,24 @@ public final class MediaClient {
         System.out.print("Enter request (IMAGE/SOUND): ");
         message = userEntry.nextLine();
       }
+
+      Socket connection = new Socket(host, PORT);
+      // Step 1…
+      ObjectInputStream inStream =
+          new ObjectInputStream(connection.getInputStream());
+      // Step 1 (cont'd)…
+      PrintWriter outStream =
+          new PrintWriter(connection.getOutputStream(), true);
       // Step 2…
       outStream.println(message);
-      getFile(inStream, message);
+      downloadFile(inStream, message);
       connection.close();
     } catch (IOException | ClassNotFoundException ioEx) {
       System.err.println(ioEx);
     }
   }
 
-  private static void getFile(ObjectInputStream inStream, String fileType)
+  private static void downloadFile(ObjectInputStream inStream, String fileType)
       throws IOException, ClassNotFoundException {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
