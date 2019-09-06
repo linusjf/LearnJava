@@ -14,6 +14,7 @@
   <property file="${LearnJava.basedir}/jacorb.properties" />
   <property file="${LearnJava.basedir}/derby.properties" />
   <property file="${LearnJava.basedir}/tomcat.properties" />
+  <property file="${LearnJava.basedir}/ecj.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -78,10 +79,26 @@
                   conf="tomcat-embed-core.lib" />
     <ivy:retrieve pathid="tomcat-embed-core.main.path"
                   conf="tomcat-embed-core.main" />
+    <ivy:retrieve pathid="tomcat-embed-jasper.lib.path"
+                  conf="tomcat-embed-jasper.lib" />
+    <ivy:retrieve pathid="tomcat-embed-jasper.main.path"
+                  conf="tomcat-embed-jasper.main" />
+    <ivy:retrieve pathid="tomcat-embed-logging-juli.lib.path"
+                  conf="tomcat-embed-logging-juli.lib" />
+    <ivy:retrieve pathid="tomcat-embed-logging-juli.main.path"
+                  conf="tomcat-embed-logging-juli.main" />
+    <ivy:retrieve pathid="tomcat-embed-logging-log4j.lib.path"
+                  conf="tomcat-embed-logging-log4j.lib" />
+    <ivy:retrieve pathid="tomcat-embed-logging-log4j.main.path"
+                  conf="tomcat-embed-logging-log4j.main" />
     <ivy:retrieve pathid="tomcat-dbcp.lib.path"
                   conf="tomcat-dbcp.lib" />
     <ivy:retrieve pathid="tomcat-dbcp.main.path"
                   conf="tomcat-dbcp.main" />
+    <ivy:retrieve pathid="ecj.lib.path"
+                  conf="ecj.lib" />
+    <ivy:retrieve pathid="ecj.main.path"
+                  conf="ecj.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -97,7 +114,9 @@
     <echo file="${derby.classpath.file}"
           message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}"/>
     <echo file="${tomcat.classpath.file}"
-          message="${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
+          message="${toString:tomcat-embed-logging-log4j.main.path}:${toString:tomcat-embed-logging-log4j.lib.path}:${toString:tomcat-embed-logging-juli.main.path}:${toString:tomcat-embed-logging-juli.lib.path}:${toString:tomcat-embed-jasper.main.path}:${toString:tomcat-embed-jasper.lib.path}:${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
+    <echo file="${ecj.classpath.file}"
+          message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
   </target>
   <!-- =================================
           target: report

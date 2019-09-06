@@ -45,8 +45,16 @@
     <conf name="derbyshared.lib" description="derbyshared dependent jars"/>
     <conf name="tomcat-embed-core.main" description="tomcat-embed-core main jars"/>
     <conf name="tomcat-embed-core.lib" description="tomcat-embed-core dependent jars"/>
+    <conf name="tomcat-embed-jasper.main" description="tomcat-embed-jasper main jars"/>
+    <conf name="tomcat-embed-jasper.lib" description="tomcat-embed-jasper dependent jars"/>
+    <conf name="tomcat-embed-logging-juli.main" description="tomcat-embed-logging-juli main jars"/>
+    <conf name="tomcat-embed-logging-juli.lib" description="tomcat-embed-logging-juli dependent jars"/>
+    <conf name="tomcat-embed-logging-log4j.main" description="tomcat-embed-logging-log4j main jars"/>
+    <conf name="tomcat-embed-logging-log4j.lib" description="tomcat-embed-logging-log4j dependent jars"/>
     <conf name="tomcat-dbcp.main" description="tomcat-dbcp main jars"/>
     <conf name="tomcat-dbcp.lib" description="tomcat-dbcp dependent jars"/>
+    <conf name="ecj.main" description="ecj main jars"/>
+    <conf name="ecj.lib" description="ecj dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -75,6 +83,14 @@
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
 <dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="9.0.24" conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
+<dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-log4j" rev="9.0.0.M6" conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile"/>
 <dependency org="org.apache.tomcat" name="tomcat-dbcp" rev="9.0.24" conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+<dependency org="org.apache.tomcat.embed" name="tomcat-embed-jasper" rev="9.0.24" conf="tomcat-embed-jasper.main-&gt;master;tomcat-embed-jasper.lib-&gt;runtime;tomcat-embed-jasper.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
+<dependency org="org.eclipse.jdt.core.compiler" name="ecj" rev="4.6.1" conf="ecj.main-&gt;master;ecj.lib-&gt;runtime;ecj.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
+<dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-juli" rev="9.0.0.M6" conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
 </dependencies>
 </ivy-module>
