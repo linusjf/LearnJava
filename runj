@@ -71,7 +71,6 @@ runJVM()
   if [ -e "$jarFile" ]
     then
       setUp
-      readAuxClassPath
       echo "Main class(es): $main"
      for a in "${main[@]}";
      do
@@ -157,6 +156,7 @@ fi
 echo "$proj"
 readVersion
 readRunOptions
+readAuxClassPath
 
 isJVM
 jvm=$?
