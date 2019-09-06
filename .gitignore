@@ -19,6 +19,10 @@
 *.gz
 *.log*
 *docs*
+Webapps/target/**/*.*
+Webapps/target/**/*.*
+Webapps/webapp/**/*.*
+Webapps/tomcat.8080/**/*.*
 JDBC/Finances/**/*.*
 JDBC/Inventory/**/*.*
 Proxy/cached/**/*.*

@@ -78,6 +78,10 @@
                   conf="tomcat-embed-core.lib" />
     <ivy:retrieve pathid="tomcat-embed-core.main.path"
                   conf="tomcat-embed-core.main" />
+    <ivy:retrieve pathid="tomcat-dbcp.lib.path"
+                  conf="tomcat-dbcp.lib" />
+    <ivy:retrieve pathid="tomcat-dbcp.main.path"
+                  conf="tomcat-dbcp.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -93,7 +97,7 @@
     <echo file="${derby.classpath.file}"
           message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}"/>
     <echo file="${tomcat.classpath.file}"
-          message="${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}"/>
+          message="${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
   </target>
   <!-- =================================
           target: report

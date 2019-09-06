@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/tomcat-embed-core-9.0.24.jar:/data/data/com.termux/files/home/LearnJava/lib/tomcat-annotations-api-9.0.24.jar
+/data/data/com.termux/files/home/LearnJava/lib/tomcat-embed-core-9.0.24.jar:/data/data/com.termux/files/home/LearnJava/lib/tomcat-annotations-api-9.0.24.jar:/data/data/com.termux/files/home/LearnJava/lib/tomcat-dbcp-9.0.24.jar:/data/data/com.termux/files/home/LearnJava/lib/tomcat-juli-9.0.24.jar

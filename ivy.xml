@@ -45,6 +45,8 @@
     <conf name="derbyshared.lib" description="derbyshared dependent jars"/>
     <conf name="tomcat-embed-core.main" description="tomcat-embed-core main jars"/>
     <conf name="tomcat-embed-core.lib" description="tomcat-embed-core dependent jars"/>
+    <conf name="tomcat-dbcp.main" description="tomcat-dbcp main jars"/>
+    <conf name="tomcat-dbcp.lib" description="tomcat-dbcp dependent jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -72,5 +74,7 @@
 <dependency org="org.apache.derby" name="derbyshared" rev="10.15.1.3" conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
 <dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="9.0.24" conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+<dependency org="org.apache.tomcat" name="tomcat-dbcp" rev="9.0.24" conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
 </dependencies>
 </ivy-module>
