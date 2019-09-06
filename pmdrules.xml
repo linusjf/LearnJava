@@ -368,7 +368,6 @@
                 value="true" />
     </properties>
   </rule>
-  <rule ref="category/java/errorprone.xml/EmptyCatchBlock" />
   <rule ref="category/java/errorprone.xml/EmptyFinalizer" />
   <rule ref="category/java/errorprone.xml/EmptyFinallyBlock" />
   <rule ref="category/java/errorprone.xml/EmptyIfStmt" />
