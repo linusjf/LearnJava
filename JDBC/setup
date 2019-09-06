@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-java org.apache.derby.tools.ij AccountsScript.sql
-java org.apache.derby.tools.ij StockScript.sql
+java -cp $(cat run.cp):. org.apache.derby.tools.ij AccountsScript.sql
+java -cp $(cat run.cp):. org.apache.derby.tools.ij StockScript.sql
