@@ -56,6 +56,8 @@
     <conf name="ecj.main" description="ecj main jars"/>
     <conf name="ecj.lib" description="ecj dependent jars"/>
     <conf name="tomcat-servlet-api.main" description="tomcat-servlet-api main jars"/>
+    <conf name="tomcat-jsp-api.main" description="tomcat-jsp-api main jars"/>
+    <conf name="tomcat-jsp-api.lib" description="tomcat-jsp-api lib jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -95,5 +97,7 @@
 <dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-juli" rev="9.0.0.M6" conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
 <dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="9.0.24" conf="tomcat-servlet-api.main-&gt;master"/>
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
+<dependency org="org.apache.tomcat" name="tomcat-jsp-api" rev="9.0.24" conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile"/>
 </dependencies>
 </ivy-module>

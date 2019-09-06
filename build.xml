@@ -101,6 +101,10 @@
                   conf="ecj.main" />
     <ivy:retrieve pathid="tomcat-servlet-api.main.path"
                   conf="tomcat-servlet-api.main" />
+    <ivy:retrieve pathid="tomcat-jsp-api.main.path"
+                  conf="tomcat-jsp-api.main" />
+    <ivy:retrieve pathid="tomcat-jsp-api.lib.path"
+                  conf="tomcat-jsp-api.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -116,7 +120,7 @@
     <echo file="${derby.classpath.file}"
           message="${toString:derby.main.path}:${toString:derbytools.main.path}:${toString:derbyshared.main.path}"/>
     <echo file="${tomcat.classpath.file}"
-          message="${toString:tomcat-servlet-api.main.path}:${toString:tomcat-embed-logging-log4j.main.path}:${toString:tomcat-embed-logging-log4j.lib.path}:${toString:tomcat-embed-logging-juli.main.path}:${toString:tomcat-embed-logging-juli.lib.path}:${toString:tomcat-embed-jasper.main.path}:${toString:tomcat-embed-jasper.lib.path}:${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
+          message="${toString:tomcat-jsp-api.lib.path}:${toString:tomcat-jsp-api.main.path}:${toString:tomcat-servlet-api.main.path}:${toString:tomcat-embed-logging-log4j.main.path}:${toString:tomcat-embed-logging-log4j.lib.path}:${toString:tomcat-embed-logging-juli.main.path}:${toString:tomcat-embed-logging-juli.lib.path}:${toString:tomcat-embed-jasper.main.path}:${toString:tomcat-embed-jasper.lib.path}:${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
     <echo file="${ecj.classpath.file}"
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
   </target>
