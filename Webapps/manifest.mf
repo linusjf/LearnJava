@@ -5,10 +5,10 @@ Built-By: root
 Main-Class: launch.Main
 
 Name: common
-Specification-Title: Tomcat
+Specification-Title: Webapps
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 37124b9 September 6 2019
+Implementation-Version: 63da4e0 September 6 2019
 Implementation-Vendor: 
 

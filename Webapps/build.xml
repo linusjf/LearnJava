@@ -108,9 +108,6 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <exec executable="bash">
-      <arg value="./setup" />
-    </exec>
     <java classname="${main.class}"
           fork="true">
       <classpath>
