@@ -22,8 +22,8 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
-  <loadfile property="derby.cp"
-            srcFile="../${derby.classpath.file}" />
+  <loadfile property="tomcat.cp"
+            srcFile="../${tomcat.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -49,6 +49,9 @@
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}">
+      <classpath>
+        <pathelement path="${tomcat.cp}" />
+      </classpath>
       <compilerarg value="${javac.params}" />
     </javac>
   </target>

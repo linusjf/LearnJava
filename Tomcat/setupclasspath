@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
 cp ../tomcat.cp run.cp
+cp ../tomcat.cp compile.cp

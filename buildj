@@ -49,6 +49,13 @@ readVersion()
       echo "Unable to read $versionFile";}
 }
 
+readAuxClassPath()
+{
+  [ -e "$proj/$buildClasspathFile" ] && \
+      { auxClasspath=$(cat "$proj/$buildClasspathFile") || \
+      echo "Unable to read $proj/$buildClasspathFile";}
+}
+
 readOptions()
 {
   [ -e "$proj"/"$optionsFile" ] && \
@@ -59,12 +66,14 @@ readOptions()
 proj=$1
 ver="1.8"
 version="0.0.0"
+auxClasspath=""
 declare -r optionsFile=".options"
 declare -a options
 declare -r distDir="dist"
 declare -r manifestFile="manifest.mf"
 declare -r verFile=".ver"
 declare -r versionFile=".version"
+declare -r buildClasspathFile="compile.cp"
 declare -r verErrMsg="Unable to read $proj/$verFile"
 declare -r archiveErrMsg="Unable to create executable archive"
 declare -i SUCCESS=0
@@ -80,10 +89,11 @@ else
       { ver=$(cat "$proj"/"$verFile") || \
       echo "$verErrMsg";}
     readOptions
+    readAuxClassPath
     readarray -t javasrcs \
       < <(find "$proj" -name "*.java" -type f)
     javac -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
-    -cp "$proj" \
+    -cp $auxClasspath:"$proj" \
     "${javasrcs[@]}"
     success=$?
     if [[ $success -eq SUCCESS ]]
