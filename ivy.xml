@@ -55,6 +55,7 @@
     <conf name="tomcat-dbcp.lib" description="tomcat-dbcp dependent jars"/>
     <conf name="ecj.main" description="ecj main jars"/>
     <conf name="ecj.lib" description="ecj dependent jars"/>
+    <conf name="tomcat-servlet-api.main" description="tomcat-servlet-api main jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -92,5 +93,7 @@
 <dependency org="org.eclipse.jdt.core.compiler" name="ecj" rev="4.6.1" conf="ecj.main-&gt;master;ecj.lib-&gt;runtime;ecj.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
 <dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-juli" rev="9.0.0.M6" conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+<dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="9.0.24" conf="tomcat-servlet-api.main-&gt;master"/>
 </dependencies>
 </ivy-module>
