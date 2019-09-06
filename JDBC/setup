@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-java -cp $(cat run.cp):. org.apache.derby.tools.ij AccountsScript.sql
-java -cp $(cat run.cp):. org.apache.derby.tools.ij StockScript.sql
+classpath=$(cat run.cp)
+java -cp "$classpath":. org.apache.derby.tools.ij AccountsScript.sql
+java -cp "$classpath":. org.apache.derby.tools.ij StockScript.sql
