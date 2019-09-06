@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+classpath=$(cat run.cp)
+java -cp "$classpath":. launch.Main &
+
