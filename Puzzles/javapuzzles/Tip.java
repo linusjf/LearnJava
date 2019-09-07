@@ -2,7 +2,7 @@ package javapuzzles;
 
 public enum Tip {
   ;
-  
+
   public static void main(String... args) {
     Point p = new Point();
     System.out.println(p.x++ + ", " + ++p.y);
@@ -16,11 +16,11 @@ public enum Tip {
     protected int x = 3;
     protected int y = 5;
 
-    public Point() {
+    Point() {
       super();
     }
 
-    public Point(int x, int y) {
+    Point(int x, int y) {
       this.x = x;
       this.y = y;
     }

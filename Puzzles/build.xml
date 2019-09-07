@@ -413,7 +413,8 @@
   </target>
   <target name="run39">
     <description>Mod target</description>
-    <java classname="${main.class39}">
+    <java classname="${main.class39}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -803,7 +804,7 @@
     <fileset dir="${basedir}"
              id="javasrcs"
              includes="**/*.java"
-               excludes="**/Ugly.java" />
+             excludes="**/Ugly.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
