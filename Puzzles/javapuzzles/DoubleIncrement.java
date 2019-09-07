@@ -11,12 +11,12 @@ public enum DoubleIncrement {
     System.out.println(d);
     d = 0d;
     for (int i = 0; i < 10; i++) {
-      d = d + 0.10000000000000000;
+      d = d + 0.100_000_000_000_000_00;
     }
     System.out.println(d);
     d = 0d;
     for (int i = 0; i < 10; i++) {
-      d = d + Math.pow(10,-1);
+      d = d + Math.pow(10, -1);
     }
     System.out.println(d);
   }

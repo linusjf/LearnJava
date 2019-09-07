@@ -4,17 +4,54 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="Laches.java"
+       files="DoubleIncrement.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Laches']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='j']]/ASSIGN/EXPR/NUM_INT[@text='0x10']"/>
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
 <suppress-xpath
-       files="Loopy.java"
+       files="DoubleIncrement.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Loopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/NUM_INT[@text='5']"/>
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/PLUS[./IDENT[@text='d']]/NUM_FLOAT[@text='0.1']"/>
 <suppress-xpath
-       files="Loopy.java"
+       files="DoubleIncrement.java"
        checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Loopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/NUM_INT[@text='6']"/>
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="DoubleIncrement.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/PLUS[./IDENT[@text='d']]/NUM_FLOAT[@text='0.100_000_000_000_000_00']"/>
+<suppress-xpath
+       files="DoubleIncrement.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="DoubleIncrement.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='DoubleIncrement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/PLUS[./IDENT[@text='d']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SetSize.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SetSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SetSize.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SetSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SetSize.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SetSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SetSize.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SetSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="Laches.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Laches']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='j']]/ASSIGN/EXPR/NUM_INT[@text='0x10']" />
+  <suppress-xpath files="Loopy.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Loopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="Loopy.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Loopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/NUM_INT[@text='6']" />
   <suppress-xpath files="IntegerCacheExample.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='IntegerCacheExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/NUM_INT[@text='127']" />
