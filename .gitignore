@@ -13,7 +13,6 @@
 *.jar
 *.txt
 *.bak
-*.html
 *.dot
 *.out
 *.gz
