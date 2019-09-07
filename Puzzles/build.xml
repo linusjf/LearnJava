@@ -94,6 +94,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run77">
+    <description>Ion target</description>
+    <java classname="${main.class77}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run76">
     <description>SetSize target</description>
     <java classname="${main.class76}">
