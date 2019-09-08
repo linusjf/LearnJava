@@ -4,14 +4,15 @@ public enum Meno {
 ;
 
   public static void main(String... args) {
-    m();
+    method();
   }
 
-  public static void m(int... a) {
+  public static void method(int... a) {
     System.out.println("1");
   }
   
-  public static void m(short... b) {
+  @SuppressWarnings("PMD.AvoidUsingShortType")
+  public static void method(short... b) {
     System.out.println("2");
   }
 }

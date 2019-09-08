@@ -7,6 +7,7 @@ public class ThreadIon implements Runnable {
     System.out.println("1");
   }
 
+  @SuppressWarnings("PMD.DontCallThreadRun")
   public static void main(String... args) {
     Thread t = new Thread(new ThreadIon());
     t.start();
