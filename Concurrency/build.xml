@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../junit.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -17,6 +18,8 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
+  <loadfile property="junit.cp"
+            srcFile="../${junit.classpath.file}" />
   <loadfile property="cs.cp"
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
@@ -26,6 +29,12 @@
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -46,6 +55,9 @@
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}">
+      <classpath>
+        <pathelement path="${junit.cp}" />
+      </classpath>
       <compilerarg value="${javac.params}" />
     </javac>
   </target>
