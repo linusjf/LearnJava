@@ -6,7 +6,7 @@ public class RunnableHelloCount implements Runnable {
   public static void main(String[] args) {
     RunnableHelloCount threadDemo = new RunnableHelloCount();
   }
-  
+
   public RunnableHelloCount() {
     // Since current object implements Runnable, it can
     // be used as the argument to the Thread
@@ -16,7 +16,7 @@ public class RunnableHelloCount implements Runnable {
     thread1.start();
     thread2.start();
   }
-  
+
   public void run() {
     int pause;
     for (int i = 0; i < 10; i++) {

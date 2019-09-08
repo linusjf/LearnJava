@@ -9,7 +9,7 @@ public class ThreadShowName extends Thread {
     thread1.start();  // Will call run.
     thread2.start();  // Will call run.
   }
-  
+
   public void run() {
     int pause;
     for (int i = 0; i < 10; i++) {

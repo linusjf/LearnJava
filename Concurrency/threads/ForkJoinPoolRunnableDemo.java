@@ -104,7 +104,8 @@ public enum ForkJoinPoolRunnableDemo {
         updatePrices();
       else {
         int middle = (last + first) / 2;
-        System.out.printf("Task: Pending tasks: %s\n", ForkJoinTask.getQueuedTaskCount());
+        System.out.printf("Task: Pending tasks: %s\n",
+                          ForkJoinTask.getQueuedTaskCount());
         Task t1 = new Task(products, first, middle + 1, increment);
         Task t2 = new Task(products, middle + 1, last, increment);
         ForkJoinTask<?> task1 = ForkJoinTask.adapt(t1);

@@ -64,7 +64,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat.main-&gt;master;gformat.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
-    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.23" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
+    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.24" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.17.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile"/>
     <dependency org="net.sourceforge.pmd" name="pmd-java" rev="6.17.0" conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">

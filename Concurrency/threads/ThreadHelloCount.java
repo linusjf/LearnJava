@@ -30,6 +30,7 @@ public enum ThreadHelloCount {
 
   static class CountThread extends Thread {
     int pause;
+
     public void run() {
       for (int i = 0; i < 5; i++) {
         try {

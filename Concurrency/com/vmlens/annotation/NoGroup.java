@@ -1,5 +1,3 @@
 package com.vmlens.annotation;
 
-public class NoGroup {
-
-}
+public class NoGroup {}

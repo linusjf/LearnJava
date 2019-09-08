@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -26,8 +25,8 @@ public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
   public static final int DELAY = 100;  // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  private ExecutorService executor1 = Executors.newCachedThreadPool(
-          new NamedThreadFactory("executor1"));
+  private ExecutorService executor1 =
+      Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
       Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
   private boolean printMessage = true;
@@ -50,12 +49,11 @@ public class ImageProcessor {
                               .timeout(Duration.ofSeconds(30))
                               .build();
     if (executor2.isShutdown())
-    return client.sendAsync(request, responseBodyHandler)
-        .thenApply(HttpResponse::body);
+      return client.sendAsync(request, responseBodyHandler)
+          .thenApply(HttpResponse::body);
     else
-    return client.sendAsync(request, responseBodyHandler)
-        .thenApplyAsync(HttpResponse::body, executor2);
-
+      return client.sendAsync(request, responseBodyHandler)
+          .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
@@ -105,12 +103,12 @@ public class ImageProcessor {
       }
       latch.await();
 
-        executor1.shutdown();
-        executor1.awaitTermination(1, TimeUnit.DAYS);
-    //    Thread.sleep(2000);
-        executor2.shutdown();
-        executor2.awaitTermination(1, TimeUnit.DAYS);
-      
+      executor1.shutdown();
+      executor1.awaitTermination(1, TimeUnit.DAYS);
+      //    Thread.sleep(2000);
+      executor2.shutdown();
+      executor2.awaitTermination(1, TimeUnit.DAYS);
+
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
