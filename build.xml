@@ -15,6 +15,7 @@
   <property file="${LearnJava.basedir}/derby.properties" />
   <property file="${LearnJava.basedir}/tomcat.properties" />
   <property file="${LearnJava.basedir}/ecj.properties" />
+  <property file="${LearnJava.basedir}/junit.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -105,6 +106,8 @@
                   conf="tomcat-jsp-api.main" />
     <ivy:retrieve pathid="tomcat-jsp-api.lib.path"
                   conf="tomcat-jsp-api.lib" />
+    <ivy:retrieve pathid="junit.main.path"
+                  conf="junit.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -123,6 +126,8 @@
           message="${toString:tomcat-jsp-api.lib.path}:${toString:tomcat-jsp-api.main.path}:${toString:tomcat-servlet-api.main.path}:${toString:tomcat-embed-logging-log4j.main.path}:${toString:tomcat-embed-logging-log4j.lib.path}:${toString:tomcat-embed-logging-juli.main.path}:${toString:tomcat-embed-logging-juli.lib.path}:${toString:tomcat-embed-jasper.main.path}:${toString:tomcat-embed-jasper.lib.path}:${toString:tomcat-embed-core.main.path}:${toString:tomcat-embed-core.lib.path}:${toString:tomcat-dbcp.main.path}:${toString:tomcat-dbcp.lib.path}"/>
     <echo file="${ecj.classpath.file}"
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
+        <echo file="${junit.classpath.file}"
+          message="${toString:junit.main.path}" />
   </target>
   <!-- =================================
           target: report
