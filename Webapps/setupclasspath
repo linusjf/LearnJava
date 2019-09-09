@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-cp ../tomcat.cp run.cp
+cat ../derby.cp <(echo -n ':') ../tomcat.cp > run.cp
 cp ../tomcat.cp compile.cp
