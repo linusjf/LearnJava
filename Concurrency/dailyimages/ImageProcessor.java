@@ -29,7 +29,8 @@ public class ImageProcessor {
   // private ExecutorService executor1 =
   //  Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private ExecutorService executor1 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS, new NamedThreadFactory("executor1"));
+      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
+                                   new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
       Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
   private boolean printMessage = true;
@@ -113,7 +114,7 @@ public class ImageProcessor {
       System.out.println("PAST LATCH");
       // wait for a minute  before shutting down executor2
       // http timeouts must expire first
-      Thread.sleep(60_000);
+      Thread.sleep(30_000);
       executor2.shutdown();
       executor2.awaitTermination(1, TimeUnit.DAYS);
 
