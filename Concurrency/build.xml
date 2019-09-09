@@ -788,6 +788,8 @@
       <arg file="java_regexp.header" />
     </java>
   </target>
+  <target name="runall"
+          depends="run,unittests"></target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">

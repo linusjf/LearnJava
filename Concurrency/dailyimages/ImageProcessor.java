@@ -25,10 +25,12 @@ public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;
   public static final int DELAY = 100;  // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
+  // private ExecutorService executor1 =
+  //  Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private ExecutorService executor1 =
-      Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
+      Executors.newFixedThreadPool(100, new NamedThreadFactory("executor1"));
   private ExecutorService executor2 =
-      Executors.newFixedThreadPool(100, new NamedThreadFactory("executor2"));
+      Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
   private boolean printMessage = true;
   private boolean saveFile = true;
   private AtomicInteger failureCount = new AtomicInteger(0);
@@ -61,6 +63,11 @@ public class ImageProcessor {
     return getAsync(info.getUrlForDate(date),
                     HttpResponse.BodyHandlers.ofString())
         .thenApply(info::findImage);
+  }
+
+  public void printExecutors() {
+    System.out.println("Executor 1: " + executor1);
+    System.out.println("Executor 2: " + executor2);
   }
 
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
@@ -102,13 +109,15 @@ public class ImageProcessor {
         date = date.minusDays(1);
       }
       latch.await();
-
-      executor1.shutdown();
-      executor1.awaitTermination(1, TimeUnit.DAYS);
-      //    Thread.sleep(2000);
+      System.out.println("PAST LATCH");
+      // wait for a minute  before shutting down executor2
+      // http timeouts must expire first
+      Thread.sleep(60_000);
       executor2.shutdown();
       executor2.awaitTermination(1, TimeUnit.DAYS);
 
+      executor1.shutdown();
+      executor1.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
@@ -137,6 +146,7 @@ public class ImageProcessor {
 
   public static void main(String... args) {
     ImageProcessor processor = new ImageProcessor();
+    processor.printExecutors();
     processor.loadAll();
   }
 }
