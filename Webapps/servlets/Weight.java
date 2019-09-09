@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +45,7 @@ public class Weight extends HttpServlet {
       response.sendRedirect("ShoppingCart.html");
     }
   }
-  
+
   private void doAdd(HttpSession cart, HttpServletRequest request) {
     String currentProduct = (String)cart.getAttribute("currentProd");
     String qty = request.getParameter("Qty");
@@ -61,7 +59,7 @@ public class Weight extends HttpServlet {
         cart.setAttribute("Pears", qty);
     }
   }
-  
+
   private void doRemove(HttpSession cart) {
     String currentProduct = (String)cart.getAttribute("currentProd");
     Object product = cart.getAttribute(currentProduct);

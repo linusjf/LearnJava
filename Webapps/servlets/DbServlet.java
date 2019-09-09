@@ -2,12 +2,11 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;    //Don't forget this!
-import java.sql.DriverManager;    //Don't forget this!
-import java.sql.SQLException; //Don't forget this!
-import java.sql.Statement;    //Don't forget this!
-import java.sql.Connection;    //Don't forget this!
-import javax.servlet.Servlet;
+import java.sql.Connection;    // Don't forget this!
+import java.sql.DriverManager; // Don't forget this!
+import java.sql.ResultSet;     // Don't forget this!
+import java.sql.SQLException;  // Don't forget this!
+import java.sql.Statement;     // Don't forget this!
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +19,7 @@ public class DbServlet extends HttpServlet {
   private Statement statement;
   private Connection link;
   private String URL = "jdbc:derby:HomeDB";
-  
+
   public void init() throws ServletException {
     super.init();
     try {
@@ -30,7 +29,7 @@ public class DbServlet extends HttpServlet {
       System.exit(1);
     }
   }
-  
+
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String surname, forenames, telNum;
@@ -93,7 +92,7 @@ public class DbServlet extends HttpServlet {
     out.println("</HTML>");
     out.flush();
   }
-  
+
   public void destroy() {
     try {
       link.close();
