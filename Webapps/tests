@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+awk '$1=$1' FS=":" OFS="\n" ../derby.cp
 classpath=$(cat run.cp)
 java -cp "$classpath":. launch.Main &
 
