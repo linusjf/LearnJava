@@ -78,7 +78,9 @@ public enum Main {
     return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
   }
 
-  private static int removeRefs(ReferenceQueue<HeavyList> queue, Set<Reference<HeavyList>> references) {
+  // clang-format off
+  private static int removeRefs(ReferenceQueue<HeavyList> queue, 
+      Set<Reference<HeavyList>> references) {
     int removed = 0;
     while (true) {
       Reference<? extends HeavyList> r = queue.poll();
@@ -89,6 +91,7 @@ public enum Main {
     }
     return removed;
   }
+  // clang-format on
 
   private static void deallocateHalf(HeavyList head) {
     HeavyList curr = head;

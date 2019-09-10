@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.commandpattern;
 
-@SuppressWarnings("PMD.ShortClassName") public interface Job { // clang-format off
+// clang-format off
+@SuppressWarnings("PMD.ShortClassName") 
+public interface Job { 
   void run();
 } // clang-format on
