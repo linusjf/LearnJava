@@ -60,6 +60,15 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
   <module name="TreeWalker">
+  <module name="SuppressWithNearbyCommentFilter"/>
+    <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
+    <module name="JavadocBlockTagLocation">
+  <property name="tags" value="author, deprecated, exception, hidden"/>
+  <property name="tags" value="param, provides, return, see, serial"/>
+  <property name="tags" value="serialData, serialField, since, throws"/>
+  <property name="tags" value="uses, version"/>
+  <property name="tags" value="noinspection"/>
+</module>
     <module name="HiddenField">
       <property name="ignoreSetter" value="true" />
     <property name="ignoreConstructorParameter" value="true" />

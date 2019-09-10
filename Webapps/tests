@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-awk '$1=$1' FS=":" OFS="\n" ../derby.cp
+awk '$1=$1' FS=":" OFS="\n" ../derby.cp \
+  | parallel -I% cp % ./webapp/WEB-INF/lib
 classpath=$(cat run.cp)
 java -cp "$classpath":. launch.Main &
 
