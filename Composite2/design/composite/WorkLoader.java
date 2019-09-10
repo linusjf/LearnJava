@@ -51,9 +51,10 @@ public class WorkLoader {
   public List<Work> getWorkList() {
     List<Work> workList = new ArrayList<>();
     Set<Object> keys = properties.keySet();
-    for (Object key : keys) {
-      String workType =
-          key.toString().substring("Calculate".length() + 1).toUpperCase(Locale.getDefault());
+    for (Object key: keys) {
+      String workType = key.toString()
+                            .substring("Calculate".length() + 1)
+                            .toUpperCase(Locale.getDefault());
       System.out.println(workType);
       String values = properties.getProperty(key.toString());
       System.out.println(values);
@@ -62,7 +63,10 @@ public class WorkLoader {
     return workList;
   }
 
-  private void addWorkToList(List<Work> workList, String workType, String values) {
-    workList.add(new Work(Calculator.valueOf(workType), Arrays.asList(values.split(","))));
+  private void addWorkToList(List<Work> workList,
+                             String workType,
+                             String values) {
+    workList.add(new Work(Calculator.valueOf(workType),
+                          Arrays.asList(values.split(","))));
   }
 }

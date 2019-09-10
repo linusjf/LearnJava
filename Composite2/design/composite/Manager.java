@@ -20,7 +20,10 @@ public class Manager extends Employee {
    * @param designation a <code>String</code> value
    * @param department a <code>Department</code> value
    */
-  public Manager(long employeeId, String employeeName, String designation, Department department) {
+  public Manager(long employeeId,
+                 String employeeName,
+                 String designation,
+                 Department department) {
     super(employeeId, employeeName, designation, department);
   }
 
@@ -46,22 +49,26 @@ public class Manager extends Employee {
 
   @Override
   public int teamSize() {
-    return managingEmployees.stream().mapToInt(employee -> employee.teamSize()).sum();
+    return managingEmployees.stream()
+        .mapToInt(employee -> employee.teamSize())
+        .sum();
   }
 
   @Override
   @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
   public void assignWork(Employee manager, Work work) {
-    System.out.println(this + " has been assigned work of '" + work + "' by manager " + manager);
+    System.out.println(this + " has been assigned work of '" + work
+                       + "' by manager " + manager);
     System.out.println();
-    System.out.println(this + " distributing work '" + work + "' to managed employees..");
+    System.out.println(this + " distributing work '" + work
+                       + "' to managed employees..");
     int fromIndex = 0;
     int toIndex = 0;
     int totalWork = work.getWork().size();
     System.out.println("totalWork = " + totalWork);
     List<String> assignWork = null;
     while (toIndex < totalWork) {
-      for (Employee employee : managingEmployees) {
+      for (Employee employee: managingEmployees) {
         System.out.println("Assigning work from " + employee);
         int size = employee.teamSize();
         toIndex = fromIndex + size;
@@ -80,7 +87,8 @@ public class Manager extends Employee {
 
   @Override
   public void performWork() {
-    System.out.println(this + " is asking his/her managed employees to perform assigned work");
+    System.out.println(
+        this + " is asking his/her managed employees to perform assigned work");
     System.out.println();
     managingEmployees.stream().forEach(employee -> employee.performWork());
     System.out.println();

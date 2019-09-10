@@ -9,7 +9,10 @@ package flyweight;
  */
 class CounterTerrorist implements Player {
   // Intrinsic Attribute
-  @SuppressWarnings("checkstyle:membername") private final String TASK; // NOPMD
+  // clang-format off
+  @SuppressWarnings("checkstyle:membername")
+  private final String TASK; // NOPMD
+  // clang-format on
 
   // Extrinsic Attribute
   private String weapon;
