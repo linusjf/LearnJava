@@ -11,6 +11,7 @@
 *.class
 *.dex
 *.jar
+*.war
 *.txt
 *.bak
 *.dot
