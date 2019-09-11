@@ -1,11 +1,13 @@
 package launch;
 
-import java.io.File;
+import java.util.logging.Logger;
+import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
-import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 
 public class Main {
+  private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+  private static final String workingDir = System.getProperty("java.io.tmpdir");
 
   public static void main(String[] args) {
     try {
@@ -22,11 +24,15 @@ public class Main {
       }
 
       tomcat.setPort(Integer.valueOf(webPort));
+      tomcat.setBaseDir(workingDir);
+      tomcat.getHost().setAppBase(workingDir);
+      tomcat.getHost().setAutoDeploy(true);
+      tomcat.getHost().setDeployOnStartup(true);
 
-      StandardContext ctx = (StandardContext)tomcat.addWebapp(
-          "/Webapp", new File(webappDirLocation).getAbsolutePath());
-      System.out.println("configuring app with basedir: "
-                         + new File(webappDirLocation).getAbsolutePath());
+      //      StandardContext ctx = (StandardContext)tomcat.addWebapp(
+      //        "/Webapp", new File(webappDirLocation).getAbsolutePath());
+      //  System.out.println("configuring app with basedir: "
+      //                   + new File(webappDirLocation).getAbsolutePath());
 
       // 5ctx.setDefaultWebXml(Paths.get("./webapp/WEB-INF/web.xml").toString());
       // Declare an alternative location for your "WEB-INF/classes" dir
@@ -43,6 +49,14 @@ public class Main {
       System.out.println(System.getProperty("catalina.home"));
       System.out.println(System.getProperty("catalina.base"));
       tomcat.start();
+
+      // Alternatively, you can specify a WAR file as last parameter in the
+      // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
+      tomcat.getHost().getAppBaseFile().mkdir();
+
+      Context appContext = tomcat.addWebapp("/app", webappDirLocation);
+      LOGGER.info("Deployed " + appContext.getBaseName() + " as "
+                  + appContext.getBaseName());
       tomcat.getServer().await();
     } catch (LifecycleException lce) {
       System.err.println(lce);

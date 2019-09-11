@@ -8,12 +8,11 @@ import java.sql.ResultSet;     // Don't forget this!
 import java.sql.SQLException;  // Don't forget this!
 import java.sql.Statement;     // Don't forget this!
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DbServlet")
+// @WebServlet("/DbServlet")
 public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private Statement statement;

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 ./setuptests
 classpath=$(cat run.cp)
-java -cp "$classpath":dist/Webapps-2.0.0.jar launch.Main
+java -cp "$classpath":dist/Webapps-2.0.0.jar launch.Main &
 
