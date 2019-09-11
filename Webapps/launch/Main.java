@@ -5,15 +5,18 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
-public class Main {
+public final class Main {
   private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-  private static final String workingDir = System.getProperty("java.io.tmpdir");
+  private static final String WORKING_DIR =
+      System.getProperty("java.io.tmpdir");
+
+  private Main() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try {
 
-      String userDir = System.getProperty("user.dir");
-      String webappDirLocation = userDir + "/dist/Webapps-2.0.0.war";
       Tomcat tomcat = new Tomcat();
 
       // The port that we should run on can be set into an environment variable
@@ -24,8 +27,8 @@ public class Main {
       }
 
       tomcat.setPort(Integer.valueOf(webPort));
-      tomcat.setBaseDir(workingDir);
-      tomcat.getHost().setAppBase(workingDir);
+      tomcat.setBaseDir(WORKING_DIR);
+      tomcat.getHost().setAppBase(WORKING_DIR);
       tomcat.getHost().setAutoDeploy(true);
       tomcat.getHost().setDeployOnStartup(true);
 
@@ -50,6 +53,8 @@ public class Main {
       System.out.println(System.getProperty("catalina.base"));
       tomcat.start();
 
+      String userDir = System.getProperty("user.dir");
+      String webappDirLocation = userDir + "/dist/Webapps-2.0.0.war";
       // Alternatively, you can specify a WAR file as last parameter in the
       // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
       tomcat.getHost().getAppBaseFile().mkdir();

@@ -17,12 +17,12 @@ public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private Statement statement;
   private Connection link;
-  private String URL = "jdbc:derby:HomeDB";
+  private String url = "jdbc:derby:HomeDB";
 
   public void init() throws ServletException {
     super.init();
     try {
-      link = DriverManager.getConnection(URL, "", "");
+      link = DriverManager.getConnection(url, "", "");
     } catch (SQLException ex) {
       System.err.println(ex);
       System.exit(1);
@@ -31,10 +31,6 @@ public class DbServlet extends HttpServlet {
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String surname, forenames, telNum;
-    surname = request.getParameter("Surname");
-    forenames = request.getParameter("Forenames");
-    telNum = request.getParameter("PhoneNum");
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
     out.println("<HTML>");
@@ -42,6 +38,9 @@ public class DbServlet extends HttpServlet {
     out.println("<TITLE>Servlet + JDBC</TITLE>");
     out.println("</HEAD>");
     out.println("<BODY>");
+    String forenames = request.getParameter("Forenames");
+    String surname = request.getParameter("Surname");
+    String telNum = request.getParameter("PhoneNum");
     String insertion = "INSERT INTO PhoneNums"
                        + " VALUES('" + surname + "','" + forenames + "','"
                        + telNum + "')";
@@ -59,13 +58,13 @@ public class DbServlet extends HttpServlet {
     }
     try {
       statement = link.createStatement();
-      ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");
       out.println("Updated table:");
       out.println("<BR/><BR/>");
       out.println("<TABLE BORDER>");
       out.println("<TR><TH>Surname</TH>");
       out.println("<TH>Forename(s)</TH>");
       out.println("<TH>Phone No.</TH></TR>");
+      ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");
       while (results.next()) {
         out.println("<TR>");
         out.println("<TD>");

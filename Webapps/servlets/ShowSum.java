@@ -17,17 +17,13 @@ public class ShowSum extends HttpServlet {
       throws IOException, ServletException {
     HttpSession adderSession = request.getSession();
     String firstTime = (String)adderSession.getAttribute("firstVisit");
-    if (firstTime.equals("Yes"))
+    if ("Yes".equals(firstTime))
       retrieveNewPreferences(request, response, adderSession);
     sendPage(response, adderSession);
   }
 
   private void sendPage(HttpServletResponse reply, HttpSession session)
       throws IOException {
-    String userName, foreColour, backColour, sum;
-    userName = (String)session.getAttribute("name");
-    foreColour = (String)session.getAttribute("foreColour");
-    backColour = (String)session.getAttribute("backColour");
     /*
     Value of 'sum' originally saved as instance of
     class Integer (and saved as instance of class
@@ -36,15 +32,18 @@ public class ShowSum extends HttpServlet {
     Instead, we use method toString of class
     Object…
     */
-    sum = session.getAttribute("sum").toString();
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Result</TITLE>");
     out.println("</HEAD>");
+    String foreColour = (String)session.getAttribute("foreColour");
+    String backColour = (String)session.getAttribute("backColour");
     out.println("<BODY TEXT=" + foreColour + " BGCOLOR=" + backColour + ">");
-    if (!userName.equals(""))
+    String sum = session.getAttribute("sum").toString();
+    String userName = (String)session.getAttribute("name");
+    if (!userName.isEmpty())
       out.println("<H2>" + userName + "'s "
                   + "Result</H2>");
     out.println("<BR/><BR/><BR/><H3>" + sum + "</H3>");
@@ -60,26 +59,26 @@ public class ShowSum extends HttpServlet {
     String forename = request.getParameter("Name");
     if (forename == null)  // Should never happen!
       return;
-    if (!forename.equals("")) {
+    if (!forename.isEmpty()) {
       Cookie nameCookie = new Cookie("name", forename);
       nameCookie.setMaxAge(AGE);
       response.addCookie(nameCookie);
       session.setAttribute("name", forename);
     }
-    String fColour = request.getParameter("ForeColour");
-    if (fColour.equals(""))
-      fColour = "Black";
-    Cookie foreColourCookie = new Cookie("foreColour", fColour);
+    String foreColour = request.getParameter("ForeColour");
+    if (foreColour.isEmpty())
+      foreColour = "Black";
+    Cookie foreColourCookie = new Cookie("foreColour", foreColour);
     foreColourCookie.setMaxAge(AGE);
     response.addCookie(foreColourCookie);
-    session.setAttribute("foreColour", fColour);
-    String bColour = request.getParameter("BackColour");
-    if (bColour.equals(""))
-      bColour = "White";
-    Cookie backColourCookie = new Cookie("backColour", bColour);
+    session.setAttribute("foreColour", foreColour);
+    String backColour = request.getParameter("BackColour");
+    if (backColour.isEmpty())
+      backColour = "White";
+    Cookie backColourCookie = new Cookie("backColour", backColour);
     backColourCookie.setMaxAge(AGE);
     response.addCookie(backColourCookie);
-    session.setAttribute("backColour", bColour);
+    session.setAttribute("backColour", backColour);
     Cookie visitCookie = new Cookie("firstVisit", "No");
     visitCookie.setMaxAge(AGE);
     response.addCookie(visitCookie);

@@ -1,5 +1,7 @@
 package servlets;
 
+import static servlets.Prices.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,8 +13,6 @@ import javax.servlet.http.HttpSession;
 // @WebServlet("/Selection")
 public class Selection extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private final float APPLES_PRICE = 1.45F;
-  private final float PEARS_PRICE = 1.75F;
   // In a real application, above prices would
   // be retrieved from a database, of course.
 
@@ -25,7 +25,7 @@ public class Selection extends HttpServlet {
     // variable called 'cart'.
     // This product name will then be available to any
     // servlet that accesses this session variable.
-    if (currentProduct.equals("Checkout"))
+    if ("Checkout".equals(currentProduct))
       response.sendRedirect("Checkout");
     else
       sendPage(response, currentProduct);

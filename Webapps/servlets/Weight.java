@@ -28,18 +28,17 @@ public class Weight extends HttpServlet {
     (after any required updating of the shopping
     cart session variable has been carried out).
     */
-    if (choice.equals("Next"))
+    if ("Next".equals(choice))
       response.sendRedirect("ShoppingCart.html");
-    if (choice.equals("Checkout"))
+    if ("Checkout".equals(choice))
       response.sendRedirect("Checkout");
-    if (choice.equals("Add")) {
+    if ("Add".equals(choice)) {
       doAdd(cart, request);
       response.sendRedirect("ShoppingCart.html");
     }
-    if (choice.equals("Remove"))
-    // Not really possible for it to be
-    // anything else, but play safe!
-    {
+    if ("Remove".equals(choice)) {
+      // Not really possible for it to be
+      // anything else, but play safe!
       doRemove(cart);
       response.sendRedirect("ShoppingCart.html");
     }
@@ -49,10 +48,9 @@ public class Weight extends HttpServlet {
     String currentProduct = (String)cart.getAttribute("currentProd");
     String qty = request.getParameter("Qty");
     // Value of weight entered by user retrieved here.
-    if (qty != null)
-    // Check that user actually entered a value!
-    {
-      if (currentProduct.equals("Apples"))
+    if (qty != null) {
+      // Check that user actually entered a value!
+      if ("Apples".equals(currentProduct))
         cart.setAttribute("Apples", qty);
       else
         cart.setAttribute("Pears", qty);
