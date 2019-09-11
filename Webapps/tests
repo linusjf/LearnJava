@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
-declare -r version="2.0.0"
-mkdir -p webapp/WEB-INF/classes/servlets
-mkdir -p webapp/WEB-INF/lib
-mkdir -p webapp/META-INF
-cp *.html webapp/
-cp web.xml webapp/WEB-INF
-cp servlets/*.class webapp/WEB-INF/classes/servlets
-awk '$1=$1' FS=":" OFS="\n" ../derby.cp \
-  | parallel -I% cp % ./webapp/WEB-INF/lib
-(cd webapp && jar -cvf Webapps"$version".war * \
-  && mv Webapps"$version".war ../dist)
+./setuptests
 classpath=$(cat run.cp)
 java -cp "$classpath":. launch.Main &
 
