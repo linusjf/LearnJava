@@ -16,6 +16,7 @@
   <property file="${LearnJava.basedir}/tomcat.properties" />
   <property file="${LearnJava.basedir}/ecj.properties" />
   <property file="${LearnJava.basedir}/junit.properties" />
+  <property file="${LearnJava.basedir}/jetty.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -108,6 +109,14 @@
                   conf="tomcat-jsp-api.lib" />
     <ivy:retrieve pathid="junit.main.path"
                   conf="junit.main" />
+    <ivy:retrieve pathid="jetty-server.main.path"
+                  conf="jetty-server.main" />
+    <ivy:retrieve pathid="jetty-server.lib.path"
+                  conf="jetty-server.lib" />
+    <ivy:retrieve pathid="jetty-servlet.main.path"
+                  conf="jetty-servlet.main" />
+    <ivy:retrieve pathid="jetty-servlet.lib.path"
+                  conf="jetty-servlet.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -128,6 +137,8 @@
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
         <echo file="${junit.classpath.file}"
           message="${toString:junit.main.path}" />
+        <echo file="${jetty.classpath.file}"
+          message="${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}" />
   </target>
   <!-- =================================
           target: report

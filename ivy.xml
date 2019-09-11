@@ -59,6 +59,10 @@
     <conf name="tomcat-jsp-api.main" description="tomcat-jsp-api main jars"/>
     <conf name="tomcat-jsp-api.lib" description="tomcat-jsp-api lib jars"/>
     <conf name="junit.main" description="junit main jars"/>
+    <conf name="jetty-server.main" description="jetty-server main jars"/>
+    <conf name="jetty-server.lib" description="jetty-server lib jars"/>
+    <conf name="jetty-servlet.main" description="jetty-servlet main jars"/>
+    <conf name="jetty-servlet.lib" description="jetty-servlet lib jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -102,5 +106,9 @@
 <dependency org="org.apache.tomcat" name="tomcat-jsp-api" rev="9.0.24" conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/junit/junit -->
 <dependency org="junit" name="junit" rev="4.4" conf="junit.main-&gt;master"/>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+<dependency org="org.eclipse.jetty" name="jetty-server" rev="10.0.0-alpha0" conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
+<dependency org="org.eclipse.jetty" name="jetty-servlet" rev="10.0.0-alpha0" conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile"/>
 </dependencies>
 </ivy-module>

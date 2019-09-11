@@ -12,7 +12,7 @@ import org.apache.catalina.webresources.StandardRoot;
 public final class Main {
   private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
   private static final String WORKING_DIR =
-      System.getProperty("java.io.tmpdir");
+      System.getProperty("java.io.tmpdir") + "/webapps";
 
   private Main() {
     throw new IllegalStateException("Private constructor");
