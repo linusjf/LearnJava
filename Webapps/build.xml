@@ -61,7 +61,11 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}">
+      <classpath>
+        <pathelement path="${tomcat.cp}" />
+      </classpath>
+    </javadoc>
   </target>
   <target name="manifest">
     <tstamp />

@@ -53,8 +53,7 @@ public class Main {
       // Alternatively, you can specify a WAR file as last parameter in the
       // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
       tomcat.getHost().getAppBaseFile().mkdir();
-
-      Context appContext = tomcat.addWebapp("/app", webappDirLocation);
+      Context appContext = tomcat.addWebapp("/Webapp", webappDirLocation);
       LOGGER.info("Deployed " + appContext.getBaseName() + " as "
                   + appContext.getBaseName());
       tomcat.getServer().await();
