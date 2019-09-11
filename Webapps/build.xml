@@ -98,6 +98,7 @@
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
          includes="**/*.class"
+         excludes="servlets/*.class,webapp/**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
   <target name="setupclasspath">

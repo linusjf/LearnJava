@@ -11,3 +11,4 @@ awk '$1=$1' FS=":" OFS="\n" ../derby.cp \
   | parallel -I% cp % ./webapp/WEB-INF/lib
 (cd webapp && jar -cvf Webapps-"$version".war * \
   && mv Webapps-"$version".war ../dist)
+rm -rf ./webapp
