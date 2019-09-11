@@ -58,8 +58,9 @@ public final class Main {
       String webappDirLocation = userDir + "/dist/Webapps-2.0.0.war";
       // Alternatively, you can specify a WAR file as last parameter in the
       // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
-      tomcat.getHost().getAppBaseFile().mkdir();
-      Context appContext = tomcat.addWebapp("/Webapp", webappDirLocation);
+      //      tomcat.getHost().getAppBaseFile().mkdir();
+      Context appContext =
+          tomcat.addWebapp(tomcat.getHost(), "/Webapp", webappDirLocation);
       LOGGER.info("Deployed " + appContext.getBaseName() + " as "
                   + appContext.getBaseName());
       tomcat.getServer().await();
