@@ -55,13 +55,13 @@ public class ShowSum extends HttpServlet {
   private void retrieveNewPreferences(HttpServletRequest request,
                                       HttpServletResponse response,
                                       HttpSession session) {
-    final int AGE = 60;  // (60secs = 1min)
     String forename = request.getParameter("Name");
     if (forename == null)  // Should never happen!
       return;
+    final int age = 60;  // (60secs = 1min)
     if (!forename.isEmpty()) {
       Cookie nameCookie = new Cookie("name", forename);
-      nameCookie.setMaxAge(AGE);
+      nameCookie.setMaxAge(age);
       response.addCookie(nameCookie);
       session.setAttribute("name", forename);
     }
@@ -69,18 +69,18 @@ public class ShowSum extends HttpServlet {
     if (foreColour.isEmpty())
       foreColour = "Black";
     Cookie foreColourCookie = new Cookie("foreColour", foreColour);
-    foreColourCookie.setMaxAge(AGE);
+    foreColourCookie.setMaxAge(age);
     response.addCookie(foreColourCookie);
     session.setAttribute("foreColour", foreColour);
     String backColour = request.getParameter("BackColour");
     if (backColour.isEmpty())
       backColour = "White";
     Cookie backColourCookie = new Cookie("backColour", backColour);
-    backColourCookie.setMaxAge(AGE);
+    backColourCookie.setMaxAge(age);
     response.addCookie(backColourCookie);
     session.setAttribute("backColour", backColour);
     Cookie visitCookie = new Cookie("firstVisit", "No");
-    visitCookie.setMaxAge(AGE);
+    visitCookie.setMaxAge(age);
     response.addCookie(visitCookie);
     session.setAttribute("firstVisit", "No");
   }

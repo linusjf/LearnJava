@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 // @WebServlet("/DbServlet")
 public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private Statement statement;
   private Connection link;
   private String url = "jdbc:derby:HomeDB";
 
@@ -44,10 +43,8 @@ public class DbServlet extends HttpServlet {
     String insertion = "INSERT INTO PhoneNums"
                        + " VALUES('" + surname + "','" + forenames + "','"
                        + telNum + "')";
-    try {
-      statement = link.createStatement();
+    try (Statement statement = link.createStatement()) {
       statement.executeUpdate(insertion);
-      statement.close();  // Ensures committal.
     } catch (SQLException sqlEx) {
       out.println("<BR/><H2>Unable to execute"
                   + " insertion!</H2>");
@@ -56,15 +53,15 @@ public class DbServlet extends HttpServlet {
       out.flush();
       System.exit(1);
     }
-    try {
-      statement = link.createStatement();
+    try (Statement statement = link.createStatement();
+         ResultSet results =
+             statement.executeQuery("SELECT * FROM PhoneNums");) {
       out.println("Updated table:");
       out.println("<BR/><BR/>");
       out.println("<TABLE BORDER>");
       out.println("<TR><TH>Surname</TH>");
       out.println("<TH>Forename(s)</TH>");
       out.println("<TH>Phone No.</TH></TR>");
-      ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");
       while (results.next()) {
         out.println("<TR>");
         out.println("<TD>");

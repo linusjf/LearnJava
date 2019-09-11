@@ -14,8 +14,6 @@ public class Weight extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     HttpSession cart = request.getSession();
-    String currentProduct = (String)cart.getAttribute("currentProd");
-    // Current product ('Apples' or 'Pears') retrieved.
     // Note the necessity for a typecast from Object
     // into String .
     String choice = request.getParameter("Option");

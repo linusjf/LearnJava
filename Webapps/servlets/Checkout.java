@@ -1,5 +1,7 @@
 package servlets;
 
+import static servlets.Prices.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -12,14 +14,12 @@ import javax.servlet.http.HttpSession;
 // @WebServlet("/Checkout")
 public class Checkout extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private final float APPLES_PRICE = 1.45F;
-  private final float PEARS_PRICE = 1.75F;
-  // In a real application, the above prices would be
-  // retrieved from a database, of course.
+
+  @SuppressWarnings({"PMD.AvoidDuplicateLiterals","checkstyle:javancss"})
   public void service(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    HttpSession cart = request.getSession();
     response.setContentType("text/HTML");
+    // print page and table header
     PrintWriter out = response.getWriter();
     out.println("<HTML>");
     out.println("<HEAD>");
@@ -36,18 +36,21 @@ public class Checkout extends HttpServlet {
     out.println("<TH>Weight(kg)</TH>");
     out.println("<TH>Cost(£)</TH>");
     out.println("</TR>");
+    HttpSession cart = request.getSession();
     cart.removeAttribute("currentProd");
     Enumeration<String> prodNames = cart.getAttributeNames();
     float totalCost = 0;
     int numProducts = 0;
+    // print product lines
     while (prodNames.hasMoreElements()) {
-      float wt = 0, cost = 0;
+      float wt = 0;
+      float cost = 0;
       String product = prodNames.nextElement();
       String stringWt = (String)cart.getAttribute(product);
       wt = Float.parseFloat(stringWt);
-      if (product.equals("Apples"))
+      if ("Apples".equals(product))
         cost = APPLES_PRICE * wt;
-      else if (product.equals("Pears"))
+      else if ("Pears".equals(product))
         cost = PEARS_PRICE * wt;
       out.println("<TR>");
       out.println("<TD>" + product + "</TD>");

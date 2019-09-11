@@ -5,6 +5,7 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
+@SuppressWarnings("PMD.ShortClassName")
 public final class Main {
   private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
   private static final String WORKING_DIR =

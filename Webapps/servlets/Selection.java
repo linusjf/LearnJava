@@ -1,7 +1,5 @@
 package servlets;
 
-import static servlets.Prices.*;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,6 +30,7 @@ public class Selection extends HttpServlet {
     // Creates page for selection of weight.
   }
 
+  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
   private void sendPage(HttpServletResponse reply, String product)
       throws IOException {
     reply.setContentType("text/HTML");
