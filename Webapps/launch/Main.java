@@ -3,7 +3,10 @@ package launch;
 import java.util.logging.Logger;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Main {
@@ -26,7 +29,8 @@ public final class Main {
       if (webPort == null || webPort.isEmpty()) {
         webPort = "8080";
       }
-
+      System.out.println(webPort);
+      tomcat.setSilent(false);
       tomcat.setPort(Integer.valueOf(webPort));
       tomcat.setBaseDir(WORKING_DIR);
       tomcat.getHost().setAppBase(WORKING_DIR);
@@ -42,25 +46,25 @@ public final class Main {
       // Declare an alternative location for your "WEB-INF/classes" dir
       // Servlet 3.0 annotation will work
       //      File additionWebInfClasses = new File("target/classes");
-      //    WebResourceRoot resources = new StandardRoot(ctx);
-      //  resources.addPreResources(
-      //    new DirResourceSet(resources,
-      //                     "/WEB-INF/classes",
-      //                   additionWebInfClasses.getAbsolutePath(),
-      //                 "/"));
-      //  ctx.setResources(resources);
 
       System.out.println(System.getProperty("catalina.home"));
       System.out.println(System.getProperty("catalina.base"));
-      tomcat.start();
 
       String userDir = System.getProperty("user.dir");
       String webappDirLocation = userDir + "/dist/Webapps-2.0.0.war";
       // Alternatively, you can specify a WAR file as last parameter in the
       // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
       //      tomcat.getHost().getAppBaseFile().mkdir();
+      // Ensure that the webapps directory exists
+
       Context appContext =
           tomcat.addWebapp(tomcat.getHost(), "/Webapp", webappDirLocation);
+      appContext.setParentClassLoader(tomcat.getClass().getClassLoader());
+      WebResourceRoot resources = new StandardRoot(appContext);
+      resources.addPreResources(
+          new DirResourceSet(resources, "/WEB-INF/classes", "", "/"));
+      appContext.setResources(resources);
+      tomcat.start();
       LOGGER.info("Deployed " + appContext.getBaseName() + " as "
                   + appContext.getBaseName());
       tomcat.getServer().await();
