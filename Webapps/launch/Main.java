@@ -1,5 +1,6 @@
 package launch;
 
+import java.text.MessageFormat;
 import java.util.logging.Logger;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
@@ -59,14 +60,18 @@ public final class Main {
 
       Context appContext =
           tomcat.addWebapp(tomcat.getHost(), "/Webapp", webappDirLocation);
-      appContext.setParentClassLoader(tomcat.getClass().getClassLoader());
+      appContext.setParentClassLoader(
+          Thread.currentThread().getContextClassLoader());
       WebResourceRoot resources = new StandardRoot(appContext);
       resources.addPreResources(
           new DirResourceSet(resources, "/WEB-INF/classes", "", "/"));
       appContext.setResources(resources);
       tomcat.start();
-      LOGGER.info("Deployed " + appContext.getBaseName() + " as "
-                  + appContext.getBaseName());
+      LOGGER.info(() -> {
+        return MessageFormat.format("Deployed {0} as {1}",
+                                    appContext.getBaseName(),
+                                    appContext.getBaseName());
+      });
       tomcat.getServer().await();
     } catch (LifecycleException lce) {
       System.err.println(lce);

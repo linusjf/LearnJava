@@ -75,6 +75,6 @@ java -cp @../"$classpathFile" \
 ${options[@]} \
 -c ../"$rules_file" -d \
 -p ../"$properties_file" \
--o "$output_file" -g \
-"${args[@]}" | tee "$1"-xpath.xml );
+-o "$1"-xpath.xml -g \
+"${args[@]}");
 exit $?
