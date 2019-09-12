@@ -77,7 +77,7 @@ public class DbServlet extends HttpServlet {
       }
       out.println("</TABLE>");
     } catch (SQLException sqlEx) {
-      out.println("<BR><H2>Unable to retrieve data!</H2>");
+      out.println("<BR/><H2>Unable to retrieve data!</H2>");
       out.println("</BODY>");
       out.println("</HTML>");
       out.flush();

@@ -20,10 +20,10 @@ public class PersonalServlet extends HttpServlet {
     out.println("<TITLE>Simple Servlet</TITLE>");
     out.println("</HEAD>");
     out.println("<BODY>");
-    out.println("<BR><BR><BR>");
+    out.println("<BR/><BR/><BR/>");
     String name = request.getParameter("FirstName");
-    out.println("<H1> A Simple Servlet for ");
-    out.println(name + "</H1></CENTER>");
+    out.println("<H1>A Simple Servlet for ");
+    out.println(name + "</H1>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();

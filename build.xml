@@ -125,6 +125,10 @@
                   conf="jetty-webapp.main" />
     <ivy:retrieve pathid="jetty-webapp.lib.path"
                   conf="jetty-webapp.lib" />
+    <ivy:retrieve pathid="jetty-jsp.main.path"
+                  conf="jetty-jsp.main" />
+    <ivy:retrieve pathid="jetty-jsp.lib.path"
+                  conf="jetty-jsp.lib" />
     <ivy:retrieve pathid="example-jetty-embedded.main.path"
                   conf="example-jetty-embedded.main" />
     <echo file="${cs.classpath.file}"
@@ -148,7 +152,7 @@
         <echo file="${junit.classpath.file}"
           message="${toString:junit.main.path}" />
         <echo file="${jetty.classpath.file}"
-          message="${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}:${toString:example-jetty-embedded.main.path}" />
+          message="${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}:${toString:example-jetty-embedded.main.path}" />
   </target>
   <!-- =================================
           target: report

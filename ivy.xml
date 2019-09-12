@@ -67,6 +67,8 @@
     <conf name="jetty-jmx.lib" description="jetty-jmx lib jars"/>
     <conf name="jetty-webapp.main" description="jetty-webapp main jars"/>
     <conf name="jetty-webapp.lib" description="jetty-webapp lib jars"/>
+    <conf name="jetty-jsp.main" description="jetty-jsp main jars"/>
+    <conf name="jetty-jsp.lib" description="jetty-jsp lib jars"/>
     <conf name="example-jetty-embedded.main" description="example-embedded main jars"/>
   </configurations>
   <dependencies>
@@ -121,5 +123,8 @@
 <dependency org="org.eclipse.jetty" name="jetty-webapp" rev="10.0.0-alpha0" conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
 <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/example-jetty-embedded -->
 <dependency org="org.eclipse.jetty" name="example-jetty-embedded" rev="9.4.15.v20190215" conf="example-jetty-embedded.main-&gt;master" />
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
+<dependency org="org.eclipse.jetty" name="jetty-jsp" rev="9.3.0.M1" conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile"/>
+
 </dependencies>
 </ivy-module>
