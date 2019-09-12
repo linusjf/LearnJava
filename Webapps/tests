@@ -11,3 +11,9 @@ curl http://localhost:8080/Webapp/index.html \
 echo "calling curl http://localhost:8080/Webapp/FirstServlet..."
 curl http://localhost:8080/Webapp/FirstServlet \
   |& grep -c "A Simple Servlet" | xargs -I % echo % "line(s) found" 
+echo "calling curl http://localhost:8080/Webapp/SimpleAdder.html..."
+curl http://localhost:8080/Webapp/SimpleAdder.html \
+  |& grep -c "Simple Adder" | xargs -I % echo % "line(s) found" 
+echo "calling curl post http://localhost:8080/Webapp/AdderServlet..."
+curl --data "Num1=50&Num2=123" http://localhost:8080/Webapp/AdderServlet \
+  |& grep -c "Result = 173" | xargs -I % echo % "line(s) found" 

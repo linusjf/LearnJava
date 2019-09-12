@@ -36,7 +36,7 @@ public class AdderServlet extends HttpServlet {
     out.println("<BODY>");
     out.println("<BR/><BR/><BR/>");
     out.println("<H1>");
-    out.println("Result=" + result);
+    out.println(result);
     out.println("</H1>");
     out.println("</BODY>");
     out.println("</HTML>");

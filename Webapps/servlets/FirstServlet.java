@@ -21,8 +21,8 @@ public class FirstServlet extends HttpServlet {
     out.println("<TITLE>Simple Servlet</TITLE>");
     out.println("</HEAD>");
     out.println("<BODY>");
-    out.println("<BR><BR><BR>");
-    out.println("<CENTER><H1>A Simple Servlet</H1></CENTER>");
+    out.println("<BR/><BR/><BR/>");
+    out.println("<H1>A Simple Servlet</H1>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();
