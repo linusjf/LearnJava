@@ -24,6 +24,8 @@
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="tomcat.cp"
             srcFile="../${tomcat.classpath.file}" />
+  <loadfile property="compile.cp"
+            srcFile="${compile.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -50,7 +52,7 @@
            srcdir="${src.dir}"
            destdir="${build.dir}">
       <classpath>
-        <pathelement path="${tomcat.cp}" />
+        <pathelement path="${compile.cp}" />
       </classpath>
       <compilerarg value="${javac.params}" />
     </javac>

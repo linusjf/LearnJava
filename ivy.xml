@@ -63,6 +63,11 @@
     <conf name="jetty-server.lib" description="jetty-server lib jars"/>
     <conf name="jetty-servlet.main" description="jetty-servlet main jars"/>
     <conf name="jetty-servlet.lib" description="jetty-servlet lib jars"/>
+    <conf name="jetty-jmx.main" description="jetty-jmx main jars"/>
+    <conf name="jetty-jmx.lib" description="jetty-jmx lib jars"/>
+    <conf name="jetty-webapp.main" description="jetty-webapp main jars"/>
+    <conf name="jetty-webapp.lib" description="jetty-webapp lib jars"/>
+    <conf name="example-jetty-embedded.main" description="example-embedded main jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -110,5 +115,11 @@
 <dependency org="org.eclipse.jetty" name="jetty-server" rev="10.0.0-alpha0" conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
 <dependency org="org.eclipse.jetty" name="jetty-servlet" rev="10.0.0-alpha0" conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
+<dependency org="org.eclipse.jetty" name="jetty-jmx" rev="10.0.0-alpha0" conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile"/>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
+<dependency org="org.eclipse.jetty" name="jetty-webapp" rev="10.0.0-alpha0" conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/example-jetty-embedded -->
+<dependency org="org.eclipse.jetty" name="example-jetty-embedded" rev="9.4.15.v20190215" conf="example-jetty-embedded.main-&gt;master" />
 </dependencies>
 </ivy-module>
