@@ -6,4 +6,5 @@ java -cp "$classpath":dist/Webapps-2.0.0.jar org.eclipse.jetty.embedded.OneWebAp
 echo "Sleeping for 15 seconds..."
 sleep 15
 echo "calling curl..."
-curl http://localhost:8080/Webapp/index.html
+curl http://localhost:8080/Webapp/index.html \
+  |& grep -c "Click me!" | xargs -I % echo % "line(s) found" 
