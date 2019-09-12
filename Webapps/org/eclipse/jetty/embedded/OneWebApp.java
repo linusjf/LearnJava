@@ -44,7 +44,7 @@ public class OneWebApp {
     // configuring to support annotation scanning in the webapp (through
     // PlusConfiguration) to choosing where the webapp will unpack itself.
     WebAppContext webapp = new WebAppContext();
-    webapp.setContextPath("/");
+    webapp.setContextPath("/Webapp");
     File warFile = new File("dist/Webapps-2.0.0.war");
     webapp.setWar(warFile.getAbsolutePath());
 

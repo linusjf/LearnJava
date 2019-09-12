@@ -3,7 +3,7 @@
 classpath=$(cat run.cp)
 #java -cp "$classpath":dist/Webapps-2.0.0.jar launch.Main &
 java -cp "$classpath":dist/Webapps-2.0.0.jar org.eclipse.jetty.embedded.OneWebApp &
-echo "Sleeping for 5 seconds..."
-sleep 5000
+echo "Sleeping for 15 seconds..."
+sleep 15
 echo "calling curl..."
 curl http://localhost:8080/Webapp/index.html
