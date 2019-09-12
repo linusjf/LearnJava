@@ -17,3 +17,12 @@ curl http://localhost:8080/Webapp/SimpleAdder.html \
 echo "calling curl post http://localhost:8080/Webapp/AdderServlet..."
 curl --data "Num1=50&Num2=123" http://localhost:8080/Webapp/AdderServlet \
   |& grep -c "Result = 173" | xargs -I % echo % "line(s) found" 
+echo "calling curl get http://localhost:8080/Webapp/AdderServlet..."
+curl http://localhost:8080/Webapp/AdderServlet \
+  |& grep -c "HTTP ERROR 405" | xargs -I % echo % "line(s) found" 
+echo "calling curl get http://localhost:8080/Webapp/PersonalServlet..."
+curl http://localhost:8080/Webapp/PersonalServlet \
+  |& grep -c "null"  | xargs -I % echo % "line(s) found" 
+echo "calling curl get http://localhost:8080/Webapp/PersonalServlet?FirstName=Sonny..."
+curl "http://localhost:8080/Webapp/PersonalServlet?FirstName=Sonny&" \
+  |& grep -c "Sonny"  | xargs -I % echo % "line(s) found" 
