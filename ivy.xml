@@ -71,7 +71,6 @@
     <conf name="jetty-jsp.lib" description="jetty-jsp lib jars"/>
     <conf name="jetty-annotations.main" description="jetty-annotations main jars"/>
     <conf name="jetty-annotations.lib" description="jetty-annotations lib jars"/>
-    <conf name="example-jetty-embedded.main" description="example-embedded main jars"/>
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -123,8 +122,6 @@
 <dependency org="org.eclipse.jetty" name="jetty-jmx" rev="10.0.0-alpha0" conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
 <dependency org="org.eclipse.jetty" name="jetty-webapp" rev="10.0.0-alpha0" conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/example-jetty-embedded -->
-<dependency org="org.eclipse.jetty" name="example-jetty-embedded" rev="9.4.15.v20190215" conf="example-jetty-embedded.main-&gt;master" />
 <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
 <dependency org="org.eclipse.jetty" name="jetty-jsp" rev="9.3.0.M1" conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile"/>
 <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
