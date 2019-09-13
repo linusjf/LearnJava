@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// https://examples.javacodegeeks.com/core-java/java-8-parallel-streams-example/
+// When and how to use parallel streams
 public enum FlattenStreams {
   ;
 
@@ -48,15 +50,17 @@ public enum FlattenStreams {
     map.put(3, Arrays.asList('G', 'e', 'e', 'k', 's'));
     List<Character> flatList = flattenStream(map.values());
     System.out.println(flatList);
-    flatList = flattenParallelStreamHeinz(map.values());
+    flatList = flattenParallelStreamCollector(map.values());
     System.out.println(flatList);
+    // not thread-safe
     flatList = flattenParallelStream(map.values());
     System.out.println(flatList);
+    // thread-safe but not ordered
     flatList = flattenParallelStreamSynchronized(map.values());
     System.out.println(flatList);
   }
 
-  public static <T> List<T> flattenParallelStreamHeinz(
+  public static <T> List<T> flattenParallelStreamCollector(
       Collection<List<T>> lists) {
     return lists.parallelStream()
         .flatMap(Collection::stream)
