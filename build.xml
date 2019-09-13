@@ -133,6 +133,10 @@
                   conf="jetty-annotations.main" />
     <ivy:retrieve pathid="jetty-annotations.lib.path"
                   conf="jetty-annotations.lib" />
+    <ivy:retrieve pathid="apache-jsp.main.path"
+                  conf="apache-jsp.main" />
+    <ivy:retrieve pathid="apache-jsp.lib.path"
+                  conf="apache-jsp.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -154,7 +158,7 @@
         <echo file="${junit.classpath.file}"
           message="${toString:junit.main.path}" />
         <echo file="${jetty.classpath.file}"
-          message="${toString:jetty-annotations.main.path}:${toString:jetty-annotations.lib.path}:${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}" />
+          message="${toString:apache-jsp.main.path}:${toString:apache-jsp.lib.path}:${toString:jetty-annotations.main.path}:${toString:jetty-annotations.lib.path}:${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}" />
   </target>
   <!-- =================================
           target: report
