@@ -55,9 +55,46 @@ public final class OneWebApp {
       File warFile = new File("dist/Webapps-2.0.0.war");
       webapp.setWar(warFile.getAbsolutePath());
 
+      // This webapp will use jsps and jstl. We need to enable the
+      // AnnotationConfiguration in order to correctly
+      // set up the jsp container
+      /**
+       * Configuration.ClassList classlist =
+       * Configuration.ClassList.setServerDefault(server); classlist.addBefore(
+       * "org.eclipse.jetty.webapp.JettyWebXmlConfiguration",
+       * "org.eclipse.jetty.annotations.AnnotationConfiguration");
+       */
+      // Set the ContainerIncludeJarPattern so that jetty examines these
+      // container-path jars for tlds, web-fragments etc.
+      // If you omit the jar that contains the jstl .tlds, the jsp engine will
+      // scan for them instead.
+      webapp.setAttribute(
+          "org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+          ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/[^/]*taglibs.*\\.jar$");
+
+      // A WebAppContext is a ContextHandler as well so it needs to be set to
+      // the server so it is aware of where to
+      // send the appropriate requests.
+      server.setHandler(webapp);
+
+      // Configure a LoginService.
+      // Since this example is for our test webapp, we need to setup a
+      // LoginService so this shows how to create a very simple hashmap based
+      // one. The name of the LoginService needs to correspond to what is
+      // configured in the webapp's web.xml and since it has a lifecycle of
+      // its own we register it as a bean with the Jetty server object so it
+      // can be started and stopped according to the lifecycle of the server
+      // itself.
+      /**
+       * HashLoginService loginService = new HashLoginService();
+       * loginService.setName("Test Realm");
+       * loginService.setConfig("src/test/resources/realm.properties");
+       * server.addBean(loginService);
+       */
+      webapp.setConfigurationDiscovered(true);
+
       // A WebAppContext is a ContextHandler as well so it needs to be set to
       // the server so it is aware of where to send the appropriate requests.
-      server.setHandler(webapp);
 
       // Start things up!
       server.start();

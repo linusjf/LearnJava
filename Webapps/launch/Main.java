@@ -66,6 +66,8 @@ public final class Main {
       resources.addPreResources(
           new DirResourceSet(resources, "/WEB-INF/classes", "", "/"));
       appContext.setResources(resources);
+      // create default connector
+      tomcat.getConnector();
       tomcat.start();
       LOGGER.info(() -> {
         return MessageFormat.format("Deployed {0} as {1}",

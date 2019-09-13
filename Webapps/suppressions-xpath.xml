@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="OneWebApp.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='server']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Server']]/ELIST/EXPR/NUM_INT[@text='8080']"/>
-<suppress-xpath
-       files="OneWebApp.java"
-       checks="IllegalCatchCheck"
-       query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='e']]"/>
+  <suppress-xpath files="OneWebApp.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='server']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Server']]/ELIST/EXPR/NUM_INT[@text='8080']" />
+  <suppress-xpath files="OneWebApp.java"
+                  checks="IllegalCatchCheck"
+                  query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='e']]" />
 </suppressions>
