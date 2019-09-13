@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-cat ../tomcat.cp <(echo -n ":") ../jetty.cp > run.cp
+cat ../tomcat.cp  > runtomcat.cp
+cat ../jetty.cp  > runjetty.cp
 cat ../tomcat.cp <(echo -n ":") ../jetty.cp > compile.cp

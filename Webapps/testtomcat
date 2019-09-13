@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+./createwar
+classpath=$(cat runtomcat.cp)
+java -cp "$classpath":dist/Webapps-2.0.0.jar launch.Main &
+echo "Sleeping for 15 seconds..."
+sleep 15
+./tests
