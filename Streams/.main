@@ -3,3 +3,4 @@ gen.ListDirectoryRecursive
 gen.ListDirectoryWithFilter
 gen.StreamBuilders
 gen.RosterTest
+streams.FlattenStreams

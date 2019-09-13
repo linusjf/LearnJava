@@ -126,6 +126,12 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <java classname="${main.class5}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
@@ -161,8 +167,9 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
-            <java classname="${cs.main.class}" output="${ant.project.name}-xpath.xml"
-              logError="true">
+    <java classname="${cs.main.class}"
+          output="${ant.project.name}-xpath.xml"
+          logError="true">
       <arg line="-c ../${cs.config} -p ${cs.properties} -o ${cs.output} -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
