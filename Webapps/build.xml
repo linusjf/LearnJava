@@ -8,6 +8,7 @@
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
   <property file="../tomcat.properties" />
+  <property file="../jetty.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -24,6 +25,8 @@
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="tomcat.cp"
             srcFile="../${tomcat.classpath.file}" />
+  <loadfile property="jetty.cp"
+            srcFile="../${jetty.classpath.file}" />
   <loadfile property="compile.cp"
             srcFile="${compile.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
@@ -66,6 +69,7 @@
              additionalparam="${javadoc.params}">
       <classpath>
         <pathelement path="${tomcat.cp}" />
+        <pathelement path="${jetty.cp}" />
       </classpath>
     </javadoc>
   </target>
