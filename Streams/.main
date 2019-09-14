@@ -10,3 +10,5 @@ streams.PrimeNumberCount 1000
 streams.PrimeNumberCount
 streams.PrimeNumberCount 7
 com.devglan.ParallelStreamPerformanceCheck
+streams.PeekExample
+streams.PeekMore
