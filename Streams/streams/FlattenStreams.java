@@ -15,7 +15,7 @@ public enum FlattenStreams {
   ;
 
   public static <T> List<T> flattenStream(Collection<List<T>> lists) {
-    List<T> finalList = new ArrayList<T>();
+    List<T> finalList = new ArrayList<>();
 
     for (List<T> list: lists)
       list.stream().forEach(finalList::add);
@@ -24,7 +24,7 @@ public enum FlattenStreams {
   }
 
   public static <T> List<T> flattenParallelStream(Collection<List<T>> lists) {
-    List<T> finalList = new ArrayList<T>();
+    List<T> finalList = new ArrayList<>();
 
     for (List<T> list: lists)
       list.parallelStream().forEach(finalList::add);
@@ -34,7 +34,7 @@ public enum FlattenStreams {
 
   public static <T> List<T> flattenParallelStreamSynchronized(
       Collection<List<T>> lists) {
-    List<T> finalList = new ArrayList<T>();
+    List<T> finalList = new ArrayList<>();
     finalList = Collections.synchronizedList(finalList);
 
     for (List<T> list: lists)
