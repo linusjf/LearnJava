@@ -3,7 +3,10 @@ package com.devglan;
 import java.util.ArrayList;
 import java.util.List;
 
-/** @author only2dhir */
+/** 
+ * ParallelStreamPerformanceCheck.
+ * @author only2dhir 
+ * */
 public enum ParallelStreamPerformanceCheck {
   ;
 
