@@ -4,3 +4,7 @@ gen.ListDirectoryWithFilter
 gen.StreamBuilders
 gen.RosterTest
 streams.FlattenStreams
+streams.CollectorExample
+streams.IntStreamExample
+streams.PrimeNumberCount 1000
+streams.PrimeNumberCount
