@@ -8,3 +8,4 @@ streams.CollectorExample
 streams.IntStreamExample
 streams.PrimeNumberCount 1000
 streams.PrimeNumberCount
+streams.PrimeNumberCount 7
