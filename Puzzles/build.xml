@@ -114,7 +114,8 @@
   </target>
   <target name="run78">
     <description>ThreadIon target</description>
-    <java classname="${main.class78}" fork="true">
+    <java classname="${main.class78}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

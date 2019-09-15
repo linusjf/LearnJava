@@ -102,87 +102,87 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class1}">
+    <java classname="${main.class1}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class2}">
+    <java classname="${main.class2}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class3}">
+    <java classname="${main.class3}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class4}">
+    <java classname="${main.class4}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class5}">
+    <java classname="${main.class5}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class6}">
+    <java classname="${main.class6}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class7}">
+    <java classname="${main.class7}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class8}">
+    <java classname="${main.class8}" fork="true">
       <arg value="1000" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class8}">
+    <java classname="${main.class8}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class8}">
+    <java classname="${main.class8}" fork="true">
       <arg value="7" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class9}">
+    <java classname="${main.class9}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class10}">
+    <java classname="${main.class10}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class11}">
+    <java classname="${main.class11}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class12}">
+    <java classname="${main.class12}" fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
