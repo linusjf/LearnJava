@@ -40,6 +40,10 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd "
     <servlet-name>Weight</servlet-name>
     <servlet-class>servlets.Weight</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>WeightX</servlet-name>
+    <servlet-class>servlets.WeightX</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>FirstServlet</servlet-name>
     <url-pattern>/FirstServlet</url-pattern>
@@ -75,6 +79,10 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd "
   <servlet-mapping>
     <servlet-name>Weight</servlet-name>
     <url-pattern>/Weight</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WeightX</servlet-name>
+    <url-pattern>/WeightX</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
