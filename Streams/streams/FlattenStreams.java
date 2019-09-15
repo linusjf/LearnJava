@@ -2,6 +2,7 @@ package streams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Vector;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -42,6 +43,16 @@ public enum FlattenStreams {
 
     return finalList;
   }
+  
+  public static <T> List<T> flattenParallelStreamVector(
+      Collection<List<T>> lists) {
+    Vector<T> finalList = new Vector<>();
+
+    for (List<T> list: lists)
+      list.parallelStream().forEach(finalList::add);
+
+    return finalList;
+  }
 
   public static void main(String... args) {
     Map<Integer, List<Character>> map = new HashMap<>();
@@ -57,6 +68,8 @@ public enum FlattenStreams {
     System.out.println(flatList);
     // thread-safe but not ordered
     flatList = flattenParallelStreamSynchronized(map.values());
+    System.out.println(flatList);
+    flatList = flattenParallelStreamVector(map.values());
     System.out.println(flatList);
   }
 
