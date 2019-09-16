@@ -94,9 +94,19 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run7">
+    <description>Symposium target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run6">
     <description>Run6 target</description>
-    <java classname="${main.class6}">
+    <java classname="${main.class6}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -149,7 +159,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run5,run4,run3,run2,run1">
+          depends="run7,run6,run5,run4,run3,run2,run1">
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
@@ -192,8 +202,9 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
-            <java classname="${cs.main.class}" output="${ant.project.name}-xpath.xml"
-              logError="true">
+    <java classname="${cs.main.class}"
+          output="${ant.project.name}-xpath.xml"
+          logError="true">
       <arg line="-c ../${cs.config} -p ${cs.properties} -o ${cs.output} -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />

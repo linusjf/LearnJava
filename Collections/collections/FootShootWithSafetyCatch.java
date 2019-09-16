@@ -10,12 +10,13 @@ public enum FootShootWithSafetyCatch {
   ;
   private static List<String> names;
 
-  @SuppressWarnings({"rawtypes","unchecked"})
+  @SuppressWarnings({"rawtypes", "unchecked"})
   public static void main(String... args) {
     Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.printf("Thread %s throws following exception: %s%n", t, e);
       System.out.println("Printing names...");
       System.out.println(names.stream().collect(joining("+")));
+      System.exit(0);
     });
 
     names = Collections.checkedList(new ArrayList<String>(), String.class);

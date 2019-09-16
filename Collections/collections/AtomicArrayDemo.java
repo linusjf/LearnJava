@@ -46,7 +46,8 @@ public enum AtomicArrayDemo {
 
     @Override
     public void run() {
-      for (int i = 0; i < vector.length(); i++) vector.getAndIncrement(i);
+      for (int i = 0; i < vector.length(); i++)
+        vector.getAndIncrement(i);
     }
   }
 
@@ -59,7 +60,8 @@ public enum AtomicArrayDemo {
 
     @Override
     public void run() {
-      for (int i = 0; i < vector.length(); i++) vector.getAndDecrement(i);
+      for (int i = 0; i < vector.length(); i++)
+        vector.getAndDecrement(i);
     }
   }
 }
