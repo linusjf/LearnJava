@@ -16,15 +16,18 @@ public enum Listing {
 
   private static int loopCount;
 
-  @SuppressWarnings("PMD.DoubleBraceInitialization")
-  public static void main(String... args) {
-
+  static {
+  
     Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.println(e);
       System.err.printf(" in thread %s...", t);
       loopCount++;
       main();
     });
+  }
+  @SuppressWarnings("PMD.DoubleBraceInitialization")
+  public static void main(String... args) {
+
 
     List<String> list = Arrays.asList(new String[] {FOO,BAR});
     assert list.contains(FOO);
