@@ -97,7 +97,7 @@
   <target name="run83">
     <description>InSum target</description>
     <java classname="${main.class83}">
-      <jvmarg value="-ea" />
+      <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
