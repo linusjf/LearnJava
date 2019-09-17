@@ -19,7 +19,7 @@ readarray -t args < <(find . -maxdepth 1 \
   ! -path "**/.git/**" ! -path .)
 for file in "${args[@]}"
   do
-    count=$(head -1 "$file" | grep 'package')
+    count=$(head -1 "$file" | grep -c 'package')
     if [ $count -ne 0 ]
     then
       package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
