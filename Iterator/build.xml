@@ -146,9 +146,9 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
-            <java classname="${cs.main.class}" output="${ant.project.name}-xpath.xml"
+            <java classname="${cs.main.class}"
               logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${cs.output} -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
