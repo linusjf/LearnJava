@@ -94,6 +94,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run8">
+    <description>Iterative target</description>
+    <java classname="${main.class8}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run7">
     <description>Symposium target</description>
     <java classname="${main.class7}">
@@ -159,7 +168,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run7,run6,run5,run4,run3,run2,run1">
+          depends="run8,run7,run6,run5,run4,run3,run2,run1">
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
