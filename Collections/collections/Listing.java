@@ -12,11 +12,15 @@ public enum Listing {
 
   ;
 
+  private static int loopCount = 0;
+
   public static void main(String... args) {
 
     Thread.currentThread().setUncaughtExceptionHandler( (t,e) -> {
       System.err.println(e);
       System.err.printf(" in thread %s...",t);
+      loopCount++;
+      main();
     });
     
     List<String> list = Arrays.asList(new String[] {"foo", "bar"});
@@ -26,7 +30,8 @@ public enum Listing {
 
     assert list.contains("foo");
 
-    list.add("baz");
+    if (loopCount == 0)
+      list.add("baz");
 
     String[] array = {"foo", "bar"};
     list = Arrays.asList(array);
@@ -46,6 +51,8 @@ public enum Listing {
       }
     };
 
+
+    System.out.println(cities.contains("Rio"));
     assert cities.contains("Rio");
   }
 }
