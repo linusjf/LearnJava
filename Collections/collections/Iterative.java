@@ -19,13 +19,13 @@ public enum Iterative {
     if (u.size() != v.size())
       throw new IllegalArgumentException("different sizes");
     double d = 0;
-    Iterator<Double> uIt = u.iterator();
-    Iterator<Double> vIt = v.iterator();
-    while (uIt.hasNext()) {
-      assert uIt.hasNext() && vIt.hasNext();
-      d += uIt.next() * vIt.next();
+    Iterator<Double> uiterator = u.iterator();
+    Iterator<Double> viterator = v.iterator();
+    while (uiterator.hasNext()) {
+      assert uiterator.hasNext() && viterator.hasNext();
+      d += uiterator.next() * viterator.next();
     }
-    assert !uIt.hasNext() && !vIt.hasNext();
+    assert !uiterator.hasNext() && !viterator.hasNext();
     return d;
   }
 

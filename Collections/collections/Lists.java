@@ -8,7 +8,7 @@ public enum Lists {
 
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
-    List<T> list = new ArrayList<T>();
+    List<T> list = new ArrayList<>();
     for (T elt: arr)
       list.add(elt);
     return list;
@@ -23,11 +23,13 @@ public enum Lists {
   public static void main(String... args) {
     List<Integer> ints = Lists.toList(1, 2, 3);
     List<String> words = Lists.toList("hello", "world");
-    ints = new ArrayList<Integer>();
+    System.out.println(words);
+    ints = new ArrayList<>();
     Lists.addAll(ints, 1, 2);
     Lists.addAll(ints, new Integer[] {3, 4});
     assert ints.toString().equals("[1, 2, 3, 4]");
     ints = Lists.<Integer>toList();
     List<Object> objs = Lists.<Object>toList(1, "two");
+    System.out.println(objs);
   }
 }

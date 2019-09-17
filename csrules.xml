@@ -167,8 +167,6 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="LITERAL_NATIVE" />
       <property name="tokens"
                 value="LITERAL_VOLATILE" />
-      <property name="tokens"
-                value="LITERAL_ASSERT" />
     </module>
     <module name="IllegalTokenText">
       <property name="tokens"

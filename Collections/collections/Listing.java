@@ -1,48 +1,50 @@
 package collections;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // https://www.baeldung.com/java-init-list-one-line
 public enum Listing {
-
   ;
 
-  private static int loopCount = 0;
+  private static final String FOO = "foo";
+  private static final String BAZ = "baz";
+  private static final String BAR = "bar";
 
+  private static int loopCount;
+
+  @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
 
-    Thread.currentThread().setUncaughtExceptionHandler( (t,e) -> {
+    Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.println(e);
-      System.err.printf(" in thread %s...",t);
+      System.err.printf(" in thread %s...", t);
       loopCount++;
       main();
     });
-    
-    List<String> list = Arrays.asList(new String[] {"foo", "bar"});
-    assert list.contains("foo");
 
-    list = Arrays.asList("foo", "bar");
+    List<String> list = Arrays.asList(new String[] {FOO,BAR});
+    assert list.contains(FOO);
 
-    assert list.contains("foo");
+    list = Arrays.asList(FOO,BAR);
+
+    assert list.contains(FOO);
 
     if (loopCount == 0)
-      list.add("baz");
+      list.add(BAZ);
 
-    String[] array = {"foo", "bar"};
+    String[] array = {FOO, BAR};
     list = Arrays.asList(array);
-    array[0] = "baz";
-    assert "baz" == list.get(0);
+    array[0] = BAZ;
+    assert BAZ == list.get(0);
 
-    list = Stream.of("foo", "bar").collect(Collectors.toList());
+    list = Stream.of(FOO, BAR).collect(Collectors.toList());
 
-    assert list.contains("foo");
-    list = List.of("foo", "bar", "baz");
-    Set<String> set = Set.of("foo", "bar", "baz");
+    assert list.contains(FOO);
+    list = List.of(FOO, BAR, BAZ);
     List<String> cities = new ArrayList<>() {
       {
         add("New York");
@@ -50,7 +52,6 @@ public enum Listing {
         add("Tokyo");
       }
     };
-
 
     System.out.println(cities.contains("Rio"));
     assert cities.contains("Rio");
