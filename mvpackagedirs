@@ -13,20 +13,25 @@
 package=""
 pkgInfoFile="package-info.java"
 dir=""
+declare -i count
 readarray -t args < <(find . -maxdepth 1 \
   -name "*.java" -type f \
   ! -path "**/.git/**" ! -path .)
 for file in "${args[@]}"
   do
-    package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
-  dir=$(mkpackagedirs "$package")
-  mv "$file" "$dir"
-  if [ -e "$dir"/"$pkgInfoFile" ]
-  then
-    continue
-  else
-    echo "package $package;">"$dir/$pkgInfoFile"
-    echo "Created $dir/$pkgInfoFile"
-  fi
+    count=$(head -1 "$file" | grep 'package')
+    if [ $count -ne 0 ]
+    then
+      package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
+      dir=$(mkpackagedirs "$package")
+      mv "$file" "$dir"
+      if [ -e "$dir"/"$pkgInfoFile" ]
+      then
+        continue
+      else
+        echo "package $package;">"$dir/$pkgInfoFile"
+        echo "Created $dir/$pkgInfoFile"
+      fi
+    fi
 done
 exit 0
