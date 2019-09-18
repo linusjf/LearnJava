@@ -1,5 +1,9 @@
 package threads;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+// https://howtodoinjava-com.cdn.ampproject.org/v/s/howtodoinjava.com/java/multi-threading/how-to-restart-thread-using-uncaughtexceptionhandler/amp/?amp_js_v=a2&amp_gsa=1&usqp=mq331AQEKAFwAQ%3D%3D#aoh=15687659722173&referrer=https%3A%2F%2Fwww.google.com&amp_tf=From%20%251%24s&ampshare=https%3A%2F%2Fhowtodoinjava.com%2Fjava%2Fmulti-threading%2Fhow-to-restart-thread-using-uncaughtexceptionhandler%2F
 public class DemoThreadExample {
   private static int runCount;
   private final static int LIMIT = 5;
@@ -12,13 +16,15 @@ public class DemoThreadExample {
 
  static class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread t, Throwable e) {
-      System.out.printf("An exception has been captured\n");
-      System.out.printf("Thread: %s\n", t.getId());
-      System.out.printf(
-          "Exception: %s: %s\n", e.getClass().getName(), e.getMessage());
-      System.out.printf("Stack Trace: \n");
-      e.printStackTrace(System.out);
-      System.out.printf("Thread status: %s\n", t.getState());
+      System.err.printf("An exception has been captured\n");
+      System.err.printf("Thread: %s\n", t.getId());
+      System.err.printf(
+          "Exception: %s: %s%n", e.getClass().getName(), e.getMessage());
+      System.err.printf("Stack Trace: %n");
+      StringWriter sw = new StringWriter(); 
+      e.printStackTrace(new PrintWriter(sw));
+      System.err.printf("%s%n",sw.toString().replace("\n"," ").replace("\t"," "));
+      System.out.printf("Thread status: %s%n", t.getState());
       runCount++;
       if (runCount < LIMIT)
         new Thread(new Task()).start();
