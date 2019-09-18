@@ -12,3 +12,4 @@ collections.ListingDefault
 collections.ListingRecur
 collections.Lists
 collections.Containment
+collections.ReverseCapture
