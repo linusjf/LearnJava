@@ -96,7 +96,8 @@
   </target>
   <target name="run14">
     <description>ReverseCapture target</description>
-    <java classname="${main.class14}" fork="true">
+    <java classname="${main.class14}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -106,7 +107,8 @@
   </target>
   <target name="run13">
     <description>Containment target</description>
-    <java classname="${main.class13}" fork="true">
+    <java classname="${main.class13}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -116,7 +118,8 @@
   </target>
   <target name="run12">
     <description>ListingDefault target</description>
-    <java classname="${main.class12}" fork="true">
+    <java classname="${main.class12}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
