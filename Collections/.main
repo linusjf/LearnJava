@@ -13,3 +13,4 @@ collections.ListingRecur
 collections.Lists
 collections.Containment
 collections.ReverseCapture
+collections.WildcardRestrictions
