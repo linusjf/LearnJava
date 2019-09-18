@@ -13,7 +13,7 @@ public enum ListingRecur {
   private static final String FOO = "foo";
   private static final String BAZ = "baz";
   private static final String BAR = "bar";
-
+  private static final int RECURSION_COUNT = 5;
   private static int loopCount;
 
   @SuppressWarnings("PMD.DoubleBraceInitialization")
@@ -26,7 +26,7 @@ public enum ListingRecur {
 
       assert list.contains(FOO);
 
-      if (loopCount < 5)
+      if (loopCount < RECURSION_COUNT)
         list.add(BAZ);
 
       String[] array = {FOO, BAR};

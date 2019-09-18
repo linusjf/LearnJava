@@ -3,98 +3,75 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
   <suppress-xpath files="FootShootWithSafetyCatch.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='FootShootWithSafetyCatch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']" />

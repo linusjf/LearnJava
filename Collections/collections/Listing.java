@@ -17,7 +17,6 @@ public enum Listing {
   private static int loopCount;
 
   static {
-  
     Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.println(e);
       System.err.printf(" in thread %s...", t);
@@ -25,14 +24,14 @@ public enum Listing {
       main();
     });
   }
+
   @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
 
-
-    List<String> list = Arrays.asList(new String[] {FOO,BAR});
+    List<String> list = Arrays.asList(new String[] {FOO, BAR});
     assert list.contains(FOO);
 
-    list = Arrays.asList(FOO,BAR);
+    list = Arrays.asList(FOO, BAR);
 
     assert list.contains(FOO);
 

@@ -94,9 +94,42 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run12">
+    <description>ListingDefault target</description>
+    <java classname="${main.class12}">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run11">
+    <description>ListingRecur target</description>
+    <java classname="${main.class11}"
+          fork="true">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run10">
+    <description>Listing target</description>
+    <java classname="${main.class10}"
+          fork="true">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run9">
     <description>Lists target</description>
-    <java classname="${main.class9}">
+    <java classname="${main.class9}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -143,7 +176,8 @@
   </target>
   <target name="run4">
     <description>Run4 target</description>
-    <java classname="${main.class4}">
+    <java classname="${main.class4}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -152,7 +186,8 @@
   </target>
   <target name="run3">
     <description>Run3 target</description>
-    <java classname="${main.class3}">
+    <java classname="${main.class3}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -178,7 +213,8 @@
     </java>
   </target>
   <target name="run"
-          depends="run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
