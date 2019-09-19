@@ -12,7 +12,6 @@
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
-
     <properties>
       <property name="foreachReassign"
                 value="firstOnly" />
@@ -20,6 +19,7 @@
                 value="skip" />
     </properties>
   </rule>
+  <rule ref="category/java/bestpractices.xml/AvoidMessageDigestField" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningParameters" />
   <rule ref="category/java/bestpractices.xml/AvoidStringBufferField" />
   <rule ref="category/java/bestpractices.xml/AvoidUsingHardCodedIP" />
