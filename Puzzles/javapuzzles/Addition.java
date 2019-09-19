@@ -19,5 +19,16 @@ public enum Addition {
     System.out.println(d);
     d = (int)(d + c);
     System.out.println(d);
+
+    var avar = 45;
+    avar += b;
+    System.out.println(avar);
+    avar += c;
+    System.out.println(avar);
+    var dvar = 0;
+    dvar = (int)(dvar + b);
+    System.out.println(dvar);
+    dvar = (int)(dvar + c);
+    System.out.println(dvar);
   }
 }

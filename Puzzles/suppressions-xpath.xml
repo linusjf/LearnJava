@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Addition.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Addition']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='avar']]/ASSIGN/EXPR/NUM_INT[@text='45']"/>
   <suppress-xpath files="Addition.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Addition']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/NUM_INT[@text='45']" />
