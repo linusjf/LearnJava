@@ -14,9 +14,13 @@ public final class Sleepy {
     throw new InterruptedException();
   }
 
+  private Sleepy(String name) throws InterruptedException {
+  this();
+  }
+
   public static void main(String... args) {
     try {
-      Sleepy sy = new Sleepy();
+      Sleepy sy = new Sleepy("sleepy");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
