@@ -1,9 +1,11 @@
 package javapuzzles;
 
+@SuppressWarnings({"PMD.FinalFieldCouldBeStatic"})
 public class Puzzle extends Superb {
   final byte x = 1;
   final Byte y = 2;
 
+  @Override
   public String toString() {
     return x + " : " + y;
   }
@@ -13,6 +15,7 @@ public class Puzzle extends Superb {
   }
 }
 
+@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.NonStaticInitializer"})
 class Superb {
   // clang-format off
   {

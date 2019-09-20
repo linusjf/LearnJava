@@ -16,6 +16,7 @@ public final class Sleepy {
 
   private Sleepy(String name) throws InterruptedException {
     this();
+    System.out.println("Into constructor with name: " + name);
   }
 
   public static void main(String... args) {
