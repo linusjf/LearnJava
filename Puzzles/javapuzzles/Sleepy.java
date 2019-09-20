@@ -5,11 +5,13 @@ package javapuzzles;
 public final class Sleepy {
   // clang-format off
   {
+    System.out.println("Initializer block");
     Thread.sleep(1000);
   }
   // clang-format on
 
   private Sleepy() throws InterruptedException {
+    throw new InterruptedException();
   }
 
   public static void main(String... args) {
