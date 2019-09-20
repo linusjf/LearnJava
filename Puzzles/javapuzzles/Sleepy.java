@@ -1,7 +1,7 @@
 package javapuzzles;
 
 // https://twitter.com/heinzkabutz/status/1174714312151187456
-@SuppressWarnings({"PMD.NonStaticInitializer","PMD.UnusedLocalVariable"})
+@SuppressWarnings({"PMD.NonStaticInitializer", "PMD.UnusedLocalVariable"})
 public final class Sleepy {
   // clang-format off
   {
@@ -15,7 +15,7 @@ public final class Sleepy {
   }
 
   private Sleepy(String name) throws InterruptedException {
-  this();
+    this();
   }
 
   public static void main(String... args) {

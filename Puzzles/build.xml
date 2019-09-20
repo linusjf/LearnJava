@@ -94,6 +94,26 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run86">
+    <description>Sleepy target</description>
+    <java classname="${main.class86}">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run85">
+    <description>Puzzle target</description>
+    <java classname="${main.class85}">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run84">
     <description>Addition target</description>
     <java classname="${main.class84}">
