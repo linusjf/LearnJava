@@ -1,5 +1,3 @@
-@SuppressWarnings({"checkstyle:outertypenumber"})
-
 package javapuzzles;
 
 @SuppressWarnings({"PMD.FinalFieldCouldBeStatic"})
