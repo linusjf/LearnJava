@@ -3,7 +3,6 @@ package org.programming.mitra.exercises;
 /**
  * <b>IntegerCacheExample.</b>
  *
- * @see Annotation
  * @author Naresh Joshi <a
  *     href="https://www.programmingmitra.com/2018/11/java-integer-cache.html">Article</a>
  */

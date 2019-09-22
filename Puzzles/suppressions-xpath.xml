@@ -3,10 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <!--  <suppress-xpath
-       files="Puzzle.java"
-       checks="OuterTypeNumberCheck"
-       query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]"/> -->
+  <suppress-xpath files="Foo.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
+  <suppress-xpath files="Foo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Foo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='foo']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Foo']]/ELIST/EXPR/NUM_INT[@text='42']" />
+  <suppress-xpath files="Foo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Foo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='bar']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Bar']]/ELIST/EXPR/NUM_INT[@text='42']" />
+  <suppress-xpath files="Puzzle.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='javapuzzles']]" />
   <suppress-xpath files="Sleepy.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Sleepy']]/OBJBLOCK/INSTANCE_INIT/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />

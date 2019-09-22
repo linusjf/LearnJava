@@ -55,7 +55,12 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}">
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -93,6 +98,16 @@
          basedir="${build.dir}"
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
+  </target>
+  <target name="run87">
+    <description>Foo target</description>
+    <java classname="${main.class87}">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="run86">
     <description>Sleepy target</description>
