@@ -59,7 +59,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignorePattern"
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
-  <module name="TreeWalker">
+    <module name="TreeWalker">
+      <module name="AvoidInlineConditionals"/>
+      <module name="CovariantEquals"/>
   <module name="SuppressWithNearbyCommentFilter"/>
     <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
     <module name="JavadocBlockTagLocation">
@@ -475,6 +477,17 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="false" />
       <property name="allowSamelineParameterizedAnnotation"
                 value="false" />
-    </module>
+            </module>
+            <module name="AnnotationUseStyle"/>
+ <module name="PackageAnnotation"/>
+            <module name="DeclarationOrder"/>
+            <module name="NoClone"/>
+            <module name="InnerAssignment"/>
+            <module name="SuperClone"/>
+            <module name="SuperFinalize"/>
+            <module name="RequireThis"/>
+            <module name="ReturnCount">
+  <property name="max" value="3"/>
+</module>
   </module>
 </module>
