@@ -14,7 +14,7 @@ public abstract class CoinSide {  // NOPMD
   }
 }
 
-// CHECKSTYLE.OFF:onetoplevelclass
+// CHECKSTYLE:OFF
 final class Heads extends CoinSide {
   public static final Heads INSTANCE = new Heads();
 
@@ -38,4 +38,4 @@ final class Tails extends CoinSide {
     return "tails";
   }
 }
-// CHECKSTYLE.ON:onetoplevelclass
+// CHECKSTYLE:ON

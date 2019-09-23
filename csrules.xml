@@ -59,6 +59,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignorePattern"
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
+  <module name="SuppressWithPlainTextCommentFilter"/>
     <module name="TreeWalker">
       <!--  <module name="AvoidInlineConditionals"/> -->
       <module name="CovariantEquals"/>
