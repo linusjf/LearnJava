@@ -1,2 +1,2 @@
-@SuppressWarnings({"checkstyle:outertypenumber"})
+@SuppressWarnings("checkstyle:outertypenumber")
 package javapuzzles;

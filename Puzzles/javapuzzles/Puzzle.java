@@ -1,6 +1,6 @@
 package javapuzzles;
 
-@SuppressWarnings({"PMD.FinalFieldCouldBeStatic"})
+@SuppressWarnings("PMD.FinalFieldCouldBeStatic")
 public class Puzzle extends Superb {
   final byte x = 1;
   final Byte y = 2;

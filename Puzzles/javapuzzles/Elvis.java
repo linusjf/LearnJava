@@ -4,9 +4,9 @@ import java.util.Calendar;
 
 public final class Elvis {
   public static final Elvis INSTANCE = new Elvis();
-  private final int beltSize;
   private static final int CURRENT_YEAR =
       Calendar.getInstance().get(Calendar.YEAR);
+  private final int beltSize;
 
   private Elvis() {
     beltSize = CURRENT_YEAR - 1930;

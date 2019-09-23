@@ -1,7 +1,7 @@
 package javapuzzles;
 
 // https://twitter.com/heinzkabutz/status/1175283793592233985
-@SuppressWarnings({"PMD.ShortClassName"})
+@SuppressWarnings("PMD.ShortClassName")
 public class Foo {
   private final int i;
 

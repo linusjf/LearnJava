@@ -56,6 +56,7 @@ public enum SuspiciousSort {
     System.out.println(order(arr));
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   static Order order(Integer... a) {
     boolean ascending = false;
     boolean descending = false;

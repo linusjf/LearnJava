@@ -9,6 +9,6 @@ Specification-Title: Collections
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 87c2664 September 18 2019
+Implementation-Version: cef2dff September 23 2019
 Implementation-Vendor: 
 

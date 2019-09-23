@@ -11,19 +11,17 @@ public enum Client {
 @SuppressWarnings({"checkstyle:onetoplevelclass", "PMD"})
 enum Cache {
   ;
+  private static int sum;
+  private static boolean initialized = false;
 
   static {
     initializeIfNecessary();
   }
 
-  private static int sum;
-
   public static int getSum() {
     initializeIfNecessary();
     return sum;
   }
-
-  private static boolean initialized = false;
 
   private static synchronized void initializeIfNecessary() {
     if (!initialized) {
