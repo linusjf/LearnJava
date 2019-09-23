@@ -111,6 +111,7 @@ public enum PhaserDemo {
       phaser.arriveAndAwaitAdvance();
     }
 
+    @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
       phaser.arriveAndAwaitAdvance();
@@ -119,13 +120,11 @@ public enum PhaserDemo {
       if (file.isDirectory()) {
         directoryProcess(file);
       }
-      if (!checkResults()) {
+      if (!checkResults())
         return;
-      }
       filterResults();
-      if (!checkResults()) {
+      if (!checkResults())
         return;
-      }
       showInfo();
       phaser.arriveAndDeregister();
       System.out.printf("%s: Work completed.\n",

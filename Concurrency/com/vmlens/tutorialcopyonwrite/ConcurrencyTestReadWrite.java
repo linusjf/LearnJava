@@ -35,17 +35,27 @@ public class ConcurrencyTestReadWrite {
 
   @Test
   public void test() throws InterruptedException {
-    Thread first = new Thread(() -> { updatePostalAddress(); });
-    Thread second = new Thread(() -> { read(); });
+    // clang-format off
+    Thread first =
+        new Thread(
+            () -> {
+              updatePostalAddress();
+            });
+    Thread second =
+        new Thread(
+            () -> {
+              read();
+            });
+    // clang-format on
     first.start();
     second.start();
     first.join();
     second.join();
     assertTrue(
         "readAddress:" + readAddress,
-        readAddress.equals(
-            "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99")
-            || readAddress.equals(
-                "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"));
+        "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(
+            readAddress)
+            || "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"
+                   .equals(readAddress));
   }
 }

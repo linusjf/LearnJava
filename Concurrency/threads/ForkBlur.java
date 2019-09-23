@@ -48,16 +48,16 @@ import javax.imageio.ImageIO;
  * illustrate the use of the Fork/Join framework.
  */
 public class ForkBlur extends RecursiveAction {
+
+  public static final long serialVersionUID = 1L;
+  protected static int sThreshold = 10_000;
+  private static AtomicInteger taskCount = new AtomicInteger(0);
+
   private int[] mSource;
   private int mStart;
   private int mLength;
   private int[] mDestination;
   private int mBlurWidth = 15;  // Processing window size, should be odd.
-
-  protected static int sThreshold = 10_000;
-
-  public static final long serialVersionUID = 1L;
-  private static AtomicInteger taskCount = new AtomicInteger(0);
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public ForkBlur(final int[] src, int start, int length, final int... dst) {

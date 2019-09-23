@@ -19,9 +19,9 @@ public class MutableAddress {
     return city;
   }
 
-  public void updatePostalAddress(String street, String city) {
-    this.street = street;
-    this.city = city;
+  public void updatePostalAddress(String st, String cty) {
+    this.street = st;
+    this.city = cty;
   }
 
   @Override

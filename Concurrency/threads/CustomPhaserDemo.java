@@ -31,6 +31,7 @@ public enum CustomPhaserDemo {
   }
 
   static class MyPhaser extends Phaser {
+    @SuppressWarnings("checkstyle:returncount")
     @Override
     protected boolean onAdvance(int phase, int registeredParties) {
       switch (phase) {

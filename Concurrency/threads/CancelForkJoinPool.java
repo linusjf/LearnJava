@@ -62,12 +62,13 @@ public enum CancelForkJoinPool {
   static class SearchNumberTask extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
     private static final int TASK_SIZE_THRESHOLD = 10;
+    private static final int NOT_FOUND = -1;
+
     private int[] numbers;
     private int start;
     private int end;
     private int number;
     private TaskManager manager;
-    private static final int NOT_FOUND = -1;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     SearchNumberTask(int[] numbers,

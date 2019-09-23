@@ -42,9 +42,9 @@ public enum FixDeadlock {
 
   @SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel")
   static class Friend {
-    private final String name;
     Object lock1 = new Object();
     Object lock2 = new Object();
+    private final String name;
 
     Friend(String name) {
       this.name = name;

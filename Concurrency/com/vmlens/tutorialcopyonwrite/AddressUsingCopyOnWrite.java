@@ -1,9 +1,14 @@
 package com.vmlens.tutorialcopyonwrite;
 
+@SuppressWarnings("IllegalToken")
 public class AddressUsingCopyOnWrite {
 
   private volatile AddressValue addressValue;
   private final Object lock = new Object();
+
+  public AddressUsingCopyOnWrite(String street, String city, String phone) {
+    this.addressValue = new AddressValue(street, city, phone);
+  }
 
   public String toStringNotThreadSafe() {
     return "street=" + addressValue.getStreet()
@@ -16,10 +21,6 @@ public class AddressUsingCopyOnWrite {
     AddressValue local = addressValue;
     return "street=" + local.getStreet() + ",city=" + local.getCity()
         + ",phoneNumber=" + local.getPhoneNumber();
-  }
-
-  public AddressUsingCopyOnWrite(String street, String city, String phone) {
-    this.addressValue = new AddressValue(street, city, phone);
   }
 
   public void updatePostalAddress(String street, String city) {

@@ -41,12 +41,12 @@ public enum ControllingExecutor {
   static class ExecutableTask implements Callable<String> {
     private String name;
 
-    public String getName() {
-      return name;
-    }
-
     ExecutableTask(String name) {
       this.name = name;
+    }
+
+    public String getName() {
+      return name;
     }
 
     @Override

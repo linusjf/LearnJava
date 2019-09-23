@@ -1,11 +1,8 @@
 package threads;
 
 public class RunnableHelloCount implements Runnable {
-  private Thread thread1, thread2;
-
-  public static void main(String[] args) {
-    RunnableHelloCount threadDemo = new RunnableHelloCount();
-  }
+  private Thread thread1;
+  private Thread thread2;
 
   public RunnableHelloCount() {
     // Since current object implements Runnable, it can
@@ -15,6 +12,10 @@ public class RunnableHelloCount implements Runnable {
     thread2 = new Thread(this);
     thread1.start();
     thread2.start();
+  }
+
+  public static void main(String[] args) {
+    RunnableHelloCount threadDemo = new RunnableHelloCount();
   }
 
   public void run() {

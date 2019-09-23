@@ -37,20 +37,20 @@ public final class ImmutableRGB {
   private final int blue;
   private final String name;
 
-  @SuppressWarnings("checkstyle:hiddenfield")
-  private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
-        || blue > 255) {
-      throw new IllegalArgumentException();
-    }
-  }
-
   public ImmutableRGB(int red, int green, int blue, String name) {
     check(red, green, blue);
     this.red = red;
     this.green = green;
     this.blue = blue;
     this.name = name;
+  }
+
+  @SuppressWarnings("checkstyle:hiddenfield")
+  private void check(int red, int green, int blue) {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
+        || blue > 255) {
+      throw new IllegalArgumentException();
+    }
   }
 
   public int getRGB() {

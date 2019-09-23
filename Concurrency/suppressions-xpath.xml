@@ -3,6 +3,39 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="RunnableHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="RunnableHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="RunnableShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="RunnableShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HelloThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HelloThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CountThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CountThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThreadShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="ThreadShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThreadShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/TYPECAST/STAR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ImageProcessor.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='30_000']" />
   <suppress-xpath files="BlockingThread.java"
                   checks="IllegalCatchCheck"
                   query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/LITERAL_CATCH" />

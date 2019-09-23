@@ -29,8 +29,18 @@ public class ConcurrencyTestTwoWrites {
 
   @Test
   public void test() throws InterruptedException {
-    Thread first = new Thread(() -> { updatePostalAddress(); });
-    Thread second = new Thread(() -> { updatePhoneNumber(); });
+    // clang-format off
+    Thread first =
+        new Thread(
+            () -> {
+              updatePostalAddress();
+            });
+    Thread second =
+        new Thread(
+            () -> {
+              updatePhoneNumber();
+            });
+    // clang-format on
     first.start();
     second.start();
     first.join();

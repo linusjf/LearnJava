@@ -3,9 +3,8 @@ package threads;
 public class ThreadShowName extends Thread {
 
   public static void main(String[] args) {
-    ThreadShowName thread1, thread2;
-    thread1 = new ThreadShowName();
-    thread2 = new ThreadShowName();
+    ThreadShowName thread1 = new ThreadShowName();
+    ThreadShowName thread2 = new ThreadShowName();
     thread1.start();  // Will call run.
     thread2.start();  // Will call run.
   }
