@@ -27,6 +27,11 @@ import java.util.Base64;
  * @author Will Glozer
  */
 public final class SCryptUtil {  // NOPMD
+  
+  private SCryptUtil() {
+    throw new IllegalStateException("Private constructor");
+  }
+  
   /**
    * Hash the supplied plaintext password and generate output in the format
    * described in {@link SCryptUtil}.
@@ -133,7 +138,4 @@ public final class SCryptUtil {  // NOPMD
     return log + (n >>> 1);
   }
 
-  private SCryptUtil() {
-    throw new IllegalStateException("Private constructor");
-  }
 }

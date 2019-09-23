@@ -13,6 +13,10 @@ package com.lambdaworks.jni;
  * @author Will Glozer
  */
 public final class LibraryLoaders {  // NOPMD
+  private LibraryLoaders() {
+    throw new IllegalStateException("Private constructor");
+  }
+  
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -35,9 +39,5 @@ public final class LibraryLoaders {  // NOPMD
     final String vmSpec = System.getProperty("java.vm.specification.name");
     return vmSpec.startsWith("Java") ? new JarLibraryLoader()
                                      : new SysLibraryLoader();
-  }
-
-  private LibraryLoaders() {
-    throw new IllegalStateException("Private constructor");
   }
 }

@@ -17,6 +17,10 @@ final class PlayerFactory { // NOPMD
   /* HashMap stores the reference to the object
   of Terrorist(TS) or CounterTerrorist(CT).  */
   private static Map<String, Player> hm = new HashMap<>();
+  
+  private PlayerFactory() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   // Method to get a player
   /**
@@ -55,7 +59,4 @@ final class PlayerFactory { // NOPMD
     return p;
   }
 
-  private PlayerFactory() {
-    throw new IllegalStateException("Private constructor");
-  }
 }

@@ -11,6 +11,10 @@ import java.util.Map;
  */
 public final class PenFactory { // NOPMD
   private static final Map<String, Pen> PENSMAP = new HashMap<>();
+  
+  private PenFactory() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   /**
    * Describe <code>getThickPen</code> method here.
@@ -75,7 +79,4 @@ public final class PenFactory { // NOPMD
     return pen;
   }
 
-  private PenFactory() {
-    throw new IllegalStateException("Private constructor");
-  }
 }

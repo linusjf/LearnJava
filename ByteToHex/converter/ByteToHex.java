@@ -9,6 +9,10 @@ package converter;
 public final class ByteToHex { // NOPMD
 
   private static final String HEXES = "0123456789abcdef";
+  
+  private ByteToHex() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   /**
    * Describe <code>getHex</code> method here.
@@ -60,7 +64,4 @@ public final class ByteToHex { // NOPMD
     return builder.toString();
   }
 
-  private ByteToHex() {
-    throw new IllegalStateException("Private constructor");
-  }
 }
