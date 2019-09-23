@@ -3,11 +3,20 @@ package dailyimages;
 import java.time.LocalDate;
 
 abstract class ImageInfo {
-  private String date;
   protected String imagePath;
+  private String date;
   private byte[] imageData;
 
   public abstract ImageInfo findImage(String body);
+
+  @SuppressWarnings({"checkstyle:hiddenfield",
+                     "PMD.LinguisticNaming",
+                     "PMD.ArrayIsStoredDirectly"})
+  public ImageInfo
+  setImageData(byte[] imageData) {
+    this.imageData = imageData;
+    return this;
+  }
 
   public void setDate(String date) {
     this.date = date;
@@ -19,15 +28,6 @@ abstract class ImageInfo {
 
   public String getImagePath() {
     return imagePath;
-  }
-
-  @SuppressWarnings({"checkstyle:hiddenfield",
-                     "PMD.LinguisticNaming",
-                     "PMD.ArrayIsStoredDirectly"})
-  public ImageInfo
-  setImageData(byte[] imageData) {
-    this.imageData = imageData;
-    return this;
   }
 
   @SuppressWarnings({"checkstyle:hiddenfield",

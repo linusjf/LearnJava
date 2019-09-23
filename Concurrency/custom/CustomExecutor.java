@@ -15,6 +15,15 @@ import java.util.concurrent.TimeUnit;
 public class CustomExecutor extends ThreadPoolExecutor {
   private ConcurrentHashMap<String, Date> startTimes;
 
+  public CustomExecutor(int corePoolSize,
+                        int maximumPoolSize,
+                        long keepAliveTime,
+                        TimeUnit unit,
+                        BlockingQueue<Runnable> workQueue) {
+    super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
+    startTimes = new ConcurrentHashMap<>();
+  }
+
   public static void main(String[] args) {
     CustomExecutor myExecutor = new CustomExecutor(
         2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
@@ -47,15 +56,6 @@ public class CustomExecutor extends ThreadPoolExecutor {
       System.err.println(e);
     }
     System.out.printf("Main: End of the program.\n");
-  }
-
-  public CustomExecutor(int corePoolSize,
-                        int maximumPoolSize,
-                        long keepAliveTime,
-                        TimeUnit unit,
-                        BlockingQueue<Runnable> workQueue) {
-    super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
-    startTimes = new ConcurrentHashMap<>();
   }
 
   @Override

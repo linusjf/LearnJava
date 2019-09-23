@@ -3,6 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="MutableAddress.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='street']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="MutableAddress.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='city']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="MutableAddress.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='phoneNumber']]/MODIFIERS/LITERAL_VOLATILE" />
   <suppress-xpath files="RunnableHelloCount.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />

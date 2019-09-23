@@ -15,6 +15,15 @@ public class CustomScheduledTask<V>
   private long period;
   private long startDate;
 
+  public CustomScheduledTask(Runnable runnable,
+                             V result,
+                             RunnableScheduledFuture<V> task,
+                             ScheduledThreadPoolExecutor executor) {
+    super(runnable, result);
+    this.task = task;
+    this.executor = executor;
+  }
+
   public static void main(String[] args) {
     try {
       CustomScheduledThreadPoolExecutor executor =
@@ -33,15 +42,6 @@ public class CustomScheduledTask<V>
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
-  }
-
-  public CustomScheduledTask(Runnable runnable,
-                             V result,
-                             RunnableScheduledFuture<V> task,
-                             ScheduledThreadPoolExecutor executor) {
-    super(runnable, result);
-    this.task = task;
-    this.executor = executor;
   }
 
   @Override

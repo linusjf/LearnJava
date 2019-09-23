@@ -10,6 +10,11 @@ public class CustomThreadFactory implements ThreadFactory {
   private int counter;
   private String prefix;
 
+  public CustomThreadFactory(String prefix) {
+    this.prefix = prefix;
+    counter = 1;
+  }
+
   public static void main(String[] args) {
     try {
       CustomThreadFactory myFactory =
@@ -34,11 +39,6 @@ public class CustomThreadFactory implements ThreadFactory {
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
       System.out.printf("Alternate Main: End of the program.\n");
-  }
-
-  public CustomThreadFactory(String prefix) {
-    this.prefix = prefix;
-    counter = 1;
   }
 
   @Override
