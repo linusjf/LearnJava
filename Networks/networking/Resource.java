@@ -1,8 +1,8 @@
 package networking;
 
 class Resource {
-  private int numResources;
   private static final int MAX = 5;
+  private int numResources;
 
   Resource(int startLevel) {
     numResources = startLevel;

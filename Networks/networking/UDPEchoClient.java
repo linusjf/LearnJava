@@ -66,6 +66,7 @@ public enum UDPEchoClient {
       this.stopped = true;
     }
 
+    @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
       try {

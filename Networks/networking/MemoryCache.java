@@ -24,15 +24,16 @@ public class MemoryCache extends ResponseCache {
     this.maxEntries = maxEntries;
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   @Override
   public CacheRequest put(URI uri, URLConnection conn) throws IOException {
     if (responses.size() >= maxEntries)
       return null;
     CacheControl control =
         new CacheControl(conn.getHeaderField("Cache-Control"));
-    if (control.isNoStore()) {
+    if (control.isNoStore())
       return null;
-    } else if (!conn.getHeaderField(0).startsWith("GET ")) {
+    else if (!conn.getHeaderField(0).startsWith("GET ")) {
       // only cache GET
       return null;
     }

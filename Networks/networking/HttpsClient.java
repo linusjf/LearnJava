@@ -13,6 +13,7 @@ public final class HttpsClient {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("checkstyle:innerassignment")
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Usage: java HttpsClient host");
@@ -36,9 +37,8 @@ public final class HttpsClient {
           new BufferedReader(new InputStreamReader(socket.getInputStream()));
       // read the header
       String s;
-      while (!(s = in.readLine()).equals("")) {
+      while (!(s = in.readLine()).equals(""))
         System.out.println(s);
-      }
       System.out.println();
       // read the length
       String contentLength = in.readLine();

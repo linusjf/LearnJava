@@ -39,6 +39,10 @@ public final class SpamCheck {
     constructCookieString();
   }
 
+  private SpamCheck() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   @SuppressWarnings("PMD.ConsecutiveLiteralAppends")
   private static void constructCookieString() {
     StringBuilder sb = new StringBuilder(200);
@@ -48,10 +52,6 @@ public final class SpamCheck {
         .append(
             "cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
     cookies = sb.toString();
-  }
-
-  private SpamCheck() {
-    throw new IllegalStateException("Private constructor");
   }
 
   private static QueryString getQueryString() {

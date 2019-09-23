@@ -10,6 +10,7 @@ public enum UDPTimeClient {
   public static final String DEFAULT_HOST = "time.nist.gov";
   public static final int NO_OF_BYTES_EXPECTED = 4;
 
+  @SuppressWarnings("checkstyle:returncount")
   public static void main(String[] args) {
     InetAddress host;
     try {

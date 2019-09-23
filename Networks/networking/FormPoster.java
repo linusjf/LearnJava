@@ -48,6 +48,7 @@ public class FormPoster {
     return uc.getInputStream();
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   public static void main(String[] args) {
     URL url;
     if (args.length > 0) {

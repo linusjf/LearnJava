@@ -26,6 +26,7 @@ public abstract class UDPServer implements Runnable {
     this(port, 8192);
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   @Override
   public void run() {
     byte[] buffer = new byte[bufferSize];

@@ -38,15 +38,15 @@ public final class DictClient {
     }
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   static void define(String word, Writer writer, BufferedReader reader)
       throws IOException, UnsupportedEncodingException {
     writer.write("DEFINE fd-eng-lat " + word + "\r\n");
     writer.flush();
     for (String line = reader.readLine(); line != null;
          line = reader.readLine()) {
-      if (line.startsWith("250 ")) {  // OK
+      if (line.startsWith("250 "))  // OK
         return;
-      }
       if (line.startsWith("552 ")) {  // no match
         System.out.println("No definition found for " + word);
         return;

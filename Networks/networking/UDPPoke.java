@@ -50,6 +50,7 @@ public class UDPPoke {
     }
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   public static void main(String[] args) {
     InetAddress host;
     int port = 0;

@@ -36,6 +36,7 @@ public final class ListDicts {
     }
   }
 
+  @SuppressWarnings("checkstyle:returncount")
   static void listDatabases(Writer writer, BufferedReader reader)
       throws IOException, UnsupportedEncodingException {
     writer.write("SHOW DB\r\n");

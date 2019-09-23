@@ -20,6 +20,11 @@ public class SocketServerExample {
   private Map<SocketChannel, List<?>> dataMapper;
   private InetSocketAddress listenAddress;
 
+  public SocketServerExample(String address, int port) throws IOException {
+    listenAddress = new InetSocketAddress(address, port);
+    dataMapper = new HashMap<>();
+  }
+
   public static void main(String[] args) {
     Runnable server = new Runnable() {
       @Override
@@ -45,11 +50,6 @@ public class SocketServerExample {
     new Thread(server).start();
     new Thread(client, "client-A").start();
     new Thread(client, "client-B").start();
-  }
-
-  public SocketServerExample(String address, int port) throws IOException {
-    listenAddress = new InetSocketAddress(address, port);
-    dataMapper = new HashMap<>();
   }
 
   // create server channel
