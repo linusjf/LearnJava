@@ -47,6 +47,7 @@
            srcdir="${src.dir}"
            destdir="${build.dir}">
       <compilerarg value="${javac.params}" />
+      <exclude name="**/AnonymousReceiver.java" />
     </javac>
   </target>
   <!-- Creates Javadoc -->

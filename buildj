@@ -56,6 +56,13 @@ readAuxClassPath()
       echo "Unable to read $proj/$buildClasspathFile";}
 }
 
+readCompileFindOptions()
+{
+  [ -e "$proj/$compileFindOptionsFile" ] && \
+      { compileFindOptions=$(cat "$proj/$compileFindOptionsFile") || \
+      echo "Unable to read $proj/$compileFindOptionsFile";}
+}
+
 readOptions()
 {
   [ -e "$proj"/"$optionsFile" ] && \
@@ -78,6 +85,8 @@ declare -r verErrMsg="Unable to read $proj/$verFile"
 declare -r archiveErrMsg="Unable to create executable archive"
 declare -i SUCCESS=0
 declare -i jarRes=0
+addnlFindOptions=""
+declare -r compileFindOptionsFile=".compilefindoptions"
 isJVM
 jvm=$?
 if [ -z "$proj" ] || [ ! -d "$proj" ]
@@ -89,9 +98,10 @@ else
       { ver=$(cat "$proj"/"$verFile") || \
       echo "$verErrMsg";}
     readOptions
+    readCompileFindOptions
     readAuxClassPath
     readarray -t javasrcs \
-      < <(find "$proj" -name "*.java" -type f)
+      < <(find "$proj" -name "*.java" -type f $compileFindOptions)
     javac -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
     -cp $auxClasspath:"$proj" \
     "${javasrcs[@]}"
