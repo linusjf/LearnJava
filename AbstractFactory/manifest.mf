@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.abstractfactorypattern.TestAbst
 
 Name: common
 Specification-Title: AbstractFactory
-Specification-Version: 1.0.0
+Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 872d36c June 19 2019
+Implementation-Version: 09e3114 September 23 2019
 Implementation-Vendor: 
 

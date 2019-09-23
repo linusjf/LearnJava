@@ -17,8 +17,7 @@ public class TWParserFactory implements AbstractParserFactory {
         return new TWResponseXMLParser();
 
       default:
-        break;
+        return null;
     }
-    return null;
   }
 }

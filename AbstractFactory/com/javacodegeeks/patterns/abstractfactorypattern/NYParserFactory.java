@@ -17,8 +17,7 @@ public class NYParserFactory implements AbstractParserFactory {
         return new NYResponseXMLParser();
 
       default:
-        break;
+        return null;
     }
-    return null;
   }
 }
