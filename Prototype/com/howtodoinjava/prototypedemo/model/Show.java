@@ -14,10 +14,11 @@ public class Show implements PrototypeCapable {
     this.name = name;
   }
 
+  @SuppressWarnings("checkstyle:noclone")
   @Override
   public Show clone() throws CloneNotSupportedException {
     System.out.println("Cloning Show object..");
-    return (Show) super.clone();
+    return (Show)super.clone();
   }
 
   @Override

@@ -9,7 +9,10 @@ public final class ExpressionUtils {
     return "+".equals(s) || "-".equals(s) || "*".equals(s);
   }
 
-  public static Expression getOperator(String s, Expression left, Expression right) {
+  @SuppressWarnings("checkstyle:returncount")
+  public static Expression getOperator(String s,
+                                       Expression left,
+                                       Expression right) {
     switch (s) {
       case "+":
         return new Addition(left, right);

@@ -60,7 +60,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
     <module name="TreeWalker">
-      <module name="AvoidInlineConditionals"/>
+      <!--  <module name="AvoidInlineConditionals"/> -->
       <module name="CovariantEquals"/>
   <module name="SuppressWithNearbyCommentFilter"/>
     <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>

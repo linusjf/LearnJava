@@ -1,10 +1,10 @@
 package com.javacodegeeks.patterns.mementopattern;
 
 public class Originator {
+  CareTaker careTaker;
   private double xCoord;
   private double yCoord;
   private String lastUndoSavepoint;
-  CareTaker careTaker;
 
   public Originator(double xCoord, double yCoord, CareTaker careTaker) {
     this.xCoord = xCoord;

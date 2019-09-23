@@ -15,14 +15,14 @@ public final class AccessControlProvider {
     map.put("VP", new AccessControl("VP", "MODIFY REPORTS"));
   }
 
+  private AccessControlProvider() {
+    throw new IllegalStateException("Private constructor");
+  }
+
   public static AccessControl getAccessControlObject(String controlLevel)
       throws CloneNotSupportedException {
     AccessControl ac = null;
     ac = map.get(controlLevel);
     return ac == null ? null : ac.clone();
-  }
-
-  private AccessControlProvider() {
-    throw new IllegalStateException("Private constructor");
   }
 }
