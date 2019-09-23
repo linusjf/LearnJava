@@ -8,6 +8,10 @@ import java.rmi.RemoteException;
 
 public final class HelloClient {
   private static final String HOST = "localhost";
+  
+  private HelloClient() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try {
@@ -35,9 +39,5 @@ public final class HelloClient {
       System.out.println("Malformed url: " + mue);
       System.exit(1);
     }
-  }
-
-  private HelloClient() {
-    throw new IllegalStateException("Private constructor");
   }
 }

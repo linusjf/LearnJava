@@ -19,8 +19,11 @@ public interface MachineMediator {
   /** Describe <code>closed</code> method here. */
   void closed();
 
+  // clang-format off
   /** Describe <code>on</code> method here. */
-  @SuppressWarnings("PMD.ShortMethodName") void on();
+  @SuppressWarnings("PMD.ShortMethodName") 
+  void on();
+  // clang-format on
 
   /** Describe <code>off</code> method here. */
   void off();

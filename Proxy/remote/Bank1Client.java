@@ -9,6 +9,10 @@ import java.util.List;
 
 public final class Bank1Client {
   private static final String HOST = "localhost";
+  
+  private Bank1Client() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     try {
@@ -32,9 +36,5 @@ public final class Bank1Client {
       System.err.println(ex);
       System.exit(1);
     }
-  }
-
-  private Bank1Client() {
-    throw new IllegalStateException("Private constructor");
   }
 }

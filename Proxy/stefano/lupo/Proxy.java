@@ -49,12 +49,6 @@ import java.util.Scanner;
  * are maintained.
  */
 public class Proxy implements Runnable {
-  private ServerSocket serverSocket;
-
-  /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true;  // NOPMD
-
   /**
    * Data structure for constant order lookup of cache items. Key: URL of
    * page/image requested. Value: File in storage associated with this key.
@@ -73,6 +67,12 @@ public class Proxy implements Runnable {
    */
   static List<Thread> servicingThreads;
 
+  private ServerSocket serverSocket;
+
+  /** Semaphore for Proxy and Consolee Management System. */
+  @SuppressWarnings("checkstyle:IllegalToken")
+  private volatile boolean running = true;  // NOPMD
+
   static {
     // Load in hash map containing previously cached sites and blocked Sites
     cache = new HashMap<>();
@@ -80,6 +80,36 @@ public class Proxy implements Runnable {
     // Create array list to hold servicing threads
     servicingThreads = new ArrayList<>();
     loadCaches();
+  }
+  
+  /**
+   * Create the Proxy Server.
+   *
+   * @param port Port number to run proxy server from.
+   */
+  public Proxy(int port) {
+    // Start dynamic manager on a separate thread.
+    new Thread(this).start();  // Starts overriden run() method at bottom
+
+    try {
+      // Create the Server Socket for the Proxy
+      serverSocket = new ServerSocket(port);
+      // Set the timeout
+      // serverSocket.setSoTimeout(100000);
+      // debug
+      System.out.println("Waiting for client on port "
+                         + serverSocket.getLocalPort() + "..");
+      running = true;
+    } catch (SocketException se) {
+      System.out.println("Socket Exception when connecting to client "
+                         + se.getMessage());
+    } catch (SocketTimeoutException ste) {
+      System.out.println("Timeout occured while connecting to client "
+                         + ste.getMessage());
+    } catch (IOException io) {
+      System.out.println("IO exception when connecting to client "
+                         + io.getMessage());
+    }
   }
 
   @SuppressWarnings("unchecked")
@@ -129,36 +159,6 @@ public class Proxy implements Runnable {
     // Create an instance of Proxy and begin listening for connections
     Proxy myProxy = new Proxy(8085);
     myProxy.listen();
-  }
-
-  /**
-   * Create the Proxy Server.
-   *
-   * @param port Port number to run proxy server from.
-   */
-  public Proxy(int port) {
-    // Start dynamic manager on a separate thread.
-    new Thread(this).start();  // Starts overriden run() method at bottom
-
-    try {
-      // Create the Server Socket for the Proxy
-      serverSocket = new ServerSocket(port);
-      // Set the timeout
-      // serverSocket.setSoTimeout(100000);
-      // debug
-      System.out.println("Waiting for client on port "
-                         + serverSocket.getLocalPort() + "..");
-      running = true;
-    } catch (SocketException se) {
-      System.out.println("Socket Exception when connecting to client "
-                         + se.getMessage());
-    } catch (SocketTimeoutException ste) {
-      System.out.println("Timeout occured while connecting to client "
-                         + ste.getMessage());
-    } catch (IOException io) {
-      System.out.println("IO exception when connecting to client "
-                         + io.getMessage());
-    }
   }
 
   /**

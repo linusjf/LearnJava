@@ -8,6 +8,10 @@ import java.util.List;
 
 public final class Bank1Server {
   private static final String HOST = "localhost";
+  
+  private Bank1Server() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String[] args) {
     // Create an initialised array of four Account
@@ -40,9 +44,5 @@ public final class Bank1Server {
     } catch (MalformedURLException re) {
       System.err.println("Malformed url: " + re);
     }
-  }
-
-  private Bank1Server() {
-    throw new IllegalStateException("Private constructor");
   }
 }
