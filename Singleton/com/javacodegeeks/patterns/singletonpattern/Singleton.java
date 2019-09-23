@@ -58,6 +58,7 @@ public final class Singleton implements Serializable, Cloneable {
    * @return an <code>Object</code> value
    * @exception CloneNotSupportedException if an error occurs
    */
+  @SuppressWarnings("checkstyle:noclone")
   @Override
   public Singleton clone() throws CloneNotSupportedException {
     throw new CloneNotSupportedException("Singleton, cannot be cloned");
