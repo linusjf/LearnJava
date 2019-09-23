@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="PlayerCreator.java"
+       checks="ReturnCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleTennisPlayer']]"/>
+<suppress-xpath
+       files="PlayerCreator.java"
+       checks="ReturnCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleSnookerPlayer']]"/>
   <suppress-xpath files="ThrowSwitch.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']" />
