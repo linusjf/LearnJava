@@ -406,7 +406,6 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="VariableDeclarationUsageDistance" />
     <module name="RedundantImport"/>
     <module name="JavadocStyle"/>
-    <module name="JavadocType"/>
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically"
                 value="true" />
