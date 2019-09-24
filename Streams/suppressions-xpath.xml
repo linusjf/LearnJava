@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="RosterTest.java"
+       checks="ExecutableStatementCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='RosterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
   <suppress-xpath files="ParallelStreamPerformanceCheck.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ParallelStreamPerformanceCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']" />

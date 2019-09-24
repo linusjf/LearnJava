@@ -3,6 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Cookies.java"
+       checks="ExecutableStatementCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='Cookies']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
+<suppress-xpath
+       files="NonblockingSingleFileHttpServer.java"
+       checks="ExecutableStatementCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='NonblockingSingleFileHttpServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]"/>
+<suppress-xpath
+       files="UDPEchoClientWithChannels.java"
+       checks="ExecutableStatementCountCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPEchoClientWithChannels']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='echoToServer']]"/>
   <suppress-xpath files="PersonnelServer.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='PersonnelServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123_456']" />
