@@ -48,6 +48,7 @@
            destdir="${build.dir}">
       <compilerarg value="${javac.params}" />
       <exclude name="**/AnonymousReceiver.java" />
+      <exclude name="**/NonAnonymousReceiver2.java" />
     </javac>
   </target>
   <!-- Creates Javadoc -->

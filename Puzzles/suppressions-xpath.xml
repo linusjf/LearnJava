@@ -3,6 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="CoinSide.java"
+                  checks="AbstractClassNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CoinSide']]" />
+  <suppress-xpath files="Obscure.java"
+                  checks="StaticVariableNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Obscure']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='System']" />
   <suppress-xpath files="CleverSwap.java"
                   checks="ExecutableStatementCountCheck"
                   query="/ENUM_DEF[./IDENT[@text='CleverSwap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
