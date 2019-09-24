@@ -5,11 +5,13 @@ public enum UnwelcomeGuest {
   public static final long GUEST_USER_ID = -1;
   //  private static final long USER_ID;
   private static final long USER_ID = getUserIdOrGuest();
-  /**
+
+  /** Commented out.
    * static { try { USER_ID = getUserIdFromEnvironment(); } catch
    * (IdUnavailableException e) { USER_ID = GUEST_USER_ID;
    * System.out.println("Logging in as guest"); } }*
    */
+
   private static long getUserIdOrGuest() {
     try {
       return getUserIdFromEnvironment();

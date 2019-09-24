@@ -18,8 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * * This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm
+/** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm.
  */
 public class ImageProcessor {
   public static final int NUMBER_TO_SHOW = 1000;

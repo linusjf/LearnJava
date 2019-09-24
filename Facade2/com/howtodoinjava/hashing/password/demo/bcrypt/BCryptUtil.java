@@ -147,7 +147,7 @@ public final class BCryptUtil {
   }
 
   /**
-   * Generate a salt for use with the BCrypt.hashpw() method
+   * Generate a salt for use with the BCrypt.hashpw() method.
    *
    * @param logRounds the log2 of the number of rounds of hashing to apply - the
    *     work factor therefore increases as 2**log_rounds.
@@ -169,7 +169,7 @@ public final class BCryptUtil {
   }
 
   /**
-   * Generate a salt for use with the BCrypt.hashpw() method
+   * Generate a salt for use with the BCrypt.hashpw() method.
    *
    * @param logRounds the log2 of the number of rounds of hashing to apply - the
    *     work factor therefore increases as 2**log_rounds.
