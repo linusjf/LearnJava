@@ -26,7 +26,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <!-- See https://checkstyle.org/config_filefilters.html -->
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern"
-              value="module\-info\.java$" />
+              value="package\-info\.java$" />
           </module>
   <module name="SeverityMatchFilter">
   <property name="severity" value="ignore"/>
@@ -63,7 +63,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignorePattern"
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
-            <module name="FileLength"/>
+    <module name="FileLength"/>
+    <module name="RegexpOnFilename"/>
+    <module name="RegexpMultiline"/>
   <module name="SuppressWithPlainTextCommentFilter"/>
   <module name="TreeWalker">
     <module name="NoWhitespaceAfter"/>
@@ -132,6 +134,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
             <module name="ParameterNumber"/>
     <module name="ClassFanOutComplexity" />
     <module name="JavaNCSS" />
+    <module name="Regexp"/>
     <module name="NPathComplexity" />
     <module name="SuppressionXpathFilter">
       <property name="optional"
@@ -147,7 +150,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="message"
                 value="Using e.printStackTrace() is forbidden. Rethrow, log or handle the exception." />
-    </module>
+            </module>
     <module name="RedundantModifier" />
     <module name="SingleSpaceSeparator">
       <property name="validateComments"
