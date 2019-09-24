@@ -65,7 +65,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
             <module name="FileLength"/>
   <module name="SuppressWithPlainTextCommentFilter"/>
-    <module name="TreeWalker">
+  <module name="TreeWalker">
+    <module name="NoWhitespaceAfter"/>
+    <module name="EmptyForInitializerPad"/>
+    <module name="EmptyForIteratorPad"/>
       <!--  <module name="AvoidInlineConditionals"/> -->
       <module name="CovariantEquals"/>
   <module name="SuppressWithNearbyCommentFilter"/>
@@ -90,7 +93,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="0" />
       <property name="maximumMessage"
                 value="Use Java 8 Lambdas!" />
-    </module>
+            </module>
+            <module name="TypecastParenPad"/>
     <module name="InnerTypeLast" />
     <module name="InterfaceIsType" />
     <module name="MutableException" />

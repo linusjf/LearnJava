@@ -14,6 +14,6 @@ public class NonAnonymousReceiver2 {
         throw new NoSuchElementException("No next element");
       }
     };
-    return iter:
+    return iter;
   }
 }
