@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="DisplayService.java"
+       checks="AbstractClassNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='DisplayService']]"/>
+<suppress-xpath
+       files="Plan.java"
+       checks="AbstractClassNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='Plan']]"/>
   <suppress-xpath files="CommercialPlan.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='CommercialPlan']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='allotRate']]/SLIST/EXPR/ASSIGN[./IDENT[@text='rate']]/NUM_FLOAT[@text='7.50']" />

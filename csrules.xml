@@ -159,7 +159,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="MissingOverride">
       <property name="javaFiveCompatibility"
                 value="false" />
-    </module>
+            </module>
+            <module name="AbstractClassName">
+  <property name="ignoreModifier" value="true"/>
+</module>
+<module name="LocalFinalVariableName"/>
+<module name="StaticVariableName"/>
     <module name="HideUtilityClassConstructor" />
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat"

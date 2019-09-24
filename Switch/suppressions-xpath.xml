@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="Player.java"
+       checks="AbstractClassNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='Player']]"/>
+<suppress-xpath
        files="PlayerCreator.java"
        checks="ReturnCountCheck"
        query="/CLASS_DEF[./IDENT[@text='PlayerCreator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleTennisPlayer']]"/>

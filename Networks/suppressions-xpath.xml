@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="UDPServer.java"
+       checks="AbstractClassNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='UDPServer']]"/>
+<suppress-xpath
        files="Cookies.java"
        checks="ExecutableStatementCountCheck"
        query="/CLASS_DEF[./IDENT[@text='Cookies']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
