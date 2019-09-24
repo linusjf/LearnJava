@@ -63,6 +63,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignorePattern"
                 value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
+            <module name="FileLength"/>
   <module name="SuppressWithPlainTextCommentFilter"/>
     <module name="TreeWalker">
       <!--  <module name="AvoidInlineConditionals"/> -->
@@ -121,7 +122,10 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="ClassDataAbstractionCoupling">
       <property name="excludedPackages"
                 value="java.io" />
-    </module>
+            </module>
+            <module name="MethodCount"/>
+            <module name="ExecutableStatementCount"/>
+            <module name="ParameterNumber"/>
     <module name="ClassFanOutComplexity" />
     <module name="JavaNCSS" />
     <module name="NPathComplexity" />

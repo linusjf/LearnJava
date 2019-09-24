@@ -4,6 +4,14 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="DHKeyAgreement.java"
+       checks="ExecutableStatementCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
+<suppress-xpath
+       files="DHThreeWay.java"
+       checks="ExecutableStatementCountCheck"
+       query="/CLASS_DEF[./IDENT[@text='DHThreeWay']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
+<suppress-xpath
        files="DHHelper.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='DHHelper']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='byte2hex']]/SLIST/VARIABLE_DEF[./IDENT[@text='high']]/ASSIGN/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xf0']"/>

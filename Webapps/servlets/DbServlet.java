@@ -32,11 +32,7 @@ public class DbServlet extends HttpServlet {
       throws ServletException, IOException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
-    out.println("<HTML>");
-    out.println("<HEAD>");
-    out.println("<TITLE>Servlet + JDBC</TITLE>");
-    out.println("</HEAD>");
-    out.println("<BODY>");
+    printHtmlHeader(out);
     String forenames = request.getParameter("Forenames");
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
@@ -46,22 +42,13 @@ public class DbServlet extends HttpServlet {
     try (Statement statement = link.createStatement()) {
       statement.executeUpdate(insertion);
     } catch (SQLException sqlEx) {
-      out.println("<BR/><H2>Unable to execute"
-                  + " insertion!</H2>");
-      out.println("</BODY>");
-      out.println("</HTML>");
-      out.flush();
+      printHtmlInsertError(out);
       System.exit(1);
     }
     try (Statement statement = link.createStatement();
          ResultSet results =
              statement.executeQuery("SELECT * FROM PhoneNums");) {
-      out.println("Updated table:");
-      out.println("<BR/><BR/>");
-      out.println("<TABLE BORDER>");
-      out.println("<TR><TH>Surname</TH>");
-      out.println("<TH>Forename(s)</TH>");
-      out.println("<TH>Phone No.</TH></TR>");
+      printHtmlTableHeader(out);
       while (results.next()) {
         out.println("<TR>");
         out.println("<TD>");
@@ -77,15 +64,44 @@ public class DbServlet extends HttpServlet {
       }
       out.println("</TABLE>");
     } catch (SQLException sqlEx) {
-      out.println("<BR/><H2>Unable to retrieve data!</H2>");
-      out.println("</BODY>");
-      out.println("</HTML>");
-      out.flush();
+      printHtmlSelectError(out);
       System.exit(1);
     }
     out.println("<BODY>");
     out.println("</HTML>");
     out.flush();
+  }
+
+  private void printHtmlHeader(PrintWriter out) {
+    out.println("<HTML>");
+    out.println("<HEAD>");
+    out.println("<TITLE>Servlet + JDBC</TITLE>");
+    out.println("</HEAD>");
+    out.println("<BODY>");
+  }
+
+  private void printHtmlTableHeader(PrintWriter out) {
+      out.println("Updated table:");
+      out.println("<BR/><BR/>");
+      out.println("<TABLE BORDER>");
+      out.println("<TR><TH>Surname</TH>");
+      out.println("<TH>Forename(s)</TH>");
+      out.println("<TH>Phone No.</TH></TR>");
+  }
+
+  private void printHtmlInsertError(PrintWriter out) {
+      out.println("<BR/><H2>Unable to execute"
+                  + " insertion!</H2>");
+      out.println("</BODY>");
+      out.println("</HTML>");
+      out.flush();
+  }
+  
+  private void printHtmlSelectError(PrintWriter out) {
+      out.println("<BR/><H2>Unable to retrieve data!</H2>");
+      out.println("</BODY>");
+      out.println("</HTML>");
+      out.flush();
   }
 
   public void destroy() {

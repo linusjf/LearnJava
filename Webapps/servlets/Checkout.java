@@ -21,21 +21,7 @@ public class Checkout extends HttpServlet {
     response.setContentType("text/HTML");
     // print page and table header
     PrintWriter out = response.getWriter();
-    out.println("<HTML>");
-    out.println("<HEAD>");
-    out.println("<TITLE>Checkout</TITLE>");
-    out.println("</STYLE>");
-    out.println("</HEAD>");
-    out.println("<BODY>");
-    out.println("<BR/><BR/><BR/>");
-    out.println("<H1>Order List</H1>");
-    out.println("<BR/><BR/><BR/>");
-    out.println("<TABLE>");
-    out.println("<TR>");
-    out.println("<TH>Item</TH>");
-    out.println("<TH>Weight(kg)</TH>");
-    out.println("<TH>Cost(£)</TH>");
-    out.println("</TR>");
+    printHtmlHeader(out);
     HttpSession cart = request.getSession();
     cart.removeAttribute("currentProd");
     Enumeration<String> prodNames = cart.getAttributeNames();
@@ -74,5 +60,23 @@ public class Checkout extends HttpServlet {
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();
+  }
+
+  private void printHtmlHeader(PrintWriter out) {
+    out.println("<HTML>");
+    out.println("<HEAD>");
+    out.println("<TITLE>Checkout</TITLE>");
+    out.println("</STYLE>");
+    out.println("</HEAD>");
+    out.println("<BODY>");
+    out.println("<BR/><BR/><BR/>");
+    out.println("<H1>Order List</H1>");
+    out.println("<BR/><BR/><BR/>");
+    out.println("<TABLE>");
+    out.println("<TR>");
+    out.println("<TH>Item</TH>");
+    out.println("<TH>Weight(kg)</TH>");
+    out.println("<TH>Cost(£)</TH>");
+    out.println("</TR>");
   }
 }
