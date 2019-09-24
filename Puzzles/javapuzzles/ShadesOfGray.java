@@ -5,7 +5,7 @@ public enum ShadesOfGray {
   ;
 
   public static void main(String[] args) {
-    System.out.println(X.Y.Z);
+    System.out.println(X.Y.zed);
     System.out.println(Ex.Why.z);
   }
 }
@@ -15,10 +15,10 @@ enum X {
   ;
   // clang-format off
   static class Y {
-    static String Z = "Black";
+    static String zed = "Black";
   }  // clang-format on
 
-  static C Y = new C();
+  static C why = new C();
 }
 
 @SuppressWarnings({"PMD", "checkstyle:onetoplevelclass"})

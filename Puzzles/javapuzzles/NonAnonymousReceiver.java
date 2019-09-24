@@ -6,15 +6,15 @@ import java.util.NoSuchElementException;
 public class NonAnonymousReceiver {
 
   public Iterator<String> emptyIterator2() {
-    return new EmptyIterator() {};
+    return new AbstractEmptyIterator() {};
   }
 
-  abstract class EmptyIterator implements Iterator<String> {
-    public boolean hasNext(EmptyIterator this) {
+  abstract class AbstractEmptyIterator implements Iterator<String> {
+    public boolean hasNext(AbstractEmptyIterator this) {
       return false;
     }
 
-    public String next(EmptyIterator this) {
+    public String next(AbstractEmptyIterator this) {
       throw new NoSuchElementException("No next element");
     }
   }

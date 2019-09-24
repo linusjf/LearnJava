@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class NonAnonymousReceiver2 {
   public Iterator<String> emptyIterator2() {
     Iterator<String> iter = new Iterator<String>() {
-      public boolean hasNext(Iterator<String> iter.this) {
+      public  boolean  hasNext(Iterator<String> iter.this) {
         return false;
       }
 

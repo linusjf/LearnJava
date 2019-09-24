@@ -14,14 +14,14 @@ final class Outer {
     System.out.println("inside outerMethod");
 
     // Inner class is local to outerMethod()
-    abstract class Inner {
+    abstract class AbstractInner {
       void innerMethod() {
         System.out.println("inside innerMethod");
         System.out.println("x= " + x);
       }
     }
 
-    Inner y = new Inner() {};
+    AbstractInner y = new AbstractInner() {};
     y.innerMethod();
   }
 
