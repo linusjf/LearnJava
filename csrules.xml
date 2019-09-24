@@ -220,7 +220,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="allowNonPrintableEscapes"
                 value="true" />
-    </module>
+            </module>
+            <module name="IllegalImport"/>
     <module name="AvoidStarImport">
       <property name="allowStaticMemberImports"
                 value="true" />
@@ -403,6 +404,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
     <module name="OverloadMethodsDeclarationOrder" />
     <module name="VariableDeclarationUsageDistance" />
+    <module name="RedundantImport"/>
+    <module name="JavadocStyle"/>
+    <module name="JavadocType"/>
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically"
                 value="true" />
@@ -478,7 +482,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="ignoreAnnotationElementDefaults"
                 value="true" />
-    </module>
+            </module>
     <module name="ArrayTrailingComma" />
     <module name="EqualsAvoidNull" />
     <module name="IllegalCatch" />
