@@ -16,4 +16,12 @@ public class NonAnonymousReceiver2 {
     };
     return iter;
   }
+
+  static interface <T extends Iterator<String>> MyIterator extends Iterator<String> {
+
+      public <T> boolean hasNext(T this);
+
+      public <T> String next(T this);
+  
+  }
 }
