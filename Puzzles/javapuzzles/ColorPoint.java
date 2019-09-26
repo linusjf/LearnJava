@@ -4,8 +4,10 @@ public class ColorPoint extends Point {
   private final String color;
 
   ColorPoint(int x, int y, String color) {
-    super(x, y);         // 2. Chain to Point constructor
-    this.color = color;  // 5. Initialize blank final-Too late
+    super(x, y);         
+    // 2. Chain to Point constructor
+    this.color = color;  
+    // 5. Initialize blank final-Too late
   }
 
   @Override
@@ -30,7 +32,8 @@ class Point {
   Point(int x, int y) {
     this.x = x;
     this.y = y;
-    name = makeName();  // 3. Invoke subclass method
+    name = makeName();  
+    // 3. Invoke subclass method
   }
 
   protected String makeName() {

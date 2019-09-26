@@ -22,7 +22,8 @@ public enum UnwelcomeGuest {
   }
 
   private static long getUserIdFromEnvironment() throws IdUnavailableException {
-    throw new IdUnavailableException("ID Unavailable");  // Simulate an error
+    throw new IdUnavailableException("ID Unavailable");  
+    // Simulate an error
   }
 
   public static void main(String[] args) {

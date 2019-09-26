@@ -26,7 +26,8 @@ public enum InSum {
     System.out.println(sumInteger(bigs) == sum(bigs));
     System.out.println(sumInteger(bigs) == sumInteger(bigs));
     assert sumInteger(bigs) == sum(bigs);
-    assert sumInteger(bigs) != sumInteger(bigs);  // not recommended
+    assert sumInteger(bigs) != sumInteger(bigs);  
+    // not recommended
 
     // the effect of caching demonstrated
     List<Integer> smalls = Arrays.asList(1, 2, 3);

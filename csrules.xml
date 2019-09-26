@@ -79,7 +79,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
     <module name="TodoComment"/>
-    <module name="TrailingComment"/>
+    <module name="TrailingComment">
+      <property name="legalComment" value="(.*clang-format.*|.*NOPMD.*)"/>
+    </module>
     <module name="NoWhitespaceAfter" />
     <module name="EmptyForInitializerPad" />
     <module name="EmptyForIteratorPad" />

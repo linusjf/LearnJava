@@ -30,7 +30,8 @@ public final class GZipAllFiles {
     if (f.isDirectory()) {
       File[] files = f.listFiles();
       for (File file: files) {
-        if (!file.isDirectory()) {  // don't recurse directories
+        if (!file.isDirectory()) {
+          // don't recurse directories
           submitZipTask(file, pool);
         }
       }

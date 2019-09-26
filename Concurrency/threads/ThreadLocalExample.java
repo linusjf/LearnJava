@@ -13,8 +13,10 @@ public enum ThreadLocalExample {
       thread1.start();
       thread2.start();
 
-      thread1.join();  // wait for thread 1 to terminate
-      thread2.join();  // wait for thread 2 to terminate
+      thread1.join();  
+      // wait for thread 1 to terminate
+      thread2.join();  
+      // wait for thread 2 to terminate
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }

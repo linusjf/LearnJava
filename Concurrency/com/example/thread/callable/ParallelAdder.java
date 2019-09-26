@@ -17,7 +17,8 @@ public class ParallelAdder {
     int count = 1;
     int prev = 0;
     for (int i = 0; i < NUM_COUNT; i++) {
-      if (count % 2 == 0) {  // grouping
+      if (count % 2 == 0) {  
+        // grouping
         System.out.println("Prev :" + prev + " current: " + i);
         Future<Integer> future = submitNumbers(prev, i, executor);
         list.add(future);

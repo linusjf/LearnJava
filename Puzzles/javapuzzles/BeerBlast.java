@@ -19,7 +19,8 @@ public enum BeerBlast {
         System.out.println();
       }
     } else {
-      try {  // Master
+      try {  
+        // Master
         Process process = Runtime.getRuntime().exec(COMMAND);
         drainInBackground(process.getInputStream());
         int exitValue = process.waitFor();

@@ -31,7 +31,8 @@ public enum FutureDemo {
 
       while (!future.isDone()) {
         System.out.println("Task is not completed yet....");
-        Thread.sleep(1);  // sleep for 1 millisecond before checking again
+        Thread.sleep(1);  
+        // sleep for 1 millisecond before checking again
       }
 
       System.out.println("Task is completed, let's check result");
@@ -71,7 +72,8 @@ public enum FutureDemo {
       int num = number;
       long result = 1;
       while (num > 0) {
-        Thread.sleep(1);  // adding delay for example
+        Thread.sleep(1);  
+        // adding delay for example
         result = result * num;
         num--;
       }

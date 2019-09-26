@@ -51,7 +51,7 @@ public class Checkout extends HttpServlet {
       out.println("<TD>*** No orders placed! ***</TD></TR>");
     } else {
       out.println("<TR>");
-      out.println("<TD></TD>");  // Blank cell.
+      out.println("<TD></TD>");
       out.println("<TD>Total cost:</TD>");
       out.format("<TD> %5.2f </TD>%n", totalCost);
       out.println("</TR>");

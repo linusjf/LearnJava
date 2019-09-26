@@ -4,6 +4,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
+       files="ByeEclipse.java"
+       checks="InnerAssignmentCheck"
+       query="/ENUM_DEF[./IDENT[@text='ByeEclipse']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_IF/EXPR/BOR/ASSIGN[./IDENT[@text='b1']]"/>
+<suppress-xpath
        files="Overflow.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1024']]/STAR/NUM_INT[@text='1024']"/>
