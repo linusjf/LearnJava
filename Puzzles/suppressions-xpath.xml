@@ -3,6 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Overflow.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1024']]/STAR/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="Overflow.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR/STAR[./NUM_INT[@text='1024']]/STAR[./NUM_INT[@text='1024']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="Overflow.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Overflow']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR/STAR/NUM_INT[@text='1024']"/>
   <suppress-xpath files="CoinSide.java"
                   checks="AbstractClassNameCheck"
                   query="/CLASS_DEF[./IDENT[@text='CoinSide']]" />

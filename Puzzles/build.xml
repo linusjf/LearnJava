@@ -946,7 +946,7 @@
     <fileset dir="${basedir}"
              id="javasrcs"
              includes="**/*.java"
-             excludes="**/Ugly.java" />
+      excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
