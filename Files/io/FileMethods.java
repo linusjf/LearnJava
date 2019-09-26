@@ -12,11 +12,13 @@ public enum FileMethods {
       System.out.print("Enter name of file/directory ");
       System.out.print("or press <Enter> to quit: ");
       filename = input.nextLine();
-      while (!"".equals(filename)) {  // Not <Enter> key.
+      while (!"".equals(filename)) {  
+        // Not <Enter> key.
         File fileDir = new File(filename);
         if (!fileDir.exists()) {
           System.out.println(filename + " does not exist!");
-          break;  // Get out of loop.
+          break;  
+          // Get out of loop.
         }
         System.out.print(filename + " is a ");
         if (fileDir.isFile())

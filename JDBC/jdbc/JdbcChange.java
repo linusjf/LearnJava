@@ -46,7 +46,8 @@ public final class JdbcChange {
       results.updateFloat("balance", 2500f);
       results.insertRow();
       // Finally, the deletion…
-      results.absolute(1);  // Move to row 1.
+      results.absolute(1);  
+      // Move to row 1.
       results.deleteRow();
       System.out.println("\nNew contents of table:\n");
       displayTable();

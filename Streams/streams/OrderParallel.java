@@ -17,16 +17,16 @@ public enum OrderParallel {
     list.add("");
 
     System.out.println("Ordered...");
-    list.parallelStream()           // in parallel, not just concurrently!
-        .filter(s -> !s.isEmpty())  // remove empty strings
-        .distinct()                 // remove duplicates
-        .sorted()                   // sort them
+    list.parallelStream()           
+        .filter(s -> !s.isEmpty())  
+        .distinct()               
+        .sorted()                   
         .forEachOrdered(s -> System.out.println(s));
     System.out.println("Unordered...");
-    list.parallelStream()           // in parallel, not just concurrently!
-        .filter(s -> !s.isEmpty())  // remove empty strings
-        .distinct()                 // remove duplicates
-        .sorted()                   // sort them
-        .forEach(s -> System.out.println(s));  // print each item
+    list.parallelStream()           
+        .filter(s -> !s.isEmpty())  
+        .distinct()                 
+        .sorted()                   
+        .forEach(s -> System.out.println(s)); 
   }
 }

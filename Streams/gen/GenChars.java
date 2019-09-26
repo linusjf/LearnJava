@@ -41,8 +41,10 @@ public enum GenChars {
             (byte)((i - firstPrintableCharacter) % numberOfPrintableCharacters
                    + firstPrintableCharacter);
       }
-      line[72] = (byte)'\r';  // carriage return
-      line[73] = (byte)'\n';  // line feed
+      line[72] = (byte)'\r';  
+      // carriage return
+      line[73] = (byte)'\n';  
+      // line feed
       out.write(line);
       start =
           (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters

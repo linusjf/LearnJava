@@ -29,7 +29,8 @@ public enum RanFile1 {
         balance = input.nextFloat();
         // Now get rid of carriage return(!)…
         input.nextLine();
-        writeRecord(ranAccts);  // Method defined below.
+        writeRecord(ranAccts);  
+        // Method defined below.
         System.out.print("\nDo you wish to do this again (y/n)? ");
         reply = input.nextLine();
       } while ("y".equalsIgnoreCase(reply));
@@ -63,15 +64,18 @@ public enum RanFile1 {
       // Now 'pad out' the field with spaces…
       for (int i = size; i < fixedSize; i++)
         file.writeChar(' ');
-    } else  // String is too long!
+    } else {
+      // String is too long!
       file.writeChars(text.substring(0, fixedSize));
-    // Write to file the first fixedSize characters of
-    // string text, starting at byte zero.
+      // Write to file the first fixedSize characters of
+      // string text, starting at byte zero.
+    }
   }
 
   public static void showRecords(RandomAccessFile file) throws IOException {
     long numRecords = file.length() / REC_SIZE;
-    file.seek(0);  // Go to start of file.
+    file.seek(0);  
+    // Go to start of file.
     for (int i = 0; i < numRecords; i++) {
       acctNum = file.readLong();
       surname = readString(file, SURNAME_SIZE);
@@ -86,7 +90,8 @@ public enum RanFile1 {
 
   public static String readString(RandomAccessFile file, int fixedSize)
       throws IOException {
-    StringBuilder value = new StringBuilder();  // Set up empty string.
+    StringBuilder value = new StringBuilder();  
+    // Set up empty string.
     for (int i = 0; i < fixedSize; i++)
       // Read character and concatenate it onto value…
       value.append(file.readChar());

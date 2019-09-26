@@ -21,7 +21,8 @@ public enum RanFile2 {
              new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply;
-      long currentPos;  // File pointer position.
+      long currentPos;  
+      // File pointer position.
       do {
         System.out.print("\nEnter account number: ");
         acctNum = input.nextLong();
@@ -30,13 +31,15 @@ public enum RanFile2 {
           System.out.print("\nEnter account number: ");
           acctNum = input.nextLong();
         }
-        showRecord(ranAccts);  // Defined below.
+        showRecord(ranAccts);  
+        // Defined below.
         System.out.print("\nEnter new balance: ");
         balance = input.nextFloat();
         input.nextLine();
         // Get rid of carriage return!
         currentPos = ranAccts.getFilePointer();
-        ranAccts.seek(currentPos - 4);  // Back 4 bytes.
+        ranAccts.seek(currentPos - 4);  
+        // Back 4 bytes.
         ranAccts.writeFloat(balance);
         System.out.print("\nModify another balance (y/n)? ");
         reply = input.nextLine();
@@ -64,6 +67,7 @@ public enum RanFile2 {
     for (int i = 0; i < fixedSize; i++)
       // Read character from file and append to buffer.
       buffer.append(file.readChar());
-    return buffer.toString();  // Convert into String.
+    return buffer.toString();  
+    // Convert into String.
   }
 }
