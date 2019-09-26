@@ -70,8 +70,16 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <module name="RegexpOnFilename" />
   <module name="RegexpMultiline" />
   <module name="NewlineAtEndOfFile" />
+    <module name="UniqueProperties">
+  <property name="fileExtensions" value="properties, translations"/>
+</module>
+  <module name="Translation">
+  <property name="fileExtensions" value="properties" />
+</module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
+    <module name="TodoComment"/>
+    <module name="TrailingComment"/>
     <module name="NoWhitespaceAfter" />
     <module name="EmptyForInitializerPad" />
     <module name="EmptyForIteratorPad" />

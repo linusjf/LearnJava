@@ -45,9 +45,11 @@ public final class DictClient {
     writer.flush();
     for (String line = reader.readLine(); line != null;
          line = reader.readLine()) {
-      if (line.startsWith("250 "))  // OK
+      // OK
+      if (line.startsWith("250 "))  
         return;
-      if (line.startsWith("552 ")) {  // no match
+      if (line.startsWith("552 ")) {  
+        // no match
         System.out.println("No definition found for " + word);
         return;
       }

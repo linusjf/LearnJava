@@ -11,7 +11,8 @@ import logging.FormatLogger;
 
 @SuppressWarnings("PMD.AvoidUsingVolatile")
 public abstract class UDPServer implements Runnable {
-  private final int bufferSize;  // in bytes
+  private final int bufferSize;  
+  // in bytes
   private final int port;
   private final FormatLogger logger =
       new FormatLogger(Logger.getLogger(UDPServer.class.getCanonicalName()));
@@ -31,7 +32,8 @@ public abstract class UDPServer implements Runnable {
   public void run() {
     byte[] buffer = new byte[bufferSize];
     try (DatagramSocket socket = new DatagramSocket(port)) {
-      socket.setSoTimeout(10_000);  // check every 10 seconds for shutdown
+      socket.setSoTimeout(10_000);  
+      // check every 10 seconds for shutdown
       while (true) {
         if (isShutDown)
           return;
@@ -45,7 +47,8 @@ public abstract class UDPServer implements Runnable {
         } catch (IOException ex) {
           logger.log(Level.WARNING, "%s: %s", ex.getMessage(), ex);
         }
-      }  // end while
+      }  
+      // end while
     } catch (SocketException ex) {
       logger.log(Level.SEVERE, "Could not bind to port %d: %s", port, ex);
     }

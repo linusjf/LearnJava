@@ -63,7 +63,8 @@ public class RequestProcessor implements Runnable {
       String method = tokens[0];
       if ("GET".equals(method)) {
         handleGet(tokens, raw, out);
-      } else {  // method does not equal "GET"
+      } else {  
+        // method does not equal "GET"
         String version = tokens[2];
         String body =
             new StringBuilder("<HTML>\r\n")
@@ -73,7 +74,8 @@ public class RequestProcessor implements Runnable {
                 .append("<H1>HTTP Error 501: Not Implemented</H1>\r\n")
                 .append("</BODY></HTML>\r\n")
                 .toString();
-        if (version.startsWith("HTTP/")) {  // send a MIME header
+        if (version.startsWith("HTTP/")) {  
+          // send a MIME header
           sendHeader(out,
                      "HTTP/1.0 501 Not Implemented",
                      "text/html; charset=utf-8",
@@ -112,11 +114,12 @@ public class RequestProcessor implements Runnable {
     }
     File theFile =
         new File(rootDirectory, fileName.substring(1, fileName.length()));
+    // Don't let clients outside the document root
     if (theFile.canRead()
-        // Don't let clients outside the document root
         && theFile.getCanonicalPath().startsWith(rootDirectory.getPath())) {
       byte[] theData = Files.readAllBytes(theFile.toPath());
-      if (version.startsWith("HTTP/")) {  // send a MIME header
+      if (version.startsWith("HTTP/")) {  
+        // send a MIME header
         sendHeader(out, "HTTP/1.0 200 OK", contentType, theData.length);
       }
       // send the file; it may be an image or other binary data
@@ -124,7 +127,8 @@ public class RequestProcessor implements Runnable {
       // instead of the writer
       raw.write(theData);
       raw.flush();
-    } else {  // can't find the file
+    } else {  
+      // can't find the file
       String body = new StringBuilder("<HTML>\r\n")
                         .append("<HEAD><TITLE>File Not Found</TITLE>\r\n")
                         .append("</HEAD>\r\n")
@@ -132,7 +136,8 @@ public class RequestProcessor implements Runnable {
                         .append("<H1>HTTP Error 404: File Not Found</H1>\r\n")
                         .append("</BODY></HTML>\r\n")
                         .toString();
-      if (version.startsWith("HTTP/")) {  // send a MIME header
+      if (version.startsWith("HTTP/")) {  
+        // send a MIME header
         sendHeader(out,
                    "HTTP/1.0 404 File Not Found",
                    "text/html; charset=utf-8",

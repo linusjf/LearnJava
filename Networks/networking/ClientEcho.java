@@ -32,8 +32,10 @@ public final class ClientEcho {
       while ((userInput = stdIn.readLine()) != null) {
         byte[] arr = userInput.getBytes();
         DatagramPacket dpack = new DatagramPacket(arr, arr.length, add, port);
-        dsock.send(dpack);     // send the packet
-        dsock.receive(dpack);  // receive the packet
+        dsock.send(dpack);     
+        // send the packet
+        dsock.receive(dpack);  
+        // receive the packet
         System.out.println("echo: " + new String(dpack.getData()));
       }
     } catch (IOException ioe) {

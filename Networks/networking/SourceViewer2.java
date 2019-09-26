@@ -18,7 +18,8 @@ public enum SourceViewer2 {
         // Open the URLConnection for reading
         URL u = new URL(args[0]);
         URLConnection uc = u.openConnection();
-        try (InputStream raw = uc.getInputStream()) {  // autoclose
+        try (InputStream raw = uc.getInputStream()) {  
+          // autoclose
           InputStream buffer = new BufferedInputStream(raw);
           // chain the InputStream to a Reader
           Reader reader = new InputStreamReader(buffer);

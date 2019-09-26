@@ -8,8 +8,10 @@ import java.net.UnknownHostException;
 import java.util.Base64;
 
 public class UDPPoke {
-  private int bufferSize;  // in bytes
-  private int timeout;     // in milliseconds
+  private int bufferSize;  
+  // in bytes
+  private int timeout;     
+  // in milliseconds
   private InetAddress host;
   private int port;
 

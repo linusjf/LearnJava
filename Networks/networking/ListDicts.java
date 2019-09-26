@@ -43,10 +43,12 @@ public final class ListDicts {
     writer.flush();
     for (String line = reader.readLine(); line != null;
          line = reader.readLine()) {
-      if (line.startsWith("250 ")) {  // OK
+      if (line.startsWith("250 ")) {  
+        // OK
         return;
       }
-      if (line.startsWith("501 ")) {  // no match
+      if (line.startsWith("501 ")) {  
+        // no match
         System.out.println(line);
         return;
       }

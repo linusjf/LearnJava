@@ -31,7 +31,8 @@ class ClientThread extends Thread {
     do {
       request = input.nextLine();
       if ("1".equals(request)) {
-        item.takeOne();  // If none available,
+        item.takeOne();  
+        // If none available,
         // wait until resource(s)
         // available (and thread is
         // at front of thread queue).

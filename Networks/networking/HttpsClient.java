@@ -19,7 +19,8 @@ public final class HttpsClient {
       System.out.println("Usage: java HttpsClient host");
       return;
     }
-    int port = 443;  // default https port
+    int port = 443;  
+    // default https port
     String host = args[0];
     SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
     try (SSLSocket socket = (SSLSocket)factory.createSocket(host, port)) {

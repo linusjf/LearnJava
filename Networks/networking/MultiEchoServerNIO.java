@@ -83,12 +83,14 @@ public final class MultiEchoServerNIO {
             // this key (as a bit pattern)…
             int keyOps = key.readyOps();
             if ((keyOps & SelectionKey.OP_ACCEPT)
-                == SelectionKey.OP_ACCEPT) {  // New connection.
+                == SelectionKey.OP_ACCEPT) {  
+              // New connection.
               acceptConnection(key);
               continue;
             }
             if ((keyOps & SelectionKey.OP_READ)
-                == SelectionKey.OP_READ) {  // Data from existing client.
+                == SelectionKey.OP_READ) {  
+              // Data from existing client.
               acceptData(key);
             }
           }
@@ -101,7 +103,8 @@ public final class MultiEchoServerNIO {
   }
 
   private static void acceptConnection(SelectionKey key)
-      throws IOException {  // Accept incoming connection and add to list.
+      throws IOException {  
+    // Accept incoming connection and add to list.
     SocketChannel socketChannel = serverSocketChannel.accept();
     socketChannel.configureBlocking(false);
     Socket socket = socketChannel.socket();
@@ -114,7 +117,8 @@ public final class MultiEchoServerNIO {
   }
 
   private static void acceptData(SelectionKey key)
-      throws IOException {  // Accept data from existing connection.
+      throws IOException {  
+    // Accept data from existing connection.
     ByteBuffer buffer = ByteBuffer.allocate(2048);
     // Above used for reading/writing data from/to
     // SocketChannel.

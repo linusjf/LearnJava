@@ -76,7 +76,8 @@ public enum EmailServer {
       PrintWriter output = new PrintWriter(link.getOutputStream(), true);
       if (name.equals(CLIENT1)) {
         handleClient1(sendRead, input, output);
-      } else {  // from client 2
+      } else {  
+        // from client 2
         handleClient2(sendRead, input, output);
       }
       link.close();

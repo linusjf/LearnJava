@@ -61,7 +61,8 @@ public class FormPoster {
     } else {
       try {
         url = new URL("http://www.cafeaulait.org/books/jnp4/postquery.phtml");
-      } catch (MalformedURLException ex) {  // shouldn't happen
+      } catch (MalformedURLException ex) {  
+        // shouldn't happen
         System.err.println(ex);
         return;
       }

@@ -62,7 +62,8 @@ public class NonblockingSingleFileHttpServer {
             ByteBuffer buffer = (ByteBuffer)key.attachment();
             if (buffer.hasRemaining()) {
               channel.write(buffer);
-            } else {  // we're done
+            } else {  
+              // we're done
               channel.close();
             }
           } else if (key.isReadable()) {

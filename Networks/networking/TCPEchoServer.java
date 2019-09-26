@@ -17,7 +17,8 @@ public enum TCPEchoServer {
   public static void main(String[] args) {
     System.out.printf("Opening port…%n");
     try {
-      serverSocket = new ServerSocket(PORT);  // Step 1.
+      // Step 1.
+      serverSocket = new ServerSocket(PORT);  
     } catch (IOException ioEx) {
       System.out.println("Unable to attach to port!");
       System.exit(1);
@@ -31,14 +32,17 @@ public enum TCPEchoServer {
          PrintWriter output = new PrintWriter(link.getOutputStream(), true);
          Scanner input = new Scanner(link.getInputStream());) {
       int numMessages = 0;
-      String message = input.nextLine();  // Step 4.
+      String message = input.nextLine();  
+      // Step 4.
       while (!"***CLOSE***".equals(message)) {
         System.out.println("Message received.");
         numMessages++;
-        output.println("Message " + numMessages + ": " + message);  // Step 4.
+        output.println("Message " + numMessages + ": " + message);  
+        // Step 4.
         message = input.nextLine();
       }
-      output.println(numMessages + " messages received.");  // Step 4.
+      output.println(numMessages + " messages received.");  
+      // Step 4.
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }

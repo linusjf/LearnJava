@@ -27,7 +27,8 @@ public enum MultiEchoServer {
         // this client and pass the constructor for this
         // thread a reference to the relevant socket…
         ClientHandler handler = new ClientHandler(client);
-        handler.start();  // As usual, method calls run.
+        handler.start();  
+        // As usual, method calls run.
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
