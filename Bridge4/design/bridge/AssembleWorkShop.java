@@ -14,7 +14,8 @@ public class AssembleWorkShop extends WorkShop {
     System.out.print("Assembling... ");
     long timeToTake = 200 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake); // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake); 
+      // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }

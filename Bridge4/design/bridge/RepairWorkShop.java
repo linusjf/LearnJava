@@ -14,7 +14,8 @@ public class RepairWorkShop extends WorkShop {
     System.out.print("Repairing... ");
     long timeToTake = 150 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake); // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake); 
+      // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }
