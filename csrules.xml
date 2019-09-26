@@ -22,16 +22,19 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
             value="${cs.fileExtensions}" />
   <property name="cacheFile"
             value="${cs.cacheFile}" />
+  <module name="OrderedProperties" />
   <!-- Excludes all 'module-info.java' files              -->
   <!-- See https://checkstyle.org/config_filefilters.html -->
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern"
               value="package\-info\.java$" />
-          </module>
+  </module>
   <module name="SeverityMatchFilter">
-  <property name="severity" value="ignore"/>
-  <property name="acceptOnMatch" value="false"/>
-</module>
+    <property name="severity"
+              value="ignore" />
+    <property name="acceptOnMatch"
+              value="false" />
+  </module>
   <!-- Checks for whitespace                               -->
   <!-- See http://checkstyle.sf.net/config_whitespace.html -->
   <module name="FileTabCharacter">
@@ -57,35 +60,43 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <property name="fileExtensions"
               value="java" />
   </module>
-    <module name="LineLength">
-      <property name="max"
-                value="100" />
-      <property name="ignorePattern"
-                value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
-    </module>
-    <module name="FileLength"/>
-    <module name="RegexpOnFilename"/>
-    <module name="RegexpMultiline"/>
-  <module name="SuppressWithPlainTextCommentFilter"/>
-  <module name="TreeWalker">
-    <module name="NoWhitespaceAfter"/>
-    <module name="EmptyForInitializerPad"/>
-    <module name="EmptyForIteratorPad"/>
-      <!--  <module name="AvoidInlineConditionals"/> -->
-      <module name="CovariantEquals"/>
-  <module name="SuppressWithNearbyCommentFilter"/>
-    <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
-    <module name="JavadocBlockTagLocation">
-  <property name="tags" value="author, deprecated, exception, hidden"/>
-  <property name="tags" value="param, provides, return, see, serial"/>
-  <property name="tags" value="serialData, serialField, since, throws"/>
-  <property name="tags" value="uses, version"/>
-  <property name="tags" value="noinspection"/>
-</module>
-    <module name="HiddenField">
-      <property name="ignoreSetter" value="true" />
-    <property name="ignoreConstructorParameter" value="true" />
+  <module name="LineLength">
+    <property name="max"
+              value="100" />
+    <property name="ignorePattern"
+              value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
   </module>
+  <module name="FileLength" />
+  <module name="RegexpOnFilename" />
+  <module name="RegexpMultiline" />
+  <module name="NewlineAtEndOfFile" />
+  <module name="SuppressWithPlainTextCommentFilter" />
+  <module name="TreeWalker">
+    <module name="NoWhitespaceAfter" />
+    <module name="EmptyForInitializerPad" />
+    <module name="EmptyForIteratorPad" />
+    <!--  <module name="AvoidInlineConditionals"/> -->
+    <module name="CovariantEquals" />
+    <module name="SuppressWithNearbyCommentFilter" />
+    <module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
+    <module name="JavadocBlockTagLocation">
+      <property name="tags"
+                value="author, deprecated, exception, hidden" />
+      <property name="tags"
+                value="param, provides, return, see, serial" />
+      <property name="tags"
+                value="serialData, serialField, since, throws" />
+      <property name="tags"
+                value="uses, version" />
+      <property name="tags"
+                value="noinspection" />
+    </module>
+    <module name="HiddenField">
+      <property name="ignoreSetter"
+                value="true" />
+      <property name="ignoreConstructorParameter"
+                value="true" />
+    </module>
     <module name="DescendantToken">
       <property name="tokens"
                 value="METHOD_CALL" />
@@ -95,8 +106,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="0" />
       <property name="maximumMessage"
                 value="Use Java 8 Lambdas!" />
-            </module>
-            <module name="TypecastParenPad"/>
+    </module>
+    <module name="TypecastParenPad" />
     <module name="InnerTypeLast" />
     <module name="InterfaceIsType" />
     <module name="MutableException" />
@@ -128,14 +139,22 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="ClassDataAbstractionCoupling">
       <property name="excludedPackages"
                 value="java.io" />
-            </module>
-            <module name="MethodCount"/>
-            <module name="ExecutableStatementCount"/>
-            <module name="ParameterNumber"/>
+    </module>
+    <module name="MethodCount" />
+    <module name="ExecutableStatementCount" />
+    <module name="ParameterNumber" />
     <module name="ClassFanOutComplexity" />
     <module name="JavaNCSS" />
-    <module name="Regexp"/>
+    <module name="Regexp" />
     <module name="NPathComplexity" />
+    <module name="SuppressionXpathSingleFilter">
+      <property name="files"
+                value="build\.properties" />
+      <property name="id"
+                value="XpathOrderedPropertie" />
+      <property name="checks"
+                value="OrderedProperties" />
+    </module>
     <module name="SuppressionXpathFilter">
       <property name="optional"
                 value="true" />
@@ -150,7 +169,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="message"
                 value="Using e.printStackTrace() is forbidden. Rethrow, log or handle the exception." />
-            </module>
+    </module>
     <module name="RedundantModifier" />
     <module name="SingleSpaceSeparator">
       <property name="validateComments"
@@ -159,12 +178,13 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="MissingOverride">
       <property name="javaFiveCompatibility"
                 value="false" />
-            </module>
-            <module name="AbstractClassName">
-  <property name="ignoreModifier" value="true"/>
-</module>
-<module name="LocalFinalVariableName"/>
-<module name="StaticVariableName"/>
+    </module>
+    <module name="AbstractClassName">
+      <property name="ignoreModifier"
+                value="true" />
+    </module>
+    <module name="LocalFinalVariableName" />
+    <module name="StaticVariableName" />
     <module name="HideUtilityClassConstructor" />
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat"
@@ -220,8 +240,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="allowNonPrintableEscapes"
                 value="true" />
-            </module>
-            <module name="IllegalImport"/>
+    </module>
+    <module name="IllegalImport" />
     <module name="AvoidStarImport">
       <property name="allowStaticMemberImports"
                 value="true" />
@@ -387,6 +407,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <message key="ws.notPreceded"
                value="GenericWhitespace ''{0}'' is not preceded with whitespace." />
     </module>
+    <module name="ArrayTypeStyle" />
     <!--<module name="Indentation">
       <property name="basicOffset" value="2"/>
       <property name="braceAdjustment" value="0"/>
@@ -404,8 +425,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
     <module name="OverloadMethodsDeclarationOrder" />
     <module name="VariableDeclarationUsageDistance" />
-    <module name="RedundantImport"/>
-    <module name="JavadocStyle"/>
+    <module name="RedundantImport" />
+    <module name="JavadocStyle" />
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically"
                 value="true" />
@@ -481,7 +502,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
       <property name="ignoreAnnotationElementDefaults"
                 value="true" />
-            </module>
+    </module>
     <module name="ArrayTrailingComma" />
     <module name="EqualsAvoidNull" />
     <module name="IllegalCatch" />
@@ -501,17 +522,18 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="false" />
       <property name="allowSamelineParameterizedAnnotation"
                 value="false" />
-            </module>
-            <module name="AnnotationUseStyle"/>
- <module name="PackageAnnotation"/>
-            <module name="DeclarationOrder"/>
-            <module name="NoClone"/>
-            <module name="InnerAssignment"/>
-            <module name="SuperClone"/>
-            <module name="SuperFinalize"/>
-            <module name="RequireThis"/>
-            <module name="ReturnCount">
-  <property name="max" value="3"/>
-</module>
+    </module>
+    <module name="AnnotationUseStyle" />
+    <module name="PackageAnnotation" />
+    <module name="DeclarationOrder" />
+    <module name="NoClone" />
+    <module name="InnerAssignment" />
+    <module name="SuperClone" />
+    <module name="SuperFinalize" />
+    <module name="RequireThis" />
+    <module name="ReturnCount">
+      <property name="max"
+                value="3" />
+    </module>
   </module>
 </module>

@@ -12,6 +12,7 @@
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+
     <properties>
       <property name="foreachReassign"
                 value="firstOnly" />
@@ -29,18 +30,19 @@
   <rule ref="category/java/bestpractices.xml/ForLoopCanBeForeach" />
   <rule ref="category/java/bestpractices.xml/ForLoopVariableCount" />
   <rule ref="category/java/bestpractices.xml/GuardLogStatement" />
-  <rule ref="category/java/bestpractices.xml/JUnit4SuitesShouldUseSuiteAnnotation" /> 
-  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseAfterAnnotation" /> 
-  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseBeforeAnnotation" /> 
-  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseTestAnnotation" /> 
-  <rule ref="category/java/bestpractices.xml/JUnitAssertionsShouldIncludeMessage" /> 
-  <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts" /> 
-  <rule ref="category/java/bestpractices.xml/JUnitTestsShouldIncludeAssert" /> 
-  <rule ref="category/java/bestpractices.xml/JUnitUseExpected" /> 
+  <rule ref="category/java/bestpractices.xml/JUnit4SuitesShouldUseSuiteAnnotation" />
+  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseAfterAnnotation" />
+  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseBeforeAnnotation" />
+  <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseTestAnnotation" />
+  <rule ref="category/java/bestpractices.xml/JUnitAssertionsShouldIncludeMessage" />
+  <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts" />
+  <rule ref="category/java/bestpractices.xml/JUnitTestsShouldIncludeAssert" />
+  <rule ref="category/java/bestpractices.xml/JUnitUseExpected" />
   <rule ref="category/java/bestpractices.xml/LooseCoupling" />
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray" />
   <rule ref="category/java/bestpractices.xml/MissingOverride" />
   <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
+
     <properties>
       <property name="strictMode"
                 value="false" />
@@ -334,9 +336,12 @@
   <rule ref="category/java/errorprone.xml/ProperCloneImplementation" />
   <rule ref="category/java/errorprone.xml/ProperLogger">
     <properties>
-        <property name="staticLoggerName" value="LOG" />
-        <property name="loggerName" value="log" />
-        <property name="loggerClass" value="Log" />
+      <property name="staticLoggerName"
+                value="LOG" />
+      <property name="loggerName"
+                value="log" />
+      <property name="loggerClass"
+                value="Log" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull" />
@@ -359,7 +364,7 @@
   <rule ref="category/java/errorprone.xml/UseEqualsToCompareStrings" />
   <rule ref="category/java/errorprone.xml/UselessOperationOnImmutable" />
   <rule ref="category/java/errorprone.xml/UseLocaleWithCaseConversions" />
-   <rule ref="category/java/errorprone.xml/UseProperClassLoader" />
+  <rule ref="category/java/errorprone.xml/UseProperClassLoader" />
   <!-- Empty rules -->
   <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
     <properties>

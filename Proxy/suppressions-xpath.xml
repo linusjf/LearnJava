@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="RequestHandler.java"
-       checks="ExecutableStatementCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='RequestHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendNonCachedToClient']]"/>
+  <suppress-xpath files="RequestHandler.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RequestHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendNonCachedToClient']]" />
   <suppress-xpath files="Bank1Server.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='111_111']" />

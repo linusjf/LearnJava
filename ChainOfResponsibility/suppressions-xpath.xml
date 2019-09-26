@@ -1,30 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="AudioFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='AudioFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
-<suppress-xpath
-       files="DocFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='DocFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
-<suppress-xpath
-       files="ExcelFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='ExcelFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
-<suppress-xpath
-       files="ImageFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='ImageFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
-<suppress-xpath
-       files="TextFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='TextFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
-<suppress-xpath
-       files="VideoFileHandler.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='VideoFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]"/>
+  <suppress-xpath files="AudioFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AudioFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
+  <suppress-xpath files="DocFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DocFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
+  <suppress-xpath files="ExcelFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ExcelFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
+  <suppress-xpath files="ImageFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ImageFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
+  <suppress-xpath files="TextFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TextFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
+  <suppress-xpath files="VideoFileHandler.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='VideoFileHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]" />
 </suppressions>

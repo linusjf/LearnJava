@@ -18,120 +18,261 @@
    under the License.
 -->
 <ivy-module version="2.0">
-  <info organisation="linus" module="LearnJava"/>
+  <info organisation="linus"
+        module="LearnJava" />
   <configurations>
-    <conf name="checkstyle.main" description="checkstyle main jar"/>
-    <conf name="gformat.main" description="google java format main jar"/>
-    <conf name="checkstyle.lib" description="checkstyle dependencies"/>
-    <conf name="gformat.lib" description="google java format dependencies"/>
-    <conf name="pmd-core.main" description="pmd core main jars"/>
-    <conf name="pmd-core.lib" description="pmd core dependent jars"/>
-    <conf name="pmd-java.main" description="pmd java main jars"/>
-    <conf name="pmd-java.lib" description="pmd java dependent jars"/>
-    <conf name="log4j-core.main" description="log4j core main jars"/>
-    <conf name="log4j-core.lib" description="log4j core dependent jars"/>
-    <conf name="log4j-api.main" description="log4j api main jars"/>
-    <conf name="log4j-api.lib" description="log4j api dependent jars"/>
-    <conf name="saxon" description="saxon jars"/>
-    <conf name="sevntu-check.main" description="sevntu-check main jars"/>
-    <conf name="sevntu-check.lib" description="sevntu-check dependent jars"/>
-    <conf name="jacorb.main" description="jacorb main jars"/>
-    <conf name="jacorb.lib" description="jacorb dependent jars"/>
-    <conf name="derby.main" description="derby main jars"/>
-    <conf name="derby.lib" description="derby dependent jars"/>
-    <conf name="derbytools.main" description="derbytools main jars"/>
-    <conf name="derbytools.lib" description="derbytools dependent jars"/>
-    <conf name="derbyshared.main" description="derbyshared main jars"/>
-    <conf name="derbyshared.lib" description="derbyshared dependent jars"/>
-    <conf name="tomcat-embed-core.main" description="tomcat-embed-core main jars"/>
-    <conf name="tomcat-embed-core.lib" description="tomcat-embed-core dependent jars"/>
-    <conf name="tomcat-embed-jasper.main" description="tomcat-embed-jasper main jars"/>
-    <conf name="tomcat-embed-jasper.lib" description="tomcat-embed-jasper dependent jars"/>
-    <conf name="tomcat-embed-logging-juli.main" description="tomcat-embed-logging-juli main jars"/>
-    <conf name="tomcat-embed-logging-juli.lib" description="tomcat-embed-logging-juli dependent jars"/>
-    <conf name="tomcat-embed-logging-log4j.main" description="tomcat-embed-logging-log4j main jars"/>
-    <conf name="tomcat-embed-logging-log4j.lib" description="tomcat-embed-logging-log4j dependent jars"/>
-    <conf name="tomcat-dbcp.main" description="tomcat-dbcp main jars"/>
-    <conf name="tomcat-dbcp.lib" description="tomcat-dbcp dependent jars"/>
-    <conf name="ecj.main" description="ecj main jars"/>
-    <conf name="ecj.lib" description="ecj dependent jars"/>
-    <conf name="tomcat-servlet-api.main" description="tomcat-servlet-api main jars"/>
-    <conf name="tomcat-jsp-api.main" description="tomcat-jsp-api main jars"/>
-    <conf name="tomcat-jsp-api.lib" description="tomcat-jsp-api lib jars"/>
-    <conf name="junit.main" description="junit main jars"/>
-    <conf name="jetty-server.main" description="jetty-server main jars"/>
-    <conf name="jetty-server.lib" description="jetty-server lib jars"/>
-    <conf name="jetty-servlet.main" description="jetty-servlet main jars"/>
-    <conf name="jetty-servlet.lib" description="jetty-servlet lib jars"/>
-    <conf name="jetty-jmx.main" description="jetty-jmx main jars"/>
-    <conf name="jetty-jmx.lib" description="jetty-jmx lib jars"/>
-    <conf name="jetty-webapp.main" description="jetty-webapp main jars"/>
-    <conf name="jetty-webapp.lib" description="jetty-webapp lib jars"/>
-    <conf name="jetty-jsp.main" description="jetty-jsp main jars"/>
-    <conf name="jetty-jsp.lib" description="jetty-jsp lib jars"/>
-    <conf name="jetty-annotations.main" description="jetty-annotations main jars"/>
-    <conf name="jetty-annotations.lib" description="jetty-annotations lib jars"/>
-    <conf name="apache-jsp.main" description="apache-jsp main jars"/>
-    <conf name="apache-jsp.lib" description="apache-jsp lib jars"/>
-    <conf name="checker.main" description="checker main jars"/>
+    <conf name="checkstyle.main"
+          description="checkstyle main jar" />
+    <conf name="gformat.main"
+          description="google java format main jar" />
+    <conf name="checkstyle.lib"
+          description="checkstyle dependencies" />
+    <conf name="gformat.lib"
+          description="google java format dependencies" />
+    <conf name="pmd-core.main"
+          description="pmd core main jars" />
+    <conf name="pmd-core.lib"
+          description="pmd core dependent jars" />
+    <conf name="pmd-java.main"
+          description="pmd java main jars" />
+    <conf name="pmd-java.lib"
+          description="pmd java dependent jars" />
+    <conf name="log4j-core.main"
+          description="log4j core main jars" />
+    <conf name="log4j-core.lib"
+          description="log4j core dependent jars" />
+    <conf name="log4j-api.main"
+          description="log4j api main jars" />
+    <conf name="log4j-api.lib"
+          description="log4j api dependent jars" />
+    <conf name="saxon"
+          description="saxon jars" />
+    <conf name="sevntu-check.main"
+          description="sevntu-check main jars" />
+    <conf name="sevntu-check.lib"
+          description="sevntu-check dependent jars" />
+    <conf name="jacorb.main"
+          description="jacorb main jars" />
+    <conf name="jacorb.lib"
+          description="jacorb dependent jars" />
+    <conf name="derby.main"
+          description="derby main jars" />
+    <conf name="derby.lib"
+          description="derby dependent jars" />
+    <conf name="derbytools.main"
+          description="derbytools main jars" />
+    <conf name="derbytools.lib"
+          description="derbytools dependent jars" />
+    <conf name="derbyshared.main"
+          description="derbyshared main jars" />
+    <conf name="derbyshared.lib"
+          description="derbyshared dependent jars" />
+    <conf name="tomcat-embed-core.main"
+          description="tomcat-embed-core main jars" />
+    <conf name="tomcat-embed-core.lib"
+          description="tomcat-embed-core dependent jars" />
+    <conf name="tomcat-embed-jasper.main"
+          description="tomcat-embed-jasper main jars" />
+    <conf name="tomcat-embed-jasper.lib"
+          description="tomcat-embed-jasper dependent jars" />
+    <conf name="tomcat-embed-logging-juli.main"
+          description="tomcat-embed-logging-juli main jars" />
+    <conf name="tomcat-embed-logging-juli.lib"
+          description="tomcat-embed-logging-juli dependent jars" />
+    <conf name="tomcat-embed-logging-log4j.main"
+          description="tomcat-embed-logging-log4j main jars" />
+    <conf name="tomcat-embed-logging-log4j.lib"
+          description="tomcat-embed-logging-log4j dependent jars" />
+    <conf name="tomcat-dbcp.main"
+          description="tomcat-dbcp main jars" />
+    <conf name="tomcat-dbcp.lib"
+          description="tomcat-dbcp dependent jars" />
+    <conf name="ecj.main"
+          description="ecj main jars" />
+    <conf name="ecj.lib"
+          description="ecj dependent jars" />
+    <conf name="tomcat-servlet-api.main"
+          description="tomcat-servlet-api main jars" />
+    <conf name="tomcat-jsp-api.main"
+          description="tomcat-jsp-api main jars" />
+    <conf name="tomcat-jsp-api.lib"
+          description="tomcat-jsp-api lib jars" />
+    <conf name="junit.main"
+          description="junit main jars" />
+    <conf name="jetty-server.main"
+          description="jetty-server main jars" />
+    <conf name="jetty-server.lib"
+          description="jetty-server lib jars" />
+    <conf name="jetty-servlet.main"
+          description="jetty-servlet main jars" />
+    <conf name="jetty-servlet.lib"
+          description="jetty-servlet lib jars" />
+    <conf name="jetty-jmx.main"
+          description="jetty-jmx main jars" />
+    <conf name="jetty-jmx.lib"
+          description="jetty-jmx lib jars" />
+    <conf name="jetty-webapp.main"
+          description="jetty-webapp main jars" />
+    <conf name="jetty-webapp.lib"
+          description="jetty-webapp lib jars" />
+    <conf name="jetty-jsp.main"
+          description="jetty-jsp main jars" />
+    <conf name="jetty-jsp.lib"
+          description="jetty-jsp lib jars" />
+    <conf name="jetty-annotations.main"
+          description="jetty-annotations main jars" />
+    <conf name="jetty-annotations.lib"
+          description="jetty-annotations lib jars" />
+    <conf name="apache-jsp.main"
+          description="apache-jsp main jars" />
+    <conf name="apache-jsp.lib"
+          description="apache-jsp lib jars" />
+    <conf name="checker.main"
+          description="checker main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
-    <dependency org="com.google.googlejavaformat" name="google-java-format" rev="1.7" conf="gformat.main-&gt;master;gformat.lib-&gt;runtime"/>
+    <dependency org="com.google.googlejavaformat"
+                name="google-java-format"
+                rev="1.7"
+                conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
-    <dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.24" conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime"/>
+    <dependency org="com.puppycrawl.tools"
+                name="checkstyle"
+                rev="8.24"
+                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
-    <dependency org="net.sourceforge.pmd" name="pmd-core" rev="6.18.0" conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile"/>
-    <dependency org="net.sourceforge.pmd" name="pmd-java" rev="6.18.0" conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-core"
+                rev="6.18.0"
+                conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-java"
+                rev="6.18.0"
+                conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
     </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
-    <dependency org="net.sourceforge.saxon" name="saxon" rev="9.1.0.8" conf="saxon-&gt;master"/>
-      <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.12.0" conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile"/>
-      <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.12.0" conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile"/>
+    <dependency org="net.sourceforge.saxon"
+                name="saxon"
+                rev="9.1.0.8"
+                conf="saxon-&gt;master" />
+    <dependency org="org.apache.logging.log4j"
+                name="log4j-api"
+                rev="2.12.0"
+                conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile" />
+    <dependency org="org.apache.logging.log4j"
+                name="log4j-core"
+                rev="2.12.0"
+                conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
-    <dependency org="com.github.sevntu-checkstyle" name="sevntu-checks" rev="1.35.0"
-      conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile"/>
-  <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
-  <dependency org="org.jacorb" name="jacorb" rev="3.9" conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile"/>
-  <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
-<dependency org="org.apache.derby" name="derby" rev="10.15.1.3" conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
-<dependency org="org.apache.derby" name="derbytools" rev="10.15.1.3" conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
-<dependency org="org.apache.derby" name="derbyshared" rev="10.15.1.3" conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
-<dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="9.0.24" conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
-<dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-log4j" rev="9.0.0.M6" conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile"/>
-<dependency org="org.apache.tomcat" name="tomcat-dbcp" rev="9.0.24" conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
-<dependency org="org.apache.tomcat.embed" name="tomcat-embed-jasper" rev="9.0.24" conf="tomcat-embed-jasper.main-&gt;master;tomcat-embed-jasper.lib-&gt;runtime;tomcat-embed-jasper.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
-<dependency org="org.eclipse.jdt.core.compiler" name="ecj" rev="4.6.1" conf="ecj.main-&gt;master;ecj.lib-&gt;runtime;ecj.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
-<dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-juli" rev="9.0.0.M6" conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
-<dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="9.0.24" conf="tomcat-servlet-api.main-&gt;master"/>
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
-<dependency org="org.apache.tomcat" name="tomcat-jsp-api" rev="9.0.24" conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/junit/junit -->
-<dependency org="junit" name="junit" rev="4.4" conf="junit.main-&gt;master"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
-<dependency org="org.eclipse.jetty" name="jetty-server" rev="10.0.0-alpha0" conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
-<dependency org="org.eclipse.jetty" name="jetty-servlet" rev="10.0.0-alpha0" conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
-<dependency org="org.eclipse.jetty" name="jetty-jmx" rev="10.0.0-alpha0" conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
-<dependency org="org.eclipse.jetty" name="jetty-webapp" rev="10.0.0-alpha0" conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
-<dependency org="org.eclipse.jetty" name="jetty-jsp" rev="9.3.0.M1" conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
-<dependency org="org.eclipse.jetty" name="jetty-annotations" rev="10.0.0-alpha0" conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
-<dependency org="org.eclipse.jetty" name="apache-jsp" rev="10.0.0-alpha0" conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile"/>
-<!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
-<dependency org="org.checkerframework" name="checker" rev="2.11.0" conf="checker.main-&gt;master"/>
-</dependencies>
+    <dependency org="com.github.sevntu-checkstyle"
+                name="sevntu-checks"
+                rev="1.35.0"
+                conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
+    <dependency org="org.jacorb"
+                name="jacorb"
+                rev="3.9"
+                conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
+    <dependency org="org.apache.derby"
+                name="derby"
+                rev="10.15.1.3"
+                conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
+    <dependency org="org.apache.derby"
+                name="derbytools"
+                rev="10.15.1.3"
+                conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+    <dependency org="org.apache.derby"
+                name="derbyshared"
+                rev="10.15.1.3"
+                conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
+    <dependency org="org.apache.tomcat.embed"
+                name="tomcat-embed-core"
+                rev="9.0.24"
+                conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
+    <dependency org="org.apache.tomcat.embed"
+                name="tomcat-embed-logging-log4j"
+                rev="9.0.0.M6"
+                conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile" />
+    <dependency org="org.apache.tomcat"
+                name="tomcat-dbcp"
+                rev="9.0.24"
+                conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+    <dependency org="org.apache.tomcat.embed"
+                name="tomcat-embed-jasper"
+                rev="9.0.24"
+                conf="tomcat-embed-jasper.main-&gt;master;tomcat-embed-jasper.lib-&gt;runtime;tomcat-embed-jasper.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
+    <dependency org="org.eclipse.jdt.core.compiler"
+                name="ecj"
+                rev="4.6.1"
+                conf="ecj.main-&gt;master;ecj.lib-&gt;runtime;ecj.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
+    <dependency org="org.apache.tomcat.embed"
+                name="tomcat-embed-logging-juli"
+                rev="9.0.0.M6"
+                conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+    <dependency org="org.apache.tomcat"
+                name="tomcat-servlet-api"
+                rev="9.0.24"
+                conf="tomcat-servlet-api.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
+    <dependency org="org.apache.tomcat"
+                name="tomcat-jsp-api"
+                rev="9.0.24"
+                conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency org="junit"
+                name="junit"
+                rev="4.4"
+                conf="junit.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-server"
+                rev="10.0.0-alpha0"
+                conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-servlet"
+                rev="10.0.0-alpha0"
+                conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jmx"
+                rev="10.0.0-alpha0"
+                conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-webapp"
+                rev="10.0.0-alpha0"
+                conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jsp"
+                rev="9.3.0.M1"
+                conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-annotations"
+                rev="10.0.0-alpha0"
+                conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
+    <dependency org="org.eclipse.jetty"
+                name="apache-jsp"
+                rev="10.0.0-alpha0"
+                conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
+    <dependency org="org.checkerframework"
+                name="checker"
+                rev="2.11.0"
+                conf="checker.main-&gt;master" />
+  </dependencies>
 </ivy-module>

@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ConnectionTemplate.java"
-       checks="AbstractClassNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='ConnectionTemplate']]"/>
+  <suppress-xpath files="ConnectionTemplate.java"
+                  checks="AbstractClassNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ConnectionTemplate']]" />
 </suppressions>

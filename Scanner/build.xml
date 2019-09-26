@@ -96,13 +96,14 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}" input="input.stdin">
+    <java classname="${main.class}"
+          input="input.stdin">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class1}" >
+    <java classname="${main.class1}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -143,8 +144,8 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
-            <java classname="${cs.main.class}"
-              logError="true">
+    <java classname="${cs.main.class}"
+          logError="true">
       <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
