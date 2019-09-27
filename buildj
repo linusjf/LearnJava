@@ -71,7 +71,7 @@ readOptions()
 }
 
 proj=$1
-ver="1.8"
+declare -i ver=8
 declare -i JVER=8
 version="0.0.0"
 auxClasspath=""
