@@ -197,6 +197,8 @@
                  toConsole="${pmd.toConsole}"></formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
+        <include name="**/*.jsp" />
+        <include name="**/*.xml" />
       </fileset>
     </pmd>
   </target>

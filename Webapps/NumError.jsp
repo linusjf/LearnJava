@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- NumError.jsp -->
-<%@ page isErrorPage="true" %>
+<%@ page contentType="text/html; charset=UTF-8" isErrorPage="true" %>
+<%-- NumError.jsp --%>
 <HTML> 
  <HEAD> 
  <TITLE>Error Page</TITLE> 

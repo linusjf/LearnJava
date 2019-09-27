@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- Adder.jsp -->
-<%@ page errorPage="NumError.jsp" %>
+<%-- Adder.jsp --%>
+<%@ page contentType="text/html; charset=UTF-8" errorPage="NumError.jsp" %>
 <%
  String value1 = request.getParameter("Num1");
  String value2 = request.getParameter("Num2");
