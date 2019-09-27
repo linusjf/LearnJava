@@ -425,4 +425,16 @@
   <rule ref="category/java/security.xml/HardCodedCryptoKey" />
   <rule ref="category/java/security.xml/InsecureCryptoIv" />
   <rule ref="category/java/bestpractices.xml/DoubleBraceInitialization" />
+<rule ref="category/jsp/bestpractices.xml/NoClassAttribute" />
+<rule ref="category/jsp/codestyle.xml/DuplicateJspImports" />
+<rule ref="category/jsp/bestpractices.xml/NoJspForward" />
+<rule ref="category/jsp/bestpractices.xml/NoHtmlComments" />
+<rule ref="category/jsp/design.xml/NoInlineScript" />
+<rule ref="category/jsp/design.xml/NoInlineStyleInformation" />
+<rule ref="category/jsp/design.xml/NoLongScripts" />
+<rule ref="category/jsp/security.xml/IframeMissingSrcAttribute" />
+  <rule ref="category/jsp/security.xml/NoUnsanitizedJSPExpression" />
+<rule ref="category/jsp/errorprone.xml/JspEncoding" />
+<rule ref="category/jsp/design.xml/NoScriptlets" />
+<rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
 </ruleset>

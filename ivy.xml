@@ -37,6 +37,8 @@
           description="pmd java main jars" />
     <conf name="pmd-java.lib"
           description="pmd java dependent jars" />
+    <conf name="pmd-jsp.main"
+          description="pmd jsp main jars" />
     <conf name="log4j-core.main"
           description="log4j core main jars" />
     <conf name="log4j-core.lib"
@@ -150,6 +152,11 @@
                 name="pmd-java"
                 rev="6.18.0"
                 conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
+    </dependency>
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-jsp"
+                rev="6.18.0"
+                conf="pmd-jsp.main-&gt;master">
     </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
     <dependency org="net.sourceforge.saxon"
