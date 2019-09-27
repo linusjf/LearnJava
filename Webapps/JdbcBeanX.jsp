@@ -5,6 +5,7 @@
  <jsp:useBean id="data" class="jdbc.JdbcBean" />
  <jsp:useBean id="countData" class="jdbc.JdbcBeanX" />
  <HEAD>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <TITLE>JDBC Bean Test</TITLE>
    <STYLE>body{text-align:center;}</STYLE>
  </HEAD>

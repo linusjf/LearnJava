@@ -5,6 +5,7 @@
  <jsp:setProperty name="purchase" property="*" /> 
 </jsp:useBean> 
  <HEAD> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <TITLE>Order Bean Test</TITLE> 
  <STYLE> 
  body {text-align:center;} 

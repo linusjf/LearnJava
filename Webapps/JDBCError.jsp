@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" isErrorPage="true" %> 
 <HTML> 
  <HEAD> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <TITLE>Error Page</TITLE> 
  <STYLE>body{text-align:center;}</STYLE> 
  </HEAD> 

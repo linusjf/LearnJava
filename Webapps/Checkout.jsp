@@ -4,6 +4,7 @@
 <%@ page import="java.util.Enumeration" %>
 <HTML> 
  <HEAD> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <TITLE>Checkout</TITLE> 
  <STYLE> 
  body{text-align=center; } 
