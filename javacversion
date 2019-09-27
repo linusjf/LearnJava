@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+regex="^javac ([1-9]{1,2})\.[0-9]+\.[0-9]+$"
+output=$(javac --version)
+if [[ $output =~ $regex ]]
+  then
+    echo ${BASH_REMATCH[1]}
+    exit $?
+  else
+    exit 1
+fi
