@@ -47,7 +47,7 @@ readOptions()
 }
 
 proj=$1
-ver="1.7"
+declare -i ver=7
 version="0.0.0"
 declare -r distDir="dist"
 declare -r verFile=".ver"
