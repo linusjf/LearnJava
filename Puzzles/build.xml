@@ -935,7 +935,7 @@
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
-                 pathsep=" " />
+                 pathsep="" />
     <loadfile property="gformat.cp"
               srcFile="../${gformat.classpath.file}" />
     <java classname="${gformat.main.class}">
@@ -959,7 +959,7 @@
              excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
-                 pathsep=" " />
+                 pathsep="" />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
