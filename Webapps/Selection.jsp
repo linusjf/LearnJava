@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <HTML>
   <HEAD>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,8 +11,7 @@
   </HEAD>
   <BODY>
     <%
-    String currentProduct;
-    currentProduct = request.getParameter("Product");
+    String currentProduct = request.getParameter("Product");
     if (currentProduct.equals("Checkout"))
       response.sendRedirect("Checkout.jsp");
     else

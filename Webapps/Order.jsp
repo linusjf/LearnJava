@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %> 
-<HTML> 
+<HTML>
 <jsp:useBean id="purchase" class="shopping.OrderBean"> 
  <jsp:setProperty name="purchase" property="*" /> 
 </jsp:useBean> 
