@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" import="java.util.Vector" errorPage="JDBCXError.jsp" %>
 <HTML>
-  <%@ page language="java" contentType="text/html" 
- import="java.util.*" errorPage="JDBCXError.jsp" %>
  <jsp:useBean id="data" class="jdbc.JdbcBean" />
  <jsp:useBean id="countData" class="jdbc.JdbcBeanX" />
  <HEAD>

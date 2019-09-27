@@ -29,6 +29,7 @@ public final class OneWebApp {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.AvoidCatchingGenericException")
   public static void main(String[] args) {
     try {
       // Create a basic jetty server object that will listen on port 8080.

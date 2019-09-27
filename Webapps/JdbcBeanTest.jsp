@@ -1,8 +1,8 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" import="java.util.Vector" errorPage="JDBCError.jsp" %>
 <HTML>
-  <%@ page language="java" contentType="text/html" 
- import="java.util.Vector" errorPage="JDBCError.jsp" %>
- <jsp:useBean id="data" class="jdbc.JdbcBean" />
+<jsp:useBean id="data" class="jdbc.JdbcBean" />
  <HEAD>
    <TITLE>JDBC Bean Test</TITLE>
    <STYLE>body{text-align:center;}</STYLE>
