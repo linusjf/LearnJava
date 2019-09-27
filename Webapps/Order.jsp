@@ -13,11 +13,11 @@
  <BODY> 
  <H1>Results</H1> 
  <BR/> 
- <TABLE STYLE="background-color:aqua"> 
+ <TABLE> 
  <TR> 
- <TH STYLE="background-color:orange"> 
+ <TH> 
  Field Name</TH> 
- <TH STYLE="background-color:orange"> 
+ <TH> 
  Value</TH> 
  </TR> 
  <TR> 
@@ -27,8 +27,7 @@
  </TR> 
  <TR> 
  <TD>addressLine1</TD> 
- <TD><jsp:getProperty name="purchase"
-                      property="addressLine1" /></TD> 
+ <TD><jsp:getProperty name="purchase" property="addressLine1" /></TD> 
  </TR> 
  <TR> 
  <TD>addressLine2</TD> 
@@ -48,7 +47,7 @@
  <TR> 
  <TD>orderItem</TD> 
  <TD><jsp:getProperty name="purchase" 
- property="orderItem" /></ TD> 
+ property="orderItem" /></TD> 
  </TR> 
  <TR> 
  <TD>quantity</TD> 
@@ -57,11 +56,11 @@
  </TR> 
  </TABLE> 
  <BR/><BR/> 
- <FORM METHOD=GET ACTION="Acceptance.html"> 
- <!-- 
+ <FORM METHOD="GET" ACTION="Acceptance.html"> 
+ <%-- 
  When confirm button pressed, 
  display Acceptance.html . 
- --> 
+ --%> 
  <INPUT TYPE="submit" VALUE="Confirm"> 
  </FORM> 
  </BODY> 

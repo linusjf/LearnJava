@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<!-- Checkout.jsp --> 
+<%-- Checkout.jsp --%> 
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.Enumeration" %>
 <HTML> 
  <HEAD> 
@@ -14,11 +15,9 @@
  <%
  final float APPLES_PRICE = 1.45F;
  final float PEARS_PRICE = 1.75F;
- //In a real application, the above prices would be
- //retrieved from a database, of course.
  %>
  <BR/><BR/><BR/> 
- <H1><P STYLE="color:red">Order List</P></H1> 
+ <H1><P>Order List</P></H1> 
  <BR><BR><BR> 
  <TABLE> 
  <TR> 
@@ -26,17 +25,16 @@
  <TH>Weight(kg)</TH> 
  <TH>Cost(£)</TH> 
  </TR> 
-<!-- Now make use of the implicit object session --> 
-<!-- to retrieve the contents of the shopping cart… --> 
+<%-- Now make use of the implicit object session --%> 
+<%-- to retrieve the contents of the shopping cart… --%> 
 <%
  session.removeAttribute("currentProd");
- //(Removes "Checkout".)
  Enumeration prodNames = session.getAttributeNames();
  float totalCost = 0;
  int numProducts = 0;
  while (prodNames.hasMoreElements())
  {
- float wt=0,cost=0;
+ float wt = 0,cost = 0;
  String product = (String)prodNames.nextElement();
  String stringWt =
  (String)session.getAttribute(product);
@@ -52,11 +50,11 @@
  <TD> <%= String.format("%.2f",cost) %></TD> 
  </TR> 
 <%
- totalCost+=cost;
+ totalCost += cost;
  numProducts++;
  }
 %>
- <TR STYLE="background-color:yellow"> 
+ <TR> 
 <%
  if (numProducts == 0)
  {
@@ -68,11 +66,11 @@
  else
  {
 %>
- <TR STYLE="background-color:yellow"> 
- <TD></TD> <!-- Blank cell --> 
+ <TR> 
+ <TD></TD> 
  <TD>Total cost:</TD> 
  <TD> 
- <%= String.format("%.2f",totalCost) %></ TD> 
+ <%= String.format("%.2f",totalCost) %></TD> 
  </TR> 
 <%
  }
