@@ -2,11 +2,11 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;    
-import java.sql.DriverManager; 
-import java.sql.ResultSet;     
-import java.sql.SQLException;  
-import java.sql.Statement;    
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -81,27 +81,27 @@ public class DbServlet extends HttpServlet {
   }
 
   private void printHtmlTableHeader(PrintWriter out) {
-      out.println("Updated table:");
-      out.println("<BR/><BR/>");
-      out.println("<TABLE BORDER>");
-      out.println("<TR><TH>Surname</TH>");
-      out.println("<TH>Forename(s)</TH>");
-      out.println("<TH>Phone No.</TH></TR>");
+    out.println("Updated table:");
+    out.println("<BR/><BR/>");
+    out.println("<TABLE BORDER>");
+    out.println("<TR><TH>Surname</TH>");
+    out.println("<TH>Forename(s)</TH>");
+    out.println("<TH>Phone No.</TH></TR>");
   }
 
   private void printHtmlInsertError(PrintWriter out) {
-      out.println("<BR/><H2>Unable to execute"
-                  + " insertion!</H2>");
-      out.println("</BODY>");
-      out.println("</HTML>");
-      out.flush();
+    out.println("<BR/><H2>Unable to execute"
+                + " insertion!</H2>");
+    out.println("</BODY>");
+    out.println("</HTML>");
+    out.flush();
   }
-  
+
   private void printHtmlSelectError(PrintWriter out) {
-      out.println("<BR/><H2>Unable to retrieve data!</H2>");
-      out.println("</BODY>");
-      out.println("</HTML>");
-      out.flush();
+    out.println("<BR/><H2>Unable to retrieve data!</H2>");
+    out.println("</BODY>");
+    out.println("</HTML>");
+    out.flush();
   }
 
   public void destroy() {

@@ -4,7 +4,9 @@ configFilePath="$(find .. -maxdepth 2 \
 -type f -name "$configFileName" ! -path \
 "**/.git/**" | head -n 1)"
 find . -maxdepth 2 -type f -name "*.xml" \
+  -o -name "*.html" \
   ! -path "**/.git/**" \
-  | parallel -j 5 -I% tidy -config "$configFilePath" \
-  -quiet -xml -m %
+  | parallel -j 5 xargs -I {} sh -c \
+  'tidy -config "$configFilePath" \
+  -quiet -xml -m $1 && echo $1' sh {}
 exit $?

@@ -73,7 +73,7 @@ public class OrderBean implements java.io.Serializable {
   public void setQuantity(int qty) {
     quantity = qty;
   }
-  
+
   public void setOrderDate(Date orderDate) {
     this.orderDate = orderDate;
   }

@@ -56,9 +56,9 @@ public class ShowSum extends HttpServlet {
                                       HttpServletResponse response,
                                       HttpSession session) {
     String forename = request.getParameter("Name");
-    if (forename == null)  
+    if (forename == null)
       return;
-    final int age = 60; 
+    final int age = 60;
     if (!forename.isEmpty()) {
       Cookie nameCookie = new Cookie("name", forename);
       nameCookie.setMaxAge(age);

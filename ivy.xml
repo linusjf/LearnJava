@@ -158,13 +158,11 @@
     <dependency org="net.sourceforge.pmd"
                 name="pmd-jsp"
                 rev="6.18.0"
-                conf="pmd-jsp.main-&gt;master">
-    </dependency>
+                conf="pmd-jsp.main-&gt;master"></dependency>
     <dependency org="net.sourceforge.pmd"
                 name="pmd-xml"
                 rev="6.18.0"
-                conf="pmd-xml.main-&gt;master">
-    </dependency>
+                conf="pmd-xml.main-&gt;master"></dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
     <dependency org="net.sourceforge.saxon"
                 name="saxon"

@@ -956,7 +956,7 @@
     <fileset dir="${basedir}"
              id="javasrcs"
              includes="**/*.java"
-      excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
+             excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
@@ -981,7 +981,7 @@
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java"
-        excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java"/>
+               excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
