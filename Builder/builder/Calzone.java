@@ -29,7 +29,8 @@ public final class Calzone extends Pizza {
 
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
-    private boolean sauce; // Default
+    private boolean sauce; 
+    // Default
 
     /**
      * sets sauce.

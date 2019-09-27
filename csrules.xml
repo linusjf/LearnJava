@@ -80,7 +80,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <module name="TreeWalker">
     <module name="TodoComment"/>
     <module name="TrailingComment">
-      <property name="legalComment" value="(.*clang-format.*|.*NOPMD.*)"/>
+      <property name="legalComment" value="(.*clang-format.*|.*NOPMD.*|.*fall.*)"/>
     </module>
     <module name="NoWhitespaceAfter" />
     <module name="EmptyForInitializerPad" />

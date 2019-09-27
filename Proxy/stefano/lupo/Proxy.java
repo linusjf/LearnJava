@@ -89,7 +89,8 @@ public class Proxy implements Runnable {
    */
   public Proxy(int port) {
     // Start dynamic manager on a separate thread.
-    new Thread(this).start();  // Starts overriden run() method at bottom
+    new Thread(this).start();  
+    // Starts overriden run() method at bottom
 
     try {
       // Create the Server Socket for the Proxy
