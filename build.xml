@@ -50,6 +50,8 @@
                   conf="pmd-java.lib" />
     <ivy:retrieve pathid="pmd-jsp.main.path"
                   conf="pmd-jsp.main" />
+    <ivy:retrieve pathid="pmd-xml.main.path"
+                  conf="pmd-xml.main" />
     <ivy:retrieve pathid="log4j-core.main.path"
                   conf="log4j-core.main" />
     <ivy:retrieve pathid="log4j-api.main.path"
@@ -147,7 +149,7 @@
     <echo file="${gformat.classpath.file}"
           message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
     <echo file="${pmd.classpath.file}"
-          message="${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
+          message="${toString:pmd-xml.main.path}:${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
     <echo file="${log4j.classpath.file}"
           message="${toString:log4j-core.main.path}:${toString:log4j-api.main.path}" />
     <echo file="${sevntu-check.classpath.file}"

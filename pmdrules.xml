@@ -437,4 +437,5 @@
 <rule ref="category/jsp/errorprone.xml/JspEncoding" />
 <rule ref="category/jsp/design.xml/NoScriptlets" />
 <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
+  <rule ref="category/xml/errorprone.xml/MistypedCDATASection" />
 </ruleset>
