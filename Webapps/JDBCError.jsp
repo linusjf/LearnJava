@@ -10,10 +10,10 @@
  <body> 
  <br/><br/><br/> 
  <h3>Data Retrieval Error<br/><br/> 
- <P> 
- <%= exception.toString() %></P></h3> 
+ <p> 
+ <%= exception.toString() %></p></h3> 
  <br/><br/><br/>
- <form method=GET action="JDBC.jsp"> 
+ <form method="GET" action="JDBC.jsp"> 
  <input type="Submit" value="Try again"> 
  </form> 
  </body> 

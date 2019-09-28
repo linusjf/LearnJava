@@ -37,8 +37,8 @@
        %>
        </table>
        Number of accounts held:
-       <P>
+       <p>
        <jsp:getProperty name="countData" property="numAccounts" />
-       </P>
+       </p>
  </body>
 </html>

@@ -18,7 +18,7 @@
  final float PEARS_PRICE = 1.75F;
  %>
  <br/><br/><br/> 
- <h1><P>Order List</P></h1> 
+ <h1><p>Order List</p></h1> 
  <br><br><br> 
  <table> 
  <tr> 

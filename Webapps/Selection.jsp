@@ -18,14 +18,14 @@
       session.setAttribute("currentProd",currentProduct);
     %>
     <h1>
-      <P><%= currentProduct %></P>
+      <p><%= currentProduct %></p>
     </h1>
     <br/><br/><br/>
     <form method="POST" action="WeightX">
       <table>
         <tr>
           <td>Quantity required (kg)
-            <input type='Text' name='Qty' value='' size='5'>
+            <input type="Text" name="Qty" value="" size="5">
           </td>
         </tr>
       </table>
@@ -33,28 +33,28 @@
       <table>
         <tr>
           <td>
-            <input type='Radio' name='Option' value='Add' checked>Add to cart.
+            <input type="Radio" name="Option" value="Add" checked="checked">Add to cart.
           </td>
         </tr>
         <tr>
           <td>
-            <input type='Radio' name='Option'
-                   value='Remove'>Remove item from cart.
+            <input type="Radio" name="Option"
+                   value="Remove">Remove item from cart.
           </td>
         </tr>
         <tr>
           <td>
-            <input type='Radio' name='Option' value='Next'>Choose next item.
+            <input type="Radio" name="Option" value="Next">Choose next item.
           </td>
         </tr>
         <tr>
           <td>
-            <input type='Radio' name='Option' value='Checkout'>Go to checkout.
+            <input type="Radio" name="Option" value="Checkout">Go to checkout.
           </td>
         </tr>
       </table>
       <br/><br/><br/>
-      <input type='Submit' value='Submit'>
+      <input type="Submit" value="Submit">
     </form>
   </body>
 </html>

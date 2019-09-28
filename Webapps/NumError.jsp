@@ -12,9 +12,8 @@
  <%= exception.toString() %>
  </h3> 
  <br/><br/><br/> 
- <form method=GET action="SimpleAdderX.html"> 
+ <form method="GET" action="SimpleAdderX.html"> 
  <input type="Submit" value="Try again"> 
  </form> 
  </body> 
 </html>
-
