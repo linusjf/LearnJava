@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+<!DOCtype html>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page language="java" import="java.util.Vector" errorPage="JDBCError.jsp" %>
-<HTML>
+<html>
 <jsp:useBean id="data" class="jdbc.JdbcBean" />
- <HEAD>
+ <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <TITLE>JDBC Bean Test</TITLE>
-   <STYLE>body{text-align:center;}</STYLE>
- </HEAD>
-<BODY>
-   <H1>Results</H1>
- <BR/><BR/><BR/>
- <TABLE>
-   <TR>
-     <TH>Acct.No.</TH>
-     <TH>Acct.Name</TH>
-     <TH>Balance</TH>
- </TR>
+   <title>JDBC Bean Test</title>
+   <style>body{text-align:center;}</style>
+ </head>
+<body>
+   <h1>Results</h1>
+ <br/><br/><br/>
+ <table>
+   <tr>
+     <th>Acct.No.</th>
+     <th>Acct.Name</th>
+     <th>Balance</th>
+ </tr>
  <%
  Vector<Object> nums=data.getAcctDetails();
  int acctNum;
@@ -28,15 +28,15 @@
  acctName = (String)nums.elementAt(i*NUM_FIELDS + 1);
  balance = (Float)nums.elementAt(i*NUM_FIELDS + 2);
  %>
- %<TR>
-   <TD><%= acctNum %></TD>
-   <TD><%= acctName %></TD>
- <TD>
-   <%= String.format("%.2f",balance %></TD>
- </TR>
+ %<tr>
+   <td><%= acctNum %></td>
+   <td><%= acctName %></td>
+ <td>
+   <%= String.format("%.2f",balance %></td>
+ </tr>
  <%
  }
  %>
- %</TABLE>
- </BODY>
-</HTML>
+ %</table>
+ </body>
+</html>

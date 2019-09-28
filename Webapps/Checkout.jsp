@@ -1,31 +1,31 @@
-<!DOCTYPE html>
+<!DOCtype html>
 <%-- Checkout.jsp --%> 
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.Enumeration" %>
-<HTML> 
- <HEAD> 
+<html> 
+ <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <TITLE>Checkout</TITLE> 
- <STYLE> 
+ <title>Checkout</title> 
+ <style> 
  body{text-align=center; } 
  table,th,td{border:2px solid black;} 
  table{background-color:aqua;} 
- </STYLE> 
- </HEAD> 
- <BODY> 
+ </style> 
+ </head> 
+ <body> 
  <%
  final float APPLES_PRICE = 1.45F;
  final float PEARS_PRICE = 1.75F;
  %>
- <BR/><BR/><BR/> 
- <H1><P>Order List</P></H1> 
- <BR><BR><BR> 
- <TABLE> 
- <TR> 
- <TH>Item</TH> 
- <TH>Weight(kg)</TH> 
- <TH>Cost(£)</TH> 
- </TR> 
+ <br/><br/><br/> 
+ <h1><P>Order List</P></h1> 
+ <br><br><br> 
+ <table> 
+ <tr> 
+ <th>Item</th> 
+ <th>Weight(kg)</th> 
+ <th>Cost(£)</th> 
+ </tr> 
 <%-- Now make use of the implicit object session --%> 
 <%-- to retrieve the contents of the shopping cart… --%> 
 <%
@@ -45,37 +45,37 @@
  else if (product.equals("Pears"))
  cost = PEARS_PRICE * wt;
 %>
- <TR> 
- <TD> <%= product %></TD> 
- <TD> <%= wt %></TD> 
- <TD> <%= String.format("%.2f",cost) %></TD> 
- </TR> 
+ <tr> 
+ <td> <%= product %></td> 
+ <td> <%= wt %></td> 
+ <td> <%= String.format("%.2f",cost) %></td> 
+ </tr> 
 <%
  totalCost += cost;
  numProducts++;
  }
 %>
- <TR> 
+ <tr> 
 <%
  if (numProducts == 0)
  {
  %>
- <TD>*** No orders placed! ***</TD> 
- </TR> 
+ <td>*** No orders placed! ***</td> 
+ </tr> 
 <%
  }
  else
  {
 %>
- <TR> 
- <TD></TD> 
- <TD>Total cost:</TD> 
- <TD> 
- <%= String.format("%.2f",totalCost) %></TD> 
- </TR> 
+ <tr> 
+ <td></td> 
+ <td>Total cost:</td> 
+ <td> 
+ <%= String.format("%.2f",totalCost) %></td> 
+ </tr> 
 <%
  }
 %>
- </TABLE> 
- </BODY> 
-</HTML>
+ </table> 
+ </body> 
+</html>

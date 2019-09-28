@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+<!DOCtype html>
 <%-- JdbcXError.jsp --%> 
 <%@page contentType="text/html; charset=UTF-8" isErrorPage="true" %> 
-<HTML> 
- <HEAD> 
+<html> 
+ <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <TITLE>Error Page</TITLE> 
- <STYLE>body{text-align:center;}</STYLE> 
- </HEAD> 
- <BODY> 
- <BR/><BR/><BR/> 
- <H3>Data Retrieval Error<BR/><BR/> 
+ <title>Error Page</title> 
+ <style>body{text-align:center;}</style> 
+ </head> 
+ <body> 
+ <br/><br/><br/> 
+ <h3>Data Retrieval Error<br/><br/> 
  <P> 
- <%= exception.toString() %></P></H3> 
- <BR/><BR/><BR/>
- <FORM METHOD=GET ACTION="JdbcBeanX.jsp"> 
- <INPUT TYPE="Submit" VALUE="Try again"> 
- </FORM> 
- </BODY> 
-</HTML>
+ <%= exception.toString() %></P></h3> 
+ <br/><br/><br/>
+ <form method=GET action="JdbcBeanX.jsp"> 
+ <input type="Submit" value="Try again"> 
+ </form> 
+ </body> 
+</html>

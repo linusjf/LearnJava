@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCtype html>
 <%-- Adder.jsp --%>
 <%@ page contentType="text/html; charset=UTF-8" errorPage="NumError.jsp" %>
 <%
@@ -8,15 +8,15 @@
  int num2 = Integer.parseInt(value2);
  int sum = num1 + num2;
 %>
-<HTML> 
- <HEAD> 
+<html> 
+ <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <TITLE>Result</TITLE> 
- </HEAD> 
- <BODY> 
- <BR/><BR/><BR/> 
- <H1> 
+ <title>Result</title> 
+ </head> 
+ <body> 
+ <br/><br/><br/> 
+ <h1> 
  <%= "Result = " + sum %>
- </H1> 
- </BODY> 
-</HTML>
+ </h1> 
+ </body> 
+</html>

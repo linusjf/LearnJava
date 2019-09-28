@@ -1,68 +1,68 @@
-<!DOCTYPE HTML>
+<!DOCtype html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %> 
-<HTML>
+<html>
 <jsp:useBean id="purchase" class="shopping.OrderBean"> 
  <jsp:setProperty name="purchase" property="*" /> 
 </jsp:useBean> 
- <HEAD> 
+ <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <TITLE>Order Bean Test</TITLE> 
- <STYLE> 
+ <title>Order Bean Test</title> 
+ <style> 
  body {text-align:center;} 
- </STYLE> 
- </HEAD> 
- <BODY> 
- <H1>Results</H1> 
- <BR/> 
- <TABLE> 
- <TR> 
- <TH> 
- Field Name</TH> 
- <TH> 
- Value</TH> 
- </TR> 
- <TR> 
- <TD>name</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="name" /></TD> 
- </TR> 
- <TR> 
- <TD>addressLine1</TD> 
- <TD><jsp:getProperty name="purchase" property="addressLine1" /></TD> 
- </TR> 
- <TR> 
- <TD>addressLine2</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="addressLine2" /></TD> 
- </TR> 
- <TR> 
- <TD>addressLine3</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="addressLine3" /></TD> 
- </TR> 
- <TR> 
- <TD>postCode</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="postCode" /></TD> 
- </TR> 
- <TR> 
- <TD>orderItem</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="orderItem" /></TD> 
- </TR> 
- <TR> 
- <TD>quantity</TD> 
- <TD><jsp:getProperty name="purchase" 
- property="quantity" /></TD> 
- </TR> 
- </TABLE> 
- <BR/><BR/> 
- <FORM METHOD="GET" ACTION="Acceptance.html"> 
+ </style> 
+ </head> 
+ <body> 
+ <h1>Results</h1> 
+ <br/> 
+ <table> 
+ <tr> 
+ <th> 
+ Field Name</th> 
+ <th> 
+ Value</th> 
+ </tr> 
+ <tr> 
+ <td>name</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="name" /></td> 
+ </tr> 
+ <tr> 
+ <td>addressLine1</td> 
+ <td><jsp:getProperty name="purchase" property="addressLine1" /></td> 
+ </tr> 
+ <tr> 
+ <td>addressLine2</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="addressLine2" /></td> 
+ </tr> 
+ <tr> 
+ <td>addressLine3</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="addressLine3" /></td> 
+ </tr> 
+ <tr> 
+ <td>postCode</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="postCode" /></td> 
+ </tr> 
+ <tr> 
+ <td>orderItem</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="orderItem" /></td> 
+ </tr> 
+ <tr> 
+ <td>quantity</td> 
+ <td><jsp:getProperty name="purchase" 
+ property="quantity" /></td> 
+ </tr> 
+ </table> 
+ <br/><br/> 
+ <form method="GET" action="Acceptance.html"> 
  <%-- 
  When confirm button pressed, 
  display Acceptance.html . 
  --%> 
- <INPUT TYPE="submit" VALUE="Confirm"> 
- </FORM> 
- </BODY> 
-</HTML> 
+ <input type="submit" value="Confirm"> 
+ </form> 
+ </body> 
+</html> 

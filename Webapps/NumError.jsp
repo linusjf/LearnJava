@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+<!DOCtype html>
 <%@ page contentType="text/html; charset=UTF-8" isErrorPage="true" %>
 <%-- NumError.jsp --%>
-<HTML> 
- <HEAD> 
+<html> 
+ <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <TITLE>Error Page</TITLE> 
- </HEAD> 
- <BODY> 
- <BR/><BR/><BR/> 
- <H3>Data Entry Error<BR/><BR/> 
+ <title>Error Page</title> 
+ </head> 
+ <body> 
+ <br/><br/><br/> 
+ <h3>Data Entry Error<br/><br/> 
  <%= exception.toString() %>
- </H3> 
- <BR/><BR/><BR/> 
- <FORM METHOD=GET ACTION="SimpleAdderX.html"> 
- <INPUT TYPE="Submit" VALUE="Try again"> 
- </FORM> 
- </BODY> 
-</HTML>
+ </h3> 
+ <br/><br/><br/> 
+ <form method=GET action="SimpleAdderX.html"> 
+ <input type="Submit" value="Try again"> 
+ </form> 
+ </body> 
+</html>
 
