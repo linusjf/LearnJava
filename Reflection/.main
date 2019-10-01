@@ -3,3 +3,4 @@ reflection.Fielded
 reflection.Methodical
 reflection.Construct
 reflection.CarBean
+reflection.StaticReflection
