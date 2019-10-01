@@ -21,11 +21,11 @@ public final class Fielded {
         System.out.println("Name: " + field.getName());
         System.out.println("Type: " + field.getType());
         // values
-        if (field.isAccessible()) {
+        if (field.canAccess(stringer)) {
           System.out.println("Get: " + field.get(stringer));
         }
         System.out.println("Modifiers:" + field.getModifiers());
-        System.out.println("isAccesible: " + field.isAccessible());
+        System.out.println("isAccessible: " + field.canAccess(stringer));
       }
       try {
         stringclass.getField("hashCode");
