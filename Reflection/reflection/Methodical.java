@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.lang.reflect.Modifier;
 
 public final class Methodical {
 
@@ -42,6 +43,12 @@ public final class Methodical {
       for (Class<?> exceptionType: exceptionTypes) {
         System.out.println("exception name " + exceptionType.getName());
       }
+      int modifiers = method.getModifiers();
+      System.out.println(Modifier.toString(modifiers &
+            Modifier.methodModifiers()));
+      if (Modifier.isStatic(modifiers))
+        System.out.println("is accessible: " + method.canAccess(null));
+      else  
       System.out.println("is accessible: " + method.canAccess(obj));
       System.out.println("is varArgs: " + method.isVarArgs());
     }
