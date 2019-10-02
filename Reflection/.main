@@ -8,3 +8,5 @@ reflection.Arrayed
 reflection.Collecting
 reflection.Annotating
 reflection.TestClassNames
+reflection.GenericsClass
+reflection.Bridge

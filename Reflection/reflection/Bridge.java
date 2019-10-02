@@ -3,9 +3,10 @@ package reflection;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 
-public class Bridge {
+public enum Bridge {
+  ;
 
-  public static void main(String args[]) {
+  public static void main(String... args) {
     try {
       Class<? extends Object> bigInt = BigInteger.class;
       Method[] methods = bigInt.getMethods();

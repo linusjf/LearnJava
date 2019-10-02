@@ -3,6 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="TestClassNames.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='reflection']]" />
   <suppress-xpath files="Arrayed.java"
                   checks="ExecutableStatementCountCheck"
                   query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />

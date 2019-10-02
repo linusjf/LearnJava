@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Class to show how to use reflection and generics
+ * Class to show how to use reflection and generics.
  *
  * @author dgutierrez-diez
  */
 public class GenericsClass {
 
   List<String> internalList;
-  Map<String,Object> internalMap;
+  Map<String, Object> internalMap;
 
   public List<String> getInternalList() {
     return internalList;
   }
-  
-  public Map<String,Object> getInternalMap() {
+
+  public Map<String, Object> getInternalMap() {
     return internalMap;
   }
 
@@ -43,7 +43,8 @@ public class GenericsClass {
         // we get the type of the arguments for the parameterized type
         Type[] typeArguments = parameterizedType.getActualTypeArguments();
         for (Type typeArgument: typeArguments) {
-          Class<? extends Object> typeClass = (Class<? extends Object>)typeArgument;
+          Class<? extends Object> typeClass =
+              (Class<? extends Object>)typeArgument;
           System.out.println("typeArgument = " + typeArgument);
           System.out.println("typeClass = " + typeClass);
         }
@@ -61,12 +62,12 @@ public class GenericsClass {
         // we get the type of the arguments for the parameterized type
         Type[] typeArguments = parameterizedType.getActualTypeArguments();
         for (Type typeArgument: typeArguments) {
-          Class<? extends Object> typeClass = (Class<? extends Object>)typeArgument;
+          Class<? extends Object> typeClass =
+              (Class<? extends Object>)typeArgument;
           System.out.println("typeArgument = " + typeArgument);
           System.out.println("typeClass = " + typeClass);
         }
-      }
-      else
+      } else
         System.out.println("Not parameterized type. ..");
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);

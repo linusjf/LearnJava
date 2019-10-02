@@ -1,6 +1,8 @@
 package reflection;
 
-public final class TestClassNames {
+public enum TestClassNames {
+  ;
+
   private static void showClass(Class<?> c) {
     System.out.println("getName():          " + c.getName());
     System.out.println("getCanonicalName(): " + c.getCanonicalName());
@@ -10,20 +12,17 @@ public final class TestClassNames {
     System.out.println();
   }
 
-  private static void x(Runnable r) {
+  private static void show(Runnable r) {
     showClass(r.getClass());
-    showClass(
-        java.lang.reflect.Array.newInstance(r.getClass(), 1)
-            .getClass());  
+    showClass(java.lang.reflect.Array.newInstance(r.getClass(), 1).getClass());
     // Obtains an array class of a lambda base type.
   }
 
-  public static class NestedClass {}
-
-  public class InnerClass {}
-
   public static void main(String[] args) {
-    class LocalClass {}
+    class LocalClass {
+      // empty local class
+    }
+
     showClass(void.class);
     showClass(int.class);
     showClass(String.class);
@@ -38,17 +37,25 @@ public final class TestClassNames {
     showClass(LocalClass[].class);
     Object anonymous = new java.io.Serializable() {};
     showClass(anonymous.getClass());
-    showClass(
-        java.lang.reflect.Array.newInstance(anonymous.getClass(), 1)
-            .getClass());  
+    showClass(java.lang.reflect.Array.newInstance(anonymous.getClass(), 1)
+                  .getClass());
     // Obtains an array class of an anonymous base type.
-    x(() -> {});
+    show(() -> {});
+  }
+
+  public static class NestedClass {
+    // static empty class
+  }
+
+  public class InnerClass {
+    // empty instance class
   }
 }
 
 @interface SomeAnnotation {
 }
 
+@SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {
   BLUE,
   YELLOW,
