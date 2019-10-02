@@ -44,8 +44,6 @@ public enum Arrayed {
           Class.forName("[Ljava.lang.String;");
       System.out.println("stringArrayClassUsingClassForName is array: "
                          + stringArrayClassUsingClassForName.isArray());
-      // this has no much sense in my opinion since we are creating an array at
-      // runtime and getting the class to create a new one...
       Class<? extends Object> stringArrayClassUsingDoubleLoop =
           Array.newInstance(String.class, 0).getClass();
       System.out.println("stringArrayClassUsingClassForName is array: "
