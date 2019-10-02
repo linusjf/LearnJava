@@ -4,3 +4,4 @@ reflection.Methodical
 reflection.Construct
 reflection.CarBean
 reflection.StaticReflection
+reflection.Arrayed
