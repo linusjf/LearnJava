@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 public enum Arrayed {
   ;
 
+  @SuppressWarnings("unused")
   public static void main(String... args) {
     try {
       String[] strArrayOne = (String[])Array.newInstance(String.class, 10);
@@ -49,24 +50,24 @@ public enum Arrayed {
       System.out.println("stringArrayClassUsingClassForName is array: "
                          + stringArrayClassUsingDoubleLoop.isArray());
 
-      // The above makes sense if you're trying 
+      // The above makes sense if you're trying
       // to get the class name of a primitive type array.
-     try { 
-Class <? extends Object> byteArrayClassUsingClassForName =
-          Class.forName("byte");
-     } catch (ClassNotFoundException cnfe) {
-    System.err.println(cnfe);
-     }
-Class <? extends Object> byteClass =
-          byte.class;
-// Now get the array class
+      try {
+        Class<? extends Object> byteArrayClassUsingClassForName =
+            Class.forName("byte");
+      } catch (ClassNotFoundException cnfe) {
+        System.err.println(cnfe);
+      }
+      Class<? extends Object> byteClass = byte.class;
+      // Now get the array class
       Class<? extends Object> byteArrayClassUsingDoubleLoop =
           Array.newInstance(byteClass, 0).getClass();
       System.out.println("byteArrayClassUsingClassForName is array: "
                          + byteArrayClassUsingDoubleLoop.isArray());
-      System.out.println( byteArrayClassUsingDoubleLoop);
+      System.out.println(byteArrayClassUsingDoubleLoop);
 
-      System.out.println("Component class: " + byteArrayClassUsingDoubleLoop.getComponentType());
+      System.out.println("Component class: "
+                         + byteArrayClassUsingDoubleLoop.getComponentType());
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }

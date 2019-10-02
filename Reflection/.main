@@ -5,3 +5,4 @@ reflection.Construct
 reflection.CarBean
 reflection.StaticReflection
 reflection.Arrayed
+reflection.Collecting
