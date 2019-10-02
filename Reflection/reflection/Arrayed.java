@@ -49,7 +49,8 @@ public enum Arrayed {
       System.out.println("stringArrayClassUsingClassForName is array: "
                          + stringArrayClassUsingDoubleLoop.isArray());
 
-      // The above makes sense if you're trying to get the class name of a primitive type array.
+      // The above makes sense if you're trying 
+      // to get the class name of a primitive type array.
      try { 
 Class <? extends Object> byteArrayClassUsingClassForName =
           Class.forName("byte");
@@ -65,6 +66,7 @@ Class <? extends Object> byteClass =
                          + byteArrayClassUsingDoubleLoop.isArray());
       System.out.println( byteArrayClassUsingDoubleLoop);
 
+      System.out.println("Component class: " + byteArrayClassUsingDoubleLoop.getComponentType());
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }
