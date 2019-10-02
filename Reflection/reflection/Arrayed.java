@@ -36,9 +36,9 @@ public enum Arrayed {
       System.out.println("stringArrayClassUsingInstance is array: "
                          + stringArrayClassUsingInstance.isArray());
       // using class for name and passing [I
-      Class<?> intArrayUsingClassForName = Class.forName("[I");
-      System.out.println("intArrayUsingClassForName is array: "
-                         + intArrayUsingClassForName.isArray());
+      Class<?> byteArrayUsingClassForName = Class.forName("[B");
+      System.out.println("byteArrayUsingClassForName is array: "
+                         + byteArrayUsingClassForName.isArray());
       // or [Ljava.lang.String
       Class<?> stringArrayClassUsingClassForName =
           Class.forName("[Ljava.lang.String;");
@@ -50,6 +50,23 @@ public enum Arrayed {
           Array.newInstance(String.class, 0).getClass();
       System.out.println("stringArrayClassUsingClassForName is array: "
                          + stringArrayClassUsingDoubleLoop.isArray());
+
+      // The above makes sense if you're trying to get the class name of a primitive type array.
+     try { 
+Class <? extends Object> byteArrayClassUsingClassForName =
+          Class.forName("byte");
+     } catch (ClassNotFoundException cnfe) {
+    System.err.println(cnfe);
+     }
+Class <? extends Object> byteClass =
+          byte.class;
+// Now get the array class
+      Class<? extends Object> byteArrayClassUsingDoubleLoop =
+          Array.newInstance(byteClass, 0).getClass();
+      System.out.println("byteArrayClassUsingClassForName is array: "
+                         + byteArrayClassUsingDoubleLoop.isArray());
+      System.out.println( byteArrayClassUsingDoubleLoop);
+
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }
