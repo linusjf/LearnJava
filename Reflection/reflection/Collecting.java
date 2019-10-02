@@ -38,7 +38,8 @@ public final class Collecting {
       System.out.println("A collection: " + ref.getClass().getName());
       @SuppressWarnings("unchecked")
       // not nice
-      Iterator<? extends Object> items = ((Collection<? extends Object>)ref).iterator();
+      Iterator<? extends Object> items =
+          ((Collection<? extends Object>)ref).iterator();
       while (items != null && items.hasNext()) {
         Object item = items.next();
         System.out.println("Element of the collection: "
