@@ -1,10 +1,11 @@
 package reflection;
 
-import java.lang.reflect.Parameter;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 public enum Parameters {
   ;
+
   public static void main(String... args) {
 
     Class<String> stringClass = String.class;

@@ -12,3 +12,4 @@ reflection.GenericsClass
 reflection.Bridge
 reflection.Loaded
 reflection.Parameters
+reflection.SyntheticSample
