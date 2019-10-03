@@ -2,6 +2,7 @@ package reflection;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
 
 public enum Loaded {
   ;
@@ -42,16 +43,22 @@ public enum Loaded {
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-      if (!REFLECTABLE_CLASS.replace(".", "/").equals(name)) {
+      if (!REFLECTABLE_CLASS.equals(name)) {
         return super.loadClass(name);
       }
       try {
         InputStream in = ClassLoader.getSystemResourceAsStream(
             name.replace(".", "/") + ".class");
-        byte[] a = new byte[10_000];
-        int len = in.read(a);
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int data = in.read();
+        while (data != -1) {
+          buffer.write(data);
+          data = in.read();
+        }
+
         in.close();
-        return defineClass(name, a, 0, len);
+        byte[] a = buffer.toByteArray();
+        return defineClass(name, a, 0, a.length);
       } catch (IOException e) {
         throw new ClassNotFoundException(e.getMessage(), e);
       }
