@@ -26,14 +26,11 @@ public enum Parameters {
     System.out.println("Printing out Task methods:");
     for (Method methodTaskClass: taskClass.getDeclaredMethods()) {
       System.out.println("method " + methodTaskClass.getName());
-      for (Parameter paramMethodTaskClass:
-           methodTaskClass.getParameters()) {
+      for (Parameter paramMethodTaskClass: methodTaskClass.getParameters()) {
         // arg0, arg1, etc because the eclipse compiling tool (different ←-
         // not support -parameters option yet
-        System.out.println(" parameter name "
-                           + paramMethodTaskClass.getName());
-        System.out.println(" parameter type "
-                           + paramMethodTaskClass.getType());
+        System.out.println(" parameter name " + paramMethodTaskClass.getName());
+        System.out.println(" parameter type " + paramMethodTaskClass.getType());
       }
     }
   }

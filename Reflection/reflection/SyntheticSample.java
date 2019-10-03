@@ -2,7 +2,11 @@ package reflection;
 
 import java.lang.reflect.Method;
 
-public class SyntheticSample {
+public final class SyntheticSample {
+
+  private SyntheticSample() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   public static void main(String... args) {
 
