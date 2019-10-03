@@ -9,6 +9,7 @@ public enum Parameters {
   public static void main(String... args) {
 
     Class<String> stringClass = String.class;
+    System.out.println("Printing out String methods:");
     for (Method methodStringClass: stringClass.getDeclaredMethods()) {
       System.out.println("method " + methodStringClass.getName());
       for (Parameter paramMethodStringClass:
@@ -20,6 +21,27 @@ public enum Parameters {
         System.out.println(" parameter type "
                            + paramMethodStringClass.getType());
       }
+    }
+    Class<Task> taskClass = Task.class;
+    System.out.println("Printing out Task methods:");
+    for (Method methodTaskClass: taskClass.getDeclaredMethods()) {
+      System.out.println("method " + methodTaskClass.getName());
+      for (Parameter paramMethodTaskClass:
+           methodTaskClass.getParameters()) {
+        // arg0, arg1, etc because the eclipse compiling tool (different ←-
+        // not support -parameters option yet
+        System.out.println(" parameter name "
+                           + paramMethodTaskClass.getName());
+        System.out.println(" parameter type "
+                           + paramMethodTaskClass.getType());
+      }
+    }
+  }
+
+  static class Task {
+
+    public void execute(int num, String message) {
+      // empty method body
     }
   }
 }
