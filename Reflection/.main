@@ -11,3 +11,4 @@ reflection.TestClassNames
 reflection.GenericsClass
 reflection.Bridge
 reflection.Loaded
+reflection.Parameters

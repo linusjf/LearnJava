@@ -16,6 +16,14 @@ public enum Bridge {
           System.out.println("Method: " + m.getName());
         }
       }
+      Class<? extends Object> stringClass = String.class;
+      methods = stringClass.getMethods();
+      System.out.println("Bridge Methods of String Class are");
+      for (Method m: methods) {
+        if (m.isBridge()) {
+          System.out.println("Method: " + m.getName());
+        }
+      }
     } catch (SecurityException e) {
       System.err.println(e);
     }
