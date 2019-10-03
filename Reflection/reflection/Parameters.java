@@ -22,8 +22,8 @@ public enum Parameters {
                            + paramMethodStringClass.getType());
       }
     }
-    Class<Task> taskClass = Task.class;
-    System.out.println("Printing out Task methods:");
+    Class<DummyTask> taskClass = DummyTask.class;
+    System.out.println("Printing out DummyTask methods:");
     for (Method methodTaskClass: taskClass.getDeclaredMethods()) {
       System.out.println("method " + methodTaskClass.getName());
       for (Parameter paramMethodTaskClass: methodTaskClass.getParameters()) {
@@ -35,7 +35,7 @@ public enum Parameters {
     }
   }
 
-  static class Task {
+  static class DummyTask {
 
     public void execute(int num, String message) {
       // empty method body
