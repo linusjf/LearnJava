@@ -95,6 +95,26 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run17">
+    <description>Run17 target</description>
+    <java classname="${main.class16}">
+      <arg value="java.io.File"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run16">
+    <description>Run16 target</description>
+    <java classname="${main.class16}">
+      <arg value="java.lang.String"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run15">
     <description>Run15 target</description>
     <java classname="${main.class15}">
@@ -231,7 +251,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
 
     <description>Run target</description>
     <java classname="${main.class}">
