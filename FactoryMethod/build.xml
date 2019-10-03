@@ -47,6 +47,7 @@
            srcdir="${src.dir}"
            destdir="${build.dir}">
       <compilerarg value="${javac.params}" />
+      <compilerarg value="${javac.params1}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->

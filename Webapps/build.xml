@@ -58,6 +58,7 @@
         <pathelement path="${compile.cp}" />
       </classpath>
       <compilerarg value="${javac.params}" />
+      <compilerarg value="${javac.params1}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
