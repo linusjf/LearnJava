@@ -107,11 +107,11 @@ else
       < <(find "$proj" -name "*.java" -type f ${compileFindOptions[@]})
     if [[ javaversion -le $JVER ]]
     then
-      javac -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
+      javac -parameters -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
         -cp $auxClasspath:"$proj" \
         "${javasrcs[@]}"
     else
-      javac -Xlint:all ${options[@]} --release "$ver" \
+      javac -parameters -Xlint:all ${options[@]} --release "$ver" \
         -cp $auxClasspath:"$proj" \
         "${javasrcs[@]}"
     fi
