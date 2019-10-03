@@ -10,3 +10,4 @@ reflection.Annotating
 reflection.TestClassNames
 reflection.GenericsClass
 reflection.Bridge
+reflection.Loaded
