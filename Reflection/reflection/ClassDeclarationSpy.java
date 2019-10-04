@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ClassDeclarationSpy {
+public enum ClassDeclarationSpy {
+  ;
+
   public static void main(String... args) {
     try {
       Class<?> c = Class.forName(args[0]);
