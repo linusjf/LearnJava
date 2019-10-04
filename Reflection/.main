@@ -17,3 +17,4 @@ reflection.Modular
 reflection.ClassDeclarationSpy java.lang.String
 reflection.ClassDeclarationSpy java.io.File
 reflection.ClassDeclarationSpy java.lang.Class
+reflection.Dynamic
