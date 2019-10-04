@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Dynamic.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Dynamic']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DynamicInvocationHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invoke']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='42']"/>
   <suppress-xpath files="Loaded.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Loaded']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestClassLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadClass']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']" />
