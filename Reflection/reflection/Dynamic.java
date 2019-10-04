@@ -15,8 +15,8 @@ public final class Dynamic {
   @SuppressWarnings("unchecked")
   public static void main(String... args) {
 
-    Map<? super Object, ? super Object> proxyInstance =
-        (Map<? super Object, ? super Object>)Proxy.newProxyInstance(
+    Map<Object, Object> proxyInstance =
+        (Map<Object, Object>)Proxy.newProxyInstance(
             Thread.currentThread().getContextClassLoader(),
             new Class<?>[] {Map.class},
             new DynamicInvocationHandler());
