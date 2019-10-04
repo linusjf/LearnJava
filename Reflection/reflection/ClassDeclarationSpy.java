@@ -7,7 +7,6 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public enum ClassDeclarationSpy {
@@ -21,7 +20,7 @@ public enum ClassDeclarationSpy {
 
       out.format("Type Parameters:%n");
       TypeVariable<?>[] tv = c.getTypeParameters();
-      if (tv.length != 0) {
+      if (tv.length > 0) {
         out.format("  ");
         for (TypeVariable<?> t: tv)
           out.format("%s ", t.getName());
@@ -32,7 +31,7 @@ public enum ClassDeclarationSpy {
 
       out.format("Implemented Interfaces:%n");
       Type[] intfs = c.getGenericInterfaces();
-      if (intfs.length != 0) {
+      if (intfs.length > 0) {
         for (Type intf: intfs)
           out.format("  %s%n", intf.toString());
         out.format("%n");
@@ -43,17 +42,17 @@ public enum ClassDeclarationSpy {
       out.format("Inheritance Path:%n");
       List<Class<?>> l = new ArrayList<Class<?>>();
       printAncestor(c, l);
-      if (l.size() != 0) {
+      if (l.isEmpty()) {
+        out.format("  -- No Super Classes --%n%n");
+      } else {
         for (Class<?> cl: l)
           out.format("  %s%n", cl.getCanonicalName());
         out.format("%n");
-      } else {
-        out.format("  -- No Super Classes --%n%n");
       }
 
       out.format("Annotations:%n");
       Annotation[] ann = c.getAnnotations();
-      if (ann.length != 0) {
+      if (ann.length > 0) {
         for (Annotation a: ann)
           out.format("  %s%n", a.toString());
         out.format("%n");
@@ -63,13 +62,15 @@ public enum ClassDeclarationSpy {
 
       // production code should handle this exception more gracefully
     } catch (ClassNotFoundException x) {
-      x.printStackTrace();
+      System.err.println(x);
     }
   }
 
   private static void printAncestor(Class<?> c, List<Class<?>> l) {
     Class<?> ancestor = c.getSuperclass();
-    if (ancestor != null) {
+    if (ancestor == null)
+      return;
+    else {
       l.add(ancestor);
       printAncestor(ancestor, l);
     }

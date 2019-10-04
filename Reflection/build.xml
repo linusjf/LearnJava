@@ -98,7 +98,7 @@
   <target name="run17">
     <description>Run17 target</description>
     <java classname="${main.class16}">
-      <arg value="java.io.File"/>
+      <arg value="java.io.File" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -108,7 +108,7 @@
   <target name="run16">
     <description>Run16 target</description>
     <java classname="${main.class16}">
-      <arg value="java.lang.String"/>
+      <arg value="java.lang.String" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

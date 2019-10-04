@@ -9,6 +9,6 @@ Specification-Title: Reflection
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 91c948a October 3 2019
+Implementation-Version: 67fac63 October 4 2019
 Implementation-Vendor: 
 
