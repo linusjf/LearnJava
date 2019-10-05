@@ -18,6 +18,7 @@
   <property file="${LearnJava.basedir}/junit.properties" />
   <property file="${LearnJava.basedir}/jetty.properties" />
   <property file="${LearnJava.basedir}/checker.properties" />
+  <property file="${LearnJava.basedir}/jcommander.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
