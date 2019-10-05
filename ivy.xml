@@ -133,6 +133,8 @@
           description="apache-jsp lib jars" />
     <conf name="checker.main"
           description="checker main jars" />
+    <conf name="jcommander.main"
+          description="jcommander main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -286,5 +288,7 @@
                 name="checker"
                 rev="2.11.0"
                 conf="checker.main-&gt;master" />
+<!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
+<dependency org="com.beust" name="jcommander" rev="1.78" conf="jcommander.main-&gt;master" />
   </dependencies>
 </ivy-module>
