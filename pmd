@@ -20,7 +20,8 @@ declare -r mainClass="net.sourceforge.pmd.PMD"
 java -cp @"$classpathFile" \
 "$mainClass" \
 -d "$1" -R "$rulesFile" -f "$format" \
--failOnViolation false -cache "$1"/"$cacheFile" \
+-min 1 \
+-failOnViolation true -cache "$1"/"$cacheFile" \
 -reportfile "$1"/"$errFile" \
 -auxclasspath "$1" \
 -t "$threads" \
