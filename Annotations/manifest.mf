@@ -4,10 +4,10 @@ Created-By: 10.0.2+13 (Oracle Corporation)
 Built-By: root
 
 Name: common
-Specification-Title: AnnoProc
-Specification-Version: 1.0.0
+Specification-Title: Annotations
+Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: e88fc5e July 7 2019
+Implementation-Version: 44ee541 October 5 2019
 Implementation-Vendor: 
 

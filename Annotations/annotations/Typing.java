@@ -1,7 +1,7 @@
 package annotations;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Typing {
   @SuppressWarnings("unused")

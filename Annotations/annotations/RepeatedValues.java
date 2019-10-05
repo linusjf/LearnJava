@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Container for the {@link CanBeRepeated} Annotation containing a list of
- * values
+ * values.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE_USE)

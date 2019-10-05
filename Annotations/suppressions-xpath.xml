@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="Interfacing.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Interfacing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myFuncInterface']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MyCustomInterface']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSomething']]/SLIST/LITERAL_RETURN/EXPR/STAR[./IDENT[@text='param']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Interfacing.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Interfacing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20']"/>
+<suppress-xpath
+       files="Interfacing.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Interfacing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myFuncInterfaceLambdas']]/ASSIGN/LAMBDA[./IDENT[@text='x']]/EXPR/STAR[./IDENT[@text='x']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Interfacing.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Interfacing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='30']"/>
+</suppressions>
