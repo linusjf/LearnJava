@@ -191,8 +191,6 @@
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}">
-      <sourceLanguage name="java"
-                      version="${ant.build.javac.source}" />
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />

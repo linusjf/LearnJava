@@ -181,6 +181,8 @@
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
+      <sourceLanguage name="java"
+                      version="${ant.build.javac.source}" />
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
@@ -200,8 +202,6 @@
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}">
-      <sourceLanguage name="java"
-                      version="${ant.build.javac.source}" />
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
