@@ -23,7 +23,7 @@ java -cp @"$classpathFile" \
 -min 1 \
 -failOnViolation true -cache "$1"/"$cacheFile" \
 -reportfile "$1"/"$errFile" \
--auxclasspath "$1" \
+-auxclasspath "$1/dist/*" \
 -t "$threads" \
 || { echo "Error running $0"; exit 1;}
 res=$?
