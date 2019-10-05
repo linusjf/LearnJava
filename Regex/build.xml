@@ -181,8 +181,6 @@
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
-      <sourceLanguage name="java"
-                      version="${ant.build.javac.source}" />
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
