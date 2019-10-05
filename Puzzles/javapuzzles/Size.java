@@ -1,7 +1,7 @@
 package javapuzzles;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 public enum Size {
   ;
@@ -15,7 +15,7 @@ public enum Size {
     students.add(new Student(5));
     System.out.println(students.size());
   }
-  
+
   static class Student {
     int id;
 

@@ -47,7 +47,7 @@ final class Sub extends Super {
   Sub(int id) {
     super();
     this.id = id;
-    set.add(this);  
+    set.add(this);
     // Establish invariant
   }
 

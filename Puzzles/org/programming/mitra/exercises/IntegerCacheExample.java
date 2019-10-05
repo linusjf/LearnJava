@@ -14,7 +14,7 @@ public enum IntegerCacheExample {
     int a = 127;
     int b = 127;
 
-    System.out.println(a == b);  
+    System.out.println(a == b);
     // Output -- true
 
     Integer objC = 127;
@@ -32,16 +32,16 @@ public enum IntegerCacheExample {
     // Output of below line is true because Integer class cache integer objects
     // which falls in range -128 to 127, and returns same object for every
     // autoboxing invocation
-    System.out.println(objC == objD);  
+    System.out.println(objC == objD);
     // Output -- true
 
-    System.out.println(objC.equals(objD));  
+    System.out.println(objC.equals(objD));
     // Output -- true
 
     a = 128;
     b = 128;
 
-    System.out.println(a == b);  
+    System.out.println(a == b);
     // Output -- true
 
     objC = 128;
@@ -50,7 +50,7 @@ public enum IntegerCacheExample {
     System.out.println(objC == objD);
     // Output -- false
 
-    System.out.println(objC.equals(objD)); 
+    System.out.println(objC.equals(objD));
     // Output -- true
   }
 }

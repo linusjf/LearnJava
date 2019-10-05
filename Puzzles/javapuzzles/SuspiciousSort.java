@@ -71,7 +71,7 @@ public enum SuspiciousSort {
     if (!ascending)
       return Order.CONSTANT;
     // All elements equal
-    return Order.UNORDERED;   
+    return Order.UNORDERED;
     // Array is not sorted
   }
 }
