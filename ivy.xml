@@ -135,6 +135,10 @@
           description="checker main jars" />
     <conf name="jcommander.main"
           description="jcommander main jars" />
+    <conf name="ant.main"
+          description="ant main jars" />
+    <conf name="ant.lib"
+          description="ant lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -289,6 +293,8 @@
                 rev="2.11.0"
                 conf="checker.main-&gt;master" />
 <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
-<dependency org="com.beust" name="jcommander" rev="1.78" conf="jcommander.main-&gt;master" />
+    <dependency org="com.beust" name="jcommander" rev="1.78" conf="jcommander.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+<dependency org="org.apache.ant" name="ant" rev="1.10.7" conf="ant.main-&gt;master;ant.lib-&gt;compile"/>
   </dependencies>
 </ivy-module>
