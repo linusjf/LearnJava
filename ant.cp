@@ -1,1 +1,0 @@
-/data/data/com.termux/files/home/LearnJava/lib/ant-1.10.7.jar:/data/data/com.termux/files/home/LearnJava/lib/ant-launcher-1.10.7.jar
