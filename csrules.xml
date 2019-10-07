@@ -23,8 +23,6 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   <property name="cacheFile"
             value="${cs.cacheFile}" />
   <module name="OrderedProperties" />
-  <!-- Excludes all 'module-info.java' files              -->
-  <!-- See https://checkstyle.org/config_filefilters.html -->
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern"
               value="package\-info\.java$" />
