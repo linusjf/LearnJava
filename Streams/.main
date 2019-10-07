@@ -13,3 +13,4 @@ com.devglan.ParallelStreamPerformanceCheck
 streams.PeekExample
 streams.PeekMore
 streams.OrderParallel
+streams.ParallelArrays

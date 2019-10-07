@@ -19,7 +19,7 @@ public final class ListDirectoryWithFilter {
       File[] items = dir.listFiles();
       for (File item: items) {
         if (item.isDirectory())
-          listRecursiveFiles(item);  
+          listRecursiveFiles(item);
         // Recursive call
       }
     }

@@ -203,6 +203,13 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <java classname="${main.class13}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
@@ -283,8 +290,10 @@
       </fileset>
     </pmd>
   </target>
-  <target name="pmd-result" depends="pmd" if="pmd.errCount">
-    <echo message="${pmd.errCount} violations found."/>
+  <target name="pmd-result"
+          depends="pmd"
+          if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd-result">
