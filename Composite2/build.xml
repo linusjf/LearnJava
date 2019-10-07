@@ -171,7 +171,8 @@
   <target name="pmd">
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}">
+         suppressMarker="${pmd.suppressMarker}"
+         failuresPropertyName="pmd.errCount">
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
@@ -184,8 +185,11 @@
       </fileset>
     </pmd>
   </target>
+  <target name="pmd-result" depends="pmd" if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found."/>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd">
+          depends="compile, jar, docs,pmd-result">
     <description>Main target</description>
   </target>
 </project>
