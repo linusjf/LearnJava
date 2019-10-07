@@ -173,23 +173,27 @@
     </checkstyle>
   </target>
   <target name="pmd">
-    <pmd cacheLocation="${pmd.cacheFile}"
-         minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}">
+    <pmd cachelocation="${pmd.cachefile}"
+         minimumpriority="${pmd.minimumpriority}"
+         suppressmarker="${pmd.suppressmarker}"
+         failurespropertyname="pmd.errcount">
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
       </auxclasspath>
-      <formatter type="${pmd.reportFormat}"
-                 toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
+      <formatter type="${pmd.reportformat}"
+                 tofile="${pmd.output}"
+                 toconsole="${pmd.toconsole}"></formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
     </pmd>
   </target>
+  <target name="pmd-result" depends="pmd" if="pmd.errcount">
+    <echo message="${pmd.errcount} violations found."/>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd">
+          depends="compile, jar, docs,pmd-result">
     <description>Main target</description>
   </target>
 </project>
