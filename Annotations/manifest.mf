@@ -8,6 +8,6 @@ Specification-Title: Annotations
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 6fb1a8d October 6 2019
+Implementation-Version: 41557af October 7 2019
 Implementation-Vendor: 
 

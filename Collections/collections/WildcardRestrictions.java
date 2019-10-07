@@ -7,7 +7,7 @@ public enum WildcardRestrictions {
   ;
 
   public static void main(String... args) {
-    List<Number> nums = new ArrayList<Number>();
+    List<Number> nums = new ArrayList<>();
     List<? super Number> sink = nums;
     List<? extends Number> source = nums;
     for (int i = 0; i < 10; i++)

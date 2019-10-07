@@ -2,6 +2,12 @@
 <project name="TestCode"
          basedir=".">
   <property file="build.properties" />
+  <property file="../pmd.properties" />
+  <loadfile property="pmd.cp"
+            srcFile="../${pmd.classpath.file}" />
+  <taskdef name="pmd"
+           classname="net.sourceforge.pmd.ant.PMDTask"
+           classpath="${pmd.cp}" />
   <target name="manifest">
     <tstamp />
     <manifest mode="update"
@@ -25,5 +31,25 @@
       <attribute name="Main-Class"
                  value="${main.class}" />
     </manifest>
+  </target>
+  <target name="pmd">
+    <pmd cacheLocation="${pmd.cacheFile}"
+         minimumPriority="${pmd.minimumPriority}"
+         suppressMarker="${pmd.suppressMarker}"
+         failuresPropertyName="pmd.errCount">
+      <ruleset>../${pmd.config}</ruleset>
+      <auxclasspath>
+        <pathelement path="${basedir}" />
+      </auxclasspath>
+      <formatter type="${pmd.reportFormat}"
+                 toFile="${pmd.output}"
+                 toConsole="${pmd.toConsole}"></formatter>
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
+    </pmd>
+  </target>
+  <target name="pmd-result" depends="pmd" if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found."/>
   </target>
 </project>
