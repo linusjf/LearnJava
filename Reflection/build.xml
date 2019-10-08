@@ -95,6 +95,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run19">
+    <description>Run19 target</description>
+    <java classname="${main.class18}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run18">
     <description>Run18 target</description>
     <java classname="${main.class17}">
@@ -260,7 +269,8 @@
     </java>
   </target>
   <target name="run"
-    depends="run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
@@ -348,8 +358,10 @@
       </fileset>
     </pmd>
   </target>
-  <target name="pmd-result" depends="pmd" if="pmd.errCount">
-    <echo message="${pmd.errCount} violations found."/>
+  <target name="pmd-result"
+          depends="pmd"
+          if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd-result">
