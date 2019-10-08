@@ -24,7 +24,7 @@ public enum OptionalDemo {
     } else
       System.out.println("word is null");
     Integer value1 = null;
-    Integer value2 = new Integer(10);
+    Integer value2 = 10;
     Optional<Integer> a = Optional.ofNullable(value1);
 
     // Optional.of - throws NullPointerException if passed parameter is null
@@ -40,7 +40,7 @@ public enum OptionalDemo {
 
     // Optional.orElse - returns the value if present otherwise returns
     // the default value passed.
-    Integer value1 = a.orElse(new Integer(0));
+    Integer value1 = a.orElse(0);
 
     // Optional.get - gets the value, value should be present
     Integer value2 = b.get();
