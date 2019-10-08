@@ -95,7 +95,8 @@
          includes="**/*.class"
          manifest="${jar.manifest}" />
   </target>
-  <target name="run">
+  <target name="run"
+          depends="run4,run3,run2">
     <description>Run target</description>
     <java classname="${main.class}"
           output="run.out"
@@ -132,6 +133,15 @@
       </classpath>
       <jvmarg line="-XX:+HeapDumpOnOutOfMemoryError -Xmx4096m -XX:+CMSParallelRemarkEnabled -XX:+UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:SurvivorRatio=25">
       </jvmarg>
+    </java>
+  </target>
+  <target name="run4">
+    <description>Run target</description>
+    <java classname="${main.class1}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
     </java>
   </target>
   <target name="format">
@@ -213,8 +223,10 @@
       </fileset>
     </pmd>
   </target>
-  <target name="pmd-result" depends="pmd" if="pmd.errCount">
-    <echo message="${pmd.errCount} violations found."/>
+  <target name="pmd-result"
+          depends="pmd"
+          if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd-result">
