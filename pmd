@@ -26,6 +26,7 @@ java -cp @"$classpathFile" \
 -reportfile "$1"/"$errFile" \
 -auxclasspath "$1" \
 -t "$threads" \
-|| { echo "Error running $0"; exit 1;}
+|| { echo "$0 ran with exit code $?"; exit 1;}
 res=$?
+echo $res
 exit $res
