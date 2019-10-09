@@ -14,14 +14,14 @@ public enum XmlSerializer {
   public static Document serializeObject(Object source) throws IllegalAccessException {
     return serializeHelper(source,
                            new Document(new Element("serialized")),
-                           new IdentityHashMap<Object, String>());
+                           new IdentityHashMap<Object, Object>());
   }
 
   private static Element 
     serializeVariable(Class<?> fieldtype,
         Object child,
         Document target,
-        Map<Object,String> table) throws IllegalAccessException {
+        Map<Object,Object> table) throws IllegalAccessException {
     if (child == null) 
       return new Element("null");
     if (!fieldtype.isPrimitive() && !"java.lang.String".equals(fieldtype.getName())) {
@@ -44,7 +44,7 @@ public enum XmlSerializer {
   private static Document serializeHelper(
     Object source,
     Document target,
-    Map<Object,String> table
+    Map<Object,Object> table
   ) throws IllegalAccessException {
     String id = Integer.toString(table.size());
     table.put(source, id);
