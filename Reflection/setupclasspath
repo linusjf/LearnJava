@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
 cp ../jdom2.cp compile.cp
+cp ../jdom2.cp run.cp
