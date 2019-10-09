@@ -1,0 +1,15 @@
+#!/bin/bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+readarray -t args < <(find $1 -type f -name "*.java")
+prettier --write "${args[@]}"
+exit $?

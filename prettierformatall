@@ -1,0 +1,4 @@
+#!/bin/bash
+readarray -t args < <(find . -mindepth 2 -type f -name "*.java")
+prettier --write "${args[@]}"
+exit $?
