@@ -135,6 +135,10 @@
           description="checker main jars" />
     <conf name="jcommander.main"
           description="jcommander main jars" />
+    <conf name="jdom2.main"
+          description="jdom2 main jars" />
+    <conf name="jdom2.lib"
+          description="jdom2 lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -290,6 +294,7 @@
                 conf="checker.main-&gt;master" />
 <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
     <dependency org="com.beust" name="jcommander" rev="1.78" conf="jcommander.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+      <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+<dependency org="org.jdom" name="jdom2" rev="2.0.6" conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile"/>
   </dependencies>
 </ivy-module>

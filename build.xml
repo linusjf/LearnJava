@@ -19,6 +19,7 @@
   <property file="${LearnJava.basedir}/jetty.properties" />
   <property file="${LearnJava.basedir}/checker.properties" />
   <property file="${LearnJava.basedir}/jcommander.properties" />
+  <property file="${LearnJava.basedir}/jdom2.properties" />
 
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
@@ -148,6 +149,10 @@
                   conf="checker.main" />
     <ivy:retrieve pathid="jcommander.main.path"
                   conf="jcommander.main" />
+    <ivy:retrieve pathid="jdom2.main.path"
+                  conf="jdom2.main" />
+    <ivy:retrieve pathid="jdom2.lib.path"
+                  conf="jdom2.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -174,6 +179,8 @@
           message="${toString:checker.main.path}" />
     <echo file="${jcommander.classpath.file}"
           message="${toString:jcommander.main.path}" />
+    <echo file="${jdom2.classpath.file}"
+          message="${toString:jdom2.main.path}:${toString:jdom2.lib.path}" />
   </target>
   <!-- =================================
           target: report
