@@ -8,7 +8,8 @@ public class Typing {
   @SuppressWarnings("unused")
   public static void main(String... args) {
     // type def
-    @TypeAnnotated String cannotBeEmpty = null;
+    @TypeAnnotated
+    String cannotBeEmpty = null;
 
     // type
     List<@TypeAnnotated String> myList = new ArrayList<>();

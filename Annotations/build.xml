@@ -138,9 +138,6 @@
       </classpath>
     </java>
     <exec executable="bash">
-      <arg line="../prettierformat ${basedir}" />
-    </exec>
-    <exec executable="bash">
       <arg line="../cformat ${basedir}" />
     </exec>
     <exec executable="bash">
