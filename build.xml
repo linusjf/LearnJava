@@ -20,7 +20,6 @@
   <property file="${LearnJava.basedir}/checker.properties" />
   <property file="${LearnJava.basedir}/jcommander.properties" />
   <property file="${LearnJava.basedir}/jdom2.properties" />
-
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"

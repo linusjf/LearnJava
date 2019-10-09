@@ -292,9 +292,15 @@
                 name="checker"
                 rev="2.11.0"
                 conf="checker.main-&gt;master" />
-<!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
-    <dependency org="com.beust" name="jcommander" rev="1.78" conf="jcommander.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
-<dependency org="org.jdom" name="jdom2" rev="2.0.6" conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile"/>
+    <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
+    <dependency org="com.beust"
+                name="jcommander"
+                rev="1.78"
+                conf="jcommander.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+    <dependency org="org.jdom"
+                name="jdom2"
+                rev="2.0.6"
+                conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
