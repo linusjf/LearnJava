@@ -59,8 +59,8 @@ public final class PropertyLoader {
     String name = normalizeName(nome);
     Properties result = null;
     try {
-      ClassLoader cl =
-          (loader == null) ? ClassLoader.getSystemClassLoader() : loader;
+      ClassLoader cl = (loader == null) ? ClassLoader.getSystemClassLoader()
+        : loader;
 
       if (LOAD_AS_RESOURCE_BUNDLE) {
         result = loadAsResourceBundle(cl, name);
@@ -68,24 +68,27 @@ public final class PropertyLoader {
         result = loadAsStream(cl, name);
       }
     } catch (MissingResourceException e) {
-      System.err.println("Error locating resource " + name + " : "
-                         + e.getMessage());
-      // result = null;
+      System.err.println(
+        "Error locating resource " + name + " : " + e.getMessage()
+      );
+    // result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException("could not load [" + name + "]"
-                                         + " as "
-                                         + (LOAD_AS_RESOURCE_BUNDLE
-                                                ? "a resource bundle"
-                                                : "a classloader resource"));
+      throw new IllegalArgumentException(
+        "could not load [" +
+          name +
+          "]" +
+          " as " +
+          (LOAD_AS_RESOURCE_BUNDLE ? "a resource bundle"
+            : "a classloader resource")
+      );
     }
     return result;
   }
 
   private static Properties loadAsStream(ClassLoader loader, String nome) {
     String name = nome.replace('.', '/');
-    if (!name.endsWith(SUFFIX))
-      name = name.concat(SUFFIX);
+    if (!name.endsWith(SUFFIX)) name = name.concat(SUFFIX);
     Properties result = null;
     try (InputStream in = loader.getResourceAsStream(name)) {
       if (in != null) {
@@ -93,17 +96,24 @@ public final class PropertyLoader {
         result.load(in);
       }
     } catch (IOException ioe) {
-      System.err.println("Error reading from resource " + name + " : "
-                         + ioe.getMessage());
+      System.err.println(
+        "Error reading from resource " + name + " : " + ioe.getMessage()
+      );
     }
     return result;
   }
 
-  private static Properties loadAsResourceBundle(ClassLoader loader,
-                                                 String nome) {
+  private static Properties loadAsResourceBundle(
+    ClassLoader loader,
+    String nome
+  ) {
     String name = nome.replace('/', '.');
-    final ResourceBundle rb =
-        ResourceBundle.getBundle(name, Locale.getDefault(), loader);
+    final
+    ResourceBundle rb = ResourceBundle.getBundle(
+      name,
+      Locale.getDefault(),
+      loader
+    );
     Properties result = new Properties();
     for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
       final String key = keys.nextElement();
@@ -116,10 +126,9 @@ public final class PropertyLoader {
   private static String normalizeName(String nome) {
     Objects.requireNonNull(nome, "null input: name");
     String name = nome;
-    if (name.charAt(0) == '/')  // NOPMD
-      name = name.substring(1);
-    if (name.endsWith(SUFFIX))
-      name = name.substring(0, name.length() - SUFFIX.length());
+    if (name.charAt(0) == '/') name = name.substring(1); // NOPMD
+    if (name.endsWith(SUFFIX)) name =
+      name.substring(0, name.length() - SUFFIX.length());
     return name;
   }
 }

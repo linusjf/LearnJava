@@ -27,6 +27,7 @@ public class SocketServerExample {
 
   public static void main(String[] args) {
     Runnable server = new Runnable() {
+
       @Override
       public void run() {
         try {
@@ -38,6 +39,7 @@ public class SocketServerExample {
     };
 
     Runnable client = new Runnable() {
+
       @Override
       public void run() {
         try {
@@ -94,7 +96,7 @@ public class SocketServerExample {
 
   // accept a connection made to this channel's socket
   private void accept(SelectionKey key) throws IOException {
-    ServerSocketChannel serverChannel = (ServerSocketChannel)key.channel();
+    ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
     SocketChannel channel = serverChannel.accept();
     channel.configureBlocking(false);
     Socket socket = channel.socket();
@@ -108,7 +110,7 @@ public class SocketServerExample {
 
   // read from the socket channel
   private void read(SelectionKey key) throws IOException {
-    SocketChannel channel = (SocketChannel)key.channel();
+    SocketChannel channel = (SocketChannel) key.channel();
     ByteBuffer buffer = ByteBuffer.allocate(1024);
     int numRead = -1;
     numRead = channel.read(buffer);

@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.factorymethodpattern;
 
 public enum TestFactoryMethodPattern {
   ;
-
   /**
    * Main method.
    *

@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public enum DelayedQueueDemo {
   ;
-
   public static void main(String[] args) {
     try {
       DelayQueue<Event> queue = new DelayQueue<>();
@@ -16,11 +15,9 @@ public enum DelayedQueueDemo {
         Task task = new Task(i + 1, queue);
         threads[i] = new Thread(task);
       }
-      for (Thread thread: threads)
-        thread.start();
+      for (Thread thread : threads) thread.start();
 
-      for (Thread thread: threads)
-        thread.join();
+      for (Thread thread : threads) thread.join();
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
@@ -35,12 +32,10 @@ public enum DelayedQueueDemo {
 
     @Override
     public int compareTo(Delayed o) {
-      long result = this.getDelay(TimeUnit.NANOSECONDS)
-                    - o.getDelay(TimeUnit.NANOSECONDS);
-      if (result < 0)
-        return -1;
-      if (result > 0)
-        return 1;
+      long result = this.getDelay(TimeUnit.NANOSECONDS) -
+        o.getDelay(TimeUnit.NANOSECONDS);
+      if (result < 0) return -1;
+      if (result > 0) return 1;
       return 0;
     }
 

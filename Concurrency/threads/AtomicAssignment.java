@@ -7,8 +7,10 @@ import java.util.Locale;
 import java.util.Map;
 
 public class AtomicAssignment implements Runnable {
-  private static final SimpleDateFormat SDF =
-      new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS", Locale.getDefault());
+  private static final SimpleDateFormat SDF = new SimpleDateFormat(
+    "yyyy-MM-dd hh:mm:ss:SSS",
+    Locale.getDefault()
+  );
   private static Map<String, String> configuration = new HashMap<>();
 
   @Override
@@ -43,19 +45,23 @@ public class AtomicAssignment implements Runnable {
   @SuppressWarnings("PMD.UnnecessaryFullyQualifiedName")
   public static void main(String[] args) {
     readConfig();
-    Thread configThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        for (int i = 0; i < 10_000; i++) {
-          readConfig();
-          try {
-            Thread.sleep(1);
-          } catch (InterruptedException e) {
-            System.err.println(e);
+    Thread configThread = new Thread(
+      new Runnable() {
+
+        @Override
+        public void run() {
+          for (int i = 0; i < 10_000; i++) {
+            readConfig();
+            try {
+              Thread.sleep(1);
+            } catch (InterruptedException e) {
+              System.err.println(e);
+            }
           }
         }
-      }
-    }, "configuration-thread");
+      },
+      "configuration-thread"
+    );
     configThread.start();
     Thread[] threads = new Thread[5];
     for (int i = 0; i < threads.length; i++) {
@@ -63,14 +69,15 @@ public class AtomicAssignment implements Runnable {
       threads[i].start();
     }
     try {
-      for (Thread thread: threads) {
+      for (Thread thread : threads) {
         thread.join();
       }
       configThread.join();
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }
-    System.out.println("[" + Thread.currentThread().getName()
-                       + "] All threads have finished.");
+    System.out.println(
+      "[" + Thread.currentThread().getName() + "] All threads have finished."
+    );
   }
 }

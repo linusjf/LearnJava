@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,10 +30,8 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 public enum ProducerConsumerExample {
   ;
-
   public static void main(String[] args) {
     Drop drop = new Drop();
     (new Thread(new Producer(drop))).start();

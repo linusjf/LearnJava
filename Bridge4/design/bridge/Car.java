@@ -8,6 +8,7 @@ package design.bridge;
  */
 @SuppressWarnings("PMD.ShortClassName")
 public class Car extends Vehicle {
+
   @Override
   public void manufacture() {
     System.out.println("Manufacturing Car");

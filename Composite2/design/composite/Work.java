@@ -66,10 +66,10 @@ public class Work {
   public String toString() {
     StringBuilder builder = new StringBuilder(46);
     builder.append("Work [workType=")
-        .append(workType)
-        .append(", work=")
-        .append(jobs)
-        .append(']');
+      .append(workType)
+      .append(", work=")
+      .append(jobs)
+      .append(']');
     return builder.toString();
   }
 }

@@ -19,13 +19,15 @@ public enum Client {
 
     switch (os) {
       case "windows":
-        downloader = new FileDownloaderAbstractionImpl(new WindowsFileDownloadImplementor());
+        downloader =
+          new FileDownloaderAbstractionImpl(
+            new WindowsFileDownloadImplementor()
+          );
         break;
-
       case "linux":
-        downloader = new FileDownloaderAbstractionImpl(new LinuxFileDownloadImplementor());
+        downloader =
+          new FileDownloaderAbstractionImpl(new LinuxFileDownloadImplementor());
         break;
-
       default:
         System.out.println("OS not supported !!");
         break;

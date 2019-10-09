@@ -1,18 +1,16 @@
 package predicate;
 
 public class PlayerCreator {
+
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public Player createPlayer(String playerType, int rank) {
     switch (playerType) {
       case "TENNIS":
         return handleTennisPlayer(rank);
-
       case "FOOTBALL":
         return handleFootballPlayer(rank);
-
       case "SNOOKER":
         return handleSnookerPlayer(rank);
-
       default:
         throw new IllegalArgumentException("Invalid player type: ");
     }

@@ -26,15 +26,16 @@ public enum PersonnelServer {
       System.exit(1);
     }
     staffListOut = new ArrayList<>();
+
     // clang-format off
     Personnel[] staff = {
       new Personnel(123_456, "Smith", "John"),
       new Personnel(234_567, "Jones", "Sally Ann"),
       new Personnel(999_999, "Black", "James Paul"),
     };
+
     // clang-format on
-    for (Personnel person: staff)
-      staffListOut.add(person);
+    for (Personnel person : staff) staffListOut.add(person);
     startServer();
   }
 
@@ -44,11 +45,12 @@ public enum PersonnelServer {
         socket = serverSocket.accept();
         inStream = new Scanner(socket.getInputStream());
         outStream = new ObjectOutputStream(socket.getOutputStream());
+
         /*
-        The above line and associated declaration
-        are the only really new code featured in
-        this example.
-        */
+                The above line and associated declaration
+                are the only really new code featured in
+                this example.
+         */
         String message = inStream.nextLine();
         if ("SEND PERSONNEL DETAILS".equals(message)) {
           outStream.writeObject(staffListOut);

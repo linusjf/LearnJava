@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,7 +30,6 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +48,6 @@ import javax.imageio.ImageIO;
  * illustrate the use of the Fork/Join framework.
  */
 public class ForkBlur extends RecursiveAction {
-
   public static final long serialVersionUID = 1L;
   protected static int sThreshold = 10_000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
@@ -57,11 +56,11 @@ public class ForkBlur extends RecursiveAction {
   private int mStart;
   private int mLength;
   private int[] mDestination;
-  private int mBlurWidth = 15;  
-  // Processing window size, should be odd.
+  private int mBlurWidth = 15;
 
+  // Processing window size, should be odd.
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-  public ForkBlur(final int[] src, int start, int length, final int... dst) {
+  public ForkBlur(final int[] src, int start, int length, finalint... dst) {
     super();
     mSource = src;
     mStart = start;
@@ -76,18 +75,21 @@ public class ForkBlur extends RecursiveAction {
       // Calculate average.
       // clang-format off
       float rt = 0, gt = 0, bt = 0; // NOPMD
+
       // clang-format on
       for (int mi = -sidePixels; mi <= sidePixels; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
-        rt += (float)((pixel & 0x00ff0000) >> 16) / mBlurWidth;
-        gt += (float)((pixel & 0x0000ff00) >> 8) / mBlurWidth;
-        bt += (float)((pixel & 0x000000ff) >> 0) / mBlurWidth;
+        rt += (float) ((pixel & 0x00ff0000) >> 16) / mBlurWidth;
+        gt += (float) ((pixel & 0x0000ff00) >> 8) / mBlurWidth;
+        bt += (float) ((pixel & 0x000000ff) >> 0) / mBlurWidth;
       }
 
       // Re-assemble destination pixel.
-      int dpixel =
-          0xff000000 | (((int)rt) << 16) | (((int)gt) << 8) | (((int)bt) << 0);
+      int dpixel = 0xff000000 |
+      (((int) rt) << 16) |
+      (((int) gt) << 8) |
+      (((int) bt) << 0);
       mDestination[index] = dpixel;
     }
   }
@@ -103,8 +105,9 @@ public class ForkBlur extends RecursiveAction {
     int split = mLength / 2;
 
     invokeAll(
-        new ForkBlur(mSource, mStart, split, mDestination),
-        new ForkBlur(mSource, mStart + split, mLength - split, mDestination));
+      new ForkBlur(mSource, mStart, split, mDestination),
+      new ForkBlur(mSource, mStart + split, mLength - split, mDestination)
+    );
   }
 
   // Plumbing follows.
@@ -115,7 +118,10 @@ public class ForkBlur extends RecursiveAction {
       BufferedImage image = ImageIO.read(srcFile);
 
       BufferedImage img = new BufferedImage(
-          image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+        image.getWidth(),
+        image.getHeight(),
+        BufferedImage.TYPE_3BYTE_BGR
+      );
       img.getGraphics().drawImage(image, 0, 0, null);
       System.out.println("Source image: " + srcName);
 
@@ -142,8 +148,12 @@ public class ForkBlur extends RecursiveAction {
     System.out.println("Threshold is " + sThreshold);
 
     int processors = Runtime.getRuntime().availableProcessors();
-    System.out.println(Integer.toString(processors) + " processor"
-                       + (processors > 1 ? "s are " : " is ") + "available");
+    System.out.println(
+      Integer.toString(processors) +
+        " processor" +
+        (processors > 1 ? "s are " : " is ") +
+        "available"
+    );
 
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
 
@@ -154,8 +164,9 @@ public class ForkBlur extends RecursiveAction {
     pool.shutdown();
     long endTime = System.currentTimeMillis();
 
-    System.out.println("Image blur took " + (endTime - startTime)
-                       + " milliseconds.");
+    System.out.println(
+      "Image blur took " + (endTime - startTime) + " milliseconds."
+    );
     System.out.println("Task count: " + taskCount.get());
     BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
     dstImage.getGraphics().drawImage(srcImage, 0, 0, null);

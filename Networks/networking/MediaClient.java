@@ -28,24 +28,32 @@ public final class MediaClient {
     }
     try {
       String message;
+
       // Set up stream for keyboard entry…
       Scanner userEntry = new Scanner(System.in);
       System.out.print("Enter request (IMAGE/SOUND): ");
       message = userEntry.nextLine();
-      while (!"IMAGE".equalsIgnoreCase(message)
-             && !"SOUND".equalsIgnoreCase(message)) {
+      while (
+        !"IMAGE".equalsIgnoreCase(message) && !"SOUND".equalsIgnoreCase(message)
+      ) {
         System.out.println("\nTry again!\n");
         System.out.print("Enter request (IMAGE/SOUND): ");
         message = userEntry.nextLine();
       }
 
       Socket connection = new Socket(host, PORT);
+
       // Step 1…
-      ObjectInputStream inStream =
-          new ObjectInputStream(connection.getInputStream());
+      ObjectInputStream inStream = new ObjectInputStream(
+        connection.getInputStream()
+      );
+
       // Step 1 (cont'd)…
-      PrintWriter outStream =
-          new PrintWriter(connection.getOutputStream(), true);
+      PrintWriter outStream = new PrintWriter(
+        connection.getOutputStream(),
+        true
+      );
+
       // Step 2…
       outStream.println(message);
       downloadFile(inStream, message);
@@ -56,18 +64,18 @@ public final class MediaClient {
   }
 
   private static void downloadFile(ObjectInputStream inStream, String fileType)
-      throws IOException, ClassNotFoundException {
+    throws IOException, ClassNotFoundException {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
-    byte[] byteArray = (byte[])inStream.readObject();
+    byte[] byteArray = (byte[]) inStream.readObject();
     OutputStream mediaStream;
-    if ("IMAGE".equalsIgnoreCase(fileType))
-      // Step 5…
-      mediaStream = Files.newOutputStream(Paths.get("image.gif"));
-    else
-      // Must be a sound file…
-      // Step 5…
-      mediaStream = Files.newOutputStream(Paths.get("sound.au"));
+    if ("IMAGE".equalsIgnoreCase(fileType)) // Step 5…
+    mediaStream = Files.newOutputStream(
+        Paths.get("image.gif")
+      ); else // Must be a sound file…
+    // Step 5…
+    mediaStream = Files.newOutputStream(Paths.get("sound.au"));
+
     // Step 6…
     mediaStream.write(byteArray);
     mediaStream.flush();

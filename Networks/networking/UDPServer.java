@@ -11,11 +11,13 @@ import logging.FormatLogger;
 
 @SuppressWarnings("PMD.AvoidUsingVolatile")
 public abstract class UDPServer implements Runnable {
-  private final int bufferSize;  
+  private final int bufferSize;
+
   // in bytes
   private final int port;
-  private final FormatLogger logger =
-      new FormatLogger(Logger.getLogger(UDPServer.class.getCanonicalName()));
+  private final FormatLogger logger = new FormatLogger(
+    Logger.getLogger(UDPServer.class.getCanonicalName())
+  );
   private volatile boolean isShutDown;
 
   public UDPServer(int port, int bufferSize) {
@@ -32,30 +34,29 @@ public abstract class UDPServer implements Runnable {
   public void run() {
     byte[] buffer = new byte[bufferSize];
     try (DatagramSocket socket = new DatagramSocket(port)) {
-      socket.setSoTimeout(10_000);  
+      socket.setSoTimeout(10_000);
+
       // check every 10 seconds for shutdown
       while (true) {
-        if (isShutDown)
-          return;
+        if (isShutDown) return;
         DatagramPacket incoming = new DatagramPacket(buffer, buffer.length);
         try {
           socket.receive(incoming);
           this.respond(socket, incoming);
         } catch (SocketTimeoutException ex) {
-          if (isShutDown)
-            return;
+          if (isShutDown) return;
         } catch (IOException ex) {
           logger.log(Level.WARNING, "%s: %s", ex.getMessage(), ex);
         }
-      }  
-      // end while
+      }
+    // end while
     } catch (SocketException ex) {
       logger.log(Level.SEVERE, "Could not bind to port %d: %s", port, ex);
     }
   }
 
   public abstract void respond(DatagramSocket socket, DatagramPacket request)
-      throws IOException;
+    throws IOException;
 
   public void shutDown() {
     this.isShutDown = true;

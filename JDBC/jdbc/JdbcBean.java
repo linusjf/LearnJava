@@ -8,15 +8,18 @@ import java.sql.Statement;
 import java.util.Vector;
 
 public class JdbcBean {
-
   private Vector<Object> acctDetails;
 
   public JdbcBean() throws JdbcBeanException {
-    try (Connection connection =
-             DriverManager.getConnection("jdbc:derby:Finances", "", "");
-         Statement statement = connection.createStatement();
-         ResultSet results =
-             statement.executeQuery("SELECT * FROM Accounts");) {
+    try (
+      Connection connection = DriverManager.getConnection(
+        "jdbc:derby:Finances",
+        "",
+        ""
+      );
+      Statement statement = connection.createStatement();
+      ResultSet results = statement.executeQuery("SELECT * FROM Accounts");
+    ) {
       acctDetails = new Vector<Object>();
       while (results.next()) {
         acctDetails.add(results.getInt(1));

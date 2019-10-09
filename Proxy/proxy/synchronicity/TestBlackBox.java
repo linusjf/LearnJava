@@ -2,7 +2,6 @@ package proxy.synchronicity;
 
 public enum TestBlackBox {
   ;
-
   /**
    * Main program.
    *

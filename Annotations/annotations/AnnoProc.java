@@ -15,6 +15,7 @@ import javax.lang.model.element.TypeElement;
  */
 @SupportedAnnotationTypes("SuppressWarnings")
 public class AnnoProc extends AbstractProcessor {
+
   /**
    * Describe <code>process</code> method here.
    *
@@ -22,8 +23,10 @@ public class AnnoProc extends AbstractProcessor {
    * @return a <code>boolean</code> value
    */
   @Override
-  public boolean process(Set<? extends TypeElement> elems,
-                         RoundEnvironment renv) {
+  public boolean process(
+    Set<? extends TypeElement> elems,
+    RoundEnvironment renv
+  ) {
     return true;
   }
 

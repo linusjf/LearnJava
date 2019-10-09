@@ -13,8 +13,7 @@ import java.util.List;
 
 public enum TestProxy {
   ;
-
-  private static final String FILE = "urls.txt";  // NOPMD
+  private static final String FILE = "urls.txt"; // NOPMD
 
   private static final String PROXY_HOST = "localhost";
 
@@ -28,8 +27,7 @@ public enum TestProxy {
    */
   public static void main(String... args) {
     String fileName = FILE;
-    if (args.length > 0)
-      fileName = args[0];
+    if (args.length > 0) fileName = args[0];
 
     String[] urls = readURLsFromFile(fileName);
     testURLs(urls);
@@ -55,12 +53,13 @@ public enum TestProxy {
   }
 
   private static void testURLs(String... urls) {
-    for (String strUrl: urls) {
+    for (String strUrl : urls) {
       try {
         connect(strUrl);
       } catch (IOException e) {
-        System.err.println("Error creating HTTP(S) connection: "
-                           + e.getMessage());
+        System.err.println(
+          "Error creating HTTP(S) connection: " + e.getMessage()
+        );
       }
     }
   }
@@ -69,8 +68,10 @@ public enum TestProxy {
     URL url = new URL(strUrl);
     System.out.println("Connecting to ..." + strUrl);
     if (strUrl.startsWith("http")) {
-      Proxy proxy = new Proxy(Proxy.Type.HTTP,
-                              new InetSocketAddress(PROXY_HOST, PROXY_PORT));
+      Proxy proxy = new Proxy(
+        Proxy.Type.HTTP,
+        new InetSocketAddress(PROXY_HOST, PROXY_PORT)
+      );
       URLConnection connection = url.openConnection(proxy);
       connection.getInputStream();
     }

@@ -11,10 +11,12 @@ import logging.FormatLogger;
 public enum DaytimeUDPServer {
   ;
   private static final int PORT = 1313;
-  private static final FormatLogger AUDIT =
-      new FormatLogger(Logger.getLogger("requests"));
-  private static final FormatLogger ERRORS =
-      new FormatLogger(Logger.getLogger("errors"));
+  private static final FormatLogger AUDIT = new FormatLogger(
+    Logger.getLogger("requests")
+  );
+  private static final FormatLogger ERRORS = new FormatLogger(
+    Logger.getLogger("errors")
+  );
 
   public static void main(String[] args) {
     try (DatagramSocket socket = new DatagramSocket(PORT)) {
@@ -25,7 +27,11 @@ public enum DaytimeUDPServer {
           String daytime = new Date().toString();
           byte[] data = daytime.getBytes("US-ASCII");
           DatagramPacket response = new DatagramPacket(
-              data, data.length, request.getAddress(), request.getPort());
+            data,
+            data.length,
+            request.getAddress(),
+            request.getPort()
+          );
           socket.send(response);
           AUDIT.info("%s %s", daytime, request.getAddress());
         } catch (IOException ex) {

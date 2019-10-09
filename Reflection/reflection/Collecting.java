@@ -14,7 +14,6 @@ public final class Collecting {
   }
 
   public static void main(String... args) {
-
     Map<String, String> map = new HashMap<>();
     map.put("1", "a");
     map.put("2", "b");
@@ -36,14 +35,14 @@ public final class Collecting {
     // check is collection
     if (ref instanceof Collection) {
       System.out.println("A collection: " + ref.getClass().getName());
-      @SuppressWarnings("unchecked")
-      // not nice
-      Iterator<? extends Object> items =
-          ((Collection<? extends Object>)ref).iterator();
+      @SuppressWarnings("unchecked") // not nice
+      Iterator<? extends Object> items = ((Collection<? extends Object>) ref)
+        .iterator();
       while (items != null && items.hasNext()) {
         Object item = items.next();
-        System.out.println("Element of the collection: "
-                           + item.getClass().getName());
+        System.out.println(
+          "Element of the collection: " + item.getClass().getName()
+        );
       }
     } else {
       System.out.println("Not a collection: " + ref.getClass().getName());

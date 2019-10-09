@@ -8,6 +8,5 @@ import java.lang.annotation.Target;
 @Target(value = ElementType.METHOD)
 @Retention(value = RetentionPolicy.CLASS)
 public @interface Interleave {
-
   Class<?> value() default NoGroup.class;
 }

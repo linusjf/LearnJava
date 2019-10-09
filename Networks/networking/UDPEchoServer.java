@@ -17,11 +17,15 @@ public class UDPEchoServer extends UDPServer {
 
   @Override
   public void respond(DatagramSocket socket, DatagramPacket packet)
-      throws IOException {
+    throws IOException {
     // clang-format off
-    DatagramPacket outgoing =
-        new DatagramPacket(
-            packet.getData(), packet.getLength(), packet.getAddress(), packet.getPort());
+    DatagramPacket outgoing = new DatagramPacket(
+      packet.getData(),
+      packet.getLength(),
+      packet.getAddress(),
+      packet.getPort()
+    );
+
     // clang-format on
     socket.send(outgoing);
   }

@@ -29,17 +29,18 @@ public final class MediaServer {
     while (true) {
       try {
         Socket connection = serverSocket.accept();
+
         // Step 1…
         Scanner inStream = new Scanner(connection.getInputStream());
+
         // Step 2…
-        ObjectOutputStream outStream =
-            new ObjectOutputStream(connection.getOutputStream());
+        ObjectOutputStream outStream = new ObjectOutputStream(
+          connection.getOutputStream()
+        );
         String message = inStream.nextLine();
         System.out.println(message);
-        if ("IMAGE".equals(message))
-          sendFile("beesting.jpg", outStream);
-        if ("SOUND".equals(message))
-          sendFile("cuckoo.wav", outStream);
+        if ("IMAGE".equals(message)) sendFile("beesting.jpg", outStream);
+        if ("SOUND".equals(message)) sendFile("cuckoo.wav", outStream);
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }
@@ -47,20 +48,26 @@ public final class MediaServer {
   }
 
   private static void sendFile(String fileName, ObjectOutputStream outStream)
-      throws IOException {
+    throws IOException {
     // Step 3…
     InputStream fileIn = Files.newInputStream(Paths.get(fileName));
+
     // Step 4…
     long fileLen = new File(fileName).length();
+
     // Step 5…
-    int intFileLen = (int)fileLen;
+    int intFileLen = (int) fileLen;
+
     // Step 5 (cont'd)…
     byte[] byteArray = new byte[intFileLen];
+
     // Step 6…
     fileIn.read(byteArray);
+
     // Now that we have finished
     // with the FileInputStream…
     fileIn.close();
+
     // Step 7…
     outStream.writeObject(byteArray);
     outStream.flush();

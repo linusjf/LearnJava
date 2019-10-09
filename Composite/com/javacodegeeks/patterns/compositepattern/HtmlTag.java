@@ -9,8 +9,7 @@ import java.util.List;
  * @version 1.0
  */
 public abstract class HtmlTag {
-  private static final String UNSUPPORTED_OPERATION =
-      "Current operation is not support for this object.";
+  private static final String UNSUPPORTED_OPERATION = "Current operation is not support for this object.";
 
   /**
    * Describe <code>getTagName</code> method here.

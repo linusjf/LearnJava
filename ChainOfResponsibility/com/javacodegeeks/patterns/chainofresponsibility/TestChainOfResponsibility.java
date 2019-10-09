@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.chainofresponsibility;
 
 public enum TestChainOfResponsibility {
   ;
-
   /**
    * Main program.
    *

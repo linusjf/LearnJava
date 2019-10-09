@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public enum CleanerDaemon {
   ;
-
   public static void main(String[] args) {
     Deque<Event> deque = new ArrayDeque<>();
     WriterTask writer = new WriterTask(deque);
@@ -52,8 +51,12 @@ public enum CleanerDaemon {
       for (int i = 1; i < 100; i++) {
         Event event = new Event();
         event.setDate(new Date());
-        event.setEvent(String.format("The thread %s has generated an event",
-                                     Thread.currentThread().getId()));
+        event.setEvent(
+          String.format(
+            "The thread %s has generated an event",
+            Thread.currentThread().getId()
+          )
+        );
         synchronized (deque) {
           deque.addFirst(event);
         }

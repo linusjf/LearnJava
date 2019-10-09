@@ -21,10 +21,10 @@ public interface MachineMediator {
 
   // clang-format off
   /** Describe <code>on</code> method here. */
-  @SuppressWarnings("PMD.ShortMethodName") 
+  @SuppressWarnings("PMD.ShortMethodName")
   void on();
-  // clang-format on
 
+  // clang-format on
   /** Describe <code>off</code> method here. */
   void off();
 

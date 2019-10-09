@@ -16,33 +16,39 @@ public enum DemoThreadExample {
   }
 
   static class ExceptionHandler implements Thread.UncaughtExceptionHandler {
+
     public void uncaughtException(Thread t, Throwable e) {
       System.err.printf("An exception has been captured\n");
       System.err.printf("Thread: %s\n", t.getId());
       System.err.printf(
-          "Exception: %s: %s%n", e.getClass().getName(), e.getMessage());
+        "Exception: %s: %s%n",
+        e.getClass().getName(),
+        e.getMessage()
+      );
       System.err.printf("Stack Trace: %n");
       StringWriter sw = new StringWriter();
       e.printStackTrace(new PrintWriter(sw));
-      System.err.printf("%s%n",
-                        sw.toString().replace("\n", " ").replace("\t", " "));
+      System.err.printf(
+        "%s%n",
+        sw.toString().replace("\n", " ").replace("\t", " ")
+      );
       System.out.printf("Thread status: %s%n", t.getState());
       runCount++;
-      if (runCount < LIMIT)
-        new Thread(new Task()).start();
+      if (runCount < LIMIT) new Thread(new Task()).start();
     }
   }
 
   static class Task implements Runnable {
+
     @Override
     public void run() {
-      Thread.currentThread().setUncaughtExceptionHandler(
-          new ExceptionHandler());
+      Thread.currentThread()
+        .setUncaughtExceptionHandler(new ExceptionHandler());
       System.out.println(Integer.parseInt("123"));
       System.out.println(Integer.parseInt("234"));
       System.out.println(Integer.parseInt("345"));
-      System.out.println(
-          Integer.parseInt("XYZ"));  
+      System.out.println(Integer.parseInt("XYZ"));
+
       // This will cause NumberFormatException
       System.out.println(Integer.parseInt("456"));
     }

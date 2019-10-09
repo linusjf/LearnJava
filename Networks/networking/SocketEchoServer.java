@@ -1,4 +1,5 @@
 package networking;
+
 /* SocketEchoServer.java
  *
  * Copyright (c) 2000 Sean Walton and Macmillan Publishers.  Use may be in
@@ -23,7 +24,6 @@ package networking;
  **
  * **************************************************************************
  */
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,15 +46,15 @@ public class SocketEchoServer {
     try {
       while (true) {
         Socket client = server.accept();
-        BufferedReader r =
-            new BufferedReader(new InputStreamReader(client.getInputStream()));
+        BufferedReader r = new BufferedReader(
+          new InputStreamReader(client.getInputStream())
+        );
         PrintWriter w = new PrintWriter(client.getOutputStream(), true);
         w.println("Welcome to the Java EchoServer.  Type 'bye' to close.");
         String line;
         do {
           line = r.readLine();
-          if (line != null)
-            w.println("Got: " + line);
+          if (line != null) w.println("Got: " + line);
         } while (!line.trim().equals("bye"));
         client.close();
       }

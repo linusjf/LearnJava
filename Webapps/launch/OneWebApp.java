@@ -16,7 +16,6 @@ package launch;
 //  You may elect to redistribute this code under either of these licenses.
 //  ========================================================================
 //
-
 import java.io.File;
 import java.lang.management.ManagementFactory;
 import org.eclipse.jetty.jmx.MBeanContainer;
@@ -39,8 +38,9 @@ public final class OneWebApp {
       Server server = new Server(8080);
 
       // Setup JMX
-      MBeanContainer mbContainer =
-          new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
+      MBeanContainer mbContainer = new MBeanContainer(
+        ManagementFactory.getPlatformMBeanServer()
+      );
       server.addBean(mbContainer);
 
       // The WebAppContext is the entity that controls the environment in

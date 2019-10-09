@@ -2,11 +2,11 @@ package regex;
 
 // A Simple Java program to demonstrate working of
 // Pattern.matches() in Java
-
 import java.util.regex.Pattern;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
+
   private Demo() {
     throw new IllegalStateException("Private constructor");
   }
@@ -18,7 +18,6 @@ public final class Demo {
 
     // Following line prints "false" because the whole
     // text "geeksfor" doesn't match pattern "g*geeks*"
-
     System.out.println(Pattern.matches("g*geeks*", "geeksfor"));
   }
 }

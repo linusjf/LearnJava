@@ -1,10 +1,8 @@
 package com.lambdaworks.jni;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
-
 import static java.lang.System.getProperty;
 import static java.util.regex.Pattern.CASE_INSENSITIVE;
-
 import java.util.regex.Pattern;
 
 /**
@@ -16,11 +14,9 @@ import java.util.regex.Pattern;
  * @author Will Glozer
  */
 public final class Platform {
-  public enum Arch {
-    X86("x86|i386"),
-    X86_64("x86_64|amd64"),
-    AARCH64("aarch64");
 
+  public enum Arch {
+    X86("x86|i386"), X86_64("x86_64|amd64"), AARCH64("aarch64");
     Pattern pattern;
 
     Arch(String pattern) {
@@ -29,10 +25,7 @@ public final class Platform {
   }
 
   public enum OS {
-    DARWIN("darwin|mac os x"),
-    FREEBSD("freebsd"),
-    LINUX("linux");
-
+    DARWIN("darwin|mac os x"), FREEBSD("freebsd"), LINUX("linux");
     Pattern pattern;
 
     OS(String pattern) {
@@ -58,9 +51,9 @@ public final class Platform {
     final String osArch = getProperty("os.arch");
     final String osName = getProperty("os.name");
 
-    for (Arch arch: Arch.values()) {
+    for (Arch arch : Arch.values()) {
       if (arch.pattern.matcher(osArch).matches()) {
-        for (OS os: OS.values()) {
+        for (OS os : OS.values()) {
           if (os.pattern.matcher(osName).matches()) {
             return new Platform(arch, os);
           }
@@ -68,8 +61,8 @@ public final class Platform {
       }
     }
 
-    final String msg =
-        String.format("Unsupported platform %s %s", osArch, osName);
+    final
+    String msg = String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 }

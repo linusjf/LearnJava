@@ -20,15 +20,21 @@ public class NonblockingSingleFileHttpServer {
   private int port = 80;
 
   @SuppressWarnings("PMD.UnusedFormalParameter")
-  public NonblockingSingleFileHttpServer(ByteBuffer data,
-                                         String encoding,
-                                         String mimeType,
-                                         int port) {
+  public NonblockingSingleFileHttpServer(
+    ByteBuffer data,
+    String encoding,
+    String mimeType,
+    int port
+  ) {
     this.port = port;
-    String header = "HTTP/1.0 200 OK\r\n"
-                    + "Server: NonblockingSingleFileHTTPServer\r\n"
-                    + "Content-length: " + data.limit() + "\r\n"
-                    + "Content-type: " + mimeType + "\r\n\r\n";
+    String header = "HTTP/1.0 200 OK\r\n" +
+      "Server: NonblockingSingleFileHTTPServer\r\n" +
+      "Content-length: " +
+      data.limit() +
+      "\r\n" +
+      "Content-type: " +
+      mimeType +
+      "\r\n\r\n";
     byte[] headerData = header.getBytes(Charset.forName("US-ASCII"));
     ByteBuffer buffer = ByteBuffer.allocate(data.limit() + headerData.length);
     buffer.put(headerData);
@@ -53,25 +59,26 @@ public class NonblockingSingleFileHttpServer {
         keys.remove();
         try {
           if (key.isAcceptable()) {
-            ServerSocketChannel server = (ServerSocketChannel)key.channel();
+            ServerSocketChannel server = (ServerSocketChannel) key.channel();
             SocketChannel channel = server.accept();
             channel.configureBlocking(false);
             channel.register(selector, SelectionKey.OP_READ);
           } else if (key.isWritable()) {
-            SocketChannel channel = (SocketChannel)key.channel();
-            ByteBuffer buffer = (ByteBuffer)key.attachment();
+            SocketChannel channel = (SocketChannel) key.channel();
+            ByteBuffer buffer = (ByteBuffer) key.attachment();
             if (buffer.hasRemaining()) {
               channel.write(buffer);
-            } else {  
+            } else {
               // we're done
               channel.close();
             }
           } else if (key.isReadable()) {
             // Don't bother trying to parse the HTTP header.
             // Just read something.
-            SocketChannel channel = (SocketChannel)key.channel();
+            SocketChannel channel = (SocketChannel) key.channel();
             ByteBuffer buffer = ByteBuffer.allocate(4096);
             channel.read(buffer);
+
             // switch channel to write-only mode
             key.interestOps(SelectionKey.OP_WRITE);
             key.attach(contentBuffer.duplicate());
@@ -92,31 +99,34 @@ public class NonblockingSingleFileHttpServer {
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println(
-          "Usage: java NonblockingSingleFileHTTPServer file port encoding");
+        "Usage: java NonblockingSingleFileHTTPServer file port encoding"
+      );
       return;
     }
     try {
       // read the single file to serve
-      String contentType =
-          URLConnection.getFileNameMap().getContentTypeFor(args[0]);
+      String contentType = URLConnection.getFileNameMap()
+        .getContentTypeFor(args[0]);
       Path file = FileSystems.getDefault().getPath(args[0]);
       byte[] data = Files.readAllBytes(file);
       ByteBuffer input = ByteBuffer.wrap(data);
+
       // set the port to listen on
       int port;
       try {
         port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65_535)
-          port = 80;
+        if (port < 1 || port > 65_535) port = 80;
       } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
         port = 80;
       }
       String encoding = "UTF-8";
-      if (args.length > 2)
-        encoding = args[2];
-      NonblockingSingleFileHttpServer server =
-          new NonblockingSingleFileHttpServer(
-              input, encoding, contentType, port);
+      if (args.length > 2) encoding = args[2];
+      NonblockingSingleFileHttpServer server = new NonblockingSingleFileHttpServer(
+        input,
+        encoding,
+        contentType,
+        port
+      );
       server.run();
     } catch (IOException ex) {
       System.err.println(ex);

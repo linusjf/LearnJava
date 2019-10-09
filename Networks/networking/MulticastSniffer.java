@@ -15,12 +15,16 @@ public final class MulticastSniffer {
   public static void main(String[] args) {
     InetAddress group = null;
     int port = 0;
+
     // read the address from the command line
     try {
       group = InetAddress.getByName(args[0]);
       port = Integer.parseInt(args[1]);
-    } catch (ArrayIndexOutOfBoundsException | NumberFormatException
-             | UnknownHostException ex) {
+    } catch (
+      ArrayIndexOutOfBoundsException
+      | NumberFormatException
+      | UnknownHostException ex
+    ) {
       System.err.println("Usage: java MulticastSniffer multicast_address port");
       System.exit(1);
     }

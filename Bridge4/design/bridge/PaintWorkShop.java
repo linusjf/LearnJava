@@ -9,13 +9,14 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class PaintWorkShop extends WorkShop {
+
   @Override
   public void work(Vehicle vehicle) {
     System.out.print("Painting... ");
     long timeToTake = 100 * vehicle.minWorkTime();
     try {
-      TimeUnit.MILLISECONDS.sleep(timeToTake); 
-      // Thread.sleep(timeToTake);
+      TimeUnit.MILLISECONDS.sleep(timeToTake);
+    // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }

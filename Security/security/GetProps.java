@@ -1,4 +1,5 @@
 package security;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,15 +30,12 @@ package security;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 public enum GetProps {
   ;
-
   private static final String NOT_SPECIFIED = "not specified";
 
   public static void main(String[] args) {
     /* Test reading properties w & w/out security manager */
-
     String s;
 
     try {
@@ -60,7 +58,6 @@ public enum GetProps {
 
       s = System.getProperty("java.home", NOT_SPECIFIED);
       System.out.println("  Your JRE installation directory is: " + s);
-
     } catch (SecurityException | IllegalArgumentException e) {
       System.err.println("Caught exception " + e.toString());
     }

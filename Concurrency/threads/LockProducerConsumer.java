@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public enum LockProducerConsumer {
   ;
-
   public static void main(String[] args) {
     FileMock mock = new FileMock(100, 10);
     Buffer buffer = new Buffer(20);
@@ -35,8 +34,8 @@ public enum LockProducerConsumer {
       for (int i = 0; i < size; i++) {
         StringBuilder buffer = new StringBuilder(length);
         for (int j = 0; j < length; j++) {
-          int indice = (int)Math.random() * 255;
-          buffer.append((char)indice);
+          int indice = (int) Math.random() * 255;
+          buffer.append((char) indice);
         }
         content[i] = buffer.toString();
       }
@@ -83,9 +82,11 @@ public enum LockProducerConsumer {
           space.await();
         }
         queue.offer(line);
-        System.out.printf("%s: Inserted Line: %d\n",
-                          Thread.currentThread().getName(),
-                          queue.size());
+        System.out.printf(
+          "%s: Inserted Line: %d\n",
+          Thread.currentThread().getName(),
+          queue.size()
+        );
         lines.signalAll();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -104,9 +105,11 @@ public enum LockProducerConsumer {
 
         if (hasPendingLines()) {
           line = queue.poll();
-          System.out.printf("%s: Line Read: %d\n",
-                            Thread.currentThread().getName(),
-                            queue.size());
+          System.out.printf(
+            "%s: Line Read: %d\n",
+            Thread.currentThread().getName(),
+            queue.size()
+          );
           space.signalAll();
         }
       } catch (InterruptedException e) {

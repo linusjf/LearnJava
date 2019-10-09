@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.flyweightpattern;
  * @version 1.0
  */
 public class JavaPlatform implements Platform {
+
   /** Creates a new <code>JavaPlatform</code> instance. */
   public JavaPlatform() {
     System.out.println("JavaPlatform object created");

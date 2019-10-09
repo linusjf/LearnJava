@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class Bank1Server {
   private static final String HOST = "localhost";
-  
+
   private Bank1Server() {
     throw new IllegalStateException("Private constructor");
   }
@@ -23,17 +23,20 @@ public final class Bank1Server {
       new Account(234_567, "White", "Mary Jane", 2345.00),
       new Account(666_666, "Satan", "Beelzebub", 666.00),
     };
+
     // clang-format on
     List<Account> acctDetails = new ArrayList<>();
+
     // Insert the Account objects into the ArrayList …
-    for (Account acct: account)
-      acctDetails.add(acct);
+    for (Account acct : account) acctDetails.add(acct);
     try {
       // Create an implementation object, passing the
       // above ArrayList to the constructor…
       Bank1Impl temp = new Bank1Impl(acctDetails);
+
       // Save the object's name in a String …
       String rmiObjectName = "rmi://" + HOST + "/Accounts";
+
       // (Could omit host name, since 'localhost' would be
       // assumed by default.)
       // Bind the object's name to its reference…

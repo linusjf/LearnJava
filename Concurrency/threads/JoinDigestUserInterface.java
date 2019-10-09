@@ -3,13 +3,16 @@ package threads;
 import java.util.Base64;
 
 public final class JoinDigestUserInterface {
+
   private JoinDigestUserInterface() {
     throw new IllegalStateException("Private constructor");
   }
 
-  private static void startThread(int index,
-                                  ReturnDigest[] digestThreads,
-                                  String arg) {
+  private static void startThread(
+    int index,
+    ReturnDigest[] digestThreads,
+    String arg
+  ) {
     digestThreads[index] = new ReturnDigest(arg);
     digestThreads[index].start();
   }
@@ -23,6 +26,7 @@ public final class JoinDigestUserInterface {
     for (int i = 0; i < args.length; i++) {
       try {
         digestThreads[i].join();
+
         // Now print the result
         printResult(args[i], digestThreads[i]);
       } catch (InterruptedException ex) {

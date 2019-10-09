@@ -11,12 +11,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public final class BinarySaver {
+
   private BinarySaver() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         URL root = new URL(arg);
         saveBinaryFile(root);
@@ -41,13 +42,18 @@ public final class BinarySaver {
       int offset = 0;
       while (offset < contentLength) {
         int bytesRead = in.read(data, offset, data.length - offset);
-        if (bytesRead == -1)
-          break;
+        if (bytesRead == -1) break;
         offset += bytesRead;
       }
       if (offset != contentLength) {
-        throw new IOException(u + ": Only read " + offset + " bytes; Expected "
-                              + contentLength + " bytes");
+        throw new IOException(
+          u +
+            ": Only read " +
+            offset +
+            " bytes; Expected " +
+            contentLength +
+            " bytes"
+        );
       }
       String filename = u.getFile();
       filename = filename.substring(filename.lastIndexOf('/') + 1);

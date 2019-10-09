@@ -13,7 +13,6 @@ import javax.crypto.NoSuchPaddingException;
 
 public enum CipherDecrypt {
   ;
-
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -48,9 +47,14 @@ public enum CipherDecrypt {
       // Decrypting the text
       byte[] decipheredText = cipher.doFinal(cipherText);
       System.out.println(new String(decipheredText));
-    } catch (BadPaddingException | NoSuchPaddingException
-             | NoSuchAlgorithmException | UnsupportedEncodingException
-             | IllegalBlockSizeException | InvalidKeyException e) {
+    } catch (
+      BadPaddingException
+      | NoSuchPaddingException
+      | NoSuchAlgorithmException
+      | UnsupportedEncodingException
+      | IllegalBlockSizeException
+      | InvalidKeyException e
+    ) {
       System.err.println(e);
     }
   }

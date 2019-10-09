@@ -23,12 +23,13 @@ public enum MultiEchoServer {
       try {
         Socket client = serverSocket.accept();
         System.out.println("\nNew client accepted.\n");
+
         // Create a thread to handle communication with
         // this client and pass the constructor for this
         // thread a reference to the relevant socket…
         ClientHandler handler = new ClientHandler(client);
-        handler.start();  
-        // As usual, method calls run.
+        handler.start();
+      // As usual, method calls run.
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
@@ -60,11 +61,12 @@ public enum MultiEchoServer {
           // Accept message from client on
           // the socket's input stream…
           received = input.nextLine();
+
           // Echo message back to client on
           // the socket's output stream…
           output.println("ECHO: " + received);
         }
-        // Repeat above until 'QUIT' sent by client…
+      // Repeat above until 'QUIT' sent by client…
       } while (!"QUIT".equals(received));
       try {
         if (client != null) {

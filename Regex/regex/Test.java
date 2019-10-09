@@ -2,17 +2,19 @@ package regex;
 
 // A Simple Java program to demonstrate working of
 // Pattern.matches() in Java
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Test {
-  private static final Pattern PASSWORD_PATTERN = Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
+  private static final Pattern PASSWORD_PATTERN = Pattern.compile(
+    "^((\\$2(a){0,1}\\$){1})(.*)"
+  );
 
-  private static final Pattern SEARCHFOR_PATTERN =
-      Pattern.compile("^(((Any)|(Network)|(Person)|(Host)|"
-          + "(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$");
+  private static final Pattern SEARCHFOR_PATTERN = Pattern.compile(
+    "^(((Any)|(Network)|(Person)|(Host)|" +
+      "(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$"
+  );
 
   private Test() {
     throw new IllegalStateException("Private constructor");

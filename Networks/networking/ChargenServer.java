@@ -38,39 +38,47 @@ public final class ChargenServer {
   }
 
   @SuppressWarnings("checkstyle:magicnumber")
-  private static void handleChannels(SelectionKey key,
-                                     byte[] rotation,
-                                     Selector selector) {
+  private static void handleChannels(
+    SelectionKey key,
+    byte[] rotation,
+    Selector selector
+  ) {
     try {
       if (key.isAcceptable()) {
-        ServerSocketChannel server = (ServerSocketChannel)key.channel();
+        ServerSocketChannel server = (ServerSocketChannel) key.channel();
         SocketChannel client = server.accept();
         System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
         ByteBuffer buffer = ByteBuffer.allocate(74);
         buffer.put(rotation, 0, 72);
-        buffer.put((byte)'\r');
-        buffer.put((byte)'\n');
+        buffer.put((byte) '\r');
+        buffer.put((byte) '\n');
         buffer.flip();
         SelectionKey key2 = client.register(selector, SelectionKey.OP_WRITE);
         key2.attach(buffer);
       } else if (key.isWritable()) {
-        SocketChannel client = (SocketChannel)key.channel();
-        ByteBuffer buffer = (ByteBuffer)key.attachment();
+        SocketChannel client = (SocketChannel) key.channel();
+        ByteBuffer buffer = (ByteBuffer) key.attachment();
         if (!buffer.hasRemaining()) {
           // Refill the buffer with the next line
           buffer.rewind();
+
           // Get the old first character
           int first = buffer.get();
+
           // Get ready to change the data in the buffer
           buffer.rewind();
+
           // Find the new first characters position in rotation
           int position = first - ' ' + 1;
+
           // copy the data from rotation into the buffer
           buffer.put(rotation, position, 72);
+
           // Store a line break at the end of the buffer
-          buffer.put((byte)'\r');
-          buffer.put((byte)'\n');
+          buffer.put((byte) '\r');
+          buffer.put((byte) '\n');
+
           // Prepare the buffer for writing
           buffer.flip();
         }
@@ -101,10 +109,12 @@ public final class ChargenServer {
       selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
-      System.err.println("Error with server socket channel: "
-                         + ex.getMessage());
+      System.err.println(
+        "Error with server socket channel: " + ex.getMessage()
+      );
       return;
     }
+
     // fill up byte array with ascii characters
     byte[] rotation = constructRotatingArray();
     while (true) {

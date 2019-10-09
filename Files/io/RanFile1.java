@@ -1,7 +1,6 @@
 package io;
 
 import static io.RanFileConstants.*;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
@@ -14,9 +13,10 @@ public enum RanFile1 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (Scanner input = new Scanner(System.in);
-         RandomAccessFile ranAccts =
-             new RandomAccessFile("accounts.dat", "rw");) {
+    try (
+      Scanner input = new Scanner(System.in);
+      RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
+    ) {
       String reply = "y";
       do {
         acctNum++;
@@ -27,9 +27,11 @@ public enum RanFile1 {
         initials = input.nextLine();
         System.out.print("Balance: ");
         balance = input.nextFloat();
+
         // Now get rid of carriage return(!)…
         input.nextLine();
-        writeRecord(ranAccts);  
+        writeRecord(ranAccts);
+
         // Method defined below.
         System.out.print("\nDo you wish to do this again (y/n)? ");
         reply = input.nextLine();
@@ -44,8 +46,10 @@ public enum RanFile1 {
   public static void writeRecord(RandomAccessFile file) throws IOException {
     // First find starting byte for current record…
     long filePos = (acctNum - 1) * REC_SIZE;
+
     // Position file pointer…
     file.seek(filePos);
+
     // Now write the four (fixed-size) fields.
     // Note that a definition must be provided
     // for method writeString…
@@ -55,46 +59,53 @@ public enum RanFile1 {
     file.writeFloat(balance);
   }
 
-  public static void writeString(RandomAccessFile file,
-                                 String text,
-                                 int fixedSize) throws IOException {
+  public static void writeString(
+    RandomAccessFile file,
+    String text,
+    int fixedSize
+  )
+    throws IOException {
     int size = text.length();
     if (size <= fixedSize) {
       file.writeChars(text);
+
       // Now 'pad out' the field with spaces…
-      for (int i = size; i < fixedSize; i++)
-        file.writeChar(' ');
+      for (int i = size; i < fixedSize; i++) file.writeChar(' ');
     } else {
       // String is too long!
       file.writeChars(text.substring(0, fixedSize));
-      // Write to file the first fixedSize characters of
-      // string text, starting at byte zero.
+    // Write to file the first fixedSize characters of
+    // string text, starting at byte zero.
     }
   }
 
   public static void showRecords(RandomAccessFile file) throws IOException {
     long numRecords = file.length() / REC_SIZE;
-    file.seek(0);  
+    file.seek(0);
+
     // Go to start of file.
     for (int i = 0; i < numRecords; i++) {
       acctNum = file.readLong();
       surname = readString(file, SURNAME_SIZE);
+
       // readString defined below.
       initials = readString(file, NUM_INITS);
       balance = file.readFloat();
-      System.out.printf(acctNum + " " + surname + " " + initials + " "
-                            + "%.2f %n",
-                        balance);
+      System.out.printf(
+        acctNum + " " + surname + " " + initials + " " + "%.2f %n",
+        balance
+      );
     }
   }
 
   public static String readString(RandomAccessFile file, int fixedSize)
-      throws IOException {
-    StringBuilder value = new StringBuilder();  
+    throws IOException {
+    StringBuilder value = new StringBuilder();
+
     // Set up empty string.
-    for (int i = 0; i < fixedSize; i++)
-      // Read character and concatenate it onto value…
-      value.append(file.readChar());
+    for (int i = 0; i <
+      fixedSize; i++) // Read character and concatenate it onto value…
+    value.append(file.readChar());
     return value.toString();
   }
 }

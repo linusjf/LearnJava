@@ -11,11 +11,10 @@ import java.util.Set;
 
 public enum SerialKiller {
   ;
-
   public static void main(String[] args) {
     Sub sub = new Sub(666);
     sub.checkInvariant();
-    Sub copy = (Sub)deepCopy(sub);
+    Sub copy = (Sub) deepCopy(sub);
     copy.checkInvariant();
   }
 
@@ -39,7 +38,7 @@ class Super implements Serializable {
   final Set<Super> set = new HashSet<>();
 }
 
-@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
+@SuppressWarnings({ "checkstyle:onetoplevelclass", "PMD.ShortClassName" })
 final class Sub extends Super {
   private static final long serialVersionUID = 1L;
   private int id;
@@ -48,12 +47,11 @@ final class Sub extends Super {
     super();
     this.id = id;
     set.add(this);
-    // Establish invariant
+  // Establish invariant
   }
 
   public void checkInvariant() {
-    if (!set.contains(this))
-      throw new AssertionError("invariant violated");
+    if (!set.contains(this)) throw new AssertionError("invariant violated");
   }
 
   @Override
@@ -63,6 +61,6 @@ final class Sub extends Super {
 
   @Override
   public boolean equals(Object o) {
-    return o instanceof Sub && id == ((Sub)o).id;
+    return o instanceof Sub && id == ((Sub) o).id;
   }
 }

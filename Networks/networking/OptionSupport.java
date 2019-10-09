@@ -11,7 +11,6 @@ import java.nio.channels.SocketChannel;
 
 public enum OptionSupport {
   ;
-
   public static void main(String[] args) {
     try {
       printOptions(SocketChannel.open());
@@ -26,7 +25,7 @@ public enum OptionSupport {
 
   private static void printOptions(NetworkChannel channel) throws IOException {
     System.out.println(channel.getClass().getSimpleName() + " supports:");
-    for (SocketOption<?> option: channel.supportedOptions()) {
+    for (SocketOption<?> option : channel.supportedOptions()) {
       try {
         System.out.println(option.name() + ": " + channel.getOption(option));
       } catch (AssertionError ae) {

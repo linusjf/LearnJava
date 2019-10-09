@@ -31,8 +31,12 @@ public final class FileChannelReadExample implements FileChannelExample {
    */
   public String readFile() {
     final StringBuilder contents = new StringBuilder();
-    try (SeekableByteChannel fileChannel =
-             createChannel(INPUT_FILE_PATH, FileOperation.READ)) {
+    try (
+      SeekableByteChannel fileChannel = createChannel(
+        INPUT_FILE_PATH,
+        FileOperation.READ
+      )
+    ) {
       final ByteBuffer buffer = createBuffer();
       while (fileChannel.read(buffer) != -1) {
         contents.append(convertBytesToString(buffer.array()));

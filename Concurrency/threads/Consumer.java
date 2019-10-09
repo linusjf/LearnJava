@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,7 +30,6 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 import java.util.Random;
 
 public class Consumer implements Runnable {
@@ -42,8 +42,8 @@ public class Consumer implements Runnable {
   @Override
   public void run() {
     Random random = new Random();
-    for (String message = drop.take(); !"DONE".equals(message);
-         message = drop.take()) {
+    for (String message = drop.take(); !"DONE".equals(message); message =
+      drop.take()) {
       System.out.format("MESSAGE RECEIVED: %s%n", message);
       try {
         Thread.sleep(random.nextInt(5000));

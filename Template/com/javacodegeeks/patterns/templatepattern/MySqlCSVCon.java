@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.templatepattern;
 
 public class MySqlCSVCon extends ConnectionTemplate {
+
   @Override
   public void setDBDriver() {
     System.out.println("Setting MySQL DB drivers...");

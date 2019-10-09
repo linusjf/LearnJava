@@ -23,11 +23,9 @@ public final class Time {
         case 0:
           d = Time.getDateFromNetwork();
           break;
-
         case 1:
           d = Time.getDateFromNetwork(args[0], 37);
           break;
-
         default:
           d = Time.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
           break;
@@ -43,7 +41,7 @@ public final class Time {
   }
 
   public static Date getDateFromNetwork(String host, int port)
-      throws IOException {
+    throws IOException {
     // The time protocol sets the epoch at 1900,
     // the Java Date class at 1970. This number
     // converts between them.

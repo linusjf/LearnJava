@@ -31,7 +31,9 @@ public class TextFileHandler implements Handler {
       return;
     }
     if (handler != null) {
-      System.out.println(handlerName + " fowards request to " + handler.getHandlerName());
+      System.out.println(
+        handlerName + " fowards request to " + handler.getHandlerName()
+      );
       handler.process(file);
       return;
     }

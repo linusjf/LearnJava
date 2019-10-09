@@ -4,14 +4,15 @@ import java.math.BigInteger;
 
 public enum Calculator implements ICalc {
   FACTORIAL {
+
     @Override
     public String calculate(String value) {
       String answer = "NA";
       try {
         final long longValue = Long.parseLong(value);
         BigInteger factorialValue = BigInteger.valueOf(1);
-        for (long i = 1; i <= longValue; i++)
-          factorialValue = factorialValue.multiply(BigInteger.valueOf(i));
+        for (long i = 1; i <= longValue; i++) factorialValue =
+          factorialValue.multiply(BigInteger.valueOf(i));
         answer = factorialValue.toString();
       } catch (NumberFormatException exp) {
         System.out.println("Can't calculate factorial of " + value);
@@ -19,8 +20,8 @@ public enum Calculator implements ICalc {
       return answer;
     }
   },
-
   PALINDROME {
+
     @Override
     @SuppressWarnings("PMD.InefficientEmptyStringCheck")
     public String calculate(String value) {
@@ -32,8 +33,8 @@ public enum Calculator implements ICalc {
       return answer;
     }
   },
-
   ARMSTRONG {
+
     @Override
     @SuppressWarnings("checkstyle:magicnumber")
     public String calculate(String value) {

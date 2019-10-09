@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 public class SocketClientExample {
+
   public void startClient() throws IOException, InterruptedException {
     InetSocketAddress hostAddress = new InetSocketAddress("localhost", 8090);
     SocketChannel client = SocketChannel.open(hostAddress);
@@ -16,9 +17,12 @@ public class SocketClientExample {
 
     // Send messages to server
     String[] messages = new String[] {
-        threadName + ": test1", threadName + ": test2", threadName + ": test3"};
+      threadName + ": test1",
+      threadName + ": test2",
+      threadName + ": test3"
+    };
 
-    for (String msg: messages) {
+    for (String msg : messages) {
       byte[] message = msg.getBytes();
       ByteBuffer buffer = ByteBuffer.wrap(message);
       client.write(buffer);

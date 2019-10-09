@@ -3,6 +3,7 @@ package javapuzzles;
 public enum UnwelcomeGuest {
   ;
   public static final long GUEST_USER_ID = -1;
+
   //  private static final long USER_ID;
   private static final long USER_ID = getUserIdOrGuest();
 
@@ -22,7 +23,7 @@ public enum UnwelcomeGuest {
 
   private static long getUserIdFromEnvironment() throws IdUnavailableException {
     throw new IdUnavailableException("ID Unavailable");
-    // Simulate an error
+  // Simulate an error
   }
 
   public static void main(String[] args) {

@@ -9,8 +9,8 @@ package flyweight;
 public class ThickPen implements Pen {
   private final BrushSize brushSize = BrushSize.THICK; // NOPMD
   private String color;
-  // extrinsic state - supplied by client
 
+  // extrinsic state - supplied by client
   /**
    * Describe <code>setColor</code> method here.
    *

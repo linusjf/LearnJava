@@ -9,9 +9,7 @@ package flyweight;
 @SuppressWarnings("PMD.ShortClassName")
 public interface Pen {
   enum BrushSize {
-    THIN,
-    MEDIUM,
-    THICK,
+    THIN, MEDIUM, THICK, ;
   }
 
   /**

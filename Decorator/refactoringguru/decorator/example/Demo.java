@@ -8,14 +8,16 @@ import refactoringguru.decorator.example.decorators.FileDataSource;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
+
   private Demo() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
     String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
-    DataSourceDecorator encoded =
-        new CompressionDecorator(new EncryptionDecorator(new FileDataSource("OutputDemo.txt")));
+    DataSourceDecorator encoded = new CompressionDecorator(
+      new EncryptionDecorator(new FileDataSource("OutputDemo.txt"))
+    );
     encoded.writeData(salaryRecords);
     DataSource plain = new FileDataSource("OutputDemo.txt");
 

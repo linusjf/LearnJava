@@ -1,7 +1,6 @@
 package cryptic;
 
 import static cryptic.DHHelper.*;
-
 import java.io.IOException;
 import java.security.AlgorithmParameters;
 import java.security.GeneralSecurityException;
@@ -40,12 +39,12 @@ public final class DHKeyAgreement {
   }
 
   private static byte[] getAlicePublicEncodedKey()
-      throws GeneralSecurityException {
+    throws GeneralSecurityException {
     // Alice encodes her public key, and sends it over to Bob.
     return aliceKpair.getPublic().getEncoded();
   }
 
-  @SuppressWarnings({"checkstyle:illegaltoken", "PMD.ExcessiveMethodLength"})
+  @SuppressWarnings({ "checkstyle:illegaltoken", "PMD.ExcessiveMethodLength" })
   public static void main(String... argv) {
     try {
       initAliceKey();
@@ -66,8 +65,8 @@ public final class DHKeyAgreement {
        * He must use the same parameters when he generates his own key
        * pair.
        */
-      DHParameterSpec dhParamFromAlicePubKey =
-          ((DHPublicKey)alicePubKey).getParams();
+      DHParameterSpec dhParamFromAlicePubKey = ((DHPublicKey) alicePubKey)
+        .getParams();
 
       // Bob creates his own DH key pair
       System.out.println("BOB: Generate DH keypair ...");
@@ -112,13 +111,15 @@ public final class DHKeyAgreement {
       byte[] aliceSharedSecret = aliceKeyAgree.generateSecret();
       int aliceLen = aliceSharedSecret.length;
       byte[] bobSharedSecret = new byte[aliceLen];
+
       // provide output buffer of required size
       int bobLen = bobKeyAgree.generateSecret(bobSharedSecret, 0);
       assert aliceLen == bobLen;
       System.out.println("Alice secret: " + toHexString(aliceSharedSecret));
       System.out.println("Bob secret: " + toHexString(bobSharedSecret));
-      if (!java.util.Arrays.equals(aliceSharedSecret, bobSharedSecret))
-        throw new GeneralSecurityException("Shared secrets differ");
+      if (
+        !java.util.Arrays.equals(aliceSharedSecret, bobSharedSecret)
+      ) throw new GeneralSecurityException("Shared secrets differ");
       System.out.println("Shared secrets are the same");
 
       /*
@@ -142,10 +143,18 @@ public final class DHKeyAgreement {
        * passed to the Cipher.init() method.
        */
       System.out.println("Use shared secret as SecretKey object ...");
-      SecretKeySpec bobAesKey =
-          new SecretKeySpec(bobSharedSecret, 0, 16, "AES");
-      SecretKeySpec aliceAesKey =
-          new SecretKeySpec(aliceSharedSecret, 0, 16, "AES");
+      SecretKeySpec bobAesKey = new SecretKeySpec(
+        bobSharedSecret,
+        0,
+        16,
+        "AES"
+      );
+      SecretKeySpec aliceAesKey = new SecretKeySpec(
+        aliceSharedSecret,
+        0,
+        16,
+        "AES"
+      );
 
       /*
        * Bob encrypts, using AES in CBC mode
@@ -162,7 +171,6 @@ public final class DHKeyAgreement {
       /*
        * Alice decrypts, using AES in CBC mode
        */
-
       // Instantiate AlgorithmParameters object from parameter encoding
       // obtained from Bob
       AlgorithmParameters aesParams = AlgorithmParameters.getInstance("AES");
@@ -170,9 +178,11 @@ public final class DHKeyAgreement {
       Cipher aliceCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
       aliceCipher.init(Cipher.DECRYPT_MODE, aliceAesKey, aesParams);
       byte[] recovered = aliceCipher.doFinal(ciphertext);
-      if (!java.util.Arrays.equals(cleartext, recovered))
-        throw new GeneralSecurityException("AES in CBC mode recovered text is "
-                                           + "different from cleartext");
+      if (
+        !java.util.Arrays.equals(cleartext, recovered)
+      ) throw new GeneralSecurityException(
+        "AES in CBC mode recovered text is " + "different from cleartext"
+      );
       System.out.println("AES in CBC mode recovered text is same as cleartext");
     } catch (GeneralSecurityException | IOException exc) {
       System.err.println(exc);

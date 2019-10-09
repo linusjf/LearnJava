@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.commandpattern;
 
 public enum TestCommandPattern {
   ;
-
   public static void main(String[] args) {
     init();
   }

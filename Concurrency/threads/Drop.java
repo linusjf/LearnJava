@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,12 +30,12 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 @SuppressWarnings("PMD.ShortClassName")
 public class Drop {
   // Message sent from producer
   // to consumer.
   private String message = "";
+
   // True if consumer should wait
   // for producer to send message,
   // false if producer should wait for
@@ -52,8 +53,10 @@ public class Drop {
           System.err.println(e);
         }
       }
+
       // Toggle status.
       empty = true;
+
       // Notify producer that
       // status has changed.
       notifyAll();
@@ -73,10 +76,13 @@ public class Drop {
           System.err.println(e);
         }
       }
+
       // Toggle status.
       empty = false;
+
       // Store message.
       this.message = message;
+
       // Notify consumer that status
       // has changed.
       notifyAll();

@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,7 +30,6 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 import java.util.Random;
 
 public class Producer implements Runnable {
@@ -42,14 +42,14 @@ public class Producer implements Runnable {
   @Override
   public void run() {
     String[] importantInfo = {
-        "Mares eat oats",
-        "Does eat oats",
-        "Little lambs eat ivy",
-        "A kid will eat ivy too",
+      "Mares eat oats",
+      "Does eat oats",
+      "Little lambs eat ivy",
+      "A kid will eat ivy too",
     };
     Random random = new Random();
 
-    for (String info: importantInfo) {
+    for (String info : importantInfo) {
       drop.put(info);
       try {
         Thread.sleep(random.nextInt(5000));

@@ -28,10 +28,11 @@ public final class JdbcMetaData {
     try {
       // Step 2…
       statement = connection.createStatement();
-      String select = "SELECT * FROM Accounts"
-                      + " WHERE acctNum = 123456";
+      String select = "SELECT * FROM Accounts" + " WHERE acctNum = 123456";
+
       // Step 3…
       results = statement.executeQuery(select);
+
       // Start of step 4…
       // Check that record has been found…
       boolean found = results.next();
@@ -52,6 +53,7 @@ public final class JdbcMetaData {
         System.out.println("Field type: " + metaData.getColumnTypeName(i));
         int colType = metaData.getColumnType(i);
         System.out.print("Value: ");
+
         // Select the appropriate getXXX method,
         // according to the SQL type of the field…
         switch (colType) {
@@ -72,6 +74,7 @@ public final class JdbcMetaData {
             break;
         }
       }
+
       // End of step 4.
       // (No further queries, so no Step 5!)
       // Step 6…

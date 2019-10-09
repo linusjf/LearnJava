@@ -3,7 +3,6 @@ package io;
 // Allows the user to retrieve individual account
 // records and modify their balances.
 import static io.RanFileConstants.*;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
@@ -16,12 +15,14 @@ public enum RanFile2 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (Scanner input = new Scanner(System.in);
-         RandomAccessFile ranAccts =
-             new RandomAccessFile("accounts.dat", "rw");) {
+    try (
+      Scanner input = new Scanner(System.in);
+      RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
+    ) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply;
-      long currentPos;  
+      long currentPos;
+
       // File pointer position.
       do {
         System.out.print("\nEnter account number: ");
@@ -31,14 +32,17 @@ public enum RanFile2 {
           System.out.print("\nEnter account number: ");
           acctNum = input.nextLong();
         }
-        showRecord(ranAccts);  
+        showRecord(ranAccts);
+
         // Defined below.
         System.out.print("\nEnter new balance: ");
         balance = input.nextFloat();
         input.nextLine();
+
         // Get rid of carriage return!
         currentPos = ranAccts.getFilePointer();
-        ranAccts.seek(currentPos - 4);  
+        ranAccts.seek(currentPos - 4);
+
         // Back 4 bytes.
         ranAccts.writeFloat(balance);
         System.out.print("\nModify another balance (y/n)? ");
@@ -61,13 +65,13 @@ public enum RanFile2 {
   }
 
   public static String readString(RandomAccessFile file, int fixedSize)
-      throws IOException {
+    throws IOException {
     // Set up empty buffer before reading from file…
     StringBuilder buffer = new StringBuilder();
-    for (int i = 0; i < fixedSize; i++)
-      // Read character from file and append to buffer.
-      buffer.append(file.readChar());
-    return buffer.toString();  
-    // Convert into String.
+    for (int i = 0; i <
+      fixedSize; i++) // Read character from file and append to buffer.
+    buffer.append(file.readChar());
+    return buffer.toString();
+  // Convert into String.
   }
 }

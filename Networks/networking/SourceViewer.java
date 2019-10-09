@@ -8,17 +8,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class SourceViewer {
+
   private SourceViewer() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
     if (args.length > 0) {
-      try (Reader r = new InputStreamReader(
-               new BufferedInputStream(new URL(args[0]).openStream()));) {
+      try (
+        Reader r = new InputStreamReader(
+          new BufferedInputStream(new URL(args[0]).openStream())
+        );
+      ) {
         int c;
-        while ((c = r.read()) != -1)
-          System.out.print((char)c);
+        while ((c = r.read()) != -1) System.out.print((char) c);
       } catch (MalformedURLException ex) {
         System.err.println(args[0] + " is not a parseable URL");
       } catch (IOException ex) {

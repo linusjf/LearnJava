@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,7 +30,6 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 public class SynchronizedRGB {
   // Values must be between 0 and 255.
   private int red;
@@ -47,8 +47,9 @@ public class SynchronizedRGB {
 
   @SuppressWarnings("checkstyle:hiddenfield")
   private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
-        || blue > 255) {
+    if (
+      red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255
+    ) {
       throw new IllegalArgumentException();
     }
   }

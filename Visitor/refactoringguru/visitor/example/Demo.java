@@ -9,6 +9,7 @@ import refactoringguru.visitor.example.visitor.XmlExportVisitor;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
+
   private Demo() {
     throw new IllegalStateException("Private constructor.");
   }

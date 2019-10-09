@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.mementopattern;
 
 public enum TestMementoPattern {
   ;
-
   @SuppressWarnings("PMD.AvoidDuplicateLiterals")
   public static void main(String[] args) {
     CareTaker careTaker = new CareTaker();

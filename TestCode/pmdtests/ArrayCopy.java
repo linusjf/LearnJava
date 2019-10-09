@@ -5,7 +5,17 @@ import java.util.Random;
 public enum ArrayCopy {
   ;
   private static String[] words = {
-      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main"};
+    "the",
+    "hello",
+    "goodbye",
+    "packt",
+    "java",
+    "thread",
+    "pool",
+    "random",
+    "class",
+    "main"
+  };
 
   public static void main(String[] args) {
     String[][] document = new String[10][100];

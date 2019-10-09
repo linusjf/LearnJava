@@ -9,7 +9,7 @@ import java.util.List;
 
 public final class Bank1Client {
   private static final String HOST = "localhost";
-  
+
   private Bank1Client() {
     throw new IllegalStateException("Private constructor");
   }
@@ -19,10 +19,11 @@ public final class Bank1Client {
       // Obtain a reference to the object from the
       // registry and typecast it into the appropriate
       // type…
-      Bank1 temp = (Bank1)Naming.lookup("rmi://" + HOST + "/Accounts");
+      Bank1 temp = (Bank1) Naming.lookup("rmi://" + HOST + "/Accounts");
       List<Account> acctDetails = temp.getBankAccounts();
+
       // Simply display all acct details…
-      for (Account acct: acctDetails) {
+      for (Account acct : acctDetails) {
         // Now invoke methods of Account object
         // to display its details…
         System.out.println("\nAccount number: " + acct.getAcctNum());

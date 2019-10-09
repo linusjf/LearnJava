@@ -9,6 +9,7 @@ import com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil;
  * @version 1.0
  */
 public class BCryptor implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *

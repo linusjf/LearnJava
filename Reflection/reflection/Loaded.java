@@ -6,32 +6,42 @@ import java.io.InputStream;
 
 public enum Loaded {
   ;
-
   private static final String REFLECTABLE_CLASS = "reflection.ReflectableClass";
 
-  @SuppressWarnings({"PMD.UseProperClassLoader",
-                     "PMD.CompareObjectsWithEquals"})
-  public static void
-  main(String... args) {
+  @SuppressWarnings(
+    { "PMD.UseProperClassLoader", "PMD.CompareObjectsWithEquals" }
+  )
+  public static void main(String... args) {
     try {
       ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
       ClassLoader classClassLoader = ReflectableClass.class.getClassLoader();
-      Class<?> reflectableClassInstanceLoaded =
-          systemClassLoader.loadClass(REFLECTABLE_CLASS);
-      Class<?> reflectableClassInstanceForName =
-          Class.forName(REFLECTABLE_CLASS, true, systemClassLoader);
-      Class<?> reflectableClassInstanceLoadedClass =
-          classClassLoader.loadClass(REFLECTABLE_CLASS);
+      Class<?> reflectableClassInstanceLoaded = systemClassLoader.loadClass(
+        REFLECTABLE_CLASS
+      );
+      Class<?> reflectableClassInstanceForName = Class.forName(
+        REFLECTABLE_CLASS,
+        true,
+        systemClassLoader
+      );
+      Class<?> reflectableClassInstanceLoadedClass = classClassLoader.loadClass(
+        REFLECTABLE_CLASS
+      );
       ClassLoader testClassLoader = new TestClassLoader();
       Class<?> classInstance = testClassLoader.loadClass(REFLECTABLE_CLASS);
-      System.out.println(reflectableClassInstanceLoaded
-                         == reflectableClassInstanceForName);
-      System.out.println(reflectableClassInstanceLoaded.equals(
-          reflectableClassInstanceForName));
-      System.out.println(reflectableClassInstanceLoadedClass
-                         == reflectableClassInstanceForName);
-      System.out.println(reflectableClassInstanceLoadedClass.equals(
-          reflectableClassInstanceForName));
+      System.out.println(
+        reflectableClassInstanceLoaded == reflectableClassInstanceForName
+      );
+      System.out.println(
+        reflectableClassInstanceLoaded.equals(reflectableClassInstanceForName)
+      );
+      System.out.println(
+        reflectableClassInstanceLoadedClass == reflectableClassInstanceForName
+      );
+      System.out.println(
+        reflectableClassInstanceLoadedClass.equals(
+          reflectableClassInstanceForName
+        )
+      );
       System.out.println(classInstance == reflectableClassInstanceForName);
       System.out.println(classInstance.equals(reflectableClassInstanceForName));
     } catch (ClassNotFoundException cnfe) {
@@ -48,7 +58,8 @@ public enum Loaded {
       }
       try {
         InputStream in = ClassLoader.getSystemResourceAsStream(
-            name.replace(".", "/") + ".class");
+          name.replace(".", "/") + ".class"
+        );
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         int data = in.read();
         while (data != -1) {

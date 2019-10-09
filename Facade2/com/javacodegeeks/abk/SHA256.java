@@ -12,6 +12,7 @@ import java.util.Base64;
  * @version 1.0
  */
 public class SHA256 implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -23,8 +24,8 @@ public class SHA256 implements Encrypt {
     String hash = "";
     try {
       final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-      final byte[] textBytes =
-          digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final
+      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());

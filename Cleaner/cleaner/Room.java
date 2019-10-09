@@ -15,6 +15,7 @@ public class Room implements AutoCloseable {
 
   // The state of this room, shared with our cleanable
   private final State state; // NOPMD
+
   // Our cleanable. Cleans the room when it’s eligible for gc
   private final Cleaner.Cleanable cleanable;
 
@@ -35,9 +36,9 @@ public class Room implements AutoCloseable {
 
   // Resource that requires cleaning. Must not refer to Room!
   private static class State implements Runnable {
-    private int numJunkPiles; 
-    // Number of junk piles in this room
+    private int numJunkPiles;
 
+    // Number of junk piles in this room
     /**
      * Creates a new <code>State</code> instance.
      *

@@ -17,8 +17,9 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory =
-          new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory = new CustomThreadFactory(
+        "CustomThreadFactory"
+      );
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -31,14 +32,16 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   public static void alternateMain() throws InterruptedException {
-    CustomThreadFactory threadFactory =
-        new CustomThreadFactory("CustomThreadFactory-alternate");
+    CustomThreadFactory threadFactory = new CustomThreadFactory(
+      "CustomThreadFactory-alternate"
+    );
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     executor.submit(task);
     executor.shutdown();
-    if (executor.awaitTermination(1, TimeUnit.DAYS))
-      System.out.printf("Alternate Main: End of the program.\n");
+    if (executor.awaitTermination(1, TimeUnit.DAYS)) System.out.printf(
+      "Alternate Main: End of the program.\n"
+    );
   }
 
   @Override
@@ -83,16 +86,17 @@ public class CustomThreadFactory implements ThreadFactory {
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
       buffer.append(getName())
-          .append(":  Creation Date: ")
-          .append(creationDate)
-          .append(" : Running time: ")
-          .append(getExecutionTime())
-          .append(" Milliseconds.");
+        .append(":  Creation Date: ")
+        .append(creationDate)
+        .append(" : Running time: ")
+        .append(getExecutionTime())
+        .append(" Milliseconds.");
       return buffer.toString();
     }
   }
 
   static class CustomTask implements Runnable {
+
     @Override
     public void run() {
       try {

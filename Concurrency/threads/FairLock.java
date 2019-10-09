@@ -18,7 +18,7 @@ public class FairLock {
     while (isLockedForThisThread) {
       synchronized (this) {
         isLockedForThisThread =
-            isLocked || waitingThreads.get(0) != queueObject;
+          isLocked || waitingThreads.get(0) != queueObject;
         if (!isLockedForThisThread) {
           isLocked = true;
           waitingThreads.remove(queueObject);
@@ -41,7 +41,8 @@ public class FairLock {
     synchronized (this) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException(
-            "Calling thread has not locked this lock");
+          "Calling thread has not locked this lock"
+        );
       }
       isLocked = false;
       if (!waitingThreads.isEmpty()) {

@@ -5,19 +5,16 @@ import java.util.List;
 
 public enum Lists {
   ;
-
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
     List<T> list = new ArrayList<>();
-    for (T elt: arr)
-      list.add(elt);
+    for (T elt : arr) list.add(elt);
     return list;
   }
 
   @SafeVarargs
   public static <T> void addAll(List<T> list, T... arr) {
-    for (T elt: arr)
-      list.add(elt);
+    for (T elt : arr) list.add(elt);
   }
 
   public static void main(String... args) {
@@ -26,7 +23,7 @@ public enum Lists {
     System.out.println(words);
     ints = new ArrayList<>();
     Lists.addAll(ints, 1, 2);
-    Lists.addAll(ints, new Integer[] {3, 4});
+    Lists.addAll(ints, new Integer[] { 3, 4 });
     assert ints.toString().equals("[1, 2, 3, 4]");
     ints = Lists.<Integer>toList();
     List<Object> objs = Lists.<Object>toList(1, "two");

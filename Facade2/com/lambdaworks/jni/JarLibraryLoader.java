@@ -1,7 +1,6 @@
 package com.lambdaworks.jni;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,14 +60,13 @@ public class JarLibraryLoader implements LibraryLoader {
     boolean loaded = false;
     File lib = null;
 
-    try (JarFile jar =
-             new JarFile(codeSource.getLocation().getPath(), verify)) {
+    try (
+      JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)
+    ) {
       final Platform platform = Platform.detect();
-      for (String path: libCandidates(platform, name)) {
+      for (String path : libCandidates(platform, name)) {
         final JarEntry entry = jar.getJarEntry(path);
-        if (entry == null)
-          continue;
-        else {
+        if (entry == null) continue; else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
           sm.checkLink(lib.getAbsolutePath());
@@ -121,19 +119,19 @@ public class JarLibraryLoader implements LibraryLoader {
     final StringBuilder sb = new StringBuilder();
 
     sb.append(libraryPath)
-        .append('/')
-        .append(platform.arch)
-        .append('/')
-        .append(platform.os)
-        .append("/lib")
-        .append(name);
+      .append('/')
+      .append(platform.arch)
+      .append('/')
+      .append(platform.os)
+      .append("/lib")
+      .append(name);
 
     switch (platform.os) {
       case DARWIN:
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case LINUX:  // falls through
+      case LINUX: // falls through
       case FREEBSD:
         candidates.add(sb + ".so");
         break;

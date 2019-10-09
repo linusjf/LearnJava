@@ -2,6 +2,7 @@ package com.javacodegeeks.patterns.abstractfactorypattern;
 
 @SuppressWarnings("PMD.ClassNamingConventions")
 public final class ParserFactoryProducer {
+
   private ParserFactoryProducer() {
     throw new AssertionError();
   }
@@ -10,10 +11,8 @@ public final class ParserFactoryProducer {
     switch (factoryType) {
       case "NYFactory":
         return new NYParserFactory();
-
       case "TWFactory":
         return new TWParserFactory();
-
       default:
         break;
     }

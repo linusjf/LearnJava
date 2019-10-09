@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 // https://www.baeldung.com/java-init-list-one-line
 public enum ListingRecur {
   ;
-
   private static final String FOO = "foo";
   private static final String BAZ = "baz";
   private static final String BAR = "bar";
@@ -19,17 +18,16 @@ public enum ListingRecur {
   @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
     try {
-      List<String> list = Arrays.asList(new String[] {FOO, BAR});
+      List<String> list = Arrays.asList(new String[] { FOO, BAR });
       assert list.contains(FOO);
 
       list = Arrays.asList(FOO, BAR);
 
       assert list.contains(FOO);
 
-      if (loopCount < RECURSION_COUNT)
-        list.add(BAZ);
+      if (loopCount < RECURSION_COUNT) list.add(BAZ);
 
-      String[] array = {FOO, BAR};
+      String[] array = { FOO, BAR };
       list = Arrays.asList(array);
       array[0] = BAZ;
       assert BAZ == list.get(0);
@@ -39,6 +37,7 @@ public enum ListingRecur {
       assert list.contains(FOO);
       list = List.of(FOO, BAR, BAZ);
       List<String> cities = new ArrayList<>() {
+
         {
           add("New York");
           add("Rio");

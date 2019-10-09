@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 
 public enum BillGenerator {
   ;
-
   /**
    * Main method.
    *
@@ -22,14 +21,19 @@ public enum BillGenerator {
 
     PlanFactory planFactory = new PlanFactory();
 
-    try (BufferedReader br =
-             new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(args[0]))))) {
+    try (
+      BufferedReader br = new BufferedReader(
+        new InputStreamReader(Files.newInputStream(Paths.get(args[0])))
+      )
+    ) {
       String planName = br.readLine();
       int units = Integer.parseInt(br.readLine());
 
       Plan p = planFactory.getPlan(planName);
 
-      System.out.print("Bill amount for " + planName + " of  " + units + " units is: ");
+      System.out.print(
+        "Bill amount for " + planName + " of  " + units + " units is: "
+      );
       p.allotRate();
       p.calculateBill(units);
     } catch (IOException | NumberFormatException e) {

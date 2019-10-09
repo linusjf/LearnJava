@@ -3,11 +3,11 @@ package javapuzzles;
 @SuppressWarnings("PMD")
 public enum CleverSwap {
   ;
-
   @SuppressWarnings("checkstyle:innerassignment")
   public static void main(String[] args) {
     // (0x7c0)
     int x = 1984;
+
     // (0x7d1)
     int y = 2001;
     x ^= y ^= x ^= y;

@@ -27,17 +27,23 @@ public final class JdbcChange {
     }
     try {
       // Step 2…
-      statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                                             ResultSet.CONCUR_UPDATABLE);
+      statement = connection.createStatement(
+          ResultSet.TYPE_SCROLL_SENSITIVE,
+          ResultSet.CONCUR_UPDATABLE
+        );
       System.out.println("\nInitial contents of table:\n");
+
       // Steps 3 and 4…
       displayTable();
+
       // Start of step 5…
       // First the update…
       results.absolute(2);
+
       // (Move to row 2 of ResultSet.)
       results.updateFloat("balance", 42.55f);
       results.updateRow();
+
       // Now the insertion…
       results.moveToInsertRow();
       results.updateInt("acctNum", 999_999);
@@ -45,12 +51,15 @@ public final class JdbcChange {
       results.updateString("firstNames", "Christine Dawn");
       results.updateFloat("balance", 2500f);
       results.insertRow();
+
       // Finally, the deletion…
-      results.absolute(1);  
+      results.absolute(1);
+
       // Move to row 1.
       results.deleteRow();
       System.out.println("\nNew contents of table:\n");
       displayTable();
+
       // End of step 5.
       // Step 6…
       connection.close();
@@ -67,8 +76,9 @@ public final class JdbcChange {
     System.out.println();
     while (results.next()) {
       System.out.println("Account no. " + results.getInt(1));
-      System.out.println("Account holder: " + results.getString(3) + " "
-                         + results.getString(2));
+      System.out.println(
+        "Account holder: " + results.getString(3) + " " + results.getString(2)
+      );
       System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
     }
   }

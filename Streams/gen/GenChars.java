@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 public enum GenChars {
   ;
-
   public static void main(String[] args) {
     try {
       generateCharacters(System.out);
@@ -38,17 +37,21 @@ public enum GenChars {
       /* infinite loop */
       for (int i = start; i < start + numberOfCharactersPerLine; i++) {
         line[i - start] =
-            (byte)((i - firstPrintableCharacter) % numberOfPrintableCharacters
-                   + firstPrintableCharacter);
+          (byte) ((i - firstPrintableCharacter) %
+            numberOfPrintableCharacters +
+            firstPrintableCharacter);
       }
-      line[72] = (byte)'\r';
+      line[72] = (byte) '\r';
+
       // carriage return
-      line[73] = (byte)'\n';
+      line[73] = (byte) '\n';
+
       // line feed
       out.write(line);
       start =
-          (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters
-          + firstPrintableCharacter;
+        (start + 1 - firstPrintableCharacter) %
+          numberOfPrintableCharacters +
+          firstPrintableCharacter;
       iterCount++;
     }
   }

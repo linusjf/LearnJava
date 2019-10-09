@@ -10,8 +10,9 @@ import java.util.logging.Logger;
 import logging.FormatLogger;
 
 public class JHttp {
-  private static final FormatLogger LOGGER =
-      new FormatLogger(Logger.getLogger(JHttp.class.getCanonicalName()));
+  private static final FormatLogger LOGGER = new FormatLogger(
+    Logger.getLogger(JHttp.class.getCanonicalName())
+  );
 
   private static final int NUM_THREADS = 50;
   private static final String INDEX_FILE = "index.html";
@@ -52,12 +53,12 @@ public class JHttp {
       System.out.println("Usage: java JHttp docroot port");
       return;
     }
+
     // set the port to listen on
     int port;
     try {
       port = Integer.parseInt(args[1]);
-      if (port < 0 || port > 65_535)
-        port = 80;
+      if (port < 0 || port > 65_535) port = 80;
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = 80;
     }

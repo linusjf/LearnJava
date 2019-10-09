@@ -1,4 +1,5 @@
 package threads;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,7 +30,6 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 public final class ImmutableRGB {
   // Values must be between 0 and 255.
   private final int red;
@@ -47,8 +47,9 @@ public final class ImmutableRGB {
 
   @SuppressWarnings("checkstyle:hiddenfield")
   private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
-        || blue > 255) {
+    if (
+      red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255
+    ) {
       throw new IllegalArgumentException();
     }
   }
@@ -63,6 +64,10 @@ public final class ImmutableRGB {
 
   public ImmutableRGB invert() {
     return new ImmutableRGB(
-        255 - red, 255 - green, 255 - blue, "Inverse of " + name);
+      255 - red,
+      255 - green,
+      255 - blue,
+      "Inverse of " + name
+    );
   }
 }

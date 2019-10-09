@@ -12,8 +12,8 @@ class CounterTerrorist implements Player {
   // clang-format off
   @SuppressWarnings("checkstyle:membername")
   private final String TASK; // NOPMD
-  // clang-format on
 
+  // clang-format on
   // Extrinsic Attribute
   private String weapon;
 
@@ -36,7 +36,8 @@ class CounterTerrorist implements Player {
   /** Describe <code>mission</code> method here. */
   @Override
   public void mission() {
-    System.out.println("Counter Terrorist with weapon " + weapon + "|"
-        + " Task is " + TASK);
+    System.out.println(
+      "Counter Terrorist with weapon " + weapon + "|" + " Task is " + TASK
+    );
   }
 }

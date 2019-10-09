@@ -40,6 +40,7 @@ public enum ReduceLockDuration {
   }
 
   static class OrigThread implements Runnable {
+
     @Override
     public void run() {
       for (int i = 0; i < 10_000; i++) {
@@ -55,6 +56,7 @@ public enum ReduceLockDuration {
   }
 
   static class ReducedThread implements Runnable {
+
     @Override
     public void run() {
       for (int i = 0; i < 10_000; i++) {

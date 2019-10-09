@@ -36,17 +36,13 @@ public enum EmailClient {
     String response;
     do {
       try (Socket link = new Socket(host, PORT)) {
-
         networkInput = new Scanner(link.getInputStream());
         networkOutput = new PrintWriter(link.getOutputStream(), true);
         do {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
         } while (!"read".equals(response) && !"send".equals(response));
-        if ("read".equals(response))
-          doRead();
-        else
-          doSend();
+        if ("read".equals(response)) doRead(); else doSend();
         System.out.print("\nDo you wish to send or read another (y/n): ");
         option = userEntry.nextLine();
         networkInput.close();
@@ -71,6 +67,7 @@ public enum EmailClient {
     int numMessages = 0;
     if (networkInput.hasNext()) {
       numMessages = networkInput.nextInt();
+
       // clear line separator
       networkInput.nextLine();
       System.out.println(numMessages + " messages.");

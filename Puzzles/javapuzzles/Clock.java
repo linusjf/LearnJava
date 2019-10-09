@@ -7,18 +7,18 @@ public enum Clock {
 
   public static void main(String[] args) {
     int minutes = 0;
-    for (int ms = 0; ms < 60 * 60 * 1000; ms++)
-      if (ms % 60 * 1000 == 0)
-        minutes++;
+    for (int ms = 0; ms < 60 * 60 * 1000; ms++) if (
+      ms % 60 * 1000 == 0
+    ) minutes++;
     System.out.println(minutes);
     altMain(args);
   }
 
   public static void altMain(String... args) {
     int minutes = 0;
-    for (int ms = 0; ms < MS_PER_HOUR; ms++)
-      if (ms % MS_PER_MINUTE == 0)
-        minutes++;
+    for (int ms = 0; ms < MS_PER_HOUR; ms++) if (
+      ms % MS_PER_MINUTE == 0
+    ) minutes++;
     System.out.println(minutes);
   }
 }

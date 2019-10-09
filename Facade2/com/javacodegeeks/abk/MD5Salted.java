@@ -1,7 +1,6 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -13,6 +12,7 @@ import java.util.Base64;
  * @version 1.0
  */
 public class MD5Salted implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *

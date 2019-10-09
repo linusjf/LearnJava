@@ -5,7 +5,6 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public enum ConcurrentLinkedDequeDemo {
   ;
-
   public static void main(String[] args) {
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];
@@ -14,9 +13,11 @@ public enum ConcurrentLinkedDequeDemo {
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf("Main: %d AddTask threads have been launched\n",
-                      threads.length);
-    for (Thread thread: threads) {
+    System.out.printf(
+      "Main: %d AddTask threads have been launched\n",
+      threads.length
+    );
+    for (Thread thread : threads) {
       try {
         thread.join();
       } catch (InterruptedException e) {
@@ -29,9 +30,11 @@ public enum ConcurrentLinkedDequeDemo {
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf("Main: %d PollTask threads have been launched\n",
-                      threads.length);
-    for (Thread thread: threads) {
+    System.out.printf(
+      "Main: %d PollTask threads have been launched\n",
+      threads.length
+    );
+    for (Thread thread : threads) {
       try {
         thread.join();
       } catch (InterruptedException e) {
@@ -57,21 +60,24 @@ public enum ConcurrentLinkedDequeDemo {
       threads2[i].setPriority(random.nextInt(10) + 1);
       threads2[i].start();
     }
-    System.out.printf("Alternate Main: %d AddTask threads have been launched\n",
-                      threads.length);
     System.out.printf(
-        "Alternate Main: %d PollTask threads have been launched simultaneously\n",
-        threads2.length);
+      "Alternate Main: %d AddTask threads have been launched\n",
+      threads.length
+    );
+    System.out.printf(
+      "Alternate Main: %d PollTask threads have been launched simultaneously\n",
+      threads2.length
+    );
     System.out.printf("Alternate Main: Size of the List: %d\n", list.size());
 
-    for (Thread thread: threads) {
+    for (Thread thread : threads) {
       try {
         thread.join();
       } catch (InterruptedException e) {
         System.err.println(e);
       }
     }
-    for (Thread thread: threads2) {
+    for (Thread thread : threads2) {
       try {
         thread.join();
       } catch (InterruptedException e) {

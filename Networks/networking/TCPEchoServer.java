@@ -18,31 +18,34 @@ public enum TCPEchoServer {
     System.out.printf("Opening port…%n");
     try {
       // Step 1.
-      serverSocket = new ServerSocket(PORT);  
+      serverSocket = new ServerSocket(PORT);
     } catch (IOException ioEx) {
       System.out.println("Unable to attach to port!");
       System.exit(1);
     }
-    while (true)
-      handleClient();
+    while (true) handleClient();
   }
 
   private static void handleClient() {
-    try (Socket link = serverSocket.accept();
-         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-         Scanner input = new Scanner(link.getInputStream());) {
+    try (
+      Socket link = serverSocket.accept();
+      PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+      Scanner input = new Scanner(link.getInputStream());
+    ) {
       int numMessages = 0;
-      String message = input.nextLine();  
+      String message = input.nextLine();
+
       // Step 4.
       while (!"***CLOSE***".equals(message)) {
         System.out.println("Message received.");
         numMessages++;
-        output.println("Message " + numMessages + ": " + message);  
+        output.println("Message " + numMessages + ": " + message);
+
         // Step 4.
         message = input.nextLine();
       }
-      output.println(numMessages + " messages received.");  
-      // Step 4.
+      output.println(numMessages + " messages received.");
+    // Step 4.
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }

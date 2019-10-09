@@ -1,6 +1,7 @@
 package player;
 
 public class TennisPlayer extends Player {
+
   public TennisPlayer() {
     super();
     type = Type.TENNIS;

@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.factorymethodpattern;
  * @version 1.0
  */
 public class OrderXMLDisplayService extends DisplayService {
+
   @Override
   public XMLParser getParser() {
     return new OrderXMLParser();

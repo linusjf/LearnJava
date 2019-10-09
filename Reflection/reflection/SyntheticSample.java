@@ -9,7 +9,6 @@ public final class SyntheticSample {
   }
 
   public static void main(String... args) {
-
     SampleNestedClass nestObj = new SampleNestedClass();
     System.out.println("Nested Variable: " + nestObj.privateVariable);
 
@@ -17,9 +16,10 @@ public final class SyntheticSample {
     Method[] methods = c.getDeclaredMethods();
 
     // The synthetic method displays the receiver parameter.
-    for (Method method: methods) {
-      System.out.println("method: " + method
-                         + " method.isSynthetic: " + method.isSynthetic());
+    for (Method method : methods) {
+      System.out.println(
+        "method: " + method + " method.isSynthetic: " + method.isSynthetic()
+      );
     }
   }
 

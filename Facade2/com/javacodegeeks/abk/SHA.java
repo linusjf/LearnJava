@@ -13,6 +13,7 @@ import java.util.Base64;
  */
 @SuppressWarnings("PMD.ShortClassName")
 public class SHA implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -24,8 +25,8 @@ public class SHA implements Encrypt {
     String hash = "";
     try {
       final MessageDigest digest = MessageDigest.getInstance("SHA");
-      final byte[] textBytes =
-          digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final
+      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());

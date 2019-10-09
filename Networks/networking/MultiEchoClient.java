@@ -23,18 +23,22 @@ public enum MultiEchoClient {
   }
 
   private static void sendMessages() {
-    try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream());
-         PrintWriter networkOutput =
-             new PrintWriter(socket.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
-
+    try (
+      Socket socket = new Socket(host, PORT);
+      Scanner networkInput = new Scanner(socket.getInputStream());
+      PrintWriter networkOutput = new PrintWriter(
+        socket.getOutputStream(),
+        true
+      );
+      Scanner userEntry = new Scanner(System.in);
+    ) {
       String message = "";
       String response = "";
       do {
         System.out.print("Enter message ('QUIT' to exit): ");
         if (userEntry.hasNext()) {
           message = userEntry.nextLine();
+
           // Send message to server on the
           // socket's output stream…
           // Accept response from server on the
@@ -43,6 +47,7 @@ public enum MultiEchoClient {
         }
         if (networkInput.hasNext()) {
           response = networkInput.nextLine();
+
           // Display server's response to user…
           System.out.println("\nSERVER> " + response);
         }

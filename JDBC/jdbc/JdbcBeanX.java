@@ -10,11 +10,17 @@ public class JdbcBeanX {
   private int numAccounts = 0;
 
   public JdbcBeanX() throws JdbcBeanException {
-    try (Connection connection =
-             DriverManager.getConnection("jdbc:derby:Finances", "", "");
-         Statement statement = connection.createStatement();
-         ResultSet results =
-             statement.executeQuery("SELECT COUNT(*) FROM Accounts");) {
+    try (
+      Connection connection = DriverManager.getConnection(
+        "jdbc:derby:Finances",
+        "",
+        ""
+      );
+      Statement statement = connection.createStatement();
+      ResultSet results = statement.executeQuery(
+        "SELECT COUNT(*) FROM Accounts"
+      );
+    ) {
       if (results.next()) {
         numAccounts = results.getInt(1);
       }

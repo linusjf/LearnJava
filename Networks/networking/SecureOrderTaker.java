@@ -34,8 +34,10 @@ public final class SecureOrderTaker {
     try {
       // The reference implementation only supports X.509 keys
       KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+
       // Oracle's default kind of key store
       KeyStore ks = KeyStore.getInstance("JKS");
+
       // For security, every key store is encrypted with a
       // passphrase that must be provided before we can load
       // it from disk. The passphrase is stored as a char[] array
@@ -48,22 +50,27 @@ public final class SecureOrderTaker {
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLServerSocketFactory factory = context.getServerSocketFactory();
-      SSLServerSocket server =
-          (SSLServerSocket)factory.createServerSocket(PORT);
+      SSLServerSocket server = (SSLServerSocket) factory.createServerSocket(
+        PORT
+      );
+
       // add anonymous (non-authenticated) cipher suites
       // CPD-ON
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
-      for (String instance: supported) {
+      for (String instance : supported) {
         if (instance.indexOf("_anon_") > 0) {
           anonCiphers.add(instance);
         }
       }
+
       // clang-format off
       String[] enabled = anonCiphers.stream().toArray(String[]::new);
+
       // clang-format on
       server.setEnabledCipherSuites(enabled);
       System.out.println("Ready to accept connections...");
+
       // Now all the set up is complete and we can focus
       // on the actual communication.
       while (true) {
@@ -76,14 +83,18 @@ public final class SecureOrderTaker {
           BufferedReader br = new BufferedReader(isr);
           String msg = br.readLine();
           System.out.println("Message received: " + msg);
-
         } catch (IOException ex) {
           System.err.println(ex.getMessage());
         }
       }
-    } catch (IOException | KeyManagementException | KeyStoreException
-             | NoSuchAlgorithmException | CertificateException
-             | UnrecoverableKeyException ex) {
+    } catch (
+      IOException
+      | KeyManagementException
+      | KeyStoreException
+      | NoSuchAlgorithmException
+      | CertificateException
+      | UnrecoverableKeyException ex
+    ) {
       System.err.println(ex.getMessage());
     }
   }

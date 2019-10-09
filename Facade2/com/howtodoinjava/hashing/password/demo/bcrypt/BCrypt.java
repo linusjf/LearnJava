@@ -13,7 +13,6 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 // WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamtoword;
 
@@ -63,10 +62,10 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamto
 public class BCrypt {
   // Expanded Blowfish key
   @SuppressWarnings("membername")
-  private int[] P;  // NOPMD
+  private int[] P; // NOPMD
 
   @SuppressWarnings("membername")
-  private int[] S;  // NOPMD
+  private int[] S; // NOPMD
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
@@ -113,13 +112,12 @@ public class BCrypt {
    */
   private void key(final byte[] key) {
     int i;
-    final int[] koffp = {0};
-    final int[] lr = {0, 0};
+    final int[] koffp = { 0 };
+    final int[] lr = { 0, 0 };
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       encipher(lr, 0);
@@ -144,14 +142,13 @@ public class BCrypt {
    */
   private void ekskey(final byte[] data, final byte[] key) {
     int i;
-    final int[] koffp = {0};
-    final int[] doffp = {0};
-    final int[] lr = {0, 0};
+    final int[] koffp = { 0 };
+    final int[] doffp = { 0 };
+    final int[] lr = { 0, 0 };
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       lr[0] ^= streamtoword(data, doffp);
@@ -171,10 +168,12 @@ public class BCrypt {
   }
 
   private void checkCryptParameters(int logRounds, byte[] salt) {
-    if (logRounds < 4 || logRounds > 31)
-      throw new IllegalArgumentException("Bad number of rounds");
-    if (salt.length != BCRYPT_SALT_LEN)
-      throw new IllegalArgumentException("Bad salt length");
+    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException(
+      "Bad number of rounds"
+    );
+    if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException(
+      "Bad salt length"
+    );
   }
 
   /**
@@ -186,9 +185,11 @@ public class BCrypt {
    *     apply
    * @return an array containing the binary hashed password
    */
-  byte[] cryptRaw(final byte[] password,
-                  final byte[] salt,
-                  final int logRounds) {
+  byte[] cryptRaw(
+    final byte[] password,
+    final byte[] salt,
+    final int logRounds
+  ) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -203,16 +204,15 @@ public class BCrypt {
     }
     int j;
     for (i = 0; i < 64; i++) {
-      for (j = 0; j < (clen >> 1); j++)
-        encipher(cdata, j << 1);
+      for (j = 0; j < (clen >> 1); j++) encipher(cdata, j << 1);
     }
 
     final byte[] ret = new byte[clen * 4];
     for (i = 0, j = 0; i < clen; i++) {
-      ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
-      ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
-      ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
-      ret[j++] = (byte)(cdata[i] & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 24) & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 16) & 0xff);
+      ret[j++] = (byte) ((cdata[i] >> 8) & 0xff);
+      ret[j++] = (byte) (cdata[i] & 0xff);
     }
     return ret;
   }

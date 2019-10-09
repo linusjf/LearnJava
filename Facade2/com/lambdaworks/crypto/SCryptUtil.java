@@ -1,6 +1,6 @@
 package com.lambdaworks.crypto;
-// Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
+// Copyright (C) 2011 - Will Glozer.  All rights reserved.
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
@@ -26,12 +26,12 @@ import java.util.Base64;
  *
  * @author Will Glozer
  */
-public final class SCryptUtil {  // NOPMD
-  
+public final class SCryptUtil { // NOPMD
+
   private SCryptUtil() {
     throw new IllegalStateException("Private constructor");
   }
-  
+
   /**
    * Hash the supplied plaintext password and generate output in the format
    * described in {@link SCryptUtil}.
@@ -42,35 +42,49 @@ public final class SCryptUtil {  // NOPMD
    * @param p Parallelization parameter.
    * @return The hashed password.
    */
-  public static String scrypt(String passwd,
-                              int enCPUCost,
-                              int rmemCost,
-                              int p) {
+  public static String scrypt(
+    String passwd,
+    int enCPUCost,
+    int rmemCost,
+    int p
+  ) {
     try {
       final byte[] salt = new byte[16];
       SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
-      final byte[] derived = SCrypt.scrypt(
-          passwd.getBytes("UTF-8"), salt, enCPUCost, rmemCost, p, 32);
+      final
+      byte[] derived = SCrypt.scrypt(
+        passwd.getBytes("UTF-8"),
+        salt,
+        enCPUCost,
+        rmemCost,
+        p,
+        32
+      );
 
-      final String params =
-          Long.toString(log2(enCPUCost) << 16L | rmemCost << 8 | p, 16);
+      final
+      String params = Long.toString(
+        log2(enCPUCost) << 16L | rmemCost << 8 | p,
+        16
+      );
 
-      final StringBuilder sb =
-          new StringBuilder((salt.length + derived.length) * 2);
+      final
+      StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
       sb.append("$s0$")
-          .append(params)
-          .append('$')
-          .append(Base64.getEncoder().encodeToString(salt))
-          .append('$')
-          .append(Base64.getEncoder().encodeToString(derived));
+        .append(params)
+        .append('$')
+        .append(Base64.getEncoder().encodeToString(salt))
+        .append('$')
+        .append(Base64.getEncoder().encodeToString(derived));
 
       return sb.toString();
     } catch (UnsupportedEncodingException e) {
       throw new IllegalStateException("JVM doesn't support UTF-8?", e);
     } catch (GeneralSecurityException e) {
       throw new IllegalStateException(
-          "JVM doesn't support SHA1PRNG or HMAC_SHA256?", e);
+        "JVM doesn't support SHA1PRNG or HMAC_SHA256?",
+        e
+      );
     }
   }
 
@@ -93,25 +107,33 @@ public final class SCryptUtil {  // NOPMD
       final long params = Long.parseLong(parts[2], 16);
       final byte[] salt = Base64.getDecoder().decode(parts[3]);
       final byte[] derived0 = Base64.getDecoder().decode(parts[4]);
-      final int n = (int)Math.pow(2, params >> 16 & 0xffff);
-      final int r = (int)params >> 8 & 0xff;
-      final int p = (int)params & 0xff;
+      final int n = (int) Math.pow(2, params >> 16 & 0xffff);
+      final int r = (int) params >> 8 & 0xff;
+      final int p = (int) params & 0xff;
 
-      final byte[] derived1 =
-          SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, n, r, p, 32);
+      final
+      byte[] derived1 = SCrypt.scrypt(
+        passwd.getBytes("UTF-8"),
+        salt,
+        n,
+        r,
+        p,
+        32
+      );
 
-      if (derived0.length != derived1.length)
-        return false;
+      if (derived0.length != derived1.length) return false;
 
       int result = 0;
-      for (int i = 0; i < derived0.length; i++)
-        result |= derived0[i] ^ derived1[i];
+      for (int i = 0; i < derived0.length; i++) result |=
+        derived0[i] ^ derived1[i];
       return result == 0;
     } catch (UnsupportedEncodingException e) {
       throw new IllegalStateException("JVM doesn't support UTF-8?", e);
     } catch (GeneralSecurityException e) {
       throw new IllegalStateException(
-          "JVM doesn't support SHA1PRNG or HMAC_SHA256?", e);
+        "JVM doesn't support SHA1PRNG or HMAC_SHA256?",
+        e
+      );
     }
   }
 
@@ -137,5 +159,4 @@ public final class SCryptUtil {  // NOPMD
     }
     return log + (n >>> 1);
   }
-
 }

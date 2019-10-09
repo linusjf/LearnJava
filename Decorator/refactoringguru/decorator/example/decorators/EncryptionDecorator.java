@@ -3,6 +3,7 @@ package refactoringguru.decorator.example.decorators;
 import java.util.Base64;
 
 public class EncryptionDecorator extends DataSourceDecorator {
+
   public EncryptionDecorator(DataSource source) {
     super(source);
   }

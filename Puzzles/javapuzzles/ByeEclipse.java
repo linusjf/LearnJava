@@ -2,7 +2,6 @@ package javapuzzles;
 
 public enum ByeEclipse {
   ;
-
   public static void main(String... args) {
     boolean b1 = true;
     boolean b2 = false;

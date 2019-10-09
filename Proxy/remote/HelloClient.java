@@ -8,21 +8,22 @@ import java.rmi.RemoteException;
 
 public final class HelloClient {
   private static final String HOST = "localhost";
-  
+
   private HelloClient() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
     try {
-
       if (System.getSecurityManager() == null) {
         System.setSecurityManager(new ZeroSecurityManager());
       }
+
       // Obtain a reference to the object from the
       // registry and typecast it into the appropriate
       // type…
-      Hello greeting = (Hello)Naming.lookup("rmi://" + HOST + "/Hello");
+      Hello greeting = (Hello) Naming.lookup("rmi://" + HOST + "/Hello");
+
       // Use the above reference to invoke the remote
       // object's method…
       System.out.println("Message received: " + greeting.getGreeting());

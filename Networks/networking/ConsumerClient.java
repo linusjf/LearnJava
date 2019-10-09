@@ -23,12 +23,15 @@ public enum ConsumerClient {
   }
 
   private static void sendMessages() {
-    try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream());
-         PrintWriter networkOutput =
-             new PrintWriter(socket.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
-
+    try (
+      Socket socket = new Socket(host, PORT);
+      Scanner networkInput = new Scanner(socket.getInputStream());
+      PrintWriter networkOutput = new PrintWriter(
+        socket.getOutputStream(),
+        true
+      );
+      Scanner userEntry = new Scanner(System.in);
+    ) {
       String message = "";
       String response = "";
       int pause;
@@ -36,6 +39,7 @@ public enum ConsumerClient {
         System.out.print("Enter '1' ('0' to exit): ");
         if (userEntry.hasNext()) {
           message = userEntry.nextLine();
+
           // Send message to server on the
           // socket's output stream…
           // Accept response from server on the
@@ -44,10 +48,12 @@ public enum ConsumerClient {
         }
         if (networkInput.hasNext()) {
           response = networkInput.nextLine();
+
           // Display server's response to user…
           System.out.println("\nSERVER> " + response);
         }
-        pause = (int)(Math.random() * 5000);
+        pause = (int) (Math.random() * 5000);
+
         // 'Sleep' for 0-5 seconds…
         Thread.sleep(pause);
       } while (!"0".equals(message));

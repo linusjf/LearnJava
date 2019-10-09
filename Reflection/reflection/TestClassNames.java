@@ -2,7 +2,6 @@ package reflection;
 
 public enum TestClassNames {
   ;
-
   private static void showClass(Class<?> c) {
     System.out.println("getName():          " + c.getName());
     System.out.println("getCanonicalName(): " + c.getCanonicalName());
@@ -15,7 +14,7 @@ public enum TestClassNames {
   private static void show(Runnable r) {
     showClass(r.getClass());
     showClass(java.lang.reflect.Array.newInstance(r.getClass(), 1).getClass());
-    // Obtains an array class of a lambda base type.
+  // Obtains an array class of a lambda base type.
   }
 
   public static void main(String[] args) {
@@ -37,8 +36,10 @@ public enum TestClassNames {
     showClass(LocalClass[].class);
     Object anonymous = new java.io.Serializable() {};
     showClass(anonymous.getClass());
-    showClass(java.lang.reflect.Array.newInstance(anonymous.getClass(), 1)
-                  .getClass());
+    showClass(
+      java.lang.reflect.Array.newInstance(anonymous.getClass(), 1).getClass()
+    );
+
     // Obtains an array class of an anonymous base type.
     show(() -> {});
   }
@@ -57,7 +58,5 @@ public enum TestClassNames {
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {
-  BLUE,
-  YELLOW,
-  RED,
+  BLUE, YELLOW, RED, ;
 }

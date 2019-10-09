@@ -1,7 +1,6 @@
 package com.lambdaworks.jni;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
-
 /**
  * {@code LibraryLoaders} will create the appropriate {@link LibraryLoader} for
  * the VM it is running on.
@@ -12,11 +11,12 @@ package com.lambdaworks.jni;
  *
  * @author Will Glozer
  */
-public final class LibraryLoaders {  // NOPMD
+public final class LibraryLoaders { // NOPMD
+
   private LibraryLoaders() {
     throw new IllegalStateException("Private constructor");
   }
-  
+
   /**
    * Create a new {@link LibraryLoader} for the current VM.
    *
@@ -26,18 +26,16 @@ public final class LibraryLoaders {  // NOPMD
     final String type = System.getProperty("com.lambdaworks.jni.loader");
 
     if (type != null) {
-      if ("sys".equals(type))
-        return new SysLibraryLoader();
-      if ("nil".equals(type))
-        return new NilLibraryLoader();
-      if ("jar".equals(type))
-        return new JarLibraryLoader();
+      if ("sys".equals(type)) return new SysLibraryLoader();
+      if ("nil".equals(type)) return new NilLibraryLoader();
+      if ("jar".equals(type)) return new JarLibraryLoader();
       throw new IllegalStateException(
-          "Illegal value for com.lambdaworks.jni.loader: " + type);
+        "Illegal value for com.lambdaworks.jni.loader: " + type
+      );
     }
 
     final String vmSpec = System.getProperty("java.vm.specification.name");
     return vmSpec.startsWith("Java") ? new JarLibraryLoader()
-                                     : new SysLibraryLoader();
+      : new SysLibraryLoader();
   }
 }

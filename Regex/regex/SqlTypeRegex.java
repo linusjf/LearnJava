@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public enum SqlTypeRegex {
   ;
-
   public static void main(String... args) {
     String sqlType = "NUMBER(10,2)";
     String type = getColumnDatatypeComponent(sqlType, 1);
@@ -22,11 +21,14 @@ public enum SqlTypeRegex {
     return getCapturedGroup(dataType.replaceAll("\\s*", ""), regex, group);
   }
 
-  public static String getCapturedGroup(String value, String pattern, int group) {
+  public static String getCapturedGroup(
+    String value,
+    String pattern,
+    int group
+  ) {
     Matcher m = Pattern.compile(pattern).matcher(value);
     if (m.matches() && group >= 0 && group <= m.groupCount()) {
       return m.group(group);
-    } else
-      return null;
+    } else return null;
   }
 }
