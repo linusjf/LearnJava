@@ -5,7 +5,7 @@ import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class ZooTest {
+public class MenagerieTest {
 
   public static void main(String[] args) {
 
@@ -17,7 +17,7 @@ public class ZooTest {
                                "female",                  //$NON-NLS-1$
                                "Ailuropoda melanoleuca",  //$NON-NLS-1$
                                221);
-    Zoo national = new Zoo("National Zoological Park",  //$NON-NLS-1$
+    Menagerie national = new Menagerie("National Zoological Park",  //$NON-NLS-1$
                            "Washington, D.C.");         //$NON-NLS-1$
 
     national.add(panda1);
