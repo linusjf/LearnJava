@@ -28,5 +28,4 @@ java -cp @"$classpathFile" \
 -t "$threads" \
 || { echo "$0 ran with exit code $?"; exit 1;}
 res=$?
-echo $res
 exit $res
