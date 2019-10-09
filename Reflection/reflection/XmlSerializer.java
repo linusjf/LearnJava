@@ -65,6 +65,7 @@ public enum XmlSerializer {
         fElt.setAttribute("declaringclass", declClass.getName());
 
         Class<?> fieldtype = fields[i].getType();
+        fElt.setAttribute("type", fieldtype.getName());
         Object child = fields[i].get(source);
 
         if (Modifier.isTransient(fields[i].getModifiers())) {
