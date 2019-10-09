@@ -1,5 +1,6 @@
 package reflection;
 
+import com.zeta.util.Mopex;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -7,13 +8,36 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import com.zeta.util.Mopex;
 
 public enum XmlSerializer {
   ;
-  public static Document serializeObject(Object source)  {
-    return serializeHelper(
-        source, new Document(new Element("serialized")), new IdentityHashMap<Object,Object>());
+  public static Document serializeObject(Object source) throws IllegalAccessException {
+    return serializeHelper(source,
+                           new Document(new Element("serialized")),
+                           new IdentityHashMap<Object, Object>());
+  }
+
+  private static Element 
+    serializeVariable(Class<?> fieldtype,
+        Object child,
+        Document target,
+        Map<Object,Object> table) throws IllegalAccessException {
+    if (child == null) {
+      return new Element("null");
+    } else if (!fieldtype.isPrimitive()) {
+      Element reference = new Element("reference");
+      if (table.containsKey(child)) {
+        reference.setText(table.get(child).toString());
+      } else {
+        reference.setText(Integer.toString(table.size()));
+        serializeHelper(child, target, table);
+      }
+      return reference;
+    } else {
+      Element value = new Element("value");
+      value.setText(child.toString());
+      return value;
+    }
   }
 
   // clang-format off
@@ -21,7 +45,7 @@ public enum XmlSerializer {
     Object source,
     Document target,
     Map<Object,Object> table
-  ) {
+  ) throws IllegalAccessException {
     String id = Integer.toString(table.size());
     table.put(source, id);
     Class<?> sourceclass = source.getClass();
