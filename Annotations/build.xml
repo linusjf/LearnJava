@@ -138,6 +138,9 @@
       </classpath>
     </java>
     <exec executable="bash">
+      <arg line="../prettierformat ${basedir}" />
+    </exec>
+    <exec executable="bash">
       <arg line="../cformat ${basedir}" />
     </exec>
     <exec executable="bash">
@@ -199,8 +202,10 @@
       </fileset>
     </pmd>
   </target>
-  <target name="pmd-result" depends="pmd" if="pmd.errCount">
-    <echo message="${pmd.errCount} violations found."/>
+  <target name="pmd-result"
+          depends="pmd"
+          if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd-result">
