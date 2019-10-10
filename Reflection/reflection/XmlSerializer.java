@@ -68,9 +68,9 @@ public enum XmlSerializer {
         fElt.setAttribute("type", fieldtype.getName());
         Object child = fields[i].get(source);
 
-        if (Modifier.isTransient(fields[i].getModifiers())) {
+        /*if (Modifier.isTransient(fields[i].getModifiers())) {
           child = null;
-        }
+        }*/
         fElt.addContent(serializeVariable(fieldtype, child, target, table));
 
         oElt.addContent(fElt);
