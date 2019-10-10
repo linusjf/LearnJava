@@ -6,6 +6,8 @@ configFilePath="$(find .. -maxdepth 2 \
 find . -maxdepth 2 -type f -name "*.xml" \
   -o -name "*.html" \
   ! -path "**/.git/**" \
+  ! -path "**/docs/**" \
+  ! -path "**/cached/**" \
   | parallel -j 5 -I% \
   tidy -config "$configFilePath" -quiet -xml -m %
 exit $?
