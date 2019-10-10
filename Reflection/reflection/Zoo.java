@@ -9,7 +9,7 @@ public class Zoo {
   String city;
   String name;
 
-  public Animal[] animals;
+  Animal[] animals;
 
   public Zoo(String city, String name) {
     this.city = city;
@@ -42,8 +42,8 @@ public class Zoo {
   }
 
   public void add(Animal al) {
-    List<Animal> animals = new ArrayList<>(Arrays.asList(this.animals));
-    animals.add(al);
-    this.animals = animals.toArray(this.animals);
+    List<Animal> beasts = new ArrayList<>(Arrays.asList(this.animals));
+    beasts.add(al);
+    this.animals = beasts.toArray(this.animals);
   }
 }

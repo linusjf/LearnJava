@@ -13,17 +13,17 @@ public final class MenagerieTest {
 
   public static void main(String[] args) {
 
-    Animal panda1 = new Animal("Tian Tian",               //$NON-NLS-1$
-                               "male",                    //$NON-NLS-1$
-                               "Ailuropoda melanoleuca",  //$NON-NLS-1$
+    Animal panda1 = new Animal("Tian Tian",             
+                               "male",                    
+                               "Ailuropoda melanoleuca",  
                                271);
-    Animal panda2 = new Animal("Mei Xiang",               //$NON-NLS-1$
-                               "female",                  //$NON-NLS-1$
-                               "Ailuropoda melanoleuca",  //$NON-NLS-1$
+    Animal panda2 = new Animal("Mei Xiang",               
+                               "female",                
+                               "Ailuropoda melanoleuca",  
                                221);
     Menagerie national =
-        new Menagerie("National Zoological Park",  //$NON-NLS-1$
-                      "Washington, D.C.");         //$NON-NLS-1$
+        new Menagerie("National Zoological Park",  
+                      "Washington, D.C.");  
 
     national.add(panda1);
     national.add(panda2);

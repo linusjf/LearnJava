@@ -9,6 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class Mopex {
+  
+  private Mopex() {
+    throw new IllegalStateException("Private constructor.");
+  }
+  
   /**
    * Returns an array of the instance variablies of the the specified class. An
    * instance variable is defined to be a non-static field that is declared by
@@ -73,12 +78,12 @@ public final class Mopex {
     Class<?>[] pta = c.getParameterTypes();
     String fpl = formalParametersToString(pta);
     String apl = actualParametersToString(pta);
-    Class<?>[] eTypes = c.getExceptionTypes();
+    Class<?>[] excTypes = c.getExceptionTypes();
     StringBuilder result = new StringBuilder(40);
     result.append(name).append('(').append(fpl).append(")\n");
-    if (eTypes.length != 0)
+    if (excTypes.length != 0)
       result.append("    throws ")
-          .append(classArrayToString(eTypes))
+          .append(classArrayToString(excTypes))
           .append('\n');
     result.append("{\n    super(")
         .append(apl)
@@ -143,7 +148,4 @@ public final class Mopex {
     }
   }
 
-  private Mopex() {
-    throw new IllegalStateException("Private constructor.");
-  }
 }

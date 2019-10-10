@@ -50,36 +50,36 @@ public enum XmlSerializer {
     String id = Integer.toString(table.size());
     table.put(source, id);
     Class<?> sourceclass = source.getClass();
-    Element oElt = new Element("object");
-    oElt.setAttribute("class", sourceclass.getName());
-    oElt.setAttribute("id", id);
-    target.getRootElement().addContent(oElt);
+    Element objElt = new Element("object");
+    objElt.setAttribute("class", sourceclass.getName());
+    objElt.setAttribute("id", id);
+    target.getRootElement().addContent(objElt);
     if (sourceclass.isArray()) {
       Class<?> componentType = sourceclass.getComponentType();
 
       int length = Array.getLength(source);
-      oElt.setAttribute("length", Integer.toString(length));
+      objElt.setAttribute("length", Integer.toString(length));
       for (int i = 0; i < length; i++) {
-        oElt.addContent(serializeVariable(componentType, Array.get(source, i), target, table));
+        objElt.addContent(serializeVariable(componentType, Array.get(source, i), target, table));
       }
     } else {
       Field[] fields = Mopex.getInstanceVariables(sourceclass);
       for (Field field : fields) {
         if (!Modifier.isPublic(field.getModifiers())) field.setAccessible(true);
-        Element fElt = new Element("field");
-        fElt.setAttribute("name", field.getName());
+        Element fldElt = new Element("field");
+        fldElt.setAttribute("name", field.getName());
         Class<?> declClass = field.getDeclaringClass();
-        fElt.setAttribute("declaringclass", declClass.getName());
+        fldElt.setAttribute("declaringclass", declClass.getName());
 
         Class<?> fieldtype = field.getType();
-        fElt.setAttribute("type", fieldtype.getName());
+        fldElt.setAttribute("type", fieldtype.getName());
         Object child = field.get(source);
 
         /*if (Modifier.isTransient(fields[i].getModifiers())) {
           child = null;
         }*/
-        fElt.addContent(serializeVariable(fieldtype, child, target, table));
-        oElt.addContent(fElt);
+        fldElt.addContent(serializeVariable(fieldtype, child, target, table));
+        objElt.addContent(fldElt);
       }
     }
     return target;
