@@ -19,3 +19,5 @@ reflection.ClassDeclarationSpy java.io.File
 reflection.ClassDeclarationSpy java.lang.Class
 reflection.Dynamic
 reflection.HelloWorld
+reflection.ZooTest
+reflection.MenagerieTest
