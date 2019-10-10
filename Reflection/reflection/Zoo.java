@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("PMD.ShortClassName")
 public class Zoo {
-  public String city, name;
+  String city;
+  String name;
 
   public Animal[] animals;
 
   public Zoo(String city, String name) {
     this.city = city;
     this.name = name;
-    this.animals = new Animal[]{};
+    this.animals = new Animal[] {};
   }
 
   public String getCity() {
@@ -32,7 +34,7 @@ public class Zoo {
   }
 
   public Animal[] getAnimals() {
-    return animals;
+    return animals.clone();
   }
 
   public void setAnimals(List<Animal> animals) {

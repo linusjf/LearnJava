@@ -5,7 +5,11 @@ import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class ZooTest {
+public final class ZooTest {
+
+  private ZooTest() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   public static void main(String[] args) {
 
@@ -27,8 +31,7 @@ public class ZooTest {
       XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
       Document d = XmlSerializer.serializeObject(national);
       out.output(d, System.out);
-    } catch (IllegalAccessException
-        | IOException ex) {
+    } catch (IllegalAccessException | IOException ex) {
       System.err.println(ex);
     }
   }

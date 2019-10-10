@@ -1,8 +1,10 @@
 package reflection;
 
 public class Animal {
-  public String name, gender, classification;
-  public int weight;
+  String name;
+  String gender;
+  String classification;
+  int weight;
 
   public Animal(String name, String gender, String classification, int weight) {
     this.name = name;

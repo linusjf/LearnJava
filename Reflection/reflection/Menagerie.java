@@ -1,13 +1,13 @@
 package reflection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Menagerie {
-  public String city, name;
+  String city;
+  String name;
 
-  public List<Animal> animals;
+  List<Animal> animals;
 
   public Menagerie(String city, String name) {
     this.city = city;

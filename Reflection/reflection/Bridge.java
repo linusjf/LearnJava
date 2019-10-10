@@ -5,12 +5,13 @@ import java.math.BigInteger;
 
 public enum Bridge {
   ;
+
   public static void main(String... args) {
     try {
       Class<? extends Object> bigInt = BigInteger.class;
       Method[] methods = bigInt.getMethods();
       System.out.println("Bridge Methods of BigInteger Class are");
-      for (Method m : methods) {
+      for (Method m: methods) {
         if (m.isBridge()) {
           System.out.println("Method: " + m.getName());
         }
@@ -18,7 +19,7 @@ public enum Bridge {
       Class<? extends Object> stringClass = String.class;
       methods = stringClass.getMethods();
       System.out.println("Bridge Methods of String Class are");
-      for (Method m : methods) {
+      for (Method m: methods) {
         if (m.isBridge()) {
           System.out.println("Method: " + m.getName());
         }

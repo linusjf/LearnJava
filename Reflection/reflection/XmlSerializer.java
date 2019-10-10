@@ -11,20 +11,28 @@ import org.jdom2.Element;
 
 public enum XmlSerializer {
   ;
-  public static Document serializeObject(Object source) throws IllegalAccessException {
+
+  private static final String STRING_CLASS = "java.lang.String";
+
+  public static Document serializeObject(Object source)
+      throws IllegalAccessException {
     return serializeHelper(source,
                            new Document(new Element("serialized")),
                            new IdentityHashMap<Object, Object>());
   }
 
-  private static Element 
-    serializeVariable(Class<?> fieldtype,
-        Object child,
-        Document target,
-        Map<Object,Object> table) throws IllegalAccessException {
-    if (child == null) 
+  private static Element serializeVariable(Class<?> fieldtype,
+                                           Object child,
+                                           Document target,
+                                           Map<Object, Object> table)
+      throws IllegalAccessException {
+    if (child == null)
       return new Element("null");
-    if (!fieldtype.isPrimitive() && !"java.lang.String".equals(fieldtype.getName())) {
+    if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
+      Element value = new Element("value");
+      value.setText(child.toString());
+      return value;
+    } else {
       Element reference = new Element("reference");
       if (table.containsKey(child)) {
         reference.setText(table.get(child).toString());
@@ -33,19 +41,12 @@ public enum XmlSerializer {
         serializeHelper(child, target, table);
       }
       return reference;
-    } else {
-      Element value = new Element("value");
-      value.setText(child.toString());
-      return value;
     }
   }
 
   // clang-format off
-  private static Document serializeHelper(
-    Object source,
-    Document target,
-    Map<Object,Object> table
-  ) throws IllegalAccessException {
+  private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
+      throws IllegalAccessException {
     String id = Integer.toString(table.size());
     table.put(source, id);
     Class<?> sourceclass = source.getClass();
@@ -53,37 +54,32 @@ public enum XmlSerializer {
     oElt.setAttribute("class", sourceclass.getName());
     oElt.setAttribute("id", id);
     target.getRootElement().addContent(oElt);
-    if (!sourceclass.isArray()) {
-      Field[] fields = Mopex.getInstanceVariables(sourceclass);
-      for (int i = 0; i < fields.length; i++) {
-        if (!Modifier.isPublic(fields[i].getModifiers())) fields
-        [i]
-          .setAccessible(true);
-        Element fElt = new Element("field");
-        fElt.setAttribute("name", fields[i].getName());
-        Class<?> declClass = fields[i].getDeclaringClass();
-        fElt.setAttribute("declaringclass", declClass.getName());
-
-        Class<?> fieldtype = fields[i].getType();
-        fElt.setAttribute("type", fieldtype.getName());
-        Object child = fields[i].get(source);
-
-        /*if (Modifier.isTransient(fields[i].getModifiers())) {
-          child = null;
-        }*/
-        fElt.addContent(serializeVariable(fieldtype, child, target, table));
-
-        oElt.addContent(fElt);
-      }
-    } else {
+    if (sourceclass.isArray()) {
       Class<?> componentType = sourceclass.getComponentType();
 
       int length = Array.getLength(source);
       oElt.setAttribute("length", Integer.toString(length));
       for (int i = 0; i < length; i++) {
-        oElt.addContent(
-          serializeVariable(componentType, Array.get(source, i), target, table)
-        );
+        oElt.addContent(serializeVariable(componentType, Array.get(source, i), target, table));
+      }
+    } else {
+      Field[] fields = Mopex.getInstanceVariables(sourceclass);
+      for (Field field : fields) {
+        if (!Modifier.isPublic(field.getModifiers())) field.setAccessible(true);
+        Element fElt = new Element("field");
+        fElt.setAttribute("name", field.getName());
+        Class<?> declClass = field.getDeclaringClass();
+        fElt.setAttribute("declaringclass", declClass.getName());
+
+        Class<?> fieldtype = field.getType();
+        fElt.setAttribute("type", fieldtype.getName());
+        Object child = field.get(source);
+
+        /*if (Modifier.isTransient(fields[i].getModifiers())) {
+          child = null;
+        }*/
+        fElt.addContent(serializeVariable(fieldtype, child, target, table));
+        oElt.addContent(fElt);
       }
     }
     return target;

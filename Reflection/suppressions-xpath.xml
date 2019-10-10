@@ -36,4 +36,24 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="Arrayed.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+<suppress-xpath
+       files="Mopex.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Mopex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createRenamedConstructor']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']"/>
+<suppress-xpath
+       files="MenagerieTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']"/>
+<suppress-xpath
+       files="MenagerieTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']"/>
+<suppress-xpath
+       files="ZooTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']"/>
+<suppress-xpath
+       files="ZooTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']"/>
 </suppressions>

@@ -5,6 +5,7 @@ import java.util.Set;
 
 public enum Modular {
   ;
+
   public static void main(String... args) {
     Module myClassModule = String.class.getModule();
     System.out.println("isNamed: " + myClassModule.isNamed());

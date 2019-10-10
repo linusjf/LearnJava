@@ -5,7 +5,11 @@ import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class MenagerieTest {
+public final class MenagerieTest {
+
+  private MenagerieTest() {
+    throw new IllegalStateException("Private constructor.");
+  }
 
   public static void main(String[] args) {
 
@@ -17,8 +21,9 @@ public class MenagerieTest {
                                "female",                  //$NON-NLS-1$
                                "Ailuropoda melanoleuca",  //$NON-NLS-1$
                                221);
-    Menagerie national = new Menagerie("National Zoological Park",  //$NON-NLS-1$
-                           "Washington, D.C.");         //$NON-NLS-1$
+    Menagerie national =
+        new Menagerie("National Zoological Park",  //$NON-NLS-1$
+                      "Washington, D.C.");         //$NON-NLS-1$
 
     national.add(panda1);
     national.add(panda2);
@@ -27,8 +32,7 @@ public class MenagerieTest {
       XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
       Document d = XmlSerializer.serializeObject(national);
       out.output(d, System.out);
-    } catch (IllegalAccessException
-        | IOException ex) {
+    } catch (IllegalAccessException | IOException ex) {
       System.err.println(ex);
     }
   }
