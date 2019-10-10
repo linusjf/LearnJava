@@ -1,6 +1,7 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,8 +28,7 @@ public class SHA256Salted implements Encrypt {
       final MessageDigest digest = MessageDigest.getInstance("SHA-256");
       final byte[] salt = getSalt();
       digest.update(salt);
-      final
-      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());

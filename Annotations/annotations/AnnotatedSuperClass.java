@@ -4,5 +4,6 @@ package annotations;
 public class AnnotatedSuperClass {
 
   public void oneMethod() {
+    // empty method body
   }
 }

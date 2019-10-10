@@ -3,6 +3,7 @@ package com.lambdaworks.crypto;
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.arraycopy;
+
 import com.lambdaworks.jni.LibraryLoader;
 import com.lambdaworks.jni.LibraryLoaders;
 import java.security.GeneralSecurityException;
@@ -11,12 +12,11 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * An implementation of the <a
- * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key derivation
- * function. This class will attempt to load a native library containing the
- * optimized C implementation from <a
- * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>
- * and fall back to the pure Java version if that fails.
+ * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key
+ * derivation function. This class will attempt to load a native library containing the optimized C
+ * implementation from <a
+ * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to
+ * the pure Java version if that fails.
  *
  * @author Will Glozer
  */
@@ -33,10 +33,9 @@ public final class SCrypt { // NOPMD
   }
 
   /**
-   * Implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls the
-   * native implementation {@link #scryptN} when the native library was
-   * successfully loaded, otherwise calls {@link #scryptJ}.
+   * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
+   * the native implementation {@link #scryptN} when the native library was successfully loaded,
+   * otherwise calls {@link #scryptJ}.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -47,25 +46,18 @@ public final class SCrypt { // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scrypt(
-    byte[] passwd,
-    byte[] salt,
-    int enCPUCost,
-    int r,
-    int p,
-    int dkLen
-  )
-    throws GeneralSecurityException {
-    byte[] derived = NATIVE_LIBRARY_LOADED
-      ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-      : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+  public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
+      throws GeneralSecurityException {
+    byte[] derived =
+        NATIVE_LIBRARY_LOADED
+            ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+            : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
     return Arrays.copyOf(derived, derived.length);
   }
 
   /**
-   * Native C implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a> using the
-   * code from <a
+   * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a> using the code from <a
    * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>.
    *
    * @param passwd Password.
@@ -78,17 +70,11 @@ public final class SCrypt { // NOPMD
    */
   @SuppressWarnings("checkstyle:IllegalToken")
   public static native byte[] scryptN(
-    byte[] passwd,
-    byte[] salt,
-    int enCPUCost,
-    int r,
-    int p,
-    int dkLen
-  );
+      byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen);
 
   /**
-   * Pure Java implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>.
+   * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a>.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -99,27 +85,14 @@ public final class SCrypt { // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scryptJ(
-    byte[] passwd,
-    byte[] salt,
-    int enCPUCost,
-    int r,
-    int p,
-    int dkLen
-  )
-    throws GeneralSecurityException {
-    if (
-      enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0
-    ) throw new IllegalArgumentException(
-      "enCPUCost must be a power of 2 greater than 1"
-    );
+  public static byte[] scryptJ(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
+      throws GeneralSecurityException {
+    if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
+      throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
 
-    if (enCPUCost > MAX_VALUE / 128 / r) throw new IllegalArgumentException(
-      "Parameter nCPUCost is too large"
-    );
-    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException(
-      "Parameter r is too large"
-    );
+    if (enCPUCost > MAX_VALUE / 128 / r)
+      throw new IllegalArgumentException("Parameter nCPUCost is too large");
+    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
 
     final Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));
@@ -149,14 +122,7 @@ public final class SCrypt { // NOPMD
    * @param v a <code>byte</code> value
    * @param xy a <code>byte</code> value
    */
-  public static void smix(
-    byte[] bytes,
-    int initialB,
-    int r,
-    int n,
-    byte[] v,
-    byte[] xy
-  ) {
+  public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v, byte[] xy) {
     int xinitial = 0;
     final int yinitial = 128 * r;
     int i;
@@ -186,12 +152,7 @@ public final class SCrypt { // NOPMD
    * @param initialY an <code>int</code> value
    * @param r an <code>int</code> value
    */
-  public static void blockmixSalsa8(
-    byte[] bytes,
-    int initialB,
-    int initialY,
-    int r
-  ) {
+  public static void blockmixSalsa8(byte[] bytes, int initialB, int initialY, int r) {
     final byte[] x = new byte[64];
     int i;
 
@@ -203,21 +164,11 @@ public final class SCrypt { // NOPMD
       arraycopy(x, 0, bytes, initialY + (i * 64), 64);
     }
 
-    for (i = 0; i < r; i++) arraycopy(
-      bytes,
-      initialY + (i * 2) * 64,
-      bytes,
-      initialB + (i * 64),
-      64
-    );
+    for (i = 0; i < r; i++)
+      arraycopy(bytes, initialY + (i * 2) * 64, bytes, initialB + (i * 64), 64);
 
-    for (i = 0; i < r; i++) arraycopy(
-      bytes,
-      initialY + (i * 2 + 1) * 64,
-      bytes,
-      initialB + (i + r) * 64,
-      64
-    );
+    for (i = 0; i < r; i++)
+      arraycopy(bytes, initialY + (i * 2 + 1) * 64, bytes, initialB + (i + r) * 64, 64);
   }
 
   /**
@@ -304,13 +255,7 @@ public final class SCrypt { // NOPMD
    * @param dinitial an <code>int</code> value
    * @param len an <code>int</code> value
    */
-  public static void blockXOR(
-    byte[] s,
-    int sinitial,
-    byte[] d,
-    int dinitial,
-    int len
-  ) {
+  public static void blockXOR(byte[] s, int sinitial, byte[] d, int dinitial, int len) {
     for (int i = 0; i < len; i++) s[dinitial + i] ^= s[sinitial + i];
   }
 
