@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+declare -r classpathFile="saxon-he.cp"
+declare -r mainClass="net.sf.saxon.Query"
+
+if [ ! -e "$classpathFile" ]
+  then
+    echo "$classpathFile cannot be found. Run ant in root directory to generate file."
+    usage
+fi
+
+java -cp @"$classpathFile" "$mainClass" "$@"
+exit $?
