@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-declare -r classpathFile="saxon-he.cp"
+declare -r classpathFile="/data/data/com.termux/files/home/LearnJava/saxon-he.cp"
 declare -r mainClass="net.sf.saxon.Query"
 
 if [ ! -e "$classpathFile" ]
