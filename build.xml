@@ -20,6 +20,7 @@
   <property file="${LearnJava.basedir}/checker.properties" />
   <property file="${LearnJava.basedir}/jcommander.properties" />
   <property file="${LearnJava.basedir}/jdom2.properties" />
+  <property file="${LearnJava.basedir}/saxon-he.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -152,6 +153,10 @@
                   conf="jdom2.main" />
     <ivy:retrieve pathid="jdom2.lib.path"
                   conf="jdom2.lib" />
+    <ivy:retrieve pathid="saxon-he.main.path"
+                  conf="saxon-he.main" />
+    <ivy:retrieve pathid="saxon-he.lib.path"
+                  conf="saxon-he.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -180,6 +185,8 @@
           message="${toString:jcommander.main.path}" />
     <echo file="${jdom2.classpath.file}"
           message="${toString:jdom2.main.path}:${toString:jdom2.lib.path}" />
+    <echo file="${saxon-he.classpath.file}"
+          message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
   </target>
   <!-- =================================
           target: report

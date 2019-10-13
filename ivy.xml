@@ -139,6 +139,10 @@
           description="jdom2 main jars" />
     <conf name="jdom2.lib"
           description="jdom2 lib jars" />
+    <conf name="saxon-he.main"
+          description="saxon-he main jars" />
+    <conf name="saxon-he.lib"
+          description="saxon-he lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -301,6 +305,8 @@
     <dependency org="org.jdom"
                 name="jdom2"
                 rev="2.0.6"
-                conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
+      conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
+      <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
+    <dependency org="net.sf.saxon" name="Saxon-HE" rev="9.9.1-5" conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional"/>
   </dependencies>
 </ivy-module>
