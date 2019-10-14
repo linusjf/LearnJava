@@ -160,6 +160,10 @@
                   conf="saxon-he.lib" />
     <ivy:retrieve pathid="javaparser-core.main.path"
                   conf="javaparser-core.main" />
+    <ivy:retrieve pathid="java-symbol-solver-core.main.path"
+                  conf="java-symbol-solver-core.main" />
+    <ivy:retrieve pathid="java-symbol-solver-core.lib.path"
+                  conf="java-symbol-solver-core.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -191,7 +195,7 @@
     <echo file="${saxon-he.classpath.file}"
           message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
     <echo file="${javaparser.classpath.file}"
-      message="${toString:javaparser-core.main.path}" />
+      message="${toString:javaparser-core.main.path}:${toString:java-symbol-solver-core.main.path}:${toString:java-symbol-solver-core.lib.path}" />
   </target>
   <!-- =================================
           target: report

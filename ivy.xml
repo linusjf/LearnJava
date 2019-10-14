@@ -145,6 +145,10 @@
           description="saxon-he lib jars" />
     <conf name="javaparser-core.main"
           description="javaparser-core main jars" />
+    <conf name="java-symbol-solver-core.main"
+          description="java-symbol-solver-core main jars" />
+    <conf name="java-symbol-solver-core.lib"
+          description="java-symbol-solver-core lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -312,6 +316,9 @@
     <dependency org="net.sf.saxon" name="Saxon-HE" rev="9.9.1-5" conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional"/>
       <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser" name="javaparser-core" rev="3.15.0"
-  conf="javaparser-core.main-&gt;master"    />
+      conf="javaparser-core.main-&gt;master"/>
+<!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
+    <dependency org="com.github.javaparser" name="java-symbol-solver-core" rev="0.6.3"
+      conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;"/>
   </dependencies>
 </ivy-module>
