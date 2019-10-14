@@ -21,6 +21,7 @@
   <property file="${LearnJava.basedir}/jcommander.properties" />
   <property file="${LearnJava.basedir}/jdom2.properties" />
   <property file="${LearnJava.basedir}/saxon-he.properties" />
+  <property file="${LearnJava.basedir}/javaparser.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -157,6 +158,8 @@
                   conf="saxon-he.main" />
     <ivy:retrieve pathid="saxon-he.lib.path"
                   conf="saxon-he.lib" />
+    <ivy:retrieve pathid="javaparser-core.main.path"
+                  conf="javaparser-core.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -187,6 +190,8 @@
           message="${toString:jdom2.main.path}:${toString:jdom2.lib.path}" />
     <echo file="${saxon-he.classpath.file}"
           message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
+    <echo file="${javaparser.classpath.file}"
+      message="${toString:javaparser-core.main.path}" />
   </target>
   <!-- =================================
           target: report

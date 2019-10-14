@@ -143,6 +143,8 @@
           description="saxon-he main jars" />
     <conf name="saxon-he.lib"
           description="saxon-he lib jars" />
+    <conf name="javaparser-core.main"
+          description="javaparser-core main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -308,5 +310,8 @@
       conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
       <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon" name="Saxon-HE" rev="9.9.1-5" conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional"/>
+      <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
+    <dependency org="com.github.javaparser" name="javaparser-core" rev="3.15.0"
+  conf="javaparser-core.main-&gt;master"    />
   </dependencies>
 </ivy-module>
