@@ -10,7 +10,35 @@
 <suppress-xpath
        files="TestMagicNumber.java"
        checks="MagicNumberCheck"
-       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text=''' ''']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text=''&apos;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&apos;&apos;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&quot;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='''']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&amp;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&gt;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&lt;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text=' ']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
 <suppress-xpath
        files="TestPlatformIndependentLineSeparator.java"
        checks="HideUtilityClassConstructorCheck"
