@@ -149,6 +149,8 @@
           description="java-symbol-solver-core main jars" />
     <conf name="java-symbol-solver-core.lib"
           description="java-symbol-solver-core lib jars" />
+    <conf name="antlr4-runtime.main"
+          description="antlr4-runtime lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -320,5 +322,7 @@
 <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser" name="java-symbol-solver-core" rev="0.6.3"
       conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;"/>
+<!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
+    <dependency org="org.antlr" name="antlr4-runtime" rev="4.7.2" conf="antlr4-runtime.main-&gt;master"/>
   </dependencies>
 </ivy-module>
