@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ThreadPool {
   private final BlockingQueue<Job> jobQueue;
   private final Thread[] jobThreads;
-  private AtomicBoolean shutdown;
+  private final AtomicBoolean shutdown;
 
   public ThreadPool(int n) {
     jobQueue = new LinkedBlockingQueue<>();

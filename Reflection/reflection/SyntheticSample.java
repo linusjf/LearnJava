@@ -23,6 +23,6 @@ public final class SyntheticSample {
   }
 
   private static final class SampleNestedClass {
-    private String privateVariable = "A Private Variable!";
+    private final String privateVariable = "A Private Variable!";
   }
 }

@@ -1,8 +1,8 @@
 package com.javacodegeeks.patterns.mementopattern;
 
 public class Memento {
-  private double xCoord;
-  private double yCoord;
+  private final double xCoord;
+  private final double yCoord;
 
   public Memento(double xCoord, double yCoord) {
     this.xCoord = xCoord;

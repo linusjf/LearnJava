@@ -63,7 +63,7 @@ public final class Dynamic {
 
     private final Map<String, Method> methods = new HashMap<>();
 
-    private Object target;
+    private final Object target;
 
     TimingDynamicInvocationHandler(Object target) {
       this.target = target;
