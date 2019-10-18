@@ -7,9 +7,14 @@ for dir in "${dirs[@]}"
 	do
 	echo "$dir"
   ./pmd "$dir"
-  if [[ "$?" -gt 0 ]]
+  exitcode="$?"
+  if [[ "$exitcode" -gt 0 ]]
   then
-    errs="$?"
+    case "$errs" in
+      0) errs="$exitcode" ;;
+      1) ;;
+      4) errs="$exitcode" ;;
+    esac
   fi
 done
 ./findpmderrors
