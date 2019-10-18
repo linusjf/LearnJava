@@ -8,7 +8,7 @@ package bridge;
  */
 public class FileDownloaderAbstractionImpl
   implements FileDownloaderAbstraction {
-  private FileDownloadImplementor provider;
+  private final FileDownloadImplementor provider;
 
   /**
    * Creates a new <code>FileDownloaderAbstractionImpl</code> instance.

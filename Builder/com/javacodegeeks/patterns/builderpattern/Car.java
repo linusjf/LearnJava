@@ -15,7 +15,7 @@ public class Car {
   private String seats;
   private String windows;
   private String fuelType;
-  private String carType;
+  private final String carType;
 
   /**
    * Creates a new <code>Car</code> instance.

@@ -7,7 +7,7 @@ package com.javacodegeeks.patterns.builderpattern;
  * @version 1.0
  */
 public class CarDirector {
-  private CarBuilder carBuilder;
+  private final CarBuilder carBuilder;
 
   /**
    * Creates a new <code>CarDirector</code> instance.

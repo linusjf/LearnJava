@@ -10,22 +10,22 @@ import java.util.Date;
  */
 @SuppressWarnings({ "PMD.ShortClassName", "PMD.TooManyFields" })
 public final class Form {
-  private String firstName;
-  private String lastName;
-  private String userName;
-  private String password;
-  private String address;
-  private Date dob;
-  private String email;
-  private String backupEmail;
-  private String spouseName;
-  private String city;
-  private String state;
-  private String country;
-  private String language;
-  private String passwordHint;
-  private String securityQuestion;
-  private String securityAnswer;
+  private final String firstName;
+  private final String lastName;
+  private final String userName;
+  private final String password;
+  private final String address;
+  private final Date dob;
+  private final String email;
+  private final String backupEmail;
+  private final String spouseName;
+  private final String city;
+  private final String state;
+  private final String country;
+  private final String language;
+  private final String passwordHint;
+  private final String securityQuestion;
+  private final String securityAnswer;
 
   private Form(FormBuilder formBuilder) {
     this.firstName = formBuilder.firstName;
@@ -112,10 +112,10 @@ public final class Form {
   /** Describe class <code>FormBuilder</code> here. */
   @SuppressWarnings({ "PMD.TooManyMethods", "PMD.TooManyFields" })
   public static class FormBuilder {
-    private String firstName;
-    private String lastName;
-    private String userName;
-    private String password;
+    private final String firstName;
+    private final String lastName;
+    private final String userName;
+    private final String password;
     private String addr;
     private Date dateOfBirth;
     private String emailAddress;
