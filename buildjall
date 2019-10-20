@@ -12,6 +12,6 @@ rm -f ./*.jar
 find . -mindepth 2 -name "*.class" -type f \
   ! -path "**/.git/**" -delete
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel -j 5 -I% --max-args 1 ./buildj %
+  parallel --joblog buildj.log -j 5 -I% --max-args 1 ./buildj %
 exit $?
 

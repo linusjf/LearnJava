@@ -8,5 +8,5 @@
 # @description : 
 ######################################################################
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel -j 5 -I% sh -c 'echo && ./runj %'
+  parallel --joblog runj.log -j 5 -I% sh -c 'echo && ./runj %'
 exit $?
