@@ -3,11 +3,14 @@ declare -i errs=0
 readarray -t dirs < <\
 (find . -maxdepth 1 \
 -type d -name "[[:upper:]]*")
+echo "Command ExitCode" > pmd.log
 for dir in "${dirs[@]}"
 	do
 	echo "$dir"
+  echo -n "'./pmd $dir'" >> pmd.log
   ./pmd "$dir"
   exitcode="$?"
+  echo " $exitcode" >> pmd.log
   if [[ "$exitcode" -gt 0 ]]
   then
     case "$errs" in
