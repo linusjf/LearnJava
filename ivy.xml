@@ -150,7 +150,9 @@
     <conf name="java-symbol-solver-core.lib"
           description="java-symbol-solver-core lib jars" />
     <conf name="antlr4-runtime.main"
-          description="antlr4-runtime lib jars" />
+          description="antlr4-runtime jars" />
+    <conf name="java-lsh.main"
+          description="java-lsh jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -324,5 +326,7 @@
       conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;"/>
 <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
     <dependency org="org.antlr" name="antlr4-runtime" rev="4.7.2" conf="antlr4-runtime.main-&gt;master"/>
+      <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
+<dependency org="info.debatty" name="java-lsh" rev="0.12"/>
   </dependencies>
 </ivy-module>

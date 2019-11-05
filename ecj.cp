@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/ecj-4.6.1.jar:
+/data/data/com.termux/files/home/LearnJava/lib/ecj-4.6.1.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12-javadoc.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12-sources.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12-javadoc.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12-sources.jar
