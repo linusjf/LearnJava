@@ -2,9 +2,12 @@ package similarity;
 
 import info.debatty.java.stringsimilarity.CharacterSubstitutionInterface;
 import info.debatty.java.stringsimilarity.WeightedLevenshtein;
+import org.javatuples.Pair;
 
 public enum WeightedLevenshteinTest {
   ;
+
+
 
   public static void main(String... args) {
     WeightedLevenshtein wl =
@@ -15,6 +18,12 @@ public enum WeightedLevenshteinTest {
             // smaller as these 2 are located next to each other
             // on a keyboard
             if (c1 == 't' && c2 == 'r') {
+              return 0.5;
+            }
+            if (c1 == 'q' && c2 == 'w') {
+              return 0.5;
+            }
+            if (c1 == 'w' && c2 == 'e') {
               return 0.5;
             }
 
