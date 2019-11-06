@@ -1,6 +1,6 @@
 package similarity;
 
-import info.debatty.java.stringsimilarity.*;
+import info.debatty.java.stringsimilarity.Levenshtein;
 
 public enum LevenshteinTest {
   ;
