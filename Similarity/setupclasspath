@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../java-string-similarity.cp run.cp
+cp ../java-string-similarity.cp compile.cp
