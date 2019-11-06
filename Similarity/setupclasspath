@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 cp ../java-string-similarity.cp run.cp
 cp ../java-string-similarity.cp compile.cp
+echo -n ':' >> run.cp
+echo -n ':' >> compile.cp
+cat ../javatuples.cp >> run.cp
+cat ../javatuples.cp >> compile.cp
+
