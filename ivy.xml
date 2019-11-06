@@ -153,6 +153,8 @@
           description="antlr4-runtime jars" />
     <conf name="java-lsh.main"
           description="java-lsh jars" />
+    <conf name="java-string-similarity.main"
+          description="java-string-similarity jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -327,6 +329,7 @@
 <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
     <dependency org="org.antlr" name="antlr4-runtime" rev="4.7.2" conf="antlr4-runtime.main-&gt;master"/>
       <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
-<dependency org="info.debatty" name="java-lsh" rev="0.12"/>
-  </dependencies>
+<dependency org="info.debatty" name="java-lsh" rev="0.12" conf="java-lsh.main-&gt;master"/>
+<dependency org="info.debatty" name="java-string-similarity" rev="1.2.1" conf="java-string-similarity.main-&gt;master"/>
+</dependencies>
 </ivy-module>
