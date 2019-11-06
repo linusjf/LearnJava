@@ -155,6 +155,8 @@
           description="java-lsh jars" />
     <conf name="java-string-similarity.main"
           description="java-string-similarity jars" />
+    <conf name="javatuples.main"
+          description="javatuples jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -331,5 +333,7 @@
       <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
 <dependency org="info.debatty" name="java-lsh" rev="0.12" conf="java-lsh.main-&gt;master"/>
 <dependency org="info.debatty" name="java-string-similarity" rev="1.2.1" conf="java-string-similarity.main-&gt;master"/>
+  <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
+<dependency org="org.javatuples" name="javatuples" rev="1.2" conf="javatuples.main-&gt;master"/>
 </dependencies>
 </ivy-module>

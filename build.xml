@@ -25,6 +25,7 @@
   <property file="${LearnJava.basedir}/antlr4-runtime.properties" />
   <property file="${LearnJava.basedir}/java-lsh.properties" />
   <property file="${LearnJava.basedir}/java-string-similarity.properties" />
+  <property file="${LearnJava.basedir}/javatuples.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -173,6 +174,8 @@
                   conf="java-lsh.main" />
     <ivy:retrieve pathid="java-string-similarity.main.path"
                   conf="java-string-similarity.main" />
+    <ivy:retrieve pathid="javatuples.main.path"
+                  conf="javatuples.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -211,6 +214,8 @@
       message="${toString:java-lsh.main.path}" />
     <echo file="${java-string-similarity.classpath.file}"
       message="${toString:java-string-similarity.main.path}" />
+    <echo file="${javatuples.classpath.file}"
+      message="${toString:javatuples.main.path}" />
   </target>
   <!-- =================================
           target: report
