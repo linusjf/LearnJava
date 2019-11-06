@@ -1,1 +1,3 @@
 similarity.LevenshteinTest
+similarity.NormalizedLevenshteinTest
+similarity.WeightedLevenshteinTest
