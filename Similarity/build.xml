@@ -100,6 +100,12 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
   <target name="run">
     <description>Run target</description>
     <java classname="${main.class}">
