@@ -21,6 +21,10 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="compilerclasspath"
+            srcFile="${compile.cp}" />
+  <loadfile property="runclasspath"
+            srcFile="${run.cp}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -45,12 +49,10 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
+      destdir="${build.dir}"
+      classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
-      <classpath>
-        <pathelement path="${compile.cp}"/>
-      </classpath>
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -104,7 +106,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
-        <pathelement path="${run.cp}"/>
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
