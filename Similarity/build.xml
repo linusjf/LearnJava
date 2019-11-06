@@ -49,8 +49,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-      destdir="${build.dir}"
-      classpath="${compilerclasspath}">
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -61,7 +61,8 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -109,6 +110,13 @@
   <target name="run">
     <description>Run target</description>
     <java classname="${main.class}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class1}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
