@@ -1,3 +1,4 @@
 similarity.LevenshteinTest
 similarity.NormalizedLevenshteinTest
 similarity.WeightedLevenshteinTest
+similarity.DamerauLevenshteinTest

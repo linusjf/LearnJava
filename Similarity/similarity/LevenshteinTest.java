@@ -2,6 +2,7 @@ package similarity;
 
 import info.debatty.java.stringsimilarity.Levenshtein;
 
+@SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum LevenshteinTest {
   ;
 

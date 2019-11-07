@@ -9,6 +9,6 @@ Specification-Title: Similarity
 Specification-Version: 2.0.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: e697ed6a November 6 2019
+Implementation-Version: d5e60df1 November 7 2019
 Implementation-Vendor: 
 
