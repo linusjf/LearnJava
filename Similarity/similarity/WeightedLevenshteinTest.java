@@ -52,6 +52,7 @@ public enum WeightedLevenshteinTest {
       return 1.0;
     });
 
+    System.out.println("\nWeighted Levenshtein: \n");
     System.out.println(wl.distance("String1", "Srring2"));
     System.out.println(wl.distance("My string", "My $tring"));
     System.out.println(wl.distance("column", "columns"));

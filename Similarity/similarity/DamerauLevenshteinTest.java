@@ -9,6 +9,7 @@ public enum DamerauLevenshteinTest {
   public static void main(String[] args) {
     Damerau d = new Damerau();
 
+    System.out.println("\nDamerau: \n");
     // 1 substitution
     System.out.println(d.distance("ABCDEF", "ABDCEF"));
 

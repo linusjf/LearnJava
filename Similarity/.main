@@ -2,3 +2,4 @@ similarity.LevenshteinTest
 similarity.NormalizedLevenshteinTest
 similarity.WeightedLevenshteinTest
 similarity.DamerauLevenshteinTest
+similarity.OptimalStringTest
