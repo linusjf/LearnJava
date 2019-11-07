@@ -5,3 +5,5 @@ similarity.DamerauLevenshteinTest
 similarity.OptimalStringTest
 similarity.JaroWinklerTest
 similarity.LCSTest
+similarity.MetricsLCSTest
+similarity.NGramTest
