@@ -3,3 +3,5 @@ similarity.NormalizedLevenshteinTest
 similarity.WeightedLevenshteinTest
 similarity.DamerauLevenshteinTest
 similarity.OptimalStringTest
+similarity.JaroWinklerTest
+similarity.LCSTest
