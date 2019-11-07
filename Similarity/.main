@@ -7,3 +7,4 @@ similarity.JaroWinklerTest
 similarity.LCSTest
 similarity.MetricsLCSTest
 similarity.NGramTest
+similarity.QGramTest
