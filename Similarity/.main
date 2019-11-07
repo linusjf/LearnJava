@@ -8,3 +8,5 @@ similarity.LCSTest
 similarity.MetricsLCSTest
 similarity.NGramTest
 similarity.QGramTest
+similarity.CosineTest
+similarity.Sift4Test
