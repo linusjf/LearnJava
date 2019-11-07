@@ -42,28 +42,27 @@ public enum WeightedLevenshteinTest {
 
   public static void main(String... args) {
     WeightedLevenshtein wl =
-        new WeightedLevenshtein(new CharacterSubstitutionInterface() {
-          public double cost(char c1, char c2) {
+        new WeightedLevenshtein((c1,c2) -> {
 
             // The cost for substituting 't' and 'r' is considered
             // smaller as these 2 are located next to each other
             // on a keyboard
-            if (c1 == 't' && c2 == 'r') {
+            Pair<Character,Character> pair = new Pair<>(c1,c2);
+            Pair<Character,Character> switched = new Pair<>(c2,c1);
+            if (keyPairs.contains(pair) ||
+                keyPairs.contains(switched))
               return 0.5;
-            }
-            if (c1 == 'q' && c2 == 'w') {
-              return 0.5;
-            }
-            if (c1 == 'w' && c2 == 'e') {
-              return 0.5;
-            }
-
             // For most cases, the cost of substituting 2 characters
             // is 1.0
             return 1.0;
-          }
-        });
+          });
 
     System.out.println(wl.distance("String1", "Srring2"));
+    System.out.println(wl.distance("My string", "My $tring"));
+    System.out.println(wl.distance("column", "columns"));
+    System.out.println(wl.distance("col", "col1"));
+    System.out.println(wl.distance("col", "col12"));
+    System.out.println(wl.distance("col", "col123"));
+    System.out.println(wl.distance("qaertyuiop", "warryyiipp"));
   }
 }
