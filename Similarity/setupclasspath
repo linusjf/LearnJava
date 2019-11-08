@@ -5,4 +5,8 @@ echo -n ':' >> run.cp
 echo -n ':' >> compile.cp
 cat ../javatuples.cp >> run.cp
 cat ../javatuples.cp >> compile.cp
+echo -n ':' >> run.cp
+echo -n ':' >> compile.cp
+cat ../java-lsh.cp >> run.cp
+cat ../java-lsh.cp >> compile.cp
 
