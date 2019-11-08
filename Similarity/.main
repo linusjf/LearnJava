@@ -11,4 +11,5 @@ similarity.QGramTest
 similarity.CosineTest
 similarity.Sift4Test
 similarity.JaccardTest
+similarity.AnotherJaccardTest
 similarity.SorensenDiceTest

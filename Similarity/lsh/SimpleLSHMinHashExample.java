@@ -51,10 +51,10 @@ public enum SimpleLSHMinHashExample {
         counts[i][hash[i]]++;
       }
 
-      print(vector);
-      System.out.print(" : ");
-      print(hash);
-      System.out.print("\n");
+      //  print(vector);
+      // System.out.print(" : ");
+      // print(hash);
+      // System.out.print("\n");
     }
 
     System.out.println("Number of elements per bucket at each stage:");
@@ -64,15 +64,15 @@ public enum SimpleLSHMinHashExample {
     }
   }
 
-  static void print(int[] array) {
+  static void print(int... array) {
     System.out.print("[");
     for (int v: array) {
-      System.out.print("" + v + " ");
+      System.out.print(v + " ");
     }
     System.out.print("]");
   }
 
-  static void print(boolean[] array) {
+  static void print(boolean... array) {
     System.out.print("[");
     for (boolean v: array) {
       System.out.print(v ? "1" : "0");
