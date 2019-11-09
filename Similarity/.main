@@ -13,3 +13,5 @@ similarity.Sift4Test
 similarity.JaccardTest
 similarity.AnotherJaccardTest
 similarity.SorensenDiceTest
+lsh.LSHMinHashExample
+lsh.SimpleLSHMinHashExample
