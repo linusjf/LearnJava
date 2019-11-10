@@ -16,3 +16,7 @@ similarity.SorensenDiceTest
 lsh.LSHMinHashExample
 lsh.SimpleLSHMinHashExample
 lsh.MinHashExample
+lsh.LSHSuperBitExample
+lsh.SuperBitSig
+lsh.InitialSeed
+lsh.SerializeExample
