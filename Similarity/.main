@@ -15,3 +15,4 @@ similarity.AnotherJaccardTest
 similarity.SorensenDiceTest
 lsh.LSHMinHashExample
 lsh.SimpleLSHMinHashExample
+lsh.MinHashExample
