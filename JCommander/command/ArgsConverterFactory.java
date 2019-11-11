@@ -18,5 +18,6 @@ public class ArgsConverterFactory {
 
     Assert.assertEquals(a.hostPort.host, "example.com");
     Assert.assertEquals(a.hostPort.port.intValue(), 8080);
+    System.out.println("All asserts cleared.");
   }
 }
