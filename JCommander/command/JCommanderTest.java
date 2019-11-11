@@ -36,5 +36,7 @@ public class JCommanderTest {
     Assert.assertEquals(true, jct.debug);
     Assert.assertEquals("value", jct.dynamicParams.get("option"));
     Assert.assertEquals(Arrays.asList("a", "b", "c"), jct.parameters);
+
+    System.out.println("All asserts passed.");
   }
 }

@@ -125,6 +125,38 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main.class}">
+      <arg line="-log 2 -groups unit1,unit2,unit4 -debug -Doption=value a b c"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class}">
+      <arg line="-log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class}">
+      <arg line="-log 2 -groups unit1,unit2,unit3 -Doption=value a b c"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class}">
+      <arg line="-log 2 -groups unit1,unit2,unit3 -debug -Doption=val a b c"/>
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
