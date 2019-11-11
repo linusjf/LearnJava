@@ -2,7 +2,8 @@
 2
 -groups
 unit1,unit2,unit3
--Doption=value
+-D
+option=value
 a
 b
 c

@@ -1,7 +1,6 @@
 command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b c
 command.JCommanderTest @params.txt
 command.JCommanderTest @params.txt -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b c
-command.JCommanderTest @params1.txt -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b c
 command.JCommanderTest -log 3 -groups unit1,unit2,unit3 -debug -Doption=value a b c
 command.JCommanderTest -log 2 -groups unit1,unit2,unit4 -debug -Doption=value a b c
 command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d

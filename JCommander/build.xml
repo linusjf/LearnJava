@@ -158,14 +158,6 @@
       </classpath>
     </java>
     <java classname="${main.class}">
-      <arg line="@params1.txt -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-        <pathelement path="${runclasspath}" />
-      </classpath>
-    </java>
-    <java classname="${main.class}">
       <arg line="-log 2 -groups unit1,unit2,unit3 -Doption=value a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
