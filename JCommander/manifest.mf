@@ -9,6 +9,6 @@ Specification-Title: JCommander
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: bea9f237 November 11 2019
+Implementation-Version: 1098d5ec November 11 2019
 Implementation-Vendor: 
 
