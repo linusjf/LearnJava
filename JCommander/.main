@@ -8,3 +8,4 @@ command.Main --length 512 --pattern 2
 command.Main -l 512 -p 2
 command.Main -host host1 --length 512 --pattern 2 -host host2
 command.ArgsPassword -password < password.txt
+command.FileCommand -file password.txt -files build.xml,build.properties,.main
