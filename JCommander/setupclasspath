@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+cp ../jcommander.cp run.cp
+cp ../jcommander.cp compile.cp
+echo -n ':' >> run.cp
+echo -n ':' >> compile.cp
+cat ../junit.cp >> run.cp
+cat ../junit.cp >> compile.cp
