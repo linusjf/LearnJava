@@ -1,0 +1,7 @@
+-groups
+unit1,unit2,unit3
+-debug
+-Doption=value
+a
+b
+c
