@@ -1,0 +1,2 @@
+command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b c
+command.JCommanderTest -log 3 -groups unit1,unit2,unit3 -debug -Doption=value a b c

@@ -29,8 +29,6 @@ public class JCommanderTest {
 
   public static void main(String... argv) {
     JCommanderTest jct = new JCommanderTest();
-    // String[] argv = { "-log", "2", "-groups", "unit1,unit2,unit3",
-    //                  "-debug", "-Doption=value", "a", "b", "c" };
     JCommander.newBuilder().addObject(jct).build().parse(argv);
 
     Assert.assertEquals(2, jct.verbose.intValue());
