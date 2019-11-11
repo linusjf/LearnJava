@@ -14,7 +14,7 @@ public class ArgsConverterFactory {
                         .addObject(a)
                         .addConverterFactory(new HostPortFactory())
                         .build();
-    jc.parse("-hostport", "example.com:8080");
+    jc.parse(argv);
 
     Assert.assertEquals(a.hostPort.host, "example.com");
     Assert.assertEquals(a.hostPort.port.intValue(), 8080);
