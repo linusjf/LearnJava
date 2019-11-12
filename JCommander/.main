@@ -17,3 +17,5 @@ command.SemiColonListCommand -files build.xml;build.properties;.main
 command.ValidatedCommand -age 25
 command.ValidatedCommand -age 0
 command.ValidatedCommand -age -10
+command.MainCommand -debug 3 build.xml build.properties
+command.SeparatorCommand -level=42
