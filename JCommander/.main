@@ -12,3 +12,4 @@ command.Main -host host1 --length 512 --pattern 2 -host host2
 command.ArgsPassword -password < password.txt
 command.FileCommand -file password.txt -files build.xml,build.properties,.main
 command.ArgsConverterFactory -hostport example.com:8080
+command.FileListCommand -files build.xml,build.properties,.main

@@ -98,7 +98,7 @@
           depends="compile,manifest">
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
-         includes="**/*.class"
+         includes="**/*.class,**/*.properties"
          manifest="${jar.manifest}"></jar>
   </target>
   <target name="setupclasspath">
@@ -109,68 +109,100 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 3 -groups unit1,unit2,unit3 -debug -Doption=value a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 2 -groups unit1,unit2,unit4 -debug -Doption=value a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="@params.txt" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="@params.txt -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 2 -groups unit1,unit2,unit3 -Doption=value a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <arg line="-log 2 -groups unit1,unit2,unit3 -debug -Doption=val a b c" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
+        <fileset dir="${build.dir}">
+          <include name="**/jcommander.properties" />
+        </fileset>
       </classpath>
     </java>
     <java classname="${main.class1}">
@@ -217,6 +249,14 @@
     </java>
     <java classname="${main.class4}">
       <arg line="-hostport example.com:8080" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class5}">
+      <arg line="-files build.xml,build.properties,.main" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
