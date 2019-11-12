@@ -6,6 +6,7 @@ command.JCommanderTest -log 2 -groups unit1,unit2,unit4 -debug -Doption=value a 
 command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -debug -Doption=value a b d
 command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -Doption=value a b c
 command.JCommanderTest -log 2 -groups unit1,unit2,unit3 -debug -Doption=val a b c
+command.JCommanderTest --help -log 2 -groups unit1,unit2,unit3 -debug -Doption=val a b c
 command.Main --length 512 --pattern 2
 command.Main -l 512 -p 2
 command.Main -host host1 --length 512 --pattern 2 -host host2

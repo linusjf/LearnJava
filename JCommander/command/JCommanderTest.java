@@ -31,14 +31,19 @@ public class JCommanderTest {
   @DynamicParameter(names = "-D", description = "Dynamic parameters go here")
   public Map<String, String> dynamicParams = new HashMap<>();
 
+  @Parameter(names = "--help", help = true)
+  boolean help;
+
   public static void main(String... argv) {
     JCommanderTest jct = new JCommanderTest();
-    JCommander.newBuilder()
-        .defaultProvider(new PropertyFileDefaultProvider())
-        .addObject(jct)
-        .build()
-        .parse(argv);
+    JCommander jc = JCommander.newBuilder()
+                        .defaultProvider(new PropertyFileDefaultProvider())
+                        .addObject(jct)
+                        .build();
+    jc.parse(argv);
 
+    if (jct.help)
+      jc.usage();
     Assert.assertEquals(2, jct.verbose.intValue());
     Assert.assertEquals(4, jct.test.intValue());
     Assert.assertEquals("unit1,unit2,unit3", jct.groups);
