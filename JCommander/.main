@@ -19,3 +19,4 @@ command.ValidatedCommand -age 0
 command.ValidatedCommand -age -10
 command.MainCommand -debug 3 build.xml build.properties
 command.SeparatorCommand -level=42
+command.ArgsCommand -master master -slave slave
