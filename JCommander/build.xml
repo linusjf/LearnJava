@@ -263,6 +263,38 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main.class6}">
+      <arg line="-files build.xml;build.properties;.main" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class7}">
+      <arg line="-age 25" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class7}">
+      <arg line="-age 0" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class7}">
+      <arg line="-age -10" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
