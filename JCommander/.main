@@ -13,7 +13,7 @@ command.ArgsPassword -password < password.txt
 command.FileCommand -file password.txt -files build.xml,build.properties,.main
 command.ArgsConverterFactory -hostport example.com:8080
 command.FileListCommand -files build.xml,build.properties,.main
-command.SemiColonListCommand -files build.xml;build.properties;.main
+command.SemiColonListCommand -files 'build.xml;build.properties;.main'
 command.ValidatedCommand -age 25
 command.ValidatedCommand -age 0
 command.ValidatedCommand -age -10
@@ -24,3 +24,5 @@ command.ArityCommand -pairs build.xml build.properties
 command.ArityCommand -pairs build.xml build.properties .main 
 command.VariableArityCommand -foo build.xml build.properties 
 command.VariableArityCommand -foo build.xml build.properties .main 
+command.MvParameters -mv from to
+command.MvParameters -mv to from
