@@ -3,6 +3,7 @@ package javapuzzles;
 @SuppressWarnings("PMD")
 public enum CleverSwap {
   ;
+
   @SuppressWarnings("checkstyle:innerassignment")
   public static void main(String[] args) {
     // (0x7c0)

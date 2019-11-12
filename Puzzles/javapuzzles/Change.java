@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 @SuppressWarnings("PMD")
 public enum Change {
   ;
+
   public static void main(String[] args) {
     // 0.9 cannot be represented exactly by double or float
     System.out.println(2.00 - 1.10);

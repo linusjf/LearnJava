@@ -3,6 +3,7 @@ package javapuzzles;
 @SuppressWarnings("PMD")
 public enum AnimalFarm {
   ;
+
   public static void main(String[] args) {
     final String pig = "length: 10";
     final String cat = "length: 10";

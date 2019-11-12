@@ -9,5 +9,4 @@ public enum Compliance {
     var b2 = " ".isEmpty();
     System.out.println(b1 + " " + b2);
   }
-
 }

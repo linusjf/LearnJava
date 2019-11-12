@@ -18,22 +18,18 @@ public class Twisted {
 
   private void reproduce() {
     new Twisted("reproduce") {
-
       void printName() {
         System.out.println(name());
       }
-    }
-      .printName();
+    }.printName();
   }
 
   private void reiterate() {
     new Twisted("reiterate") {
-
       void printName() {
         System.out.println(getName());
       }
-    }
-      .printName();
+    }.printName();
   }
 
   public static void main(String[] args) {

@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Addition {
   ;
+
   public static void main(String... args) {
     int a = 45;
     double b = 3.141_598_7;
@@ -15,9 +16,9 @@ public enum Addition {
     // d  = d + b;
     // d = d + c;
     int d = 0;
-    d = (int) (d + b);
+    d = (int)(d + b);
     System.out.println(d);
-    d = (int) (d + c);
+    d = (int)(d + c);
     System.out.println(d);
 
     var avar = 45;
@@ -26,9 +27,9 @@ public enum Addition {
     avar += c;
     System.out.println(avar);
     var dvar = 0;
-    dvar = (int) (dvar + b);
+    dvar = (int)(dvar + b);
     System.out.println(dvar);
-    dvar = (int) (dvar + c);
+    dvar = (int)(dvar + c);
     System.out.println(dvar);
   }
 }

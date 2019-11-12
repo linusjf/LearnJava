@@ -4,6 +4,7 @@ import click.CodeTalk;
 
 public enum TypeIt {
   ;
+
   @SuppressWarnings("PMD.MissingOverride")
   private static class ClickIt extends CodeTalk {
 
