@@ -82,10 +82,10 @@ public enum ForkJoinPoolDemo {
   @SuppressWarnings("PMD.ShortClassName")
   static class Task extends RecursiveAction {
     private static final long serialVersionUID = 1L;
-    private List<Product> products;
-    private int first;
-    private int last;
-    private double increment;
+    private final List<Product> products;
+    private final int first;
+    private final int last;
+    private final double increment;
 
     Task(List<Product> products, int first, int last, double increment) {
       super();

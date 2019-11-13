@@ -41,7 +41,7 @@ public enum CleanerDaemon {
   }
 
   static class WriterTask implements Runnable {
-    private Deque<Event> deque;
+    private final Deque<Event> deque;
 
     WriterTask(Deque<Event> deque) {
       this.deque = deque;

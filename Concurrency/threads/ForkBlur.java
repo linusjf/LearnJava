@@ -52,11 +52,11 @@ public class ForkBlur extends RecursiveAction {
   protected static int sThreshold = 10_000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
 
-  private int[] mSource;
-  private int mStart;
-  private int mLength;
+  private final int[] mSource;
+  private final int mStart;
+  private final int mLength;
   private int[] mDestination;
-  private int mBlurWidth = 15;
+  private final int mBlurWidth = 15;
 
   // Processing window size, should be odd.
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")

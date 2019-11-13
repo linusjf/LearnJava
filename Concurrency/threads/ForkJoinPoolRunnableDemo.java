@@ -16,7 +16,7 @@ public enum ForkJoinPoolRunnableDemo {
     List<Product> products = generator.generate(10_000);
     Task task = new Task(products, 0, products.size(), 0.20);
     ForkJoinTask<?> t = ForkJoinTask.adapt(task);
-    task.setForkedTask(t);
+    // task.setForkedTask(t);
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(t);
     do {
@@ -80,11 +80,11 @@ public enum ForkJoinPoolRunnableDemo {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private List<Product> products;
-    private int first;
-    private int last;
-    private double increment;
-    private ForkJoinTask<?> t;
+    private final List<Product> products;
+    private final int first;
+    private final int last;
+    private final double increment;
+    // private ForkJoinTask<?> t;
 
     Task(List<Product> products, int first, int last, double increment) {
       super();
@@ -94,11 +94,10 @@ public enum ForkJoinPoolRunnableDemo {
       this.increment = increment;
     }
 
-    @SuppressWarnings("checkstyle:hiddenfield")
-    void setForkedTask(ForkJoinTask<?> t) {
-      this.t = t;
-    }
-
+    /**
+     * @SuppressWarnings("checkstyle:hiddenfield") void
+     * setForkedTask(ForkJoinTask<?> t) { this.t = t; }
+     */
     @Override
     public void run() {
       if (last - first < BATCH_SIZE)
@@ -111,8 +110,8 @@ public enum ForkJoinPoolRunnableDemo {
         Task t2 = new Task(products, middle + 1, last, increment);
         ForkJoinTask<?> task1 = ForkJoinTask.adapt(t1);
         ForkJoinTask<?> task2 = ForkJoinTask.adapt(t2);
-        t1.setForkedTask(task1);
-        t2.setForkedTask(task2);
+        // t1.setForkedTask(task1);
+        // t2.setForkedTask(task2);
         ForkJoinTask.invokeAll(task1, task2);
       }
     }
