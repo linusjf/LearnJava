@@ -6,9 +6,9 @@ Main-Class: com.gamasoft.memoryreferences.Main
 
 Name: common
 Specification-Title: References
-Specification-Version: 2.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: e73644a October 8 2019
+Implementation-Version: ef4f8ee5 November 13 2019
 Implementation-Vendor: 
 

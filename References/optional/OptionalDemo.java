@@ -1,25 +1,29 @@
 package optional;
 
+import java.util.Locale;
 import java.util.Optional;
 
 public enum OptionalDemo {
   ;
+
   public static void main(String[] args) {
     String[] words = new String[10];
 
     Optional<String> checkNull = Optional.ofNullable(words[5]);
 
     if (checkNull.isPresent()) {
-      String word = words[5].toLowerCase();
+      String word = words[5].toLowerCase(Locale.getDefault());
       System.out.println(word);
-    } else System.out.println("word is null");
+    } else
+      System.out.println("word is null");
     words[5] = "Hello";
     checkNull = Optional.of(words[5]);
 
     if (checkNull.isPresent()) {
-      String word = words[5].toLowerCase();
+      String word = words[5].toLowerCase(Locale.getDefault());
       System.out.println(word);
-    } else System.out.println("word is null");
+    } else
+      System.out.println("word is null");
     Integer value1 = null;
     Integer value2 = 10;
     Optional<Integer> a = Optional.ofNullable(value1);
