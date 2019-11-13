@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private Connection link;
-  private String url = "jdbc:derby:HomeDB";
+  private final String url = "jdbc:derby:HomeDB";
 
   public void init() throws ServletException {
     super.init();

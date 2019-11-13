@@ -58,8 +58,8 @@ public enum ConcurrentSkipListMapDemo {
   }
 
   static class Contact {
-    private String name;
-    private String phone;
+    private final String name;
+    private final String phone;
 
     Contact(String name, String phone) {
       this.name = name;
@@ -77,8 +77,8 @@ public enum ConcurrentSkipListMapDemo {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private ConcurrentSkipListMap<String, Contact> map;
-    private String id;
+    private final ConcurrentSkipListMap<String, Contact> map;
+    private final String id;
 
     Task(ConcurrentSkipListMap<String, Contact> map, String id) {
       this.id = id;

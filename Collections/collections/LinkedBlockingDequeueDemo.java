@@ -31,7 +31,7 @@ public enum LinkedBlockingDequeueDemo {
   }
 
   static class Client implements Runnable {
-    private LinkedBlockingDeque<String> requestList;
+    private final LinkedBlockingDeque<String> requestList;
 
     Client(LinkedBlockingDeque<String> requestList) {
       this.requestList = requestList;
@@ -59,4 +59,4 @@ public enum LinkedBlockingDequeueDemo {
       System.out.printf("Client: End.\n");
     }
   }
-}
+} 

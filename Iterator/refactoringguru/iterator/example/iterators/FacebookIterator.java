@@ -6,12 +6,12 @@ import refactoringguru.iterator.example.profile.Profile;
 import refactoringguru.iterator.example.socialnetworks.Facebook;
 
 public class FacebookIterator implements ProfileIterator {
-  private Facebook facebook;
-  private String type;
-  private String email;
+  private final Facebook facebook;
+  private final String type;
+  private final String email;
   private int currentPosition;
-  private List<String> emails = new ArrayList<>();
-  private List<Profile> profiles = new ArrayList<>();
+  private final List<String> emails = new ArrayList<>();
+  private final List<Profile> profiles = new ArrayList<>();
 
   public FacebookIterator(Facebook facebook, String type, String email) {
     this.facebook = facebook;
@@ -21,11 +21,9 @@ public class FacebookIterator implements ProfileIterator {
 
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> friends = facebook.requestProfileFriendsFromFacebook(
-        this.email,
-        this.type
-      );
-      for (String profile : friends) {
+      List<String> friends =
+          facebook.requestProfileFriendsFromFacebook(this.email, this.type);
+      for (String profile: friends) {
         this.emails.add(profile);
         this.profiles.add(null);
       }

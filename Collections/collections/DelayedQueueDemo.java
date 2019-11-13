@@ -24,7 +24,7 @@ public enum DelayedQueueDemo {
   }
 
   static class Event implements Delayed {
-    private Date startDate;
+    private final Date startDate;
 
     Event(Date startDate) {
       this.startDate = startDate;
@@ -49,8 +49,8 @@ public enum DelayedQueueDemo {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private int id;
-    private DelayQueue<Event> queue;
+    private final int id;
+    private final DelayQueue<Event> queue;
 
     Task(int id, DelayQueue<Event> queue) {
       this.id = id;

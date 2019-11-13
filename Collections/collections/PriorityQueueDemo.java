@@ -34,8 +34,8 @@ public enum PriorityQueueDemo {
   }
 
   static class Event implements Comparable<Event> {
-    private int thread;
-    private int priority;
+    private final int thread;
+    private final int priority;
 
     Event(int thread, int priority) {
       this.thread = thread;
@@ -60,8 +60,8 @@ public enum PriorityQueueDemo {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private int id;
-    private PriorityBlockingQueue<Event> queue;
+    private final int id;
+    private final PriorityBlockingQueue<Event> queue;
 
     Task(int id, PriorityBlockingQueue<Event> queue) {
       this.id = id;

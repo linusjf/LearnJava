@@ -88,7 +88,7 @@ public enum ConcurrentLinkedDequeDemo {
   }
 
   static class AddTask implements Runnable {
-    private ConcurrentLinkedDeque<String> list;
+    private final ConcurrentLinkedDeque<String> list;
 
     AddTask(ConcurrentLinkedDeque<String> list) {
       this.list = list;
@@ -104,7 +104,7 @@ public enum ConcurrentLinkedDequeDemo {
   }
 
   static class PollTask implements Runnable {
-    private ConcurrentLinkedDeque<String> list;
+    private final ConcurrentLinkedDeque<String> list;
 
     PollTask(ConcurrentLinkedDeque<String> list) {
       this.list = list;

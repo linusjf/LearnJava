@@ -22,6 +22,7 @@ public final class SyntheticSample {
     }
   }
 
+  @SuppressWarnings("PMD.FinalFieldCouldBeStatic")
   private static final class SampleNestedClass {
     private final String privateVariable = "A Private Variable!";
   }

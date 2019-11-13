@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class FileDataSource implements DataSource {
-  private String name;
+  private final String name;
 
   public FileDataSource(String name) {
     this.name = name;

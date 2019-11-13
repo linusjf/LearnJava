@@ -37,7 +37,7 @@ public enum AtomicArrayDemo {
   }
 
   static class Incrementer implements Runnable {
-    private AtomicIntegerArray vector;
+    private final AtomicIntegerArray vector;
 
     Incrementer(AtomicIntegerArray vector) {
       this.vector = vector;
@@ -50,7 +50,7 @@ public enum AtomicArrayDemo {
   }
 
   static class Decrementer implements Runnable {
-    private AtomicIntegerArray vector;
+    private final AtomicIntegerArray vector;
 
     Decrementer(AtomicIntegerArray vector) {
       this.vector = vector;
