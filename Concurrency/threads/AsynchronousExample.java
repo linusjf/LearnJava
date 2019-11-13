@@ -55,8 +55,8 @@ public enum AsynchronousExample {
   static class FolderProcessor extends RecursiveTask<List<String>> {
     private static final long serialVersionUID = 1L;
     private static final int TASK_THRESHOLD = 50;
-    private String path;
-    private String extension;
+    private final String path;
+    private final String extension;
 
     FolderProcessor(String path, String extension) {
       super();

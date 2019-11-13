@@ -29,15 +29,15 @@ public class ImageProcessor {
 
   // private ExecutorService executor1 =
   //  Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
-  private ExecutorService executor1 =
+  private final ExecutorService executor1 =
       Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
                                    new NamedThreadFactory("executor1"));
-  private ExecutorService executor2 =
+  private final ExecutorService executor2 =
       Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
-  private boolean printMessage = true;
-  private boolean saveFile = true;
-  private AtomicInteger failureCount = new AtomicInteger(0);
-  private Path imageDir = Paths.get("/tmp/images");
+  private final boolean printMessage = true;
+  private final boolean saveFile = true;
+  private final AtomicInteger failureCount = new AtomicInteger(0);
+  private final Path imageDir = Paths.get("/tmp/images");
 
   private final HttpClient client =
       HttpClient.newBuilder()
