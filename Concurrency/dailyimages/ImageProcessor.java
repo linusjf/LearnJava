@@ -34,8 +34,8 @@ public class ImageProcessor {
                                    new NamedThreadFactory("executor1"));
   private final ExecutorService executor2 =
       Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
-  private final boolean printMessage = true;
-  private final boolean saveFile = true;
+  private static final boolean PRINT_MESSAGE = true;
+  private static final boolean SAVE_FILE = true;
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
 
@@ -134,11 +134,11 @@ public class ImageProcessor {
 
   public void process(ImageInfo info) {
     latch.countDown();
-    if (printMessage) {
+    if (PRINT_MESSAGE) {
       System.out.println("process called by " + Thread.currentThread()
                          + ", date: " + info.getDate());
     }
-    if (saveFile)
+    if (SAVE_FILE)
       try {
         Files.createDirectories(imageDir);
         Files.write(imageDir.resolve(info.getDate() + ".jpg"),
