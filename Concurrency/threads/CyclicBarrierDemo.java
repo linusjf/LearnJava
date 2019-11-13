@@ -10,11 +10,11 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierDemo {
   private CyclicBarrier cyclicBarrier;
-  private List<List<Integer>> partialResults =
+  private final List<List<Integer>> partialResults =
       Collections.synchronizedList(new ArrayList<>());
-  private Random random = new Random();
+  private final Random random = new Random();
   private int numPartialResults;
-  private int numWorkers;
+  private final int numWorkers;
   private CountDownLatch latch;
 
   public CyclicBarrierDemo(int numWorkers) {

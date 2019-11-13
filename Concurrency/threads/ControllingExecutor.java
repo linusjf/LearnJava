@@ -39,7 +39,7 @@ public enum ControllingExecutor {
   }
 
   static class ExecutableTask implements Callable<String> {
-    private String name;
+    private final String name;
 
     ExecutableTask(String name) {
       this.name = name;
@@ -64,7 +64,7 @@ public enum ControllingExecutor {
   }
 
   static class ResultTask extends FutureTask<String> {
-    private String name;
+    private final String name;
 
     ResultTask(Callable<String> callable) {
       super(callable);

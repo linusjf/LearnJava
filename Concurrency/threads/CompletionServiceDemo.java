@@ -46,8 +46,8 @@ public enum CompletionServiceDemo {
   }
 
   static class ReportGenerator implements Callable<String> {
-    private String sender;
-    private String title;
+    private final String sender;
+    private final String title;
 
     ReportGenerator(String sender, String title) {
       this.sender = sender;
@@ -72,8 +72,8 @@ public enum CompletionServiceDemo {
   }
 
   static class ReportRequest implements Runnable {
-    private String name;
-    private CompletionService<String> service;
+    private final String name;
+    private final CompletionService<String> service;
 
     ReportRequest(String name, CompletionService<String> service) {
       this.name = name;
@@ -88,8 +88,8 @@ public enum CompletionServiceDemo {
   }
 
   static class ReportProcessor implements Runnable {
-    private CompletionService<String> service;
-    private boolean end;
+    private final CompletionService<String> service;
+    private final boolean end;
 
     ReportProcessor(CompletionService<String> service) {
       this.service = service;

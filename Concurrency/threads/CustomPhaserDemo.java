@@ -78,7 +78,7 @@ public enum CustomPhaserDemo {
   }
 
   static class Student implements Runnable {
-    private Phaser phaser;
+    private final Phaser phaser;
 
     Student(Phaser phaser) {
       this.phaser = phaser;
