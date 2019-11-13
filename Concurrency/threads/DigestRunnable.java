@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class DigestRunnable implements Runnable {
-  private String filename;
+  private final String filename;
 
   public DigestRunnable(String filename) {
     this.filename = filename;

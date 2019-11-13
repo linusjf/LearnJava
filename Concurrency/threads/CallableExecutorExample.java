@@ -52,7 +52,7 @@ public enum CallableExecutorExample {
   }
 
   static class FactorialCalculator implements Callable<Integer> {
-    private Integer number;
+    private final Integer number;
 
     FactorialCalculator(Integer number) {
       this.number = number;

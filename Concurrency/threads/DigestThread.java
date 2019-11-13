@@ -11,7 +11,7 @@ import java.util.Base64;
 
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 public class DigestThread extends Thread {
-  private String filename;
+  private final String filename;
 
   public DigestThread(String filename) {
     super();

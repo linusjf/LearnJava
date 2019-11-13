@@ -38,7 +38,7 @@ public enum CyclicBarrierExample {
   // Runnable task for each thread
   @SuppressWarnings("PMD.ShortClassName")
   private static class Task implements Runnable {
-    private CyclicBarrier barrier;
+    private final CyclicBarrier barrier;
 
     Task(CyclicBarrier barrier) {
       this.barrier = barrier;

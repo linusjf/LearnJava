@@ -67,7 +67,7 @@ public enum CleanerDaemon {
   }
 
   static class CleanerTask extends Thread {
-    private Deque<Event> deque;
+    private final Deque<Event> deque;
 
     CleanerTask(Deque<Event> deque) {
       super();

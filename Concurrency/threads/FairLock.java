@@ -6,7 +6,7 @@ import java.util.List;
 public class FairLock {
   private boolean isLocked;
   private Thread lockingThread;
-  private List<QueueObject> waitingThreads = new ArrayList<>();
+  private final List<QueueObject> waitingThreads = new ArrayList<>();
 
   public void lock() throws InterruptedException {
     QueueObject queueObject = new QueueObject();

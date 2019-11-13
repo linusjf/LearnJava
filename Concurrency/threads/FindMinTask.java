@@ -9,10 +9,10 @@ import java.util.concurrent.Future;
 
 public class FindMinTask implements Callable<Integer> {
   private static final int MIN_SIZE = 2;
-  private int[] numbers;
-  private int startIndex;
-  private int endIndex;
-  private ExecutorService executorService;
+  private final int[] numbers;
+  private final int startIndex;
+  private final int endIndex;
+  private final ExecutorService executorService;
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public FindMinTask(ExecutorService executorService,

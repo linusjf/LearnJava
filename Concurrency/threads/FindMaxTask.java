@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 class FindMaxTask implements Callable<Integer> {
-  private int[] data;
-  private int start;
-  private int end;
+  private final int[] data;
+  private final int start;
+  private final int end;
 
   FindMaxTask(int[] data, int start, int end) {
     this.data = Arrays.copyOf(data, data.length);

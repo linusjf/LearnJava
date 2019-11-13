@@ -29,9 +29,9 @@ public enum ExceptionalForkJoin {
   static class Task extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
     private static final int MIN_TASK_SIZE = 10;
-    private int[] array;
-    private int start;
-    private int end;
+    private final int[] array;
+    private final int start;
+    private final int end;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     Task(int[] array, int start, int end) {

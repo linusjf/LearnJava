@@ -7,9 +7,9 @@ import java.util.concurrent.RecursiveTask;
 public class FindMin extends RecursiveTask<Integer> {
   private static final long serialVersionUID = 1L;
   private static final int MIN_SIZE = 2;
-  private int[] numbers;
-  private int startIndex;
-  private int endIndex;
+  private final int[] numbers;
+  private final int startIndex;
+  private final int endIndex;
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public FindMin(int[] numbers, int startIndex, int endIndex) {
