@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.AbstractClassWithoutAbstractMethod")
 final class Outer {
 
   public static void main(String[] args) {
@@ -14,7 +15,6 @@ final class Outer {
     System.out.println("inside outerMethod");
 
     // Inner class is local to outerMethod()
-    @SuppressWarnings("PMD.AbstractClassWithoutAbstractMethod")
     abstract class AbstractInner {
 
       void innerMethod() {
