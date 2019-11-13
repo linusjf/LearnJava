@@ -42,7 +42,7 @@ class Super implements Serializable {
 @SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
 final class Sub extends Super {
   private static final long serialVersionUID = 1L;
-  private int id;
+  private final int id;
 
   Sub(int id) {
     super();

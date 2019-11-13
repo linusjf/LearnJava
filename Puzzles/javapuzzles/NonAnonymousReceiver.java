@@ -10,10 +10,12 @@ public class NonAnonymousReceiver {
   }
 
   abstract class AbstractEmptyIterator implements Iterator<String> {
+    @Override
     public boolean hasNext(AbstractEmptyIterator this) {
       return false;
     }
 
+    @Override
     public String next(AbstractEmptyIterator this) {
       throw new NoSuchElementException("No next element");
     }

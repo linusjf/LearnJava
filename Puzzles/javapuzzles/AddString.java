@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.AvoidUsingOctalValues")
 public enum AddString {
   ;
 
