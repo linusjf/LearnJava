@@ -8,9 +8,9 @@ import java.util.Random;
 
 public class RsaAlgorithm {
   private static final int MAX_LENGTH = 1024;
-  private BigInteger n;
-  private BigInteger e;
-  private BigInteger d;
+  private final BigInteger n;
+  private final BigInteger e;
+  private final BigInteger d;
 
   public RsaAlgorithm() {
     Random random = new Random();
