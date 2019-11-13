@@ -40,7 +40,7 @@ public enum CancelForkJoinPool {
   }
 
   static class TaskManager {
-    private List<ForkJoinTask<Integer>> tasks;
+    private final List<ForkJoinTask<Integer>> tasks;
 
     TaskManager() {
       tasks = new ArrayList<>();
@@ -65,11 +65,11 @@ public enum CancelForkJoinPool {
     private static final int TASK_SIZE_THRESHOLD = 10;
     private static final int NOT_FOUND = -1;
 
-    private int[] numbers;
-    private int start;
-    private int end;
-    private int number;
-    private TaskManager manager;
+    private final int[] numbers;
+    private final int start;
+    private final int end;
+    private final int number;
+    private final TaskManager manager;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     SearchNumberTask(int[] numbers,

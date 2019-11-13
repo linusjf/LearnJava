@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CallbackDigest implements Runnable {
-  private String filename;
+  private final String filename;
 
   public CallbackDigest(String filename) {
     this.filename = filename;

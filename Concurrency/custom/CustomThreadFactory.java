@@ -49,7 +49,7 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   static class CustomThread extends Thread {
-    private Date creationDate;
+    private final Date creationDate;
     private Date startDate;
     private Date finishDate;
 

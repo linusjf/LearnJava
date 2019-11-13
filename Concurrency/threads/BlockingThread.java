@@ -1,7 +1,7 @@
 package threads;
 
 public class BlockingThread extends Thread {
-  private SimpleBlockingQueue<?> queue;
+  private final SimpleBlockingQueue<?> queue;
   private boolean wasInterrupted;
   private boolean reachedAfterGet;
   private boolean throwableThrown;
@@ -51,14 +51,14 @@ public class BlockingThread extends Thread {
     BlockingThread blockingThread = new BlockingThread(queue);
     blockingThread.start();
     Thread.sleep(5000);
-    assert blockingThread.isReachedAfterGet() == false;
-    assert blockingThread.isWasInterrupted() == false;
-    assert blockingThread.isThrowableThrown() == false;
+    assert !blockingThread.isReachedAfterGet();
+    assert !blockingThread.isWasInterrupted();
+    assert !blockingThread.isThrowableThrown();
     queue.put(new Object());
     Thread.sleep(1000);
-    assert blockingThread.isReachedAfterGet() == true;
-    assert blockingThread.isWasInterrupted() == false;
-    assert blockingThread.isThrowableThrown() == false;
+    assert blockingThread.isReachedAfterGet();
+    assert !blockingThread.isWasInterrupted();
+    assert !blockingThread.isThrowableThrown();
     blockingThread.join();
   }
 }

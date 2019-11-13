@@ -1,7 +1,7 @@
 package threads;
 
 public class Calculator implements Runnable {
-  private int number;
+  private final int number;
 
   public Calculator(int number) {
     this.number = number;
