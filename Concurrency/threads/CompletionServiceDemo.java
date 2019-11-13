@@ -89,7 +89,7 @@ public enum CompletionServiceDemo {
 
   static class ReportProcessor implements Runnable {
     private final CompletionService<String> service;
-    private final boolean end;
+    private boolean end;
 
     ReportProcessor(CompletionService<String> service) {
       this.service = service;
