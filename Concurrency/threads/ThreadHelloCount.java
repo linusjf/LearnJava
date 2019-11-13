@@ -12,6 +12,7 @@ public enum ThreadHelloCount {
 
   static class HelloThread extends Thread {
 
+    @Override
     public void run() {
       int pause;
       for (int i = 0; i < 5; i++) {
@@ -33,6 +34,7 @@ public enum ThreadHelloCount {
   static class CountThread extends Thread {
     int pause;
 
+    @Override
     public void run() {
       for (int i = 0; i < 5; i++) {
         try {
