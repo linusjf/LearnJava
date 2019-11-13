@@ -1,6 +1,6 @@
 package com.vmlens.tutorialcopyonwrite;
 
-@SuppressWarnings("IllegalToken")
+@SuppressWarnings({"PMD.IllegalToken","PMD.AvoidUsingVolatile"})
 public class AddressUsingCopyOnWrite {
   private volatile AddressValue addressValue;
   private final Object lock = new Object();

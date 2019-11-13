@@ -1,5 +1,6 @@
 package com.vmlens.tutorialcopyonwrite;
 
+@SuppressWarnings("PMD.AvoidUsingVolatile")
 public class MutableAddress {
   private volatile String street;
   private volatile String city;

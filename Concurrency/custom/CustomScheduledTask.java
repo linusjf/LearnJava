@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class CustomScheduledTask<V>
     extends FutureTask<V> implements RunnableScheduledFuture<V> {
-  private RunnableScheduledFuture<V> task;
-  private ScheduledThreadPoolExecutor executor;
+  private final RunnableScheduledFuture<V> task;
+  private final ScheduledThreadPoolExecutor executor;
   private long period;
   private long startDate;
 

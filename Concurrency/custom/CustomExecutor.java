@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomExecutor extends ThreadPoolExecutor {
-  private ConcurrentHashMap<String, Date> startTimes;
+  private final ConcurrentHashMap<String, Date> startTimes;
 
   public CustomExecutor(int corePoolSize,
                         int maximumPoolSize,

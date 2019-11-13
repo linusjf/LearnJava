@@ -7,8 +7,8 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 public class CustomThreadFactory implements ThreadFactory {
-  private int counter;
-  private String prefix;
+  private final int counter;
+  private final String prefix;
 
   public CustomThreadFactory(String prefix) {
     this.prefix = prefix;

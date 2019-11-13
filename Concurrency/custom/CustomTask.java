@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomTask implements Runnable, Comparable<CustomTask> {
-  private int priority;
-  private String name;
+  private final int priority;
+  private final String name;
 
   public CustomTask(String name, int priority) {
     this.name = name;
