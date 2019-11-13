@@ -1,16 +1,14 @@
 package com.vmlens.tutorialcopyonwrite;
 
 import static org.junit.Assert.assertTrue;
+
 import com.vmlens.annotation.Interleave;
 import org.junit.Test;
 
 public class ConcurrencyTestReadWrite {
   // An not thread safe address
-  private final MutableAddress address = new MutableAddress(
-    "E. Bonanza St.",
-    "South Park",
-    "456 77 99"
-  );
+  private final MutableAddress address =
+      new MutableAddress("E. Bonanza St.", "South Park", "456 77 99");
 
   // Change to a thread safe address using copy on write
   // private final AddressUsingCopyOnWrite address = new
@@ -29,22 +27,22 @@ public class ConcurrencyTestReadWrite {
   @Interleave(ConcurrencyTestReadWrite.class)
   private void read() {
     readAddress = address.toString();
-  // readAddress = address.toStringNotThreadSafe();
+    // readAddress = address.toStringNotThreadSafe();
   }
 
   @Test
   public void test() throws InterruptedException {
     // clang-format off
-    Thread first = new Thread(
-      () -> {
-        updatePostalAddress();
-      }
-    );
-    Thread second = new Thread(
-      () -> {
-        read();
-      }
-    );
+    Thread first =
+        new Thread(
+            () -> {
+              updatePostalAddress();
+            });
+    Thread second =
+        new Thread(
+            () -> {
+              read();
+            });
 
     // clang-format on
     first.start();
@@ -52,11 +50,10 @@ public class ConcurrencyTestReadWrite {
     first.join();
     second.join();
     assertTrue(
-      "readAddress:" + readAddress,
-      "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99"
-        .equals(readAddress) ||
-      "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"
-        .equals(readAddress)
-    );
+        "readAddress:" + readAddress,
+        "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(
+            readAddress)
+            || "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"
+                   .equals(readAddress));
   }
 }

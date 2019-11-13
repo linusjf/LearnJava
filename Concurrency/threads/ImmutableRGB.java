@@ -47,9 +47,8 @@ public final class ImmutableRGB {
 
   @SuppressWarnings("checkstyle:hiddenfield")
   private void check(int red, int green, int blue) {
-    if (
-      red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255
-    ) {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
+        || blue > 255) {
       throw new IllegalArgumentException();
     }
   }
@@ -64,10 +63,6 @@ public final class ImmutableRGB {
 
   public ImmutableRGB invert() {
     return new ImmutableRGB(
-      255 - red,
-      255 - green,
-      255 - blue,
-      "Inverse of " + name
-    );
+        255 - red, 255 - green, 255 - blue, "Inverse of " + name);
   }
 }

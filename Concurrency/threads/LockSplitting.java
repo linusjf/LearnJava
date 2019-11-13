@@ -13,9 +13,10 @@ public class LockSplitting implements Runnable {
   @Override
   public void run() {
     for (int i = 0; i < 100_000; i++) {
-      if (
-        ThreadLocalRandom.current().nextBoolean()
-      ) counter.incrementCustomer(); else counter.incrementShipping();
+      if (ThreadLocalRandom.current().nextBoolean())
+        counter.incrementCustomer();
+      else
+        counter.incrementShipping();
     }
   }
 
@@ -23,23 +24,27 @@ public class LockSplitting implements Runnable {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
       Counter counter = new CounterOneLock();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] =
-        new Thread(new LockSplitting(counter));
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i] = new Thread(new LockSplitting(counter));
 
       long startMillis = System.currentTimeMillis();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i].start();
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i].start();
 
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i].join();
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i].join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
       counter = new CounterSeparateLock();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] =
-        new Thread(new LockSplitting(counter));
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i] = new Thread(new LockSplitting(counter));
 
       startMillis = System.currentTimeMillis();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i].start();
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i].start();
 
-      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i].join();
+      for (int i = 0; i < NUMBER_OF_THREADS; i++)
+        threads[i].join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {

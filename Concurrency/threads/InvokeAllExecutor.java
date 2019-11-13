@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum InvokeAllExecutor {
   ;
+
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
     List<Task> taskList = new ArrayList<>();
@@ -26,7 +27,7 @@ public enum InvokeAllExecutor {
     }
     executor.shutdown();
     System.out.println("Main: Printing the results");
-    for (Future<Result> future : resultList) {
+    for (Future<Result> future: resultList) {
       try {
         Result result = future.get();
         System.out.println(result.getName() + ": " + result.getValue());
@@ -68,19 +69,16 @@ public enum InvokeAllExecutor {
     @Override
     public Result call() throws Exception {
       try {
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         System.out.printf(
-          "%s: Waiting %d seconds for results.\n",
-          this.name,
-          duration
-        );
+            "%s: Waiting %d seconds for results.\n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
       int value = 0;
       for (int i = 0; i < 5; i++) {
-        value += (int) (Math.random() * 100);
+        value += (int)(Math.random() * 100);
       }
       Result result = new Result();
       result.setName(this.name);

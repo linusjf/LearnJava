@@ -29,7 +29,7 @@ public class ParallelAdder {
       count++;
     }
     int totsum = 0;
-    for (Future<Integer> fut : list) {
+    for (Future<Integer> fut: list) {
       try {
         totsum = totsum + fut.get();
       } catch (InterruptedException | ExecutionException e) {
@@ -41,17 +41,16 @@ public class ParallelAdder {
     return totsum;
   }
 
-  private Future<Integer> submitNumbers(
-    int prev,
-    int i,
-    ExecutorService executor
-  ) {
+  private Future<Integer> submitNumbers(int prev,
+                                        int i,
+                                        ExecutorService executor) {
     return executor.submit(new CallableAdder(prev, i));
   }
 
   public int sequentialSum() {
     Integer totsum = 0;
-    for (int i = 0; i < NUM_COUNT; i++) totsum = totsum + i;
+    for (int i = 0; i < NUM_COUNT; i++)
+      totsum = totsum + i;
     System.out.println("sequentialSum Total Sum is " + totsum);
     return totsum;
   }

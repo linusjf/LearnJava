@@ -19,9 +19,11 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public int compareTo(CustomTask o) {
-    if (this.getPriority() < o.getPriority()) return 1;
+    if (this.getPriority() < o.getPriority())
+      return 1;
 
-    if (this.getPriority() > o.getPriority()) return -1;
+    if (this.getPriority() > o.getPriority())
+      return -1;
 
     return 0;
   }
@@ -38,12 +40,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   public static void main(String[] args) {
     ThreadPoolExecutor executor = new ThreadPoolExecutor(
-      2,
-      2,
-      1,
-      TimeUnit.SECONDS,
-      new PriorityBlockingQueue<Runnable>()
-    );
+        2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
     for (int i = 0; i < 4; i++) {
       CustomTask task = new CustomTask("Task " + i, i);
       executor.execute(task);

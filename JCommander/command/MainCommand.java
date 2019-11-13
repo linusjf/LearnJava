@@ -5,6 +5,7 @@ import com.beust.jcommander.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("PMD.ImmutableField")
 public class MainCommand {
   @Parameter(description = "Files")
   private List<String> files = new ArrayList<>();

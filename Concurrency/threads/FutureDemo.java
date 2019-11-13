@@ -17,9 +17,8 @@ import java.util.logging.Logger;
  */
 public enum FutureDemo {
   ;
-  private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(
-    3
-  );
+  private static final ExecutorService THREAD_POOL =
+      Executors.newFixedThreadPool(3);
 
   public static void main(String[] args) {
     try {
@@ -33,7 +32,7 @@ public enum FutureDemo {
       while (!future.isDone()) {
         System.out.println("Task is not completed yet....");
         Thread.sleep(1);
-      // sleep for 1 millisecond before checking again
+        // sleep for 1 millisecond before checking again
       }
 
       System.out.println("Task is completed, let's check result");
@@ -60,7 +59,7 @@ public enum FutureDemo {
         output = factorial(number);
       } catch (InterruptedException ex) {
         Logger.getLogger(FutureDemo.class.getName())
-          .log(Level.SEVERE, null, ex);
+            .log(Level.SEVERE, null, ex);
       }
       return output;
     }

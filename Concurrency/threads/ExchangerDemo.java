@@ -6,6 +6,7 @@ import java.util.concurrent.Exchanger;
 
 public enum ExchangerDemo {
   ;
+
   public static void main(String[] args) {
     List<String> buffer1 = new ArrayList<>();
     List<String> buffer2 = new ArrayList<>();

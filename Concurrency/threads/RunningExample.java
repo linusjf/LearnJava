@@ -5,6 +5,7 @@ import threads.HelperClass.WakingThread;
 
 public enum RunningExample {
   ;
+
   public static void main(String[] args) {
     try {
       Thread waitThread = new WaitingThread();
@@ -18,9 +19,8 @@ public enum RunningExample {
       waitThread.join();
       wakingThread.join();
     } catch (InterruptedException ex) {
-      System.err.println(
-        "An InterruptedException was caught: " + ex.getMessage()
-      );
+      System.err.println("An InterruptedException was caught: "
+                         + ex.getMessage());
     }
   }
 }

@@ -9,20 +9,15 @@ import java.util.concurrent.TimeUnit;
 
 public enum AsynchronousExample {
   ;
+
   public static void main(String[] args) {
     ForkJoinPool pool = new ForkJoinPool();
     FolderProcessor system = new FolderProcessor(
-      "/data/data/com.termux/files/home/LearnNodeJS",
-      "log"
-    );
-    FolderProcessor apps = new FolderProcessor(
-      "/data/data/com.termux/files/home/",
-      "log"
-    );
+        "/data/data/com.termux/files/home/LearnNodeJS", "log");
+    FolderProcessor apps =
+        new FolderProcessor("/data/data/com.termux/files/home/", "log");
     FolderProcessor documents = new FolderProcessor(
-      "/data/data/com.termux/files/home/LearnJava",
-      "log"
-    );
+        "/data/data/com.termux/files/home/LearnJava", "log");
     pool.execute(system);
     pool.execute(apps);
 
@@ -31,10 +26,8 @@ public enum AsynchronousExample {
     do {
       System.out.printf("******************************************\n");
       System.out.printf("Main: Parallelism: %d\n", pool.getParallelism());
-      System.out.printf(
-        "Main: Active Threads: %d\n",
-        pool.getActiveThreadCount()
-      );
+      System.out.printf("Main: Active Threads: %d\n",
+                        pool.getActiveThreadCount());
       System.out.printf("Main: Task Count: %d\n", pool.getQueuedTaskCount());
       System.out.printf("Main: Steal Count: %d\n", pool.getStealCount());
       System.out.printf("******************************************\n");
@@ -79,34 +72,30 @@ public enum AsynchronousExample {
       File[] content = file.listFiles();
 
       if (content != null) {
-        for (File f : content) {
+        for (File f: content) {
           if (f.isDirectory()) {
-            FolderProcessor task = new FolderProcessor(
-              f.getAbsolutePath(),
-              extension
-            );
+            FolderProcessor task =
+                new FolderProcessor(f.getAbsolutePath(), extension);
             task.fork();
             tasks.add(task);
           } else {
-            if (checkFile(f.getName())) list.add(f.getAbsolutePath());
+            if (checkFile(f.getName()))
+              list.add(f.getAbsolutePath());
           }
         }
-        if (tasks.size() > TASK_THRESHOLD) System.out.printf(
-          "%s: %d tasks ran.\n",
-          file.getAbsolutePath(),
-          tasks.size()
-        );
+        if (tasks.size() > TASK_THRESHOLD)
+          System.out.printf(
+              "%s: %d tasks ran.\n", file.getAbsolutePath(), tasks.size());
       }
 
       addResultsFromTasks(list, tasks);
       return list;
     }
 
-    private void addResultsFromTasks(
-      List<String> list,
-      List<FolderProcessor> tasks
-    ) {
-      for (FolderProcessor item : tasks) list.addAll(item.join());
+    private void addResultsFromTasks(List<String> list,
+                                     List<FolderProcessor> tasks) {
+      for (FolderProcessor item: tasks)
+        list.addAll(item.join());
     }
 
     private boolean checkFile(String name) {

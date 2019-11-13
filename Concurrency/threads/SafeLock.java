@@ -36,24 +36,22 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public enum SafeLock {
   ;
+
   public static void main(String[] args) {
     final Friend alphonse = new Friend("Alphonse");
     final Friend gaston = new Friend("Gaston");
     new Thread(new BowLoop(alphonse, gaston)).start();
     new Thread(new BowLoop(gaston, alphonse)).start();
-    new Thread(
-      () -> {
-        try {
-          int sleepTime = new Random().nextInt(10_000);
-          Thread.sleep(sleepTime);
-          System.out.println("Exiting after " + sleepTime + " milliseconds.");
-          System.exit(0);
-        } catch (InterruptedException ex) {
-          System.err.println(ex);
-        }
+    new Thread(() -> {
+      try {
+        int sleepTime = new Random().nextInt(10_000);
+        Thread.sleep(sleepTime);
+        System.out.println("Exiting after " + sleepTime + " milliseconds.");
+        System.exit(0);
+      } catch (InterruptedException ex) {
+        System.err.println(ex);
       }
-    )
-      .start();
+    }).start();
   }
 
   static class Friend {
@@ -90,34 +88,30 @@ public enum SafeLock {
     public void bow(Friend bower) {
       if (impendingBow(bower)) {
         try {
-          System.out.format(
-            "%s: %s has" + " bowed to me!%n",
-            this.name,
-            bower.getName()
-          );
+          System.out.format("%s: %s has"
+                                + " bowed to me!%n",
+                            this.name,
+                            bower.getName());
           bower.bowBack(this);
         } finally {
           lock.unlock();
           bower.lock.unlock();
         }
       } else {
-        System.out.format(
-          "%s: %s started" +
-            " to bow to me, but saw that" +
-            " I was already bowing to" +
-            " him.%n",
-          this.name,
-          bower.getName()
-        );
+        System.out.format("%s: %s started"
+                              + " to bow to me, but saw that"
+                              + " I was already bowing to"
+                              + " him.%n",
+                          this.name,
+                          bower.getName());
       }
     }
 
     public void bowBack(Friend bower) {
-      System.out.format(
-        "%s: %s has" + " bowed back to me!%n",
-        this.name,
-        bower.getName()
-      );
+      System.out.format("%s: %s has"
+                            + " bowed back to me!%n",
+                        this.name,
+                        bower.getName());
     }
   }
 

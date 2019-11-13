@@ -11,10 +11,7 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     System.out.printf("Thread Daemon: %s\n", t.isDaemon());
     System.out.printf("Thread Description: %s\n", t.toString());
     System.out.printf(
-      "Exception: %s: %s\n",
-      e.getClass().getName(),
-      e.getMessage()
-    );
+        "Exception: %s: %s\n", e.getClass().getName(), e.getMessage());
     System.out.printf("Stack Trace: \n");
     e.printStackTrace(System.out);
     System.out.printf("Thread status: %s\n", t.getState());

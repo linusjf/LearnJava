@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum ExceptionalForkJoin {
   ;
+
   public static void main(String[] args) {
     int[] array = new int[100];
     Task task = new Task(array, 0, 100);
@@ -44,15 +45,10 @@ public enum ExceptionalForkJoin {
     protected Integer compute() {
       System.out.printf("Task: Start from %d to %d\n", start, end);
       if (end - start < MIN_TASK_SIZE) {
-        if (3 > start && 3 < end) completeExceptionally(
-          new RuntimeException(
-            "This task throws a Runtime " +
-              "Exception: Task from " +
-              start +
-              " to " +
-              end
-          )
-        );
+        if (3 > start && 3 < end)
+          completeExceptionally(new RuntimeException(
+              "This task throws a Runtime "
+              + "Exception: Task from " + start + " to " + end));
         try {
           TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {

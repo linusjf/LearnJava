@@ -22,10 +22,9 @@ public class RunnableHelloCount implements Runnable {
     int pause;
     for (int i = 0; i < 10; i++) {
       try {
-        System.out.println(
-          Thread.currentThread().getName() + " being executed."
-        );
-        pause = (int) (Math.random() * 3000);
+        System.out.println(Thread.currentThread().getName()
+                           + " being executed.");
+        pause = (int)(Math.random() * 3000);
         Thread.sleep(pause);
       } catch (InterruptedException interruptEx) {
         System.out.println(interruptEx);
