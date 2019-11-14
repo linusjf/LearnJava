@@ -11,9 +11,8 @@ public class XmlExportVisitor implements Visitor {
 
   public String export(Shape... args) {
     StringBuilder sb = new StringBuilder(50);
-    for (Shape shape: args) {
-      sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                + "\n");
+    for (Shape shape : args) {
+      sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + "\n");
       sb.append(shape.accept(this)).append('\n');
       System.out.println(sb.toString());
       sb.setLength(0);
@@ -25,11 +24,17 @@ public class XmlExportVisitor implements Visitor {
   public String visitDot(Dot d) {
     return "<dot>"
         + "\n"
-        + "    <id>" + d.getId() + "</id>"
+        + "    <id>"
+        + d.getId()
+        + "</id>"
         + "\n"
-        + "    <x>" + d.getX() + "</x>"
+        + "    <x>"
+        + d.getX()
+        + "</x>"
         + "\n"
-        + "    <y>" + d.getY() + "</y>"
+        + "    <y>"
+        + d.getY()
+        + "</y>"
         + "\n"
         + "</dot>";
   }
@@ -38,13 +43,21 @@ public class XmlExportVisitor implements Visitor {
   public String visitCircle(Circle c) {
     return "<circle>"
         + "\n"
-        + "    <id>" + c.getId() + "</id>"
+        + "    <id>"
+        + c.getId()
+        + "</id>"
         + "\n"
-        + "    <x>" + c.getX() + "</x>"
+        + "    <x>"
+        + c.getX()
+        + "</x>"
         + "\n"
-        + "    <y>" + c.getY() + "</y>"
+        + "    <y>"
+        + c.getY()
+        + "</y>"
         + "\n"
-        + "    <radius>" + c.getRadius() + "</radius>"
+        + "    <radius>"
+        + c.getRadius()
+        + "</radius>"
         + "\n"
         + "</circle>";
   }
@@ -53,15 +66,25 @@ public class XmlExportVisitor implements Visitor {
   public String visitRectangle(Rectangle r) {
     return "<rectangle>"
         + "\n"
-        + "    <id>" + r.getId() + "</id>"
+        + "    <id>"
+        + r.getId()
+        + "</id>"
         + "\n"
-        + "    <x>" + r.getX() + "</x>"
+        + "    <x>"
+        + r.getX()
+        + "</x>"
         + "\n"
-        + "    <y>" + r.getY() + "</y>"
+        + "    <y>"
+        + r.getY()
+        + "</y>"
         + "\n"
-        + "    <width>" + r.getWidth() + "</width>"
+        + "    <width>"
+        + r.getWidth()
+        + "</width>"
         + "\n"
-        + "    <height>" + r.getHeight() + "</height>"
+        + "    <height>"
+        + r.getHeight()
+        + "</height>"
         + "\n"
         + "</rectangle>";
   }
@@ -70,13 +93,17 @@ public class XmlExportVisitor implements Visitor {
   public String visitCompoundGraphic(CompoundShape cg) {
     return "<compoundgraphic>"
         + "\n"
-        + "   <id>" + cg.getId() + "</id>"
-        + "\n" + visitCompoundGraphicChildren(cg) + "</compoundgraphic>";
+        + "   <id>"
+        + cg.getId()
+        + "</id>"
+        + "\n"
+        + visitCompoundGraphicChildren(cg)
+        + "</compoundgraphic>";
   }
 
   private String visitCompoundGraphicChildren(CompoundShape cg) {
     StringBuilder sb = new StringBuilder();
-    for (Shape shape: cg.getChildren()) {
+    for (Shape shape : cg.getChildren()) {
       String obj = shape.accept(this);
 
       // Proper indentation for sub-objects.

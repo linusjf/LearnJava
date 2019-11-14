@@ -21,9 +21,8 @@ public enum Permutations {
     return IntStream.rangeClosed(2, num).reduce(1, (x, y) -> x * y);
   }
 
-  private static <T> List<T> permutation(final int count,
-                                         final List<T> input,
-                                         final List<T> output) {
+  private static <T> List<T> permutation(
+      final int count, final List<T> input, final List<T> output) {
     if (input.isEmpty()) {
       return output;
     }

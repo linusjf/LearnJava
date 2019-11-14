@@ -52,8 +52,8 @@ public enum CleanerDaemon {
       for (int i = 1; i < 100; i++) {
         Event event = new Event();
         event.setDate(new Date());
-        event.setEvent(String.format("The thread %s has generated an event",
-                                     Thread.currentThread().getId()));
+        event.setEvent(
+            String.format("The thread %s has generated an event", Thread.currentThread().getId()));
         synchronized (deque) {
           deque.addFirst(event);
         }

@@ -14,7 +14,9 @@ public class MvParameters {
 
   public static void main(String... argv) {
     class Parameters {
-      @Parameter(names = {"-mv"}, arity = 2)
+      @Parameter(
+          names = {"-mv"},
+          arity = 2)
       public MvParameters mvParameters;
     }
 

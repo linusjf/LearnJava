@@ -41,7 +41,7 @@ public enum Streams {
     final double totalPoints =
         tasks.stream()
             .parallel()
-            .map(task -> task.getPoints())  // or map( Task::getPoints )
+            .map(task -> task.getPoints()) // or map( Task::getPoints )
             .reduce(0, Integer::sum);
     System.out.println("Total points (all tasks): " + totalPoints);
 
@@ -57,14 +57,13 @@ public enum Streams {
             .asLongStream()
             .mapToDouble(points -> points / totalPoints)
             .boxed()
-            .mapToLong(weigth -> (long)(weigth * 100))
+            .mapToLong(weigth -> (long) (weigth * 100))
             .mapToObj(percentage -> percentage + "%")
-            .collect(Collectors.toList());  // List< String >
+            .collect(Collectors.toList()); // List< String >
     System.out.println(result);
     final Path path = new File("build.xml").toPath();
     try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
-      lines.onClose(() -> System.out.println("Done!"))
-          .forEach(System.out::println);
+      lines.onClose(() -> System.out.println("Done!")).forEach(System.out::println);
     } catch (java.io.IOException ioe) {
       System.err.println(ioe);
     }

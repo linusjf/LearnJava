@@ -14,20 +14,15 @@ public enum XmlSerializer {
 
   private static final String STRING_CLASS = "java.lang.String";
 
-  public static Document serializeObject(Object source)
-      throws IllegalAccessException {
-    return serializeHelper(source,
-                           new Document(new Element("serialized")),
-                           new IdentityHashMap<Object, Object>());
+  public static Document serializeObject(Object source) throws IllegalAccessException {
+    return serializeHelper(
+        source, new Document(new Element("serialized")), new IdentityHashMap<Object, Object>());
   }
 
-  private static Element serializeVariable(Class<?> fieldtype,
-                                           Object child,
-                                           Document target,
-                                           Map<Object, Object> table)
+  private static Element serializeVariable(
+      Class<?> fieldtype, Object child, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
-    if (child == null)
-      return new Element("null");
+    if (child == null) return new Element("null");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
       Element value = new Element("value");
       value.setText(child.toString());

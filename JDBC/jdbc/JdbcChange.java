@@ -27,8 +27,8 @@ public final class JdbcChange {
     }
     try {
       // Step 2…
-      statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                                             ResultSet.CONCUR_UPDATABLE);
+      statement =
+          connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
       System.out.println("\nInitial contents of table:\n");
 
       // Steps 3 and 4…
@@ -74,8 +74,7 @@ public final class JdbcChange {
     System.out.println();
     while (results.next()) {
       System.out.println("Account no. " + results.getInt(1));
-      System.out.println("Account holder: " + results.getString(3) + " "
-                         + results.getString(2));
+      System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
       System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
     }
   }

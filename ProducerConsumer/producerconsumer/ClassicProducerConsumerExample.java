@@ -9,41 +9,47 @@ public enum ClassicProducerConsumerExample {
   public static void main(String[] args) throws InterruptedException {
     final Buffer buffer = new Buffer(2);
 
-    Thread producerThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          buffer.produce();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
-      }
-    });
+    Thread producerThread =
+        new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  buffer.produce();
+                } catch (InterruptedException e) {
+                  System.err.println(e);
+                }
+              }
+            });
 
-    Thread consumerThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          buffer.consume();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
-      }
-    });
+    Thread consumerThread =
+        new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  buffer.consume();
+                } catch (InterruptedException e) {
+                  System.err.println(e);
+                }
+              }
+            });
 
-    Thread terminatorThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          Thread.sleep(10_000);
-          System.out.println("Exiting program...");
-          System.exit(0);
-        } catch (InterruptedException e) {
-          System.err.println(e);
-          Runtime.getRuntime().halt(0);
-        }
-      }
-    });
+    Thread terminatorThread =
+        new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  Thread.sleep(10_000);
+                  System.out.println("Exiting program...");
+                  System.exit(0);
+                } catch (InterruptedException e) {
+                  System.err.println(e);
+                  Runtime.getRuntime().halt(0);
+                }
+              }
+            });
     producerThread.start();
     consumerThread.start();
     terminatorThread.start();

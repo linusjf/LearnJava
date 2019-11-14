@@ -61,7 +61,7 @@ public class HtmlParentElement extends HtmlTag {
   @Override
   public void generateHtml() {
     System.out.println(startTag);
-    for (HtmlTag tag: childrenTag) {
+    for (HtmlTag tag : childrenTag) {
       tag.generateHtml();
     }
     System.out.println(endTag);

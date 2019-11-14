@@ -17,18 +17,17 @@ public enum ListingDefault {
 
   static {
     Thread.setDefaultUncaughtExceptionHandler(
-      (t, e) -> {
-        System.err.println(e);
-        System.err.printf(" in thread %s...", t);
-        loopCount++;
-        main();
-      }
-    );
+        (t, e) -> {
+          System.err.println(e);
+          System.err.printf(" in thread %s...", t);
+          loopCount++;
+          main();
+        });
   }
 
   @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
-    List<String> list = Arrays.asList(new String[] { FOO, BAR });
+    List<String> list = Arrays.asList(new String[] {FOO, BAR});
     assert list.contains(FOO);
 
     list = Arrays.asList(FOO, BAR);
@@ -37,7 +36,7 @@ public enum ListingDefault {
 
     if (loopCount == 0) list.add(BAZ);
 
-    String[] array = { FOO, BAR };
+    String[] array = {FOO, BAR};
     list = Arrays.asList(array);
     array[0] = BAZ;
     assert BAZ == list.get(0);
@@ -46,14 +45,15 @@ public enum ListingDefault {
 
     assert list.contains(FOO);
     list = List.of(FOO, BAR, BAZ);
-    List<String> cities = new ArrayList<>() {
+    List<String> cities =
+        new ArrayList<>() {
 
-      {
-        add("New York");
-        add("Rio");
-        add("Tokyo");
-      }
-    };
+          {
+            add("New York");
+            add("Rio");
+            add("Tokyo");
+          }
+        };
 
     System.out.println(cities.contains("Rio"));
     assert cities.contains("Rio");

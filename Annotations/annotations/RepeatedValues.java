@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Container for the {@link CanBeRepeated} Annotation containing a list of
+ * Container for the {@link CanBeRepeated}. Annotation containing a list of
  * values.
  */
 @Retention(RetentionPolicy.RUNTIME)

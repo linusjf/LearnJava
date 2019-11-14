@@ -29,8 +29,7 @@ public enum StreamBuilders {
   }
 
   public static void arrayOf() {
-    Stream<Integer> stream =
-        Stream.of(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
+    Stream<Integer> stream = Stream.of(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
     stream.forEach(p -> System.out.println(p));
   }
 
@@ -68,8 +67,7 @@ public enum StreamBuilders {
       list.add(i);
     }
     Stream<Integer> stream = list.stream();
-    List<Integer> evenNumbersList =
-        stream.filter(i -> i % 2 == 0).collect(Collectors.toList());
+    List<Integer> evenNumbersList = stream.filter(i -> i % 2 == 0).collect(Collectors.toList());
     System.out.println(evenNumbersList);
   }
 
@@ -84,8 +82,7 @@ public enum StreamBuilders {
     Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
 
     // clang-format on
-    for (Integer num: evenNumbersArr)
-      System.out.println(num);
+    for (Integer num : evenNumbersArr) System.out.println(num);
   }
 
   public static void coreStream() {
@@ -98,19 +95,14 @@ public enum StreamBuilders {
     memberNames.add("Salman");
     memberNames.add("Yana");
     memberNames.add("Lokesh");
-    memberNames.stream()
-        .filter(s -> s.charAt(0) == 'A')
-        .forEach(System.out::println);
+    memberNames.stream().filter(s -> s.charAt(0) == 'A').forEach(System.out::println);
 
     memberNames.stream()
         .filter(s -> s.charAt(0) == 'A')
         .map(String::toUpperCase)
         .forEach(System.out::println);
 
-    memberNames.stream()
-        .sorted()
-        .map(String::toUpperCase)
-        .forEach(System.out::println);
+    memberNames.stream().sorted().map(String::toUpperCase).forEach(System.out::println);
 
     // clang-format off
     List<String> memNamesInUppercase =
@@ -119,8 +111,7 @@ public enum StreamBuilders {
     // clang-format on
     System.out.print(memNamesInUppercase);
 
-    boolean matchedResult =
-        memberNames.stream().anyMatch(s -> s.charAt(0) == 'A');
+    boolean matchedResult = memberNames.stream().anyMatch(s -> s.charAt(0) == 'A');
 
     System.out.println(matchedResult);
 
@@ -132,13 +123,11 @@ public enum StreamBuilders {
 
     System.out.println(matchedResult);
 
-    long totalMatched =
-        memberNames.stream().filter(s -> s.charAt(0) == 'A').count();
+    long totalMatched = memberNames.stream().filter(s -> s.charAt(0) == 'A').count();
 
     System.out.println(totalMatched);
 
-    Optional<String> reduced =
-        memberNames.stream().reduce((s1, s2) -> s1 + "#" + s2);
+    Optional<String> reduced = memberNames.stream().reduce((s1, s2) -> s1 + "#" + s2);
 
     reduced.ifPresent(System.out::println);
 
@@ -150,8 +139,7 @@ public enum StreamBuilders {
 
   private static void parallelStream() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++)
-      list.add(i);
+    for (int i = 1; i < 10; i++) list.add(i);
 
     // Here creating a parallel stream
     Stream<Integer> stream = list.parallelStream();

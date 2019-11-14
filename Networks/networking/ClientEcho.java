@@ -26,8 +26,7 @@ public final class ClientEcho {
     try {
       InetAddress add = InetAddress.getByName("localhost");
       DatagramSocket dsock = new DatagramSocket();
-      BufferedReader stdIn =
-          new BufferedReader(new InputStreamReader(System.in));
+      BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         byte[] arr = userInput.getBytes();

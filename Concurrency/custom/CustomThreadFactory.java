@@ -17,8 +17,7 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory =
-          new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -31,8 +30,7 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   public static void alternateMain() throws InterruptedException {
-    CustomThreadFactory threadFactory =
-        new CustomThreadFactory("CustomThreadFactory-alternate");
+    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     executor.submit(task);
@@ -82,7 +80,8 @@ public class CustomThreadFactory implements ThreadFactory {
     @Override
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
-      buffer.append(getName())
+      buffer
+          .append(getName())
           .append(":  Creation Date: ")
           .append(creationDate)
           .append(" : Running time: ")

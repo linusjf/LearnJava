@@ -24,8 +24,8 @@ public enum TCPEchoClient {
 
   private static void accessServer() {
     try (Socket link = new Socket(host, PORT);
-         Scanner input = new Scanner(link.getInputStream());
-         PrintWriter output = new PrintWriter(link.getOutputStream(), true);) {
+        Scanner input = new Scanner(link.getInputStream());
+        PrintWriter output = new PrintWriter(link.getOutputStream(), true); ) {
       // Set up stream for keyboard entry…
       Scanner userEntry = new Scanner(System.in);
       String message = "";

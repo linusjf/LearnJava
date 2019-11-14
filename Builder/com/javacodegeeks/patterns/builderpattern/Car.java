@@ -156,21 +156,21 @@ public class Car {
   public String toString() {
     StringBuilder sb = new StringBuilder(150);
     sb.append("--------------")
-      .append(carType)
-      .append("--------------------- \\n Body: ")
-      .append(bodyStyle)
-      .append("\n Power: ")
-      .append(power)
-      .append("\n Engine: ")
-      .append(engine)
-      .append("\n Brakes: ")
-      .append(brakes)
-      .append("\n Seats: ")
-      .append(seats)
-      .append("\n Windows: ")
-      .append(windows)
-      .append("\n Fuel Type: ")
-      .append(fuelType);
+        .append(carType)
+        .append("--------------------- \\n Body: ")
+        .append(bodyStyle)
+        .append("\n Power: ")
+        .append(power)
+        .append("\n Engine: ")
+        .append(engine)
+        .append("\n Brakes: ")
+        .append(brakes)
+        .append("\n Seats: ")
+        .append(seats)
+        .append("\n Windows: ")
+        .append(windows)
+        .append("\n Fuel Type: ")
+        .append(fuelType);
     return sb.toString();
   }
 }

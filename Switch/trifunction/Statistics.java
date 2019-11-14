@@ -9,21 +9,15 @@ public final class Statistics {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static String computeBackhandTrend(TennisPlayer player,
-                                            Period period,
-                                            String owner) {
+  public static String computeBackhandTrend(TennisPlayer player, Period period, String owner) {
     return "Backhand trend...";
   }
 
-  public static String computeForehandTrend(TennisPlayer player,
-                                            Period period,
-                                            String owner) {
+  public static String computeForehandTrend(TennisPlayer player, Period period, String owner) {
     return "Forehand trend...";
   }
 
-  public static String computeServeTrend(TennisPlayer player,
-                                         Period period,
-                                         String owner) {
+  public static String computeServeTrend(TennisPlayer player, Period period, String owner) {
     return "Serve trend...";
   }
 }

@@ -3,6 +3,7 @@ package container;
 @SuppressWarnings("PMD.ShortClassName")
 public enum Main {
   ;
+
   public static void main(String... args) {
     MovieImpl movie = new MovieImpl();
     movie.setId("23");

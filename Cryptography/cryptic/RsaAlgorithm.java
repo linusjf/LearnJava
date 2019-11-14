@@ -17,8 +17,7 @@ public class RsaAlgorithm {
     BigInteger p = BigInteger.probablePrime(MAX_LENGTH, random);
     BigInteger q = BigInteger.probablePrime(MAX_LENGTH, random);
     n = p.multiply(q);
-    BigInteger phi = p.subtract(BigInteger.ONE)
-      .multiply(q.subtract(BigInteger.ONE));
+    BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
     e = BigInteger.probablePrime(MAX_LENGTH / 2, random);
     while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0) {
       e.add(BigInteger.ONE);
@@ -38,9 +37,7 @@ public class RsaAlgorithm {
     System.out.println("Enter message you wish to send.");
     inputString = input.readLine();
     System.out.println("Encrypting the message: " + inputString);
-    System.out.println(
-      "The message in bytes is:: " + bytesToString(inputString.getBytes())
-    );
+    System.out.println("The message in bytes is:: " + bytesToString(inputString.getBytes()));
     RsaAlgorithm rsa = new RsaAlgorithm();
 
     // encryption

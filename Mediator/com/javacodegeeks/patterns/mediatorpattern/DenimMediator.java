@@ -25,13 +25,12 @@ public class DenimMediator implements MachineMediator {
    * @param valve a <code>Valve</code> value
    */
   public DenimMediator(
-    Machine machine,
-    Heater heater,
-    Motor motor,
-    Sensor sensor,
-    SoilRemoval soilRemoval,
-    Valve valve
-  ) {
+      Machine machine,
+      Heater heater,
+      Motor motor,
+      Sensor sensor,
+      SoilRemoval soilRemoval,
+      Valve valve) {
     this.machine = machine;
     this.heater = heater;
     this.motor = motor;

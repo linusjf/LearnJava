@@ -72,17 +72,13 @@ public enum UDPEchoClient {
     @Override
     public void run() {
       try {
-        BufferedReader userInput =
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-          if (stopped)
-            return;
+          if (stopped) return;
           String theLine = userInput.readLine();
-          if (".".equals(theLine))
-            return;
+          if (".".equals(theLine)) return;
           byte[] data = theLine.getBytes("UTF-8");
-          DatagramPacket output =
-              new DatagramPacket(data, data.length, server, port);
+          DatagramPacket output = new DatagramPacket(data, data.length, server, port);
           socket.send(output);
           Thread.yield();
         }
@@ -109,8 +105,7 @@ public enum UDPEchoClient {
     public void run() {
       byte[] buffer = new byte[65_507];
       while (true) {
-        if (stopped)
-          return;
+        if (stopped) return;
         DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
         try {
           socket.receive(dp);

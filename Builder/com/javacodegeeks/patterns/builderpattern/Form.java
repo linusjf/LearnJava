@@ -8,7 +8,7 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings({ "PMD.ShortClassName", "PMD.TooManyFields" })
+@SuppressWarnings({"PMD.ShortClassName", "PMD.TooManyFields"})
 public final class Form {
   private final String firstName;
   private final String lastName;
@@ -47,45 +47,44 @@ public final class Form {
   }
 
   private String toString(String label, Object value) {
-    return value == null ? " " + label + ":  "
-      : " " + label + ":  " + value.toString();
+    return value == null ? " " + label + ":  " : " " + label + ":  " + value.toString();
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder(100);
     sb.append(" First Name: ")
-      .append(firstName)
-      .append("\n Last Name: ")
-      .append(lastName)
-      .append("\n User Name: ")
-      .append(userName)
-      .append("\n Password: ")
-      .append(password)
-      .append(System.lineSeparator())
-      .append(toString("Address", address))
-      .append(System.lineSeparator())
-      .append(toString("DOB", dob))
-      .append(System.lineSeparator())
-      .append(toString("Email", email))
-      .append(System.lineSeparator())
-      .append(toString("Backup Email", backupEmail))
-      .append(System.lineSeparator())
-      .append(toString("Spouse Name", spouseName))
-      .append(System.lineSeparator())
-      .append(toString("City", city))
-      .append(System.lineSeparator())
-      .append(toString("State", state))
-      .append(System.lineSeparator())
-      .append(toString("Country", country))
-      .append(System.lineSeparator())
-      .append(toString("Language", language))
-      .append(System.lineSeparator())
-      .append(toString("Password Hint", passwordHint))
-      .append(System.lineSeparator())
-      .append(toString("Security Question", securityQuestion))
-      .append(System.lineSeparator())
-      .append(toString("Security Answer", securityAnswer));
+        .append(firstName)
+        .append("\n Last Name: ")
+        .append(lastName)
+        .append("\n User Name: ")
+        .append(userName)
+        .append("\n Password: ")
+        .append(password)
+        .append(System.lineSeparator())
+        .append(toString("Address", address))
+        .append(System.lineSeparator())
+        .append(toString("DOB", dob))
+        .append(System.lineSeparator())
+        .append(toString("Email", email))
+        .append(System.lineSeparator())
+        .append(toString("Backup Email", backupEmail))
+        .append(System.lineSeparator())
+        .append(toString("Spouse Name", spouseName))
+        .append(System.lineSeparator())
+        .append(toString("City", city))
+        .append(System.lineSeparator())
+        .append(toString("State", state))
+        .append(System.lineSeparator())
+        .append(toString("Country", country))
+        .append(System.lineSeparator())
+        .append(toString("Language", language))
+        .append(System.lineSeparator())
+        .append(toString("Password Hint", passwordHint))
+        .append(System.lineSeparator())
+        .append(toString("Security Question", securityQuestion))
+        .append(System.lineSeparator())
+        .append(toString("Security Answer", securityAnswer));
 
     return sb.toString();
   }
@@ -96,21 +95,17 @@ public final class Form {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Form form = new Form.FormBuilder(
-      "Dave",
-      "Carter",
-      "DavCarter",
-      "DAvCaEr123"
-    )
-      .passwordHint("MyName")
-      .city("NY")
-      .language("English")
-      .build();
+    Form form =
+        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+            .passwordHint("MyName")
+            .city("NY")
+            .language("English")
+            .build();
     System.out.println(form);
   }
 
   /** Describe class <code>FormBuilder</code> here. */
-  @SuppressWarnings({ "PMD.TooManyMethods", "PMD.TooManyFields" })
+  @SuppressWarnings({"PMD.TooManyMethods", "PMD.TooManyFields"})
   public static class FormBuilder {
     private final String firstName;
     private final String lastName;
@@ -137,12 +132,7 @@ public final class Form {
      * @param userName a <code>String</code> value
      * @param password a <code>String</code> value
      */
-    public FormBuilder(
-      String firstName,
-      String lastName,
-      String userName,
-      String password
-    ) {
+    public FormBuilder(String firstName, String lastName, String userName, String password) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.userName = userName;

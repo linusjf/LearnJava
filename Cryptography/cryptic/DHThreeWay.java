@@ -1,6 +1,7 @@
 package cryptic;
 
 import static cryptic.DHHelper.*;
+
 import java.security.GeneralSecurityException;
 import java.security.Key;
 import java.security.KeyPair;
@@ -30,8 +31,7 @@ public final class DHThreeWay {
 
       // This DH parameters can also be constructed by creating a
       // DHParameterSpec object using agreed-upon values
-      DHParameterSpec dhParamShared = ((DHPublicKey) aliceKpair.getPublic())
-        .getParams();
+      DHParameterSpec dhParamShared = ((DHPublicKey) aliceKpair.getPublic()).getParams();
 
       // Bob creates his own DH key pair using the same params
       System.out.println("BOB: Generate DH keypair ...");
@@ -90,15 +90,13 @@ public final class DHThreeWay {
       System.out.println("Carol secret: " + toBase64String(carolSharedSecret));
 
       // Compare Alice and Bob
-      if (
-        !java.util.Arrays.equals(aliceSharedSecret, bobSharedSecret)
-      ) throw new GeneralSecurityException("Alice and Bob differ");
+      if (!java.util.Arrays.equals(aliceSharedSecret, bobSharedSecret))
+        throw new GeneralSecurityException("Alice and Bob differ");
       System.out.println("Alice and Bob are the same");
 
       // Compare Bob and Carol
-      if (
-        !java.util.Arrays.equals(bobSharedSecret, carolSharedSecret)
-      ) throw new GeneralSecurityException("Bob and Carol differ");
+      if (!java.util.Arrays.equals(bobSharedSecret, carolSharedSecret))
+        throw new GeneralSecurityException("Bob and Carol differ");
       System.out.println("Bob and Carol are the same");
     } catch (GeneralSecurityException e) {
       System.err.println(e);

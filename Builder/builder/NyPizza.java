@@ -11,7 +11,9 @@ import java.util.Objects;
 public final class NyPizza extends Pizza {
 
   public enum Size {
-    SMALL, MEDIUM, LARGE;
+    SMALL,
+    MEDIUM,
+    LARGE;
   }
 
   private final Size size;
@@ -26,10 +28,10 @@ public final class NyPizza extends Pizza {
   public String toString() {
     StringBuilder sb = new StringBuilder(36);
     sb.append("Size = ")
-      .append(size)
-      .append(System.lineSeparator())
-      .append("Toppings: ")
-      .append(System.lineSeparator());
+        .append(size)
+        .append(System.lineSeparator())
+        .append("Toppings: ")
+        .append(System.lineSeparator());
     for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }

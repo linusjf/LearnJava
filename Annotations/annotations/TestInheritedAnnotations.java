@@ -3,7 +3,7 @@ package annotations;
 public enum TestInheritedAnnotations {
   ;
 
-  private static final String IS_TRUE = "is true: "; 
+  private static final String IS_TRUE = "is true: ";
 
   public static void main(String... args) {
     System.out.println(IS_TRUE

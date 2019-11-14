@@ -22,12 +22,10 @@ public final class ListDicts {
 
   public static void main(String[] args) {
     try (Socket socket = new Socket(SERVER, PORT);
-         OutputStream out = socket.getOutputStream();
-         Writer writer =
-             new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-         InputStream in = socket.getInputStream();
-         BufferedReader reader =
-             new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
+        OutputStream out = socket.getOutputStream();
+        Writer writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+        InputStream in = socket.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8")); ) {
       listDatabases(writer, reader);
       writer.write("quit\r\n");
       writer.flush();
@@ -41,8 +39,7 @@ public final class ListDicts {
       throws IOException, UnsupportedEncodingException {
     writer.write("SHOW DB\r\n");
     writer.flush();
-    for (String line = reader.readLine(); line != null;
-         line = reader.readLine()) {
+    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
       if (line.startsWith("250 ")) {
         // OK
         return;
@@ -52,10 +49,8 @@ public final class ListDicts {
         System.out.println(line);
         return;
       }
-      if (line.matches("\\d\\d\\d .*"))
-        continue;
-      if (line.trim().equals("."))
-        continue;
+      if (line.matches("\\d\\d\\d .*")) continue;
+      if (line.trim().equals(".")) continue;
       System.out.println(line);
     }
   }

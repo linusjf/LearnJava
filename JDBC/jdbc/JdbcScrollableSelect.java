@@ -42,7 +42,7 @@ public final class JdbcScrollableSelect {
 
   private static void forward() {
     try {
-      while (results.next())  // Iterate through the rows in the forward
+      while (results.next()) // Iterate through the rows in the forward
         // direction, displaying the contents of each
         // row (as in the original program)…
         showRow();
@@ -58,7 +58,7 @@ public final class JdbcScrollableSelect {
       // Cursor for ResultSet is now positioned
       // just after last row, so we can make use
       // of method previous to access the data…
-      while (results.previous())  // Iterate through rows in reverse direction,
+      while (results.previous()) // Iterate through rows in reverse direction,
         // again displaying contents of each row…
         showRow();
     } catch (SQLException sqlEx) {
@@ -88,8 +88,7 @@ public final class JdbcScrollableSelect {
   public static void showRow() throws SQLException {
     System.out.println();
     System.out.println("Account no. " + results.getInt(1));
-    System.out.println("Account holder: " + results.getString(3) + " "
-                       + results.getString(2));
+    System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
     System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
   }
 }

@@ -12,7 +12,7 @@ public class WeightX extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+      throws IOException, ServletException {
     HttpSession cart = request.getSession();
 
     // Note the necessity for a typecast from Object
@@ -20,14 +20,14 @@ public class WeightX extends HttpServlet {
     String choice = request.getParameter("Option");
 
     /*
-        Above parameter determines whether user wishes
-        to select another product, add the current order
-        to the cart, remove an existing order from
-        the cart or proceed to the checkout.
-        User is redirected to the appropriate page
-        (after any required updating of the shopping
-        cart session variable has been carried out).
-     */
+       Above parameter determines whether user wishes
+       to select another product, add the current order
+       to the cart, remove an existing order from
+       the cart or proceed to the checkout.
+       User is redirected to the appropriate page
+       (after any required updating of the shopping
+       cart session variable has been carried out).
+    */
     if ("Next".equals(choice)) response.sendRedirect("ShoppingCartX.html");
     if ("Checkout".equals(choice)) response.sendRedirect("Checkout.jsp");
     if ("Add".equals(choice)) {
@@ -49,10 +49,8 @@ public class WeightX extends HttpServlet {
     // Value of weight entered by user retrieved here.
     if (qty != null) {
       // Check that user actually entered a value!
-      if ("Apples".equals(currentProduct)) cart.setAttribute(
-        "Apples",
-        qty
-      ); else cart.setAttribute("Pears", qty);
+      if ("Apples".equals(currentProduct)) cart.setAttribute("Apples", qty);
+      else cart.setAttribute("Pears", qty);
     }
   }
 

@@ -35,8 +35,7 @@ public enum PersonnelServer {
     };
 
     // clang-format on
-    for (Personnel person: staff)
-      staffListOut.add(person);
+    for (Personnel person : staff) staffListOut.add(person);
     startServer();
   }
 

@@ -18,8 +18,7 @@ public final class PrototypeFactory {
     prototypes.put(ModelType.SHOW, new Show());
   }
 
-  public static PrototypeCapable getInstance(final String s)
-    throws CloneNotSupportedException {
+  public static PrototypeCapable getInstance(final String s) throws CloneNotSupportedException {
     return prototypes.get(s).clone();
   }
 

@@ -23,8 +23,7 @@ public class WhoisUI {
 
   private void inputWhois(Scanner scanner) {
     System.out.println("Enter entity name for whois record: ");
-    if (scanner.hasNext())
-      whois = scanner.next().trim();
+    if (scanner.hasNext()) whois = scanner.next().trim();
   }
 
   private void inputSearchFor(Scanner scanner) {
@@ -43,8 +42,7 @@ public class WhoisUI {
 
   private void inputSearchAt(Scanner scanner) {
     System.out.println("Enter name of registry server to search at: ");
-    if (scanner.hasNext())
-      searchAt = scanner.next().trim();
+    if (scanner.hasNext()) searchAt = scanner.next().trim();
   }
 
   private void inputSearchIn(Scanner scanner) {
@@ -63,8 +61,7 @@ public class WhoisUI {
 
   private void inputExactMatch(Scanner scanner) {
     System.out.println("Is search to be an exact match?");
-    if (scanner.hasNextBoolean())
-      exactMatch = scanner.nextBoolean();
+    if (scanner.hasNextBoolean()) exactMatch = scanner.nextBoolean();
   }
 
   public static void main(String[] args) {
@@ -74,8 +71,7 @@ public class WhoisUI {
       Whois server = new Whois(ui.searchAt);
       server.lookUpNames(
           ui.whois,
-          Whois.SearchFor.valueOf(
-              ui.searchFor.toUpperCase(Locale.getDefault())),
+          Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
           Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())),
           ui.exactMatch);
     } catch (IOException e) {

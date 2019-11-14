@@ -38,9 +38,7 @@ public final class OneWebApp {
       Server server = new Server(8080);
 
       // Setup JMX
-      MBeanContainer mbContainer = new MBeanContainer(
-        ManagementFactory.getPlatformMBeanServer()
-      );
+      MBeanContainer mbContainer = new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
       server.addBean(mbContainer);
 
       // The WebAppContext is the entity that controls the environment in

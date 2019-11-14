@@ -14,28 +14,21 @@ public enum ThreadLocalOne {
   private static ThreadLocal<List<Integer>> threadLocal = new ThreadLocal<>();
 
   public static void main(String[] args) {
-    System.out.println("Free memory: "
-                       + Runtime.getRuntime().freeMemory() / (1024 * 1024)
-                       + " MB");
-    ExecutorService executorService =
-        Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+    System.out.println("Free memory: " + Runtime.getRuntime().freeMemory() / (1024 * 1024) + " MB");
+    ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
     for (int i = 0; i < THREAD_POOL_SIZE * 2; i++) {
-      executorService.execute(() -> {
-        threadLocal.set(getBigList());
-        System.out.println(Thread.currentThread().getName() + " : "
-                           + threadLocal.get().size());
-        // threadLocal.remove();
-        // explicitly remove the cache, OOM shall not occur;
-      });
+      executorService.execute(
+          () -> {
+            threadLocal.set(getBigList());
+            System.out.println(Thread.currentThread().getName() + " : " + threadLocal.get().size());
+            // threadLocal.remove();
+            // explicitly remove the cache, OOM shall not occur;
+          });
     }
-    System.out.println("Free memory: "
-                       + Runtime.getRuntime().freeMemory() / (1024 * 1024)
-                       + " MB");
+    System.out.println("Free memory: " + Runtime.getRuntime().freeMemory() / (1024 * 1024) + " MB");
     executorService.shutdown();
-    System.out.println("Free memory: "
-                       + Runtime.getRuntime().freeMemory() / (1024 * 1024)
-                       + " MB");
+    System.out.println("Free memory: " + Runtime.getRuntime().freeMemory() / (1024 * 1024) + " MB");
   }
 
   private static List<Integer> getBigList() {

@@ -18,9 +18,7 @@ public class Employee {
    * @param employeeSalary a <code>double</code> value
    * @param employeeDesignation a <code>String</code> value
    */
-  public Employee(String employeeName,
-                  double employeeSalary,
-                  String employeeDesignation) {
+  public Employee(String employeeName, double employeeSalary, String employeeDesignation) {
     this.employeeName = employeeName;
     this.employeeSalary = employeeSalary;
     this.employeeDesignation = employeeDesignation;
@@ -60,7 +58,11 @@ public class Employee {
    */
   @Override
   public String toString() {
-    return "Employee Name: " + employeeName + ", EmployeeDesignation: "
-        + employeeDesignation + ", Employee Salary: " + employeeSalary;
+    return "Employee Name: "
+        + employeeName
+        + ", EmployeeDesignation: "
+        + employeeDesignation
+        + ", Employee Salary: "
+        + employeeSalary;
   }
 }

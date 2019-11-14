@@ -17,7 +17,7 @@ public enum FileTest3 {
         total += mark;
         count++;
       }
-      System.out.println("Mean = " + (float)total / count);
+      System.out.println("Mean = " + (float) total / count);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }

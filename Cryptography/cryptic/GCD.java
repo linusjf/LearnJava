@@ -4,6 +4,7 @@ import java.util.Random;
 
 public enum GCD {
   ;
+
   public static long gcdRecursive(long x, long y) {
     if (y == 0) return x;
     return gcdRecursive(y, x % y);

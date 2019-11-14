@@ -17,10 +17,9 @@ public final class ListDirectoryRecursive {
   public static void listRecursive(File dir) {
     if (dir.isDirectory()) {
       File[] items = dir.listFiles();
-      for (File item: items) {
+      for (File item : items) {
         System.out.println(item.getAbsoluteFile());
-        if (item.isDirectory())
-          listRecursive(item);
+        if (item.isDirectory()) listRecursive(item);
         // Recursive call
       }
     }

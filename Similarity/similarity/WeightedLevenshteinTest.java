@@ -39,18 +39,19 @@ public enum WeightedLevenshteinTest {
   }
 
   public static void main(String... args) {
-    WeightedLevenshtein wl = new WeightedLevenshtein((c1, c2) -> {
-      // The cost for substituting 't' and 'r' is considered
-      // smaller as these 2 are located next to each other
-      // on a keyboard
-      Pair<Character, Character> pair = new Pair<>(c1, c2);
-      Pair<Character, Character> switched = new Pair<>(c2, c1);
-      if (keyPairs.contains(pair) || keyPairs.contains(switched))
-        return 0.5;
-      // For most cases, the cost of substituting 2 characters
-      // is 1.0
-      return 1.0;
-    });
+    WeightedLevenshtein wl =
+        new WeightedLevenshtein(
+            (c1, c2) -> {
+              // The cost for substituting 't' and 'r' is considered
+              // smaller as these 2 are located next to each other
+              // on a keyboard
+              Pair<Character, Character> pair = new Pair<>(c1, c2);
+              Pair<Character, Character> switched = new Pair<>(c2, c1);
+              if (keyPairs.contains(pair) || keyPairs.contains(switched)) return 0.5;
+              // For most cases, the cost of substituting 2 characters
+              // is 1.0
+              return 1.0;
+            });
 
     System.out.println("\nWeighted Levenshtein: \n");
     System.out.println(wl.distance("String1", "Srring2"));

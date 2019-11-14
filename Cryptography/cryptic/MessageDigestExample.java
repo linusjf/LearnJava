@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public enum MessageDigestExample {
   ;
+
   public static void main(String[] args) {
     // Reading data from user
     Scanner sc = new Scanner(System.in);
@@ -31,9 +32,7 @@ public enum MessageDigestExample {
         hexString.append(Integer.toHexString(0xFF & token));
       }
       System.out.println("Hex format : " + hexString.toString());
-      System.out.println(
-        "Base64 format : " + Base64.getEncoder().encodeToString(digest)
-      );
+      System.out.println("Base64 format : " + Base64.getEncoder().encodeToString(digest));
     } catch (NoSuchAlgorithmException nsae) {
       System.err.println(nsae);
     }

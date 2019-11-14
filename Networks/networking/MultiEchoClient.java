@@ -24,10 +24,9 @@ public enum MultiEchoClient {
 
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream());
-         PrintWriter networkOutput =
-             new PrintWriter(socket.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
+        Scanner networkInput = new Scanner(socket.getInputStream());
+        PrintWriter networkOutput = new PrintWriter(socket.getOutputStream(), true);
+        Scanner userEntry = new Scanner(System.in); ) {
       String message = "";
       String response = "";
       do {

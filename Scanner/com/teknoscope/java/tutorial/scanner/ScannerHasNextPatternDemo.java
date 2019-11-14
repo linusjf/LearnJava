@@ -24,8 +24,8 @@ public final class ScannerHasNextPatternDemo {
     scan.useDelimiter("\\p{javaWhitespace}+");
 
     /*Initialize the String pattern which
-        signifies that the String token contains
-        characters of the alphabet only*/
+    signifies that the String token contains
+    characters of the alphabet only*/
     Pattern pattern = Pattern.compile("[A-Za-z]*");
 
     while (scan.hasNext()) {

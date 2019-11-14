@@ -29,31 +29,23 @@ public class DbServlet extends HttpServlet {
   }
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+      throws ServletException, IOException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
     printHtmlHeader(out);
     String forenames = request.getParameter("Forenames");
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
-    String insertion = "INSERT INTO PhoneNums" +
-      " VALUES('" +
-      surname +
-      "','" +
-      forenames +
-      "','" +
-      telNum +
-      "')";
+    String insertion =
+        "INSERT INTO PhoneNums" + " VALUES('" + surname + "','" + forenames + "','" + telNum + "')";
     try (Statement statement = link.createStatement()) {
       statement.executeUpdate(insertion);
     } catch (SQLException sqlEx) {
       printHtmlInsertError(out);
       System.exit(1);
     }
-    try (
-      Statement statement = link.createStatement();
-      ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");
-    ) {
+    try (Statement statement = link.createStatement();
+        ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums"); ) {
       printHtmlTableHeader(out);
       while (results.next()) {
         out.println("<TR>");

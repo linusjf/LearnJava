@@ -42,10 +42,8 @@ public enum EmailClient {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
         } while (!"read".equals(response) && !"send".equals(response));
-        if ("read".equals(response))
-          doRead();
-        else
-          doSend();
+        if ("read".equals(response)) doRead();
+        else doSend();
         System.out.print("\nDo you wish to send or read another (y/n): ");
         option = userEntry.nextLine();
         networkInput.close();

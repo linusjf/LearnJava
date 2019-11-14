@@ -6,6 +6,7 @@ import java.util.List;
 
 public enum ReverseCapture {
   ;
+
   public static void reverse(List<?> list) {
     rev(list);
   }

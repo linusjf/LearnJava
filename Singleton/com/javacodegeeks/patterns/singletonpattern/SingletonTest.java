@@ -50,43 +50,37 @@ public enum SingletonTest {
     final AtomicReference<Throwable> exception = new AtomicReference<>();
 
     final Set<Long> generatedValues = new LinkedHashSet<>(size);
-    final
-    Set<Singleton> instances = Collections.newSetFromMap(
-      new IdentityHashMap<Singleton, Boolean>()
-    );
+    final Set<Singleton> instances =
+        Collections.newSetFromMap(new IdentityHashMap<Singleton, Boolean>());
 
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
-      final
-      Thread thread = new Thread(
-        new Runnable() {
+      final Thread thread =
+          new Thread(
+              new Runnable() {
 
-          @Override
-          public void run() {
-            try {
-              cyclicBarrier.await();
-            } catch (InterruptedException | BrokenBarrierException e) {
-              exception.compareAndSet(null, e);
-              return;
-            }
+                @Override
+                public void run() {
+                  try {
+                    cyclicBarrier.await();
+                  } catch (InterruptedException | BrokenBarrierException e) {
+                    exception.compareAndSet(null, e);
+                    return;
+                  }
 
-            final Singleton singleton = Singleton.getInstance();
-            final long value = singleton.getNextValue();
+                  final Singleton singleton = Singleton.getInstance();
+                  final long value = singleton.getNextValue();
 
-            // Synchronise the access as the collections used are not thread-safe
-            synchronized (SingletonTest.class) {
-              if (!generatedValues.add(value)) {
-                exception.compareAndSet(
-                  null,
-                  new AssertionError("Duplicate value " + value)
-                );
-                return;
-              }
-              instances.add(singleton);
-            }
-          }
-        }
-      );
+                  // Synchronise the access as the collections used are not thread-safe
+                  synchronized (SingletonTest.class) {
+                    if (!generatedValues.add(value)) {
+                      exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+                      return;
+                    }
+                    instances.add(singleton);
+                  }
+                }
+              });
       thread.start();
       threads.add(thread);
     }
@@ -94,11 +88,10 @@ public enum SingletonTest {
   }
 
   private static void testForSingleton(
-    List<Thread> threads,
-    Set<Long> generatedValues,
-    Set<Singleton> instances,
-    AtomicReference<Throwable> exception
-  ) {
+      List<Thread> threads,
+      Set<Long> generatedValues,
+      Set<Singleton> instances,
+      AtomicReference<Throwable> exception) {
     try {
       for (final Thread thread : threads) thread.join();
 
@@ -129,17 +122,14 @@ public enum SingletonTest {
     final Singleton instance = Singleton.getInstance();
 
     try {
-      final
-      ObjectOutput out = new ObjectOutputStream(
-        Files.newOutputStream(Paths.get("singleton.ser"))
-      );
+      final ObjectOutput out =
+          new ObjectOutputStream(Files.newOutputStream(Paths.get("singleton.ser")));
       out.writeObject(instance);
       out.close();
 
       // deserialize from file to object
-      final ObjectInput in = new ObjectInputStream(
-        Files.newInputStream(Paths.get("singleton.ser"))
-      );
+      final ObjectInput in =
+          new ObjectInputStream(Files.newInputStream(Paths.get("singleton.ser")));
       final Singleton instance2 = (Singleton) in.readObject();
       in.close();
       System.out.println("instance hashCode:- " + instance.hashCode());
@@ -160,20 +150,17 @@ public enum SingletonTest {
 
   private static void testReflection() {
     try {
-      final
-      Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
+      final Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
       for (Constructor<?> constructor : constructors) {
         constructor.setAccessible(true);
         final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
       }
-    } catch (
-      SecurityException
-      | InstantiationException
-      | IllegalArgumentException
-      | IllegalAccessException
-      | InvocationTargetException e
-    ) {
+    } catch (SecurityException
+        | InstantiationException
+        | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
       System.out.println(e.getCause().getMessage());
     }
   }
@@ -183,25 +170,20 @@ public enum SingletonTest {
     try {
       resetSingleton();
       Singleton singleton = Singleton.getInstance();
-      if (singleton.getNextValue() != 0L) throw new AssertionError(
-        "Next value should be zero."
-      );
+      if (singleton.getNextValue() != 0L) throw new AssertionError("Next value should be zero.");
       resetSingleton();
       singleton = Singleton.getInstance();
       singleton.getNextValue();
       singleton.getNextValue();
       singleton.getNextValue();
-      if (singleton.getNextValue() != 3L) throw new AssertionError(
-        "Next value should be three."
-      );
+      if (singleton.getNextValue() != 3L) throw new AssertionError("Next value should be three.");
       System.out.println("No assert errors. State validated.");
     } catch (NoSuchFieldException | IllegalAccessException e) {
       System.out.println(e.getMessage());
     }
   }
 
-  private static void resetSingleton()
-    throws NoSuchFieldException, IllegalAccessException {
+  private static void resetSingleton() throws NoSuchFieldException, IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");
     instance.setAccessible(true);
     instance.set(null, null);

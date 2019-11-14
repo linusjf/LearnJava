@@ -12,12 +12,11 @@ public class SedanCarBuilder implements CarBuilder {
   @Override
   public void buildBodyStyle() {
     car.setBodyStyle(
-      "External dimensions: overall length (inches): 202.9, " +
-        "overall width (inches): 76.2, overall height (inches):" +
-        "60.7, wheelbase (inches): 112.9," +
-        " front track (inches): 65.3, rear track (inches): 65.5 and" +
-        "curb to curb turning circle (feet): 39.5"
-    );
+        "External dimensions: overall length (inches): 202.9, "
+            + "overall width (inches): 76.2, overall height (inches):"
+            + "60.7, wheelbase (inches): 112.9,"
+            + " front track (inches): 65.3, rear track (inches): 65.5 and"
+            + "curb to curb turning circle (feet): 39.5");
   }
 
   @Override
@@ -32,18 +31,13 @@ public class SedanCarBuilder implements CarBuilder {
 
   @Override
   public void buildBrakes() {
-    car.setBrakes(
-      "Four-wheel disc brakes: two ventilated." +
-        "Electronic brake distribution"
-    );
+    car.setBrakes("Four-wheel disc brakes: two ventilated." + "Electronic brake distribution");
   }
 
   @Override
   public void buildSeats() {
     car.setSeats(
-      "Front seat center armrest.Rear seat center armrest.Split-" +
-        "folding rear seats"
-    );
+        "Front seat center armrest.Rear seat center armrest.Split-" + "folding rear seats");
   }
 
   @Override
@@ -53,10 +47,7 @@ public class SedanCarBuilder implements CarBuilder {
 
   @Override
   public void buildFuelType() {
-    car.setFuelType(
-      "Gasoline 19 MPG city, 29 MPG highway, 23 MPG combined and " +
-        "437 mi. range"
-    );
+    car.setFuelType("Gasoline 19 MPG city, 29 MPG highway, 23 MPG combined and " + "437 mi. range");
   }
 
   @Override

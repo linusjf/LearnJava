@@ -14,27 +14,22 @@ public class ShowSum extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public void service(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+      throws IOException, ServletException {
     HttpSession adderSession = request.getSession();
     String firstTime = (String) adderSession.getAttribute("firstVisit");
-    if ("Yes".equals(firstTime)) retrieveNewPreferences(
-      request,
-      response,
-      adderSession
-    );
+    if ("Yes".equals(firstTime)) retrieveNewPreferences(request, response, adderSession);
     sendPage(response, adderSession);
   }
 
-  private void sendPage(HttpServletResponse reply, HttpSession session)
-    throws IOException {
+  private void sendPage(HttpServletResponse reply, HttpSession session) throws IOException {
     /*
-        Value of 'sum' originally saved as instance of
-        class Integer (and saved as instance of class
-        Object in session object), so we cannot typecast
-        into class String as done for three values above.
-        Instead, we use method toString of class
-        Object…
-     */
+       Value of 'sum' originally saved as instance of
+       class Integer (and saved as instance of class
+       Object in session object), so we cannot typecast
+       into class String as done for three values above.
+       Instead, we use method toString of class
+       Object…
+    */
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
     out.println("<HTML>");
@@ -46,9 +41,7 @@ public class ShowSum extends HttpServlet {
     out.println("<BODY TEXT=" + foreColour + " BGCOLOR=" + backColour + ">");
     String sum = session.getAttribute("sum").toString();
     String userName = (String) session.getAttribute("name");
-    if (!userName.isEmpty()) out.println(
-      "<H2>" + userName + "'s " + "Result</H2>"
-    );
+    if (!userName.isEmpty()) out.println("<H2>" + userName + "'s " + "Result</H2>");
     out.println("<BR/><BR/><BR/><H3>" + sum + "</H3>");
     out.println("</BODY>");
     out.println("</HTML>");
@@ -56,10 +49,7 @@ public class ShowSum extends HttpServlet {
   }
 
   private void retrieveNewPreferences(
-    HttpServletRequest request,
-    HttpServletResponse response,
-    HttpSession session
-  ) {
+      HttpServletRequest request, HttpServletResponse response, HttpSession session) {
     String forename = request.getParameter("Name");
     if (forename == null) return;
     final int age = 60;

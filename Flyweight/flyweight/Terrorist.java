@@ -37,8 +37,6 @@ class Terrorist implements Player {
   @Override
   public void mission() {
     // Work on the Mission
-    System.out.println(
-      "Terrorist with weapon " + weapon + "|" + " Task is " + TASK
-    );
+    System.out.println("Terrorist with weapon " + weapon + "|" + " Task is " + TASK);
   }
 }

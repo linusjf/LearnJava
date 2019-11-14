@@ -127,9 +127,7 @@ public class XpayToPayDAdapter implements PayD {
   private void setProp() {
     setCardOwnerName(this.xpay.getCustomerName());
     setCustCardNo(this.xpay.getCreditCardNo());
-    setCardExpMonthDate(
-      this.xpay.getCardExpMonth() + "/" + this.xpay.getCardExpYear()
-    );
+    setCardExpMonthDate(this.xpay.getCardExpMonth() + "/" + this.xpay.getCardExpYear());
     setCvvNo(this.xpay.getCardCvvNo().intValue());
     setTotalAmount(this.xpay.getAmount());
   }

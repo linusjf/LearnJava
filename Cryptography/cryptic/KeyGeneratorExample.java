@@ -13,6 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 
 public enum KeyGeneratorExample {
   ;
+
   public static void main(String... args) {
     try {
       // Creating a SecureRandom object
@@ -37,13 +38,11 @@ public enum KeyGeneratorExample {
       System.out.println(bytes);
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(bytes));
-    } catch (
-      BadPaddingException
-      | NoSuchPaddingException
-      | IllegalBlockSizeException
-      | NoSuchAlgorithmException
-      | InvalidKeyException e
-    ) {
+    } catch (BadPaddingException
+        | NoSuchPaddingException
+        | IllegalBlockSizeException
+        | NoSuchAlgorithmException
+        | InvalidKeyException e) {
       System.err.println(e);
     }
   }

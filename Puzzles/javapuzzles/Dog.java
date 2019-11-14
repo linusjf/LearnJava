@@ -6,8 +6,7 @@ public final class Dog extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  private Dog() {
-  }
+  private Dog() {}
 
   public String toString() {
     return "Woof";

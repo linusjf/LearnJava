@@ -16,7 +16,7 @@ public final class CallbackDigestUserInterface {
   }
 
   public static void main(String[] args) {
-    for (String filename: args) {
+    for (String filename : args) {
       spinOffCallback(filename);
     }
   }

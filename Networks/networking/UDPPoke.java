@@ -41,8 +41,7 @@ public class UDPPoke {
       socket.connect(host, port);
       socket.setSoTimeout(timeout);
       socket.send(outgoing);
-      DatagramPacket incoming =
-          new DatagramPacket(new byte[bufferSize], bufferSize);
+      DatagramPacket incoming = new DatagramPacket(new byte[bufferSize], bufferSize);
 
       // next line blocks until the response is received
       socket.receive(incoming);
@@ -62,8 +61,7 @@ public class UDPPoke {
     try {
       host = InetAddress.getByName(args[0]);
       port = Integer.parseInt(args[1]);
-    } catch (ArrayIndexOutOfBoundsException | NumberFormatException
-             | UnknownHostException ex) {
+    } catch (ArrayIndexOutOfBoundsException | NumberFormatException | UnknownHostException ex) {
       System.out.println("Usage: java UDPPoke host port");
       return;
     }
@@ -75,7 +73,7 @@ public class UDPPoke {
     }
     System.out.println(Base64.getEncoder().encodeToString(response));
     StringBuilder sb = new StringBuilder(8);
-    for (byte b: response) {
+    for (byte b : response) {
       sb.append(String.format("%02X ", b));
     }
     System.out.println(sb.toString());

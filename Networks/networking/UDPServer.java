@@ -37,15 +37,13 @@ public abstract class UDPServer implements Runnable {
 
       // check every 10 seconds for shutdown
       while (true) {
-        if (isShutDown)
-          return;
+        if (isShutDown) return;
         DatagramPacket incoming = new DatagramPacket(buffer, buffer.length);
         try {
           socket.receive(incoming);
           this.respond(socket, incoming);
         } catch (SocketTimeoutException ex) {
-          if (isShutDown)
-            return;
+          if (isShutDown) return;
         } catch (IOException ex) {
           logger.log(Level.WARNING, "%s: %s", ex.getMessage(), ex);
         }
@@ -56,8 +54,7 @@ public abstract class UDPServer implements Runnable {
     }
   }
 
-  public abstract void respond(DatagramSocket socket, DatagramPacket request)
-      throws IOException;
+  public abstract void respond(DatagramSocket socket, DatagramPacket request) throws IOException;
 
   public void shutDown() {
     this.isShutDown = true;

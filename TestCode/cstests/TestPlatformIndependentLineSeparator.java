@@ -1,24 +1,22 @@
 package cstests;
 
-/***
-This class lists the varied combinations where the line separator denoted by \n
-is to be replaced by either a call to System.lineSeparator(), %n in a
-System.out.printf() or System.getProperty("line.separator").
-
-
-The same rule should apply to \r\n as well, if specified.
-\n and \r\n must not be flagged in this comment block.
-***/
+/**
+ * * This class lists the varied combinations where the line separator denoted by \n is to be
+ * replaced by either a call to System.lineSeparator(), %n in a System.out.printf() or
+ * System.getProperty("line.separator").
+ *
+ * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
+ * this comment block. *
+ */
 public class TestPlatformIndependentLineSeparator {
-  /***
-    This class lists the varied combinations where the line separator denoted by
-    \n is to be replaced by either a call to System.lineSeparator(), %n in a
-    System.out.printf() or System.getProperty("line.separator").
-
-
-    The same rule should apply to \r\n as well, if specified.
-    \n and \r\n must not be flagged in this comment block either.
-   ***/
+  /**
+   * * This class lists the varied combinations where the line separator denoted by \n is to be
+   * replaced by either a call to System.lineSeparator(), %n in a System.out.printf() or
+   * System.getProperty("line.separator").
+   *
+   * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
+   * this comment block either. *
+   */
   // test if \n is flagged here. It shouldn't.
   // test if \r\n is flagged here. It shouldn't.
   private static final String testString = "\nTest to catch line separator\n";
@@ -50,7 +48,7 @@ public class TestPlatformIndependentLineSeparator {
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
+    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following
@@ -82,7 +80,7 @@ public class TestPlatformIndependentLineSeparator {
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
+    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following

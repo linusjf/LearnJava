@@ -15,8 +15,7 @@ public enum RanFile1 {
 
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in);
-         RandomAccessFile ranAccts =
-             new RandomAccessFile("accounts.dat", "rw");) {
+        RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw"); ) {
       String reply = "y";
       do {
         acctNum++;
@@ -59,16 +58,14 @@ public enum RanFile1 {
     file.writeFloat(balance);
   }
 
-  public static void writeString(RandomAccessFile file,
-                                 String text,
-                                 int fixedSize) throws IOException {
+  public static void writeString(RandomAccessFile file, String text, int fixedSize)
+      throws IOException {
     int size = text.length();
     if (size <= fixedSize) {
       file.writeChars(text);
 
       // Now 'pad out' the field with spaces…
-      for (int i = size; i < fixedSize; i++)
-        file.writeChar(' ');
+      for (int i = size; i < fixedSize; i++) file.writeChar(' ');
     } else {
       // String is too long!
       file.writeChars(text.substring(0, fixedSize));
@@ -89,20 +86,16 @@ public enum RanFile1 {
       // readString defined below.
       initials = readString(file, NUM_INITS);
       balance = file.readFloat();
-      System.out.printf(acctNum + " " + surname + " " + initials + " "
-                            + "%.2f %n",
-                        balance);
+      System.out.printf(acctNum + " " + surname + " " + initials + " " + "%.2f %n", balance);
     }
   }
 
-  public static String readString(RandomAccessFile file, int fixedSize)
-      throws IOException {
+  public static String readString(RandomAccessFile file, int fixedSize) throws IOException {
     StringBuilder value = new StringBuilder();
 
     // Set up empty string.
-    for (int i = 0; i < fixedSize;
-         i++)  // Read character and concatenate it onto value…
-      value.append(file.readChar());
+    for (int i = 0; i < fixedSize; i++) // Read character and concatenate it onto value…
+    value.append(file.readChar());
     return value.toString();
   }
 }

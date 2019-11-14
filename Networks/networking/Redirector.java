@@ -15,8 +15,7 @@ import java.util.logging.Logger;
 import logging.FormatLogger;
 
 public class Redirector {
-  private static final FormatLogger LOGGER =
-      new FormatLogger(Logger.getLogger("Redirector"));
+  private static final FormatLogger LOGGER = new FormatLogger(Logger.getLogger("Redirector"));
   private final int port;
   private final String newSite;
 
@@ -27,9 +26,7 @@ public class Redirector {
 
   public void start() {
     try (ServerSocket server = new ServerSocket(port)) {
-      LOGGER.info("Redirecting connections on port %d to %s",
-                  server.getLocalPort(),
-                  newSite);
+      LOGGER.info("Redirecting connections on port %d to %s", server.getLocalPort(), newSite);
       while (true) {
         try {
           Socket s = server.accept();
@@ -82,17 +79,16 @@ public class Redirector {
 
     @Override
     public void run() {
-      try (Writer out = new BufferedWriter(new OutputStreamWriter(
-               connection.getOutputStream(), "US-ASCII"));
-           Reader in = new InputStreamReader(
-               new BufferedInputStream(connection.getInputStream()));) {
+      try (Writer out =
+              new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "US-ASCII"));
+          Reader in =
+              new InputStreamReader(new BufferedInputStream(connection.getInputStream())); ) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
           int c = in.read();
-          if (c == '\r' || c == '\n' || c == -1)
-            break;
-          request.append((char)c);
+          if (c == '\r' || c == '\n' || c == -1) break;
+          request.append((char) c);
         }
         String get = request.toString();
         String[] pieces = get.split("\\w*");
@@ -113,23 +109,28 @@ public class Redirector {
         // produce HTML that says where the document has moved to.
         out.write("<HTML><HEAD><TITLE>Document moved</TITLE></HEAD>\r\n");
         out.write("<BODY><H1>Document moved</H1>\r\n");
-        out.write("The document " + theFile + " has moved to\r\n<A HREF=\""
-                  + newSite + theFile + "\">" + newSite + theFile
-                  + "</A>.\r\n Please update your bookmarks<P>");
+        out.write(
+            "The document "
+                + theFile
+                + " has moved to\r\n<A HREF=\""
+                + newSite
+                + theFile
+                + "\">"
+                + newSite
+                + theFile
+                + "</A>.\r\n Please update your bookmarks<P>");
         out.write("</BODY></HTML>\r\n");
         out.flush();
         LOGGER.info("Redirected %s", connection.getRemoteSocketAddress());
       } catch (IOException ex) {
-        LOGGER.warning("Error talking to %s: %s",
-                       connection.getRemoteSocketAddress(),
-                       ex.getMessage());
+        LOGGER.warning(
+            "Error talking to %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
       } finally {
         try {
           connection.close();
         } catch (IOException ex) {
-          LOGGER.warning("Error closing %s: %s",
-                         connection.getRemoteSocketAddress(),
-                         ex.getMessage());
+          LOGGER.warning(
+              "Error closing %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
         }
       }
     }

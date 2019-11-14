@@ -16,17 +16,14 @@ public enum UDPDiscardClient {
     int port = args.length > 1 ? readPort(args[1]) : PORT;
     try (DatagramSocket theSocket = new DatagramSocket()) {
       InetAddress server = InetAddress.getByName(hostname);
-      BufferedReader userInput =
-          new BufferedReader(new InputStreamReader(System.in));
+      BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
       while (true) {
         String theLine = userInput.readLine();
-        if (".".equals(theLine))
-          break;
+        if (".".equals(theLine)) break;
         byte[] data = theLine.getBytes();
-        DatagramPacket theOutput =
-            new DatagramPacket(data, data.length, server, port);
+        DatagramPacket theOutput = new DatagramPacket(data, data.length, server, port);
         theSocket.send(theOutput);
-      }  // end while
+      } // end while
     } catch (IOException ex) {
       System.err.println(ex);
     }

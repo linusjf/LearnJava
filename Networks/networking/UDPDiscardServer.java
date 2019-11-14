@@ -27,17 +27,15 @@ public enum UDPDiscardServer {
       while (true) {
         try {
           server.receive(packet);
-          String s =
-              new String(packet.getData(), 0, packet.getLength(), "8859_1");
-          System.out.println(packet.getAddress() + " at port "
-                             + packet.getPort() + " says: " + s);
+          String s = new String(packet.getData(), 0, packet.getLength(), "8859_1");
+          System.out.println(packet.getAddress() + " at port " + packet.getPort() + " says: " + s);
 
           // reset the length for the next packet
           packet.setLength(buffer.length);
         } catch (IOException ex) {
           System.err.println(ex);
         }
-      }  // end while
+      } // end while
     } catch (SocketException ex) {
       System.err.println(ex);
     }

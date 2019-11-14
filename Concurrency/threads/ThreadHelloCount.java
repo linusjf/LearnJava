@@ -21,7 +21,7 @@ public enum ThreadHelloCount {
 
           // Again, introduce an element
           // of randomness…
-          pause = (int)(Math.random() * 3000);
+          pause = (int) (Math.random() * 3000);
           sleep(pause);
         } catch (InterruptedException interruptEx) {
           System.out.println(interruptEx);
@@ -39,7 +39,7 @@ public enum ThreadHelloCount {
       for (int i = 0; i < 5; i++) {
         try {
           System.out.println(i);
-          pause = (int)(Math.random() * 3000);
+          pause = (int) (Math.random() * 3000);
           sleep(pause);
         } catch (InterruptedException interruptEx) {
           System.out.println(interruptEx);
