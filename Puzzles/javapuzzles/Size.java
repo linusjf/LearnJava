@@ -3,6 +3,7 @@ package javapuzzles;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("checkstyle:magicnumber")
 public enum Size {
   ;
 

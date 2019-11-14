@@ -10,7 +10,8 @@ public enum Shifty {
       int j = -1 << i;
       System.out.printf("%d %d %n", j, i);
       i++;
-      if (i > INT_BITS) break;
+      if (i > INT_BITS)
+        break;
     }
     System.out.println(i);
     altMain(args);

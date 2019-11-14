@@ -9,7 +9,7 @@ public enum Iterative {
   ;
 
   public static void removeNegative(List<Double> v) {
-    for (Iterator<Double> it = v.iterator(); it.hasNext(); ) {
+    for (Iterator<Double> it = v.iterator(); it.hasNext();) {
       if (it.next() < 0) it.remove();
     }
   }

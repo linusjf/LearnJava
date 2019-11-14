@@ -6,7 +6,11 @@ public final class Dog extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  private Dog() {}
+  // clang-format off
+  private Dog() {
+    // empty constructor
+  }
+  // clang-format on
 
   public String toString() {
     return "Woof";

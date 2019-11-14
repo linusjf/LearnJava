@@ -9,8 +9,8 @@ public enum UnwelcomeGuest {
 
   /**
    * Commented out. static { try { USER_ID = getUserIdFromEnvironment(); } catch
-   * (IdUnavailableException e) { USER_ID = GUEST_USER_ID; System.out.println("Logging in as
-   * guest"); } }*
+   * (IdUnavailableException e) { USER_ID = GUEST_USER_ID;
+   * System.out.println("Logging in as guest"); } }*
    */
   private static long getUserIdOrGuest() {
     try {

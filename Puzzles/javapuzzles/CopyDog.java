@@ -7,11 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public enum CopyDog {
-// Not to be confused with copycat
-;
+  // Not to be confused with copycat
+  ;
 
   public static void main(String[] args) {
-    Dog newDog = (Dog) deepCopy(Dog.INSTANCE);
+    Dog newDog = (Dog)deepCopy(Dog.INSTANCE);
     System.out.println(newDog == Dog.INSTANCE);
     System.out.println(newDog);
   }
