@@ -56,7 +56,7 @@ public class ForkBlur extends RecursiveAction {
   private final int mStart;
   private final int mLength;
   private int[] mDestination;
-  private final int mBlurWidth = 15;
+  private static final int BLUR_WIDTH = 15;
 
   // Processing window size, should be odd.
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
@@ -70,7 +70,7 @@ public class ForkBlur extends RecursiveAction {
 
   // Average pixels from source, write results into destination.
   protected void computeDirectly() {
-    int sidePixels = (mBlurWidth - 1) / 2;
+    int sidePixels = (BLUR_WIDTH - 1) / 2;
     for (int index = mStart; index < mStart + mLength; index++) {
       // Calculate average.
       // clang-format off
@@ -80,9 +80,9 @@ public class ForkBlur extends RecursiveAction {
       for (int mi = -sidePixels; mi <= sidePixels; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
-        rt += (float)((pixel & 0x00ff0000) >> 16) / mBlurWidth;
-        gt += (float)((pixel & 0x0000ff00) >> 8) / mBlurWidth;
-        bt += (float)((pixel & 0x000000ff) >> 0) / mBlurWidth;
+        rt += (float)((pixel & 0x00ff0000) >> 16) / BLUR_WIDTH;
+        gt += (float)((pixel & 0x0000ff00) >> 8) / BLUR_WIDTH;
+        bt += (float)((pixel & 0x000000ff) >> 0) / BLUR_WIDTH;
       }
 
       // Re-assemble destination pixel.

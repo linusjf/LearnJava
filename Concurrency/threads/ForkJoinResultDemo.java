@@ -50,7 +50,7 @@ public enum ForkJoinResultDemo {
   }
 
   static class DocumentMock {
-    private String[] words = {
+    private final String[] words = {
         "the",
         "hello",
         "goodbye",
@@ -88,10 +88,10 @@ public enum ForkJoinResultDemo {
 
   static class DocumentTask extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
-    private String[][] document;
-    private int start;
-    private int end;
-    private String word;
+    private final String[][] document;
+    private final int start;
+    private final int end;
+    private final String word;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     DocumentTask(String[][] document, int start, int end, String word) {
@@ -152,10 +152,10 @@ public enum ForkJoinResultDemo {
 
   static class LineTask extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
-    private String[] line;
-    private int start;
-    private int end;
-    private String word;
+    private final String[] line;
+    private final int start;
+    private final int end;
+    private final String word;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     LineTask(String[] line, int start, int end, String word) {

@@ -60,7 +60,7 @@ public enum InvokeAllExecutor {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Callable<Result> {
-    private String name;
+    private final String name;
 
     Task(String name) {
       this.name = name;

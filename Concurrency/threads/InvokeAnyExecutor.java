@@ -37,7 +37,7 @@ public enum InvokeAnyExecutor {
   }
 
   static class UserValidator {
-    private String name;
+    private final String name;
 
     UserValidator(String name) {
       this.name = name;
@@ -66,9 +66,9 @@ public enum InvokeAnyExecutor {
   }
 
   static class TaskValidator implements Callable<String> {
-    private UserValidator validator;
-    private String user;
-    private String password;
+    private final UserValidator validator;
+    private final String user;
+    private final String password;
 
     TaskValidator(UserValidator validator, String user, String password) {
       this.validator = validator;

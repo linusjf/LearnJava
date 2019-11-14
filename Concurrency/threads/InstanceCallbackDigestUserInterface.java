@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class InstanceCallbackDigestUserInterface {
-  private String filename;
+  private final String filename;
   private byte[] digest;
 
   public InstanceCallbackDigestUserInterface(String filename) {

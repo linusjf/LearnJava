@@ -20,8 +20,8 @@ public enum MultiSemaphoreExample {
 
   static class PrintQueue {
     private final Semaphore semaphore;
-    private boolean[] freePrinters;
-    private Lock lockPrinters;
+    private final boolean[] freePrinters;
+    private final Lock lockPrinters;
 
     PrintQueue() {
       freePrinters = new boolean[] {true, true, true};
@@ -72,7 +72,7 @@ public enum MultiSemaphoreExample {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Job implements Runnable {
-    private PrintQueue printQueue;
+    private final PrintQueue printQueue;
 
     Job(PrintQueue printQueue) {
       this.printQueue = printQueue;

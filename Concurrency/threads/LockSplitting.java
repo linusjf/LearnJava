@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class LockSplitting implements Runnable {
   private static final int NUMBER_OF_THREADS = 5;
-  private Counter counter;
+  private final Counter counter;
 
   public LockSplitting(Counter counter) {
     this.counter = counter;

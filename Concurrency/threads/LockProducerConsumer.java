@@ -27,7 +27,7 @@ public enum LockProducerConsumer {
   }
 
   static class FileMock {
-    private String[] content;
+    private final String[] content;
     private int index;
 
     FileMock(int size, int length) {
@@ -57,14 +57,14 @@ public enum LockProducerConsumer {
   }
 
   static class Buffer {
-    private Deque<String> queue;
+    private final Deque<String> queue;
 
-    private int maxSize;
+    private final int maxSize;
 
-    private ReentrantLock lock;
+    private final ReentrantLock lock;
 
-    private Condition lines;
-    private Condition space;
+    private final Condition lines;
+    private final Condition space;
     private boolean pendingLines;
 
     Buffer(int maxSize) {
@@ -127,9 +127,9 @@ public enum LockProducerConsumer {
   }
 
   static class Producer implements Runnable {
-    private FileMock mock;
+    private final FileMock mock;
 
-    private Buffer buffer;
+    private final Buffer buffer;
 
     Producer(FileMock mock, Buffer buffer) {
       this.mock = mock;
@@ -148,7 +148,7 @@ public enum LockProducerConsumer {
   }
 
   static class Consumer implements Runnable {
-    private Buffer buffer;
+    private final Buffer buffer;
 
     Consumer(Buffer buffer) {
       this.buffer = buffer;

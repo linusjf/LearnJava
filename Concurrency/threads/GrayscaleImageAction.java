@@ -10,8 +10,8 @@ import javax.imageio.ImageIO;
 
 public class GrayscaleImageAction extends RecursiveAction {
   private static final long serialVersionUID = 1L;
-  private int row;
-  private BufferedImage bufferedImage;
+  private final int row;
+  private final BufferedImage bufferedImage;
 
   public GrayscaleImageAction(int row, BufferedImage bufferedImage) {
     super();
