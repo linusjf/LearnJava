@@ -7,10 +7,10 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
  * @version 1.0
  */
 public class Company {
-  private String companyName;
-  private String companyAddress;
-  private String companyContactNo;
-  private ContactList contactList;
+  private final String companyName;
+  private final String companyAddress;
+  private final String companyContactNo;
+  private final ContactList contactList;
 
   /**
    * Creates a new <code>Company</code> instance.

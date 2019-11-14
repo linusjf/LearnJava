@@ -24,9 +24,7 @@ public class PlayerSupplier {
 
   public Player supplyPlayer(String playerType) {
     Supplier<Player> player = Objects.requireNonNull(
-      PLAYER_SUPPLIER.get(playerType),
-      "Invalid player type: " + playerType
-    );
+        PLAYER_SUPPLIER.get(playerType), "Invalid player type: " + playerType);
     return player.get();
   }
 }

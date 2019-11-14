@@ -9,7 +9,7 @@ public class Bank1Impl extends UnicastRemoteObject implements Bank1 {
 
   // Declare the ArrayList that will hold Account
   // objects…
-  private List<Account> acctInfo;
+  private final List<Account> acctInfo;
 
   // The constructor must be supplied with an ArrayList
   // of Account objects…

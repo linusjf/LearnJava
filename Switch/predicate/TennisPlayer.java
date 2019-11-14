@@ -1,7 +1,7 @@
 package predicate;
 
 public class TennisPlayer implements Player {
-  private String name;
+  private final String name;
 
   public TennisPlayer(String name) {
     this.name = name;

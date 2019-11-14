@@ -27,5 +27,6 @@ public enum PlayerTypes {
       return new SnookerPlayer();
     }
   };
+
   public abstract Player createPlayer();
 }

@@ -6,9 +6,9 @@ public class Account implements Serializable {
   private static final long serialVersionUID = 1L;
 
   // Instance variables…
-  private int acctNum;
-  private String surname;
-  private String firstNames;
+  private final int acctNum;
+  private final String surname;
+  private final String firstNames;
   private double balance;
 
   // Constructor…

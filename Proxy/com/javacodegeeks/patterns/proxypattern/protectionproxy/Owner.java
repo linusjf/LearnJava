@@ -6,8 +6,9 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.FinalFieldCouldBeStatic")
 public class Owner implements Staff {
-  private boolean owning = true;
+  private final boolean owning = true;
 
   private ReportGeneratorProxy reportGenerator;
 

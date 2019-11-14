@@ -6,9 +6,9 @@ Main-Class: strategy.Main
 
 Name: common
 Specification-Title: Switch
-Specification-Version: 1.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 09b8ddf July 2 2019
+Implementation-Version: 943a6cb8 November 14 2019
 Implementation-Vendor: 
 

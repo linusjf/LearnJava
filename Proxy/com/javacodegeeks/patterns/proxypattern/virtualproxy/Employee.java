@@ -7,9 +7,9 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
  * @version 1.0
  */
 public class Employee {
-  private String employeeName;
-  private double employeeSalary;
-  private String employeeDesignation;
+  private final String employeeName;
+  private final double employeeSalary;
+  private final String employeeDesignation;
 
   /**
    * Creates a new <code>Employee</code> instance.

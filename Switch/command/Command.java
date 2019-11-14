@@ -2,6 +2,4 @@ package command;
 
 import player.Player;
 
-public interface Command {
-  Player create();
-}
+public interface Command { Player create(); }
