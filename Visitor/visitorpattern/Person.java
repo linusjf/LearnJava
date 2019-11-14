@@ -1,8 +1,8 @@
 package visitorpattern;
 
 public class Person implements Transportable {
-  private double fare;
-  private int numberOfPersons;
+  private final double fare;
+  private final int numberOfPersons;
 
   public Person(double f, int n) {
     fare = f;

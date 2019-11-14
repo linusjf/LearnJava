@@ -1,8 +1,8 @@
 package visitorpattern;
 
 public class Luggage implements Transportable {
-  private double fare;
-  private double weight;
+  private final double fare;
+  private final double weight;
 
   public Luggage(double f, double w) {
     fare = f;

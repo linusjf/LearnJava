@@ -5,22 +5,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JdbcBean {
-  private Vector<Object> acctDetails;
+  private List<Object> acctDetails;
 
   public JdbcBean() throws JdbcBeanException {
-    try (
-      Connection connection = DriverManager.getConnection(
-        "jdbc:derby:Finances",
-        "",
-        ""
-      );
-      Statement statement = connection.createStatement();
-      ResultSet results = statement.executeQuery("SELECT * FROM Accounts");
-    ) {
-      acctDetails = new Vector<Object>();
+    try (Connection connection =
+             DriverManager.getConnection("jdbc:derby:Finances", "", "");
+         Statement statement = connection.createStatement();
+         ResultSet results =
+             statement.executeQuery("SELECT * FROM Accounts");) {
+      acctDetails = new ArrayList<>();
       while (results.next()) {
         acctDetails.add(results.getInt(1));
         acctDetails.add(results.getString(3) + " " + results.getString(2));
@@ -31,7 +28,7 @@ public class JdbcBean {
     }
   }
 
-  public Vector<Object> getAcctDetails() {
+  public List<Object> getAcctDetails() {
     return acctDetails;
   }
 

@@ -6,24 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@SuppressWarnings("PMD.ImmutableField")
 public class JdbcBeanX {
-  private int numAccounts = 0;
+  private int numAccounts;
 
   public JdbcBeanX() throws JdbcBeanException {
-    try (
-      Connection connection = DriverManager.getConnection(
-        "jdbc:derby:Finances",
-        "",
-        ""
-      );
-      Statement statement = connection.createStatement();
-      ResultSet results = statement.executeQuery(
-        "SELECT COUNT(*) FROM Accounts"
-      );
-    ) {
-      if (results.next()) {
+    numAccounts = 0;
+    try (Connection connection =
+             DriverManager.getConnection("jdbc:derby:Finances", "", "");
+         Statement statement = connection.createStatement();
+         ResultSet results =
+             statement.executeQuery("SELECT COUNT(*) FROM Accounts");) {
+      if (results.next())
         numAccounts = results.getInt(1);
-      }
     } catch (SQLException sqe) {
       throw new JdbcBeanException(sqe);
     }

@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum OrderParallel {
   ;
+
   public static void main(String[] args) {
     List<String> list = new ArrayList<>();
     list.add("C");
@@ -17,15 +18,15 @@ public enum OrderParallel {
 
     System.out.println("Ordered...");
     list.parallelStream()
-      .filter(s -> !s.isEmpty())
-      .distinct()
-      .sorted()
-      .forEachOrdered(s -> System.out.println(s));
+        .filter(s -> !s.isEmpty())
+        .distinct()
+        .sorted()
+        .forEachOrdered(s -> System.out.println(s));
     System.out.println("Unordered...");
     list.parallelStream()
-      .filter(s -> !s.isEmpty())
-      .distinct()
-      .sorted()
-      .forEach(s -> System.out.println(s));
+        .filter(s -> !s.isEmpty())
+        .distinct()
+        .sorted()
+        .forEach(s -> System.out.println(s));
   }
 }

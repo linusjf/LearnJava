@@ -3,7 +3,7 @@ package refactoringguru.visitor.example.shapes;
 import refactoringguru.visitor.example.visitor.Visitor;
 
 public class Circle extends Dot {
-  private int radius;
+  private final int radius;
 
   public Circle(int id, int x, int y, int radius) {
     super(id, x, y);

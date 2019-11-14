@@ -5,8 +5,8 @@ import java.util.List;
 import refactoringguru.visitor.example.visitor.Visitor;
 
 public class CompoundShape implements Shape {
-  private int id;
-  private List<Shape> children = new ArrayList<>();
+  private final int id;
+  private final List<Shape> children = new ArrayList<>();
 
   public CompoundShape(int id) {
     this.id = id;
