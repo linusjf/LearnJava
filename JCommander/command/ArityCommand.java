@@ -17,6 +17,7 @@ public class ArityCommand {
   }
 
   public void run() {
-    for (String one : pairs) System.out.println(one);
+    for (String one: pairs)
+      System.out.println(one);
   }
 }

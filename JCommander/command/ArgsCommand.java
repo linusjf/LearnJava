@@ -4,11 +4,13 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import org.junit.Assert;
 
+@SuppressWarnings("checkstyle:onetoplevelclass")
 class ArgsMaster {
   @Parameter(names = "-master")
   String master;
 }
 
+@SuppressWarnings("checkstyle:onetoplevelclass")
 class ArgsSlave {
   @Parameter(names = "-slave")
   String slave;

@@ -5,6 +5,7 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.SubParameter;
 import org.junit.Assert;
 
+@SuppressWarnings("checkstyle:visibilitymodifier")
 public class MvParameters {
   @SubParameter(order = 0)
   public String from;
@@ -14,9 +15,7 @@ public class MvParameters {
 
   public static void main(String... argv) {
     class Parameters {
-      @Parameter(
-          names = {"-mv"},
-          arity = 2)
+      @Parameter(names = "-mv", arity = 2)
       public MvParameters mvParameters;
     }
 
