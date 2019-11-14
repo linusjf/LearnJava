@@ -16,17 +16,14 @@ public enum TestObserver {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    final
-    Subject subject = new CommentaryObject(
-      new ArrayList<Observer>(),
-      "Soccer Match [2014AUG24]"
-    );
+    final Subject subject = new CommentaryObject(new ArrayList<Observer>(),
+                                                 "Soccer Match [2014AUG24]");
     final Observer observer = new SMSUsers(subject, "Adam Warner [New York]");
     observer.subscribe();
     System.out.println();
     final Observer observer2 = new SMSUsers(subject, "Tim Ronney [London]");
     observer2.subscribe();
-    final Commentary commentary = (Commentary) subject;
+    final Commentary commentary = (Commentary)subject;
     commentary.setDesc("Welcome to live Soccer match");
     commentary.setDesc("Current score 0-0");
     System.out.println();

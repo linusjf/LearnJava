@@ -11,8 +11,8 @@ public enum Calculator implements ICalc {
       try {
         final long longValue = Long.parseLong(value);
         BigInteger factorialValue = BigInteger.valueOf(1);
-        for (long i = 1; i <= longValue; i++) factorialValue =
-          factorialValue.multiply(BigInteger.valueOf(i));
+        for (long i = 1; i <= longValue; i++)
+          factorialValue = factorialValue.multiply(BigInteger.valueOf(i));
         answer = factorialValue.toString();
       } catch (NumberFormatException exp) {
         System.out.println("Can't calculate factorial of " + value);

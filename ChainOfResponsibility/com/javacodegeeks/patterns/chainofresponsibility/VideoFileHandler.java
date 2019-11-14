@@ -8,7 +8,7 @@ package com.javacodegeeks.patterns.chainofresponsibility;
  */
 public class VideoFileHandler implements Handler {
   private Handler handler;
-  private String handlerName;
+  private final String handlerName;
 
   /**
    * Creates a new <code>VideoFileHandler</code> instance.
@@ -31,9 +31,8 @@ public class VideoFileHandler implements Handler {
       return;
     }
     if (handler != null) {
-      System.out.println(
-        handlerName + " forwards request to " + handler.getHandlerName()
-      );
+      System.out.println(handlerName + " forwards request to "
+                         + handler.getHandlerName());
       handler.process(file);
       return;
     }

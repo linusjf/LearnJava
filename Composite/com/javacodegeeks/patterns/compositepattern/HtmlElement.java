@@ -7,7 +7,7 @@ package com.javacodegeeks.patterns.compositepattern;
  * @version 1.0
  */
 public class HtmlElement extends HtmlTag {
-  private String tagName;
+  private final String tagName;
   private String startTag;
   private String endTag;
   private String tagBody;

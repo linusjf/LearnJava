@@ -10,11 +10,11 @@ import java.beans.PropertyChangeSupport;
  * @version 1.0
  */
 public class CommentaryObjectObservable implements Commentary {
-  private String desc; // NOPMD
+  private String desc;  // NOPMD
 
   private final String subjectDetails;
 
-  private PropertyChangeSupport pcs;
+  private final PropertyChangeSupport pcs;
 
   /**
    * Creates a new <code>CommentaryObjectObservable</code> instance.

@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.chainofresponsibility.TestChain
 
 Name: common
 Specification-Title: ChainOfResponsibility
-Specification-Version: 1.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: e88fc5e July 7 2019
+Implementation-Version: 44bb72e8 November 14 2019
 Implementation-Vendor: 
 

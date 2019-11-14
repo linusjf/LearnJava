@@ -10,10 +10,10 @@ import java.util.List;
  * @version 1.0
  */
 public class HtmlParentElement extends HtmlTag {
-  private String tagName;
+  private final String tagName;
   private String startTag;
   private String endTag;
-  private List<HtmlTag> childrenTag;
+  private final List<HtmlTag> childrenTag;
 
   /**
    * Creates a new <code>HtmlParentElement</code> instance.
@@ -61,7 +61,7 @@ public class HtmlParentElement extends HtmlTag {
   @Override
   public void generateHtml() {
     System.out.println(startTag);
-    for (HtmlTag tag : childrenTag) {
+    for (HtmlTag tag: childrenTag) {
       tag.generateHtml();
     }
     System.out.println(endTag);
