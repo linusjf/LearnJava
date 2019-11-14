@@ -40,7 +40,8 @@ public enum UDPEchoClientWithChannels {
       int n = 0;
       int numbersRead = 0;
       while (true) {
-        if (numbersRead == LIMIT) break;
+        if (numbersRead == LIMIT)
+          break;
 
         // wait one minute for a connection
         selector.select(60_000);
@@ -77,9 +78,8 @@ public enum UDPEchoClientWithChannels {
           }
         }
       }
-      System.out.println(
-        "Echoed " + numbersRead + " out of " + LIMIT + " sent"
-      );
+      System.out.println("Echoed " + numbersRead + " out of " + LIMIT
+                         + " sent");
       System.out.println("Success rate: " + 100.0 * numbersRead / LIMIT + "%");
     } catch (IOException ex) {
       System.err.println(ex);

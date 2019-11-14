@@ -19,10 +19,8 @@ public enum Copy {
       return;
     }
 
-    try (
-      Scanner source = new Scanner(new File(arg[0]));
-      PrintWriter destination = new PrintWriter(new File(arg[1]));
-    ) {
+    try (Scanner source = new Scanner(new File(arg[0]));
+         PrintWriter destination = new PrintWriter(new File(arg[1]));) {
       String input;
       while (source.hasNext()) {
         input = source.nextLine();

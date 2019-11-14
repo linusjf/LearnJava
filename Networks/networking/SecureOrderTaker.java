@@ -50,15 +50,14 @@ public final class SecureOrderTaker {
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLServerSocketFactory factory = context.getServerSocketFactory();
-      SSLServerSocket server = (SSLServerSocket) factory.createServerSocket(
-        PORT
-      );
+      SSLServerSocket server =
+          (SSLServerSocket)factory.createServerSocket(PORT);
 
       // add anonymous (non-authenticated) cipher suites
       // CPD-ON
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
-      for (String instance : supported) {
+      for (String instance: supported) {
         if (instance.indexOf("_anon_") > 0) {
           anonCiphers.add(instance);
         }
@@ -87,14 +86,9 @@ public final class SecureOrderTaker {
           System.err.println(ex.getMessage());
         }
       }
-    } catch (
-      IOException
-      | KeyManagementException
-      | KeyStoreException
-      | NoSuchAlgorithmException
-      | CertificateException
-      | UnrecoverableKeyException ex
-    ) {
+    } catch (IOException | KeyManagementException | KeyStoreException
+             | NoSuchAlgorithmException | CertificateException
+             | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

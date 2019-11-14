@@ -11,6 +11,7 @@ import java.net.URLConnection;
 
 public enum SourceViewer2 {
   ;
+
   public static void main(String[] args) {
     if (args.length > 0) {
       try {
@@ -25,7 +26,7 @@ public enum SourceViewer2 {
           Reader reader = new InputStreamReader(buffer);
           int c;
           while ((c = reader.read()) != -1) {
-            System.out.print((char) c);
+            System.out.print((char)c);
           }
         }
       } catch (MalformedURLException ex) {

@@ -41,7 +41,7 @@ public final class Time {
   }
 
   public static Date getDateFromNetwork(String host, int port)
-    throws IOException {
+      throws IOException {
     // The time protocol sets the epoch at 1900,
     // the Java Date class at 1970. This number
     // converts between them.

@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.net.CacheRequest;
 
 public class SimpleCacheRequest extends CacheRequest {
-  private ByteArrayOutputStream out = new ByteArrayOutputStream();
+  private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
   @Override
   public OutputStream getBody() throws IOException {
@@ -19,6 +19,9 @@ public class SimpleCacheRequest extends CacheRequest {
   }
 
   public byte[] getData() {
-    if (out.size() == 0) return null; else return out.toByteArray();
+    if (out.size() == 0)
+      return null;
+    else
+      return out.toByteArray();
   }
 }

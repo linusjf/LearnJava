@@ -1,7 +1,7 @@
 package networking;
 
 class Producer extends Thread {
-  private Resource item;
+  private final Resource item;
 
   Producer(Resource resource) {
     super();
@@ -17,7 +17,7 @@ class Producer extends Thread {
         // Add 1 to level and return new level…
         newLevel = item.addOne();
         System.out.println("<Producer> New level: " + newLevel);
-        pause = (int) (Math.random() * 5000);
+        pause = (int)(Math.random() * 5000);
 
         // 'Sleep' for 0-5 seconds…
         sleep(pause);

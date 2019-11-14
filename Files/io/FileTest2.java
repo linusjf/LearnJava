@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public enum FileTest2 {
   ;
+
   public static void main(String[] args) {
     String fileName;
     int mark;
@@ -20,7 +21,7 @@ public enum FileTest2 {
           System.out.print("Enter mark " + i + ": ");
           mark = input.nextInt();
 
-           // * Should really validate entry! *
+          // * Should really validate entry! *
           output.println(mark);
           output.flush();
         }

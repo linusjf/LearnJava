@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.concurrent.Callable;
 
 public class DaytimeTask implements Runnable, Callable<Void> {
-  private Socket connection;
+  private final Socket connection;
 
   DaytimeTask(Socket connection) {
     this.connection = connection;
@@ -27,13 +27,10 @@ public class DaytimeTask implements Runnable, Callable<Void> {
     try {
       Writer out = new OutputStreamWriter(connection.getOutputStream());
       Date now = new Date();
-      SimpleDateFormat format = new SimpleDateFormat(
-        "yy-MM-dd hh:mm:ss Z",
-        Locale.getDefault()
-      );
-      out.write(
-        ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n"
-      );
+      SimpleDateFormat format =
+          new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
+      out.write(ProcessHandle.current().pid() + " " + format.format(now)
+                + "\\r\\n");
       out.flush();
     } catch (IOException ex) {
       System.err.println(ex);

@@ -6,8 +6,8 @@ import java.net.Socket;
 import java.util.Scanner;
 
 class ClientThread extends Thread {
-  private Socket client;
-  private Resource item;
+  private final Socket client;
+  private final Resource item;
   private Scanner input;
   private PrintWriter output;
 

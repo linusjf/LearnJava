@@ -17,12 +17,9 @@ public class SocketClientExample {
 
     // Send messages to server
     String[] messages = new String[] {
-      threadName + ": test1",
-      threadName + ": test2",
-      threadName + ": test3"
-    };
+        threadName + ": test1", threadName + ": test2", threadName + ": test3"};
 
-    for (String msg : messages) {
+    for (String msg: messages) {
       byte[] message = msg.getBytes();
       ByteBuffer buffer = ByteBuffer.wrap(message);
       client.write(buffer);

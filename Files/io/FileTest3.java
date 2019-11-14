@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public enum FileTest3 {
   ;
+
   public static void main(String[] args) {
     int mark;
     int total = 0;
@@ -16,7 +17,7 @@ public enum FileTest3 {
         total += mark;
         count++;
       }
-      System.out.println("Mean = " + (float) total / count);
+      System.out.println("Mean = " + (float)total / count);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }

@@ -3,6 +3,7 @@ package io;
 // Allows the user to retrieve individual account
 // records and modify their balances.
 import static io.RanFileConstants.*;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
@@ -15,10 +16,9 @@ public enum RanFile2 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (
-      Scanner input = new Scanner(System.in);
-      RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
-    ) {
+    try (Scanner input = new Scanner(System.in);
+         RandomAccessFile ranAccts =
+             new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply;
       long currentPos;
@@ -65,13 +65,13 @@ public enum RanFile2 {
   }
 
   public static String readString(RandomAccessFile file, int fixedSize)
-    throws IOException {
+      throws IOException {
     // Set up empty buffer before reading from file…
     StringBuilder buffer = new StringBuilder();
-    for (int i = 0; i <
-      fixedSize; i++) // Read character from file and append to buffer.
-    buffer.append(file.readChar());
+    for (int i = 0; i < fixedSize;
+         i++)  // Read character from file and append to buffer.
+      buffer.append(file.readChar());
     return buffer.toString();
-  // Convert into String.
+    // Convert into String.
   }
 }

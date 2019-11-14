@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 import java.util.concurrent.Callable;
 
 public class LookupTask implements Callable<String> {
-  private String line;
+  private final String line;
 
   public LookupTask(String line) {
     this.line = line;

@@ -13,7 +13,7 @@ public final class ContentGetter {
   public static void main(String[] args) {
     if (args.length > 0) {
       // Open the URLs for reading
-      for (String arg : args) {
+      for (String arg: args) {
         try {
           processUrl(arg);
         } catch (MalformedURLException ex) {
@@ -26,7 +26,7 @@ public final class ContentGetter {
   }
 
   private static void processUrl(String url)
-    throws MalformedURLException, IOException {
+      throws MalformedURLException, IOException {
     URL u = new URL(url);
     Object o = u.getContent();
     System.out.println("I got a " + o.getClass().getName() + " for " + url);

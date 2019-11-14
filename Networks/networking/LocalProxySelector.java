@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocalProxySelector extends ProxySelector {
-  private List<URI> failed = new ArrayList<>();
+  private final List<URI> failed = new ArrayList<>();
 
   @Override
   public List<Proxy> select(URI uri) {
@@ -18,10 +18,8 @@ public class LocalProxySelector extends ProxySelector {
     if (failed.contains(uri) || !"http".equalsIgnoreCase(uri.getScheme())) {
       result.add(Proxy.NO_PROXY);
     } else {
-      SocketAddress proxyAddress = new InetSocketAddress(
-        "proxy.example.com",
-        8000
-      );
+      SocketAddress proxyAddress =
+          new InetSocketAddress("proxy.example.com", 8000);
       Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddress);
       result.add(proxy);
     }

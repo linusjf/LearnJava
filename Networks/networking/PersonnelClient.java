@@ -27,23 +27,22 @@ public enum PersonnelClient {
 
   @SuppressWarnings("unchecked")
   private static void talkToServer() throws ClassNotFoundException {
-    try (
-      Socket socket = new Socket(host, PORT);
-      ObjectInputStream inStream = new ObjectInputStream(
-        socket.getInputStream()
-      );
-      PrintWriter outStream = new PrintWriter(socket.getOutputStream(), true);
-    ) {
+    try (Socket socket = new Socket(host, PORT);
+         ObjectInputStream inStream =
+             new ObjectInputStream(socket.getInputStream());
+         PrintWriter outStream =
+             new PrintWriter(socket.getOutputStream(), true);) {
       outStream.println("SEND PERSONNEL DETAILS");
-      ArrayList<Personnel> response = (ArrayList<Personnel>) inStream.readObject();
+      ArrayList<Personnel> response =
+          (ArrayList<Personnel>)inStream.readObject();
 
       /*
-            As in ArrayListSerialise, the compiler will
-            issue a warning for the line above.
-            Simply ignore this warning.
-       */
+           As in ArrayListSerialise, the compiler will
+           issue a warning for the line above.
+           Simply ignore this warning.
+      */
       int staffCount = 0;
-      for (Personnel person : response) {
+      for (Personnel person: response) {
         staffCount++;
         System.out.println("\nStaff member " + staffCount);
         System.out.println("Payroll number: " + person.getPayNum());

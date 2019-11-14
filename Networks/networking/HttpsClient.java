@@ -24,8 +24,8 @@ public final class HttpsClient {
 
     // default https port
     String host = args[0];
-    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-    try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+    SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+    try (SSLSocket socket = (SSLSocket)factory.createSocket(host, port)) {
       // enable all the suites
       String[] supported = socket.getSupportedCipherSuites();
       socket.setEnabledCipherSuites(supported);
@@ -38,13 +38,13 @@ public final class HttpsClient {
       out.flush();
 
       // read response
-      BufferedReader in = new BufferedReader(
-        new InputStreamReader(socket.getInputStream())
-      );
+      BufferedReader in =
+          new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
       // read the header
       String s;
-      while (!(s = in.readLine()).equals("")) System.out.println(s);
+      while (!(s = in.readLine()).equals(""))
+        System.out.println(s);
       System.out.println();
 
       // read the length
@@ -54,8 +54,7 @@ public final class HttpsClient {
         length = Integer.parseInt(contentLength.trim(), 16);
       } catch (NumberFormatException ex) {
         System.err.println(
-          "This server doesn't send the content-length in the first line of the response body."
-        );
+            "This server doesn't send the content-length in the first line of the response body.");
       }
       System.out.println(contentLength);
       int c;

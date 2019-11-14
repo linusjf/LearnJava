@@ -35,7 +35,8 @@ public enum PersonnelServer {
     };
 
     // clang-format on
-    for (Personnel person : staff) staffListOut.add(person);
+    for (Personnel person: staff)
+      staffListOut.add(person);
     startServer();
   }
 
@@ -47,10 +48,10 @@ public enum PersonnelServer {
         outStream = new ObjectOutputStream(socket.getOutputStream());
 
         /*
-                The above line and associated declaration
-                are the only really new code featured in
-                this example.
-         */
+               The above line and associated declaration
+               are the only really new code featured in
+               this example.
+        */
         String message = inStream.nextLine();
         if ("SEND PERSONNEL DETAILS".equals(message)) {
           outStream.writeObject(staffListOut);

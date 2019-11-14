@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 
 @SuppressWarnings("PMD.AvoidStringBufferField")
 public class QueryString {
-  private StringBuilder query;
+  private final StringBuilder query;
 
   public QueryString() {
     query = new StringBuilder();
@@ -13,7 +13,8 @@ public class QueryString {
 
   public void add(String name, String value) {
     synchronized (query) {
-      if (query.length() > 0) query.append('&');
+      if (query.length() > 0)
+        query.append('&');
       encode(name, value);
     }
   }
