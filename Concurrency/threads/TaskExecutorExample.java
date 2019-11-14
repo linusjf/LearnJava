@@ -19,8 +19,8 @@ public enum TaskExecutorExample {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private Date initDate;
-    private String name;
+    private final Date initDate;
+    private final String name;
 
     Task(String name) {
       initDate = new Date();
@@ -56,7 +56,7 @@ public enum TaskExecutorExample {
 
   // CPD-ON
   static class Server {
-    private ThreadPoolExecutor executor;
+    private final ThreadPoolExecutor executor;
 
     Server() {
       executor = (ThreadPoolExecutor)Executors.newCachedThreadPool();

@@ -43,7 +43,7 @@ public enum SemaphoreExample {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Job implements Runnable {
-    private PrintQueue printQueue;
+    private final PrintQueue printQueue;
 
     Job(PrintQueue printQueue) {
       this.printQueue = printQueue;

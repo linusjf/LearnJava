@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class ReturnDigest extends Thread {
-  private String filename;
+  private final String filename;
   private byte[] digest;
 
   public ReturnDigest(String filename) {
