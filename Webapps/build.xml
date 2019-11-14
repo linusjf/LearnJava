@@ -27,8 +27,8 @@
             srcFile="../${tomcat.classpath.file}" />
   <loadfile property="jetty.cp"
             srcFile="../${jetty.classpath.file}" />
-  <loadfile property="compile.cp"
-            srcFile="${compile.classpath.file}" />
+  <loadfile property="compilerclasspath"
+            srcFile="${compile.cp}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -53,10 +53,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
-      <classpath>
-        <pathelement path="${compile.cp}" />
-      </classpath>
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>

@@ -28,8 +28,10 @@ public class WeightX extends HttpServlet {
        (after any required updating of the shopping
        cart session variable has been carried out).
     */
-    if ("Next".equals(choice)) response.sendRedirect("ShoppingCartX.html");
-    if ("Checkout".equals(choice)) response.sendRedirect("Checkout.jsp");
+    if ("Next".equals(choice))
+      response.sendRedirect("ShoppingCartX.html");
+    if ("Checkout".equals(choice))
+      response.sendRedirect("Checkout.jsp");
     if ("Add".equals(choice)) {
       doAdd(cart, request);
       response.sendRedirect("ShoppingCartX.html");
@@ -43,25 +45,28 @@ public class WeightX extends HttpServlet {
   }
 
   private void doAdd(HttpSession cart, HttpServletRequest request) {
-    String currentProduct = (String) cart.getAttribute("currentProd");
+    String currentProduct = (String)cart.getAttribute("currentProd");
     String qty = request.getParameter("Qty");
 
     // Value of weight entered by user retrieved here.
     if (qty != null) {
       // Check that user actually entered a value!
-      if ("Apples".equals(currentProduct)) cart.setAttribute("Apples", qty);
-      else cart.setAttribute("Pears", qty);
+      if ("Apples".equals(currentProduct))
+        cart.setAttribute("Apples", qty);
+      else
+        cart.setAttribute("Pears", qty);
     }
   }
 
   private void doRemove(HttpSession cart) {
-    String currentProduct = (String) cart.getAttribute("currentProd");
+    String currentProduct = (String)cart.getAttribute("currentProd");
     Object product = cart.getAttribute(currentProduct);
 
     // Note that there is no need for a typecast into
     // String , since we only need to know that there
     // is an order for the current product in the cart.
-    if (product != null) // Product found in cart.
-    cart.removeAttribute(currentProduct);
+    // Product found in cart.
+    if (product != null)
+      cart.removeAttribute(currentProduct);
   }
 }

@@ -25,7 +25,8 @@ public class AdderServlet extends HttpServlet {
     }
   }
 
-  private void sendPage(HttpServletResponse reply, String result) throws IOException {
+  private void sendPage(HttpServletResponse reply, String result)
+      throws IOException {
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
     out.println("<HTML>");

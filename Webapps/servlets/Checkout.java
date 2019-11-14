@@ -34,10 +34,12 @@ public class Checkout extends HttpServlet {
       float wt = 0;
       float cost = 0;
       String product = prodNames.nextElement();
-      String stringWt = (String) cart.getAttribute(product);
+      String stringWt = (String)cart.getAttribute(product);
       wt = Float.parseFloat(stringWt);
-      if ("Apples".equals(product)) cost = APPLES_PRICE * wt;
-      else if ("Pears".equals(product)) cost = PEARS_PRICE * wt;
+      if ("Apples".equals(product))
+        cost = APPLES_PRICE * wt;
+      else if ("Pears".equals(product))
+        cost = PEARS_PRICE * wt;
       out.println("<TR>");
       out.println("<TD>" + product + "</TD>");
       out.format("<TD> %4.2f </TD>%n", wt);
