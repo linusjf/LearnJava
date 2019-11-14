@@ -35,7 +35,7 @@ public enum PeriodicExecutor {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-    private String name;
+    private final String name;
 
     Task(String name) {
       this.name = name;

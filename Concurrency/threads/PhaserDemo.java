@@ -35,10 +35,10 @@ public enum PhaserDemo {
   }
 
   static class FileSearch implements Runnable {
-    private String initPath;
-    private String end;
+    private final String initPath;
+    private final String end;
     private List<String> results;
-    private Phaser phaser;
+    private final Phaser phaser;
 
     FileSearch(String initPath, String end, Phaser phaser) {
       this.initPath = initPath;

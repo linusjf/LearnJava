@@ -30,8 +30,8 @@ public enum ReadWriteLockExample {
   static class PricesInfo {
     private double price1;
     private double price2;
-    private ReadWriteLock lock;
-    private Random random = new Random();
+    private final ReadWriteLock lock;
+    private final Random random = new Random();
 
     PricesInfo() {
       price1 = 1.0;
@@ -65,7 +65,7 @@ public enum ReadWriteLockExample {
   }
 
   static class Reader implements Runnable {
-    private PricesInfo pricesInfo;
+    private final PricesInfo pricesInfo;
 
     Reader(PricesInfo pricesInfo) {
       this.pricesInfo = pricesInfo;
@@ -87,7 +87,7 @@ public enum ReadWriteLockExample {
   }
 
   static class Writer implements Runnable {
-    private PricesInfo pricesInfo;
+    private final PricesInfo pricesInfo;
 
     Writer(PricesInfo pricesInfo) {
       this.pricesInfo = pricesInfo;
