@@ -31,23 +31,23 @@ public final class EchoServer {
   private static void handleChannels(SelectionKey key, Selector selector) {
     try {
       if (key.isAcceptable()) {
-        ServerSocketChannel server = (ServerSocketChannel) key.channel();
+        ServerSocketChannel server = (ServerSocketChannel)key.channel();
         SocketChannel client = server.accept();
         System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
-        SelectionKey clientKey =
-            client.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
+        SelectionKey clientKey = client.register(
+            selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
         ByteBuffer buffer = ByteBuffer.allocate(100);
         clientKey.attach(buffer);
       }
       if (key.isReadable()) {
-        SocketChannel client = (SocketChannel) key.channel();
-        ByteBuffer output = (ByteBuffer) key.attachment();
+        SocketChannel client = (SocketChannel)key.channel();
+        ByteBuffer output = (ByteBuffer)key.attachment();
         client.read(output);
       }
       if (key.isWritable()) {
-        SocketChannel client = (SocketChannel) key.channel();
-        ByteBuffer output = (ByteBuffer) key.attachment();
+        SocketChannel client = (SocketChannel)key.channel();
+        ByteBuffer output = (ByteBuffer)key.attachment();
         output.flip();
         client.write(output);
         output.compact();

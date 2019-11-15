@@ -94,9 +94,10 @@ public final class Ping {
       connector.join();
 
       // Print status of targets that have not yet been shown
-      for (Target t : targets) {
+      for (Target t: targets) {
         // Target t = (Target)i.next();
-        if (!t.shown) t.show();
+        if (!t.shown)
+          t.show();
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);
@@ -123,8 +124,10 @@ public final class Ping {
 
     void show() {
       String result = "Timed out";
-      if (connectFinish > 0) result = Long.toString(connectFinish - connectStart) + "ms";
-      if (failure != null) result = failure.toString();
+      if (connectFinish > 0)
+        result = Long.toString(connectFinish - connectStart) + "ms";
+      if (failure != null)
+        result = failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -151,10 +154,11 @@ public final class Ping {
     @Override
     public void run() {
       try {
-        for (; ; ) {
+        for (;;) {
           Target t = null;
           synchronized (pending) {
-            while (pending.isEmpty()) pending.wait();
+            while (pending.isEmpty())
+              pending.wait();
             t = pending.remove(0);
           }
           t.show();
@@ -256,14 +260,15 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext(); ) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator();
+           i.hasNext();) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = i.next();
         i.remove();
 
         // Retrieve the target and the channel
-        Target t = (Target) sk.attachment();
-        SocketChannel sc = (SocketChannel) sk.channel();
+        Target t = (Target)sk.attachment();
+        SocketChannel sc = (SocketChannel)sk.channel();
 
         // Attempt to complete the connection sequence
         try {
@@ -292,10 +297,11 @@ public final class Ping {
     //
     @Override
     public void run() {
-      for (; ; ) {
+      for (;;) {
         try {
           int n = sel.select();
-          if (n > 0) processSelectedKeys();
+          if (n > 0)
+            processSelectedKeys();
           processPendingTargets();
           if (isShutdown) {
             sel.close();

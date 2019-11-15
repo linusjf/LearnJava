@@ -41,8 +41,9 @@ public enum Streams {
     final double totalPoints =
         tasks.stream()
             .parallel()
-            .map(task -> task.getPoints()) // or map( Task::getPoints )
+            .map(task -> task.getPoints()) 
             .reduce(0, Integer::sum);
+    // or map( Task::getPoints )
     System.out.println("Total points (all tasks): " + totalPoints);
 
     // Group tasks by their status
@@ -59,7 +60,8 @@ public enum Streams {
             .boxed()
             .mapToLong(weigth -> (long) (weigth * 100))
             .mapToObj(percentage -> percentage + "%")
-            .collect(Collectors.toList()); // List< String >
+            .collect(Collectors.toList()); 
+    // List< String >
     System.out.println(result);
     final Path path = new File("build.xml").toPath();
     try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {

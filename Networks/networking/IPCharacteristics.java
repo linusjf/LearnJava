@@ -36,13 +36,15 @@ public final class IPCharacteristics {
       if (address.isMCGlobal()) {
         System.out.println(address + " is a global multicast address.");
       } else if (address.isMCOrgLocal()) {
-        System.out.println(address + " is an organization wide multicast address.");
+        System.out.println(address
+                           + " is an organization wide multicast address.");
       } else if (address.isMCSiteLocal()) {
         System.out.println(address + " is a site wide multicast address.");
       } else if (address.isMCLinkLocal()) {
         System.out.println(address + " is a subnet wide multicast address.");
       } else if (address.isMCNodeLocal()) {
-        System.out.println(address + " is an interface-local multicast address.");
+        System.out.println(address
+                           + " is an interface-local multicast address.");
       } else {
         System.out.println(address + " is an unknown multicast address type.");
       }
@@ -52,7 +54,7 @@ public final class IPCharacteristics {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         InetAddress address = InetAddress.getByName(arg);
         handleWildcardAddress(address);

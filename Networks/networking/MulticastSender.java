@@ -16,16 +16,19 @@ public final class MulticastSender {
   public static void main(String[] args) {
     InetAddress ia = null;
     int port = 0;
-    byte ttl = (byte) 1;
+    byte ttl = (byte)1;
 
     // read the address from the command line
     try {
       ia = InetAddress.getByName(args[0]);
       port = Integer.parseInt(args[1]);
-      if (args.length > 2) ttl = (byte) Integer.parseInt(args[2]);
-    } catch (NumberFormatException | IndexOutOfBoundsException | UnknownHostException ex) {
+      if (args.length > 2)
+        ttl = (byte)Integer.parseInt(args[2]);
+    } catch (NumberFormatException | IndexOutOfBoundsException
+             | UnknownHostException ex) {
       System.err.println(ex);
-      System.err.println("Usage: java MulticastSender multicast_address port ttl");
+      System.err.println(
+          "Usage: java MulticastSender multicast_address port ttl");
       System.exit(1);
     }
     byte[] data = "Here's some multicast data\r\n".getBytes();

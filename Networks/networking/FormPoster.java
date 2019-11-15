@@ -15,7 +15,9 @@ public class FormPoster {
   private final QueryString query = new QueryString();
 
   public FormPoster(URL url) {
-    if (!url.getProtocol().toLowerCase(Locale.getDefault()).startsWith("http")) {
+    if (!url.getProtocol()
+             .toLowerCase(Locale.getDefault())
+             .startsWith("http")) {
       throw new IllegalArgumentException("Posting only works for http URLs");
     }
     this.url = url;
@@ -33,7 +35,8 @@ public class FormPoster {
     // open the connection and prepare it to POST
     URLConnection uc = url.openConnection();
     uc.setDoOutput(true);
-    try (OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(), "UTF-8")) {
+    try (OutputStreamWriter out =
+             new OutputStreamWriter(uc.getOutputStream(), "UTF-8")) {
       // The POST line, the Content-type header,
       // and the Content-length headers are sent by the URLConnection.
       // We just need to send the data
@@ -73,7 +76,7 @@ public class FormPoster {
       Reader r = new InputStreamReader(in);
       int c;
       while ((c = r.read()) != -1) {
-        System.out.print((char) c);
+        System.out.print((char)c);
       }
       System.out.println();
     } catch (IOException ex) {

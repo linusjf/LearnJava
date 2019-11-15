@@ -69,14 +69,16 @@ public enum DaytimeUDPClient {
     }
   }
 
-  private static void connectToTimeServer(DatagramSocket socket, String hostname, int port)
-      throws IOException {
+  private static void connectToTimeServer(DatagramSocket socket,
+                                          String hostname,
+                                          int port) throws IOException {
     InetAddress host = InetAddress.getByName(hostname);
     DatagramPacket request = new DatagramPacket(new byte[1], 1, host, port);
     DatagramPacket response = new DatagramPacket(new byte[1024], 1024);
     socket.send(request);
     socket.receive(response);
-    String result = new String(response.getData(), 0, response.getLength(), "US-ASCII");
+    String result =
+        new String(response.getData(), 0, response.getLength(), "US-ASCII");
     System.out.println(result);
   }
 }

@@ -30,7 +30,7 @@ public final class IntgenClient {
       SocketChannel client = SocketChannel.open(address);
       ByteBuffer buffer = ByteBuffer.allocate(4);
       IntBuffer view = buffer.asIntBuffer();
-      for (int expected = 0; ; expected++) {
+      for (int expected = 0;; expected++) {
         client.read(buffer);
         int actual = view.get();
         buffer.clear();

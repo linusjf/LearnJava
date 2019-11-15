@@ -12,7 +12,8 @@ public final class InterfaceLister {
 
   public static void main(String[] args) {
     try {
-      Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+      Enumeration<NetworkInterface> interfaces =
+          NetworkInterface.getNetworkInterfaces();
       while (interfaces.hasMoreElements()) {
         NetworkInterface ni = interfaces.nextElement();
         System.out.println(ni);

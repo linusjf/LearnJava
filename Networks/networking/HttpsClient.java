@@ -24,8 +24,8 @@ public final class HttpsClient {
 
     // default https port
     String host = args[0];
-    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-    try (SSLSocket socket = (SSLSocket) factory.createSocket(host, port)) {
+    SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+    try (SSLSocket socket = (SSLSocket)factory.createSocket(host, port)) {
       // enable all the suites
       String[] supported = socket.getSupportedCipherSuites();
       socket.setEnabledCipherSuites(supported);
@@ -38,11 +38,13 @@ public final class HttpsClient {
       out.flush();
 
       // read response
-      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      BufferedReader in =
+          new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
       // read the header
       String s;
-      while (!(s = in.readLine()).equals("")) System.out.println(s);
+      while (!(s = in.readLine()).equals(""))
+        System.out.println(s);
       System.out.println();
 
       // read the length

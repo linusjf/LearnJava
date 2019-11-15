@@ -17,7 +17,8 @@ public enum RanFile2 {
 
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in);
-        RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw"); ) {
+         RandomAccessFile ranAccts =
+             new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply;
       long currentPos;
@@ -63,11 +64,13 @@ public enum RanFile2 {
     System.out.printf("Balance: %.2f %n", balance);
   }
 
-  public static String readString(RandomAccessFile file, int fixedSize) throws IOException {
+  public static String readString(RandomAccessFile file, int fixedSize)
+      throws IOException {
     // Set up empty buffer before reading from file…
     StringBuilder buffer = new StringBuilder();
-    for (int i = 0; i < fixedSize; i++) // Read character from file and append to buffer.
-    buffer.append(file.readChar());
+    // Read character from file and append to buffer.
+    for (int i = 0; i < fixedSize; i++)
+      buffer.append(file.readChar());
     return buffer.toString();
     // Convert into String.
   }
