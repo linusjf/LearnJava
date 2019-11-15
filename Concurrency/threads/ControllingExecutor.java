@@ -23,10 +23,10 @@ public enum ControllingExecutor {
     } catch (InterruptedException e1) {
       System.err.println(e1);
     }
-    for (ResultTask task : resultTasks) {
+    for (ResultTask task: resultTasks) {
       task.cancel(true);
     }
-    for (ResultTask task : resultTasks) {
+    for (ResultTask task: resultTasks) {
       try {
         if (!task.isCancelled()) {
           System.out.printf("%s\n", task.get());
@@ -52,8 +52,9 @@ public enum ControllingExecutor {
     @Override
     public String call() throws Exception {
       try {
-        long duration = (long) (Math.random() * 10);
-        System.out.printf("%s: Waiting %d seconds for results.\n", this.name, duration);
+        long duration = (long)(Math.random() * 10);
+        System.out.printf(
+            "%s: Waiting %d seconds for results.\n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -67,7 +68,7 @@ public enum ControllingExecutor {
 
     ResultTask(Callable<String> callable) {
       super(callable);
-      this.name = ((ExecutableTask) callable).getName();
+      this.name = ((ExecutableTask)callable).getName();
     }
 
     @Override

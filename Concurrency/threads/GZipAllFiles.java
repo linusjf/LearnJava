@@ -13,7 +13,7 @@ public final class GZipAllFiles {
 
   public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
-    for (String filename : args) {
+    for (String filename: args) {
       zipFile(filename, pool);
     }
     pool.shutdown();
@@ -29,7 +29,7 @@ public final class GZipAllFiles {
   private static void zip(File f, ExecutorService pool) {
     if (f.isDirectory()) {
       File[] files = f.listFiles();
-      for (File file : files) {
+      for (File file: files) {
         if (!file.isDirectory()) {
           // don't recurse directories
           submitZipTask(file, pool);

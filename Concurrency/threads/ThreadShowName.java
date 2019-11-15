@@ -18,7 +18,7 @@ public class ThreadShowName extends Thread {
     for (int i = 0; i < 10; i++) {
       try {
         System.out.println(getName() + " being executed.");
-        pause = (int) (Math.random() * 3000);
+        pause = (int)(Math.random() * 3000);
         sleep(pause);
         // 0-3 seconds.
       } catch (InterruptedException interruptEx) {

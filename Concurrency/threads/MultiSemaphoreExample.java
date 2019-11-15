@@ -11,9 +11,11 @@ public enum MultiSemaphoreExample {
   public static void main(String[] args) {
     PrintQueue printQueue = new PrintQueue();
     Thread[] thread = new Thread[10];
-    for (int i = 0; i < 10; i++) thread[i] = new Thread(new Job(printQueue), "Thread" + i);
+    for (int i = 0; i < 10; i++)
+      thread[i] = new Thread(new Job(printQueue), "Thread" + i);
 
-    for (int i = 0; i < 10; i++) thread[i].start();
+    for (int i = 0; i < 10; i++)
+      thread[i].start();
   }
 
   static class PrintQueue {
@@ -35,10 +37,12 @@ public enum MultiSemaphoreExample {
       try {
         semaphore.acquire();
         int assignedPrinter = getPrinter();
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         System.out.printf(
             "%s: PrintQueue: Printing a Job at %d utilizing %d seconds\n",
-            Thread.currentThread().getName(), assignedPrinter, duration);
+            Thread.currentThread().getName(),
+            assignedPrinter,
+            duration);
         Thread.sleep(duration);
         freePrinters[assignedPrinter] = true;
       } catch (InterruptedException e) {
@@ -76,9 +80,11 @@ public enum MultiSemaphoreExample {
 
     @Override
     public void run() {
-      System.out.printf("%s: Going to print a job\n", Thread.currentThread().getName());
+      System.out.printf("%s: Going to print a job\n",
+                        Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf("%s: The document has been printed\n", Thread.currentThread().getName());
+      System.out.printf("%s: The document has been printed\n",
+                        Thread.currentThread().getName());
     }
   }
 }

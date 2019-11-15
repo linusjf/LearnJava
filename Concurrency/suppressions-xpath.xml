@@ -3,6 +3,27 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='16']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x00ff0000']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR/NUM_INT[@text='16']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='8']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x0000ff00']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR/NUM_INT[@text='8']" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='bt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='0']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='0x000000ff']" />
+  <suppress-xpath files="AddressUsingCopyOnWrite.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressUsingCopyOnWrite']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='addressValue']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="AddressUsingCopyOnWriteWithoutSynchronized.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AddressUsingCopyOnWriteWithoutSynchronized']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='addressValue']]/MODIFIERS/LITERAL_VOLATILE" />
   <suppress-xpath files="ImageInfo.java"
                   checks="AbstractClassNameCheck"
                   query="/CLASS_DEF[./IDENT[@text='ImageInfo']]" />

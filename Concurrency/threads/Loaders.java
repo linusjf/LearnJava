@@ -41,13 +41,15 @@ public enum Loaders {
 
     @Override
     public void run() {
-      System.out.printf("Beginning network connections loading: %s\n", new Date());
+      System.out.printf("Beginning network connections loading: %s\n",
+                        new Date());
       try {
         TimeUnit.SECONDS.sleep(6);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-      System.out.printf("Network connections loading has finished: %s\n", new Date());
+      System.out.printf("Network connections loading has finished: %s\n",
+                        new Date());
     }
   }
 }

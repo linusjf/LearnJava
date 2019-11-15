@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="LSHMinHashExample.java"
-       checks="CyclomaticComplexityCheck"
-       query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
-<suppress-xpath
-       files="LSHMinHashExample.java"
-       checks="ExecutableStatementCountCheck"
-       query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
-<suppress-xpath
-       files="LSHMinHashExample.java"
-       checks="NPathComplexityCheck"
-       query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="CyclomaticComplexityCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="NPathComplexityCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
   <suppress-xpath files="WeightedLevenshteinTest.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='WeightedLevenshteinTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='wl']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='WeightedLevenshtein']]/ELIST/LAMBDA/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_FLOAT[@text='0.5']" />
