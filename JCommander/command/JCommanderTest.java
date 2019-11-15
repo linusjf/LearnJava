@@ -27,7 +27,7 @@ public class JCommanderTest {
              description = "Comma-separated list of group names to be run")
   String groups;
 
-  @Parameter(names = "-debug", description = "Debug mode")
+  @Parameter(names = "-debug", description = "Debug mode", hidden = true)
   boolean debug;
 
   @DynamicParameter(names = "-D", description = "Dynamic parameters go here")

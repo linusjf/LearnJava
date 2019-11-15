@@ -29,3 +29,4 @@ command.MvParameters -mv from to
 command.MvParameters -mv to from
 command.TooledCommand -verbose commit --amend --author=cbeust A.java B.java
 command.TooledCommand -verbose add -i *.java
+command.DelegateCommand -v -port 1234
