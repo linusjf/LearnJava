@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../picocli.cp run.cp
+cp ../picocli.cp compile.cp
