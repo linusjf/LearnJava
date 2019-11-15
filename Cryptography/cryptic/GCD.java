@@ -6,7 +6,8 @@ public enum GCD {
   ;
 
   public static long gcdRecursive(long x, long y) {
-    if (y == 0) return x;
+    if (y == 0)
+      return x;
     return gcdRecursive(y, x % y);
   }
 
@@ -59,7 +60,8 @@ public enum GCD {
   }
 
   public static void check(long x, long y, long... w) {
-    if (x * w[0] + y * w[1] != w[2]) System.exit(1);
+    if (x * w[0] + y * w[1] != w[2])
+      System.exit(1);
   }
 
   public static void main(String[] args) {
@@ -76,7 +78,8 @@ public enum GCD {
     System.out.println("GCD: " + gcd);
 
     long[] u = gcdKnuth(first, second);
-    for (long l : u) System.out.println(l);
+    for (long l: u)
+      System.out.println(l);
 
     assert u[0] * first + u[1] * second == u[2];
   }

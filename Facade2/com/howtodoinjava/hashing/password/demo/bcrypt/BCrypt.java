@@ -17,23 +17,25 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamtoword;
 
 /**
- * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme described in "A
- * Future-Adaptable Password Scheme" by Niels Provos and David Mazieres.
+ * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
+ * described in "A Future-Adaptable Password Scheme" by Niels Provos and David
+ * Mazieres.
  *
- * <p>This password hashing system tries to thwart off-line password cracking using a
- * computationally-intensive hashing algorithm, based on Bruce Schneier's Blowfish cipher. The work
- * factor of the algorithm is parameterised, so it can be increased as computers get faster.
+ * <p>This password hashing system tries to thwart off-line password cracking
+ * using a computationally-intensive hashing algorithm, based on Bruce
+ * Schneier's Blowfish cipher. The work factor of the algorithm is
+ * parameterised, so it can be increased as computers get faster.
  *
- * <p>Usage is really simple. To hash a password for the first time, call the hashpw method with a
- * random salt, like this:
+ * <p>Usage is really simple. To hash a password for the first time, call the
+ * hashpw method with a random salt, like this:
  *
  * <p><code>
  * String pw_hash = BCrypt.hashpw(plain_password, BCrypt.gensalt());
  *
  * </code>
  *
- * <p>To check whether a plaintext password matches one that has been hashed previously, use the
- * checkpw method:
+ * <p>To check whether a plaintext password matches one that has been hashed
+ * previously, use the checkpw method:
  *
  * <p><code>
  * if (BCrypt.checkpw(candidate_password, stored_hash))
@@ -42,16 +44,17 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamto
  * &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("It does not match");
  * </code>
  *
- * <p>The gensalt() method takes an optional parameter (log_rounds) that determines the
- * computational complexity of the hashing:
+ * <p>The gensalt() method takes an optional parameter (log_rounds) that
+ * determines the computational complexity of the hashing:
  *
  * <p><code>
  * String strong_salt = BCrypt.gensalt(10)
  * String stronger_salt = BCrypt.gensalt(12)
  * </code>
  *
- * <p>The amount of work increases exponentially (2**log_rounds), so each increment is twice as much
- * work. The default log_rounds is 10, and the valid range is 4 to 31.
+ * <p>The amount of work increases exponentially (2**log_rounds), so each
+ * increment is twice as much work. The default log_rounds is 10, and the valid
+ * range is 4 to 31.
  *
  * @author Damien Miller
  * @version 0.2
@@ -59,10 +62,10 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamto
 public class BCrypt {
   // Expanded Blowfish key
   @SuppressWarnings("membername")
-  private int[] P; // NOPMD
+  private int[] P;  // NOPMD
 
   @SuppressWarnings("membername")
-  private int[] S; // NOPMD
+  private int[] S;  // NOPMD
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
@@ -77,7 +80,7 @@ public class BCrypt {
     int r = lr[off + 1];
 
     l ^= P[0];
-    for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2; ) {
+    for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;) {
       // Feistel substitution on left word
       n = S[(l >> 24) & 0xff];
       n += S[0x100 | ((l >> 16) & 0xff)];
@@ -114,7 +117,8 @@ public class BCrypt {
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++)
+      P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       encipher(lr, 0);
@@ -130,8 +134,9 @@ public class BCrypt {
   }
 
   /**
-   * Perform the "enhanced key schedule" step described by Provos and Mazieres in "A
-   * Future-Adaptable Password Scheme" http://www.openbsd.org/papers/bcrypt-paper.ps.
+   * Perform the "enhanced key schedule" step described by Provos and Mazieres
+   * in "A Future-Adaptable Password Scheme"
+   * http://www.openbsd.org/papers/bcrypt-paper.ps.
    *
    * @param data salt information
    * @param key password information
@@ -144,7 +149,8 @@ public class BCrypt {
     final int plen = P.length;
     final int slen = S.length;
 
-    for (i = 0; i < plen; i++) P[i] = P[i] ^ streamtoword(key, koffp);
+    for (i = 0; i < plen; i++)
+      P[i] = P[i] ^ streamtoword(key, koffp);
 
     for (i = 0; i < plen; i += 2) {
       lr[0] ^= streamtoword(data, doffp);
@@ -164,8 +170,10 @@ public class BCrypt {
   }
 
   private void checkCryptParameters(int logRounds, byte[] salt) {
-    if (logRounds < 4 || logRounds > 31) throw new IllegalArgumentException("Bad number of rounds");
-    if (salt.length != BCRYPT_SALT_LEN) throw new IllegalArgumentException("Bad salt length");
+    if (logRounds < 4 || logRounds > 31)
+      throw new IllegalArgumentException("Bad number of rounds");
+    if (salt.length != BCRYPT_SALT_LEN)
+      throw new IllegalArgumentException("Bad salt length");
   }
 
   /**
@@ -173,10 +181,13 @@ public class BCrypt {
    *
    * @param password the password to hash
    * @param salt the binary salt to hash with the password
-   * @param logRounds the binary logarithm of the number of rounds of hashing to apply
+   * @param logRounds the binary logarithm of the number of rounds of hashing to
+   *     apply
    * @return an array containing the binary hashed password
    */
-  byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
+  byte[] cryptRaw(final byte[] password,
+                  final byte[] salt,
+                  final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -191,15 +202,16 @@ public class BCrypt {
     }
     int j;
     for (i = 0; i < 64; i++) {
-      for (j = 0; j < (clen >> 1); j++) encipher(cdata, j << 1);
+      for (j = 0; j < (clen >> 1); j++)
+        encipher(cdata, j << 1);
     }
 
     final byte[] ret = new byte[clen * 4];
     for (i = 0, j = 0; i < clen; i++) {
-      ret[j++] = (byte) ((cdata[i] >> 24) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 16) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 8) & 0xff);
-      ret[j++] = (byte) (cdata[i] & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
+      ret[j++] = (byte)(cdata[i] & 0xff);
     }
     return ret;
   }

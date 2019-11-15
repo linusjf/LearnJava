@@ -28,11 +28,12 @@ public enum MessageDigestExample {
       // Converting the byte array in to HexString format
       StringBuilder hexString = new StringBuilder();
 
-      for (byte token : digest) {
+      for (byte token: digest) {
         hexString.append(Integer.toHexString(0xFF & token));
       }
       System.out.println("Hex format : " + hexString.toString());
-      System.out.println("Base64 format : " + Base64.getEncoder().encodeToString(digest));
+      System.out.println("Base64 format : "
+                         + Base64.getEncoder().encodeToString(digest));
     } catch (NoSuchAlgorithmException nsae) {
       System.err.println(nsae);
     }

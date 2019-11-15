@@ -28,7 +28,8 @@ public class SHASalted implements Encrypt {
       final MessageDigest digest = MessageDigest.getInstance("SHA");
       final byte[] salt = getSalt();
       digest.update(salt);
-      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final byte[] textBytes =
+          digest.digest(text.getBytes(StandardCharsets.UTF_8));
       hash = Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());

@@ -98,7 +98,7 @@ public final class PropertyLoader {
     String name = nome.replace('/', '.');
     final ResourceBundle rb = ResourceBundle.getBundle(name, Locale.getDefault(), loader);
     Properties result = new Properties();
-    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements(); ) {
+    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
       final String key = keys.nextElement();
       final String value = rb.getString(key);
       result.put(key, value);

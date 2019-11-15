@@ -9,13 +9,15 @@ public enum Lists {
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
     List<T> list = new ArrayList<>();
-    for (T elt : arr) list.add(elt);
+    for (T elt: arr)
+      list.add(elt);
     return list;
   }
 
   @SafeVarargs
   public static <T> void addAll(List<T> list, T... arr) {
-    for (T elt : arr) list.add(elt);
+    for (T elt: arr)
+      list.add(elt);
   }
 
   public static void main(String... args) {

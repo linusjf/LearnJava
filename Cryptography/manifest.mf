@@ -6,9 +6,9 @@ Main-Class: cryptic.MessageDigestExample
 
 Name: common
 Specification-Title: Cryptography
-Specification-Version: 2.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 05d539e October 5 2019
+Implementation-Version: 79d2e806 November 15 2019
 Implementation-Vendor: 
 

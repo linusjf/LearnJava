@@ -25,7 +25,8 @@ public enum ListingRecur {
 
       assert list.contains(FOO);
 
-      if (loopCount < RECURSION_COUNT) list.add(BAZ);
+      if (loopCount < RECURSION_COUNT)
+        list.add(BAZ);
 
       String[] array = {FOO, BAR};
       list = Arrays.asList(array);
@@ -36,15 +37,13 @@ public enum ListingRecur {
 
       assert list.contains(FOO);
       list = List.of(FOO, BAR, BAZ);
-      List<String> cities =
-          new ArrayList<>() {
-
-            {
-              add("New York");
-              add("Rio");
-              add("Tokyo");
-            }
-          };
+      List<String> cities = new ArrayList<>() {
+        {
+          add("New York");
+          add("Rio");
+          add("Tokyo");
+        }
+      };
 
       System.out.println(cities.contains("Rio"));
       assert cities.contains("Rio");
