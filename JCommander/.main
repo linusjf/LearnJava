@@ -27,3 +27,5 @@ command.VariableArityCommand -foo build.xml build.properties
 command.VariableArityCommand -foo build.xml build.properties .main 
 command.MvParameters -mv from to
 command.MvParameters -mv to from
+command.TooledCommand -verbose commit --amend --author=cbeust A.java B.java
+command.TooledCommand -verbose add -i *.java
