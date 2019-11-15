@@ -24,7 +24,9 @@ public enum SuperBitSig {
     boolean[] sig1 = sb.signature(v1);
     boolean[] sig2 = sb.signature(v2);
 
-    System.out.println("Signature (estimated) similarity: " + sb.similarity(sig1, sig2));
-    System.out.println("Real (cosine) similarity: " + SuperBit.cosineSimilarity(v1, v2));
+    System.out.println("Signature (estimated) similarity: "
+                       + sb.similarity(sig1, sig2));
+    System.out.println("Real (cosine) similarity: "
+                       + SuperBit.cosineSimilarity(v1, v2));
   }
 }

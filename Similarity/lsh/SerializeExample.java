@@ -46,11 +46,12 @@ public enum SerializeExample {
       ObjectOutputStream oos = new ObjectOutputStream(fout);
       oos.writeObject(lsh);
       oos.close();
-      System.out.println("LSH object serialized to " + tempfile.getAbsolutePath());
+      System.out.println("LSH object serialized to "
+                         + tempfile.getAbsolutePath());
 
       InputStream fin = Files.newInputStream(tempfile.toPath());
       ObjectInputStream ois = new ObjectInputStream(fin);
-      LSHMinHash savedLSH = (LSHMinHash) ois.readObject();
+      LSHMinHash savedLSH = (LSHMinHash)ois.readObject();
       println(savedLSH.hash(vector));
     } catch (IOException | ClassNotFoundException exc) {
       System.err.println(exc.getMessage());
@@ -59,7 +60,7 @@ public enum SerializeExample {
 
   static void println(int... array) {
     System.out.print("[");
-    for (int v : array) {
+    for (int v: array) {
       System.out.print(v + " ");
     }
     System.out.println("]");
