@@ -3,26 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ParallelArrays.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='arrayOfLong']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='20_000']"/>
-<suppress-xpath
-       files="ParallelArrays.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='index']]/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="ParallelArrays.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='forEach']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="ParallelArrays.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='forEach']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="Streams.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Streams']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='mapToObj']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='weigth']]/EXPR/TYPECAST/STAR[./IDENT[@text='weigth']]/NUM_INT[@text='100']"/>
+  <suppress-xpath files="ParallelArrays.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='arrayOfLong']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='20_000']" />
+  <suppress-xpath files="ParallelArrays.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='index']]/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="ParallelArrays.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='forEach']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ParallelArrays.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='forEach']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="Streams.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Streams']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='mapToObj']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='weigth']]/EXPR/TYPECAST/STAR[./IDENT[@text='weigth']]/NUM_INT[@text='100']" />
   <suppress-xpath files="RosterTest.java"
                   checks="ExecutableStatementCountCheck"
                   query="/CLASS_DEF[./IDENT[@text='RosterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
