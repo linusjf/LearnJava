@@ -165,6 +165,8 @@
           description="commons-text jars" />
     <conf name="commons-text.lib"
           description="commons-text lib jars" />
+    <conf name="picocli.main"
+          description="picocli jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -347,5 +349,7 @@
 <dependency org="com.google.truth" name="truth" rev="1.0" conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
   <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
 <dependency org="org.apache.commons" name="commons-text" rev="1.8" conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
+  <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
+<dependency org="info.picocli" name="picocli" rev="4.0.4" conf="picocli.main-&gt;master"/>
 </dependencies>
 </ivy-module>
