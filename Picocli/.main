@@ -1,0 +1,2 @@
+command.CheckSum -a MD5 build.xml
+command.Tar -c --file result.tar file1.txt file2.txt
