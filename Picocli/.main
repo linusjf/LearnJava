@@ -7,3 +7,4 @@ command.PasswordDemo --password:file .password
 command.PasswordDemo --password:env TESTPASSWD
 command.ClusteredShortOptions
 command.BooleanOptions
+command.NegatableOptionsDemo
