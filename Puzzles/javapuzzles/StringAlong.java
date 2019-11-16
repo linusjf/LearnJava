@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD")
 public enum StringAlong {
   ;
 
