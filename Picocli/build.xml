@@ -146,6 +146,34 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main.class3}"
+          fork="true"
+          inputstring="This is the password.">
+      <arg line="--password" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class3}"
+          fork="true">
+      <arg line="--password:file .password" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main.class3}"
+          fork="true">
+      <arg line="--password:env TESTPASSWD" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
