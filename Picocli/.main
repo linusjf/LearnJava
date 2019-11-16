@@ -1,4 +1,5 @@
 command.CheckSum -a MD5 build.xml
+command.CheckSum -a MD5 -a SHA1 build.xml
 command.Tar -c --file result.tar file1.txt file2.txt
 command.Login -u user123 -p < .password
 command.Login -u joe -p 123

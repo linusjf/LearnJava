@@ -118,6 +118,15 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main.class}"
+          fork="true">
+      <arg line="-a MD5 -a SHA1 build.xml" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
     <java classname="${main.class1}"
           fork="true">
       <arg line="-c --file result.tar file1.txt file2.txt" />
