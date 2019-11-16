@@ -8,3 +8,4 @@ command.PasswordDemo --password:env TESTPASSWD
 command.ClusteredShortOptions
 command.BooleanOptions
 command.NegatableOptionsDemo
+command.PositionalParameters localhost 12345 file1.txt file2.txt
