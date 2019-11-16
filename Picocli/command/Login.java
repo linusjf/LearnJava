@@ -1,6 +1,7 @@
 package command;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.concurrent.Callable;
@@ -17,7 +18,8 @@ public class Login implements Callable<Integer> {
           arity = "0..1")
   char[] password;
 
-  public Integer call() throws Exception {
+  @Override
+  public Integer call() throws NoSuchAlgorithmException {
     byte[] bytes = new byte[password.length];
     for (int i = 0; i < bytes.length; i++) {
       bytes[i] = (byte)password[i];

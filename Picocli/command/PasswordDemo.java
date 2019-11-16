@@ -22,17 +22,23 @@ public class PasswordDemo implements Runnable {
   @Spec
   CommandSpec spec;
 
+  @SuppressWarnings("checkstyle:returncount")
+  @Override
   public void run() {
     try {
       if (password != null) {
         login(password);
-      } else if (passwordEnvironmentVariable != null) {
-        login(System.getenv(passwordEnvironmentVariable));
-      } else if (passwordFile != null) {
-        login(new String(Files.readAllBytes(passwordFile.toPath())));
-      } else {
-        throw new ParameterException(spec.commandLine(), "Password required");
+        return;
       }
+      if (passwordEnvironmentVariable != null) {
+        login(System.getenv(passwordEnvironmentVariable));
+        return;
+      }
+      if (passwordFile != null) {
+        login(new String(Files.readAllBytes(passwordFile.toPath())));
+        return;
+      }
+      throw new ParameterException(spec.commandLine(), "Password required");
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }

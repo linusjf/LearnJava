@@ -5,3 +5,4 @@ command.Login -u joe -p 123
 command.PasswordDemo --password < .password
 command.PasswordDemo --password:file .password
 command.PasswordDemo --password:env TESTPASSWD
+command.ClusteredShortOptions
