@@ -13,7 +13,8 @@ public class Login implements Callable<Integer> {
 
   @Option(names = {"-p", "--password"},
           description = "Passphrase",
-          interactive = true)
+          interactive = true,
+          arity = "0..1")
   char[] password;
 
   public Integer call() throws Exception {
