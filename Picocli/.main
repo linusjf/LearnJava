@@ -12,3 +12,4 @@ command.NegatableOptionsDemo
 command.PositionalParameters localhost 12345 file1.txt file2.txt
 command.Mixed param0 -o AAA param1 param2 -o BBB param3
 command.DoubleDashDemo
+command.App
