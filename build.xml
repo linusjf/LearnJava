@@ -202,6 +202,10 @@
                   conf="org.jacoco.report.main" />
     <ivy:retrieve pathid="org.jacoco.report.lib.path"
                   conf="org.jacoco.report.lib" />
+    <ivy:retrieve pathid="org.jacoco.cli.main.path"
+      conf="org.jacoco.cli.main" />
+    <ivy:retrieve pathid="org.jacoco.cli.lib.path"
+      conf="org.jacoco.cli.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -249,9 +253,7 @@
     <echo file="${picocli.classpath.file}"
           message="${toString:picocli.main.path}" />
     <echo file="${jacoco.classpath.file}"
-          message="${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
-    <echo file="${jacoco.classpath.file}"
-          message="${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
+          message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
   </target>
   <!-- =================================
           target: report

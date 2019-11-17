@@ -179,6 +179,10 @@
           description="jacoco report main jars" />
     <conf name="org.jacoco.report.lib"
           description="jacoco report lib jars" />
+    <conf name="org.jacoco.cli.main"
+          description="jacoco cli main jars" />
+    <conf name="org.jacoco.cli.lib"
+          description="jacoco cli lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -405,6 +409,11 @@
     <dependency org="org.jacoco"
                 name="org.jacoco.report"
                 rev="0.8.5"
-                conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
+      conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
+<!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
+    <dependency org="org.jacoco" 
+      name="org.jacoco.cli" 
+      rev="0.8.5"
+      conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
