@@ -175,6 +175,10 @@
           description="jacoco ant main jars" />
     <conf name="org.jacoco.ant.lib"
           description="jacoco ant lib jars" />
+    <conf name="org.jacoco.report.main"
+          description="jacoco report main jars" />
+    <conf name="org.jacoco.report.lib"
+          description="jacoco report lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -397,5 +401,10 @@
                 name="org.jacoco.ant"
                 rev="0.8.5"
                 conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.report -->
+    <dependency org="org.jacoco"
+                name="org.jacoco.report"
+                rev="0.8.5"
+                conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
