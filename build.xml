@@ -29,6 +29,7 @@
   <property file="${LearnJava.basedir}/truth.properties" />
   <property file="${LearnJava.basedir}/commons-text.properties" />
   <property file="${LearnJava.basedir}/picocli.properties" />
+  <property file="${LearnJava.basedir}/jacoco.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -189,6 +190,10 @@
                   conf="commons-text.lib" />
     <ivy:retrieve pathid="picocli.main.path"
                   conf="picocli.main" />
+    <ivy:retrieve pathid="org.jacoco.core.main.path"
+                  conf="org.jacoco.core.main" />
+    <ivy:retrieve pathid="org.jacoco.core.lib.path"
+                  conf="org.jacoco.core.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -235,6 +240,8 @@
       message="${toString:commons-text.main.path}:${toString:commons-text.lib.path}" />
     <echo file="${picocli.classpath.file}"
       message="${toString:picocli.main.path}" />
+    <echo file="${jacoco.classpath.file}"
+      message="${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
   </target>
   <!-- =================================
           target: report

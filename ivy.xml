@@ -167,6 +167,10 @@
           description="commons-text lib jars" />
     <conf name="picocli.main"
           description="picocli jars" />
+    <conf name="org.jacoco.core.main"
+          description="jacoco core main jars" />
+    <conf name="org.jacoco.core.lib"
+          description="jacoco core lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -351,5 +355,8 @@
 <dependency org="org.apache.commons" name="commons-text" rev="1.8" conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
   <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
 <dependency org="info.picocli" name="picocli" rev="4.0.4" conf="picocli.main-&gt;master"/>
+  <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
+<dependency org="org.jacoco" name="org.jacoco.core" rev="0.8.5" conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;"/>
+
 </dependencies>
 </ivy-module>
