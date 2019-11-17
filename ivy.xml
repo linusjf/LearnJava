@@ -337,32 +337,65 @@
     <dependency org="org.jdom"
                 name="jdom2"
                 rev="2.0.6"
-      conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
-      <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
-    <dependency org="net.sf.saxon" name="Saxon-HE" rev="9.9.1-5" conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional"/>
-      <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
-    <dependency org="com.github.javaparser" name="javaparser-core" rev="3.15.0"
-      conf="javaparser-core.main-&gt;master"/>
-<!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
-    <dependency org="com.github.javaparser" name="java-symbol-solver-core" rev="0.6.3"
-      conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;"/>
-<!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
-    <dependency org="org.antlr" name="antlr4-runtime" rev="4.7.2" conf="antlr4-runtime.main-&gt;master"/>
-      <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
-<dependency org="info.debatty" name="java-lsh" rev="0.12" conf="java-lsh.main-&gt;master"/>
-<dependency org="info.debatty" name="java-string-similarity" rev="1.2.1" conf="java-string-similarity.main-&gt;master"/>
-  <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
-<dependency org="org.javatuples" name="javatuples" rev="1.2" conf="javatuples.main-&gt;master"/>
-  <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
-<dependency org="com.google.truth" name="truth" rev="1.0" conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
-  <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-<dependency org="org.apache.commons" name="commons-text" rev="1.8" conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
-  <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
-<dependency org="info.picocli" name="picocli" rev="4.0.4" conf="picocli.main-&gt;master"/>
-  <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
-<dependency org="org.jacoco" name="org.jacoco.core" rev="0.8.5" conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;"/>
-<!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant -->
-<dependency org="org.jacoco" name="org.jacoco.ant" rev="0.8.5" conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;"/>
-
-</dependencies>
+                conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
+    <dependency org="net.sf.saxon"
+                name="Saxon-HE"
+                rev="9.9.1-5"
+                conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
+    <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
+    <dependency org="com.github.javaparser"
+                name="javaparser-core"
+                rev="3.15.0"
+                conf="javaparser-core.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
+    <dependency org="com.github.javaparser"
+                name="java-symbol-solver-core"
+                rev="0.6.3"
+                conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
+    <dependency org="org.antlr"
+                name="antlr4-runtime"
+                rev="4.7.2"
+                conf="antlr4-runtime.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
+    <dependency org="info.debatty"
+                name="java-lsh"
+                rev="0.12"
+                conf="java-lsh.main-&gt;master" />
+    <dependency org="info.debatty"
+                name="java-string-similarity"
+                rev="1.2.1"
+                conf="java-string-similarity.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
+    <dependency org="org.javatuples"
+                name="javatuples"
+                rev="1.2"
+                conf="javatuples.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
+    <dependency org="com.google.truth"
+                name="truth"
+                rev="1.0"
+                conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+    <dependency org="org.apache.commons"
+                name="commons-text"
+                rev="1.8"
+                conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
+    <dependency org="info.picocli"
+                name="picocli"
+                rev="4.0.4"
+                conf="picocli.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
+    <dependency org="org.jacoco"
+                name="org.jacoco.core"
+                rev="0.8.5"
+                conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant -->
+    <dependency org="org.jacoco"
+                name="org.jacoco.ant"
+                rev="0.8.5"
+                conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
+  </dependencies>
 </ivy-module>

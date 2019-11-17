@@ -104,7 +104,8 @@
   </target>
   <target name="run94">
     <description>StringAlong target</description>
-    <java classname="${main.class94}" fork="true">
+    <java classname="${main.class94}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -114,7 +115,8 @@
   </target>
   <target name="run93">
     <description>Add String target</description>
-    <java classname="${main.class93}" fork="true">
+    <java classname="${main.class93}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -124,7 +126,8 @@
   </target>
   <target name="run92">
     <description>Voiding target</description>
-    <java classname="${main.class92}" fork="true">
+    <java classname="${main.class92}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -134,7 +137,8 @@
   </target>
   <target name="run91">
     <description>Compliance target</description>
-    <java classname="${main.class91}" fork="true">
+    <java classname="${main.class91}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -144,7 +148,8 @@
   </target>
   <target name="run90">
     <description>Size target</description>
-    <java classname="${main.class90}" fork="true">
+    <java classname="${main.class90}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -154,7 +159,8 @@
   </target>
   <target name="run89">
     <description>ByeEclipse target</description>
-    <java classname="${main.class89}" fork="true">
+    <java classname="${main.class89}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -164,7 +170,8 @@
   </target>
   <target name="run88">
     <description>Outer target</description>
-    <java classname="${main.class88}" fork="true">
+    <java classname="${main.class88}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -174,7 +181,8 @@
   </target>
   <target name="run87">
     <description>Foo target</description>
-    <java classname="${main.class87}" fork="true">
+    <java classname="${main.class87}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -184,7 +192,8 @@
   </target>
   <target name="run86">
     <description>Sleepy target</description>
-    <java classname="${main.class86}" fork="true">
+    <java classname="${main.class86}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -194,7 +203,8 @@
   </target>
   <target name="run85">
     <description>Puzzle target</description>
-    <java classname="${main.class85}" fork="true">
+    <java classname="${main.class85}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -204,7 +214,8 @@
   </target>
   <target name="run84">
     <description>Addition target</description>
-    <java classname="${main.class84}" fork="true">
+    <java classname="${main.class84}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -214,7 +225,8 @@
   </target>
   <target name="run83">
     <description>InSum target</description>
-    <java classname="${main.class83}" fork="true">
+    <java classname="${main.class83}"
+          fork="true">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />

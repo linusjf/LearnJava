@@ -229,23 +229,23 @@
     <echo file="${saxon-he.classpath.file}"
           message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
     <echo file="${javaparser.classpath.file}"
-      message="${toString:javaparser-core.main.path}:${toString:java-symbol-solver-core.main.path}:${toString:java-symbol-solver-core.lib.path}" />
+          message="${toString:javaparser-core.main.path}:${toString:java-symbol-solver-core.main.path}:${toString:java-symbol-solver-core.lib.path}" />
     <echo file="${antlr4-runtime.classpath.file}"
-      message="${toString:antlr4-runtime.main.path}" />
+          message="${toString:antlr4-runtime.main.path}" />
     <echo file="${java-lsh.classpath.file}"
-      message="${toString:java-lsh.main.path}" />
+          message="${toString:java-lsh.main.path}" />
     <echo file="${java-string-similarity.classpath.file}"
-      message="${toString:java-string-similarity.main.path}" />
+          message="${toString:java-string-similarity.main.path}" />
     <echo file="${javatuples.classpath.file}"
-      message="${toString:javatuples.main.path}" />
+          message="${toString:javatuples.main.path}" />
     <echo file="${truth.classpath.file}"
-      message="${toString:truth.main.path}:${toString:truth.lib.path}" />
+          message="${toString:truth.main.path}:${toString:truth.lib.path}" />
     <echo file="${commons-text.classpath.file}"
-      message="${toString:commons-text.main.path}:${toString:commons-text.lib.path}" />
+          message="${toString:commons-text.main.path}:${toString:commons-text.lib.path}" />
     <echo file="${picocli.classpath.file}"
-      message="${toString:picocli.main.path}" />
+          message="${toString:picocli.main.path}" />
     <echo file="${jacoco.classpath.file}"
-      message="${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
+          message="${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
   </target>
   <!-- =================================
           target: report

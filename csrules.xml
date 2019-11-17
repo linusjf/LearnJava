@@ -454,8 +454,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
     </module>
     <module name="ParenPad" />
-    <module name="OperatorWrap">
-    </module>
+    <module name="OperatorWrap"></module>
     <module name="NonEmptyAtclauseDescription" />
     <module name="JavadocTagContinuationIndentation" />
     <module name="SummaryJavadoc">
