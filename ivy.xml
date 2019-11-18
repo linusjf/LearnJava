@@ -191,6 +191,10 @@
           description="pitest command line main jars" />
     <conf name="pitest-command-line.lib"
           description="pitest command line lib jars" />
+    <conf name="pitest-junit5-plugin.main"
+          description="pitest junit5 plugin main  jars" />
+    <conf name="pitest-ant.main"
+          description="pitest ant main  jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -438,5 +442,15 @@
       name="pitest-command-line" 
       rev="1.4.10"
       conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
+    <dependency org="org.pitest" 
+      name="pitest-junit5-plugin" 
+      rev="0.10"
+      conf="pitest-junit5-plugin.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
+    <dependency org="org.pitest" 
+      name="pitest-ant" 
+      rev="1.4.10"
+      conf="pitest-ant.main-&gt;master" />
   </dependencies>
 </ivy-module>
