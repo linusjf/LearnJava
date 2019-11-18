@@ -262,7 +262,7 @@
     <echo file="${picocli.classpath.file}"
           message="${toString:picocli.main.path}" />
     <echo file="${jacoco.classpath.file}"
-          message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.agent.main.path}" />
+          message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}:${toString:org.jacoco.agent.main.path}" />
     <echo file="${pitest.classpath.file}"
       message="${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
   </target>
