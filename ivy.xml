@@ -183,6 +183,8 @@
           description="jacoco cli main jars" />
     <conf name="org.jacoco.cli.lib"
           description="jacoco cli lib jars" />
+    <conf name="org.jacoco.agent.main"
+          description="jacoco agent jars" />
     <conf name="pitest.main"
           description="pitest main jars" />
     <conf name="pitest-command-line.main"
@@ -421,6 +423,11 @@
       name="org.jacoco.cli" 
       rev="0.8.5"
       conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
+    <dependency org="org.jacoco" 
+      name="org.jacoco.agent" 
+      rev="0.8.5"
+      conf="org.jacoco.agent.main-&gt;master" />
   <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest" 
       name="pitest" 
