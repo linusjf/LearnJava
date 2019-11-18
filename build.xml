@@ -32,6 +32,7 @@
   <property file="${LearnJava.basedir}/jacoco.properties" />
   <property file="${LearnJava.basedir}/pitest.properties" />
   <property file="${LearnJava.basedir}/antcontrib.properties" />
+  <property file="${LearnJava.basedir}/assertj.properties" />
     <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -229,6 +230,8 @@
       conf="ant-contrib.main" />
     <ivy:retrieve pathid="ant-contrib.lib.path"
       conf="ant-contrib.lib" />
+    <ivy:retrieve pathid="assertj.main.path"
+      conf="assertj-core.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -281,6 +284,8 @@
       message="${toString:pitest-ant.main.path}:${toString:pitest-unit5-plugin.main.path}:${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
     <echo file="${antcontrib.classpath.file}"
       message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
+    <echo file="${assertj.classpath.file}"
+      message="${toString:assertj.main.path}" />
   </target>
   <!-- =================================
           target: report

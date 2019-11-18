@@ -199,6 +199,8 @@
       description="ant contrib main  jars" />
     <conf name="ant-contrib.lib"
       description="ant contrib lib jars" />
+    <conf name="assertj-core.main"
+      description="assertj core main  jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -461,5 +463,10 @@
       name="ant-contrib" 
       rev="1.0b3"
       conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+    <dependency org="org.assertj" 
+      name="assertj-core" 
+      rev="3.14.0"
+ conf="assertj-core.main-&gt;master" />
   </dependencies>
 </ivy-module>
