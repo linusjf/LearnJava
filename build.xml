@@ -30,6 +30,7 @@
   <property file="${LearnJava.basedir}/commons-text.properties" />
   <property file="${LearnJava.basedir}/picocli.properties" />
   <property file="${LearnJava.basedir}/jacoco.properties" />
+  <property file="${LearnJava.basedir}/pitest.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -206,6 +207,8 @@
       conf="org.jacoco.cli.main" />
     <ivy:retrieve pathid="org.jacoco.cli.lib.path"
       conf="org.jacoco.cli.lib" />
+    <ivy:retrieve pathid="pitest.main.path"
+      conf="pitest.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -254,6 +257,8 @@
           message="${toString:picocli.main.path}" />
     <echo file="${jacoco.classpath.file}"
           message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
+    <echo file="${pitest.classpath.file}"
+          message="${toString:pitest.main.path}" />
   </target>
   <!-- =================================
           target: report
