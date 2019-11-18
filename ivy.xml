@@ -185,6 +185,10 @@
           description="jacoco cli lib jars" />
     <conf name="pitest.main"
           description="pitest main jars" />
+    <conf name="pitest-command-line.main"
+          description="pitest command line main jars" />
+    <conf name="pitest-command-line.lib"
+          description="pitest command line lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -422,5 +426,10 @@
       name="pitest" 
       rev="1.4.10"
       conf="pitest.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
+    <dependency org="org.pitest" 
+      name="pitest-command-line" 
+      rev="1.4.10"
+      conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>

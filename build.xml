@@ -209,6 +209,10 @@
       conf="org.jacoco.cli.lib" />
     <ivy:retrieve pathid="pitest.main.path"
       conf="pitest.main" />
+    <ivy:retrieve pathid="pitest-command-line.main.path"
+      conf="pitest-command-line.main" />
+    <ivy:retrieve pathid="pitest-command-line.lib.path"
+      conf="pitest-command-line.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -258,7 +262,7 @@
     <echo file="${jacoco.classpath.file}"
           message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}" />
     <echo file="${pitest.classpath.file}"
-          message="${toString:pitest.main.path}" />
+      message="${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
   </target>
   <!-- =================================
           target: report
