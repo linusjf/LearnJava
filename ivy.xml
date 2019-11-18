@@ -195,6 +195,10 @@
           description="pitest junit5 plugin main  jars" />
     <conf name="pitest-ant.main"
           description="pitest ant main  jars" />
+    <conf name="ant-contrib.main"
+      description="ant contrib main  jars" />
+    <conf name="ant-contrib.lib"
+      description="ant contrib lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -452,5 +456,10 @@
       name="pitest-ant" 
       rev="1.4.10"
       conf="pitest-ant.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
+    <dependency org="ant-contrib" 
+      name="ant-contrib" 
+      rev="1.0b3"
+      conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
