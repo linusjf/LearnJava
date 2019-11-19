@@ -329,8 +329,8 @@
           message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
-    <antcall target="uniquify"></antcall>
-  </target>
+      <!--  <antcall target="uniquify"></antcall> -->
+    </target> 
   <!-- =================================
           target: report
          ================================= -->
