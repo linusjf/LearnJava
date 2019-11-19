@@ -22,7 +22,7 @@
   <property file="${LearnJava.basedir}/jdom2.properties" />
   <property file="${LearnJava.basedir}/saxon-he.properties" />
   <property file="${LearnJava.basedir}/javaparser.properties" />
-  <property file="${LearnJava.basedir}/antlr4-runtime.properties" />
+  <property file="${LearnJava.basedir}/antlr4.properties" />
   <property file="${LearnJava.basedir}/java-lsh.properties" />
   <property file="${LearnJava.basedir}/java-string-similarity.properties" />
   <property file="${LearnJava.basedir}/javatuples.properties" />
@@ -221,8 +221,10 @@
                   conf="java-symbol-solver-core.main" />
     <ivy:retrieve pathid="java-symbol-solver-core.lib.path"
                   conf="java-symbol-solver-core.lib" />
-    <ivy:retrieve pathid="antlr4-runtime.main.path"
-                  conf="antlr4-runtime.main" />
+    <ivy:retrieve pathid="antlr4.main.path"
+                  conf="antlr4.main" />
+    <ivy:retrieve pathid="antlr4.lib.path"
+                  conf="antlr4.lib" />
     <ivy:retrieve pathid="java-lsh.main.path"
                   conf="java-lsh.main" />
     <ivy:retrieve pathid="java-string-similarity.main.path"
@@ -305,8 +307,8 @@
           message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
     <echo file="${javaparser.classpath.file}"
           message="${toString:javaparser-core.main.path}:${toString:java-symbol-solver-core.main.path}:${toString:java-symbol-solver-core.lib.path}" />
-    <echo file="${antlr4-runtime.classpath.file}"
-          message="${toString:antlr4-runtime.main.path}" />
+    <echo file="${antlr4.classpath.file}"
+          message="${toString:antlr4.main.path}:${toString:antlr4.lib.path}" />
     <echo file="${java-lsh.classpath.file}"
           message="${toString:java-lsh.main.path}" />
     <echo file="${java-string-similarity.classpath.file}"

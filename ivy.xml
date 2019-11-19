@@ -149,8 +149,10 @@
           description="java-symbol-solver-core main jars" />
     <conf name="java-symbol-solver-core.lib"
           description="java-symbol-solver-core lib jars" />
-    <conf name="antlr4-runtime.main"
-          description="antlr4-runtime jars" />
+    <conf name="antlr4.main"
+          description="antlr4  jars" />
+    <conf name="antlr4.lib"
+          description="antlr4 lib jars" />
     <conf name="java-lsh.main"
           description="java-lsh jars" />
     <conf name="java-string-similarity.main"
@@ -379,11 +381,10 @@
                 name="java-symbol-solver-core"
                 rev="0.6.3"
                 conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;" />
-    <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
-    <dependency org="org.antlr"
-                name="antlr4-runtime"
-                rev="4.7.2"
-                conf="antlr4-runtime.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/org.antlr/antlr4 -->
+    <dependency org="org.antlr" 
+      name="antlr4" rev="4.7.2"
+      conf="antlr4.main-&gt;master;antlr4.lib->compile;" />
     <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
     <dependency org="info.debatty"
                 name="java-lsh"
