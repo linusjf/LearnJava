@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -cp @spotbugs.cp edu.umd.cs.findbugs.LaunchAppropriateUI $@
