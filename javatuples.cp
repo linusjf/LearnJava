@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/javatuples-1.2.jar
+@/data/data/com.termux/files/home/LearnJava/lib/javatuples-1.2.jar

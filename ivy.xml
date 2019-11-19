@@ -196,11 +196,11 @@
     <conf name="pitest-ant.main"
           description="pitest ant main  jars" />
     <conf name="ant-contrib.main"
-      description="ant contrib main  jars" />
+          description="ant contrib main  jars" />
     <conf name="ant-contrib.lib"
-      description="ant contrib lib jars" />
+          description="ant contrib lib jars" />
     <conf name="assertj-core.main"
-      description="assertj core main  jars" />
+          description="assertj core main  jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -427,46 +427,46 @@
     <dependency org="org.jacoco"
                 name="org.jacoco.report"
                 rev="0.8.5"
-      conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
-<!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
-    <dependency org="org.jacoco" 
-      name="org.jacoco.cli" 
-      rev="0.8.5"
-      conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
-    <dependency org="org.jacoco" 
-      name="org.jacoco.agent" 
-      rev="0.8.5"
-      conf="org.jacoco.agent.main-&gt;master" />
-  <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
-    <dependency org="org.pitest" 
-      name="pitest" 
-      rev="1.4.10"
-      conf="pitest.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
-    <dependency org="org.pitest" 
-      name="pitest-command-line" 
-      rev="1.4.10"
-      conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
-    <dependency org="org.pitest" 
-      name="pitest-junit5-plugin" 
-      rev="0.10"
-      conf="pitest-junit5-plugin.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
-    <dependency org="org.pitest" 
-      name="pitest-ant" 
-      rev="1.4.10"
-      conf="pitest-ant.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
-    <dependency org="ant-contrib" 
-      name="ant-contrib" 
-      rev="1.0b3"
-      conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-    <dependency org="org.assertj" 
-      name="assertj-core" 
-      rev="3.14.0"
- conf="assertj-core.main-&gt;master" />
+                conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
+    <dependency org="org.jacoco"
+                name="org.jacoco.cli"
+                rev="0.8.5"
+                conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
+    <dependency org="org.jacoco"
+                name="org.jacoco.agent"
+                rev="0.8.5"
+                conf="org.jacoco.agent.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
+    <dependency org="org.pitest"
+                name="pitest"
+                rev="1.4.10"
+                conf="pitest.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
+    <dependency org="org.pitest"
+                name="pitest-command-line"
+                rev="1.4.10"
+                conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
+    <dependency org="org.pitest"
+                name="pitest-junit5-plugin"
+                rev="0.10"
+                conf="pitest-junit5-plugin.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
+    <dependency org="org.pitest"
+                name="pitest-ant"
+                rev="1.4.10"
+                conf="pitest-ant.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
+    <dependency org="ant-contrib"
+                name="ant-contrib"
+                rev="1.0b3"
+                conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+    <dependency org="org.assertj"
+                name="assertj-core"
+                rev="3.14.0"
+                conf="assertj-core.main-&gt;master" />
   </dependencies>
 </ivy-module>

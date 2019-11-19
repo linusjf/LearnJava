@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/antlr4-runtime-4.7.2.jar
+@/data/data/com.termux/files/home/LearnJava/lib/antlr4-runtime-4.7.2.jar

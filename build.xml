@@ -33,7 +33,7 @@
   <property file="${LearnJava.basedir}/pitest.properties" />
   <property file="${LearnJava.basedir}/antcontrib.properties" />
   <property file="${LearnJava.basedir}/assertj.properties" />
-    <!-- Sets variables which can later be used. -->
+  <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
             value="${LearnJava.basedir}/lib" />
@@ -42,9 +42,50 @@
   </path>
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
-    <taskdef resource="net/sf/antcontrib/antlib.xml"
-        classpath="${antcontrib.cp}">
-    </taskdef>
+  <taskdef resource="net/sf/antcontrib/antlib.xml"
+           classpath="${antcontrib.cp}"></taskdef>
+  <target name="removeduplicates"
+          if="file">
+    <loadfile srcFile="${file}"
+              property="input">
+      <filterchain>
+        <tokenfilter>
+          <filetokenizer />
+          <replacestring from=":"
+                         to="${line.separator}" />
+        </tokenfilter>
+        <sortfilter />
+        <uniqfilter />
+        <ignoreblank />
+        <trim />
+        <tokenfilter>
+          <filetokenizer />
+          <replacestring from="${line.separator}"
+                         to=":" />
+          <replaceregex pattern="^:|:$"
+                        replace="" />
+        </tokenfilter>
+      </filterchain>
+    </loadfile>
+    <echo file="${file}"
+          message="@${input}" />
+  </target>
+  <target name="uniquify">
+    <for param="theFile"
+         parallel="false">
+      <path>
+        <fileset dir="${LearnJava.basedir}"
+                 includes="*.cp" />
+      </path>
+      <sequential>
+        <echo message="@{theFile}" />
+        <antcall target="removeduplicates">
+          <param name="file"
+                 value="@{theFile}" />
+        </antcall>
+      </sequential>
+    </for>
+  </target>
   <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
     <first id="ivyfile">
@@ -211,27 +252,27 @@
     <ivy:retrieve pathid="org.jacoco.report.lib.path"
                   conf="org.jacoco.report.lib" />
     <ivy:retrieve pathid="org.jacoco.cli.main.path"
-      conf="org.jacoco.cli.main" />
+                  conf="org.jacoco.cli.main" />
     <ivy:retrieve pathid="org.jacoco.cli.lib.path"
-      conf="org.jacoco.cli.lib" />
+                  conf="org.jacoco.cli.lib" />
     <ivy:retrieve pathid="org.jacoco.agent.main.path"
-      conf="org.jacoco.agent.main" />
+                  conf="org.jacoco.agent.main" />
     <ivy:retrieve pathid="pitest.main.path"
-      conf="pitest.main" />
+                  conf="pitest.main" />
     <ivy:retrieve pathid="pitest-command-line.main.path"
-      conf="pitest-command-line.main" />
+                  conf="pitest-command-line.main" />
     <ivy:retrieve pathid="pitest-command-line.lib.path"
-      conf="pitest-command-line.lib" />
+                  conf="pitest-command-line.lib" />
     <ivy:retrieve pathid="pitest-junit5-plugin.main.path"
-      conf="pitest-junit5-plugin.main" />
+                  conf="pitest-junit5-plugin.main" />
     <ivy:retrieve pathid="pitest-ant.main.path"
-      conf="pitest-ant.main" />
+                  conf="pitest-ant.main" />
     <ivy:retrieve pathid="ant-contrib.main.path"
-      conf="ant-contrib.main" />
+                  conf="ant-contrib.main" />
     <ivy:retrieve pathid="ant-contrib.lib.path"
-      conf="ant-contrib.lib" />
+                  conf="ant-contrib.lib" />
     <ivy:retrieve pathid="assertj.main.path"
-      conf="assertj-core.main" />
+                  conf="assertj-core.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -281,11 +322,12 @@
     <echo file="${jacoco.classpath.file}"
           message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}:${toString:org.jacoco.agent.main.path}" />
     <echo file="${pitest.classpath.file}"
-      message="${toString:pitest-ant.main.path}:${toString:pitest-unit5-plugin.main.path}:${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
+          message="${toString:pitest-ant.main.path}:${toString:pitest-unit5-plugin.main.path}:${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
     <echo file="${antcontrib.classpath.file}"
-      message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
+          message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
     <echo file="${assertj.classpath.file}"
-      message="${toString:assertj.main.path}" />
+          message="${toString:assertj.main.path}" />
+    <antcall target="uniquify"></antcall>
   </target>
   <!-- =================================
           target: report

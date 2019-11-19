@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jdom2-2.0.6.jar:
+@/data/data/com.termux/files/home/LearnJava/lib/jdom2-2.0.6.jar
