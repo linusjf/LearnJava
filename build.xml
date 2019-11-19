@@ -53,11 +53,13 @@
           <filetokenizer />
           <replacestring from=":"
                          to="${line.separator}" />
+          <replaceregex pattern="\Z"
+                        replace="${line.separator}" />
         </tokenfilter>
-        <sortfilter />
-        <uniqfilter />
         <ignoreblank />
         <trim />
+        <sortfilter />
+        <uniqfilter />
         <tokenfilter>
           <filetokenizer />
           <replacestring from="${line.separator}"
@@ -329,7 +331,7 @@
           message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
-      <!--  <antcall target="uniquify"></antcall> -->
+    <antcall target="uniquify"></antcall> 
     </target> 
   <!-- =================================
           target: report
