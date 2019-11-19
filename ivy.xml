@@ -203,12 +203,12 @@
           description="ant contrib lib jars" />
     <conf name="assertj-core.main"
           description="assertj core main  jars" />
-      <conf name="spotbugs.main"
+    <conf name="spotbugs.main"
           description="spotbugs main  jars" />
-      <conf name="spotbugs.lib"
+    <conf name="spotbugs.lib"
           description="spotbugs lib jars" />
-      <conf name="spotbugs-ant.main"
-        description="spotbugs ant main jars" />
+    <conf name="spotbugs-ant.main"
+          description="spotbugs ant main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -387,10 +387,11 @@
                 name="java-symbol-solver-core"
                 rev="0.6.3"
                 conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/org.antlr/antlr4 -->
-    <dependency org="org.antlr" 
-      name="antlr4" rev="4.7.2"
-      conf="antlr4.main-&gt;master;antlr4.lib->compile;" />
+    <!-- https://mvnrepository.com/artifact/org.antlr/antlr4 -->
+    <dependency org="org.antlr"
+                name="antlr4"
+                rev="4.7.2"
+                conf="antlr4.main-&gt;master;antlr4.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
     <dependency org="info.debatty"
                 name="java-lsh"
@@ -474,16 +475,16 @@
     <dependency org="org.assertj"
                 name="assertj-core"
                 rev="3.14.0"
-      conf="assertj-core.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
-    <dependency org="com.github.spotbugs" 
-      name="spotbugs" 
-      rev="4.0.0-beta4"
-      conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
+                conf="assertj-core.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
-      name="spotbugs-ant" 
-      rev="4.0.0-beta4"
-      conf="spotbugs-ant.main-&gt;master;" />
+                name="spotbugs"
+                rev="4.0.0-beta4"
+                conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
+    <dependency org="com.github.spotbugs"
+                name="spotbugs-ant"
+                rev="4.0.0-beta4"
+                conf="spotbugs-ant.main-&gt;master;" />
   </dependencies>
 </ivy-module>

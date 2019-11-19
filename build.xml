@@ -340,8 +340,8 @@
           message="${toString:assertj.main.path}" />
     <echo file="${spotbugs.classpath.file}"
           message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}" />
-    <antcall target="uniquify"></antcall> 
-    </target> 
+    <antcall target="uniquify"></antcall>
+  </target>
   <!-- =================================
           target: report
          ================================= -->
