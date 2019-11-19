@@ -145,6 +145,7 @@
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="hello/*.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -169,7 +170,8 @@
                 failOnViolation="false"
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
-               includes="**/*.java" />
+               includes="**/*.java"
+               excludes="hello/*.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
@@ -193,6 +195,7 @@
                  toConsole="${pmd.toConsole}"></formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
+        <exclude name="hello/*.java" />
       </fileset>
     </pmd>
   </target>
