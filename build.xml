@@ -68,7 +68,7 @@
       </filterchain>
     </loadfile>
     <echo file="${file}"
-          message="@${input}" />
+          message="${input}" />
   </target>
   <target name="uniquify">
     <for param="theFile"
