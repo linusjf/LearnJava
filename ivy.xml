@@ -203,6 +203,12 @@
           description="ant contrib lib jars" />
     <conf name="assertj-core.main"
           description="assertj core main  jars" />
+      <conf name="spotbugs.main"
+          description="spotbugs main  jars" />
+      <conf name="spotbugs.lib"
+          description="spotbugs lib jars" />
+      <conf name="spotbugs-ant.main"
+        description="spotbugs ant main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -468,6 +474,16 @@
     <dependency org="org.assertj"
                 name="assertj-core"
                 rev="3.14.0"
-                conf="assertj-core.main-&gt;master" />
+      conf="assertj-core.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
+    <dependency org="com.github.spotbugs" 
+      name="spotbugs" 
+      rev="4.0.0-beta4"
+      conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
+    <dependency org="com.github.spotbugs"
+      name="spotbugs-ant" 
+      rev="4.0.0-beta4"
+      conf="spotbugs-ant.main-&gt;master;" />
   </dependencies>
 </ivy-module>

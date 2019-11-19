@@ -33,6 +33,7 @@
   <property file="${LearnJava.basedir}/pitest.properties" />
   <property file="${LearnJava.basedir}/antcontrib.properties" />
   <property file="${LearnJava.basedir}/assertj.properties" />
+  <property file="${LearnJava.basedir}/spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -277,6 +278,12 @@
                   conf="ant-contrib.lib" />
     <ivy:retrieve pathid="assertj.main.path"
                   conf="assertj-core.main" />
+    <ivy:retrieve pathid="spotbugs.lib.path"
+                  conf="spotbugs.lib" />
+    <ivy:retrieve pathid="spotbugs.main.path"
+                  conf="spotbugs.main" />
+    <ivy:retrieve pathid="spotbugs-ant.main.path"
+                  conf="spotbugs-ant.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -331,6 +338,8 @@
           message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
+    <echo file="${spotbugs.classpath.file}"
+          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}" />
     <antcall target="uniquify"></antcall> 
     </target> 
   <!-- =================================
