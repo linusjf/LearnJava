@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../antlr.cp run.cp
+cp ../antlr.cp compile.cp

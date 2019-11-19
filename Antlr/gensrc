@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./antlr4 -package hello -o hello Hello.g4
