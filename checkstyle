@@ -14,12 +14,6 @@ readOptions()
       echo "Unable to read $proj/$optionsFile";}
 }
 
-if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
-then
-  usage
-fi
-
-proj=$1
 declare -r optionsFile=".csoptions"
 declare -a options
 rules_file="csrules.xml"
@@ -29,6 +23,13 @@ classpathFile="cs.cp"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 #suppressionsFile="suppr.xml"
 #xsltFile="merge.xslt"
+
+if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+proj=$1
 echo "$1"
 if [ -n "$2" ]
   then

@@ -1,2 +1,29 @@
 #!/usr/bin/env bash
-java -cp @spotbugs.cp edu.umd.cs.findbugs.LaunchAppropriateUI $@
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+declare -r errFile="spotbugs.errors"
+declare -r classpathFile="spotbugs.cp"
+declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
+declare -r srcInfoFile="source.info"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+java -cp @"$classpathFile" "$mainClass" \
+  "$1" -output "$1"/"$errFile" \
+  -auxclasspath "$1" -quiet -adjustExperimental \
+  -effort:max -xml:withMessages -workHard -sortByClass \
+  -experimental -nested:false -timestampNow \
+  -longBugCodes -progress -dontCombineWarnings \
+  -sourceInfo "$1"/"$srcInfoFile" \
+|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res
+

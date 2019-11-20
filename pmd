@@ -1,14 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 usage()
 {
   echo "Usage: $0 dir"
   echo "dir - Project directory"
   exit 1
 }
-if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
-then
-  usage
-fi
+
 declare -r rulesFile="pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"
@@ -17,6 +14,11 @@ declare -i threads=5
 declare -i minpriority=5
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.PMD"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
 
 java -cp @"$classpathFile" \
 "$mainClass" \
