@@ -284,6 +284,10 @@
                   conf="spotbugs.main" />
     <ivy:retrieve pathid="spotbugs-ant.main.path"
                   conf="spotbugs-ant.main" />
+    <ivy:retrieve pathid="slf4j-nop.lib.path"
+                  conf="slf4j-nop.lib" />
+    <ivy:retrieve pathid="slf4j-nop.main.path"
+                  conf="slf4j-nop.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -339,7 +343,7 @@
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
     <echo file="${spotbugs.classpath.file}"
-          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}" />
+          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}" />
     <antcall target="uniquify"></antcall>
   </target>
   <!-- =================================

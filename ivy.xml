@@ -209,6 +209,10 @@
           description="spotbugs lib jars" />
     <conf name="spotbugs-ant.main"
           description="spotbugs ant main jars" />
+    <conf name="slf4j-nop.lib"
+          description="slf4j nop lib jars" />
+    <conf name="slf4j-nop.main"
+          description="slf4j nop main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -485,6 +489,11 @@
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
                 rev="4.0.0-beta4"
-                conf="spotbugs-ant.main-&gt;master;" />
+      conf="spotbugs-ant.main-&gt;master;" />
+      <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+    <dependency org="org.slf4j" 
+      name="slf4j-nop" 
+      rev="2.0.0-alpha1"
+      conf="slf4j-nop.main-&gt;master;slf4j-nop.lib->compile;" />
   </dependencies>
 </ivy-module>
