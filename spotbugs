@@ -9,7 +9,7 @@ usage()
 declare -r errFile="spotbugs.errors"
 declare -r classpathFile="spotbugs.cp"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
-declare -r srcInfoFile="source.info"
+declare -r pluginjars="spotbugs-plugin.cp"
 
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
@@ -22,6 +22,7 @@ java -cp @"$classpathFile" "$mainClass" \
   -effort:max -xml:withMessages -workHard -sortByClass \
   -experimental -nested:false -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
+  -pluginList '<$(cat "$pluginjars")>' \
   "$1" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
