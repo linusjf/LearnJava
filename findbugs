@@ -20,7 +20,7 @@ java -cp @"$classpathFile" "$mainClass" \
   -pluginList '<$(cat "$pluginjars")>' \
   -auxclasspath "$1" -quiet -adjustExperimental \
   -output "$1"/"$errFile" \
-  -effort:max -xml:withMessages -workHard -sortByClass \
+  -effort:max -xml:withMessages -workHard \
   -experimental -nested:false -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
   "$1" \
