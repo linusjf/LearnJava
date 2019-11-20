@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 ./antlr4 -package hello -o hello Hello.g4
+./antlr4 -package hello -Dlanguage=Python3 -o hellopy3 Hello.g4
+
