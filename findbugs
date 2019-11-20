@@ -20,8 +20,8 @@ java -cp @"$classpathFile" "$mainClass" \
   -pluginList '<$(cat "$pluginjars")>' \
   -auxclasspath "$1" -quiet -adjustExperimental \
   -output "$1"/"$errFile" \
-  -effort:max -xml:withMessages -workHard \
-  -experimental -nested:false -timestampNow \
+  -xml:withMessages -workHard \
+  -experimental -nested:true -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
   "$1" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}

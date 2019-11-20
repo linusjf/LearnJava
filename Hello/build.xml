@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -21,11 +22,15 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="spotbugs.cp"
+            srcFile="../${spotbugs.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
+  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+           classpath="${spotbugs.cp}" />
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -187,6 +192,21 @@
           depends="pmd"
           if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
+  </target>
+  <target name="spotbugs">
+    <spotbugs output="xml"
+      outputFile="${spotbugs.output}"
+      reportLevel="low"
+      effort="max"
+      nested="true">
+      <auxClasspath path="${basedir}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd-result">

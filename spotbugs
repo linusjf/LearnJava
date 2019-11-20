@@ -19,8 +19,8 @@ fi
 java -cp @"$classpathFile" "$mainClass" \
   -xml:withMessages -output "$1"/"$errFile" \
   -auxclasspath "$1" -quiet -adjustExperimental \
-  -effort:max  -workHard \
-  -experimental -nested:false -timestampNow \
+  -workHard \
+  -experimental -nested:true -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
   -pluginList '<$(cat "$pluginjars")>' \
   "$1" \
