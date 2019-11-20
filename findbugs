@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+declare -r errFile="spotbugs.errors"
+declare -r classpathFile="spotbugs.cp"
+declare -r mainClass="edu.umd.cs.findbugs.FindBugs2"
+declare -r pluginjars="spotbugs-plugin.cp"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+java -cp @"$classpathFile" "$mainClass" \
+  -pluginList '<$(cat "$pluginjars")>' \
+  -auxclasspath "$1" -quiet -adjustExperimental \
+  -output "$1"/"$errFile" \
+  -effort:max -xml:withMessages -workHard -sortByClass \
+  -experimental -nested:false -timestampNow \
+  -longBugCodes -progress -dontCombineWarnings \
+  "$1" \
+|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res
+
