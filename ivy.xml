@@ -213,6 +213,8 @@
           description="slf4j nop lib jars" />
     <conf name="slf4j-nop.main"
           description="slf4j nop main jars" />
+    <conf name="findsecbugs-plugin.main"
+          description="findsecbugs-plugin main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -495,5 +497,10 @@
       name="slf4j-nop" 
       rev="2.0.0-alpha1"
       conf="slf4j-nop.main-&gt;master;slf4j-nop.lib->compile;" />
+      <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
+    <dependency org="com.h3xstream.findsecbugs" 
+      name="findsecbugs-plugin" 
+      rev="1.10.1"
+      conf="findsecbugs-plugin.main-&gt;master" />
   </dependencies>
 </ivy-module>

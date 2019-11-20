@@ -288,6 +288,8 @@
                   conf="slf4j-nop.lib" />
     <ivy:retrieve pathid="slf4j-nop.main.path"
                   conf="slf4j-nop.main" />
+    <ivy:retrieve pathid="findsecbugs-plugin.main.path"
+                  conf="findsecbugs-plugin.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -343,7 +345,7 @@
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
     <echo file="${spotbugs.classpath.file}"
-          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}" />
+          message="${toString:findsecbugs-plugin.main.path}:${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}" />
     <antcall target="uniquify"></antcall>
   </target>
   <!-- =================================
