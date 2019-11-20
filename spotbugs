@@ -17,12 +17,12 @@ then
 fi
 
 java -cp @"$classpathFile" "$mainClass" \
-  "$1" -output "$1"/"$errFile" \
+  -output "$1"/"$errFile" \
   -auxclasspath "$1" -quiet -adjustExperimental \
   -effort:max -xml:withMessages -workHard -sortByClass \
   -experimental -nested:false -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
-  -sourceInfo "$1"/"$srcInfoFile" \
+  "$1" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
 exit $res
