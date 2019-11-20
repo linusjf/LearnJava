@@ -215,6 +215,8 @@
           description="slf4j nop main jars" />
     <conf name="findsecbugs-plugin.main"
           description="findsecbugs-plugin main jars" />
+    <conf name="fb-contrib.main"
+          description="fb-contrib main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -502,5 +504,10 @@
       name="findsecbugs-plugin" 
       rev="1.10.1"
       conf="findsecbugs-plugin.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/com.mebigfatguy.fb-contrib/fb-contrib -->
+    <dependency org="com.mebigfatguy.fb-contrib" 
+      name="fb-contrib" 
+      rev="7.4.7"
+      conf="fb-contrib.main-&gt;master"/>
   </dependencies>
 </ivy-module>
