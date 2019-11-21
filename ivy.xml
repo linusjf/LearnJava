@@ -217,6 +217,10 @@
           description="findsecbugs-plugin main jars" />
     <conf name="fb-contrib.main"
           description="fb-contrib main jars" />
+    <conf name="error_prone_core.main"
+          description="error_prone_core main jars" />
+    <conf name="error_prone_core.lib"
+          description="error_prone_core lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -509,5 +513,10 @@
       name="fb-contrib" 
       rev="7.4.7"
       conf="fb-contrib.main-&gt;master"/>
+      <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
+    <dependency org="com.google.errorprone" 
+      name="error_prone_core" 
+      rev="2.3.3"
+      conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;"/>
   </dependencies>
 </ivy-module>
