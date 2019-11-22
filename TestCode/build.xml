@@ -3,8 +3,11 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />

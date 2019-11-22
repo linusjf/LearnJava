@@ -23,7 +23,7 @@
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
-            srcFile="../${spotbugs.classpath.file}" />
+            srcfile="../${spotbugs.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"

@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <property file="../tomcat.properties" />
   <property file="../jetty.properties" />
   <!-- Sets variables which can later be used. -->
@@ -23,6 +24,8 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="tomcat.cp"
             srcFile="../${tomcat.classpath.file}" />
   <loadfile property="jetty.cp"

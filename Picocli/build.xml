@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -25,6 +26,8 @@
             srcFile="${compile.cp}" />
   <loadfile property="runclasspath"
             srcFile="${run.cp}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"

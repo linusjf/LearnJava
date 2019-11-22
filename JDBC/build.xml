@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <property file="../derby.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
@@ -22,6 +23,8 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="derby.cp"
             srcFile="../${derby.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
