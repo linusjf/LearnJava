@@ -196,7 +196,7 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs">
-    <spotbugs output="xml"
+    <spotbugs output="text" 
       outputFile="${spotbugs.output}"
       reportLevel="low"
       effort="max"
@@ -211,7 +211,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile, jar, docs,pmd-result">
+          depends="compile, pmd-result, spotbugs,jar,docs">
     <description>Main target</description>
   </target>
 </project>

@@ -17,7 +17,7 @@ then
 fi
 
 java -cp @"$classpathFile" "$mainClass" \
-  -xml:withMessages -output "$1"/"$errFile" \
+  -output "$1"/"$errFile" \
   -auxclasspath "$1" -quiet -adjustExperimental \
   -workHard \
   -experimental -nested:true -timestampNow \

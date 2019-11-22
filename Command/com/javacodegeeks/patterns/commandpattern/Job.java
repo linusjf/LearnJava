@@ -4,4 +4,4 @@ package com.javacodegeeks.patterns.commandpattern;
 @SuppressWarnings("PMD.ShortClassName")
 public interface Job {
   void run();
-} // clang-format on
+}  // clang-format on

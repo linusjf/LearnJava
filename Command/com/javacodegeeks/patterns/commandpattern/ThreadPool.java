@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ThreadPool {
+public final class ThreadPool {
   private final BlockingQueue<Job> jobQueue;
   private final Thread[] jobThreads;
   private final AtomicBoolean shutdown;
@@ -36,7 +36,7 @@ public class ThreadPool {
       }
     }
     shutdown.set(true);
-    for (Thread workerThread : jobThreads) {
+    for (Thread workerThread: jobThreads) {
       workerThread.interrupt();
     }
   }

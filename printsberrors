@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+./findsberrors \
+    | awk '{print $2}' \
+    | xargs -i cat {}
+exit $?

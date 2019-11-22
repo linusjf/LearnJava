@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+find . -name spotbugs.errors \
+       | xargs -i wc -l {} \
+       | awk '$1 > 0'
+exit $?
