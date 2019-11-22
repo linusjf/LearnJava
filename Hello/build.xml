@@ -32,7 +32,7 @@
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
   <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}" />
+    classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>

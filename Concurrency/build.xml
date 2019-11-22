@@ -35,7 +35,7 @@
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
   <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}" />
+           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
   <target name="setupclasspath">
     <description>Run target</description>
     <exec executable="bash">
