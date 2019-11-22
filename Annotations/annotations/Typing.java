@@ -9,13 +9,13 @@ public class Typing {
   public static void main(String... args) {
     // type def
     @TypeAnnotated
-    String cannotBeEmpty = null;
+    String cannotBeEmpty;
 
     // type
     List<@TypeAnnotated String> myList = new ArrayList<>();
 
     // values
-    String myString = new @TypeAnnotated String("this is annotated in java 8");
+    Object myObject = new @TypeAnnotated Object();
   }
 
   // in method params
