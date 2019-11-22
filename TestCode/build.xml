@@ -11,6 +11,8 @@
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
+  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+           classpath="${spotbugs.cp}" />
   <target name="manifest">
     <tstamp />
     <manifest mode="update"
