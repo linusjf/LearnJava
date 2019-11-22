@@ -27,6 +27,8 @@
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
             srcfile="../${spotbugs.classpath.file}" />
+  <loadfile property="spotbugs-plugins.cp"
+    srcfile="../${spotbugs-plugin.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"

@@ -32,6 +32,8 @@
             srcFile="../${jetty.classpath.file}" />
   <loadfile property="compilerclasspath"
             srcFile="${compile.cp}" />
+  <loadfile property="spotbugs-plugins.cp"
+    srcfile="../${spotbugs-plugin.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"

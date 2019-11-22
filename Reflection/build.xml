@@ -24,6 +24,8 @@
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
             srcfile="../${spotbugs.classpath.file}" />
+  <loadfile property="spotbugs-plugins.cp"
+    srcfile="../${spotbugs-plugin.classpath.file}" />
   <loadfile property="compile.cp"
             srcFile="${compile.classpath.file}" />
   <loadfile property="run.cp"
