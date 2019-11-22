@@ -128,6 +128,9 @@
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/*Parser.java" />
+      <exclude name="**/*Lexer.java" />
+      <exclude name="**/*Listener.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -141,8 +144,8 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <exec executable="bash">
-      <arg line="../cformat ${basedir}" />
+    <exec executable="sudo">
+      <arg line="clang-format -style=file -i -sort-includes ${sources}" />
     </exec>
     <exec executable="bash">
       <arg line="../xformatall ${basedir}" />
