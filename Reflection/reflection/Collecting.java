@@ -36,11 +36,13 @@ public final class Collecting {
     if (ref instanceof Collection) {
       System.out.println("A collection: " + ref.getClass().getName());
       @SuppressWarnings("unchecked")
-      Iterator<? extends Object> items = ((Collection<? extends Object>) ref).iterator();
+      Iterator<? extends Object> items =
+          ((Collection<? extends Object>)ref).iterator();
       // not nice
       while (items != null && items.hasNext()) {
         Object item = items.next();
-        System.out.println("Element of the collection: " + item.getClass().getName());
+        System.out.println("Element of the collection: "
+                           + item.getClass().getName());
       }
     } else {
       System.out.println("Not a collection: " + ref.getClass().getName());

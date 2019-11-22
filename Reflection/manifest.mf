@@ -6,9 +6,9 @@ Main-Class: reflection.Enumbed
 
 Name: common
 Specification-Title: Reflection
-Specification-Version: 2.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f530825b October 10 2019
+Implementation-Version: c2a03169 November 22 2019
 Implementation-Vendor: 
 

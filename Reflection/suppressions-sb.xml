@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="reflection.Construct" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="reflection.SyntheticSample$SampleNestedClass" />
+    <Bug code="SS" />
+  </Match>
+</FindBugsFilter>

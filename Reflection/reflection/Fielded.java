@@ -2,6 +2,8 @@ package reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 public final class Fielded {
 
@@ -18,18 +20,21 @@ public final class Fielded {
       System.out.println(stringGetClass == stringclass);
       System.out.println(stringGetClass.equals(stringclass));
       Field[] fields = stringclass.getDeclaredFields();
-      for (Field field : fields) {
+      for (Field field: fields) {
         System.out.println("*************************");
         System.out.println("Name: " + field.getName());
         System.out.println("Type: " + field.getType());
         int modifiers = field.getModifiers();
-        System.out.println(Modifier.toString(modifiers & Modifier.fieldModifiers()));
+        System.out.println(
+            Modifier.toString(modifiers & Modifier.fieldModifiers()));
         if (Modifier.isStatic(modifiers)) {
           System.out.println("isAccessible: " + field.canAccess(null));
-          if (field.canAccess(null)) System.out.println("Get: " + field.get(null));
+          if (field.canAccess(null))
+            System.out.println("Get: " + field.get(null));
         } else {
           System.out.println("isAccessible: " + field.canAccess(stringer));
-          if (field.canAccess(stringer)) System.out.println("Get: " + field.get(stringer));
+          if (field.canAccess(stringer))
+            System.out.println("Get: " + field.get(stringer));
         }
       }
       try {
@@ -43,7 +48,11 @@ public final class Fielded {
       } catch (IllegalAccessException iae) {
         System.err.println(iae);
       }
-      fieldHashCode.setAccessible(true);
+
+      AccessController.doPrivileged((PrivilegedAction<?>)() -> {
+        fieldHashCode.setAccessible(true);
+        return null;
+      });
 
       Object value = fieldHashCode.get(stringer);
       int valueInt = fieldHashCode.getInt(stringer);

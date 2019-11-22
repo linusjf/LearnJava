@@ -17,27 +17,22 @@ public final class Dynamic {
   @SuppressWarnings("unchecked")
   public static void main(String... args) {
     Map<Object, Object> proxyInstance =
-        (Map<Object, Object>)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {Map.class},
-                new DynamicInvocationHandler());
+        (Map<Object, Object>)Proxy.newProxyInstance(
+            Thread.currentThread().getContextClassLoader(),
+            new Class<?>[] {Map.class},
+            new DynamicInvocationHandler());
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));
 
-    proxyInstance =
-        (Map<Object, Object>)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {Map.class},
-                new TimingDynamicInvocationHandler(new HashMap<Object, Object>()));
+    proxyInstance = (Map<Object, Object>)Proxy.newProxyInstance(
+        Thread.currentThread().getContextClassLoader(),
+        new Class<?>[] {Map.class},
+        new TimingDynamicInvocationHandler(new HashMap<Object, Object>()));
 
-    CharSequence csProxyInstance =
-        (CharSequence)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {CharSequence.class},
-                new TimingDynamicInvocationHandler("Hello World"));
+    CharSequence csProxyInstance = (CharSequence)Proxy.newProxyInstance(
+        Thread.currentThread().getContextClassLoader(),
+        new Class<?>[] {CharSequence.class},
+        new TimingDynamicInvocationHandler("Hello World"));
 
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));
@@ -45,10 +40,12 @@ public final class Dynamic {
   }
 
   static class DynamicInvocationHandler implements InvocationHandler {
-    private static final Logger LOGGER = Logger.getLogger(DynamicInvocationHandler.class.getName());
+    private static final Logger LOGGER =
+        Logger.getLogger(DynamicInvocationHandler.class.getName());
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable {
       // clang-format off
       LOGGER.info(
           () -> {
@@ -70,13 +67,14 @@ public final class Dynamic {
 
     TimingDynamicInvocationHandler(Object target) {
       this.target = target;
-      for (Method method : target.getClass().getDeclaredMethods()) {
+      for (Method method: target.getClass().getDeclaredMethods()) {
         this.methods.put(method.getName(), method);
       }
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable {
       long start = System.nanoTime();
       Object result = methods.get(method.getName()).invoke(target, args);
       long elapsed = System.nanoTime() - start;

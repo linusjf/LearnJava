@@ -25,11 +25,11 @@
   <loadfile property="spotbugs.cp"
             srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="spotbugs-plugins.cp"
-    srcfile="../${spotbugs-plugin.classpath.file}" />
-  <loadfile property="compile.cp"
-            srcFile="${compile.classpath.file}" />
-  <loadfile property="run.cp"
-            srcFile="${runtime.classpath.file}" />
+            srcfile="../${spotbugs-plugin.classpath.file}" />
+  <loadfile property="compilerclasspath"
+            srcFile="${compile.cp}" />
+  <loadfile property="runtimeclasspath"
+            srcFile="${run.cp}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -56,10 +56,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
-      <classpath>
-        <pathelement path="${compile.cp}" />
-      </classpath>
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -70,11 +68,8 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}">
-      <classpath>
-        <pathelement path="${compile.cp}" />
-      </classpath>
-    </javadoc>
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -117,7 +112,7 @@
     <description>Run21 target</description>
     <java classname="${main.class20}">
       <classpath>
-        <pathelement path="${compile.cp}" />
+        <pathelement location="${runtimeclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
@@ -127,7 +122,7 @@
     <description>Run20 target</description>
     <java classname="${main.class19}">
       <classpath>
-        <pathelement path="${compile.cp}" />
+        <pathelement location="${runtimeclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
@@ -401,8 +396,25 @@
           if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
   </target>
+  <target name="spotbugs">
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+      nested="true"
+      excludeFilter="${spotbugs.suppressions.xml}">
+      <auxClasspath path="${basedir}" />
+      <auxClasspath location="${compilerclasspath}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd-result">
+          depends="compile, pmd-result,spotbugs,jar, docs">
     <description>Main target</description>
   </target>
 </project>
