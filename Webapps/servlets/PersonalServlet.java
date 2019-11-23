@@ -2,6 +2,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +25,12 @@ public class PersonalServlet extends HttpServlet {
     out.println("<BR/><BR/><BR/>");
     String name = request.getParameter("FirstName");
     out.println("<H1>A Simple Servlet for ");
-    out.println(name + "</H1>");
+    if (name == null)
+      out.println("'No name provided'");
+    else
+      out.println(
+          URLEncoder.encode(name, StandardCharsets.UTF_8.displayName()));
+    out.println("</H1>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();

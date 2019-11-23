@@ -2,6 +2,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -54,12 +56,14 @@ public class ShowSum extends HttpServlet {
 
   private void retrieveNewPreferences(HttpServletRequest request,
                                       HttpServletResponse response,
-                                      HttpSession session) {
+                                      HttpSession session) throws IOException {
     String forename = request.getParameter("Name");
     if (forename == null)
       return;
     final int age = 60;
     if (!forename.isEmpty()) {
+      forename =
+          URLEncoder.encode(forename, StandardCharsets.UTF_8.displayName());
       Cookie nameCookie = new Cookie("name", forename);
       nameCookie.setMaxAge(age);
       response.addCookie(nameCookie);
@@ -68,6 +72,8 @@ public class ShowSum extends HttpServlet {
     String foreColour = request.getParameter("ForeColour");
     if (foreColour.isEmpty())
       foreColour = "Black";
+    foreColour =
+        URLEncoder.encode(foreColour, StandardCharsets.UTF_8.displayName());
     Cookie foreColourCookie = new Cookie("foreColour", foreColour);
     foreColourCookie.setMaxAge(age);
     response.addCookie(foreColourCookie);
@@ -75,6 +81,8 @@ public class ShowSum extends HttpServlet {
     String backColour = request.getParameter("BackColour");
     if (backColour.isEmpty())
       backColour = "White";
+    backColour =
+        URLEncoder.encode(backColour, StandardCharsets.UTF_8.displayName());
     Cookie backColourCookie = new Cookie("backColour", backColour);
     backColourCookie.setMaxAge(age);
     response.addCookie(backColourCookie);
