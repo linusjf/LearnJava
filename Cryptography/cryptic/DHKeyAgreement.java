@@ -3,6 +3,7 @@ package cryptic;
 import static cryptic.DHHelper.*;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.AlgorithmParameters;
 import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
@@ -153,7 +154,8 @@ public final class DHKeyAgreement {
        */
       Cipher bobCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
       bobCipher.init(Cipher.ENCRYPT_MODE, bobAesKey);
-      byte[] cleartext = "This is just an example".getBytes();
+      byte[] cleartext =
+          "This is just an example".getBytes(StandardCharsets.UTF_8);
       byte[] ciphertext = bobCipher.doFinal(cleartext);
 
       // Retrieve the parameter that was used, and transfer it to Alice in

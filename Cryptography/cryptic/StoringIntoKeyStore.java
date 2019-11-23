@@ -3,6 +3,7 @@ package cryptic;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyStore;
@@ -34,7 +35,8 @@ public enum StoringIntoKeyStore {
           new KeyStore.PasswordProtection(password);
 
       // Creating SecretKey object
-      SecretKey mySecretKey = new SecretKeySpec("myPassword".getBytes(), "DSA");
+      SecretKey mySecretKey = new SecretKeySpec(
+          "myPassword".getBytes(StandardCharsets.UTF_8), "DSA");
 
       // Creating SecretKeyEntry object
       KeyStore.SecretKeyEntry secretKeyEntry =

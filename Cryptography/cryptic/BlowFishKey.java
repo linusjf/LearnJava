@@ -1,5 +1,6 @@
 package cryptic;
 
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -28,7 +29,8 @@ public enum BlowFishKey {
 
       Cipher cipher = Cipher.getInstance("Blowfish");
       cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-      byte[] encrypted = cipher.doFinal("This is just an example".getBytes());
+      byte[] encrypted = cipher.doFinal(
+          "This is just an example".getBytes(StandardCharsets.UTF_8));
       System.out.println("Base 64: "
                          + Base64.getEncoder().encodeToString(encrypted));
     } catch (IllegalBlockSizeException | InvalidKeyException

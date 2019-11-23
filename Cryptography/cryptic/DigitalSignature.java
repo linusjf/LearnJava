@@ -1,6 +1,7 @@
 package cryptic;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -17,7 +18,7 @@ public enum DigitalSignature {
   public static void main(String... args) {
     try {
       // Accepting text from user
-      Scanner sc = new Scanner(System.in);
+      Scanner sc = new Scanner(System.in, "UTF8");
       System.out.println("Enter some text");
       String msg = sc.nextLine();
 
@@ -39,7 +40,7 @@ public enum DigitalSignature {
       // Initialize the signature
       sign.initSign(privKey);
 
-      byte[] bytes = msg.getBytes();
+      byte[] bytes = msg.getBytes(StandardCharsets.UTF_8);
 
       // Adding data to the signature
       sign.update(bytes);

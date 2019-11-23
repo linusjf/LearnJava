@@ -1,6 +1,6 @@
 package cryptic;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -35,22 +35,23 @@ public enum CipherDecrypt {
       cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
       // Add data to the cipher
-      byte[] input = "Welcome to Decrypt Example".getBytes();
+      byte[] input =
+          "Welcome to Decrypt Example".getBytes(StandardCharsets.UTF_8);
       cipher.update(input);
 
       // encrypting the data
       byte[] cipherText = cipher.doFinal();
-      System.out.println(new String(cipherText, "UTF8"));
+      System.out.println(new String(cipherText, StandardCharsets.UTF_8));
 
       // Initializing the same cipher for decryption
       cipher.init(Cipher.DECRYPT_MODE, pair.getPrivate());
 
       // Decrypting the text
       byte[] decipheredText = cipher.doFinal(cipherText);
-      System.out.println(new String(decipheredText));
+      System.out.println(new String(decipheredText, StandardCharsets.UTF_8));
     } catch (BadPaddingException | NoSuchPaddingException
-             | NoSuchAlgorithmException | UnsupportedEncodingException
-             | IllegalBlockSizeException | InvalidKeyException e) {
+             | NoSuchAlgorithmException | IllegalBlockSizeException
+             | InvalidKeyException e) {
       System.err.println(e);
     }
   }

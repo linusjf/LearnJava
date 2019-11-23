@@ -42,32 +42,34 @@ public enum GCD {
       t[0] = u[0] - v[0] * q;
       t[1] = u[1] - v[1] * q;
       t[2] = u[2] - v[2] * q;
-      check(x, y, t);
+      if (check(x, y, t))
+        return new long[0];
 
       // vector equation: u = v;
       u[0] = v[0];
       u[1] = v[1];
       u[2] = v[2];
-      check(x, y, u);
+      if (check(x, y, u))
+        return new long[0];
 
       // vector equation: v = t;
       v[0] = t[0];
       v[1] = t[1];
       v[2] = t[2];
-      check(x, y, v);
+      if (check(x, y, v))
+        return new long[0];
     }
     return u;
   }
 
-  public static void check(long x, long y, long... w) {
-    if (x * w[0] + y * w[1] != w[2])
-      System.exit(1);
+  public static boolean check(long x, long y, long... w) {
+    return x * w[0] + y * w[1] != w[2];
   }
 
   public static void main(String[] args) {
     Random rnd = new Random();
-    long first = Math.abs(rnd.nextLong());
-    long second = Math.abs(rnd.nextLong());
+    long first = Math.abs(rnd.nextLong() % Long.MAX_VALUE);
+    long second = Math.abs(rnd.nextLong() % Long.MAX_VALUE);
 
     System.out.printf("Finding GCD of %d and %d : %n", first, second);
     long gcd = gcdRecursive(first, second);
@@ -80,7 +82,7 @@ public enum GCD {
     long[] u = gcdKnuth(first, second);
     for (long l: u)
       System.out.println(l);
-
-    assert u[0] * first + u[1] * second == u[2];
+    if (u.length > 0)
+      assert u[0] * first + u[1] * second == u[2];
   }
 }

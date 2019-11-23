@@ -1,9 +1,11 @@
 package cryptic;
 
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -34,8 +36,8 @@ public enum KeyGeneratorExample {
       cipher.init(Cipher.ENCRYPT_MODE, key);
 
       String msg = "Hi, how are you?";
-      byte[] bytes = cipher.doFinal(msg.getBytes());
-      System.out.println(bytes);
+      byte[] bytes = cipher.doFinal(msg.getBytes(StandardCharsets.UTF_8));
+      System.out.println(Arrays.toString(bytes));
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(bytes));
     } catch (BadPaddingException | NoSuchPaddingException
