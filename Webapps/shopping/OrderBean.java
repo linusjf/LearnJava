@@ -75,10 +75,15 @@ public class OrderBean implements java.io.Serializable {
   }
 
   public void setOrderDate(Date orderDate) {
-    this.orderDate = orderDate;
+    if (orderDate == null)
+      this.orderDate = orderDate;
+    else
+      this.orderDate = new Date(orderDate.getTime());
   }
 
   public Date getOrderDate() {
-    return orderDate;
+    if (orderDate == null)
+      return null;
+    return new Date(orderDate.getTime());
   }
 }

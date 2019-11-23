@@ -31,7 +31,7 @@ public final class Main {
       }
       System.out.println(webPort);
       tomcat.setSilent(false);
-      tomcat.setPort(Integer.valueOf(webPort));
+      tomcat.setPort(Integer.parseInt(webPort));
       tomcat.setBaseDir(WORKING_DIR);
       tomcat.getHost().setAppBase(WORKING_DIR);
       tomcat.getHost().setAutoDeploy(true);

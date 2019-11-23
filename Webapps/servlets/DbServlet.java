@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,15 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private Connection link;
-  private final String url = "jdbc:derby:HomeDB";
+  private static final String URL = "jdbc:derby:HomeDB";
 
   public void init() throws ServletException {
     super.init();
     try {
-      link = DriverManager.getConnection(url, "", "");
+      link = DriverManager.getConnection(URL, "", "");
     } catch (SQLException ex) {
       System.err.println(ex);
-      System.exit(1);
     }
   }
 
@@ -37,13 +37,16 @@ public class DbServlet extends HttpServlet {
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
     String insertion = "INSERT INTO PhoneNums"
-                       + " VALUES('" + surname + "','" + forenames + "','"
-                       + telNum + "')";
-    try (Statement statement = link.createStatement()) {
-      statement.executeUpdate(insertion);
+                       + " VALUES(?,?,?)";
+    try (PreparedStatement statement = link.prepareStatement(insertion)) {
+      statement.setString(1, forenames);
+      statement.setString(2, surname);
+      statement.setString(3, telNum);
+      int rowsInserted = statement.executeUpdate();
+      System.out.printf("%d rows inserted.%n", rowsInserted);
     } catch (SQLException sqlEx) {
       printHtmlInsertError(out);
-      System.exit(1);
+      return;
     }
     try (Statement statement = link.createStatement();
          ResultSet results =
@@ -65,7 +68,7 @@ public class DbServlet extends HttpServlet {
       out.println("</TABLE>");
     } catch (SQLException sqlEx) {
       printHtmlSelectError(out);
-      System.exit(1);
+      return;
     }
     out.println("<BODY>");
     out.println("</HTML>");
@@ -110,7 +113,6 @@ public class DbServlet extends HttpServlet {
     } catch (SQLException ex) {
       System.err.println("Error on closing database!");
       System.err.println(ex);
-      System.exit(1);
     }
   }
 }
