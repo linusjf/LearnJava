@@ -10,6 +10,6 @@ Specification-Title: Command
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 1b061893 November 22 2019
+Implementation-Version: a884d630 November 24 2019
 Implementation-Vendor: 
 

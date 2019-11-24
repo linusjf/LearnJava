@@ -13,4 +13,12 @@ public class Addition implements Expression {
   public int interpret() {
     return leftExpression.interpret() + rightExpression.interpret();
   }
+
+  public Expression getLeftExpression() {
+    return leftExpression;
+  }
+
+  public Expression getRightExpression() {
+    return rightExpression;
+  }
 }

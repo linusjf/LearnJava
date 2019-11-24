@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class FileIOJob implements Job {
   private FileIO fileIO;
 

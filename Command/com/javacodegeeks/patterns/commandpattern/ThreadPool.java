@@ -4,6 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class ThreadPool {
   private final BlockingQueue<Job> jobQueue;
   private final Thread[] jobThreads;

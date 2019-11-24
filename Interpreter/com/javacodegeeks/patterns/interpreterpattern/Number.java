@@ -9,6 +9,10 @@ public class Number implements Expression {
 
   @Override
   public int interpret() {
+    return getNum();
+  }
+
+  public int getNum() {
     return num;
   }
 }

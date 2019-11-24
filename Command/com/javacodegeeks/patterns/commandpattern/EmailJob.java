@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class EmailJob implements Job {
   private Email email;
 

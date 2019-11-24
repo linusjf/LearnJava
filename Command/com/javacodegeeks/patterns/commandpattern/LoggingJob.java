@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LoggingJob implements Job {
   private Logging logging;
 

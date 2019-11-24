@@ -11,7 +11,9 @@ public final class ExpressionUtils {
   }
 
   @SuppressWarnings("checkstyle:returncount")
-  public static Expression getOperator(String s, Expression left, Expression right) {
+  public static Expression getOperator(String s,
+                                       Expression left,
+                                       Expression right) {
     switch (s) {
       case "+":
         return new Addition(left, right);

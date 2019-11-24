@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.interpreterpattern.TestInterpre
 
 Name: common
 Specification-Title: Interpreter
-Specification-Version: 2.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: dcf6f43 October 7 2019
+Implementation-Version: a884d630 November 24 2019
 Implementation-Vendor: 
 

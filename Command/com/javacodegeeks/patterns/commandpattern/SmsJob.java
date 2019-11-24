@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class SmsJob implements Job {
   private Sms sms;
 

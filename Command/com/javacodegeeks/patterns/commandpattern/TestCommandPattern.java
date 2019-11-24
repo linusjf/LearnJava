@@ -9,14 +9,14 @@ public enum TestCommandPattern {
 
   private static void init() {
     ThreadPool pool = new ThreadPool(10);
-    Email email = null;
+    Email email;
     EmailJob emailJob = new EmailJob();
-    Sms sms = null;
+    Sms sms;
     SmsJob smsJob = new SmsJob();
-    FileIO fileIO = null;
+    FileIO fileIO;
 
     FileIOJob fileIOJob = new FileIOJob();
-    Logging logging = null;
+    Logging logging;
     LoggingJob logJob = new LoggingJob();
 
     for (int i = 0; i < 5; i++) {
