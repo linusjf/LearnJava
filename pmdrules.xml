@@ -106,7 +106,7 @@
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions" />
-  <!--<rule ref="category/java/codestyle.xml/LongVariable" /> -->
+  <rule ref="category/java/codestyle.xml/LongVariable" />
   <rule ref="category/java/codestyle.xml/MethodNamingConventions" />
   <rule ref="category/java/codestyle.xml/PackageCase" />
   <rule ref="category/java/codestyle.xml/ShortClassName" />
@@ -145,7 +145,7 @@
                 value="false" />
     </properties>
   </rule>
-  <!--<rule ref="category/java/codestyle.xml/DefaultPackage"/>-->
+  <rule ref="category/java/codestyle.xml/DefaultPackage"/>
   <rule ref="category/java/codestyle.xml/DontImportJavaLang" />
   <rule ref="category/java/codestyle.xml/DuplicateImports" />
   <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract" />
@@ -278,7 +278,7 @@
   <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators" />
   <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues" />
   <rule ref="category/java/errorprone.xml/BadComparison" />
-  <!-- <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" /> -->
+   <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" /> 
   <rule ref="category/java/errorprone.xml/BrokenNullCheck" />
   <rule ref="category/java/errorprone.xml/CallSuperFirst" />
   <rule ref="category/java/errorprone.xml/CallSuperLast" />
@@ -302,12 +302,12 @@
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals" />
   <rule ref="category/java/errorprone.xml/ConstructorCallsOverridableMethod" />
-  <!-- <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" /> -->
-  <!-- <rule ref="category/java/errorprone.xml/DetachedTestCase" /> -->
+  <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" /> 
+   <rule ref="category/java/errorprone.xml/DetachedTestCase" /> 
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly" />
-  <!--  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit"/> -->
+   <rule ref="category/java/errorprone.xml/DoNotCallSystemExit"/> 
   <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable" />
-  <!-- <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" /> -->
+  <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" /> 
   <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally" />
   <rule ref="category/java/errorprone.xml/DontImportSun" />
   <rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices" />
@@ -349,14 +349,14 @@
   <rule ref="category/java/errorprone.xml/SimpleDateFormatNeedsLocale" />
   <rule ref="category/java/errorprone.xml/SingleMethodSingleton" />
   <rule ref="category/java/errorprone.xml/SingletonClassReturningNewInstance" />
-  <!-- <rule ref="category/java/errorprone.xml/StaticEJBFieldShouldBeFinal" /> -->
+   <rule ref="category/java/errorprone.xml/StaticEJBFieldShouldBeFinal" /> 
   <rule ref="category/java/errorprone.xml/StringBufferInstantiationWithChar" />
   <rule ref="category/java/errorprone.xml/SuspiciousEqualsMethodName" />
   <rule ref="category/java/errorprone.xml/SuspiciousHashcodeMethodName" />
   <rule ref="category/java/errorprone.xml/SuspiciousOctalEscape" />
-  <!-- <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases" /> -->
+    <!-- <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases" /> -->
   <rule ref="category/java/errorprone.xml/UnconditionalIfStatement" />
-  <!-- <rule ref="category/java/errorprone.xml/UnnecessaryBooleanAssertion" /> -->
+  <rule ref="category/java/errorprone.xml/UnnecessaryBooleanAssertion" /> 
   <rule ref="category/java/errorprone.xml/UnnecessaryCaseChange" />
   <rule ref="category/java/errorprone.xml/UnnecessaryConversionTemporary" />
   <rule ref="category/java/errorprone.xml/UnusedNullCheckInEquals" />

@@ -9,7 +9,7 @@ import java.util.Random;
 public class RsaAlgorithm {
   private static final int MAX_LENGTH = 1024;
   private final BigInteger n;
-  private final BigInteger e;
+  private BigInteger e;
   private final BigInteger d;
 
   public RsaAlgorithm() {
@@ -21,7 +21,7 @@ public class RsaAlgorithm {
         p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
     e = BigInteger.probablePrime(MAX_LENGTH / 2, random);
     while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0) {
-      e.add(BigInteger.ONE);
+      e = e.add(BigInteger.ONE);
     }
     d = e.modInverse(phi);
   }
