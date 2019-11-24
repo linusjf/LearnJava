@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.strategypattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class TextEditor {
   private final TextFormatter textFormatter;
 

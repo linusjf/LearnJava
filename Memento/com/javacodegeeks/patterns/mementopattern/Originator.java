@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.mementopattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Originator {
   CareTaker careTaker;
   private double xCoord;

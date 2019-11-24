@@ -296,7 +296,7 @@
     <ivy:retrieve pathid="error_prone_core.main.path"
                   conf="error_prone_core.main" />
     <ivy:retrieve pathid="error_prone_core.lib.path"
-      conf="error_prone_core.lib" />
+                  conf="error_prone_core.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -352,9 +352,9 @@
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
     <echo file="${spotbugs.classpath.file}"
-      message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}" />
+          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}" />
     <echo file="${spotbugs-plugin.classpath.file}"
-      message="${toString:fb-contrib.main.path};${toString:findsecbugs-plugin.main.path}"/>
+          message="${toString:fb-contrib.main.path};${toString:findsecbugs-plugin.main.path}" />
     <echo file="${error_prone.classpath.file}"
           message="${toString:error_prone_core.lib.path}:${toString:error_prone_core.main.path}" />
     <antcall target="uniquify"></antcall>

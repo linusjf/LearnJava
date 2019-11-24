@@ -220,8 +220,8 @@
               excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
-        <auxClasspath location="${tomcat.cp}" />
-        <auxClasspath location="${jetty.cp}" />
+      <auxClasspath location="${tomcat.cp}" />
+      <auxClasspath location="${jetty.cp}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>

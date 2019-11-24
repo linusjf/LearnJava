@@ -2,6 +2,7 @@ package com.javacodegeeks.patterns.templatepattern;
 
 import java.util.Date;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public abstract class ConnectionTemplate {
   private boolean isLoggingEnabled;
 

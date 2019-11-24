@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.mementopattern;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Memento {
   private final double xCoord;
   private final double yCoord;

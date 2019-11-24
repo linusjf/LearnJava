@@ -21,8 +21,7 @@ public final class AccessControlProvider {
 
   public static AccessControl getAccessControlObject(String controlLevel)
       throws CloneNotSupportedException {
-    AccessControl ac = null;
-    ac = map.get(controlLevel);
+    AccessControl ac = map.get(controlLevel);
     return ac == null ? null : ac.clone();
   }
 }

@@ -497,26 +497,26 @@
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
                 rev="4.0.0-beta4"
-      conf="spotbugs-ant.main-&gt;master;" />
-      <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
-    <dependency org="org.slf4j" 
-      name="slf4j-nop" 
-      rev="2.0.0-alpha1"
-      conf="slf4j-nop.main-&gt;master;slf4j-nop.lib->compile;" />
-      <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
-    <dependency org="com.h3xstream.findsecbugs" 
-      name="findsecbugs-plugin" 
-      rev="1.10.1"
-      conf="findsecbugs-plugin.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/com.mebigfatguy.fb-contrib/fb-contrib -->
-    <dependency org="com.mebigfatguy.fb-contrib" 
-      name="fb-contrib" 
-      rev="7.4.7"
-      conf="fb-contrib.main-&gt;master"/>
-      <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
-    <dependency org="com.google.errorprone" 
-      name="error_prone_core" 
-      rev="2.3.3"
-      conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;"/>
+                conf="spotbugs-ant.main-&gt;master;" />
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+    <dependency org="org.slf4j"
+                name="slf4j-nop"
+                rev="2.0.0-alpha1"
+                conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
+    <dependency org="com.h3xstream.findsecbugs"
+                name="findsecbugs-plugin"
+                rev="1.10.1"
+                conf="findsecbugs-plugin.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/com.mebigfatguy.fb-contrib/fb-contrib -->
+    <dependency org="com.mebigfatguy.fb-contrib"
+                name="fb-contrib"
+                rev="7.4.7"
+                conf="fb-contrib.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
+    <dependency org="com.google.errorprone"
+                name="error_prone_core"
+                rev="2.3.3"
+                conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
   </dependencies>
 </ivy-module>
