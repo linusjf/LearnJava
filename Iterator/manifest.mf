@@ -9,6 +9,6 @@ Specification-Title: Iterator
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 26cb098f November 13 2019
+Implementation-Version: bed76485 November 25 2019
 Implementation-Vendor: 
 

@@ -5,6 +5,7 @@ import java.util.List;
 import refactoringguru.iterator.example.profile.Profile;
 import refactoringguru.iterator.example.socialnetworks.Facebook;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class FacebookIterator implements ProfileIterator {
   private final Facebook facebook;
   private final String type;
@@ -21,8 +22,9 @@ public class FacebookIterator implements ProfileIterator {
 
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> friends = facebook.requestProfileFriendsFromFacebook(this.email, this.type);
-      for (String profile : friends) {
+      List<String> friends =
+          facebook.requestProfileFriendsFromFacebook(this.email, this.type);
+      for (String profile: friends) {
         this.emails.add(profile);
         this.profiles.add(null);
       }
@@ -41,9 +43,9 @@ public class FacebookIterator implements ProfileIterator {
       return null;
     }
 
-    String friendEmail = emails.get(currentPosition);
     Profile friendProfile = profiles.get(currentPosition);
     if (friendProfile == null) {
+      String friendEmail = emails.get(currentPosition);
       friendProfile = facebook.requestProfileFromFacebook(friendEmail);
       profiles.set(currentPosition, friendProfile);
     }

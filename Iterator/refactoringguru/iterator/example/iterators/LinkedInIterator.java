@@ -5,6 +5,7 @@ import java.util.List;
 import refactoringguru.iterator.example.profile.Profile;
 import refactoringguru.iterator.example.socialnetworks.LinkedIn;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LinkedInIterator implements ProfileIterator {
   private final LinkedIn linkedIn;
   private final String type;
@@ -21,8 +22,9 @@ public class LinkedInIterator implements ProfileIterator {
 
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> profiles = linkedIn.requestRelatedContactsFromLinkedInAPI(this.email, this.type);
-      for (String profile : profiles) {
+      List<String> profiles =
+          linkedIn.requestRelatedContactsFromLinkedInAPI(this.email, this.type);
+      for (String profile: profiles) {
         this.emails.add(profile);
         this.contacts.add(null);
       }
@@ -41,9 +43,9 @@ public class LinkedInIterator implements ProfileIterator {
       return null;
     }
 
-    String friendEmail = emails.get(currentPosition);
     Profile friendContact = contacts.get(currentPosition);
     if (friendContact == null) {
+      String friendEmail = emails.get(currentPosition);
       friendContact = linkedIn.requestContactInfoFromLinkedInAPI(friendEmail);
       contacts.set(currentPosition, friendContact);
     }

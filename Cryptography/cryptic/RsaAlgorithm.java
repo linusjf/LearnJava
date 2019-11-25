@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.Random;
 
+@SuppressWarnings({"PMD.BeanMembersShouldSerialize", "PMD.ImmutableField"})
 public class RsaAlgorithm {
   private static final int MAX_LENGTH = 1024;
   private final BigInteger n;

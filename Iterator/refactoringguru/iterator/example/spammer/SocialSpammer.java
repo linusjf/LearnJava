@@ -4,6 +4,7 @@ import refactoringguru.iterator.example.iterators.ProfileIterator;
 import refactoringguru.iterator.example.profile.Profile;
 import refactoringguru.iterator.example.socialnetworks.SocialNetwork;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class SocialSpammer {
   SocialNetwork network;
   ProfileIterator iterator;
@@ -31,6 +32,7 @@ public class SocialSpammer {
   }
 
   public void sendMessage(String email, String message) {
-    System.out.println("Sent message to: '" + email + "'. Message body: '" + message + "'");
+    System.out.println("Sent message to: '" + email + "'. Message body: '"
+                       + message + "'");
   }
 }

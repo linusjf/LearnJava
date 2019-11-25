@@ -7,6 +7,7 @@ import refactoringguru.iterator.example.iterators.LinkedInIterator;
 import refactoringguru.iterator.example.iterators.ProfileIterator;
 import refactoringguru.iterator.example.profile.Profile;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LinkedIn implements SocialNetwork {
   private final List<Profile> contacts;
 
@@ -20,24 +21,22 @@ public class LinkedIn implements SocialNetwork {
     // Instead, we emulates long network connection, which you would expect
     // in the real life...
     simulateNetworkLatency();
-    System.out.println("LinkedIn: Loading profile '" + profileEmail + "' over the network...");
+    System.out.println("LinkedIn: Loading profile '" + profileEmail
+                       + "' over the network...");
 
     // ...and return test data.
     return findContact(profileEmail);
   }
 
   public List<String> requestRelatedContactsFromLinkedInAPI(
-      String profileEmail, String contactType) {
+      String profileEmail,
+      String contactType) {
     // Here would be a POST request to one of the LinkedIn API endpoints.
     // Instead, we emulates long network connection, which you would expect
     // in the real life.
     simulateNetworkLatency();
-    System.out.println(
-        "LinkedIn: Loading '"
-            + contactType
-            + "' list of '"
-            + profileEmail
-            + "' over the network...");
+    System.out.println("LinkedIn: Loading '" + contactType + "' list of '"
+                       + profileEmail + "' over the network...");
 
     // ...and return test data.
     Optional<Profile> profile = Optional.ofNullable(findContact(profileEmail));
@@ -46,7 +45,7 @@ public class LinkedIn implements SocialNetwork {
   }
 
   private Profile findContact(String profileEmail) {
-    for (Profile profile : contacts) {
+    for (Profile profile: contacts) {
       if (profile.getEmail().equals(profileEmail)) {
         return profile;
       }
