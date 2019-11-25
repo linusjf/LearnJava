@@ -90,8 +90,9 @@ public enum ConcurrentLinkedDequeDemo {
 
     @Override
     public void run() {
+      String str = Thread.currentThread().getName() + " : %d";
       for (int i = 0; i < 10_000; i++) {
-        list.add(Thread.currentThread().getName() + ": Element " + i);
+        list.add(String.format(str, i));
       }
     }
   }
