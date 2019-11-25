@@ -16,7 +16,7 @@ public enum FootShootWithSafetyCatch {
       System.err.printf("Thread %s throws following exception: %s%n", t, e);
       System.out.println("Printing names...");
       System.out.println(names.stream().collect(joining("+")));
-      System.exit(0);
+      System.exit(1);
     });
 
     names = Collections.checkedList(new ArrayList<String>(), String.class);

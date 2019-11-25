@@ -12,12 +12,11 @@ public enum DelayedQueueDemo {
     try {
       DelayQueue<Event> queue = new DelayQueue<>();
       Thread[] threads = new Thread[5];
-      for (int i = 0; i < threads.length; i++) {
+      for (int i = 0; i < threads.length; ++i) {
         Task task = new Task(i + 1, queue);
         threads[i] = new Thread(task);
+        threads[i].start();
       }
-      for (Thread thread: threads)
-        thread.start();
 
       for (Thread thread: threads)
         thread.join();
@@ -26,6 +25,7 @@ public enum DelayedQueueDemo {
     }
   }
 
+  @SuppressWarnings("PMD.BeanFieldsShouldSerialize")
   static class Event implements Delayed {
     private final Date startDate;
 
@@ -52,7 +52,7 @@ public enum DelayedQueueDemo {
     }
   }
 
-  @SuppressWarnings("PMD.ShortClassName")
+  @SuppressWarnings({"PMD.ShortClassName", "PMD.BeanFieldsShouldSerialize"})
   static class Task implements Runnable {
     private final int id;
     private final DelayQueue<Event> queue;

@@ -36,6 +36,7 @@ public enum AtomicArrayDemo {
     System.out.printf("No. of non-zero elements: %d\n", counter);
   }
 
+  @SuppressWarnings("PMD.BeanFieldsShouldSerialize")
   static class Incrementer implements Runnable {
     private final AtomicIntegerArray vector;
 
@@ -50,6 +51,7 @@ public enum AtomicArrayDemo {
     }
   }
 
+  @SuppressWarnings("PMD.BeanFieldsShouldSerialize")
   static class Decrementer implements Runnable {
     private final AtomicIntegerArray vector;
 

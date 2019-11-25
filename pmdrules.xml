@@ -283,7 +283,7 @@
   <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators" />
   <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues" />
   <rule ref="category/java/errorprone.xml/BadComparison" />
-  <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" />
+    <!--  <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" /> -->
   <rule ref="category/java/errorprone.xml/BrokenNullCheck" />
   <rule ref="category/java/errorprone.xml/CallSuperFirst" />
   <rule ref="category/java/errorprone.xml/CallSuperLast" />
@@ -310,7 +310,7 @@
   <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" />
   <rule ref="category/java/errorprone.xml/DetachedTestCase" />
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly" />
-  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" />
+    <!--  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" /> -->
   <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable" />
   <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" />
   <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally" />

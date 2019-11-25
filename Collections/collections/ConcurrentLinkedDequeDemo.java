@@ -43,10 +43,10 @@ public enum ConcurrentLinkedDequeDemo {
   }
 
   private static void alternateMain() {
-    Random random = new Random();
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];
     Thread[] threads2 = new Thread[100];
+    Random random = new Random();
     for (int i = 0; i < threads.length; i++) {
       AddTask task = new AddTask(list);
       threads[i] = new Thread(task);
@@ -90,9 +90,8 @@ public enum ConcurrentLinkedDequeDemo {
 
     @Override
     public void run() {
-      String name = Thread.currentThread().getName();
       for (int i = 0; i < 10_000; i++) {
-        list.add(name + ": Element " + i);
+        list.add(Thread.currentThread().getName() + ": Element " + i);
       }
     }
   }

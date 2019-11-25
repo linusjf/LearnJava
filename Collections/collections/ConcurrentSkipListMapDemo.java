@@ -8,18 +8,17 @@ public enum ConcurrentSkipListMapDemo {
   ;
 
   public static void main(String[] args) {
-    ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
     Thread[] threads = new Thread[25];
-    int counter = 0;
+    ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
     for (char i = 'A'; i < 'Z'; i++) {
       Task task = new Task(map, String.valueOf(i));
-      threads[counter] = new Thread(task);
-      threads[counter].start();
-      counter++;
+      int index = i - 'A';
+      threads[index] = new Thread(task);
+      threads[index].start();
     }
-    for (int i = 0; i < 25; i++) {
+    for (Thread t: threads) {
       try {
-        threads[i].join();
+        t.join();
       } catch (InterruptedException e) {
         System.err.println(e);
       }

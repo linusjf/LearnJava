@@ -39,6 +39,8 @@ public enum Listing {
     String[] array = {FOO, BAR};
     list = Arrays.asList(array);
     array[0] = BAZ;
+    assert array[0] == list.get(0);
+
     assert BAZ == list.get(0);
 
     list = Stream.of(FOO, BAR).collect(Collectors.toList());
