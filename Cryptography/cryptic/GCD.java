@@ -22,19 +22,13 @@ public enum GCD {
   }
 
   public static long[] gcdKnuth(long x, long y) {
-    final long[] u = new long[3];
-    final long[] v = new long[3];
+    final long[] u = {1, 0, x};
+    final long[] v = {0, 1, y};
     final long[] t = new long[3];
 
     // at all stages, if w is any of the 3 vectors u, v or t, then
     // x*w[0] + y*w[1] = w[2] (this is verified by "check" below)
     // vector initializations: u = {1, 0, u}; v = {0, 1, v};
-    u[0] = 1;
-    u[1] = 0;
-    u[2] = x;
-    v[0] = 0;
-    v[1] = 1;
-    v[2] = y;
     while (v[2] != 0) {
       long q = u[2] / v[2];
 
