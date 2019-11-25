@@ -3,9 +3,9 @@ package annotations;
 public enum Interfacing {
   ;
 
+  @SuppressWarnings({"unused","PMD.DataflowAnomalyAnalysis"})
   public static void main(String... args) {
     // implementing its methods
-    @SuppressWarnings("unused")
     MyCustomInterface myFuncInterface = new MyCustomInterface() {
       @Override
       public int doSomething(int param) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Typing {
 
-  @SuppressWarnings("unused")
+  @SuppressWarnings({"unused","PMD.DataflowAnomalyAnalysis"})
   public static void main(String... args) {
     // type def
     @TypeAnnotated

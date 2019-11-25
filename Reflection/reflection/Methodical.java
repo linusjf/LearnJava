@@ -11,7 +11,6 @@ public final class Methodical {
   }
 
   public static void main(String... args) {
-    final String obj = "String object";
     Class<String> stringclass = String.class;
     Method[] methods = stringclass.getMethods();
 
@@ -53,7 +52,8 @@ public final class Methodical {
       if (Modifier.isStatic(modifiers))
         System.out.println("is accessible: " + method.canAccess(null));
       else
-        System.out.println("is accessible: " + method.canAccess(obj));
+        System.out.println("is accessible: "
+                           + method.canAccess("String object"));
       System.out.println("is varArgs: " + method.isVarArgs());
     }
   }

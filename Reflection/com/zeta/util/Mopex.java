@@ -44,10 +44,11 @@ public final class Mopex {
         if (!Modifier.isStatic(method.getModifiers()))
           instanceMethods.add(method);
     }
-    Method[] ims = new Method[instanceMethods.size()];
+    /*    Method[] ims = new Method[instanceMethods.size()];
     for (int j = 0; j < instanceMethods.size(); j++)
-      ims[j] = instanceMethods.get(j);
-    return ims;
+      ims[j] = instanceMethods.get(j);*/
+
+    return instanceMethods.toArray(new Method[0]);
   }
 
   /**

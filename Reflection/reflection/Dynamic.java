@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class Dynamic {
   private static final String HELLO = "Hello";
 
@@ -72,6 +73,7 @@ public final class Dynamic {
       }
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
     public Object invoke(Object proxy, Method method, Object[] args)
         throws Throwable {

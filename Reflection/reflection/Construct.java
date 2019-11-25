@@ -14,10 +14,12 @@ public final class Construct {
   public static void main(String... args) {
     // get all visible constructors
     Constructor<?>[] constructors = String.class.getConstructors();
-
+    System.out.println("Number of constructors: " + constructors.length);
     // all constructors
     Constructor<?>[] declaredConstructors =
         String.class.getDeclaredConstructors();
+    System.out.println("Number of declared constructors: "
+                       + declaredConstructors.length);
     System.out.println("Declared constructors...");
     for (Constructor<?> constructor: declaredConstructors) {
       int numberParams = constructor.getParameterCount();

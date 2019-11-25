@@ -57,7 +57,8 @@
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}"
-           classpath="${compilerclasspath}">
+           classpath="${compilerclasspath}"
+           fork="true">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>

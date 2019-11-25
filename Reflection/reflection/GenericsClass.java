@@ -11,6 +11,7 @@ import java.util.Map;
  *
  * @author dgutierrez-diez
  */
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class GenericsClass {
   List<String> internalList;
   Map<String, Object> internalMap;

@@ -204,8 +204,8 @@
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
       <fileset dir="${basedir}">
-        <include name="**/*.java" />
         <exclude name="hello/*.java" />
+        <include name="**/*.java" />
       </fileset>
     </pmd>
   </target>

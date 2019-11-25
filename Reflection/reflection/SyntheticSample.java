@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Method;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class SyntheticSample {
 
   private SyntheticSample() {

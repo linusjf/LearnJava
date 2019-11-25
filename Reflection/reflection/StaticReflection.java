@@ -6,6 +6,7 @@ public final class StaticReflection {
     throw new IllegalStateException("Private constructor.");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     try {
       // 1 access static class

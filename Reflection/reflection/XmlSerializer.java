@@ -53,7 +53,6 @@ public enum XmlSerializer {
     Element objElt = new Element("object");
     objElt.setAttribute("class", sourceclass.getName());
     objElt.setAttribute("id", id);
-    target.getRootElement().addContent(objElt);
     if (sourceclass.isArray()) {
       Class<?> componentType = sourceclass.getComponentType();
 
@@ -82,6 +81,7 @@ public enum XmlSerializer {
         objElt.addContent(fldElt);
       }
     }
+    target.getRootElement().addContent(objElt);
     return target;
   }
   // clang-format on
