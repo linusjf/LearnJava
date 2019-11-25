@@ -13,7 +13,6 @@ public class Weight extends HttpServlet {
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    HttpSession cart = request.getSession();
 
     // Note the necessity for a typecast from Object
     // into String .
@@ -33,23 +32,23 @@ public class Weight extends HttpServlet {
     if ("Checkout".equals(choice))
       response.sendRedirect("Checkout");
     if ("Add".equals(choice)) {
-      doAdd(cart, request);
+      doAdd(request.getSession(), request);
       response.sendRedirect("ShoppingCart.html");
     }
     if ("Remove".equals(choice)) {
       // Not really possible for it to be
       // anything else, but play safe!
-      doRemove(cart);
+      doRemove(request.getSession());
       response.sendRedirect("ShoppingCart.html");
     }
   }
 
   private void doAdd(HttpSession cart, HttpServletRequest request) {
-    String currentProduct = (String)cart.getAttribute("currentProd");
     String qty = request.getParameter("Qty");
 
     // Value of weight entered by user retrieved here.
     if (qty != null) {
+      String currentProduct = (String)cart.getAttribute("currentProd");
       // Check that user actually entered a value!
       if ("Apples".equals(currentProduct))
         cart.setAttribute("Apples", qty);
