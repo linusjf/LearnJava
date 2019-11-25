@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 // @WebServlet("/DbServlet")
 public class DbServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private Connection link;
+  private transient Connection link;
   private static final String URL = "jdbc:derby:HomeDB";
 
   public void init() throws ServletException {
@@ -36,9 +36,8 @@ public class DbServlet extends HttpServlet {
     String forenames = request.getParameter("Forenames");
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
-    String insertion = "INSERT INTO PhoneNums"
-                       + " VALUES(?,?,?)";
-    try (PreparedStatement statement = link.prepareStatement(insertion)) {
+    try (PreparedStatement statement =
+             link.prepareStatement("INSERT INTO PhoneNums VALUES(?,?,?)")) {
       statement.setString(1, forenames);
       statement.setString(2, surname);
       statement.setString(3, telNum);

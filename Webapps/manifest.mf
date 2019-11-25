@@ -9,6 +9,6 @@ Specification-Title: Webapps
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 67a21a7f November 23 2019
+Implementation-Version: 46c51a9c November 25 2019
 Implementation-Vendor: 
 
