@@ -31,6 +31,7 @@ public enum BeerBlast {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   static void drainInBackground(final InputStream is) {
     new Thread(() -> {
       try {
@@ -42,7 +43,7 @@ public enum BeerBlast {
         System.out.println(result.toString());
       } catch (IOException e) {
         // return on IOException
-        return;
+        System.err.println(e.getMessage());
       }
     }).start();
   }

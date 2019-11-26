@@ -9,7 +9,7 @@ public enum Clock {
     int minutes = 0;
     for (int ms = 0; ms < 60 * 60 * 1000; ms++)
       if (ms % 60 * 1000 == 0)
-        minutes++;
+        minutes += 1;
     System.out.println(minutes);
     altMain(args);
   }
