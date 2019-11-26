@@ -5,6 +5,7 @@ public enum Mod {
   ;
   private static final int MODULUS = 3;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     int[] histogram = new int[MODULUS];
 
@@ -27,6 +28,7 @@ public enum Mod {
     return result < 0 ? result + modulus : result;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void altMain(String... args) {
     int[] histogram = new int[MODULUS];
 

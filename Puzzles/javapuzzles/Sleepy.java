@@ -20,6 +20,7 @@ public final class Sleepy {
     System.out.println("Into constructor with name: " + name);
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     try {
       Sleepy sy = new Sleepy("sleepy");

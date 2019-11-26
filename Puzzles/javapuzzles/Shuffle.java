@@ -10,6 +10,7 @@ public enum Shuffle {
   private static Random rnd = new Random();
   private static Map<Integer, Integer> map = new HashMap<>();
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Integer[] nums = new Integer[100];
     for (int i = 0; i < 100; i++)

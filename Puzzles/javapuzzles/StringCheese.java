@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 public enum StringCheese {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     try {
       System.out.println("Default charset: " + Charset.defaultCharset());

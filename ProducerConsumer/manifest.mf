@@ -9,6 +9,6 @@ Specification-Title: ProducerConsumer
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 626264b9 November 13 2019
+Implementation-Version: 6aec1fdc November 26 2019
 Implementation-Vendor: 
 
