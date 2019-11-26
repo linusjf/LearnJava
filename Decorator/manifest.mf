@@ -6,9 +6,9 @@ Main-Class: refactoringguru.decorator.example.Demo
 
 Name: common
 Specification-Title: Decorator
-Specification-Version: 1.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 2d02ff6 July 4 2019
+Implementation-Version: cd6f95cb November 26 2019
 Implementation-Vendor: 
 

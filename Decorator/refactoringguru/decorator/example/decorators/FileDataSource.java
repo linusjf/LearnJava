@@ -14,25 +14,22 @@ public class FileDataSource implements DataSource {
     this.name = name;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   @Override
-  public void writeData(String data) {
+  public void writeData(String data) throws IOException {
     File file = new File(name);
     try (OutputStream fos = Files.newOutputStream(Paths.get(file.getPath()))) {
       fos.write(data.getBytes(), 0, data.length());
-    } catch (IOException ex) {
-      System.out.println(ex.getMessage());
     }
   }
 
   @Override
-  public String readData() {
-    char[] buffer = null;
+  public String readData() throws IOException {
+    char[] buffer;
     File file = new File(name);
     try (Reader reader = Files.newBufferedReader(Paths.get(file.getPath()))) {
-      buffer = new char[(int) file.length()];
+      buffer = new char[(int)file.length()];
       reader.read(buffer);
-    } catch (IOException ex) {
-      System.out.println(ex.getMessage());
     }
     return new String(buffer);
   }

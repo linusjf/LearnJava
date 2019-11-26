@@ -9,6 +9,6 @@ Specification-Title: Picocli
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: c927e16d November 16 2019
+Implementation-Version: cd6f95cb November 26 2019
 Implementation-Vendor: 
 

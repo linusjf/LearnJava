@@ -1,5 +1,7 @@
 package refactoringguru.decorator.example.decorators;
 
+import java.io.IOException;
+
 public class DataSourceDecorator implements DataSource {
   private final DataSource wrappee;
 
@@ -8,12 +10,12 @@ public class DataSourceDecorator implements DataSource {
   }
 
   @Override
-  public void writeData(String data) {
+  public void writeData(String data) throws IOException {
     wrappee.writeData(data);
   }
 
   @Override
-  public String readData() {
+  public String readData() throws IOException {
     return wrappee.readData();
   }
 }

@@ -1,7 +1,9 @@
 package refactoringguru.decorator.example.decorators;
 
-public interface DataSource {
-  void writeData(String data);
+import java.io.IOException;
 
-  String readData();
+public interface DataSource {
+  void writeData(String data) throws IOException;
+
+  String readData() throws IOException;
 }
