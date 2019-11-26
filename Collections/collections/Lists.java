@@ -22,6 +22,7 @@ public enum Lists {
 
   public static void main(String... args) {
     List<Integer> ints = Lists.toList(1, 2, 3);
+    System.out.println(ints);
     List<String> words = Lists.toList("hello", "world");
     System.out.println(words);
     ints = new ArrayList<>();

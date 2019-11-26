@@ -8,25 +8,28 @@ public class TaskLocalRandom implements Runnable {
     ThreadLocalRandom.current();
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   @Override
   public void run() {
-    String name = Thread.currentThread().getName();
-    for (int i = 0; i < 10; i++) {
-      System.out.printf("%s with priority %d: %d \n",
-                        name,
+    StringBuilder sb = new StringBuilder(40);
+    sb.append(Thread.currentThread().getName())
+        .append(" with priority %d: %d \n");
+    String str = sb.toString();
+    for (int i = 0; i < 10; i++)
+      System.out.printf(str,
                         Thread.currentThread().getPriority(),
                         ThreadLocalRandom.current().nextInt(10));
-    }
   }
 
   public static void main(String[] args) {
-    Thread[] threads = new Thread[3];
-    for (int i = 0; i < 3; i++) {
-      TaskLocalRandom task = new TaskLocalRandom();
-      threads[i] = new Thread(task);
-      threads[i].setPriority(ThreadLocalRandom.current().nextInt(10) + 1);
+    Thread[] threads = {
+        new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom()),
+    };
+    for (Thread t: threads) {
+      t.setPriority(ThreadLocalRandom.current().nextInt(10) + 1);
+      t.start();
     }
-    for (Thread thread: threads)
-      thread.start();
   }
 }
