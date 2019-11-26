@@ -18,7 +18,7 @@ public final class ScannerHasNextPatternDemo {
 
   public static void main(String[] args) {
     // Initialize Scanner object
-    Scanner scan = new Scanner("Vince1    Gandhi    Albert   ");
+    Scanner scan = new Scanner("Vince1    Gandhi    Albert   1234567");
 
     // declare the delimiter to be used by Scanner object
     scan.useDelimiter("\\p{javaWhitespace}+");
@@ -26,16 +26,22 @@ public final class ScannerHasNextPatternDemo {
     /*Initialize the String pattern which
     signifies that the String token contains
     characters of the alphabet only*/
-    Pattern pattern = Pattern.compile("[A-Za-z]*");
 
-    while (scan.hasNext()) {
-      // check if the token consists of declared pattern
-      if (scan.hasNext(pattern)) {
-        System.out.println(scan.next());
-      } else scan.next();
-    }
+    Pattern pattern = Pattern.compile("([A-Za-z]*)");
+
+    printNames(scan, pattern);
 
     // closing the scanner stream
     scan.close();
+  }
+
+  public static void printNames(Scanner scan, Pattern pattern) {
+    while (scan.hasNext()) {
+      // check if the token consists of declared pattern
+      if (scan.hasNext(pattern))
+        System.out.println(scan.next());
+      else
+        scan.next();
+    }
   }
 }

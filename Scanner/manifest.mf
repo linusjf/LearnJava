@@ -6,9 +6,9 @@ Main-Class: scan.ScannerDemo1
 
 Name: common
 Specification-Title: Scanner
-Specification-Version: 1.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 1b62f2b July 1 2019
+Implementation-Version: 1fb97d64 November 26 2019
 Implementation-Vendor: 
 
