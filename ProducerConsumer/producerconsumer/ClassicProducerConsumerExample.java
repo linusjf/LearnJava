@@ -61,6 +61,7 @@ public enum ClassicProducerConsumerExample {
       this.size = size;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     public void produce() throws InterruptedException {
       int value = 0;
       while (true) {
