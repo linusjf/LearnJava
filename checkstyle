@@ -24,6 +24,7 @@ readExclusions()
 declare -r optionsFile=".csoptions"
 declare -a options
 declare -r exclusionsFile=".exclusions"
+declare -a exclusions
 rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
