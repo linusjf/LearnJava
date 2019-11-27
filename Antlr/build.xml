@@ -180,8 +180,8 @@
                 failOnViolation="false"
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
-               includes="**/*.java"
-               excludes="hello/*.java" />
+               excludes="hello/*.java"
+        includes="**/*.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />

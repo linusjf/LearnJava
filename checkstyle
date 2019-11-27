@@ -14,8 +14,16 @@ readOptions()
       echo "Unable to read $proj/$optionsFile";}
 }
 
+readExclusions()
+{
+  [ -e "$proj"/"$exclusionsFile" ] && \
+      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
+      echo "Unable to read $proj/$exclusionsFile";}
+}
+
 declare -r optionsFile=".csoptions"
 declare -a options
+declare -r exclusionsFile=".exclusions"
 rules_file="csrules.xml"
 properties_file="checkstyle.properties"
 output_file="cs.errors"
@@ -67,9 +75,12 @@ fi
    # fi
 #fi
 readOptions
+readExclusions
+set -o noglob
 (cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
+${exclusions[@]} \
   ! -path "docs/**" ! -path "dist/**") && \
 java -cp @../"$classpathFile" \
 "$mainClass" \
@@ -78,4 +89,5 @@ ${options[@]} \
 -p ../"$properties_file" \
 -o "$output_file" \
 "${args[@]}")
+set +o noglob
 exit $?
