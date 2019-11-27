@@ -5,11 +5,10 @@ import java.util.List;
 
 public class Typing {
 
-  @SuppressWarnings({"unused", "PMD.DataflowAnomalyAnalysis"})
+  @SuppressWarnings({ "unused", "PMD.DataflowAnomalyAnalysis" })
   public static void main(String... args) {
     // type def
-    @TypeAnnotated
-    String cannotBeEmpty;
+    @TypeAnnotated String cannotBeEmpty;
 
     // type
     List<@TypeAnnotated String> myList = new ArrayList<>();
