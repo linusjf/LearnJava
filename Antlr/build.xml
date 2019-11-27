@@ -181,7 +181,7 @@
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
                excludes="hello/*.java"
-        includes="**/*.java" />
+               includes="**/*.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />

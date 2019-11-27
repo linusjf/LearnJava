@@ -6,6 +6,7 @@ import java.util.Queue;
 public enum ClassicProducerConsumerExample {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) throws InterruptedException {
     final Buffer buffer = new Buffer(2);
 

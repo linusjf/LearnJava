@@ -3,7 +3,7 @@ package producerconsumer;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@SuppressWarnings("PMD.AvoidUsingVolatile")
+@SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.AvoidUsingVolatile"})
 public enum ProducerConsumerExample {
   ;
   static volatile boolean shutdown;

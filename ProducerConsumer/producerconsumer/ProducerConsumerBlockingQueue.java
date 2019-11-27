@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public enum ProducerConsumerBlockingQueue {
   ;
 
-  @SuppressWarnings("PMD.AvoidThreadGroup")
+  @SuppressWarnings({"PMD.AvoidThreadGroup", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
     try {
       BlockingQueue<Integer> blockingQueue = new LinkedBlockingDeque<>(2);
