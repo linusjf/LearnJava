@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public enum ProducerConsumerExecutorService {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     BlockingQueue<Integer> blockingQueue = new LinkedBlockingDeque<>(2);
     final ExecutorService executor = Executors.newFixedThreadPool(3);
