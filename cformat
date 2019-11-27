@@ -5,13 +5,34 @@ usage()
   echo "dir - Project directory"
   exit 1
 }
+
+readOptions()
+{
+  [ -e "$proj"/"$optionsFile" ] && \
+      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
+      echo "Unable to read $proj/$optionsFile";}
+}
+
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
   usage
 fi
 
-readarray -t args < <(find $1 -type f -name "*.java")
-clang-format -i -assume-filename=.clang-format \
-  -style=file -sort-includes \
-  "${args[@]}"
-exit $?
+declare -r optionsFile=".formatoptions"
+declare -a options
+declare -i res=0
+
+proj=$1
+
+readOptions
+set +o noglob
+printf -v findCmd '%q ' find $1 -type f -name '*.java' ${options[@]}
+readarray -t args < <(eval $findCmd)
+if [ ${#args[@]} -ne 0 ]; then
+  clang-format -i -assume-filename=.clang-format \
+    -style=file -sort-includes \
+    "${args[@]}"
+  res="$?"
+fi
+set -o noglob
+exit "$res"

@@ -8,11 +8,11 @@ public class AnnotatedClass {
     return "nothing niente";
   }
 
-  @CustomAnnotationMethod(
-      author = "friend of mine",
-      date = "2014-06-05",
-      description = "annotated method")
-  public String annotatedMethodFromAFriend() {
+  @CustomAnnotationMethod(author = "friend of mine",
+                          date = "2014-06-05",
+                          description = "annotated method")
+  public String
+  annotatedMethodFromAFriend() {
     return "nothing niente";
   }
 }

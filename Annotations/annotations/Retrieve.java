@@ -11,7 +11,8 @@ public enum Retrieve {
 
     // Retrieve all annotations from the class
     Annotation[] annotations = object.getAnnotations();
-    for (Annotation annotation : annotations) System.out.println(annotation);
+    for (Annotation annotation: annotations)
+      System.out.println(annotation);
 
     // Checks if an annotation is present
     if (object.isAnnotationPresent(CustomAnnotationClass.class)) {
@@ -21,9 +22,10 @@ public enum Retrieve {
     }
 
     // the same for all methods of the class
-    for (Method method : object.getDeclaredMethods()) {
+    for (Method method: object.getDeclaredMethods()) {
       if (method.isAnnotationPresent(CustomAnnotationMethod.class)) {
-        Annotation annotation = method.getAnnotation(CustomAnnotationMethod.class);
+        Annotation annotation =
+            method.getAnnotation(CustomAnnotationMethod.class);
         System.out.println(annotation);
       }
     }
