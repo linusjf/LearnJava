@@ -14,19 +14,13 @@ public class ParallelAdder {
   public Integer parallelSum() {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     List<Future<Integer>> list = new ArrayList<>();
-    int count = 1;
-    int prev = 0;
     for (int i = 0; i < NUM_COUNT; i++) {
-      if (count % 2 == 0) {
+      if ((i + 1) % 2 == 0) {
         // grouping
-        System.out.println("Prev :" + prev + " current: " + i);
-        Future<Integer> future = submitNumbers(prev, i, executor);
+        System.out.println("Prev :" + (i - 1) + " current: " + i);
+        Future<Integer> future = submitNumbers(i - 1, i, executor);
         list.add(future);
-        count = 1;
-        continue;
       }
-      prev = i;
-      count++;
     }
     int totsum = 0;
     for (Future<Integer> fut: list) {

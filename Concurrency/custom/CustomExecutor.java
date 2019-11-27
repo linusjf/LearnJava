@@ -13,6 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomExecutor extends ThreadPoolExecutor {
+  private static final int FIVE = 5;
   private final ConcurrentHashMap<String, Date> startTimes;
 
   public CustomExecutor(int corePoolSize,
@@ -27,32 +28,18 @@ public class CustomExecutor extends ThreadPoolExecutor {
   public static void main(String[] args) {
     CustomExecutor myExecutor = new CustomExecutor(
         2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
-    List<Future<String>> results = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-      SleepTwoSecondsTask task = new SleepTwoSecondsTask();
-      Future<String> result = myExecutor.submit(task);
-      results.add(result);
-    }
-    for (int i = 0; i < 5; i++) {
-      try {
-        String result = results.get(i).get();
-        System.out.printf("Main: Result for Task %d : %s\n", i, result);
-      } catch (InterruptedException | ExecutionException e) {
-        System.err.println(e);
-      }
-    }
-    myExecutor.shutdown();
-    for (int i = 5; i < 10; i++) {
-      try {
-        String result = results.get(i).get();
-        System.out.printf("Main: Result for Task %d : %s\n", i, result);
-      } catch (InterruptedException | ExecutionException e) {
-        System.err.println(e);
-      }
-    }
+    final List<Future<String>> results = new ArrayList<>();
+    for (int i = 0; i < 10; i++)
+      results.add(myExecutor.submit(new SleepTwoSecondsTask()));
     try {
+      for (int i = 0; i < 10; i++) {
+        System.out.printf(
+            "Main: Result for Task %d : %s\n", i, results.get(i).get());
+        if (i == FIVE)
+          myExecutor.shutdown();
+      }
       myExecutor.awaitTermination(1, TimeUnit.DAYS);
-    } catch (InterruptedException e) {
+    } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
     System.out.printf("Main: End of the program.\n");
