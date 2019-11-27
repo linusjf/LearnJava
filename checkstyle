@@ -82,7 +82,7 @@ set -o noglob
 readarray -t args \
   < <(find . -type f -name "*.java" \
 ${exclusions[@]} \
-  ! -path "docs/**" ! -path "dist/**") && \
+  -not -path "./docs" -not -path "./dist") && \
 java -cp @../"$classpathFile" \
 "$mainClass" \
 ${options[@]} \

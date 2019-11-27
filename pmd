@@ -6,6 +6,13 @@ usage()
   exit 1
 }
 
+readExclusions()
+{
+  [ -e "$proj"/"$exclusionsFile" ] && \
+      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
+      echo "Unable to read $proj/$exclusionsFile";}
+}
+
 declare -r rulesFile="pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"
@@ -14,20 +21,32 @@ declare -i threads=5
 declare -i minpriority=5
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.PMD"
+declare -r exclusionsFile=".exclusions"
+declare -r fileslist="pmdfiles.txt"
+declare -a exclusions
+declare -i res=0
+proj="$1"
 
-if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+if [ "$#" -ne 1 ] || ! [ -d "$proj" ]; 
 then
   usage
 fi
 
-java -cp @"$classpathFile" \
-"$mainClass" \
--d "$1" -R "$rulesFile" -f "$format" \
--min "$minpriority" -norulesetcompatibility \
--failOnViolation true -cache "$1"/"$cacheFile" \
--reportfile "$1"/"$errFile" \
--auxclasspath "$1" \
--t "$threads" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
+readExclusions
+set -o noglob
+find "$proj" -type f -name "*.java" ${exclusions[@]} | tr '\n' ',' > "$proj"/"$fileslist"
+if [ -s "$proj"/"$fileslist" ]
+then
+  java -cp @"$classpathFile" \
+    "$mainClass" \
+    -filelist "$proj"/"$fileslist" -R "$rulesFile" -f "$format" \
+    -min "$minpriority" -norulesetcompatibility \
+    -failOnViolation true -cache "$proj"/"$cacheFile" \
+    -reportfile "$proj"/"$errFile" \
+    -auxclasspath "$proj" \
+    -t "$threads" \
+    || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+      res=$?
+fi
+set +o noglob
 exit $res
