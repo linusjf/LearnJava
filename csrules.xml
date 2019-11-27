@@ -435,7 +435,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="3" />
     </module>
     <module name="OverloadMethodsDeclarationOrder" />
-    <module name="VariableDeclarationUsageDistance" />
+    <module name="VariableDeclarationUsageDistance" >
+      <property name="validateBetweenScopes" value="true"/>
+    </module>
     <module name="RedundantImport" />
     <module name="JavadocStyle" />
     <module name="CustomImportOrder">
