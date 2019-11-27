@@ -14,8 +14,7 @@ public class HelloParser extends Parser {
   }
 
   protected static final DFA[] _decisionToDFA;
-  protected static final PredictionContextCache _sharedContextCache =
-      new PredictionContextCache();
+  protected static final PredictionContextCache _sharedContextCache = new PredictionContextCache();
   public static final int T__0 = 1, ID = 2, WS = 3;
   public static final int RULE_r = 0;
 
@@ -36,12 +35,10 @@ public class HelloParser extends Parser {
   }
 
   private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
-  public static final Vocabulary VOCABULARY =
-      new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+  public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
   /** @deprecated Use {@link #VOCABULARY} instead. */
-  @Deprecated
-  public static final String[] tokenNames;
+  @Deprecated public static final String[] tokenNames;
 
   static {
     tokenNames = new String[_SYMBOLIC_NAMES.length];
@@ -90,8 +87,7 @@ public class HelloParser extends Parser {
 
   public HelloParser(TokenStream input) {
     super(input);
-    _interp =
-        new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+    _interp = new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
   }
 
   public static class RContext extends ParserRuleContext {
@@ -110,14 +106,12 @@ public class HelloParser extends Parser {
 
     @Override
     public void enterRule(ParseTreeListener listener) {
-      if (listener instanceof HelloListener)
-        ((HelloListener)listener).enterR(this);
+      if (listener instanceof HelloListener) ((HelloListener) listener).enterR(this);
     }
 
     @Override
     public void exitRule(ParseTreeListener listener) {
-      if (listener instanceof HelloListener)
-        ((HelloListener)listener).exitR(this);
+      if (listener instanceof HelloListener) ((HelloListener) listener).exitR(this);
     }
   }
 
@@ -144,10 +138,9 @@ public class HelloParser extends Parser {
 
   public static final String _serializedATN =
       "\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\5\b\4\2\t\2\3\2\3"
-      + "\2\3\2\3\2\2\2\3\2\2\2\2\6\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\3\3\2"
-      + "\2\2\2";
-  public static final ATN _ATN =
-      new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+          + "\2\3\2\3\2\2\2\3\2\2\2\2\6\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\3\3\2"
+          + "\2\2\2";
+  public static final ATN _ATN = new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 
   static {
     _decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];

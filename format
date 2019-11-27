@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 usage()
 {
   echo "Usage: $0 dir"
@@ -22,6 +22,7 @@ declare -r optionsFile=".formatoptions"
 declare -a options
 declare -r classpathFile="gformat.cp"
 declare -r mainClass="com.google.googlejavaformat.java.Main"
+declare -i res=0
 
 if [ ! -e "$classpathFile" ]
   then
@@ -30,9 +31,14 @@ if [ ! -e "$classpathFile" ]
 fi
 
 readOptions
+set +o noglob
 printf -v findCmd '%q ' find $1 -type f -name '*.java' ${options[@]}
 readarray -t args < <(eval $findCmd)
-java -cp @"$classpathFile" "$mainClass" \
-  --set-exit-if-changed -i \
-  "${args[@]}"
-exit $?
+if [ ${#args[@]} -ne 0 ]; then
+  java -cp @"$classpathFile" "$mainClass" \
+    --set-exit-if-changed -i \
+    "${args[@]}"
+  res="$?"
+fi
+set -o noglob
+exit "$res"
