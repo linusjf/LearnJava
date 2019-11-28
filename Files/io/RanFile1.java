@@ -17,7 +17,7 @@ public enum RanFile1 {
     try (Scanner input = new Scanner(System.in);
          RandomAccessFile ranAccts =
              new RandomAccessFile("accounts.dat", "rw");) {
-      String reply = "y";
+      String reply;
       do {
         acctNum++;
         System.out.println("\nAccount number " + acctNum + ".\n");
