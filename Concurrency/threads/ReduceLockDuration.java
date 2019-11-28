@@ -1,8 +1,8 @@
 package threads;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Arrays;
 import java.util.UUID;
 
 public enum ReduceLockDuration {
@@ -13,14 +13,14 @@ public enum ReduceLockDuration {
   public static void main(String[] args) {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
-      Arrays.setArray(threads, i -> new Thread(new OrigThread()));
+      Arrays.setAll(threads, i -> new Thread(new OrigThread()));
       long startMillis = System.currentTimeMillis();
       for (Thread t: threads)
         t.start();
       for (Thread t: threads)
         t.join();
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
-      Arrays.setArray(threads, i -> new Thread(new ReducedThread()));
+      Arrays.setAll(threads, i -> new Thread(new ReducedThread()));
       startMillis = System.currentTimeMillis();
       for (Thread t: threads)
         t.start();

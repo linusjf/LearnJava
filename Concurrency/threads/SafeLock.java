@@ -66,6 +66,7 @@ public enum SafeLock {
       return this.name;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     public boolean impendingBow(Friend bower) {
       Boolean myLock = false;
       Boolean yourLock = false;
@@ -74,12 +75,10 @@ public enum SafeLock {
         yourLock = bower.lock.tryLock();
       } finally {
         if (!(myLock && yourLock)) {
-          if (myLock) {
+          if (myLock)
             lock.unlock();
-          }
-          if (yourLock) {
+          if (yourLock)
             bower.lock.unlock();
-          }
         }
       }
       return myLock && yourLock;
@@ -118,15 +117,16 @@ public enum SafeLock {
   static class BowLoop implements Runnable {
     private final Friend bower;
     private final Friend bowee;
+    private final Random random;
 
     BowLoop(Friend bower, Friend bowee) {
       this.bower = bower;
       this.bowee = bowee;
+      this.random = new Random();
     }
 
     @Override
     public void run() {
-      Random random = new Random();
       for (;;) {
         try {
           Thread.sleep(random.nextInt(10));

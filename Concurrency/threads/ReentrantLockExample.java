@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,10 +11,9 @@ public enum ReentrantLockExample {
   public static void main(String[] args) {
     PrintQueue printQueue = new PrintQueue();
     Thread[] thread = new Thread[10];
-    for (int i = 0; i < 10; i++)
-      thread[i] = new Thread(new Job(printQueue), "Thread " + i);
-    for (int i = 0; i < 10; i++) {
-      thread[i].start();
+    Arrays.setAll(thread, i -> new Thread(new Job(printQueue), "Thread " + i));
+    for (Thread t: thread) {
+      t.start();
       try {
         Thread.sleep(100);
       } catch (InterruptedException e) {
