@@ -63,7 +63,7 @@ public enum ForkJoinResultDemo {
         "main",
     };
 
-    @SuppressWarnings("PMD.AvoidArrayLoops")
+    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis"})
     public String[][] generateDocument(int numLines,
                                        int numWords,
                                        String word) {
@@ -102,12 +102,13 @@ public enum ForkJoinResultDemo {
       this.word = word;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
     protected Integer compute() {
       int result = 0;
-      if (end - start < MIN_LINES) {
+      if (end - start < MIN_LINES)
         result = processLines(document, start, end, word);
-      } else {
+      else {
         int mid = (start + end) / 2;
         DocumentTask task1 = new DocumentTask(document, start, mid, word);
         DocumentTask task2 = new DocumentTask(document, mid, end, word);
@@ -144,9 +145,7 @@ public enum ForkJoinResultDemo {
     }
 
     private Integer groupResults(Integer number1, Integer number2) {
-      Integer result;
-      result = number1 + number2;
-      return result;
+      return number1 + number2;
     }
   }
 
