@@ -15,16 +15,14 @@ public final class JoinDigestUserInterface {
     digestThreads[index].start();
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     ReturnDigest[] digestThreads = new ReturnDigest[args.length];
-    for (int i = 0; i < args.length; i++) {
-      // Calculate the digest
+    for (int i = 0; i < args.length; i++)
       startThread(i, digestThreads, args[i]);
-    }
     for (int i = 0; i < args.length; i++) {
       try {
         digestThreads[i].join();
-
         // Now print the result
         printResult(args[i], digestThreads[i]);
       } catch (InterruptedException ex) {

@@ -20,31 +20,30 @@ public class LockSplitting implements Runnable {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
-      Counter counter = new CounterOneLock();
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(counter));
+        threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
 
       long startMillis = System.currentTimeMillis();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i].start();
+      for (Thread t: threads)
+        t.start();
 
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i].join();
+      for (Thread t: threads)
+        t.join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
-      counter = new CounterSeparateLock();
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(counter));
+        threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
 
       startMillis = System.currentTimeMillis();
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i].start();
+      for (Thread t: threads)
+        t.start();
 
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i].join();
+      for (Thread t: threads)
+        t.join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
