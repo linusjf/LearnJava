@@ -66,17 +66,15 @@ public enum PhaserDemo {
       }
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     private void filterResults() {
       List<String> newResults = new ArrayList<>();
       long actualDate = new Date().getTime();
       for (String fileName: results) {
-        File file = new File(fileName);
-        long fileDate = file.lastModified();
-
+        long fileDate = new File(fileName).lastModified();
         if (actualDate - fileDate
-            < TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)) {
+            < TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS))
           newResults.add(fileName);
-        }
       }
       results = newResults;
     }

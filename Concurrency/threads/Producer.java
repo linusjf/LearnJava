@@ -34,9 +34,11 @@ import java.util.Random;
 
 public class Producer implements Runnable {
   private final Drop drop;
+  private final Random random;
 
   public Producer(Drop drop) {
     this.drop = drop;
+    this.random = new Random();
   }
 
   @Override
@@ -47,7 +49,6 @@ public class Producer implements Runnable {
         "Little lambs eat ivy",
         "A kid will eat ivy too",
     };
-    Random random = new Random();
 
     for (String info: importantInfo) {
       drop.put(info);
