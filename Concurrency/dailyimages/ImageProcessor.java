@@ -91,26 +91,29 @@ public class ImageProcessor {
         .thenAccept(t -> latch.countDown());
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  public void loopLoadAll(boolean isDilbert) throws InterruptedException {
+    LocalDate newDate = LocalDate.now();
+    for (int i = 0; i < NUMBER_TO_SHOW; i++) {
+      ImageInfo info;
+      if (isDilbert)
+        info = new DilbertImageInfo();
+      else
+        info = new WikimediaImageInfo();
+      info.setDate(newDate.toString());
+      System.out.println("Loading " + newDate);
+      load(newDate, info);
+      if (DELAY > 0)
+        Thread.sleep(DELAY);
+      newDate = newDate.minusDays(1);
+    }
+  }
+
   public void loadAll() {
     long time = System.nanoTime();
     try {
-      LocalDate date = LocalDate.now();
-      Random random = new Random();
-      boolean isDilbert = random.nextBoolean();
-      System.out.println("isDilbert: " + isDilbert);
-      for (int i = 0; i < NUMBER_TO_SHOW; i++) {
-        ImageInfo info;
-        if (isDilbert)
-          info = new DilbertImageInfo();
-        else
-          info = new WikimediaImageInfo();
-        info.setDate(date.toString());
-        System.out.println("Loading " + date);
-        load(date, info);
-        if (DELAY > 0)
-          Thread.sleep(DELAY);
-        date = date.minusDays(1);
-      }
+      boolean isDilbert = new Random().nextBoolean();
+      loopLoadAll(isDilbert);
       latch.await();
       System.out.println("PAST LATCH");
 

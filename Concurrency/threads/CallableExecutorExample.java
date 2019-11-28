@@ -17,9 +17,8 @@ public enum CallableExecutorExample {
     ThreadPoolExecutor executor =
         (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
     List<Future<Integer>> resultList = new ArrayList<>();
-    Random random = new Random();
     for (int i = 0; i < 10; i++) {
-      Integer number = random.nextInt(10);
+      Integer number = new Random().nextInt(10);
       FactorialCalculator calculator = new FactorialCalculator(number);
       Future<Integer> result = executor.submit(calculator);
       resultList.add(result);
@@ -43,10 +42,11 @@ public enum CallableExecutorExample {
       Integer number = null;
       try {
         number = result.get();
+        System.out.printf(
+            "Main: Task %d: calculated factorial: %d\n", i, number);
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
-      System.out.printf("Main: Task %d: calculated factorial: %d\n", i, number);
     }
     executor.shutdown();
   }
@@ -61,9 +61,7 @@ public enum CallableExecutorExample {
     @Override
     public Integer call() throws Exception {
       int result = 1;
-      if (number == 0 || number == 1) {
-        result = 1;
-      } else {
+      if (number > 1) {
         for (int i = 2; i <= number; i++) {
           result *= i;
           TimeUnit.MILLISECONDS.sleep(20);

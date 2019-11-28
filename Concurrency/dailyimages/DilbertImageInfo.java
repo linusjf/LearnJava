@@ -11,6 +11,7 @@ class DilbertImageInfo extends ImageInfo {
     return this;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String findProperty(String body, String filter) {
     String search = "meta name=\"twitter:" + filter + "\" content=\"";
     return body.lines()

@@ -25,6 +25,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
     startTimes = new ConcurrentHashMap<>();
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     CustomExecutor myExecutor = new CustomExecutor(
         2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());

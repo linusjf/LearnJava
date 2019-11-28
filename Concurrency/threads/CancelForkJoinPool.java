@@ -29,12 +29,12 @@ public enum CancelForkJoinPool {
 
   static class ArrayGenerator {
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     public int[] generateArray(int size) {
       int[] array = new int[size];
       Random random = new Random();
-      for (int i = 0; i < size; i++) {
-        array[i] = random.nextInt(10);
-      }
+      for (int i = 0; i < size; i++)
+        array[i] = new Random(random.nextLong()).nextInt(10);
       return array;
     }
   }
