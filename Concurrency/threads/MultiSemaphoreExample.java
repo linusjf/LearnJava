@@ -14,8 +14,8 @@ public enum MultiSemaphoreExample {
     for (int i = 0; i < 10; i++)
       thread[i] = new Thread(new Job(printQueue), "Thread" + i);
 
-    for (int i = 0; i < 10; i++)
-      thread[i].start();
+    for (Thread t: thread)
+      t.start();
   }
 
   static class PrintQueue {
@@ -53,20 +53,18 @@ public enum MultiSemaphoreExample {
     }
 
     private int getPrinter() {
-      int ret = -1;
       try {
         lockPrinters.lock();
         for (int i = 0; i < freePrinters.length; i++) {
           if (freePrinters[i]) {
-            ret = i;
             freePrinters[i] = false;
-            break;
+            return i;
           }
         }
       } finally {
         lockPrinters.unlock();
       }
-      return ret;
+      return -1;
     }
   }
 
