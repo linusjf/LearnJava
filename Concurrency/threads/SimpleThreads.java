@@ -44,7 +44,6 @@ public enum SimpleThreads {
     // we interrupt MessageLoop
     // thread (default one hour).
     long patience = 1000 * 60 * 60;
-
     // If command line argument
     // present, gives patience
     // in seconds.
@@ -59,8 +58,8 @@ public enum SimpleThreads {
 
     try {
       threadMessage("Starting MessageLoop thread");
-      long startTime = System.currentTimeMillis();
       Thread t = new Thread(new MessageLoop());
+      long startTime = System.currentTimeMillis();
       t.start();
 
       threadMessage("Waiting for MessageLoop thread to finish");

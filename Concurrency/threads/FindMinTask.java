@@ -44,12 +44,12 @@ public class FindMinTask implements Callable<Integer> {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     int[] numbers = new int[10_000];
-    Random random = new Random(System.currentTimeMillis());
-    for (int i = 0; i < numbers.length; i++) {
+    Random random = new Random();
+    for (int i = 0; i < numbers.length; i++)
       numbers[i] = Math.abs(random.nextInt());
-    }
     try {
       ExecutorService executorService = Executors.newFixedThreadPool(6400);
       Future<Integer> futureResult = executorService.submit(

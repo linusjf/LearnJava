@@ -53,6 +53,8 @@ public class ForkBlur extends RecursiveAction {
   private static AtomicInteger taskCount = new AtomicInteger(0);
   private static final int BLUR_WIDTH = 15;
 
+  private static final int SIDE_PIXELS = (BLUR_WIDTH - 1) / 2;
+
   private final int[] mSource;
   private final int mStart;
   private final int mLength;
@@ -70,14 +72,13 @@ public class ForkBlur extends RecursiveAction {
 
   // Average pixels from source, write results into destination.
   protected void computeDirectly() {
-    int sidePixels = (BLUR_WIDTH - 1) / 2;
     for (int index = mStart; index < mStart + mLength; index++) {
       // Calculate average.
       // clang-format off
       float rt = 0, gt = 0, bt = 0; // NOPMD
 
       // clang-format on
-      for (int mi = -sidePixels; mi <= sidePixels; mi++) {
+      for (int mi = -SIDE_PIXELS; mi <= SIDE_PIXELS; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
         rt += (float)((pixel & 0x00ff0000) >> 16) / BLUR_WIDTH;

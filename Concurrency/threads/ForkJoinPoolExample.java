@@ -8,6 +8,7 @@ import java.util.concurrent.ForkJoinPool;
 public enum ForkJoinPoolExample {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     try {
       List<Integer> numbers = buildIntRange();

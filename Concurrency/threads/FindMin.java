@@ -35,12 +35,12 @@ public class FindMin extends RecursiveTask<Integer> {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     int[] numbers = new int[100];
-    Random random = new Random(System.currentTimeMillis());
-    for (int i = 0; i < numbers.length; i++) {
-      numbers[i] = Math.abs(random.nextInt());
-    }
+    Random random = new Random();
+    for (int i = 0; i < numbers.length; i++)
+      numbers[i] = Math.abs(new Random(random.nextLong()).nextInt());
     ForkJoinPool pool =
         new ForkJoinPool(Runtime.getRuntime().availableProcessors());
     Integer min = pool.invoke(new FindMin(numbers, 0, numbers.length - 1));
