@@ -10,7 +10,6 @@ import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public final class ProtectedUrlAccess {
 
@@ -48,7 +47,7 @@ public final class ProtectedUrlAccess {
   }
 
   public static class CustomAuthenticator extends Authenticator {
-    private String password;
+    private final String password;
 
     public CustomAuthenticator(String randomString) {
       super();
@@ -75,18 +74,6 @@ public final class ProtectedUrlAccess {
       System.out.println("Prompt: " + prompt);
 
       String username = "httpwatch";
-      if (password == null) {
-        System.out.println("Enter username (use httpwatch): ");
-
-        Scanner scanner = new Scanner(System.in);
-        if (scanner.hasNext())
-          username = scanner.nextLine();
-
-        System.out.println("Enter password : ");
-
-        if (scanner.hasNext())
-          password = scanner.nextLine();
-      }
 
       // Return the information (a data holder that is used by Authenticator)
       return new PasswordAuthentication(username, password.toCharArray());

@@ -29,6 +29,7 @@ public final class BinarySaver {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void saveBinaryFile(URL u) throws IOException {
     URLConnection uc = u.openConnection();
     String contentType = uc.getContentType();

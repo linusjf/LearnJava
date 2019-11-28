@@ -218,13 +218,6 @@
           outputproperty="random">
       <arg line="../generaterandom" />
     </exec>
-    <java classname="${main.class17}">
-      <arg line="${random}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
     <java classname="${main.class18}">
       <arg line="https://www.spamhaus.org/" />
       <classpath>
@@ -392,6 +385,15 @@
       </classpath>
     </java>
     <exec executable="./tests" />
+  </target>
+  <target name="run17">
+    <java classname="${main.class17}">
+      <arg line="${random}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="run27">
     <java classname="${main.class27}">

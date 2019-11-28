@@ -27,13 +27,13 @@ public class CacheControl {
   }
 
   private void parseValues(String component) {
-    Date now = new Date();
     if (component.startsWith("max-age=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(8));
-      maxAge = new Date(now.getTime() + 1000 * secondsInTheFuture);
+      maxAge = new Date(System.currentTimeMillis() + 1000 * secondsInTheFuture);
     } else if (component.startsWith("s-maxage=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(9));
-      sharedMaxAge = new Date(now.getTime() + 1000 * secondsInTheFuture);
+      sharedMaxAge =
+          new Date(System.currentTimeMillis() + 1000 * secondsInTheFuture);
     } else if ("must-revalidate".equals(component)) {
       mustRevalidate = true;
     } else if ("proxy-revalidate".equals(component)) {

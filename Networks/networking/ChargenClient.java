@@ -15,6 +15,7 @@ public final class ChargenClient {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Usage: java ChargenClient host [port]");
@@ -23,12 +24,14 @@ public final class ChargenClient {
     int port;
     try {
       port = Integer.parseInt(args[1]);
+      System.out.printf("Using %d.%n", port);
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
+      System.err.printf(
+          "Invalid input %s for port. Using %d.%n", args[1], port);
     }
-    try {
-      SocketAddress address = new InetSocketAddress(args[0], port);
-      SocketChannel client = SocketChannel.open(address);
+    SocketAddress address = new InetSocketAddress(args[0], port);
+    try (SocketChannel client = SocketChannel.open(address)) {
       ByteBuffer buffer = ByteBuffer.allocate(74);
       WritableByteChannel out = Channels.newChannel(System.out);
       while (client.read(buffer) != -1) {
