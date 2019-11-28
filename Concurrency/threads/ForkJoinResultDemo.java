@@ -165,33 +165,32 @@ public enum ForkJoinResultDemo {
       this.word = word;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
     protected Integer compute() {
       Integer result = null;
-      if (end - start < MIN_WORDS) {
-        result = count(line, start, end, word);
-      } else {
-        int mid = (start + end) / 2;
-        LineTask task1 = new LineTask(line, start, mid, word);
-        LineTask task2 = new LineTask(line, mid, end, word);
-        invokeAll(task1, task2);
-        try {
+      try {
+        if (end - start < MIN_WORDS) {
+          result = count(line, start, end, word);
+        } else {
+          int mid = (start + end) / 2;
+          LineTask task1 = new LineTask(line, start, mid, word);
+          LineTask task2 = new LineTask(line, mid, end, word);
+          invokeAll(task1, task2);
           result = groupResults(task1.get(), task2.get());
-        } catch (InterruptedException | ExecutionException e) {
-          System.err.println(e);
         }
+      } catch (InterruptedException | ExecutionException e) {
+        System.err.println(e);
       }
       return result;
     }
 
-    @SuppressWarnings("checkstyle:hiddenfield")
+    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis"})
     private Integer count(String[] line, int start, int end, String word) {
-      int counter;
-      counter = 0;
+      int counter = 0;
       for (int i = start; i < end; i++) {
-        if (line[i].equals(word)) {
+        if (line[i].equals(word))
           counter++;
-        }
       }
       try {
         Thread.sleep(10);
@@ -202,9 +201,7 @@ public enum ForkJoinResultDemo {
     }
 
     private Integer groupResults(Integer number1, Integer number2) {
-      Integer result;
-      result = number1 + number2;
-      return result;
+      return number1 + number2;
     }
   }
 }
