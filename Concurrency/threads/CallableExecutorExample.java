@@ -17,8 +17,9 @@ public enum CallableExecutorExample {
     ThreadPoolExecutor executor =
         (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
     List<Future<Integer>> resultList = new ArrayList<>();
+    Random random = new Random();
     for (int i = 0; i < 10; i++) {
-      Integer number = new Random().nextInt(10);
+      Integer number = new Random(random.nextLong()).nextInt(10);
       FactorialCalculator calculator = new FactorialCalculator(number);
       Future<Integer> result = executor.submit(calculator);
       resultList.add(result);
