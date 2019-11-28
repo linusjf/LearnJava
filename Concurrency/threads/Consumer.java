@@ -39,6 +39,7 @@ public class Consumer implements Runnable {
     this.drop = drop;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   @Override
   public void run() {
     Random random = new Random();
@@ -46,7 +47,7 @@ public class Consumer implements Runnable {
          message = drop.take()) {
       System.out.format("MESSAGE RECEIVED: %s%n", message);
       try {
-        Thread.sleep(random.nextInt(5000));
+        Thread.sleep(new Random(random.nextLong()).nextInt(5000));
       } catch (InterruptedException e) {
         System.err.println(e);
       }

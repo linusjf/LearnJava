@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 public enum CustomPhaserDemo {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     MyPhaser phaser = new MyPhaser();
     Student[] students = new Student[5];

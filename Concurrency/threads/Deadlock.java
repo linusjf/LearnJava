@@ -36,6 +36,10 @@ public enum Deadlock {
   public static void main(String[] args) {
     final Friend alphonse = new Friend("Alphonse");
     final Friend gaston = new Friend("Gaston");
+    friendlyBow(alphonse, gaston);
+  }
+
+  private static void friendlyBow(Friend alphonse, Friend gaston) {
     new Thread(() -> alphonse.bow(gaston)).start();
     new Thread(() -> gaston.bow(alphonse)).start();
     new Thread(() -> {

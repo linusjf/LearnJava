@@ -29,12 +29,13 @@ public enum ExchangerDemo {
       this.exchanger = exchanger;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
     public void run() {
       int cycle = 1;
 
       for (int i = 0; i < 10; i++) {
-        System.out.printf("Producer: Cycle %d\n", cycle);
+        System.out.printf("Producer: Cycle %d\n", cycle++);
         for (int j = 0; j < 10; j++) {
           String message = "Event " + (i * 10 + j);
           System.out.printf("Producer: %s\n", message);
@@ -46,7 +47,6 @@ public enum ExchangerDemo {
           System.err.println(e);
         }
         System.out.println("Producer buffer size: " + buffer.size());
-        cycle++;
       }
     }
   }
@@ -61,12 +61,13 @@ public enum ExchangerDemo {
       this.exchanger = exchanger;
     }
 
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
     public void run() {
       int cycle = 1;
 
       for (int i = 0; i < 10; i++) {
-        System.out.printf("Consumer: Cycle %d\n", cycle);
+        System.out.printf("Consumer: Cycle %d\n", cycle++);
         try {
           buffer = exchanger.exchange(buffer);
         } catch (InterruptedException e) {
@@ -79,7 +80,6 @@ public enum ExchangerDemo {
           System.out.println("Consumer: " + message);
           buffer.remove(0);
         }
-        cycle++;
       }
     }
   }

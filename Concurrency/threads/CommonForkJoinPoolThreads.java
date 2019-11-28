@@ -7,6 +7,7 @@ import java.util.List;
 public enum CommonForkJoinPoolThreads {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     final List<Integer> numbers = getNumbers();
     Thread t1 = new Thread(() -> numbers.parallelStream().forEach(n -> {

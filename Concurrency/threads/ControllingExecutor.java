@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit;
 public enum ControllingExecutor {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
     ResultTask[] resultTasks = new ResultTask[5];
     for (int i = 0; i < 5; i++) {
-      ExecutableTask executableTask = new ExecutableTask("Task " + i);
-      resultTasks[i] = new ResultTask(executableTask);
+      resultTasks[i] = new ResultTask(new ExecutableTask("Task " + i));
       executor.submit(resultTasks[i]);
     }
     try {
@@ -23,14 +23,12 @@ public enum ControllingExecutor {
     } catch (InterruptedException e1) {
       System.err.println(e1);
     }
-    for (ResultTask task: resultTasks) {
+    for (ResultTask task: resultTasks)
       task.cancel(true);
-    }
     for (ResultTask task: resultTasks) {
       try {
-        if (!task.isCancelled()) {
+        if (!task.isCancelled())
           System.out.printf("%s\n", task.get());
-        }
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }

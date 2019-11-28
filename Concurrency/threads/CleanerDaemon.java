@@ -11,10 +11,13 @@ public enum CleanerDaemon {
   public static void main(String[] args) {
     Deque<Event> deque = new ArrayDeque<>();
     WriterTask writer = new WriterTask(deque);
-    for (int i = 0; i < 3; i++) {
-      Thread thread = new Thread(writer);
-      thread.start();
-    }
+    Thread[] threads = {
+        new Thread(writer),
+        new Thread(writer),
+        new Thread(writer),
+    };
+    for (Thread t: threads)
+      t.start();
     CleanerTask cleaner = new CleanerTask(deque);
     cleaner.start();
   }
@@ -98,13 +101,13 @@ public enum CleanerDaemon {
       while (difference > 10_000 && !deque.isEmpty()) {
         System.out.printf("Cleaner: %s\n", e.getEvent());
         deque.removeLast();
-        delete = true;
+        if (!delete)
+          delete = true;
         e = deque.getLast();
         difference = date.getTime() - e.getDate().getTime();
       }
-      if (delete) {
+      if (delete)
         System.out.printf("Cleaner: Size of the queue: %d\n", deque.size());
-      }
     }
   }
 }

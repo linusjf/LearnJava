@@ -900,6 +900,7 @@
               excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${junit.cp}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
