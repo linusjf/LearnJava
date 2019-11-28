@@ -33,45 +33,48 @@ public final class Cookies {
       for (String headerValue: headerFieldValue) {
         System.out.println("Cookie Found...");
         String[] fields = headerValue.split(";\\s*");
-        String cookieValue = fields[0];
-        String expires = null;
-        String path = null;
-        String domain = null;
-        boolean secure = false;
+        Cookie cookie = new Cookie();
+        cookie.cookieValue = fields[0];
 
         // Parse each field
         for (int j = 1; j < fields.length; j++) {
           if ("secure".equalsIgnoreCase(fields[j])) {
-            secure = true;
+            cookie.secure = true;
             continue;
           }
-          if (fields[j].indexOf('=') > 0) {
-            String[] f = fields[j].split("=");
-            if ("expires".equalsIgnoreCase(f[0])) {
-              expires = f[1];
-              continue;
-            }
-            if ("domain".equalsIgnoreCase(f[0])) {
-              domain = f[1];
-              continue;
-            }
-            if ("path".equalsIgnoreCase(f[0])) {
-              path = f[1];
-              continue;
-            }
+          String[] f = fields[j].split("=");
+          if ("expires".equalsIgnoreCase(f[0])) {
+            cookie.expires = f[1];
+            continue;
+          }
+          if ("domain".equalsIgnoreCase(f[0])) {
+            cookie.domain = f[1];
+            continue;
+          }
+          if ("path".equalsIgnoreCase(f[0])) {
+            cookie.path = f[1];
+            continue;
           }
         }
 
-        System.out.println("cookieValue:" + cookieValue);
-        System.out.println("expires:" + expires);
-        System.out.println("path:" + path);
-        System.out.println("domain:" + domain);
-        System.out.println("secure:" + secure);
+        System.out.println("cookieValue:" + cookie.cookieValue);
+        System.out.println("expires:" + cookie.expires);
+        System.out.println("path:" + cookie.path);
+        System.out.println("domain:" + cookie.domain);
+        System.out.println("secure:" + cookie.secure);
 
         System.out.println("*****************************************");
       }
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }
+  }
+
+  static final class Cookie {
+    String cookieValue;
+    String expires;
+    String path;
+    String domain;
+    boolean secure;
   }
 }

@@ -286,12 +286,6 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <java classname="${main.class27}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
     <java classname="${main.class28}">
       <arg line="https://www.spamhaus.org/" />
       <classpath>
@@ -397,12 +391,25 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <exec executable="./tests" />
+  </target>
+  <target name="run27">
+    <java classname="${main.class27}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run45">
     <java classname="${main.class45}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+  </target>
+  <target name="run46">
     <java classname="${main.class46}"
           input="domain.txt">
       <classpath>
@@ -410,13 +417,14 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+  </target>
+  <target name="run47">
     <java classname="${main.class47}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <exec executable="./tests" />
   </target>
   <target name="whois">
     <java classname="${main.class35}">
@@ -491,7 +499,8 @@
   <target name="pmd">
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}">
+         suppressMarker="${pmd.suppressMarker}"
+         failuresPropertyName="pmd.errCount">
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
@@ -504,8 +513,29 @@
       </fileset>
     </pmd>
   </target>
+  <target name="pmd-result"
+          depends="pmd"
+          if="pmd.errCount">
+    <echo message="${pmd.errCount} violations found." />
+  </target>
+  <target name="spotbugs">
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+              excludeFilter="${spotbugs.suppressions.xml}"
+              nested="true">
+      <auxClasspath path="${basedir}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd">
+          depends="compile,pmd-result,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>
