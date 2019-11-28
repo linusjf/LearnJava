@@ -54,14 +54,13 @@ public enum FutureDemo {
 
     @Override
     public Long call() {
-      long output = 0;
       try {
-        output = factorial(number);
+        return factorial(number);
       } catch (InterruptedException ex) {
         Logger.getLogger(FutureDemo.class.getName())
             .log(Level.SEVERE, null, ex);
       }
-      return output;
+      return 0L;
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
