@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -9,20 +10,17 @@ public enum ReadWriteLockExample {
 
   public static void main(String[] args) {
     PricesInfo pricesInfo = new PricesInfo();
-    Reader[] readers = new Reader[5];
     Thread[] threadsReader = new Thread[5];
 
-    for (int i = 0; i < 5; i++) {
-      readers[i] = new Reader(pricesInfo);
-      threadsReader[i] = new Thread(readers[i]);
-    }
+    Arrays.setAll(threadsReader, i -> new Thread(new Reader(pricesInfo)));
+
     Writer writer = new Writer(pricesInfo);
     Writer writer2 = new Writer(pricesInfo);
     Thread threadWriter = new Thread(writer);
     Thread threadWriter2 = new Thread(writer2);
-    for (int i = 0; i < 5; i++) {
-      threadsReader[i].start();
-    }
+    for (Thread t: threadsReader)
+      t.start();
+
     threadWriter.start();
     threadWriter2.start();
   }
