@@ -11,14 +11,18 @@ import java.util.Date;
 
 public final class Last24 {
 
+  private static final long MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+
   private Last24() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    // Initialize a Date object with the current date and time
-    Date today = new Date();
-    long millisecondsPerDay = 24 * 60 * 60 * 1000;
+    last24hoursFiles(new Date(), args);
+  }
+
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  private static void last24hoursFiles(Date today, String... args) {
     for (String arg: args) {
       try {
         System.out.println("Retrieving ...." + arg);
@@ -27,15 +31,14 @@ public final class Last24 {
         System.out.println("Original if modified since: "
                            + new Date(uc.getIfModifiedSince()));
         uc.setIfModifiedSince(
-            new Date(today.getTime() - millisecondsPerDay).getTime());
+            new Date(today.getTime() - MILLISECONDS_PER_DAY).getTime());
         System.out.println("Will retrieve file if it's modified since "
                            + new Date(uc.getIfModifiedSince()));
         try (InputStream in = new BufferedInputStream(uc.getInputStream())) {
           Reader r = new InputStreamReader(in);
           int c;
-          while ((c = r.read()) != -1) {
+          while ((c = r.read()) != -1) 
             System.out.print((char)c);
-          }
           System.out.println();
         }
       } catch (IOException ex) {
