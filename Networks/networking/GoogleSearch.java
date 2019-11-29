@@ -15,6 +15,7 @@ public final class GoogleSearch {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     String target = "";
     for (String arg: args)
