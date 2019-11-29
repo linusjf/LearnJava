@@ -21,8 +21,10 @@ public final class EchoServer {
     int port;
     try {
       port = Integer.parseInt(args[0]);
+      System.out.printf("Using port: %d%n", port);
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
+      System.err.printf("Using port: %d%n", port);
     }
     return port;
   }
@@ -63,36 +65,29 @@ public final class EchoServer {
   }
 
   public static void main(String[] args) {
-    int port = getPort(args);
 
-    Selector selector = null;
     try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
-      InetSocketAddress address = new InetSocketAddress(port);
+      InetSocketAddress address = new InetSocketAddress(getPort(args));
       serverChannel.bind(address);
       serverChannel.configureBlocking(false);
-      selector = Selector.open();
+      Selector selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
       System.out.println("selector registered");
-    } catch (IOException ex) {
-      System.err.println("Error with server channel: " + ex.getMessage());
-      return;
-    }
-    while (true) {
-      try {
+      while (true) {
         System.out.println("about to select...");
         selector.select();
-      } catch (IOException ex) {
-        System.err.println("Error selecting channel: " + ex.getMessage());
-        break;
+
+        Set<SelectionKey> readyKeys = selector.selectedKeys();
+        Iterator<SelectionKey> iterator = readyKeys.iterator();
+        while (iterator.hasNext()) {
+          SelectionKey key = iterator.next();
+          iterator.remove();
+          System.out.println("About to handle key...");
+          handleChannels(key, selector);
+        }
       }
-      Set<SelectionKey> readyKeys = selector.selectedKeys();
-      Iterator<SelectionKey> iterator = readyKeys.iterator();
-      while (iterator.hasNext()) {
-        SelectionKey key = iterator.next();
-        iterator.remove();
-        System.out.println("About to handle key...");
-        handleChannels(key, selector);
-      }
+    } catch (IOException ex) {
+      System.err.println(ex.getMessage());
     }
   }
 }

@@ -17,13 +17,15 @@ public enum EncodingAwareSourceViewer {
     for (String arg: args) {
       try {
         // set default encoding
-        String encoding = "ISO-8859-1";
+        String encoding;
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
         String contentType = uc.getContentType();
         int encodingStart = contentType.indexOf("charset=");
-        if (encodingStart != -1)
+        if (encodingStart > 0)
           encoding = contentType.substring(encodingStart + 8);
+        else
+          encoding = "ISO-8859-1";
         InputStream in = new BufferedInputStream(uc.getInputStream());
         Reader r = new InputStreamReader(in, encoding);
         int c;

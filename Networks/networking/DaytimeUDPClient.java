@@ -58,9 +58,11 @@ public enum DaytimeUDPClient {
         int port;
         try {
           port = Integer.parseInt(args[1]);
+          System.out.printf("Using port %d%n", port);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
-          System.err.println(ex);
           port = PORT;
+          System.err.printf("Error parsing command line. Using port %d%n",
+                            port);
         }
         connectToTimeServer(socket, hostname, port);
       }

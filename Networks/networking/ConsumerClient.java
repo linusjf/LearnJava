@@ -31,11 +31,11 @@ public enum ConsumerClient {
       String message = "";
       String response = "";
       int pause;
-      do {
+      while (!"0".equals(message)) {
+
         System.out.print("Enter '1' ('0' to exit): ");
         if (userEntry.hasNext()) {
           message = userEntry.nextLine();
-
           // Send message to server on the
           // socket's output stream…
           // Accept response from server on the
@@ -44,7 +44,6 @@ public enum ConsumerClient {
         }
         if (networkInput.hasNext()) {
           response = networkInput.nextLine();
-
           // Display server's response to user…
           System.out.println("\nSERVER> " + response);
         }
@@ -52,7 +51,7 @@ public enum ConsumerClient {
 
         // 'Sleep' for 0-5 seconds…
         Thread.sleep(pause);
-      } while (!"0".equals(message));
+      }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);
       Thread.currentThread().interrupt();

@@ -49,23 +49,21 @@ public class FormPoster {
     return uc.getInputStream();
   }
 
-  @SuppressWarnings("checkstyle:returncount")
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    URL url;
+    Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+      System.err.println(e.getMessage());
+      System.exit(1);
+    });
+
+    URL url = getDefaultURL();
     if (args.length > 0) {
       try {
         url = new URL(args[0]);
+        System.out.printf("Connecting to %s%n", url);
       } catch (MalformedURLException ex) {
-        System.err.println("Usage: java FormPoster url");
-        return;
-      }
-    } else {
-      try {
-        url = new URL("http://www.cafeaulait.org/books/jnp4/postquery.phtml");
-      } catch (MalformedURLException ex) {
-        // shouldn't happen
-        System.err.println(ex);
-        return;
+        System.err.println(ex.getMessage());
+        System.err.printf("Connecting to %s instead%n", url);
       }
     }
     FormPoster poster = new FormPoster(url);
@@ -81,6 +79,14 @@ public class FormPoster {
       System.out.println();
     } catch (IOException ex) {
       System.err.println(ex);
+    }
+  }
+
+  private static URL getDefaultURL() {
+    try {
+      return new URL("http://www.cafeaulait.org/books/jnp4/postquery.phtml");
+    } catch (MalformedURLException mue) {
+      throw new AssertionError("This should not happen:", mue);
     }
   }
 }

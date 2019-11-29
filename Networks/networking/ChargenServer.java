@@ -21,13 +21,15 @@ public final class ChargenServer {
     int port;
     try {
       port = Integer.parseInt(args[0]);
+      System.out.printf("Using port %d: ", port);
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
+      System.out.printf("Error parsing input. Using port %d: ", port);
     }
     return port;
   }
 
-  @SuppressWarnings("checkstyle:magicnumber")
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.DataflowAnomalyAnalysis"})
   private static byte[] constructRotatingArray() {
     byte[] rotation = new byte[95 * 2];
     for (byte i = ' '; i <= '~'; i++) {

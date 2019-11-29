@@ -14,13 +14,17 @@ public final class ClientEcho {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     int port = PORT;
     if (args.length > 0) {
       try {
         port = Integer.parseInt(args[0]);
+        System.out.printf("Using %d.%n", args[1], port);
       } catch (NumberFormatException nfe) {
         port = PORT;
+        System.err.printf(
+            "Invalid input %s for port. Using %d.%n", args[1], port);
       }
     }
     try {

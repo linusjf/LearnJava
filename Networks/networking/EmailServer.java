@@ -95,11 +95,11 @@ public enum EmailServer {
        message into message box for other client (if
        there is room).
     */
-    String message = input.nextLine();
-    if (messagesInBox == MAX_MESSAGES)
+    if (messagesInBox == MAX_MESSAGES) {
       System.out.println("\nMessage box full!");
-    else
-      mailbox[messagesInBox] = message;
+      input.skip("^.*$");
+    } else
+      mailbox[messagesInBox] = input.nextLine();
   }
 
   private static void doRead(String[] mailbox,

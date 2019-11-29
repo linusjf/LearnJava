@@ -27,8 +27,7 @@ public final class ChargenClient {
       System.out.printf("Using %d.%n", port);
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
-      System.err.printf(
-          "Invalid input %s for port. Using %d.%n", args[1], port);
+      System.out.printf("Error parsing input. Using port %d: ", port);
     }
     SocketAddress address = new InetSocketAddress(args[0], port);
     try (SocketChannel client = SocketChannel.open(address)) {

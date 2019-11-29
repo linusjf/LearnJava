@@ -27,9 +27,8 @@ class ClientThread extends Thread {
 
   @Override
   public void run() {
-    String request = "";
+    String request = input.nextLine();
     do {
-      request = input.nextLine();
       if ("1".equals(request)) {
         item.takeOne();
 
@@ -39,6 +38,7 @@ class ClientThread extends Thread {
         // at front of thread queue).
         output.println("Request granted.");
       }
+      request = input.nextLine();
     } while (!"0".equals(request));
     try {
       System.out.println("Closing down connection…");

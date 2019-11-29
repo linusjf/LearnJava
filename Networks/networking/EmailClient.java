@@ -15,6 +15,7 @@ public enum EmailClient {
   private static Scanner networkInput;
   private static Scanner userEntry;
   private static PrintWriter networkOutput;
+  private static int numMessages;
 
   public static void main(String[] args) {
     try {
@@ -34,7 +35,7 @@ public enum EmailClient {
   private static void talkToServer() {
     String option = "y";
     String response;
-    do {
+    while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT)) {
         networkInput = new Scanner(link.getInputStream());
         networkOutput = new PrintWriter(link.getOutputStream(), true);
@@ -53,7 +54,7 @@ public enum EmailClient {
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
-    } while (!"n".equals(option));
+    }
   }
 
   private static void doSend() {
@@ -67,7 +68,6 @@ public enum EmailClient {
   private static void doRead() {
     networkOutput.println(name);
     networkOutput.println("read");
-    int numMessages = 0;
     if (networkInput.hasNext()) {
       numMessages = networkInput.nextInt();
 

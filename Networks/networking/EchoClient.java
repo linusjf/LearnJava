@@ -9,18 +9,30 @@ import java.net.UnknownHostException;
 
 public final class EchoClient {
 
+  private static final int ECHO_PORT = 7;
+
   private EchoClient() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
-  public static void main(String[] args) throws IOException {
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+                     "PMD.DataflowAnomalyAnalysis"})
+  public static void
+  main(String[] args) throws IOException {
     if (args.length < 2) {
       System.err.println("Usage: java EchoClient <host name> <port number>");
       System.exit(1);
     }
     String hostName = args[0];
-    int portNumber = Integer.parseInt(args[1]);
+    int portNumber;
+    try {
+      portNumber = Integer.parseInt(args[1]);
+      System.out.printf("Connecting to port %d%n", portNumber);
+    } catch (NumberFormatException nfe) {
+      portNumber = ECHO_PORT;
+      System.err.printf("Error parsing input. Connecting to port %d%n",
+                        portNumber);
+    }
     try (Socket echoSocket = new Socket(hostName, portNumber);
          PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
          BufferedReader in = new BufferedReader(
