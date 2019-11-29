@@ -26,42 +26,49 @@ public class JHttp {
     this.port = port;
   }
 
+  private void acceptAndSubmit(ServerSocket server, ExecutorService pool) {
+    while (true) {
+      try {
+        Socket request = server.accept();
+        Runnable r = new RequestProcessor(rootDirectory, INDEX_FILE, request);
+        pool.submit(r);
+      } catch (IOException ex) {
+        LOGGER.warning("Error accepting connection: %s", ex.getMessage());
+      }
+    }
+  }
+
   public void start() throws IOException {
-    ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
     try (ServerSocket server = new ServerSocket(port)) {
       LOGGER.info("Accepting connections on port %d.", server.getLocalPort());
       LOGGER.info("Document Root: %s", rootDirectory);
-      while (true) {
-        try {
-          Socket request = server.accept();
-          Runnable r = new RequestProcessor(rootDirectory, INDEX_FILE, request);
-          pool.submit(r);
-        } catch (IOException ex) {
-          LOGGER.warning("Error accepting connection: %s", ex.getMessage());
-        }
-      }
+      ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
+      acceptAndSubmit(server, pool);
+    }
+  }
+
+  private static File getRoot(String... args) {
+    return new File(args[0]);
+  }
+
+  private static int getPort(String... args) {
+    try {
+      int port = Integer.parseInt(args[1]);
+      if (port < 0 || port > 65_535)
+        port = 80;
+      return port;
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+      return 80;
     }
   }
 
   public static void main(String[] args) {
     // get the Document root
-    File docroot;
-    try {
-      docroot = new File(args[0]);
-    } catch (ArrayIndexOutOfBoundsException ex) {
-      System.out.println("Usage: java JHttp docroot port");
-      return;
-    }
+    File docroot = getRoot(args);
 
     // set the port to listen on
-    int port;
-    try {
-      port = Integer.parseInt(args[1]);
-      if (port < 0 || port > 65_535)
-        port = 80;
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
-      port = 80;
-    }
+    int port = getPort(args);
+
     try {
       JHttp webserver = new JHttp(docroot, port);
       webserver.start();

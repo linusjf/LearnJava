@@ -52,13 +52,16 @@ public final class IntgenServer {
     }
   }
 
-  public static void main(String[] args) {
-    int port;
+  private static int getPort(String... args) {
     try {
-      port = Integer.parseInt(args[0]);
+      return Integer.parseInt(args[0]);
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
-      port = DEFAULT_PORT;
+      return DEFAULT_PORT;
     }
+  }
+
+  public static void main(String[] args) {
+    int port = getPort();
 
     System.out.println("Listening for connections on port " + port);
     ServerSocketChannel serverChannel;
