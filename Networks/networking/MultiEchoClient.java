@@ -30,7 +30,7 @@ public enum MultiEchoClient {
          Scanner userEntry = new Scanner(System.in);) {
       String message = "";
       String response = "";
-      do {
+      while (!"QUIT".equals(message)) {
         System.out.print("Enter message ('QUIT' to exit): ");
         if (userEntry.hasNext()) {
           message = userEntry.nextLine();
@@ -47,7 +47,7 @@ public enum MultiEchoClient {
           // Display server's response to user…
           System.out.println("\nSERVER> " + response);
         }
-      } while (!"QUIT".equals(message));
+      }
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }

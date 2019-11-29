@@ -27,27 +27,34 @@ public final class LoggingDaytimeServer {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void main(String[] args) {
-    int port;
+  private static int getPort(String... args) {
     try {
-      port = Integer.parseInt(args[0]);
-    } catch (NumberFormatException nfe) {
-      port = PORT;
+      return Integer.parseInt(args[0]);
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException nfe) {
+      return PORT;
     }
+  }
 
-    ExecutorService pool = Executors.newFixedThreadPool(50);
-    try (ServerSocket server = new ServerSocket(port)) {
-      while (true) {
-        try {
-          Socket connection = server.accept();
-          Callable<Void> task = new DaytimeTask(connection);
-          pool.submit(task);
-        } catch (IOException ex) {
-          ERROR_LOGGER.severe("accept error %s", ex.getMessage());
-        }
-      }
+  public static void main(String[] args) {
+
+    try (ServerSocket server = new ServerSocket(getPort(args))) {
+      ExecutorService pool = Executors.newFixedThreadPool(50);
+      acceptAndSubmit(pool, server);
     } catch (IOException ex) {
       ERROR_LOGGER.severe("Couldn't start server: %s", ex.getMessage());
+    }
+  }
+
+  private static void acceptAndSubmit(ExecutorService pool,
+                                      ServerSocket server) {
+    while (true) {
+      try {
+        Socket connection = server.accept();
+        Callable<Void> task = new DaytimeTask(connection);
+        pool.submit(task);
+      } catch (IOException ex) {
+        ERROR_LOGGER.severe("accept error %s", ex.getMessage());
+      }
     }
   }
 

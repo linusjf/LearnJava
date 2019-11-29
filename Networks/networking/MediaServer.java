@@ -34,14 +34,14 @@ public final class MediaServer {
         Scanner inStream = new Scanner(connection.getInputStream());
 
         // Step 2…
-        ObjectOutputStream outStream =
-            new ObjectOutputStream(connection.getOutputStream());
         String message = inStream.nextLine();
         System.out.println(message);
         if ("IMAGE".equals(message))
-          sendFile("beesting.jpg", outStream);
+          sendFile("beesting.jpg",
+                   new ObjectOutputStream(connection.getOutputStream()));
         if ("SOUND".equals(message))
-          sendFile("cuckoo.wav", outStream);
+          sendFile("cuckoo.wav",
+                   new ObjectOutputStream(connection.getOutputStream()));
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }

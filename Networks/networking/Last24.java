@@ -37,7 +37,7 @@ public final class Last24 {
         try (InputStream in = new BufferedInputStream(uc.getInputStream())) {
           Reader r = new InputStreamReader(in);
           int c;
-          while ((c = r.read()) != -1) 
+          while ((c = r.read()) != -1)
             System.out.print((char)c);
           System.out.println();
         }

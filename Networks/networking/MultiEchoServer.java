@@ -56,7 +56,7 @@ public enum MultiEchoServer {
     @Override
     public void run() {
       String received = "";
-      do {
+      while (!"QUIT".equals(received)) {
         if (input.hasNext()) {
           // Accept message from client on
           // the socket's input stream…
@@ -67,7 +67,7 @@ public enum MultiEchoServer {
           output.println("ECHO: " + received);
         }
         // Repeat above until 'QUIT' sent by client…
-      } while (!"QUIT".equals(received));
+      }
       try {
         if (client != null) {
           System.out.println("Closing down connection…");
