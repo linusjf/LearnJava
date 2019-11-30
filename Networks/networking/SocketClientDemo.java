@@ -12,16 +12,21 @@ public final class SocketClientDemo {
     throw new IllegalStateException("Private constructor");
   }
 
+  private static int getPort(String... args) {
+
+    if (args.length > 0) {
+      try {
+        return Integer.parseInt(args[0]);
+      } catch (NumberFormatException nfe) {
+        // empty catch block
+      }
+    }
+    return 5432;
+  }
+
   public static void main(String... args) {
     try {
-      int port = 5432;
-      if (args.length > 0) {
-        try {
-          port = Integer.parseInt(args[0]);
-        } catch (NumberFormatException nfe) {
-          port = 5432;
-        }
-      }
+      int port = getPort(args);
       SSLSocketFactory ssf = (SSLSocketFactory)SSLSocketFactory.getDefault();
       SSLSocket s = (SSLSocket)ssf.createSocket("localhost", port);
       s.setEnabledCipherSuites(

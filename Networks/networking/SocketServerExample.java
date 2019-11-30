@@ -110,8 +110,7 @@ public class SocketServerExample {
   private void read(SelectionKey key) throws IOException {
     SocketChannel channel = (SocketChannel)key.channel();
     ByteBuffer buffer = ByteBuffer.allocate(1024);
-    int numRead = -1;
-    numRead = channel.read(buffer);
+    int numRead = channel.read(buffer);
 
     if (numRead == -1) {
       this.dataMapper.remove(channel);

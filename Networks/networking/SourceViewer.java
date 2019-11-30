@@ -13,6 +13,7 @@ public final class SourceViewer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     if (args.length > 0) {
       try (Reader r = new InputStreamReader(
