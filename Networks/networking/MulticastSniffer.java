@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 
 public final class MulticastSniffer {
 
@@ -12,41 +11,43 @@ public final class MulticastSniffer {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void main(String[] args) {
-    InetAddress group = null;
-    int port = 0;
-
-    // read the address from the command line
+  private static InetAddress getAddress(String... args) {
     try {
-      group = InetAddress.getByName(args[0]);
-      port = Integer.parseInt(args[1]);
-    } catch (ArrayIndexOutOfBoundsException | NumberFormatException
-             | UnknownHostException ex) {
-      System.err.println("Usage: java MulticastSniffer multicast_address port");
-      System.exit(1);
+      return InetAddress.getByName(args[0]);
+    } catch (IOException | SecurityException e) {
+      throw new AssertionError("Invalid host or address specified", e);
     }
-    MulticastSocket ms = null;
+  }
+
+  private static int getPort(String... args) {
     try {
-      ms = new MulticastSocket(port);
+      return Integer.parseInt(args[1]);
+    } catch (NumberFormatException e) {
+      throw new AssertionError("Invalid number specified", e);
+    }
+  }
+
+  public static void main(String[] args) {
+    InetAddress group = getAddress(args);
+    int port = getPort(args);
+
+    try {
+      MulticastSocket ms = new MulticastSocket(port);
       ms.joinGroup(group);
-      byte[] buffer = new byte[8192];
       while (true) {
-        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
-        ms.receive(dp);
+        DatagramPacket dp = new DatagramPacket(new byte[8192], 8192);
+        try {
+          ms.receive(dp);
+        } catch (IOException ioe) {
+          break;
+        }
         String s = new String(dp.getData(), "8859_1");
         System.out.println(s);
       }
+      ms.leaveGroup(group);
+      ms.close();
     } catch (IOException ex) {
       System.err.println(ex);
-    } finally {
-      if (ms != null) {
-        try {
-          ms.leaveGroup(group);
-          ms.close();
-        } catch (IOException ex) {
-          System.err.println(ex);
-        }
-      }
     }
   }
 }

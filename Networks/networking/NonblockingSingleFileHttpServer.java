@@ -89,6 +89,23 @@ public class NonblockingSingleFileHttpServer {
     }
   }
 
+  private static int getPort(String... args) {
+    try {
+      int port = Integer.parseInt(args[1]);
+      if (port < 1 || port > 65_535)
+        port = 80;
+      return port;
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+      return 80;
+    }
+  }
+
+  private static String getEncoding(String... args) {
+    if (args.length > (1 + 1))
+      return args[2];
+    return "UTF-8";
+  }
+
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     if (args.length == 0) {
@@ -105,17 +122,8 @@ public class NonblockingSingleFileHttpServer {
       ByteBuffer input = ByteBuffer.wrap(data);
 
       // set the port to listen on
-      int port;
-      try {
-        port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65_535)
-          port = 80;
-      } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
-        port = 80;
-      }
-      String encoding = "UTF-8";
-      if (args.length > 2)
-        encoding = args[2];
+      int port = getPort();
+      String encoding = getEncoding();
       NonblockingSingleFileHttpServer server =
           new NonblockingSingleFileHttpServer(
               input, encoding, contentType, port);
