@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.UnknownHostException;
 
 public final class MulticastSender {
 
@@ -12,31 +11,44 @@ public final class MulticastSender {
     throw new IllegalStateException("Private constructor");
   }
 
+  private static InetAddress getAddress(String... args) {
+    try {
+      return InetAddress.getByName(args[0]);
+    } catch (IOException | SecurityException e) {
+      throw new AssertionError("Invalid host or address specified", e);
+    }
+  }
+
+  private static int getPort(String... args) {
+    try {
+      return Integer.parseInt(args[1]);
+    } catch (NumberFormatException e) {
+      throw new AssertionError("Invalid number specified", e);
+    }
+  }
+
+  private static byte getTTL(String... args) {
+    try {
+      if (args.length > (1 + 1))
+        return (byte)Integer.parseInt(args[2]);
+    } catch (NumberFormatException e) {
+      // empty catch block
+    }
+    return (byte)1;
+  }
+
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
-    InetAddress ia = null;
-    int port = 0;
-    byte ttl = (byte)1;
+    InetAddress ia = getAddress(args);
+    int port = getPort(args);
+    byte ttl = getTTL(args);
 
-    // read the address from the command line
-    try {
-      ia = InetAddress.getByName(args[0]);
-      port = Integer.parseInt(args[1]);
-      if (args.length > 2)
-        ttl = (byte)Integer.parseInt(args[2]);
-    } catch (NumberFormatException | IndexOutOfBoundsException
-             | UnknownHostException ex) {
-      System.err.println(ex);
-      System.err.println(
-          "Usage: java MulticastSender multicast_address port ttl");
-      System.exit(1);
-    }
     byte[] data = "Here's some multicast data\r\n".getBytes();
-    DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
     try (MulticastSocket ms = new MulticastSocket()) {
+      DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
-      for (int i = 1; i < 10; i++) 
+      for (int i = 1; i < 10; i++)
         ms.send(dp);
       ms.leaveGroup(ia);
     } catch (IOException ex) {
