@@ -23,6 +23,7 @@ public final class WhoisQuery {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void performWhoisQuery(String host, int port, String query)
       throws UnknownHostException, IOException {
     System.out.println("**** Performing whois query for '" + query + "' at "
@@ -37,8 +38,7 @@ public final class WhoisQuery {
     out.println(query);
 
     String line = "";
-    while ((line = in.readLine()) != null) {
+    while ((line = in.readLine()) != null)
       System.out.println(line);
-    }
   }
 }

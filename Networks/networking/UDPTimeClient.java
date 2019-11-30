@@ -14,11 +14,11 @@ public enum UDPTimeClient {
   public static void main(String[] args) {
     InetAddress host;
     try {
-      if (args.length > 0) {
+      if (args.length > 0) 
         host = InetAddress.getByName(args[0]);
-      } else {
+       else 
         host = InetAddress.getByName(DEFAULT_HOST);
-      }
+      
     } catch (UnknownHostException ex) {
       System.out.println("Usage: java UDPTimeClient [host]");
       return;

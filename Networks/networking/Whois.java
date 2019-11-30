@@ -91,13 +91,21 @@ public class Whois {
     }
   }
 
+  public String lookUpNamesExactMatch(String target,
+                                      SearchFor category,
+                                      SearchIn group) throws IOException {
+    return lookUpNames(target, category, group, "");
+  }
+
+  public String lookUpNames(String target, SearchFor category, SearchIn group)
+      throws IOException {
+    return lookUpNames(target, category, group, ".");
+  }
+
   public String lookUpNames(String target,
                             SearchFor category,
                             SearchIn group,
-                            boolean exactMatch) throws IOException {
-    String suffix = "";
-    if (!exactMatch)
-      suffix = ".";
+                            String suffix) throws IOException {
     String prefix = category.label + " " + group.label;
     String query = prefix + target + suffix;
     try (Socket socket = new Socket(host, port);
@@ -107,10 +115,11 @@ public class Whois {
       out.write(query + "\r\n");
       out.flush();
       StringBuilder response = new StringBuilder();
-      String theLine = null;
-      while ((theLine = in.readLine()) != null) {
+      String theLine = in.readLine();
+      while (theLine != null) {
         response.append(theLine);
         response.append("\r\n");
+        theLine = in.readLine();
       }
       return response.toString();
     }

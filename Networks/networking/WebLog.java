@@ -14,9 +14,9 @@ public final class WebLog {
   }
 
   public static void main(String[] args) {
-    String entry = null;
     try (BufferedReader bin = Files.newBufferedReader(Paths.get(args[0]));) {
-      for (entry = bin.readLine(); entry != null; entry = bin.readLine()) {
+      for (String entry = bin.readLine(); entry != null;
+           entry = bin.readLine()) {
         // separate out the IP address
         int index = entry.indexOf(' ');
         String ip = entry.substring(0, index);
@@ -27,9 +27,9 @@ public final class WebLog {
         System.out.println(address.getHostName() + theRest);
       }
     } catch (UnknownHostException e) {
-      System.err.println(entry);
+      System.err.println(e.getMessage());
     } catch (IOException ex) {
-      System.out.println("Exception: " + ex);
+      System.err.println("Exception: " + ex);
     }
   }
 }
