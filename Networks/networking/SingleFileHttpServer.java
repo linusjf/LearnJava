@@ -85,9 +85,9 @@ public class SingleFileHttpServer {
         return port;
       }
     } catch (NumberFormatException ex) {
-   // empty catch block 
-      }
-return 80;
+      // empty catch block
+    }
+    return 80;
   }
 
   private static String getEncoding(String... args) {
