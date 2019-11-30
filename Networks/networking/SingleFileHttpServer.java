@@ -49,46 +49,59 @@ public class SingleFileHttpServer {
     this.header = headerString.getBytes(Charset.forName("US-ASCII"));
   }
 
+  private void acceptAndSubmit(ExecutorService pool, ServerSocket server) {
+    while (true) {
+      try {
+        Socket connection = server.accept();
+        pool.submit(new HttpHandler(connection));
+      } catch (IOException ex) {
+        if (LOGGER.isLoggable(Level.WARNING))
+          LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
+      }
+    }
+  }
+
   public void start() {
-    ExecutorService pool = Executors.newFixedThreadPool(100);
     try (ServerSocket server = new ServerSocket(this.port)) {
       if (LOGGER.isLoggable(Level.INFO)) {
         LOGGER.info("Accepting connections on port " + server.getLocalPort());
         LOGGER.info("Data to be sent:");
         LOGGER.info(new String(this.content, encoding));
       }
-      while (true) {
-        try {
-          Socket connection = server.accept();
-          pool.submit(new HttpHandler(connection));
-        } catch (IOException ex) {
-          if (LOGGER.isLoggable(Level.WARNING))
-            LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
-        }
-      }
+      ExecutorService pool = Executors.newFixedThreadPool(100);
+      acceptAndSubmit(pool, server);
     } catch (IOException ex) {
       if (LOGGER.isLoggable(Level.WARNING))
         LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
     }
   }
 
+  private static int getPort(String... args) {
+    try {
+      if (args.length > 1) {
+        int port = Integer.parseInt(args[1]);
+        if (port < 1 || port > 65_535)
+          port = 80;
+        return port;
+      }
+    } catch (NumberFormatException ex) {
+   // empty catch block 
+      }
+return 80;
+  }
+
+  private static String getEncoding(String... args) {
+    if (args.length > 2)
+      return args[2];
+    return "UTF-8";
+  }
+
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     // set the port to listen on
-    int port = 80;
-    try {
-      if (args.length > 1) {
-        port = Integer.parseInt(args[1]);
-        if (port < 1 || port > 65_535)
-          port = 80;
-      }
-    } catch (NumberFormatException ex) {
-      port = 80;
-    }
+    int port = getPort(args);
+    String encoding = getEncoding(args);
 
-    String encoding = "UTF-8";
-    if (args.length > 2)
-      encoding = args[2];
     try {
       Path path = Paths.get(args[0]);
       byte[] data = Files.readAllBytes(path);
@@ -115,11 +128,10 @@ public class SingleFileHttpServer {
 
     @Override
     public Void call() throws IOException {
-      try {
-        OutputStream out =
-            new BufferedOutputStream(connection.getOutputStream());
-        InputStream in = new BufferedInputStream(connection.getInputStream());
-
+      try (OutputStream out =
+               new BufferedOutputStream(connection.getOutputStream());
+           InputStream in =
+               new BufferedInputStream(connection.getInputStream());) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
