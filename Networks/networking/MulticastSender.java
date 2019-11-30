@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.util.stream.IntStream;
 
 public final class MulticastSender {
 
@@ -45,11 +46,18 @@ public final class MulticastSender {
 
     byte[] data = "Here's some multicast data\r\n".getBytes();
     try (MulticastSocket ms = new MulticastSocket()) {
-      DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
-      for (int i = 1; i < 10; i++)
-        ms.send(dp);
+      DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
+      IntStream.range(1, 10).forEach(i -> {
+        try {
+          ms.send(dp);
+        } catch (IOException e) {
+          System.err.println(e);
+        }
+      });
+      /*for (int i = 1; i < 10; i++)
+      ms.send(dp);*/
       ms.leaveGroup(ia);
     } catch (IOException ex) {
       System.err.println(ex);
