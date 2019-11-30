@@ -46,6 +46,17 @@ public class Redirector {
     }
   }
 
+  private static int getPort(String... args) {
+    if (args.length > 1) {
+      try {
+        return Integer.parseInt(args[1]);
+      } catch (NumberFormatException ex) {
+        LOGGER.warning("Using port 80. Port cannot be parsed from %s", args[1]);
+      }
+    }
+    return 80;
+  }
+
   public static void main(String[] args) {
     String theSite;
     if (args.length > 0) {
@@ -59,14 +70,7 @@ public class Redirector {
       System.out.println("Usage: java Redirector http://www.newsite.com/ port");
       return;
     }
-    int thePort = 80;
-    if (args.length > 1) {
-      try {
-        thePort = Integer.parseInt(args[1]);
-      } catch (NumberFormatException ex) {
-        LOGGER.warning("Using port 80. Port cannot be parsed from %s", args[1]);
-      }
-    }
+    int thePort = getPort(args);
 
     Redirector redirector = new Redirector(theSite, thePort);
     redirector.start();
