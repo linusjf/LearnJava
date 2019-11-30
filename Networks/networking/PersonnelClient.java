@@ -41,14 +41,20 @@ public enum PersonnelClient {
            issue a warning for the line above.
            Simply ignore this warning.
       */
-      int staffCount = 0;
-      for (Personnel person: response) {
+      int[] staffCount = {0};
+      response.stream().forEach(person -> {
+        System.out.println("\nStaff member " + ++staffCount[0]);
+        System.out.println("Payroll number: " + person.getPayNum());
+        System.out.println("Surname: " + person.getSurname());
+        System.out.println("First names: " + person.getFirstNames());
+      });
+      /*  for (Personnel person: response) {
         staffCount++;
         System.out.println("\nStaff member " + staffCount);
         System.out.println("Payroll number: " + person.getPayNum());
         System.out.println("Surname: " + person.getSurname());
         System.out.println("First names: " + person.getFirstNames());
-      }
+      }*/
       System.out.println("\n\n");
     } catch (IOException ioEx) {
       System.err.println(ioEx);
