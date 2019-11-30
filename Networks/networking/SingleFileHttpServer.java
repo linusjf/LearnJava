@@ -91,7 +91,7 @@ public class SingleFileHttpServer {
   }
 
   private static String getEncoding(String... args) {
-    if (args.length > 2)
+    if (args.length > (1 + 1))
       return args[2];
     return "UTF-8";
   }
