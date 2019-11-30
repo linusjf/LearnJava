@@ -58,21 +58,26 @@ public final class Ping {
     throw new IllegalStateException("Private constructor");
   }
 
+  private static int getFirstArg(String... args) {
+
+    if (Pattern.matches("[0-9]+", args[0])) {
+      port = Integer.parseInt(args[0]);
+      return 1;
+    }
+    return 0;
+  }
+
   public static void main(String[] args) {
     if (args.length < 1) {
       System.err.println("Usage: java Ping [port] host...");
       return;
     }
-    int firstArg = 0;
 
     try {
       // If the first argument is a string of digits then we take that
       // to be the port number to use
-      if (Pattern.matches("[0-9]+", args[0])) {
-        port = Integer.parseInt(args[0]);
-        firstArg = 1;
-      }
 
+      int firstArg = getFirstArg(args);
       // Create the threads and start them up
       Printer printer = new Printer();
       printer.start();
@@ -123,11 +128,9 @@ public final class Ping {
     }
 
     void show() {
-      String result = "Timed out";
-      if (connectFinish > 0)
-        result = Long.toString(connectFinish - connectStart) + "ms";
-      if (failure != null)
-        result = failure.toString();
+      String result = connectFinish > 0
+                          ? Long.toString(connectFinish - connectStart) + "ms"
+                          : failure == null ? "Timed out" : failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -154,17 +157,22 @@ public final class Ping {
     @Override
     public void run() {
       try {
-        for (;;) {
-          Target t = null;
-          synchronized (pending) {
-            while (pending.isEmpty())
-              pending.wait();
-            t = pending.remove(0);
-          }
+        while (true) {
+          Target t = waitAndGetTarget(pending);
           t.show();
         }
       } catch (InterruptedException x) {
         return;
+      }
+    }
+
+    private Target waitAndGetTarget(List<Target> pending)
+        throws InterruptedException {
+
+      synchronized (pending) {
+        while (pending.isEmpty())
+          pending.wait();
+        return pending.remove(0);
       }
     }
   }
@@ -194,10 +202,7 @@ public final class Ping {
     // target to the pending-target list
     //
     void add(Target t) {
-      SocketChannel sc = null;
-      try {
-        // Open the channel, set it to non-blocking, initiate connect
-        sc = SocketChannel.open();
+      try (SocketChannel sc = SocketChannel.open()) {
         sc.configureBlocking(false);
         if (t.address != null) {
           boolean connected = sc.connect(t.address);
@@ -208,7 +213,6 @@ public final class Ping {
 
           if (connected) {
             t.connectFinish = t.connectStart;
-            sc.close();
             printer.add(t);
           } else {
             // Add the new channel to the pending list
@@ -221,13 +225,6 @@ public final class Ping {
           }
         }
       } catch (IOException x) {
-        if (sc != null) {
-          try {
-            sc.close();
-          } catch (IOException xx) {
-            System.err.println(xx);
-          }
-        }
         t.failure = x;
         printer.add(t);
       }

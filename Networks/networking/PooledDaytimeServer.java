@@ -15,13 +15,12 @@ public final class PooledDaytimeServer {
   }
 
   public static void main(String[] args) {
-    ExecutorService pool = Executors.newFixedThreadPool(50);
     try (ServerSocket server = new ServerSocket(PORT)) {
+    ExecutorService pool = Executors.newFixedThreadPool(50);
       while (true) {
         try {
           Socket connection = server.accept();
-          Callable<Void> task = new DaytimeTask(connection);
-          pool.submit(task);
+          pool.submit(new DaytimeTask(connection));
         } catch (IOException ex) {
           System.err.println(ex.getMessage());
         }
