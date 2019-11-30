@@ -36,9 +36,8 @@ public final class MulticastSender {
     try (MulticastSocket ms = new MulticastSocket()) {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
-      for (int i = 1; i < 10; i++) {
+      for (int i = 1; i < 10; i++) 
         ms.send(dp);
-      }
       ms.leaveGroup(ia);
     } catch (IOException ex) {
       System.err.println(ex);
