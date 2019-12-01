@@ -32,6 +32,7 @@ public final class SourceViewer4 {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void printFromStream(InputStream raw) throws IOException {
     try (InputStream buffer = new BufferedInputStream(raw)) {
       Reader reader = new InputStreamReader(buffer);
