@@ -23,9 +23,9 @@ public enum UDPDiscardServer {
     byte[] buffer = new byte[MAX_PACKET_SIZE];
     System.out.println("port: " + port);
     try (DatagramSocket server = new DatagramSocket(port)) {
-      DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
       while (true) {
         try {
+          DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
           server.receive(packet);
           String s =
               new String(packet.getData(), 0, packet.getLength(), "8859_1");
