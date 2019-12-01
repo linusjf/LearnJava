@@ -46,6 +46,15 @@ public final class Time {
     // the Java Date class at 1970. This number
     // converts between them.
     // long differenceBetweenEpochs = 2208988800L;
+    Socket socket = new Socket(host, port);
+    socket.setSoTimeout(15_000);
+
+    InputStream raw = socket.getInputStream();
+    return new Date(getMillisSince1970(raw));
+  }
+
+  private static long getMillisSince1970(InputStream raw) throws IOException {
+
     TimeZone gmt = TimeZone.getTimeZone("GMT");
     Calendar epoch1900 = Calendar.getInstance(gmt);
     epoch1900.set(1900, 01, 01, 00, 00, 00);
@@ -55,16 +64,10 @@ public final class Time {
     long epoch1970ms = epoch1970.getTime().getTime();
     long differenceInMS = epoch1970ms - epoch1900ms;
     long differenceBetweenEpochs = differenceInMS / 1000;
-    Socket socket = new Socket(host, port);
-    socket.setSoTimeout(15_000);
-    InputStream raw = socket.getInputStream();
-
     long secondsSince1900 = 0;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++)
       secondsSince1900 = (secondsSince1900 << 8) | raw.read();
-    }
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
-    long msSince1970 = secondsSince1970 * 1000;
-    return new Date(msSince1970);
+    return secondsSince1970 * 1000;
   }
 }

@@ -31,17 +31,14 @@ public enum TCPEchoServer {
     try (Socket link = serverSocket.accept();
          PrintWriter output = new PrintWriter(link.getOutputStream(), true);
          Scanner input = new Scanner(link.getInputStream());) {
-      int numMessages = 0;
-      String message = input.nextLine();
 
+      int numMessages = 0;
+      String message;
       // Step 4.
-      while (!"***CLOSE***".equals(message)) {
+      while (!"***CLOSE***".equals(message = input.nextLine())) {
         System.out.println("Message received.");
         numMessages++;
         output.println("Message " + numMessages + ": " + message);
-
-        // Step 4.
-        message = input.nextLine();
       }
       output.println(numMessages + " messages received.");
       // Step 4.

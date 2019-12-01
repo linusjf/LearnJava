@@ -97,7 +97,7 @@ public final class SpamCheck {
     InputStream in = new BufferedInputStream(connection.getInputStream());
     InputStreamReader theHTML = new InputStreamReader(in);
     int c;
-    while ((c = theHTML.read()) != -1) 
+    while ((c = theHTML.read()) != -1)
       sb.append((char)c);
     return isIpFlagged(sb.toString(), ip);
   }
