@@ -225,6 +225,10 @@
           description="ckjm_ext main jars" />
     <conf name="ckjm_ext.lib"
           description="ckjm_ext lib jars" />
+    <conf name="javancss.main"
+          description="javancss main jars" />
+    <conf name="javancss.lib"
+          description="javancss lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -527,5 +531,10 @@
                 name="ckjm_ext"
                 rev="2.2"
                 conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
+<!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
+    <dependency org="org.codehaus.javancss" 
+      name="javancss" 
+      rev="33.54"
+  conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
   </dependencies>
 </ivy-module>

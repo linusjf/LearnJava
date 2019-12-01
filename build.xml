@@ -36,6 +36,7 @@
   <property file="${LearnJava.basedir}/spotbugs.properties" />
   <property file="${LearnJava.basedir}/error_prone.properties" />
   <property file="${LearnJava.basedir}/ckjm_ext.properties" />
+  <property file="${LearnJava.basedir}/javancss.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -302,6 +303,10 @@
                   conf="ckjm_ext.main" />
     <ivy:retrieve pathid="ckjm_ext.lib.path"
                   conf="ckjm_ext.lib" />
+    <ivy:retrieve pathid="javancss.main.path"
+                  conf="javancss.main" />
+    <ivy:retrieve pathid="javancss.lib.path"
+                  conf="javancss.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -364,6 +369,8 @@
           message="${toString:error_prone_core.lib.path}:${toString:error_prone_core.main.path}" />
     <echo file="${ckjm_ext.classpath.file}"
           message="${toString:ckjm_ext.lib.path}:${toString:ckjm_ext.main.path}" />
+    <echo file="${javancss.classpath.file}"
+          message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
     <antcall target="uniquify"></antcall>
   </target>
   <!-- =================================
