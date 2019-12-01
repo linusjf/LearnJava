@@ -31,7 +31,6 @@ public abstract class UDPServer implements Runnable {
   @SuppressWarnings("checkstyle:returncount")
   @Override
   public void run() {
-    byte[] buffer = new byte[bufferSize];
     try (DatagramSocket socket = new DatagramSocket(port)) {
       socket.setSoTimeout(10_000);
 
@@ -39,7 +38,8 @@ public abstract class UDPServer implements Runnable {
       while (true) {
         if (isShutDown)
           return;
-        DatagramPacket incoming = new DatagramPacket(buffer, buffer.length);
+        DatagramPacket incoming =
+            new DatagramPacket(new byte[bufferSize], bufferSize);
         try {
           socket.receive(incoming);
           this.respond(socket, incoming);

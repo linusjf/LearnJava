@@ -10,19 +10,20 @@ public enum UDPTimeClient {
   public static final String DEFAULT_HOST = "time.nist.gov";
   public static final int NO_OF_BYTES_EXPECTED = 4;
 
+  private static InetAddress getAddress(String... args) {
+    try {
+      if (args.length > 0)
+        return InetAddress.getByName(args[0]);
+      else
+        return InetAddress.getByName(DEFAULT_HOST);
+    } catch (UnknownHostException ex) {
+      throw new AssertionError("Usage: java UDPTimeClient [host]", ex);
+    }
+  }
+
   @SuppressWarnings("checkstyle:returncount")
   public static void main(String[] args) {
-    InetAddress host;
-    try {
-      if (args.length > 0) 
-        host = InetAddress.getByName(args[0]);
-       else 
-        host = InetAddress.getByName(DEFAULT_HOST);
-      
-    } catch (UnknownHostException ex) {
-      System.out.println("Usage: java UDPTimeClient [host]");
-      return;
-    }
+    InetAddress host = getAddress(args);
     UDPPoke poker = new UDPPoke(host, PORT);
     byte[] response = poker.poke();
     if (response == null) {
