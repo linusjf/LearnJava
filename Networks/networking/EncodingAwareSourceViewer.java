@@ -13,6 +13,7 @@ import java.net.URLConnection;
 public enum EncodingAwareSourceViewer {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     for (String arg: args) {
       try {
