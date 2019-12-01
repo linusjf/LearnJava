@@ -35,6 +35,7 @@
   <property file="${LearnJava.basedir}/assertj.properties" />
   <property file="${LearnJava.basedir}/spotbugs.properties" />
   <property file="${LearnJava.basedir}/error_prone.properties" />
+  <property file="${LearnJava.basedir}/ckjm_ext.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -297,6 +298,10 @@
                   conf="error_prone_core.main" />
     <ivy:retrieve pathid="error_prone_core.lib.path"
                   conf="error_prone_core.lib" />
+    <ivy:retrieve pathid="ckjm_ext.main.path"
+                  conf="ckjm_ext.main" />
+    <ivy:retrieve pathid="ckjm_ext.lib.path"
+                  conf="ckjm_ext.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -357,6 +362,8 @@
           message="${toString:fb-contrib.main.path};${toString:findsecbugs-plugin.main.path}" />
     <echo file="${error_prone.classpath.file}"
           message="${toString:error_prone_core.lib.path}:${toString:error_prone_core.main.path}" />
+    <echo file="${ckjm_ext.classpath.file}"
+          message="${toString:ckjm_ext.lib.path}:${toString:ckjm_ext.main.path}" />
     <antcall target="uniquify"></antcall>
   </target>
   <!-- =================================

@@ -69,7 +69,7 @@ public final class Cookies {
         cookie.secure = true;
         continue;
       }
-      String[] f = splitOn(fields,j, "=");
+      String[] f = splitOn(fields, j, "=");
       if ("expires".equalsIgnoreCase(f[0])) {
         cookie.expires = f[1];
         continue;
@@ -85,7 +85,9 @@ public final class Cookies {
     }
   }
 
-  private static String[] splitOn(String[] values,int index, String separator) {
+  private static String[] splitOn(String[] values,
+                                  int index,
+                                  String separator) {
     return new String(values[index]).split(separator);
   }
 
