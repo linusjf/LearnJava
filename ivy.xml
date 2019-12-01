@@ -220,11 +220,11 @@
     <conf name="error_prone_core.main"
           description="error_prone_core main jars" />
     <conf name="error_prone_core.lib"
-      description="error_prone_core lib jars" />
+          description="error_prone_core lib jars" />
     <conf name="ckjm_ext.main"
           description="ckjm_ext main jars" />
     <conf name="ckjm_ext.lib"
-      description="ckjm_ext lib jars" />
+          description="ckjm_ext lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -522,10 +522,10 @@
                 name="error_prone_core"
                 rev="2.3.3"
                 conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
-      <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
-    <dependency org="gr.spinellis.ckjm" 
-      name="ckjm_ext" 
-      rev="2.2"
-      conf="ckjm_ext.main->master;ckjm_ext.lib->compile;"/>
+    <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
+    <dependency org="gr.spinellis.ckjm"
+                name="ckjm_ext"
+                rev="2.2"
+                conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
