@@ -531,10 +531,10 @@
                 name="ckjm_ext"
                 rev="2.2"
                 conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
-<!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
-    <dependency org="org.codehaus.javancss" 
-      name="javancss" 
-      rev="33.54"
-  conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
+    <!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
+    <dependency org="org.codehaus.javancss"
+                name="javancss"
+                rev="33.54"
+                conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
   </dependencies>
 </ivy-module>
