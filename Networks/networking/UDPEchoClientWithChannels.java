@@ -37,52 +37,58 @@ public enum UDPEchoClientWithChannels {
       Selector selector = Selector.open();
       channel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
       ByteBuffer buffer = ByteBuffer.allocate(4);
-      int n = 0;
-      int numbersRead = 0;
-      while (true) {
-        if (numbersRead == LIMIT)
-          break;
-
-        // wait one minute for a connection
-        selector.select(60_000);
-        Set<SelectionKey> readyKeys = selector.selectedKeys();
-        if (readyKeys.isEmpty() && n == LIMIT) {
-          // All packets have been written and it doesn't look like any
-          // more are will arrive from the network
-          break;
-        } else {
-          Iterator<SelectionKey> iterator = readyKeys.iterator();
-          while (iterator.hasNext()) {
-            SelectionKey key = iterator.next();
-            iterator.remove();
-            if (key.isReadable()) {
-              buffer.clear();
-              channel.read(buffer);
-              buffer.flip();
-              int echo = buffer.getInt();
-              System.out.println("Read: " + echo);
-              numbersRead++;
-            }
-            if (key.isWritable() && n < LIMIT) {
-              buffer.clear();
-              buffer.putInt(n);
-              buffer.flip();
-              channel.write(buffer);
-              System.out.println("Wrote: " + n);
-              n++;
-            } else {
-              // All packets have been written;
-              // switch to read-only mode
-              key.interestOps(SelectionKey.OP_READ);
-            }
-          }
-        }
-      }
-      System.out.println("Echoed " + numbersRead + " out of " + LIMIT
-                         + " sent");
-      System.out.println("Success rate: " + 100.0 * numbersRead / LIMIT + "%");
+      echoToServer(buffer, selector, channel);
     } catch (IOException ex) {
       System.err.println(ex);
     }
+  }
+
+  private static void echoToServer(ByteBuffer buffer,
+                                   Selector selector,
+                                   DatagramChannel channel) throws IOException {
+
+    int n = 0;
+    int numbersRead = 0;
+    while (true) {
+      if (numbersRead == LIMIT)
+        break;
+
+      // wait one minute for a connection
+      selector.select(60_000);
+      Set<SelectionKey> readyKeys = selector.selectedKeys();
+      if (readyKeys.isEmpty() && n == LIMIT) {
+        // All packets have been written and it doesn't look like any
+        // more are will arrive from the network
+        break;
+      } else {
+        Iterator<SelectionKey> iterator = readyKeys.iterator();
+        while (iterator.hasNext()) {
+          SelectionKey key = iterator.next();
+          iterator.remove();
+          if (key.isReadable()) {
+            buffer.clear();
+            channel.read(buffer);
+            buffer.flip();
+            int echo = buffer.getInt();
+            System.out.println("Read: " + echo);
+            numbersRead++;
+          }
+          if (key.isWritable() && n < LIMIT) {
+            buffer.clear();
+            buffer.putInt(n);
+            buffer.flip();
+            channel.write(buffer);
+            System.out.println("Wrote: " + n);
+            n++;
+          } else {
+            // All packets have been written;
+            // switch to read-only mode
+            key.interestOps(SelectionKey.OP_READ);
+          }
+        }
+      }
+    }
+    System.out.println("Echoed " + numbersRead + " out of " + LIMIT + " sent");
+    System.out.println("Success rate: " + 100.0 * numbersRead / LIMIT + "%");
   }
 }

@@ -20,20 +20,18 @@ public enum UDPDiscardServer {
 
   public static void main(String[] args) {
     int port = args.length > 0 ? readPort(args[0]) : PORT;
-    byte[] buffer = new byte[MAX_PACKET_SIZE];
     System.out.println("port: " + port);
     try (DatagramSocket server = new DatagramSocket(port)) {
       while (true) {
         try {
-          DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+          DatagramPacket packet =
+              new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);
           server.receive(packet);
           String s =
               new String(packet.getData(), 0, packet.getLength(), "8859_1");
           System.out.println(packet.getAddress() + " at port "
                              + packet.getPort() + " says: " + s);
 
-          // reset the length for the next packet
-          packet.setLength(buffer.length);
         } catch (IOException ex) {
           System.err.println(ex);
         }

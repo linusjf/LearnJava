@@ -55,18 +55,27 @@ public class UDPPoke {
     }
   }
 
-  @SuppressWarnings("checkstyle:returncount")
-  public static void main(String[] args) {
-    InetAddress host;
-    int port = 0;
+  private static InetAddress getHost(String... args) {
     try {
-      host = InetAddress.getByName(args[0]);
-      port = Integer.parseInt(args[1]);
+      return InetAddress.getByName(args[0]);
     } catch (ArrayIndexOutOfBoundsException | NumberFormatException
              | UnknownHostException ex) {
-      System.out.println("Usage: java UDPPoke host port");
-      return;
+      throw new AssertionError("Usage: java UDPPoke host port", ex);
     }
+  }
+
+  private static int getPort(String... args) {
+    try {
+      return Integer.parseInt(args[1]);
+    } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
+      throw new AssertionError("Usage: java UDPPoke host port", ex);
+    }
+  }
+
+  @SuppressWarnings("checkstyle:returncount")
+  public static void main(String[] args) {
+    InetAddress host = getHost(args);
+    int port = getPort(args);
     UDPPoke poker = new UDPPoke(host, port);
     byte[] response = poker.poke();
     if (response == null) {
@@ -75,9 +84,8 @@ public class UDPPoke {
     }
     System.out.println(Base64.getEncoder().encodeToString(response));
     StringBuilder sb = new StringBuilder(8);
-    for (byte b: response) {
+    for (byte b: response)
       sb.append(String.format("%02X ", b));
-    }
     System.out.println(sb.toString());
   }
 }

@@ -29,9 +29,8 @@ public enum UDPDiscardServerWithChannels {
       SocketAddress address = new InetSocketAddress(port);
       socket.bind(address);
       ByteBuffer buffer = ByteBuffer.allocateDirect(MAX_PACKET_SIZE);
-      while (true) {
+      while (true)
         readAndPrintClient(buffer, channel);
-      }
     } catch (IOException ex) {
       System.err.println(ex);
     }
