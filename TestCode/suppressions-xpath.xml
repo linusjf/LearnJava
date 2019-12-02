@@ -1,84 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE 
-suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/VARIABLE_DEF[./IDENT[@text='rotation']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text=''&apos;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&apos;&apos;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&quot;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='''']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&amp;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&gt;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&lt;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestMagicNumber.java"
-                  checks="MagicNumberCheck"
-                  query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text=' ']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="HideUtilityClassConstructorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="ConstantNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='testString']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="ConstantNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='testString2']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="ConstantNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='testString3']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="ConstantNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='testString4']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="NoWhitespaceAfterCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/STATIC_INIT/SLIST/VARIABLE_DEF[./IDENT[@text='chars']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="IllegalTypeCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/STATIC_INIT/SLIST/VARIABLE_DEF[./IDENT[@text='sb1']]/TYPE/IDENT[@text='StringBuffer']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="IllegalInstantiationCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/STATIC_INIT/SLIST/VARIABLE_DEF[./IDENT[@text='sb1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuffer']]" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="NoWhitespaceAfterCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='chars']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="IllegalTypeCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb1']]/TYPE/IDENT[@text='StringBuffer']" />
-  <suppress-xpath files="TestPlatformIndependentLineSeparator.java"
-                  checks="IllegalInstantiationCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestPlatformIndependentLineSeparator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuffer']]" />
-  <suppress-xpath files="ArrayCopy.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='ArrayCopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='document']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]/ARRAY_DECLARATOR/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']" />
-  <suppress-xpath files="ArrayCopy.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='ArrayCopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='document']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
-  <suppress-xpath files="ArrayCopy.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='ArrayCopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
-  <suppress-xpath files="ArrayCopy.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='ArrayCopy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='100']" />
-  <suppress-xpath files="FQNTest.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='FQNTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
-  <suppress-xpath files="FQNTest.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='FQNTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='10_000']" />
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/VARIABLE_DEF[./IDENT[@text='rotation']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='' '']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
 </suppressions>

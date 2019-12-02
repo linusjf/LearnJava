@@ -2,10 +2,11 @@ package pmdtests;
 
 import java.util.Random;
 
+@SuppressWarnings("checkstyle:magicnumber")
 public enum ArrayCopy {
   ;
   private static String[] words = {
-    "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main"
+    "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main",
   };
 
   private static Random random = new Random();

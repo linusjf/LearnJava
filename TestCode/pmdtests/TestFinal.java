@@ -1,7 +1,7 @@
 package pmdtests;
 
-import java.util.Random;
 import java.math.BigInteger;
+import java.util.Random;
 
 public class TestFinal {
 

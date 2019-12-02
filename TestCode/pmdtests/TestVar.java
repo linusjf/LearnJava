@@ -2,6 +2,7 @@ package pmdtests;
 
 import java.util.List;
 
+@SuppressWarnings("checkstyle:magicnumber")
 public final class TestVar {
 
 private TestVar() {

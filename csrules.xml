@@ -78,6 +78,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
+    <module name="JavadocContentLocationCheck"/>
     <module name="TodoComment" />
     <module name="TrailingComment">
       <property name="legalComment"

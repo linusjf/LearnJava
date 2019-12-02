@@ -1,12 +1,13 @@
-package threads;
+package pmdtests;
 
+@SuppressWarnings("checkstyle:magicnumber")
 public enum FQNTest {
   ;
 
   public static void main(String[] args) {
-    Thread[] threads = new Thread[5];
-    for (int i = 0; i < threads.length; i++) {
-      threads[i] =
+    Thread[] pmdtests = new Thread[5];
+    for (int i = 0; i < pmdtests.length; i++) {
+      pmdtests[i] =
           new Thread(
               new Runnable() {
 
@@ -22,10 +23,10 @@ public enum FQNTest {
                 }
               },
               "thread-" + i);
-      threads[i].start();
+      pmdtests[i].start();
     }
     try {
-      for (Thread thread : threads) {
+      for (Thread thread : pmdtests) {
         thread.join();
       }
     } catch (InterruptedException ex) {

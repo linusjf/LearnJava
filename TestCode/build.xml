@@ -2,14 +2,21 @@
 <project name="TestCode"
          basedir=".">
   <property file="build.properties" />
+  <property file="../checkstyle.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property name="src.dir"
+            location="." />
+  <loadfile property="cs.cp"
+            srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
             srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="spotbugs-plugins.cp"
             srcfile="../${spotbugs-plugin.classpath.file}" />
+  <taskdef resource="${cs.taskdef.resource}"
+           classpath="${cs.cp}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
@@ -38,6 +45,44 @@
       <attribute name="Main-Class"
                  value="${main.class}" />
     </manifest>
+  </target>
+  <target name="checkstyle">
+    <first id="checkstylefile">
+      <fileset dir=".."
+               includes="${cs.config}" />
+    </first>
+    <checkstyle config="${toString:checkstylefile}"
+                failOnViolation="false"
+      properties="../${cs.properties}">
+      <fileset dir="${src.dir}"
+               includes="**/*.java" />
+      <formatter type="plain" />
+      <formatter type="plain"
+                 toFile="${cs.output}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </checkstyle>
+  </target>
+  <target name="checkstyleg">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <java classname="${cs.main.class}"
+          logError="true">
+    <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="pmd">
     <pmd cacheLocation="${pmd.cacheFile}"
