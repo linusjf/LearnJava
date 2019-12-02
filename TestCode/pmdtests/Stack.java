@@ -4,7 +4,7 @@ package pmdtests;
 public class Stack {
   private Node first;
   // can't be made final
-  private int n; 
+  private int n;
 
   public void insert(int x) {
     first = new Node(first, x);
@@ -22,7 +22,7 @@ public class Stack {
       this.next = next;
       this.x = x;
       // inner class updates instance variable in outer class
-      n++;     
+      n++;
     }
   }
 }

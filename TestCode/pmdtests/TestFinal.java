@@ -9,8 +9,7 @@ public class TestFinal {
     Random random = new Random();
     BigInteger e = BigInteger.probablePrime(Integer.MAX_VALUE / 2, random);
 
-    while (random.nextBoolean()) 
+    while (random.nextBoolean())
       e = e.add(BigInteger.ONE);
   }
-
 }

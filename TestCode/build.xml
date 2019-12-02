@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <project name="TestCode"
+         default="main"
          basedir=".">
   <property file="build.properties" />
+  <property file="../globalbuild.properties" />
+  <property file="../gformat.properties" />
   <property file="../checkstyle.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <property name="src.dir"
+            location="." />
+  <property name="build.dir"
             location="." />
   <loadfile property="cs.cp"
             srcFile="../${cs.classpath.file}" />
@@ -53,7 +58,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-      properties="../${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />
@@ -77,7 +82,7 @@
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true">
-    <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
@@ -105,5 +110,66 @@
           depends="pmd"
           if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
+  </target>
+  <target name="spotbugs">
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+              nested="true">
+      <auxClasspath path="${basedir}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
+  <target name="compile"
+          depends="clean, makedir,format">
+    <javac includeantruntime="false"
+           srcdir="${src.dir}"
+           destdir="${build.dir}">
+      <compilerarg value="${javac.params}" />
+      <compilerarg value="${javac.params1}" />
+    </javac>
+  </target>
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete>
+      <fileset dir="."
+               includes="**/*.class" />
+    </delete>
+  </target>
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir"></target>
+  <target name="format">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="gformat.cp"
+              srcFile="../${gformat.classpath.file}" />
+    <java classname="${gformat.main.class}">
+      <arg line="-i ${sources}" />
+      <classpath>
+        <pathelement path="${gformat.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <exec executable="bash">
+      <arg line="../cformat ${basedir}" />
+    </exec>
+    <exec executable="bash">
+      <arg line="../xformatall ${basedir}" />
+    </exec>
+  </target>
+  <target name="main"
+          depends="compile, pmd-result, spotbugs">
+    <description>Main target</description>
   </target>
 </project>
