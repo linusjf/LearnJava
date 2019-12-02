@@ -1,5 +1,6 @@
 package cstests;
 
+@SuppressWarnings("PMD")
 public interface TestMagicNumber {
   static byte[] getAsciiRotator() {
     byte[] rotation = new byte[95 * 2];

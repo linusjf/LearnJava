@@ -1,5 +1,6 @@
 package pmdtests;
 
+@SuppressWarnings("PMD.ShortClassName")
 public class Stack {
   private Node first;
   private int n; // can't be made final

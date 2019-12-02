@@ -1,5 +1,6 @@
 package cstests;
 
+@SuppressWarnings("PMD")
 class Test {
   {
     String a = "\"escaped\"" + "that";

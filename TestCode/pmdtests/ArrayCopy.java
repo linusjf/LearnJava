@@ -8,15 +8,15 @@ public enum ArrayCopy {
     "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main"
   };
 
+  private static Random random = new Random();
+
+  private static String[][] document = new String[10][100];
+  
   public static void main(String[] args) {
-    String[][] document = new String[10][100];
-    Random random = new Random();
 
     for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 100; j++) {
-        int index = random.nextInt(words.length);
-        document[i][j] = words[index];
-      }
+      for (int j = 0; j < 100; j++) 
+        document[i][j] = words[random.nextInt(words.length)];
     }
   }
 }

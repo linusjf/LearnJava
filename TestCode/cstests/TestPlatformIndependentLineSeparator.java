@@ -8,6 +8,7 @@ package cstests;
  * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
  * this comment block. *
  */
+@SuppressWarnings("PMD")
 public class TestPlatformIndependentLineSeparator {
   /**
    * * This class lists the varied combinations where the line separator denoted by \n is to be
