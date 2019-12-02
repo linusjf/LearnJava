@@ -14,20 +14,29 @@ public enum UDPEchoClient {
   ;
   public static final int PORT = 7;
 
-  public static void main(String[] args) {
-    String hostname = "localhost";
-    if (args.length > 0) {
-      hostname = args[0];
-    }
+  private static String getHostName(String... args) {
 
-    int port = PORT;
+    if (args.length > 0)
+      return args[0];
+    return "localhost";
+  }
+
+  private static int getPort(String... args) {
+
     if (args.length > 1) {
       try {
-        port = Integer.parseInt(args[1]);
+        return Integer.parseInt(args[1]);
       } catch (NumberFormatException nfe) {
-        port = PORT;
+        // empty catch block
       }
     }
+    return PORT;
+  }
+
+  public static void main(String[] args) {
+    String hostname = getHostName(args);
+
+    int port = getPort(args);
 
     try {
       InetAddress ia = InetAddress.getByName(hostname);
@@ -71,9 +80,8 @@ public enum UDPEchoClient {
     @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
-      try {
-        BufferedReader userInput =
-            new BufferedReader(new InputStreamReader(System.in));
+      try (BufferedReader userInput =
+               new BufferedReader(new InputStreamReader(System.in))) {
         while (true) {
           if (stopped)
             return;
@@ -107,11 +115,10 @@ public enum UDPEchoClient {
 
     @Override
     public void run() {
-      byte[] buffer = new byte[65_507];
       while (true) {
         if (stopped)
           return;
-        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+        DatagramPacket dp = new DatagramPacket(new byte[65_507], 65_507);
         try {
           socket.receive(dp);
           String s = new String(dp.getData(), 0, dp.getLength(), "UTF-8");

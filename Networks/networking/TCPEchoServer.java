@@ -27,6 +27,7 @@ public enum TCPEchoServer {
       handleClient();
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void handleClient() {
     try (Socket link = serverSocket.accept();
          PrintWriter output = new PrintWriter(link.getOutputStream(), true);
