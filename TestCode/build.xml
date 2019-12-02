@@ -169,7 +169,7 @@
     </exec>
   </target>
   <target name="main"
-          depends="compile, pmd-result, spotbugs">
+          depends="compile, pmd-result, spotbugs,checkstyle">
     <description>Main target</description>
   </target>
 </project>

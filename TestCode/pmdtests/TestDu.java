@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class TestDu {
 
-  private final List<String> list = new ArrayList<>();
+  private List<String> list = new ArrayList<>();
 
   public void run() {
     String str = Thread.currentThread().getName() + " Element : %d";
@@ -24,8 +24,8 @@ public class TestDu {
 
   public void runOnceMore() {
     String str = Thread.currentThread().getName() + " Element : %d";
-    IntStream.range(0, 10_000)
-        .mapToObj(i -> String.format(str, i))
-        .collect(Collectors.toList());
+    list = IntStream.range(0, 10_000)
+               .mapToObj(i -> String.format(str, i))
+               .collect(Collectors.toList());
   }
 }
