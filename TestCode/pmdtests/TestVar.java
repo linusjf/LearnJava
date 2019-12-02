@@ -8,6 +8,7 @@ private TestVar() {
   throw new IllegalStateException("Private constructor.");
 }
 
+@SuppressWarnings("PMD.UnusedPrivateMethod")
 private static int addProducts(List<String> prods) {
     var rowAdder = new RowAdder();
     rowAdder.add(prods);
@@ -17,8 +18,6 @@ private static int addProducts(List<String> prods) {
 }
 
 private void processDocument(RowAdder rowAdder) {
-  // do nothing
-  //
 System.out.println("Processing " + rowAdder);
 }
 

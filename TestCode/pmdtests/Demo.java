@@ -1,6 +1,6 @@
 package pmdtests;
 
-import java.util.*;
+import java.util.Objects;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class Demo {

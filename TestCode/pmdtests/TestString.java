@@ -1,5 +1,6 @@
 package pmdtests;
 
+@SuppressWarnings("PMD.UnusedPrivateMethod")
 public class TestString {
 
   private void startProcess() {
@@ -10,7 +11,7 @@ public class TestString {
 private void createEvent(
     String a, String b, String c) {
   // do some logic
-  System.out.println("creating event...");
+  System.out.printf("creating event... with %s %s %s%n",a,b,c);
 }
 }
 
