@@ -27,9 +27,9 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   @Override
   public String generateDailyReport() {
     if (staff.isOwner()) {
-      ReportGenerator reportGenerator = null;
       try {
-        reportGenerator = (ReportGenerator) Naming.lookup("rmi://127.0.0.1/PizzaCoRemoteGenerator");
+        ReportGenerator reportGenerator = (ReportGenerator)Naming.lookup(
+            "rmi://127.0.0.1/PizzaCoRemoteGenerator");
         return reportGenerator.generateDailyReport();
       } catch (MalformedURLException | RemoteException | NotBoundException e) {
         System.err.println(e.getMessage());
