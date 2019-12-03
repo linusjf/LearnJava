@@ -16,10 +16,12 @@ public enum SuspiciousSort {
     ;
   }
 
+  private static final Random RANDOM = new Random();
+
   public static void main(String[] args) {
     Integer[] arr = new Integer[100];
     for (int i = 0; i < arr.length; i++)
-      arr[i] = new Random().nextInt();
+      arr[i] = RANDOM.nextInt();
     Comparator<Integer> cmp = (i1, i2) -> i2 - i1;
     Arrays.sort(arr, cmp);
     System.out.println(order(arr));
@@ -28,25 +30,18 @@ public enum SuspiciousSort {
   }
 
   public static void collectionsMain(String... args) {
-    Random rnd = new Random();
     Integer[] arr = new Integer[100];
     for (int i = 0; i < arr.length; i++)
-      arr[i] = rnd.nextInt();
+      arr[i] = RANDOM.nextInt();
     Arrays.sort(arr, Collections.reverseOrder());
     System.out.println(order(arr));
   }
 
   public static void refactoredMain(String... args) {
-    Random rnd = new Random();
     Integer[] arr = new Integer[100];
     for (int i = 0; i < arr.length; i++)
-      arr[i] = rnd.nextInt();
-    Comparator<Integer> cmp = new Comparator<Integer>() {
-      @Override
-      public int compare(Integer i1, Integer i2) {
-        return i2 < i1 ? -1 : i2 > i1 ? 1 : 0;
-      }
-    };
+      arr[i] = RANDOM.nextInt();
+    Comparator<Integer> cmp = (i1, i2) -> i2 < i1 ? -1 : i2 > i1 ? 1 : 0;
     Arrays.sort(arr, cmp);
     System.out.println(order(arr));
   }

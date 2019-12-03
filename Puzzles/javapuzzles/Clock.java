@@ -18,7 +18,7 @@ public enum Clock {
     int minutes = 0;
     for (int ms = 0; ms < MS_PER_HOUR; ms++)
       if (ms % MS_PER_MINUTE == 0)
-        minutes++;
+        minutes += 1;
     System.out.println(minutes);
   }
 }

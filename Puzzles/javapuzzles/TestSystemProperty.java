@@ -3,6 +3,7 @@ package javapuzzles;
 public enum TestSystemProperty {
   ;
 
+  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
   public static void main(String... args) {
 
     System.out.printf(
