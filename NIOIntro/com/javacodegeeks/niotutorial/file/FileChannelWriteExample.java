@@ -36,7 +36,8 @@ public class FileChannelWriteExample implements FileChannelExample {
 
   /** Describe <code>writeFile</code> method here. */
   public void writeFile() {
-    try (SeekableByteChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
+    try (SeekableByteChannel fileChannel =
+             createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
       final ByteBuffer buffer = createBuffer(CONTENTS.getBytes().length);
       buffer.put(CONTENTS.getBytes());
       buffer.flip();

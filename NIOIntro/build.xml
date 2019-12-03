@@ -212,8 +212,24 @@
           if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
   </target>
+  <target name="spotbugs">
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+              excludeFilter="${spotbugs.suppressions.xml}"
+              nested="true">
+      <auxClasspath path="${basedir}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd-result">
+          depends="compile,pmd-result,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>
