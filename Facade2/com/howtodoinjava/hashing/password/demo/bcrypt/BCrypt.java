@@ -142,6 +142,30 @@ public class BCrypt {
     });
   }
 
+  private void encipherEkskeyP(int[] lr, byte[] data, int... doffp) {
+    IntStream.range(0, P.length).forEach(index -> {
+      if (index % 2 == 0) {
+        lr[0] ^= streamtoword(data, doffp);
+        lr[1] ^= streamtoword(data, doffp);
+        encipher(lr, 0);
+        P[index] = lr[0];
+        P[index + 1] = lr[1];
+      }
+    });
+  }
+
+  private void encipherEkskeyS(int[] lr, byte[] data, int... doffp) {
+    IntStream.range(0, S.length).forEach(index -> {
+      if (index % 2 == 0) {
+        lr[0] ^= streamtoword(data, doffp);
+        lr[1] ^= streamtoword(data, doffp);
+        encipher(lr, 0);
+        S[index] = lr[0];
+        S[index + 1] = lr[1];
+      }
+    });
+  }
+
   /**
    * Perform the "enhanced key schedule" step described by Provos and Mazieres
    * in "A Future-Adaptable Password Scheme"
@@ -150,32 +174,15 @@ public class BCrypt {
    * @param data salt information
    * @param key password information
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private void ekskey(final byte[] data, final byte[] key) {
-    int i;
     final int[] koffp = {0};
     final int[] doffp = {0};
     final int[] lr = {0, 0};
-    final int plen = P.length;
-    final int slen = S.length;
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
-
-    for (i = 0; i < plen; i += 2) {
-      lr[0] ^= streamtoword(data, doffp);
-      lr[1] ^= streamtoword(data, doffp);
-      encipher(lr, 0);
-      P[i] = lr[0];
-      P[i + 1] = lr[1];
-    }
-
-    for (i = 0; i < slen; i += 2) {
-      lr[0] ^= streamtoword(data, doffp);
-      lr[1] ^= streamtoword(data, doffp);
-      encipher(lr, 0);
-      S[i] = lr[0];
-      S[i + 1] = lr[1];
-    }
+    Arrays.setAll(P, index -> P[index] ^ streamtoword(key, koffp));
+    encipherEkskeyP(lr, data, doffp);
+    encipherEkskeyS(lr, data, doffp);
   }
 
   private void checkCryptParameters(int logRounds, byte[] salt) {
@@ -194,6 +201,7 @@ public class BCrypt {
    *     apply
    * @return an array containing the binary hashed password
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   byte[] cryptRaw(final byte[] password,
                   final byte[] salt,
                   final int logRounds) {
