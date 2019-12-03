@@ -16,6 +16,9 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamtoword;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme
  * described in "A Future-Adaptable Password Scheme" by Niels Provos and David
@@ -110,27 +113,33 @@ public class BCrypt {
    *
    * @param key an array containing the key
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private void key(final byte[] key) {
-    int i;
-    final int[] koffp = {0};
     final int[] lr = {0, 0};
-    final int plen = P.length;
-    final int slen = S.length;
+    final int[] koffp = {0};
+    Arrays.setAll(P, index -> P[index] ^ streamtoword(key, koffp));
+    encipherP(lr);
+    encipherS(lr);
+  }
 
-    for (i = 0; i < plen; i++)
-      P[i] = P[i] ^ streamtoword(key, koffp);
+  private void encipherS(int... lr) {
+    IntStream.range(0, S.length).forEach(index -> {
+      if (index % 2 == 0) {
+        encipher(lr, 0);
+        S[index] = lr[0];
+        S[index + 1] = lr[1];
+      }
+    });
+  }
 
-    for (i = 0; i < plen; i += 2) {
-      encipher(lr, 0);
-      P[i] = lr[0];
-      P[i + 1] = lr[1];
-    }
-
-    for (i = 0; i < slen; i += 2) {
-      encipher(lr, 0);
-      S[i] = lr[0];
-      S[i + 1] = lr[1];
-    }
+  private void encipherP(int... lr) {
+    IntStream.range(0, P.length).forEach(index -> {
+      if (index % 2 == 0) {
+        encipher(lr, 0);
+        P[index] = lr[0];
+        P[index + 1] = lr[1];
+      }
+    });
   }
 
   /**
