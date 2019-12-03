@@ -63,22 +63,22 @@ public final class PropertyLoader {
       ClassLoader cl =
           (loader == null) ? ClassLoader.getSystemClassLoader() : loader;
 
-      if (LOAD_AS_RESOURCE_BUNDLE) {
+      if (LOAD_AS_RESOURCE_BUNDLE) 
         result = loadAsResourceBundle(cl, name);
-      } else {
+       else 
         result = loadAsStream(cl, name);
-      }
     } catch (MissingResourceException e) {
       System.err.println("Error locating resource " + name + " : "
                          + e.getMessage());
-      // result = null;
+       result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
-      throw new IllegalArgumentException("could not load [" + name + "]"
-                                         + " as "
-                                         + (LOAD_AS_RESOURCE_BUNDLE
-                                                ? "a resource bundle"
-                                                : "a classloader resource"));
+      throw new IllegalArgumentException(
+          "could not load [" + name + "]"
+          + " as "
+          + (LOAD_AS_RESOURCE_BUNDLE
+          ? "a resource bundle"
+          : "a classloader resource"));
     }
     return result;
   }
