@@ -23,7 +23,6 @@ public class PBKDFEncryptor implements Encrypt {
    */
   @Override
   public String encrypt(String text) {
-    String hash = "";
     try {
       final byte[] textBytes = text.getBytes();
       final byte[] salt = getSalt();
@@ -31,10 +30,9 @@ public class PBKDFEncryptor implements Encrypt {
       int sizeKey = 64 * 8;
       byte[] derived =
           PBKDF.pbkdf2("HmacSHA512", textBytes, salt, iterationCount, sizeKey);
-      hash = Base64.getEncoder().encodeToString(derived);
+      return Base64.getEncoder().encodeToString(derived);
     } catch (GeneralSecurityException e) {
-      System.out.println("Error generating derived key: " + e.getMessage());
+      throw new AssertionError("Error generating derived key: ", e);
     }
-    return hash;
   }
 }

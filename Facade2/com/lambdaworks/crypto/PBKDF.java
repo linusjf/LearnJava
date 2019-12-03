@@ -53,6 +53,7 @@ public final class PBKDF {  // NOPMD
    * @param dkLen Intended length, in octets, of the derived key.
    * @throws GeneralSecurityException security exception
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void pbkdf2(Mac mac,
                             byte[] salt,
                             int c,

@@ -80,6 +80,7 @@ public final class BCryptUtil {
   /**
    * Using regex. Match the initial salt and match the minor and offset values.
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char)0;
     int off = 0;
@@ -105,26 +106,25 @@ public final class BCryptUtil {
    * @return the hashed password
    */
   public static String hashpw(final String password, final String salt) {
-    String[] vals = retrieveOffsetMinor(salt);
-
-    char minor = vals[0].charAt(0);
-
-    byte[] passwordb;
     try {
-      passwordb =
+      String[] vals = retrieveOffsetMinor(salt);
+
+      char minor = vals[0].charAt(0);
+
+      byte[] passwordb =
           (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
+
+      int off = Integer.parseInt(vals[1]);
+      final int rounds = Integer.parseInt(salt.substring(off, off + 2));
+
+      String realSalt = salt.substring(off + 3, off + 25);
+      final byte[] saltb = decodeBase64(realSalt);
+      final BCrypt crypt = new BCrypt();
+      final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);
+      return getHashedPassword(minor, rounds, saltb, hashed);
     } catch (final UnsupportedEncodingException uee) {
       throw new AssertionError("UTF-8 is not supported", uee);
     }
-
-    int off = Integer.parseInt(vals[1]);
-    final int rounds = Integer.parseInt(salt.substring(off, off + 2));
-
-    String realSalt = salt.substring(off + 3, off + 25);
-    final byte[] saltb = decodeBase64(realSalt);
-    final BCrypt crypt = new BCrypt();
-    final byte[] hashed = crypt.cryptRaw(passwordb, saltb, rounds);
-    return getHashedPassword(minor, rounds, saltb, hashed);
   }
 
   private static String getHashedPassword(char minor,

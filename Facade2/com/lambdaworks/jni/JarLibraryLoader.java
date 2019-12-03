@@ -27,6 +27,7 @@ import java.util.jar.JarFile;
 public class JarLibraryLoader implements LibraryLoader {
   private final CodeSource codeSource;
   private final String libraryPath;
+  File lib;
 
   /**
    * Initialize a new instance that looks for shared libraries located in the
@@ -57,9 +58,6 @@ public class JarLibraryLoader implements LibraryLoader {
    */
   @Override
   public boolean load(String name, boolean verify) {
-    boolean loaded = false;
-    File lib = null;
-
     try (JarFile jar =
              new JarFile(codeSource.getLocation().getPath(), verify)) {
       final Platform platform = Platform.detect();
@@ -73,15 +71,13 @@ public class JarLibraryLoader implements LibraryLoader {
           sm.checkLink(lib.getAbsolutePath());
           System.load(lib.getAbsolutePath());
           lib.delete();
-          loaded = true;
-          break;
+          return true;
         }
       }
     } catch (SecurityException | IOException e) {
       System.err.println("Unable to load library : " + lib);
-      loaded = false;
     }
-    return loaded;
+    return false;
   }
 
   /**
@@ -92,14 +88,15 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return A temporary file.
    * @throws IOException when an IO error occurs.
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static File extract(String name, InputStream is) throws IOException {
     final byte[] buf = new byte[4096];
-    int len;
 
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
 
     OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()));
+    int len;
     while ((len = is.read(buf)) > 0) {
       os.write(buf, 0, len);
     }

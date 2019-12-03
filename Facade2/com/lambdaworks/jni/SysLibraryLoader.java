@@ -19,17 +19,14 @@ public class SysLibraryLoader implements LibraryLoader {
   @Override
   @SuppressWarnings("PMD.AvoidUsingNativeCode")
   public boolean load(String name, boolean verify) {
-    boolean loaded;
-
     try {
       System.getSecurityManager().checkLink(name);
       System.loadLibrary(name);
-      loaded = true;
+      return true;
     } catch (SecurityException e) {
       System.err.println("Error loading system library " + name + " : "
                          + e.getMessage());
-      loaded = false;
+      return false;
     }
-    return loaded;
   }
 }

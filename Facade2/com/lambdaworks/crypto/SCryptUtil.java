@@ -115,8 +115,10 @@ public final class SCryptUtil {  // NOPMD
     }
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
-  private static int log2(int m) {
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+                     "PMD.DataflowAnomalyAnalysis"})
+  private static int
+  log2(int m) {
     int log = 0;
     int n = m;
     if ((n & 0xffff0000) != 0) {

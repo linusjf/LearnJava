@@ -95,6 +95,7 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static byte[] scryptJ(byte[] passwd,
                                byte[] salt,
                                int enCPUCost,
@@ -139,6 +140,7 @@ public final class SCrypt {  // NOPMD
    * @param v a <code>byte</code> value
    * @param xy a <code>byte</code> value
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void smix(byte[] bytes,
                           int initialB,
                           int r,
@@ -216,6 +218,7 @@ public final class SCrypt {  // NOPMD
    *
    * @param bytes a <code>byte</code> value
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void salsa20Slash8(byte[] bytes) {
     final int[] b32 = new int[16];
     final int[] x = new int[16];
