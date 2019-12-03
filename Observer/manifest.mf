@@ -9,6 +9,6 @@ Specification-Title: Observer
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 44bb72e8 November 14 2019
+Implementation-Version: 4ed93153 December 3 2019
 Implementation-Vendor: 
 

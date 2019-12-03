@@ -41,7 +41,7 @@ public class CommentaryObject implements Subject, Commentary {
   @Override
   public void notifyObservers() {
     System.out.println();
-    for (Observer observer : observers) {
+    for (Observer observer: observers) {
       observer.update(desc);
     }
   }
