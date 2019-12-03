@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="ByteLoop.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ByteLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='b']]/NUM_INT[@text='128']"/>
   <suppress-xpath files="ByeEclipse.java"
                   checks="InnerAssignmentCheck"
                   query="/ENUM_DEF[./IDENT[@text='ByeEclipse']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_IF/EXPR/BOR/ASSIGN[./IDENT[@text='b1']]" />

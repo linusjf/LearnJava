@@ -1,2 +1,1 @@
 -not -name AnonymousReceiver.java
--not -name NonAnonymousReceiver2.java

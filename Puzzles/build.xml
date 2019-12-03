@@ -56,7 +56,6 @@
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
       <exclude name="**/AnonymousReceiver.java" />
-      <exclude name="**/NonAnonymousReceiver2.java" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -1070,7 +1069,7 @@
     <fileset dir="${basedir}"
              id="javasrcs"
              includes="**/*.java"
-             excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
+             excludes="**/Ugly.java,**/AnonymousReceiver.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
@@ -1095,7 +1094,7 @@
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java"
-               excludes="**/Ugly.java,**/AnonymousReceiver.java,**/NonAnonymousReceiver2.java" />
+               excludes="**/Ugly.java,**/AnonymousReceiver.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
