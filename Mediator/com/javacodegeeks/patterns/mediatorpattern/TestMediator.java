@@ -31,7 +31,8 @@ public enum TestMediator {
     valve.setMediator(mediator);
     button.press();
 
-    mediator = new DenimMediator(machine, heater, motor, sensor, soilRemoval, valve);
+    mediator =
+        new DenimMediator(machine, heater, motor, sensor, soilRemoval, valve);
     button.setMediator(mediator);
     machine.setMediator(mediator);
     heater.setMediator(mediator);
