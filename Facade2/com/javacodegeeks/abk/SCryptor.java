@@ -18,13 +18,11 @@ public class SCryptor implements Encrypt {
    */
   @Override
   public String encrypt(String text) {
-    String hash = "";
     try {
-      hash = SCryptUtil.scrypt(text, 16, 16, 16);
-      hash = hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
+      String hash = SCryptUtil.scrypt(text, 16, 16, 16);
+      return hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
     } catch (IllegalStateException e) {
-      System.err.println("Illegal state : " + e.getMessage());
+      throw new AssertionError("Illegal state : ", e);
     }
-    return hash;
   }
 }

@@ -28,7 +28,7 @@ public class MD5Encryptor implements Encrypt {
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : " + e.getMessage());
-      throw new AssertionError("Algorithm not found : ",e);
+      throw new AssertionError("Algorithm not found : ", e);
     }
   }
 }
