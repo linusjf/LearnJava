@@ -29,13 +29,11 @@ final class PlayerFactory {  // NOPMD
    * @return a <code>Player</code> value
    */
   public static Player getPlayer(String type) {
-    Player p = null;
+    Player p = hm.get(type);
 
     /* If an object for TS or CT has already been
     created simply return its reference */
-    if (hm.containsKey(type))
-      p = hm.get(type);
-    else {
+    if (p == null) {
       /* create an object of TS/CT  */
       switch (type) {
         case "Terrorist":
@@ -50,7 +48,6 @@ final class PlayerFactory {  // NOPMD
           System.out.println("Unreachable code!");
           break;
       }
-
       // Once created insert it into the HashMap
       hm.put(type, p);
     }

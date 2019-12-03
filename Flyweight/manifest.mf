@@ -9,6 +9,6 @@ Specification-Title: Flyweight
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 73a4d359 December 3 2019
+Implementation-Version: dbfd1219 December 3 2019
 Implementation-Vendor: 
 

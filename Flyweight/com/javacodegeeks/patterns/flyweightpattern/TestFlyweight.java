@@ -30,7 +30,6 @@ public enum TestFlyweight {
     platform = PlatformFactory.getPlatformInstance("JAVA");
     code = new Code();
     code.setCode("JAVA Code2...");
-    platform = PlatformFactory.getPlatformInstance("JAVA");
     platform.execute(code);
     System.out.println(ASTERIXES);
     code = new Code();
