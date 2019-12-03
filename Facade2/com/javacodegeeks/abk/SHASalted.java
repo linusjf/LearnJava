@@ -23,17 +23,15 @@ public class SHASalted implements Encrypt {
    */
   @Override
   public String encrypt(String text) {
-    String hash = "";
     try {
       final MessageDigest digest = MessageDigest.getInstance("SHA");
       final byte[] salt = getSalt();
       digest.update(salt);
       final byte[] textBytes =
           digest.digest(text.getBytes(StandardCharsets.UTF_8));
-      hash = Base64.getEncoder().encodeToString(textBytes);
+      return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm not found : " + e.getMessage());
+      throw new AssertionError("Algorithm not found : ", e);
     }
-    return hash;
   }
 }
