@@ -4,14 +4,17 @@ import java.util.stream.IntStream;
 
 public final class PrimeNumberCount {
 
-  public static void main(String... args) {
-    int range = 100;
+  private static int getRange(String... args) {
     try {
-      range = Integer.parseInt(args[0]);
+      return Integer.parseInt(args[0]);
     } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
       System.err.println("Invalid or no range specified. Defaulting to 100.");
     }
+    return 100;
+  }
 
+  public static void main(String... args) {
+    int range = getRange(args);
     PrimeNumberCount pmc = new PrimeNumberCount();
     pmc.count(range);
   }
