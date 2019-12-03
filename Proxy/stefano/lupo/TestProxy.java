@@ -26,27 +26,23 @@ public enum TestProxy {
    * @param args list of String arguments
    */
   public static void main(String... args) {
-    String fileName = FILE;
-    if (args.length > 0)
-      fileName = args[0];
+    String fileName = args.length > 0 ? args[0] : FILE;
 
     String[] urls = readURLsFromFile(fileName);
     testURLs(urls);
   }
 
   private static String[] readURLsFromFile(String fileName) {
-    String[] data = new String[] {};
+    String[] data = new String[0];
     try {
       BufferedReader reader = Files.newBufferedReader(Paths.get(fileName));
       List<String> lines = new ArrayList<>();
 
-      String line = reader.readLine();
-      while (line != null) {
+      String line;
+      while ((line = reader.readLine()) != null)
         lines.add(line);
-        line = reader.readLine();
-      }
       reader.close();
-      data = lines.toArray(new String[] {});
+      data = lines.toArray(new String[0]);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }
@@ -65,9 +61,9 @@ public enum TestProxy {
   }
 
   private static void connect(String strUrl) throws IOException {
-    URL url = new URL(strUrl);
     System.out.println("Connecting to ..." + strUrl);
     if (strUrl.startsWith("http")) {
+      URL url = new URL(strUrl);
       Proxy proxy = new Proxy(Proxy.Type.HTTP,
                               new InetSocketAddress(PROXY_HOST, PROXY_PORT));
       URLConnection connection = url.openConnection(proxy);

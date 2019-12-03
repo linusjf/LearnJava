@@ -66,6 +66,8 @@ public class Proxy implements Runnable {
    */
   static List<Thread> servicingThreads;
 
+  private String command = "";
+
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
@@ -292,7 +294,11 @@ public class Proxy implements Runnable {
                        + "\"blocked\" to see blocked sites, "
                        + "\"cached\" to see cached sites, or "
                        + "\"close\" to close server.");
-    String command = "";
+    handleCommands(scanner);
+    scanner.close();
+  }
+
+  private void handleCommands(Scanner scanner) {
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();
@@ -315,6 +321,5 @@ public class Proxy implements Runnable {
         }
       }
     }
-    scanner.close();
   }
 }

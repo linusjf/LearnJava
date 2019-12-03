@@ -138,6 +138,7 @@ public class RequestHandler implements Runnable {
    *
    * @param cachedFile The file to be sent (can be image/text)
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private void sendCachedPageToClient(File cachedFile) {
     // Read from File containing cached web page
     try {
@@ -174,21 +175,18 @@ public class RequestHandler implements Runnable {
         proxyToClientBw.flush();
 
         String line;
-        while ((line = cachedFileBufferedReader.readLine()) != null) {
+        while ((line = cachedFileBufferedReader.readLine()) != null)
           proxyToClientBw.write(line);
-        }
         proxyToClientBw.flush();
 
         // Close resources
-        if (cachedFileBufferedReader != null) {
+        if (cachedFileBufferedReader != null)
           cachedFileBufferedReader.close();
-        }
       }
 
       // Close Down Resources
-      if (proxyToClientBw != null) {
+      if (proxyToClientBw != null)
         proxyToClientBw.close();
-      }
     } catch (IOException e) {
       System.out.println("Error Sending Cached file to client "
                          + e.getMessage());
@@ -223,24 +221,20 @@ public class RequestHandler implements Runnable {
    *
    * @param urlString URL ofthe file requested
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private void sendNonCachedToClient(String urlString) {
     // Compute a logical file name as per schema
     // This allows the files on stored on disk to resemble that of the URL it
     // was taken from
     String fileExtension = computeLogicalFileExtension(urlString);
-    String fileName = computeLogicalFilePrefix(urlString) + fileExtension;
 
     // Attempt to create File to cache to
-    boolean caching = true;
-    File fileToCache = null;
-    BufferedWriter fileToCacheBW = null;
 
     try {
-      fileToCache = getCacheFile(urlString);
-      caching = fileToCache.exists();
+      File fileToCache = getCacheFile(urlString);
 
       // Create Buffered output stream to write to cached copy of file
-      fileToCacheBW =
+      BufferedWriter fileToCacheBW =
           Files.newBufferedWriter(Paths.get(fileToCache.getAbsolutePath()));
 
       // Check if file is an image
@@ -250,6 +244,7 @@ public class RequestHandler implements Runnable {
         BufferedImage image = ImageIO.read(remoteURL);
 
         if (image == null) {
+          String fileName = computeLogicalFilePrefix(urlString) + fileExtension;
           System.out.println(
               "Sending 404 to client as image wasn't received from server"
               + fileName);
@@ -296,7 +291,7 @@ public class RequestHandler implements Runnable {
           proxyToClientBw.write(line);
 
           // Write to our cached copy of the file
-          if (caching)
+          if (fileToCache.exists())
             fileToCacheBW.write(line);
         }
 
@@ -308,7 +303,7 @@ public class RequestHandler implements Runnable {
           proxyToServerBR.close();
       }
 
-      if (caching) {
+      if (fileToCache.exists()) {
         // Ensure data written and add to our cached hash maps
         fileToCacheBW.flush();
         Proxy.addCachedPage(urlString, fileToCache);
