@@ -1,5 +1,6 @@
 package scan;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class ScannerDemo1 {
@@ -13,7 +14,7 @@ public final class ScannerDemo1 {
     // predefined standard input object
     System.out.println("Enter name,gender,age,mobile,CGPA");
 
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8.name());
 
     // String input
     String name = sc.nextLine();
