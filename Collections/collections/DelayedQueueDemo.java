@@ -46,7 +46,7 @@ public enum DelayedQueueDemo {
         return 1;
       return 0;
     }
-    
+
     @Override
     public int hashCode() {
       return Objects.hash(startDate);
@@ -94,7 +94,7 @@ public enum DelayedQueueDemo {
     public void run() {
       Date now = new Date();
       Date delay = new Date();
-      delay.setTime(now.getTime() + (long)(id * 1000));
+      delay.setTime(now.getTime() + (id * 1000L));
       System.out.printf("Thread %s: %s%n", id, delay);
       for (int i = 0; i < 100; i++) {
         Event event = new Event(delay);

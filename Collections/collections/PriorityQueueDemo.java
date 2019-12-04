@@ -1,5 +1,6 @@
 package collections;
 
+import java.util.Objects;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public enum PriorityQueueDemo {
@@ -56,6 +57,31 @@ public enum PriorityQueueDemo {
       if (this.priority < e.getPriority())
         return 1;
       return 0;
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(thread, priority);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+      // If the object is compared with itself then return true
+      if (o == this)
+        return true;
+      /* Check if o is an instance of Event or not
+
+      "null instanceof [type]" also returns false */
+
+      if (!(o instanceof Event))
+        return false;
+      // typecast o to Event so that we can compare data members
+
+      Event e = (Event)o;
+      // Compare the data members and return accordingly
+
+      return e.thread == thread && e.priority == priority;
     }
   }
 
