@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
@@ -35,7 +36,7 @@ public class CompressionDecorator extends DataSourceDecorator {
   }
 
   private String compress(String stringData) throws IOException {
-    byte[] data = stringData.getBytes();
+    byte[] data = stringData.getBytes(StandardCharsets.UTF_8);
     try (ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
          DeflaterOutputStream dos =
              new DeflaterOutputStream(bout, new Deflater(compLevel));) {
@@ -53,7 +54,7 @@ public class CompressionDecorator extends DataSourceDecorator {
       int b;
       while ((b = iin.read()) != -1)
         bout.write(b);
-      return new String(bout.toByteArray());
+      return new String(bout.toByteArray(), StandardCharsets.UTF_8);
     }
   }
 }
