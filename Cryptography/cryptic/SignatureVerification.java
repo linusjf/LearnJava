@@ -1,5 +1,6 @@
 package cryptic;
 
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -30,7 +31,7 @@ public enum SignatureVerification {
 
       // Initializing the signature
       sign.initSign(privKey);
-      byte[] bytes = "Hello, How are you?".getBytes();
+      byte[] bytes = "Hello, How are you?".getBytes(StandardCharsets.UTF_8);
 
       // Adding data to the signature
       sign.update(bytes);

@@ -12,6 +12,7 @@ public enum Exponential {
     return exp(base, binary, binary.length - 1);
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   static int exp(int x, char[] binary, int k) {
     // Y = Y[k] Y[k-1] ... Y[1] Y[0] (in binary)
     int y = 0;
@@ -27,6 +28,7 @@ public enum Exponential {
     return z;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   static int expSecond(int base, int exponent) {
     int x = base;
     int y = exponent;

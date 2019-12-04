@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 @SuppressWarnings({"PMD.BeanMembersShouldSerialize", "PMD.ImmutableField"})
@@ -34,23 +35,31 @@ public class RsaAlgorithm {
   }
 
   public static void main(String[] arguments) throws IOException {
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader input = new BufferedReader(
+        new InputStreamReader(System.in, StandardCharsets.UTF_8.name()));
     String inputString;
     System.out.println("Enter message you wish to send.");
     inputString = input.readLine();
-    System.out.println("Encrypting the message: " + inputString);
-    System.out.println("The message in bytes is:: "
-                       + bytesToString(inputString.getBytes()));
-    RsaAlgorithm rsa = new RsaAlgorithm();
+    if (inputString == null)
+      return;
+    else {
+      System.out.println("Encrypting the message: " + inputString);
+      System.out.println(
+          "The message in bytes is:: "
+          + bytesToString(inputString.getBytes(StandardCharsets.UTF_8)));
+      RsaAlgorithm rsa = new RsaAlgorithm();
 
-    // encryption
-    byte[] cipher = rsa.encryptMessage(inputString.getBytes());
+      // encryption
+      byte[] cipher =
+          rsa.encryptMessage(inputString.getBytes(StandardCharsets.UTF_8));
 
-    // decryption
-    byte[] plain = rsa.decryptMessage(cipher);
-    System.out.println("Decrypting Bytes: " + bytesToString(plain));
+      // decryption
+      byte[] plain = rsa.decryptMessage(cipher);
+      System.out.println("Decrypting Bytes: " + bytesToString(plain));
 
-    System.out.println("Plain message is: " + new String(plain));
+      System.out.println("Plain message is: "
+                         + new String(plain, StandardCharsets.UTF_8));
+    }
   }
 
   private static String bytesToString(byte[] cipher) {

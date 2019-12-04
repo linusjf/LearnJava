@@ -1,5 +1,6 @@
 package cryptic;
 
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -33,11 +34,11 @@ public enum MacSample {
 
       // Computing the Mac
       String msg = "Hi, how are you?";
-      byte[] bytes = msg.getBytes();
+      byte[] bytes = msg.getBytes(StandardCharsets.UTF_8);
       byte[] macResult = mac.doFinal(bytes);
 
       System.out.println("Mac result:");
-      System.out.println(new String(macResult));
+      System.out.println(new String(macResult, StandardCharsets.UTF_8));
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(macResult));
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {

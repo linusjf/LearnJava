@@ -21,6 +21,7 @@ public enum GCD {
     return x;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static long[] gcdKnuth(long x, long y) {
     final long[] u = {1, 0, x};
     final long[] v = {0, 1, y};
