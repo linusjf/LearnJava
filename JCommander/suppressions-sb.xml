@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="command.CommandAdd" />
+    <Field name="interactive" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="command.TooledCommand" />
+    <Field name="test" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="command.ArgsConverterFactory" />
+    <Method name="main" />
+    <Bug code="ISC" />
+  </Match>
+</FindBugsFilter>
