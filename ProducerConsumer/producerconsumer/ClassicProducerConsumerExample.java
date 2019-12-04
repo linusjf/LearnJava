@@ -2,6 +2,7 @@ package producerconsumer;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 public enum ClassicProducerConsumerExample {
   ;
@@ -17,6 +18,7 @@ public enum ClassicProducerConsumerExample {
           buffer.produce();
         } catch (InterruptedException e) {
           System.err.println(e);
+          Thread.currentThread().interrupt();
         }
       }
     });
@@ -28,6 +30,7 @@ public enum ClassicProducerConsumerExample {
           buffer.consume();
         } catch (InterruptedException e) {
           System.err.println(e);
+          Thread.currentThread().interrupt();
         }
       }
     });
@@ -38,7 +41,9 @@ public enum ClassicProducerConsumerExample {
         try {
           Thread.sleep(10_000);
           System.out.println("Exiting program...");
-          System.exit(0);
+          producerThread.interrupt();
+          consumerThread.interrupt();
+          // System.exit(0);
         } catch (InterruptedException e) {
           System.err.println(e);
           Runtime.getRuntime().halt(0);
@@ -56,6 +61,8 @@ public enum ClassicProducerConsumerExample {
   static class Buffer {
     private final Queue<Integer> list;
     private final int size;
+    private final Random random =
+      new Random();
 
     Buffer(int size) {
       this.list = new LinkedList<>();
@@ -66,6 +73,7 @@ public enum ClassicProducerConsumerExample {
     public void produce() throws InterruptedException {
       int value = 0;
       while (true) {
+        Thread.sleep(random.nextInt(1000));
         synchronized (this) {
           while (list.size() >= size) {
             // wait for the consumer
@@ -77,13 +85,13 @@ public enum ClassicProducerConsumerExample {
 
           // notify the consumer
           notifyAll();
-          Thread.sleep(1000);
         }
       }
     }
 
     public void consume() throws InterruptedException {
       while (true) {
+        Thread.sleep(random.nextInt(1000));
         synchronized (this) {
           while (list.size() == 0) {
             // wait for the producer
@@ -94,7 +102,6 @@ public enum ClassicProducerConsumerExample {
 
           // notify the producer
           notifyAll();
-          Thread.sleep(1000);
         }
       }
     }
