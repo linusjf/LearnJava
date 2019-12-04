@@ -22,6 +22,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
             value="${cs.fileExtensions}" />
   <property name="cacheFile"
             value="${cs.cacheFile}" />
+  <property name="haltOnException"
+            value="${cs.haltOnException}" />
   <module name="OrderedProperties" />
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern"
