@@ -56,6 +56,7 @@ public final class PropertyLoader {
    * @throws IllegalArgumentException if the resource was not found and *
    *     THROW_ON_LOAD_FAILURE is true
    */
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static Properties loadProperties(String nome, ClassLoader loader) {
     String name = normalizeName(nome);
     Properties result = null;
