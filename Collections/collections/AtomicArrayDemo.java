@@ -33,7 +33,7 @@ public enum AtomicArrayDemo {
         counter++;
       }
     }
-    System.out.printf("No. of non-zero elements: %d\n", counter);
+    System.out.printf("No. of non-zero elements: %d%n", counter);
   }
 
   @SuppressWarnings("PMD.BeanFieldsShouldSerialize")

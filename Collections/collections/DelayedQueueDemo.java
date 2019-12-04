@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +31,8 @@ public enum DelayedQueueDemo {
     private final Date startDate;
 
     Event(Date startDate) {
+      if (startDate == null)
+        throw new IllegalArgumentException("null");
       this.startDate = startDate;
     }
 
@@ -42,6 +45,31 @@ public enum DelayedQueueDemo {
       if (result > 0)
         return 1;
       return 0;
+    }
+    
+    @Override
+    public int hashCode() {
+      return Objects.hash(startDate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+      // If the object is compared with itself then return true
+      if (o == this)
+        return true;
+      /* Check if o is an instance of Complex or not
+
+      "null instanceof [type]" also returns false */
+
+      if (!(o instanceof Event))
+        return false;
+      // typecast o to Event so that we can compare data members
+
+      Event e = (Event)o;
+      // Compare the data members and return accordingly
+
+      return e.startDate.equals(startDate);
     }
 
     @Override
@@ -66,8 +94,8 @@ public enum DelayedQueueDemo {
     public void run() {
       Date now = new Date();
       Date delay = new Date();
-      delay.setTime(now.getTime() + (id * 1000));
-      System.out.printf("Thread %s: %s\n", id, delay);
+      delay.setTime(now.getTime() + (long)(id * 1000));
+      System.out.printf("Thread %s: %s%n", id, delay);
       for (int i = 0; i < 100; i++) {
         Event event = new Event(delay);
         queue.add(event);

@@ -14,7 +14,7 @@ public enum ConcurrentLinkedDequeDemo {
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf("Main: %d AddTask threads have been launched\n",
+    System.out.printf("Main: %d AddTask threads have been launched%n",
                       threads.length);
     for (Thread thread: threads) {
       try {
@@ -23,13 +23,13 @@ public enum ConcurrentLinkedDequeDemo {
         System.err.println(e);
       }
     }
-    System.out.printf("Main: Size of the List: %d\n", list.size());
+    System.out.printf("Main: Size of the List: %d%n", list.size());
     for (int i = 0; i < threads.length; i++) {
       PollTask task = new PollTask(list);
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf("Main: %d PollTask threads have been launched\n",
+    System.out.printf("Main: %d PollTask threads have been launched%n",
                       threads.length);
     for (Thread thread: threads) {
       try {
@@ -38,7 +38,7 @@ public enum ConcurrentLinkedDequeDemo {
         System.err.println(e);
       }
     }
-    System.out.printf("Main: Size of the List: %d\n", list.size());
+    System.out.printf("Main: Size of the List: %d%n", list.size());
     alternateMain();
   }
 
@@ -57,12 +57,12 @@ public enum ConcurrentLinkedDequeDemo {
       threads2[i].setPriority(random.nextInt(10) + 1);
       threads2[i].start();
     }
-    System.out.printf("Alternate Main: %d AddTask threads have been launched\n",
+    System.out.printf("Alternate Main: %d AddTask threads have been launched%n",
                       threads.length);
     System.out.printf(
-        "Alternate Main: %d PollTask threads have been launched simultaneously\n",
+        "Alternate Main: %d PollTask threads have been launched simultaneously%n",
         threads2.length);
-    System.out.printf("Alternate Main: Size of the List: %d\n", list.size());
+    System.out.printf("Alternate Main: Size of the List: %d%n", list.size());
 
     for (Thread thread: threads) {
       try {
@@ -78,7 +78,7 @@ public enum ConcurrentLinkedDequeDemo {
         System.err.println(e);
       }
     }
-    System.out.printf("Alternate Main: Size of the List: %d\n", list.size());
+    System.out.printf("Alternate Main: Size of the List: %d%n", list.size());
   }
 
   static class AddTask implements Runnable {

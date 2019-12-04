@@ -1,5 +1,6 @@
 package refactoringguru.iterator.example;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,7 +13,8 @@ import refactoringguru.iterator.example.spammer.SocialSpammer;
 /** Demo class. Everything comes together here. */
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
-  private static final Scanner SCANNER = new Scanner(System.in);
+  private static final Scanner SCANNER =
+      new Scanner(System.in, StandardCharsets.UTF_8.name());
 
   private Demo() {
     throw new IllegalStateException("Private constructor");

@@ -16,14 +16,14 @@ public enum LinkedBlockingDequeueDemo {
       for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 3; j++) {
           String request = list.take();
-          System.out.printf("Main: Request: %s at %s. Size: %d\n",
+          System.out.printf("Main: Request: %s at %s. Size: %d%n",
                             request,
                             new Date(),
                             list.size());
         }
         TimeUnit.MILLISECONDS.sleep(300);
       }
-      System.out.printf("Main: End of the program.\n");
+      System.out.printf("Main: End of the program.%n");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
@@ -47,7 +47,7 @@ public enum LinkedBlockingDequeueDemo {
           } catch (InterruptedException e) {
             System.err.println(e);
           }
-          System.out.printf("Client: %s at %s.\n", request, new Date());
+          System.out.printf("Client: %s at %s.%n", request, new Date());
         }
         try {
           TimeUnit.SECONDS.sleep(2);
@@ -55,7 +55,7 @@ public enum LinkedBlockingDequeueDemo {
           System.err.println(e);
         }
       }
-      System.out.printf("Client: End.\n");
+      System.out.printf("Client: End.%n");
     }
   }
 }

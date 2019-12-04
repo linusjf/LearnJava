@@ -22,14 +22,14 @@ public enum PriorityQueueDemo {
         System.err.println(e);
       }
     }
-    System.out.printf("Main: Queue Size: %d\n", queue.size());
+    System.out.printf("Main: Queue Size: %d%n", queue.size());
     for (int i = 0; i < taskThreads.length * 1000; i++) {
       Event event = queue.poll();
       System.out.printf(
-          "Thread %s: Priority %d\n", event.getThread(), event.getPriority());
+          "Thread %s: Priority %d%n", event.getThread(), event.getPriority());
     }
-    System.out.printf("Main: Queue Size: %d\n", queue.size());
-    System.out.printf("Main: End of the program\n");
+    System.out.printf("Main: Queue Size: %d%n", queue.size());
+    System.out.printf("Main: End of the program%n");
   }
 
   static class Event implements Comparable<Event> {

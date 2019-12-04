@@ -30,6 +30,7 @@ public enum Lists {
     Lists.addAll(ints, new Integer[] {3, 4});
     assert ints.toString().equals("[1, 2, 3, 4]");
     ints = Lists.<Integer>toList();
+    System.out.println(ints);
     List<Object> objs = Lists.<Object>toList(1, "two");
     System.out.println(objs);
   }
