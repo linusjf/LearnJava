@@ -2,6 +2,7 @@ package command;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import picocli.CommandLine;
 import picocli.CommandLine.Model.CommandSpec;
@@ -35,7 +36,8 @@ public class PasswordDemo implements Runnable {
         return;
       }
       if (passwordFile != null) {
-        login(new String(Files.readAllBytes(passwordFile.toPath())));
+        login(new String(Files.readAllBytes(passwordFile.toPath()),
+                         StandardCharsets.UTF_8));
         return;
       }
       throw new ParameterException(spec.commandLine(), "Password required");

@@ -40,7 +40,7 @@ public class CheckSum implements Callable<Integer> {
     byte[] fileContents = Files.readAllBytes(file.toPath());
     byte[] digest = MessageDigest.getInstance(algorithm).digest(fileContents);
     System.out.println(algorithm);
-    System.out.println(Base64.getEncoder().encode(digest));
+    System.out.println(Base64.getEncoder().encodeToString(digest));
     System.out.printf("%0" + (digest.length * 2) + "x%n",
                       new BigInteger(1, digest));
     return 0;
