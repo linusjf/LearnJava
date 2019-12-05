@@ -108,10 +108,22 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run99">
+    <description>WeirdLoop target</description>
+    <java classname="${main.class99}"
+          fork="true">
+      <jvmarg value="${java.params}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run98">
     <description>ByteLoop target</description>
     <java classname="${main.class98}"
-          fork="true" timeout="2000">
+          fork="true"
+          timeout="2000">
       <jvmarg value="${java.params}" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
