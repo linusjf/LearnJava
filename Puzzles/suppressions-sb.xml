@@ -69,4 +69,9 @@
     <Class name="javapuzzles.Elvis" />
     <Bug code="SI" />
   </Match>
+  <Match>
+    <Class name="org.programming.mitra.exercises.IntegerCacheExample" />
+    <Method name="main" />
+    <Bug code="RC" />
+  </Match>
 </FindBugsFilter>
