@@ -13,7 +13,7 @@ public enum BigDelight {
       if (b == (byte)0x90)
         System.out.println(JOY);
       if ((b & 0xff) == 0x90)
-        System.out.println(JOY);
+      System.out.println(JOY);
       if (b == TARGET)
         System.out.println(JOY);
     }

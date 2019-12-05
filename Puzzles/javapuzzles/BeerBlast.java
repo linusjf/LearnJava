@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public enum BeerBlast {
   ;
@@ -35,7 +36,8 @@ public enum BeerBlast {
   static void drainInBackground(final InputStream is) {
     new Thread(() -> {
       try {
-        BufferedReader bri = new BufferedReader(new InputStreamReader(is));
+        BufferedReader bri = new BufferedReader(
+            new InputStreamReader(is, StandardCharsets.UTF_8.name()));
         StringBuilder result = new StringBuilder();
         String line;
         while ((line = bri.readLine()) != null)
