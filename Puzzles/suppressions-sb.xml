@@ -15,4 +15,58 @@
     <Method name="main" />
     <Bug code="UC" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.BigProblem" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.C" />
+    <Field name="Z" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Change" />
+    <Method name="main" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.ColorPoint" />
+    <Method name="makeName" />
+    <Bug code="UR" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Count" />
+    <Method name="main" />
+    <Bug code="IL" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Creator" />
+    <Method name="main" />
+    <Bug code="ISC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Creature" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Crito" />
+    <Method name="main" />
+    <Bug code="DMI,Dm,ES" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.DatingGame" />
+    <Method name="main" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Derived" />
+    <Field name="className" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Elvis" />
+    <Bug code="SI" />
+  </Match>
 </FindBugsFilter>
