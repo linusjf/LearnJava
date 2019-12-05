@@ -74,4 +74,13 @@
     <Method name="main" />
     <Bug code="RC" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.Twisted" />
+    <Bug code="UPM,SIC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Theaetetus" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>
