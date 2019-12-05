@@ -83,4 +83,34 @@
     <Method name="main" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.Equivalency" />
+    <Method name="main" />
+    <Bug code="Dm,ES" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Increment" />
+    <Method name="main" />
+    <Bug code="SA,DLS" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Lazy$1" />
+    <Method name="run" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Sleepy" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.AnimalFarm" />
+    <Method name="main" />
+    <Bug code="ES" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.WeirdLoop" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
 </FindBugsFilter>
