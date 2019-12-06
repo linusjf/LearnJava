@@ -21,7 +21,7 @@ public final class JdbcScrollableSelect {
     } catch (SQLException sqlEx) {
       System.err.println("* Cannot connect to database! *");
       System.err.println(sqlEx);
-      throw new AssertionError(sqlEx.getMessage(),sqlEx);
+      throw new AssertionError(sqlEx.getMessage(), sqlEx);
     }
   }
 
@@ -36,7 +36,7 @@ public final class JdbcScrollableSelect {
     } catch (SQLException sqlEx) {
       System.out.println("* Cannot execute query! *");
       System.err.println(sqlEx);
-      throw new AssertionError(sqlEx.getMessage(),sqlEx);
+      throw new AssertionError(sqlEx.getMessage(), sqlEx);
     }
   }
 
@@ -50,7 +50,7 @@ public final class JdbcScrollableSelect {
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
       System.err.println(sqlEx);
-      throw new AssertionError(sqlEx.getMessage(),sqlEx);
+      throw new AssertionError(sqlEx.getMessage(), sqlEx);
     }
   }
 
@@ -66,7 +66,7 @@ public final class JdbcScrollableSelect {
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
       System.err.println(sqlEx);
-      throw new AssertionError(sqlEx.getMessage(),sqlEx);
+      throw new AssertionError(sqlEx.getMessage(), sqlEx);
     }
   }
 
