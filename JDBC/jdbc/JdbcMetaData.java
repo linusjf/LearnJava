@@ -65,8 +65,6 @@ public final class JdbcMetaData {
             System.out.println(results.getString(i));
             break;
           case Types.NUMERIC:
-            System.out.printf("%.2f %n%n", results.getFloat(i));
-            break;
           case Types.REAL:
             System.out.printf("%.2f %n%n", results.getFloat(i));
             break;
