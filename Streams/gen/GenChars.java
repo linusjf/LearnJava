@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 public enum GenChars {
   ;
 
+  private static final String TMP_FILE_PATH = "/tmp/data.txt";
+
   public static void main(String[] args) {
     try {
       generateCharacters(System.out);
@@ -17,11 +19,9 @@ public enum GenChars {
     }
   }
 
-  private static void writeToFile() {
-    try (OutputStream out = Files.newOutputStream(Paths.get("/tmp/data.txt"))) {
-      generateCharacters(out);
-    } catch (IOException ex) {
-      System.err.println(ex.getMessage());
+  private static void writeToFile() throws IOException {
+    try (OutputStream out = Files.newOutputStream(Paths.get(TMP_FILE_PATH))) {
+generateCharacters(out);
     }
   }
 
