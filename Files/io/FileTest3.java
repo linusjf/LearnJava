@@ -3,6 +3,7 @@ package io;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 
 public enum FileTest3 {
   ;
@@ -11,7 +12,7 @@ public enum FileTest3 {
     int mark;
     int total = 0;
     int count = 0;
-    try (Scanner input = new Scanner(new File("marks1.txt"))) {
+    try (Scanner input = new Scanner(new File("marks1.txt"),StandardCharsets.UTF_8.name())) {
       while (input.hasNext()) {
         mark = input.nextInt();
         total += mark;

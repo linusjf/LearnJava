@@ -14,7 +14,7 @@ public enum ArrayListSerialise {
   @SuppressWarnings("unchecked")
   public static void main(String[] args) {
     ArrayList<Personnel> staffListOut = new ArrayList<>();
-    ArrayList<Personnel> staffListIn = new ArrayList<>();
+    ArrayList<Personnel> staffListIn;
     try (ObjectOutputStream outStream = new ObjectOutputStream(
              Files.newOutputStream(Paths.get("personnel.dat")))) {
       // clang-format off

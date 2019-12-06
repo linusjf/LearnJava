@@ -2,13 +2,14 @@ package io;
 
 import java.io.File;
 import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 
 public enum FileMethods {
   ;
 
   public static void main(String[] args) {
     String filename;
-    try (Scanner input = new Scanner(System.in)) {
+    try (Scanner input = new Scanner(System.in,StandardCharsets.UTF_8.name())) {
       System.out.print("Enter name of file/directory ");
       System.out.print("or press <Enter> to quit: ");
       filename = input.nextLine();
@@ -39,8 +40,10 @@ public enum FileMethods {
 
           // Now display list of files in
           // directory…
+          if (fileList != null) {
           for (String fileName: fileList)
             System.out.println(" " + fileName);
+          }
         } else {
           System.out.print("Size of file: ");
           System.out.println(fileDir.length() + " bytes.");

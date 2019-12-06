@@ -7,6 +7,7 @@ import static io.RanFileConstants.*;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 
 public enum RanFile2 {
   ;
@@ -16,7 +17,7 @@ public enum RanFile2 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (Scanner input = new Scanner(System.in);
+    try (Scanner input = new Scanner(System.in,StandardCharsets.UTF_8.name());
          RandomAccessFile ranAccts =
              new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;

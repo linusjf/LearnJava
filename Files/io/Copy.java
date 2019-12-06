@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 
 public enum Copy {
   ;
@@ -19,8 +20,8 @@ public enum Copy {
       return;
     }
 
-    try (Scanner source = new Scanner(new File(arg[0]));
-         PrintWriter destination = new PrintWriter(new File(arg[1]));) {
+    try (Scanner source = new Scanner(new File(arg[0]),StandardCharsets.UTF_8.name());
+         PrintWriter destination = new PrintWriter(new File(arg[1]),StandardCharsets.UTF_8.name());) {
       String input;
       while (source.hasNext()) {
         input = source.nextLine();
