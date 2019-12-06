@@ -9,6 +9,13 @@ package com.javacodegeeks.patterns.mediatorpattern;
 public class Button implements Colleague {
   private MachineMediator mediator;
 
+  public Button() {
+  }
+
+  public Button(MachineMediator mediator) {
+    setMediator(mediator);
+  }
+
   @Override
   public void setMediator(MachineMediator mediator) {
     this.mediator = mediator;
