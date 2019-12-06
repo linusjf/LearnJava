@@ -3,6 +3,7 @@ package com.javacodegeeks.niotutorial.file;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Describe class <code>FileChannelReadExample</code> here.
@@ -45,7 +46,7 @@ public final class FileChannelReadExample implements FileChannelExample {
   }
 
   private String convertBytesToString(byte[] bytes) {
-    return new String(bytes);
+    return new String(bytes, StandardCharsets.UTF_8);
   }
 
   private ByteBuffer createBuffer() {

@@ -3,6 +3,7 @@ package com.javacodegeeks.niotutorial.file;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Describe class <code>FileChannelWriteExample</code> here.
@@ -38,8 +39,9 @@ public class FileChannelWriteExample implements FileChannelExample {
   public void writeFile() {
     try (SeekableByteChannel fileChannel =
              createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
-      final ByteBuffer buffer = createBuffer(CONTENTS.getBytes().length);
-      buffer.put(CONTENTS.getBytes());
+      final ByteBuffer buffer =
+          createBuffer(CONTENTS.getBytes(StandardCharsets.UTF_8).length);
+      buffer.put(CONTENTS.getBytes(StandardCharsets.UTF_8));
       buffer.flip();
 
       while (buffer.hasRemaining()) {

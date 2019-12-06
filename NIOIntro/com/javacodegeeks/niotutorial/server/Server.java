@@ -7,6 +7,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
@@ -99,7 +100,8 @@ public final class Server {
       client.close();
     } else {
       System.out.println(
-          String.format("Request data: %s", new String(buffer.array())));
+          String.format("Request data: %s",
+                        new String(buffer.array(), StandardCharsets.UTF_8)));
     }
   }
 }

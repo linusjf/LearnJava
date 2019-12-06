@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Describe class <code>Client</code> here.
@@ -31,8 +32,8 @@ public final class Client {
 
     for (int i = 0; i < 10; i++) {
       try (SocketChannel client = SocketChannel.open(HOSTADDRESS)) {
-        final ByteBuffer buffer =
-            ByteBuffer.wrap(Constants.TEXT_FIRST_SEGMENT.getBytes());
+        final ByteBuffer buffer = ByteBuffer.wrap(
+            Constants.TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8));
 
         while (buffer.hasRemaining()) {
           client.write(buffer);
@@ -46,6 +47,6 @@ public final class Client {
   }
 
   private static String convertBytesToString(byte[] bytes) {
-    return new String(bytes);
+    return new String(bytes, StandardCharsets.UTF_8);
   }
 }
