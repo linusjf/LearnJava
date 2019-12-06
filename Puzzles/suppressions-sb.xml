@@ -148,4 +148,14 @@
     <Method name="main" />
     <Bug code="DLS" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.Reluctant" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="IL,ISC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Reluctant" />
+    <Method name="main" />
+    <Bug code="ISC" />
+  </Match>
 </FindBugsFilter>
