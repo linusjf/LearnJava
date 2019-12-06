@@ -183,4 +183,48 @@
     <Method name="main" />
     <Bug code="Ru" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.ReferenceComparison" />
+    <Method name="main" />
+    <Bug code="RC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Rhymes" />
+    <Method name="main" />
+    <Bug code="SF,DLS" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.PoisonParen" />
+    <Field name="i" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.PoisonParen" />
+    <Field name="j" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Size$Student" />
+    <Field name="id" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.See" />
+    <Field name="z" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Obscure" />
+    <Field name="System" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Reluctant" />
+    <Field name="internalInstance" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Outer$Inner" />
+    <Bug code="SIC" />
+  </Match>
 </FindBugsFilter>
