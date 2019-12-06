@@ -216,12 +216,17 @@
   <Match>
     <Class name="javapuzzles.Obscure" />
     <Field name="System" />
-    <Bug code="UrF" />
+    <Bug code="UrF,UuF" />
   </Match>
   <Match>
     <Class name="javapuzzles.Reluctant" />
     <Field name="internalInstance" />
     <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Puzzle" />
+    <Field name="x" />
+    <Bug code="UrF,SS" />
   </Match>
   <Match>
     <Class name="javapuzzles.Outer$Inner" />
