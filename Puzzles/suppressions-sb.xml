@@ -135,11 +135,16 @@
   </Match>
   <Match>
     <Class name="javapuzzles.Obscure" />
-    <Method name="main" />
+    <Field name="System" />
     <Bug code="Nm" />
   </Match>
   <Match>
     <Class name="javapuzzles.CleverSwap" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Loopy" />
     <Method name="main" />
     <Bug code="DLS" />
   </Match>
