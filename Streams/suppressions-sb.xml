@@ -8,4 +8,9 @@
     <Method name="writeToFile" />
     <Bug code="DMI,RCN" />
   </Match>
+  <Match>
+    <Class name="streams.Streams" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>
