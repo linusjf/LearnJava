@@ -113,4 +113,34 @@
     <Method name="main" />
     <Bug code="DLS" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.MoreNames" />
+    <Method name="MoreNames" />
+    <Bug code="Nm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.NameGame" />
+    <Method name="altMain" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Odd" />
+    <Method name="isOddModulo" />
+    <Bug code="IM" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.InSum" />
+    <Method name="main" />
+    <Bug code="RC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.Obscure" />
+    <Method name="main" />
+    <Bug code="Nm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.CleverSwap" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
 </FindBugsFilter>
