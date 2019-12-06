@@ -158,4 +158,29 @@
     <Method name="main" />
     <Bug code="ISC" />
   </Match>
+  <Match>
+    <Class name="javapuzzles.StringAlong" />
+    <Method name="main" />
+    <Bug code="DMI,Dm,ES" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.HelloGoodbye" />
+    <Method name="finallyMain" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.HelloGoodbye" />
+    <Method name="shutdownHooksMain" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.HelloGoodbye" />
+    <Method name="shutdownHooksMain" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.PingPong" />
+    <Method name="main" />
+    <Bug code="Ru" />
+  </Match>
 </FindBugsFilter>
