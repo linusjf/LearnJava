@@ -72,7 +72,8 @@ public enum ClassicProducerConsumerExample {
     @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     public void produce() throws InterruptedException {
       int value = 0;
-      while (true) {
+      // equivalent of while(true)
+      while (value >= 0) {
         Thread.sleep(random.nextInt(1000));
         synchronized (this) {
           while (list.size() >= size) {
