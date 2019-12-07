@@ -10,12 +10,6 @@ public enum ConcurrentSkipListMapDemo {
   public static void main(String[] args) {
     Thread[] threads = new Thread[25];
     ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
-    for (char i = 'A'; i < 'Z'; i++) {
-      Task task = new Task(map, String.valueOf(i));
-      int index = i - 'A';
-      threads[index] = new Thread(task);
-      threads[index].start();
-    }
     for (Thread t: threads) {
       try {
         t.join();
@@ -47,6 +41,16 @@ public enum ConcurrentSkipListMapDemo {
         System.out.printf("%s: %s%n", contact.getName(), contact.getPhone());
       }
     } while (element != null);
+  }
+
+  private static void startThreads(Thread[] threads,
+                                   ConcurrentSkipListMap<String, Contact> map) {
+    for (char i = 'A'; i < 'Z'; i++) {
+      Task task = new Task(map, String.valueOf(i));
+      int index = i - 'A';
+      threads[index] = new Thread(task);
+      threads[index].start();
+    }
   }
 
   static class Contact {

@@ -13,16 +13,19 @@ public enum DelayedQueueDemo {
     try {
       DelayQueue<Event> queue = new DelayQueue<>();
       Thread[] threads = new Thread[5];
-      for (int i = 0; i < threads.length; ++i) {
-        Task task = new Task(i + 1, queue);
-        threads[i] = new Thread(task);
-        threads[i].start();
-      }
-
+      startThreads(threads, queue);
       for (Thread thread: threads)
         thread.join();
     } catch (InterruptedException ie) {
       System.err.println(ie);
+    }
+  }
+
+  private static void startThreads(Thread[] threads, DelayQueue<Event> queue) {
+    for (int i = 0; i < threads.length; ++i) {
+      Task task = new Task(i + 1, queue);
+      threads[i] = new Thread(task);
+      threads[i].start();
     }
   }
 

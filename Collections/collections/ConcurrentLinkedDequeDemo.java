@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public enum ConcurrentLinkedDequeDemo {
   ;
 
+  private static Random random = new Random();
+
   public static void main(String[] args) {
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];
@@ -46,17 +48,7 @@ public enum ConcurrentLinkedDequeDemo {
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];
     Thread[] threads2 = new Thread[100];
-    Random random = new Random();
-    for (int i = 0; i < threads.length; i++) {
-      AddTask task = new AddTask(list);
-      threads[i] = new Thread(task);
-      threads[i].setPriority(random.nextInt(10) + 1);
-      threads[i].start();
-      PollTask task1 = new PollTask(list);
-      threads2[i] = new Thread(task1);
-      threads2[i].setPriority(random.nextInt(10) + 1);
-      threads2[i].start();
-    }
+    startThreads(threads, threads2, list);
     System.out.printf("Alternate Main: %d AddTask threads have been launched%n",
                       threads.length);
     System.out.printf(
@@ -79,6 +71,21 @@ public enum ConcurrentLinkedDequeDemo {
       }
     }
     System.out.printf("Alternate Main: Size of the List: %d%n", list.size());
+  }
+
+  private static void startThreads(Thread[] threads,
+                                   Thread[] threads2,
+                                   ConcurrentLinkedDeque<String> list) {
+    for (int i = 0; i < threads.length; i++) {
+      AddTask task = new AddTask(list);
+      threads[i] = new Thread(task);
+      threads[i].setPriority(random.nextInt(10) + 1);
+      threads[i].start();
+      PollTask task1 = new PollTask(list);
+      threads2[i] = new Thread(task1);
+      threads2[i].setPriority(random.nextInt(10) + 1);
+      threads2[i].start();
+    }
   }
 
   static class AddTask implements Runnable {

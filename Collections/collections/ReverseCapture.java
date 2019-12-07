@@ -11,6 +11,7 @@ public enum ReverseCapture {
     rev(list);
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static <T> void rev(List<T> list) {
     List<T> tmp = new ArrayList<>(list);
     for (int i = 0; i < list.size(); i++)

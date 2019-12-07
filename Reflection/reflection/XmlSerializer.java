@@ -45,6 +45,7 @@ public enum XmlSerializer {
   }
 
   // clang-format off
+  @SuppressWarnings("DataflowAnomalyAnalysis")
   private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
     String id = Integer.toString(table.size());
@@ -54,13 +55,12 @@ public enum XmlSerializer {
     objElt.setAttribute("class", sourceclass.getName());
     objElt.setAttribute("id", id);
     if (sourceclass.isArray()) {
-      Class<?> componentType = sourceclass.getComponentType();
 
       int length = Array.getLength(source);
       objElt.setAttribute("length", Integer.toString(length));
-      for (int i = 0; i < length; i++) {
+      Class<?> componentType = sourceclass.getComponentType();
+      for (int i = 0; i < length; i++)
         objElt.addContent(serializeVariable(componentType, Array.get(source, i), target, table));
-      }
     } else {
       Field[] fields = Mopex.getInstanceVariables(sourceclass);
       for (Field field : fields) {

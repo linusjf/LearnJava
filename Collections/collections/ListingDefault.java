@@ -45,7 +45,6 @@ public enum ListingDefault {
     list = Stream.of(FOO, BAR).collect(Collectors.toList());
 
     assert list.contains(FOO);
-    list = List.of(FOO, BAR, BAZ);
     List<String> cities = new ArrayList<>() {
       {
         add("New York");
