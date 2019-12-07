@@ -10,10 +10,11 @@ public class Valve implements Colleague {
   private MachineMediator mediator;
 
   public Valve() {
+    // empty constructor
   }
 
   public Valve(MachineMediator mediator) {
-    setMediator(mediator);
+    this.mediator = mediator;
   }
 
   @Override

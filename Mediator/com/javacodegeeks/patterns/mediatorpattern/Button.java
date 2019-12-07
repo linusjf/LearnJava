@@ -10,10 +10,11 @@ public class Button implements Colleague {
   private MachineMediator mediator;
 
   public Button() {
+    // empty constructor
   }
 
   public Button(MachineMediator mediator) {
-    setMediator(mediator);
+    this.mediator = mediator;
   }
 
   @Override

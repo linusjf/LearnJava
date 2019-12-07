@@ -10,10 +10,11 @@ public class Heater implements Colleague {
   private MachineMediator mediator;
 
   public Heater() {
+    // empty constructor
   }
 
   public Heater(MachineMediator mediator) {
-    setMediator(mediator);
+    this.mediator = mediator;
   }
 
   @Override

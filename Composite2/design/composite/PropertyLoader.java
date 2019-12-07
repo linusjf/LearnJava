@@ -71,7 +71,6 @@ public final class PropertyLoader {
     } catch (MissingResourceException e) {
       System.err.println("Error locating resource " + name + " : "
                          + e.getMessage());
-       result = null;
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
       throw new IllegalArgumentException(
@@ -84,21 +83,21 @@ public final class PropertyLoader {
     return result;
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static Properties loadAsStream(ClassLoader loader, String nome) {
     String name = nome.replace('.', '/');
-    if (!name.endsWith(SUFFIX))
-      name = name.concat(SUFFIX);
-    Properties result = null;
+    name = name.endsWith(SUFFIX) ? name : name.concat(SUFFIX);
     try (InputStream in = loader.getResourceAsStream(name)) {
       if (in != null) {
-        result = new Properties();
+        Properties result = new Properties();
         result.load(in);
+        return result;
       }
     } catch (IOException ioe) {
       System.err.println("Error reading from resource " + name + " : "
                          + ioe.getMessage());
     }
-    return result;
+    return null;
   }
 
   private static Properties loadAsResourceBundle(ClassLoader loader,

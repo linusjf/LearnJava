@@ -55,7 +55,8 @@ public class Manager extends Employee {
   }
 
   @Override
-  @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+  @SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops",
+  "PMD.DataflowAnomalyAnalysis"})
   public void assignWork(Employee manager, Work work) {
     System.out.println(this + " has been assigned work of '" + work
                        + "' by manager " + manager);
