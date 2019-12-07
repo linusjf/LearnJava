@@ -22,7 +22,7 @@ public enum ForkJoinPuzzle {
     System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism",
                        String.valueOf(parallelism));
 
-    System.out.printf("Set parallelism to %d\n", parallelism);
+    System.out.printf("Set parallelism to %d%n", parallelism);
     System.out.println("Forkjoin pool size: "
                        + ForkJoinPool.getCommonPoolParallelism());
     System.out.println("No. of processors: "
@@ -57,12 +57,12 @@ public enum ForkJoinPuzzle {
       String processor = Thread.currentThread().getName();
       System.out.println("Processing: " + processor);
       Runnable updateTask = () -> parallelStream().forEach(value -> {
-        System.out.printf("Active thread count: %d\n", Thread.activeCount());
+        System.out.printf("Active thread count: %d%n", Thread.activeCount());
         System.out.println("Updating: " + Thread.currentThread().getName()
                            + " value = " + value + " "
                            + ForkJoinPool.commonPool());
         counter.incrementAndGet();
-        System.out.printf("Thread %s\n", Thread.currentThread());
+        System.out.printf("Thread %s%n", Thread.currentThread());
       });
       Thread thread = new Thread(updateTask, "Worker for " + processor);
       thread.start();

@@ -30,7 +30,7 @@ public enum SemaphoreExample {
         semaphore.acquire();
         long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "%s: PrintQueue: Printing a Job utilizing %d seconds\n",
+            "%s: PrintQueue: Printing a Job utilizing %d seconds%n",
             Thread.currentThread().getName(),
             duration);
         Thread.sleep(duration);
@@ -52,10 +52,10 @@ public enum SemaphoreExample {
 
     @Override
     public void run() {
-      System.out.printf("%s: Going to print a job\n",
+      System.out.printf("%s: Going to print a job%n",
                         Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf("%s: The document has been printed\n",
+      System.out.printf("%s: The document has been printed%n",
                         Thread.currentThread().getName());
     }
   }

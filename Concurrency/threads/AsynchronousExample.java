@@ -24,13 +24,13 @@ public enum AsynchronousExample {
     // CPD-OFF
     pool.execute(documents);
     do {
-      System.out.printf("******************************************\n");
-      System.out.printf("Main: Parallelism: %d\n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d\n",
+      System.out.printf("******************************************%n");
+      System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
+      System.out.printf("Main: Active Threads: %d%n",
                         pool.getActiveThreadCount());
-      System.out.printf("Main: Task Count: %d\n", pool.getQueuedTaskCount());
-      System.out.printf("Main: Steal Count: %d\n", pool.getStealCount());
-      System.out.printf("******************************************\n");
+      System.out.printf("Main: Task Count: %d%n", pool.getQueuedTaskCount());
+      System.out.printf("Main: Steal Count: %d%n", pool.getStealCount());
+      System.out.printf("******************************************%n");
       try {
         TimeUnit.SECONDS.sleep(1);
       } catch (InterruptedException e) {
@@ -43,13 +43,13 @@ public enum AsynchronousExample {
     List<String> results;
 
     results = system.join();
-    System.out.printf("System: %d files found.\n", results.size());
+    System.out.printf("System: %d files found.%n", results.size());
 
     results = apps.join();
-    System.out.printf("Apps: %d files found.\n", results.size());
+    System.out.printf("Apps: %d files found.%n", results.size());
 
     results = documents.join();
-    System.out.printf("Documents: %d files found.\n", results.size());
+    System.out.printf("Documents: %d files found.%n", results.size());
   }
 
   static class FolderProcessor extends RecursiveTask<List<String>> {
@@ -85,7 +85,7 @@ public enum AsynchronousExample {
         }
         if (tasks.size() > TASK_THRESHOLD)
           System.out.printf(
-              "%s: %d tasks ran.\n", file.getAbsolutePath(), tasks.size());
+              "%s: %d tasks ran.%n", file.getAbsolutePath(), tasks.size());
       }
 
       addResultsFromTasks(list, tasks);

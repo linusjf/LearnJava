@@ -79,7 +79,7 @@ public enum LockProducerConsumer {
         while (queue.size() == maxSize)
           space.await();
         queue.offer(line);
-        System.out.printf("%s: Inserted Line: %d\n",
+        System.out.printf("%s: Inserted Line: %d%n",
                           Thread.currentThread().getName(),
                           queue.size());
         lines.signalAll();
@@ -98,7 +98,7 @@ public enum LockProducerConsumer {
 
         if (hasPendingLines()) {
           String line = queue.poll();
-          System.out.printf("%s: Line Read: %d\n",
+          System.out.printf("%s: Line Read: %d%n",
                             Thread.currentThread().getName(),
                             queue.size());
           space.signalAll();

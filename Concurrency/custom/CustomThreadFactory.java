@@ -23,7 +23,7 @@ public class CustomThreadFactory implements ThreadFactory {
       Thread thread = myFactory.newThread(task);
       thread.start();
       thread.join();
-      System.out.printf("Main: End of the example.\n");
+      System.out.printf("Main: End of the example.%n");
       alternateMain();
     } catch (InterruptedException ie) {
       System.err.println(ie);
@@ -38,7 +38,7 @@ public class CustomThreadFactory implements ThreadFactory {
     executor.submit(task);
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
-      System.out.printf("Alternate Main: End of the program.\n");
+      System.out.printf("Alternate Main: End of the program.%n");
   }
 
   @Override
@@ -63,8 +63,8 @@ public class CustomThreadFactory implements ThreadFactory {
       setStartDate();
       super.run();
       setFinishDate();
-      System.out.printf("%s: Thread information.\n", getName());
-      System.out.printf("%s\n", this);
+      System.out.printf("%s: Thread information.%n", getName());
+      System.out.printf("%s%n", this);
     }
 
     public void setStartDate() {

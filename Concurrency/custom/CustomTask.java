@@ -30,7 +30,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public void run() {
-    System.out.printf("CustomTask: %s Priority : %d\n", name, priority);
+    System.out.printf("CustomTask: %s Priority : %d%n", name, priority);
     try {
       TimeUnit.SECONDS.sleep(2);
     } catch (InterruptedException e) {
@@ -60,6 +60,6 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
     } catch (InterruptedException e) {
       System.err.println(e);
     }
-    System.out.printf("Main: End of the program.\n");
+    System.out.printf("Main: End of the program.%n");
   }
 }

@@ -73,10 +73,10 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 10; i++) {
         synchronized (System.out) {
-          System.out.printf("%s: Price 1: %f\n",
+          System.out.printf("%s: Price 1: %f%n",
                             Thread.currentThread().getName(),
                             pricesInfo.getPrice1());
-          System.out.printf("%s: Price 2: %f\n",
+          System.out.printf("%s: Price 2: %f%n",
                             Thread.currentThread().getName(),
                             pricesInfo.getPrice2());
         }
@@ -95,12 +95,12 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 3; i++) {
         synchronized (System.out) {
-          System.out.printf("Writer %s: Attempt to modify the prices.\n",
+          System.out.printf("Writer %s: Attempt to modify the prices.%n",
                             Thread.currentThread().getName());
         }
         pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
         synchronized (System.out) {
-          System.out.printf("Writer %s: Prices have been modified.\n",
+          System.out.printf("Writer %s: Prices have been modified.%n",
                             Thread.currentThread().getName());
         }
         try {

@@ -21,13 +21,13 @@ public enum ForkJoinResultDemo {
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(task);
     do {
-      System.out.printf("******************************************\n");
-      System.out.printf("Main: Parallelism: %d\n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d\n",
+      System.out.printf("******************************************%n");
+      System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
+      System.out.printf("Main: Active Threads: %d%n",
                         pool.getActiveThreadCount());
-      System.out.printf("Main: Task Count: %d\n", pool.getQueuedTaskCount());
-      System.out.printf("Main: Steal Count: %d\n", pool.getStealCount());
-      System.out.printf("******************************************\n");
+      System.out.printf("Main: Task Count: %d%n", pool.getQueuedTaskCount());
+      System.out.printf("Main: Steal Count: %d%n", pool.getStealCount());
+      System.out.printf("******************************************%n");
       try {
         TimeUnit.SECONDS.sleep(1);
       } catch (InterruptedException e) {

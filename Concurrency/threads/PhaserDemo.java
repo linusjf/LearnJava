@@ -81,16 +81,16 @@ public enum PhaserDemo {
 
     private boolean checkResults() {
       if (results.isEmpty()) {
-        System.out.printf("%s: Phase %d: 0 results.\n",
+        System.out.printf("%s: Phase %d: 0 results.%n",
                           Thread.currentThread().getName(),
                           phaser.getPhase());
-        System.out.printf("%s: Phase %d: End.\n",
+        System.out.printf("%s: Phase %d: End.%n",
                           Thread.currentThread().getName(),
                           phaser.getPhase());
         phaser.arriveAndDeregister();
         return false;
       } else {
-        System.out.printf("%s: Phase %d: %d results.\n",
+        System.out.printf("%s: Phase %d: %d results.%n",
                           Thread.currentThread().getName(),
                           phaser.getPhase(),
                           results.size());
@@ -102,7 +102,7 @@ public enum PhaserDemo {
     private void showInfo() {
       for (String fileName: results) {
         File file = new File(fileName);
-        System.out.printf("%s: %s\n",
+        System.out.printf("%s: %s%n",
                           Thread.currentThread().getName(),
                           file.getAbsolutePath());
       }
@@ -113,7 +113,7 @@ public enum PhaserDemo {
     @Override
     public void run() {
       phaser.arriveAndAwaitAdvance();
-      System.out.printf("%s: Starting.\n", Thread.currentThread().getName());
+      System.out.printf("%s: Starting.%n", Thread.currentThread().getName());
       File file = new File(initPath);
       if (file.isDirectory()) {
         directoryProcess(file);
@@ -125,7 +125,7 @@ public enum PhaserDemo {
         return;
       showInfo();
       phaser.arriveAndDeregister();
-      System.out.printf("%s: Work completed.\n",
+      System.out.printf("%s: Work completed.%n",
                         Thread.currentThread().getName());
     }
   }

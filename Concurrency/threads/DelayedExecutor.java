@@ -12,7 +12,7 @@ public enum DelayedExecutor {
   public static void main(String[] args) {
     ScheduledThreadPoolExecutor executor =
         (ScheduledThreadPoolExecutor)Executors.newScheduledThreadPool(1);
-    System.out.printf("Main: Starting at: %s\n", new Date());
+    System.out.printf("Main: Starting at: %s%n", new Date());
     for (int i = 0; i < 5; i++) {
       Task task = new Task("Task " + i);
       executor.schedule(task, (i + 1) * (i + 1), TimeUnit.SECONDS);
@@ -23,7 +23,7 @@ public enum DelayedExecutor {
     } catch (InterruptedException e) {
       System.err.println(e);
     }
-    System.out.printf("Main: Ends at: %s\n", new Date());
+    System.out.printf("Main: Ends at: %s%n", new Date());
   }
 
   @SuppressWarnings("PMD.ShortClassName")
@@ -36,7 +36,7 @@ public enum DelayedExecutor {
 
     @Override
     public String call() throws Exception {
-      System.out.printf("%s: Starting at : %s\n", name, new Date());
+      System.out.printf("%s: Starting at : %s%n", name, new Date());
       return "Hello, world";
     }
   }

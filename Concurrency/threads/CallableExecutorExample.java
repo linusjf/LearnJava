@@ -26,11 +26,11 @@ public enum CallableExecutorExample {
       resultList.add(result);
     }
     do {
-      System.out.printf("Main: Number of Completed Tasks: %d\n",
+      System.out.printf("Main: Number of Completed Tasks: %d%n",
                         executor.getCompletedTaskCount());
       for (int i = 0; i < resultList.size(); i++) {
         Future<Integer> result = resultList.get(i);
-        System.out.printf("Main: Task %d completed: %s\n", i, result.isDone());
+        System.out.printf("Main: Task %d completed: %s%n", i, result.isDone());
       }
       try {
         TimeUnit.MILLISECONDS.sleep(50);
@@ -68,7 +68,7 @@ public enum CallableExecutorExample {
           TimeUnit.MILLISECONDS.sleep(20);
         }
       }
-      System.out.printf("%s: Factorial %d:  %d\n",
+      System.out.printf("%s: Factorial %d:  %d%n",
                         Thread.currentThread().getName(),
                         number,
                         result);

@@ -18,10 +18,10 @@ public enum ForkJoinPoolDemo {
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(task);
     do {
-      System.out.printf("Main: Thread Count: %d\n",
+      System.out.printf("Main: Thread Count: %d%n",
                         pool.getActiveThreadCount());
-      System.out.printf("Main: Thread Steal: %d\n", pool.getStealCount());
-      System.out.printf("Main: Parallelism: %d\n", pool.getParallelism());
+      System.out.printf("Main: Thread Steal: %d%n", pool.getStealCount());
+      System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
       try {
         TimeUnit.MILLISECONDS.sleep(5);
       } catch (InterruptedException e) {
@@ -32,15 +32,15 @@ public enum ForkJoinPoolDemo {
 
     // CPD-OFF
     if (task.isCompletedNormally()) {
-      System.out.printf("Main: The process has completed normally.\n");
+      System.out.printf("Main: The process has completed normally.%n");
     }
     for (Product product: products) {
       if (product.getPrice() != EXPECTED_PRICE) {
         System.out.printf(
-            "Product %s: %f\n", product.getName(), product.getPrice());
+            "Product %s: %f%n", product.getName(), product.getPrice());
       }
     }
-    System.out.println("Main: End of the program.\n");
+    System.out.println("Main: End of the program.%n");
   }
 
   static class Product {
@@ -101,7 +101,7 @@ public enum ForkJoinPoolDemo {
         updatePrices();
       else {
         int middle = (last + first) / 2;
-        System.out.printf("Task: Pending tasks: %s\n", getQueuedTaskCount());
+        System.out.printf("Task: Pending tasks: %s%n", getQueuedTaskCount());
         Task t1 = new Task(products, first, middle + 1, increment);
         Task t2 = new Task(products, middle + 1, last, increment);
         invokeAll(t1, t2);

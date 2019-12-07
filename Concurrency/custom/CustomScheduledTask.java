@@ -29,16 +29,16 @@ public class CustomScheduledTask<V>
       CustomScheduledThreadPoolExecutor executor =
           new CustomScheduledThreadPoolExecutor(2);
       Task task = new Task();
-      System.out.printf("Main: %s\n", new Date());
+      System.out.printf("Main: %s%n", new Date());
       executor.schedule(task, 1, TimeUnit.SECONDS);
       TimeUnit.SECONDS.sleep(3);
       task = new Task();
-      System.out.printf("Main: %s\n", new Date());
+      System.out.printf("Main: %s%n", new Date());
       executor.scheduleAtFixedRate(task, 1, 3, TimeUnit.SECONDS);
       TimeUnit.SECONDS.sleep(10);
       executor.shutdown();
       executor.awaitTermination(1, TimeUnit.DAYS);
-      System.out.printf("Main: End of the program.\n");
+      System.out.printf("Main: End of the program.%n");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
@@ -74,10 +74,10 @@ public class CustomScheduledTask<V>
       startDate = now.getTime() + period;
       executor.getQueue().add(this);
     }
-    System.out.printf("Pre-CustomScheduledTask: %s\n", new Date());
-    System.out.printf("CustomScheduledTask: Is Periodic: %s\n", isPeriodic());
+    System.out.printf("Pre-CustomScheduledTask: %s%n", new Date());
+    System.out.printf("CustomScheduledTask: Is Periodic: %s%n", isPeriodic());
     super.runAndReset();
-    System.out.printf("Post-CustomScheduledTask: %s\n", new Date());
+    System.out.printf("Post-CustomScheduledTask: %s%n", new Date());
   }
 
   public void setPeriod(long period) {
@@ -115,13 +115,13 @@ public class CustomScheduledTask<V>
 
     @Override
     public void run() {
-      System.out.printf("Task: Begin.\n");
+      System.out.printf("Task: Begin.%n");
       try {
         TimeUnit.SECONDS.sleep(2);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-      System.out.printf("Task: End.\n");
+      System.out.printf("Task: End.%n");
     }
   }
 }

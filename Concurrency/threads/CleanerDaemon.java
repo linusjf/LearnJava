@@ -99,7 +99,7 @@ public enum CleanerDaemon {
       Event e = deque.getLast();
       long difference = date.getTime() - e.getDate().getTime();
       while (difference > 10_000 && !deque.isEmpty()) {
-        System.out.printf("Cleaner: %s\n", e.getEvent());
+        System.out.printf("Cleaner: %s%n", e.getEvent());
         deque.removeLast();
         if (!delete)
           delete = true;
@@ -107,7 +107,7 @@ public enum CleanerDaemon {
         difference = date.getTime() - e.getDate().getTime();
       }
       if (delete)
-        System.out.printf("Cleaner: Size of the queue: %d\n", deque.size());
+        System.out.printf("Cleaner: Size of the queue: %d%n", deque.size());
     }
   }
 }

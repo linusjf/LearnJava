@@ -28,12 +28,12 @@ public enum InvokeAnyExecutor {
     String result;
     try {
       result = executor.invokeAny(taskList);
-      System.out.printf("Main: Result: %s\n", result);
+      System.out.printf("Main: Result: %s%n", result);
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
     executor.shutdown();
-    System.out.printf("Main: End of the Execution\n");
+    System.out.printf("Main: End of the Execution%n");
   }
 
   static class UserValidator {
@@ -48,13 +48,13 @@ public enum InvokeAnyExecutor {
       try {
         long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "Validator %s: Validating a user utilizing %d seconds\n",
+            "Validator %s: Validating a user utilizing %d seconds%n",
             name,
             duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.printf(
-            "%s: %s:- Returning false...\n", name, e.getMessage());
+            "%s: %s:- Returning false...%n", name, e.getMessage());
         return false;
       }
       return new Random().nextBoolean();
@@ -79,11 +79,11 @@ public enum InvokeAnyExecutor {
     @Override
     public String call() throws Exception {
       if (!validator.validate(user, password)) {
-        System.out.printf("%s: The user has not been found\n",
+        System.out.printf("%s: The user has not been found%n",
                           validator.getName());
         throw new GeneralSecurityException("Error validating user");
       }
-      System.out.printf("%s: The user has been found\n", validator.getName());
+      System.out.printf("%s: The user has been found%n", validator.getName());
       return validator.getName();
     }
   }

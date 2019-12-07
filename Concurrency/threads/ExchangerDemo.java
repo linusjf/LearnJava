@@ -35,10 +35,10 @@ public enum ExchangerDemo {
       int cycle = 1;
 
       for (int i = 0; i < 10; i++) {
-        System.out.printf("Producer: Cycle %d\n", cycle++);
+        System.out.printf("Producer: Cycle %d%n", cycle++);
         for (int j = 0; j < 10; j++) {
           String message = "Event " + (i * 10 + j);
-          System.out.printf("Producer: %s\n", message);
+          System.out.printf("Producer: %s%n", message);
           buffer.add(message);
         }
         try {
@@ -67,7 +67,7 @@ public enum ExchangerDemo {
       int cycle = 1;
 
       for (int i = 0; i < 10; i++) {
-        System.out.printf("Consumer: Cycle %d\n", cycle++);
+        System.out.printf("Consumer: Cycle %d%n", cycle++);
         try {
           buffer = exchanger.exchange(buffer);
         } catch (InterruptedException e) {

@@ -19,8 +19,8 @@ public enum ExceptionalForkJoin {
       System.err.println(e);
     }
     if (task.isCompletedAbnormally()) {
-      System.out.printf("Main: An exception has ocurred\n");
-      System.out.printf("Main: %s\n", task.getException());
+      System.out.printf("Main: An exception has ocurred%n");
+      System.out.printf("Main: %s%n", task.getException());
     }
     System.out.printf("Main: Result: %d", task.join());
   }
@@ -43,7 +43,7 @@ public enum ExceptionalForkJoin {
 
     @Override
     protected Integer compute() {
-      System.out.printf("Task: Start from %d to %d\n", start, end);
+      System.out.printf("Task: Start from %d to %d%n", start, end);
       if (end - start < MIN_TASK_SIZE) {
         if (3 > start && 3 < end)
           completeExceptionally(new RuntimeException(
@@ -60,7 +60,7 @@ public enum ExceptionalForkJoin {
         Task task2 = new Task(array, mid, end);
         invokeAll(task1, task2);
       }
-      System.out.printf("Task: End from %d to %d\n", start, end);
+      System.out.printf("Task: End from %d to %d%n", start, end);
       return 0;
     }
   }

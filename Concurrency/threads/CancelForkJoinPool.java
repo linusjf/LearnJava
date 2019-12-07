@@ -24,7 +24,7 @@ public enum CancelForkJoinPool {
     } catch (InterruptedException e) {
       System.err.println(e);
     }
-    System.out.printf("Main: The program has finished\n");
+    System.out.printf("Main: The program has finished%n");
   }
 
   static class ArrayGenerator {
@@ -100,7 +100,7 @@ public enum CancelForkJoinPool {
       for (int i = start; i < end; i++) {
         if (numbers[i] == number) {
           System.out.printf(
-              "Task: Number %d found in position %d\n", number, i);
+              "Task: Number %d found in position %d%n", number, i);
           manager.cancelTasks(this);
           return i;
         }
@@ -135,7 +135,7 @@ public enum CancelForkJoinPool {
     }
 
     public void writeCancelMessage() {
-      System.out.printf("Task: Canceled task from %d to %d\n", start, end);
+      System.out.printf("Task: Canceled task from %d to %d%n", start, end);
     }
   }
 }

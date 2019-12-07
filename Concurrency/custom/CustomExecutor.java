@@ -35,7 +35,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
     try {
       for (int i = 0; i < 10; i++) {
         System.out.printf(
-            "Main: Result for Task %d : %s\n", i, results.get(i).get());
+            "Main: Result for Task %d : %s%n", i, results.get(i).get());
         if (i == FIVE)
           myExecutor.shutdown();
       }
@@ -43,32 +43,32 @@ public class CustomExecutor extends ThreadPoolExecutor {
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
-    System.out.printf("Main: End of the program.\n");
+    System.out.printf("Main: End of the program.%n");
   }
 
   @Override
   public void shutdown() {
-    System.out.printf("CustomExecutor: Going to shutdown.\n");
-    System.out.printf("CustomExecutor: Executed tasks: %d\n",
+    System.out.printf("CustomExecutor: Going to shutdown.%n");
+    System.out.printf("CustomExecutor: Executed tasks: %d%n",
                       getCompletedTaskCount());
-    System.out.printf("CustomExecutor: Running tasks: %d\n", getActiveCount());
-    System.out.printf("CustomExecutor: Pending tasks: %d\n", getQueue().size());
+    System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
+    System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     super.shutdown();
   }
 
   @Override
   public List<Runnable> shutdownNow() {
-    System.out.printf("CustomExecutor: Going to immediately shutdown.\n");
-    System.out.printf("CustomExecutor: Executed tasks: %d\n",
+    System.out.printf("CustomExecutor: Going to immediately shutdown.%n");
+    System.out.printf("CustomExecutor: Executed tasks: %d%n",
                       getCompletedTaskCount());
-    System.out.printf("CustomExecutor: Running tasks: %d\n", getActiveCount());
-    System.out.printf("CustomExecutor: Pending tasks: %d\n", getQueue().size());
+    System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
+    System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     return super.shutdownNow();
   }
 
   @Override
   protected void beforeExecute(Thread t, Runnable r) {
-    System.out.printf("CustomExecutor: A task is beginning: %s : %s\n",
+    System.out.printf("CustomExecutor: A task is beginning: %s : %s%n",
                       t.getName(),
                       r.hashCode());
     startTimes.put(String.valueOf(r.hashCode()), new Date());
@@ -78,14 +78,14 @@ public class CustomExecutor extends ThreadPoolExecutor {
   protected void afterExecute(Runnable r, Throwable t) {
     Future<?> result = (Future<?>)r;
     try {
-      System.out.printf("*********************************\n");
-      System.out.printf("CustomExecutor: A task is finishing.\n");
-      System.out.printf("CustomExecutor: Result: %s\n", result.get());
+      System.out.printf("*********************************%n");
+      System.out.printf("CustomExecutor: A task is finishing.%n");
+      System.out.printf("CustomExecutor: Result: %s%n", result.get());
       Date startDate = startTimes.remove(String.valueOf(r.hashCode()));
       Date finishDate = new Date();
       long diff = finishDate.getTime() - startDate.getTime();
-      System.out.printf("CustomExecutor: Duration: %d\n", diff);
-      System.out.printf("*********************************\n");
+      System.out.printf("CustomExecutor: Duration: %d%n", diff);
+      System.out.printf("*********************************%n");
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }

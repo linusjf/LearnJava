@@ -28,7 +28,7 @@ public enum ControllingExecutor {
     for (ResultTask task: resultTasks) {
       try {
         if (!task.isCancelled())
-          System.out.printf("%s\n", task.get());
+          System.out.printf("%s%n", task.get());
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
@@ -52,7 +52,7 @@ public enum ControllingExecutor {
       try {
         long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "%s: Waiting %d seconds for results.\n", this.name, duration);
+            "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -72,9 +72,9 @@ public enum ControllingExecutor {
     @Override
     protected void done() {
       if (isCancelled()) {
-        System.out.printf("%s: Has been canceled\n", name);
+        System.out.printf("%s: Has been canceled%n", name);
       } else {
-        System.out.printf("%s: Has finished\n", name);
+        System.out.printf("%s: Has finished%n", name);
       }
     }
   }

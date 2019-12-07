@@ -70,7 +70,7 @@ public enum InvokeAllExecutor {
       try {
         long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "%s: Waiting %d seconds for results.\n", this.name, duration);
+            "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
