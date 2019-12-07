@@ -33,7 +33,6 @@ public enum TestProxy {
   }
 
   private static String[] readURLsFromFile(String fileName) {
-    String[] data = new String[0];
     try {
       BufferedReader reader = Files.newBufferedReader(Paths.get(fileName));
       List<String> lines = new ArrayList<>();
@@ -42,11 +41,11 @@ public enum TestProxy {
       while ((line = reader.readLine()) != null)
         lines.add(line);
       reader.close();
-      data = lines.toArray(new String[0]);
+      return lines.toArray(new String[0]);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }
-    return data;
+    return new String[0];
   }
 
   private static void testURLs(String... urls) {
