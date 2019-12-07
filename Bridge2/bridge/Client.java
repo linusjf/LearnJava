@@ -15,18 +15,20 @@ public enum Client {
    */
   public static void main(String[] args) {
     String os = "linux";
-    FileDownloaderAbstraction downloader = null;
+    FileDownloaderAbstraction downloader;
 
     switch (os) {
       case "windows":
-        downloader = new FileDownloaderAbstractionImpl(new WindowsFileDownloadImplementor());
+        downloader = new FileDownloaderAbstractionImpl(
+            new WindowsFileDownloadImplementor());
         break;
       case "linux":
-        downloader = new FileDownloaderAbstractionImpl(new LinuxFileDownloadImplementor());
+        downloader = new FileDownloaderAbstractionImpl(
+            new LinuxFileDownloadImplementor());
         break;
       default:
-        System.out.println("OS not supported !!");
-        break;
+        System.err.println("OS not supported !!");
+        throw new AssertionError("OS not supported !!");
     }
 
     Object fileContent = downloader.download("some path");
