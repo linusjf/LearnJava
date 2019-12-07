@@ -13,13 +13,13 @@ public class AssembleWorkShop extends WorkShop {
   @Override
   public void work(Vehicle vehicle) {
     System.out.print("Assembling... ");
-    long timeToTake = 200 * vehicle.minWorkTime();
+    long timeToTake = 200L * vehicle.minWorkTime();
     try {
       TimeUnit.MILLISECONDS.sleep(timeToTake);
       // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }
-    System.out.printf("(Time taken: %d millis), Done.\n", timeToTake);
+    System.out.printf("(Time taken: %d millis), Done.%n", timeToTake);
   }
 }
