@@ -10,6 +10,7 @@ public enum ConcurrentSkipListMapDemo {
   public static void main(String[] args) {
     Thread[] threads = new Thread[25];
     ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
+    startThreads(threads, map);
     for (Thread t: threads) {
       try {
         t.join();

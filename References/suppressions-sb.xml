@@ -5,4 +5,14 @@
     <Method name="count" />
     <Bug code="UPM" />
   </Match>
+  <Match>
+    <Class name="com.gamasoft.memoryreferences.Main" />
+    <Method name="allocationLoop" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="optional.OptionalDemo" />
+    <Method name="main" />
+    <Bug code="NP" />
+  </Match>
 </FindBugsFilter>

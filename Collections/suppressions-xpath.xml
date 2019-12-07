@@ -3,26 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="DelayedQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_LONG[@text='1000L']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_LONG[@text='1000L']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
   <suppress-xpath files="Containment.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='objs']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='3.14']" />
