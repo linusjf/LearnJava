@@ -7,6 +7,7 @@ import java.util.concurrent.Semaphore;
 public enum SemaphoreExample {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Thread[] thread = new Thread[10];
     PrintQueue printQueue = new PrintQueue();

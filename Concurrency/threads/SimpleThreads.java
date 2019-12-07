@@ -39,22 +39,26 @@ public enum SimpleThreads {
     System.out.format("%s: %s%n", threadName, message);
   }
 
+  private static long getPatience(String... args) {
+    if (args.length > 0) {
+      try {
+        return Long.parseLong(args[0]) * 1000L;
+      } catch (NumberFormatException e) {
+        System.err.println("Argument must be an integer.");
+      }
+    }
+      return 1000L * 60L * 60L;
+  }
+
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     // Delay, in milliseconds before
     // we interrupt MessageLoop
     // thread (default one hour).
-    long patience = 1000 * 60 * 60;
+    long patience = getPatience(args);
     // If command line argument
     // present, gives patience
     // in seconds.
-    if (args.length > 0) {
-      try {
-        patience = Long.parseLong(args[0]) * 1000;
-      } catch (NumberFormatException e) {
-        System.err.println("Argument must be an integer.");
-        System.exit(1);
-      }
-    }
 
     try {
       threadMessage("Starting MessageLoop thread");
