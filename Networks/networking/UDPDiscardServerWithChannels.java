@@ -29,8 +29,7 @@ public enum UDPDiscardServerWithChannels {
       SocketAddress address = new InetSocketAddress(port);
       socket.bind(address);
       ByteBuffer buffer = ByteBuffer.allocateDirect(MAX_PACKET_SIZE);
-      while (true)
-        readAndPrintClient(buffer, channel);
+      readAndPrintClient(buffer, channel);
     } catch (IOException ex) {
       System.err.println(ex);
     }
@@ -39,12 +38,14 @@ public enum UDPDiscardServerWithChannels {
   private static void readAndPrintClient(ByteBuffer buffer,
                                          DatagramChannel channel)
       throws IOException {
-    SocketAddress client = channel.receive(buffer);
+    while(true) {
+      SocketAddress client = channel.receive(buffer);
     buffer.flip();
     System.out.print(client + " says: ");
     while (buffer.hasRemaining())
       System.out.write(buffer.get());
     System.out.println();
     buffer.clear();
+    }
   }
 }
