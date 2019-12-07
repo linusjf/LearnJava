@@ -9,23 +9,18 @@ public enum TestCommandPattern {
 
   private static void init() {
     ThreadPool pool = new ThreadPool(10);
-    Email email;
-    Sms sms;
-    FileIO fileIO;
-
-    Logging logging;
 
     for (int i = 0; i < 5; i++) {
-      email = new Email();
+     Email email = new Email();
       EmailJob emailJob = new EmailJob();
       emailJob.setEmail(email);
-      sms = new Sms();
+     Sms sms = new Sms();
       SmsJob smsJob = new SmsJob();
       smsJob.setSms(sms);
-      fileIO = new FileIO();
+     FileIO fileIO = new FileIO();
       FileIOJob fileIOJob = new FileIOJob();
       fileIOJob.setFileIO(fileIO);
-      logging = new Logging();
+     Logging logging = new Logging();
       LoggingJob logJob = new LoggingJob();
       logJob.setLogging(logging);
       pool.addJob(emailJob);
