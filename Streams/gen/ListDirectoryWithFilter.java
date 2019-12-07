@@ -2,6 +2,7 @@ package gen;
 
 // List files that end with ".java"
 import java.io.File;
+import java.util.Optional;
 
 public final class ListDirectoryWithFilter {
 
@@ -18,13 +19,15 @@ public final class ListDirectoryWithFilter {
     if (dir.isDirectory()) {
       listFiles(dir);
       File[] items = dir.listFiles();
-      if (items != null) {
-      for (File item: items) {
+      Optional<?> files = Optional.ofNullable(items);
+      files.ifPresent( obj -> {
+      File[] objs = (File[])obj;
+      for (File item: objs) {
         if (item.isDirectory())
           listRecursiveFiles(item);
         // Recursive call
       }
-      }
+      });
     }
   }
 

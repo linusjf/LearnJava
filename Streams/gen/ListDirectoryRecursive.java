@@ -2,6 +2,7 @@ package gen;
 
 // Recursively list the contents of a directory (Unix's "ls -r" command).
 import java.io.File;
+import java.util.Optional;
 
 public final class ListDirectoryRecursive {
 
@@ -17,14 +18,16 @@ public final class ListDirectoryRecursive {
   public static void listRecursive(File dir) {
     if (dir.isDirectory()) {
       File[] items = dir.listFiles();
-      if (items != null) {
-      for (File item: items) {
+      Optional<?> files = Optional.ofNullable(items);
+      files.ifPresent( obj -> {
+      File[] objs = (File[]) obj;
+      for (File item: objs) {
         System.out.println(item.getAbsoluteFile());
         if (item.isDirectory())
           listRecursive(item);
         // Recursive call
       }
-    }
+      });
     }
   }
 }
