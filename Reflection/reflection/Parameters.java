@@ -11,8 +11,8 @@ public enum Parameters {
     System.out.println("Printing out String methods:");
     for (Method methodStringClass: stringClass.getDeclaredMethods()) {
       System.out.println("method " + methodStringClass.getName());
-      for (Parameter paramMethodStringClass:
-           methodStringClass.getParameters()) {
+      for (Parameter paramMethodStringClass
+          : methodStringClass.getParameters()) {
         // arg0, arg1, etc because the eclipse compiling tool (different ←-
         // not support -parameters option yet
         System.out.println(" parameter name "
