@@ -1,10 +1,6 @@
 package com.javacodegeeks.patterns.flyweightpattern;
 
-/**
- * *
- *
- * <p>Main class to test the flyweight pattern.
- */
+/** Main class to test the flyweight pattern. */
 public enum TestFlyweight {
   ;
   private static final String ASTERIXES = "*************************";

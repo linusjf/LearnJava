@@ -13,7 +13,7 @@ public enum ParallelStreamPerformanceCheck {
 
   public static void main(String[] args) {
     List<Integer> numList = new ArrayList<>();
-    for (int i = 0; i < 1000; i++) 
+    for (int i = 0; i < 1000; i++)
       numList.add(i);
 
     // Processing sequentially

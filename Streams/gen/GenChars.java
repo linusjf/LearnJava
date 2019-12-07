@@ -21,7 +21,7 @@ public enum GenChars {
 
   private static void writeToFile() throws IOException {
     try (OutputStream out = Files.newOutputStream(Paths.get(TMP_FILE_PATH))) {
-generateCharacters(out);
+      generateCharacters(out);
     }
   }
 
