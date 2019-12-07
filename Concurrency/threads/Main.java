@@ -10,26 +10,27 @@ public enum Main {
   ;
 
   public static void main(String[] args) {
-try {    Thread[] threads = new Thread[10];
-    setupThreads(threads);
-    Thread.State[] status = new Thread.State[10];
-    setupStatuses(status,threads);
+    try {
+      Thread[] threads = new Thread[10];
+      setupThreads(threads);
+      Thread.State[] status = new Thread.State[10];
+      setupStatuses(status, threads);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }
   }
 
-private static void setupThreads(Thread... threads) {
+  private static void setupThreads(Thread... threads) {
     for (int i = 0; i < 10; i++) {
       threads[i] = new Thread(new Calculator(i));
       threads[i].setPriority(i % 2 == 0 ? Thread.MAX_PRIORITY
                                         : Thread.MIN_PRIORITY);
       threads[i].setName("Thread " + i);
     }
-}
+  }
 
-private static void setupStatuses(Thread.State[] status,
-    Thread... threads) throws IOException {
+  private static void setupStatuses(Thread.State[] status, Thread... threads)
+      throws IOException {
 
     try (BufferedWriter file = Files.newBufferedWriter(Paths.get("./log.txt"));
          PrintWriter pw = new PrintWriter(file);) {
@@ -42,7 +43,7 @@ private static void setupStatuses(Thread.State[] status,
         t.start();
       logThreadState(threads, status, pw);
     }
-}
+  }
 
   private static void logThreadState(Thread[] threads,
                                      Thread.State[] status,

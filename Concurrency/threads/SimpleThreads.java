@@ -47,7 +47,7 @@ public enum SimpleThreads {
         System.err.println("Argument must be an integer.");
       }
     }
-      return 1000L * 60L * 60L;
+    return 1000L * 60L * 60L;
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -55,7 +55,7 @@ public enum SimpleThreads {
     // Delay, in milliseconds before
     // we interrupt MessageLoop
     // thread (default one hour).
-    long patience = getPatience(args);
+    final long patience = getPatience(args);
     // If command line argument
     // present, gives patience
     // in seconds.
@@ -63,7 +63,7 @@ public enum SimpleThreads {
     try {
       threadMessage("Starting MessageLoop thread");
       Thread t = new Thread(new MessageLoop());
-      long startTime = System.currentTimeMillis();
+      final long startTime = System.currentTimeMillis();
       t.start();
 
       threadMessage("Waiting for MessageLoop thread to finish");

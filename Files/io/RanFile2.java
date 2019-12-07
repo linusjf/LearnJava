@@ -6,8 +6,8 @@ import static io.RanFileConstants.*;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Scanner;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public enum RanFile2 {
   ;
@@ -17,38 +17,36 @@ public enum RanFile2 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (Scanner input = new Scanner(System.in,StandardCharsets.UTF_8.name());
+    try (Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
          RandomAccessFile ranAccts =
              new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
-      String reply;
-      long currentPos;
+      String reply = "y";
 
-      // File pointer position.
-      do {
-        System.out.print("\nEnter account number: ");
+      while ("y".equalsIgnoreCase(reply)) {
+        System.out.printf("%nEnter account number: ");
         acctNum = input.nextLong();
         while (acctNum < 1 || acctNum > numRecords) {
-          System.out.println("\n*** Invalid number! ***\n");
-          System.out.print("\nEnter account number: ");
+          System.out.printf("%n*** Invalid number! ***%n%n");
+          System.out.printf("%nEnter account number: ");
           acctNum = input.nextLong();
         }
         showRecord(ranAccts);
 
         // Defined below.
-        System.out.print("\nEnter new balance: ");
+        System.out.printf("%nEnter new balance: ");
         balance = input.nextFloat();
         input.nextLine();
 
         // Get rid of carriage return!
-        currentPos = ranAccts.getFilePointer();
+        long currentPos = ranAccts.getFilePointer();
         ranAccts.seek(currentPos - 4);
 
         // Back 4 bytes.
         ranAccts.writeFloat(balance);
-        System.out.print("\nModify another balance (y/n)? ");
+        System.out.printf("%nModify another balance (y/n)? ");
         reply = input.nextLine();
-      } while ("y".equalsIgnoreCase(reply));
+      }
     } catch (IOException exc) {
       System.err.println(exc);
     }
