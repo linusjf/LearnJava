@@ -6,6 +6,16 @@
     <Bug code="DLS" />
   </Match>
   <Match>
+    <Class name="reflection.Arrayed" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="reflection.StaticReflection" />
+    <Method name="main" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
     <Class name="reflection.SyntheticSample$SampleNestedClass" />
     <Bug code="SS" />
   </Match>

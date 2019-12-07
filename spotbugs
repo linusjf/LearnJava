@@ -17,6 +17,7 @@ then
   usage
 fi
 
+echo "$1"
 java -cp @"$classpathFile" "$mainClass" \
   -output "$1"/"$errFile" \
   -auxclasspath "$1" -quiet -adjustExperimental \
