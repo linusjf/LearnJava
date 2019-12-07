@@ -13,13 +13,14 @@ import java.util.concurrent.TimeUnit;
 public enum CallableExecutorExample {
   ;
 
+  private static Random random = new Random();
+
   public static void main(String[] args) {
     ThreadPoolExecutor executor =
         (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
     List<Future<Integer>> resultList = new ArrayList<>();
-    Random random = new Random();
     for (int i = 0; i < 10; i++) {
-      Integer number = new Random(random.nextLong()).nextInt(10);
+      Integer number = random.nextInt(10);
       FactorialCalculator calculator = new FactorialCalculator(number);
       Future<Integer> result = executor.submit(calculator);
       resultList.add(result);
@@ -37,14 +38,13 @@ public enum CallableExecutorExample {
         System.err.println(e);
       }
     } while (executor.getCompletedTaskCount() < resultList.size());
-    System.out.printf("Main: Results\n");
+    System.out.printf("Main: Results%n");
     for (int i = 0; i < resultList.size(); i++) {
       Future<Integer> result = resultList.get(i);
-      Integer number = null;
       try {
-        number = result.get();
+        Integer number = result.get();
         System.out.printf(
-            "Main: Task %d: calculated factorial: %d\n", i, number);
+            "Main: Task %d: calculated factorial: %d%n", i, number);
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }

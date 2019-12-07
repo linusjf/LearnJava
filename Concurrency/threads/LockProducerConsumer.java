@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Random;
@@ -15,8 +16,8 @@ public enum LockProducerConsumer {
     Producer producer = new Producer(mock, buffer);
     Thread threadProducer = new Thread(producer, "Producer");
     Thread[] threadConsumers = new Thread[3];
-    for (int i = 0; i < 3; i++)
-      threadConsumers[i] = new Thread(new Consumer(buffer), "Consumer " + i);
+    Arrays.setAll(threadConsumers,
+                  i -> new Thread(new Consumer(buffer), "Consumer " + i));
     threadProducer.start();
     for (Thread t: threadConsumers)
       t.start();
