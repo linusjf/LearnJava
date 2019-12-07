@@ -24,6 +24,5 @@ public final class Odd {
 
     System.out.printf("-10 %% 2 = %d%n", -10 % 2);
     System.out.printf("-15 %% 2 = %d%n", -15 % 2);
-
   }
 }

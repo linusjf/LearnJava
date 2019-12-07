@@ -3,6 +3,7 @@ package javapuzzles;
 public enum Arrayed {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
 
     int[] ia = new int[2];

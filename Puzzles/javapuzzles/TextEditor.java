@@ -1,6 +1,9 @@
 package javapuzzles;
 
-public class TextEditor {
+public enum TextEditor {
+  ;
+
+  @SuppressWarnings("PMD.ShortClassName")
   static class Char {  // line 1
     char c;
 
@@ -17,6 +20,7 @@ public class TextEditor {
     typeText(new Char('A'));
 
     typeText(new Char('B') {  // line 2
+      @Override
       public void print() {
         System.out.print("[");
         super.print();  // line 3
