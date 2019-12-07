@@ -3,6 +3,7 @@ package com.javacodegeeks.abk;
 import static com.javacodegeeks.abk.Encrypt.getSalt;
 
 import com.lambdaworks.crypto.PBKDF;
+import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 
@@ -24,7 +25,7 @@ public class PBKDFEncryptor implements Encrypt {
   @Override
   public String encrypt(String text) {
     try {
-      final byte[] textBytes = text.getBytes();
+      final byte[] textBytes = text.getBytes(StandardCharsets.UTF_8);
       final byte[] salt = getSalt();
       int iterationCount = 1000;
       int sizeKey = 64 * 8;

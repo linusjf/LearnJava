@@ -1,5 +1,6 @@
 package com.javacodegeeks.abk;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -22,7 +23,7 @@ public class MD5Encryptor implements Encrypt {
   public String encrypt(String text) {
     try {
       final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
-      msgDigest.update(text.getBytes());
+      msgDigest.update(text.getBytes(StandardCharsets.UTF_8));
 
       final byte[] textBytes = msgDigest.digest();
       return Base64.getEncoder().encodeToString(textBytes);

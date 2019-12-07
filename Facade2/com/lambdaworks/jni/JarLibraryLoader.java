@@ -25,9 +25,9 @@ import java.util.jar.JarFile;
  * @author Will Glozer
  */
 public class JarLibraryLoader implements LibraryLoader {
+  File lib;
   private final CodeSource codeSource;
   private final String libraryPath;
-  File lib;
 
   /**
    * Initialize a new instance that looks for shared libraries located in the
@@ -70,8 +70,7 @@ public class JarLibraryLoader implements LibraryLoader {
           SecurityManager sm = System.getSecurityManager();
           sm.checkLink(lib.getAbsolutePath());
           System.load(lib.getAbsolutePath());
-          lib.delete();
-          return true;
+          return lib.delete();
         }
       }
     } catch (SecurityException | IOException e) {
@@ -94,13 +93,12 @@ public class JarLibraryLoader implements LibraryLoader {
 
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
-
-    OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()));
-    int len;
-    while ((len = is.read(buf)) > 0) {
-      os.write(buf, 0, len);
+    try (OutputStream os =
+             Files.newOutputStream(Paths.get(lib.getAbsolutePath()))) {
+      int len;
+      while ((len = is.read(buf)) > 0)
+        os.write(buf, 0, len);
     }
-
     return lib;
   }
 

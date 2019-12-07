@@ -17,5 +17,6 @@ public class ThinPen implements Pen {
   @Override
   public void draw(String content) {
     System.out.println("Drawing THIN content in color : " + color);
+    System.out.println("Drawing THIN content with brush size : " + brushSize);
   }
 }
