@@ -55,11 +55,11 @@ public enum UDPEchoClientWithChannels {
       // wait one minute for a connection
       selector.select(60_000);
       Set<SelectionKey> readyKeys = selector.selectedKeys();
-        // All packets have been written and it doesn't look like any
-        // more are will arrive from the network
-      if (readyKeys.isEmpty() && n == LIMIT) 
+      // All packets have been written and it doesn't look like any
+      // more are will arrive from the network
+      if (readyKeys.isEmpty() && n == LIMIT)
         break;
-       else {
+      else {
         Iterator<SelectionKey> iterator = readyKeys.iterator();
         while (iterator.hasNext()) {
           SelectionKey key = iterator.next();

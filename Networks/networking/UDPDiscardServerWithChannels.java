@@ -38,14 +38,14 @@ public enum UDPDiscardServerWithChannels {
   private static void readAndPrintClient(ByteBuffer buffer,
                                          DatagramChannel channel)
       throws IOException {
-    while(true) {
+    while (true) {
       SocketAddress client = channel.receive(buffer);
-    buffer.flip();
-    System.out.print(client + " says: ");
-    while (buffer.hasRemaining())
-      System.out.write(buffer.get());
-    System.out.println();
-    buffer.clear();
+      buffer.flip();
+      System.out.print(client + " says: ");
+      while (buffer.hasRemaining())
+        System.out.write(buffer.get());
+      System.out.println();
+      buffer.clear();
     }
   }
 }

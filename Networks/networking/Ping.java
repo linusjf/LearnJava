@@ -158,7 +158,7 @@ public final class Ping {
     public void run() {
       try {
         while (true) {
-          Target t = waitAndGetTarget(pending);
+          Target t = waitAndGetTarget();
           t.show();
         }
       } catch (InterruptedException x) {
@@ -166,8 +166,7 @@ public final class Ping {
       }
     }
 
-    private Target waitAndGetTarget(List<Target> pending)
-        throws InterruptedException {
+    private Target waitAndGetTarget() throws InterruptedException {
 
       synchronized (pending) {
         while (pending.isEmpty())

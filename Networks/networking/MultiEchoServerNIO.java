@@ -30,12 +30,11 @@ public final class MultiEchoServerNIO {
    (on the SocketChannel).
   */
   public static void main(String[] args) {
-    ServerSocket serverSocket;
     System.out.println("Opening port…\n");
     try {
       serverSocketChannel = ServerSocketChannel.open();
       serverSocketChannel.configureBlocking(false);
-      serverSocket = serverSocketChannel.socket();
+      ServerSocket serverSocket = serverSocketChannel.socket();
 
       /*
            ServerSocketChannel created before

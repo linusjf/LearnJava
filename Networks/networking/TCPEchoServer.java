@@ -34,12 +34,13 @@ public enum TCPEchoServer {
          Scanner input = new Scanner(link.getInputStream());) {
 
       int numMessages = 0;
-      String message;
+      String message = "";
       // Step 4.
-      while (!"***CLOSE***".equals(message = input.nextLine())) {
+      while (!"***CLOSE***".equals(message)) {
         System.out.println("Message received.");
         numMessages++;
         output.println("Message " + numMessages + ": " + message);
+        message = input.nextLine();
       }
       output.println(numMessages + " messages received.");
       // Step 4.

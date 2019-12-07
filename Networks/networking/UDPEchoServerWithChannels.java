@@ -28,7 +28,7 @@ public enum UDPEchoServerWithChannels {
       SocketAddress address = new InetSocketAddress(port);
       socket.bind(address);
       ByteBuffer buffer = ByteBuffer.allocateDirect(MAX_PACKET_SIZE);
-        echoToServer(buffer, channel);
+      echoToServer(buffer, channel);
     } catch (IOException ex) {
       System.err.println(ex);
     }
@@ -38,9 +38,9 @@ public enum UDPEchoServerWithChannels {
       throws IOException {
     while (true) {
       SocketAddress client = channel.receive(buffer);
-    buffer.flip();
-    channel.send(buffer, client);
-    buffer.clear();
+      buffer.flip();
+      channel.send(buffer, client);
+      buffer.clear();
     }
   }
 }
