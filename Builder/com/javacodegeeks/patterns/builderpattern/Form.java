@@ -161,7 +161,7 @@ public final class Form {
      * @return a <code>FormBuilder</code> value
      */
     public FormBuilder dob(Date dob) {
-      this.dateOfBirth = dob;
+      this.dateOfBirth = new Date(dob.getTime());
       return this;
     }
 

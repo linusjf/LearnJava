@@ -1,5 +1,7 @@
 package converter;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * Describe class <code>ByteToHex</code> here.
  *
@@ -28,7 +30,7 @@ public enum TestByteToHex {
             + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
             + "FDSSSGHIJJH";
 
-    final byte[] raw = byteString.getBytes();
+    final byte[] raw = byteString.getBytes(StandardCharsets.UTF_8);
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);
     long end = System.nanoTime();
