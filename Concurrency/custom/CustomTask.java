@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CustomTask implements Runnable, Comparable<CustomTask> {
   private final int priority;
-  private final String name;
+  private final transient String name;
 
   public CustomTask(String name, int priority) {
     this.name = name;
@@ -18,6 +18,11 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
   }
 
   @Override
+  public int hashCode() {
+    return new Integer(priority).hashCode();
+  }
+
+  @Override
   public int compareTo(CustomTask o) {
     if (this.getPriority() < o.getPriority())
       return 1;
@@ -26,6 +31,13 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
       return -1;
 
     return 0;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof CustomTask))
+      return false;
+    return compareTo((CustomTask)o) == 0;
   }
 
   @Override

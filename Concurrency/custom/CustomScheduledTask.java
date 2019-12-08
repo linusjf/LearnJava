@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 public class CustomScheduledTask<V>
     extends FutureTask<V> implements RunnableScheduledFuture<V> {
   private final RunnableScheduledFuture<V> task;
-  private final ScheduledThreadPoolExecutor executor;
-  private long period;
-  private long startDate;
+  private final transient ScheduledThreadPoolExecutor executor;
+  private transient long period;
+  private transient long startDate;
 
   public CustomScheduledTask(Runnable runnable,
                              V result,
@@ -60,6 +60,18 @@ public class CustomScheduledTask<V>
   @Override
   public int compareTo(Delayed o) {
     return task.compareTo(o);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Delayed))
+      return false;
+    return task.compareTo((Delayed)o) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    return task.hashCode();
   }
 
   @Override
