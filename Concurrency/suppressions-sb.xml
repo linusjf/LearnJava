@@ -34,4 +34,9 @@
     <Method name="submitZipTask" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="threads.ReentrantLockExample$PrintQueue" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="DMI" />
+  </Match>
 </FindBugsFilter>

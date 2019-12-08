@@ -1,6 +1,10 @@
 package threads;
 
+import java.util.Random;
+
 public class RunnableShowName implements Runnable {
+
+  private static Random random = new Random();
 
   public static void main(String[] args) {
     Thread thread1 = new Thread(new RunnableShowName());
@@ -19,7 +23,7 @@ public class RunnableShowName implements Runnable {
         // method getName on that reference…
         System.out.println(Thread.currentThread().getName()
                            + " being executed.");
-        pause = (int)(Math.random() * 3000);
+        pause = random.nextInt(3000);
 
         // Call static method sleep…
         Thread.sleep(pause);
