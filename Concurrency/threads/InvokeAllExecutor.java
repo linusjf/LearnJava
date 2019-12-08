@@ -2,6 +2,7 @@ package threads;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -61,6 +62,7 @@ public enum InvokeAllExecutor {
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Callable<Result> {
     private final String name;
+    private final Random random = new Random();
 
     Task(String name) {
       this.name = name;
@@ -69,7 +71,8 @@ public enum InvokeAllExecutor {
     @Override
     public Result call() throws Exception {
       try {
-        long duration = (long)(Math.random() * 10);
+        long duration = random.nextInt(10);
+
         System.out.printf(
             "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
@@ -77,9 +80,8 @@ public enum InvokeAllExecutor {
         System.err.println(e);
       }
       int value = 0;
-      for (int i = 0; i < 5; i++) {
-        value += (int)(Math.random() * 100);
-      }
+      for (int i = 0; i < 5; i++)
+        value += random.nextInt(100);
       Result result = new Result();
       result.setName(this.name);
       result.setValue(value);

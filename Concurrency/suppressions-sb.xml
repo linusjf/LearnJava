@@ -39,4 +39,19 @@
     <Method name="&lt;init&gt;" />
     <Bug code="DMI" />
   </Match>
+  <Match>
+    <Class name="threads.HelperClass$WaitingThread" />
+    <Method name="run" />
+    <Bug code="UW,Wa" />
+  </Match>
+  <Match>
+    <Class name="threads.IllegalMonitorStateWaitExample" />
+    <Method name="main" />
+    <Bug code="Wa" />
+  </Match>
+  <Match>
+    <Class name="threads.GrayscaleImageAction" />
+    <Field name="bufferedImage" />
+    <Bug code="Se" />
+  </Match>
 </FindBugsFilter>

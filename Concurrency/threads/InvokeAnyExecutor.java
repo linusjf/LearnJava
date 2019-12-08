@@ -38,6 +38,7 @@ public enum InvokeAnyExecutor {
 
   static class UserValidator {
     private final String name;
+    private final Random random = new Random();
 
     UserValidator(String name) {
       this.name = name;
@@ -46,7 +47,7 @@ public enum InvokeAnyExecutor {
     @SuppressWarnings("checkstyle:hiddenfield")
     public boolean validate(String name, String password) {
       try {
-        long duration = (long)(Math.random() * 10);
+        long duration = (long)(random.nextInt(10));
         System.out.printf(
             "Validator %s: Validating a user utilizing %d seconds%n",
             name,
