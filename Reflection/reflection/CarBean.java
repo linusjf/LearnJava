@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Method;
 
+@SuppressWarnings("PMD.DataClass")
 public class CarBean {
   private String name;
   private Object price;

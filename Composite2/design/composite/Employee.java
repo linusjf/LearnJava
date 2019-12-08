@@ -6,6 +6,7 @@ package design.composite;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.DataClass")
 public abstract class Employee implements Worker {
   protected long employeeId;
   protected String employeeName;

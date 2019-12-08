@@ -2,6 +2,7 @@ package statepattern;
 
 import java.util.Optional;
 
+@SuppressWarnings("PMD.DataClass")
 public class DeliveryContext {
   private PackageState currentState;
   private String packageId;

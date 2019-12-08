@@ -43,6 +43,7 @@ public enum ForkJoinPoolDemo {
     System.out.println("Main: End of the program.%n");
   }
 
+@SuppressWarnings("PMD.DataClass")
   static class Product {
     private String name;
     private double price;

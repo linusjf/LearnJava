@@ -6,6 +6,7 @@ package com.javacodegeeks.patterns.proxypattern.virtualproxy;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.DataClass")
 public class Company {
   private final String companyName;
   private final String companyAddress;

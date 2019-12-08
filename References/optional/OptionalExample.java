@@ -35,6 +35,7 @@ public enum OptionalExample {
     });
   }
 
+@SuppressWarnings("PMD.DataClass")
   static class Person {
     private final String name;
     private final Optional<Address> address;
@@ -70,6 +71,7 @@ public enum OptionalExample {
     }
   }
 
+@SuppressWarnings("PMD.DataClass")
   static class Address {
     public static final Address EMPTY_ADDRESS = new Address("", "", "", 0);
     private final String line1;

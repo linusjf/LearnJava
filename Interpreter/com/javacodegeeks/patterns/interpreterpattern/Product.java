@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.interpreterpattern;
 
+@SuppressWarnings("PMD.DataClass")
 public class Product implements Expression {
   private final Expression leftExpression;
   private final Expression rightExpression;

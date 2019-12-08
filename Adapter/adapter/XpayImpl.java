@@ -1,5 +1,6 @@
 package adapter;
 
+@SuppressWarnings("PMD.DataClass")
 public class XpayImpl implements Xpay {
   private String creditCardNo;
   private String customerName;

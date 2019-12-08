@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.prototypepattern;
 
-@SuppressWarnings("PMD.ShortClassName")
+@SuppressWarnings({"PMD.ShortClassName",
+"PMD.DataClass"})
 public class User {
   private String userName;
   private String level;

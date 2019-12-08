@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 import java.util.EnumSet;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("PMD.DataClass")
 public class Whois {
   public static final int DEFAULT_PORT = 43;
   public static final String DEFAULT_HOST = "whois.internic.net";

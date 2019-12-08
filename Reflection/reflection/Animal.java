@@ -1,5 +1,6 @@
 package reflection;
 
+@SuppressWarnings("PMD.DataClass")
 public class Animal {
   String name;
   String gender;

@@ -3,6 +3,7 @@ package networking;
 import java.util.Date;
 import java.util.Locale;
 
+@SuppressWarnings("PMD.DataClass")
 public class CacheControl {
   private Date maxAge;
   private Date sharedMaxAge;

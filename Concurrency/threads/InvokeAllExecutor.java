@@ -36,6 +36,7 @@ public enum InvokeAllExecutor {
     }
   }
 
+@SuppressWarnings("PMD.DataClass")
   static class Result {
     private String name;
     private int value;

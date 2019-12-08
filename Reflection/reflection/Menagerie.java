@@ -3,6 +3,7 @@ package reflection;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("PMD.DataClass")
 public class Menagerie {
   String city;
   String name;

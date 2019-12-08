@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("PMD.DataClass")
 public class MovieImpl
     extends PropertyContainerImpl implements Movie, Serializable {
   public static final long serialVersionUID = 1L;

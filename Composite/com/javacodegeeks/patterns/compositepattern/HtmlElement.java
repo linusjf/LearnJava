@@ -6,6 +6,7 @@ package com.javacodegeeks.patterns.compositepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.DataClass")
 public class HtmlElement extends HtmlTag {
   private final String tagName;
   private String startTag;

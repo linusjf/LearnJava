@@ -2,6 +2,7 @@ package shopping;
 
 import java.util.Date;
 
+@SuppressWarnings("PMD.DataClass")
 public class OrderBean implements java.io.Serializable {
   private static final long serialVersionUID = 1L;
   private String name;

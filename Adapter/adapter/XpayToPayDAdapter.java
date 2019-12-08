@@ -6,6 +6,7 @@ package adapter;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
+@SuppressWarnings("PMD.DataClass")
 public class XpayToPayDAdapter implements PayD {
   private String custCardNo;
   private String cardOwnerName;
