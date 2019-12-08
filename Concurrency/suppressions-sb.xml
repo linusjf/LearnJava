@@ -54,4 +54,24 @@
     <Field name="bufferedImage" />
     <Bug code="Se" />
   </Match>
+  <Match>
+    <Class name="threads.QueueObject" />
+    <Field name="isNotified" />
+    <Bug code="IS" />
+  </Match>
+  <Match>
+    <Class name="threads.InvokeAnyExecutor$UserValidator" />
+    <Method name="validate" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="threads.RejectedExecutor" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="threads.SemaphoreExample$PrintQueue" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="DMI" />
+  </Match>
 </FindBugsFilter>

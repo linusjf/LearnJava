@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class ReturnDigest extends Thread {
   private final String filename;
-  private byte[] digest;
+  private byte[] digest = new byte[0];
 
   public ReturnDigest(String filename) {
     super();

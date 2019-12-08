@@ -8,7 +8,6 @@ public class RunnableHelloCount implements Runnable {
   Thread thread2 = new Thread(this);
   private final Random random = new Random();
 
-
   public void start() {
     thread1.start();
     thread2.start();
