@@ -5,7 +5,7 @@ import java.util.Random;
 public enum ThreadHelloCount {
   ;
 
-  private static final Random random = new Random();
+  private static final Random RANDOM = new Random();
 
   public static void main(String[] args) {
     HelloThread hello = new HelloThread();
@@ -25,7 +25,7 @@ public enum ThreadHelloCount {
 
           // Again, introduce an element
           // of randomness…
-          pause = random.nextInt(3000);
+          pause = RANDOM.nextInt(3000);
           sleep(pause);
         } catch (InterruptedException interruptEx) {
           System.out.println(interruptEx);
@@ -43,7 +43,7 @@ public enum ThreadHelloCount {
       for (int i = 0; i < 5; i++) {
         try {
           System.out.println(i);
-          pause = random.nextInt(3000);
+          pause = RANDOM.nextInt(3000);
           sleep(pause);
         } catch (InterruptedException interruptEx) {
           System.out.println(interruptEx);

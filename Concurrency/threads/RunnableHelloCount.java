@@ -4,14 +4,10 @@ import java.util.Random;
 
 public class RunnableHelloCount implements Runnable {
 
-  private final Random random = new Random();
-
   Thread thread1 = new Thread(this);
   Thread thread2 = new Thread(this);
+  private final Random random = new Random();
 
-  public RunnableHelloCount() {
-    // empty constructor
-  }
 
   public void start() {
     thread1.start();

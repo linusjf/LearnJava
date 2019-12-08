@@ -40,7 +40,7 @@ import javax.imageio.ImageIO;
 
 /**
  * ForkBlur implements a simple horizontal image blur. It averages pixels in the
- * source array and writes them to a destination array. The sThreshold value
+ * source array and writes them to a destination array. The S_THRESHOLD value
  * determines whether the blurring will be performed directly or split into two
  * tasks.
  *
@@ -49,7 +49,7 @@ import javax.imageio.ImageIO;
  */
 public class ForkBlur extends RecursiveAction {
   public static final long serialVersionUID = 1L;
-  protected static final int sThreshold = 10_000;
+  protected static final int S_THRESHOLD = 10_000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
   private static final int BLUR_WIDTH = 15;
 
@@ -96,7 +96,7 @@ public class ForkBlur extends RecursiveAction {
   @Override
   protected void compute() {
     taskCount.getAndIncrement();
-    if (mLength < sThreshold) {
+    if (mLength < S_THRESHOLD) {
       computeDirectly();
       return;
     }
@@ -140,7 +140,7 @@ public class ForkBlur extends RecursiveAction {
     int[] dst = new int[src.length];
 
     System.out.println("Array size is " + src.length);
-    System.out.println("Threshold is " + sThreshold);
+    System.out.println("Threshold is " + S_THRESHOLD);
 
     int processors = Runtime.getRuntime().availableProcessors();
     System.out.println(Integer.toString(processors) + " processor"
