@@ -29,4 +29,9 @@
     <Method name="sequentialStream" />
     <Bug code="UPM" />
   </Match>
+  <Match>
+    <Class name="threads.GZipAllFiles" />
+    <Method name="submitZipTask" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>
