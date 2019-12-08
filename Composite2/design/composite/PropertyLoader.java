@@ -88,11 +88,9 @@ public final class PropertyLoader {
     String name = nome.replace('.', '/');
     name = name.endsWith(SUFFIX) ? name : name.concat(SUFFIX);
     try (InputStream in = loader.getResourceAsStream(name)) {
-      if (in != null) {
         Properties result = new Properties();
         result.load(in);
         return result;
-      }
     } catch (IOException ioe) {
       System.err.println("Error reading from resource " + name + " : "
                          + ioe.getMessage());
