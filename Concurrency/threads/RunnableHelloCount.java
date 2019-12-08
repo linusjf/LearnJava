@@ -6,18 +6,20 @@ public class RunnableHelloCount implements Runnable {
 
   private final Random random = new Random();
 
+  Thread thread1 = new Thread(this);
+  Thread thread2 = new Thread(this);
+
   public RunnableHelloCount() {
-    // Since current object implements Runnable, it can
-    // be used as the argument to the Thread
-    // constructor for each of the member threads…
-    Thread thread1 = new Thread(this);
-    Thread thread2 = new Thread(this);
+    // empty constructor
+  }
+
+  public void start() {
     thread1.start();
     thread2.start();
   }
 
   public static void main(String[] args) {
-    new RunnableHelloCount();
+    new RunnableHelloCount().start();
   }
 
   @Override
