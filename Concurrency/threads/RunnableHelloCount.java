@@ -1,6 +1,10 @@
 package threads;
 
+import java.util.Random;
+
 public class RunnableHelloCount implements Runnable {
+
+  private final Random random = new Random();
 
   public RunnableHelloCount() {
     // Since current object implements Runnable, it can
@@ -23,7 +27,7 @@ public class RunnableHelloCount implements Runnable {
       try {
         System.out.println(Thread.currentThread().getName()
                            + " being executed.");
-        pause = (int)(Math.random() * 3000);
+        pause = random.nextInt(3000);
         Thread.sleep(pause);
       } catch (InterruptedException interruptEx) {
         System.out.println(interruptEx);

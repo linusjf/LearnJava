@@ -3,6 +3,39 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="DemoThreadExample.java"
+                  checks="IllegalTokenCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DemoThreadExample']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runCount']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="ForkBlur.java"
+                  checks="ConstantNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='sThreshold']" />
+  <suppress-xpath files="InvokeAllExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="InvokeAllExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_FOR/EXPR/PLUS_ASSIGN[./IDENT[@text='value']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="InvokeAnyExecutor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InvokeAnyExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='UserValidator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='validate']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LockProducerConsumer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='FileMock']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='FileMock']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='indice']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='255']" />
+  <suppress-xpath files="RunnableShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HelloThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CountThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
+  <suppress-xpath files="ThreadLocalExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyRunnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ThreadShowName.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ThreadShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
   <suppress-xpath files="CustomExecutor.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />

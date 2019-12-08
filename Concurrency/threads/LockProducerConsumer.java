@@ -26,7 +26,7 @@ public enum LockProducerConsumer {
   static class FileMock {
     private final String[] content;
     private int index;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     FileMock(int size, int length) {
       content = new String[size];

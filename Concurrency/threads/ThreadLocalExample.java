@@ -1,5 +1,7 @@
 package threads;
 
+import java.util.Random;
+
 public enum ThreadLocalExample {
   ;
 
@@ -25,10 +27,11 @@ public enum ThreadLocalExample {
 
   public static class MyRunnable implements Runnable {
     private final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private final Random random = new Random();
 
     @Override
     public void run() {
-      threadLocal.set((int)(Math.random() * 100D));
+      threadLocal.set(random.nextInt(100));
 
       try {
         Thread.sleep(2000);
