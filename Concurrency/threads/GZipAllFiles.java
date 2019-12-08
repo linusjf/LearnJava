@@ -1,8 +1,6 @@
 package threads;
 
 import java.io.File;
-import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,42 +12,36 @@ public final class GZipAllFiles {
   }
 
   public static void main(String[] args) {
-    try {
-      ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
-      for (String filename: args)
-        zipFile(filename, pool);
-      pool.shutdown();
-    } catch (InterruptedException | ExecutionException ie) {
-      System.err.println(ie.getMessage());
+    ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
+    for (String filename: args) {
+      zipFile(filename, pool);
+    }
+    pool.shutdown();
+  }
+
+  private static void zipFile(String filename, ExecutorService pool) {
+    File f = new File(filename);
+    if (f.exists()) {
+      zip(f, pool);
     }
   }
 
-  private static void zipFile(String filename, ExecutorService pool)
-      throws InterruptedException, ExecutionException {
-    File f = new File(filename);
-    if (f.exists())
-      zip(f, pool);
-  }
-
-  private static void zip(File f, ExecutorService pool)
-      throws ExecutionException, InterruptedException {
+  private static void zip(File f, ExecutorService pool) {
     if (f.isDirectory()) {
-      Optional<Object> files = Optional.ofNullable(f.listFiles());
-      if (files.isPresent()) {
-        File[] objs = (File[])files.get();
-        for (File file: objs) {
-          if (!file.isDirectory())
-            // don't recurse directories
-            submitZipTask(file, pool);
+      File[] files = f.listFiles();
+      for (File file: files) {
+        if (!file.isDirectory()) {
+          // don't recurse directories
+          submitZipTask(file, pool);
         }
       }
-    } else
+    } else {
       submitZipTask(f, pool);
+    }
   }
 
-  private static void submitZipTask(File file, ExecutorService pool)
-      throws ExecutionException, InterruptedException {
+  private static void submitZipTask(File file, ExecutorService pool) {
     Runnable task = new GZipRunnable(file);
-    assert pool.submit(task).get() != null;
+    pool.submit(task);
   }
 }
