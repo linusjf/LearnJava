@@ -45,7 +45,7 @@ public enum XmlSerializer {
   }
 
   // clang-format off
-  @SuppressWarnings("DataflowAnomalyAnalysis")
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
     String id = Integer.toString(table.size());

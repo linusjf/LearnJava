@@ -2,6 +2,7 @@ package dailyimages;
 
 import java.time.LocalDate;
 
+@SuppressWarnings("PMD.DataClass")
 abstract class ImageInfo {
   protected String imagePath;
   private String date;

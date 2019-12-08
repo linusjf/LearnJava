@@ -9,9 +9,10 @@ import java.util.concurrent.locks.ReentrantLock;
 public enum MultiSemaphoreExample {
   ;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    PrintQueue printQueue = new PrintQueue();
     Thread[] thread = new Thread[10];
+    PrintQueue printQueue = new PrintQueue();
     Arrays.setAll(thread, i -> new Thread(new Job(printQueue), "Thread" + i));
     for (Thread t: thread)
       t.start();

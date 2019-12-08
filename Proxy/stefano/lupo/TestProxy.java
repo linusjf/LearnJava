@@ -32,6 +32,7 @@ public enum TestProxy {
     testURLs(urls);
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String[] readURLsFromFile(String fileName) {
     try {
       BufferedReader reader = Files.newBufferedReader(Paths.get(fileName));
