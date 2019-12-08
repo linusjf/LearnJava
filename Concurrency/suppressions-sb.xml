@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="dailyimages.ImageProcessor" />
+    <Bug code="DMI" />
+  </Match>
+</FindBugsFilter>

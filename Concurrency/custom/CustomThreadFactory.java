@@ -1,8 +1,10 @@
 package custom;
 
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
@@ -25,20 +27,23 @@ public class CustomThreadFactory implements ThreadFactory {
       thread.join();
       System.out.printf("Main: End of the example.%n");
       alternateMain();
-    } catch (InterruptedException ie) {
+    } catch (InterruptedException | ExecutionException ie) {
       System.err.println(ie);
     }
   }
 
-  public static void alternateMain() throws InterruptedException {
+  public static void alternateMain()
+      throws InterruptedException, ExecutionException {
     CustomThreadFactory threadFactory =
         new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
-    executor.submit(task);
+    Future<?> result = executor.submit(task);
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
       System.out.printf("Alternate Main: End of the program.%n");
+    if (result.get() == null)
+      System.out.printf("Task completed successfully%n");
   }
 
   @Override
@@ -50,8 +55,7 @@ public class CustomThreadFactory implements ThreadFactory {
 
   static class CustomThread extends Thread {
     private final Date creationDate;
-    private Date startDate;
-    private Date finishDate;
+    private long executionTime;
 
     CustomThread(Runnable target, String name) {
       super(target, name);
@@ -60,23 +64,16 @@ public class CustomThreadFactory implements ThreadFactory {
 
     @Override
     public void run() {
-      setStartDate();
+      Date startDate = new Date();
       super.run();
-      setFinishDate();
+      Date finishDate = new Date();
+      executionTime = finishDate.getTime() - startDate.getTime();
       System.out.printf("%s: Thread information.%n", getName());
       System.out.printf("%s%n", this);
     }
 
-    public void setStartDate() {
-      startDate = new Date();
-    }
-
-    public void setFinishDate() {
-      finishDate = new Date();
-    }
-
     public long getExecutionTime() {
-      return finishDate.getTime() - startDate.getTime();
+      return executionTime;
     }
 
     @Override
