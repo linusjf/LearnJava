@@ -40,7 +40,7 @@ public class FindMin extends RecursiveTask<Integer> {
     int[] numbers = new int[100];
     Random random = new Random();
     for (int i = 0; i < numbers.length; i++)
-      numbers[i] = Math.abs(new Random(random.nextLong()).nextInt());
+      numbers[i] = Math.abs(random.nextInt() % Integer.MAX_VALUE);
     ForkJoinPool pool =
         new ForkJoinPool(Runtime.getRuntime().availableProcessors());
     Integer min = pool.invoke(new FindMin(numbers, 0, numbers.length - 1));

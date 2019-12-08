@@ -49,7 +49,7 @@ public class FindMinTask implements Callable<Integer> {
     int[] numbers = new int[10_000];
     Random random = new Random();
     for (int i = 0; i < numbers.length; i++)
-      numbers[i] = Math.abs(random.nextInt());
+      numbers[i] = Math.abs(random.nextInt() % Integer.MAX_VALUE);
     try {
       ExecutorService executorService = Executors.newFixedThreadPool(6400);
       Future<Integer> futureResult = executorService.submit(

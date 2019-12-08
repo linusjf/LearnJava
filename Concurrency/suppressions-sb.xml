@@ -9,4 +9,24 @@
     <Method name="main" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="threads.FindMin" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="EI2" />
+  </Match>
+  <Match>
+    <Class name="threads.FindMinTask" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="EI2" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkBlur" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="EI2" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkJoinPuzzle" />
+    <Method name="sequentialStream" />
+    <Bug code="UPM" />
+  </Match>
 </FindBugsFilter>

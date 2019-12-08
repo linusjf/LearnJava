@@ -49,7 +49,7 @@ import javax.imageio.ImageIO;
  */
 public class ForkBlur extends RecursiveAction {
   public static final long serialVersionUID = 1L;
-  protected static int sThreshold = 10_000;
+  protected static final int sThreshold = 10_000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
   private static final int BLUR_WIDTH = 15;
 

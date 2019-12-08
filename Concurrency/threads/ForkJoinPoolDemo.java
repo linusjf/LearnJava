@@ -1,5 +1,6 @@
 package threads;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
@@ -44,7 +45,8 @@ public enum ForkJoinPoolDemo {
   }
 
   @SuppressWarnings("PMD.DataClass")
-  static class Product {
+  static class Product implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private double price;
 
