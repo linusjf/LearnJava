@@ -4,4 +4,9 @@
     <Class name="dailyimages.ImageProcessor" />
     <Bug code="DMI" />
   </Match>
+  <Match>
+    <Class name="threads.ControllingExecutor" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>

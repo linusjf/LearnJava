@@ -46,7 +46,7 @@ public enum Deadlock {
       try {
         Thread.sleep(10_000);
         System.out.println("10 seconds of deadlock. That's enough...");
-        System.exit(0);
+        throw new AssertionError("10 seconds of deadlock. That's enough...");
       } catch (InterruptedException ie) {
         System.err.println(ie);
       }

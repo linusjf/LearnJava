@@ -1,5 +1,6 @@
 package threads;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -39,7 +40,8 @@ public enum CancelForkJoinPool {
     }
   }
 
-  static class TaskManager {
+  static class TaskManager implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final List<ForkJoinTask<Integer>> tasks;
 
     TaskManager() {

@@ -6,7 +6,7 @@ import java.io.StringWriter;
 // https://howtodoinjava-com.cdn.ampproject.org/v/s/howtodoinjava.com/java/multi-threading/how-to-restart-thread-using-uncaughtexceptionhandler/amp/?amp_js_v=a2&amp_gsa=1&usqp=mq331AQEKAFwAQ%3D%3D#aoh=15687659722173&referrer=https%3A%2F%2Fwww.google.com&amp_tf=From%20%251%24s&ampshare=https%3A%2F%2Fhowtodoinjava.com%2Fjava%2Fmulti-threading%2Fhow-to-restart-thread-using-uncaughtexceptionhandler%2F
 public enum DemoThreadExample {
   ;
-  private static int runCount;
+  private static volatile int runCount;
   private static final int LIMIT = 5;
 
   public static void main(String[] args) {
@@ -29,8 +29,10 @@ public enum DemoThreadExample {
       System.err.printf("%s%n",
                         sw.toString().replace("%n", " ").replace("\t", " "));
       System.out.printf("Thread status: %s%n", t.getState());
-      runCount++;
-      if (runCount < LIMIT)
+      synchronized (DemoThreadExample.class) {
+        DemoThreadExample.runCount++;
+      }
+      if (DemoThreadExample.runCount < LIMIT)
         new Thread(new Task()).start();
     }
   }
