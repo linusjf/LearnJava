@@ -19,7 +19,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public int hashCode() {
-    return new Integer(priority).hashCode();
+    return Integer.valueOf(priority).hashCode();
   }
 
   @Override
