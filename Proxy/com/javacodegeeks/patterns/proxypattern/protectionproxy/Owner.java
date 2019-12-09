@@ -8,7 +8,6 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  */
 @SuppressWarnings("PMD.FinalFieldCouldBeStatic")
 public class Owner implements Staff {
-  private final boolean owning = true;
 
   private ReportGeneratorProxy reportGenerator;
 
@@ -19,7 +18,7 @@ public class Owner implements Staff {
 
   @Override
   public boolean isOwner() {
-    return owning;
+    return true;
   }
 
   /**
