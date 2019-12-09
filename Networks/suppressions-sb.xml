@@ -40,4 +40,9 @@
     <Method name="main" />
     <Bug code="BC" />
   </Match>
+  <Match>
+    <Class name="networking.CacheControl" />
+    <Field name="noStore" />
+    <Bug code="UwF" />
+  </Match>
 </FindBugsFilter>

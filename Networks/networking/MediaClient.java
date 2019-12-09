@@ -64,18 +64,15 @@ public final class MediaClient {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
     byte[] byteArray = (byte[])inStream.readObject();
-    OutputStream mediaStream;
-    // Step 5…
-    if ("IMAGE".equalsIgnoreCase(fileType))
-      mediaStream = Files.newOutputStream(Paths.get("image.gif"));
-    else
-      // Step 5…Must be a sound file…
-      mediaStream = Files.newOutputStream(Paths.get("sound.au"));
+try (OutputStream mediaStream = 
+    "IMAGE".equalsIgnoreCase(fileType) ?
+      Files.newOutputStream(Paths.get("image.gif"))
+      : Files.newOutputStream(Paths.get("sound.au"))) {
 
     // Step 6…
     mediaStream.write(byteArray);
     mediaStream.flush();
-    mediaStream.close();
     System.out.println("File written successfully");
+  }
   }
 }

@@ -88,7 +88,7 @@ public final class Cookies {
   private static String[] splitOn(String[] values,
                                   int index,
                                   String separator) {
-    return new String(values[index]).split(separator);
+    return values[index].split(separator);
   }
 
   static final class Cookie {
