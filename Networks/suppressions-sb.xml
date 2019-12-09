@@ -20,4 +20,9 @@
     <Method name="acceptAndSubmit" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="networking.DictClient" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

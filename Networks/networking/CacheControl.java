@@ -30,11 +30,11 @@ public class CacheControl {
   private void parseValues(String component) {
     if (component.startsWith("max-age=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(8));
-      maxAge = new Date(System.currentTimeMillis() + 1000 * secondsInTheFuture);
+      maxAge = new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
     } else if (component.startsWith("s-maxage=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(9));
       sharedMaxAge =
-          new Date(System.currentTimeMillis() + 1000 * secondsInTheFuture);
+          new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
     } else if ("must-revalidate".equals(component)) {
       mustRevalidate = true;
     } else if ("proxy-revalidate".equals(component)) {
@@ -49,11 +49,11 @@ public class CacheControl {
   }
 
   public Date getMaxAge() {
-    return maxAge;
+    return new Date(maxAge.getTime());
   }
 
   public Date getSharedMaxAge() {
-    return sharedMaxAge;
+    return new Date(sharedMaxAge.getTime());
   }
 
   public boolean isMustRevalidate() {

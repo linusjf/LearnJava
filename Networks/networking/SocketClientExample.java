@@ -3,6 +3,7 @@ package networking;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.nio.channels.SocketChannel;
 
 public class SocketClientExample {
@@ -20,7 +21,7 @@ public class SocketClientExample {
         threadName + ": test1", threadName + ": test2", threadName + ": test3"};
 
     for (String msg: messages) {
-      byte[] message = msg.getBytes();
+      byte[] message = msg.getBytes(StandardCharsets.UTF_8);
       ByteBuffer buffer = ByteBuffer.wrap(message);
       client.write(buffer);
       System.out.println(msg);

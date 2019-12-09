@@ -28,9 +28,8 @@ public final class DictClient {
          InputStream in = socket.getInputStream();
          BufferedReader reader =
              new BufferedReader(new InputStreamReader(in, "UTF-8"));) {
-      for (String word: args) {
+      for (String word: args) 
         define(word, writer, reader);
-      }
       writer.write("quit\r\n");
       writer.flush();
     } catch (IOException ex) {
