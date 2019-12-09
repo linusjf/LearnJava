@@ -58,9 +58,8 @@ public final class SecureOrderTaker {
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
       for (String instance: supported) {
-        if (instance.indexOf("_anon_") > 0) {
+        if (instance.contains("_anon_")) 
           anonCiphers.add(instance);
-        }
       }
 
       // clang-format off

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
@@ -29,6 +30,18 @@ public final class HttpsClient {
     connect(host, factory);
   }
 
+  private static int getLength(String input) {
+      if (input != null) {
+      try {
+        return Integer.parseInt(input.trim(), 16);
+      } catch (NumberFormatException ex) {
+        System.err.println(
+            "This server doesn't send the content-length in the first line of the response body.");
+      }
+      }
+      return Integer.MAX_VALUE;
+  }
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void connect(String host, SSLSocketFactory factory) {
     try (SSLSocket socket = (SSLSocket)factory.createSocket(host, PORT)) {
@@ -45,7 +58,8 @@ public final class HttpsClient {
 
       // read response
       BufferedReader in =
-          new BufferedReader(new InputStreamReader(socket.getInputStream()));
+          new BufferedReader(new InputStreamReader(socket.getInputStream(),
+                StandardCharsets.UTF_8.name()));
 
       // read the header
       String s = in.readLine();
@@ -57,14 +71,8 @@ public final class HttpsClient {
 
       // read the length
       String contentLength = in.readLine();
-      int length = Integer.MAX_VALUE;
-      try {
-        length = Integer.parseInt(contentLength.trim(), 16);
-      } catch (NumberFormatException ex) {
-        System.err.println(
-            "This server doesn't send the content-length in the first line of the response body.");
-      }
-      System.out.println(contentLength);
+      int length = getLength(contentLength);
+      System.out.println(length);
       int c;
       int i = 0;
       while ((c = in.read()) != -1 && i++ < length) {
