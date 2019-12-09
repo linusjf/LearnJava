@@ -55,7 +55,7 @@ public final class SecureOrderPlacer {
       // String[] anonCipherSuitesSupported = new String[supported.length];
       // int numAnonCipherSuitesSupported = 0;
       for (String instance: supported) {
-        if (instance.indexOf("_anon_") > 0) {
+        if (instance.contains("_anon_")) {
           anonCiphers.add(instance);
         }
       }

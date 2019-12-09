@@ -54,7 +54,7 @@ public class MemoryCache extends ResponseCache {
 
       // check expiration date
       if (response != null && response.isExpired()) {
-        responses.remove(response);
+        responses.remove(uri);
         return null;
       }
       return response;

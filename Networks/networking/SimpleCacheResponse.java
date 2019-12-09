@@ -44,7 +44,7 @@ public class SimpleCacheResponse extends CacheResponse {
     Date now = new Date();
     if (control.getMaxAge().before(now))
       return true;
-    if (expires != null && control.getMaxAge() != null)
+    if (expires != null)
       return expires.before(now);
     return false;
   }
