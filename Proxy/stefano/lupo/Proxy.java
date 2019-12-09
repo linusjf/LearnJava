@@ -17,9 +17,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -119,46 +119,44 @@ public class Proxy implements Runnable {
 
     // Start dynamic manager on a separate thread.
     new Thread(this).start();
-
   }
 
   @SuppressWarnings("unchecked")
   private static void loadCaches() {
-    try {  
-    // Load in cached sites from file
+    try {
+      // Load in cached sites from file
       File cachedSites = new File("cachedSites.txt");
       if (!cachedSites.createNewFile()) {
-        try (
-        InputStream fileInputStream =
-            Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
-        ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream)) {
-        cache = (HashMap<String, File>)objectInputStream.readObject();
-      } catch (IOException ioe) {
-      System.err.println("Error loading previously cached sites file :"
-                         + ioe.getMessage());
+        try (InputStream fileInputStream =
+                 Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
+             ObjectInputStream objectInputStream =
+                 new ObjectInputStream(fileInputStream)) {
+          cache = (HashMap<String, File>)objectInputStream.readObject();
+        } catch (IOException ioe) {
+          System.err.println("Error loading previously cached sites file :"
+                             + ioe.getMessage());
+        }
       }
-    }
 
       // Load in blocked sites from file
       File blockedSitesTxtFile = new File("blockedSites.txt");
       if (!blockedSitesTxtFile.createNewFile()) {
-        try (
-        InputStream fileInputStream = Files.newInputStream(
-            Paths.get(blockedSitesTxtFile.getAbsolutePath()));
-        ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream);) {
-        blockedSites = (HashMap<String, String>)objectInputStream.readObject();
-      } catch (IOException e) {
-      System.err.println("Error loading previously cached sites file :"
-                         + e.getMessage());
-    } catch (ClassNotFoundException e) {
-      System.out.println(
-          "Class not found loading in previously cached sites file : "
-          + e.getMessage());
-    }
+        try (InputStream fileInputStream = Files.newInputStream(
+                 Paths.get(blockedSitesTxtFile.getAbsolutePath()));
+             ObjectInputStream objectInputStream =
+                 new ObjectInputStream(fileInputStream);) {
+          blockedSites =
+              (HashMap<String, String>)objectInputStream.readObject();
+        } catch (IOException e) {
+          System.err.println("Error loading previously cached sites file :"
+                             + e.getMessage());
+        } catch (ClassNotFoundException e) {
+          System.out.println(
+              "Class not found loading in previously cached sites file : "
+              + e.getMessage());
+        }
       }
-      } catch (IOException e) {
+    } catch (IOException e) {
       System.err.println("Error loading previously cached sites file :"
                          + e.getMessage());
     } catch (ClassNotFoundException e) {
@@ -221,25 +219,23 @@ public class Proxy implements Runnable {
    */
   private void closeServer() {
     try {
-    System.out.println("\nClosing Server..");
-    running = false;
-    try (
-      OutputStream fileOutputStream =
-          Files.newOutputStream(Paths.get("cachedSites.txt"));
-      ObjectOutputStream objectOutputStream =
-          new ObjectOutputStream(fileOutputStream);) {
+      System.out.println("\nClosing Server..");
+      running = false;
+      try (OutputStream fileOutputStream =
+               Files.newOutputStream(Paths.get("cachedSites.txt"));
+           ObjectOutputStream objectOutputStream =
+               new ObjectOutputStream(fileOutputStream);) {
 
-      objectOutputStream.writeObject(cache);
-      System.out.println("Cached Sites written");
-          }
-try (
-      OutputStream fileOutputStream2 =
-          Files.newOutputStream(Paths.get("blockedSites.txt"));
-      ObjectOutputStream objectOutputStream2 =
-          new ObjectOutputStream(fileOutputStream2);) {
-      objectOutputStream2.writeObject(blockedSites);
-      System.out.println("Blocked Site list saved");
-    }
+        objectOutputStream.writeObject(cache);
+        System.out.println("Cached Sites written");
+      }
+      try (OutputStream fileOutputStream2 =
+               Files.newOutputStream(Paths.get("blockedSites.txt"));
+           ObjectOutputStream objectOutputStream2 =
+               new ObjectOutputStream(fileOutputStream2);) {
+        objectOutputStream2.writeObject(blockedSites);
+        System.out.println("Blocked Site list saved");
+      }
       try {
         // Close all servicing threads
         for (Thread thread: servicingThreads) {
@@ -304,9 +300,7 @@ try (
    */
   @Override
   public void run() {
-    Scanner scanner = new Scanner(
-        System.in,
-        StandardCharsets.UTF_8.name());
+    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
     System.out.println("Enter new site to block, or type "
                        + "\"blocked\" to see blocked sites, "
                        + "\"cached\" to see cached sites, or "

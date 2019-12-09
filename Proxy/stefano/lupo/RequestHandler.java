@@ -18,9 +18,9 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
 import javax.imageio.ImageIO;
 
 /**
@@ -42,10 +42,10 @@ public class RequestHandler implements Runnable {
   final Socket clientSocket;
 
   /** Read data client sends to proxy. */
-//  BufferedReader proxyToClientBr;
+  //  BufferedReader proxyToClientBr;
 
   /** Send data from proxy to client. */
- // BufferedWriter proxyToClientBw;
+  // BufferedWriter proxyToClientBw;
 
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
@@ -63,7 +63,7 @@ public class RequestHandler implements Runnable {
   private void blockedSiteRequested() {
     try (BufferedWriter bufferedWriter = new BufferedWriter(
              new OutputStreamWriter(clientSocket.getOutputStream(),
-               StandardCharsets.UTF_8.name()))) {
+                                    StandardCharsets.UTF_8.name()))) {
       String line = "HTTP/1.0 403 Access Forbidden \n"
                     + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       bufferedWriter.write(line);
@@ -82,12 +82,12 @@ public class RequestHandler implements Runnable {
   public void run() {
     // Get Request from client
     String requestString;
-    try (BufferedReader br = new BufferedReader(
-             new InputStreamReader(this.clientSocket.getInputStream(),
-               StandardCharsets.UTF_8.name()));
-         BufferedWriter bw = new BufferedWriter(
-             new OutputStreamWriter(this.clientSocket.getOutputStream(),
-               StandardCharsets.UTF_8.name()));) {
+    try (
+        BufferedReader br = new BufferedReader(new InputStreamReader(
+            this.clientSocket.getInputStream(), StandardCharsets.UTF_8.name()));
+        BufferedWriter bw = new BufferedWriter(
+            new OutputStreamWriter(this.clientSocket.getOutputStream(),
+                                   StandardCharsets.UTF_8.name()));) {
       do {
         requestString = br.readLine();
       } while (requestString == null);
@@ -95,41 +95,41 @@ public class RequestHandler implements Runnable {
       // Parse out URL
       System.out.println("Request Received " + requestString);
 
-        // remove request type and space
-        String urlString = extractURL(requestString);
+      // remove request type and space
+      String urlString = extractURL(requestString);
 
-        // Check if site is blocked
-        if (Proxy.isBlocked(urlString)) {
-          System.out.println("Blocked site requested : " + urlString);
-          blockedSiteRequested();
-          return;
-        }
+      // Check if site is blocked
+      if (Proxy.isBlocked(urlString)) {
+        System.out.println("Blocked site requested : " + urlString);
+        blockedSiteRequested();
+        return;
+      }
 
-        // Get the Request type
-        final String request =
-            requestString.substring(0, requestString.indexOf(' '));
+      // Get the Request type
+      final String request =
+          requestString.substring(0, requestString.indexOf(' '));
 
-        // Check request type
-        if ("CONNECT".equals(request)) {
-          System.out.println("HTTPS Request for : " + urlString + "\n");
-          handleHTTPSRequest(urlString,bw,br);
-        } else 
-          handleForCaching(urlString,bw);
+      // Check request type
+      if ("CONNECT".equals(request)) {
+        System.out.println("HTTPS Request for : " + urlString + "\n");
+        handleHTTPSRequest(urlString, bw, br);
+      } else
+        handleForCaching(urlString, bw);
     } catch (IOException ioe) {
       System.out.println("IO error : " + ioe.getMessage());
     }
   }
 
-  private void handleForCaching(String urlString,BufferedWriter bw) {
+  private void handleForCaching(String urlString, BufferedWriter bw) {
     // Check if we have a cached copy
     File file = Proxy.getCachedPage(urlString);
     if (file != null) {
       System.out.println("Cached Copy found for : " + urlString + "\n");
-      sendCachedPageToClient(file,bw);
+      sendCachedPageToClient(file, bw);
       return;
     }
     System.out.println("HTTP GET for : " + urlString + "\n");
-    sendNonCachedToClient(urlString,bw);
+    sendNonCachedToClient(urlString, bw);
   }
 
   /**
@@ -138,7 +138,8 @@ public class RequestHandler implements Runnable {
    * @param cachedFile The file to be sent (can be image/text)
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private void sendCachedPageToClient(File cachedFile,BufferedWriter proxyToClientBw) {
+  private void sendCachedPageToClient(File cachedFile,
+                                      BufferedWriter proxyToClientBw) {
     // Read from File containing cached web page
     try {
       // If file is an image write data to client using buffered image.
@@ -166,18 +167,18 @@ public class RequestHandler implements Runnable {
                         clientSocket.getOutputStream());
         }
       } else {
-      try (  final BufferedReader cachedFileBufferedReader =
-            Files.newBufferedReader(Paths.get(cachedFile.getAbsolutePath()))) {
-        response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
-        proxyToClientBw.write(response);
-        proxyToClientBw.flush();
+        try (final BufferedReader cachedFileBufferedReader =
+                 Files.newBufferedReader(
+                     Paths.get(cachedFile.getAbsolutePath()))) {
+          response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
+          proxyToClientBw.write(response);
+          proxyToClientBw.flush();
 
-        String line;
-        while ((line = cachedFileBufferedReader.readLine()) != null)
-          proxyToClientBw.write(line);
-        proxyToClientBw.flush();
-
-            }
+          String line;
+          while ((line = cachedFileBufferedReader.readLine()) != null)
+            proxyToClientBw.write(line);
+          proxyToClientBw.flush();
+        }
       }
 
       // Close Down Resources
@@ -196,10 +197,8 @@ public class RequestHandler implements Runnable {
         String parent = fileToCache.getParent();
         File parentPath = new File(parent);
         if (!(parentPath.mkdirs() && fileToCache.createNewFile()))
-          throw new AssertionError("Unable to create parent directories : " 
-              + parentPath
-              + " or file: "
-              + fileToCache);
+          throw new AssertionError("Unable to create parent directories : "
+                                   + parentPath + " or file: " + fileToCache);
       }
     } catch (IOException | SecurityException e) {
       System.err.println("Error creating cache file: " + e.getMessage());
@@ -222,7 +221,7 @@ public class RequestHandler implements Runnable {
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private void sendNonCachedToClient(String urlString,
-     BufferedWriter proxyToClientBw ) {
+                                     BufferedWriter proxyToClientBw) {
     // Compute a logical file name as per schema
     // This allows the files on stored on disk to resemble that of the URL it
     // was taken from
@@ -278,26 +277,26 @@ public class RequestHandler implements Runnable {
         proxyToServerCon.setDoOutput(true);
 
         // Create Buffered Reader from remote Server
-try (        BufferedReader proxyToServerBR = new BufferedReader(
-            new InputStreamReader(proxyToServerCon.getInputStream(),
-              StandardCharsets.UTF_8.name()))) {
-        // Send success code to client
-        String line = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
-        proxyToClientBw.write(line);
-
-        // Read from input stream between proxy and remote server
-        while ((line = proxyToServerBR.readLine()) != null) {
-          // Send on data to client
+        try (BufferedReader proxyToServerBR = new BufferedReader(
+                 new InputStreamReader(proxyToServerCon.getInputStream(),
+                                       StandardCharsets.UTF_8.name()))) {
+          // Send success code to client
+          String line = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
           proxyToClientBw.write(line);
 
-          // Write to our cached copy of the file
-          if (fileToCache.exists())
-            fileToCacheBW.write(line);
-        }
+          // Read from input stream between proxy and remote server
+          while ((line = proxyToServerBR.readLine()) != null) {
+            // Send on data to client
+            proxyToClientBw.write(line);
 
-        // Ensure all data is sent by this point
-        proxyToClientBw.flush();
-            }
+            // Write to our cached copy of the file
+            if (fileToCache.exists())
+              fileToCacheBW.write(line);
+          }
+
+          // Ensure all data is sent by this point
+          proxyToClientBw.flush();
+        }
       }
 
       if (fileToCache.exists()) {
@@ -321,8 +320,8 @@ try (        BufferedReader proxyToServerBR = new BufferedReader(
                      "checkstyle:magicnumber"})
   private void
   handleHTTPSRequest(String urlString,
-      BufferedWriter proxyToClientBw,
-      BufferedReader proxyToClientBr) {
+                     BufferedWriter proxyToClientBw,
+                     BufferedReader proxyToClientBr) {
     // Extract the URL and port of remote
     String url = urlString.substring(7);
     String[] pieces = url.split(":");
@@ -351,12 +350,12 @@ try (        BufferedReader proxyToServerBR = new BufferedReader(
       // Create a Buffered Writer betwen proxy and remote
       final BufferedWriter proxyToServerBW = new BufferedWriter(
           new OutputStreamWriter(proxyToServerSocket.getOutputStream(),
-            StandardCharsets.UTF_8.name()));
+                                 StandardCharsets.UTF_8.name()));
 
       // Create Buffered Reader from proxy and remote
       final BufferedReader proxyToServerBR = new BufferedReader(
           new InputStreamReader(proxyToServerSocket.getInputStream(),
-            StandardCharsets.UTF_8.name()));
+                                StandardCharsets.UTF_8.name()));
 
       // Create a new thread to listen to client and transmit to server
       ClientToServerHttpsTransmit clientToServerHttps =
