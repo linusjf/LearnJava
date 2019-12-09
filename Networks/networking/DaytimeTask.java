@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -25,7 +26,9 @@ public class DaytimeTask implements Runnable, Callable<Void> {
   @Override
   public void run() {
     try {
-      Writer out = new OutputStreamWriter(connection.getOutputStream());
+      Writer out = new OutputStreamWriter(
+          connection.getOutputStream(),
+          StandardCharsets.UTF_8.name());
       Date now = new Date();
       SimpleDateFormat format =
           new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());

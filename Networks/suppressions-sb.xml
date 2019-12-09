@@ -30,4 +30,14 @@
     <Method name="main" />
     <Bug code="BC" />
   </Match>
+  <Match>
+    <Class name="networking.BinarySaver" />
+    <Method name="saveBinaryFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.MainClass" />
+    <Method name="main" />
+    <Bug code="BC" />
+  </Match>
 </FindBugsFilter>
