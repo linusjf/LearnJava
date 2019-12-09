@@ -59,7 +59,7 @@ public final class MultiEchoServerNIO {
       serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ioEx) {
       System.err.println(ioEx);
-      System.exit(1);
+      throw new AssertionError(ioEx.getMessage(),ioEx);
     }
     processConnections();
   }

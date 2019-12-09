@@ -2,8 +2,10 @@ package networking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public enum MultiEchoServer {
@@ -46,8 +48,12 @@ public enum MultiEchoServer {
       // Set up reference to associated socket…
       client = socket;
       try {
-        input = new Scanner(client.getInputStream());
-        output = new PrintWriter(client.getOutputStream(), true);
+        input = new Scanner(client.getInputStream(),
+            StandardCharsets.UTF_8.name());
+        output = new PrintWriter(new OutputStreamWriter(
+              client.getOutputStream(),
+              StandardCharsets.UTF_8.name()),
+            true);
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }
