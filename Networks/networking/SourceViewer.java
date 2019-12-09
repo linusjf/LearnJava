@@ -4,9 +4,9 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public final class SourceViewer {
 
@@ -19,7 +19,7 @@ public final class SourceViewer {
     if (args.length > 0) {
       try (Reader r = new InputStreamReader(
                new BufferedInputStream(new URL(args[0]).openStream()),
-                 StandardCharsets.UTF_8.name());) {
+               StandardCharsets.UTF_8.name());) {
         int c;
         while ((c = r.read()) != -1)
           System.out.print((char)c);

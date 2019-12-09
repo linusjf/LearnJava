@@ -1,14 +1,14 @@
 package networking;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public enum ConsumerClient {
   ;
@@ -29,12 +29,13 @@ public enum ConsumerClient {
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
          Scanner networkInput = new Scanner(socket.getInputStream(),
-           StandardCharsets.UTF_8.name());
-         PrintWriter networkOutput =
-             new PrintWriter(new OutputStreamWriter(
-                 socket.getOutputStream(),
-                 StandardCharsets.UTF_8.name()), true);
-         Scanner userEntry = new Scanner(System.in,StandardCharsets.UTF_8.name());) {
+                                            StandardCharsets.UTF_8.name());
+         PrintWriter networkOutput = new PrintWriter(
+             new OutputStreamWriter(socket.getOutputStream(),
+                                    StandardCharsets.UTF_8.name()),
+             true);
+         Scanner userEntry =
+             new Scanner(System.in, StandardCharsets.UTF_8.name());) {
       String message = "";
       while (!"0".equals(message)) {
 

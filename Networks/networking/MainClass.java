@@ -1,10 +1,10 @@
 package networking;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
@@ -25,10 +25,10 @@ public final class MainClass {
       ss.setEnabledProtocols(new String[] {"TLSv1.2"});
       while (true) {
         Socket socket = ss.accept();
-        PrintWriter out = 
-          new PrintWriter(new OutputStreamWriter(
-                socket.getOutputStream(),
-                StandardCharsets.UTF_8.name()), true);
+        PrintWriter out = new PrintWriter(
+            new OutputStreamWriter(socket.getOutputStream(),
+                                   StandardCharsets.UTF_8.name()),
+            true);
         out.println("Hello World!");
       }
     } catch (IOException ioe) {

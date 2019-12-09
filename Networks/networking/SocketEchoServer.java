@@ -29,9 +29,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class SocketEchoServer {
   private ServerSocket server;
@@ -48,15 +48,11 @@ public class SocketEchoServer {
     try {
       while (true) {
         Socket client = server.accept();
-        BufferedReader r =
-            new BufferedReader(
-                new InputStreamReader(
-                  client.getInputStream(),
-                  StandardCharsets.UTF_8.name()));
+        BufferedReader r = new BufferedReader(new InputStreamReader(
+            client.getInputStream(), StandardCharsets.UTF_8.name()));
         PrintWriter w = new PrintWriter(
-            new OutputStreamWriter(
-              client.getOutputStream(),
-              StandardCharsets.UTF_8.name()),
+            new OutputStreamWriter(client.getOutputStream(),
+                                   StandardCharsets.UTF_8.name()),
             true);
         w.println("Welcome to the Java EchoServer.  Type 'bye' to close.");
         String line;

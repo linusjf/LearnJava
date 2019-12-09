@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -59,7 +59,7 @@ public final class SecureOrderTaker {
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
       for (String instance: supported) {
-        if (instance.contains("_anon_")) 
+        if (instance.contains("_anon_"))
           anonCiphers.add(instance);
       }
 
@@ -78,7 +78,8 @@ public final class SecureOrderTaker {
         try (Socket theConnection = server.accept()) {
           System.out.println("Connection accepted");
           InputStream in = theConnection.getInputStream();
-          InputStreamReader isr = new InputStreamReader(in,StandardCharsets.UTF_8.name());
+          InputStreamReader isr =
+              new InputStreamReader(in, StandardCharsets.UTF_8.name());
           BufferedReader br = new BufferedReader(isr);
           String msg = br.readLine();
           System.out.println("Message received: " + msg);

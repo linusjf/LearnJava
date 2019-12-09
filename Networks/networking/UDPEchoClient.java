@@ -3,12 +3,12 @@ package networking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 
 @SuppressWarnings("PMD.AvoidUsingVolatile")
 public enum UDPEchoClient {
@@ -81,8 +81,8 @@ public enum UDPEchoClient {
     @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
-      try (BufferedReader userInput =
-               new BufferedReader(new InputStreamReader(System.in,StandardCharsets.UTF_8.name()))) {
+      try (BufferedReader userInput = new BufferedReader(new InputStreamReader(
+               System.in, StandardCharsets.UTF_8.name()))) {
         while (true) {
           if (stopped)
             return;

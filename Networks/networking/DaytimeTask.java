@@ -26,9 +26,8 @@ public class DaytimeTask implements Runnable, Callable<Void> {
   @Override
   public void run() {
     try {
-      Writer out = new OutputStreamWriter(
-          connection.getOutputStream(),
-          StandardCharsets.UTF_8.name());
+      Writer out = new OutputStreamWriter(connection.getOutputStream(),
+                                          StandardCharsets.UTF_8.name());
       Date now = new Date();
       SimpleDateFormat format =
           new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());

@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 
 public final class WhoisQuery {
 
@@ -33,12 +33,14 @@ public final class WhoisQuery {
 
     Socket socket = new Socket(host, port);
 
-    InputStreamReader isr = new InputStreamReader(socket.getInputStream(),
-        StandardCharsets.UTF_8.name());
+    InputStreamReader isr = new InputStreamReader(
+        socket.getInputStream(), StandardCharsets.UTF_8.name());
     BufferedReader in = new BufferedReader(isr);
 
-    PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),
-          StandardCharsets.UTF_8.name()), true);
+    PrintWriter out =
+        new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),
+                                               StandardCharsets.UTF_8.name()),
+                        true);
     out.println(query);
 
     String line = "";

@@ -31,15 +31,15 @@ public final class HttpsClient {
   }
 
   private static int getLength(String input) {
-      if (input != null) {
+    if (input != null) {
       try {
         return Integer.parseInt(input.trim(), 16);
       } catch (NumberFormatException ex) {
         System.err.println(
             "This server doesn't send the content-length in the first line of the response body.");
       }
-      }
-      return Integer.MAX_VALUE;
+    }
+    return Integer.MAX_VALUE;
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -57,9 +57,8 @@ public final class HttpsClient {
       out.flush();
 
       // read response
-      BufferedReader in =
-          new BufferedReader(new InputStreamReader(socket.getInputStream(),
-                StandardCharsets.UTF_8.name()));
+      BufferedReader in = new BufferedReader(new InputStreamReader(
+          socket.getInputStream(), StandardCharsets.UTF_8.name()));
 
       // read the header
       String s = in.readLine();

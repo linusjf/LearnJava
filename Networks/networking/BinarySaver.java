@@ -34,11 +34,11 @@ public final class BinarySaver {
     URLConnection uc = u.openConnection();
     String contentType = uc.getContentType();
     int contentLength = uc.getContentLength();
-    if (contentType.startsWith("text/") || contentLength == -1) 
+    if (contentType.startsWith("text/") || contentLength == -1)
       throw new IOException(u + " is not a binary file.");
-    
-    try (InputStream raw = uc.getInputStream(); 
-      InputStream in = new BufferedInputStream(raw);) {
+
+    try (InputStream raw = uc.getInputStream();
+         InputStream in = new BufferedInputStream(raw);) {
       byte[] data = new byte[contentLength];
       int offset = 0;
       while (offset < contentLength) {
