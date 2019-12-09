@@ -2,15 +2,19 @@ package networking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.util.Random;
 
 public enum ConsumerClient {
   ;
   private static InetAddress host;
   private static final int PORT = 1234;
+  private static final Random random = new Random();
 
   public static void main(String[] args) {
     try {
@@ -24,10 +28,13 @@ public enum ConsumerClient {
 
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream());
+         Scanner networkInput = new Scanner(socket.getInputStream(),
+           StandardCharsets.UTF_8.name());
          PrintWriter networkOutput =
-             new PrintWriter(socket.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
+             new PrintWriter(new OutputStreamWriter(
+                 socket.getOutputStream(),
+                 StandardCharsets.UTF_8.name()), true);
+         Scanner userEntry = new Scanner(System.in,StandardCharsets.UTF_8.name());) {
       String message = "";
       while (!"0".equals(message)) {
 
@@ -46,7 +53,7 @@ public enum ConsumerClient {
         }
 
         // 'Sleep' for 0-5 seconds…
-        Thread.sleep((int)(Math.random() * 5000));
+        Thread.sleep(random.nextInt(5000));
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);

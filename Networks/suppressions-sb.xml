@@ -15,4 +15,9 @@
     <Method name="main" />
     <Bug code="RCN,BC" />
   </Match>
+  <Match>
+    <Class name="networking.SingleFileHttpServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>
