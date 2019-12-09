@@ -20,6 +20,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import javax.imageio.ImageIO;
 
 /**
@@ -61,7 +62,8 @@ public class RequestHandler implements Runnable {
    */
   private void blockedSiteRequested() {
     try (BufferedWriter bufferedWriter = new BufferedWriter(
-             new OutputStreamWriter(clientSocket.getOutputStream()))) {
+             new OutputStreamWriter(clientSocket.getOutputStream(),
+               StandardCharsets.UTF_8.name()))) {
       String line = "HTTP/1.0 403 Access Forbidden \n"
                     + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       bufferedWriter.write(line);
@@ -81,9 +83,11 @@ public class RequestHandler implements Runnable {
     // Get Request from client
     String requestString;
     try (BufferedReader br = new BufferedReader(
-             new InputStreamReader(this.clientSocket.getInputStream()));
+             new InputStreamReader(this.clientSocket.getInputStream(),
+               StandardCharsets.UTF_8.name()));
          BufferedWriter bw = new BufferedWriter(
-             new OutputStreamWriter(this.clientSocket.getOutputStream()));) {
+             new OutputStreamWriter(this.clientSocket.getOutputStream(),
+               StandardCharsets.UTF_8.name()));) {
       proxyToClientBr = br;
       proxyToClientBw = bw;
       do {
@@ -199,8 +203,11 @@ public class RequestHandler implements Runnable {
       if (!fileToCache.exists()) {
         String parent = fileToCache.getParent();
         File parentPath = new File(parent);
-        parentPath.mkdirs();
-        fileToCache.createNewFile();
+        if (!(parentPath.mkdirs() && fileToCache.createNewFile()))
+          throw new AssertionError("Unable to create parent directories : " 
+              + parentPath
+              + " or file: "
+              + fileToCache);
       }
     } catch (IOException | SecurityException e) {
       System.err.println("Error creating cache file: " + e.getMessage());
@@ -279,7 +286,8 @@ public class RequestHandler implements Runnable {
 
         // Create Buffered Reader from remote Server
         BufferedReader proxyToServerBR = new BufferedReader(
-            new InputStreamReader(proxyToServerCon.getInputStream()));
+            new InputStreamReader(proxyToServerCon.getInputStream(),
+              StandardCharsets.UTF_8.name()));
 
         // Send success code to client
         String line = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
@@ -351,11 +359,13 @@ public class RequestHandler implements Runnable {
 
       // Create a Buffered Writer betwen proxy and remote
       final BufferedWriter proxyToServerBW = new BufferedWriter(
-          new OutputStreamWriter(proxyToServerSocket.getOutputStream()));
+          new OutputStreamWriter(proxyToServerSocket.getOutputStream(),
+            StandardCharsets.UTF_8.name()));
 
       // Create Buffered Reader from proxy and remote
       final BufferedReader proxyToServerBR = new BufferedReader(
-          new InputStreamReader(proxyToServerSocket.getInputStream()));
+          new InputStreamReader(proxyToServerSocket.getInputStream(),
+            StandardCharsets.UTF_8.name()));
 
       // Create a new thread to listen to client and transmit to server
       ClientToServerHttpsTransmit clientToServerHttps =
@@ -432,7 +442,7 @@ public class RequestHandler implements Runnable {
    * separate thread as must be done asynchronously to reading data from server
    * and transmitting that data to the client.
    */
-  class ClientToServerHttpsTransmit implements Runnable {
+  static class ClientToServerHttpsTransmit implements Runnable {
     InputStream proxyToClientIS;
     OutputStream proxyToServerOS;
 

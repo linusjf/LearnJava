@@ -85,14 +85,11 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Start the Proxy Server.
+   * Create the Proxy Server.
    *
    * @param port Port number to run proxy server from.
    */
-  public void start(int port) {
-
-    // Start dynamic manager on a separate thread.
-    new Thread(this).start();
+  public Proxy(int port) {
 
     // Starts overriden run() method at bottom
     try {
@@ -117,35 +114,52 @@ public class Proxy implements Runnable {
     }
   }
 
+  public void startManager() {
+
+    // Start dynamic manager on a separate thread.
+    new Thread(this).start();
+
+  }
+
   @SuppressWarnings("unchecked")
   private static void loadCaches() {
-    try {
-      // Load in cached sites from file
+    try {  
+    // Load in cached sites from file
       File cachedSites = new File("cachedSites.txt");
       if (!cachedSites.createNewFile()) {
+        try (
         InputStream fileInputStream =
             Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
         ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream);
+            new ObjectInputStream(fileInputStream)) {
 
         cache = (HashMap<String, File>)objectInputStream.readObject();
-        fileInputStream.close();
-        objectInputStream.close();
+      } catch (IOException ioe) {
+      System.err.println("Error loading previously cached sites file :"
+                         + ioe.getMessage());
       }
+    }
 
       // Load in blocked sites from file
       File blockedSitesTxtFile = new File("blockedSites.txt");
       if (!blockedSitesTxtFile.createNewFile()) {
+        try (
         InputStream fileInputStream = Files.newInputStream(
             Paths.get(blockedSitesTxtFile.getAbsolutePath()));
         ObjectInputStream objectInputStream =
-            new ObjectInputStream(fileInputStream);
+            new ObjectInputStream(fileInputStream);) {
         blockedSites = (HashMap<String, String>)objectInputStream.readObject();
-        fileInputStream.close();
-        objectInputStream.close();
+      } catch (IOException e) {
+      System.err.println("Error loading previously cached sites file :"
+                         + e.getMessage());
+    } catch (ClassNotFoundException e) {
+      System.out.println(
+          "Class not found loading in previously cached sites file : "
+          + e.getMessage());
+    }
       }
-    } catch (IOException e) {
-      System.out.println("Error loading previously cached sites file :"
+      } catch (IOException e) {
+      System.err.println("Error loading previously cached sites file :"
                          + e.getMessage());
     } catch (ClassNotFoundException e) {
       System.out.println(
@@ -162,8 +176,8 @@ public class Proxy implements Runnable {
   @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
     // Create an instance of Proxy and begin listening for connections
-    Proxy myProxy = new Proxy();
-    myProxy.start(8085);
+    Proxy myProxy = new Proxy(8085);
+    myProxy.startManager();
     myProxy.listen();
   }
 
