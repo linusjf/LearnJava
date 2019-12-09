@@ -19,6 +19,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -132,7 +133,6 @@ public class Proxy implements Runnable {
             Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
         ObjectInputStream objectInputStream =
             new ObjectInputStream(fileInputStream)) {
-
         cache = (HashMap<String, File>)objectInputStream.readObject();
       } catch (IOException ioe) {
       System.err.println("Error loading previously cached sites file :"
@@ -220,27 +220,26 @@ public class Proxy implements Runnable {
    * servicing requests.
    */
   private void closeServer() {
+    try {
     System.out.println("\nClosing Server..");
     running = false;
-    try {
+    try (
       OutputStream fileOutputStream =
           Files.newOutputStream(Paths.get("cachedSites.txt"));
       ObjectOutputStream objectOutputStream =
-          new ObjectOutputStream(fileOutputStream);
+          new ObjectOutputStream(fileOutputStream);) {
 
       objectOutputStream.writeObject(cache);
-      objectOutputStream.close();
-      fileOutputStream.close();
       System.out.println("Cached Sites written");
-
+          }
+try (
       OutputStream fileOutputStream2 =
           Files.newOutputStream(Paths.get("blockedSites.txt"));
       ObjectOutputStream objectOutputStream2 =
-          new ObjectOutputStream(fileOutputStream2);
+          new ObjectOutputStream(fileOutputStream2);) {
       objectOutputStream2.writeObject(blockedSites);
-      objectOutputStream2.close();
-      fileOutputStream2.close();
       System.out.println("Blocked Site list saved");
+    }
       try {
         // Close all servicing threads
         for (Thread thread: servicingThreads) {
@@ -305,7 +304,9 @@ public class Proxy implements Runnable {
    */
   @Override
   public void run() {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(
+        System.in,
+        StandardCharsets.UTF_8.name());
     System.out.println("Enter new site to block, or type "
                        + "\"blocked\" to see blocked sites, "
                        + "\"cached\" to see cached sites, or "
