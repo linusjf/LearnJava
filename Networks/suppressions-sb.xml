@@ -25,4 +25,9 @@
     <Method name="main" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.SocketClientDemo" />
+    <Method name="main" />
+    <Bug code="BC" />
+  </Match>
 </FindBugsFilter>

@@ -3,7 +3,9 @@ package networking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -31,10 +33,12 @@ public final class WhoisQuery {
 
     Socket socket = new Socket(host, port);
 
-    InputStreamReader isr = new InputStreamReader(socket.getInputStream());
+    InputStreamReader isr = new InputStreamReader(socket.getInputStream(),
+        StandardCharsets.UTF_8.name());
     BufferedReader in = new BufferedReader(isr);
 
-    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+    PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),
+          StandardCharsets.UTF_8.name()), true);
     out.println(query);
 
     String line = "";

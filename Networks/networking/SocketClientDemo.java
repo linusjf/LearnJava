@@ -3,6 +3,7 @@ package networking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
@@ -37,7 +38,8 @@ public final class SocketClientDemo {
       // sslParams.setEndpointIdentificationAlgorithm("HTTPS");
       // s.setSSLParameters(sslParams);
       BufferedReader input =
-          new BufferedReader(new InputStreamReader(s.getInputStream()));
+          new BufferedReader(new InputStreamReader(s.getInputStream(),
+              StandardCharsets.UTF_8.name()));
       System.out.println(input.readLine());
     } catch (IOException ioe) {
       System.err.println("IO exception: " + ioe.getMessage());
