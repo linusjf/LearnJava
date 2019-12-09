@@ -85,11 +85,12 @@ public class Proxy implements Runnable {
   }
 
   /**
-   * Create the Proxy Server.
+   * Start the Proxy Server.
    *
    * @param port Port number to run proxy server from.
    */
-  public Proxy(int port) {
+  public void start(int port) {
+
     // Start dynamic manager on a separate thread.
     new Thread(this).start();
 
@@ -161,7 +162,8 @@ public class Proxy implements Runnable {
   @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String[] args) {
     // Create an instance of Proxy and begin listening for connections
-    Proxy myProxy = new Proxy(8085);
+    Proxy myProxy = new Proxy();
+    myProxy.start(8085);
     myProxy.listen();
   }
 

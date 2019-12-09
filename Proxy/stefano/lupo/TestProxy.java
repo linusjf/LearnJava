@@ -34,14 +34,13 @@ public enum TestProxy {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String[] readURLsFromFile(String fileName) {
-    try {
-      BufferedReader reader = Files.newBufferedReader(Paths.get(fileName));
+    try (
+      BufferedReader reader = Files.newBufferedReader(Paths.get(fileName))) {
       List<String> lines = new ArrayList<>();
 
       String line;
       while ((line = reader.readLine()) != null)
         lines.add(line);
-      reader.close();
       return lines.toArray(new String[0]);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
