@@ -1,7 +1,10 @@
 package networking;
 
+import java.util.Random;
+
 class Producer extends Thread {
   private final Resource item;
+  private Random random = new Random();
 
   Producer(Resource resource) {
     super();
@@ -17,7 +20,7 @@ class Producer extends Thread {
         // Add 1 to level and return new level…
         newLevel = item.addOne();
         System.out.println("<Producer> New level: " + newLevel);
-        pause = (int)(Math.random() * 5000);
+        pause = random.nextInt(5000);
 
         // 'Sleep' for 0-5 seconds…
         sleep(pause);

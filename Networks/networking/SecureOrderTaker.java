@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -77,7 +78,7 @@ public final class SecureOrderTaker {
         try (Socket theConnection = server.accept()) {
           System.out.println("Connection accepted");
           InputStream in = theConnection.getInputStream();
-          InputStreamReader isr = new InputStreamReader(in);
+          InputStreamReader isr = new InputStreamReader(in,StandardCharsets.UTF_8.name());
           BufferedReader br = new BufferedReader(isr);
           String msg = br.readLine();
           System.out.println("Message received: " + msg);

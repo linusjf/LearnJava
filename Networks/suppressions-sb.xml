@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="networking.HttpsClient" />
+    <Method name="connect" />
+    <Bug code="RCN,BC" />
+  </Match>
+  <Match>
+    <Class name="networking.ListDicts" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SecureOrderTaker" />
+    <Method name="main" />
+    <Bug code="RCN,BC" />
+  </Match>
+</FindBugsFilter>
