@@ -26,7 +26,7 @@ public enum UDPTimeClient {
     InetAddress host = getAddress(args);
     UDPPoke poker = new UDPPoke(host, PORT);
     byte[] response = poker.poke();
-    if (response == null) {
+    if (response.length == 0) {
       System.out.println("No response within allotted time");
       return;
     } else if (response.length != NO_OF_BYTES_EXPECTED) {
@@ -39,9 +39,8 @@ public enum UDPTimeClient {
     // converts between them.
     long differenceBetweenEpochs = 2_208_988_800L;
     long secondsSince1900 = 0;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) 
       secondsSince1900 = (secondsSince1900 << 8) | (response[i] & 0x000000FF);
-    }
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
     long msSince1970 = secondsSince1970 * 1000;
     Date time = new Date(msSince1970);

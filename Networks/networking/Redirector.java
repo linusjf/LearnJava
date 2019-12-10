@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.logging.Logger;
 import logging.FormatLogger;
@@ -87,9 +88,10 @@ public class Redirector {
     @Override
     public void run() {
       try (Writer out = new BufferedWriter(new OutputStreamWriter(
-               connection.getOutputStream(), "US-ASCII"));
+               connection.getOutputStream(), StandardCharsets.US_ASCII.name()));
            Reader in = new InputStreamReader(
-               new BufferedInputStream(connection.getInputStream()));) {
+               new BufferedInputStream(connection.getInputStream()),
+                 StandardCharsets.US_ASCII.name());) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
