@@ -5,8 +5,10 @@ package networking;
 // number of messages received. Uses TCP.
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public enum TCPEchoServer {
@@ -30,8 +32,11 @@ public enum TCPEchoServer {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void handleClient() {
     try (Socket link = serverSocket.accept();
-         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-         Scanner input = new Scanner(link.getInputStream());) {
+         PrintWriter output = new PrintWriter(
+           new OutputStreamWriter(link.getOutputStream(),
+             StandardCharsets.UTF_8.name()), true);
+         Scanner input = new Scanner(link.getInputStream(),
+           StandardCharsets.UTF_8.name());) {
 
       int numMessages = 0;
       String message = "";

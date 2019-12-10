@@ -120,4 +120,9 @@
     <Method name="echoToServer" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.TCPEchoServer" />
+    <Method name="handleClient" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

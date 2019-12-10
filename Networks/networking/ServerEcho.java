@@ -3,6 +3,7 @@ package networking;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public final class ServerEcho {
@@ -41,7 +42,7 @@ public final class ServerEcho {
 
       byte[] arr2 = dpack.getData();
       int packSize = dpack.getLength();
-      String s2 = new String(arr2, 0, packSize);
+      String s2 = new String(arr2, 0, packSize,StandardCharsets.UTF_8);
 
       System.out.println(new Date() + "  " + dpack.getAddress() + " : "
                          + dpack.getPort() + " " + s2);

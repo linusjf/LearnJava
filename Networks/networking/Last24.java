@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public final class Last24 {
@@ -34,8 +35,10 @@ public final class Last24 {
             new Date(today.getTime() - MILLISECONDS_PER_DAY).getTime());
         System.out.println("Will retrieve file if it's modified since "
                            + new Date(uc.getIfModifiedSince()));
-        try (InputStream in = new BufferedInputStream(uc.getInputStream());
-             Reader r = new InputStreamReader(in);) {
+        try (InputStream in = new BufferedInputStream(
+              uc.getInputStream());
+             Reader r = new InputStreamReader(in,
+               StandardCharsets.UTF_8.name());) {
           int c;
           while ((c = r.read()) != -1)
             System.out.print((char)c);
