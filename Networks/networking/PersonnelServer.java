@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -44,7 +45,8 @@ public enum PersonnelServer {
     while (true) {
       try {
         socket = serverSocket.accept();
-        inStream = new Scanner(socket.getInputStream());
+        inStream = new Scanner(socket.getInputStream(),
+            StandardCharsets.UTF_8.name());
         outStream = new ObjectOutputStream(socket.getOutputStream());
 
         /*

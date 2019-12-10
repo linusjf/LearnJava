@@ -1,6 +1,7 @@
 package networking;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -13,7 +14,8 @@ public class WhoisUI {
   private String searchIn;
 
   public void inputWhoisFields(String... args) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in,
+        StandardCharsets.UTF_8.name());
     inputWhois(scanner);
     inputExactMatch(scanner);
     inputSearchFor(scanner);

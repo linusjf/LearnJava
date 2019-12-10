@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 
 /**
@@ -94,12 +95,15 @@ public final class SpamCheck {
             + "Mobile Safari/537.36");
     connection.setRequestProperty("Cookie", getCookies());
     StringBuilder sb = new StringBuilder();
+    try (
     InputStream in = new BufferedInputStream(connection.getInputStream());
-    InputStreamReader theHTML = new InputStreamReader(in);
+    InputStreamReader theHTML = new InputStreamReader(in,
+        StandardCharsets.UTF_8.name());) {
     int c;
     while ((c = theHTML.read()) != -1)
       sb.append((char)c);
     return isIpFlagged(sb.toString(), ip);
+  }
   }
 
   @SuppressWarnings("PMD.OneDeclarationPerLine")

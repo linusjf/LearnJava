@@ -70,4 +70,14 @@
     <Method name="main" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.Resource" />
+    <Field name="numResources" />
+    <Bug code="IS" />
+  </Match>
+  <Match>
+    <Class name="networking.JHttp" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>
