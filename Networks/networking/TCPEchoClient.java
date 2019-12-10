@@ -1,10 +1,12 @@
 package networking;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public enum TCPEchoClient {
@@ -24,9 +26,14 @@ public enum TCPEchoClient {
 
   private static void accessServer() {
     try (Socket link = new Socket(host, PORT);
-         Scanner input = new Scanner(link.getInputStream());
-         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
+         Scanner input =
+             new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
+         PrintWriter output = new PrintWriter(
+             new OutputStreamWriter(link.getOutputStream(),
+                                    StandardCharsets.UTF_8.name()),
+             true);
+         Scanner userEntry =
+             new Scanner(System.in, StandardCharsets.UTF_8.name());) {
       // Set up stream for keyboard entry…
       String message = "";
       while (!"***CLOSE***".equals(message)) {

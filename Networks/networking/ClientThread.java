@@ -1,8 +1,10 @@
 package networking;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 class ClientThread extends Thread {
@@ -18,8 +20,12 @@ class ClientThread extends Thread {
     try {
       // Create input and output streams
       // on the socket…
-      input = new Scanner(client.getInputStream());
-      output = new PrintWriter(client.getOutputStream(), true);
+      input =
+          new Scanner(client.getInputStream(), StandardCharsets.UTF_8.name());
+      output =
+          new PrintWriter(new OutputStreamWriter(client.getOutputStream(),
+                                                 StandardCharsets.UTF_8.name()),
+                          true);
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }
@@ -28,7 +34,7 @@ class ClientThread extends Thread {
   @Override
   public void run() {
     String request = input.nextLine();
-    do {
+    while (!"0".equals(request)) {
       if ("1".equals(request)) {
         item.takeOne();
 
@@ -39,7 +45,7 @@ class ClientThread extends Thread {
         output.println("Request granted.");
       }
       request = input.nextLine();
-    } while (!"0".equals(request));
+    }
     try {
       System.out.println("Closing down connection…");
       client.close();

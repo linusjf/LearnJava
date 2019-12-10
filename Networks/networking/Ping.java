@@ -242,7 +242,7 @@ public final class Ping {
             // after the key is added to the selector's
             // selected-key set
             if (t.channel != null)
-            t.channel.register(sel, SelectionKey.OP_CONNECT, t);
+              t.channel.register(sel, SelectionKey.OP_CONNECT, t);
           } catch (IOException x) {
             // Something went wrong, so close the channel and
             // record the failure

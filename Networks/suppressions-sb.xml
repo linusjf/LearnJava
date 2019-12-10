@@ -45,4 +45,14 @@
     <Field name="noStore" />
     <Bug code="UwF" />
   </Match>
+  <Match>
+    <Class name="networking.PooledDaytimeServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.ChargenClient" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>
