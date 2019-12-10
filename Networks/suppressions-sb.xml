@@ -115,4 +115,9 @@
     <Method name="main" />
     <Bug code="BC" />
   </Match>
+  <Match>
+    <Class name="networking.UDPEchoClientWithChannels" />
+    <Method name="echoToServer" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

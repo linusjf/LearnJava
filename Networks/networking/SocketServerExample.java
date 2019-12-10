@@ -9,6 +9,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -124,6 +125,6 @@ public class SocketServerExample {
 
     byte[] data = new byte[numRead];
     System.arraycopy(buffer.array(), 0, data, 0, numRead);
-    System.out.println("Got: " + new String(data));
+    System.out.println("Got: " + new String(data,StandardCharsets.UTF_8));
   }
 }
