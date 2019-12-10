@@ -55,4 +55,14 @@
     <Method name="main" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.TimeServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SourceViewer2" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

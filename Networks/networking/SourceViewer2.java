@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 public enum SourceViewer2 {
   ;
@@ -20,15 +21,12 @@ public enum SourceViewer2 {
         URL u = new URL(args[0]);
         URLConnection uc = u.openConnection();
         try (InputStream raw = uc.getInputStream();
-             // autoclose
              InputStream buffer = new BufferedInputStream(raw);
-
-             // chain the InputStream to a Reader
-             Reader reader = new InputStreamReader(buffer);) {
+             Reader reader = new InputStreamReader(buffer,
+               StandardCharsets.UTF_8.name());) {
           int c;
-          while ((c = reader.read()) != -1) {
+          while ((c = reader.read()) != -1) 
             System.out.print((char)c);
-          }
         }
       } catch (MalformedURLException ex) {
         System.err.println(args[0] + " is not a parseable URL");
