@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -73,7 +74,8 @@ public final class LoggingDaytimeServer {
         // write the log entry first in case the client disconnects
         AUDIT_LOGGER.info(
             "%s %s", (Object)now, (Object)connection.getRemoteSocketAddress());
-        Writer out = new OutputStreamWriter(connection.getOutputStream());
+        Writer out = new OutputStreamWriter(connection.getOutputStream(),
+            StandardCharsets.UTF_8.name());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
         out.write(ProcessHandle.current().pid() + " " + format.format(now)

@@ -3,9 +3,11 @@ package networking;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public enum PersonnelClient {
@@ -31,7 +33,9 @@ public enum PersonnelClient {
          ObjectInputStream inStream =
              new ObjectInputStream(socket.getInputStream());
          PrintWriter outStream =
-             new PrintWriter(socket.getOutputStream(), true);) {
+             new PrintWriter(new OutputStreamWriter(
+                 socket.getOutputStream(),
+                 StandardCharsets.UTF_8.name()),true);) {
       outStream.println("SEND PERSONNEL DETAILS");
       ArrayList<Personnel> response =
           (ArrayList<Personnel>)inStream.readObject();

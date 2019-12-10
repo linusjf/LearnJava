@@ -85,4 +85,25 @@
     <Method name="acceptAndSubmit" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="networking.PooledWebLog" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.FormPoster" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.Ping$Connector" />
+    <Method name="add" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DaytimeServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
 </FindBugsFilter>

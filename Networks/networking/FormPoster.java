@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 public class FormPoster {
@@ -71,11 +72,11 @@ public class FormPoster {
     poster.add("email", "elharo@ibiblio.org");
     try (InputStream in = poster.post()) {
       // Read the response
-      Reader r = new InputStreamReader(in);
+      Reader r = new InputStreamReader(in,
+          StandardCharsets.UTF_8.name());
       int c;
-      while ((c = r.read()) != -1) {
+      while ((c = r.read()) != -1) 
         System.out.print((char)c);
-      }
       System.out.println();
     } catch (IOException ex) {
       System.err.println(ex);

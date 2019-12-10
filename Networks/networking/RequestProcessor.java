@@ -12,6 +12,7 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.URLConnection;
 import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.logging.Logger;
 import logging.FormatLogger;
@@ -50,10 +51,11 @@ public class RequestProcessor implements Runnable {
   public void run() {
     try (OutputStream raw =
              new BufferedOutputStream(connection.getOutputStream());
-         Writer out = new OutputStreamWriter(raw);
+         Writer out = new OutputStreamWriter(raw,
+           StandardCharsets.US_ASCII.name());
          Reader in = new InputStreamReader(
              new BufferedInputStream(connection.getInputStream()),
-             "US-ASCII");) {
+             StandardCharsets.US_ASCII.name());) {
       StringBuilder requestLine = new StringBuilder();
       while (true) {
         int c = in.read();
