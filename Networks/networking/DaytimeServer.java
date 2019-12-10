@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -21,7 +22,8 @@ public final class DaytimeServer {
       while (true) {
         try (Socket connection = server.accept();
              Writer out =
-                 new OutputStreamWriter(connection.getOutputStream());) {
+                 new OutputStreamWriter(connection.getOutputStream(),
+                                        StandardCharsets.UTF_8.name());) {
           Date now = new Date();
           SimpleDateFormat format =
               new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());

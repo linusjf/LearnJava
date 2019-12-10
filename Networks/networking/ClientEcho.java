@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 
 public final class ClientEcho {
   private static final int PORT = 7;
@@ -30,11 +31,11 @@ public final class ClientEcho {
     try {
       InetAddress add = InetAddress.getByName("localhost");
       DatagramSocket dsock = new DatagramSocket();
-      BufferedReader stdIn =
-          new BufferedReader(new InputStreamReader(System.in));
+      BufferedReader stdIn = new BufferedReader(
+          new InputStreamReader(System.in, StandardCharsets.UTF_8.name()));
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
-        byte[] arr = userInput.getBytes();
+        byte[] arr = userInput.getBytes(StandardCharsets.UTF_8);
         DatagramPacket dpack = new DatagramPacket(arr, arr.length, add, port);
         dsock.send(dpack);
 
@@ -42,7 +43,8 @@ public final class ClientEcho {
         dsock.receive(dpack);
 
         // receive the packet
-        System.out.println("echo: " + new String(dpack.getData()));
+        System.out.println(
+            "echo: " + new String(dpack.getData(), StandardCharsets.UTF_8));
       }
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
