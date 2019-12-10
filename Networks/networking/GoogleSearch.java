@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 /** Set user-agent property. ** */
 public final class GoogleSearch {
@@ -36,12 +37,12 @@ public final class GoogleSearch {
               + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
               + "Mobile Safari/537.36");
       try (InputStream in =
-               new BufferedInputStream(connection.getInputStream())) {
-        InputStreamReader theHTML = new InputStreamReader(in);
+               new BufferedInputStream(connection.getInputStream());
+        InputStreamReader theHTML = new InputStreamReader(in,
+          StandardCharsets.UTF_8.name());) {
         int c;
-        while ((c = theHTML.read()) != -1) {
+        while ((c = theHTML.read()) != -1) 
           System.out.print((char)c);
-        }
       }
     } catch (MalformedURLException ex) {
       System.err.println("MalformedURL : " + ex);
