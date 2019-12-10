@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
 public final class MulticastSender {
@@ -44,7 +45,8 @@ public final class MulticastSender {
     int port = getPort(args);
     byte ttl = getTTL(args);
 
-    byte[] data = "Here's some multicast data\r\n".getBytes();
+    byte[] data = "Here's some multicast data\r\n"
+      .getBytes(StandardCharsets.UTF_8);
     try (MulticastSocket ms = new MulticastSocket()) {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
