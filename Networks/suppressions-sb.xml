@@ -80,4 +80,9 @@
     <Method name="acceptAndSubmit" />
     <Bug code="RV" />
   </Match>
+  <Match>
+    <Class name="networking.LoggingDaytimeServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
 </FindBugsFilter>
