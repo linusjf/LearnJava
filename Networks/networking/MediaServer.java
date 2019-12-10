@@ -66,12 +66,11 @@ public final class MediaServer {
     byte[] byteArray = new byte[intFileLen];
 
     // Step 6…
-    fileIn.read(byteArray);
-
-
+    if (fileIn.read(byteArray) != -1) {
     // Step 7…
     outStream.writeObject(byteArray);
     outStream.flush();
+    }
       }
   }
 }

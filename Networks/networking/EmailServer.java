@@ -2,8 +2,10 @@ package networking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public enum EmailServer {
@@ -65,7 +67,9 @@ public enum EmailServer {
       throws InvalidClientException, InvalidRequestException {
     try {
       Socket link = serverSocket.accept();
-      Scanner input = new Scanner(link.getInputStream());
+      Scanner input = new Scanner(
+          link.getInputStream(),
+          StandardCharsets.UTF_8.name());
       String name = input.nextLine();
       if (!name.equals(CLIENT1) && !name.equals(CLIENT2))
         throw new InvalidClientException();
@@ -73,7 +77,9 @@ public enum EmailServer {
       if (!"send".equals(sendRead) && !"read".equals(sendRead))
         throw new InvalidRequestException();
       System.out.println("\n" + name + " " + sendRead + "ing mail…");
-      PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+      PrintWriter output = new PrintWriter(
+          new OutputStreamWriter(link.getOutputStream(),
+            StandardCharsets.UTF_8.name()), true);
       if (name.equals(CLIENT1)) {
         handleClient1(sendRead, input, output);
       } else {

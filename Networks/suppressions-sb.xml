@@ -130,4 +130,24 @@
     <Method name="main" />
     <Bug code="Dm" />
   </Match>
+  <Match>
+    <Class name="networking.MediaServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.MediaServer" />
+    <Method name="sendFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DefaultSocketOptionValues" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.WebLog" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>
