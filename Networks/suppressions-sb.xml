@@ -105,4 +105,14 @@
     <Method name="main" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.MediaClient" />
+    <Method name="downloadFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SecureOrderPlacer" />
+    <Method name="main" />
+    <Bug code="BC" />
+  </Match>
 </FindBugsFilter>

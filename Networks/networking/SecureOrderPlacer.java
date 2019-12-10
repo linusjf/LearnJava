@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -70,7 +71,7 @@ public final class SecureOrderPlacer {
       // Now all the set up is complete and we can focus
       // on the actual communication.
       OutputStream out = s.getOutputStream();
-      out.write("Let's place an order".getBytes());
+      out.write("Let's place an order".getBytes(StandardCharsets.UTF_8));
       out.flush();
     } catch (IOException | KeyManagementException | KeyStoreException
              | NoSuchAlgorithmException | CertificateException

@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class MediaClient {
@@ -30,7 +32,8 @@ public final class MediaClient {
       String message;
 
       // Set up stream for keyboard entry…
-      Scanner userEntry = new Scanner(System.in);
+      Scanner userEntry = new Scanner(System.in,
+          StandardCharsets.UTF_8.name());
       System.out.print("Enter request (IMAGE/SOUND): ");
       message = userEntry.nextLine();
       while (!"IMAGE".equalsIgnoreCase(message)
@@ -48,7 +51,9 @@ public final class MediaClient {
 
       // Step 1 (cont'd)…
       PrintWriter outStream =
-          new PrintWriter(connection.getOutputStream(), true);
+          new PrintWriter(new OutputStreamWriter(
+                connection.getOutputStream(),
+                StandardCharsets.UTF_8.name()), true);
 
       // Step 2…
       outStream.println(message);
