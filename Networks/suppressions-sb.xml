@@ -65,4 +65,9 @@
     <Method name="main" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Class name="networking.SourceViewer4" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

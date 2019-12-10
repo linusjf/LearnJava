@@ -51,7 +51,7 @@ public class UDPPoke {
       System.arraycopy(incoming.getData(), 0, response, 0, numBytes);
       return response;
     } catch (IOException ex) {
-      return null;
+      return new byte[0];
     }
   }
 
@@ -78,7 +78,7 @@ public class UDPPoke {
     int port = getPort(args);
     UDPPoke poker = new UDPPoke(host, port);
     byte[] response = poker.poke();
-    if (response == null) {
+    if (response.length == 0) {
       System.out.println("No response within allotted time");
       return;
     }
