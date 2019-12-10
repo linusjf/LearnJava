@@ -2,6 +2,7 @@ package networking;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class IPFinder {
@@ -12,7 +13,7 @@ public final class IPFinder {
 
   public static void main(String[] args) {
     String host;
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
     InetAddress address;
     System.out.print("\n\nEnter host name: ");
     host = input.next();

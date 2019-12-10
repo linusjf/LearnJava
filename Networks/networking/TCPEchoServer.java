@@ -4,8 +4,8 @@ package networking;
 // At end of dialogue, sends message indicating
 // number of messages received. Uses TCP.
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -33,10 +33,11 @@ public enum TCPEchoServer {
   private static void handleClient() {
     try (Socket link = serverSocket.accept();
          PrintWriter output = new PrintWriter(
-           new OutputStreamWriter(link.getOutputStream(),
-             StandardCharsets.UTF_8.name()), true);
+             new OutputStreamWriter(link.getOutputStream(),
+                                    StandardCharsets.UTF_8.name()),
+             true);
          Scanner input = new Scanner(link.getInputStream(),
-           StandardCharsets.UTF_8.name());) {
+                                     StandardCharsets.UTF_8.name());) {
 
       int numMessages = 0;
       String message = "";

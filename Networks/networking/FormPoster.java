@@ -72,10 +72,9 @@ public class FormPoster {
     poster.add("email", "elharo@ibiblio.org");
     try (InputStream in = poster.post()) {
       // Read the response
-      Reader r = new InputStreamReader(in,
-          StandardCharsets.UTF_8.name());
+      Reader r = new InputStreamReader(in, StandardCharsets.UTF_8.name());
       int c;
-      while ((c = r.read()) != -1) 
+      while ((c = r.read()) != -1)
         System.out.print((char)c);
       System.out.println();
     } catch (IOException ex) {

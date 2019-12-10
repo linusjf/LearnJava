@@ -75,7 +75,7 @@ public final class LoggingDaytimeServer {
         AUDIT_LOGGER.info(
             "%s %s", (Object)now, (Object)connection.getRemoteSocketAddress());
         Writer out = new OutputStreamWriter(connection.getOutputStream(),
-            StandardCharsets.UTF_8.name());
+                                            StandardCharsets.UTF_8.name());
         SimpleDateFormat format =
             new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
         out.write(ProcessHandle.current().pid() + " " + format.format(now)

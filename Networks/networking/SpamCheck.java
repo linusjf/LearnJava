@@ -95,15 +95,14 @@ public final class SpamCheck {
             + "Mobile Safari/537.36");
     connection.setRequestProperty("Cookie", getCookies());
     StringBuilder sb = new StringBuilder();
-    try (
-    InputStream in = new BufferedInputStream(connection.getInputStream());
-    InputStreamReader theHTML = new InputStreamReader(in,
-        StandardCharsets.UTF_8.name());) {
-    int c;
-    while ((c = theHTML.read()) != -1)
-      sb.append((char)c);
-    return isIpFlagged(sb.toString(), ip);
-  }
+    try (InputStream in = new BufferedInputStream(connection.getInputStream());
+         InputStreamReader theHTML =
+             new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+      int c;
+      while ((c = theHTML.read()) != -1)
+        sb.append((char)c);
+      return isIpFlagged(sb.toString(), ip);
+    }
   }
 
   @SuppressWarnings("PMD.OneDeclarationPerLine")

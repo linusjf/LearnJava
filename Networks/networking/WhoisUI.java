@@ -14,8 +14,7 @@ public class WhoisUI {
   private String searchIn;
 
   public void inputWhoisFields(String... args) {
-    Scanner scanner = new Scanner(System.in,
-        StandardCharsets.UTF_8.name());
+    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
     inputWhois(scanner);
     inputExactMatch(scanner);
     inputSearchFor(scanner);

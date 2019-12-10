@@ -91,7 +91,7 @@ public class Redirector {
                connection.getOutputStream(), StandardCharsets.US_ASCII.name()));
            Reader in = new InputStreamReader(
                new BufferedInputStream(connection.getInputStream()),
-                 StandardCharsets.US_ASCII.name());) {
+               StandardCharsets.US_ASCII.name());) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {

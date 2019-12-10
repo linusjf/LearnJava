@@ -37,8 +37,7 @@ public final class SourceViewer3 {
         System.out.println();
         try (InputStream in = new BufferedInputStream(uc.getInputStream())) {
           // chain the InputStream to a Reader
-          Reader r = new InputStreamReader(in,
-              StandardCharsets.UTF_8.name());
+          Reader r = new InputStreamReader(in, StandardCharsets.UTF_8.name());
           int c;
           while ((c = r.read()) != -1)
             System.out.print((char)c);

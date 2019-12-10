@@ -38,10 +38,10 @@ public final class GoogleSearch {
               + "Mobile Safari/537.36");
       try (InputStream in =
                new BufferedInputStream(connection.getInputStream());
-        InputStreamReader theHTML = new InputStreamReader(in,
-          StandardCharsets.UTF_8.name());) {
+           InputStreamReader theHTML =
+               new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
         int c;
-        while ((c = theHTML.read()) != -1) 
+        while ((c = theHTML.read()) != -1)
           System.out.print((char)c);
       }
     } catch (MalformedURLException ex) {

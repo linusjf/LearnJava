@@ -125,6 +125,6 @@ public class SocketServerExample {
 
     byte[] data = new byte[numRead];
     System.arraycopy(buffer.array(), 0, data, 0, numRead);
-    System.out.println("Got: " + new String(data,StandardCharsets.UTF_8));
+    System.out.println("Got: " + new String(data, StandardCharsets.UTF_8));
   }
 }

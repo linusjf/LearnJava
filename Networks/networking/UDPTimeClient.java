@@ -39,7 +39,7 @@ public enum UDPTimeClient {
     // converts between them.
     long differenceBetweenEpochs = 2_208_988_800L;
     long secondsSince1900 = 0;
-    for (int i = 0; i < 4; i++) 
+    for (int i = 0; i < 4; i++)
       secondsSince1900 = (secondsSince1900 << 8) | (response[i] & 0x000000FF);
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
     long msSince1970 = secondsSince1970 * 1000;

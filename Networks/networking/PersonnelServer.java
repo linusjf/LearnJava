@@ -45,8 +45,8 @@ public enum PersonnelServer {
     while (true) {
       try {
         socket = serverSocket.accept();
-        inStream = new Scanner(socket.getInputStream(),
-            StandardCharsets.UTF_8.name());
+        inStream =
+            new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
         outStream = new ObjectOutputStream(socket.getOutputStream());
 
         /*

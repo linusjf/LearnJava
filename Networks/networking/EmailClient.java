@@ -1,8 +1,8 @@
 package networking;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -37,17 +37,18 @@ public enum EmailClient {
     String response = "";
     while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT);
-        Scanner networkInput = new Scanner(link.getInputStream(),
-            StandardCharsets.UTF_8.name());
-        PrintWriter networkOutput = new PrintWriter(
-            new OutputStreamWriter(link.getOutputStream(),
-              StandardCharsets.UTF_8.name()), true);) {
+           Scanner networkInput = new Scanner(link.getInputStream(),
+                                              StandardCharsets.UTF_8.name());
+           PrintWriter networkOutput = new PrintWriter(
+               new OutputStreamWriter(link.getOutputStream(),
+                                      StandardCharsets.UTF_8.name()),
+               true);) {
         while (!"read".equals(response) && !"send".equals(response)) {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
         }
         if ("read".equals(response))
-          doRead(networkInput,networkOutput);
+          doRead(networkInput, networkOutput);
         else
           doSend(networkOutput);
         System.out.print("\nDo you wish to send or read another (y/n): ");
@@ -66,8 +67,7 @@ public enum EmailClient {
     networkOutput.println(message);
   }
 
-  private static void doRead(Scanner networkInput,
-      PrintWriter networkOutput) {
+  private static void doRead(Scanner networkInput, PrintWriter networkOutput) {
     networkOutput.println(name);
     networkOutput.println("read");
     if (networkInput.hasNext()) {
