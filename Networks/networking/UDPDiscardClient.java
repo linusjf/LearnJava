@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 
 public enum UDPDiscardClient {
   ;
@@ -17,12 +18,13 @@ public enum UDPDiscardClient {
     int port = args.length > 1 ? readPort(args[1]) : PORT;
     try (DatagramSocket theSocket = new DatagramSocket();
          BufferedReader userInput =
-             new BufferedReader(new InputStreamReader(System.in));) {
+             new BufferedReader(new InputStreamReader(System.in,
+                 StandardCharsets.UTF_8.name()));) {
       while (true) {
         String theLine = userInput.readLine();
         if (".".equals(theLine))
           break;
-        byte[] data = theLine.getBytes();
+        byte[] data = theLine.getBytes(StandardCharsets.UTF_8);
         DatagramPacket theOutput = new DatagramPacket(
             data, data.length, InetAddress.getByName(hostname), port);
         theSocket.send(theOutput);

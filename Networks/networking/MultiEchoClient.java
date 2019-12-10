@@ -2,9 +2,11 @@ package networking;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public enum MultiEchoClient {
@@ -24,10 +26,14 @@ public enum MultiEchoClient {
 
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream());
+         Scanner networkInput = new Scanner(socket.getInputStream(),
+           StandardCharsets.UTF_8.name());
          PrintWriter networkOutput =
-             new PrintWriter(socket.getOutputStream(), true);
-         Scanner userEntry = new Scanner(System.in);) {
+             new PrintWriter(new OutputStreamWriter(
+                 socket.getOutputStream(),
+                 StandardCharsets.UTF_8.name()), true);
+         Scanner userEntry = new Scanner(System.in,
+          StandardCharsets.UTF_8.name());) {
       String message = "";
       while (!"QUIT".equals(message)) {
         System.out.print("Enter message ('QUIT' to exit): ");
