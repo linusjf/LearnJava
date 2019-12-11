@@ -37,6 +37,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public enum SafeLock {
   ;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     final Friend alphonse = new Friend("Alphonse");
     final Friend gaston = new Friend("Gaston");

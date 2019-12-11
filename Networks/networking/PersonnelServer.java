@@ -18,6 +18,7 @@ public enum PersonnelServer {
   private static Scanner inStream;
   private static ObjectOutputStream outStream;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     System.out.println("Opening port…\n");
     try {

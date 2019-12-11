@@ -17,6 +17,7 @@ public enum EmailClient {
   private static Scanner userEntry;
   private static int numMessages;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       host = InetAddress.getLocalHost();

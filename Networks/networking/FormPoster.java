@@ -50,7 +50,8 @@ public class FormPoster {
     return uc.getInputStream();
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DoNotCallSystemExit",
+  "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
     Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
       System.err.println(e.getMessage());

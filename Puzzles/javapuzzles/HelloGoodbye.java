@@ -21,6 +21,7 @@ public enum HelloGoodbye {
     }
   }
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void finallyMain(String... args) {
     try {
       System.out.println("Hello world");
@@ -30,6 +31,7 @@ public enum HelloGoodbye {
     }
   }
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void shutdownHooksMain(String... args) {
     System.out.println("Hello world");
     Runtime.getRuntime().addShutdownHook(

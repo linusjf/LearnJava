@@ -19,6 +19,7 @@ public final class MediaServer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     System.out.println("Opening port…\n");
     try {

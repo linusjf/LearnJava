@@ -18,7 +18,8 @@ public final class EchoClient {
   }
 
   @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
-                     "PMD.DataflowAnomalyAnalysis"})
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.DoNotCallSystemExit"})
   public static void
   main(String[] args) throws IOException {
     if (args.length < 2) {

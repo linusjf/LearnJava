@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="RunnableHelloCount.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+  <suppress-xpath files="RunnableHelloCount.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']" />
   <suppress-xpath files="DemoThreadExample.java"
                   checks="IllegalTokenCheck"
                   query="/ENUM_DEF[./IDENT[@text='DemoThreadExample']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runCount']]/MODIFIERS/LITERAL_VOLATILE" />

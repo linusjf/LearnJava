@@ -13,6 +13,7 @@ public enum MultiEchoServer {
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       serverSocket = new ServerSocket(PORT);

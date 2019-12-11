@@ -16,6 +16,7 @@ public enum TCPEchoServer {
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     System.out.printf("Opening port…%n");
     try {

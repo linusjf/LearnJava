@@ -20,6 +20,7 @@ public enum EmailServer {
   private static int messagesInBox1;
   private static int messagesInBox2;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     System.out.println("Opening connection…\n");
     try {

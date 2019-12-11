@@ -21,6 +21,7 @@ public final class MediaClient {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       host = InetAddress.getLocalHost();

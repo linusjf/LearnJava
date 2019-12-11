@@ -16,6 +16,7 @@ public enum ConsumerClient {
   private static final int PORT = 1234;
   private static final Random RANDOM = new Random();
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       host = InetAddress.getLocalHost();

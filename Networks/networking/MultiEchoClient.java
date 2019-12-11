@@ -14,6 +14,7 @@ public enum MultiEchoClient {
   private static InetAddress host;
   private static final int PORT = 1234;
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       host = InetAddress.getLocalHost();
