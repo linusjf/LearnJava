@@ -3,6 +3,34 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="CacheControl.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='maxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_LONG[@text='1000L']"/>
+<suppress-xpath
+       files="CacheControl.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sharedMaxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_LONG[@text='1000L']"/>
+<suppress-xpath
+       files="ConsumerClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ConsumerClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendMessages']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="HttpsClient.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='HttpsClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getLength']]/SLIST/LITERAL_IF/SLIST/LITERAL_TRY/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="Producer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/ASSIGN[./IDENT[@text='secondsSince1900']]/BOR/SL[./IDENT[@text='secondsSince1900']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="UDPTimeClient.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='UDPTimeClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/ASSIGN[./IDENT[@text='secondsSince1900']]/BOR/BAND/NUM_INT[@text='0x000000FF']"/>
   <suppress-xpath files="ConsumerClient.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ConsumerClient']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendMessages']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/TYPECAST/STAR/NUM_INT[@text='5000']" />

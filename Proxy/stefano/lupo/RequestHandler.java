@@ -41,12 +41,6 @@ public class RequestHandler implements Runnable {
   /** Socket connected to client passed by Proxy server. */
   final Socket clientSocket;
 
-  /** Read data client sends to proxy. */
-  //  BufferedReader proxyToClientBr;
-
-  /** Send data from proxy to client. */
-  // BufferedWriter proxyToClientBw;
-
   /**
    * Creates a RequestHandler object capable of servicing HTTP(S) GET requests.
    *
