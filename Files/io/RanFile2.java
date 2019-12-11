@@ -16,6 +16,7 @@ public enum RanFile2 {
   private static String initials;
   private static float balance;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
          RandomAccessFile ranAccts =

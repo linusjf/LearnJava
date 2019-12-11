@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="RanFile2.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='RanFile2']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./IDENT[@text='currentPos']]/NUM_INT[@text='4']"/>
+  <suppress-xpath files="RanFile2.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='RanFile2']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/MINUS[./IDENT[@text='currentPos']]/NUM_INT[@text='4']" />
   <suppress-xpath files="ArrayListSerialise.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ArrayListSerialise']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='staff']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Personnel']]/ELIST/EXPR/NUM_INT[@text='123_456']" />
