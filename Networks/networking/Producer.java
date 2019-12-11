@@ -4,7 +4,7 @@ import java.util.Random;
 
 class Producer extends Thread {
   private final Resource item;
-  private Random random = new Random();
+  private final Random random = new Random();
 
   Producer(Resource resource) {
     super();

@@ -14,7 +14,7 @@ public enum ConsumerClient {
   ;
   private static InetAddress host;
   private static final int PORT = 1234;
-  private static final Random random = new Random();
+  private static final Random RANDOM = new Random();
 
   public static void main(String[] args) {
     try {
@@ -54,7 +54,7 @@ public enum ConsumerClient {
         }
 
         // 'Sleep' for 0-5 seconds…
-        Thread.sleep(random.nextInt(5000));
+        Thread.sleep(RANDOM.nextInt(5000));
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);

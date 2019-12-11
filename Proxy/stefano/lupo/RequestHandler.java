@@ -167,9 +167,8 @@ public class RequestHandler implements Runnable {
                         clientSocket.getOutputStream());
         }
       } else {
-        try (final BufferedReader cachedFileBufferedReader =
-                 Files.newBufferedReader(
-                     Paths.get(cachedFile.getAbsolutePath()))) {
+        try (BufferedReader cachedFileBufferedReader = Files.newBufferedReader(
+                 Paths.get(cachedFile.getAbsolutePath()))) {
           response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
           proxyToClientBw.write(response);
           proxyToClientBw.flush();
