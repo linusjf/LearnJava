@@ -34,7 +34,6 @@ public enum EmailClient {
 
   private static void talkToServer() {
     String option = "y";
-    String response = "";
     while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT);
            Scanner networkInput = new Scanner(link.getInputStream(),
@@ -43,6 +42,7 @@ public enum EmailClient {
                new OutputStreamWriter(link.getOutputStream(),
                                       StandardCharsets.UTF_8.name()),
                true);) {
+        String response = "";
         while (!"read".equals(response) && !"send".equals(response)) {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
