@@ -4,7 +4,7 @@ public enum TextEditor {
   ;
 
   @SuppressWarnings("PMD.ShortClassName")
-  static class Char {  
+  static class Char {
     char c;
 
     Char(char c) {
@@ -19,11 +19,11 @@ public enum TextEditor {
   public static void main(String[] args) {
     typeText(new Char('A'));
 
-    typeText(new Char('B') {  
+    typeText(new Char('B') {
       @Override
       public void print() {
         System.out.print("[");
-        super.print();  
+        super.print();
         System.out.print("]");
       }
     });

@@ -3,30 +3,24 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Clock.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='ms']]/STAR/NUM_INT[@text='60']"/>
-<suppress-xpath
-       files="Clock.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='ms']]/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="WeirdLoop.java"
-       checks="ConstantNameCheck"
-       query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='i']"/>
-<suppress-xpath
-       files="WeirdLoop.java"
-       checks="HiddenFieldCheck"
-       query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF/IDENT[@text='i']"/>
-<suppress-xpath
-       files="WeirdLoop.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="TextEditor.java"
-       checks="DescendantTokenCheck"
-       query="/ENUM_DEF[./IDENT[@text='TextEditor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='typeText']]"/>
+  <suppress-xpath files="Clock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='ms']]/STAR/NUM_INT[@text='60']" />
+  <suppress-xpath files="Clock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Clock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='ms']]/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="WeirdLoop.java"
+                  checks="ConstantNameCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='i']" />
+  <suppress-xpath files="WeirdLoop.java"
+                  checks="HiddenFieldCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF/IDENT[@text='i']" />
+  <suppress-xpath files="WeirdLoop.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WeirdLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="TextEditor.java"
+                  checks="DescendantTokenCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TextEditor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='typeText']]" />
   <suppress-xpath files="ByteLoop.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ByteLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='b']]/NUM_INT[@text='128']" />
