@@ -14,6 +14,7 @@ public final class Bank1Client {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
       // Obtain a reference to the object from the

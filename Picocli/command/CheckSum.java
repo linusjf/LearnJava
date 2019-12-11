@@ -29,6 +29,7 @@ public class CheckSum implements Callable<Integer> {
           description = "MD5, SHA-1, SHA-256, ...")
   private String algorithm = "SHA-1";
 
+  @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     int exitCode = new CommandLine(new CheckSum()).execute(args);
     System.exit(exitCode);

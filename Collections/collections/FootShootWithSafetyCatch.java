@@ -10,7 +10,8 @@ public enum FootShootWithSafetyCatch {
   ;
   private static List<String> names;
 
-  @SuppressWarnings({"rawtypes", "unchecked"})
+  @SuppressWarnings({"rawtypes", "unchecked",
+  "PMD.DoNotCallSystemExit"})
   public static void main(String... args) {
     Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.printf("Thread %s throws following exception: %s%n", t, e);
