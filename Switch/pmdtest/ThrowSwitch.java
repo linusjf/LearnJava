@@ -10,7 +10,7 @@ public final class ThrowSwitch {
 
   @SuppressWarnings({"fallthrough",
                      "PMD.MissingBreakInSwitch",
-                     "DoNotCallSystemExit"})
+                     "PMD.DoNotCallSystemExit"})
   public static void
   main(String... args) {
     int errCode = getSimulatedErrorCode();

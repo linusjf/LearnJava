@@ -60,12 +60,13 @@ public final class PlayerSupplier {
     }
     Map<Predicate<Integer>, Supplier<Player>> players =
         PLAYER_CREATOR.get(playerType);
-    for (Entry<Predicate<Integer>, Supplier<Player>> entry:
-         players.entrySet()) {
+    // clang-format off
+    for (Entry<Predicate<Integer>, Supplier<Player>> entry : players.entrySet()) {
       if (entry.getKey().test(rank)) {
         return entry.getValue().get();
       }
     }
+    // clang-format on
     throw new IllegalStateException("The players map is         corrupted");
   }
 }
