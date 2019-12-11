@@ -74,4 +74,9 @@
     <Method name="&lt;init&gt;" />
     <Bug code="DMI" />
   </Match>
+  <Match>
+    <Class name="threads.DemoThreadExample$ExceptionHandler" />
+    <Method name="uncaughtException" />
+    <Bug code="ST" />
+  </Match>
 </FindBugsFilter>

@@ -20,15 +20,14 @@ public enum TestByteToHex {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    final String byteString =
-        "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
-            + "$123456789003356788990335688335678888"
-            + "))5778889===66://))*£&'/!!))))?:/!?"
-            + "?????!//!!!!!!!!!?????      dffvbbfrews"
-            + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
-            + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
-            + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
-            + "FDSSSGHIJJH";
+    final String byteString = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
+                              + "$123456789003356788990335688335678888"
+                              + "))5778889===66://))*£&'/!!))))?:/!?"
+                              + "?????!//!!!!!!!!!?????      dffvbbfrews"
+                              + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
+                              + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
+                              + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
+                              + "FDSSSGHIJJH";
 
     final byte[] raw = byteString.getBytes(StandardCharsets.UTF_8);
     long start = System.nanoTime();
