@@ -11,11 +11,20 @@ public enum Nashorn {
     try {
       ScriptEngineManager manager = new ScriptEngineManager();
       ScriptEngine engine = manager.getEngineByName("JavaScript");
-      System.out.println(engine.getClass().getName());
-      System.out.println("Result:"
-                         + engine.eval("function f() { return 1; }; f() + 1;"));
+      System.out.println(getClassForObject(engine));
+      System.out.println(
+          "Result:" + eval(engine, "function f() { return 1; }; f() + 1;"));
     } catch (ScriptException se) {
       System.err.println(se);
     }
+  }
+
+  private static Class<?> getClassForObject(Object obj) {
+    return obj.getClass();
+  }
+
+  private static Object eval(ScriptEngine engine, String scriptlet)
+      throws ScriptException {
+    return engine.eval(scriptlet);
   }
 }
