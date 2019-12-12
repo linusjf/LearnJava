@@ -15,4 +15,9 @@ public class Number implements Expression {
   public int getNum() {
     return num;
   }
+
+  @Override
+  public String toString() {
+    return Integer.toString(num);
+  }
 }

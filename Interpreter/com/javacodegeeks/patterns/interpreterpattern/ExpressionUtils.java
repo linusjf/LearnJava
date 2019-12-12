@@ -25,4 +25,15 @@ public final class ExpressionUtils {
         return null;
     }
   }
+
+  public static int interpret(String s,
+                              Expression leftExpression,
+                              Expression rightExpression) {
+    Expression expr = getOperator(s, leftExpression, rightExpression);
+    return interpret(expr);
+  }
+
+  public static int interpret(Expression expr) {
+    return expr.interpret();
+  }
 }

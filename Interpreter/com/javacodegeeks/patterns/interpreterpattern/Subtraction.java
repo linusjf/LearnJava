@@ -21,4 +21,9 @@ public class Subtraction implements Expression {
   public Expression getRightExpression() {
     return rightExpression;
   }
+
+  @Override
+  public String toString() {
+    return leftExpression + " - " + rightExpression;
+  }
 }
