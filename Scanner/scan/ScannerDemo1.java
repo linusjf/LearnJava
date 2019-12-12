@@ -1,20 +1,24 @@
 package scan;
 
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class ScannerDemo1 {
 
+  private static Charset charset = StandardCharsets.UTF_8;
+
   private ScannerDemo1() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     // Declare the object and initialize with
     // predefined standard input object
     System.out.println("Enter name,gender,age,mobile,CGPA");
 
-    Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    Scanner sc = new Scanner(System.in, charset.name());
 
     // String input
     String name = sc.nextLine();

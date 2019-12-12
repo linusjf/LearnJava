@@ -9,6 +9,6 @@ Specification-Title: Scanner
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 445e41e0 December 4 2019
+Implementation-Version: 52d87ece December 12 2019
 Implementation-Vendor: 
 
