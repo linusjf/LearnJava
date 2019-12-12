@@ -81,7 +81,7 @@ public class XpayToPayDAdapter implements PayD {
    * @param custCardNo a <code>String</code> value
    */
   @Override
-  public void setCustCardNo(String custCardNo) {
+  public final void setCustCardNo(String custCardNo) {
     this.custCardNo = custCardNo;
   }
 
@@ -91,7 +91,7 @@ public class XpayToPayDAdapter implements PayD {
    * @param cardOwnerName a <code>String</code> value
    */
   @Override
-  public void setCardOwnerName(String cardOwnerName) {
+  public final void setCardOwnerName(String cardOwnerName) {
     this.cardOwnerName = cardOwnerName;
   }
 
@@ -101,7 +101,7 @@ public class XpayToPayDAdapter implements PayD {
    * @param cardExpMonthDate a <code>String</code> value
    */
   @Override
-  public void setCardExpMonthDate(String cardExpMonthDate) {
+  public final void setCardExpMonthDate(String cardExpMonthDate) {
     this.cardExpMonthDate = cardExpMonthDate;
   }
 
@@ -111,7 +111,7 @@ public class XpayToPayDAdapter implements PayD {
    * @param cvvNo an <code>Integer</code> value
    */
   @Override
-  public void setCvvNo(Integer cvvNo) {
+  public final void setCvvNo(Integer cvvNo) {
     this.cvvNo = cvvNo;
   }
 
@@ -121,15 +121,15 @@ public class XpayToPayDAdapter implements PayD {
    * @param totalAmount a <code>Double</code> value
    */
   @Override
-  public void setTotalAmount(Double totalAmount) {
+  public final void setTotalAmount(Double totalAmount) {
     this.totalAmount = totalAmount;
   }
 
   private void setProp() {
-    setCardOwnerName(this.xpay.getCustomerName());
-    setCustCardNo(this.xpay.getCreditCardNo());
-    setCardExpMonthDate(this.xpay.getCardExpMonth() + "/" + this.xpay.getCardExpYear());
-    setCvvNo(this.xpay.getCardCvvNo().intValue());
-    setTotalAmount(this.xpay.getAmount());
+    setCardOwnerName(xpay.getCustomerName());
+    setCustCardNo(xpay.getCreditCardNo());
+    setCardExpMonthDate(xpay.getCardExpMonth() + "/" + xpay.getCardExpYear());
+    setCvvNo((int)xpay.getCardCvvNo());
+    setTotalAmount(xpay.getAmount());
   }
 }

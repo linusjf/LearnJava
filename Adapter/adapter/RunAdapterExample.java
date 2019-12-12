@@ -20,7 +20,7 @@ public enum RunAdapterExample {
     xpay.setCustomerName("Max Warner");
     xpay.setCardExpMonth("09");
     xpay.setCardExpYear("25");
-    xpay.setCardCvvNo((short) 235);
+    xpay.setCardCvvNo((short)235);
     xpay.setAmount(2565.23D);
     final PayD payD = new XpayToPayDAdapter(xpay);
     testPayD(payD);
