@@ -50,6 +50,7 @@ public class Originator {
     careTaker.clearSavepoints();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void setOriginatorState(String savepointName) {
     Memento mem = careTaker.getMemento(savepointName);
     this.xCoord = mem.getX();
