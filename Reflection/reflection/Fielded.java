@@ -56,12 +56,18 @@ public final class Fielded {
         return null;
       });
 
-      Object value = fieldHashCode.get(stringer);
-      int valueInt = fieldHashCode.getInt(stringer);
-      System.out.println(value);
-      System.out.println(valueInt);
+      printHashCodeField(fieldHashCode,stringer);
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }
+  }
+
+  private static void printHashCodeField(
+      Field field,
+      Object stringer) throws ReflectiveOperationException {
+      Object value = field.get(stringer);
+      int valueInt = field.getInt(stringer);
+      System.out.println(value);
+      System.out.println(valueInt);
   }
 }
