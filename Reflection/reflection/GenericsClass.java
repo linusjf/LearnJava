@@ -28,6 +28,7 @@ public class GenericsClass {
     this.internalList = internalList;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       Method getInternalListMethod =

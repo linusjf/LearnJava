@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public final class Dynamic {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked","PMD.LawOfDemeter"})
   public static void main(String... args) {
     Map<Object, Object> proxyInstance =
         (Map<Object, Object>)Proxy.newProxyInstance(
@@ -78,7 +79,8 @@ public final class Dynamic {
     public Object invoke(Object proxy, Method method, Object[] args)
         throws Throwable {
       long start = System.nanoTime();
-      Object result = methods.get(method.getName()).invoke(target, args);
+      Method meth = methods.get(method.getName());
+      Object result = invokeMethod(meth,args); 
       long elapsed = System.nanoTime() - start;
 
       // clang-format off
@@ -89,6 +91,13 @@ public final class Dynamic {
 
       // clang-format on
       return result;
+    }
+
+    private Object invokeMethod(Method method,
+        Object... args)
+    throws IllegalAccessException,
+             InvocationTargetException {
+      return method.invoke(target, args);
     }
   }
 }

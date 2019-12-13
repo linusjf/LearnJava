@@ -14,13 +14,13 @@ public final class Enumbed {
   private Enumbed() {
     throw new IllegalStateException("Private constructor");
   }
-
+  
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
-    ExampleEnum value = ExampleEnum.FOUR;
-    ExampleEnum[] enumConstants = value.getClass().getEnumConstants();
+    ExampleEnum[] enumConstants = ExampleEnum.class.getEnumConstants();
     for (ExampleEnum exampleEnum: enumConstants)
       System.out.println("enum constant " + exampleEnum);
-    Field[] flds = value.getClass().getDeclaredFields();
+    Field[] flds = ExampleEnum.class.getDeclaredFields();
     for (Field f: flds)
       System.out.println(f.getName() + " " + f.isEnumConstant());
   }

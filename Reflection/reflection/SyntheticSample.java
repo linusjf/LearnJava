@@ -12,15 +12,17 @@ public final class SyntheticSample {
   public static void main(String... args) {
     SampleNestedClass nestObj = new SampleNestedClass();
     System.out.println("Nested Variable: " + nestObj.privateVariable);
-
     Class<?> c = nestObj.getClass();
+    displaySyntheticity(c);
+  }
+
+  private static void displaySyntheticity(Class<?> c) {
     Method[] methods = c.getDeclaredMethods();
 
     // The synthetic method displays the receiver parameter.
-    for (Method method: methods) {
+    for (Method method: methods) 
       System.out.println("method: " + method
                          + " method.isSynthetic: " + method.isSynthetic());
-    }
   }
 
   @SuppressWarnings("PMD.FinalFieldCouldBeStatic")
