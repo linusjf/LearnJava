@@ -38,23 +38,20 @@ public enum Arrayed {
 
       // retrieve the class from an instance
       Class<String[]> stringArrayClassUsingInstance = String[].class;
-      System.out.println("stringArrayClassUsingInstance is array: "
-                         + stringArrayClassUsingInstance.isArray());
+      printIfArray(stringArrayClassUsingInstance);
 
       // using class for name and passing [I
       Class<?> byteArrayUsingClassForName = Class.forName("[B");
-      System.out.println("byteArrayUsingClassForName is array: "
-                         + byteArrayUsingClassForName.isArray());
+      printIfArray(byteArrayUsingClassForName);
 
       // or [Ljava.lang.String
       Class<?> stringArrayClassUsingClassForName =
           Class.forName("[Ljava.lang.String;");
-      System.out.println("stringArrayClassUsingClassForName is array: "
-                         + stringArrayClassUsingClassForName.isArray());
+      printIfArray(stringArrayClassUsingClassForName);
+      
       Class<? extends Object> stringArrayClassUsingDoubleLoop =
           Array.newInstance(String.class, 0).getClass();
-      System.out.println("stringArrayClassUsingClassForName is array: "
-                         + stringArrayClassUsingDoubleLoop.isArray());
+      printIfArray(stringArrayClassUsingDoubleLoop);
 
       // The above makes sense if you're trying
       // to get the class name of a primitive type array.
@@ -69,8 +66,7 @@ public enum Arrayed {
       // Now get the array class
       Class<? extends Object> byteArrayClassUsingDoubleLoop =
           Array.newInstance(byteClass, 0).getClass();
-      System.out.println("byteArrayClassUsingClassForName is array: "
-                         + byteArrayClassUsingDoubleLoop.isArray());
+      printIfArray(byteArrayClassUsingDoubleLoop);
       System.out.println(byteArrayClassUsingDoubleLoop);
 
       System.out.println("Component class: "
@@ -78,5 +74,10 @@ public enum Arrayed {
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }
+  }
+
+  private static void printIfArray(Class<? extends Object> obj) throws ReflectiveOperationException {
+      System.out.println(obj + " is array: "
+                         + obj.isArray());
   }
 }
