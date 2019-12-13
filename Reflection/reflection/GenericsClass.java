@@ -33,50 +33,40 @@ public class GenericsClass {
       Method getInternalListMethod =
           GenericsClass.class.getMethod("getInternalList");
 
-      // we get the return type
-      Type getInternalListMethodGenericReturnType =
-          getInternalListMethod.getGenericReturnType();
+      printParameterTypes(getInternalListMethod);
 
-      // we can check if the return type is parameterized (using
-      // ParameterizedType)
-      if (getInternalListMethodGenericReturnType instanceof ParameterizedType) {
-        ParameterizedType parameterizedType =
-            (ParameterizedType)getInternalListMethodGenericReturnType;
-
-        // we get the type of the arguments for the parameterized type
-        Type[] typeArguments = parameterizedType.getActualTypeArguments();
-        for (Type typeArgument: typeArguments) {
-          Class<? extends Object> typeClass =
-              (Class<? extends Object>)typeArgument;
-          System.out.println("typeArgument = " + typeArgument);
-          System.out.println("typeClass = " + typeClass);
-        }
-      }
       Method getInternalMapMethod =
           GenericsClass.class.getMethod("getInternalMap");
-
-      // we get the return type
-      Type getInternalMapMethodGenericReturnType =
-          getInternalMapMethod.getGenericReturnType();
-
-      // we can check if the return type is parameterized (using
-      // ParameterizedType)
-      if (getInternalMapMethodGenericReturnType instanceof ParameterizedType) {
-        ParameterizedType parameterizedType =
-            (ParameterizedType)getInternalMapMethodGenericReturnType;
-
-        // we get the type of the arguments for the parameterized type
-        Type[] typeArguments = parameterizedType.getActualTypeArguments();
-        for (Type typeArgument: typeArguments) {
-          Class<? extends Object> typeClass =
-              (Class<? extends Object>)typeArgument;
-          System.out.println("typeArgument = " + typeArgument);
-          System.out.println("typeClass = " + typeClass);
-        }
-      } else
-        System.out.println("Not parameterized type. ..");
+      printParameterTypes(getInternalMapMethod);
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
     }
+  }
+
+  private static void printParameterTypes(Method method) {
+
+      // we get the return type
+      Type genericReturnType =
+          method.getGenericReturnType();
+
+      // we can check if the return type is parameterized (using
+      // ParameterizedType)
+      if (genericReturnType instanceof ParameterizedType) {
+        ParameterizedType parameterizedType =
+            (ParameterizedType)genericReturnType;
+printParameterTypes(parameterizedType);
+  }
+  }
+
+  private static void printParameterTypes(ParameterizedType parameterizedType) {
+
+        // we get the type of the arguments for the parameterized type
+        Type[] typeArguments = parameterizedType.getActualTypeArguments();
+        for (Type typeArgument: typeArguments) {
+          Class<? extends Object> typeClass =
+              (Class<? extends Object>)typeArgument;
+          System.out.println("typeArgument = " + typeArgument);
+          System.out.println("typeClass = " + typeClass);
+        }
   }
 }
