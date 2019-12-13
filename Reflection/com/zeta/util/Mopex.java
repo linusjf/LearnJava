@@ -38,17 +38,20 @@ public final class Mopex {
   /** Returns an array of the methods that are not static. */
   public static Method[] getInstanceMethods(Class<?> cls) {
     List<Method> instanceMethods = new ArrayList<>();
-    for (Class<?> c = cls; c != null; c = c.getSuperclass()) {
+    addInstanceMethods(instanceMethods,cls);
+    return instanceMethods.toArray(new Method[0]);
+  }
+
+  private static void addInstanceMethods(List<Method> instanceMethods,
+      Class<?> cls) {
+    Class<?> c = cls;
+    while(c != null) {
       Method[] methods = c.getDeclaredMethods();
       for (Method method: methods)
         if (!Modifier.isStatic(method.getModifiers()))
           instanceMethods.add(method);
+      c = c.getSuperclass();
     }
-    /*    Method[] ims = new Method[instanceMethods.size()];
-    for (int j = 0; j < instanceMethods.size(); j++)
-      ims[j] = instanceMethods.get(j);*/
-
-    return instanceMethods.toArray(new Method[0]);
   }
 
   /**
@@ -97,7 +100,8 @@ public final class Mopex {
   /**
    * Returns a string that can be used as a formal parameter list for a method
    * that has the parameter types of the specified array.
-   */
+   */ 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String formalParametersToString(Class<?>... pts) {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
@@ -126,6 +130,7 @@ public final class Mopex {
    * Returns a String that is a comma separated list of the typenames of the
    * classes in the array pts.
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String classArrayToString(Class<?>... pts) {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {

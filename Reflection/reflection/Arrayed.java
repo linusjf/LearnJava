@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 public enum Arrayed {
   ;
 
-  @SuppressWarnings({"unused", "PMD.DataflowAnomalyAnalysis"})
+  @SuppressWarnings({"unused", "PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   public static void main(String... args) {
     try {
       String[] strArrayOne = (String[])Array.newInstance(String.class, 10);
