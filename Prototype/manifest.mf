@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.prototypepattern.TestPrototypeP
 
 Name: common
 Specification-Title: Prototype
-Specification-Version: 2.0.0
+Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ba65d5b September 23 2019
+Implementation-Version: 2fbcd086 December 13 2019
 Implementation-Vendor: 
 

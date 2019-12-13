@@ -1,7 +1,6 @@
 package com.javacodegeeks.patterns.prototypepattern;
 
-@SuppressWarnings({"PMD.ShortClassName",
-"PMD.DataClass"})
+@SuppressWarnings({"PMD.ShortClassName", "PMD.DataClass"})
 public class User {
   private String userName;
   private String level;
@@ -37,15 +36,14 @@ public class User {
     this.accessControl = accessControl;
   }
 
+  public void setAccess(String access) {
+    this.accessControl.setAccess(access);
+  }
+
   @Override
   public String toString() {
-    return "Name: "
-        + userName
-        + ", Level: "
-        + level
-        + ", Access Control Level:"
-        + accessControl.getControlLevel()
-        + ", Access: "
-        + accessControl.getAccess();
+    return "Name: " + userName + ", Level: " + level
+        + ", Access Control Level:" + accessControl.getControlLevel()
+        + ", Access: " + accessControl.getAccess();
   }
 }

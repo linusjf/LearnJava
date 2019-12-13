@@ -19,6 +19,7 @@ public final class AccessControlProvider {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static AccessControl getAccessControlObject(String controlLevel)
       throws CloneNotSupportedException {
     AccessControl ac = map.get(controlLevel);
