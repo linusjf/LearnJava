@@ -17,7 +17,7 @@ public enum Bridge {
     }
   }
 
-  private static void printBridgeMethods(Class<? extends Object> obj) throws SecurityException {
+  private static void printBridgeMethods(Class<? extends Object> obj)  {
       Method[] methods = obj.getMethods();
       System.out.println("Bridge Methods of "
           + obj + " are");

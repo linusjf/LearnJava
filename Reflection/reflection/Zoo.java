@@ -14,7 +14,7 @@ public class Zoo {
   public Zoo(String city, String name) {
     this.city = city;
     this.name = name;
-    this.animals = new Animal[] {};
+    this.animals = new Animal[0];
   }
 
   public String getCity() {
@@ -38,12 +38,12 @@ public class Zoo {
   }
 
   public void setAnimals(List<Animal> animals) {
-    this.animals = animals.toArray(this.animals);
+    this.animals = animals.toArray(new Animal[0]);
   }
 
   public void add(Animal al) {
-    List<Animal> beasts = new ArrayList<>(Arrays.asList(this.animals));
+    List<Animal> beasts = new ArrayList<>(Arrays.asList(animals));
     beasts.add(al);
-    this.animals = beasts.toArray(this.animals);
+    this.animals = beasts.toArray(new Animal[0]);
   }
 }

@@ -3,7 +3,6 @@ package reflection;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -31,21 +30,15 @@ public final class Collecting {
     reflectionCollections("this is a string");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void reflectionCollections(Object ref) {
     // check is collection
     if (ref instanceof Collection) {
-      System.out.println("A collection: " + ref.getClass().getName());
+      System.out.println("A collection: " + ref.getClass());
       @SuppressWarnings("unchecked")
-      Iterator<? extends Object> items =
-          ((Collection<? extends Object>)ref).iterator();
-      // not nice
-      while (items != null && items.hasNext()) {
-        Object item = items.next();
-        System.out.println("Element of the collection: "
-                           + item.getClass().getName());
-      }
-    } else {
+      Collection<? extends Object> coll = (Collection<? extends Object>)ref;
+      coll.forEach(obj -> System.out.println(obj.getClass()));
+    } else 
       System.out.println("Not a collection: " + ref.getClass().getName());
-    }
   }
 }

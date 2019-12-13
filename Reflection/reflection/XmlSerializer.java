@@ -21,22 +21,24 @@ public enum XmlSerializer {
                            new IdentityHashMap<Object, Object>());
   }
 
-  private static Element serializeVariable(Class<?> fieldtype,
-                                           Object child,
-                                           Document target,
-                                           Map<Object, Object> table)
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static Element 
+  serializeVariable(
+      Class<?> fieldtype,
+  Object child, Document target,
+  Map<Object, Object> table)
       throws IllegalAccessException {
     if (child == null)
-      return new Element("null");
+      return new Element("empty");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
       Element value = new Element("value");
       value.setText(child.toString());
       return value;
     } else {
       Element reference = new Element("reference");
-      if (table.containsKey(child)) {
+      if (table.containsKey(child)) 
         reference.setText(table.get(child).toString());
-      } else {
+       else {
         reference.setText(Integer.toString(table.size()));
         serializeHelper(child, target, table);
       }
@@ -45,7 +47,8 @@ public enum XmlSerializer {
   }
 
   // clang-format off
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
     String id = Integer.toString(table.size());
@@ -73,10 +76,6 @@ public enum XmlSerializer {
         Class<?> fieldtype = field.getType();
         fldElt.setAttribute("type", fieldtype.getName());
         Object child = field.get(source);
-
-        /*if (Modifier.isTransient(fields[i].getModifiers())) {
-          child = null;
-        }*/
         fldElt.addContent(serializeVariable(fieldtype, child, target, table));
         objElt.addContent(fldElt);
       }
