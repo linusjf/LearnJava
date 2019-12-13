@@ -3,6 +3,8 @@ package com.javacodegeeks.patterns.commandpattern;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Stream;
+
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class ThreadPool {
@@ -20,6 +22,7 @@ public final class ThreadPool {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void addJob(Job r) {
     try {
       jobQueue.put(r);
@@ -37,9 +40,8 @@ public final class ThreadPool {
       }
     }
     shutdown.set(true);
-    for (Thread workerThread: jobThreads) {
+    for (Thread workerThread: jobThreads)
       workerThread.interrupt();
-    }
   }
 
   private class Worker extends Thread {
@@ -52,12 +54,23 @@ public final class ThreadPool {
     public void run() {
       while (!shutdown.get()) {
         try {
-          Job r = jobQueue.take();
-          r.run();
+          runTopJob();
         } catch (InterruptedException e) {
           System.err.println(e.getMessage());
         }
       }
+    }
+
+    @SuppressWarnings("PMD.LawOfDemeter")
+    private void runTopJob() throws InterruptedException {
+      Stream.generate(() -> {
+        try {
+            return jobQueue.take();
+        } catch (InterruptedException ie) {
+            return null;
+        }
+    })
+    .findFirst().get().run();
     }
   }
 }

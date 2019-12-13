@@ -8,6 +8,7 @@ public class EmailJob implements Job {
     this.email = email;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
     System.out.println("Job ID: " + Thread.currentThread().getId()

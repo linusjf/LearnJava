@@ -8,13 +8,13 @@ public class LoggingJob implements Job {
     this.logging = logging;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
     System.out.println("Job ID: " + Thread.currentThread().getId()
                        + " executing logging jobs.");
-    if (logging != null) {
+    if (logging != null)
       logging.log();
-    }
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {

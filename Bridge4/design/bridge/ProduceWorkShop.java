@@ -10,13 +10,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class ProduceWorkShop extends WorkShop {
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void work(Vehicle vehicle) {
     System.out.print("Producing... ");
     long timeToTake = 300L * vehicle.minWorkTime();
     try {
       TimeUnit.MILLISECONDS.sleep(timeToTake);
-      // Thread.sleep(timeToTake);
     } catch (InterruptedException exp) {
       // nothing to do for now.
     }
