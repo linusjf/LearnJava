@@ -76,17 +76,16 @@ public abstract class PropertyContainerImpl
 
   @Override
   public boolean equals(Object o) {
-    if (o == null)
+    if (!(o instanceof PropertyContainerImpl))
       return false;
     if (o == this)
       return true;
-    if (o instanceof PropertyContainerImpl)
-      return ivProperties.equals(((PropertyContainerImpl)o).ivProperties);
-    return false;
+    PropertyContainerImpl obj = (PropertyContainerImpl)o;
+    return ivProperties.equals(obj.ivProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ivProperties, super.hashCode());
+    return Objects.hash(ivProperties);
   }
 }
