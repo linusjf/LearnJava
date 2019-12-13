@@ -32,10 +32,9 @@ public enum Arrayed {
       Array.set(intArrayOne, 9, 10);
 
       // and specific getters and setters for primitive types
-      for (int i = 0; i < Array.getLength(intArrayOne); ++i) {
+      for (int i = 0; i < Array.getLength(intArrayOne); ++i) 
         System.out.println("intArrayOne[" + i
                            + "] : " + Array.getInt(intArrayOne, i));
-      }
 
       // retrieve the class from an instance
       Class<String[]> stringArrayClassUsingInstance = String[].class;

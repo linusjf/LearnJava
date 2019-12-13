@@ -11,8 +11,10 @@ public final class Fielded {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.CompareObjectsWithEquals","checkstyle:executablestatementcount"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals",
+                     "checkstyle:executablestatementcount"})
+  public static void
+  main(String... args) {
     try {
       String stringer = "this is a String called stringer";
       Class<? extends String> stringGetClass = stringer.getClass();
