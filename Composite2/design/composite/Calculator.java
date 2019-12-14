@@ -5,6 +5,7 @@ import java.math.BigInteger;
 public enum Calculator implements ICalc {
   FACTORIAL {
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     @Override
     public String calculate(String value) {
       String answer = "NA";
@@ -23,7 +24,8 @@ public enum Calculator implements ICalc {
   PALINDROME {
 
     @Override
-    @SuppressWarnings("PMD.InefficientEmptyStringCheck")
+    @SuppressWarnings({"PMD.InefficientEmptyStringCheck",
+    "PMD.LawOfDemeter"})
     public String calculate(String value) {
       String answer = "false";
       if (value != null && !value.trim().isEmpty()) {
@@ -49,7 +51,7 @@ public enum Calculator implements ICalc {
           armstrongValue = armstrongValue + temp * temp * temp;
           number /= 10;
         }
-        answer = Boolean.toString(String.valueOf(armstrongValue).equals(value));
+        answer = Boolean.toString(armstrongValue == longValue);
       } catch (NumberFormatException exp) {
         System.out.println("Can't calculate armstrong of " + value);
       }

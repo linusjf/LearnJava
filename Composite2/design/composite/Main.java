@@ -13,6 +13,7 @@ public enum Main {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     final Engineer ajay =
         new Engineer(1001L, "Ajay", "Developer", Department.ENG);
@@ -46,7 +47,7 @@ public enum Main {
     final WorkLoader workLoad = new WorkLoader("work.properties");
 
     workLoad.getWorkList().stream().forEach(
-        work -> { rachelle.assignWork(rachelle, work); });
+        work ->  rachelle.assignWork(rachelle, work) );
     rachelle.performWork();
   }
 }

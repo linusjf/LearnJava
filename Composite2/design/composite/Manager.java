@@ -47,6 +47,7 @@ public class Manager extends Employee {
     return managingEmployees.remove(employee);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public int teamSize() {
     return managingEmployees.stream()
@@ -54,9 +55,9 @@ public class Manager extends Employee {
         .sum();
   }
 
-  @Override
   @SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops",
   "PMD.DataflowAnomalyAnalysis"})
+  @Override
   public void assignWork(Employee manager, Work work) {
     System.out.println(this + " has been assigned work of '" + work
                        + "' by manager " + manager);
@@ -65,7 +66,7 @@ public class Manager extends Employee {
                        + "' to managed employees..");
     int fromIndex = 0;
     int toIndex = 0;
-    int totalWork = work.getWork().size();
+    int totalWork = work.getWorkSize();
     System.out.println("totalWork = " + totalWork);
     while (toIndex < totalWork) {
       for (Employee employee: managingEmployees) {
@@ -73,15 +74,16 @@ public class Manager extends Employee {
         toIndex = fromIndex + employee.teamSize();
         if (toIndex > totalWork)
           toIndex = totalWork;
-        List<String> assignWork = work.getWork().subList(fromIndex, toIndex);
-        if (assignWork.isEmpty())
+        if (fromIndex == toIndex)
           return;
+        List<String> assignWork = work.getWork(fromIndex, toIndex);
         employee.assignWork(this, new Work(work.getWorkType(), assignWork));
         fromIndex = toIndex;
       }
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void performWork() {
     System.out.println(

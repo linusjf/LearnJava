@@ -39,6 +39,7 @@ public class Engineer extends Employee {
                        + manager);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void performWork() {
     System.out.println(this + " is performing work of '" + works + "'");

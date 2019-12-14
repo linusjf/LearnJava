@@ -48,6 +48,7 @@ public class WorkLoader {
    *
    * @return a <code>List</code> object
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public List<Work> getWorkList() {
     List<Work> workList = new ArrayList<>();
     Set<Object> keys = properties.keySet();

@@ -2,10 +2,10 @@ package design.composite;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Enumeration;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Objects;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -33,6 +33,7 @@ public final class PropertyLoader {
    * @param name path of property resource
    * @return Properties object
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static Properties loadProperties(final String name) {
     return loadProperties(name, Thread.currentThread().getContextClassLoader());
   }
@@ -83,7 +84,8 @@ public final class PropertyLoader {
     return result;
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private static Properties loadAsStream(ClassLoader loader, String nome) {
     String name = nome.replace('.', '/');
     name = name.endsWith(SUFFIX) ? name : name.concat(SUFFIX);
@@ -103,15 +105,17 @@ public final class PropertyLoader {
     String name = nome.replace('/', '.');
     final ResourceBundle rb =
         ResourceBundle.getBundle(name, Locale.getDefault(), loader);
-    Properties result = new Properties();
-    for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
-      final String key = keys.nextElement();
-      final String value = rb.getString(key);
-      result.put(key, value);
-    }
-    return result;
+    return getProperties(rb);
   }
 
+private static Properties getProperties(ResourceBundle rb) {
+    Properties result = new Properties();
+for (String key : Collections.list(rb.getKeys()))
+      result.put(key, rb.getString(key));
+    return result;
+}
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String normalizeName(String nome) {
     Objects.requireNonNull(nome, "null input: name");
     String name = nome;

@@ -52,6 +52,26 @@ public class Work {
   public List<String> getWork() {
     return jobs;
   }
+  
+  /**
+   * Describe <code>getWork</code> method here.
+   *
+   * @param from start index of tasks.
+   * @param to end index of tasks.
+   * @return a <code>List</code> object
+   */
+  public List<String> getWork(int from,int to) {
+    return jobs.subList(from,to);
+  }
+  
+  /**
+   * Describe <code>getWorkSize</code> method here.
+   *
+   * @return an <code>int</code> object
+   */
+  public int getWorkSize() {
+    return jobs.size();
+  }
 
   /**
    * Describe <code>setWork</code> method here.
