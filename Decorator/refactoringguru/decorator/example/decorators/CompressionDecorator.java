@@ -12,6 +12,8 @@ import java.util.zip.InflaterInputStream;
 
 public class CompressionDecorator extends DataSourceDecorator {
   private int compLevel = 6;
+  private final Base64.Encoder encoder = Base64.getEncoder(); 
+  private final Base64.Decoder decoder = Base64.getDecoder(); 
 
   public CompressionDecorator(DataSource source) {
     super(source);
@@ -30,6 +32,7 @@ public class CompressionDecorator extends DataSourceDecorator {
     super.writeData(compress(data));
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public String readData() throws IOException {
     return decompress(super.readData());
@@ -40,13 +43,13 @@ public class CompressionDecorator extends DataSourceDecorator {
     try (ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
          DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));) {
       dos.write(data);
-      return Base64.getEncoder().encodeToString(bout.toByteArray());
+      return encoder.encodeToString(bout.toByteArray());
     }
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private String decompress(String stringData) throws IOException {
-    byte[] data = Base64.getDecoder().decode(stringData);
+    byte[] data = decoder.decode(stringData);
     try (InputStream in = new ByteArrayInputStream(data);
          InflaterInputStream iin = new InflaterInputStream(in);
          ByteArrayOutputStream bout = new ByteArrayOutputStream(512);) {
