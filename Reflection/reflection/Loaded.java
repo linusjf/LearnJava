@@ -4,17 +4,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+@SuppressWarnings("PMD.UseProperClassLoader")
 public enum Loaded {
   ;
   private static final String REFLECTABLE_CLASS = "reflection.ReflectableClass";
+      
+  private static ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+      private static ClassLoader classClassLoader = ReflectableClass.class.getClassLoader();
 
-  @SuppressWarnings({"PMD.UseProperClassLoader",
-                     "PMD.CompareObjectsWithEquals"})
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals","PMD.LawOfDemeter"})
   public static void
   main(String... args) {
     try {
-      ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-      ClassLoader classClassLoader = ReflectableClass.class.getClassLoader();
       Class<?> reflectableClassInstanceLoaded =
           systemClassLoader.loadClass(REFLECTABLE_CLASS);
       Class<?> reflectableClassInstanceForName =
@@ -42,20 +43,18 @@ public enum Loaded {
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-      if (!REFLECTABLE_CLASS.equals(name)) {
+      if (!REFLECTABLE_CLASS.equals(name)) 
         return super.loadClass(name);
-      }
-      try {
+      try (
         InputStream in = ClassLoader.getSystemResourceAsStream(
             name.replace(".", "/") + ".class");
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();) {
         int data = in.read();
         while (data != -1) {
           buffer.write(data);
           data = in.read();
         }
 
-        in.close();
         byte[] a = buffer.toByteArray();
         return defineClass(name, a, 0, a.length);
       } catch (IOException e) {
