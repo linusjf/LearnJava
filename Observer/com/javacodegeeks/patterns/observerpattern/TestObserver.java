@@ -15,6 +15,7 @@ public enum TestObserver {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     final Subject subject = new CommentaryObject(new ArrayList<Observer>(),
                                                  "Soccer Match [2014AUG24]");
