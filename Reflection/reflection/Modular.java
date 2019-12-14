@@ -6,10 +6,15 @@ import java.util.Set;
 public enum Modular {
   ;
 
+    private static Module myClassModule = String.class.getModule();
+
   public static void main(String... args) {
-    Module myClassModule = String.class.getModule();
     System.out.println("isNamed: " + myClassModule.isNamed());
     ModuleDescriptor md = myClassModule.getDescriptor();
+    printModuleDescription(md);
+  }
+
+  private static void printModuleDescription(ModuleDescriptor md) {
     System.out.println("Module name: " + md.name());
     System.out.println("Module exports: ");
     Set<ModuleDescriptor.Exports> exports = md.exports();

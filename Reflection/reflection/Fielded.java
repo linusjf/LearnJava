@@ -7,6 +7,10 @@ import java.security.PrivilegedAction;
 
 public final class Fielded {
 
+      private static String stringer = "this is a String called stringer";
+     private static Class<? extends String> stringGetClass = stringer.getClass();
+ private static     Class<String> stringclass = String.class;
+
   private Fielded() {
     throw new IllegalStateException("Private constructor");
   }
@@ -16,9 +20,6 @@ public final class Fielded {
   public static void
   main(String... args) {
     try {
-      String stringer = "this is a String called stringer";
-      Class<? extends String> stringGetClass = stringer.getClass();
-      Class<String> stringclass = String.class;
       System.out.println(stringGetClass == stringclass);
       System.out.println(stringGetClass.equals(stringclass));
       Field[] fields = stringclass.getDeclaredFields();
@@ -39,14 +40,22 @@ public final class Fielded {
             System.out.println("Get: " + field.get(stringer));
         }
       }
+    checkForHashCode(stringGetClass,stringer);
+    } catch (ReflectiveOperationException roe) {
+      System.err.println(roe);
+    }
+  }
+
+  private static void checkForHashCode(Class<?> cls,Object obj) 
+  throws ReflectiveOperationException {
       try {
-        stringclass.getField("hashCode");
+        cls.getField("hashCode");
       } catch (NoSuchFieldException nsfe) {
         System.err.println(nsfe);
       }
-      Field fieldHashCode = stringclass.getDeclaredField("hash");
+      Field fieldHashCode = cls.getDeclaredField("hash");
       try {
-        fieldHashCode.get(stringer);
+        fieldHashCode.get(obj);
       } catch (IllegalAccessException iae) {
         System.err.println(iae);
       }
@@ -56,10 +65,7 @@ public final class Fielded {
         return null;
       });
 
-      printHashCodeField(fieldHashCode,stringer);
-    } catch (ReflectiveOperationException roe) {
-      System.err.println(roe);
-    }
+      printHashCodeField(fieldHashCode,obj);
   }
 
   private static void printHashCodeField(

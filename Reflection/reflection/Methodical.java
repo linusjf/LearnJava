@@ -6,12 +6,13 @@ import java.lang.reflect.Parameter;
 
 public final class Methodical {
 
+  private static Class<String> stringclass = String.class;
+
   private Methodical() {
     throw new IllegalStateException("Private constructor.");
   }
 
   public static void main(String... args) {
-    Class<String> stringclass = String.class;
     Method[] methods = stringclass.getMethods();
 
     // All methods for the String class
