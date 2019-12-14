@@ -32,6 +32,7 @@ public final class ByteToHex {  // NOPMD
    * @param raw a <code>byte</code> value
    * @return a <code>String</code> value
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static String getHex2(byte[] raw) {
     final StringBuilder builder = new StringBuilder(2 * raw.length);
     for (final byte b: raw)

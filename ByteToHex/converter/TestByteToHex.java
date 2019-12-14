@@ -14,13 +14,7 @@ import java.nio.charset.StandardCharsets;
  */
 public enum TestByteToHex {
   ;
-  /**
-   * Describe <code>main</code> method here.
-   *
-   * @param args a <code>String</code> value
-   */
-  public static void main(String[] args) {
-    final String byteString = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
+    static final String BYTE_STRING = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
                               + "$123456789003356788990335688335678888"
                               + "))5778889===66://))*£&'/!!))))?:/!?"
                               + "?????!//!!!!!!!!!?????      dffvbbfrews"
@@ -28,8 +22,15 @@ public enum TestByteToHex {
                               + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
                               + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
                               + "FDSSSGHIJJH";
+  /**
+   * Describe <code>main</code> method here.
+   *
+   * @param args a <code>String</code> value
+   */
+  @SuppressWarnings("PMD.LawOfDemeter")
+  public static void main(String[] args) {
 
-    final byte[] raw = byteString.getBytes(StandardCharsets.UTF_8);
+    final byte[] raw = BYTE_STRING.getBytes(StandardCharsets.UTF_8);
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);
     long end = System.nanoTime();
