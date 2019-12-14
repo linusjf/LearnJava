@@ -28,6 +28,7 @@ public class LinkedIn implements SocialNetwork {
     return findContact(profileEmail);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public List<String> requestRelatedContactsFromLinkedInAPI(
       String profileEmail,
       String contactType) {
@@ -44,11 +45,11 @@ public class LinkedIn implements SocialNetwork {
     return profile.isPresent() ? profile.get().getContacts(contactType) : null;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private Profile findContact(String profileEmail) {
     for (Profile profile: contacts) {
-      if (profile.getEmail().equals(profileEmail)) {
+      if (profile.getEmail().equals(profileEmail)) 
         return profile;
-      }
     }
     return null;
   }

@@ -20,10 +20,11 @@ public class LinkedInIterator implements ProfileIterator {
     this.email = email;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void lazyLoad() {
     if (emails.isEmpty()) {
       List<String> profiles =
-          linkedIn.requestRelatedContactsFromLinkedInAPI(this.email, this.type);
+          linkedIn.requestRelatedContactsFromLinkedInAPI(email, type);
       for (String profile: profiles) {
         this.emails.add(profile);
         this.contacts.add(null);

@@ -28,6 +28,7 @@ public class Facebook implements SocialNetwork {
     return findProfile(profileEmail);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public List<String> requestProfileFriendsFromFacebook(String profileEmail,
                                                         String contactType) {
     // Here would be a POST request to one of the Facebook API endpoints.
@@ -45,9 +46,8 @@ public class Facebook implements SocialNetwork {
 
   private Profile findProfile(String profileEmail) {
     for (Profile profile: profiles) {
-      if (profile.getEmail().equals(profileEmail)) {
+      if (profile.equals(profileEmail)) 
         return profile;
-      }
     }
     return null;
   }
