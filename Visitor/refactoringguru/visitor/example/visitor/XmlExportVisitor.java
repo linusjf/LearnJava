@@ -101,6 +101,7 @@ public class XmlExportVisitor implements Visitor {
         + "</compoundgraphic>";
   }
 
+@SuppressWarnings("PMD.LawOfDemeter")
   private String visitCompoundGraphicChildren(CompoundShape cg) {
     StringBuilder sb = new StringBuilder();
     for (Shape shape : cg.getChildren()) {
