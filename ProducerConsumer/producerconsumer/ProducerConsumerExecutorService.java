@@ -9,16 +9,17 @@ import java.util.concurrent.TimeUnit;
 public enum ProducerConsumerExecutorService {
   ;
 
+    static final BlockingQueue<Integer> BLOCKING_QUEUE = new LinkedBlockingDeque<>(2);
+    static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(3);
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    BlockingQueue<Integer> blockingQueue = new LinkedBlockingDeque<>(2);
-    final ExecutorService executor = Executors.newFixedThreadPool(3);
 
     Runnable producerTask = () -> {
       try {
         int value = 0;
-        while (!executor.isShutdown()) {
-          blockingQueue.put(value);
+        while (!EXECUTOR.isShutdown()) {
+          BLOCKING_QUEUE.put(value);
           System.out.println("Produced " + value);
           value++;
           Thread.sleep(1000);
@@ -30,8 +31,8 @@ public enum ProducerConsumerExecutorService {
 
     Runnable consumerTask = () -> {
       try {
-        while (!executor.isShutdown()) {
-          int value = blockingQueue.take();
+        while (!EXECUTOR.isShutdown()) {
+          int value = BLOCKING_QUEUE.take();
           System.out.println("Consumed " + value);
           Thread.sleep(1000);
         }
@@ -43,17 +44,17 @@ public enum ProducerConsumerExecutorService {
     Runnable terminatorTask = () -> {
       try {
         Thread.sleep(10_000);
-        executor.shutdown();
+        EXECUTOR.shutdown();
         System.out.println("Blocking for 10 seconds...");
-        executor.awaitTermination(10, TimeUnit.SECONDS);
+        EXECUTOR.awaitTermination(10, TimeUnit.SECONDS);
         System.out.println("Closing executor service...");
-        //  executor.shutdownNow();
+        //  EXECUTOR.shutdownNow();
       } catch (InterruptedException e) {
         System.err.println(e);
       }
     };
-    executor.execute(producerTask);
-    executor.execute(consumerTask);
-    executor.execute(terminatorTask);
+    EXECUTOR.execute(producerTask);
+    EXECUTOR.execute(consumerTask);
+    EXECUTOR.execute(terminatorTask);
   }
 }
