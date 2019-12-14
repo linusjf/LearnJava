@@ -46,6 +46,21 @@ public final class JdbcMetaData {
       }
 
       ResultSetMetaData metaData = results.getMetaData();
+      printMetaData(metaData);
+      // End of step 4.
+      // (No further queries, so no Step 5!)
+      // Step 6…
+      connection.close();
+    } catch (SQLException ex) {
+      System.err.println("* SQL or connection error! *");
+      System.err.println(ex);
+      System.exit(1);
+    }
+  }
+
+  private static void printMetaData(ResultSetMetaData metaData) throws
+  SQLException {
+
       int numFields = metaData.getColumnCount();
 
       // Cycle through the database fields, displaying
@@ -74,15 +89,5 @@ public final class JdbcMetaData {
             break;
         }
       }
-
-      // End of step 4.
-      // (No further queries, so no Step 5!)
-      // Step 6…
-      connection.close();
-    } catch (SQLException ex) {
-      System.err.println("* SQL or connection error! *");
-      System.err.println(ex);
-      System.exit(1);
-    }
   }
 }
