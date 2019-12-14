@@ -31,6 +31,7 @@ public class JCommanderTest {
 
   @Parameter(names = "--help", help = true) boolean help;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     JCommanderTest jct = new JCommanderTest();
     JCommander jc = JCommander.newBuilder()
