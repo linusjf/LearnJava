@@ -24,6 +24,7 @@ public class AudioFileHandler implements Handler {
     this.handler = handler;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void process(File file) {
     if (file.getFileType().equals("audio")) {
