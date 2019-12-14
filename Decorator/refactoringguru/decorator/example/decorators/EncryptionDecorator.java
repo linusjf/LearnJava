@@ -5,6 +5,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class EncryptionDecorator extends DataSourceDecorator {
+  private final Base64.Encoder encoder = Base64.getEncoder(); 
+  private final Base64.Decoder decoder = Base64.getDecoder(); 
+  
   public EncryptionDecorator(DataSource source) {
     super(source);
   }
@@ -14,6 +17,7 @@ public class EncryptionDecorator extends DataSourceDecorator {
     super.writeData(encode(data));
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public String readData() throws IOException {
     return decode(super.readData());
@@ -24,11 +28,11 @@ public class EncryptionDecorator extends DataSourceDecorator {
     for (int i = 0; i < result.length; i++) {
       result[i] += (byte) 1;
     }
-    return Base64.getEncoder().encodeToString(result);
+    return encoder.encodeToString(result);
   }
 
   private String decode(String data) {
-    byte[] result = Base64.getDecoder().decode(data);
+    byte[] result = decoder.decode(data);
     for (int i = 0; i < result.length; i++) result[i] -= (byte) 1;
     return new String(result, StandardCharsets.UTF_8);
   }
