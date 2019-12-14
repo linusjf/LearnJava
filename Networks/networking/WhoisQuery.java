@@ -10,7 +10,6 @@ import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 public final class WhoisQuery {
-
   private WhoisQuery() {
     throw new IllegalStateException("Private constructor");
   }
@@ -28,23 +27,19 @@ public final class WhoisQuery {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void performWhoisQuery(String host, int port, String query)
       throws UnknownHostException, IOException {
-    System.out.println("**** Performing whois query for '" + query + "' at "
-                       + host + ":" + port);
+    System.out.println("**** Performing whois query for '" + query + "' at " + host + ":" + port);
 
     Socket socket = new Socket(host, port);
 
-    InputStreamReader isr = new InputStreamReader(
-        socket.getInputStream(), StandardCharsets.UTF_8.name());
+    InputStreamReader isr =
+        new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8.name());
     BufferedReader in = new BufferedReader(isr);
 
-    PrintWriter out =
-        new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),
-                                               StandardCharsets.UTF_8.name()),
-                        true);
+    PrintWriter out = new PrintWriter(
+        new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()), true);
     out.println(query);
 
     String line = "";
-    while ((line = in.readLine()) != null)
-      System.out.println(line);
+    while ((line = in.readLine()) != null) System.out.println(line);
   }
 }

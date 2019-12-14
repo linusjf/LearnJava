@@ -16,17 +16,17 @@ public class Profile {
     this.name = name;
 
     // Parse contact list from a set of "friend:email@gmail.com" pairs.
-    for (String contact: contacts) {
+    for (String contact : contacts) {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;
-      if (parts.length == 1) 
+      if (parts.length == 1)
         contactEmail = parts[0];
       else {
         contactType = parts[0];
         contactEmail = parts[1];
       }
-      if (!this.contacts.containsKey(contactType)) 
+      if (!this.contacts.containsKey(contactType))
         this.contacts.put(contactType, new ArrayList<String>());
       this.contacts.get(contactType).add(contactEmail);
     }
@@ -41,7 +41,7 @@ public class Profile {
   }
 
   public List<String> getContacts(String contactType) {
-    if (!this.contacts.containsKey(contactType)) 
+    if (!this.contacts.containsKey(contactType))
       this.contacts.put(contactType, new ArrayList<String>());
     return contacts.get(contactType);
   }
@@ -51,14 +51,12 @@ public class Profile {
   public boolean equals(Object o) {
     if (!(o instanceof Profile || o instanceof String))
       return false;
-    if (o instanceof Profile)
-    {
-      Profile profile = (Profile)o;
+    if (o instanceof Profile) {
+      Profile profile = (Profile) o;
       return areEmailsEqual(profile);
     }
-    if (o instanceof String)
-    {
-      String email = (String)o;
+    if (o instanceof String) {
+      String email = (String) o;
       return email.equals(this.email);
     }
     return false;
@@ -66,7 +64,7 @@ public class Profile {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private boolean areEmailsEqual(Profile profile) {
-      return profile.getEmail().equals(email);
+    return profile.getEmail().equals(email);
   }
 
   @Override

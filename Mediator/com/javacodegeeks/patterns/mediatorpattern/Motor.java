@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public class Motor {
-
   /** Describe <code>startMotor</code> method here. */
   public void startMotor() {
     System.out.println("Start motor...");

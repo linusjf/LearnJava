@@ -35,8 +35,7 @@ public enum CipherDecrypt {
       cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
       // Add data to the cipher
-      byte[] input =
-          "Welcome to Decrypt Example".getBytes(StandardCharsets.UTF_8);
+      byte[] input = "Welcome to Decrypt Example".getBytes(StandardCharsets.UTF_8);
       cipher.update(input);
 
       // encrypting the data
@@ -49,9 +48,8 @@ public enum CipherDecrypt {
       // Decrypting the text
       byte[] decipheredText = cipher.doFinal(cipherText);
       System.out.println(new String(decipheredText, StandardCharsets.UTF_8));
-    } catch (BadPaddingException | NoSuchPaddingException
-             | NoSuchAlgorithmException | IllegalBlockSizeException
-             | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException | NoSuchAlgorithmException
+        | IllegalBlockSizeException | InvalidKeyException e) {
       System.err.println(e);
     }
   }

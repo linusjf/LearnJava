@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class ScannerDemo1 {
-
   private static Charset charset = StandardCharsets.UTF_8;
 
   private ScannerDemo1() {

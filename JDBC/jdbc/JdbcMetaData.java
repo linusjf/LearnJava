@@ -30,7 +30,7 @@ public final class JdbcMetaData {
       // Step 2…
       statement = connection.createStatement();
       String select = "SELECT * FROM Accounts"
-                      + " WHERE acctNum = 123456";
+          + " WHERE acctNum = 123456";
 
       // Step 3…
       results = statement.executeQuery(select);
@@ -58,36 +58,34 @@ public final class JdbcMetaData {
     }
   }
 
-  private static void printMetaData(ResultSetMetaData metaData) throws
-  SQLException {
+  private static void printMetaData(ResultSetMetaData metaData) throws SQLException {
+    int numFields = metaData.getColumnCount();
 
-      int numFields = metaData.getColumnCount();
+    // Cycle through the database fields, displaying
+    // meta data about each one…
+    for (int i = 1; i <= numFields; i++) {
+      System.out.println("\nField name: " + metaData.getColumnName(i));
+      System.out.println("Field type: " + metaData.getColumnTypeName(i));
+      int colType = metaData.getColumnType(i);
+      System.out.print("Value: ");
 
-      // Cycle through the database fields, displaying
-      // meta data about each one…
-      for (int i = 1; i <= numFields; i++) {
-        System.out.println("\nField name: " + metaData.getColumnName(i));
-        System.out.println("Field type: " + metaData.getColumnTypeName(i));
-        int colType = metaData.getColumnType(i);
-        System.out.print("Value: ");
-
-        // Select the appropriate getXXX method,
-        // according to the SQL type of the field…
-        switch (colType) {
-          case Types.INTEGER:
-            System.out.println(results.getInt(i));
-            break;
-          case Types.VARCHAR:
-            System.out.println(results.getString(i));
-            break;
-          case Types.NUMERIC:
-          case Types.REAL:
-            System.out.printf("%.2f %n%n", results.getFloat(i));
-            break;
-          default:
-            System.out.println("Unknown");
-            break;
-        }
+      // Select the appropriate getXXX method,
+      // according to the SQL type of the field…
+      switch (colType) {
+        case Types.INTEGER:
+          System.out.println(results.getInt(i));
+          break;
+        case Types.VARCHAR:
+          System.out.println(results.getString(i));
+          break;
+        case Types.NUMERIC:
+        case Types.REAL:
+          System.out.printf("%.2f %n%n", results.getFloat(i));
+          break;
+        default:
+          System.out.println("Unknown");
+          break;
       }
+    }
   }
 }

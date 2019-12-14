@@ -14,20 +14,14 @@ public enum XmlSerializer {
 
   private static final String STRING_CLASS = "java.lang.String";
 
-  public static Document serializeObject(Object source)
-      throws IllegalAccessException {
-    return serializeHelper(source,
-                           new Document(new Element("serialized")),
-                           new IdentityHashMap<Object, Object>());
+  public static Document serializeObject(Object source) throws IllegalAccessException {
+    return serializeHelper(
+        source, new Document(new Element("serialized")), new IdentityHashMap<Object, Object>());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static Element 
-  serializeVariable(
-      Class<?> fieldtype,
-  Object child, Document target,
-  Map<Object, Object> table)
-      throws IllegalAccessException {
+  private static Element serializeVariable(Class<?> fieldtype, Object child, Document target,
+      Map<Object, Object> table) throws IllegalAccessException {
     if (child == null)
       return new Element("empty");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
@@ -36,9 +30,9 @@ public enum XmlSerializer {
       return value;
     } else {
       Element reference = new Element("reference");
-      if (table.containsKey(child)) 
+      if (table.containsKey(child))
         reference.setText(table.get(child).toString());
-       else {
+      else {
         reference.setText(Integer.toString(table.size()));
         serializeHelper(child, target, table);
       }
@@ -47,8 +41,7 @@ public enum XmlSerializer {
   }
 
   // clang-format off
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
     String id = Integer.toString(table.size());

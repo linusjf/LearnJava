@@ -37,19 +37,17 @@ public enum GenChars {
     while (iterCount < numberOfPrintableCharacters) {
       /* infinite loop */
       for (int i = start; i < start + numberOfCharactersPerLine; i++) {
-        line[i - start] =
-            (byte)((i - firstPrintableCharacter) % numberOfPrintableCharacters
-                   + firstPrintableCharacter);
+        line[i - start] = (byte) ((i - firstPrintableCharacter) % numberOfPrintableCharacters
+            + firstPrintableCharacter);
       }
-      line[72] = (byte)'\r';
+      line[72] = (byte) '\r';
 
       // carriage return
-      line[73] = (byte)'\n';
+      line[73] = (byte) '\n';
 
       // line feed
       out.write(line);
-      start =
-          (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters
+      start = (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters
           + firstPrintableCharacter;
       iterCount++;
     }

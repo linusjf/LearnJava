@@ -52,7 +52,7 @@ public class Work {
   public List<String> getWork() {
     return jobs;
   }
-  
+
   /**
    * Describe <code>getWork</code> method here.
    *
@@ -60,10 +60,10 @@ public class Work {
    * @param to end index of tasks.
    * @return a <code>List</code> object
    */
-  public List<String> getWork(int from,int to) {
-    return jobs.subList(from,to);
+  public List<String> getWork(int from, int to) {
+    return jobs.subList(from, to);
   }
-  
+
   /**
    * Describe <code>getWorkSize</code> method here.
    *
@@ -85,11 +85,7 @@ public class Work {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder(46);
-    builder.append("Work [workType=")
-        .append(workType)
-        .append(", work=")
-        .append(jobs)
-        .append(']');
+    builder.append("Work [workType=").append(workType).append(", work=").append(jobs).append(']');
     return builder.toString();
   }
 }

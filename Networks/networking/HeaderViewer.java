@@ -7,13 +7,12 @@ import java.net.URLConnection;
 import java.util.Date;
 
 public final class HeaderViewer {
-
   private HeaderViewer() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
@@ -23,11 +22,9 @@ public final class HeaderViewer {
         if (uc.getDate() != 0)
           System.out.println("Date: " + new Date(uc.getDate()));
         if (uc.getLastModified() != 0)
-          System.out.println("Last modified: "
-                             + new Date(uc.getLastModified()));
+          System.out.println("Last modified: " + new Date(uc.getLastModified()));
         if (uc.getExpiration() != 0)
-          System.out.println("Expiration date: "
-                             + new Date(uc.getExpiration()));
+          System.out.println("Expiration date: " + new Date(uc.getExpiration()));
         if (uc.getContentLength() != -1)
           System.out.println("Content-length: " + uc.getContentLength());
       } catch (MalformedURLException ex) {

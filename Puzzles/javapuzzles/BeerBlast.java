@@ -36,12 +36,11 @@ public enum BeerBlast {
   static void drainInBackground(final InputStream is) {
     new Thread(() -> {
       try {
-        BufferedReader bri = new BufferedReader(
-            new InputStreamReader(is, StandardCharsets.UTF_8.name()));
+        BufferedReader bri =
+            new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8.name()));
         StringBuilder result = new StringBuilder();
         String line;
-        while ((line = bri.readLine()) != null)
-          result.append(line).append(System.lineSeparator());
+        while ((line = bri.readLine()) != null) result.append(line).append(System.lineSeparator());
         System.out.println(result.toString());
       } catch (IOException e) {
         // return on IOException

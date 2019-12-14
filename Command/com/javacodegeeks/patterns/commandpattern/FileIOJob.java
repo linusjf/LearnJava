@@ -11,8 +11,7 @@ public class FileIOJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing fileIO jobs.");
+    System.out.println("Job ID: " + Thread.currentThread().getId() + " executing fileIO jobs.");
     if (fileIO != null)
       fileIO.execute();
     try {

@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class NonAnonymousReceiver {
-
   public Iterator<String> emptyIterator2() {
     return new AbstractEmptyIterator() {};
   }

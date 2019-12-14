@@ -4,7 +4,6 @@ import java.math.BigInteger;
 
 public enum Calculator implements ICalc {
   FACTORIAL {
-
     @SuppressWarnings("PMD.LawOfDemeter")
     @Override
     public String calculate(String value) {
@@ -22,10 +21,8 @@ public enum Calculator implements ICalc {
     }
   },
   PALINDROME {
-
     @Override
-    @SuppressWarnings({"PMD.InefficientEmptyStringCheck",
-    "PMD.LawOfDemeter"})
+    @SuppressWarnings({"PMD.InefficientEmptyStringCheck", "PMD.LawOfDemeter"})
     public String calculate(String value) {
       String answer = "false";
       if (value != null && !value.trim().isEmpty()) {
@@ -36,7 +33,6 @@ public enum Calculator implements ICalc {
     }
   },
   ARMSTRONG {
-
     @Override
     @SuppressWarnings("checkstyle:magicnumber")
     public String calculate(String value) {

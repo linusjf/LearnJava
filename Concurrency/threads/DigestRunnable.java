@@ -37,7 +37,7 @@ public class DigestRunnable implements Runnable {
 
   public static void main(String[] args) {
     System.out.println("Into DigestRunnable...");
-    for (String filename: args) {
+    for (String filename : args) {
       runDigestThread(filename);
     }
   }

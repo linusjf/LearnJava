@@ -40,8 +40,7 @@ public final class DHKeyAgreement {
     aliceKeyAgree.init(aliceKpair.getPrivate());
   }
 
-  private static byte[] getAlicePublicEncodedKey()
-      throws GeneralSecurityException {
+  private static byte[] getAlicePublicEncodedKey() throws GeneralSecurityException {
     // Alice encodes her public key, and sends it over to Bob.
     return aliceKpair.getPublic().getEncoded();
   }
@@ -67,8 +66,7 @@ public final class DHKeyAgreement {
        * He must use the same parameters when he generates his own key
        * pair.
        */
-      DHParameterSpec dhParamFromAlicePubKey =
-          ((DHPublicKey)alicePubKey).getParams();
+      DHParameterSpec dhParamFromAlicePubKey = ((DHPublicKey) alicePubKey).getParams();
 
       // Bob creates his own DH key pair
       System.out.println("BOB: Generate DH keypair ...");
@@ -144,18 +142,15 @@ public final class DHKeyAgreement {
        * passed to the Cipher.init() method.
        */
       System.out.println("Use shared secret as SecretKey object ...");
-      SecretKeySpec bobAesKey =
-          new SecretKeySpec(bobSharedSecret, 0, 16, "AES");
-      SecretKeySpec aliceAesKey =
-          new SecretKeySpec(aliceSharedSecret, 0, 16, "AES");
+      SecretKeySpec bobAesKey = new SecretKeySpec(bobSharedSecret, 0, 16, "AES");
+      SecretKeySpec aliceAesKey = new SecretKeySpec(aliceSharedSecret, 0, 16, "AES");
 
       /*
        * Bob encrypts, using AES in CBC mode
        */
       Cipher bobCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
       bobCipher.init(Cipher.ENCRYPT_MODE, bobAesKey);
-      byte[] cleartext =
-          "This is just an example".getBytes(StandardCharsets.UTF_8);
+      byte[] cleartext = "This is just an example".getBytes(StandardCharsets.UTF_8);
       byte[] ciphertext = bobCipher.doFinal(cleartext);
 
       // Retrieve the parameter that was used, and transfer it to Alice in
@@ -174,7 +169,7 @@ public final class DHKeyAgreement {
       byte[] recovered = aliceCipher.doFinal(ciphertext);
       if (!java.util.Arrays.equals(cleartext, recovered))
         throw new GeneralSecurityException("AES in CBC mode recovered text is "
-                                           + "different from cleartext");
+            + "different from cleartext");
       System.out.println("AES in CBC mode recovered text is same as cleartext");
     } catch (GeneralSecurityException | IOException exc) {
       System.err.println(exc);

@@ -7,7 +7,6 @@ public enum TypeIt {
 
   @SuppressWarnings("PMD.MissingOverride")
   private static class ClickIt extends CodeTalk {
-
     void printMessage() {
       System.out.println("Hack");
     }

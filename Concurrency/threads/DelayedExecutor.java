@@ -11,7 +11,7 @@ public enum DelayedExecutor {
 
   public static void main(String[] args) {
     ScheduledThreadPoolExecutor executor =
-        (ScheduledThreadPoolExecutor)Executors.newScheduledThreadPool(1);
+        (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
     System.out.printf("Main: Starting at: %s%n", new Date());
     for (int i = 0; i < 5; i++) {
       Task task = new Task("Task " + i);

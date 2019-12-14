@@ -1,7 +1,6 @@
 package player;
 
 public final class ComputeEnduranceAlgorithm {
-
   private ComputeEnduranceAlgorithm() {
     throw new IllegalStateException("Private constructor");
   }

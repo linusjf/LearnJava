@@ -24,9 +24,8 @@ public enum BillGenerator {
 
     PlanFactory planFactory = new PlanFactory();
 
-    try (BufferedReader br = new BufferedReader(
-             new InputStreamReader(Files.newInputStream(Paths.get(args[0])),
-                                   StandardCharsets.UTF_8.name()))) {
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(
+             Files.newInputStream(Paths.get(args[0])), StandardCharsets.UTF_8.name()))) {
       Optional<String> planName = Optional.ofNullable(br.readLine());
       planName.ifPresent(plan -> {
         try {
@@ -34,8 +33,7 @@ public enum BillGenerator {
 
           Plan p = planFactory.getPlan(plan);
 
-          System.out.print("Bill amount for " + plan + " of  " + units
-                           + " units is: ");
+          System.out.print("Bill amount for " + plan + " of  " + units + " units is: ");
           p.allotRate();
           p.calculateBill(units);
         } catch (IOException | NumberFormatException e) {

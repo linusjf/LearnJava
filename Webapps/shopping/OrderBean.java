@@ -23,8 +23,7 @@ public class OrderBean implements java.io.Serializable {
   }
 
   public String getAddress() {
-    return addressLine1 + "\n" + addressLine2 + "\n" + addressLine3 + "\n"
-        + postCode;
+    return addressLine1 + "\n" + addressLine2 + "\n" + addressLine3 + "\n" + postCode;
   }
 
   public String getAddressLine1() {

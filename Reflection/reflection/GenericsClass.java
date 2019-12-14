@@ -31,13 +31,11 @@ public class GenericsClass {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
-      Method getInternalListMethod =
-          GenericsClass.class.getMethod("getInternalList");
+      Method getInternalListMethod = GenericsClass.class.getMethod("getInternalList");
 
       printParameterTypes(getInternalListMethod);
 
-      Method getInternalMapMethod =
-          GenericsClass.class.getMethod("getInternalMap");
+      Method getInternalMapMethod = GenericsClass.class.getMethod("getInternalMap");
       printParameterTypes(getInternalMapMethod);
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);
@@ -45,29 +43,24 @@ public class GenericsClass {
   }
 
   private static void printParameterTypes(Method method) {
+    // we get the return type
+    Type genericReturnType = method.getGenericReturnType();
 
-      // we get the return type
-      Type genericReturnType =
-          method.getGenericReturnType();
-
-      // we can check if the return type is parameterized (using
-      // ParameterizedType)
-      if (genericReturnType instanceof ParameterizedType) {
-        ParameterizedType parameterizedType =
-            (ParameterizedType)genericReturnType;
-printParameterTypes(parameterizedType);
-  }
+    // we can check if the return type is parameterized (using
+    // ParameterizedType)
+    if (genericReturnType instanceof ParameterizedType) {
+      ParameterizedType parameterizedType = (ParameterizedType) genericReturnType;
+      printParameterTypes(parameterizedType);
+    }
   }
 
   private static void printParameterTypes(ParameterizedType parameterizedType) {
-
-        // we get the type of the arguments for the parameterized type
-        Type[] typeArguments = parameterizedType.getActualTypeArguments();
-        for (Type typeArgument: typeArguments) {
-          Class<? extends Object> typeClass =
-              (Class<? extends Object>)typeArgument;
-          System.out.println("typeArgument = " + typeArgument);
-          System.out.println("typeClass = " + typeClass);
-        }
+    // we get the type of the arguments for the parameterized type
+    Type[] typeArguments = parameterizedType.getActualTypeArguments();
+    for (Type typeArgument : typeArguments) {
+      Class<? extends Object> typeClass = (Class<? extends Object>) typeArgument;
+      System.out.println("typeArgument = " + typeArgument);
+      System.out.println("typeClass = " + typeClass);
+    }
   }
 }

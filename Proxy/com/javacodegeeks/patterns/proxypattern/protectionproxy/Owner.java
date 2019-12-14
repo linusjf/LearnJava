@@ -8,7 +8,6 @@ package com.javacodegeeks.patterns.proxypattern.protectionproxy;
  */
 @SuppressWarnings("PMD.FinalFieldCouldBeStatic")
 public class Owner implements Staff {
-
   private ReportGeneratorProxy reportGenerator;
 
   @Override
@@ -24,8 +23,7 @@ public class Owner implements Staff {
   /**
    * Describe <code>generateDailyReport</code> method here.
    *
-   * @return a <code>String</code> value. Returns empty string if
-   *     reportGenerator is null.
+   * @return a <code>String</code> value. Returns empty string if reportGenerator is null.
    */
   public String generateDailyReport() {
     if (reportGenerator == null)

@@ -32,17 +32,15 @@ public enum CipherSample {
       cipher.init(Cipher.ENCRYPT_MODE, pair.getPublic());
 
       // Adding data to the cipher
-      byte[] input =
-          "Test data to be encrypted".getBytes(StandardCharsets.UTF_8);
+      byte[] input = "Test data to be encrypted".getBytes(StandardCharsets.UTF_8);
       cipher.update(input);
 
       // encrypting the data
       byte[] cipherText = cipher.doFinal();
       System.out.println(new String(cipherText, StandardCharsets.UTF_8));
       System.out.println(Base64.getEncoder().encodeToString(cipherText));
-    } catch (BadPaddingException | NoSuchPaddingException
-             | NoSuchAlgorithmException | IllegalBlockSizeException
-             | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException | NoSuchAlgorithmException
+        | IllegalBlockSizeException | InvalidKeyException e) {
       System.err.println(e);
     }
   }

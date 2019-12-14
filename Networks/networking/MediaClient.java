@@ -36,8 +36,7 @@ public final class MediaClient {
       Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());
       System.out.print("Enter request (IMAGE/SOUND): ");
       message = userEntry.nextLine();
-      while (!"IMAGE".equalsIgnoreCase(message)
-             && !"SOUND".equalsIgnoreCase(message)) {
+      while (!"IMAGE".equalsIgnoreCase(message) && !"SOUND".equalsIgnoreCase(message)) {
         System.out.println("\nTry again!\n");
         System.out.print("Enter request (IMAGE/SOUND): ");
         message = userEntry.nextLine();
@@ -46,14 +45,12 @@ public final class MediaClient {
       Socket connection = new Socket(host, PORT);
 
       // Step 1…
-      ObjectInputStream inStream =
-          new ObjectInputStream(connection.getInputStream());
+      ObjectInputStream inStream = new ObjectInputStream(connection.getInputStream());
 
       // Step 1 (cont'd)…
-      PrintWriter outStream =
-          new PrintWriter(new OutputStreamWriter(connection.getOutputStream(),
-                                                 StandardCharsets.UTF_8.name()),
-                          true);
+      PrintWriter outStream = new PrintWriter(
+          new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8.name()),
+          true);
 
       // Step 2…
       outStream.println(message);
@@ -68,12 +65,10 @@ public final class MediaClient {
       throws IOException, ClassNotFoundException {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
-    byte[] byteArray = (byte[])inStream.readObject();
-    try (OutputStream mediaStream =
-             "IMAGE".equalsIgnoreCase(fileType)
-                 ? Files.newOutputStream(Paths.get("image.gif"))
-                 : Files.newOutputStream(Paths.get("sound.au"))) {
-
+    byte[] byteArray = (byte[]) inStream.readObject();
+    try (OutputStream mediaStream = "IMAGE".equalsIgnoreCase(fileType)
+            ? Files.newOutputStream(Paths.get("image.gif"))
+            : Files.newOutputStream(Paths.get("sound.au"))) {
       // Step 6…
       mediaStream.write(byteArray);
       mediaStream.flush();

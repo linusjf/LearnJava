@@ -20,8 +20,7 @@ public enum SuspiciousSort {
 
   public static void main(String[] args) {
     Integer[] arr = new Integer[100];
-    for (int i = 0; i < arr.length; i++)
-      arr[i] = RANDOM.nextInt();
+    for (int i = 0; i < arr.length; i++) arr[i] = RANDOM.nextInt();
     Comparator<Integer> cmp = (i1, i2) -> i2 - i1;
     Arrays.sort(arr, cmp);
     System.out.println(order(arr));
@@ -31,16 +30,14 @@ public enum SuspiciousSort {
 
   public static void collectionsMain(String... args) {
     Integer[] arr = new Integer[100];
-    for (int i = 0; i < arr.length; i++)
-      arr[i] = RANDOM.nextInt();
+    for (int i = 0; i < arr.length; i++) arr[i] = RANDOM.nextInt();
     Arrays.sort(arr, Collections.reverseOrder());
     System.out.println(order(arr));
   }
 
   public static void refactoredMain(String... args) {
     Integer[] arr = new Integer[100];
-    for (int i = 0; i < arr.length; i++)
-      arr[i] = RANDOM.nextInt();
+    for (int i = 0; i < arr.length; i++) arr[i] = RANDOM.nextInt();
     Comparator<Integer> cmp = (i1, i2) -> i2 < i1 ? -1 : i2 > i1 ? 1 : 0;
     Arrays.sort(arr, cmp);
     System.out.println(order(arr));

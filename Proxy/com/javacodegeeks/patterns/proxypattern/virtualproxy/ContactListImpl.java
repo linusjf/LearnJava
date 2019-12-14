@@ -10,7 +10,6 @@ import java.util.List;
  * @version 1.0
  */
 public class ContactListImpl implements ContactList {
-
   @Override
   public List<Employee> getEmployeeList() {
     return getEmpList();

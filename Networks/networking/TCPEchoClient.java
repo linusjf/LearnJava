@@ -27,14 +27,10 @@ public enum TCPEchoClient {
 
   private static void accessServer() {
     try (Socket link = new Socket(host, PORT);
-         Scanner input =
-             new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
+         Scanner input = new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
          PrintWriter output = new PrintWriter(
-             new OutputStreamWriter(link.getOutputStream(),
-                                    StandardCharsets.UTF_8.name()),
-             true);
-         Scanner userEntry =
-             new Scanner(System.in, StandardCharsets.UTF_8.name());) {
+             new OutputStreamWriter(link.getOutputStream(), StandardCharsets.UTF_8.name()), true);
+         Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());) {
       // Set up stream for keyboard entry…
       String message = "";
       while (!"***CLOSE***".equals(message)) {

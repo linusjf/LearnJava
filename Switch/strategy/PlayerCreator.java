@@ -6,7 +6,6 @@ import player.SnookerPlayer;
 import player.TennisPlayer;
 
 public class PlayerCreator {
-
   public Player createPlayer(PlayerTypes playerType) {
     switch (playerType) {
       case TENNIS:
@@ -16,8 +15,7 @@ public class PlayerCreator {
       case SNOOKER:
         return new SnookerPlayer();
       default:
-        throw new IllegalArgumentException("Invalid player type: "
-                                           + playerType);
+        throw new IllegalArgumentException("Invalid player type: " + playerType);
     }
   }
 }

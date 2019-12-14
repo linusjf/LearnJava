@@ -32,8 +32,7 @@ public class Selection extends HttpServlet {
   }
 
   @SuppressWarnings("PMD.AvoidDuplicateLiterals")
-  private void sendPage(HttpServletResponse reply, String product)
-      throws IOException {
+  private void sendPage(HttpServletResponse reply, String product) throws IOException {
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
     out.println("<HTML>");
@@ -48,29 +47,29 @@ public class Selection extends HttpServlet {
     out.println("<TR>");
     out.println(" <TD>Quantity required (kg)");
     out.println(" <INPUT TYPE='Text' NAME='Qty'"
-                + " VALUE='' SIZE=5></TD>");
+        + " VALUE='' SIZE=5></TD>");
     out.println("</TR>");
     out.println("</TABLE>");
     out.println("<BR/><BR/><BR/>");
     out.println("<TABLE>");
     out.println("<TR>");
     out.println(" <TD><INPUT TYPE='Radio'"
-                + " NAME='Option' VALUE='Add' CHECKED>");
+        + " NAME='Option' VALUE='Add' CHECKED>");
     out.println(" Add to cart.</TD>");
     out.println("</TR>");
     out.println("<TR>");
     out.println(" <TD><INPUT TYPE='Radio'"
-                + " NAME='Option' VALUE='Remove'>");
+        + " NAME='Option' VALUE='Remove'>");
     out.println(" Remove item from cart.</TD>");
     out.println("</TR>");
     out.println("<TR>");
     out.println(" <TD><INPUT TYPE='Radio'"
-                + " NAME='Option' VALUE='Next'>");
+        + " NAME='Option' VALUE='Next'>");
     out.println(" Choose next item.</TD>");
     out.println("</TR>");
     out.println("<TR>");
     out.println(" <TD><INPUT TYPE='Radio'"
-                + " NAME='Option' VALUE='Checkout'>");
+        + " NAME='Option' VALUE='Checkout'>");
     out.println("</TD>");
     out.println("</TR>");
     out.println("</TABLE>");

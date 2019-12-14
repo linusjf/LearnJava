@@ -12,8 +12,7 @@ public enum Nashorn {
       ScriptEngineManager manager = new ScriptEngineManager();
       ScriptEngine engine = manager.getEngineByName("JavaScript");
       System.out.println(getClassForObject(engine));
-      System.out.println(
-          "Result:" + eval(engine, "function f() { return 1; }; f() + 1;"));
+      System.out.println("Result:" + eval(engine, "function f() { return 1; }; f() + 1;"));
     } catch (ScriptException se) {
       System.err.println(se);
     }
@@ -23,8 +22,7 @@ public enum Nashorn {
     return obj.getClass();
   }
 
-  private static Object eval(ScriptEngine engine, String scriptlet)
-      throws ScriptException {
+  private static Object eval(ScriptEngine engine, String scriptlet) throws ScriptException {
     return engine.eval(scriptlet);
   }
 }

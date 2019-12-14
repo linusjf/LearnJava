@@ -14,7 +14,6 @@ public enum Symposium {
     treeSet.add(4);
     treeSet.add(1);
 
-    for (Integer temp: treeSet)
-      System.out.println(temp);
+    for (Integer temp : treeSet) System.out.println(temp);
   }
 }

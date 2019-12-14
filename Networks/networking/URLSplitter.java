@@ -4,13 +4,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class URLSplitter {
-
   private URLSplitter() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         URL u = new URL(arg);
         System.out.println("The URL is " + u);

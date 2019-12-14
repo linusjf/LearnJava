@@ -14,14 +14,14 @@ import java.nio.charset.StandardCharsets;
  */
 public enum TestByteToHex {
   ;
-    static final String BYTE_STRING = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
-                              + "$123456789003356788990335688335678888"
-                              + "))5778889===66://))*£&'/!!))))?:/!?"
-                              + "?????!//!!!!!!!!!?????      dffvbbfrews"
-                              + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
-                              + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
-                              + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
-                              + "FDSSSGHIJJH";
+  static final String BYTE_STRING = "@#£&_-()=%?!/:'*\"[]{}<>^¡¿~™®©¢¥€"
+      + "$123456789003356788990335688335678888"
+      + "))5778889===66://))*£&'/!!))))?:/!?"
+      + "?????!//!!!!!!!!!?????      dffvbbfrews"
+      + "hjoohgvvvzscvbmmmxxvffew236889uygghhbhjk"
+      + "iu65fvbhbbvvvvvdew13yhgftggjioo9hhgggg"
+      + "gvvgdWeryhhhDFGJKYRESCHJKKOKVVCSSDVNJH"
+      + "FDSSSGHIJJH";
   /**
    * Describe <code>main</code> method here.
    *
@@ -29,7 +29,6 @@ public enum TestByteToHex {
    */
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-
     final byte[] raw = BYTE_STRING.getBytes(StandardCharsets.UTF_8);
     long start = System.nanoTime();
     final String hex = ByteToHex.getHex(raw);

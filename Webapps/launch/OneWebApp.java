@@ -23,7 +23,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public final class OneWebApp {
-
   private OneWebApp() {
     throw new IllegalStateException("Private constructor");
   }
@@ -38,8 +37,7 @@ public final class OneWebApp {
       Server server = new Server(8080);
 
       // Setup JMX
-      MBeanContainer mbContainer =
-          new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
+      MBeanContainer mbContainer = new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
       server.addBean(mbContainer);
 
       // The WebAppContext is the entity that controls the environment in

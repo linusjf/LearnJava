@@ -12,7 +12,6 @@ import java.util.Base64;
  * @version 1.0
  */
 public class MD5Encryptor implements Encrypt {
-
   /**
    * Describe <code>encrypt</code> method here.
    *

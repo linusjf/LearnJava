@@ -7,7 +7,6 @@ package cleaner;
  * @version 1.0
  */
 public final class Adult {
-
   private Adult() {
     throw new IllegalStateException("Private constructor.");
   }

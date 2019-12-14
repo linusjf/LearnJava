@@ -30,11 +30,11 @@ public enum Iterative {
   }
 
   public static void main(String... args) {
-    List<Double> doubles = new ArrayList<>(
-        Arrays.asList(2.2d, 3.4d, 6.78d, 2.45d, -3.4d, -2.56d, 4.23d, -5.6d));
+    List<Double> doubles =
+        new ArrayList<>(Arrays.asList(2.2d, 3.4d, 6.78d, 2.45d, -3.4d, -2.56d, 4.23d, -5.6d));
     removeNegative(doubles);
-    List<Double> doubles2 = new ArrayList<>(
-        Arrays.asList(2.2d, 3.4d, 6.78d, 2.45d, -3.4d, -2.56d, 4.23d, -5.6d));
+    List<Double> doubles2 =
+        new ArrayList<>(Arrays.asList(2.2d, 3.4d, 6.78d, 2.45d, -3.4d, -2.56d, 4.23d, -5.6d));
     removeNegative(doubles2);
     assert doubles.equals(doubles2);
     double dotProduct = dot(doubles, doubles2);

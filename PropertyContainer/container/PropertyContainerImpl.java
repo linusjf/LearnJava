@@ -7,16 +7,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class PropertyContainerImpl
-    implements PropertyContainer, Serializable {
+public abstract class PropertyContainerImpl implements PropertyContainer, Serializable {
   public static final long serialVersionUID = 1L;
 
   protected Map<String, Object> ivProperties = new Hashtable<>();
 
   /**
-   * Add a property associated with a token name. If the token already exists,
-   * the value will be replaced. If the token does not exist, it will be added
-   * with the value.
+   * Add a property associated with a token name. If the token already exists, the value will be
+   * replaced. If the token does not exist, it will be added with the value.
    *
    * @param value is an object that cannot be null
    * @param token is a key that can be used to retrieve the value
@@ -80,7 +78,7 @@ public abstract class PropertyContainerImpl
       return false;
     if (o == this)
       return true;
-    PropertyContainerImpl obj = (PropertyContainerImpl)o;
+    PropertyContainerImpl obj = (PropertyContainerImpl) o;
     return ivProperties.equals(obj.ivProperties);
   }
 

@@ -14,7 +14,7 @@ public class AccessControl implements Prototype {
   @Override
   public AccessControl clone() throws CloneNotSupportedException {
     try {
-      return (AccessControl)super.clone();
+      return (AccessControl) super.clone();
     } catch (CloneNotSupportedException e) {
       System.err.println(e.getMessage());
     }

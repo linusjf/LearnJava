@@ -13,9 +13,8 @@ public enum Shuffle {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Integer[] nums = new Integer[100];
-    for (int i = 0; i < 100; i++)
-      nums[i] = rnd.nextInt(100);
-    shuffle((Object)nums);
+    for (int i = 0; i < 100; i++) nums[i] = rnd.nextInt(100);
+    shuffle((Object) nums);
   }
 
   public static void shuffle(Object... a) {
@@ -54,7 +53,7 @@ public enum Shuffle {
     Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
     int min = 0;
     int max = 0;
-    for (Map.Entry<Integer, Integer> entry: entries) {
+    for (Map.Entry<Integer, Integer> entry : entries) {
       System.out.printf(" (%d : %d) ", entry.getKey(), entry.getValue());
       if (entry.getValue() > max)
         max = entry.getValue();

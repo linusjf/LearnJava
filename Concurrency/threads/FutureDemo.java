@@ -9,16 +9,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Java program to show how to use Future in Java. Future allows to write
- * asynchronous code in Java, where Future promises result to be available in
- * future
+ * Java program to show how to use Future in Java. Future allows to write asynchronous code in Java,
+ * where Future promises result to be available in future
  *
  * @author Javin
  */
 public enum FutureDemo {
   ;
-  private static final ExecutorService THREAD_POOL =
-      Executors.newFixedThreadPool(3);
+  private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(3);
 
   public static void main(String[] args) {
     try {
@@ -57,8 +55,7 @@ public enum FutureDemo {
       try {
         return factorial(number);
       } catch (InterruptedException ex) {
-        Logger.getLogger(FutureDemo.class.getName())
-            .log(Level.SEVERE, null, ex);
+        Logger.getLogger(FutureDemo.class.getName()).log(Level.SEVERE, null, ex);
       }
       return 0L;
     }

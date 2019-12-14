@@ -38,8 +38,7 @@ public class CompressionDecorator extends DataSourceDecorator {
   private String compress(String stringData) throws IOException {
     byte[] data = stringData.getBytes(StandardCharsets.UTF_8);
     try (ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-         DeflaterOutputStream dos =
-             new DeflaterOutputStream(bout, new Deflater(compLevel));) {
+         DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));) {
       dos.write(data);
       return Base64.getEncoder().encodeToString(bout.toByteArray());
     }
@@ -52,8 +51,7 @@ public class CompressionDecorator extends DataSourceDecorator {
          InflaterInputStream iin = new InflaterInputStream(in);
          ByteArrayOutputStream bout = new ByteArrayOutputStream(512);) {
       int b;
-      while ((b = iin.read()) != -1)
-        bout.write(b);
+      while ((b = iin.read()) != -1) bout.write(b);
       return new String(bout.toByteArray(), StandardCharsets.UTF_8);
     }
   }

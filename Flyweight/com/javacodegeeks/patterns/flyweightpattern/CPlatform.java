@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.flyweightpattern;
  * @version 1.0
  */
 public class CPlatform implements Platform {
-
   /** Creates a new <code>CPlatform</code> instance. */
   public CPlatform() {
     System.out.println("CPlatform object created");

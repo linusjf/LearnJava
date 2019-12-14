@@ -12,7 +12,6 @@ public enum ExceptionTask {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-
     @Override
     public void run() {
       int numero = Integer.parseInt("TTT");

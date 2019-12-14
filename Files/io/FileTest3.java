@@ -12,14 +12,13 @@ public enum FileTest3 {
     int mark;
     int total = 0;
     int count = 0;
-    try (Scanner input = new Scanner(new File("marks1.txt"),
-                                     StandardCharsets.UTF_8.name())) {
+    try (Scanner input = new Scanner(new File("marks1.txt"), StandardCharsets.UTF_8.name())) {
       while (input.hasNext()) {
         mark = input.nextInt();
         total += mark;
         count++;
       }
-      System.out.println("Mean = " + (float)total / count);
+      System.out.println("Mean = " + (float) total / count);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }

@@ -4,9 +4,7 @@ package com.vmlens.tutorialcopyonwrite;
 public class AddressUsingCopyOnWriteWithoutSynchronized {
   private volatile AddressValue addressValue;
 
-  public AddressUsingCopyOnWriteWithoutSynchronized(String street,
-                                                    String city,
-                                                    String phone) {
+  public AddressUsingCopyOnWriteWithoutSynchronized(String street, String city, String phone) {
     this.addressValue = new AddressValue(street, city, phone);
   }
 
@@ -18,12 +16,10 @@ public class AddressUsingCopyOnWriteWithoutSynchronized {
   }
 
   public void updatePostalAddress(String street, String city) {
-    addressValue =
-        new AddressValue(street, city, addressValue.getPhoneNumber());
+    addressValue = new AddressValue(street, city, addressValue.getPhoneNumber());
   }
 
   public void updatePhoneNumber(String phone) {
-    addressValue = new AddressValue(
-        addressValue.getStreet(), addressValue.getCity(), phone);
+    addressValue = new AddressValue(addressValue.getStreet(), addressValue.getCity(), phone);
   }
 }

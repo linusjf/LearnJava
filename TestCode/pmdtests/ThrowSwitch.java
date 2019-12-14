@@ -3,7 +3,6 @@ package pmdtests;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class ThrowSwitch {
-
   private ThrowSwitch() {
     throw new IllegalStateException("Private constructor");
   }
@@ -28,4 +27,3 @@ public final class ThrowSwitch {
     return ThreadLocalRandom.current().nextInt(0, 6);
   }
 }
-

@@ -10,16 +10,14 @@ import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 public final class EchoClient {
-
   private static final int ECHO_PORT = 7;
 
   private EchoClient() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
-                     "PMD.DataflowAnomalyAnalysis",
-                     "PMD.DoNotCallSystemExit"})
+  @SuppressWarnings(
+      {"PMD.AvoidLiteralsInIfCondition", "PMD.DataflowAnomalyAnalysis", "PMD.DoNotCallSystemExit"})
   public static void
   main(String[] args) throws IOException {
     if (args.length < 2) {
@@ -33,18 +31,16 @@ public final class EchoClient {
       System.out.printf("Connecting to port %d%n", portNumber);
     } catch (NumberFormatException nfe) {
       portNumber = ECHO_PORT;
-      System.err.printf("Error parsing input. Connecting to port %d%n",
-                        portNumber);
+      System.err.printf("Error parsing input. Connecting to port %d%n", portNumber);
     }
     try (Socket echoSocket = new Socket(hostName, portNumber);
          PrintWriter out = new PrintWriter(
-             new OutputStreamWriter(echoSocket.getOutputStream(),
-                                    StandardCharsets.UTF_8.name()),
+             new OutputStreamWriter(echoSocket.getOutputStream(), StandardCharsets.UTF_8.name()),
              true);
-         BufferedReader in = new BufferedReader(new InputStreamReader(
-             echoSocket.getInputStream(), StandardCharsets.UTF_8.name()));
-         BufferedReader stdIn = new BufferedReader(
-             new InputStreamReader(System.in, StandardCharsets.UTF_8.name()))) {
+         BufferedReader in = new BufferedReader(
+             new InputStreamReader(echoSocket.getInputStream(), StandardCharsets.UTF_8.name()));
+         BufferedReader stdIn =
+             new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8.name()))) {
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         out.println(userInput);
@@ -53,8 +49,8 @@ public final class EchoClient {
     } catch (UnknownHostException e) {
       System.err.println("Don't know about host " + hostName);
     } catch (IOException e) {
-      System.err.println("Couldn't get I/O for the connection to " + hostName
-                         + ": " + e.getMessage());
+      System.err.println(
+          "Couldn't get I/O for the connection to " + hostName + ": " + e.getMessage());
     }
   }
 }

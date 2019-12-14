@@ -26,6 +26,7 @@ public enum SqlTypeRegex {
     Matcher m = Pattern.compile(pattern).matcher(value);
     if (m.matches() && group >= 0 && group <= m.groupCount()) {
       return m.group(group);
-    } else return null;
+    } else
+      return null;
   }
 }

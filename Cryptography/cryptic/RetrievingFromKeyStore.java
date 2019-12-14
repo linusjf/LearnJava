@@ -35,12 +35,11 @@ public enum RetrievingFromKeyStore {
       keyStore.load(is, password);
 
       // Creating the KeyStore.ProtectionParameter object
-      ProtectionParameter protectionParam =
-          new KeyStore.PasswordProtection(password);
+      ProtectionParameter protectionParam = new KeyStore.PasswordProtection(password);
 
       // Creating SecretKey object
-      SecretKey mySecretKey = new SecretKeySpec(
-          "myPassword".getBytes(StandardCharsets.UTF_8), "DSA");
+      SecretKey mySecretKey =
+          new SecretKeySpec("myPassword".getBytes(StandardCharsets.UTF_8), "DSA");
 
       // Creating SecretKeyEntry object
       SecretKeyEntry secretKeyEntry = new SecretKeyEntry(mySecretKey);
@@ -52,15 +51,14 @@ public enum RetrievingFromKeyStore {
 
       // Creating the KeyStore.SecretKeyEntry object
       SecretKeyEntry secretKeyEnt =
-          (SecretKeyEntry)keyStore.getEntry("secretKeyAlias", protectionParam);
+          (SecretKeyEntry) keyStore.getEntry("secretKeyAlias", protectionParam);
 
       // Creating SecretKey object
       SecretKey mysecretKey = secretKeyEnt.getSecretKey();
-      System.out.println("Algorithm used to generate key : "
-                         + mysecretKey.getAlgorithm());
+      System.out.println("Algorithm used to generate key : " + mysecretKey.getAlgorithm());
       System.out.println("Format used for the key: " + mysecretKey.getFormat());
-    } catch (UnrecoverableEntryException | CertificateException
-             | NoSuchAlgorithmException | KeyStoreException | IOException e) {
+    } catch (UnrecoverableEntryException | CertificateException | NoSuchAlgorithmException
+        | KeyStoreException | IOException e) {
       System.err.println(e);
     }
   }

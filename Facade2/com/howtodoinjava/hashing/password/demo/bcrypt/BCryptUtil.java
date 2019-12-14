@@ -22,17 +22,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class BCryptUtil {
-  private static final Pattern PASSWORD_PATTERN =
-      Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
+  private static final Pattern PASSWORD_PATTERN = Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
   private BCryptUtil() {
     throw new IllegalStateException("Private constructor");
   }
 
   /**
-   * Encode a byte array using bcrypt's slightly-modified base64 encoding
-   * scheme. Note that this is *not* compatible with the standard MIME-base64
-   * encoding.
+   * Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this is
+   * *not* compatible with the standard MIME-base64 encoding.
    *
    * @param d the byte array to encode
    * @return base64-encoded string
@@ -43,8 +41,8 @@ public final class BCryptUtil {
   }
 
   /**
-   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note
-   * that this is *not* compatible with the standard MIME-base64 encoding.
+   * Decode a string encoded using bcrypt's base64 scheme to a byte array. Note that this is *not*
+   * compatible with the standard MIME-base64 encoding.
    *
    * @param s the string to decode
    * @return an array containing the decoded bytes
@@ -58,8 +56,7 @@ public final class BCryptUtil {
    * Cylically extract a word of key material.
    *
    * @param data the string to extract the data from
-   * @param offp a "pointer" (as a one-entry array) to the current offset into
-   *     data
+   * @param offp a "pointer" (as a one-entry array) to the current offset into data
    * @return the next word of material from data
    */
   @SuppressWarnings("PMD.UseVarargs")
@@ -77,12 +74,10 @@ public final class BCryptUtil {
     return word;
   }
 
-  /**
-   * Using regex. Match the initial salt and match the minor and offset values.
-   */
+  /** Using regex. Match the initial salt and match the minor and offset values. */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String[] retrieveOffsetMinor(String salt) {
-    char minor = (char)0;
+    char minor = (char) 0;
     int off = 0;
     Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (matcher.matches()) {
@@ -111,8 +106,7 @@ public final class BCryptUtil {
 
       char minor = vals[0].charAt(0);
 
-      byte[] passwordb =
-          (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
+      byte[] passwordb = (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
 
       int off = Integer.parseInt(vals[1]);
       final int rounds = Integer.parseInt(salt.substring(off, off + 2));
@@ -127,10 +121,7 @@ public final class BCryptUtil {
     }
   }
 
-  private static String getHashedPassword(char minor,
-                                          int rounds,
-                                          byte[] saltb,
-                                          byte[] hashed) {
+  private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
     if (minor >= LOWER_CASE_A)
@@ -149,8 +140,8 @@ public final class BCryptUtil {
   /**
    * Generate a salt for use with the BCrypt.hashpw() method.
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the
-   *     work factor therefore increases as 2**log_rounds.
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   *     therefore increases as 2**log_rounds.
    * @param random an instance of SecureRandom to use
    * @return an encoded salt value
    */
@@ -162,17 +153,15 @@ public final class BCryptUtil {
     rs.append("$2a$");
     if (logRounds < TEN)
       rs.append('0');
-    rs.append(Integer.toString(logRounds))
-        .append(DOLLAR)
-        .append(encodeBase64(rnd));
+    rs.append(Integer.toString(logRounds)).append(DOLLAR).append(encodeBase64(rnd));
     return rs.toString();
   }
 
   /**
    * Generate a salt for use with the BCrypt.hashpw() method.
    *
-   * @param logRounds the log2 of the number of rounds of hashing to apply - the
-   *     work factor therefore increases as 2**log_rounds.
+   * @param logRounds the log2 of the number of rounds of hashing to apply - the work factor
+   *     therefore increases as 2**log_rounds.
    * @return an encoded salt value
    */
   public static String gensalt(final int logRounds) {
@@ -180,8 +169,8 @@ public final class BCryptUtil {
   }
 
   /**
-   * Generate a salt for use with the BCrypt.hashpw() method, selecting a
-   * reasonable default for the number of hashing rounds to apply.
+   * Generate a salt for use with the BCrypt.hashpw() method, selecting a reasonable default for the
+   * number of hashing rounds to apply.
    *
    * @return an encoded salt value
    */

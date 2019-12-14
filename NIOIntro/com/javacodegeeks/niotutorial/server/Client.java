@@ -13,7 +13,6 @@ import java.nio.charset.StandardCharsets;
  * @version 1.0
  */
 public final class Client {
-
   static final InetSocketAddress HOSTADDRESS =
       new InetSocketAddress(Constants.HOST, Constants.PORT);
 
@@ -32,13 +31,12 @@ public final class Client {
 
     for (int i = 0; i < 10; i++) {
       try (SocketChannel client = SocketChannel.open(HOSTADDRESS)) {
-        final ByteBuffer buffer = ByteBuffer.wrap(
-            Constants.TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8));
+        final ByteBuffer buffer =
+            ByteBuffer.wrap(Constants.TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8));
 
         while (buffer.hasRemaining()) {
           client.write(buffer);
-          System.out.println("Written " + (i + 1) + " : "
-                             + convertBytesToString(buffer.array()));
+          System.out.println("Written " + (i + 1) + " : " + convertBytesToString(buffer.array()));
         }
       } catch (IOException e) {
         System.err.println("Error with client writing " + e.getMessage());

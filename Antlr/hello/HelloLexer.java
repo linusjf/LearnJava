@@ -15,8 +15,7 @@ public class HelloLexer extends Lexer {
   }
 
   protected static final DFA[] _decisionToDFA;
-  protected static final PredictionContextCache _sharedContextCache =
-      new PredictionContextCache();
+  protected static final PredictionContextCache _sharedContextCache = new PredictionContextCache();
   public static final int T__0 = 1, ID = 2, WS = 3;
   public static String[] channelNames = {"DEFAULT_TOKEN_CHANNEL", "HIDDEN"};
 
@@ -39,12 +38,10 @@ public class HelloLexer extends Lexer {
   }
 
   private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
-  public static final Vocabulary VOCABULARY =
-      new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+  public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
   /** @deprecated Use {@link #VOCABULARY} instead. */
-  @Deprecated
-  public static final String[] tokenNames;
+  @Deprecated public static final String[] tokenNames;
 
   static {
     tokenNames = new String[_SYMBOLIC_NAMES.length];
@@ -73,8 +70,7 @@ public class HelloLexer extends Lexer {
 
   public HelloLexer(CharStream input) {
     super(input);
-    _interp =
-        new LexerATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+    _interp = new LexerATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
   }
 
   @Override
@@ -117,8 +113,7 @@ public class HelloLexer extends Lexer {
       + "\3\2\2\2\22\23\3\2\2\2\23\6\3\2\2\2\24\26\t\3\2\2\25\24\3\2\2\2\26\27"
       + "\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\31\3\2\2\2\31\32\b\4\2\2\32\b"
       + "\3\2\2\2\5\2\22\27\3\b\2\2";
-  public static final ATN _ATN =
-      new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+  public static final ATN _ATN = new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 
   static {
     _decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];

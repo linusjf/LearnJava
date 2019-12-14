@@ -126,7 +126,7 @@ public final class MultiEchoServerNIO {
 
     // Above used for reading/writing data from/to
     // SocketChannel.
-    SocketChannel socketChannel = (SocketChannel)key.channel();
+    SocketChannel socketChannel = (SocketChannel) key.channel();
     buffer.clear();
     int numBytes = socketChannel.read(buffer);
     System.out.println(numBytes + " bytes read.");
@@ -148,8 +148,7 @@ public final class MultiEchoServerNIO {
                writing them to the SocketChannel…
         */
         buffer.flip();
-        while (buffer.remaining() > 0)
-          socketChannel.write(buffer);
+        while (buffer.remaining() > 0) socketChannel.write(buffer);
       } catch (IOException ioEx) {
         System.out.println("\nClosing socket " + socket + "…");
         closeSocket(socket);

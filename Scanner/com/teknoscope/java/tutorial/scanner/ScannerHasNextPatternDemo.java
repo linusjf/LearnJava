@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
  * Java Tutorial
  */
 public final class ScannerHasNextPatternDemo {
-
   private ScannerHasNextPatternDemo() {
     throw new IllegalStateException("Private constructor");
   }

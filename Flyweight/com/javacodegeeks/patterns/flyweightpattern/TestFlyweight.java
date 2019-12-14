@@ -5,9 +5,9 @@ public enum TestFlyweight {
   ;
   private static final String ASTERIXES = "*************************";
 
-    private static Platform platformC = PlatformFactory.getPlatformInstance("C");
-    private static Platform platformJava = PlatformFactory.getPlatformInstance("Java");
-    private static Platform platformRuby = PlatformFactory.getPlatformInstance("Ruby");
+  private static Platform platformC = PlatformFactory.getPlatformInstance("C");
+  private static Platform platformJava = PlatformFactory.getPlatformInstance("Java");
+  private static Platform platformRuby = PlatformFactory.getPlatformInstance("Ruby");
 
   /**
    * Main class.

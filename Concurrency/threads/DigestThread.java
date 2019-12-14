@@ -41,7 +41,7 @@ public class DigestThread extends Thread {
   // CPD-ON
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
-    for (String filename: args) {
+    for (String filename : args) {
       runDigestThread(filename);
     }
   }

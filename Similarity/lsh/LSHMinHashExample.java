@@ -37,8 +37,7 @@ public enum LSHMinHashExample {
       vectors[i] = new boolean[n];
 
       for (int j = 0; j < n; j++) {
-        vectors[i][j] =
-            r.nextDouble() <= 0.7 ? vectors[0][j] : r.nextInt(10) == 0;
+        vectors[i][j] = r.nextDouble() <= 0.7 ? vectors[0][j] : r.nextInt(10) == 0;
       }
     }
 
@@ -46,7 +45,6 @@ public enum LSHMinHashExample {
     // Now we can proceed to LSH binning
     // We will test multiple stages
     for (int stages = 1; stages <= 10; stages++) {
-
       // Compute the LSH hash of each vector
       LSHMinHash lsh = new LSHMinHash(stages, buckets, n);
       int[][] hashes = new int[count][];
@@ -72,12 +70,12 @@ public enum LSHMinHashExample {
 
           // We count the number of pairs with similarity 0.1, 0.2,
           // 0.3, etc.
-          results[(int)(10 * similarity)][0]++;
+          results[(int) (10 * similarity)][0]++;
 
           // Do they fall in the same bucket for one of the stages?
           for (int stage = 0; stage < stages; stage++) {
             if (hash1[stage] == hash2[stage]) {
-              results[(int)(10 * similarity)][1]++;
+              results[(int) (10 * similarity)][1]++;
               break;
             }
           }
@@ -88,11 +86,11 @@ public enum LSHMinHashExample {
       // For pairs that have a similarity x, the probability of falling
       // in the same bucket for at least one of the stages is y
       for (int i = 0; i < results.length; i++) {
-        double similarity = (double)i / 10;
+        double similarity = (double) i / 10;
 
         double probability = 0;
         if (results[i][0] != 0) {
-          probability = (double)results[i][1] / results[i][0];
+          probability = (double) results[i][1] / results[i][0];
         }
         System.out.println(similarity + "\t" + probability + "\t" + stages);
       }

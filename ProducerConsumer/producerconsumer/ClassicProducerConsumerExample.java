@@ -61,8 +61,7 @@ public enum ClassicProducerConsumerExample {
   static class Buffer {
     private final Queue<Integer> list;
     private final int size;
-    private final Random random =
-      new Random();
+    private final Random random = new Random();
 
     Buffer(int size) {
       this.list = new LinkedList<>();

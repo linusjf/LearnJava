@@ -16,7 +16,6 @@ import javax.crypto.spec.DHParameterSpec;
  * 3 parties: Alice, Bob, and Carol using a shared 2048-bit DH parameter.
  */
 public final class DHThreeWay {
-
   private DHThreeWay() {
     throw new IllegalStateException("Private constructor");
   }
@@ -31,8 +30,7 @@ public final class DHThreeWay {
 
       // This DH parameters can also be constructed by creating a
       // DHParameterSpec object using agreed-upon values
-      DHParameterSpec dhParamShared =
-          ((DHPublicKey)aliceKpair.getPublic()).getParams();
+      DHParameterSpec dhParamShared = ((DHPublicKey) aliceKpair.getPublic()).getParams();
 
       // Bob creates his own DH key pair using the same params
       System.out.println("BOB: Generate DH keypair ...");

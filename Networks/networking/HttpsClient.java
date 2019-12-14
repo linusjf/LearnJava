@@ -10,7 +10,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 public final class HttpsClient {
-
   private static final int PORT = 443;
 
   private HttpsClient() {
@@ -26,7 +25,7 @@ public final class HttpsClient {
 
     // default https port
     String host = args[0];
-    SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
     connect(host, factory);
   }
 
@@ -44,7 +43,7 @@ public final class HttpsClient {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void connect(String host, SSLSocketFactory factory) {
-    try (SSLSocket socket = (SSLSocket)factory.createSocket(host, PORT)) {
+    try (SSLSocket socket = (SSLSocket) factory.createSocket(host, PORT)) {
       // enable all the suites
       String[] supported = socket.getSupportedCipherSuites();
       socket.setEnabledCipherSuites(supported);
@@ -57,8 +56,8 @@ public final class HttpsClient {
       out.flush();
 
       // read response
-      BufferedReader in = new BufferedReader(new InputStreamReader(
-          socket.getInputStream(), StandardCharsets.UTF_8.name()));
+      BufferedReader in = new BufferedReader(
+          new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8.name()));
 
       // read the header
       String s = in.readLine();

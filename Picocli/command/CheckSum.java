@@ -14,19 +14,12 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 @SuppressWarnings("PMD.ImmutableField")
-@Command(
-    description = "Prints the checksum (MD5 by default) of a file to STDOUT.",
-    name = "checksum",
-    mixinStandardHelpOptions = true,
-    version = "checksum 3.0")
+@Command(description = "Prints the checksum (MD5 by default) of a file to STDOUT.",
+    name = "checksum", mixinStandardHelpOptions = true, version = "checksum 3.0")
 public class CheckSum implements Callable<Integer> {
+  @Parameters(index = "0", description = "The file whose checksum to calculate.") private File file;
 
-  @Parameters(index = "0",
-              description = "The file whose checksum to calculate.")
-  private File file;
-
-  @Option(names = {"-a", "--algorithm"},
-          description = "MD5, SHA-1, SHA-256, ...")
+  @Option(names = {"-a", "--algorithm"}, description = "MD5, SHA-1, SHA-256, ...")
   private String algorithm = "SHA-1";
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
@@ -37,13 +30,11 @@ public class CheckSum implements Callable<Integer> {
 
   @Override
   public Integer call() throws IOException, NoSuchAlgorithmException {
-
     byte[] fileContents = Files.readAllBytes(file.toPath());
     byte[] digest = MessageDigest.getInstance(algorithm).digest(fileContents);
     System.out.println(algorithm);
     System.out.println(Base64.getEncoder().encodeToString(digest));
-    System.out.printf("%0" + (digest.length * 2) + "x%n",
-                      new BigInteger(1, digest));
+    System.out.printf("%0" + (digest.length * 2) + "x%n", new BigInteger(1, digest));
     return 0;
   }
 }

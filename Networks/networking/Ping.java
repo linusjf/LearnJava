@@ -59,7 +59,6 @@ public final class Ping {
   }
 
   private static int getFirstArg(String... args) {
-
     if (Pattern.matches("[0-9]+", args[0])) {
       port = Integer.parseInt(args[0]);
       return 1;
@@ -99,7 +98,7 @@ public final class Ping {
       connector.join();
 
       // Print status of targets that have not yet been shown
-      for (Target t: targets) {
+      for (Target t : targets) {
         // Target t = (Target)i.next();
         if (!t.shown)
           t.show();
@@ -128,9 +127,8 @@ public final class Ping {
     }
 
     void show() {
-      String result = connectFinish > 0
-                          ? Long.toString(connectFinish - connectStart) + "ms"
-                          : failure == null ? "Timed out" : failure.toString();
+      String result = connectFinish > 0 ? Long.toString(connectFinish - connectStart) + "ms"
+                                        : failure == null ? "Timed out" : failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -167,10 +165,8 @@ public final class Ping {
     }
 
     private Target waitAndGetTarget() throws InterruptedException {
-
       synchronized (pending) {
-        while (pending.isEmpty())
-          pending.wait();
+        while (pending.isEmpty()) pending.wait();
         return pending.remove(0);
       }
     }
@@ -257,15 +253,14 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator();
-           i.hasNext();) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext();) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = i.next();
         i.remove();
 
         // Retrieve the target and the channel
-        Target t = (Target)sk.attachment();
-        SocketChannel sc = (SocketChannel)sk.channel();
+        Target t = (Target) sk.attachment();
+        SocketChannel sc = (SocketChannel) sk.channel();
 
         // Attempt to complete the connection sequence
         try {

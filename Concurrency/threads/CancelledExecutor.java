@@ -9,8 +9,7 @@ public enum CancelledExecutor {
   ;
 
   public static void main(String[] args) {
-    ThreadPoolExecutor executor =
-        (ThreadPoolExecutor)Executors.newCachedThreadPool();
+    ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     Task task = new Task();
     System.out.printf("Main: Executing the Task%n");
     Future<?> result = executor.submit(task);
@@ -29,7 +28,6 @@ public enum CancelledExecutor {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-
     @Override
     public void run() {
       while (true) {

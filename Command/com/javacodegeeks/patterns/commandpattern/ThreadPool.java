@@ -5,7 +5,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
 
-
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class ThreadPool {
   private final BlockingQueue<Job> jobQueue;
@@ -40,12 +39,10 @@ public final class ThreadPool {
       }
     }
     shutdown.set(true);
-    for (Thread workerThread: jobThreads)
-      workerThread.interrupt();
+    for (Thread workerThread : jobThreads) workerThread.interrupt();
   }
 
   private class Worker extends Thread {
-
     Worker(String name) {
       super(name);
     }
@@ -63,14 +60,17 @@ public final class ThreadPool {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void runTopJob() throws InterruptedException {
-      Stream.generate(() -> {
-        try {
-            return jobQueue.take();
-        } catch (InterruptedException ie) {
-            return null;
-        }
-    })
-    .findFirst().get().run();
+      Stream
+          .generate(() -> {
+            try {
+              return jobQueue.take();
+            } catch (InterruptedException ie) {
+              return null;
+            }
+          })
+          .findFirst()
+          .get()
+          .run();
     }
   }
 }

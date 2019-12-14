@@ -13,10 +13,9 @@ public enum PriorityQueueDemo {
       Task task = new Task(i, queue);
       taskThreads[i] = new Thread(task);
     }
-    for (Thread taskThread: taskThreads)
-      taskThread.start();
+    for (Thread taskThread : taskThreads) taskThread.start();
 
-    for (Thread taskThread: taskThreads) {
+    for (Thread taskThread : taskThreads) {
       try {
         taskThread.join();
       } catch (InterruptedException e) {
@@ -26,8 +25,7 @@ public enum PriorityQueueDemo {
     System.out.printf("Main: Queue Size: %d%n", queue.size());
     for (int i = 0; i < taskThreads.length * 1000; i++) {
       Event event = queue.poll();
-      System.out.printf(
-          "Thread %s: Priority %d%n", event.getThread(), event.getPriority());
+      System.out.printf("Thread %s: Priority %d%n", event.getThread(), event.getPriority());
     }
     System.out.printf("Main: Queue Size: %d%n", queue.size());
     System.out.printf("Main: End of the program%n");
@@ -66,7 +64,6 @@ public enum PriorityQueueDemo {
 
     @Override
     public boolean equals(Object o) {
-
       // If the object is compared with itself then return true
       if (o == this)
         return true;
@@ -78,7 +75,7 @@ public enum PriorityQueueDemo {
         return false;
       // typecast o to Event so that we can compare data members
 
-      Event e = (Event)o;
+      Event e = (Event) o;
       // Compare the data members and return accordingly
 
       return e.thread == thread && e.priority == priority;

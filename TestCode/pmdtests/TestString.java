@@ -2,7 +2,6 @@ package pmdtests;
 
 @SuppressWarnings("PMD.UnusedPrivateMethod")
 public class TestString {
-
   String a;
   String c;
 

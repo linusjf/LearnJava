@@ -31,15 +31,12 @@ public enum PersonnelClient {
   @SuppressWarnings("unchecked")
   private static void talkToServer() throws ClassNotFoundException {
     try (Socket socket = new Socket(host, PORT);
-         ObjectInputStream inStream =
-             new ObjectInputStream(socket.getInputStream());
+         ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
          PrintWriter outStream = new PrintWriter(
-             new OutputStreamWriter(socket.getOutputStream(),
-                                    StandardCharsets.UTF_8.name()),
+             new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()),
              true);) {
       outStream.println("SEND PERSONNEL DETAILS");
-      ArrayList<Personnel> response =
-          (ArrayList<Personnel>)inStream.readObject();
+      ArrayList<Personnel> response = (ArrayList<Personnel>) inStream.readObject();
 
       /*
            As in ArrayListSerialise, the compiler will

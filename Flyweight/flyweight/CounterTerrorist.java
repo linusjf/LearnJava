@@ -37,6 +37,6 @@ class CounterTerrorist implements Player {
   @Override
   public void mission() {
     System.out.println("Counter Terrorist with weapon " + weapon + "|"
-                       + " Task is " + TASK);
+        + " Task is " + TASK);
   }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 @SuppressWarnings("checkstyle:magicnumber")
 public final class TestVar {
-
   private TestVar() {
     throw new IllegalStateException("Private constructor.");
   }

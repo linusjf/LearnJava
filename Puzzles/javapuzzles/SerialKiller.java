@@ -15,7 +15,7 @@ public enum SerialKiller {
   public static void main(String[] args) {
     Sub sub = new Sub(666);
     sub.checkInvariant();
-    Sub copy = (Sub)deepCopy(sub);
+    Sub copy = (Sub) deepCopy(sub);
     copy.checkInvariant();
   }
 
@@ -63,6 +63,6 @@ final class Sub extends Super {
 
   @Override
   public boolean equals(Object o) {
-    return o instanceof Sub && id == ((Sub)o).id;
+    return o instanceof Sub && id == ((Sub) o).id;
   }
 }

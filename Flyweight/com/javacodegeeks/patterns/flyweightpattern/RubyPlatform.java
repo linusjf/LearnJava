@@ -7,7 +7,6 @@ package com.javacodegeeks.patterns.flyweightpattern;
  * @version 1.0
  */
 public class RubyPlatform implements Platform {
-
   /** Creates a new <code>RubyPlatform</code> instance. */
   public RubyPlatform() {
     System.out.println("RubyPlatform object created");

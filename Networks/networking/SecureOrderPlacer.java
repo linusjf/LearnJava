@@ -47,7 +47,7 @@ public final class SecureOrderPlacer {
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLSocketFactory ssf = context.getSocketFactory();
-      SSLSocket s = (SSLSocket)ssf.createSocket("localhost", PORT);
+      SSLSocket s = (SSLSocket) ssf.createSocket("localhost", PORT);
 
       // add anonymous (non-authenticated) cipher suites
       String[] supported = ssf.getSupportedCipherSuites();
@@ -55,7 +55,7 @@ public final class SecureOrderPlacer {
 
       // String[] anonCipherSuitesSupported = new String[supported.length];
       // int numAnonCipherSuitesSupported = 0;
-      for (String instance: supported) {
+      for (String instance : supported) {
         if (instance.contains("_anon_")) {
           anonCiphers.add(instance);
         }
@@ -73,9 +73,8 @@ public final class SecureOrderPlacer {
       OutputStream out = s.getOutputStream();
       out.write("Let's place an order".getBytes(StandardCharsets.UTF_8));
       out.flush();
-    } catch (IOException | KeyManagementException | KeyStoreException
-             | NoSuchAlgorithmException | CertificateException
-             | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException
+        | CertificateException | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

@@ -24,8 +24,8 @@ public class CreatePlayerCommand {
   }
 
   public Player createPlayer(String playerType) {
-    Command cmd = Objects.requireNonNull(PLAYERS.get(playerType),
-                                         "Invalid player type: " + playerType);
+    Command cmd =
+        Objects.requireNonNull(PLAYERS.get(playerType), "Invalid player type: " + playerType);
     return cmd.create();
   }
 }

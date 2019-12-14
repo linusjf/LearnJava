@@ -29,7 +29,6 @@ import java.util.function.Supplier;
  * @version 1.0
  */
 public final class EncryptorFacade {
-
   public enum EncryptionType {
     MD5,
     MD5SALTED,
@@ -49,8 +48,7 @@ public final class EncryptorFacade {
     ;
   }
 
-  private static final Map<EncryptionType, Supplier<Encrypt>>
-      ENCRYPTOR_SUPPLIER;
+  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
 
   static {
     final Map<EncryptionType, Supplier<Encrypt>> encryptors = new HashMap<>();
@@ -73,8 +71,8 @@ public final class EncryptorFacade {
   }
 
   public Encrypt supplyEncryptor(EncryptionType type) {
-    Supplier<Encrypt> supplier = Objects.requireNonNull(
-        ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
+    Supplier<Encrypt> supplier =
+        Objects.requireNonNull(ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
     return supplier.get();
   }
 

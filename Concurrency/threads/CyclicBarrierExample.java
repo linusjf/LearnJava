@@ -6,8 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Java program to demonstrate how to use CyclicBarrier in Java. CyclicBarrier
- * is a new Concurrency Utility added in Java 5 Concurrent package.
+ * Java program to demonstrate how to use CyclicBarrier in Java. CyclicBarrier is a new Concurrency
+ * Utility added in Java 5 Concurrent package.
  *
  * @author Javin Paul
  */
@@ -47,14 +47,11 @@ public enum CyclicBarrierExample {
     @Override
     public void run() {
       try {
-        System.out.println(Thread.currentThread().getName()
-                           + " is waiting on barrier");
+        System.out.println(Thread.currentThread().getName() + " is waiting on barrier");
         barrier.await();
-        System.out.println(Thread.currentThread().getName()
-                           + " has crossed the barrier");
+        System.out.println(Thread.currentThread().getName() + " has crossed the barrier");
       } catch (InterruptedException | BrokenBarrierException ex) {
-        Logger.getLogger(CyclicBarrierExample.class.getName())
-            .log(Level.SEVERE, null, ex);
+        Logger.getLogger(CyclicBarrierExample.class.getName()).log(Level.SEVERE, null, ex);
       }
     }
   }

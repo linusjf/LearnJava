@@ -6,7 +6,7 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-@SuppressWarnings({"PMD.DataClass","PMD.ShortClassName"})
+@SuppressWarnings({"PMD.DataClass", "PMD.ShortClassName"})
 public abstract class Car {
   private final Product product;
 

@@ -38,8 +38,7 @@ public abstract class UDPServer implements Runnable {
       while (true) {
         if (isShutDown)
           return;
-        DatagramPacket incoming =
-            new DatagramPacket(new byte[bufferSize], bufferSize);
+        DatagramPacket incoming = new DatagramPacket(new byte[bufferSize], bufferSize);
         try {
           socket.receive(incoming);
           this.respond(socket, incoming);
@@ -56,8 +55,7 @@ public abstract class UDPServer implements Runnable {
     }
   }
 
-  public abstract void respond(DatagramSocket socket, DatagramPacket request)
-      throws IOException;
+  public abstract void respond(DatagramSocket socket, DatagramPacket request) throws IOException;
 
   public void shutDown() {
     this.isShutDown = true;

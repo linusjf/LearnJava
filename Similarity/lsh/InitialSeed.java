@@ -7,7 +7,6 @@ public enum InitialSeed {
   ;
 
   public static void main(String[] args) {
-
     // Initialize two minhash objects, with the same seed
     int signatureSize = 20;
     int dictionarySize = 100;
@@ -30,7 +29,7 @@ public enum InitialSeed {
 
   static void println(final int... array) {
     System.out.print("[");
-    for (int v: array) {
+    for (int v : array) {
       System.out.print(v + " ");
     }
     System.out.println("]");

@@ -7,7 +7,6 @@ public enum JaccardTest {
   ;
 
   public static void main(String... args) {
-
     Jaccard jac = new Jaccard();
 
     System.out.println("\nJaccard: \n");

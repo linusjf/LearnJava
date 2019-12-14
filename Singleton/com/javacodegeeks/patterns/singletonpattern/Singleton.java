@@ -13,14 +13,13 @@ public final class Singleton implements Serializable, Cloneable {
   private static final long serialVersionUID = -1093810940935189395L;
 
   @SuppressWarnings("checkstyle:illegaltoken")
-  private static transient volatile Singleton instance;  // NOPMD
+  private static transient volatile Singleton instance; // NOPMD
 
   private transient long nextValue;
 
   private Singleton() {
     if (instance != null) {
-      throw new IllegalStateException(
-          "Illegal access to constructor: Already instantiated.");
+      throw new IllegalStateException("Illegal access to constructor: Already instantiated.");
     }
   }
 
@@ -30,7 +29,7 @@ public final class Singleton implements Serializable, Cloneable {
    * @return a <code>Singleton</code> value
    */
   public static Singleton getInstance() {
-    if (instance == null) {  // NOPMD
+    if (instance == null) { // NOPMD
       // the pmd warning emitted ignores the volatile modufier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
@@ -50,10 +49,9 @@ public final class Singleton implements Serializable, Cloneable {
   }
 
   /**
-   * This method <code>clone</code> should be implemented only if the Singleton
-   * class immplements the Cloneable interface or extends a class that does. if
-   * not,the compiler will do the exact same thing this method does without
-   * having to implement it.
+   * This method <code>clone</code> should be implemented only if the Singleton class immplements
+   * the Cloneable interface or extends a class that does. if not,the compiler will do the exact
+   * same thing this method does without having to implement it.
    *
    * @return an <code>Object</code> value
    * @exception CloneNotSupportedException if an error occurs
@@ -65,8 +63,7 @@ public final class Singleton implements Serializable, Cloneable {
   }
 
   @SuppressWarnings({"unused", "PMD.UseProperClassLoader"})
-  private static Class<?> getClass(String classname)
-      throws ClassNotFoundException {
+  private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     if (classLoader == null)
       classLoader = Singleton.class.getClassLoader();

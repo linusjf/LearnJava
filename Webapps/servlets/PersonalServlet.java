@@ -28,8 +28,7 @@ public class PersonalServlet extends HttpServlet {
     if (name == null)
       out.println("'No name provided'");
     else
-      out.println(
-          URLEncoder.encode(name, StandardCharsets.UTF_8.displayName()));
+      out.println(URLEncoder.encode(name, StandardCharsets.UTF_8.displayName()));
     out.println("</H1>");
     out.println("</BODY>");
     out.println("</HTML>");

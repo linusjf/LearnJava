@@ -61,8 +61,7 @@ public enum DaytimeUDPClient {
           System.out.printf("Using port %d%n", port);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
           port = PORT;
-          System.err.printf("Error parsing command line. Using port %d%n",
-                            port);
+          System.err.printf("Error parsing command line. Using port %d%n", port);
         }
         connectToTimeServer(socket, hostname, port);
       }
@@ -71,16 +70,14 @@ public enum DaytimeUDPClient {
     }
   }
 
-  private static void connectToTimeServer(DatagramSocket socket,
-                                          String hostname,
-                                          int port) throws IOException {
+  private static void connectToTimeServer(DatagramSocket socket, String hostname, int port)
+      throws IOException {
     InetAddress host = InetAddress.getByName(hostname);
     DatagramPacket request = new DatagramPacket(new byte[1], 1, host, port);
     DatagramPacket response = new DatagramPacket(new byte[1024], 1024);
     socket.send(request);
     socket.receive(response);
-    String result =
-        new String(response.getData(), 0, response.getLength(), "US-ASCII");
+    String result = new String(response.getData(), 0, response.getLength(), "US-ASCII");
     System.out.println(result);
   }
 }

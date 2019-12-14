@@ -7,21 +7,18 @@ import player.TennisPlayer;
 
 public enum PlayerTypes {
   TENNIS {
-
     @Override
     public Player createPlayer() {
       return new TennisPlayer();
     }
   },
   FOOTBALL {
-
     @Override
     public Player createPlayer() {
       return new FootballPlayer();
     }
   },
   SNOOKER {
-
     @Override
     public Player createPlayer() {
       return new SnookerPlayer();

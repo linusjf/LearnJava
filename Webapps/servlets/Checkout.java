@@ -29,11 +29,10 @@ public class Checkout extends HttpServlet {
     int numProducts = 0;
 
     // print product lines
-    for (Enumeration<String> prodNames = cart.getAttributeNames();
-         prodNames.hasMoreElements();
+    for (Enumeration<String> prodNames = cart.getAttributeNames(); prodNames.hasMoreElements();
          ++numProducts) {
       String product = prodNames.nextElement();
-      String stringWt = (String)cart.getAttribute(product);
+      String stringWt = (String) cart.getAttribute(product);
       float wt = Float.parseFloat(stringWt);
       float cost;
       if ("Apples".equals(product))

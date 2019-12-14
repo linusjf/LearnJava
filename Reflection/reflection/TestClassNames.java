@@ -1,7 +1,7 @@
 package reflection;
 
-import java.lang.reflect.Array;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 
 public enum TestClassNames {
   ;
@@ -18,7 +18,7 @@ public enum TestClassNames {
     System.out.println("toString():         " + c.toString());
     System.out.println();
   }
-  
+
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void show(Runnable r) {
     showClass(r.getClass());
@@ -45,8 +45,7 @@ public enum TestClassNames {
     showClass(LocalClass[].class);
     Object anonymous = new Serializable() {};
     showClassForObject(anonymous);
-    showClassForObject(Array.newInstance(
-          anonymous.getClass(), 1));
+    showClassForObject(Array.newInstance(anonymous.getClass(), 1));
 
     // Obtains an array class of an anonymous base type.
     show(() -> {});
@@ -61,8 +60,7 @@ public enum TestClassNames {
   }
 }
 
-@interface SomeAnnotation {
-}
+@interface SomeAnnotation {}
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {

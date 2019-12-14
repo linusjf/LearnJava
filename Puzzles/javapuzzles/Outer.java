@@ -2,7 +2,6 @@ package javapuzzles;
 
 @SuppressWarnings("PMD.AbstractClassWithoutAbstractMethod")
 final class Outer {
-
   public static void main(String[] args) {
     Outer.Inner in = new Outer().new Inner();
     in.show();
@@ -16,7 +15,6 @@ final class Outer {
 
     // Inner class is local to outerMethod()
     abstract class AbstractInner {
-
       void innerMethod() {
         System.out.println("inside innerMethod");
         System.out.println("x= " + x);
@@ -29,7 +27,6 @@ final class Outer {
 
   // Simple nested inner class
   class Inner {
-
     public void show() {
       System.out.println("In a nested class method");
     }

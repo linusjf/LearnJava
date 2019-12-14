@@ -36,8 +36,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public final class RosterTest {
-  private static final String SELECTIVE_SERVICE =
-      "Persons who are eligible for Selective Service ";
+  private static final String SELECTIVE_SERVICE = "Persons who are eligible for Selective Service ";
 
   private RosterTest() {
     throw new IllegalStateException("Private constructor");
@@ -57,8 +56,8 @@ public final class RosterTest {
   // Approach 2: Create More Generalized Search Methods
   // clang-format off
   public static void printPersonsWithinAgeRange(
-      List<Person> roster, int low, int high) {  // clang-format on
-    for (Person p: roster) {
+      List<Person> roster, int low, int high) { // clang-format on
+    for (Person p : roster) {
       if (low <= p.getAge() && p.getAge() < high) {
         p.printPerson();
       }
@@ -69,8 +68,8 @@ public final class RosterTest {
   // Approach 4: Specify Search Criteria Code in an Anonymous Class
   // Approach 5: Specify Search Criteria Code with a Lambda Expression
   // clang-format off
-  public static void printPersons(List<Person> roster, CheckPerson tester) {  // clang-format on
-    for (Person p: roster) {
+  public static void printPersons(List<Person> roster, CheckPerson tester) { // clang-format on
+    for (Person p : roster) {
       if (tester.test(p)) {
         p.printPerson();
       }
@@ -80,8 +79,8 @@ public final class RosterTest {
   // Approach 6: Use Standard Functional Interfaces with Lambda Expressions
   // clang-format off
   public static void printPersonsWithPredicate(
-      List<Person> roster, Predicate<Person> tester) {  // clang-format on
-    for (Person p: roster) {
+      List<Person> roster, Predicate<Person> tester) { // clang-format on
+    for (Person p : roster) {
       if (tester.test(p)) {
         p.printPerson();
       }
@@ -91,8 +90,8 @@ public final class RosterTest {
   // Approach 7: Use Lambda Expressions Throughout Your Application
   // clang-format off
   public static void processPersons(
-      List<Person> roster, Predicate<Person> tester, Consumer<Person> block) {  // clang-format on
-    for (Person p: roster) {
+      List<Person> roster, Predicate<Person> tester, Consumer<Person> block) { // clang-format on
+    for (Person p : roster) {
       if (tester.test(p)) {
         block.accept(p);
       }
@@ -100,11 +99,9 @@ public final class RosterTest {
   }
 
   // Approach 7, second example
-  public static void processPersonsWithFunction(List<Person> roster,
-                                                Predicate<Person> tester,
-                                                Function<Person, String> mapper,
-                                                Consumer<String> block) {
-    for (Person p: roster) {
+  public static void processPersonsWithFunction(List<Person> roster, Predicate<Person> tester,
+      Function<Person, String> mapper, Consumer<String> block) {
+    for (Person p : roster) {
       if (tester.test(p)) {
         String data = mapper.apply(p);
         block.accept(data);
@@ -113,11 +110,9 @@ public final class RosterTest {
   }
 
   // Approach 8: Use Generics More Extensively
-  public static <X, Y> void processElements(Iterable<X> source,
-                                            Predicate<X> tester,
-                                            Function<X, Y> mapper,
-                                            Consumer<Y> block) {
-    for (X p: source) {
+  public static <X, Y> void processElements(
+      Iterable<X> source, Predicate<X> tester, Function<X, Y> mapper, Consumer<Y> block) {
+    for (X p : source) {
       if (tester.test(p)) {
         Y data = mapper.apply(p);
         block.accept(data);
@@ -129,7 +124,7 @@ public final class RosterTest {
   public static void main(String... args) {
     List<Person> roster = Person.createRoster();
 
-    for (Person p: roster) {
+    for (Person p : roster) {
       p.printPerson();
     }
 
@@ -148,11 +143,9 @@ public final class RosterTest {
     System.out.println(SELECTIVE_SERVICE + ":");
 
     class CheckPersonEligibleForSelectiveService implements CheckPerson {
-
       @Override
       public boolean test(Person p) {
-        return p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-            && p.getAge() <= 25;
+        return p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
       }
     }
 
@@ -166,8 +159,7 @@ public final class RosterTest {
     printPersons(roster, new CheckPerson() {
       @Override
       public boolean test(Person p) {
-        return p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-            && p.getAge() <= 25;
+        return p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
       }
     });
 
@@ -177,9 +169,7 @@ public final class RosterTest {
     System.out.println(SELECTIVE_SERVICE + "(lambda expression):");
 
     printPersons(roster,
-                 (Person p)
-                     -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-                            && p.getAge() <= 25);
+        (Person p) -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25);
 
     System.out.println();
 
@@ -187,37 +177,28 @@ public final class RosterTest {
     // Expressions
     System.out.println(SELECTIVE_SERVICE + "(with Predicate parameter):");
 
-    printPersonsWithPredicate(roster,
-                              p
-                              -> p.getGender() == Person.Sex.MALE
-                                     && p.getAge() >= 18 && p.getAge() <= 25);
+    printPersonsWithPredicate(
+        roster, p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25);
 
     System.out.println();
 
     // Approach 7: Use Lamba Expressions Throughout Your Application
-    System.out.println(SELECTIVE_SERVICE
-                       + "(with Predicate and Consumer parameters):");
+    System.out.println(SELECTIVE_SERVICE + "(with Predicate and Consumer parameters):");
 
     processPersons(roster,
-                   p
-                   -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-                          && p.getAge() <= 25,
-                   p -> p.printPerson());
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+        p -> p.printPerson());
 
     System.out.println();
 
     // Approach 7, second example
-    System.out.println(
-        SELECTIVE_SERVICE
-        + "(with Predicate, Function, and Consumer parameters):");
+    System.out.println(SELECTIVE_SERVICE + "(with Predicate, Function, and Consumer parameters):");
 
     processPersonsWithFunction(roster,
-                               p
-                               -> p.getGender() == Person.Sex.MALE
-                                      && p.getAge() >= 18 && p.getAge() <= 25,
-                               p
-                               -> p.getEmailAddress(),
-                               email -> System.out.println(email));
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+        p -> p.getEmailAddress(), email -> System.out.println(email));
 
     System.out.println();
 
@@ -225,12 +206,9 @@ public final class RosterTest {
     System.out.println(SELECTIVE_SERVICE + "(generic version):");
 
     processElements(roster,
-                    p
-                    -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-                           && p.getAge() <= 25,
-                    p
-                    -> p.getEmailAddress(),
-                    email -> System.out.println(email));
+        p
+        -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
+        p -> p.getEmailAddress(), email -> System.out.println(email));
 
     System.out.println();
 
@@ -239,9 +217,7 @@ public final class RosterTest {
     System.out.println(SELECTIVE_SERVICE + "(with bulk data operations):");
 
     roster.stream()
-        .filter(p
-                -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18
-                       && p.getAge() <= 25)
+        .filter(p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25)
         .map(p -> p.getEmailAddress())
         .forEach(email -> System.out.println(email));
   }

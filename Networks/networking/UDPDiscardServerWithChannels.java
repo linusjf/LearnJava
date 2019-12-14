@@ -35,15 +35,13 @@ public enum UDPDiscardServerWithChannels {
     }
   }
 
-  private static void readAndPrintClient(ByteBuffer buffer,
-                                         DatagramChannel channel)
+  private static void readAndPrintClient(ByteBuffer buffer, DatagramChannel channel)
       throws IOException {
     while (true) {
       SocketAddress client = channel.receive(buffer);
       buffer.flip();
       System.out.print(client + " says: ");
-      while (buffer.hasRemaining())
-        System.out.write(buffer.get());
+      while (buffer.hasRemaining()) System.out.write(buffer.get());
       System.out.println();
       buffer.clear();
     }

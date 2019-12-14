@@ -89,9 +89,8 @@ public enum SafeLock {
       if (impendingBow(bower)) {
         try {
           System.out.format("%s: %s has"
-                                + " bowed to me!%n",
-                            this.name,
-                            bower.getName());
+                  + " bowed to me!%n",
+              this.name, bower.getName());
           bower.bowBack(this);
         } finally {
           lock.unlock();
@@ -99,19 +98,17 @@ public enum SafeLock {
         }
       } else {
         System.out.format("%s: %s started"
-                              + " to bow to me, but saw that"
-                              + " I was already bowing to"
-                              + " him.%n",
-                          this.name,
-                          bower.getName());
+                + " to bow to me, but saw that"
+                + " I was already bowing to"
+                + " him.%n",
+            this.name, bower.getName());
       }
     }
 
     public void bowBack(Friend bower) {
       System.out.format("%s: %s has"
-                            + " bowed back to me!%n",
-                        this.name,
-                        bower.getName());
+              + " bowed back to me!%n",
+          this.name, bower.getName());
     }
   }
 

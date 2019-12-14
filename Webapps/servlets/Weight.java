@@ -13,7 +13,6 @@ public class Weight extends HttpServlet {
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-
     // Note the necessity for a typecast from Object
     // into String .
     String choice = request.getParameter("Option");
@@ -48,7 +47,7 @@ public class Weight extends HttpServlet {
 
     // Value of weight entered by user retrieved here.
     if (qty != null) {
-      String currentProduct = (String)cart.getAttribute("currentProd");
+      String currentProduct = (String) cart.getAttribute("currentProd");
       // Check that user actually entered a value!
       if ("Apples".equals(currentProduct))
         cart.setAttribute("Apples", qty);
@@ -58,7 +57,7 @@ public class Weight extends HttpServlet {
   }
 
   private void doRemove(HttpSession cart) {
-    String currentProduct = (String)cart.getAttribute("currentProd");
+    String currentProduct = (String) cart.getAttribute("currentProd");
     Object product = cart.getAttribute(currentProduct);
 
     // Note that there is no need for a typecast into

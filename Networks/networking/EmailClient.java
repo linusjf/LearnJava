@@ -37,11 +37,9 @@ public enum EmailClient {
     String option = "y";
     while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT);
-           Scanner networkInput = new Scanner(link.getInputStream(),
-                                              StandardCharsets.UTF_8.name());
+           Scanner networkInput = new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
            PrintWriter networkOutput = new PrintWriter(
-               new OutputStreamWriter(link.getOutputStream(),
-                                      StandardCharsets.UTF_8.name()),
+               new OutputStreamWriter(link.getOutputStream(), StandardCharsets.UTF_8.name()),
                true);) {
         String response = "";
         while (!"read".equals(response) && !"send".equals(response)) {

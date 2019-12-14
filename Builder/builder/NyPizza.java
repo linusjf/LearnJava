@@ -9,7 +9,6 @@ import java.util.Objects;
  * @version 1.0
  */
 public final class NyPizza extends Pizza {
-
   public enum Size {
     SMALL,
     MEDIUM,
@@ -20,7 +19,7 @@ public final class NyPizza extends Pizza {
 
   private NyPizza(Builder builder) {
     super(builder);
-    this.size = builder.size;  // NOPMD
+    this.size = builder.size; // NOPMD
   }
 
   /** returns object state as string. */
@@ -32,8 +31,7 @@ public final class NyPizza extends Pizza {
         .append(System.lineSeparator())
         .append("Toppings: ")
         .append(System.lineSeparator());
-    for (Topping t: toppings)
-      sb.append(t).append(System.lineSeparator());
+    for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }
 

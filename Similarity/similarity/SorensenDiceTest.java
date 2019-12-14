@@ -7,7 +7,6 @@ public enum SorensenDiceTest {
   ;
 
   public static void main(String... args) {
-
     SorensenDice sd = new SorensenDice();
 
     System.out.println("\nSorensen Dice: \n");

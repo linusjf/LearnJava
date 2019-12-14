@@ -12,16 +12,15 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * An implementation of the <a
- * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key derivation
- * function. This class will attempt to load a native library containing the
- * optimized C implementation from <a
- * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>
- * and fall back to the pure Java version if that fails.
+ * An implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt</a> key
+ * derivation function. This class will attempt to load a native library containing the optimized C
+ * implementation from <a
+ * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a> and fall back to
+ * the pure Java version if that fails.
  *
  * @author Will Glozer
  */
-public final class SCrypt {  // NOPMD
+public final class SCrypt { // NOPMD
   private static final boolean NATIVE_LIBRARY_LOADED;
 
   static {
@@ -34,10 +33,9 @@ public final class SCrypt {  // NOPMD
   }
 
   /**
-   * Implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls the
-   * native implementation {@link #scryptN} when the native library was
-   * successfully loaded, otherwise calls {@link #scryptJ}.
+   * Implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>. Calls
+   * the native implementation {@link #scryptN} when the native library was successfully loaded,
+   * otherwise calls {@link #scryptJ}.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -48,22 +46,16 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
-  public static byte[] scrypt(byte[] passwd,
-                              byte[] salt,
-                              int enCPUCost,
-                              int r,
-                              int p,
-                              int dkLen) throws GeneralSecurityException {
-    byte[] derived = NATIVE_LIBRARY_LOADED
-                         ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-                         : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+  public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
+      throws GeneralSecurityException {
+    byte[] derived = NATIVE_LIBRARY_LOADED ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+                                           : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
     return Arrays.copyOf(derived, derived.length);
   }
 
   /**
-   * Native C implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a> using the
-   * code from <a
+   * Native C implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a> using the code from <a
    * href="http://www.tarsnap.com/scrypt.html">http://www.tarsnap.com/scrypt.html</a>.
    *
    * @param passwd Password.
@@ -75,16 +67,12 @@ public final class SCrypt {  // NOPMD
    * @return The derived key.
    */
   @SuppressWarnings("checkstyle:IllegalToken")
-  public static native byte[] scryptN(byte[] passwd,
-                                      byte[] salt,
-                                      int enCPUCost,
-                                      int r,
-                                      int p,
-                                      int dkLen);
+  public static native byte[] scryptN(
+      byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen);
 
   /**
-   * Pure Java implementation of the <a
-   * href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt KDF</a>.
+   * Pure Java implementation of the <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">scrypt
+   * KDF</a>.
    *
    * @param passwd Password.
    * @param salt Salt.
@@ -96,15 +84,10 @@ public final class SCrypt {  // NOPMD
    * @throws GeneralSecurityException when HMAC_SHA256 is not available.
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  public static byte[] scryptJ(byte[] passwd,
-                               byte[] salt,
-                               int enCPUCost,
-                               int r,
-                               int p,
-                               int dkLen) throws GeneralSecurityException {
+  public static byte[] scryptJ(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
+      throws GeneralSecurityException {
     if (enCPUCost < 2 || (enCPUCost & (enCPUCost - 1)) != 0)
-      throw new IllegalArgumentException(
-          "enCPUCost must be a power of 2 greater than 1");
+      throw new IllegalArgumentException("enCPUCost must be a power of 2 greater than 1");
 
     if (enCPUCost > MAX_VALUE / 128 / r)
       throw new IllegalArgumentException("Parameter nCPUCost is too large");
@@ -122,8 +105,7 @@ public final class SCrypt {  // NOPMD
 
     PBKDF.pbkdf2(mac, salt, 1, bytes, p * 128 * r);
 
-    for (i = 0; i < p; i++)
-      smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
+    for (i = 0; i < p; i++) smix(bytes, i * 128 * r, r, enCPUCost, v, xyBytes);
 
     PBKDF.pbkdf2(mac, bytes, 1, derivedKey, dkLen);
 
@@ -141,12 +123,7 @@ public final class SCrypt {  // NOPMD
    * @param xy a <code>byte</code> value
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  public static void smix(byte[] bytes,
-                          int initialB,
-                          int r,
-                          int n,
-                          byte[] v,
-                          byte[] xy) {
+  public static void smix(byte[] bytes, int initialB, int r, int n, byte[] v, byte[] xy) {
     int xinitial = 0;
     final int yinitial = 128 * r;
     int i;
@@ -176,10 +153,7 @@ public final class SCrypt {  // NOPMD
    * @param initialY an <code>int</code> value
    * @param r an <code>int</code> value
    */
-  public static void blockmixSalsa8(byte[] bytes,
-                                    int initialB,
-                                    int initialY,
-                                    int r) {
+  public static void blockmixSalsa8(byte[] bytes, int initialB, int initialY, int r) {
     final byte[] x = new byte[64];
     int i;
 
@@ -195,11 +169,7 @@ public final class SCrypt {  // NOPMD
       arraycopy(bytes, initialY + (i * 2) * 64, bytes, initialB + (i * 64), 64);
 
     for (i = 0; i < r; i++)
-      arraycopy(bytes,
-                initialY + (i * 2 + 1) * 64,
-                bytes,
-                initialB + (i + r) * 64,
-                64);
+      arraycopy(bytes, initialY + (i * 2 + 1) * 64, bytes, initialB + (i + r) * 64, 64);
   }
 
   /**
@@ -268,14 +238,13 @@ public final class SCrypt {  // NOPMD
       x[15] ^= leftRotate(x[14] + x[13], 18);
     }
 
-    for (i = 0; i < 16; ++i)
-      b32[i] = x[i] + b32[i];
+    for (i = 0; i < 16; ++i) b32[i] = x[i] + b32[i];
 
     for (i = 0; i < 16; i++) {
-      bytes[i * 4 + 0] = (byte)(b32[i] >> 0 & 0xff);
-      bytes[i * 4 + 1] = (byte)(b32[i] >> 8 & 0xff);
-      bytes[i * 4 + 2] = (byte)(b32[i] >> 16 & 0xff);
-      bytes[i * 4 + 3] = (byte)(b32[i] >> 24 & 0xff);
+      bytes[i * 4 + 0] = (byte) (b32[i] >> 0 & 0xff);
+      bytes[i * 4 + 1] = (byte) (b32[i] >> 8 & 0xff);
+      bytes[i * 4 + 2] = (byte) (b32[i] >> 16 & 0xff);
+      bytes[i * 4 + 3] = (byte) (b32[i] >> 24 & 0xff);
     }
   }
 
@@ -288,13 +257,8 @@ public final class SCrypt {  // NOPMD
    * @param dinitial an <code>int</code> value
    * @param len an <code>int</code> value
    */
-  public static void blockXOR(byte[] s,
-                              int sinitial,
-                              byte[] d,
-                              int dinitial,
-                              int len) {
-    for (int i = 0; i < len; i++)
-      s[dinitial + i] ^= s[sinitial + i];
+  public static void blockXOR(byte[] s, int sinitial, byte[] d, int dinitial, int len) {
+    for (int i = 0; i < len; i++) s[dinitial + i] ^= s[sinitial + i];
   }
 
   /**

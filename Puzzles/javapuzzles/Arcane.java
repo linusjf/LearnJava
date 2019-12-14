@@ -30,7 +30,6 @@ interface Type3 extends Type1, Type2 {}
 
 @SuppressWarnings({"checkstyle:onetoplevelclass", "PMD"})
 class Arcane3 implements Type3 {
-
   public void f() {
     System.out.println("Hello world");
   }

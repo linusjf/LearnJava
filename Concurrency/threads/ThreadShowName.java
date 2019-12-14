@@ -3,7 +3,6 @@ package threads;
 import java.util.Random;
 
 public class ThreadShowName extends Thread {
-
   private final Random random = new Random();
 
   public static void main(String[] args) {

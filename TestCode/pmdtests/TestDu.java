@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestDu {
-
   private List<String> list = new ArrayList<>();
 
   public void run() {
@@ -18,8 +17,7 @@ public class TestDu {
 
   public void runAgain() {
     String str = Thread.currentThread().getName() + " Element : %d";
-    for (int i = 0; i < 10_000; i++)
-      list.add(String.format(str, i));
+    for (int i = 0; i < 10_000; i++) list.add(String.format(str, i));
   }
 
   public void runOnceMore() {

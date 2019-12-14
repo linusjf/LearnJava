@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
 public final class MulticastSender {
-
   private MulticastSender() {
     throw new IllegalStateException("Private constructor");
   }
@@ -32,11 +31,11 @@ public final class MulticastSender {
   private static byte getTTL(String... args) {
     try {
       if (args.length > (1 + 1))
-        return (byte)Integer.parseInt(args[2]);
+        return (byte) Integer.parseInt(args[2]);
     } catch (NumberFormatException e) {
       // empty catch block
     }
-    return (byte)1;
+    return (byte) 1;
   }
 
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
@@ -45,8 +44,7 @@ public final class MulticastSender {
     int port = getPort(args);
     byte ttl = getTTL(args);
 
-    byte[] data =
-        "Here's some multicast data\r\n".getBytes(StandardCharsets.UTF_8);
+    byte[] data = "Here's some multicast data\r\n".getBytes(StandardCharsets.UTF_8);
     try (MulticastSocket ms = new MulticastSocket()) {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);

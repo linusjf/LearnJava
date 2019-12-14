@@ -6,7 +6,6 @@ public enum MetricsLCSTest {
   ;
 
   public static void main(String[] args) {
-
     MetricLCS lcs = new MetricLCS();
 
     String s1 = "ABCDEFG";

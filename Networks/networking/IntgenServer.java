@@ -21,7 +21,7 @@ public final class IntgenServer {
   private static void handleKey(SelectionKey key, Selector selector) {
     try {
       if (key.isAcceptable()) {
-        ServerSocketChannel server = (ServerSocketChannel)key.channel();
+        ServerSocketChannel server = (ServerSocketChannel) key.channel();
         SocketChannel client = server.accept();
         System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
@@ -31,8 +31,8 @@ public final class IntgenServer {
         output.flip();
         key2.attach(output);
       } else if (key.isWritable()) {
-        SocketChannel client = (SocketChannel)key.channel();
-        ByteBuffer output = (ByteBuffer)key.attachment();
+        SocketChannel client = (SocketChannel) key.channel();
+        ByteBuffer output = (ByteBuffer) key.attachment();
         if (!output.hasRemaining()) {
           output.rewind();
           int value = output.getInt();
