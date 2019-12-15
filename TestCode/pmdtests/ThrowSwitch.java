@@ -24,6 +24,7 @@ public final class ThrowSwitch {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static int getSimulatedErrorCode() {
     return ThreadLocalRandom.current().nextInt(0, 6);
   }

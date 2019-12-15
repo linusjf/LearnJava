@@ -8,18 +8,21 @@ import java.util.stream.IntStream;
 public class TestDu {
   private List<String> list = new ArrayList<>();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     String str = Thread.currentThread().getName() + " Element : %d";
-    for (int i = 0; i < 10_000; i++) {
+    for (int i = 0; i < 10_000; i++) 
       list.add(String.format(str, i));
-    }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void runAgain() {
     String str = Thread.currentThread().getName() + " Element : %d";
-    for (int i = 0; i < 10_000; i++) list.add(String.format(str, i));
+    for (int i = 0; i < 10_000; i++) 
+      list.add(String.format(str, i));
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void runOnceMore() {
     String str = Thread.currentThread().getName() + " Element : %d";
     list =

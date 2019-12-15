@@ -3,6 +3,7 @@ package pmdtests;
 @SuppressWarnings("checkstyle:magicnumber")
 public enum FQNTest {
   ;
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     Thread[] pmdtests = new Thread[5];
     for (int i = 0; i < pmdtests.length; i++) {
@@ -26,9 +27,8 @@ public enum FQNTest {
       pmdtests[i].start();
     }
     try {
-      for (Thread thread : pmdtests) {
+      for (Thread thread : pmdtests) 
         thread.join();
-      }
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }

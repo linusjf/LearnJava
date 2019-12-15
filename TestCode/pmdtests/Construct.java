@@ -2,6 +2,7 @@ package pmdtests;
 
 import java.lang.reflect.Constructor;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public final class Construct {
 
   private Construct() {

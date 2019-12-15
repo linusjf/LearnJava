@@ -46,7 +46,6 @@ public enum SimpleLSHMinHashExample {
     // Perform hashing
     for (boolean[] vector : vectors) {
       int[] hash = lsh.hash(vector);
-
       for (int i = 0; i < hash.length; i++) 
         counts[i][hash[i]]++;
     }
