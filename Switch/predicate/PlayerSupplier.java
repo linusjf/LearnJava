@@ -75,15 +75,18 @@ public final class PlayerSupplier {
     Map<Predicate<Integer>, Supplier<Player>> players = PLAYER_CREATOR.get(
       playerType
     );
+    return getPlayer(players,rank);
+  }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static Player getPlayer(Map<Predicate<Integer>, Supplier<Player>> players,
+      int rank) {
     // clang-format off
     for (Entry<Predicate<Integer>, Supplier<Player>> entry : players.entrySet()) {
-      if (entry.getKey().test(rank)) {
+      if (entry.getKey().test(rank)) 
         return entry.getValue().get();
-      }
     }
-
     // clang-format on
-    throw new IllegalStateException("The players map is         corrupted");
+    throw new IllegalStateException("The players map is corrupted");
   }
 }

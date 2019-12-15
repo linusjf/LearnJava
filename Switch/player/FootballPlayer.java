@@ -13,7 +13,7 @@ public class FootballPlayer extends Player {
 
   @Override
   public int playerEndurance() {
-    return ComputeEnduranceAlgorithm.basicEndurance(this.getDelta());
+    return ComputeEnduranceAlgorithm.basicEndurance(getDelta());
   }
 
   @Override

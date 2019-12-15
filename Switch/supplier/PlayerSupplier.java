@@ -3,12 +3,13 @@ package supplier;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
 import player.FootballPlayer;
 import player.Player;
 import player.SnookerPlayer;
 import player.TennisPlayer;
+
+import static java.util.Objects.requireNonNull;
 
 public class PlayerSupplier {
   private static final Map<String, Supplier<Player>> PLAYER_SUPPLIER;
@@ -22,11 +23,16 @@ public class PlayerSupplier {
     PLAYER_SUPPLIER = Collections.unmodifiableMap(players);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Player supplyPlayer(String playerType) {
-    Supplier<Player> player = Objects.requireNonNull(
+    Supplier<Player> player = getPlayerSupplier(playerType);
+    return player.get();
+  }
+  
+  public Supplier<Player> getPlayerSupplier(String playerType) {
+    return requireNonNull(
       PLAYER_SUPPLIER.get(playerType),
       "Invalid player type: " + playerType
     );
-    return player.get();
   }
 }

@@ -3,8 +3,10 @@ package predicate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 public enum PlayerTypes {
   TENNIS(
@@ -70,13 +72,26 @@ public enum PlayerTypes {
     if (rank < 1 || rank > 10) {
       throw new IllegalArgumentException("Invalid rank: " + rank);
     }
-    List<Predicate<Integer>> selectors = PlayerTypes.valueOf(playerType)
-      .conditions;
-    for (int i = 0; i < selectors.size(); i++) {
-      if (selectors.get(i).test(rank)) {
-        return PlayerTypes.valueOf(playerType).names.get(i).get();
-      }
-    }
+    PlayerTypes type = getPlayerType(playerType);
+    List<Predicate<Integer>> selectors = 
+      type.conditions;
+List<Supplier<Player>> players = type.names;
+  return getPlayerForConditions(selectors,players,rank);
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static Player getPlayerForConditions(List<Predicate<Integer>> selectors,
+ List<Supplier<Player>> players,
+ int rank) {
+OptionalInt indexOpt = IntStream.range(0, selectors.size())
+     .filter(i -> selectors.get(i).test(rank))
+     .findFirst();
+if (indexOpt.isPresent())
+  return players.get(indexOpt.getAsInt()).get();
     throw new IllegalStateException("The enum is corrupted");
+  }
+
+  public static PlayerTypes getPlayerType(String type) {
+    return PlayerTypes.valueOf(type);
   }
 }
