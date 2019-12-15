@@ -2,7 +2,6 @@ package threads;
 
 public enum ExceptionTask {
   ;
-
   public static void main(String[] args) {
     Task task = new Task();
     Thread thread = new Thread(task);
@@ -12,6 +11,7 @@ public enum ExceptionTask {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
+
     @Override
     public void run() {
       int numero = Integer.parseInt("TTT");

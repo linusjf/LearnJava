@@ -13,7 +13,9 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGenerator {
+public class ReportGeneratorImpl
+  extends UnicastRemoteObject
+  implements ReportGenerator {
   private static final long serialVersionUID = 3107413009881629428L;
 
   /**
@@ -29,19 +31,21 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
   public String generateDailyReport() throws RemoteException {
     StringBuilder sb = new StringBuilder(250);
     sb.append("********************Location X Daily Report********************")
-        .append(System.lineSeparator())
-        .append(" Location ID: 012")
-        .append(System.lineSeparator())
-        .append("Today’s Date: ")
-        .append(new Date())
-        .append(System.lineSeparator())
-        .append(" Total Pizza’s Sell: 112")
-        .append(System.lineSeparator())
-        .append(" Total Price: $2534")
-        .append(System.lineSeparator())
-        .append(" Net Profit: $1985")
-        .append(System.lineSeparator())
-        .append("***************************************************************");
+      .append(System.lineSeparator())
+      .append(" Location ID: 012")
+      .append(System.lineSeparator())
+      .append("Today’s Date: ")
+      .append(new Date())
+      .append(System.lineSeparator())
+      .append(" Total Pizza’s Sell: 112")
+      .append(System.lineSeparator())
+      .append(" Total Price: $2534")
+      .append(System.lineSeparator())
+      .append(" Net Profit: $1985")
+      .append(System.lineSeparator())
+      .append(
+        "***************************************************************"
+      );
     return sb.toString();
   }
 

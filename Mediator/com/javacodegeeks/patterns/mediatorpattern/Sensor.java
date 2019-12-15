@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public class Sensor {
+
   /**
    * Describe <code>checkTemperature</code> method here.
    *

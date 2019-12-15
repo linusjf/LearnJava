@@ -23,7 +23,10 @@ public enum ForkJoinResultDemo {
     do {
       System.out.printf("******************************************%n");
       System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d%n", pool.getActiveThreadCount());
+      System.out.printf(
+        "Main: Active Threads: %d%n",
+        pool.getActiveThreadCount()
+      );
       System.out.printf("Main: Task Count: %d%n", pool.getQueuedTaskCount());
       System.out.printf("Main: Steal Count: %d%n", pool.getStealCount());
       System.out.printf("******************************************%n");
@@ -41,7 +44,9 @@ public enum ForkJoinResultDemo {
     }
     try {
       System.out.printf(
-          "Main: The word '" + WORD + "' appears %d times in the document.", task.get());
+        "Main: The word '" + WORD + "' appears %d times in the document.",
+        task.get()
+      );
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
@@ -49,20 +54,24 @@ public enum ForkJoinResultDemo {
 
   static class DocumentMock {
     private final String[] words = {
-        "the",
-        "hello",
-        "goodbye",
-        "packt",
-        "java",
-        "thread",
-        "pool",
-        "random",
-        "class",
-        "main",
+      "the",
+      "hello",
+      "goodbye",
+      "packt",
+      "java",
+      "thread",
+      "pool",
+      "random",
+      "class",
+      "main",
     };
 
-    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis"})
-    public String[][] generateDocument(int numLines, int numWords, String word) {
+    @SuppressWarnings({ "PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis" })
+    public String[][] generateDocument(
+      int numLines,
+      int numWords,
+      String word
+    ) {
       int counter = 0;
       String[][] document = new String[numLines][numWords];
       Random random = new Random();
@@ -77,7 +86,12 @@ public enum ForkJoinResultDemo {
         }
       }
       System.out.println(
-          "DocumentMock: The word '" + word + "' appears " + counter + " times in the document");
+        "DocumentMock: The word '" +
+          word +
+          "' appears " +
+          counter +
+          " times in the document"
+      );
       return document;
     }
   }
@@ -102,9 +116,8 @@ public enum ForkJoinResultDemo {
     @Override
     protected Integer compute() {
       int result = 0;
-      if (end - start < MIN_LINES)
-        result = processLines(document, start, end, word);
-      else {
+      if (end - start < MIN_LINES) result =
+        processLines(document, start, end, word); else {
         int mid = (start + end) / 2;
         DocumentTask task1 = new DocumentTask(document, start, mid, word);
         DocumentTask task2 = new DocumentTask(document, mid, end, word);
@@ -119,7 +132,12 @@ public enum ForkJoinResultDemo {
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
-    private Integer processLines(String[][] doc, int start, int end, String word) {
+    private Integer processLines(
+      String[][] doc,
+      int start,
+      int end,
+      String word
+    ) {
       List<LineTask> tasks = new ArrayList<>();
       for (int i = start; i < end; i++) {
         LineTask task = new LineTask(doc[i], 0, doc[i].length, word);
@@ -178,12 +196,13 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
-    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis"})
+    @SuppressWarnings(
+      { "checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis" }
+    )
     private Integer count(String[] line, int start, int end, String word) {
       int counter = 0;
       for (int i = start; i < end; i++) {
-        if (line[i].equals(word))
-          counter++;
+        if (line[i].equals(word)) counter++;
       }
       try {
         Thread.sleep(10);

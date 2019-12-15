@@ -4,7 +4,6 @@ import java.util.Stack;
 
 public enum TestInterpreterPattern {
   ;
-
   public static void main(String[] args) {
     String tokenString = "7 3 - 2 1 + *";
     Expression expr = parseTokenString(tokenString);
@@ -22,7 +21,11 @@ public enum TestInterpreterPattern {
       if (ExpressionUtils.isOperator(s)) {
         Expression rightExpression = stack.pop();
         Expression leftExpression = stack.pop();
-        int result = ExpressionUtils.interpret(s, leftExpression, rightExpression);
+        int result = ExpressionUtils.interpret(
+          s,
+          leftExpression,
+          rightExpression
+        );
         stack.push(new Number(result));
       } else {
         Expression i = new Number(Integer.parseInt(s));

@@ -20,9 +20,18 @@ class ClientThread extends Thread {
     try {
       // Create input and output streams
       // on the socket…
-      input = new Scanner(client.getInputStream(), StandardCharsets.UTF_8.name());
-      output = new PrintWriter(
-          new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8.name()), true);
+      input = new Scanner(
+          client.getInputStream(),
+          StandardCharsets.UTF_8.name()
+        );
+      output =
+        new PrintWriter(
+          new OutputStreamWriter(
+            client.getOutputStream(),
+            StandardCharsets.UTF_8.name()
+          ),
+          true
+        );
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }

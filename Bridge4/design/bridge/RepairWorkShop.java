@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class RepairWorkShop extends WorkShop {
+
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void work(Vehicle vehicle) {

@@ -5,7 +5,6 @@ import java.lang.reflect.Parameter;
 
 public enum Parameters {
   ;
-
   public static void main(String... args) {
     Class<String> stringClass = String.class;
     System.out.println("Printing out String methods:");
@@ -14,8 +13,12 @@ public enum Parameters {
       for (Parameter paramMethodStringClass : methodStringClass.getParameters()) {
         // arg0, arg1, etc because the eclipse compiling tool (different ←-
         // not support -parameters option yet
-        System.out.println(" parameter name " + paramMethodStringClass.getName());
-        System.out.println(" parameter type " + paramMethodStringClass.getType());
+        System.out.println(
+          " parameter name " + paramMethodStringClass.getName()
+        );
+        System.out.println(
+          " parameter type " + paramMethodStringClass.getType()
+        );
       }
     }
     Class<DummyTask> taskClass = DummyTask.class;
@@ -32,6 +35,7 @@ public enum Parameters {
   }
 
   static class DummyTask {
+
     public void execute(int num, String message) {
       // empty method body
     }

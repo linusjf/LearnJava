@@ -11,6 +11,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * the available methods.
  */
 public class HelloBaseListener implements HelloListener {
+
   /**
    * {@inheritDoc}
    *
@@ -18,6 +19,7 @@ public class HelloBaseListener implements HelloListener {
    */
   @Override
   public void enterR(HelloParser.RContext ctx) {}
+
   /**
    * {@inheritDoc}
    *
@@ -33,6 +35,7 @@ public class HelloBaseListener implements HelloListener {
    */
   @Override
   public void enterEveryRule(ParserRuleContext ctx) {}
+
   /**
    * {@inheritDoc}
    *
@@ -40,6 +43,7 @@ public class HelloBaseListener implements HelloListener {
    */
   @Override
   public void exitEveryRule(ParserRuleContext ctx) {}
+
   /**
    * {@inheritDoc}
    *
@@ -47,6 +51,7 @@ public class HelloBaseListener implements HelloListener {
    */
   @Override
   public void visitTerminal(TerminalNode node) {}
+
   /**
    * {@inheritDoc}
    *

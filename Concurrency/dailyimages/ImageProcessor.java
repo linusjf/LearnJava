@@ -31,32 +31,50 @@ public class ImageProcessor {
 
   // private ExecutorService executor1 =
   //  Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
-  private final ExecutorService executor1 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS, new NamedThreadFactory("executor1"));
-  private final ExecutorService executor2 =
-      Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
+  private final ExecutorService executor1 = Executors.newFixedThreadPool(
+    MAX_CONCURRENT_STREAMS,
+    new NamedThreadFactory("executor1")
+  );
+  private final ExecutorService executor2 = Executors.newCachedThreadPool(
+    new NamedThreadFactory("executor2")
+  );
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
 
   private final HttpClient client = HttpClient.newBuilder()
-                                        .executor(executor1)
-                                        .followRedirects(HttpClient.Redirect.NEVER)
-                                        .build();
+    .executor(executor1)
+    .followRedirects(HttpClient.Redirect.NEVER)
+    .build();
 
   public <T> CompletableFuture<T> getAsync(
-      String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request =
-        HttpRequest.newBuilder().GET().uri(URI.create(url)).timeout(Duration.ofSeconds(30)).build();
-    if (executor2.isShutdown())
-      return client.sendAsync(request, responseBodyHandler).thenApply(HttpResponse::body);
-    else
-      return client.sendAsync(request, responseBodyHandler)
-          .thenApplyAsync(HttpResponse::body, executor2);
+    String url,
+    HttpResponse.BodyHandler<T> responseBodyHandler
+  ) {
+    HttpRequest request = HttpRequest.newBuilder()
+      .GET()
+      .uri(URI.create(url))
+      .timeout(Duration.ofSeconds(30))
+      .build();
+    if (executor2.isShutdown()) return client.sendAsync(
+      request,
+      responseBodyHandler
+    )
+      .thenApply(HttpResponse::body); else return client.sendAsync(
+      request,
+      responseBodyHandler
+    )
+      .thenApplyAsync(HttpResponse::body, executor2);
   }
 
-  public CompletableFuture<ImageInfo> findImageInfo(LocalDate date, ImageInfo info) {
-    return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString())
-        .thenApply(info::findImage);
+  public CompletableFuture<ImageInfo> findImageInfo(
+    LocalDate date,
+    ImageInfo info
+  ) {
+    return getAsync(
+      info.getUrlForDate(date),
+      HttpResponse.BodyHandlers.ofString()
+    )
+      .thenApply(info::findImage);
   }
 
   public void printExecutors() {
@@ -65,20 +83,25 @@ public class ImageProcessor {
   }
 
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
-    return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray())
-        .thenApply(info::setImageData);
+    return getAsync(
+      info.getImagePath(),
+      HttpResponse.BodyHandlers.ofByteArray()
+    )
+      .thenApply(info::setImageData);
   }
 
   public void load(LocalDate date, ImageInfo info) {
     findImageInfo(date, info)
-        .thenCompose(this::findImageData)
-        .thenAccept(this::process)
-        .exceptionally(t -> {
+      .thenCompose(this::findImageData)
+      .thenAccept(this::process)
+      .exceptionally(
+        t -> {
           System.err.println(info.getUrlForDate(date) + " : " + t);
           failureCount.incrementAndGet();
           return null;
-        })
-        .thenAccept(t -> latch.countDown());
+        }
+      )
+      .thenAccept(t -> latch.countDown());
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -86,15 +109,12 @@ public class ImageProcessor {
     LocalDate newDate = LocalDate.now();
     for (int i = 0; i < NUMBER_TO_SHOW; i++) {
       ImageInfo info;
-      if (isDilbert)
-        info = new DilbertImageInfo();
-      else
-        info = new WikimediaImageInfo();
+      if (isDilbert) info = new DilbertImageInfo(); else info =
+        new WikimediaImageInfo();
       info.setDate(newDate.toString());
       System.out.println("Loading " + newDate);
       load(newDate, info);
-      if (DELAY > 0)
-        Thread.sleep(DELAY);
+      if (DELAY > 0) Thread.sleep(DELAY);
       newDate = newDate.minusDays(1);
     }
   }
@@ -129,15 +149,21 @@ public class ImageProcessor {
     latch.countDown();
     if (PRINT_MESSAGE) {
       System.out.println(
-          "process called by " + Thread.currentThread() + ", date: " + info.getDate());
+        "process called by " +
+          Thread.currentThread() +
+          ", date: " +
+          info.getDate()
+      );
     }
-    if (SAVE_FILE)
-      try {
-        Files.createDirectories(imageDir);
-        Files.write(imageDir.resolve(info.getDate() + ".jpg"), info.getImageData());
-      } catch (IOException ex) {
-        System.err.println(ex);
-      }
+    if (SAVE_FILE) try {
+      Files.createDirectories(imageDir);
+      Files.write(
+        imageDir.resolve(info.getDate() + ".jpg"),
+        info.getImageData()
+      );
+    } catch (IOException ex) {
+      System.err.println(ex);
+    }
   }
 
   public static void main(String... args) {

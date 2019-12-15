@@ -4,7 +4,6 @@ import java.util.Random;
 
 public enum ThreadLocalExample {
   ;
-
   public static void main(String[] args) {
     try {
       MyRunnable sharedRunnableInstance = new MyRunnable();
@@ -19,7 +18,7 @@ public enum ThreadLocalExample {
 
       // wait for thread 1 to terminate
       thread2.join();
-      // wait for thread 2 to terminate
+    // wait for thread 2 to terminate
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }

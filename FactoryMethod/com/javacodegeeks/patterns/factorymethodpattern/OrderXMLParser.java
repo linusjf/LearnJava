@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.factorymethodpattern;
  * @version 1.0
  */
 public class OrderXMLParser implements XMLParser {
+
   @Override
   public String parse() {
     System.out.println("Parsing order XML...");

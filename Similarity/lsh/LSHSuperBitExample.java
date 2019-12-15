@@ -5,7 +5,6 @@ import java.util.Random;
 
 public enum LSHSuperBitExample {
   ;
-
   public static void main(String[] args) {
     int count = 100;
 

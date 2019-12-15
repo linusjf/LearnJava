@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 
 public enum MyLocalIPAddress {
   ;
-
   public static void main(String[] args) {
     try {
       InetAddress address = InetAddress.getLocalHost();

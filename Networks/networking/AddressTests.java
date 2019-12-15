@@ -13,11 +13,8 @@ public final class AddressTests {
 
   public static int getVersion(InetAddress ia) {
     byte[] address = ia.getAddress();
-    if (address.length == IPV4_LENGTH)
-      return 4;
-    else if (address.length == IPV6_LENGTH)
-      return 6;
-    else
-      return -1;
+    if (address.length == IPV4_LENGTH) return 4; else if (
+      address.length == IPV6_LENGTH
+    ) return 6; else return -1;
   }
 }

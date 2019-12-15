@@ -2,13 +2,12 @@ package javapuzzles;
 
 public enum Client {
   ;
-
   public static void main(String[] args) {
     System.out.println(Cache.getSum());
   }
 }
 
-@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD"})
+@SuppressWarnings({ "checkstyle:onetoplevelclass", "PMD" })
 enum Cache {
   ;
   private static int sum;

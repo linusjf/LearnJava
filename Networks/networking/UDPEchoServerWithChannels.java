@@ -34,7 +34,8 @@ public enum UDPEchoServerWithChannels {
     }
   }
 
-  private static void echoToServer(ByteBuffer buffer, DatagramChannel channel) throws IOException {
+  private static void echoToServer(ByteBuffer buffer, DatagramChannel channel)
+    throws IOException {
     while (true) {
       SocketAddress client = channel.receive(buffer);
       buffer.flip();

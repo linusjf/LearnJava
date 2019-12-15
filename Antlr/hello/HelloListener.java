@@ -14,6 +14,7 @@ public interface HelloListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   void enterR(HelloParser.RContext ctx);
+
   /**
    * Exit a parse tree produced by {@link HelloParser#r}.
    *

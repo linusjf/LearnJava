@@ -5,7 +5,6 @@ import info.debatty.java.stringsimilarity.Levenshtein;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum LevenshteinTest {
   ;
-
   public static void main(String[] args) {
     Levenshtein l = new Levenshtein();
     System.out.println("\nLevenshtein: \n");

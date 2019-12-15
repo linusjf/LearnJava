@@ -32,7 +32,6 @@ package threads;
  */
 public enum Deadlock {
   ;
-
   public static void main(String[] args) {
     final Friend alphonse = new Friend("Alphonse");
     final Friend gaston = new Friend("Gaston");
@@ -42,15 +41,18 @@ public enum Deadlock {
   private static void friendlyBow(Friend alphonse, Friend gaston) {
     new Thread(() -> alphonse.bow(gaston)).start();
     new Thread(() -> gaston.bow(alphonse)).start();
-    new Thread(() -> {
-      try {
-        Thread.sleep(10_000);
-        System.out.println("10 seconds of deadlock. That's enough...");
-        throw new AssertionError("10 seconds of deadlock. That's enough...");
-      } catch (InterruptedException ie) {
-        System.err.println(ie);
+    new Thread(
+      () -> {
+        try {
+          Thread.sleep(10_000);
+          System.out.println("10 seconds of deadlock. That's enough...");
+          throw new AssertionError("10 seconds of deadlock. That's enough...");
+        } catch (InterruptedException ie) {
+          System.err.println(ie);
+        }
       }
-    }).start();
+    )
+      .start();
   }
 
   @SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel")
@@ -66,16 +68,20 @@ public enum Deadlock {
     }
 
     public synchronized void bow(Friend bower) {
-      System.out.format("%s: %s"
-              + "  has bowed to me!%n",
-          this.name, bower.getName());
+      System.out.format(
+        "%s: %s" + "  has bowed to me!%n",
+        this.name,
+        bower.getName()
+      );
       bower.bowBack(this);
     }
 
     public synchronized void bowBack(Friend bower) {
-      System.out.format("%s: %s"
-              + " has bowed back to me!%n",
-          this.name, bower.getName());
+      System.out.format(
+        "%s: %s" + " has bowed back to me!%n",
+        this.name,
+        bower.getName()
+      );
     }
   }
 }

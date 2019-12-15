@@ -7,6 +7,7 @@ package design.bridge;
  * @version 1.0
  */
 public abstract class WorkShop {
+
   /**
    * Describe <code>work</code> method here.
    *

@@ -23,7 +23,10 @@ public final class PooledDaytimeServer {
     }
   }
 
-  private static void acceptAndSubmit(ExecutorService pool, ServerSocket server) {
+  private static void acceptAndSubmit(
+    ExecutorService pool,
+    ServerSocket server
+  ) {
     while (true) {
       try {
         Socket connection = server.accept();

@@ -5,7 +5,6 @@ import info.debatty.java.stringsimilarity.Jaccard;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum JaccardTest {
   ;
-
   public static void main(String... args) {
     Jaccard jac = new Jaccard();
 

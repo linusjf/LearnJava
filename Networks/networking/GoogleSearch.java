@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 
 /** Set user-agent property. ** */
 public final class GoogleSearch {
+
   private GoogleSearch() {
     throw new IllegalStateException("Private constructor");
   }
@@ -29,12 +30,19 @@ public final class GoogleSearch {
     try {
       URL u = new URL("https://www.google.com/search?" + query);
       URLConnection connection = u.openConnection();
-      connection.setRequestProperty("User-Agent",
-          "Mozilla/5.0 (Linux; Android 7.1.2;"
-              + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
-              + "Mobile Safari/537.36");
-      try (InputStream in = new BufferedInputStream(connection.getInputStream());
-           InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+      connection.setRequestProperty(
+        "User-Agent",
+        "Mozilla/5.0 (Linux; Android 7.1.2;" +
+          " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 " +
+          "Mobile Safari/537.36"
+      );
+      try (
+        InputStream in = new BufferedInputStream(connection.getInputStream());
+        InputStreamReader theHTML = new InputStreamReader(
+          in,
+          StandardCharsets.UTF_8.name()
+        );
+      ) {
         int c;
         while ((c = theHTML.read()) != -1) System.out.print((char) c);
       }

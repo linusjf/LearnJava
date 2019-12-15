@@ -28,8 +28,10 @@ public final class JdbcScrollableSelect {
   private static void executeQuery() {
     try {
       // clang-format off
-      statement =
-          connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      statement = connection.createStatement(
+          ResultSet.TYPE_SCROLL_SENSITIVE,
+          ResultSet.CONCUR_READ_ONLY
+        );
 
       // clang-format on
       results = statement.executeQuery("SELECT * FROM Accounts");
@@ -43,10 +45,9 @@ public final class JdbcScrollableSelect {
   private static void forward() {
     try {
       // Iterate through the rows in the forward
-      while (results.next())
-        // direction, displaying the contents of each
-        // row (as in the original program)…
-        showRow();
+      while (results.next()) // direction, displaying the contents of each
+      // row (as in the original program)…
+      showRow();
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
       System.err.println(sqlEx);
@@ -60,9 +61,8 @@ public final class JdbcScrollableSelect {
       // just after last row, so we can make use
       // of method previous to access the data…
       // Iterate through rows in reverse direction,
-      while (results.previous())
-        // again displaying contents of each row…
-        showRow();
+      while (results.previous()) // again displaying contents of each row…
+      showRow();
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
       System.err.println(sqlEx);
@@ -90,7 +90,9 @@ public final class JdbcScrollableSelect {
   public static void showRow() throws SQLException {
     System.out.println();
     System.out.println("Account no. " + results.getInt(1));
-    System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
+    System.out.println(
+      "Account holder: " + results.getString(3) + " " + results.getString(2)
+    );
     System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
   }
 }

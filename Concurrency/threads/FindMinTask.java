@@ -15,7 +15,12 @@ public class FindMinTask implements Callable<Integer> {
   private final ExecutorService executorService;
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-  public FindMinTask(ExecutorService executorService, int[] numbers, int startIndex, int endIndex) {
+  public FindMinTask(
+    ExecutorService executorService,
+    int[] numbers,
+    int startIndex,
+    int endIndex
+  ) {
     this.executorService = executorService;
     this.numbers = numbers;
     this.startIndex = startIndex;
@@ -26,11 +31,19 @@ public class FindMinTask implements Callable<Integer> {
   public Integer call() throws InterruptedException, ExecutionException {
     int sliceLength = (endIndex - startIndex) + 1;
     if (sliceLength > MIN_SIZE) {
-      FindMinTask lowerFindMin =
-          new FindMinTask(executorService, numbers, startIndex, startIndex + (sliceLength / 2) - 1);
+      FindMinTask lowerFindMin = new FindMinTask(
+        executorService,
+        numbers,
+        startIndex,
+        startIndex + (sliceLength / 2) - 1
+      );
       Future<Integer> futureLowerFindMin = executorService.submit(lowerFindMin);
-      FindMinTask upperFindMin =
-          new FindMinTask(executorService, numbers, startIndex + (sliceLength / 2), endIndex);
+      FindMinTask upperFindMin = new FindMinTask(
+        executorService,
+        numbers,
+        startIndex + (sliceLength / 2),
+        endIndex
+      );
       Future<Integer> futureUpperFindMin = executorService.submit(upperFindMin);
       return Math.min(futureLowerFindMin.get(), futureUpperFindMin.get());
     } else {
@@ -42,12 +55,13 @@ public class FindMinTask implements Callable<Integer> {
   public static void main(String[] args) {
     int[] numbers = new int[10_000];
     Random random = new Random();
-    for (int i = 0; i < numbers.length; i++)
-      numbers[i] = Math.abs(random.nextInt() % Integer.MAX_VALUE);
+    for (int i = 0; i < numbers.length; i++) numbers[i] =
+      Math.abs(random.nextInt() % Integer.MAX_VALUE);
     try {
       ExecutorService executorService = Executors.newFixedThreadPool(6400);
-      Future<Integer> futureResult =
-          executorService.submit(new FindMinTask(executorService, numbers, 0, numbers.length - 1));
+      Future<Integer> futureResult = executorService.submit(
+        new FindMinTask(executorService, numbers, 0, numbers.length - 1)
+      );
       System.out.println(futureResult.get());
       executorService.shutdown();
     } catch (ExecutionException | InterruptedException e) {

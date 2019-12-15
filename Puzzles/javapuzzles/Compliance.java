@@ -2,7 +2,6 @@ package javapuzzles;
 
 public enum Compliance {
   ;
-
   // Java 11 compliance
   public static void main(String... args) {
     var b1 = " ".isBlank();

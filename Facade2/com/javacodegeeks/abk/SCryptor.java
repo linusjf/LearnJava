@@ -9,6 +9,7 @@ import com.lambdaworks.crypto.SCryptUtil;
  * @version 1.0
  */
 public class SCryptor implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *

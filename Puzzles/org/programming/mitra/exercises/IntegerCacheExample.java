@@ -8,7 +8,6 @@ package org.programming.mitra.exercises;
  */
 public enum IntegerCacheExample {
   ;
-
   @SuppressWarnings("PMD.CompareObjectsWithEquals")
   public static void main(String[] args) {
     int a = 127;
@@ -52,6 +51,6 @@ public enum IntegerCacheExample {
 
     // Output -- false
     System.out.println(objC.equals(objD));
-    // Output -- true
+  // Output -- true
   }
 }

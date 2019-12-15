@@ -12,7 +12,7 @@ public class ThreadShowName extends Thread {
 
     // Will call run.
     thread2.start();
-    // Will call run.
+  // Will call run.
   }
 
   @Override
@@ -23,7 +23,7 @@ public class ThreadShowName extends Thread {
         System.out.println(getName() + " being executed.");
         pause = random.nextInt(3000);
         sleep(pause);
-        // 0-3 seconds.
+      // 0-3 seconds.
       } catch (InterruptedException interruptEx) {
         System.out.println(interruptEx);
         interrupt();

@@ -9,14 +9,16 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public enum LockProducerConsumer {
   ;
-
   public static void main(String[] args) {
     FileMock mock = new FileMock(100, 10);
     Buffer buffer = new Buffer(20);
     Producer producer = new Producer(mock, buffer);
     Thread threadProducer = new Thread(producer, "Producer");
     Thread[] threadConsumers = new Thread[3];
-    Arrays.setAll(threadConsumers, i -> new Thread(new Consumer(buffer), "Consumer " + i));
+    Arrays.setAll(
+      threadConsumers,
+      i -> new Thread(new Consumer(buffer), "Consumer " + i)
+    );
     threadProducer.start();
     for (Thread t : threadConsumers) t.start();
   }
@@ -78,7 +80,10 @@ public enum LockProducerConsumer {
         while (queue.size() == maxSize) space.await();
         queue.offer(line);
         System.out.printf(
-            "%s: Inserted Line: %d%n", Thread.currentThread().getName(), queue.size());
+          "%s: Inserted Line: %d%n",
+          Thread.currentThread().getName(),
+          queue.size()
+        );
         lines.signalAll();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -94,7 +99,11 @@ public enum LockProducerConsumer {
 
         if (hasPendingLines()) {
           String line = queue.poll();
-          System.out.printf("%s: Line Read: %d%n", Thread.currentThread().getName(), queue.size());
+          System.out.printf(
+            "%s: Line Read: %d%n",
+            Thread.currentThread().getName(),
+            queue.size()
+          );
           space.signalAll();
           return line;
         }

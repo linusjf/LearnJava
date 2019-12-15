@@ -23,5 +23,5 @@ public abstract class Player {
   }
 
   public abstract int playerEndurance();
-  // More similar methods
+// More similar methods
 }

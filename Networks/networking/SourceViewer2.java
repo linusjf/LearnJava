@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 
 public enum SourceViewer2 {
   ;
-
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     if (args.length > 0) {
@@ -20,9 +19,14 @@ public enum SourceViewer2 {
         // Open the URLConnection for reading
         URL u = new URL(args[0]);
         URLConnection uc = u.openConnection();
-        try (InputStream raw = uc.getInputStream();
-             InputStream buffer = new BufferedInputStream(raw);
-             Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name());) {
+        try (
+          InputStream raw = uc.getInputStream();
+          InputStream buffer = new BufferedInputStream(raw);
+          Reader reader = new InputStreamReader(
+            buffer,
+            StandardCharsets.UTF_8.name()
+          );
+        ) {
           int c;
           while ((c = reader.read()) != -1) System.out.print((char) c);
         }

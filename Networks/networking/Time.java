@@ -40,7 +40,8 @@ public final class Time {
     return getDateFromNetwork(HOSTNAME, 37);
   }
 
-  public static Date getDateFromNetwork(String host, int port) throws IOException {
+  public static Date getDateFromNetwork(String host, int port)
+    throws IOException {
     // The time protocol sets the epoch at 1900,
     // the Java Date class at 1970. This number
     // converts between them.
@@ -63,7 +64,8 @@ public final class Time {
     long differenceInMS = epoch1970ms - epoch1900ms;
     long differenceBetweenEpochs = differenceInMS / 1000;
     long secondsSince1900 = 0;
-    for (int i = 0; i < 4; i++) secondsSince1900 = (secondsSince1900 << 8) | raw.read();
+    for (int i = 0; i < 4; i++) secondsSince1900 =
+      (secondsSince1900 << 8) | raw.read();
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
     return secondsSince1970 * 1000;
   }

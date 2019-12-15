@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileListConverter implements IStringConverter<List<File>> {
+
   @Override
   public List<File> convert(String files) {
     String[] paths = files.split(",");

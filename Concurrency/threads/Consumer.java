@@ -43,7 +43,8 @@ public class Consumer implements Runnable {
   @Override
   public void run() {
     Random random = new Random();
-    for (String message = drop.take(); !"DONE".equals(message); message = drop.take()) {
+    for (String message = drop.take(); !"DONE".equals(message); message =
+      drop.take()) {
       System.out.format("MESSAGE RECEIVED: %s%n", message);
       try {
         Thread.sleep(new Random(random.nextLong()).nextInt(5000));

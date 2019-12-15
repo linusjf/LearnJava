@@ -31,12 +31,23 @@ public enum TCPEchoServer {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void handleClient() {
-    try (Socket link = serverSocket.accept();
-         PrintWriter output = new PrintWriter(
-             new OutputStreamWriter(link.getOutputStream(), StandardCharsets.UTF_8.name()), true);
-         Scanner input = new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());) {
+    try (
+      Socket link = serverSocket.accept();
+      PrintWriter output = new PrintWriter(
+        new OutputStreamWriter(
+          link.getOutputStream(),
+          StandardCharsets.UTF_8.name()
+        ),
+        true
+      );
+      Scanner input = new Scanner(
+        link.getInputStream(),
+        StandardCharsets.UTF_8.name()
+      );
+    ) {
       int numMessages = 0;
       String message = "";
+
       // Step 4.
       while (!"***CLOSE***".equals(message)) {
         System.out.println("Message received.");
@@ -45,7 +56,7 @@ public enum TCPEchoServer {
         message = input.nextLine();
       }
       output.println(numMessages + " messages received.");
-      // Step 4.
+    // Step 4.
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }

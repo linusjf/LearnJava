@@ -8,10 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 public enum PeriodicExecutor {
   ;
-
   private static void printAndDelay(ScheduledFuture<?> result) {
     for (int i = 0; i < 10; i++) {
-      System.out.printf("Main: Delay: %d%n", result.getDelay(TimeUnit.MILLISECONDS));
+      System.out.printf(
+        "Main: Delay: %d%n",
+        result.getDelay(TimeUnit.MILLISECONDS)
+      );
       try {
         TimeUnit.MILLISECONDS.sleep(500);
       } catch (InterruptedException e) {
@@ -23,8 +25,12 @@ public enum PeriodicExecutor {
   public static void main(String[] args) {
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     System.out.printf("Main: Starting at: %s%n", new Date());
-    ScheduledFuture<?> result =
-        executor.scheduleAtFixedRate(new Task("Task"), 1, 2, TimeUnit.SECONDS);
+    ScheduledFuture<?> result = executor.scheduleAtFixedRate(
+      new Task("Task"),
+      1,
+      2,
+      TimeUnit.SECONDS
+    );
     printAndDelay(result);
     executor.shutdown();
     try {

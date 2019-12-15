@@ -5,7 +5,6 @@ import java.util.Random;
 
 public enum SimpleLSHMinHashExample {
   ;
-
   public static void main(String[] args) {
     // proportion of 0's in the vectors
     // if the vectors are dense (lots of 1's), the average jaccard similarity
@@ -50,11 +49,10 @@ public enum SimpleLSHMinHashExample {
       for (int i = 0; i < hash.length; i++) {
         counts[i][hash[i]]++;
       }
-
-      //  print(vector);
-      // System.out.print(" : ");
-      // print(hash);
-      // System.out.print("\n");
+    //  print(vector);
+    // System.out.print(" : ");
+    // print(hash);
+    // System.out.print("\n");
     }
 
     System.out.println("Number of elements per bucket at each stage:");

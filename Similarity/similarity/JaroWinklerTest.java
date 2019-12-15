@@ -5,13 +5,13 @@ import info.debatty.java.stringsimilarity.JaroWinkler;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum JaroWinklerTest {
   ;
-
   public static void main(String[] args) {
     JaroWinkler jw = new JaroWinkler();
 
     System.out.println("\nJaro-Winkler: \n");
 
     System.out.println("\nSimilarity: \n");
+
     // substitution of s and t
     System.out.println(jw.similarity("My string", "My tsring"));
 
@@ -37,6 +37,7 @@ public enum JaroWinklerTest {
     System.out.println(jw.similarity("col", "col123"));
 
     System.out.println("\nDistance: \n");
+
     // substitution of s and t
     System.out.println(1 - jw.similarity("My string", "My tsring"));
 

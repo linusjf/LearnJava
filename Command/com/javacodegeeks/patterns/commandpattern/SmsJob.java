@@ -11,9 +11,10 @@ public class SmsJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId() + " executing sms jobs.");
-    if (sms != null)
-      sms.sendSms();
+    System.out.println(
+      "Job ID: " + Thread.currentThread().getId() + " executing sms jobs."
+    );
+    if (sms != null) sms.sendSms();
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {

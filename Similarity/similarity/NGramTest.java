@@ -4,9 +4,9 @@ import info.debatty.java.stringsimilarity.NGram;
 
 public enum NGramTest {
   ;
-
   public static void main(String[] args) {
     System.out.println("\nNGram :\n");
+
     // produces 0.583333
     NGram twogram = new NGram(2);
     System.out.println(twogram.distance("ABCD", "ABTUIO"));

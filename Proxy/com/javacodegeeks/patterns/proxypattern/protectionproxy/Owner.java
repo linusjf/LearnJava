@@ -26,8 +26,7 @@ public class Owner implements Staff {
    * @return a <code>String</code> value. Returns empty string if reportGenerator is null.
    */
   public String generateDailyReport() {
-    if (reportGenerator == null)
-      return "";
+    if (reportGenerator == null) return "";
     return reportGenerator.generateDailyReport();
   }
 }

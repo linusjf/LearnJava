@@ -22,7 +22,10 @@ public class SMSUsersObserver implements PropertyChangeListener {
    * @param observable an <code>Observable</code> value
    * @param userInfo a <code>String</code> value
    */
-  public SMSUsersObserver(CommentaryObjectObservable observable, String userInfo) {
+  public SMSUsersObserver(
+    CommentaryObjectObservable observable,
+    String userInfo
+  ) {
     this.observable = observable;
     this.userInfo = userInfo;
   }
@@ -30,7 +33,12 @@ public class SMSUsersObserver implements PropertyChangeListener {
   /** Describe <code>subscribe</code> method here. */
   public void subscribe() {
     System.out.println(
-        "Subscribing " + userInfo + " to " + observable.getSubjectDetails() + " ...");
+      "Subscribing " +
+        userInfo +
+        " to " +
+        observable.getSubjectDetails() +
+        " ..."
+    );
     this.observable.addPropertyChangeListener(this);
     System.out.println("Subscribed successfully.");
   }
@@ -38,7 +46,12 @@ public class SMSUsersObserver implements PropertyChangeListener {
   /** Describe <code>unSubscribe</code> method here. */
   public void unSubscribe() {
     System.out.println(
-        "Unsubscribing " + userInfo + " to " + observable.getSubjectDetails() + " ...");
+      "Unsubscribing " +
+        userInfo +
+        " to " +
+        observable.getSubjectDetails() +
+        " ..."
+    );
     this.observable.removePropertyChangeListener(this);
     System.out.println("Unsubscribed successfully.");
   }

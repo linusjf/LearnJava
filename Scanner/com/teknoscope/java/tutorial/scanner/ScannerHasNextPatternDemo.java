@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
  * Java Tutorial
  */
 public final class ScannerHasNextPatternDemo {
+
   private ScannerHasNextPatternDemo() {
     throw new IllegalStateException("Private constructor");
   }
@@ -23,9 +24,8 @@ public final class ScannerHasNextPatternDemo {
     scan.useDelimiter("\\p{javaWhitespace}+");
 
     /*Initialize the String pattern which
-    signifies that the String token contains
-    characters of the alphabet only*/
-
+        signifies that the String token contains
+        characters of the alphabet only*/
     Pattern pattern = Pattern.compile("([A-Za-z]*)");
 
     printNames(scan, pattern);
@@ -37,10 +37,9 @@ public final class ScannerHasNextPatternDemo {
   public static void printNames(Scanner scan, Pattern pattern) {
     while (scan.hasNext()) {
       // check if the token consists of declared pattern
-      if (scan.hasNext(pattern))
-        System.out.println(scan.next());
-      else
-        scan.next();
+      if (scan.hasNext(pattern)) System.out.println(
+        scan.next()
+      ); else scan.next();
     }
   }
 }

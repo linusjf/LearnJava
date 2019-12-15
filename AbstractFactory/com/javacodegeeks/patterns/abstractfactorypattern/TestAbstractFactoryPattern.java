@@ -2,11 +2,12 @@ package com.javacodegeeks.patterns.abstractfactorypattern;
 
 public enum TestAbstractFactoryPattern {
   ;
-
-  static final AbstractParserFactory PARSER_FACTORY_NY =
-      ParserFactoryProducer.getFactory("NYFactory");
-  static final AbstractParserFactory PARSER_FACTORY_TW =
-      ParserFactoryProducer.getFactory("TWFactory");
+  static final AbstractParserFactory PARSER_FACTORY_NY = ParserFactoryProducer.getFactory(
+    "NYFactory"
+  );
+  static final AbstractParserFactory PARSER_FACTORY_TW = ParserFactoryProducer.getFactory(
+    "TWFactory"
+  );
 
   public static void main(String[] args) {
     XMLParser parser = PARSER_FACTORY_NY.getParserInstance("NYORDER");

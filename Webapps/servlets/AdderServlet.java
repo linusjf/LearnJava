@@ -12,7 +12,7 @@ public class AdderServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
+    throws IOException, ServletException {
     try {
       String value1 = request.getParameter("Num1");
       String value2 = request.getParameter("Num2");
@@ -25,7 +25,8 @@ public class AdderServlet extends HttpServlet {
     }
   }
 
-  private void sendPage(HttpServletResponse reply, String result) throws IOException {
+  private void sendPage(HttpServletResponse reply, String result)
+    throws IOException {
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
     out.println("<HTML>");

@@ -2,7 +2,6 @@ package javapuzzles;
 
 public enum ReturnFinally {
   ;
-
   @SuppressWarnings("PMD")
   public static String getString() {
     try {

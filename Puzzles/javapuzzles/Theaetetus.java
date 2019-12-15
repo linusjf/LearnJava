@@ -1,6 +1,7 @@
 package javapuzzles;
 
 public class Theaetetus {
+
   @SuppressWarnings("static")
   public static void main(String... args) {
     new Theaetetus().printIt((String) null);

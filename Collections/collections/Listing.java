@@ -16,27 +16,29 @@ public enum Listing {
   private static int loopCount;
 
   static {
-    Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
-      System.err.println(e);
-      System.err.printf(" in thread %s...", t);
-      loopCount++;
-      main();
-    });
+    Thread.currentThread()
+      .setUncaughtExceptionHandler(
+        (t, e) -> {
+          System.err.println(e);
+          System.err.printf(" in thread %s...", t);
+          loopCount++;
+          main();
+        }
+      );
   }
 
   @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
-    List<String> list = Arrays.asList(new String[] {FOO, BAR});
+    List<String> list = Arrays.asList(new String[] { FOO, BAR });
     assert list.contains(FOO);
 
     list = Arrays.asList(FOO, BAR);
 
     assert list.contains(FOO);
 
-    if (loopCount == 0)
-      list.add(BAZ);
+    if (loopCount == 0) list.add(BAZ);
 
-    String[] array = {FOO, BAR};
+    String[] array = { FOO, BAR };
     list = Arrays.asList(array);
     array[0] = BAZ;
     assert array[0] == list.get(0);
@@ -47,6 +49,7 @@ public enum Listing {
 
     assert list.contains(FOO);
     List<String> cities = new ArrayList<>() {
+
       {
         add("New York");
         add("Rio");

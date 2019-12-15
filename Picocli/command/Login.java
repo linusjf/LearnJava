@@ -9,10 +9,15 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 public class Login implements Callable<Integer> {
-  @Option(names = {"-u", "--user"}, description = "User name") String user;
+  @Option(names = { "-u", "--user" }, description = "User name")
+  String user;
 
   @Option(
-      names = {"-p", "--password"}, description = "Passphrase", interactive = true, arity = "0..1")
+    names = { "-p", "--password" },
+    description = "Passphrase",
+    interactive = true,
+    arity = "0..1"
+  )
   char[] password;
 
   @Override
@@ -26,7 +31,10 @@ public class Login implements Callable<Integer> {
     md.update(bytes);
 
     System.out.printf(
-        "Hi %s, your password is hashed to %s.%n", user, Base64.getEncoder().encode(md.digest()));
+      "Hi %s, your password is hashed to %s.%n",
+      user,
+      Base64.getEncoder().encode(md.digest())
+    );
 
     // null out the arrays when done
     Arrays.fill(bytes, (byte) 0);

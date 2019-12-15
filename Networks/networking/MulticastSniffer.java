@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 
 public final class MulticastSniffer {
+
   private MulticastSniffer() {
     throw new IllegalStateException("Private constructor");
   }

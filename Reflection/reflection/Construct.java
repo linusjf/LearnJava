@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 
 public final class Construct {
+
   private Construct() {
     throw new IllegalStateException("Private constructor.");
   }
@@ -15,9 +16,14 @@ public final class Construct {
     // get all visible constructors
     Constructor<?>[] constructors = String.class.getConstructors();
     System.out.println("Number of constructors: " + constructors.length);
+
     // all constructors
-    Constructor<?>[] declaredConstructors = String.class.getDeclaredConstructors();
-    System.out.println("Number of declared constructors: " + declaredConstructors.length);
+    Constructor<?>[] declaredConstructors = String
+    .class
+      .getDeclaredConstructors();
+    System.out.println(
+      "Number of declared constructors: " + declaredConstructors.length
+    );
     System.out.println("Declared constructors...");
     for (Constructor<?> constructor : declaredConstructors) {
       int numberParams = constructor.getParameterCount();
@@ -27,7 +33,11 @@ public final class Construct {
       // public, private, etc.
       int modifiersConstructor = constructor.getModifiers();
       System.out.println(
-          "modifiers " + Modifier.toString(modifiersConstructor & Modifier.constructorModifiers()));
+        "modifiers " +
+          Modifier.toString(
+            modifiersConstructor & Modifier.constructorModifiers()
+          )
+      );
 
       // array of parameters, more info in the methods section
       Parameter[] parameters = constructor.getParameters();
@@ -43,7 +53,9 @@ public final class Construct {
       Annotation[] annotations = constructor.getAnnotations();
       if (annotations.length > 0) {
         System.out.println("Annotations: ");
-        for (Annotation anno : annotations) System.out.println(anno.annotationType());
+        for (Annotation anno : annotations) System.out.println(
+          anno.annotationType()
+        );
       }
     }
   }

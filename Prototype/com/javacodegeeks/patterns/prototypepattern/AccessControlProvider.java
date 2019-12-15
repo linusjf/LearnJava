@@ -8,7 +8,8 @@ public final class AccessControlProvider {
 
   static {
     System.out.println(
-        "Fetching data from external resources and creating access control objects...");
+      "Fetching data from external resources and creating access control objects..."
+    );
     map.put("USER", new AccessControl("USER", "DO_WORK"));
     map.put("ADMIN", new AccessControl("ADMIN", "ADD/REMOVE USERS"));
     map.put("MANAGER", new AccessControl("MANAGER", "GENERATE/READ REPORTS"));
@@ -21,7 +22,7 @@ public final class AccessControlProvider {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static AccessControl getAccessControlObject(String controlLevel)
-      throws CloneNotSupportedException {
+    throws CloneNotSupportedException {
     AccessControl ac = map.get(controlLevel);
     return ac == null ? null : ac.clone();
   }

@@ -11,7 +11,6 @@ import java.nio.channels.SocketChannel;
 
 public enum OptionSupport {
   ;
-
   public static void main(String[] args) {
     try {
       printOptions(SocketChannel.open());

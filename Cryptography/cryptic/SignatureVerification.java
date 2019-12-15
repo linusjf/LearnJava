@@ -11,7 +11,6 @@ import java.security.SignatureException;
 
 public enum SignatureVerification {
   ;
-
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -46,11 +45,12 @@ public enum SignatureVerification {
       // Verifying the signature
       boolean bool = sign.verify(signature);
 
-      if (bool)
-        System.out.println("Signature verified");
-      else
-        System.out.println("Signature failed");
-    } catch (SignatureException | NoSuchAlgorithmException | InvalidKeyException ex) {
+      if (bool) System.out.println(
+        "Signature verified"
+      ); else System.out.println("Signature failed");
+    } catch (
+      SignatureException | NoSuchAlgorithmException | InvalidKeyException ex
+    ) {
       System.err.println(ex);
     }
   }

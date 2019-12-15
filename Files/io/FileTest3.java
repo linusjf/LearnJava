@@ -7,12 +7,16 @@ import java.util.Scanner;
 
 public enum FileTest3 {
   ;
-
   public static void main(String[] args) {
     int mark;
     int total = 0;
     int count = 0;
-    try (Scanner input = new Scanner(new File("marks1.txt"), StandardCharsets.UTF_8.name())) {
+    try (
+      Scanner input = new Scanner(
+        new File("marks1.txt"),
+        StandardCharsets.UTF_8.name()
+      )
+    ) {
       while (input.hasNext()) {
         mark = input.nextInt();
         total += mark;

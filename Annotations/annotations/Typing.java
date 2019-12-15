@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Typing {
-  @SuppressWarnings({"unused", "PMD.DataflowAnomalyAnalysis"})
+
+  @SuppressWarnings({ "unused", "PMD.DataflowAnomalyAnalysis" })
   public static void main(String... args) {
     // type def
     @TypeAnnotated String cannotBeEmpty;

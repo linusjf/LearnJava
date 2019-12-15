@@ -20,9 +20,16 @@ public enum Copy {
       return;
     }
 
-    try (Scanner source = new Scanner(new File(arg[0]), StandardCharsets.UTF_8.name());
-         PrintWriter destination =
-             new PrintWriter(new File(arg[1]), StandardCharsets.UTF_8.name());) {
+    try (
+      Scanner source = new Scanner(
+        new File(arg[0]),
+        StandardCharsets.UTF_8.name()
+      );
+      PrintWriter destination = new PrintWriter(
+        new File(arg[1]),
+        StandardCharsets.UTF_8.name()
+      );
+    ) {
       String input;
       while (source.hasNext()) {
         input = source.nextLine();

@@ -5,11 +5,11 @@ import info.debatty.java.stringsimilarity.OptimalStringAlignment;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum OptimalStringTest {
   ;
-
   public static void main(String[] args) {
     OptimalStringAlignment osa = new OptimalStringAlignment();
 
     System.out.println("\nOptimal String Alignment: \n");
+
     // 1 substitution
     System.out.println(osa.distance("ABCDEF", "ABDCEF"));
 

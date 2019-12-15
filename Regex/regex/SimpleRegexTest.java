@@ -2,7 +2,6 @@ package regex;
 
 public enum SimpleRegexTest {
   ;
-
   public static void main(String[] args) {
     String sampleText = "this is the 1st test string";
     String sampleRegex = "\\d+\\w+";
@@ -13,7 +12,14 @@ public enum SimpleRegexTest {
       int matchedFrom = m.start();
       int matchedTo = m.end();
       System.out.println(
-          "matched [" + matchedText + "] from " + matchedFrom + " to " + matchedTo + ".");
+        "matched [" +
+          matchedText +
+          "] from " +
+          matchedFrom +
+          " to " +
+          matchedTo +
+          "."
+      );
     } else {
       System.out.println("didn’t match");
     }

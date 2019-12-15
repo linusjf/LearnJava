@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public enum Voiding {
   ;
-
   @SuppressWarnings("checkstyle:magicnumber")
   public static void main(String... args) {
     try {

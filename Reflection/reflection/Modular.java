@@ -5,7 +5,6 @@ import java.util.Set;
 
 public enum Modular {
   ;
-
   private static Module myClassModule = String.class.getModule();
 
   public static void main(String... args) {

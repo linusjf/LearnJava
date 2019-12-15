@@ -5,12 +5,13 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public final class LowPortScanner {
+
   private LowPortScanner() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    String[] hosts = args.length > 0 ? args : new String[] {"localhost"};
+    String[] hosts = args.length > 0 ? args : new String[] { "localhost" };
     for (String host : hosts) {
       for (int i = 1; i < 1024; i++) {
         try {

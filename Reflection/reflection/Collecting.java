@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class Collecting {
+
   private Collecting() {
     throw new IllegalStateException("Private constructor.");
   }
@@ -37,7 +38,6 @@ public final class Collecting {
       @SuppressWarnings("unchecked")
       Collection<? extends Object> coll = (Collection<? extends Object>) ref;
       coll.forEach(obj -> System.out.println(obj.getClass()));
-    } else
-      System.out.println("Not a collection: " + ref.getClass().getName());
+    } else System.out.println("Not a collection: " + ref.getClass().getName());
   }
 }

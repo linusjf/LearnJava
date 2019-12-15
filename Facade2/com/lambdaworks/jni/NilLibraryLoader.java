@@ -7,6 +7,7 @@ package com.lambdaworks.jni;
  * @author Will Glozer
  */
 public class NilLibraryLoader implements LibraryLoader {
+
   /**
    * Don't load a shared library.
    *

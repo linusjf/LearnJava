@@ -7,13 +7,8 @@ import java.util.Random;
 
 public enum SuspiciousSort {
   ;
-
   enum Order {
-    ASCENDING,
-    DESCENDING,
-    CONSTANT,
-    UNORDERED,
-    ;
+    ASCENDING, DESCENDING, CONSTANT, UNORDERED, ;
   }
 
   private static final Random RANDOM = new Random();
@@ -51,15 +46,12 @@ public enum SuspiciousSort {
       ascending |= a[i] > a[i - 1];
       descending |= a[i] < a[i - 1];
     }
-    if (ascending && !descending)
-      return Order.ASCENDING;
-    if (descending && !ascending)
-      return Order.DESCENDING;
-    if (!ascending)
-      return Order.CONSTANT;
+    if (ascending && !descending) return Order.ASCENDING;
+    if (descending && !ascending) return Order.DESCENDING;
+    if (!ascending) return Order.CONSTANT;
 
     // All elements equal
     return Order.UNORDERED;
-    // Array is not sorted
+  // Array is not sorted
   }
 }

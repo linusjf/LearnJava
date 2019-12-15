@@ -16,8 +16,7 @@ import java.nio.file.StandardOpenOption;
  */
 public interface FileChannelExample {
   enum FileOperation {
-    READ,
-    WRITE;
+    READ, WRITE;
   }
 
   /**
@@ -28,16 +27,26 @@ public interface FileChannelExample {
    * @return <code>SeekableByteChannel</code> object based on fileOperation parameter
    * @throws FileNotFoundException if the file path does not point to a file.
    */
-  default SeekableByteChannel createChannel(String path, FileOperation fileOperation)
-      throws FileNotFoundException, IOException {
+  default SeekableByteChannel createChannel(
+    String path,
+    FileOperation fileOperation
+  )
+    throws FileNotFoundException, IOException {
     //    final File file =
     //      new
     //      File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
-    final File file =
-        new File(Thread.currentThread().getContextClassLoader().getResource(path).getFile());
+    final File file = new File(
+      Thread.currentThread().getContextClassLoader().getResource(path).getFile()
+    );
     return fileOperation == FileOperation.READ
-        ? Files.newByteChannel(Paths.get(file.getAbsolutePath()), StandardOpenOption.READ)
-        : Files.newByteChannel(
-            Paths.get(file.getAbsolutePath()), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+      ? Files.newByteChannel(
+      Paths.get(file.getAbsolutePath()),
+      StandardOpenOption.READ
+    )
+      : Files.newByteChannel(
+      Paths.get(file.getAbsolutePath()),
+      StandardOpenOption.CREATE,
+      StandardOpenOption.WRITE
+    );
   }
 }

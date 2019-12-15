@@ -1,6 +1,7 @@
 package javapuzzles;
 
 public class ThreadIon implements Runnable {
+
   @Override
   public void run() {
     System.out.println("1");

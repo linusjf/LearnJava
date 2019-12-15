@@ -8,7 +8,6 @@ package com.javacodegeeks.patterns.factorymethodpattern;
  */
 public abstract class DisplayService {
 
-
   /** Describe <code>display</code> method here. */
   @SuppressWarnings("PMD.LawOfDemeter")
   public void display() {

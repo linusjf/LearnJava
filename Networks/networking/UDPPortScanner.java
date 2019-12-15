@@ -5,7 +5,6 @@ import java.net.SocketException;
 
 public enum UDPPortScanner {
   ;
-
   public static void main(String[] args) {
     for (int port = 1024; port <= 65_535; port++) {
       try {

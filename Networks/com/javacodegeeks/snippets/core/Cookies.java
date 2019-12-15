@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public final class Cookies {
+
   private Cookies() {
     throw new IllegalStateException("Private constructor");
   }
@@ -23,12 +24,15 @@ public final class Cookies {
     }
   }
 
-  private static void printConnectionCookies(URLConnection conn) throws IOException {
+  private static void printConnectionCookies(URLConnection conn)
+    throws IOException {
     Map<String, List<String>> headers = conn.getHeaderFields();
     Map<String, List<String>> copyHeaders = new HashMap<>();
     copyHeaders.putAll(headers);
     copyHeaders.put("NULL", copyHeaders.remove(null));
-    Map<String, List<String>> headersTree = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    Map<String, List<String>> headersTree = new TreeMap<>(
+      String.CASE_INSENSITIVE_ORDER
+    );
     headersTree.putAll(copyHeaders);
 
     List<String> headerFieldValue = headersTree.get("Set-Cookie");
@@ -79,7 +83,11 @@ public final class Cookies {
     }
   }
 
-  private static String[] splitOn(String[] values, int index, String separator) {
+  private static String[] splitOn(
+    String[] values,
+    int index,
+    String separator
+  ) {
     return values[index].split(separator);
   }
 

@@ -31,7 +31,8 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
    * @param args array of arguments
    */
   @Override
-  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+  public Object invoke(Object proxy, Method method, Object[] args)
+    throws Throwable {
     synchronized (lockObject) {
       System.out.println("Synchronized call...");
       return method.invoke(wrappableImpl, args);
@@ -45,12 +46,15 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
    * @param wrappableClass Class the interface
    * @param wrappableImpl the interface implementation
    */
-  @SuppressWarnings({"unchecked", "rawtypes"})
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   public static <T> T wrap(Class<T> wrappableClass, T wrappableImpl) {
     // return (T)Proxy.newProxyInstance(SyncProxyWrapper.class.getClassLoader(),
     //                               new Class[] {wrappableClass},
     //                             new SyncProxyWrapper<>(wrappableImpl));
-    return (T) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-        new Class[] {wrappableClass}, new SyncProxyWrapper<>(wrappableImpl));
+    return (T) Proxy.newProxyInstance(
+      Thread.currentThread().getContextClassLoader(),
+      new Class[] { wrappableClass },
+      new SyncProxyWrapper<>(wrappableImpl)
+    );
   }
 }

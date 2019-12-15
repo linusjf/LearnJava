@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class IPFinder {
+
   private IPFinder() {
     throw new IllegalStateException("Private constructor");
   }

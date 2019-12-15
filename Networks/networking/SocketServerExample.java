@@ -28,6 +28,7 @@ public class SocketServerExample {
 
   public static void main(String[] args) {
     Runnable server = new Runnable() {
+
       @Override
       public void run() {
         try {
@@ -39,6 +40,7 @@ public class SocketServerExample {
     };
 
     Runnable client = new Runnable() {
+
       @Override
       public void run() {
         try {

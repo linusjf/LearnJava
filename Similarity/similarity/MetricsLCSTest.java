@@ -4,7 +4,6 @@ import info.debatty.java.stringsimilarity.MetricLCS;
 
 public enum MetricsLCSTest {
   ;
-
   public static void main(String[] args) {
     MetricLCS lcs = new MetricLCS();
 

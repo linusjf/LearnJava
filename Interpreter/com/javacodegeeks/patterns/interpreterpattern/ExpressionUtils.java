@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.interpreterpattern;
 
 public final class ExpressionUtils {
+
   private ExpressionUtils() {
     throw new IllegalStateException("Private constructor");
   }
@@ -10,7 +11,11 @@ public final class ExpressionUtils {
   }
 
   @SuppressWarnings("checkstyle:returncount")
-  public static Expression getOperator(String s, Expression left, Expression right) {
+  public static Expression getOperator(
+    String s,
+    Expression left,
+    Expression right
+  ) {
     switch (s) {
       case "+":
         return new Addition(left, right);
@@ -23,7 +28,11 @@ public final class ExpressionUtils {
     }
   }
 
-  public static int interpret(String s, Expression leftExpression, Expression rightExpression) {
+  public static int interpret(
+    String s,
+    Expression leftExpression,
+    Expression rightExpression
+  ) {
     Expression expr = getOperator(s, leftExpression, rightExpression);
     return interpret(expr);
   }

@@ -35,8 +35,11 @@ public final class ServerEcho {
     }
   }
 
-  private static void receiveAndSend(DatagramSocket dsock, DatagramPacket dpack)
-      throws IOException {
+  private static void receiveAndSend(
+    DatagramSocket dsock,
+    DatagramPacket dpack
+  )
+    throws IOException {
     while (true) {
       dsock.receive(dpack);
 
@@ -45,7 +48,14 @@ public final class ServerEcho {
       String s2 = new String(arr2, 0, packSize, StandardCharsets.UTF_8);
 
       System.out.println(
-          new Date() + "  " + dpack.getAddress() + " : " + dpack.getPort() + " " + s2);
+        new Date() +
+          "  " +
+          dpack.getAddress() +
+          " : " +
+          dpack.getPort() +
+          " " +
+          s2
+      );
       dsock.send(dpack);
     }
   }

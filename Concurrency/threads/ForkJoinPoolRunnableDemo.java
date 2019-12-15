@@ -16,11 +16,15 @@ public enum ForkJoinPoolRunnableDemo {
     List<Product> products = generator.generate(10_000);
     Task task = new Task(products, 0, products.size(), 0.20);
     ForkJoinTask<?> t = ForkJoinTask.adapt(task);
+
     // task.setForkedTask(t);
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(t);
     do {
-      System.out.printf("Main: Thread Count: %d%n", pool.getActiveThreadCount());
+      System.out.printf(
+        "Main: Thread Count: %d%n",
+        pool.getActiveThreadCount()
+      );
       System.out.printf("Main: Thread Steal: %d%n", pool.getStealCount());
       System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
       try {
@@ -35,7 +39,11 @@ public enum ForkJoinPoolRunnableDemo {
     }
     for (Product product : products) {
       if (product.getPrice() != EXPECTED_PRICE) {
-        System.out.printf("Product %s: %f%n", product.getName(), product.getPrice());
+        System.out.printf(
+          "Product %s: %f%n",
+          product.getName(),
+          product.getPrice()
+        );
       }
     }
     System.out.println("Main: End of the program.%n");
@@ -64,6 +72,7 @@ public enum ForkJoinPoolRunnableDemo {
   }
 
   static class ProductListGenerator {
+
     public List<Product> generate(int size) {
       List<Product> ret = new ArrayList<>();
       for (int i = 0; i < size; i++) {
@@ -82,8 +91,8 @@ public enum ForkJoinPoolRunnableDemo {
     private final int first;
     private final int last;
     private final double increment;
-    // private ForkJoinTask<?> t;
 
+    // private ForkJoinTask<?> t;
     Task(List<Product> products, int first, int last, double increment) {
       super();
       this.products = products;
@@ -94,15 +103,17 @@ public enum ForkJoinPoolRunnableDemo {
 
     @Override
     public void run() {
-      if (last - first < BATCH_SIZE)
-        updatePrices();
-      else {
+      if (last - first < BATCH_SIZE) updatePrices(); else {
         int middle = (last + first) / 2;
-        System.out.printf("Task: Pending tasks: %s%n", ForkJoinTask.getQueuedTaskCount());
+        System.out.printf(
+          "Task: Pending tasks: %s%n",
+          ForkJoinTask.getQueuedTaskCount()
+        );
         Task t1 = new Task(products, first, middle + 1, increment);
         Task t2 = new Task(products, middle + 1, last, increment);
         ForkJoinTask<?> task1 = ForkJoinTask.adapt(t1);
         ForkJoinTask<?> task2 = ForkJoinTask.adapt(t2);
+
         // t1.setForkedTask(task1);
         // t2.setForkedTask(task2);
         ForkJoinTask.invokeAll(task1, task2);

@@ -4,10 +4,9 @@ import info.debatty.java.lsh.LSHMinHash;
 import info.debatty.java.lsh.MinHash;
 import java.util.Random;
 
-@SuppressWarnings({"PMD.CyclomaticComplexity", "PMD.NPathComplexity"})
+@SuppressWarnings({ "PMD.CyclomaticComplexity", "PMD.NPathComplexity" })
 public enum LSHMinHashExample {
   ;
-
   public static void main(String[] args) {
     // Number of sets
     int count = 2000;
@@ -37,11 +36,13 @@ public enum LSHMinHashExample {
       vectors[i] = new boolean[n];
 
       for (int j = 0; j < n; j++) {
-        vectors[i][j] = r.nextDouble() <= 0.7 ? vectors[0][j] : r.nextInt(10) == 0;
+        vectors[i][j] =
+          r.nextDouble() <= 0.7 ? vectors[0][j] : r.nextInt(10) == 0;
       }
     }
 
     System.out.println("\nSimilarity and probability: \n");
+
     // Now we can proceed to LSH binning
     // We will test multiple stages
     for (int stages = 1; stages <= 10; stages++) {

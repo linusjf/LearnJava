@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public final class SourceViewer {
+
   private SourceViewer() {
     throw new IllegalStateException("Private constructor");
   }
@@ -16,8 +17,12 @@ public final class SourceViewer {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     if (args.length > 0) {
-      try (Reader r = new InputStreamReader(new BufferedInputStream(new URL(args[0]).openStream()),
-               StandardCharsets.UTF_8.name());) {
+      try (
+        Reader r = new InputStreamReader(
+          new BufferedInputStream(new URL(args[0]).openStream()),
+          StandardCharsets.UTF_8.name()
+        );
+      ) {
         int c;
         while ((c = r.read()) != -1) System.out.print((char) c);
       } catch (MalformedURLException ex) {

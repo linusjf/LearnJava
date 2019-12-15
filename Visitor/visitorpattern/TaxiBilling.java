@@ -5,7 +5,6 @@ import java.util.List;
 
 public enum TaxiBilling {
   ;
-
   public static void main(String[] args) {
     List<Transportable> list = new ArrayList<>();
 
@@ -18,6 +17,8 @@ public enum TaxiBilling {
       t.accept(taxi);
     }
 
-    System.out.println(String.format("Total Fare : $%.2f", taxi.getTotalFare()));
+    System.out.println(
+      String.format("Total Fare : $%.2f", taxi.getTotalFare())
+    );
   }
 }

@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.mediatorpattern;
  * @version 1.0
  */
 public class SoilRemoval {
+
   /** Describe <code>low</code> method here. */
   public void low() {
     System.out.println("Setting Soil Removal to low");

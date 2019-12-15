@@ -4,8 +4,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public enum Coin {
-  HEADS,
-  TAILS;
+  HEADS, TAILS;
   private static Random rnd = new Random();
 
   @Override

@@ -6,7 +6,6 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 public enum ConcurrentSkipListMapDemo {
   ;
-
   public static void main(String[] args) {
     Thread[] threads = new Thread[25];
     ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
@@ -25,13 +24,24 @@ public enum ConcurrentSkipListMapDemo {
 
     element = map.firstEntry();
     contact = element.getValue();
-    System.out.printf("Main: First Entry: %s: %s%n", contact.getName(), contact.getPhone());
+    System.out.printf(
+      "Main: First Entry: %s: %s%n",
+      contact.getName(),
+      contact.getPhone()
+    );
 
     element = map.lastEntry();
     contact = element.getValue();
-    System.out.printf("Main: Last Entry: %s: %s%n", contact.getName(), contact.getPhone());
+    System.out.printf(
+      "Main: Last Entry: %s: %s%n",
+      contact.getName(),
+      contact.getPhone()
+    );
     System.out.printf("Main: Submap from A1996 to B1002: %n");
-    ConcurrentNavigableMap<String, Contact> submap = map.subMap("A1996", "B1002");
+    ConcurrentNavigableMap<String, Contact> submap = map.subMap(
+      "A1996",
+      "B1002"
+    );
     do {
       element = submap.pollFirstEntry();
       if (element != null) {
@@ -41,7 +51,10 @@ public enum ConcurrentSkipListMapDemo {
     } while (element != null);
   }
 
-  private static void startThreads(Thread[] threads, ConcurrentSkipListMap<String, Contact> map) {
+  private static void startThreads(
+    Thread[] threads,
+    ConcurrentSkipListMap<String, Contact> map
+  ) {
     for (char i = 'A'; i < 'Z'; i++) {
       Task task = new Task(map, String.valueOf(i));
       int index = i - 'A';

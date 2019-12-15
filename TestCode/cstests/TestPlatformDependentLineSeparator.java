@@ -8,7 +8,7 @@ package cstests;
  * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
  * this comment block. *
  */
-@SuppressWarnings({"PMD", "checkstyle:magicnumber"})
+@SuppressWarnings({ "PMD", "checkstyle:magicnumber" })
 public final class TestPlatformDependentLineSeparator {
   /**
    * * This class lists the varied combinations where the line separator denoted by \n is to be
@@ -20,7 +20,6 @@ public final class TestPlatformDependentLineSeparator {
    */
   // test if \n is flagged here. It shouldn't.
   // test if \r\n is flagged here. It shouldn't.
-
   private static String testString = "\nTest to catch line separator\n";
 
   private static String testString2 = "\r\nTest to catch line separator\r\n";
@@ -44,15 +43,17 @@ public final class TestPlatformDependentLineSeparator {
     System.out.println(testString3);
     System.out.println(testString4);
     StringBuilder sb = new StringBuilder();
+
     // this should be flagged
     sb.append('\n');
+
     // this should be flagged
     sb.append("\r\n");
     System.out.println(sb.toString());
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
+    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following
@@ -60,8 +61,10 @@ public final class TestPlatformDependentLineSeparator {
     System.out.print(charString);
 
     StringBuilder sb1 = new StringBuilder(20);
+
     // this should be flagged
     sb1.append('\n');
+
     // this should be flagged
     sb1.append("\r\n");
     System.out.println(sb1.toString());
@@ -84,15 +87,17 @@ public final class TestPlatformDependentLineSeparator {
     System.out.println(testString3);
     System.out.println(testString4);
     StringBuilder sb = new StringBuilder();
+
     // this should be flagged
     sb.append('\n');
+
     // this should be flagged
     sb.append("\r\n");
     System.out.println(sb.toString());
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
+    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following
@@ -100,8 +105,10 @@ public final class TestPlatformDependentLineSeparator {
     System.out.print(charString);
 
     StringBuilder sb1 = new StringBuilder(25);
+
     // this should be flagged
     sb1.append('\n');
+
     // this should be flagged
     sb1.append("\r\n");
     System.out.println(sb1.toString());

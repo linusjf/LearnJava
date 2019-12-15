@@ -3,7 +3,6 @@ package javapuzzles;
 @SuppressWarnings("PMD.DontUseFloatTypeForLoopIndices")
 public enum Count {
   ;
-
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     final int start = 2_000_000_000;

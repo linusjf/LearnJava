@@ -7,14 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 public enum CleanerDaemon {
   ;
-
   public static void main(String[] args) {
     Deque<Event> deque = new ArrayDeque<>();
     WriterTask writer = new WriterTask(deque);
     Thread[] threads = {
-        new Thread(writer),
-        new Thread(writer),
-        new Thread(writer),
+      new Thread(writer),
+      new Thread(writer),
+      new Thread(writer),
     };
     for (Thread t : threads) t.start();
     CleanerTask cleaner = new CleanerTask(deque);
@@ -55,7 +54,11 @@ public enum CleanerDaemon {
         Event event = new Event();
         event.setDate(new Date());
         event.setEvent(
-            String.format("The thread %s has generated an event", Thread.currentThread().getId()));
+          String.format(
+            "The thread %s has generated an event",
+            Thread.currentThread().getId()
+          )
+        );
         synchronized (deque) {
           deque.addFirst(event);
         }
@@ -100,13 +103,14 @@ public enum CleanerDaemon {
       while (difference > 10_000 && !deque.isEmpty()) {
         System.out.printf("Cleaner: %s%n", e.getEvent());
         deque.removeLast();
-        if (!delete)
-          delete = true;
+        if (!delete) delete = true;
         e = deque.getLast();
         difference = date.getTime() - e.getDate().getTime();
       }
-      if (delete)
-        System.out.printf("Cleaner: Size of the queue: %d%n", deque.size());
+      if (delete) System.out.printf(
+        "Cleaner: Size of the queue: %d%n",
+        deque.size()
+      );
     }
   }
 }

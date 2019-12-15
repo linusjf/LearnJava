@@ -1,6 +1,7 @@
 package stefano.lupo;
 
 public final class RequestHandlerUtils {
+
   private RequestHandlerUtils() {
     throw new IllegalStateException("Private constructor");
   }

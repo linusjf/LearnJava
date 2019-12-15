@@ -24,11 +24,11 @@ public final class MultiEchoServerNIO {
   }
 
   /*
-   Above Selector used both for detecting new
-   connections (on the ServerSocketChannel) and for
-   detecting incoming data from existing connections
-   (on the SocketChannel).
-  */
+     Above Selector used both for detecting new
+     connections (on the ServerSocketChannel) and for
+     detecting incoming data from existing connections
+     (on the SocketChannel).
+   */
   public static void main(String[] args) {
     System.out.println("Opening port…\n");
     try {
@@ -37,14 +37,14 @@ public final class MultiEchoServerNIO {
       ServerSocket serverSocket = serverSocketChannel.socket();
 
       /*
-           ServerSocketChannel created before
-           ServerSocket largely in order to configure
-           latter as a non-blocking socket by calling
-           the configureBlocking method of the
-           ServerSocketChannel with argument of 'false'.
-           (ServerSocket will have a ServerSocketChannel
-           only if latter is created first.)
-      */
+                 ServerSocketChannel created before
+                 ServerSocket largely in order to configure
+                 latter as a non-blocking socket by calling
+                 the configureBlocking method of the
+                 ServerSocketChannel with argument of 'false'.
+                 (ServerSocket will have a ServerSocketChannel
+                 only if latter is created first.)
+       */
       InetSocketAddress netAddress = new InetSocketAddress(PORT);
 
       // Bind socket to port…
@@ -143,10 +143,10 @@ public final class MultiEchoServerNIO {
     } else {
       try {
         /*
-               Reset buffer pointer to start of buffer,
-               prior to reading buffer's contents and
-               writing them to the SocketChannel…
-        */
+                       Reset buffer pointer to start of buffer,
+                       prior to reading buffer's contents and
+                       writing them to the SocketChannel…
+         */
         buffer.flip();
         while (buffer.remaining() > 0) socketChannel.write(buffer);
       } catch (IOException ioEx) {
@@ -162,8 +162,7 @@ public final class MultiEchoServerNIO {
 
   private static void closeSocket(Socket socket) {
     try {
-      if (socket != null)
-        socket.close();
+      if (socket != null) socket.close();
     } catch (IOException ioEx) {
       System.out.println("*** Unable to close socket! ***");
     }

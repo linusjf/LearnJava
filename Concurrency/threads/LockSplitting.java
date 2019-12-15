@@ -13,10 +13,9 @@ public class LockSplitting implements Runnable {
   @Override
   public void run() {
     for (int i = 0; i < 100_000; i++) {
-      if (ThreadLocalRandom.current().nextBoolean())
-        counter.incrementCustomer();
-      else
-        counter.incrementShipping();
+      if (
+        ThreadLocalRandom.current().nextBoolean()
+      ) counter.incrementCustomer(); else counter.incrementShipping();
     }
   }
 
@@ -24,8 +23,8 @@ public class LockSplitting implements Runnable {
   public static void main(String[] args) {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
+      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] =
+        new Thread(new LockSplitting(new CounterOneLock()));
 
       long startMillis = System.currentTimeMillis();
       for (Thread t : threads) t.start();
@@ -33,8 +32,8 @@ public class LockSplitting implements Runnable {
       for (Thread t : threads) t.join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
+      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] =
+        new Thread(new LockSplitting(new CounterSeparateLock()));
 
       startMillis = System.currentTimeMillis();
       for (Thread t : threads) t.start();

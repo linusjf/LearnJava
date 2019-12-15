@@ -45,9 +45,11 @@ public final class SpamCheck {
   private static void constructCookieString() {
     StringBuilder sb = new StringBuilder(200);
     sb.append("__cfduid=d1c401e353768541acd788ffac40686911560481116; ")
-        .append("_ga=GA1.2.258026625.1560481121; ")
-        .append("_gid=GA1.2.1507765202.1561264155; ")
-        .append("cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150");
+      .append("_ga=GA1.2.258026625.1560481121; ")
+      .append("_gid=GA1.2.1507765202.1561264155; ")
+      .append(
+        "cf_clearance=5bf5acbbc9de97ae5421ff665219fe913ecd7640-1561308998-28800-150"
+      );
     cookies = sb.toString();
   }
 
@@ -76,21 +78,29 @@ public final class SpamCheck {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static boolean isInSpammerLists(String ip) throws IOException, MalformedURLException {
+  private static boolean isInSpammerLists(String ip)
+    throws IOException, MalformedURLException {
     QueryString query = getQueryString();
     query.add("ip", ip);
 
     System.out.println(LOOKUP + query);
     URL u = new URL(LOOKUP + query);
     URLConnection connection = u.openConnection();
-    connection.setRequestProperty("User-Agent",
-        "Mozilla/5.0 (Linux; Android 7.1.2;"
-            + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
-            + "Mobile Safari/537.36");
+    connection.setRequestProperty(
+      "User-Agent",
+      "Mozilla/5.0 (Linux; Android 7.1.2;" +
+        " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 " +
+        "Mobile Safari/537.36"
+    );
     connection.setRequestProperty("Cookie", getCookies());
     StringBuilder sb = new StringBuilder();
-    try (InputStream in = new BufferedInputStream(connection.getInputStream());
-         InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+    try (
+      InputStream in = new BufferedInputStream(connection.getInputStream());
+      InputStreamReader theHTML = new InputStreamReader(
+        in,
+        StandardCharsets.UTF_8.name()
+      );
+    ) {
       int c;
       while ((c = theHTML.read()) != -1) sb.append((char) c);
       return isIpFlagged(sb.toString(), ip);
@@ -99,7 +109,7 @@ public final class SpamCheck {
 
   @SuppressWarnings("PMD.OneDeclarationPerLine")
   private static boolean isIpFlagged(String content, String ip) {
-    String[] params = new String[] {ip};
+    String[] params = new String[] { ip };
 
     // clang-format off
     String sblString, xblString, pblString;
@@ -113,7 +123,8 @@ public final class SpamCheck {
       formatter = new MessageFormat(EXPLOIT_LISTER);
       xblString = formatter.format(params);
     }
-    return content.contains(sblString) || content.contains(xblString)
-        || content.contains(pblString);
+    return content.contains(sblString) ||
+    content.contains(xblString) ||
+    content.contains(pblString);
   }
 }

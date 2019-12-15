@@ -8,7 +8,6 @@ import java.security.PublicKey;
 
 public enum KeyPairGeneratorExample {
   ;
-
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object

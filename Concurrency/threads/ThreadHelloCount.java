@@ -4,7 +4,6 @@ import java.util.Random;
 
 public enum ThreadHelloCount {
   ;
-
   private static final Random RANDOM = new Random();
 
   public static void main(String[] args) {
@@ -15,6 +14,7 @@ public enum ThreadHelloCount {
   }
 
   static class HelloThread extends Thread {
+
     @Override
     public void run() {
       int pause;

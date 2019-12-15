@@ -1,7 +1,6 @@
 package io;
 
 import static io.RanFileConstants.*;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
@@ -15,8 +14,10 @@ public enum RanFile1 {
   private static float balance;
 
   public static void main(String[] args) {
-    try (Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
-         RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");) {
+    try (
+      Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
+      RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
+    ) {
       String reply;
       do {
         acctNum++;
@@ -59,8 +60,12 @@ public enum RanFile1 {
     file.writeFloat(balance);
   }
 
-  public static void writeString(RandomAccessFile file, String text, int fixedSize)
-      throws IOException {
+  public static void writeString(
+    RandomAccessFile file,
+    String text,
+    int fixedSize
+  )
+    throws IOException {
     int size = text.length();
     if (size <= fixedSize) {
       file.writeChars(text);
@@ -70,8 +75,8 @@ public enum RanFile1 {
     } else {
       // String is too long!
       file.writeChars(text.substring(0, fixedSize));
-      // Write to file the first fixedSize characters of
-      // string text, starting at byte zero.
+    // Write to file the first fixedSize characters of
+    // string text, starting at byte zero.
     }
   }
 
@@ -87,13 +92,15 @@ public enum RanFile1 {
       // readString defined below.
       initials = readString(file, NUM_INITS);
       balance = file.readFloat();
-      System.out.printf(acctNum + " " + surname + " " + initials + " "
-              + "%.2f %n",
-          balance);
+      System.out.printf(
+        acctNum + " " + surname + " " + initials + " " + "%.2f %n",
+        balance
+      );
     }
   }
 
-  public static String readString(RandomAccessFile file, int fixedSize) throws IOException {
+  public static String readString(RandomAccessFile file, int fixedSize)
+    throws IOException {
     StringBuilder value = new StringBuilder();
 
     // Set up empty string.

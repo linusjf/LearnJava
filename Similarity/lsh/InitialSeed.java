@@ -5,7 +5,6 @@ import java.util.Random;
 
 public enum InitialSeed {
   ;
-
   public static void main(String[] args) {
     // Initialize two minhash objects, with the same seed
     int signatureSize = 20;
@@ -27,7 +26,7 @@ public enum InitialSeed {
     println(mh2.signature(vector));
   }
 
-  static void println(final int... array) {
+  static void println(finalint... array) {
     System.out.print("[");
     for (int v : array) {
       System.out.print(v + " ");

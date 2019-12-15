@@ -2,7 +2,6 @@ package javapuzzles;
 
 public enum Null {
   ;
-
   public static void greet() {
     System.out.println("Hello world!");
   }

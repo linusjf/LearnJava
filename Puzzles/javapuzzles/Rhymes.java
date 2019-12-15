@@ -47,7 +47,7 @@ public enum Rhymes {
   }
 
   public static void generalMain(String... args) {
-    String[] a = {"Main", "Pain", "Gain"};
+    String[] a = { "Main", "Pain", "Gain" };
     System.out.println(randomElement(a));
   }
 

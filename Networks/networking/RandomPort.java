@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 public final class RandomPort {
+
   private RandomPort() {
     throw new IllegalStateException("Private constructor");
   }

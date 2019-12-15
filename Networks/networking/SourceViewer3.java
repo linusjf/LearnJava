@@ -11,6 +11,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public final class SourceViewer3 {
+
   private SourceViewer3() {
     throw new IllegalStateException("Private constructor");
   }
@@ -28,7 +29,10 @@ public final class SourceViewer3 {
         int j = 1;
         String header;
         String key;
-        while ((header = uc.getHeaderField(j)) != null && (key = uc.getHeaderFieldKey(j)) != null) {
+        while (
+          (header = uc.getHeaderField(j)) != null &&
+          (key = uc.getHeaderFieldKey(j)) != null
+        ) {
           System.out.println(key + ": " + header);
           j++;
         }

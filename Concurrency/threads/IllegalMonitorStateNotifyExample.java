@@ -5,7 +5,6 @@ import threads.HelperClass.WaitingThread;
 
 public enum IllegalMonitorStateNotifyExample {
   ;
-
   public static void main(String[] args) {
     try {
       Thread waitThread = new WaitingThread();
@@ -20,8 +19,7 @@ public enum IllegalMonitorStateNotifyExample {
       // object. The following statement results in an
       // IllegalMonitorStateException.
       System.out.println("Checking for lock...");
-      if (Thread.holdsLock(HelperClass.OBJ))
-        HelperClass.OBJ.notifyAll();
+      if (Thread.holdsLock(HelperClass.OBJ)) HelperClass.OBJ.notifyAll();
       System.out.println("No exception since lock checked...");
 
       System.out.println("Caring a damn for lock ...");
@@ -30,7 +28,9 @@ public enum IllegalMonitorStateNotifyExample {
       // Wait for all threads to terminate.
       waitThread.join();
     } catch (InterruptedException ex) {
-      System.err.println("An InterruptedException was caught: " + ex.getMessage());
+      System.err.println(
+        "An InterruptedException was caught: " + ex.getMessage()
+      );
       return;
     }
   }

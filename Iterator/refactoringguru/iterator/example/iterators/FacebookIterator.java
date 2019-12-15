@@ -23,7 +23,10 @@ public class FacebookIterator implements ProfileIterator {
   @SuppressWarnings("PMD.LawOfDemeter")
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> friends = facebook.requestProfileFriendsFromFacebook(this.email, this.type);
+      List<String> friends = facebook.requestProfileFriendsFromFacebook(
+        this.email,
+        this.type
+      );
       for (String profile : friends) {
         this.emails.add(profile);
         this.profiles.add(null);
@@ -39,8 +42,7 @@ public class FacebookIterator implements ProfileIterator {
 
   @Override
   public Profile getNext() {
-    if (!hasNext())
-      return null;
+    if (!hasNext()) return null;
 
     Profile friendProfile = profiles.get(currentPosition);
     if (friendProfile == null) {

@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 public enum GenChars {
   ;
-
   private static final String TMP_FILE_PATH = "/tmp/data.txt";
 
   public static void main(String[] args) {
@@ -37,8 +36,10 @@ public enum GenChars {
     while (iterCount < numberOfPrintableCharacters) {
       /* infinite loop */
       for (int i = start; i < start + numberOfCharactersPerLine; i++) {
-        line[i - start] = (byte) ((i - firstPrintableCharacter) % numberOfPrintableCharacters
-            + firstPrintableCharacter);
+        line[i - start] =
+          (byte) ((i - firstPrintableCharacter) %
+            numberOfPrintableCharacters +
+            firstPrintableCharacter);
       }
       line[72] = (byte) '\r';
 
@@ -47,8 +48,10 @@ public enum GenChars {
 
       // line feed
       out.write(line);
-      start = (start + 1 - firstPrintableCharacter) % numberOfPrintableCharacters
-          + firstPrintableCharacter;
+      start =
+        (start + 1 - firstPrintableCharacter) %
+          numberOfPrintableCharacters +
+          firstPrintableCharacter;
       iterCount++;
     }
   }

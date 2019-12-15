@@ -4,7 +4,8 @@ import java.util.Calendar;
 
 public final class Elvis {
   public static final Elvis INSTANCE = new Elvis();
-  private static final int CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR);
+  private static final int CURRENT_YEAR = Calendar.getInstance()
+    .get(Calendar.YEAR);
   private final int beltSize;
 
   private Elvis() {
@@ -16,6 +17,8 @@ public final class Elvis {
   }
 
   public static void main(String[] args) {
-    System.out.println("Elvis wears a size " + INSTANCE.getBeltSize() + " belt.");
+    System.out.println(
+      "Elvis wears a size " + INSTANCE.getBeltSize() + " belt."
+    );
   }
 }

@@ -14,7 +14,6 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
-
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -22,7 +21,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class BCryptUtil {
-  private static final Pattern PASSWORD_PATTERN = Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
+  private static final Pattern PASSWORD_PATTERN = Pattern.compile(
+    "^((\\$2(a){0,1}\\$){1})(.*)"
+  );
 
   private BCryptUtil() {
     throw new IllegalStateException("Private constructor");
@@ -82,15 +83,14 @@ public final class BCryptUtil {
     Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (matcher.matches()) {
       off = matcher.end(1);
-      if (off == OFFSET_4)
-        minor = 'a';
-    } else
-      throw new IllegalArgumentException("Invalid salt:" + salt);
+      if (off == OFFSET_4) minor = 'a';
+    } else throw new IllegalArgumentException("Invalid salt:" + salt);
 
     // Extract number of rounds
-    if (salt.charAt(off + 2) > DOLLAR)
-      throw new IllegalArgumentException("Missing salt rounds");
-    return new String[] {String.valueOf(minor), String.valueOf(off)};
+    if (salt.charAt(off + 2) > DOLLAR) throw new IllegalArgumentException(
+      "Missing salt rounds"
+    );
+    return new String[] { String.valueOf(minor), String.valueOf(off) };
   }
 
   /**
@@ -106,7 +106,8 @@ public final class BCryptUtil {
 
       char minor = vals[0].charAt(0);
 
-      byte[] passwordb = (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
+      byte[] passwordb = (password + (minor >= LOWER_CASE_A ? "\000" : ""))
+        .getBytes("UTF-8");
 
       int off = Integer.parseInt(vals[1]);
       final int rounds = Integer.parseInt(salt.substring(off, off + 2));
@@ -121,19 +122,22 @@ public final class BCryptUtil {
     }
   }
 
-  private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
+  private static String getHashedPassword(
+    char minor,
+    int rounds,
+    byte[] saltb,
+    byte[] hashed
+  ) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
-    if (minor >= LOWER_CASE_A)
-      rs.append(minor);
+    if (minor >= LOWER_CASE_A) rs.append(minor);
     rs.append(DOLLAR);
-    if (rounds < TEN)
-      rs.append('0');
+    if (rounds < TEN) rs.append('0');
     rs.append(Integer.toString(rounds))
-        .append(DOLLAR)
-        .append(encodeBase64(saltb))
-        .append(DOLLAR)
-        .append(encodeBase64(hashed));
+      .append(DOLLAR)
+      .append(encodeBase64(saltb))
+      .append(DOLLAR)
+      .append(encodeBase64(hashed));
     return rs.toString();
   }
 
@@ -151,9 +155,10 @@ public final class BCryptUtil {
 
     random.nextBytes(rnd);
     rs.append("$2a$");
-    if (logRounds < TEN)
-      rs.append('0');
-    rs.append(Integer.toString(logRounds)).append(DOLLAR).append(encodeBase64(rnd));
+    if (logRounds < TEN) rs.append('0');
+    rs.append(Integer.toString(logRounds))
+      .append(DOLLAR)
+      .append(encodeBase64(rnd));
     return rs.toString();
   }
 

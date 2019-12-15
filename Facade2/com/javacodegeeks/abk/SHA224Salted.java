@@ -1,7 +1,6 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,6 +13,7 @@ import java.util.Base64;
  * @version 1.0
  */
 public class SHA224Salted implements Encrypt {
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -26,7 +26,8 @@ public class SHA224Salted implements Encrypt {
       final MessageDigest digest = MessageDigest.getInstance("SHA-224");
       final byte[] salt = getSalt();
       digest.update(salt);
-      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final
+      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);

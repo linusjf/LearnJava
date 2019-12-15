@@ -6,7 +6,6 @@ import java.util.concurrent.Semaphore;
 
 public enum SemaphoreExample {
   ;
-
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Thread[] thread = new Thread[10];
@@ -28,8 +27,11 @@ public enum SemaphoreExample {
       try {
         semaphore.acquire();
         long duration = (long) (Math.random() * 10);
-        System.out.printf("%s: PrintQueue: Printing a Job utilizing %d seconds%n",
-            Thread.currentThread().getName(), duration);
+        System.out.printf(
+          "%s: PrintQueue: Printing a Job utilizing %d seconds%n",
+          Thread.currentThread().getName(),
+          duration
+        );
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -49,9 +51,15 @@ public enum SemaphoreExample {
 
     @Override
     public void run() {
-      System.out.printf("%s: Going to print a job%n", Thread.currentThread().getName());
+      System.out.printf(
+        "%s: Going to print a job%n",
+        Thread.currentThread().getName()
+      );
       printQueue.printJob(new Object());
-      System.out.printf("%s: The document has been printed%n", Thread.currentThread().getName());
+      System.out.printf(
+        "%s: The document has been printed%n",
+        Thread.currentThread().getName()
+      );
     }
   }
 }

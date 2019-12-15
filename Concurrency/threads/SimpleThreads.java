@@ -56,10 +56,10 @@ public enum SimpleThreads {
     // we interrupt MessageLoop
     // thread (default one hour).
     final long patience = getPatience(args);
+
     // If command line argument
     // present, gives patience
     // in seconds.
-
     try {
       threadMessage("Starting MessageLoop thread");
       Thread t = new Thread(new MessageLoop());
@@ -77,7 +77,9 @@ public enum SimpleThreads {
         // for MessageLoop thread
         // to finish.
         t.join(1000);
-        if ((System.currentTimeMillis() - startTime) > patience && t.isAlive()) {
+        if (
+          (System.currentTimeMillis() - startTime) > patience && t.isAlive()
+        ) {
           threadMessage("Tired of waiting!");
           t.interrupt();
 
@@ -93,13 +95,14 @@ public enum SimpleThreads {
   }
 
   private static class MessageLoop implements Runnable {
+
     @Override
     public void run() {
       String[] importantInfo = {
-          "Mares eat oats",
-          "Does eat oats",
-          "Little lambs eat ivy",
-          "A kid will eat ivy too",
+        "Mares eat oats",
+        "Does eat oats",
+        "Little lambs eat ivy",
+        "A kid will eat ivy too",
       };
       try {
         for (String info : importantInfo) {

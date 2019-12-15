@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public enum FixedSizeExecutorExample {
   ;
-
   public static void main(String[] args) {
     Server server = new Server();
     for (int i = 0; i < 100; i++) {
@@ -30,19 +29,35 @@ public enum FixedSizeExecutorExample {
     @Override
     public void run() {
       System.out.printf(
-          "%s: Task %s: Created on: %s%n", Thread.currentThread().getName(), name, initDate);
+        "%s: Task %s: Created on: %s%n",
+        Thread.currentThread().getName(),
+        name,
+        initDate
+      );
       System.out.printf(
-          "%s: Task %s: Started on: %s%n", Thread.currentThread().getName(), name, new Date());
+        "%s: Task %s: Started on: %s%n",
+        Thread.currentThread().getName(),
+        name,
+        new Date()
+      );
       try {
         Long duration = (long) (Math.random() * 10);
-        System.out.printf("%s: Task %s: Doing a task utilizing %d seconds%n",
-            Thread.currentThread().getName(), name, duration);
+        System.out.printf(
+          "%s: Task %s: Doing a task utilizing %d seconds%n",
+          Thread.currentThread().getName(),
+          name,
+          duration
+        );
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
       System.out.printf(
-          "%s: Task %s: Finished on: %s%n", Thread.currentThread().getName(), name, new Date());
+        "%s: Task %s: Finished on: %s%n",
+        Thread.currentThread().getName(),
+        name,
+        new Date()
+      );
     }
   }
 
@@ -57,8 +72,14 @@ public enum FixedSizeExecutorExample {
       System.out.printf("Server: A new task has arrived%n");
       executor.execute(task);
       System.out.printf("Server: Pool Size: %d%n", executor.getPoolSize());
-      System.out.printf("Server: Active Count: %d%n", executor.getActiveCount());
-      System.out.printf("Server: Completed Tasks: %d%n", executor.getCompletedTaskCount());
+      System.out.printf(
+        "Server: Active Count: %d%n",
+        executor.getActiveCount()
+      );
+      System.out.printf(
+        "Server: Completed Tasks: %d%n",
+        executor.getCompletedTaskCount()
+      );
     }
 
     public void endServer() {

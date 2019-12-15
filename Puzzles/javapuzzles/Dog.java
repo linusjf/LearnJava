@@ -10,8 +10,8 @@ public final class Dog extends Exception {
   private Dog() {
     // empty constructor
   }
-  // clang-format on
 
+  // clang-format on
   public String toString() {
     return "Woof";
   }

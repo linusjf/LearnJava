@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
 public class NYParserFactory implements AbstractParserFactory {
+
   @Override
   public XMLParser getParserInstance(String parserType) {
     switch (parserType) {

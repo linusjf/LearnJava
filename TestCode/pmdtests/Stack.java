@@ -3,6 +3,7 @@ package pmdtests;
 @SuppressWarnings("PMD.ShortClassName")
 public class Stack {
   private Node first;
+
   // can't be made final
   private int n;
 
@@ -21,6 +22,7 @@ public class Stack {
     private Node(Node next, int x) {
       this.next = next;
       this.x = x;
+
       // inner class updates instance variable in outer class
       n++;
     }

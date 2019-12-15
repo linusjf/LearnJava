@@ -23,7 +23,9 @@ public final class TestFjDeadlock {
 
     // Run through ITERATIONS loops, subdividing the iteration into TASKS F-J
     // subtasks
-    for (int i = 0; i < ITERATIONS; i++) pool.invoke(new RecursiveIterate(0, INT_ARRAY.length));
+    for (int i = 0; i < ITERATIONS; i++) pool.invoke(
+      new RecursiveIterate(0, INT_ARRAY.length)
+    );
 
     pool.shutdown();
   }
@@ -47,7 +49,10 @@ public final class TestFjDeadlock {
       } else {
         // Subdivide and start new tasks
         final int mid = (start + end) >>> 1;
-        invokeAll(new RecursiveIterate(start, mid), new RecursiveIterate(mid, end));
+        invokeAll(
+          new RecursiveIterate(start, mid),
+          new RecursiveIterate(mid, end)
+        );
       }
     }
   }

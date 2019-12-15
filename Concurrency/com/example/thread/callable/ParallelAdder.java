@@ -35,7 +35,11 @@ public class ParallelAdder {
     return totsum;
   }
 
-  private Future<Integer> submitNumbers(int prev, int i, ExecutorService executor) {
+  private Future<Integer> submitNumbers(
+    int prev,
+    int i,
+    ExecutorService executor
+  ) {
     return executor.submit(new CallableAdder(prev, i));
   }
 

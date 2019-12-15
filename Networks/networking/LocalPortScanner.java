@@ -6,6 +6,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
 public final class LocalPortScanner {
+
   private LocalPortScanner() {
     throw new IllegalStateException("Private constructor");
   }
@@ -15,8 +16,9 @@ public final class LocalPortScanner {
       try (ServerSocket server = new ServerSocket();) {
         server.bind(new InetSocketAddress(port));
       } catch (BindException ex) {
-        if (ex.getMessage().startsWith("Address already in use"))
-          System.err.println("There is a server on " + port + ".");
+        if (
+          ex.getMessage().startsWith("Address already in use")
+        ) System.err.println("There is a server on " + port + ".");
       } catch (IOException ex) {
         System.err.println("io: " + ex.getMessage());
       }
