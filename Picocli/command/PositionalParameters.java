@@ -22,6 +22,7 @@ public class PositionalParameters {
   @Parameters(index = "2..*")
   File[] files;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     PositionalParameters params = CommandLine.populateCommand(
       new PositionalParameters(),

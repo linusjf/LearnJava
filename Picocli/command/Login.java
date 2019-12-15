@@ -9,17 +9,17 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 public class Login implements Callable<Integer> {
-  @Option(names = { "-u", "--user" }, description = "User name")
+  @Option(names = {"-u", "--user"}, description = "User name") 
   String user;
 
+
   @Option(
-    names = { "-p", "--password" },
-    description = "Passphrase",
-    interactive = true,
-    arity = "0..1"
-  )
+      names = {"-p", "--password"}, description = "Passphrase", interactive = true, arity = "0..1")
   char[] password;
 
+  private final Base64.Encoder encoder = Base64.getEncoder();
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public Integer call() throws NoSuchAlgorithmException {
     byte[] bytes = new byte[password.length];
@@ -27,14 +27,11 @@ public class Login implements Callable<Integer> {
       bytes[i] = (byte) password[i];
     }
 
-    MessageDigest md = MessageDigest.getInstance("SHA-256");
+  MessageDigest md = MessageDigest.getInstance("SHA-256");
     md.update(bytes);
 
     System.out.printf(
-      "Hi %s, your password is hashed to %s.%n",
-      user,
-      Base64.getEncoder().encode(md.digest())
-    );
+        "Hi %s, your password is hashed to %s.%n", user, encoder.encode(md.digest()));
 
     // null out the arrays when done
     Arrays.fill(bytes, (byte) 0);
