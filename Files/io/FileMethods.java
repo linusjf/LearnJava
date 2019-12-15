@@ -6,10 +6,14 @@ import java.util.Scanner;
 
 public enum FileMethods {
   ;
+
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+
   public static void main(String[] args) {
     String filename;
     try (
-      Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name())
+      Scanner input = new Scanner(System.in,UTF_8 )
     ) {
       System.out.print("Enter name of file/directory ");
       System.out.print("or press <Enter> to quit: ");

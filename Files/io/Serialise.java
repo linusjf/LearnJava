@@ -30,16 +30,7 @@ public enum Serialise {
         Files.newInputStream(Paths.get("personnel.dat"))
       )
     ) {
-      int staffCount = 0;
-
-      while (staffCount < 3) {
-        Personnel person = (Personnel) inStream.readObject();
-        staffCount++;
-        System.out.println("\nStaff member " + staffCount);
-        System.out.println("Payroll number: " + person.getPayNum());
-        System.out.println("Surname: " + person.getSurname());
-        System.out.println("First names: " + person.getFirstNames());
-      }
+      printPersonnel(inStream);
     } catch (EOFException eofEx) {
       System.out.println("\n\n*** End of file ***\n");
     } catch (IOException ioe) {
@@ -47,5 +38,25 @@ public enum Serialise {
     } catch (ClassNotFoundException cnfe) {
       System.err.println("Class not found: " + cnfe);
     }
+  }
+
+  private static void printPersonnel(ObjectInputStream inStream) 
+  throws IOException, ClassNotFoundException {
+
+      int staffCount = 0;
+
+      while (staffCount < 3) {
+        Personnel person = (Personnel) inStream.readObject();
+        staffCount++;
+        printPersonnel(person,staffCount);
+      }
+  }
+
+  private static void printPersonnel(Personnel person,
+      int staffCount) {
+        System.out.println("\nStaff member " + staffCount);
+        System.out.println("Payroll number: " + person.getPayNum());
+        System.out.println("Surname: " + person.getSurname());
+        System.out.println("First names: " + person.getFirstNames());
   }
 }

@@ -12,14 +12,16 @@ public enum RanFile1 {
   private static String surname;
   private static String initials;
   private static float balance;
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
 
   public static void main(String[] args) {
     try (
-      Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
+      Scanner input = new Scanner(System.in,UTF_8 );
       RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
     ) {
-      String reply;
-      do {
+      String reply = "y";
+      while ("y".equalsIgnoreCase(reply)) {
         acctNum++;
         System.out.println("\nAccount number " + acctNum + ".\n");
         System.out.print("Surname: ");
@@ -36,7 +38,7 @@ public enum RanFile1 {
         // Method defined below.
         System.out.print("\nDo you wish to do this again (y/n)? ");
         reply = input.nextLine();
-      } while ("y".equalsIgnoreCase(reply));
+      } 
       System.out.println();
       showRecords(ranAccts);
     } catch (IOException ioe) {

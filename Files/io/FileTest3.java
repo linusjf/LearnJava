@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public enum FileTest3 {
   ;
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+  
   public static void main(String[] args) {
     int mark;
     int total = 0;
@@ -14,7 +17,7 @@ public enum FileTest3 {
     try (
       Scanner input = new Scanner(
         new File("marks1.txt"),
-        StandardCharsets.UTF_8.name()
+        UTF_8
       )
     ) {
       while (input.hasNext()) {

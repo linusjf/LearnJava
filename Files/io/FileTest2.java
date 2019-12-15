@@ -8,9 +8,13 @@ import java.util.Scanner;
 
 public enum FileTest2 {
   ;
+
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+
   public static void main(String[] args) {
     try (
-      Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name())
+      Scanner input = new Scanner(System.in,UTF_8 )
     ) {
       System.out.print("Enter file name: ");
       String fileName = input.nextLine();
@@ -25,7 +29,7 @@ public enum FileTest2 {
     try (
       PrintWriter output = new PrintWriter(
         new File(fileName),
-        StandardCharsets.UTF_8.name()
+        UTF_8
       )
     ) {
       System.out.printf("Ten marks needed.%n");

@@ -10,6 +10,8 @@ public enum Copy {
   ;
   private static final int NO_OF_ARGS = 2;
 
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
+
   public static void main(String[] arg) {
     // First check that 2 file names have been
     // supplied…
@@ -23,11 +25,11 @@ public enum Copy {
     try (
       Scanner source = new Scanner(
         new File(arg[0]),
-        StandardCharsets.UTF_8.name()
+        UTF_8
       );
       PrintWriter destination = new PrintWriter(
         new File(arg[1]),
-        StandardCharsets.UTF_8.name()
+        UTF_8
       );
     ) {
       String input;
