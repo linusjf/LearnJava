@@ -69,16 +69,20 @@ public final class Server {
     while (selectionKeyIterator.hasNext()) {
       final SelectionKey key = selectionKeyIterator.next();
 
-      if (key.isAcceptable()) {
-        acceptClientSocket(key, serverSocket);
-      } else if (key.isReadable()) {
-        readRequest(key);
-      } else {
-        System.out.println("Invalid selection key");
-      }
-
+     handleKey(key,serverSocket); 
       selectionKeyIterator.remove();
     }
+  }
+
+
+  private static void handleKey(SelectionKey key,
+      ServerSocketChannel serverSocket ) throws IOException {
+      if (key.isAcceptable()) 
+        acceptClientSocket(key, serverSocket);
+       else if (key.isReadable()) 
+        readRequest(key);
+       else 
+        System.out.println("Invalid selection key");
   }
 
   private static void acceptClientSocket(
@@ -91,10 +95,14 @@ public final class Server {
     ) throw new AssertionError("key and/or serverSocket null.");
 
     final SocketChannel client = serverSocket.accept();
+    configureAndRegister(client,key);
+    System.out.println("Accepted connection from client");
+  }
+
+  private static void configureAndRegister(SocketChannel client,
+      SelectionKey key) throws IOException {
     client.configureBlocking(false);
     client.register(key.selector(), SelectionKey.OP_READ);
-
-    System.out.println("Accepted connection from client");
   }
 
   private static void readRequest(final SelectionKey key) throws IOException {
@@ -105,12 +113,17 @@ public final class Server {
     ByteBuffer buffer = ByteBuffer.allocate(
       Constants.CLIENT_BYTE_BUFFER_CAPACITY
     );
+processBuffer(buffer,client);
+  }
+
+  private static void processBuffer(ByteBuffer buffer,
+     SocketChannel client ) throws IOException {
 
     final int bytesRead = client.read(buffer);
 
-    if (bytesRead == -1) {
+    if (bytesRead == -1) 
       client.close();
-    } else {
+     else {
       System.out.println(
         String.format(
           "Request data: %s",

@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
+import static com.javacodegeeks.niotutorial.server.Constants.*;
+
 /**
  * Describe class <code>Client</code> here.
  *
@@ -14,8 +16,8 @@ import java.nio.charset.StandardCharsets;
  */
 public final class Client {
   static final InetSocketAddress HOSTADDRESS = new InetSocketAddress(
-    Constants.HOST,
-    Constants.PORT
+    HOST,
+    PORT
   );
 
   private Client() {
@@ -35,19 +37,22 @@ public final class Client {
       try (SocketChannel client = SocketChannel.open(HOSTADDRESS)) {
         final
         ByteBuffer buffer = ByteBuffer.wrap(
-          Constants.TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8)
+          TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8)
         );
+        writeToBuffer(client,buffer,i);
+      } catch (IOException e) {
+        System.err.println("Error with client writing " + e.getMessage());
+      }
+    }
+  }
 
+  private static void writeToBuffer(SocketChannel client,ByteBuffer buffer,int i) throws IOException {
         while (buffer.hasRemaining()) {
           client.write(buffer);
           System.out.println(
             "Written " + (i + 1) + " : " + convertBytesToString(buffer.array())
           );
         }
-      } catch (IOException e) {
-        System.err.println("Error with client writing " + e.getMessage());
-      }
-    }
   }
 
   private static String convertBytesToString(byte[] bytes) {

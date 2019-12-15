@@ -30,6 +30,7 @@ public final class FileChannelReadExample implements FileChannelExample {
    *
    * @return a <code>String</code> value
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String readFile() {
     try (
       SeekableByteChannel fileChannel = createChannel(
@@ -40,7 +41,7 @@ public final class FileChannelReadExample implements FileChannelExample {
       final ByteBuffer buffer = createBuffer();
       final StringBuilder contents = new StringBuilder();
       while (fileChannel.read(buffer) != -1) {
-        contents.append(convertBytesToString(buffer.array()));
+        contents.append(convertBytesToString(buffer));
         buffer.clear();
       }
       return contents.toString();
@@ -49,8 +50,8 @@ public final class FileChannelReadExample implements FileChannelExample {
     }
   }
 
-  private String convertBytesToString(byte[] bytes) {
-    return new String(bytes, StandardCharsets.UTF_8);
+  private String convertBytesToString(ByteBuffer buffer) {
+    return new String(buffer.array(), StandardCharsets.UTF_8);
   }
 
   private ByteBuffer createBuffer() {
