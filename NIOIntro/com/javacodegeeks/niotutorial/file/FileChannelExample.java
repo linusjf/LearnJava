@@ -27,6 +27,7 @@ public interface FileChannelExample {
    * @return <code>SeekableByteChannel</code> object based on fileOperation parameter
    * @throws FileNotFoundException if the file path does not point to a file.
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   default SeekableByteChannel createChannel(
     String path,
     FileOperation fileOperation

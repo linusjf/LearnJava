@@ -37,11 +37,11 @@ public enum SqlTypeRegex {
 
     Regex(String pattern,String value) {
       this.pattern = Pattern.compile(pattern);
-      createMatcher(value);
+      this.matcher = createMatcher(value);
     }
 
-    private void createMatcher(String value) {
-     this.matcher = pattern.matcher(value); 
+    private Matcher createMatcher(String value) {
+     return pattern.matcher(value); 
     }
 
     public String group(int index) {
