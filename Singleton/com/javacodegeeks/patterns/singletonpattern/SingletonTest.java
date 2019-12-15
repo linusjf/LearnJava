@@ -142,11 +142,19 @@ public enum SingletonTest {
       );
       final Singleton instance2 = (Singleton) in.readObject();
       in.close();
-      System.out.println("instance hashCode:- " + instance.hashCode());
-      System.out.println("instance2 hashCode:- " + instance2.hashCode());
+      printEqualityTests(instance,instance2);
     } catch (IOException | ClassNotFoundException e) {
       System.out.println(e.getMessage());
     }
+  }
+
+  private static void printEqualityTests(Singleton instance,
+      Singleton instance2) {
+      System.out.println("instance hashCode:- " + instance.hashCode());
+      System.out.println("instance2 hashCode:- " + instance2.hashCode());
+      System.out.println(instance.equals(instance2));
+      System.out.println(instance);
+      System.out.println(instance2);
   }
 
   private static void testCloneable() {
@@ -158,6 +166,7 @@ public enum SingletonTest {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void testReflection() {
     try {
       final
@@ -174,11 +183,12 @@ public enum SingletonTest {
       | IllegalAccessException
       | InvocationTargetException e
     ) {
-      System.out.println(e.getCause().getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+  "PMD.LawOfDemeter"})
   private static void testState() {
     try {
       resetSingleton();
@@ -200,6 +210,7 @@ public enum SingletonTest {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void resetSingleton()
     throws NoSuchFieldException, IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");

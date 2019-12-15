@@ -63,11 +63,13 @@ public final class Singleton implements Serializable, Cloneable {
     throw new CloneNotSupportedException("Singleton, cannot be cloned");
   }
 
-  @SuppressWarnings({ "unused", "PMD.UseProperClassLoader" })
+  @SuppressWarnings({ "unused", "PMD.UseProperClassLoader",
+  "PMD.LawOfDemeter"})
   private static Class<?> getClass(String classname)
     throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null) classLoader = Singleton.class.getClassLoader();
+    if (classLoader == null) 
+      classLoader = Singleton.class.getClassLoader();
     return classLoader.loadClass(classname);
   }
 
