@@ -31,6 +31,7 @@ public class TooledCommand {
 
   @Parameter(names = "-test", description = "Test") Integer test = 1;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     TooledCommand tc = new TooledCommand();
     CommandAdd add = new CommandAdd();
