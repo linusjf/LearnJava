@@ -1,16 +1,22 @@
 package regex;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public enum SimpleRegexTest {
   ;
+    private static final String SAMPLE_TEXT = "this is the 1st test string";
+
+    private static final String SAMPLE_REGEX = "\\d+\\w+";
+    private static final Pattern P = Pattern.compile(SAMPLE_REGEX);
+
+    private static final Matcher M = P.matcher(SAMPLE_TEXT);
+
   public static void main(String[] args) {
-    String sampleText = "this is the 1st test string";
-    String sampleRegex = "\\d+\\w+";
-    java.util.regex.Pattern p = java.util.regex.Pattern.compile(sampleRegex);
-    java.util.regex.Matcher m = p.matcher(sampleText);
-    if (m.find()) {
-      String matchedText = m.group();
-      int matchedFrom = m.start();
-      int matchedTo = m.end();
+    if (M.find()) {
+      String matchedText = M.group();
+      int matchedFrom = M.start();
+      int matchedTo = M.end();
       System.out.println(
         "matched [" +
           matchedText +
@@ -20,8 +26,7 @@ public enum SimpleRegexTest {
           matchedTo +
           "."
       );
-    } else {
+    } else 
       System.out.println("didn’t match");
-    }
   }
 }

@@ -24,21 +24,22 @@ public final class Test {
     String firstTest = "$2a$12$fghjhytygh";
 
     Matcher matcher = PASSWORD_PATTERN.matcher(firstTest);
-
-    System.out.println(matcher.matches());
-    System.out.println(matcher.end(1));
+    printResult(matcher);
 
     String secondTest = "$2$12$dfghhjjhggg";
     matcher = PASSWORD_PATTERN.matcher(secondTest);
 
-    System.out.println(matcher.matches());
-    System.out.println(matcher.end(1));
+    printResult(matcher);
     String thirdTest = "$2a$12$3PJIlsPnJBgPNr4qNcZPke";
     matcher = PASSWORD_PATTERN.matcher(thirdTest);
 
+    printResult(matcher);
+    testSearchForPattern();
+  }
+
+  private static void printResult(Matcher matcher) {
     System.out.println(matcher.matches());
     System.out.println(matcher.end(1));
-    testSearchForPattern();
   }
 
   private static void testSearchForPattern() {
@@ -46,15 +47,15 @@ public final class Test {
 
     Matcher matcher = SEARCHFOR_PATTERN.matcher(firstTest);
 
-    System.out.println(matcher.matches());
+    printResult(matcher);
 
     String secondTest = "ASN";
     matcher = SEARCHFOR_PATTERN.matcher(secondTest);
 
-    System.out.println(matcher.matches());
+    printResult(matcher);
     String thirdTest = "Irg";
     matcher = SEARCHFOR_PATTERN.matcher(thirdTest);
 
-    System.out.println(matcher.matches());
+    printResult(matcher);
   }
 }

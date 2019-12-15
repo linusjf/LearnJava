@@ -5,10 +5,16 @@ import java.util.regex.Pattern;
 
 public enum TypeNameRegex {
   ;
+    
+  static final Pattern P = Pattern.compile("(?:(.*)\\.)?([^\\.]*)");
+
   public static String getTypenameComponent(String classname, int group) {
     // regex is: (?:(.*)\.)?([^\.]*)
-    Pattern p = Pattern.compile("(?:(.*)\\.)?([^\\.]*)");
-    Matcher m = p.matcher(classname);
+    Matcher m = P.matcher(classname);
+    return findTypeComponent(m,group); 
+  }
+
+  private static String findTypeComponent(Matcher m,int group) {
     return m.matches() ? m.group(group) : null;
   }
 
