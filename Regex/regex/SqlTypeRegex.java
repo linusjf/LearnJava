@@ -1,7 +1,7 @@
 package regex;
 
 import java.util.regex.Matcher;
-import static java.util.regex.Pattern.compile;
+import java.util.regex.Pattern;
 
 public enum SqlTypeRegex {
   ;
@@ -21,16 +21,34 @@ public enum SqlTypeRegex {
     return getCapturedGroup(dataType.replaceAll("\\s*", ""), regex, group);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
   public static String getCapturedGroup(
     String value,
     String pattern,
     int group
   ) {
-    Matcher m =  compile(pattern).matcher(value);
-    if (m.matches() && group >= 0 && group <= m.groupCount()) 
-      return m.group(group);
+    Regex regex = new Regex(pattern,value);
+    return regex.group(group);
+  }
+
+  static final class Regex {
+
+    Pattern pattern;
+    Matcher matcher;
+
+    Regex(String pattern,String value) {
+      this.pattern = Pattern.compile(pattern);
+      createMatcher(value);
+    }
+
+    private void createMatcher(String value) {
+     this.matcher = pattern.matcher(value); 
+    }
+
+    public String group(int index) {
+    if (matcher.matches() && index >= 0 && index <= matcher.groupCount()) 
+      return matcher.group(index);
      else 
       return null;
+    }
   }
 }
