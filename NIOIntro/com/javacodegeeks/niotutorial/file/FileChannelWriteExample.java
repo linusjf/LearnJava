@@ -23,7 +23,7 @@ public class FileChannelWriteExample implements FileChannelExample {
     " Aenean tellus nunc, " +
     "vestibulum sed nunc in, faucibus posuere quam." +
     " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
-
+private static final byte[] BYTES = CONTENTS.getBytes(StandardCharsets.UTF_8);
   /**
    * Describe <code>main</code> method here.
    *
@@ -44,17 +44,21 @@ public class FileChannelWriteExample implements FileChannelExample {
     ) {
       final
       ByteBuffer buffer = createBuffer(
-        CONTENTS.getBytes(StandardCharsets.UTF_8).length
+        BYTES.length
       );
-      buffer.put(CONTENTS.getBytes(StandardCharsets.UTF_8));
-      buffer.flip();
-
-      while (buffer.hasRemaining()) {
-        fileChannel.write(buffer);
-      }
+    processBuffer(buffer,fileChannel);
     } catch (IOException e) {
       throw new NIORuntimeException("Unable to write to file", e);
     }
+  }
+
+  private void processBuffer(ByteBuffer buffer,
+      SeekableByteChannel fileChannel ) throws IOException {
+      buffer.put(BYTES);
+      buffer.flip();
+
+      while (buffer.hasRemaining()) 
+        fileChannel.write(buffer);
   }
 
   private ByteBuffer createBuffer(final int length) {
