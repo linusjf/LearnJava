@@ -21,4 +21,9 @@ public class PlayerCreator {
         );
     }
   }
+  
+  public Player createPlayer(String playerType) {
+    PlayerTypes type = PlayerTypes.valueOf(playerType);
+    return createPlayer(type);
+  }
 }

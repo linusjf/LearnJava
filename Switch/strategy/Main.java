@@ -9,7 +9,7 @@ public enum Main {
     Player tennisPlayer = playerCreator.createPlayer(PlayerTypes.TENNIS);
 
     System.out.println(tennisPlayer);
-    Player footballPlayer = PlayerTypes.valueOf("FOOTBALL").createPlayer();
+    Player footballPlayer = playerCreator.createPlayer("FOOTBALL");
 
     System.out.println(footballPlayer);
   }

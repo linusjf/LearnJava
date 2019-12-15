@@ -3,8 +3,8 @@ package trifunction;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import player.TennisPlayer;
+import static java.util.Objects.requireNonNull;
 
 public final class FunctionalStatistics {
   private static final Map<String, TriFunction<TennisPlayer, Period, String, String>> STATISTICS = new HashMap<>();
@@ -19,6 +19,7 @@ public final class FunctionalStatistics {
     STATISTICS.put("BACKHAND", Statistics::computeBackhandTrend);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static String computeTrend(
     TennisPlayer tennisPlayer,
     Period period,
@@ -26,7 +27,8 @@ public final class FunctionalStatistics {
     String trend
   ) {
     // clang-format off
-    TriFunction<TennisPlayer, Period, String, String> function = Objects.requireNonNull(
+    TriFunction<TennisPlayer, Period, String, String> function = 
+      requireNonNull(
       STATISTICS.get(trend),
       "Invalid trend type: " + trend
     );

@@ -1,4 +1,5 @@
 package player;
+:q
 
 public enum Main {
   ;

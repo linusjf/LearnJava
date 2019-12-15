@@ -1,7 +1,7 @@
 package pmdtest;
 
 import java.util.concurrent.ThreadLocalRandom;
-
+ 
 public final class ThrowSwitch {
 
   private ThrowSwitch() {
@@ -12,7 +12,7 @@ public final class ThrowSwitch {
     { "fallthrough", "PMD.MissingBreakInSwitch", "PMD.DoNotCallSystemExit" }
   )
   public static void main(String... args) {
-    int errCode = getSimulatedErrorCode();
+    int errCode = getSimulatedErrorCode(ThreadLocalRandom.current());
 
     switch (errCode) {
       case 1:
@@ -26,7 +26,8 @@ public final class ThrowSwitch {
     }
   }
 
-  public static int getSimulatedErrorCode() {
-    return ThreadLocalRandom.current().nextInt(0, 6);
+  @SuppressWarnings("PMD.LawOfDemeter")
+  public static int getSimulatedErrorCode(ThreadLocalRandom tlr) {
+    return tlr.nextInt(0, 6);
   }
 }

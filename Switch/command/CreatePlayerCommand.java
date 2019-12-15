@@ -3,7 +3,7 @@ package command;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 import player.FootballPlayer;
 import player.Player;
 import player.SnookerPlayer;
@@ -38,8 +38,9 @@ public class CreatePlayerCommand {
     PLAYERS = Collections.unmodifiableMap(players);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Player createPlayer(String playerType) {
-    Command cmd = Objects.requireNonNull(
+    Command cmd = requireNonNull(
       PLAYERS.get(playerType),
       "Invalid player type: " + playerType
     );
