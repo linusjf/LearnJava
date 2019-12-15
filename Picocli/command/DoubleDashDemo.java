@@ -7,12 +7,16 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 public class DoubleDashDemo {
-  @Option(names = "-v") boolean verbose;
+  @Option(names = "-v") 
+  boolean verbose;
 
-  @Option(names = "-files") List<String> files;
+  @Option(names = "-files") 
+  List<String> files;
 
-  @Parameters List<String> params;
+  @Parameters 
+  List<String> params;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     String[] args = {"-v", "--", "-files", "file1", "file2"};
     DoubleDashDemo demo = new DoubleDashDemo();
