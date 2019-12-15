@@ -5,6 +5,8 @@ import java.util.Random;
 
 public enum SimpleLSHMinHashExample {
   ;
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     // proportion of 0's in the vectors
     // if the vectors are dense (lots of 1's), the average jaccard similarity
@@ -32,9 +34,8 @@ public enum SimpleLSHMinHashExample {
     Random rand = new Random();
 
     for (int i = 0; i < count; i++) {
-      for (int j = 0; j < n; j++) {
+      for (int j = 0; j < n; j++) 
         vectors[i][j] = rand.nextDouble() > sparsity;
-      }
     }
 
     // Create and configure LSH algorithm
@@ -46,13 +47,8 @@ public enum SimpleLSHMinHashExample {
     for (boolean[] vector : vectors) {
       int[] hash = lsh.hash(vector);
 
-      for (int i = 0; i < hash.length; i++) {
+      for (int i = 0; i < hash.length; i++) 
         counts[i][hash[i]]++;
-      }
-    //  print(vector);
-    // System.out.print(" : ");
-    // print(hash);
-    // System.out.print("\n");
     }
 
     System.out.println("Number of elements per bucket at each stage:");
@@ -64,17 +60,15 @@ public enum SimpleLSHMinHashExample {
 
   static void print(int... array) {
     System.out.print("[");
-    for (int v : array) {
+    for (int v : array) 
       System.out.print(v + " ");
-    }
     System.out.print("]");
   }
 
   static void print(boolean... array) {
     System.out.print("[");
-    for (boolean v : array) {
+    for (boolean v : array) 
       System.out.print(v ? "1" : "0");
-    }
     System.out.print("]");
   }
 }
