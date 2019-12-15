@@ -12,6 +12,7 @@ import java.util.Random;
 
 public enum SerializeExample {
   ;
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       // Create a single random boolean vector
@@ -19,9 +20,8 @@ public enum SerializeExample {
       double sparsity = 0.75;
       boolean[] vector = new boolean[n];
       Random rand = new Random();
-      for (int j = 0; j < n; j++) {
+      for (int j = 0; j < n; j++) 
         vector[j] = rand.nextDouble() > sparsity;
-      }
 
       // Create and configure LSH
       int stages = 2;
@@ -40,7 +40,9 @@ public enum SerializeExample {
       // be used to compute estimated similarity!
       // The solution is to serialize and save the object, so it can be
       // reused later...
+      // this should not be flagged by LOD
       File tempfile = File.createTempFile("lshobject", ".ser");
+      // this should not be flagged by LOD
       OutputStream fout = Files.newOutputStream(tempfile.toPath());
       ObjectOutputStream oos = new ObjectOutputStream(fout);
       oos.writeObject(lsh);
@@ -49,6 +51,7 @@ public enum SerializeExample {
         "LSH object serialized to " + tempfile.getAbsolutePath()
       );
 
+      // this should not be flagged by LOD
       InputStream fin = Files.newInputStream(tempfile.toPath());
       ObjectInputStream ois = new ObjectInputStream(fin);
       LSHMinHash savedLSH = (LSHMinHash) ois.readObject();
