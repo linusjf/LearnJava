@@ -22,7 +22,7 @@ public final class HelloClient {
       // Obtain a reference to the object from the
       // registry and typecast it into the appropriate
       // type…
-      Hello greeting = (Hello) Naming.lookup("rmi://" + HOST + "/Hello");
+      Hello greeting = (Hello)Naming.lookup("rmi://" + HOST + "/Hello");
       printGreeting(greeting);
     } catch (ConnectException conEx) {
       System.out.println("Unable to connect to server!");
@@ -40,8 +40,8 @@ public final class HelloClient {
   }
 
   private static void printGreeting(Hello greeting) throws RemoteException {
-      // Use the above reference to invoke the remote
-      // object's method…
-      System.out.println("Message received: " + greeting.getGreeting());
+    // Use the above reference to invoke the remote
+    // object's method…
+    System.out.println("Message received: " + greeting.getGreeting());
   }
 }

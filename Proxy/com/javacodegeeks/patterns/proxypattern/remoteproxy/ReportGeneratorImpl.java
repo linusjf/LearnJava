@@ -13,7 +13,8 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGenerator {
+public class ReportGeneratorImpl
+    extends UnicastRemoteObject implements ReportGenerator {
   private static final long serialVersionUID = 3107413009881629428L;
 
   private static Registry registry;
@@ -51,7 +52,8 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
         .append(System.lineSeparator())
         .append(" Net Profit: $1985")
         .append(System.lineSeparator())
-        .append("***************************************************************");
+        .append(
+            "***************************************************************");
     return sb.toString();
   }
 
