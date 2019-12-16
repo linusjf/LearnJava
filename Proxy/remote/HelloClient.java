@@ -23,10 +23,7 @@ public final class HelloClient {
       // registry and typecast it into the appropriate
       // type…
       Hello greeting = (Hello) Naming.lookup("rmi://" + HOST + "/Hello");
-
-      // Use the above reference to invoke the remote
-      // object's method…
-      System.out.println("Message received: " + greeting.getGreeting());
+      printGreeting(greeting);
     } catch (ConnectException conEx) {
       System.out.println("Unable to connect to server!");
       System.exit(1);
@@ -40,5 +37,11 @@ public final class HelloClient {
       System.out.println("Malformed url: " + mue);
       System.exit(1);
     }
+  }
+
+  private static void printGreeting(Hello greeting) throws RemoteException {
+      // Use the above reference to invoke the remote
+      // object's method…
+      System.out.println("Message received: " + greeting.getGreeting());
   }
 }

@@ -64,6 +64,9 @@ public class Proxy implements Runnable {
    */
   static List<Thread> servicingThreads;
 
+  static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
   private String command = "";
 
   private ServerSocket serverSocket;
@@ -169,9 +172,9 @@ public class Proxy implements Runnable {
   public void listen() {
     while (running) {
       try {
-        // serverSocket.accpet() Blocks until a connection is made
+        // serverSocket.accept()
+        // Blocks until a connection is made
         Socket socket = serverSocket.accept();
-        socket.setSoTimeout(60 * 1000);
         spinOffRequest(socket);
       } catch (SocketException e) {
         // Socket exception is triggered by management system to shut down the
@@ -183,7 +186,8 @@ public class Proxy implements Runnable {
     }
   }
 
-  private void spinOffRequest(Socket socket) {
+  private void spinOffRequest(Socket socket) throws SocketException {
+    socket.setSoTimeout(60 * 1000);
     // Create new Thread and pass it Runnable RequestHandler
     Thread thread = new Thread(new RequestHandler(socket));
 
@@ -273,7 +277,7 @@ public class Proxy implements Runnable {
    */
   @Override
   public void run() {
-    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    Scanner scanner = new Scanner(System.in, UTF_8);
     System.out.println("Enter new site to block, or type "
         + "\"blocked\" to see blocked sites, "
         + "\"cached\" to see cached sites, or "

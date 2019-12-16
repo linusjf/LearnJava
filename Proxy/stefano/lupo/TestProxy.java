@@ -1,11 +1,13 @@
 package stefano.lupo;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.HttpURLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -60,8 +62,19 @@ public enum TestProxy {
     if (strUrl.startsWith("http")) {
       URL url = new URL(strUrl);
       Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT));
-      URLConnection connection = url.openConnection(proxy);
-      connection.getInputStream();
+      connect(url,proxy);
     }
+  }
+  
+  private static void connect(URL url,Proxy proxy) throws IOException {
+      HttpURLConnection connection = (HttpURLConnection)url.openConnection(proxy);
+      connection.connect();
+    System.out.println("Using proxy: " +
+        connection.usingProxy());
+   InputStream in =  connection.getInputStream();
+    int responseCode = connection.getResponseCode();
+ if (responseCode / 100 == 2) 
+    System.out.println("Connection successful");
+    connection.disconnect(); 
   }
 }

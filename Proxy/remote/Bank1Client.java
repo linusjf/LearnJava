@@ -21,16 +21,7 @@ public final class Bank1Client {
       // registry and typecast it into the appropriate
       // type…
       Bank1 temp = (Bank1) Naming.lookup("rmi://" + HOST + "/Accounts");
-      List<Account> acctDetails = temp.getBankAccounts();
-
-      // Simply display all acct details…
-      for (Account acct : acctDetails) {
-        // Now invoke methods of Account object
-        // to display its details…
-        System.out.println("\nAccount number: " + acct.getAcctNum());
-        System.out.println("Name: " + acct.getName());
-        System.out.println("Balance: " + acct.getBalance());
-      }
+      printBankAccounts(temp);
     } catch (ConnectException conEx) {
       System.out.println("Unable to connect to server!");
       System.exit(1);
@@ -38,5 +29,20 @@ public final class Bank1Client {
       System.err.println(ex);
       System.exit(1);
     }
+  }
+
+  private static void printBankAccounts(Bank1 bank) throws RemoteException {
+
+      List<Account> acctDetails = bank.getBankAccounts();
+
+      // simply display all acct details…
+      for (Account acct : acctDetails) {
+        // now invoke methods of account object
+        // to display its details…
+        System.out.println("\naccount number: " + acct.getAcctNum());
+        System.out.println("name: " + acct.getName());
+        System.out.println("balance: " + acct.getBalance());
+      }
+
   }
 }
