@@ -18,6 +18,16 @@ public class ReportGeneratorImpl
   implements ReportGenerator {
   private static final long serialVersionUID = 3107413009881629428L;
 
+  private static Registry registry;
+
+  static {
+try {
+  registry = LocateRegistry.getRegistry();
+} catch (RemoteException e) {
+  System.err.println(e.getMessage());
+}
+  }
+
   /**
    * Creates a new <code>ReportGeneratorImpl</code> instance.
    *
@@ -57,9 +67,7 @@ public class ReportGeneratorImpl
   public static void main(String[] args) {
     try {
       ReportGeneratorImpl reportGenerator = new ReportGeneratorImpl();
-
       // Bind the remote object's stub in the registry
-      Registry registry = LocateRegistry.getRegistry();
       registry.bind("PizzaCoRemoteGenerator", reportGenerator);
     } catch (RemoteException | AlreadyBoundException e) {
       System.out.println(e.getMessage());

@@ -15,6 +15,8 @@ import java.rmi.RemoteException;
 public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   Staff staff;
 
+        ReportGenerator reportGenerator;
+
   /**
    * Creates a new <code>ReportGeneratorProtectionProxy</code> instance.
    *
@@ -24,20 +26,26 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
     this.staff = staff;
   }
 
+  private ReportGenerator getReportGenerator() throws NotBoundException,
+          MalformedURLException, RemoteException {
+if (reportGenerator == null)
+          reportGenerator =  (ReportGenerator) Naming.lookup(
+          "rmi://127.0.0.1/PizzaCoRemoteGenerator"
+        );
+return reportGenerator;
+  }
+
   @Override
   public String generateDailyReport() {
     if (staff.isOwner()) {
       try {
-        ReportGenerator reportGenerator = (ReportGenerator) Naming.lookup(
-          "rmi://127.0.0.1/PizzaCoRemoteGenerator"
-        );
+        getReportGenerator();
         return reportGenerator.generateDailyReport();
       } catch (MalformedURLException | RemoteException | NotBoundException e) {
         System.err.println(e.getMessage());
       }
       return "";
-    } else {
+    } else 
       return "Not Authorized to view report.";
-    }
   }
 }

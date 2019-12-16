@@ -12,25 +12,32 @@ import java.rmi.registry.Registry;
  * @version 1.0
  */
 public class ReportGeneratorClient {
-
+ReportGenerator stub;
   /**
    * Describe <code>main</code> method here.
    *
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
+    try {
     new ReportGeneratorClient().generateReport();
+    } catch (RemoteException | NotBoundException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public ReportGeneratorClient() throws RemoteException, NotBoundException {
+      Registry registry = LocateRegistry.getRegistry(null);
+       stub = (ReportGenerator) registry.lookup(
+        "PizzaCoRemoteGenerator"
+      );
   }
 
   /** Describe <code>generateReport</code> method here. */
   public void generateReport() {
     try {
-      Registry registry = LocateRegistry.getRegistry(null);
-      ReportGenerator stub = (ReportGenerator) registry.lookup(
-        "PizzaCoRemoteGenerator"
-      );
       System.out.println(stub.generateDailyReport());
-    } catch (RemoteException | NotBoundException e) {
+    } catch (RemoteException e) {
       System.out.println(e.getMessage());
     }
   }
