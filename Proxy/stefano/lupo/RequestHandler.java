@@ -143,38 +143,11 @@ extractRequest(requestString);
          getFileExtension(cachedFile);
 
       // Response that will be sent to the server
-      String response;
-      if (fileExtension.matches(IMG_REGEX)) {
-        // Read in image from storage
-        BufferedImage image = ImageIO.read(cachedFile);
-
-        if (image == null) {
-          System.out.println("Image " + cachedFile.getName() + " was null");
-          response = "HTTP/1.0 404 NOT FOUND \n" + PROXY_AGENT_STR
-                     + System.lineSeparator();
-          proxyToClientBw.write(response);
-          proxyToClientBw.flush();
-        } else {
-          response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
-          proxyToClientBw.write(response);
-          proxyToClientBw.flush();
-          ImageIO.write(image,
-                        fileExtension.substring(1),
-                        clientSocket.getOutputStream());
-        }
-      } else {
-        try (BufferedReader cachedFileBufferedReader = Files.newBufferedReader(
-                 Paths.get(cachedFile.getAbsolutePath()))) {
-          response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
-          proxyToClientBw.write(response);
-          proxyToClientBw.flush();
-
-          String line;
-          while ((line = cachedFileBufferedReader.readLine()) != null)
-            proxyToClientBw.write(line);
-          proxyToClientBw.flush();
-        }
-      }
+      if (fileExtension.matches(IMG_REGEX)) 
+          handleImageFile(cachedFile,proxyToClientBw,
+              fileExtension,clientSocket);
+       else 
+          handleAllOtherFiles(cachedFile,proxyToClientBw);
 
       // Close Down Resources
       if (proxyToClientBw != null)
@@ -184,6 +157,44 @@ extractRequest(requestString);
                          + e.getMessage());
     }
   }
+
+private void handleAllOtherFiles(File cachedFile,
+    BufferedWriter proxyToClientBw) throws IOException {
+
+        try (BufferedReader cachedFileBufferedReader = Files.newBufferedReader(
+                 Paths.get(cachedFile.getAbsolutePath()))) {
+          String response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
+          proxyToClientBw.write(response);
+          proxyToClientBw.flush();
+
+          String line;
+          while ((line = cachedFileBufferedReader.readLine()) != null)
+            proxyToClientBw.write(line);
+          proxyToClientBw.flush();
+        }
+}
+
+private void handleImageFile(File cachedFile,BufferedWriter proxyToClientBw,
+    String fileExtension,
+    Socket clientSocket) throws IOException {
+
+        BufferedImage image = ImageIO.read(cachedFile);
+
+        if (image == null) {
+          System.out.println("Image " + cachedFile.getName() + " was null");
+          String response = "HTTP/1.0 404 NOT FOUND \n" + PROXY_AGENT_STR
+                     + System.lineSeparator();
+          proxyToClientBw.write(response);
+          proxyToClientBw.flush();
+        } else {
+          String response = HTTP_OK + PROXY_AGENT_STR + System.lineSeparator();
+          proxyToClientBw.write(response);
+          proxyToClientBw.flush();
+          ImageIO.write(image,
+                        fileExtension.substring(1),
+                        clientSocket.getOutputStream());
+        }
+}
 
   private File getCacheFile(String fileName) {
     File fileToCache = new File("cached/" + fileName);
@@ -412,13 +423,11 @@ extractRequest(requestString);
   private void closeResources(Writer fileToCacheBW, Writer proxyToClientBw)
       throws IOException {
     // Close down resources
-    if (fileToCacheBW != null) {
+    if (fileToCacheBW != null) 
       fileToCacheBW.close();
-    }
-
-    if (proxyToClientBw != null) {
+    
+    if (proxyToClientBw != null) 
       proxyToClientBw.close();
-    }
   }
 
   /**
