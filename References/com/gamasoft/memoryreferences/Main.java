@@ -57,17 +57,8 @@ public enum Main {
       final HeavyList newTail = allocate(HOW_MANY, oldTail);
 
       HeavyList curr = oldTail.next;
-      while (curr != null) {
-        //                Reference<HeavyList> reference = new
-        //                SoftReference<>(curr, queue);
-        Reference<HeavyList> reference = new WeakReference<>(curr, queue);
 
-        //                Reference<HeavyList> reference = new
-        //                PhantomReference<>(curr, queue);
-        references.add(reference);
-
-        curr = curr.getNext();
-      }
+      addReferences(queue,references,curr);
 
       deallocateHalf(head);
 
@@ -89,6 +80,24 @@ public enum Main {
     oldTail = null;
   }
 
+  private static void addReferences(ReferenceQueue<HeavyList> queue,
+      Set<Reference<HeavyList>> references,
+      HeavyList curr) {
+      HeavyList current = curr;
+      while (current != null) {
+        //                Reference<HeavyList> reference = new
+        //                SoftReference<>(curr, queue);
+        Reference<HeavyList> reference = new WeakReference<>(curr, queue);
+
+        //                Reference<HeavyList> reference = new
+        //                PhantomReference<>(curr, queue);
+        references.add(reference);
+
+        current = current.getNext();
+      }
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static long getUsedMem() {
     return Runtime.getRuntime().totalMemory() -
       Runtime.getRuntime().freeMemory();
@@ -119,6 +128,7 @@ public enum Main {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void printMem() {
     /* Total number of processors or cores available to the JVM */
     System.out.println(

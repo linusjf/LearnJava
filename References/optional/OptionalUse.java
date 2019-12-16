@@ -4,6 +4,7 @@ import java.util.Optional;
 
 public enum OptionalUse {
   ;
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     Optional<String> fullName = Optional.ofNullable(null);
     System.out.println("Full Name is set? " + fullName.isPresent());

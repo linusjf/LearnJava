@@ -10,6 +10,7 @@ import java.util.Optional;
  *
  * @author Javin Paul
  */
+@SuppressWarnings("PMD.LawOfDemeter")
 public enum OptionalExample {
   ;
   public static void main(String... args) {
