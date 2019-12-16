@@ -6,6 +6,7 @@ import java.util.Set;
 @SuppressWarnings("PMD.AvoidUsingShortType")
 public enum SetSize {
   ;
+
   public static void main(String... args) {
     Set<Short> set = new HashSet<>();
     for (short i = 0; i < 10; i++) {

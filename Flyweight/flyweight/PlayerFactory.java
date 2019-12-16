@@ -14,7 +14,7 @@ import java.util.Map;
  */
 final class PlayerFactory { // NOPMD
   /* HashMap stores the reference to the object
-   of Terrorist(TS) or CounterTerrorist(CT).  */
+  of Terrorist(TS) or CounterTerrorist(CT).  */
   private static Map<String, Player> hm = new HashMap<>();
 
   private PlayerFactory() {
@@ -32,7 +32,7 @@ final class PlayerFactory { // NOPMD
     Player p = hm.get(type);
 
     /* If an object for TS or CT has already been
-     created simply return its reference */
+    created simply return its reference */
     if (p == null) {
       /* create an object of TS/CT  */
       switch (type) {

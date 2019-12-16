@@ -31,15 +31,11 @@ public class GenericsClass {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
-      Method getInternalListMethod = GenericsClass
-      .class
-        .getMethod("getInternalList");
+      Method getInternalListMethod = GenericsClass.class.getMethod("getInternalList");
 
       printParameterTypes(getInternalListMethod);
 
-      Method getInternalMapMethod = GenericsClass
-      .class
-        .getMethod("getInternalMap");
+      Method getInternalMapMethod = GenericsClass.class.getMethod("getInternalMap");
       printParameterTypes(getInternalMapMethod);
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe);

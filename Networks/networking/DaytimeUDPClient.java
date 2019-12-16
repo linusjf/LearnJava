@@ -11,37 +11,38 @@ public enum DaytimeUDPClient {
   private static final int PORT = 13;
 
   // clang-format off
-  private static final String[] HOSTNAMES = new String[] {
-    "time.nist.gov",
-    "a-g.nist.gov",
-    "time-b-g.nist.gov",
-    "time-c-g.nist.gov",
-    "time-d-g.nist.gov",
-    "time-d-g.nist.gov",
-    "time-e-g.nist.gov",
-    "time-e-g.nist.gov",
-    "time-a-wwv.nist.gov",
-    "time-b-wwv.nist.gov",
-    "time-c-wwv.nist.gov",
-    "time-d-wwv.nist.gov",
-    "time-d-wwv.nist.gov",
-    "time-e-wwv.nist.gov",
-    "time-e-wwv.nist.gov",
-    "time-a-b.nist.gov",
-    "time-b-b.nist.gov",
-    "time-c-b.nist.gov",
-    "time-d-b.nist.gov",
-    "time-d-b.nist.gov",
-    "time-e-b.nist.gov",
-    "time-e-b.nist.gov",
-    "utcnist.colorado.edu",
-    "utcnist2.colorado.ed",
-    "tick.usno.navy.mil",
-    "tock.usno.navy.mil",
-    "ntp2.usno.navy.mil",
-    "tick.usnogps.navy.mil",
-    "tock.usnogps.navy.mil",
-  };
+  private static final String[] HOSTNAMES =
+      new String[] {
+        "time.nist.gov",
+        "a-g.nist.gov",
+        "time-b-g.nist.gov",
+        "time-c-g.nist.gov",
+        "time-d-g.nist.gov",
+        "time-d-g.nist.gov",
+        "time-e-g.nist.gov",
+        "time-e-g.nist.gov",
+        "time-a-wwv.nist.gov",
+        "time-b-wwv.nist.gov",
+        "time-c-wwv.nist.gov",
+        "time-d-wwv.nist.gov",
+        "time-d-wwv.nist.gov",
+        "time-e-wwv.nist.gov",
+        "time-e-wwv.nist.gov",
+        "time-a-b.nist.gov",
+        "time-b-b.nist.gov",
+        "time-c-b.nist.gov",
+        "time-d-b.nist.gov",
+        "time-d-b.nist.gov",
+        "time-e-b.nist.gov",
+        "time-e-b.nist.gov",
+        "utcnist.colorado.edu",
+        "utcnist2.colorado.ed",
+        "tick.usno.navy.mil",
+        "tock.usno.navy.mil",
+        "ntp2.usno.navy.mil",
+        "tick.usnogps.navy.mil",
+        "tock.usnogps.navy.mil",
+      };
 
   // clang-format on
   public static void main(String[] args) {
@@ -60,10 +61,7 @@ public enum DaytimeUDPClient {
           System.out.printf("Using port %d%n", port);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
           port = PORT;
-          System.err.printf(
-            "Error parsing command line. Using port %d%n",
-            port
-          );
+          System.err.printf("Error parsing command line. Using port %d%n", port);
         }
         connectToTimeServer(socket, hostname, port);
       }
@@ -72,23 +70,14 @@ public enum DaytimeUDPClient {
     }
   }
 
-  private static void connectToTimeServer(
-    DatagramSocket socket,
-    String hostname,
-    int port
-  )
-    throws IOException {
+  private static void connectToTimeServer(DatagramSocket socket, String hostname, int port)
+      throws IOException {
     InetAddress host = InetAddress.getByName(hostname);
     DatagramPacket request = new DatagramPacket(new byte[1], 1, host, port);
     DatagramPacket response = new DatagramPacket(new byte[1024], 1024);
     socket.send(request);
     socket.receive(response);
-    String result = new String(
-      response.getData(),
-      0,
-      response.getLength(),
-      "US-ASCII"
-    );
+    String result = new String(response.getData(), 0, response.getLength(), "US-ASCII");
     System.out.println(result);
   }
 }

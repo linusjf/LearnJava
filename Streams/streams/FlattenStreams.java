@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 // When and how to use parallel streams
 public enum FlattenStreams {
   ;
+
   public static <T> List<T> flattenStream(Collection<List<T>> lists) {
     List<T> finalList = new ArrayList<>();
 
@@ -30,9 +31,7 @@ public enum FlattenStreams {
     return finalList;
   }
 
-  public static <T> List<T> flattenParallelStreamSynchronized(
-    Collection<List<T>> lists
-  ) {
+  public static <T> List<T> flattenParallelStreamSynchronized(Collection<List<T>> lists) {
     List<T> finalList = new ArrayList<>();
     finalList = Collections.synchronizedList(finalList);
 
@@ -41,12 +40,8 @@ public enum FlattenStreams {
     return finalList;
   }
 
-  @SuppressWarnings(
-    { "PMD.ReplaceVectorWithList", "PMD.UseArrayListInsteadOfVector" }
-  )
-  public static <T> List<T> flattenParallelStreamVector(
-    Collection<List<T>> lists
-  ) {
+  @SuppressWarnings({"PMD.ReplaceVectorWithList", "PMD.UseArrayListInsteadOfVector"})
+  public static <T> List<T> flattenParallelStreamVector(Collection<List<T>> lists) {
     Vector<T> finalList = new Vector<>();
 
     for (List<T> list : lists) list.parallelStream().forEach(finalList::add);
@@ -75,11 +70,7 @@ public enum FlattenStreams {
     System.out.println(flatList);
   }
 
-  public static <T> List<T> flattenParallelStreamCollector(
-    Collection<List<T>> lists
-  ) {
-    return lists.parallelStream()
-      .flatMap(Collection::stream)
-      .collect(Collectors.toList());
+  public static <T> List<T> flattenParallelStreamCollector(Collection<List<T>> lists) {
+    return lists.parallelStream().flatMap(Collection::stream).collect(Collectors.toList());
   }
 }

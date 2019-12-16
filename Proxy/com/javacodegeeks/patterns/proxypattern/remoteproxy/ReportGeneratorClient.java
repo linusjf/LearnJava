@@ -12,7 +12,7 @@ import java.rmi.registry.Registry;
  * @version 1.0
  */
 public class ReportGeneratorClient {
-ReportGenerator stub;
+  ReportGenerator stub;
   /**
    * Describe <code>main</code> method here.
    *
@@ -20,17 +20,15 @@ ReportGenerator stub;
    */
   public static void main(String[] args) {
     try {
-    new ReportGeneratorClient().generateReport();
+      new ReportGeneratorClient().generateReport();
     } catch (RemoteException | NotBoundException e) {
       System.out.println(e.getMessage());
     }
   }
 
   public ReportGeneratorClient() throws RemoteException, NotBoundException {
-      Registry registry = LocateRegistry.getRegistry(null);
-       stub = (ReportGenerator) registry.lookup(
-        "PizzaCoRemoteGenerator"
-      );
+    Registry registry = LocateRegistry.getRegistry(null);
+    stub = (ReportGenerator) registry.lookup("PizzaCoRemoteGenerator");
   }
 
   /** Describe <code>generateReport</code> method here. */

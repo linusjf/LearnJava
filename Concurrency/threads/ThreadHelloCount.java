@@ -14,7 +14,6 @@ public enum ThreadHelloCount {
   }
 
   static class HelloThread extends Thread {
-
     @Override
     public void run() {
       int pause;

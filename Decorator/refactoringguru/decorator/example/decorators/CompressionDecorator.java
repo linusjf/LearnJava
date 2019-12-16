@@ -40,13 +40,8 @@ public class CompressionDecorator extends DataSourceDecorator {
 
   private String compress(String stringData) throws IOException {
     byte[] data = stringData.getBytes(StandardCharsets.UTF_8);
-    try (
-      ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-      DeflaterOutputStream dos = new DeflaterOutputStream(
-        bout,
-        new Deflater(compLevel)
-      );
-    ) {
+    try (ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
+         DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));) {
       dos.write(data);
       return encoder.encodeToString(bout.toByteArray());
     }
@@ -55,11 +50,9 @@ public class CompressionDecorator extends DataSourceDecorator {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private String decompress(String stringData) throws IOException {
     byte[] data = decoder.decode(stringData);
-    try (
-      InputStream in = new ByteArrayInputStream(data);
-      InflaterInputStream iin = new InflaterInputStream(in);
-      ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-    ) {
+    try (InputStream in = new ByteArrayInputStream(data);
+         InflaterInputStream iin = new InflaterInputStream(in);
+         ByteArrayOutputStream bout = new ByteArrayOutputStream(512);) {
       int b;
       while ((b = iin.read()) != -1) bout.write(b);
       return new String(bout.toByteArray(), StandardCharsets.UTF_8);

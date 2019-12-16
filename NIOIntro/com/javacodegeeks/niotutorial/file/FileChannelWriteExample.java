@@ -13,17 +13,17 @@ import java.nio.charset.StandardCharsets;
  */
 public class FileChannelWriteExample implements FileChannelExample {
   private static final String OUTPUT_FILE_PATH = "file/output.txt";
-  private static final String CONTENTS = "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-    " Phasellus efficitur auctor risus, non tristique erat finibus nec." +
-    " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. " +
-    "In hac habitasse platea dictumst. " +
-    "Nulla vehicula lacus dapibus semper eleifend." +
-    " Morbi eget malesuada lorem. Mauris mattis quam vel turpis mollis rutrum." +
-    " Etiam hendrerit tortor sed purus congue volutpat." +
-    " Aenean tellus nunc, " +
-    "vestibulum sed nunc in, faucibus posuere quam." +
-    " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
-private static final byte[] BYTES = CONTENTS.getBytes(StandardCharsets.UTF_8);
+  private static final String CONTENTS = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      + " Phasellus efficitur auctor risus, non tristique erat finibus nec."
+      + " Pellentesque lacus ante, volutpat at purus in, mollis porttitor est. "
+      + "In hac habitasse platea dictumst. "
+      + "Nulla vehicula lacus dapibus semper eleifend."
+      + " Morbi eget malesuada lorem. Mauris mattis quam vel turpis mollis rutrum."
+      + " Etiam hendrerit tortor sed purus congue volutpat."
+      + " Aenean tellus nunc, "
+      + "vestibulum sed nunc in, faucibus posuere quam."
+      + " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
+  private static final byte[] BYTES = CONTENTS.getBytes(StandardCharsets.UTF_8);
 
   /**
    * Describe <code>main</code> method here.
@@ -37,29 +37,20 @@ private static final byte[] BYTES = CONTENTS.getBytes(StandardCharsets.UTF_8);
 
   /** Describe <code>writeFile</code> method here. */
   public void writeFile() {
-    try (
-      SeekableByteChannel fileChannel = createChannel(
-        OUTPUT_FILE_PATH,
-        FileOperation.WRITE
-      )
-    ) {
-      final
-      ByteBuffer buffer = createBuffer(
-        BYTES.length
-      );
-    processBuffer(buffer,fileChannel);
+    try (SeekableByteChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
+      final ByteBuffer buffer = createBuffer(BYTES.length);
+      processBuffer(buffer, fileChannel);
     } catch (IOException e) {
       throw new NIORuntimeException("Unable to write to file", e);
     }
   }
 
-  private void processBuffer(ByteBuffer buffer,
-      SeekableByteChannel fileChannel ) throws IOException {
-      buffer.put(BYTES);
-      buffer.flip();
+  private void processBuffer(ByteBuffer buffer, SeekableByteChannel fileChannel)
+      throws IOException {
+    buffer.put(BYTES);
+    buffer.flip();
 
-      while (buffer.hasRemaining()) 
-        fileChannel.write(buffer);
+    while (buffer.hasRemaining()) fileChannel.write(buffer);
   }
 
   private ByteBuffer createBuffer(final int length) {

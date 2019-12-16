@@ -6,6 +6,7 @@ import java.util.Map;
 /** Example of computing cosine similarity with pre-computed profiles. */
 public enum CosineTest {
   ;
+
   public static void main(String[] args) {
     String s1 = "My first string";
     String s2 = "My other string...";

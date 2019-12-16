@@ -1,6 +1,6 @@
 package javapuzzles;
 
-@SuppressWarnings({ "PMD.ShortClassName", "PMD.DoNotCallSystemExit" })
+@SuppressWarnings({"PMD.ShortClassName", "PMD.DoNotCallSystemExit"})
 public class Pet {
   public final String name;
   public final String food;
@@ -26,21 +26,18 @@ public class Pet {
 
   public void live() {
     // new Thread() {
-    new Thread(
-      () -> {
-        while (true) {
-          eat();
-          play();
-          sleep();
-          try {
-            Thread.sleep(1000);
-          } catch (InterruptedException ie) {
-            System.err.println(ie);
-          }
+    new Thread(() -> {
+      while (true) {
+        eat();
+        play();
+        sleep();
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException ie) {
+          System.err.println(ie);
         }
       }
-    )
-      .start();
+    }).start();
   }
 
   public static void main(String[] args) {

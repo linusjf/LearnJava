@@ -5,6 +5,7 @@ import java.util.Random;
 
 public enum LSHSuperBitExample {
   ;
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     int count = 100;
@@ -32,8 +33,7 @@ public enum LSHSuperBitExample {
     for (int i = 0; i < count; i++) {
       double[] vector = vectors[i];
       int[] hash = lsh.hash(vector);
-      for (double v : vector) 
-        System.out.printf("%6.2f\t", v);
+      for (double v : vector) System.out.printf("%6.2f\t", v);
       System.out.print(hash[0]);
       System.out.print("\n");
     }

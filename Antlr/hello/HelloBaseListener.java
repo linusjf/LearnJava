@@ -11,7 +11,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * the available methods.
  */
 public class HelloBaseListener implements HelloListener {
-
   /**
    * {@inheritDoc}
    *

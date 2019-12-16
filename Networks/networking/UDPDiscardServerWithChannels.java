@@ -35,11 +35,8 @@ public enum UDPDiscardServerWithChannels {
     }
   }
 
-  private static void readAndPrintClient(
-    ByteBuffer buffer,
-    DatagramChannel channel
-  )
-    throws IOException {
+  private static void readAndPrintClient(ByteBuffer buffer, DatagramChannel channel)
+      throws IOException {
     while (true) {
       SocketAddress client = channel.receive(buffer);
       buffer.flip();

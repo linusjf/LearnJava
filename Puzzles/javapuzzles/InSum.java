@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum InSum {
   ;
+
   public static int sum(List<Integer> ints) {
     int s = 0;
     for (int n : ints) s += n;

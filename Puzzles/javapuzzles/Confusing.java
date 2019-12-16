@@ -1,7 +1,6 @@
 package javapuzzles;
 
 public final class Confusing {
-
   private Confusing(Object o) {
     System.out.println("Object " + o);
   }

@@ -16,28 +16,21 @@ public final class Dynamic {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({ "unchecked", "PMD.LawOfDemeter" })
+  @SuppressWarnings({"unchecked", "PMD.LawOfDemeter"})
   public static void main(String... args) {
-    Map<Object, Object> proxyInstance = (Map<Object, Object>) Proxy.newProxyInstance(
-      Thread.currentThread().getContextClassLoader(),
-      new Class<?>[] { Map.class },
-      new DynamicInvocationHandler()
-    );
+    Map<Object, Object> proxyInstance =
+        (Map<Object, Object>) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+            new Class<?>[] {Map.class}, new DynamicInvocationHandler());
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));
 
-    proxyInstance =
-      (Map<Object, Object>) Proxy.newProxyInstance(
-        Thread.currentThread().getContextClassLoader(),
-        new Class<?>[] { Map.class },
-        new TimingDynamicInvocationHandler(new HashMap<Object, Object>())
-      );
+    proxyInstance = (Map<Object, Object>) Proxy.newProxyInstance(
+        Thread.currentThread().getContextClassLoader(), new Class<?>[] {Map.class},
+        new TimingDynamicInvocationHandler(new HashMap<Object, Object>()));
 
-    CharSequence csProxyInstance = (CharSequence) Proxy.newProxyInstance(
-      Thread.currentThread().getContextClassLoader(),
-      new Class<?>[] { CharSequence.class },
-      new TimingDynamicInvocationHandler("Hello World")
-    );
+    CharSequence csProxyInstance =
+        (CharSequence) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+            new Class<?>[] {CharSequence.class}, new TimingDynamicInvocationHandler("Hello World"));
 
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));
@@ -45,19 +38,15 @@ public final class Dynamic {
   }
 
   static class DynamicInvocationHandler implements InvocationHandler {
-    private static final Logger LOGGER = Logger.getLogger(
-      DynamicInvocationHandler.class.getName()
-    );
+    private static final Logger LOGGER = Logger.getLogger(DynamicInvocationHandler.class.getName());
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args)
-      throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
       // clang-format off
       LOGGER.info(
-        () -> {
-          return "Invoked method: " + method.getName();
-        }
-      );
+          () -> {
+            return "Invoked method: " + method.getName();
+          });
 
       // clang-format on
       return 42;
@@ -65,9 +54,8 @@ public final class Dynamic {
   }
 
   static class TimingDynamicInvocationHandler implements InvocationHandler {
-    private static final Logger LOGGER = Logger.getLogger(
-      TimingDynamicInvocationHandler.class.getName()
-    );
+    private static final Logger LOGGER =
+        Logger.getLogger(TimingDynamicInvocationHandler.class.getName());
 
     private final Map<String, Method> methods = new HashMap<>();
 
@@ -82,8 +70,7 @@ public final class Dynamic {
 
     @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args)
-      throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
       long start = System.nanoTime();
       Method meth = methods.get(method.getName());
       Object result = invokeMethod(meth, args);
@@ -91,21 +78,16 @@ public final class Dynamic {
 
       // clang-format off
       LOGGER.info(
-        () -> {
-          return String.format(
-            "Executing %s finished in %d ns",
-            method.getName(),
-            elapsed
-          );
-        }
-      );
+          () -> {
+            return String.format("Executing %s finished in %d ns", method.getName(), elapsed);
+          });
 
       // clang-format on
       return result;
     }
 
     private Object invokeMethod(Method method, Object... args)
-      throws IllegalAccessException, InvocationTargetException {
+        throws IllegalAccessException, InvocationTargetException {
       return method.invoke(target, args);
     }
   }

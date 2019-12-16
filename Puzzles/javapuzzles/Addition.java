@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Addition {
   ;
+
   public static void main(String... args) {
     int a = 45;
     double b = 3.141_598_7;

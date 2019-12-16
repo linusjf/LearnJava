@@ -4,6 +4,7 @@ import info.debatty.java.stringsimilarity.LongestCommonSubsequence;
 
 public enum LCSTest {
   ;
+
   public static void main(String[] args) {
     LongestCommonSubsequence lcs = new LongestCommonSubsequence();
 

@@ -1,7 +1,6 @@
 package com.javacodegeeks.patterns.templatepattern;
 
 public class OracleTxtCon extends ConnectionTemplate {
-
   @Override
   public void setDBDriver() {
     System.out.println("Setting Oracle DB drivers...");

@@ -26,21 +26,11 @@ public enum TCPEchoClient {
   }
 
   private static void accessServer() {
-    try (
-      Socket link = new Socket(host, PORT);
-      Scanner input = new Scanner(
-        link.getInputStream(),
-        StandardCharsets.UTF_8.name()
-      );
-      PrintWriter output = new PrintWriter(
-        new OutputStreamWriter(
-          link.getOutputStream(),
-          StandardCharsets.UTF_8.name()
-        ),
-        true
-      );
-      Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());
-    ) {
+    try (Socket link = new Socket(host, PORT);
+         Scanner input = new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
+         PrintWriter output = new PrintWriter(
+             new OutputStreamWriter(link.getOutputStream(), StandardCharsets.UTF_8.name()), true);
+         Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());) {
       // Set up stream for keyboard entry…
       String message = "";
       while (!"***CLOSE***".equals(message)) {
@@ -49,9 +39,8 @@ public enum TCPEchoClient {
           message = userEntry.nextLine();
           output.println(message);
         }
-        if (input.hasNext()) System.out.println(
-          "\nSERVER> " + input.nextLine()
-        );
+        if (input.hasNext())
+          System.out.println("\nSERVER> " + input.nextLine());
       }
     } catch (IOException ioEx) {
       System.err.println(ioEx);

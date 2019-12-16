@@ -8,21 +8,17 @@ import picocli.CommandLine.Parameters;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class App {
-  @Parameters
-  Locale locale;
+  @Parameters Locale locale;
 
-  @Option(names = "-a")
-  Cipher cipher;
+  @Option(names = "-a") Cipher cipher;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     App app = new App();
-    CommandLine commandLine = new CommandLine(app)
-      .registerConverter(
-        Locale.class,
-        s -> new Locale.Builder().setLanguageTag(s).build()
-      )
-      .registerConverter(Cipher.class, s -> Cipher.getInstance(s));
+    CommandLine commandLine =
+        new CommandLine(app)
+            .registerConverter(Locale.class, s -> new Locale.Builder().setLanguageTag(s).build())
+            .registerConverter(Cipher.class, s -> Cipher.getInstance(s));
 
     commandLine.parseArgs("-a", "AES/CBC/NoPadding", "en-GB");
 

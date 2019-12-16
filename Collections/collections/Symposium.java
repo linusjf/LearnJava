@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 public enum Symposium {
   ;
+
   public static void main(String... args) {
     SortedSet<Integer> treeSet = new TreeSet<>();
     treeSet.add(6);

@@ -2,7 +2,6 @@ package com.javacodegeeks.patterns.abstractfactorypattern;
 
 @SuppressWarnings("PMD.ClassNamingConventions")
 public final class ParserFactoryProducer {
-
   private ParserFactoryProducer() {
     throw new AssertionError();
   }

@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 
 public enum TestClassNames {
   ;
+
   private static void showClassForObject(Object o) {
     showClass(o.getClass());
   }
@@ -22,7 +23,7 @@ public enum TestClassNames {
   private static void show(Runnable r) {
     showClass(r.getClass());
     showClass(Array.newInstance(r.getClass(), 1).getClass());
-  // Obtains an array class of a lambda base type.
+    // Obtains an array class of a lambda base type.
   }
 
   public static void main(String[] args) {
@@ -59,10 +60,12 @@ public enum TestClassNames {
   }
 }
 
-@interface SomeAnnotation {
-}
+@interface SomeAnnotation {}
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {
-  BLUE, YELLOW, RED, ;
+  BLUE,
+  YELLOW,
+  RED,
+  ;
 }

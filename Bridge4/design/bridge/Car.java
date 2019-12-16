@@ -8,7 +8,6 @@ package design.bridge;
  */
 @SuppressWarnings("PMD.ShortClassName")
 public class Car extends Vehicle {
-
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void manufacture() {

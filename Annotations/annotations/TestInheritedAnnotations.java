@@ -7,22 +7,12 @@ public enum TestInheritedAnnotations {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     System.out.println(
-      IS_TRUE +
-        AnnotatedSuperClass.class.isAnnotationPresent(InheritedAnnotation.class)
-    );
+        IS_TRUE + AnnotatedSuperClass.class.isAnnotationPresent(InheritedAnnotation.class));
     System.out.println(
-      IS_TRUE +
-        AnnotatedSubClass.class.isAnnotationPresent(InheritedAnnotation.class)
-    );
+        IS_TRUE + AnnotatedSubClass.class.isAnnotationPresent(InheritedAnnotation.class));
     System.out.println(
-      IS_TRUE +
-        AnnotatedInterface.class.isAnnotationPresent(InheritedAnnotation.class)
-    );
+        IS_TRUE + AnnotatedInterface.class.isAnnotationPresent(InheritedAnnotation.class));
     System.out.println(
-      IS_TRUE +
-        AnnotatedImplementedClass
-        .class
-          .isAnnotationPresent(InheritedAnnotation.class)
-    );
+        IS_TRUE + AnnotatedImplementedClass.class.isAnnotationPresent(InheritedAnnotation.class));
   }
 }

@@ -1,6 +1,7 @@
 package servlets;
 
 import static servlets.Prices.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -14,9 +15,9 @@ import javax.servlet.http.HttpSession;
 public class Checkout extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  @SuppressWarnings({ "PMD.AvoidDuplicateLiterals", "checkstyle:javancss" })
+  @SuppressWarnings({"PMD.AvoidDuplicateLiterals", "checkstyle:javancss"})
   public void service(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+      throws IOException, ServletException {
     response.setContentType("text/HTML");
 
     // print page and table header
@@ -28,14 +29,18 @@ public class Checkout extends HttpServlet {
     int numProducts = 0;
 
     // print product lines
-    for (Enumeration<String> prodNames = cart.getAttributeNames(); prodNames.hasMoreElements(); ++numProducts) {
+    for (Enumeration<String> prodNames = cart.getAttributeNames(); prodNames.hasMoreElements();
+         ++numProducts) {
       String product = prodNames.nextElement();
       String stringWt = (String) cart.getAttribute(product);
       float wt = Float.parseFloat(stringWt);
       float cost;
-      if ("Apples".equals(product)) cost = APPLES_PRICE * wt; else if (
-        "Pears".equals(product)
-      ) cost = PEARS_PRICE * wt; else cost = 0;
+      if ("Apples".equals(product))
+        cost = APPLES_PRICE * wt;
+      else if ("Pears".equals(product))
+        cost = PEARS_PRICE * wt;
+      else
+        cost = 0;
       out.println("<TR>");
       out.println("<TD>" + product + "</TD>");
       out.format("<TD> %4.2f </TD>%n", wt);

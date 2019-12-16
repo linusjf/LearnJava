@@ -21,20 +21,12 @@ public class NonblockingSingleFileHttpServer {
 
   @SuppressWarnings("PMD.UnusedFormalParameter")
   public NonblockingSingleFileHttpServer(
-    ByteBuffer data,
-    String encoding,
-    String mimeType,
-    int port
-  ) {
+      ByteBuffer data, String encoding, String mimeType, int port) {
     this.port = port;
-    String header = "HTTP/1.0 200 OK\r\n" +
-      "Server: NonblockingSingleFileHTTPServer\r\n" +
-      "Content-length: " +
-      data.limit() +
-      "\r\n" +
-      "Content-type: " +
-      mimeType +
-      "\r\n\r\n";
+    String header = "HTTP/1.0 200 OK\r\n"
+        + "Server: NonblockingSingleFileHTTPServer\r\n"
+        + "Content-length: " + data.limit() + "\r\n"
+        + "Content-type: " + mimeType + "\r\n\r\n";
     byte[] headerData = header.getBytes(Charset.forName("US-ASCII"));
     ByteBuffer buffer = ByteBuffer.allocate(data.limit() + headerData.length);
     buffer.put(headerData);
@@ -98,7 +90,8 @@ public class NonblockingSingleFileHttpServer {
   private static int getPort(String... args) {
     try {
       int port = Integer.parseInt(args[1]);
-      if (port < 1 || port > 65_535) port = 80;
+      if (port < 1 || port > 65_535)
+        port = 80;
       return port;
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       return 80;
@@ -106,22 +99,20 @@ public class NonblockingSingleFileHttpServer {
   }
 
   private static String getEncoding(String... args) {
-    if (args.length > (1 + 1)) return args[2];
+    if (args.length > (1 + 1))
+      return args[2];
     return "UTF-8";
   }
 
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public static void main(String[] args) {
     if (args.length == 0) {
-      System.out.println(
-        "Usage: java NonblockingSingleFileHTTPServer file port encoding"
-      );
+      System.out.println("Usage: java NonblockingSingleFileHTTPServer file port encoding");
       return;
     }
     try {
       // read the single file to serve
-      String contentType = URLConnection.getFileNameMap()
-        .getContentTypeFor(args[0]);
+      String contentType = URLConnection.getFileNameMap().getContentTypeFor(args[0]);
       Path file = FileSystems.getDefault().getPath(args[0]);
       byte[] data = Files.readAllBytes(file);
       ByteBuffer input = ByteBuffer.wrap(data);
@@ -129,12 +120,8 @@ public class NonblockingSingleFileHttpServer {
       // set the port to listen on
       int port = getPort();
       String encoding = getEncoding();
-      NonblockingSingleFileHttpServer server = new NonblockingSingleFileHttpServer(
-        input,
-        encoding,
-        contentType,
-        port
-      );
+      NonblockingSingleFileHttpServer server =
+          new NonblockingSingleFileHttpServer(input, encoding, contentType, port);
       server.run();
     } catch (IOException ex) {
       System.err.println(ex);

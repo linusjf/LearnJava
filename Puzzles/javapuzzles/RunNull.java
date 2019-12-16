@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum RunNull {
   ;
+
   public static void run(String str) {
     System.out.print("String");
   }

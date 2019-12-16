@@ -45,15 +45,14 @@ public enum PersonnelServer {
     while (true) {
       try {
         socket = serverSocket.accept();
-        inStream =
-          new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
+        inStream = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
         outStream = new ObjectOutputStream(socket.getOutputStream());
 
         /*
-                       The above line and associated declaration
-                       are the only really new code featured in
-                       this example.
-         */
+                      The above line and associated declaration
+                      are the only really new code featured in
+                      this example.
+        */
         String message = inStream.nextLine();
         if ("SEND PERSONNEL DETAILS".equals(message)) {
           outStream.writeObject(staffListOut);

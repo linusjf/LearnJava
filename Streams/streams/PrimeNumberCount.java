@@ -3,7 +3,6 @@ package streams;
 import java.util.stream.IntStream;
 
 public final class PrimeNumberCount {
-
   private static int getRange(String... args) {
     try {
       return Integer.parseInt(args[0]);
@@ -20,17 +19,14 @@ public final class PrimeNumberCount {
   }
 
   public void count(int range) {
-    final
-    long count = IntStream.range(1, range)
-      .parallel()
-      .filter(number -> isPrime(number))
-      .count();
+    final long count =
+        IntStream.range(1, range).parallel().filter(number -> isPrime(number)).count();
     System.out.println("Count - " + count);
   }
 
   public boolean isPrime(final int number) {
-    return number > 1 &&
-    IntStream.rangeClosed(2, (int) Math.sqrt(number))
-      .noneMatch(divisor -> number % divisor == 0);
+    return number > 1
+        && IntStream.rangeClosed(2, (int) Math.sqrt(number))
+               .noneMatch(divisor -> number % divisor == 0);
   }
 }

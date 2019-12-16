@@ -5,7 +5,6 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 public final class InterfaceLister {
-
   private InterfaceLister() {
     throw new IllegalStateException("Private constructor");
   }

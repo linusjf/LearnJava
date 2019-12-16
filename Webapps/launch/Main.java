@@ -12,10 +12,7 @@ import org.apache.catalina.webresources.StandardRoot;
 @SuppressWarnings("PMD.ShortClassName")
 public final class Main {
   private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-  private static final String WORKING_DIR = System.getProperty(
-    "java.io.tmpdir"
-  ) +
-    "/webapps";
+  private static final String WORKING_DIR = System.getProperty("java.io.tmpdir") + "/webapps";
 
   private Main() {
     throw new IllegalStateException("Private constructor");
@@ -57,32 +54,19 @@ public final class Main {
       // following call e.g. "C:\\Users\\admin\\Desktop\\app.war"
       //      tomcat.getHost().getAppBaseFile().mkdir();
       // Ensure that the webapps directory exists
-      Context appContext = tomcat.addWebapp(
-        tomcat.getHost(),
-        "/Webapp",
-        webappDirLocation
-      );
-      appContext.setParentClassLoader(
-        Thread.currentThread().getContextClassLoader()
-      );
+      Context appContext = tomcat.addWebapp(tomcat.getHost(), "/Webapp", webappDirLocation);
+      appContext.setParentClassLoader(Thread.currentThread().getContextClassLoader());
       WebResourceRoot resources = new StandardRoot(appContext);
-      resources.addPreResources(
-        new DirResourceSet(resources, "/WEB-INF/classes", "", "/")
-      );
+      resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes", "", "/"));
       appContext.setResources(resources);
 
       // create default connector
       tomcat.getConnector();
       tomcat.start();
-      LOGGER.info(
-        () -> {
-          return MessageFormat.format(
-            "Deployed {0} as {1}",
-            appContext.getBaseName(),
-            appContext.getBaseName()
-          );
-        }
-      );
+      LOGGER.info(() -> {
+        return MessageFormat.format(
+            "Deployed {0} as {1}", appContext.getBaseName(), appContext.getBaseName());
+      });
       tomcat.getServer().await();
     } catch (LifecycleException lce) {
       System.err.println(lce);

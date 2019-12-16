@@ -1,7 +1,6 @@
 package click;
 
 public class CodeTalk {
-
   public void doIt() {
     printMessage();
   }

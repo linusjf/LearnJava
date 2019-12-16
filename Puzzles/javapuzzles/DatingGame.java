@@ -5,6 +5,7 @@ import java.util.Date;
 
 public enum DatingGame {
   ;
+
   @SuppressWarnings("deprecation")
   public static void main(String[] args) {
     Calendar cal = Calendar.getInstance();

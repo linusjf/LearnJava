@@ -7,11 +7,9 @@ import java.util.List;
 
 @SuppressWarnings("PMD.ImmutableField")
 public class MainCommand {
-  @Parameter(description = "Files")
-  private List<String> files = new ArrayList<>();
+  @Parameter(description = "Files") private List<String> files = new ArrayList<>();
 
-  @Parameter(names = "-debug", description = "Debugging level")
-  private Integer debug = 1;
+  @Parameter(names = "-debug", description = "Debugging level") private Integer debug = 1;
 
   public static void main(String... argv) {
     MainCommand fc = new MainCommand();

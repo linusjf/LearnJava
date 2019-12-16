@@ -19,6 +19,9 @@ public class SimpleCacheRequest extends CacheRequest {
   }
 
   public byte[] getData() {
-    if (out.size() == 0) return new byte[0]; else return out.toByteArray();
+    if (out.size() == 0)
+      return new byte[0];
+    else
+      return out.toByteArray();
   }
 }

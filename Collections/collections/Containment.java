@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum Containment {
   ;
+
   public static void main(String... args) {
     Object obj = "one";
     List<Object> objs = Arrays.<Object>asList("one", 2, Math.PI, 4);

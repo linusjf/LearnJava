@@ -8,9 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum ProducerConsumerExecutorService {
   ;
-  static final BlockingQueue<Integer> BLOCKING_QUEUE = new LinkedBlockingDeque<>(
-    2
-  );
+  static final BlockingQueue<Integer> BLOCKING_QUEUE = new LinkedBlockingDeque<>(2);
   static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(3);
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -48,7 +46,7 @@ public enum ProducerConsumerExecutorService {
         System.out.println("Blocking for 10 seconds...");
         EXECUTOR.awaitTermination(10, TimeUnit.SECONDS);
         System.out.println("Closing executor service...");
-      //  EXECUTOR.shutdownNow();
+        //  EXECUTOR.shutdownNow();
       } catch (InterruptedException e) {
         System.err.println(e);
       }

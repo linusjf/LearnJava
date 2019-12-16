@@ -20,9 +20,7 @@ public class RunnableShowName implements Runnable {
         // Use static method currentThread to get
         // reference to current thread and then call
         // method getName on that reference…
-        System.out.println(
-          Thread.currentThread().getName() + " being executed."
-        );
+        System.out.println(Thread.currentThread().getName() + " being executed.");
         pause = random.nextInt(3000);
 
         // Call static method sleep…

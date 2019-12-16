@@ -6,58 +6,50 @@ import java.util.Random;
 
 public enum ClassicProducerConsumerExample {
   ;
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) throws InterruptedException {
     final Buffer buffer = new Buffer(2);
 
-    Thread producerThread = new Thread(
-      new Runnable() {
-
-        @Override
-        public void run() {
-          try {
-            buffer.produce();
-          } catch (InterruptedException e) {
-            System.err.println(e);
-            Thread.currentThread().interrupt();
-          }
+    Thread producerThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          buffer.produce();
+        } catch (InterruptedException e) {
+          System.err.println(e);
+          Thread.currentThread().interrupt();
         }
       }
-    );
+    });
 
-    Thread consumerThread = new Thread(
-      new Runnable() {
-
-        @Override
-        public void run() {
-          try {
-            buffer.consume();
-          } catch (InterruptedException e) {
-            System.err.println(e);
-            Thread.currentThread().interrupt();
-          }
+    Thread consumerThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          buffer.consume();
+        } catch (InterruptedException e) {
+          System.err.println(e);
+          Thread.currentThread().interrupt();
         }
       }
-    );
+    });
 
-    Thread terminatorThread = new Thread(
-      new Runnable() {
-
-        @Override
-        public void run() {
-          try {
-            Thread.sleep(10_000);
-            System.out.println("Exiting program...");
-            producerThread.interrupt();
-            consumerThread.interrupt();
+    Thread terminatorThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          Thread.sleep(10_000);
+          System.out.println("Exiting program...");
+          producerThread.interrupt();
+          consumerThread.interrupt();
           // System.exit(0);
-          } catch (InterruptedException e) {
-            System.err.println(e);
-            Runtime.getRuntime().halt(0);
-          }
+        } catch (InterruptedException e) {
+          System.err.println(e);
+          Runtime.getRuntime().halt(0);
         }
       }
-    );
+    });
     producerThread.start();
     consumerThread.start();
     terminatorThread.start();

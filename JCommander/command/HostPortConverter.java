@@ -3,7 +3,6 @@ package command;
 import com.beust.jcommander.IStringConverter;
 
 public class HostPortConverter implements IStringConverter<HostPort> {
-
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public HostPort convert(String value) {

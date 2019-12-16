@@ -19,9 +19,7 @@ public final class Singleton implements Serializable, Cloneable {
 
   private Singleton() {
     if (instance != null) {
-      throw new IllegalStateException(
-        "Illegal access to constructor: Already instantiated."
-      );
+      throw new IllegalStateException("Illegal access to constructor: Already instantiated.");
     }
   }
 
@@ -35,7 +33,8 @@ public final class Singleton implements Serializable, Cloneable {
       // the pmd warning emitted ignores the volatile modufier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
-        if (instance == null) instance = new Singleton();
+        if (instance == null)
+          instance = new Singleton();
       }
     }
     return instance;
@@ -63,12 +62,10 @@ public final class Singleton implements Serializable, Cloneable {
     throw new CloneNotSupportedException("Singleton, cannot be cloned");
   }
 
-  @SuppressWarnings({ "unused", "PMD.UseProperClassLoader",
-  "PMD.LawOfDemeter"})
-  private static Class<?> getClass(String classname)
-    throws ClassNotFoundException {
+  @SuppressWarnings({"unused", "PMD.UseProperClassLoader", "PMD.LawOfDemeter"})
+  private static Class<?> getClass(String classname) throws ClassNotFoundException {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    if (classLoader == null) 
+    if (classLoader == null)
       classLoader = Singleton.class.getClassLoader();
     return classLoader.loadClass(classname);
   }

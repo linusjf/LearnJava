@@ -2,6 +2,7 @@ package com.lambdaworks.crypto;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 import static java.lang.System.arraycopy;
+
 import java.security.GeneralSecurityException;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -11,8 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-@SuppressWarnings("checkstyle:abbreviationaswordinname")
-public final class PBKDF { // NOPMD
+@SuppressWarnings("checkstyle:abbreviationaswordinname") public final class PBKDF { // NOPMD
 
   private PBKDF() {
     throw new IllegalStateException("Private constructor");
@@ -29,14 +29,8 @@ public final class PBKDF { // NOPMD
    * @return The derived key in bytes
    * @throws GeneralSecurityException security exception
    */
-  public static byte[] pbkdf2(
-    String alg,
-    byte[] password,
-    byte[] salt,
-    int c,
-    int dkLen
-  )
-    throws GeneralSecurityException {
+  public static byte[] pbkdf2(String alg, byte[] password, byte[] salt, int c, int dkLen)
+      throws GeneralSecurityException {
     final Mac mac = Mac.getInstance(alg);
     mac.init(new SecretKeySpec(password, alg));
     final byte[] derivedKey = new byte[dkLen];
@@ -55,14 +49,8 @@ public final class PBKDF { // NOPMD
    * @throws GeneralSecurityException security exception
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  public static void pbkdf2(
-    Mac mac,
-    byte[] salt,
-    int c,
-    byte[] derivedKey,
-    int dkLen
-  )
-    throws GeneralSecurityException {
+  public static void pbkdf2(Mac mac, byte[] salt, int c, byte[] derivedKey, int dkLen)
+      throws GeneralSecurityException {
     final int lengthH = mac.getMacLength();
 
     if (dkLen > (Math.pow(2, 32) - 1) * lengthH) {

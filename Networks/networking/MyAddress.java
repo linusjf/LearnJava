@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public final class MyAddress {
-
   private MyAddress() {
     throw new IllegalStateException("Private constructor");
   }
@@ -16,9 +15,7 @@ public final class MyAddress {
       String dottedQuad = address.getHostAddress();
       System.out.println(dottedQuad);
     } catch (UnknownHostException ex) {
-      System.out.println(
-        "Could not find this computer's address: " + ex.getMessage()
-      );
+      System.out.println("Could not find this computer's address: " + ex.getMessage());
     }
   }
 }

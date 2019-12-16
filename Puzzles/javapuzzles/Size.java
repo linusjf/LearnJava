@@ -6,6 +6,7 @@ import java.util.Set;
 @SuppressWarnings("checkstyle:magicnumber")
 public enum Size {
   ;
+
   public static void main(String... args) {
     Set<Student> students = new HashSet<>();
     students.add(new Student(1));

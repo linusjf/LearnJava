@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum ControllingExecutor {
   ;
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
@@ -25,7 +26,8 @@ public enum ControllingExecutor {
     for (ResultTask task : resultTasks) task.cancel(true);
     for (ResultTask task : resultTasks) {
       try {
-        if (!task.isCancelled()) System.out.printf("%s%n", task.get());
+        if (!task.isCancelled())
+          System.out.printf("%s%n", task.get());
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
@@ -48,11 +50,7 @@ public enum ControllingExecutor {
     public String call() throws Exception {
       try {
         long duration = (long) (Math.random() * 10);
-        System.out.printf(
-          "%s: Waiting %d seconds for results.%n",
-          this.name,
-          duration
-        );
+        System.out.printf("%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

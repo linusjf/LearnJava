@@ -2,13 +2,14 @@ package javapuzzles;
 
 public enum Creator {
   ;
+
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++) new Creature();
     System.out.println(Creature.getNumCreated());
   }
 }
 
-@SuppressWarnings({ "checkstyle:onetoplevelclass", "PMD" })
+@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD"})
 class Creature {
   private static long numCreated;
 

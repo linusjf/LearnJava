@@ -4,6 +4,7 @@ import info.debatty.java.stringsimilarity.NGram;
 
 public enum NGramTest {
   ;
+
   public static void main(String[] args) {
     System.out.println("\nNGram :\n");
 

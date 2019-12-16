@@ -23,13 +23,7 @@ public class OrderBean implements java.io.Serializable {
   }
 
   public String getAddress() {
-    return addressLine1 +
-      "\n" +
-      addressLine2 +
-      "\n" +
-      addressLine3 +
-      "\n" +
-      postCode;
+    return addressLine1 + "\n" + addressLine2 + "\n" + addressLine3 + "\n" + postCode;
   }
 
   public String getAddressLine1() {
@@ -82,12 +76,15 @@ public class OrderBean implements java.io.Serializable {
 
   @SuppressWarnings("PMD.NullAssignment")
   public void setOrderDate(Date orderDate) {
-    if (orderDate == null) this.orderDate = null; else this.orderDate =
-      new Date(orderDate.getTime());
+    if (orderDate == null)
+      this.orderDate = null;
+    else
+      this.orderDate = new Date(orderDate.getTime());
   }
 
   public Date getOrderDate() {
-    if (orderDate == null) return null;
+    if (orderDate == null)
+      return null;
     return new Date(orderDate.getTime());
   }
 }

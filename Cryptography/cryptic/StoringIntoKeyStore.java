@@ -16,6 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 @SuppressWarnings("PMD.HardCodedCryptoKey")
 public enum StoringIntoKeyStore {
   ;
+
   public static void main(String[] args) {
     try {
       // Creating the KeyStore object
@@ -30,32 +31,21 @@ public enum StoringIntoKeyStore {
       keyStore.load(is, password);
 
       // Creating the KeyStore.ProtectionParameter object
-      KeyStore.ProtectionParameter protectionParam = new KeyStore.PasswordProtection(
-        password
-      );
+      KeyStore.ProtectionParameter protectionParam = new KeyStore.PasswordProtection(password);
 
       // Creating SecretKey object
-      SecretKey mySecretKey = new SecretKeySpec(
-        "myPassword".getBytes(StandardCharsets.UTF_8),
-        "DSA"
-      );
+      SecretKey mySecretKey =
+          new SecretKeySpec("myPassword".getBytes(StandardCharsets.UTF_8), "DSA");
 
       // Creating SecretKeyEntry object
-      KeyStore.SecretKeyEntry secretKeyEntry = new KeyStore.SecretKeyEntry(
-        mySecretKey
-      );
+      KeyStore.SecretKeyEntry secretKeyEntry = new KeyStore.SecretKeyEntry(mySecretKey);
       keyStore.setEntry("secretKeyAlias", secretKeyEntry, protectionParam);
 
       // Storing the KeyStore object
       OutputStream os = Files.newOutputStream(Paths.get("newKeyStore.jks"));
       keyStore.store(os, password);
       System.out.println("data stored");
-    } catch (
-      CertificateException
-      | NoSuchAlgorithmException
-      | KeyStoreException
-      | IOException e
-    ) {
+    } catch (CertificateException | NoSuchAlgorithmException | KeyStoreException | IOException e) {
       System.err.println(e);
     }
   }

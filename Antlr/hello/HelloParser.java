@@ -7,9 +7,8 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 
-@SuppressWarnings({ "all", "warnings", "unchecked", "unused", "cast" })
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class HelloParser extends Parser {
-
   static {
     RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION);
   }
@@ -20,30 +19,26 @@ public class HelloParser extends Parser {
   public static final int RULE_r = 0;
 
   private static String[] makeRuleNames() {
-    return new String[] { "r" };
+    return new String[] {"r"};
   }
 
   public static final String[] ruleNames = makeRuleNames();
 
   private static String[] makeLiteralNames() {
-    return new String[] { null, "'hello'" };
+    return new String[] {null, "'hello'"};
   }
 
   private static final String[] _LITERAL_NAMES = makeLiteralNames();
 
   private static String[] makeSymbolicNames() {
-    return new String[] { null, null, "ID", "WS" };
+    return new String[] {null, null, "ID", "WS"};
   }
 
   private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
-  public static final Vocabulary VOCABULARY = new VocabularyImpl(
-    _LITERAL_NAMES,
-    _SYMBOLIC_NAMES
-  );
+  public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
   /** @deprecated Use {@link #VOCABULARY} instead. */
-  @Deprecated
-  public static final String[] tokenNames;
+  @Deprecated public static final String[] tokenNames;
 
   static {
     tokenNames = new String[_SYMBOLIC_NAMES.length];
@@ -92,12 +87,10 @@ public class HelloParser extends Parser {
 
   public HelloParser(TokenStream input) {
     super(input);
-    _interp =
-      new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+    _interp = new ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
   }
 
   public static class RContext extends ParserRuleContext {
-
     public TerminalNode ID() {
       return getToken(HelloParser.ID, 0);
     }
@@ -113,14 +106,14 @@ public class HelloParser extends Parser {
 
     @Override
     public void enterRule(ParseTreeListener listener) {
-      if (listener instanceof HelloListener) ((HelloListener) listener)
-        .enterR(this);
+      if (listener instanceof HelloListener)
+        ((HelloListener) listener).enterR(this);
     }
 
     @Override
     public void exitRule(ParseTreeListener listener) {
-      if (listener instanceof HelloListener) ((HelloListener) listener)
-        .exitR(this);
+      if (listener instanceof HelloListener)
+        ((HelloListener) listener).exitR(this);
     }
   }
 
@@ -145,11 +138,11 @@ public class HelloParser extends Parser {
     return _localctx;
   }
 
-  public static final String _serializedATN = "\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\5\b\4\2\t\2\3\2\3" +
-    "\2\3\2\3\2\2\2\3\2\2\2\2\6\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\3\3\2" +
-    "\2\2\2";
-  public static final ATN _ATN = new ATNDeserializer()
-    .deserialize(_serializedATN.toCharArray());
+  public static final String _serializedATN =
+      "\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\5\b\4\2\t\2\3\2\3"
+      + "\2\3\2\3\2\2\2\3\2\2\2\2\6\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\3\3\2"
+      + "\2\2\2";
+  public static final ATN _ATN = new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 
   static {
     _decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];

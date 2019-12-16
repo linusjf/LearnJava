@@ -4,6 +4,7 @@ import info.debatty.java.stringsimilarity.QGram;
 
 public enum QGramTest {
   ;
+
   public static void main(String[] args) {
     QGram dig = new QGram(2);
 

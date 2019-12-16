@@ -1,17 +1,15 @@
 package com.vmlens.tutorialcopyonwrite;
 
 import static org.junit.Assert.assertEquals;
+
 import com.vmlens.annotation.Interleave;
 import org.junit.Test;
 
 public class ConcurrencyTestTwoWrites {
   // Not thread safe address since the write is not guarded by a synchronized
   // block
-  private final AddressUsingCopyOnWriteWithoutSynchronized address = new AddressUsingCopyOnWriteWithoutSynchronized(
-    "E. Bonanza St.",
-    "South Park",
-    "456 77 99"
-  );
+  private final AddressUsingCopyOnWriteWithoutSynchronized address =
+      new AddressUsingCopyOnWriteWithoutSynchronized("E. Bonanza St.", "South Park", "456 77 99");
 
   // Thread safe, the write is guarded by a synchronized block
   // private final AddressUsingCopyOnWrite address = new
@@ -29,26 +27,23 @@ public class ConcurrencyTestTwoWrites {
   @Test
   public void test() throws InterruptedException {
     // clang-format off
-    Thread first = new Thread(
-      () -> {
-        updatePostalAddress();
-      }
-    );
-    Thread second = new Thread(
-      () -> {
-        updatePhoneNumber();
-      }
-    );
+    Thread first =
+        new Thread(
+            () -> {
+              updatePostalAddress();
+            });
+    Thread second =
+        new Thread(
+            () -> {
+              updatePhoneNumber();
+            });
 
     // clang-format on
     first.start();
     second.start();
     first.join();
     second.join();
-    assertEquals(
-      "The two address strings don't match",
-      "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222",
-      address.toString()
-    );
+    assertEquals("The two address strings don't match",
+        "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222", address.toString());
   }
 }

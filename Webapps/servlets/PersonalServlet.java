@@ -14,7 +14,7 @@ public class PersonalServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+      throws IOException, ServletException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
     out.println("<HTML>");
@@ -25,9 +25,10 @@ public class PersonalServlet extends HttpServlet {
     out.println("<BR/><BR/><BR/>");
     String name = request.getParameter("FirstName");
     out.println("<H1>A Simple Servlet for ");
-    if (name == null) out.println("'No name provided'"); else out.println(
-      URLEncoder.encode(name, StandardCharsets.UTF_8.displayName())
-    );
+    if (name == null)
+      out.println("'No name provided'");
+    else
+      out.println(URLEncoder.encode(name, StandardCharsets.UTF_8.displayName()));
     out.println("</H1>");
     out.println("</BODY>");
     out.println("</HTML>");

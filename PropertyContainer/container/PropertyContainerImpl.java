@@ -7,8 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class PropertyContainerImpl
-  implements PropertyContainer, Serializable {
+public abstract class PropertyContainerImpl implements PropertyContainer, Serializable {
   public static final long serialVersionUID = 1L;
 
   protected Map<String, Object> ivProperties = new Hashtable<>();
@@ -22,7 +21,8 @@ public abstract class PropertyContainerImpl
    */
   @Override
   public void addPropertyBy(Object value, String token) {
-    if (value == null || token == null) return;
+    if (value == null || token == null)
+      return;
     ivProperties.remove(token);
     ivProperties.put(token, value);
   }
@@ -59,7 +59,8 @@ public abstract class PropertyContainerImpl
    */
   @Override
   public void removeProperty(String token) {
-    if (token == null) return;
+    if (token == null)
+      return;
     ivProperties.remove(token);
   }
 
@@ -73,8 +74,10 @@ public abstract class PropertyContainerImpl
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof PropertyContainerImpl)) return false;
-    if (o == this) return true;
+    if (!(o instanceof PropertyContainerImpl))
+      return false;
+    if (o == this)
+      return true;
     PropertyContainerImpl obj = (PropertyContainerImpl) o;
     return ivProperties.equals(obj.ivProperties);
   }

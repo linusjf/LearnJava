@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public final class ProtectedUrlAccess {
-
   private ProtectedUrlAccess() {
     throw new IllegalStateException("Private constructor");
   }
@@ -22,16 +21,13 @@ public final class ProtectedUrlAccess {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
       Authenticator.setDefault(
-        args.length > 0 ? new CustomAuthenticator(args[0])
-          : new CustomAuthenticator()
-      );
+          args.length > 0 ? new CustomAuthenticator(args[0]) : new CustomAuthenticator());
 
       double random = Math.random();
 
       URL url = new URL(
-        "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?" +
-          random
-      );
+          "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
+          + random);
       byte[] b = new byte[1];
 
       DataInputStream di = new DataInputStream(url.openStream());

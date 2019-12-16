@@ -15,12 +15,11 @@ public class Puzzle extends Superb {
   }
 }
 
-@SuppressWarnings({ "checkstyle:onetoplevelclass", "PMD.NonStaticInitializer" })
+@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.NonStaticInitializer"})
 class Superb {
-
   // clang-format off
   {
     System.out.println(this);
   }
-// clang-format on
+  // clang-format on
 }

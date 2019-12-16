@@ -19,6 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public enum BlowFishKey {
   ;
+
   public static void main(String[] args) {
     try {
       KeyGenerator kgen = KeyGenerator.getInstance("Blowfish");
@@ -28,19 +29,10 @@ public enum BlowFishKey {
 
       Cipher cipher = Cipher.getInstance("Blowfish");
       cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-      byte[] encrypted = cipher.doFinal(
-        "This is just an example".getBytes(StandardCharsets.UTF_8)
-      );
-      System.out.println(
-        "Base 64: " + Base64.getEncoder().encodeToString(encrypted)
-      );
-    } catch (
-      IllegalBlockSizeException
-      | InvalidKeyException
-      | BadPaddingException
-      | NoSuchPaddingException
-      | NoSuchAlgorithmException exc
-    ) {
+      byte[] encrypted = cipher.doFinal("This is just an example".getBytes(StandardCharsets.UTF_8));
+      System.out.println("Base 64: " + Base64.getEncoder().encodeToString(encrypted));
+    } catch (IllegalBlockSizeException | InvalidKeyException | BadPaddingException
+        | NoSuchPaddingException | NoSuchAlgorithmException exc) {
       System.err.println(exc);
     }
   }

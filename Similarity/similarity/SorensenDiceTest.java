@@ -5,6 +5,7 @@ import info.debatty.java.stringsimilarity.SorensenDice;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum SorensenDiceTest {
   ;
+
   public static void main(String... args) {
     SorensenDice sd = new SorensenDice();
 

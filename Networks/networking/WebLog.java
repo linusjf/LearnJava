@@ -8,15 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public final class WebLog {
-
   private WebLog() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
     try (BufferedReader bin = Files.newBufferedReader(Paths.get(args[0]));) {
-      for (String entry = bin.readLine(); entry != null; entry =
-        bin.readLine()) {
+      for (String entry = bin.readLine(); entry != null; entry = bin.readLine()) {
         // separate out the IP address
         int index = entry.indexOf(' ');
         String ip = entry.substring(0, index);

@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Crito {
   ;
+
   @SuppressWarnings("PMD")
   public static void main(String... args) {
     CharSequence a = "21";

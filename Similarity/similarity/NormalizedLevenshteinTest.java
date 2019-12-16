@@ -5,6 +5,7 @@ import info.debatty.java.stringsimilarity.NormalizedLevenshtein;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum NormalizedLevenshteinTest {
   ;
+
   public static void main(String[] args) {
     NormalizedLevenshtein nl = new NormalizedLevenshtein();
 

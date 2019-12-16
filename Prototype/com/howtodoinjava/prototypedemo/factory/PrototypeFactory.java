@@ -19,8 +19,7 @@ public final class PrototypeFactory {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static PrototypeCapable getInstance(final String s)
-    throws CloneNotSupportedException {
+  public static PrototypeCapable getInstance(final String s) throws CloneNotSupportedException {
     return prototypes.get(s).clone();
   }
 

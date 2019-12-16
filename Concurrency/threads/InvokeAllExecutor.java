@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum InvokeAllExecutor {
   ;
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
@@ -71,11 +72,7 @@ public enum InvokeAllExecutor {
       try {
         long duration = random.nextInt(10);
 
-        System.out.printf(
-          "%s: Waiting %d seconds for results.%n",
-          this.name,
-          duration
-        );
+        System.out.printf("%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

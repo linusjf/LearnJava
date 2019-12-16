@@ -13,7 +13,7 @@ public class GetPreferences extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+      throws IOException, ServletException {
     response.setContentType("text/HTML");
     HttpSession adderSession = request.getSession();
     adderSession.setAttribute("firstVisit", "Yes");
@@ -31,26 +31,27 @@ public class GetPreferences extends HttpServlet {
     out.println("<TABLE>");
     out.println("<TR>");
     out.println("<TD>First name</TD>");
-    out.println(
-      "<TD><INPUT TYPE='Text' " + "NAME='Name' VALUE='' SIZE=15></TD>"
-    );
+    out.println("<TD><INPUT TYPE='Text' "
+        + "NAME='Name' VALUE='' SIZE=15></TD>");
     out.println("</TR>");
     out.println("<TR>");
     out.println("<TD>Foreground colour</TD>");
-    out.println(
-      "<TD><INPUT TYPE='Text' " + "NAME='ForeColour' VALUE=''" + "SIZE=10></TD>"
-    );
+    out.println("<TD><INPUT TYPE='Text' "
+        + "NAME='ForeColour' VALUE=''"
+        + "SIZE=10></TD>");
     out.println("</TR>");
     out.println("<TR>");
     out.println("<TD>Background colour</TD>");
-    out.println(
-      "<TD><INPUT TYPE='Text' " + "NAME='BackColour' VALUE=''" + "SIZE=10></TD>"
-    );
+    out.println("<TD><INPUT TYPE='Text' "
+        + "NAME='BackColour' VALUE=''"
+        + "SIZE=10></TD>");
     out.println("</TR>");
     out.println("</TABLE>");
     out.println("<BR/><BR/>");
-    out.println("<INPUT TYPE='Submit' " + "VALUE = 'Submit'>");
-    out.println("<INPUT TYPE='Reset' " + "VALUE='Clear'>");
+    out.println("<INPUT TYPE='Submit' "
+        + "VALUE = 'Submit'>");
+    out.println("<INPUT TYPE='Reset' "
+        + "VALUE='Clear'>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();

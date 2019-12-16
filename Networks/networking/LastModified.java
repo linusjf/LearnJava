@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.Date;
 
 public final class LastModified {
-
   private LastModified() {
     throw new IllegalStateException("Private constructor");
   }
@@ -18,9 +17,7 @@ public final class LastModified {
         URL u = new URL(arg);
         HttpURLConnection http = (HttpURLConnection) u.openConnection();
         http.setRequestMethod("HEAD");
-        System.out.println(
-          u + " was last modified at " + new Date(http.getLastModified())
-        );
+        System.out.println(u + " was last modified at " + new Date(http.getLastModified()));
       } catch (MalformedURLException ex) {
         System.err.println(arg + " is not a URL I understand");
       } catch (IOException ex) {

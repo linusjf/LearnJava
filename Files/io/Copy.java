@@ -22,16 +22,8 @@ public enum Copy {
       return;
     }
 
-    try (
-      Scanner source = new Scanner(
-        new File(arg[0]),
-        UTF_8
-      );
-      PrintWriter destination = new PrintWriter(
-        new File(arg[1]),
-        UTF_8
-      );
-    ) {
+    try (Scanner source = new Scanner(new File(arg[0]), UTF_8);
+         PrintWriter destination = new PrintWriter(new File(arg[1]), UTF_8);) {
       String input;
       while (source.hasNext()) {
         input = source.nextLine();

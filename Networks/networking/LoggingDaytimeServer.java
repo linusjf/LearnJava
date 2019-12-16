@@ -18,13 +18,9 @@ import logging.FormatLogger;
 public final class LoggingDaytimeServer {
   public static final int PORT = 13;
 
-  private static final FormatLogger AUDIT_LOGGER = new FormatLogger(
-    Logger.getLogger("requests")
-  );
+  private static final FormatLogger AUDIT_LOGGER = new FormatLogger(Logger.getLogger("requests"));
 
-  private static final FormatLogger ERROR_LOGGER = new FormatLogger(
-    Logger.getLogger("errors")
-  );
+  private static final FormatLogger ERROR_LOGGER = new FormatLogger(Logger.getLogger("errors"));
 
   private LoggingDaytimeServer() {
     throw new IllegalStateException("Private constructor");
@@ -47,10 +43,7 @@ public final class LoggingDaytimeServer {
     }
   }
 
-  private static void acceptAndSubmit(
-    ExecutorService pool,
-    ServerSocket server
-  ) {
+  private static void acceptAndSubmit(ExecutorService pool, ServerSocket server) {
     while (true) {
       try {
         Socket connection = server.accept();
@@ -75,22 +68,11 @@ public final class LoggingDaytimeServer {
         Date now = new Date();
 
         // write the log entry first in case the client disconnects
-        AUDIT_LOGGER.info(
-          "%s %s",
-          (Object) now,
-          (Object) connection.getRemoteSocketAddress()
-        );
-        Writer out = new OutputStreamWriter(
-          connection.getOutputStream(),
-          StandardCharsets.UTF_8.name()
-        );
-        SimpleDateFormat format = new SimpleDateFormat(
-          "yy-MM-dd hh:mm:ss Z",
-          Locale.getDefault()
-        );
-        out.write(
-          ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n"
-        );
+        AUDIT_LOGGER.info("%s %s", (Object) now, (Object) connection.getRemoteSocketAddress());
+        Writer out =
+            new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8.name());
+        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
+        out.write(ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n");
         out.flush();
       } catch (IOException ex) {
         AUDIT_LOGGER.warning(ex.getMessage());

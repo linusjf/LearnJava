@@ -57,13 +57,13 @@ public class JarLibraryLoader implements LibraryLoader {
    */
   @Override
   public boolean load(String name, boolean verify) {
-    try (
-      JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)
-    ) {
+    try (JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)) {
       final Platform platform = Platform.detect();
       for (String path : libCandidates(platform, name)) {
         final JarEntry entry = jar.getJarEntry(path);
-        if (entry == null) continue; else {
+        if (entry == null)
+          continue;
+        else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
           sm.checkLink(lib.getAbsolutePath());
@@ -91,9 +91,7 @@ public class JarLibraryLoader implements LibraryLoader {
 
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
-    try (
-      OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()))
-    ) {
+    try (OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()))) {
       int len;
       while ((len = is.read(buf)) > 0) os.write(buf, 0, len);
     }
@@ -113,12 +111,12 @@ public class JarLibraryLoader implements LibraryLoader {
     final StringBuilder sb = new StringBuilder();
 
     sb.append(libraryPath)
-      .append('/')
-      .append(platform.arch)
-      .append('/')
-      .append(platform.os)
-      .append("/lib")
-      .append(name);
+        .append('/')
+        .append(platform.arch)
+        .append('/')
+        .append(platform.os)
+        .append("/lib")
+        .append(name);
 
     switch (platform.os) {
       case DARWIN:

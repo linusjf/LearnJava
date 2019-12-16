@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum DoubleIncrement {
   ;
+
   public static void main(String... args) {
     double d = 0d;
     for (int i = 0; i < 10; i++) {

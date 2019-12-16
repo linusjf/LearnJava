@@ -16,38 +16,23 @@ public class CustomExecutor extends ThreadPoolExecutor {
   private static final int FIVE = 5;
   private final ConcurrentHashMap<String, Date> startTimes;
 
-  public CustomExecutor(
-    int corePoolSize,
-    int maximumPoolSize,
-    long keepAliveTime,
-    TimeUnit unit,
-    BlockingQueue<Runnable> workQueue
-  ) {
+  public CustomExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
+      BlockingQueue<Runnable> workQueue) {
     super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     startTimes = new ConcurrentHashMap<>();
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    CustomExecutor myExecutor = new CustomExecutor(
-      2,
-      4,
-      1000,
-      TimeUnit.MILLISECONDS,
-      new LinkedBlockingDeque<Runnable>()
-    );
+    CustomExecutor myExecutor =
+        new CustomExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
     final List<Future<String>> results = new ArrayList<>();
-    for (int i = 0; i < 10; i++) results.add(
-      myExecutor.submit(new SleepTwoSecondsTask())
-    );
+    for (int i = 0; i < 10; i++) results.add(myExecutor.submit(new SleepTwoSecondsTask()));
     try {
       for (int i = 0; i < 10; i++) {
-        System.out.printf(
-          "Main: Result for Task %d : %s%n",
-          i,
-          results.get(i).get()
-        );
-        if (i == FIVE) myExecutor.shutdown();
+        System.out.printf("Main: Result for Task %d : %s%n", i, results.get(i).get());
+        if (i == FIVE)
+          myExecutor.shutdown();
       }
       myExecutor.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException | ExecutionException e) {
@@ -59,10 +44,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @Override
   public void shutdown() {
     System.out.printf("CustomExecutor: Going to shutdown.%n");
-    System.out.printf(
-      "CustomExecutor: Executed tasks: %d%n",
-      getCompletedTaskCount()
-    );
+    System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     super.shutdown();
@@ -71,10 +53,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @Override
   public List<Runnable> shutdownNow() {
     System.out.printf("CustomExecutor: Going to immediately shutdown.%n");
-    System.out.printf(
-      "CustomExecutor: Executed tasks: %d%n",
-      getCompletedTaskCount()
-    );
+    System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     return super.shutdownNow();
@@ -82,11 +61,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
 
   @Override
   protected void beforeExecute(Thread t, Runnable r) {
-    System.out.printf(
-      "CustomExecutor: A task is beginning: %s : %s%n",
-      t.getName(),
-      r.hashCode()
-    );
+    System.out.printf("CustomExecutor: A task is beginning: %s : %s%n", t.getName(), r.hashCode());
     startTimes.put(String.valueOf(r.hashCode()), new Date());
   }
 
@@ -108,7 +83,6 @@ public class CustomExecutor extends ThreadPoolExecutor {
   }
 
   static class SleepTwoSecondsTask implements Callable<String> {
-
     @Override
     public String call() throws Exception {
       TimeUnit.SECONDS.sleep(2);

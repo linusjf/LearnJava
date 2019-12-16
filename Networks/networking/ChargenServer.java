@@ -29,7 +29,7 @@ public final class ChargenServer {
     return port;
   }
 
-  @SuppressWarnings({ "checkstyle:magicnumber", "PMD.DataflowAnomalyAnalysis" })
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.DataflowAnomalyAnalysis"})
   private static byte[] constructRotatingArray() {
     byte[] rotation = new byte[95 * 2];
     for (byte i = ' '; i <= '~'; i++) {
@@ -40,11 +40,7 @@ public final class ChargenServer {
   }
 
   @SuppressWarnings("checkstyle:magicnumber")
-  private static void handleChannels(
-    SelectionKey key,
-    byte[] rotation,
-    Selector selector
-  ) {
+  private static void handleChannels(SelectionKey key, byte[] rotation, Selector selector) {
     try {
       if (key.isAcceptable()) {
         ServerSocketChannel server = (ServerSocketChannel) key.channel();
@@ -111,9 +107,7 @@ public final class ChargenServer {
       selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
-      System.err.println(
-        "Error with server socket channel: " + ex.getMessage()
-      );
+      System.err.println("Error with server socket channel: " + ex.getMessage());
       return;
     }
 

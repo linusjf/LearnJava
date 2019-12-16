@@ -44,12 +44,8 @@ public enum UDPEchoClientWithChannels {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void echoToServer(
-    ByteBuffer buffer,
-    Selector selector,
-    DatagramChannel channel
-  )
-    throws IOException {
+  private static void echoToServer(ByteBuffer buffer, Selector selector, DatagramChannel channel)
+      throws IOException {
     int n = 0;
     int numbersRead = 0;
     while (numbersRead < LIMIT) {
@@ -59,7 +55,9 @@ public enum UDPEchoClientWithChannels {
 
       // All packets have been written and it doesn't look like any
       // more are will arrive from the network
-      if (readyKeys.isEmpty() && n == LIMIT) break; else {
+      if (readyKeys.isEmpty() && n == LIMIT)
+        break;
+      else {
         Iterator<SelectionKey> iterator = readyKeys.iterator();
         while (iterator.hasNext()) {
           SelectionKey key = iterator.next();

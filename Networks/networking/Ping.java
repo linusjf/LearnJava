@@ -100,7 +100,8 @@ public final class Ping {
       // Print status of targets that have not yet been shown
       for (Target t : targets) {
         // Target t = (Target)i.next();
-        if (!t.shown) t.show();
+        if (!t.shown)
+          t.show();
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);
@@ -126,9 +127,8 @@ public final class Ping {
     }
 
     void show() {
-      String result = connectFinish > 0
-        ? Long.toString(connectFinish - connectStart) + "ms"
-        : failure == null ? "Timed out" : failure.toString();
+      String result = connectFinish > 0 ? Long.toString(connectFinish - connectStart) + "ms"
+                                        : failure == null ? "Timed out" : failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -237,11 +237,8 @@ public final class Ping {
             // target object so that we can get the target back
             // after the key is added to the selector's
             // selected-key set
-            if (t.channel != null) t.channel.register(
-              sel,
-              SelectionKey.OP_CONNECT,
-              t
-            );
+            if (t.channel != null)
+              t.channel.register(sel, SelectionKey.OP_CONNECT, t);
           } catch (IOException x) {
             // Something went wrong, so close the channel and
             // record the failure
@@ -256,8 +253,7 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator<SelectionKey> i = sel.selectedKeys()
-        .iterator(); i.hasNext();) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext();) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = i.next();
         i.remove();
@@ -296,7 +292,8 @@ public final class Ping {
       for (;;) {
         try {
           int n = sel.select();
-          if (n > 0) processSelectedKeys();
+          if (n > 0)
+            processSelectedKeys();
           processPendingTargets();
           if (isShutdown) {
             sel.close();

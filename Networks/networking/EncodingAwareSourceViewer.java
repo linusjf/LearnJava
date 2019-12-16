@@ -12,6 +12,7 @@ import java.net.URLConnection;
 
 public enum EncodingAwareSourceViewer {
   ;
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     for (String arg : args) {
@@ -22,9 +23,10 @@ public enum EncodingAwareSourceViewer {
         URLConnection uc = u.openConnection();
         String contentType = uc.getContentType();
         int encodingStart = contentType.indexOf("charset=");
-        if (encodingStart > 0) encoding =
-          contentType.substring(encodingStart + 8); else encoding =
-          "ISO-8859-1";
+        if (encodingStart > 0)
+          encoding = contentType.substring(encodingStart + 8);
+        else
+          encoding = "ISO-8859-1";
         InputStream in = new BufferedInputStream(uc.getInputStream());
         Reader r = new InputStreamReader(in, encoding);
         int c;
@@ -33,9 +35,7 @@ public enum EncodingAwareSourceViewer {
       } catch (MalformedURLException ex) {
         System.err.println(arg + " is not a parseable URL");
       } catch (UnsupportedEncodingException ex) {
-        System.err.println(
-          "Server sent an encoding Java does not support: " + ex.getMessage()
-        );
+        System.err.println("Server sent an encoding Java does not support: " + ex.getMessage());
       } catch (IOException ex) {
         System.err.println(ex);
       }

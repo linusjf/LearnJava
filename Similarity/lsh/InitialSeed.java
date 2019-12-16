@@ -5,6 +5,7 @@ import java.util.Random;
 
 public enum InitialSeed {
   ;
+
   public static void main(String[] args) {
     // Initialize two minhash objects, with the same seed
     int signatureSize = 20;

@@ -43,7 +43,6 @@ public final class ThreadPool {
   }
 
   private class Worker extends Thread {
-
     Worker(String name) {
       super(name);
     }
@@ -61,18 +60,17 @@ public final class ThreadPool {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void runTopJob() throws InterruptedException {
-      Stream.generate(
-        () -> {
-          try {
-            return jobQueue.take();
-          } catch (InterruptedException ie) {
-            return null;
-          }
-        }
-      )
-        .findFirst()
-        .get()
-        .run();
+      Stream
+          .generate(() -> {
+            try {
+              return jobQueue.take();
+            } catch (InterruptedException ie) {
+              return null;
+            }
+          })
+          .findFirst()
+          .get()
+          .run();
     }
   }
 }

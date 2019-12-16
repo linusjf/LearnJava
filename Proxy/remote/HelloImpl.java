@@ -8,7 +8,7 @@ public class HelloImpl extends UnicastRemoteObject implements Hello {
 
   public HelloImpl() throws RemoteException {
     super();
-  // No action needed here.
+    // No action needed here.
   }
 
   @Override

@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
 public final class MulticastSender {
-
   private MulticastSender() {
     throw new IllegalStateException("Private constructor");
   }
@@ -31,7 +30,8 @@ public final class MulticastSender {
 
   private static byte getTTL(String... args) {
     try {
-      if (args.length > (1 + 1)) return (byte) Integer.parseInt(args[2]);
+      if (args.length > (1 + 1))
+        return (byte) Integer.parseInt(args[2]);
     } catch (NumberFormatException e) {
       // empty catch block
     }
@@ -44,25 +44,21 @@ public final class MulticastSender {
     int port = getPort(args);
     byte ttl = getTTL(args);
 
-    byte[] data = "Here's some multicast data\r\n"
-      .getBytes(StandardCharsets.UTF_8);
+    byte[] data = "Here's some multicast data\r\n".getBytes(StandardCharsets.UTF_8);
     try (MulticastSocket ms = new MulticastSocket()) {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
       DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
-      IntStream.range(1, 10)
-        .forEach(
-          i -> {
-            try {
-              ms.send(dp);
-            } catch (IOException e) {
-              System.err.println(e);
-            }
-          }
-        );
+      IntStream.range(1, 10).forEach(i -> {
+        try {
+          ms.send(dp);
+        } catch (IOException e) {
+          System.err.println(e);
+        }
+      });
 
       /*for (int i = 1; i < 10; i++)
-            ms.send(dp);*/
+      ms.send(dp);*/
       ms.leaveGroup(ia);
     } catch (IOException ex) {
       System.err.println(ex);

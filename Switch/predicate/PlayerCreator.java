@@ -1,7 +1,6 @@
 package predicate;
 
 public class PlayerCreator {
-
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   public Player createPlayer(String playerType, int rank) {
     switch (playerType) {

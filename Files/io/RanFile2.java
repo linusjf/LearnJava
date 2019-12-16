@@ -3,6 +3,7 @@ package io;
 // Allows the user to retrieve individual account
 // records and modify their balances.
 import static io.RanFileConstants.*;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
@@ -14,15 +15,12 @@ public enum RanFile2 {
   private static String surname;
   private static String initials;
   private static float balance;
-  private static final String UTF_8 =
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    try (
-      Scanner input = new Scanner(System.in, UTF_8);
-      RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");
-    ) {
+    try (Scanner input = new Scanner(System.in, UTF_8);
+         RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply = "y";
 
@@ -66,15 +64,13 @@ public enum RanFile2 {
     System.out.printf("Balance: %.2f %n", balance);
   }
 
-  public static String readString(RandomAccessFile file, int fixedSize)
-    throws IOException {
+  public static String readString(RandomAccessFile file, int fixedSize) throws IOException {
     // Set up empty buffer before reading from file…
     StringBuilder buffer = new StringBuilder();
 
     // Read character from file and append to buffer.
-    for (int i = 0; i < fixedSize; i++) 
-      buffer.append(file.readChar());
+    for (int i = 0; i < fixedSize; i++) buffer.append(file.readChar());
     return buffer.toString();
-  // Convert into String.
+    // Convert into String.
   }
 }

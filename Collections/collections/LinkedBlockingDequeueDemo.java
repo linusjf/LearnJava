@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum LinkedBlockingDequeueDemo {
   ;
+
   public static void main(String[] args) {
     try {
       LinkedBlockingDeque<String> list = new LinkedBlockingDeque<>(3);
@@ -16,11 +17,7 @@ public enum LinkedBlockingDequeueDemo {
         for (int j = 0; j < 3; j++) {
           String request = list.take();
           System.out.printf(
-            "Main: Request: %s at %s. Size: %d%n",
-            request,
-            new Date(),
-            list.size()
-          );
+              "Main: Request: %s at %s. Size: %d%n", request, new Date(), list.size());
         }
         TimeUnit.MILLISECONDS.sleep(300);
       }

@@ -5,6 +5,7 @@ import info.debatty.java.stringsimilarity.JaroWinkler;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum JaroWinklerTest {
   ;
+
   public static void main(String[] args) {
     JaroWinkler jw = new JaroWinkler();
 

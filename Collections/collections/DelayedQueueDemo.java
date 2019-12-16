@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum DelayedQueueDemo {
   ;
+
   public static void main(String[] args) {
     try {
       DelayQueue<Event> queue = new DelayQueue<>();
@@ -32,16 +33,18 @@ public enum DelayedQueueDemo {
     private final Date startDate;
 
     Event(Date startDate) {
-      if (startDate == null) throw new IllegalArgumentException("null");
+      if (startDate == null)
+        throw new IllegalArgumentException("null");
       this.startDate = startDate;
     }
 
     @Override
     public int compareTo(Delayed o) {
-      long result = this.getDelay(TimeUnit.NANOSECONDS) -
-        o.getDelay(TimeUnit.NANOSECONDS);
-      if (result < 0) return -1;
-      if (result > 0) return 1;
+      long result = this.getDelay(TimeUnit.NANOSECONDS) - o.getDelay(TimeUnit.NANOSECONDS);
+      if (result < 0)
+        return -1;
+      if (result > 0)
+        return 1;
       return 0;
     }
 
@@ -53,12 +56,14 @@ public enum DelayedQueueDemo {
     @Override
     public boolean equals(Object o) {
       // If the object is compared with itself then return true
-      if (o == this) return true;
+      if (o == this)
+        return true;
 
       /* Check if o is an instance of Complex or not
 
-       "null instanceof [type]" also returns false */
-      if (!(o instanceof Event)) return false;
+      "null instanceof [type]" also returns false */
+      if (!(o instanceof Event))
+        return false;
 
       // typecast o to Event so that we can compare data members
       Event e = (Event) o;
@@ -75,7 +80,7 @@ public enum DelayedQueueDemo {
     }
   }
 
-  @SuppressWarnings({ "PMD.ShortClassName", "PMD.BeanFieldsShouldSerialize" })
+  @SuppressWarnings({"PMD.ShortClassName", "PMD.BeanFieldsShouldSerialize"})
   static class Task implements Runnable {
     private final int id;
     private final DelayQueue<Event> queue;

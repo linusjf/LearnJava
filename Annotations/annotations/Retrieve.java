@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 
 public enum Retrieve {
   ;
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     Class<AnnotatedClass> object = AnnotatedClass.class;
@@ -23,9 +24,7 @@ public enum Retrieve {
     // the same for all methods of the class
     for (Method method : object.getDeclaredMethods()) {
       if (method.isAnnotationPresent(CustomAnnotationMethod.class)) {
-        Annotation annotation = method.getAnnotation(
-          CustomAnnotationMethod.class
-        );
+        Annotation annotation = method.getAnnotation(CustomAnnotationMethod.class);
         System.out.println(annotation);
       }
     }

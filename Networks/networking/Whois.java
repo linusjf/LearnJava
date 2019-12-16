@@ -41,9 +41,15 @@ public class Whois {
 
   // Items to search for
   public enum SearchFor {
-    ANY("Any"), NETWORK("Network"), PERSON("Person"), HOST("Host"),
-    DOMAIN("Domain"), ORGANIZATION("Organization"), GROUP("Group"),
-    GATEWAY("Gateway"), ASN("ASN");
+    ANY("Any"),
+    NETWORK("Network"),
+    PERSON("Person"),
+    HOST("Host"),
+    DOMAIN("Domain"),
+    ORGANIZATION("Organization"),
+    GROUP("Group"),
+    GATEWAY("Gateway"),
+    ASN("ASN");
     private String label;
 
     SearchFor(String label) {
@@ -54,9 +60,7 @@ public class Whois {
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
       EnumSet.allOf(SearchFor.class)
-        .forEach(
-          searchfor -> pattern.append('(').append(searchfor).append(")|")
-        );
+          .forEach(searchfor -> pattern.append('(').append(searchfor).append(")|"));
       pattern.deleteCharAt(pattern.length() - 1);
       pattern.append("){1})$");
       return Pattern.compile(pattern.toString());
@@ -65,7 +69,10 @@ public class Whois {
 
   // Categories to search in
   public enum SearchIn {
-    ALL(""), NAME("Name"), MAILBOX("Mailbox"), HANDLE("!");
+    ALL(""),
+    NAME("Name"),
+    MAILBOX("Mailbox"),
+    HANDLE("!");
     private String label;
 
     SearchIn(String label) {
@@ -76,43 +83,30 @@ public class Whois {
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
       EnumSet.allOf(SearchIn.class)
-        .forEach(searchin -> pattern.append('(').append(searchin).append(")|"));
+          .forEach(searchin -> pattern.append('(').append(searchin).append(")|"));
       pattern.deleteCharAt(pattern.length() - 1);
       pattern.append("){1})$");
       return Pattern.compile(pattern.toString());
     }
   }
 
-  public String lookUpNamesExactMatch(
-    String target,
-    SearchFor category,
-    SearchIn group
-  )
-    throws IOException {
+  public String lookUpNamesExactMatch(String target, SearchFor category, SearchIn group)
+      throws IOException {
     return lookUpNames(target, category, group, "");
   }
 
-  public String lookUpNames(String target, SearchFor category, SearchIn group)
-    throws IOException {
+  public String lookUpNames(String target, SearchFor category, SearchIn group) throws IOException {
     return lookUpNames(target, category, group, ".");
   }
 
-  public String lookUpNames(
-    String target,
-    SearchFor category,
-    SearchIn group,
-    String suffix
-  )
-    throws IOException {
+  public String lookUpNames(String target, SearchFor category, SearchIn group, String suffix)
+      throws IOException {
     String prefix = category.label + " " + group.label;
     String query = prefix + target + suffix;
-    try (
-      Socket socket = new Socket(host, port);
-      Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
-      BufferedReader in = new BufferedReader(
-        new InputStreamReader(socket.getInputStream(), "ASCII")
-      );
-    ) {
+    try (Socket socket = new Socket(host, port);
+         Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
+         BufferedReader in =
+             new BufferedReader(new InputStreamReader(socket.getInputStream(), "ASCII"));) {
       out.write(query + "\r\n");
       out.flush();
       StringBuilder response = new StringBuilder();

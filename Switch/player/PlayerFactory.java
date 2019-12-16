@@ -1,7 +1,6 @@
 package player;
 
 public class PlayerFactory implements AbstractPlayerFactory {
-
   @Override
   public Player createPlayer(Type type, int delta) {
     switch (type) {

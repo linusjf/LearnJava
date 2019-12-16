@@ -13,33 +13,25 @@ public enum XmlSerializer {
   ;
   private static final String STRING_CLASS = "java.lang.String";
 
-  public static Document serializeObject(Object source)
-    throws IllegalAccessException {
+  public static Document serializeObject(Object source) throws IllegalAccessException {
     return serializeHelper(
-      source,
-      new Document(new Element("serialized")),
-      new IdentityHashMap<Object, Object>()
-    );
+        source, new Document(new Element("serialized")), new IdentityHashMap<Object, Object>());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static Element serializeVariable(
-    Class<?> fieldtype,
-    Object child,
-    Document target,
-    Map<Object, Object> table
-  )
-    throws IllegalAccessException {
-    if (child == null) return new Element("empty");
+  private static Element serializeVariable(Class<?> fieldtype, Object child, Document target,
+      Map<Object, Object> table) throws IllegalAccessException {
+    if (child == null)
+      return new Element("empty");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
       Element value = new Element("value");
       value.setText(child.toString());
       return value;
     } else {
       Element reference = new Element("reference");
-      if (table.containsKey(child)) reference.setText(
-        table.get(child).toString()
-      ); else {
+      if (table.containsKey(child))
+        reference.setText(table.get(child).toString());
+      else {
         reference.setText(Integer.toString(table.size()));
         serializeHelper(child, target, table);
       }
@@ -48,13 +40,9 @@ public enum XmlSerializer {
   }
 
   // clang-format off
-  @SuppressWarnings({ "PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter" })
-  private static Document serializeHelper(
-    Object source,
-    Document target,
-    Map<Object, Object> table
-  )
-    throws IllegalAccessException {
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
+  private static Document serializeHelper(Object source, Document target, Map<Object, Object> table)
+      throws IllegalAccessException {
     String id = Integer.toString(table.size());
     table.put(source, id);
     Class<?> sourceclass = source.getClass();
@@ -65,9 +53,8 @@ public enum XmlSerializer {
       int length = Array.getLength(source);
       objElt.setAttribute("length", Integer.toString(length));
       Class<?> componentType = sourceclass.getComponentType();
-      for (int i = 0; i < length; i++) objElt.addContent(
-        serializeVariable(componentType, Array.get(source, i), target, table)
-      );
+      for (int i = 0; i < length; i++)
+        objElt.addContent(serializeVariable(componentType, Array.get(source, i), target, table));
     } else {
       Field[] fields = Mopex.getInstanceVariables(sourceclass);
       for (Field field : fields) {
@@ -87,5 +74,5 @@ public enum XmlSerializer {
     target.getRootElement().addContent(objElt);
     return target;
   }
-// clang-format on
+  // clang-format on
 }

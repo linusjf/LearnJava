@@ -37,10 +37,8 @@ public final class EchoServer {
         SocketChannel client = server.accept();
         System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
-        SelectionKey clientKey = client.register(
-          selector,
-          SelectionKey.OP_WRITE | SelectionKey.OP_READ
-        );
+        SelectionKey clientKey =
+            client.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ);
         ByteBuffer buffer = ByteBuffer.allocate(100);
         clientKey.attach(buffer);
       }

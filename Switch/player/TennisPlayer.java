@@ -1,7 +1,6 @@
 package player;
 
 public class TennisPlayer extends Player {
-
   public TennisPlayer() {
     super();
     type = Type.TENNIS;
@@ -14,7 +13,6 @@ public class TennisPlayer extends Player {
   @Override
   public int playerEndurance() {
     return ComputeEnduranceAlgorithm.basicEndurance(getDelta());
-
   }
 
   @Override

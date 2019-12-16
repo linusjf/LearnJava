@@ -20,21 +20,13 @@ public final class DaytimeServer {
   public static void main(String[] args) {
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
-        try (
-          Socket connection = server.accept();
-          Writer out = new OutputStreamWriter(
-            connection.getOutputStream(),
-            StandardCharsets.UTF_8.name()
-          );
-        ) {
+        try (Socket connection = server.accept();
+             Writer out = new OutputStreamWriter(
+                 connection.getOutputStream(), StandardCharsets.UTF_8.name());) {
           Date now = new Date();
-          SimpleDateFormat format = new SimpleDateFormat(
-            "yy-MM-dd hh:mm:ss Z",
-            Locale.getDefault()
-          );
-          out.write(
-            ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n"
-          );
+          SimpleDateFormat format =
+              new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
+          out.write(ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n");
           out.flush();
         } catch (IOException ex) {
           System.err.println(ex.getMessage());

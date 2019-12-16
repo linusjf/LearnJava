@@ -32,7 +32,7 @@ public enum MultiEchoServer {
         // thread a reference to the relevant socket…
         ClientHandler handler = new ClientHandler(client);
         handler.start();
-      // As usual, method calls run.
+        // As usual, method calls run.
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
@@ -49,16 +49,9 @@ public enum MultiEchoServer {
       // Set up reference to associated socket…
       client = socket;
       try {
-        input =
-          new Scanner(client.getInputStream(), StandardCharsets.UTF_8.name());
-        output =
-          new PrintWriter(
-            new OutputStreamWriter(
-              client.getOutputStream(),
-              StandardCharsets.UTF_8.name()
-            ),
-            true
-          );
+        input = new Scanner(client.getInputStream(), StandardCharsets.UTF_8.name());
+        output = new PrintWriter(
+            new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8.name()), true);
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }
@@ -77,7 +70,7 @@ public enum MultiEchoServer {
           // the socket's output stream…
           output.println("ECHO: " + received);
         }
-      // Repeat above until 'QUIT' sent by client…
+        // Repeat above until 'QUIT' sent by client…
       }
       try {
         if (client != null) {

@@ -15,10 +15,7 @@ public enum ConcurrentLinkedDequeDemo {
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf(
-      "Main: %d AddTask threads have been launched%n",
-      threads.length
-    );
+    System.out.printf("Main: %d AddTask threads have been launched%n", threads.length);
     for (Thread thread : threads) {
       try {
         thread.join();
@@ -32,10 +29,7 @@ public enum ConcurrentLinkedDequeDemo {
       threads[i] = new Thread(task);
       threads[i].start();
     }
-    System.out.printf(
-      "Main: %d PollTask threads have been launched%n",
-      threads.length
-    );
+    System.out.printf("Main: %d PollTask threads have been launched%n", threads.length);
     for (Thread thread : threads) {
       try {
         thread.join();
@@ -52,14 +46,9 @@ public enum ConcurrentLinkedDequeDemo {
     Thread[] threads = new Thread[100];
     Thread[] threads2 = new Thread[100];
     startThreads(threads, threads2, list);
+    System.out.printf("Alternate Main: %d AddTask threads have been launched%n", threads.length);
     System.out.printf(
-      "Alternate Main: %d AddTask threads have been launched%n",
-      threads.length
-    );
-    System.out.printf(
-      "Alternate Main: %d PollTask threads have been launched simultaneously%n",
-      threads2.length
-    );
+        "Alternate Main: %d PollTask threads have been launched simultaneously%n", threads2.length);
     System.out.printf("Alternate Main: Size of the List: %d%n", list.size());
 
     for (Thread thread : threads) {
@@ -80,10 +69,7 @@ public enum ConcurrentLinkedDequeDemo {
   }
 
   private static void startThreads(
-    Thread[] threads,
-    Thread[] threads2,
-    ConcurrentLinkedDeque<String> list
-  ) {
+      Thread[] threads, Thread[] threads2, ConcurrentLinkedDeque<String> list) {
     for (int i = 0; i < threads.length; i++) {
       AddTask task = new AddTask(list);
       threads[i] = new Thread(task);

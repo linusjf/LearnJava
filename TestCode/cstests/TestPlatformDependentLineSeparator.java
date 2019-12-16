@@ -8,7 +8,7 @@ package cstests;
  * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
  * this comment block. *
  */
-@SuppressWarnings({ "PMD", "checkstyle:magicnumber" })
+@SuppressWarnings({"PMD", "checkstyle:magicnumber"})
 public final class TestPlatformDependentLineSeparator {
   /**
    * * This class lists the varied combinations where the line separator denoted by \n is to be
@@ -53,7 +53,7 @@ public final class TestPlatformDependentLineSeparator {
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
+    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following
@@ -97,7 +97,7 @@ public final class TestPlatformDependentLineSeparator {
     System.out.printf("%s\n", sb.toString());
 
     // the above line must be flagged
-    char[] chars = new char[] { '\n', '\r', 'a', 'b', 'c' };
+    char[] chars = new char[] {'\n', '\r', 'a', 'b', 'c'};
 
     // the above shouldn't be flagged. Maybe, it // should or someone could do
     // the following

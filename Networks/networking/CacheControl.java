@@ -17,7 +17,7 @@ public class CacheControl {
   public CacheControl(String s) {
     if (s == null || !s.contains(":")) {
       return;
-    // default policy
+      // default policy
     }
     String value = s.split(":")[1].trim();
     String[] components = value.toLowerCase(Locale.US).split(",");
@@ -30,12 +30,10 @@ public class CacheControl {
   private void parseValues(String component) {
     if (component.startsWith("max-age=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(8));
-      maxAge =
-        new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
+      maxAge = new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
     } else if (component.startsWith("s-maxage=")) {
       int secondsInTheFuture = Integer.parseInt(component.substring(9));
-      sharedMaxAge =
-        new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
+      sharedMaxAge = new Date(System.currentTimeMillis() + 1000L * secondsInTheFuture);
     } else if ("must-revalidate".equals(component)) {
       mustRevalidate = true;
     } else if ("proxy-revalidate".equals(component)) {

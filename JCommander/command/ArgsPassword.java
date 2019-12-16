@@ -5,11 +5,7 @@ import com.beust.jcommander.Parameter;
 
 public class ArgsPassword {
   @Parameter(
-    names = "-password",
-    description = "Connection password",
-    password = true,
-    echoInput = true
-  )
+      names = "-password", description = "Connection password", password = true, echoInput = true)
   private String password;
 
   public static void main(String... argv) {

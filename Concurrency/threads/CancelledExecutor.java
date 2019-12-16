@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum CancelledExecutor {
   ;
+
   public static void main(String[] args) {
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     Task task = new Task();
@@ -27,7 +28,6 @@ public enum CancelledExecutor {
 
   @SuppressWarnings("PMD.ShortClassName")
   static class Task implements Runnable {
-
     @Override
     public void run() {
       while (true) {

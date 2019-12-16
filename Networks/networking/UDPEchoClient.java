@@ -16,7 +16,8 @@ public enum UDPEchoClient {
   public static final int PORT = 7;
 
   private static String getHostName(String... args) {
-    if (args.length > 0) return args[0];
+    if (args.length > 0)
+      return args[0];
     return "localhost";
   }
 
@@ -78,22 +79,16 @@ public enum UDPEchoClient {
     @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
-      try (
-        BufferedReader userInput = new BufferedReader(
-          new InputStreamReader(System.in, StandardCharsets.UTF_8.name())
-        )
-      ) {
+      try (BufferedReader userInput = new BufferedReader(
+               new InputStreamReader(System.in, StandardCharsets.UTF_8.name()))) {
         while (true) {
-          if (stopped) return;
+          if (stopped)
+            return;
           String theLine = userInput.readLine();
-          if (".".equals(theLine)) return;
+          if (".".equals(theLine))
+            return;
           byte[] data = theLine.getBytes("UTF-8");
-          DatagramPacket output = new DatagramPacket(
-            data,
-            data.length,
-            server,
-            port
-          );
+          DatagramPacket output = new DatagramPacket(data, data.length, server, port);
           socket.send(output);
           Thread.yield();
         }
@@ -119,7 +114,8 @@ public enum UDPEchoClient {
     @Override
     public void run() {
       while (true) {
-        if (stopped) return;
+        if (stopped)
+          return;
         DatagramPacket dp = new DatagramPacket(new byte[65_507], 65_507);
         try {
           socket.receive(dp);

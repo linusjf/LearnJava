@@ -9,75 +9,60 @@ public enum CountDownLatchDemo {
   private static final String DOING_WORK = "Doing some work...";
 
   public static void main(String[] args) {
-    final
-    Thread run1 = new Thread(
-      () -> {
-        System.out.println(DOING_WORK);
+    final Thread run1 = new Thread(() -> {
+      System.out.println(DOING_WORK);
 
-        try {
-          Thread.sleep(2000);
-          COUNT_DOWN_LATCH.countDown();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
+      try {
+        Thread.sleep(2000);
+        COUNT_DOWN_LATCH.countDown();
+      } catch (InterruptedException e) {
+        System.err.println(e);
       }
-    );
+    });
 
-    final
-    Thread run2 = new Thread(
-      () -> {
-        System.out.println(DOING_WORK);
+    final Thread run2 = new Thread(() -> {
+      System.out.println(DOING_WORK);
 
-        try {
-          Thread.sleep(2000);
-          COUNT_DOWN_LATCH.countDown();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
+      try {
+        Thread.sleep(2000);
+        COUNT_DOWN_LATCH.countDown();
+      } catch (InterruptedException e) {
+        System.err.println(e);
       }
-    );
+    });
 
-    final
-    Thread run3 = new Thread(
-      () -> {
-        System.out.println(DOING_WORK);
+    final Thread run3 = new Thread(() -> {
+      System.out.println(DOING_WORK);
 
-        try {
-          Thread.sleep(2000);
-          COUNT_DOWN_LATCH.countDown();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
+      try {
+        Thread.sleep(2000);
+        COUNT_DOWN_LATCH.countDown();
+      } catch (InterruptedException e) {
+        System.err.println(e);
       }
-    );
+    });
 
-    final
-    Thread run4 = new Thread(
-      () -> {
-        System.out.println(DOING_WORK);
+    final Thread run4 = new Thread(() -> {
+      System.out.println(DOING_WORK);
 
-        try {
-          Thread.sleep(2000);
-          COUNT_DOWN_LATCH.countDown();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
+      try {
+        Thread.sleep(2000);
+        COUNT_DOWN_LATCH.countDown();
+      } catch (InterruptedException e) {
+        System.err.println(e);
       }
-    );
+    });
 
-    final
-    Thread run5 = new Thread(
-      () -> {
-        System.out.println(DOING_WORK);
+    final Thread run5 = new Thread(() -> {
+      System.out.println(DOING_WORK);
 
-        try {
-          Thread.sleep(3000);
-          COUNT_DOWN_LATCH.countDown();
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
+      try {
+        Thread.sleep(3000);
+        COUNT_DOWN_LATCH.countDown();
+      } catch (InterruptedException e) {
+        System.err.println(e);
       }
-    );
+    });
 
     run1.start();
     run2.start();

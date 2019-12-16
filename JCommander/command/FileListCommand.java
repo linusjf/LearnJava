@@ -6,8 +6,7 @@ import java.io.File;
 import java.util.List;
 
 public class FileListCommand {
-  @Parameter(names = "-files", listConverter = FileListConverter.class)
-  List<File> files;
+  @Parameter(names = "-files", listConverter = FileListConverter.class) List<File> files;
 
   public static void main(String... argv) {
     FileListCommand fc = new FileListCommand();

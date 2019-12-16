@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 
 @SuppressWarnings("PMD.LawOfDemeter")
 public final class Construct {
-
   private Construct() {
     throw new IllegalStateException("Private constructor.");
   }

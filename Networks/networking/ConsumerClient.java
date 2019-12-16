@@ -28,21 +28,11 @@ public enum ConsumerClient {
   }
 
   private static void sendMessages() {
-    try (
-      Socket socket = new Socket(host, PORT);
-      Scanner networkInput = new Scanner(
-        socket.getInputStream(),
-        StandardCharsets.UTF_8.name()
-      );
-      PrintWriter networkOutput = new PrintWriter(
-        new OutputStreamWriter(
-          socket.getOutputStream(),
-          StandardCharsets.UTF_8.name()
-        ),
-        true
-      );
-      Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());
-    ) {
+    try (Socket socket = new Socket(host, PORT);
+         Scanner networkInput = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
+         PrintWriter networkOutput = new PrintWriter(
+             new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()), true);
+         Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());) {
       String message = "";
       while (!"0".equals(message)) {
         System.out.print("Enter '1' ('0' to exit): ");

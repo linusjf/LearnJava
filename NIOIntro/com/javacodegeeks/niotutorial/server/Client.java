@@ -1,12 +1,12 @@
 package com.javacodegeeks.niotutorial.server;
 
+import static com.javacodegeeks.niotutorial.server.Constants.*;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-
-import static com.javacodegeeks.niotutorial.server.Constants.*;
 
 /**
  * Describe class <code>Client</code> here.
@@ -15,10 +15,7 @@ import static com.javacodegeeks.niotutorial.server.Constants.*;
  * @version 1.0
  */
 public final class Client {
-  static final InetSocketAddress HOSTADDRESS = new InetSocketAddress(
-    HOST,
-    PORT
-  );
+  static final InetSocketAddress HOSTADDRESS = new InetSocketAddress(HOST, PORT);
 
   private Client() {
     throw new IllegalStateException("Instantiation not allowed");
@@ -35,24 +32,21 @@ public final class Client {
 
     for (int i = 0; i < 10; i++) {
       try (SocketChannel client = SocketChannel.open(HOSTADDRESS)) {
-        final
-        ByteBuffer buffer = ByteBuffer.wrap(
-          TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8)
-        );
-        writeToBuffer(client,buffer,i);
+        final ByteBuffer buffer =
+            ByteBuffer.wrap(TEXT_FIRST_SEGMENT.getBytes(StandardCharsets.UTF_8));
+        writeToBuffer(client, buffer, i);
       } catch (IOException e) {
         System.err.println("Error with client writing " + e.getMessage());
       }
     }
   }
 
-  private static void writeToBuffer(SocketChannel client,ByteBuffer buffer,int i) throws IOException {
-        while (buffer.hasRemaining()) {
-          client.write(buffer);
-          System.out.println(
-            "Written " + (i + 1) + " : " + convertBytesToString(buffer.array())
-          );
-        }
+  private static void writeToBuffer(SocketChannel client, ByteBuffer buffer, int i)
+      throws IOException {
+    while (buffer.hasRemaining()) {
+      client.write(buffer);
+      System.out.println("Written " + (i + 1) + " : " + convertBytesToString(buffer.array()));
+    }
   }
 
   private static String convertBytesToString(byte[] bytes) {

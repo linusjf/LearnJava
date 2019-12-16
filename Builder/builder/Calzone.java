@@ -19,10 +19,10 @@ public final class Calzone extends Pizza {
   public String toString() {
     StringBuilder sb = new StringBuilder(30);
     sb.append("Sauce = ")
-      .append(sauceInside)
-      .append(System.lineSeparator())
-      .append("Toppings: ")
-      .append(System.lineSeparator());
+        .append(sauceInside)
+        .append(System.lineSeparator())
+        .append("Toppings: ")
+        .append(System.lineSeparator());
     for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }

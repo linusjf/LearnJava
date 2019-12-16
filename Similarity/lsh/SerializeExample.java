@@ -12,6 +12,7 @@ import java.util.Random;
 
 public enum SerializeExample {
   ;
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
@@ -20,8 +21,7 @@ public enum SerializeExample {
       double sparsity = 0.75;
       boolean[] vector = new boolean[n];
       Random rand = new Random();
-      for (int j = 0; j < n; j++) 
-        vector[j] = rand.nextDouble() > sparsity;
+      for (int j = 0; j < n; j++) vector[j] = rand.nextDouble() > sparsity;
 
       // Create and configure LSH
       int stages = 2;
@@ -47,9 +47,7 @@ public enum SerializeExample {
       ObjectOutputStream oos = new ObjectOutputStream(fout);
       oos.writeObject(lsh);
       oos.close();
-      System.out.println(
-        "LSH object serialized to " + tempfile.getAbsolutePath()
-      );
+      System.out.println("LSH object serialized to " + tempfile.getAbsolutePath());
 
       // this should not be flagged by LOD
       InputStream fin = Files.newInputStream(tempfile.toPath());

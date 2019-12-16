@@ -5,6 +5,7 @@ import java.util.IllegalFormatConversionException;
 @SuppressWarnings("PMD")
 public enum DosEquis {
   ;
+
   public static void main(String[] args) {
     char x = 'X';
     int i = 0;

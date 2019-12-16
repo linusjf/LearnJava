@@ -7,7 +7,6 @@ package bridge;
  * @version 1.0
  */
 public class LinuxFileDownloadImplementor implements FileDownloadImplementor {
-
   @Override
   public Object downloadFile(String path) {
     return new Object();

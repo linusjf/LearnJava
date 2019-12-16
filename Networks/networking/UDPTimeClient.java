@@ -12,9 +12,10 @@ public enum UDPTimeClient {
 
   private static InetAddress getAddress(String... args) {
     try {
-      if (args.length > 0) return InetAddress.getByName(
-        args[0]
-      ); else return InetAddress.getByName(DEFAULT_HOST);
+      if (args.length > 0)
+        return InetAddress.getByName(args[0]);
+      else
+        return InetAddress.getByName(DEFAULT_HOST);
     } catch (UnknownHostException ex) {
       throw new AssertionError("Usage: java UDPTimeClient [host]", ex);
     }
@@ -38,8 +39,8 @@ public enum UDPTimeClient {
     // converts between them.
     long differenceBetweenEpochs = 2_208_988_800L;
     long secondsSince1900 = 0;
-    for (int i = 0; i < 4; i++) secondsSince1900 =
-      (secondsSince1900 << 8) | (response[i] & 0x000000FF);
+    for (int i = 0; i < 4; i++)
+      secondsSince1900 = (secondsSince1900 << 8) | (response[i] & 0x000000FF);
     long secondsSince1970 = secondsSince1900 - differenceBetweenEpochs;
     long msSince1970 = secondsSince1970 * 1000;
     Date time = new Date(msSince1970);

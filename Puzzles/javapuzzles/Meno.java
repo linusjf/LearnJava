@@ -2,6 +2,7 @@ package javapuzzles;
 
 public enum Meno {
   ;
+
   public static void main(String... args) {
     method();
   }

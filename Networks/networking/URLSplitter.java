@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class URLSplitter {
-
   private URLSplitter() {
     throw new IllegalStateException("Private constructor");
   }
@@ -19,7 +18,8 @@ public final class URLSplitter {
         String host = u.getHost();
         if (host != null) {
           int atSign = host.indexOf('@');
-          if (atSign != -1) host = host.substring(atSign + 1);
+          if (atSign != -1)
+            host = host.substring(atSign + 1);
         }
         System.out.println("The host is " + host);
         System.out.println("The port is " + u.getPort());

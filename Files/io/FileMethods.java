@@ -7,14 +7,11 @@ import java.util.Scanner;
 public enum FileMethods {
   ;
 
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public static void main(String[] args) {
     String filename;
-    try (
-      Scanner input = new Scanner(System.in,UTF_8 )
-    ) {
+    try (Scanner input = new Scanner(System.in, UTF_8)) {
       System.out.print("Enter name of file/directory ");
       System.out.print("or press <Enter> to quit: ");
       filename = input.nextLine();
@@ -24,17 +21,20 @@ public enum FileMethods {
         if (!fileDir.exists()) {
           System.out.println(filename + " does not exist!");
           break;
-        // Get out of loop.
+          // Get out of loop.
         }
         System.out.print(filename + " is a ");
-        if (fileDir.isFile()) System.out.println(
-          "file."
-        ); else System.out.println("directory.");
+        if (fileDir.isFile())
+          System.out.println("file.");
+        else
+          System.out.println("directory.");
         System.out.print("It is ");
-        if (!fileDir.canRead()) System.out.print("not ");
+        if (!fileDir.canRead())
+          System.out.print("not ");
         System.out.println("readable.");
         System.out.print("It is ");
-        if (!fileDir.canWrite()) System.out.print("not ");
+        if (!fileDir.canWrite())
+          System.out.print("not ");
         System.out.println("writeable.");
         if (fileDir.isDirectory()) {
           System.out.println("Contents:");

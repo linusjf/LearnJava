@@ -5,7 +5,6 @@ import java.util.List;
 
 @SuppressWarnings("checkstyle:magicnumber")
 public final class TestVar {
-
   private TestVar() {
     throw new IllegalStateException("Private constructor.");
   }
@@ -30,7 +29,6 @@ public final class TestVar {
   }
 
   private static class RowAdder {
-
     public void add(List<String> prods) {
       System.out.println("Adding " + prods);
     }

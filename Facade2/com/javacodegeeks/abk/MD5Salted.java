@@ -1,6 +1,7 @@
 package com.javacodegeeks.abk;
 
 import static com.javacodegeeks.abk.Encrypt.getSalt;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,7 +14,6 @@ import java.util.Base64;
  * @version 1.0
  */
 public class MD5Salted implements Encrypt {
-
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -26,10 +26,7 @@ public class MD5Salted implements Encrypt {
       final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
       final byte[] salt = getSalt();
       msgDigest.update(salt);
-      final
-      byte[] textBytes = msgDigest.digest(
-        text.getBytes(StandardCharsets.UTF_8)
-      );
+      final byte[] textBytes = msgDigest.digest(text.getBytes(StandardCharsets.UTF_8));
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);

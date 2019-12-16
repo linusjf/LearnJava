@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 public enum MinHashExample {
   ;
+
   public static void main(String[] args) {
     // Initialize the hash function for an similarity error of 0.1
     // For sets built from a dictionary of 5 items
@@ -14,7 +15,7 @@ public enum MinHashExample {
     // Or as a set of integers:
     // set2 = [1 0 1 1 0]
     MinHash minhash = new MinHash(0.1, 5);
-    boolean[] vector1 = { true, false, false, true, false };
+    boolean[] vector1 = {true, false, false, true, false};
     final int[] sig1 = minhash.signature(vector1);
     final Set<Integer> set2 = new TreeSet<>();
     set2.add(0);
@@ -22,12 +23,8 @@ public enum MinHashExample {
     set2.add(3);
     int[] sig2 = minhash.signature(set2);
 
-    System.out.println(
-      "Signature similarity: " + minhash.similarity(sig1, sig2)
-    );
-    System.out.println(
-      "Real similarity (Jaccard index)" +
-        MinHash.jaccardIndex(MinHash.convert2Set(vector1), set2)
-    );
+    System.out.println("Signature similarity: " + minhash.similarity(sig1, sig2));
+    System.out.println("Real similarity (Jaccard index)"
+        + MinHash.jaccardIndex(MinHash.convert2Set(vector1), set2));
   }
 }

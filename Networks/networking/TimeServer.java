@@ -21,19 +21,17 @@ public final class TimeServer {
     // converts between them.
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
-        try (
-          Socket connection = server.accept();
-          OutputStream out = connection.getOutputStream();
-        ) {
+        try (Socket connection = server.accept();
+             OutputStream out = connection.getOutputStream();) {
           Date now = new Date();
           long msSince1970 = now.getTime();
           long secondsSince1970 = msSince1970 / 1000;
           long secondsSince1900 = secondsSince1970 + DIFF_BTW_EPOCHS;
           byte[] time = {
-            (byte) ((secondsSince1900 & 0x00000000FF000000L) >> 24),
-            (byte) ((secondsSince1900 & 0x0000000000FF0000L) >> 16),
-            (byte) ((secondsSince1900 & 0x000000000000FF00L) >> 8),
-            (byte) (secondsSince1900 & 0x00000000000000FFL),
+              (byte) ((secondsSince1900 & 0x00000000FF000000L) >> 24),
+              (byte) ((secondsSince1900 & 0x0000000000FF0000L) >> 16),
+              (byte) ((secondsSince1900 & 0x000000000000FF00L) >> 8),
+              (byte) (secondsSince1900 & 0x00000000000000FFL),
           };
           out.write(time);
           out.flush();

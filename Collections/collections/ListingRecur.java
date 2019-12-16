@@ -18,16 +18,17 @@ public enum ListingRecur {
   @SuppressWarnings("PMD.DoubleBraceInitialization")
   public static void main(String... args) {
     try {
-      List<String> list = Arrays.asList(new String[] { FOO, BAR });
+      List<String> list = Arrays.asList(new String[] {FOO, BAR});
       assert list.contains(FOO);
 
       list = Arrays.asList(FOO, BAR);
 
       assert list.contains(FOO);
 
-      if (loopCount < RECURSION_COUNT) list.add(BAZ);
+      if (loopCount < RECURSION_COUNT)
+        list.add(BAZ);
 
-      String[] array = { FOO, BAR };
+      String[] array = {FOO, BAR};
       list = Arrays.asList(array);
       array[0] = BAZ;
       assert BAZ == list.get(0);
@@ -37,7 +38,6 @@ public enum ListingRecur {
 
       assert list.contains(FOO);
       List<String> cities = new ArrayList<>() {
-
         {
           add("New York");
           add("Rio");

@@ -16,9 +16,8 @@ public final class HelloClient {
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
     try {
-      if (System.getSecurityManager() == null) System.setSecurityManager(
-        new ZeroSecurityManager()
-      );
+      if (System.getSecurityManager() == null)
+        System.setSecurityManager(new ZeroSecurityManager());
 
       // Obtain a reference to the object from the
       // registry and typecast it into the appropriate

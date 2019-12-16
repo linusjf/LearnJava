@@ -7,7 +7,6 @@ package proxy.synchronicity;
  * @version 1.0
  */
 public class BlackBox implements IBlackBox {
-
   @Override
   public void methodA() {
     System.out.println("Into method A...");

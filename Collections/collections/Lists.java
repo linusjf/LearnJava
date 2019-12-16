@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum Lists {
   ;
+
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
     List<T> list = new ArrayList<>();
@@ -24,7 +25,7 @@ public enum Lists {
     System.out.println(words);
     ints = new ArrayList<>();
     Lists.addAll(ints, 1, 2);
-    Lists.addAll(ints, new Integer[] { 3, 4 });
+    Lists.addAll(ints, new Integer[] {3, 4});
     assert ints.toString().equals("[1, 2, 3, 4]");
     ints = Lists.<Integer>toList();
     System.out.println(ints);

@@ -32,9 +32,7 @@ public class VideoFileHandler implements Handler {
       return;
     }
     if (handler != null) {
-      System.out.println(
-        handlerName + " forwards request to " + handler.getHandlerName()
-      );
+      System.out.println(handlerName + " forwards request to " + handler.getHandlerName());
       handler.process(file);
       return;
     }

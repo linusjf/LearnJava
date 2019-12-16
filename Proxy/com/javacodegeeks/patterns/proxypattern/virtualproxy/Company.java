@@ -22,11 +22,7 @@ public class Company {
    * @param contactList a <code>ContactList</code> value
    */
   public Company(
-    String companyName,
-    String companyAddress,
-    String companyContactNo,
-    ContactList contactList
-  ) {
+      String companyName, String companyAddress, String companyContactNo, ContactList contactList) {
     this.companyName = companyName;
     this.companyAddress = companyAddress;
     this.companyContactNo = companyContactNo;

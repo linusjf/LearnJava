@@ -4,6 +4,7 @@ import info.debatty.java.stringsimilarity.experimental.Sift4;
 
 public enum Sift4Test {
   ;
+
   public static void main(String[] args) {
     String s1 = "This is the first string";
     String s2 = "And this is another string";

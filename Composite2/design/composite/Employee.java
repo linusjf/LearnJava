@@ -21,12 +21,7 @@ public abstract class Employee implements Worker {
    * @param designation a <code>String</code> value
    * @param department a <code>Department</code> value
    */
-  public Employee(
-    long employeeId,
-    String employeeName,
-    String designation,
-    Department department
-  ) {
+  public Employee(long employeeId, String employeeName, String designation, Department department) {
     super();
     this.employeeId = employeeId;
     this.employeeName = employeeName;
@@ -121,16 +116,16 @@ public abstract class Employee implements Worker {
   public String fullDetails() {
     StringBuilder builder = new StringBuilder(48);
     builder.append("Employee [")
-      .append(employeeId)
-      .append(", ")
-      .append(employeeName)
-      .append(", ")
-      .append(designation)
-      .append(", ")
-      .append(department)
-      .append(", Team=")
-      .append(teamSize())
-      .append(']');
+        .append(employeeId)
+        .append(", ")
+        .append(employeeName)
+        .append(", ")
+        .append(designation)
+        .append(", ")
+        .append(department)
+        .append(", Team=")
+        .append(teamSize())
+        .append(']');
     return builder.toString();
   }
 

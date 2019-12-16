@@ -8,7 +8,6 @@ package com.lambdaworks.jni;
  * @author Will Glozer
  */
 public class SysLibraryLoader implements LibraryLoader {
-
   /**
    * Load a shared library.
    *
@@ -24,9 +23,7 @@ public class SysLibraryLoader implements LibraryLoader {
       System.loadLibrary(name);
       return true;
     } catch (SecurityException e) {
-      System.err.println(
-        "Error loading system library " + name + " : " + e.getMessage()
-      );
+      System.err.println("Error loading system library " + name + " : " + e.getMessage());
       return false;
     }
   }

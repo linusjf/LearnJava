@@ -35,8 +35,7 @@ public final class HttpsClient {
         return Integer.parseInt(input.trim(), 16);
       } catch (NumberFormatException ex) {
         System.err.println(
-          "This server doesn't send the content-length in the first line of the response body."
-        );
+            "This server doesn't send the content-length in the first line of the response body.");
       }
     }
     return Integer.MAX_VALUE;
@@ -58,11 +57,7 @@ public final class HttpsClient {
 
       // read response
       BufferedReader in = new BufferedReader(
-        new InputStreamReader(
-          socket.getInputStream(),
-          StandardCharsets.UTF_8.name()
-        )
-      );
+          new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8.name()));
 
       // read the header
       String s = in.readLine();

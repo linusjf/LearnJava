@@ -10,10 +10,11 @@ import java.util.stream.Stream;
 
 public enum Permutations {
   ;
+
   @SuppressWarnings("PMD.ShortMethodName")
   public static <T> Stream<Stream<T>> of(final List<T> items) {
     return IntStream.range(0, factorial(items.size()))
-      .mapToObj(i -> permutation(i, items).stream());
+        .mapToObj(i -> permutation(i, items).stream());
   }
 
   private static int factorial(final int num) {
@@ -21,10 +22,7 @@ public enum Permutations {
   }
 
   private static <T> List<T> permutation(
-    final int count,
-    final List<T> input,
-    final List<T> output
-  ) {
+      final int count, final List<T> input, final List<T> output) {
     if (input.isEmpty()) {
       return output;
     }
@@ -45,12 +43,11 @@ public enum Permutations {
   public static void main(String... args) {
     // clang-format off
     Permutations.of(Arrays.asList(1, 2, 3))
-      .forEach(
-        p -> {
-          p.forEach(System.out::print);
-          System.out.print(" ");
-        }
-      );
-  // clang-format on
+        .forEach(
+            p -> {
+              p.forEach(System.out::print);
+              System.out.print(" ");
+            });
+    // clang-format on
   }
 }

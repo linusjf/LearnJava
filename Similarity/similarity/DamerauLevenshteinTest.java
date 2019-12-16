@@ -5,6 +5,7 @@ import info.debatty.java.stringsimilarity.Damerau;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum DamerauLevenshteinTest {
   ;
+
   public static void main(String[] args) {
     Damerau d = new Damerau();
 

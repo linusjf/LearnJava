@@ -1,7 +1,6 @@
 package reflection;
 
 public class HelloWorld {
-
   public void printName() {
     System.out.println(HelloWorld.class);
   }

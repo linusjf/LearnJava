@@ -33,17 +33,17 @@ public final class NutritionFacts {
   public String toString() {
     StringBuilder sb = new StringBuilder(100);
     sb.append("serving size = ")
-      .append(servingSize)
-      .append(", servings = ")
-      .append(servings)
-      .append(", calories = ")
-      .append(calories)
-      .append(", fat = ")
-      .append(fat)
-      .append(", sodium = ")
-      .append(sodium)
-      .append(", carbohydrates = ")
-      .append(carbohydrate);
+        .append(servingSize)
+        .append(", servings = ")
+        .append(servings)
+        .append(", calories = ")
+        .append(calories)
+        .append(", fat = ")
+        .append(fat)
+        .append(", sodium = ")
+        .append(sodium)
+        .append(", carbohydrates = ")
+        .append(carbohydrate);
     return sb.toString();
   }
 

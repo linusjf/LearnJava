@@ -5,6 +5,7 @@ import info.debatty.java.stringsimilarity.OptimalStringAlignment;
 @SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum OptimalStringTest {
   ;
+
   public static void main(String[] args) {
     OptimalStringAlignment osa = new OptimalStringAlignment();
 

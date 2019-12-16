@@ -1,16 +1,13 @@
 package pmdtest;
 
 import java.util.concurrent.ThreadLocalRandom;
- 
-public final class ThrowSwitch {
 
+public final class ThrowSwitch {
   private ThrowSwitch() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings(
-    { "fallthrough", "PMD.MissingBreakInSwitch", "PMD.DoNotCallSystemExit" }
-  )
+  @SuppressWarnings({"fallthrough", "PMD.MissingBreakInSwitch", "PMD.DoNotCallSystemExit"})
   public static void main(String... args) {
     int errCode = getSimulatedErrorCode(ThreadLocalRandom.current());
 

@@ -29,18 +29,15 @@ public class DbServlet extends HttpServlet {
   }
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+      throws ServletException, IOException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
     printHtmlHeader(out);
     String forenames = request.getParameter("Forenames");
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
-    try (
-      PreparedStatement statement = link.prepareStatement(
-        "INSERT INTO PhoneNums VALUES(?,?,?)"
-      )
-    ) {
+    try (PreparedStatement statement =
+             link.prepareStatement("INSERT INTO PhoneNums VALUES(?,?,?)")) {
       statement.setString(1, forenames);
       statement.setString(2, surname);
       statement.setString(3, telNum);
@@ -50,10 +47,8 @@ public class DbServlet extends HttpServlet {
       printHtmlInsertError(out);
       return;
     }
-    try (
-      Statement statement = link.createStatement();
-      ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");
-    ) {
+    try (Statement statement = link.createStatement();
+         ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");) {
       printHtmlTableHeader(out);
       while (results.next()) {
         out.println("<TR>");
@@ -96,7 +91,8 @@ public class DbServlet extends HttpServlet {
   }
 
   private void printHtmlInsertError(PrintWriter out) {
-    out.println("<BR/><H2>Unable to execute" + " insertion!</H2>");
+    out.println("<BR/><H2>Unable to execute"
+        + " insertion!</H2>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();

@@ -8,6 +8,7 @@ import java.util.Set;
 
 public enum Reflector {
   ;
+
   public static void main(String[] args) {
     try {
       Set<String> s = new HashSet<>();
@@ -15,11 +16,7 @@ public enum Reflector {
       Iterator<String> it = s.iterator();
       Method m = it.getClass().getMethod("hasNext");
       System.out.println(m.invoke(it));
-    } catch (
-      IllegalAccessException
-      | InvocationTargetException
-      | NoSuchMethodException iae
-    ) {
+    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {
       System.err.println(iae);
     }
     altMain(args);
@@ -32,11 +29,7 @@ public enum Reflector {
       Iterator<String> it = s.iterator();
       Method m = Iterator.class.getMethod("hasNext");
       System.out.println(m.invoke(it));
-    } catch (
-      IllegalAccessException
-      | InvocationTargetException
-      | NoSuchMethodException iae
-    ) {
+    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException iae) {
       System.err.println(iae);
     }
   }

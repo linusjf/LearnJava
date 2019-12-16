@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public enum Loaders {
   ;
+
   public static void main(String[] args) {
     DataSourcesLoader dsLoader = new DataSourcesLoader();
     Thread thread1 = new Thread(dsLoader, "DataSourceThread");
@@ -23,7 +24,6 @@ public enum Loaders {
   }
 
   static class DataSourcesLoader implements Runnable {
-
     @Override
     public void run() {
       System.out.printf("Beginning data sources loading: %s%n", new Date());
@@ -37,22 +37,15 @@ public enum Loaders {
   }
 
   static class NetworkConnectionsLoader implements Runnable {
-
     @Override
     public void run() {
-      System.out.printf(
-        "Beginning network connections loading: %s%n",
-        new Date()
-      );
+      System.out.printf("Beginning network connections loading: %s%n", new Date());
       try {
         TimeUnit.SECONDS.sleep(6);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-      System.out.printf(
-        "Network connections loading has finished: %s%n",
-        new Date()
-      );
+      System.out.printf("Network connections loading has finished: %s%n", new Date());
     }
   }
 }
