@@ -38,6 +38,9 @@ public class RequestHandler implements Runnable {
   private static final String HTTP_OK =
       "HTTP/1.0 200 OK" + System.lineSeparator();
 
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+
   /** Socket connected to client passed by Proxy server. */
   final Socket clientSocket;
 
@@ -56,8 +59,7 @@ public class RequestHandler implements Runnable {
    */
   private void blockedSiteRequested() {
     try (BufferedWriter bufferedWriter = new BufferedWriter(
-             new OutputStreamWriter(clientSocket.getOutputStream(),
-                                    StandardCharsets.UTF_8.name()))) {
+             new OutputStreamWriter(clientSocket.getOutputStream(), UTF_8))) {
       String line = "HTTP/1.0 403 Access Forbidden \n"
                     + "User-Agent: ProxyServer/1.0\n" + System.lineSeparator();
       bufferedWriter.write(line);
@@ -75,16 +77,16 @@ public class RequestHandler implements Runnable {
   @Override
   public void run() {
     // Get Request from client
-    String requestString;
     try (
         BufferedReader br = new BufferedReader(new InputStreamReader(
-            this.clientSocket.getInputStream(), StandardCharsets.UTF_8.name()));
+            this.clientSocket.getInputStream(), 
+            UTF_8));
         BufferedWriter bw = new BufferedWriter(
             new OutputStreamWriter(this.clientSocket.getOutputStream(),
-                                   StandardCharsets.UTF_8.name()));) {
-      do {
+                                   UTF_8));) {
+    String requestString = null;
+      while (requestString == null) 
         requestString = br.readLine();
-      } while (requestString == null);
 
       // Parse out URL
       System.out.println("Request Received " + requestString);
@@ -101,7 +103,7 @@ public class RequestHandler implements Runnable {
 
       // Get the Request type
       final String request =
-          requestString.substring(0, requestString.indexOf(' '));
+extractRequest(requestString);          
 
       // Check request type
       if ("CONNECT".equals(request)) {
@@ -138,7 +140,7 @@ public class RequestHandler implements Runnable {
     try {
       // If file is an image write data to client using buffered image.
       String fileExtension =
-          cachedFile.getName().substring(cachedFile.getName().lastIndexOf('.'));
+         getFileExtension(cachedFile);
 
       // Response that will be sent to the server
       String response;

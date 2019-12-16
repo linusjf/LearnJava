@@ -1,5 +1,8 @@
 package stefano.lupo;
 
+import java.io.File;
+
+@SuppressWarnings("PMD.LawOfDemeter")
 public final class RequestHandlerUtils {
   private RequestHandlerUtils() {
     throw new IllegalStateException("Private constructor");
@@ -46,5 +49,15 @@ public final class RequestHandlerUtils {
       fileExtension = fileExtension.concat(".html");
     }
     return fileExtension;
+  }
+
+  public static String extractRequest(String requestString) {
+      // Get the Request type
+         return requestString.substring(0, 
+             requestString.indexOf(' '));
+  }
+
+  public static String getFileExtension(File file) {
+return  file.getName().substring(file.getName().lastIndexOf('.'));
   }
 }
