@@ -52,12 +52,11 @@ public final class RequestHandlerUtils {
   }
 
   public static String extractRequest(String requestString) {
-      // Get the Request type
-         return requestString.substring(0, 
-             requestString.indexOf(' '));
+    // Get the Request type
+    return requestString.substring(0, requestString.indexOf(' '));
   }
 
   public static String getFileExtension(File file) {
-return  file.getName().substring(file.getName().lastIndexOf('.'));
+    return file.getName().substring(file.getName().lastIndexOf('.'));
   }
 }

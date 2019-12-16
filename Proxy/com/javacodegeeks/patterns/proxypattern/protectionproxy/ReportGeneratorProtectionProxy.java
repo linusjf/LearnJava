@@ -29,8 +29,7 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   private ReportGenerator getReportGenerator()
       throws NotBoundException, MalformedURLException, RemoteException {
     if (reportGenerator == null)
-      reportGenerator = (ReportGenerator)Naming.lookup(
-          "rmi://127.0.0.1/PizzaCoRemoteGenerator");
+      reportGenerator = (ReportGenerator) Naming.lookup("rmi://127.0.0.1/PizzaCoRemoteGenerator");
     return reportGenerator;
   }
 
