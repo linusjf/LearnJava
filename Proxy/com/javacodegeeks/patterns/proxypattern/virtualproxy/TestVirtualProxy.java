@@ -20,7 +20,14 @@ public enum TestVirtualProxy {
 
   private static void printEmployees(Company company) {
     ContactList contactList = company.getContactList();
-    List<Employee> empList = contactList.getEmployeeList();
+    printContactList(contactList);
+  }
+  
+  private static void printContactList(ContactList contactList) {
+    printList(contactList.getEmployeeList());
+  }
+
+  private static void printList(List<Employee> empList) {
     for (Employee emp : empList) 
       System.out.println(emp);
   }
