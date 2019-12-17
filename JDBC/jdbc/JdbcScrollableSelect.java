@@ -45,9 +45,8 @@ public final class JdbcScrollableSelect {
   private static void forward() {
     try {
       // Iterate through the rows in the forward
-      while (
-          results
-              .next())  // direction, displaying the contents of each
+      while (results.next())
+        // direction, displaying the contents of each
         // row (as in the original program)…
         showRow();
     } catch (SQLException sqlEx) {
@@ -63,9 +62,8 @@ public final class JdbcScrollableSelect {
       // just after last row, so we can make use
       // of method previous to access the data…
       // Iterate through rows in reverse direction,
-      while (
-          results
-              .previous())  // again displaying contents of each row…
+      while (results.previous())
+        // again displaying contents of each row…
         showRow();
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
