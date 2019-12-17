@@ -3,6 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="Proxy.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='60']" />
+  <suppress-xpath files="Proxy.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="TestProxy.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TestProxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='processConnection']]/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='2']]/DIV[./IDENT[@text='responseCode']]/NUM_INT[@text='100']" />
   <suppress-xpath files="RequestHandler.java"
                   checks="ExecutableStatementCountCheck"
                   query="/CLASS_DEF[./IDENT[@text='RequestHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendNonCachedToClient']]" />

@@ -155,10 +155,8 @@ public class RequestHandler implements Runnable {
 
       // Response that will be sent to the server
       if (fileExtension.matches(IMG_REGEX))
-        handleImageFile(cachedFile,
-                        proxyToClientBw,
-                        fileExtension,
-                        clientSocket);
+        handleImageFile(
+            cachedFile, proxyToClientBw, fileExtension);
       else
         handleAllOtherFiles(cachedFile, proxyToClientBw);
 
@@ -192,8 +190,7 @@ public class RequestHandler implements Runnable {
   private void handleImageFile(
       File cachedFile,
       BufferedWriter proxyToClientBw,
-      String fileExtension,
-      Socket clientSocket) throws IOException {
+      String fileExtension) throws IOException {
     BufferedImage image = ImageIO.read(cachedFile);
 
     if (image == null) {

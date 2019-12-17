@@ -13,6 +13,14 @@ import java.rmi.registry.Registry;
  */
 public class ReportGeneratorClient {
   ReportGenerator stub;
+
+  public ReportGeneratorClient()
+      throws RemoteException, NotBoundException {
+    Registry registry = LocateRegistry.getRegistry(null);
+    stub = (ReportGenerator)registry.lookup(
+        "PizzaCoRemoteGenerator");
+  }
+
   /**
    * Describe <code>main</code> method here.
    *
@@ -24,13 +32,6 @@ public class ReportGeneratorClient {
     } catch (RemoteException | NotBoundException e) {
       System.out.println(e.getMessage());
     }
-  }
-
-  public ReportGeneratorClient()
-      throws RemoteException, NotBoundException {
-    Registry registry = LocateRegistry.getRegistry(null);
-    stub = (ReportGenerator)registry.lookup(
-        "PizzaCoRemoteGenerator");
   }
 
   /** Describe <code>generateReport</code> method here. */
