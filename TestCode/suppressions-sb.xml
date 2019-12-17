@@ -5,17 +5,25 @@
 
   <Match>
     <Class name="cstests.TestPlatformDependentLineSeparator" />
+    <Bug code="FS" />
   </Match>
   <Match>
     <Class name="pmdtests.Demo" />
   </Match>
   <Match>
     <Class name="pmdtests.Stack$Node" />
+    <Bug code="SIC,UrF" />
   </Match>
   <Match>
     <Class name="pmdtests.Construct" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="sbtests.Twisted" />
+    <Bug code="SIC" />
   </Match>
   <Match>
     <Class name="~.*[.]TestString.*" />
+    <Bug code="UPM,UwF,Dm" />
   </Match>
 </FindBugsFilter>
