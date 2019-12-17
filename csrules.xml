@@ -461,7 +461,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="true" />
     </module>
     <module name="ParenPad" />
-    <module name="OperatorWrap"></module>
+    <module name="OperatorWrap">
+      <property name="option" value="nl"/>
+        <property name="tokens"
+    value="DIV_ASSIGN,PLUS_ASSIGN,MINUS_ASSIGN,STAR_ASSIGN,MOD_ASSIGN,
+           SR_ASSIGN,BSR_ASSIGN,SL_ASSIGN,BXOR_ASSIGN,BOR_ASSIGN,BAND_ASSIGN"/>
+    </module>
     <module name="NonEmptyAtclauseDescription" />
     <module name="JavadocTagContinuationIndentation" >
   <property name="offset" value="4"/>

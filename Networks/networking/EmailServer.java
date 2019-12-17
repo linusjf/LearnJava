@@ -46,9 +46,9 @@ public enum EmailServer {
                                     PrintWriter output) {
     if ("send".equals(sendRead)) {
       doSend(mailbox2, messagesInBox2, input);
-      messagesInBox2 = messagesInBox2 < MAX_MESSAGES
-                           ? messagesInBox2 + 1
-                           : messagesInBox2;
+      messagesInBox2 = messagesInBox2 < MAX_MESSAGES ?
+                           messagesInBox2 + 1 :
+                           messagesInBox2;
     } else {
       doRead(mailbox1, messagesInBox1, output);
       messagesInBox1 = 0;

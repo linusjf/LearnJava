@@ -88,8 +88,8 @@ public class RequestProcessor implements Runnable {
                     "<H1>HTTP Error 501: Not Implemented</H1>\r\n")
                 .append("</BODY></HTML>\r\n")
                 .toString();
-        if (version.startsWith(
-                "HTTP/"))  // send a MIME header
+        // send a MIME header
+        if (version.startsWith("HTTP/"))
           sendHeader(out,
                      "HTTP/1.0 501 Not Implemented",
                      "text/html; charset=utf-8",
@@ -138,8 +138,8 @@ public class RequestProcessor implements Runnable {
         && theFile.getCanonicalPath().startsWith(
             rootDirectory.getPath())) {
       byte[] theData = Files.readAllBytes(theFile.toPath());
-      if (version.startsWith(
-              "HTTP/"))  // send a MIME header
+      // send a MIME header
+      if (version.startsWith("HTTP/"))
         sendHeader(out,
                    "HTTP/1.0 200 OK",
                    URLConnection.getFileNameMap()
@@ -163,8 +163,8 @@ public class RequestProcessor implements Runnable {
                   "<H1>HTTP Error 404: File Not Found</H1>\r\n")
               .append("</BODY></HTML>\r\n")
               .toString();
-      if (version.startsWith(
-              "HTTP/"))  // send a MIME header
+      // send a MIME header
+      if (version.startsWith("HTTP/"))
         sendHeader(out,
                    "HTTP/1.0 404 File Not Found",
                    "text/html; charset=utf-8",

@@ -74,10 +74,10 @@ public final class MediaClient {
     // (Note the unusual appearance of the typecast!)
     byte[] byteArray = (byte[])inStream.readObject();
     try (OutputStream mediaStream =
-             "IMAGE".equalsIgnoreCase(fileType)
-                 ? Files.newOutputStream(
-                     Paths.get("image.gif"))
-                 : Files.newOutputStream(
+             "IMAGE".equalsIgnoreCase(fileType) ?
+                 Files.newOutputStream(
+                     Paths.get("image.gif")) :
+                 Files.newOutputStream(
                      Paths.get("sound.au"))) {
       // Step 6…
       mediaStream.write(byteArray);

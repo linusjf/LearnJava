@@ -50,8 +50,8 @@ public enum MultiEchoClient {
           // socket's intput stream…
           networkOutput.println(message);
         }
-        if (networkInput
-                .hasNext())  // Display server's response to user…
+        // Display server's response to user…
+        if (networkInput.hasNext())
           System.out.println("\nSERVER> "
                              + networkInput.nextLine());
       }

@@ -29,8 +29,8 @@ public final class MediaServer {
       System.exit(1);
     }
     while (true) {
-      try (Socket connection =
-               serverSocket.accept();  // Step 1…
+      // Step 1…
+      try (Socket connection = serverSocket.accept();
            Scanner inStream = new Scanner(
                connection.getInputStream(),
                StandardCharsets.UTF_8.name());) {

@@ -29,9 +29,9 @@ public class UDPEchoServer extends UDPServer {
   }
 
   public static void main(String[] args) {
-    int port = args.length > 0
-                   ? readPort(args[0], DEFAULT_PORT)
-                   : DEFAULT_PORT;
+    int port = args.length > 0 ?
+                   readPort(args[0], DEFAULT_PORT) :
+                   DEFAULT_PORT;
     UDPServer server = new UDPEchoServer(port);
     Thread t = new Thread(server);
     t.start();

@@ -129,11 +129,11 @@ public final class Ping {
 
     void show() {
       String result =
-          connectFinish > 0
-              ? Long.toString(connectFinish - connectStart)
-                    + "ms"
-              : failure == null ? "Timed out"
-                                : failure.toString();
+          connectFinish > 0 ?
+              Long.toString(connectFinish - connectStart)
+                  + "ms" :
+              failure == null ? "Timed out" :
+                                failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
