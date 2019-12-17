@@ -9,12 +9,10 @@ import java.util.Objects;
 public class Profile {
   private final String name;
   private final String email;
-  private final Map<String, List<String>> contacts =
-      new HashMap<>();
+  private final Map<String, List<String>> contacts = new HashMap<>();
 
-  public Profile(String email,
-                 String name,
-                 String... contacts) {
+  @SuppressWarnings("checkstyle:hiddenfield")
+  public Profile(String email, String name, String... contacts) {
     this.email = email;
     this.name = name;
 
@@ -30,8 +28,7 @@ public class Profile {
         contactEmail = parts[1];
       }
       if (!this.contacts.containsKey(contactType))
-        this.contacts.put(contactType,
-                          new ArrayList<String>());
+        this.contacts.put(contactType, new ArrayList<String>());
       this.contacts.get(contactType).add(contactEmail);
     }
   }
@@ -46,12 +43,11 @@ public class Profile {
 
   public List<String> getContacts(String contactType) {
     if (!this.contacts.containsKey(contactType))
-      this.contacts.put(contactType,
-                        new ArrayList<String>());
+      this.contacts.put(contactType, new ArrayList<String>());
     return contacts.get(contactType);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "checkstyle:hiddenfield"})
   @Override
   public boolean equals(Object o) {
     if (!(o instanceof Profile || o instanceof String))

@@ -54,12 +54,10 @@ public final class Demo {
                          "Maximilian",
                          "friends:anna.smith@bing.com",
                          "coworkers:sam@amazon.com"));
-    data.add(new Profile("bill@microsoft.eu",
-                         "Billie",
-                         "coworkers:avanger@ukr.net"));
-    data.add(new Profile("avanger@ukr.net",
-                         "John Day",
-                         "coworkers:bill@microsoft.eu"));
+    data.add(new Profile(
+        "bill@microsoft.eu", "Billie", "coworkers:avanger@ukr.net"));
+    data.add(new Profile(
+        "avanger@ukr.net", "John Day", "coworkers:bill@microsoft.eu"));
     data.add(new Profile("sam@amazon.com",
                          "Sam Kitting",
                          "coworkers:anna.smith@bing.com",

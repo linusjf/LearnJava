@@ -14,9 +14,7 @@ public class FacebookIterator implements ProfileIterator {
   private final List<String> emails = new ArrayList<>();
   private final List<Profile> profiles = new ArrayList<>();
 
-  public FacebookIterator(Facebook facebook,
-                          String type,
-                          String email) {
+  public FacebookIterator(Facebook facebook, String type, String email) {
     this.facebook = facebook;
     this.type = type;
     this.email = email;
@@ -26,8 +24,7 @@ public class FacebookIterator implements ProfileIterator {
   private void lazyLoad() {
     if (emails.isEmpty()) {
       List<String> friends =
-          facebook.requestProfileFriendsFromFacebook(
-              this.email, this.type);
+          facebook.requestProfileFriendsFromFacebook(this.email, this.type);
       for (String profile: friends) {
         this.emails.add(profile);
         this.profiles.add(null);
@@ -49,8 +46,7 @@ public class FacebookIterator implements ProfileIterator {
     Profile friendProfile = profiles.get(currentPosition);
     if (friendProfile == null) {
       String friendEmail = emails.get(currentPosition);
-      friendProfile =
-          facebook.requestProfileFromFacebook(friendEmail);
+      friendProfile = facebook.requestProfileFromFacebook(friendEmail);
       profiles.set(currentPosition, friendProfile);
     }
     currentPosition++;
