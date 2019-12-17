@@ -15,8 +15,7 @@ public enum RanFile2 {
   private static String surname;
   private static String initials;
   private static float balance;
-  private static final String UTF_8 =
-      StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
@@ -30,8 +29,7 @@ public enum RanFile2 {
         System.out.printf("%nEnter account number: ");
         acctNum = input.nextLong();
         while (acctNum < 1 || acctNum > numRecords) {
-          System.out.printf(
-              "%n*** Invalid number! ***%n%n");
+          System.out.printf("%n*** Invalid number! ***%n%n");
           System.out.printf("%nEnter account number: ");
           acctNum = input.nextLong();
         }
@@ -48,8 +46,7 @@ public enum RanFile2 {
 
         // Back 4 bytes.
         ranAccts.writeFloat(balance);
-        System.out.printf(
-            "%nModify another balance (y/n)? ");
+        System.out.printf("%nModify another balance (y/n)? ");
         reply = input.nextLine();
       }
     } catch (IOException exc) {
@@ -57,8 +54,7 @@ public enum RanFile2 {
     }
   }
 
-  public static void showRecord(RandomAccessFile file)
-      throws IOException {
+  public static void showRecord(RandomAccessFile file) throws IOException {
     file.seek((acctNum - 1) * REC_SIZE);
     acctNum = file.readLong();
     surname = readString(file, SURNAME_SIZE);
@@ -69,8 +65,7 @@ public enum RanFile2 {
     System.out.printf("Balance: %.2f %n", balance);
   }
 
-  public static String readString(RandomAccessFile file,
-                                  int fixedSize)
+  public static String readString(RandomAccessFile file, int fixedSize)
       throws IOException {
     // Set up empty buffer before reading from file…
     StringBuilder buffer = new StringBuilder();

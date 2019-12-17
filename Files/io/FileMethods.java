@@ -7,8 +7,7 @@ import java.util.Scanner;
 public enum FileMethods {
   ;
 
-  private static final String UTF_8 =
-      StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public static void main(String[] args) {
     String filename;
@@ -51,8 +50,7 @@ public enum FileMethods {
           System.out.print("Size of file: ");
           System.out.println(fileDir.length() + " bytes.");
         }
-        System.out.print(
-            "\n\nEnter name of next file/directory ");
+        System.out.print("\n\nEnter name of next file/directory ");
         System.out.print("or press <Enter> to quit: ");
         filename = input.nextLine();
       }

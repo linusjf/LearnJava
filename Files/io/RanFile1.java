@@ -13,8 +13,7 @@ public enum RanFile1 {
   private static String surname;
   private static String initials;
   private static float balance;
-  private static final String UTF_8 =
-      StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in, UTF_8);
@@ -23,8 +22,7 @@ public enum RanFile1 {
       String reply = "y";
       while ("y".equalsIgnoreCase(reply)) {
         acctNum++;
-        System.out.println("\nAccount number " + acctNum
-                           + ".\n");
+        System.out.println("\nAccount number " + acctNum + ".\n");
         System.out.print("Surname: ");
         surname = input.nextLine();
         System.out.print("Initial(s): ");
@@ -37,8 +35,7 @@ public enum RanFile1 {
         writeRecord(ranAccts);
 
         // Method defined below.
-        System.out.print(
-            "\nDo you wish to do this again (y/n)? ");
+        System.out.print("\nDo you wish to do this again (y/n)? ");
         reply = input.nextLine();
       }
       System.out.println();
@@ -48,8 +45,7 @@ public enum RanFile1 {
     }
   }
 
-  public static void writeRecord(RandomAccessFile file)
-      throws IOException {
+  public static void writeRecord(RandomAccessFile file) throws IOException {
     // First find starting byte for current record…
     long filePos = (acctNum - 1) * REC_SIZE;
 
@@ -67,8 +63,7 @@ public enum RanFile1 {
 
   public static void writeString(RandomAccessFile file,
                                  String text,
-                                 int fixedSize)
-      throws IOException {
+                                 int fixedSize) throws IOException {
     int size = text.length();
     if (size <= fixedSize) {
       file.writeChars(text);
@@ -84,8 +79,7 @@ public enum RanFile1 {
     }
   }
 
-  public static void showRecords(RandomAccessFile file)
-      throws IOException {
+  public static void showRecords(RandomAccessFile file) throws IOException {
     long numRecords = file.length() / REC_SIZE;
     file.seek(0);
 
@@ -97,15 +91,13 @@ public enum RanFile1 {
       // readString defined below.
       initials = readString(file, NUM_INITS);
       balance = file.readFloat();
-      System.out.printf(acctNum + " " + surname + " "
-                            + initials + " "
+      System.out.printf(acctNum + " " + surname + " " + initials + " "
                             + "%.2f %n",
                         balance);
     }
   }
 
-  public static String readString(RandomAccessFile file,
-                                  int fixedSize)
+  public static String readString(RandomAccessFile file, int fixedSize)
       throws IOException {
     StringBuilder value = new StringBuilder();
 

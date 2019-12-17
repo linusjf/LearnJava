@@ -9,8 +9,7 @@ import java.util.Scanner;
 public enum FileTest2 {
   ;
 
-  private static final String UTF_8 =
-      StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in, UTF_8)) {
@@ -22,11 +21,9 @@ public enum FileTest2 {
     }
   }
 
-  private static void inputMarks(Scanner input,
-                                 String fileName)
+  private static void inputMarks(Scanner input, String fileName)
       throws IOException {
-    try (PrintWriter output =
-             new PrintWriter(new File(fileName), UTF_8)) {
+    try (PrintWriter output = new PrintWriter(new File(fileName), UTF_8)) {
       System.out.printf("Ten marks needed.%n");
       for (int i = 1; i < 11; i++) {
         if (input.hasNext()) {
