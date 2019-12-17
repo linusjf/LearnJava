@@ -30,23 +30,18 @@ public enum OptionalDemo {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void testOptional(
-      Optional<String> checkNull) {
+  private static void testOptional(Optional<String> checkNull) {
     if (checkNull.isPresent()) {
-      String word =
-          checkNull.get().toLowerCase(Locale.getDefault());
+      String word = checkNull.get().toLowerCase(Locale.getDefault());
       System.out.println(word);
     } else
       System.out.println("word is null");
   }
 
-  public static Integer sum(Optional<Integer> a,
-                            Optional<Integer> b) {
+  public static Integer sum(Optional<Integer> a, Optional<Integer> b) {
     // Optional.isPresent - checks the value is present or not
-    System.out.println("First parameter is present: "
-                       + a.isPresent());
-    System.out.println("Second parameter is present: "
-                       + b.isPresent());
+    System.out.println("First parameter is present: " + a.isPresent());
+    System.out.println("Second parameter is present: " + b.isPresent());
 
     // Optional.orElse - returns the value if present otherwise returns
     // the default value passed.
