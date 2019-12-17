@@ -14,18 +14,21 @@ public final class Fielded {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.CompareObjectsWithEquals", "checkstyle:executablestatementcount"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals",
+                     "checkstyle:executablestatementcount"})
+  public static void
+  main(String... args) {
     try {
       System.out.println(stringGetClass == stringclass);
       System.out.println(stringGetClass.equals(stringclass));
       Field[] fields = stringclass.getDeclaredFields();
-      for (Field field : fields) {
+      for (Field field: fields) {
         System.out.println("*************************");
         System.out.println("Name: " + field.getName());
         System.out.println("Type: " + field.getType());
         int modifiers = field.getModifiers();
-        System.out.println(Modifier.toString(modifiers & Modifier.fieldModifiers()));
+        System.out.println(
+            Modifier.toString(modifiers & Modifier.fieldModifiers()));
         if (Modifier.isStatic(modifiers)) {
           System.out.println("isAccessible: " + field.canAccess(null));
           if (field.canAccess(null))
@@ -56,7 +59,7 @@ public final class Fielded {
       System.err.println(iae);
     }
 
-    AccessController.doPrivileged((PrivilegedAction<?>) () -> {
+    AccessController.doPrivileged((PrivilegedAction<?>)() -> {
       fieldHashCode.setAccessible(true);
       return null;
     });
@@ -64,10 +67,10 @@ public final class Fielded {
     printHashCodeField(fieldHashCode, obj);
   }
 
-  private static void printHashCodeField(Field field, Object stringer)
+  private static void printHashCodeField(Field field, Object object)
       throws ReflectiveOperationException {
-    Object value = field.get(stringer);
-    int valueInt = field.getInt(stringer);
+    Object value = field.get(object);
+    int valueInt = field.getInt(object);
     System.out.println(value);
     System.out.println(valueInt);
   }

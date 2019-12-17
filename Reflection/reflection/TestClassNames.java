@@ -60,7 +60,8 @@ public enum TestClassNames {
   }
 }
 
-@interface SomeAnnotation {}
+@interface SomeAnnotation {
+}
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {

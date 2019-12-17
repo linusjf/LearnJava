@@ -3,22 +3,18 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="OptionalDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='WORDS']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="OptionalDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='checkNull']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='ofNullable']]/ELIST/EXPR/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="OptionalDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./STRING_LITERAL[@text='Hello']]/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="OptionalDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='checkNull']]/METHOD_CALL[./IDENT[@text='of']]/ELIST/EXPR/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']"/>
+  <suppress-xpath files="OptionalDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='WORDS']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="OptionalDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='checkNull']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='ofNullable']]/ELIST/EXPR/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="OptionalDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./STRING_LITERAL[@text='Hello']]/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="OptionalDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='checkNull']]/METHOD_CALL[./IDENT[@text='of']]/ELIST/EXPR/INDEX_OP[./IDENT[@text='WORDS']]/EXPR/NUM_INT[@text='5']" />
   <suppress-xpath files="OptionalDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='OptionalDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='words']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']" />
