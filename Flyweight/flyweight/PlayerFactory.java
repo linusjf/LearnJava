@@ -12,7 +12,7 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-final class PlayerFactory { // NOPMD
+final class PlayerFactory {  // NOPMD
   /* HashMap stores the reference to the object
   of Terrorist(TS) or CounterTerrorist(CT).  */
   private static Map<String, Player> hm = new HashMap<>();

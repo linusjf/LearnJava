@@ -7,18 +7,24 @@ import java.io.File;
 import java.util.List;
 
 public class FileCommand {
-  @Parameter(names = "-file", converter = FileConverter.class) File file;
+  @Parameter(names = "-file",
+             converter = FileConverter.class)
+  File file;
 
-  @Parameter(names = "-files", converter = FileConverter.class) List<File> files;
+  @Parameter(names = "-files",
+             converter = FileConverter.class)
+  List<File> files;
 
   public static void main(String... argv) {
     FileCommand fc = new FileCommand();
-    JCommander.newBuilder().addObject(fc).build().parse(argv);
+    JCommander.newBuilder().addObject(fc).build().parse(
+        argv);
     fc.run();
   }
 
   public void run() {
     System.out.println(file);
-    for (File f : files) System.out.printf("%s %n", f);
+    for (File f: files)
+      System.out.printf("%s %n", f);
   }
 }

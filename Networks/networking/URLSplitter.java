@@ -9,12 +9,14 @@ public final class URLSplitter {
   }
 
   public static void main(String[] args) {
-    for (String arg : args) {
+    for (String arg: args) {
       try {
         URL u = new URL(arg);
         System.out.println("The URL is " + u);
-        System.out.println("The scheme is " + u.getProtocol());
-        System.out.println("The user info is " + u.getUserInfo());
+        System.out.println("The scheme is "
+                           + u.getProtocol());
+        System.out.println("The user info is "
+                           + u.getUserInfo());
         String host = u.getHost();
         if (host != null) {
           int atSign = host.indexOf('@');
@@ -25,9 +27,11 @@ public final class URLSplitter {
         System.out.println("The port is " + u.getPort());
         System.out.println("The path is " + u.getPath());
         System.out.println("The ref is " + u.getRef());
-        System.out.println("The query string is " + u.getQuery());
+        System.out.println("The query string is "
+                           + u.getQuery());
       } catch (MalformedURLException ex) {
-        System.err.println(arg + " is not a URL I understand.");
+        System.err.println(arg
+                           + " is not a URL I understand.");
       }
       System.out.println();
     }

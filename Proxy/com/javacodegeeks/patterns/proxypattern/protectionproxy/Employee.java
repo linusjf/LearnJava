@@ -10,7 +10,8 @@ public class Employee implements Staff {
   private ReportGeneratorProxy reportGenerator;
 
   @Override
-  public void setReportGenerator(ReportGeneratorProxy reportGenerator) {
+  public void setReportGenerator(
+      ReportGeneratorProxy reportGenerator) {
     this.reportGenerator = reportGenerator;
   }
 

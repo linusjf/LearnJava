@@ -16,8 +16,11 @@ public class FormPoster {
   private final QueryString query = new QueryString();
 
   public FormPoster(URL url) {
-    if (!url.getProtocol().toLowerCase(Locale.getDefault()).startsWith("http")) {
-      throw new IllegalArgumentException("Posting only works for http URLs");
+    if (!url.getProtocol()
+             .toLowerCase(Locale.getDefault())
+             .startsWith("http")) {
+      throw new IllegalArgumentException(
+          "Posting only works for http URLs");
     }
     this.url = url;
   }
@@ -34,7 +37,8 @@ public class FormPoster {
     // open the connection and prepare it to POST
     URLConnection uc = url.openConnection();
     uc.setDoOutput(true);
-    try (OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(), "UTF-8")) {
+    try (OutputStreamWriter out = new OutputStreamWriter(
+             uc.getOutputStream(), "UTF-8")) {
       // The POST line, the Content-type header,
       // and the Content-length headers are sent by the URLConnection.
       // We just need to send the data
@@ -47,8 +51,10 @@ public class FormPoster {
     return uc.getInputStream();
   }
 
-  @SuppressWarnings({"PMD.DoNotCallSystemExit", "PMD.DataflowAnomalyAnalysis"})
-  public static void main(String[] args) {
+  @SuppressWarnings({"PMD.DoNotCallSystemExit",
+                     "PMD.DataflowAnomalyAnalysis"})
+  public static void
+  main(String[] args) {
     Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
       System.err.println(e.getMessage());
       System.exit(1);
@@ -61,7 +67,8 @@ public class FormPoster {
         System.out.printf("Connecting to %s%n", url);
       } catch (MalformedURLException ex) {
         System.err.println(ex.getMessage());
-        System.err.printf("Connecting to %s instead%n", url);
+        System.err.printf("Connecting to %s instead%n",
+                          url);
       }
     }
     FormPoster poster = new FormPoster(url);
@@ -69,9 +76,11 @@ public class FormPoster {
     poster.add("email", "elharo@ibiblio.org");
     try (InputStream in = poster.post()) {
       // Read the response
-      Reader r = new InputStreamReader(in, StandardCharsets.UTF_8.name());
+      Reader r = new InputStreamReader(
+          in, StandardCharsets.UTF_8.name());
       int c;
-      while ((c = r.read()) != -1) System.out.print((char) c);
+      while ((c = r.read()) != -1)
+        System.out.print((char)c);
       System.out.println();
     } catch (IOException ex) {
       System.err.println(ex);
@@ -80,9 +89,11 @@ public class FormPoster {
 
   private static URL getDefaultURL() {
     try {
-      return new URL("http://www.cafeaulait.org/books/jnp4/postquery.phtml");
+      return new URL(
+          "http://www.cafeaulait.org/books/jnp4/postquery.phtml");
     } catch (MalformedURLException mue) {
-      throw new AssertionError("This should not happen:", mue);
+      throw new AssertionError("This should not happen:",
+                               mue);
     }
   }
 }

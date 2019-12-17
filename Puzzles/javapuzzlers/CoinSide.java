@@ -3,8 +3,10 @@ package javapuzzlers;
 import java.util.Random;
 
 public final class CoinSide {
-  public static final CoinSide HEADS = new CoinSide("heads");
-  public static final CoinSide TAILS = new CoinSide("tails");
+  public static final CoinSide HEADS =
+      new CoinSide("heads");
+  public static final CoinSide TAILS =
+      new CoinSide("tails");
   private static Random rnd = new Random();
   private final String name;
 

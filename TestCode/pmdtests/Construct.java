@@ -10,7 +10,6 @@ public final class Construct {
 
   public static void main(String... args) {
     // get all visible constructors
-    Constructor<?>[] constructors =
-        String.class.getConstructors();
+    Constructor<?>[] constructors = String.class.getConstructors();
   }
 }

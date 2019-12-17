@@ -11,7 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public final class Last24 {
-  private static final long MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+  private static final long MILLISECONDS_PER_DAY =
+      24 * 60 * 60 * 1000;
 
   private Last24() {
     throw new IllegalStateException("Private constructor");
@@ -22,20 +23,29 @@ public final class Last24 {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void last24hoursFiles(Date today, String... args) {
-    for (String arg : args) {
+  private static void last24hoursFiles(Date today,
+                                       String... args) {
+    for (String arg: args) {
       try {
         System.out.println("Retrieving ...." + arg);
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
-        System.out.println("Original if modified since: " + new Date(uc.getIfModifiedSince()));
-        uc.setIfModifiedSince(new Date(today.getTime() - MILLISECONDS_PER_DAY).getTime());
         System.out.println(
-            "Will retrieve file if it's modified since " + new Date(uc.getIfModifiedSince()));
-        try (InputStream in = new BufferedInputStream(uc.getInputStream());
-             Reader r = new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+            "Original if modified since: "
+            + new Date(uc.getIfModifiedSince()));
+        uc.setIfModifiedSince(
+            new Date(today.getTime() - MILLISECONDS_PER_DAY)
+                .getTime());
+        System.out.println(
+            "Will retrieve file if it's modified since "
+            + new Date(uc.getIfModifiedSince()));
+        try (InputStream in = new BufferedInputStream(
+                 uc.getInputStream());
+             Reader r = new InputStreamReader(
+                 in, StandardCharsets.UTF_8.name());) {
           int c;
-          while ((c = r.read()) != -1) System.out.print((char) c);
+          while ((c = r.read()) != -1)
+            System.out.print((char)c);
           System.out.println();
         }
       } catch (IOException ex) {

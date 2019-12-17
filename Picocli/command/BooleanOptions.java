@@ -4,9 +4,14 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 public class BooleanOptions {
-  @Option(names = "-x", defaultValue = "false", fallbackValue = "true", arity = "0..1",
-      description = "Option with optional parameter. Default: ${DEFAULT-VALUE}, "
-          + "if specified without parameter: ${FALLBACK-VALUE}")
+  @Option(
+      names = "-x",
+      defaultValue = "false",
+      fallbackValue = "true",
+      arity = "0..1",
+      description =
+          "Option with optional parameter. Default: ${DEFAULT-VALUE}, "
+              + "if specified without parameter: ${FALLBACK-VALUE}")
   boolean x;
 
   public static void main(String... args) {

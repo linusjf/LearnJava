@@ -10,8 +10,10 @@ public enum Main {
   ;
   public static final int HOW_MANY = 50_000;
 
-  @SuppressWarnings("PMD.DoNotCallGarbageCollectionExplicitly")
-  public static void main(String[] args) {
+  @SuppressWarnings(
+      "PMD.DoNotCallGarbageCollectionExplicitly")
+  public static void
+  main(String[] args) {
     // -XX:+HeapDumpOnOutOfMemoryError -Xmx4096mlex
     // try with
     // -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=75
@@ -26,22 +28,28 @@ public enum Main {
 
     long start = System.currentTimeMillis();
 
-    ReferenceQueue<HeavyList> queue = new ReferenceQueue<>();
+    ReferenceQueue<HeavyList> queue =
+        new ReferenceQueue<>();
 
     Set<Reference<HeavyList>> references = new HashSet<>();
     allocationLoop(queue, references, 100);
-    System.out.println("Total time " + (System.currentTimeMillis() - start));
+    System.out.println(
+        "Total time "
+        + (System.currentTimeMillis() - start));
 
     System.gc();
     int removed = removeRefs(queue, references);
 
-    System.out.println("Final used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
-        + references.size());
+    System.out.println("Final used mem " + getUsedMem()
+                       + "    Refs removed " + removed
+                       + "   left " + references.size());
   }
 
   @SuppressWarnings("PMD.NullAssignment")
   private static void allocationLoop(
-      ReferenceQueue<HeavyList> queue, Set<Reference<HeavyList>> references, int howManyTimes) {
+      ReferenceQueue<HeavyList> queue,
+      Set<Reference<HeavyList>> references,
+      int howManyTimes) {
     HeavyList head = new HeavyList(0, null);
     HeavyList oldTail = head;
     for (int i = 0; i < howManyTimes; i++) {
@@ -56,8 +64,9 @@ public enum Main {
       int removed = removeRefs(queue, references);
 
       //  System.gc();   //uncomment this line to comparing with forced gc
-      System.out.println("used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
-          + references.size());
+      System.out.println("used mem " + getUsedMem()
+                         + "    Refs removed " + removed
+                         + "   left " + references.size());
 
       oldTail = newTail;
     }
@@ -66,12 +75,15 @@ public enum Main {
   }
 
   private static void addReferences(
-      ReferenceQueue<HeavyList> queue, Set<Reference<HeavyList>> references, HeavyList curr) {
+      ReferenceQueue<HeavyList> queue,
+      Set<Reference<HeavyList>> references,
+      HeavyList curr) {
     HeavyList current = curr;
     while (current != null) {
       //                Reference<HeavyList> reference = new
       //                SoftReference<>(curr, queue);
-      Reference<HeavyList> reference = new WeakReference<>(curr, queue);
+      Reference<HeavyList> reference =
+          new WeakReference<>(curr, queue);
 
       //                Reference<HeavyList> reference = new
       //                PhantomReference<>(curr, queue);
@@ -83,7 +95,8 @@ public enum Main {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private static long getUsedMem() {
-    return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    return Runtime.getRuntime().totalMemory()
+        - Runtime.getRuntime().freeMemory();
   }
 
   // clang-format off
@@ -113,23 +126,30 @@ public enum Main {
   private static void printMem() {
     /* Total number of processors or cores available to the JVM */
     System.out.println(
-        "Available processors (cores): " + Runtime.getRuntime().availableProcessors());
+        "Available processors (cores): "
+        + Runtime.getRuntime().availableProcessors());
 
     /* Total amount of free memory available to the JVM */
-    System.out.println("Free memory (bytes): " + Runtime.getRuntime().freeMemory());
+    System.out.println("Free memory (bytes): "
+                       + Runtime.getRuntime().freeMemory());
 
     /* This will return Long.MAX_VALUE if there is no preset limit */
     long maxMemory = Runtime.getRuntime().maxMemory();
 
     /* Maximum amount of memory the JVM will attempt to use */
-    System.out.println(
-        "Maximum memory (bytes): " + (maxMemory == Long.MAX_VALUE ? "no limit" : maxMemory));
+    System.out.println("Maximum memory (bytes): "
+                       + (maxMemory == Long.MAX_VALUE
+                              ? "no limit"
+                              : maxMemory));
 
     /* Total memory currently in use by the JVM */
-    System.out.println("Total memory (bytes): " + Runtime.getRuntime().totalMemory());
+    System.out.println(
+        "Total memory (bytes): "
+        + Runtime.getRuntime().totalMemory());
   }
 
-  private static HeavyList allocate(int howMany, HeavyList startFrom) {
+  private static HeavyList allocate(int howMany,
+                                    HeavyList startFrom) {
     HeavyList curr = startFrom;
     for (int i = 0; i < howMany; i++) {
       curr = new HeavyList(i, curr);
@@ -153,7 +173,7 @@ public enum Main {
 
     HeavyList(int number, HeavyList prev) {
       for (int i = 0; i < mega.length; i++) {
-        mega[i] = (byte) (number % 256);
+        mega[i] = (byte)(number % 256);
       }
       if (prev != null) {
         prev.next = this;

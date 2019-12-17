@@ -16,7 +16,8 @@ public enum CleanerDaemon {
         new Thread(writer),
         new Thread(writer),
     };
-    for (Thread t : threads) t.start();
+    for (Thread t: threads)
+      t.start();
     CleanerTask cleaner = new CleanerTask(deque);
     cleaner.start();
   }
@@ -54,8 +55,9 @@ public enum CleanerDaemon {
       for (int i = 1; i < 100; i++) {
         Event event = new Event();
         event.setDate(new Date());
-        event.setEvent(
-            String.format("The thread %s has generated an event", Thread.currentThread().getId()));
+        event.setEvent(String.format(
+            "The thread %s has generated an event",
+            Thread.currentThread().getId()));
         synchronized (deque) {
           deque.addFirst(event);
         }
@@ -96,7 +98,8 @@ public enum CleanerDaemon {
       }
       boolean delete = false;
       Event e = deque.getLast();
-      long difference = date.getTime() - e.getDate().getTime();
+      long difference =
+          date.getTime() - e.getDate().getTime();
       while (difference > 10_000 && !deque.isEmpty()) {
         System.out.printf("Cleaner: %s%n", e.getEvent());
         deque.removeLast();
@@ -106,7 +109,9 @@ public enum CleanerDaemon {
         difference = date.getTime() - e.getDate().getTime();
       }
       if (delete)
-        System.out.printf("Cleaner: Size of the queue: %d%n", deque.size());
+        System.out.printf(
+            "Cleaner: Size of the queue: %d%n",
+            deque.size());
     }
   }
 }

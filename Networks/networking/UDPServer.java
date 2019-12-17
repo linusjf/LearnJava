@@ -15,8 +15,8 @@ public abstract class UDPServer implements Runnable {
 
   // in bytes
   private final int port;
-  private final FormatLogger logger =
-      new FormatLogger(Logger.getLogger(UDPServer.class.getCanonicalName()));
+  private final FormatLogger logger = new FormatLogger(
+      Logger.getLogger(UDPServer.class.getCanonicalName()));
   private volatile boolean isShutDown;
 
   public UDPServer(int port, int bufferSize) {
@@ -38,7 +38,8 @@ public abstract class UDPServer implements Runnable {
       while (true) {
         if (isShutDown)
           return;
-        DatagramPacket incoming = new DatagramPacket(new byte[bufferSize], bufferSize);
+        DatagramPacket incoming = new DatagramPacket(
+            new byte[bufferSize], bufferSize);
         try {
           socket.receive(incoming);
           this.respond(socket, incoming);
@@ -46,22 +47,29 @@ public abstract class UDPServer implements Runnable {
           if (isShutDown)
             return;
         } catch (IOException ex) {
-          logger.log(Level.WARNING, "%s: %s", ex.getMessage(), ex);
+          logger.log(
+              Level.WARNING, "%s: %s", ex.getMessage(), ex);
         }
       }
       // end while
     } catch (SocketException ex) {
-      logger.log(Level.SEVERE, "Could not bind to port %d: %s", port, ex);
+      logger.log(Level.SEVERE,
+                 "Could not bind to port %d: %s",
+                 port,
+                 ex);
     }
   }
 
-  public abstract void respond(DatagramSocket socket, DatagramPacket request) throws IOException;
+  public abstract void respond(DatagramSocket socket,
+                               DatagramPacket request)
+      throws IOException;
 
   public void shutDown() {
     this.isShutDown = true;
   }
 
-  protected static int readPort(String portVal, int defaultPort) {
+  protected static int readPort(String portVal,
+                                int defaultPort) {
     try {
       return Integer.parseInt(portVal);
     } catch (NumberFormatException nfe) {

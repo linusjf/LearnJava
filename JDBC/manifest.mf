@@ -9,6 +9,6 @@ Specification-Title: JDBC
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 29cb2941 December 6 2019
+Implementation-Version: 76e57d26 December 17 2019
 Implementation-Vendor: 
 

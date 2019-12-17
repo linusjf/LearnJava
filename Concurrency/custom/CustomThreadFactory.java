@@ -19,7 +19,8 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory =
+          new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -31,21 +32,27 @@ public class CustomThreadFactory implements ThreadFactory {
     }
   }
 
-  public static void alternateMain() throws InterruptedException, ExecutionException {
-    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
-    ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
+  public static void alternateMain()
+      throws InterruptedException, ExecutionException {
+    CustomThreadFactory threadFactory =
+        new CustomThreadFactory(
+            "CustomThreadFactory-alternate");
+    ExecutorService executor =
+        Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     Future<?> result = executor.submit(task);
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
-      System.out.printf("Alternate Main: End of the program.%n");
+      System.out.printf(
+          "Alternate Main: End of the program.%n");
     if (result.get() == null)
       System.out.printf("Task completed successfully%n");
   }
 
   @Override
   public Thread newThread(Runnable r) {
-    CustomThread myThread = new CustomThread(r, prefix + "-" + counter);
+    CustomThread myThread =
+        new CustomThread(r, prefix + "-" + counter);
     counter++;
     return myThread;
   }
@@ -64,8 +71,10 @@ public class CustomThreadFactory implements ThreadFactory {
       Date startDate = new Date();
       super.run();
       Date finishDate = new Date();
-      executionTime = finishDate.getTime() - startDate.getTime();
-      System.out.printf("%s: Thread information.%n", getName());
+      executionTime =
+          finishDate.getTime() - startDate.getTime();
+      System.out.printf("%s: Thread information.%n",
+                        getName());
       System.out.printf("%s%n", this);
     }
 

@@ -13,14 +13,16 @@ public final class GZipAllFiles {
   }
 
   public static void main(String[] args) {
-    ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
-    for (String filename : args) {
+    ExecutorService pool =
+        Executors.newFixedThreadPool(THREAD_COUNT);
+    for (String filename: args) {
       zipFile(filename, pool);
     }
     pool.shutdown();
   }
 
-  private static void zipFile(String filename, ExecutorService pool) {
+  private static void zipFile(String filename,
+                              ExecutorService pool) {
     File f = new File(filename);
     if (f.exists()) {
       zip(f, pool);
@@ -31,9 +33,9 @@ public final class GZipAllFiles {
     if (f.isDirectory()) {
       Optional<?> objs = Optional.ofNullable(f.listFiles());
       objs.ifPresent(obj -> {
-        File[] files = (File[]) obj;
-        for (File file : files) {
-          if (!file.isDirectory()) // don't recurse directories
+        File[] files = (File[])obj;
+        for (File file: files) {
+          if (!file.isDirectory())  // don't recurse directories
             submitZipTask(file, pool);
         }
       });
@@ -41,7 +43,8 @@ public final class GZipAllFiles {
       submitZipTask(f, pool);
   }
 
-  private static void submitZipTask(File file, ExecutorService pool) {
+  private static void submitZipTask(File file,
+                                    ExecutorService pool) {
     Runnable task = new GZipRunnable(file);
     pool.submit(task);
   }

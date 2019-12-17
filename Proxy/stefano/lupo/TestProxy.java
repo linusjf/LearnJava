@@ -13,11 +13,12 @@ import java.util.List;
 
 public enum TestProxy {
   ;
-  private static final String FILE = "urls.txt"; // NOPMD
+  private static final String FILE = "urls.txt";  // NOPMD
 
   private static final String PROXY_HOST = "localhost";
 
-  @SuppressWarnings("checkstyle:magicnumber") private static final int PROXY_PORT = 8085;
+  @SuppressWarnings("checkstyle:magicnumber")
+  private static final int PROXY_PORT = 8085;
 
   /**
    * Main program.
@@ -32,12 +33,15 @@ public enum TestProxy {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static String[] readURLsFromFile(String fileName) {
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get(fileName))) {
+  private static String[] readURLsFromFile(
+      String fileName) {
+    try (BufferedReader reader =
+             Files.newBufferedReader(Paths.get(fileName))) {
       List<String> lines = new ArrayList<>();
 
       String line;
-      while ((line = reader.readLine()) != null) lines.add(line);
+      while ((line = reader.readLine()) != null)
+        lines.add(line);
       return lines.toArray(new String[0]);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
@@ -46,33 +50,42 @@ public enum TestProxy {
   }
 
   private static void testURLs(String... urls) {
-    for (String strUrl : urls) {
+    for (String strUrl: urls) {
       try {
         connect(strUrl);
       } catch (IOException e) {
-        System.err.println("Error creating HTTP(S) connection: " + e.getMessage());
+        System.err.println(
+            "Error creating HTTP(S) connection: "
+            + e.getMessage());
       }
     }
   }
 
-  private static void connect(String strUrl) throws IOException {
+  private static void connect(String strUrl)
+      throws IOException {
     System.out.println("Connecting to ..." + strUrl);
     if (strUrl.startsWith("http")) {
       URL url = new URL(strUrl);
-      Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT));
+      Proxy proxy = new Proxy(
+          Proxy.Type.HTTP,
+          new InetSocketAddress(PROXY_HOST, PROXY_PORT));
       connect(url, proxy);
     }
   }
 
-  private static void connect(URL url, Proxy proxy) throws IOException {
-    HttpURLConnection connection = (HttpURLConnection) url.openConnection(proxy);
+  private static void connect(URL url, Proxy proxy)
+      throws IOException {
+    HttpURLConnection connection =
+        (HttpURLConnection)url.openConnection(proxy);
     processConnection(connection);
   }
 
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
-  private static void processConnection(HttpURLConnection connection) throws IOException {
+  private static void processConnection(
+      HttpURLConnection connection) throws IOException {
     connection.connect();
-    System.out.println("Using proxy: " + connection.usingProxy());
+    System.out.println("Using proxy: "
+                       + connection.usingProxy());
     connection.getInputStream();
     int responseCode = connection.getResponseCode();
     if (responseCode / 100 == 2)

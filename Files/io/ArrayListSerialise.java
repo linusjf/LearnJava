@@ -16,7 +16,8 @@ public enum ArrayListSerialise {
     ArrayList<Personnel> staffListOut = new ArrayList<>();
     ArrayList<Personnel> staffListIn;
     try (ObjectOutputStream outStream =
-             new ObjectOutputStream(Files.newOutputStream(Paths.get("personnel.dat")))) {
+             new ObjectOutputStream(Files.newOutputStream(
+                 Paths.get("personnel.dat")))) {
       // clang-format off
       Personnel[] staff = {
         new Personnel(123_456, "Smith", "John"),
@@ -25,25 +26,31 @@ public enum ArrayListSerialise {
       };
 
       // clang-format on
-      for (Personnel person : staff) staffListOut.add(person);
+      for (Personnel person: staff)
+        staffListOut.add(person);
       outStream.writeObject(staffListOut);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }
 
     try (ObjectInputStream inStream =
-             new ObjectInputStream(Files.newInputStream(Paths.get("personnel.dat")))) {
+             new ObjectInputStream(Files.newInputStream(
+                 Paths.get("personnel.dat")))) {
       int staffCount = 0;
-      staffListIn = (ArrayList<Personnel>) inStream.readObject();
+      staffListIn =
+          (ArrayList<Personnel>)inStream.readObject();
 
       // The compiler will issue a warning for the
       // above line, but ignore this!
-      for (Personnel person : staffListIn) {
+      for (Personnel person: staffListIn) {
         staffCount++;
         System.out.println("\nStaff member " + staffCount);
-        System.out.println("Payroll number: " + person.getPayNum());
-        System.out.println("Surname: " + person.getSurname());
-        System.out.println("First names: " + person.getFirstNames());
+        System.out.println("Payroll number: "
+                           + person.getPayNum());
+        System.out.println("Surname: "
+                           + person.getSurname());
+        System.out.println("First names: "
+                           + person.getFirstNames());
       }
       System.out.println("\n");
     } catch (EOFException eofEx) {

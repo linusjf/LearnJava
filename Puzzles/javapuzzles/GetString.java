@@ -3,8 +3,10 @@ package javapuzzles;
 public enum GetString {
   ;
 
-  @SuppressWarnings({"finally", "PMD.ReturnFromFinallyBlock"})
-  public static String getString() {
+  @SuppressWarnings({"finally",
+                     "PMD.ReturnFromFinallyBlock"})
+  public static String
+  getString() {
     try {
       return "tried";
     } finally {

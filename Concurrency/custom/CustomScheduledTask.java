@@ -8,13 +8,18 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableScheduledFuture<V> {
+public class CustomScheduledTask<V> extends FutureTask<V>
+    implements RunnableScheduledFuture<V> {
   private final RunnableScheduledFuture<V> task;
-  private final transient ScheduledThreadPoolExecutor executor;
+  private final transient ScheduledThreadPoolExecutor
+      executor;
   private transient long period;
   private transient long startDate;
 
-  public CustomScheduledTask(Runnable runnable, V result, RunnableScheduledFuture<V> task,
+  public CustomScheduledTask(
+      Runnable runnable,
+      V result,
+      RunnableScheduledFuture<V> task,
       ScheduledThreadPoolExecutor executor) {
     super(runnable, result);
     this.task = task;
@@ -23,14 +28,16 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
 
   public static void main(String[] args) {
     try {
-      CustomScheduledThreadPoolExecutor executor = new CustomScheduledThreadPoolExecutor(2);
+      CustomScheduledThreadPoolExecutor executor =
+          new CustomScheduledThreadPoolExecutor(2);
       Task task = new Task();
       System.out.printf("Main: %s%n", new Date());
       executor.schedule(task, 1, TimeUnit.SECONDS);
       TimeUnit.SECONDS.sleep(3);
       task = new Task();
       System.out.printf("Main: %s%n", new Date());
-      executor.scheduleAtFixedRate(task, 1, 3, TimeUnit.SECONDS);
+      executor.scheduleAtFixedRate(
+          task, 1, 3, TimeUnit.SECONDS);
       TimeUnit.SECONDS.sleep(10);
       executor.shutdown();
       executor.awaitTermination(1, TimeUnit.DAYS);
@@ -62,7 +69,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
   public boolean equals(Object o) {
     if (!(o instanceof Delayed))
       return false;
-    return task.compareTo((Delayed) o) == 0;
+    return task.compareTo((Delayed)o) == 0;
   }
 
   @Override
@@ -82,34 +89,44 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
       startDate = now.getTime() + period;
       executor.getQueue().add(this);
     }
-    System.out.printf("Pre-CustomScheduledTask: %s%n", new Date());
-    System.out.printf("CustomScheduledTask: Is Periodic: %s%n", isPeriodic());
+    System.out.printf("Pre-CustomScheduledTask: %s%n",
+                      new Date());
+    System.out.printf(
+        "CustomScheduledTask: Is Periodic: %s%n",
+        isPeriodic());
     super.runAndReset();
-    System.out.printf("Post-CustomScheduledTask: %s%n", new Date());
+    System.out.printf("Post-CustomScheduledTask: %s%n",
+                      new Date());
   }
 
   public void setPeriod(long period) {
     this.period = period;
   }
 
-  static class CustomScheduledThreadPoolExecutor extends ScheduledThreadPoolExecutor {
+  static class CustomScheduledThreadPoolExecutor
+      extends ScheduledThreadPoolExecutor {
     CustomScheduledThreadPoolExecutor(int corePoolSize) {
       super(corePoolSize);
     }
 
     @Override
     protected <V> RunnableScheduledFuture<V> decorateTask(
-        Runnable runnable, RunnableScheduledFuture<V> task) {
-      return new CustomScheduledTask<V>(runnable, null, task, this);
+        Runnable runnable,
+        RunnableScheduledFuture<V> task) {
+      return new CustomScheduledTask<V>(
+          runnable, null, task, this);
     }
 
     // clang-format off
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(
-        Runnable command, long initialDelay, long period, TimeUnit unit) { // clang-format on
-      ScheduledFuture<?> task = super.scheduleAtFixedRate(command, initialDelay, period, unit);
-      CustomScheduledTask<?> myTask = (CustomScheduledTask<?>) task;
-      myTask.setPeriod(TimeUnit.MILLISECONDS.convert(period, unit));
+        Runnable command, long initialDelay, long period, TimeUnit unit) {  // clang-format on
+      ScheduledFuture<?> task = super.scheduleAtFixedRate(
+          command, initialDelay, period, unit);
+      CustomScheduledTask<?> myTask =
+          (CustomScheduledTask<?>)task;
+      myTask.setPeriod(
+          TimeUnit.MILLISECONDS.convert(period, unit));
       return task;
     }
   }

@@ -10,12 +10,14 @@ public final class LowPortScanner {
   }
 
   public static void main(String[] args) {
-    String[] hosts = args.length > 0 ? args : new String[] {"localhost"};
-    for (String host : hosts) {
+    String[] hosts =
+        args.length > 0 ? args : new String[] {"localhost"};
+    for (String host: hosts) {
       for (int i = 1; i < 1024; i++) {
         try {
           Socket s = new Socket(host, i);
-          System.out.println("There is a server on port " + i + " of " + host);
+          System.out.println("There is a server on port "
+                             + i + " of " + host);
           s.close();
         } catch (UnknownHostException ex) {
           System.err.println(ex);

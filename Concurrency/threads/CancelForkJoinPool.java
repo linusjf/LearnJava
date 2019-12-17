@@ -17,7 +17,8 @@ public enum CancelForkJoinPool {
     int[] array = generator.generateArray(1000);
     TaskManager manager = new TaskManager();
     ForkJoinPool pool = new ForkJoinPool();
-    SearchNumberTask task = new SearchNumberTask(array, 0, 1000, 5, manager);
+    SearchNumberTask task =
+        new SearchNumberTask(array, 0, 1000, 5, manager);
     pool.execute(task);
     pool.shutdown();
     try {
@@ -33,7 +34,9 @@ public enum CancelForkJoinPool {
     public int[] generateArray(int size) {
       int[] array = new int[size];
       Random random = new Random();
-      for (int i = 0; i < size; i++) array[i] = new Random(random.nextLong()).nextInt(10);
+      for (int i = 0; i < size; i++)
+        array[i] =
+            new Random(random.nextLong()).nextInt(10);
       return array;
     }
   }
@@ -50,17 +53,19 @@ public enum CancelForkJoinPool {
       tasks.add(task);
     }
 
-    public void cancelTasks(ForkJoinTask<Integer> cancelTask) {
-      for (ForkJoinTask<Integer> task : tasks) {
+    public void cancelTasks(
+        ForkJoinTask<Integer> cancelTask) {
+      for (ForkJoinTask<Integer> task: tasks) {
         if (!task.equals(cancelTask)) {
           task.cancel(true);
-          ((SearchNumberTask) task).writeCancelMessage();
+          ((SearchNumberTask)task).writeCancelMessage();
         }
       }
     }
   }
 
-  static class SearchNumberTask extends RecursiveTask<Integer> {
+  static class SearchNumberTask
+      extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
     private static final int TASK_SIZE_THRESHOLD = 10;
     private static final int NOT_FOUND = -1;
@@ -72,7 +77,11 @@ public enum CancelForkJoinPool {
     private final TaskManager manager;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-    SearchNumberTask(int[] numbers, int start, int end, int number, TaskManager manager) {
+    SearchNumberTask(int[] numbers,
+                     int start,
+                     int end,
+                     int number,
+                     TaskManager manager) {
       super();
       this.numbers = numbers;
       this.start = start;
@@ -95,7 +104,10 @@ public enum CancelForkJoinPool {
     private int lookForNumber() {
       for (int i = start; i < end; i++) {
         if (numbers[i] == number) {
-          System.out.printf("Task: Number %d found in position %d%n", number, i);
+          System.out.printf(
+              "Task: Number %d found in position %d%n",
+              number,
+              i);
           manager.cancelTasks(this);
           return i;
         }
@@ -111,8 +123,10 @@ public enum CancelForkJoinPool {
     private int launchTasks() {
       int mid = (start + end) / 2;
 
-      SearchNumberTask task1 = new SearchNumberTask(numbers, start, mid, number, manager);
-      SearchNumberTask task2 = new SearchNumberTask(numbers, mid, end, number, manager);
+      SearchNumberTask task1 = new SearchNumberTask(
+          numbers, start, mid, number, manager);
+      SearchNumberTask task2 = new SearchNumberTask(
+          numbers, mid, end, number, manager);
       manager.addTask(task1);
       manager.addTask(task2);
       task1.fork();
@@ -128,7 +142,10 @@ public enum CancelForkJoinPool {
     }
 
     public void writeCancelMessage() {
-      System.out.printf("Task: Canceled task from %d to %d%n", start, end);
+      System.out.printf(
+          "Task: Canceled task from %d to %d%n",
+          start,
+          end);
     }
   }
 }

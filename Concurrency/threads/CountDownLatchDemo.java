@@ -4,9 +4,11 @@ import java.util.concurrent.CountDownLatch;
 
 public enum CountDownLatchDemo {
   ;
-  private static final CountDownLatch COUNT_DOWN_LATCH = new CountDownLatch(5);
+  private static final CountDownLatch COUNT_DOWN_LATCH =
+      new CountDownLatch(5);
 
-  private static final String DOING_WORK = "Doing some work...";
+  private static final String DOING_WORK =
+      "Doing some work...";
 
   public static void main(String[] args) {
     final Thread run1 = new Thread(() -> {

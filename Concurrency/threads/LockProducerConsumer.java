@@ -14,11 +14,16 @@ public enum LockProducerConsumer {
     FileMock mock = new FileMock(100, 10);
     Buffer buffer = new Buffer(20);
     Producer producer = new Producer(mock, buffer);
-    Thread threadProducer = new Thread(producer, "Producer");
+    Thread threadProducer =
+        new Thread(producer, "Producer");
     Thread[] threadConsumers = new Thread[3];
-    Arrays.setAll(threadConsumers, i -> new Thread(new Consumer(buffer), "Consumer " + i));
+    Arrays.setAll(threadConsumers,
+                  i
+                  -> new Thread(new Consumer(buffer),
+                                "Consumer " + i));
     threadProducer.start();
-    for (Thread t : threadConsumers) t.start();
+    for (Thread t: threadConsumers)
+      t.start();
   }
 
   static class FileMock {
@@ -32,7 +37,7 @@ public enum LockProducerConsumer {
         StringBuilder buffer = new StringBuilder(length);
         for (int j = 0; j < length; j++) {
           int indice = random.nextInt(255);
-          buffer.append((char) indice);
+          buffer.append((char)indice);
         }
         content[i] = buffer.toString();
       }
@@ -45,7 +50,8 @@ public enum LockProducerConsumer {
 
     public String getLine() {
       if (this.hasMoreLines()) {
-        System.out.println("Mock: " + (content.length - index));
+        System.out.println("Mock: "
+                           + (content.length - index));
         return content[index++];
       }
       return null;
@@ -75,10 +81,12 @@ public enum LockProducerConsumer {
     public void insert(String line) {
       lock.lock();
       try {
-        while (queue.size() == maxSize) space.await();
+        while (queue.size() == maxSize)
+          space.await();
         queue.offer(line);
-        System.out.printf(
-            "%s: Inserted Line: %d%n", Thread.currentThread().getName(), queue.size());
+        System.out.printf("%s: Inserted Line: %d%n",
+                          Thread.currentThread().getName(),
+                          queue.size());
         lines.signalAll();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -90,11 +98,15 @@ public enum LockProducerConsumer {
     public String get() {
       lock.lock();
       try {
-        while (queue.size() == 0 && hasPendingLines()) lines.await();
+        while (queue.size() == 0 && hasPendingLines())
+          lines.await();
 
         if (hasPendingLines()) {
           String line = queue.poll();
-          System.out.printf("%s: Line Read: %d%n", Thread.currentThread().getName(), queue.size());
+          System.out.printf(
+              "%s: Line Read: %d%n",
+              Thread.currentThread().getName(),
+              queue.size());
           space.signalAll();
           return line;
         }
@@ -153,7 +165,8 @@ public enum LockProducerConsumer {
 
     private void processLine(String line) {
       try {
-        System.out.printf("About to process line: %s", line);
+        System.out.printf("About to process line: %s",
+                          line);
         Random random = new Random();
         Thread.sleep(random.nextInt(100));
       } catch (InterruptedException e) {

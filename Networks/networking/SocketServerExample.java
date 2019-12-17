@@ -21,7 +21,8 @@ public class SocketServerExample {
   private final Map<SocketChannel, List<?>> dataMapper;
   private final InetSocketAddress listenAddress;
 
-  public SocketServerExample(String address, int port) throws IOException {
+  public SocketServerExample(String address, int port)
+      throws IOException {
     listenAddress = new InetSocketAddress(address, port);
     dataMapper = new HashMap<>();
   }
@@ -31,9 +32,11 @@ public class SocketServerExample {
       @Override
       public void run() {
         try {
-          new SocketServerExample("localhost", 8090).startServer();
+          new SocketServerExample("localhost", 8090)
+              .startServer();
         } catch (IOException e) {
-          System.out.println("Error running server: " + e.getMessage());
+          System.out.println("Error running server: "
+                             + e.getMessage());
         }
       }
     };
@@ -44,7 +47,8 @@ public class SocketServerExample {
         try {
           new SocketClientExample().startClient();
         } catch (IOException | InterruptedException e) {
-          System.out.println("Error connecting to  server: " + e.getMessage());
+          System.out.println("Error connecting to  server: "
+                             + e.getMessage());
         }
       }
     };
@@ -56,12 +60,14 @@ public class SocketServerExample {
   // create server channel
   private void startServer() throws IOException {
     this.selector = Selector.open();
-    ServerSocketChannel serverChannel = ServerSocketChannel.open();
+    ServerSocketChannel serverChannel =
+        ServerSocketChannel.open();
     serverChannel.configureBlocking(false);
 
     // retrieve server socket and bind to port
     serverChannel.bind(listenAddress);
-    serverChannel.register(this.selector, SelectionKey.OP_ACCEPT);
+    serverChannel.register(this.selector,
+                           SelectionKey.OP_ACCEPT);
 
     System.out.println("Server started...");
 
@@ -72,7 +78,8 @@ public class SocketServerExample {
       System.out.println("Selected...");
 
       // work on selected keys
-      Iterator<SelectionKey> keys = this.selector.selectedKeys().iterator();
+      Iterator<SelectionKey> keys =
+          this.selector.selectedKeys().iterator();
       while (keys.hasNext()) {
         SelectionKey key = keys.next();
 
@@ -95,11 +102,13 @@ public class SocketServerExample {
 
   // accept a connection made to this channel's socket
   private void accept(SelectionKey key) throws IOException {
-    ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
+    ServerSocketChannel serverChannel =
+        (ServerSocketChannel)key.channel();
     SocketChannel channel = serverChannel.accept();
     channel.configureBlocking(false);
     Socket socket = channel.socket();
-    SocketAddress remoteAddr = socket.getRemoteSocketAddress();
+    SocketAddress remoteAddr =
+        socket.getRemoteSocketAddress();
     System.out.println("Connected to: " + remoteAddr);
 
     // register channel with selector for further IO
@@ -109,15 +118,17 @@ public class SocketServerExample {
 
   // read from the socket channel
   private void read(SelectionKey key) throws IOException {
-    SocketChannel channel = (SocketChannel) key.channel();
+    SocketChannel channel = (SocketChannel)key.channel();
     ByteBuffer buffer = ByteBuffer.allocate(1024);
     int numRead = channel.read(buffer);
 
     if (numRead == -1) {
       this.dataMapper.remove(channel);
       Socket socket = channel.socket();
-      SocketAddress remoteAddr = socket.getRemoteSocketAddress();
-      System.out.println("Connection closed by client: " + remoteAddr);
+      SocketAddress remoteAddr =
+          socket.getRemoteSocketAddress();
+      System.out.println("Connection closed by client: "
+                         + remoteAddr);
       channel.close();
       key.cancel();
       return;
@@ -125,6 +136,7 @@ public class SocketServerExample {
 
     byte[] data = new byte[numRead];
     System.arraycopy(buffer.array(), 0, data, 0, numRead);
-    System.out.println("Got: " + new String(data, StandardCharsets.UTF_8));
+    System.out.println(
+        "Got: " + new String(data, StandardCharsets.UTF_8));
   }
 }

@@ -15,18 +15,23 @@ public class LocalProxySelector extends ProxySelector {
   @Override
   public List<Proxy> select(URI uri) {
     List<Proxy> result = new ArrayList<>();
-    if (failed.contains(uri) || !"http".equalsIgnoreCase(uri.getScheme())) {
+    if (failed.contains(uri)
+        || !"http".equalsIgnoreCase(uri.getScheme())) {
       result.add(Proxy.NO_PROXY);
     } else {
-      SocketAddress proxyAddress = new InetSocketAddress("proxy.example.com", 8000);
-      Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddress);
+      SocketAddress proxyAddress =
+          new InetSocketAddress("proxy.example.com", 8000);
+      Proxy proxy =
+          new Proxy(Proxy.Type.HTTP, proxyAddress);
       result.add(proxy);
     }
     return result;
   }
 
   @Override
-  public void connectFailed(URI uri, SocketAddress address, IOException ex) {
+  public void connectFailed(URI uri,
+                            SocketAddress address,
+                            IOException ex) {
     failed.add(uri);
   }
 }

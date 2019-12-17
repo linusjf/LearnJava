@@ -9,11 +9,13 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class PlatformFactory { // NOPMD
-  private static Map<String, Platform> map = new HashMap<>();
+public final class PlatformFactory {  // NOPMD
+  private static Map<String, Platform> map =
+      new HashMap<>();
 
   private PlatformFactory() {
-    throw new AssertionError("Cannot instantiate the class");
+    throw new AssertionError(
+        "Cannot instantiate the class");
   }
 
   /**
@@ -22,7 +24,8 @@ public final class PlatformFactory { // NOPMD
    * @param platformType a <code>String</code> value
    * @return a <code>Platform</code> value
    */
-  public static Platform getPlatformInstance(String platformType) {
+  public static Platform getPlatformInstance(
+      String platformType) {
     Platform platform;
     synchronized (map) {
       platform = map.get(platformType);

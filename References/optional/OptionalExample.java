@@ -15,9 +15,11 @@ public enum OptionalExample {
   ;
 
   public static void main(String... args) {
-    Address johnaddress = new Address("52/A, 22nd Street", "Mumbai", "India", 400_001);
+    Address johnaddress = new Address(
+        "52/A, 22nd Street", "Mumbai", "India", 400_001);
 
-    Person john = new Person("John", johnaddress, 874_731_232);
+    Person john =
+        new Person("John", johnaddress, 874_731_232);
 
     Person mac = new Person("Mac", null, 333_299_911);
     Person gautam = new Person("Gautam", null, 533_299_911);
@@ -28,7 +30,10 @@ public enum OptionalExample {
     people.add(gautam);
 
     people.stream().forEach(p -> {
-      System.out.printf("%s from %s %n", p.getName(), p.getAddress().orElse(Address.EMPTY_ADDRESS));
+      System.out.printf(
+          "%s from %s %n",
+          p.getName(),
+          p.getAddress().orElse(Address.EMPTY_ADDRESS));
     });
   }
 
@@ -40,7 +45,8 @@ public enum OptionalExample {
 
     Person(String name, Address address, int phone) {
       if (name == null) {
-        throw new IllegalArgumentException("Null value for name is not permitted");
+        throw new IllegalArgumentException(
+            "Null value for name is not permitted");
       }
       this.name = name;
       this.address = Optional.ofNullable(address);
@@ -62,19 +68,24 @@ public enum OptionalExample {
     @Override
     public String toString() {
       return "Person{"
-          + "name=" + name + ", address=" + address.get() + ", phone=" + phone + '}';
+          + "name=" + name + ", address=" + address.get()
+          + ", phone=" + phone + '}';
     }
   }
 
   @SuppressWarnings("PMD.DataClass")
   static class Address {
-    public static final Address EMPTY_ADDRESS = new Address("", "", "", 0);
+    public static final Address EMPTY_ADDRESS =
+        new Address("", "", "", 0);
     private final String line1;
     private final String city;
     private final String country;
     private final int zipcode;
 
-    Address(String line1, String city, String country, int zipcode) {
+    Address(String line1,
+            String city,
+            String country,
+            int zipcode) {
       this.line1 = line1;
       this.city = city;
       this.country = country;
@@ -100,7 +111,8 @@ public enum OptionalExample {
     @Override
     public String toString() {
       return "Address{"
-          + "line1=" + line1 + ", city=" + city + ", country=" + country + ", zipcode=" + zipcode
+          + "line1=" + line1 + ", city=" + city
+          + ", country=" + country + ", zipcode=" + zipcode
           + '}';
     }
   }

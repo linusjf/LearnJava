@@ -27,35 +27,50 @@ public class ImageProcessor {
   private static final boolean SAVE_FILE = true;
 
   // ms between requests
-  private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
+  private final CountDownLatch latch =
+      new CountDownLatch(NUMBER_TO_SHOW);
 
   // private ExecutorService executor1 =
   //  Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private final ExecutorService executor1 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS, new NamedThreadFactory("executor1"));
+      Executors.newFixedThreadPool(
+          MAX_CONCURRENT_STREAMS,
+          new NamedThreadFactory("executor1"));
   private final ExecutorService executor2 =
-      Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
-  private final AtomicInteger failureCount = new AtomicInteger(0);
+      Executors.newCachedThreadPool(
+          new NamedThreadFactory("executor2"));
+  private final AtomicInteger failureCount =
+      new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
 
-  private final HttpClient client = HttpClient.newBuilder()
-                                        .executor(executor1)
-                                        .followRedirects(HttpClient.Redirect.NEVER)
-                                        .build();
+  private final HttpClient client =
+      HttpClient.newBuilder()
+          .executor(executor1)
+          .followRedirects(HttpClient.Redirect.NEVER)
+          .build();
 
   public <T> CompletableFuture<T> getAsync(
-      String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
+      String url,
+      HttpResponse.BodyHandler<T> responseBodyHandler) {
     HttpRequest request =
-        HttpRequest.newBuilder().GET().uri(URI.create(url)).timeout(Duration.ofSeconds(30)).build();
+        HttpRequest.newBuilder()
+            .GET()
+            .uri(URI.create(url))
+            .timeout(Duration.ofSeconds(30))
+            .build();
     if (executor2.isShutdown())
-      return client.sendAsync(request, responseBodyHandler).thenApply(HttpResponse::body);
+      return client.sendAsync(request, responseBodyHandler)
+          .thenApply(HttpResponse::body);
     else
       return client.sendAsync(request, responseBodyHandler)
           .thenApplyAsync(HttpResponse::body, executor2);
   }
 
-  public CompletableFuture<ImageInfo> findImageInfo(LocalDate date, ImageInfo info) {
-    return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString())
+  public CompletableFuture<ImageInfo> findImageInfo(
+      LocalDate date,
+      ImageInfo info) {
+    return getAsync(info.getUrlForDate(date),
+                    HttpResponse.BodyHandlers.ofString())
         .thenApply(info::findImage);
   }
 
@@ -64,8 +79,10 @@ public class ImageProcessor {
     System.out.println("Executor 2: " + executor2);
   }
 
-  public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
-    return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray())
+  public CompletableFuture<ImageInfo> findImageData(
+      ImageInfo info) {
+    return getAsync(info.getImagePath(),
+                    HttpResponse.BodyHandlers.ofByteArray())
         .thenApply(info::setImageData);
   }
 
@@ -74,7 +91,8 @@ public class ImageProcessor {
         .thenCompose(this::findImageData)
         .thenAccept(this::process)
         .exceptionally(t -> {
-          System.err.println(info.getUrlForDate(date) + " : " + t);
+          System.err.println(info.getUrlForDate(date)
+                             + " : " + t);
           failureCount.incrementAndGet();
           return null;
         })
@@ -82,7 +100,8 @@ public class ImageProcessor {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  public void loopLoadAll(boolean isDilbert) throws InterruptedException {
+  public void loopLoadAll(boolean isDilbert)
+      throws InterruptedException {
     LocalDate newDate = LocalDate.now();
     for (int i = 0; i < NUMBER_TO_SHOW; i++) {
       ImageInfo info;
@@ -121,20 +140,24 @@ public class ImageProcessor {
     } finally {
       time = System.nanoTime() - time;
       System.out.printf("time = %dms%n", time / 1_000_000);
-      System.out.println(failureCount.get() + " failures downloading");
+      System.out.println(failureCount.get()
+                         + " failures downloading");
     }
   }
 
   public void process(ImageInfo info) {
     latch.countDown();
     if (PRINT_MESSAGE) {
-      System.out.println(
-          "process called by " + Thread.currentThread() + ", date: " + info.getDate());
+      System.out.println("process called by "
+                         + Thread.currentThread()
+                         + ", date: " + info.getDate());
     }
     if (SAVE_FILE)
       try {
         Files.createDirectories(imageDir);
-        Files.write(imageDir.resolve(info.getDate() + ".jpg"), info.getImageData());
+        Files.write(
+            imageDir.resolve(info.getDate() + ".jpg"),
+            info.getImageData());
       } catch (IOException ex) {
         System.err.println(ex);
       }

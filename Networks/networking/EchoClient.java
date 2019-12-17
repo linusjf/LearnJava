@@ -16,41 +16,55 @@ public final class EchoClient {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings(
-      {"PMD.AvoidLiteralsInIfCondition", "PMD.DataflowAnomalyAnalysis", "PMD.DoNotCallSystemExit"})
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.DoNotCallSystemExit"})
   public static void
   main(String[] args) throws IOException {
     if (args.length < 2) {
-      System.err.println("Usage: java EchoClient <host name> <port number>");
+      System.err.println(
+          "Usage: java EchoClient <host name> <port number>");
       System.exit(1);
     }
     String hostName = args[0];
     int portNumber;
     try {
       portNumber = Integer.parseInt(args[1]);
-      System.out.printf("Connecting to port %d%n", portNumber);
+      System.out.printf("Connecting to port %d%n",
+                        portNumber);
     } catch (NumberFormatException nfe) {
       portNumber = ECHO_PORT;
-      System.err.printf("Error parsing input. Connecting to port %d%n", portNumber);
+      System.err.printf(
+          "Error parsing input. Connecting to port %d%n",
+          portNumber);
     }
-    try (Socket echoSocket = new Socket(hostName, portNumber);
+    try (Socket echoSocket =
+             new Socket(hostName, portNumber);
          PrintWriter out = new PrintWriter(
-             new OutputStreamWriter(echoSocket.getOutputStream(), StandardCharsets.UTF_8.name()),
+             new OutputStreamWriter(
+                 echoSocket.getOutputStream(),
+                 StandardCharsets.UTF_8.name()),
              true);
-         BufferedReader in = new BufferedReader(
-             new InputStreamReader(echoSocket.getInputStream(), StandardCharsets.UTF_8.name()));
+         BufferedReader in =
+             new BufferedReader(new InputStreamReader(
+                 echoSocket.getInputStream(),
+                 StandardCharsets.UTF_8.name()));
          BufferedReader stdIn =
-             new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8.name()))) {
+             new BufferedReader(new InputStreamReader(
+                 System.in,
+                 StandardCharsets.UTF_8.name()))) {
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         out.println(userInput);
         System.out.println("echo: " + in.readLine());
       }
     } catch (UnknownHostException e) {
-      System.err.println("Don't know about host " + hostName);
+      System.err.println("Don't know about host "
+                         + hostName);
     } catch (IOException e) {
       System.err.println(
-          "Couldn't get I/O for the connection to " + hostName + ": " + e.getMessage());
+          "Couldn't get I/O for the connection to "
+          + hostName + ": " + e.getMessage());
     }
   }
 }

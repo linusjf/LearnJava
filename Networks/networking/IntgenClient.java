@@ -16,12 +16,14 @@ public final class IntgenClient {
 
   public static void main(String[] args) {
     if (args.length == 0) {
-      System.out.println("Usage: java IntgenClient host [port]");
+      System.out.println(
+          "Usage: java IntgenClient host [port]");
       return;
     }
     int port = getPort(args);
     try {
-      SocketAddress address = new InetSocketAddress(args[0], port);
+      SocketAddress address =
+          new InetSocketAddress(args[0], port);
       SocketChannel client = SocketChannel.open(address);
       ByteBuffer buffer = ByteBuffer.allocate(4);
       IntBuffer view = buffer.asIntBuffer();
@@ -32,7 +34,9 @@ public final class IntgenClient {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void printInts(ByteBuffer buffer, IntBuffer view, SocketChannel client)
+  private static void printInts(ByteBuffer buffer,
+                                IntBuffer view,
+                                SocketChannel client)
       throws IOException {
     for (int expected = 0;; expected++) {
       client.read(buffer);
@@ -40,7 +44,8 @@ public final class IntgenClient {
       buffer.clear();
       view.rewind();
       if (actual != expected) {
-        System.err.println("Expected " + expected + "; was " + actual);
+        System.err.println("Expected " + expected + "; was "
+                           + actual);
         break;
       }
       System.out.println(actual);
@@ -50,7 +55,8 @@ public final class IntgenClient {
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[1]);
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+    } catch (NumberFormatException
+             | ArrayIndexOutOfBoundsException ex) {
       return DEFAULT_PORT;
     }
   }

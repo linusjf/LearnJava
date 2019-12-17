@@ -15,7 +15,8 @@ public class Foo {
 
   public void method(Foo this, String... args) {
     System.out.println(this.i);
-    for (String arg : args) System.out.println(arg);
+    for (String arg: args)
+      System.out.println(arg);
   }
 
   public static void main(String... args) {
@@ -27,7 +28,8 @@ public class Foo {
   }
 }
 
-@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
+@SuppressWarnings(
+    {"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
 class Bar extends Foo {
   Bar(int i) {
     super(i);

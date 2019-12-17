@@ -8,7 +8,8 @@ public class NonAnonymousReceiver {
     return new AbstractEmptyIterator() {};
   }
 
-  abstract class AbstractEmptyIterator implements Iterator<String> {
+  abstract class AbstractEmptyIterator
+      implements Iterator<String> {
     @Override
     public boolean hasNext(AbstractEmptyIterator this) {
       return false;

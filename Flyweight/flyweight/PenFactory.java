@@ -9,8 +9,9 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class PenFactory { // NOPMD
-  private static final Map<String, Pen> PENSMAP = new HashMap<>();
+public final class PenFactory {  // NOPMD
+  private static final Map<String, Pen> PENSMAP =
+      new HashMap<>();
 
   private PenFactory() {
     throw new IllegalStateException("Private constructor");

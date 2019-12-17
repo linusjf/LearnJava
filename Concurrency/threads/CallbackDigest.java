@@ -19,16 +19,20 @@ public class CallbackDigest implements Runnable {
   @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
-      InputStream in = Files.newInputStream(Paths.get(filename));
-      MessageDigest sha = MessageDigest.getInstance("SHA-256");
-      DigestInputStream din = new DigestInputStream(in, sha);
+      InputStream in =
+          Files.newInputStream(Paths.get(filename));
+      MessageDigest sha =
+          MessageDigest.getInstance("SHA-256");
+      DigestInputStream din =
+          new DigestInputStream(in, sha);
 
       // read entire file
       while (din.read() != -1)
         ;
       din.close();
       byte[] digest = sha.digest();
-      CallbackDigestUserInterface.receiveDigest(digest, filename);
+      CallbackDigestUserInterface.receiveDigest(digest,
+                                                filename);
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }

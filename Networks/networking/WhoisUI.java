@@ -14,7 +14,8 @@ public class WhoisUI {
   private String searchIn;
 
   public void inputWhoisFields(String... args) {
-    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    Scanner scanner = new Scanner(
+        System.in, StandardCharsets.UTF_8.name());
     inputWhois(scanner);
     inputExactMatch(scanner);
     inputSearchFor(scanner);
@@ -23,7 +24,8 @@ public class WhoisUI {
   }
 
   private void inputWhois(Scanner scanner) {
-    System.out.println("Enter entity name for whois record: ");
+    System.out.println(
+        "Enter entity name for whois record: ");
     if (scanner.hasNext())
       whois = scanner.next().trim();
   }
@@ -43,7 +45,8 @@ public class WhoisUI {
   }
 
   private void inputSearchAt(Scanner scanner) {
-    System.out.println("Enter name of registry server to search at: ");
+    System.out.println(
+        "Enter name of registry server to search at: ");
     if (scanner.hasNext())
       searchAt = scanner.next().trim();
   }
@@ -74,13 +77,21 @@ public class WhoisUI {
       ui.inputWhoisFields(args);
       Whois server = new Whois(ui.searchAt);
       if (ui.exactMatch)
-        server.lookUpNamesExactMatch(ui.whois,
-            Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
-            Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())));
+        server.lookUpNamesExactMatch(
+            ui.whois,
+            Whois.SearchFor.valueOf(
+                ui.searchFor.toUpperCase(
+                    Locale.getDefault())),
+            Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(
+                Locale.getDefault())));
       else
-        server.lookUpNames(ui.whois,
-            Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
-            Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())));
+        server.lookUpNames(
+            ui.whois,
+            Whois.SearchFor.valueOf(
+                ui.searchFor.toUpperCase(
+                    Locale.getDefault())),
+            Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(
+                Locale.getDefault())));
     } catch (IOException e) {
       System.err.println(e.getMessage());
     }

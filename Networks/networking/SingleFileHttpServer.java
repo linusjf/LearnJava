@@ -20,53 +20,71 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SingleFileHttpServer {
-  private static final Logger LOGGER = Logger.getLogger("SingleFileHTTPServer");
+  private static final Logger LOGGER =
+      Logger.getLogger("SingleFileHTTPServer");
 
   private final byte[] content;
   private final byte[] header;
   private final int port;
   private final String encoding;
 
-  public SingleFileHttpServer(String data, String encoding, String mimeType, int port)
+  public SingleFileHttpServer(String data,
+                              String encoding,
+                              String mimeType,
+                              int port)
       throws UnsupportedEncodingException {
     this(data.getBytes(encoding), encoding, mimeType, port);
   }
 
-  public SingleFileHttpServer(byte[] data, String encoding, String mimeType, int port) {
+  public SingleFileHttpServer(byte[] data,
+                              String encoding,
+                              String mimeType,
+                              int port) {
     this.content = data.clone();
     this.port = port;
     this.encoding = encoding;
-    String headerString = "HTTP/1.0 200 OK\r\n"
+    String headerString =
+        "HTTP/1.0 200 OK\r\n"
         + "Server: OneFile 2.0\r\n"
         + "Content-length: " + this.content.length + "\r\n"
-        + "Content-type: " + mimeType + "; charset=" + encoding + "\r\n\r\n";
-    this.header = headerString.getBytes(Charset.forName("US-ASCII"));
+        + "Content-type: " + mimeType
+        + "; charset=" + encoding + "\r\n\r\n";
+    this.header =
+        headerString.getBytes(Charset.forName("US-ASCII"));
   }
 
-  private void acceptAndSubmit(ExecutorService pool, ServerSocket server) {
+  private void acceptAndSubmit(ExecutorService pool,
+                               ServerSocket server) {
     while (true) {
       try {
         Socket connection = server.accept();
         pool.submit(new HttpHandler(connection));
       } catch (IOException ex) {
         if (LOGGER.isLoggable(Level.WARNING))
-          LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
+          LOGGER.log(Level.WARNING,
+                     "Exception accepting connection",
+                     ex);
       }
     }
   }
 
   public void start() {
-    try (ServerSocket server = new ServerSocket(this.port)) {
+    try (ServerSocket server =
+             new ServerSocket(this.port)) {
       if (LOGGER.isLoggable(Level.INFO)) {
-        LOGGER.info("Accepting connections on port " + server.getLocalPort());
+        LOGGER.info("Accepting connections on port "
+                    + server.getLocalPort());
         LOGGER.info("Data to be sent:");
         LOGGER.info(new String(this.content, encoding));
       }
-      ExecutorService pool = Executors.newFixedThreadPool(100);
+      ExecutorService pool =
+          Executors.newFixedThreadPool(100);
       acceptAndSubmit(pool, server);
     } catch (IOException ex) {
       if (LOGGER.isLoggable(Level.WARNING))
-        LOGGER.log(Level.WARNING, "Exception accepting connection", ex);
+        LOGGER.log(Level.WARNING,
+                   "Exception accepting connection",
+                   ex);
     }
   }
 
@@ -99,11 +117,16 @@ public class SingleFileHttpServer {
     try {
       Path path = Paths.get(args[0]);
       byte[] data = Files.readAllBytes(path);
-      String contentType = URLConnection.getFileNameMap().getContentTypeFor(args[0]);
-      SingleFileHttpServer server = new SingleFileHttpServer(data, encoding, contentType, port);
+      String contentType =
+          URLConnection.getFileNameMap().getContentTypeFor(
+              args[0]);
+      SingleFileHttpServer server =
+          new SingleFileHttpServer(
+              data, encoding, contentType, port);
       server.start();
     } catch (ArrayIndexOutOfBoundsException ex) {
-      System.out.println("Usage: java SingleFileHttpServer filename port encoding");
+      System.out.println(
+          "Usage: java SingleFileHttpServer filename port encoding");
     } catch (IOException ex) {
       if (LOGGER.isLoggable(Level.SEVERE))
         LOGGER.severe(ex.getMessage());
@@ -119,15 +142,17 @@ public class SingleFileHttpServer {
 
     @Override
     public Void call() throws IOException {
-      try (OutputStream out = new BufferedOutputStream(connection.getOutputStream());
-           InputStream in = new BufferedInputStream(connection.getInputStream());) {
+      try (OutputStream out = new BufferedOutputStream(
+               connection.getOutputStream());
+           InputStream in = new BufferedInputStream(
+               connection.getInputStream());) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
           int c = in.read();
           if (c == '\r' || c == '\n' || c == -1)
             break;
-          request.append((char) c);
+          request.append((char)c);
         }
 
         // If this is HTTP/1.0 or later send a MIME header
@@ -138,7 +163,8 @@ public class SingleFileHttpServer {
         out.flush();
       } catch (IOException ex) {
         if (LOGGER.isLoggable(Level.WARNING))
-          LOGGER.log(Level.WARNING, "Error writing to client", ex);
+          LOGGER.log(
+              Level.WARNING, "Error writing to client", ex);
       } finally {
         connection.close();
       }

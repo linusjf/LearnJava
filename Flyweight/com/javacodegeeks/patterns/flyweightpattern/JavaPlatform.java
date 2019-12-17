@@ -14,6 +14,7 @@ public class JavaPlatform implements Platform {
 
   @Override
   public void execute(Code code) {
-    System.out.println("Compiling and executing Java code.");
+    System.out.println(
+        "Compiling and executing Java code.");
   }
 }

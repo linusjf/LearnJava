@@ -17,18 +17,21 @@ public final class HelloClient {
   public static void main(String[] args) {
     try {
       if (System.getSecurityManager() == null)
-        System.setSecurityManager(new ZeroSecurityManager());
+        System.setSecurityManager(
+            new ZeroSecurityManager());
 
       // Obtain a reference to the object from the
       // registry and typecast it into the appropriate
       // type…
-      Hello greeting = (Hello) Naming.lookup("rmi://" + HOST + "/Hello");
+      Hello greeting =
+          (Hello)Naming.lookup("rmi://" + HOST + "/Hello");
       printGreeting(greeting);
     } catch (ConnectException conEx) {
       System.out.println("Unable to connect to server!");
       System.exit(1);
     } catch (NotBoundException nbEx) {
-      System.out.println("Unable to bind to naming server!");
+      System.out.println(
+          "Unable to bind to naming server!");
       System.exit(1);
     } catch (RemoteException rme) {
       System.err.println(rme);
@@ -39,9 +42,11 @@ public final class HelloClient {
     }
   }
 
-  private static void printGreeting(Hello greeting) throws RemoteException {
+  private static void printGreeting(Hello greeting)
+      throws RemoteException {
     // Use the above reference to invoke the remote
     // object's method…
-    System.out.println("Message received: " + greeting.getGreeting());
+    System.out.println("Message received: "
+                       + greeting.getGreeting());
   }
 }

@@ -4,7 +4,8 @@ public enum Creator {
   ;
 
   public static void main(String[] args) {
-    for (int i = 0; i < 100; i++) new Creature();
+    for (int i = 0; i < 100; i++)
+      new Creature();
     System.out.println(Creature.getNumCreated());
   }
 }

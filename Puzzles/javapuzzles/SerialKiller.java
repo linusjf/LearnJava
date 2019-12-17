@@ -15,16 +15,18 @@ public enum SerialKiller {
   public static void main(String[] args) {
     Sub sub = new Sub(666);
     sub.checkInvariant();
-    Sub copy = (Sub) deepCopy(sub);
+    Sub copy = (Sub)deepCopy(sub);
     copy.checkInvariant();
   }
 
   // Copies its argument via serialization (See Puzzle 83)
   public static Object deepCopy(Object obj) {
     try {
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      ByteArrayOutputStream bos =
+          new ByteArrayOutputStream();
       new ObjectOutputStream(bos).writeObject(obj);
-      ByteArrayInputStream bin = new ByteArrayInputStream(bos.toByteArray());
+      ByteArrayInputStream bin =
+          new ByteArrayInputStream(bos.toByteArray());
       return new ObjectInputStream(bin).readObject();
     } catch (IOException | ClassNotFoundException e) {
       throw new IllegalArgumentException(e);
@@ -39,7 +41,8 @@ class Super implements Serializable {
   final Set<Super> set = new HashSet<>();
 }
 
-@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
+@SuppressWarnings(
+    {"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
 final class Sub extends Super {
   private static final long serialVersionUID = 1L;
   private final int id;
@@ -63,6 +66,6 @@ final class Sub extends Super {
 
   @Override
   public boolean equals(Object o) {
-    return o instanceof Sub && id == ((Sub) o).id;
+    return o instanceof Sub && id == ((Sub)o).id;
   }
 }

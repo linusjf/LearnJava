@@ -50,7 +50,7 @@ public class Producer implements Runnable {
         "A kid will eat ivy too",
     };
 
-    for (String info : importantInfo) {
+    for (String info: importantInfo) {
       drop.put(info);
       try {
         Thread.sleep(random.nextInt(5000));

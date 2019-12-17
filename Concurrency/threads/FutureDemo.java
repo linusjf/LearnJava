@@ -16,11 +16,13 @@ import java.util.logging.Logger;
  */
 public enum FutureDemo {
   ;
-  private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(3);
+  private static final ExecutorService THREAD_POOL =
+      Executors.newFixedThreadPool(3);
 
   public static void main(String[] args) {
     try {
-      FactorialCalculator task = new FactorialCalculator(10);
+      FactorialCalculator task =
+          new FactorialCalculator(10);
       System.out.println("Submitting Task ...");
 
       Future<Long> future = THREAD_POOL.submit(task);
@@ -33,9 +35,11 @@ public enum FutureDemo {
         // sleep for 1 millisecond before checking again
       }
 
-      System.out.println("Task is completed, let's check result");
+      System.out.println(
+          "Task is completed, let's check result");
       long factorial = future.get();
-      System.out.println("Factorial of 10 is : " + factorial);
+      System.out.println("Factorial of 10 is : "
+                         + factorial);
 
       THREAD_POOL.shutdown();
     } catch (InterruptedException | ExecutionException e) {
@@ -43,7 +47,8 @@ public enum FutureDemo {
     }
   }
 
-  private static class FactorialCalculator implements Callable<Long> {
+  private static class FactorialCalculator
+      implements Callable<Long> {
     private final int number;
 
     FactorialCalculator(int number) {
@@ -55,15 +60,18 @@ public enum FutureDemo {
       try {
         return factorial(number);
       } catch (InterruptedException ex) {
-        Logger.getLogger(FutureDemo.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FutureDemo.class.getName())
+            .log(Level.SEVERE, null, ex);
       }
       return 0L;
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
-    private long factorial(int number) throws InterruptedException {
+    private long factorial(int number)
+        throws InterruptedException {
       if (number < 0) {
-        throw new IllegalArgumentException("Number must be greater than zero");
+        throw new IllegalArgumentException(
+            "Number must be greater than zero");
       }
       int num = number;
       long result = 1;

@@ -1,42 +1,32 @@
 package cstests;
 
 /**
- * * This class lists the varied combinations where the line
- * separator denoted by \n is to be replaced by either a
- * call to System.lineSeparator(), %n in a
- * System.out.printf() or
+ * * This class lists the varied combinations where the line separator denoted by \n is to be
+ * replaced by either a call to System.lineSeparator(), %n in a System.out.printf() or
  * System.getProperty("line.separator").
  *
- * <p>The same rule should apply to \r\n as well, if
- * specified. \n and \r\n must not be flagged in this
- * comment block. *
+ * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
+ * this comment block. *
  */
 @SuppressWarnings({"PMD", "checkstyle:magicnumber"})
 public final class TestPlatformDependentLineSeparator {
   /**
-   * * This class lists the varied combinations where the
-   * line separator denoted by \n is to be replaced by
-   * either a call to System.lineSeparator(), %n in a
-   * System.out.printf() or
+   * * This class lists the varied combinations where the line separator denoted by \n is to be
+   * replaced by either a call to System.lineSeparator(), %n in a System.out.printf() or
    * System.getProperty("line.separator").
    *
-   * <p>The same rule should apply to \r\n as well, if
-   * specified. \n and \r\n must not be flagged in this
-   * comment block either. *
+   * <p>The same rule should apply to \r\n as well, if specified. \n and \r\n must not be flagged in
+   * this comment block either. *
    */
   // test if \n is flagged here. It shouldn't.
   // test if \r\n is flagged here. It shouldn't.
-  private static String testString =
-      "\nTest to catch line separator\n";
+  private static String testString = "\nTest to catch line separator\n";
 
-  private static String testString2 =
-      "\r\nTest to catch line separator\r\n";
+  private static String testString2 = "\r\nTest to catch line separator\r\n";
 
-  private static String testString3 =
-      "\\nTest to escape line separator\\n";
+  private static String testString3 = "\\nTest to escape line separator\\n";
 
-  private static String testString4 =
-      "\\r\\nTest to escape line separator\\r\\n";
+  private static String testString4 = "\\r\\nTest to escape line separator\\r\\n";
 
   // this must be flagged
   private static final String CRLF = "/r/n";

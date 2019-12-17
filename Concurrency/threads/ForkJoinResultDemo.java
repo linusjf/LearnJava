@@ -16,17 +16,25 @@ public enum ForkJoinResultDemo {
 
   public static void main(String[] args) {
     DocumentMock mock = new DocumentMock();
-    String[][] document = mock.generateDocument(100, 1000, WORD);
-    DocumentTask task = new DocumentTask(document, 0, 100, WORD);
+    String[][] document =
+        mock.generateDocument(100, 1000, WORD);
+    DocumentTask task =
+        new DocumentTask(document, 0, 100, WORD);
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(task);
     do {
-      System.out.printf("******************************************%n");
-      System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d%n", pool.getActiveThreadCount());
-      System.out.printf("Main: Task Count: %d%n", pool.getQueuedTaskCount());
-      System.out.printf("Main: Steal Count: %d%n", pool.getStealCount());
-      System.out.printf("******************************************%n");
+      System.out.printf(
+          "******************************************%n");
+      System.out.printf("Main: Parallelism: %d%n",
+                        pool.getParallelism());
+      System.out.printf("Main: Active Threads: %d%n",
+                        pool.getActiveThreadCount());
+      System.out.printf("Main: Task Count: %d%n",
+                        pool.getQueuedTaskCount());
+      System.out.printf("Main: Steal Count: %d%n",
+                        pool.getStealCount());
+      System.out.printf(
+          "******************************************%n");
       try {
         TimeUnit.SECONDS.sleep(1);
       } catch (InterruptedException e) {
@@ -41,7 +49,9 @@ public enum ForkJoinResultDemo {
     }
     try {
       System.out.printf(
-          "Main: The word '" + WORD + "' appears %d times in the document.", task.get());
+          "Main: The word '" + WORD
+              + "' appears %d times in the document.",
+          task.get());
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
@@ -61,8 +71,11 @@ public enum ForkJoinResultDemo {
         "main",
     };
 
-    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis"})
-    public String[][] generateDocument(int numLines, int numWords, String word) {
+    @SuppressWarnings({"PMD.AvoidArrayLoops",
+                       "PMD.DataflowAnomalyAnalysis"})
+    public String[][] generateDocument(int numLines,
+                                       int numWords,
+                                       String word) {
       int counter = 0;
       String[][] document = new String[numLines][numWords];
       Random random = new Random();
@@ -76,8 +89,9 @@ public enum ForkJoinResultDemo {
           }
         }
       }
-      System.out.println(
-          "DocumentMock: The word '" + word + "' appears " + counter + " times in the document");
+      System.out.println("DocumentMock: The word '" + word
+                         + "' appears " + counter
+                         + " times in the document");
       return document;
     }
   }
@@ -90,7 +104,10 @@ public enum ForkJoinResultDemo {
     private final String word;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-    DocumentTask(String[][] document, int start, int end, String word) {
+    DocumentTask(String[][] document,
+                 int start,
+                 int end,
+                 String word) {
       super();
       this.document = document;
       this.start = start;
@@ -106,12 +123,15 @@ public enum ForkJoinResultDemo {
         result = processLines(document, start, end, word);
       else {
         int mid = (start + end) / 2;
-        DocumentTask task1 = new DocumentTask(document, start, mid, word);
-        DocumentTask task2 = new DocumentTask(document, mid, end, word);
+        DocumentTask task1 =
+            new DocumentTask(document, start, mid, word);
+        DocumentTask task2 =
+            new DocumentTask(document, mid, end, word);
         invokeAll(task1, task2);
         try {
           result = groupResults(task1.get(), task2.get());
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException
+                 | ExecutionException e) {
           System.err.println(e);
         }
       }
@@ -119,25 +139,31 @@ public enum ForkJoinResultDemo {
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
-    private Integer processLines(String[][] doc, int start, int end, String word) {
+    private Integer processLines(String[][] doc,
+                                 int start,
+                                 int end,
+                                 String word) {
       List<LineTask> tasks = new ArrayList<>();
       for (int i = start; i < end; i++) {
-        LineTask task = new LineTask(doc[i], 0, doc[i].length, word);
+        LineTask task =
+            new LineTask(doc[i], 0, doc[i].length, word);
         tasks.add(task);
       }
       invokeAll(tasks);
       int result = 0;
-      for (LineTask task : tasks) {
+      for (LineTask task: tasks) {
         try {
           result = result + task.get();
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException
+                 | ExecutionException e) {
           System.err.println(e);
         }
       }
       return Integer.valueOf(result);
     }
 
-    private Integer groupResults(Integer number1, Integer number2) {
+    private Integer groupResults(Integer number1,
+                                 Integer number2) {
       return number1 + number2;
     }
   }
@@ -150,7 +176,10 @@ public enum ForkJoinResultDemo {
     private final String word;
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-    LineTask(String[] line, int start, int end, String word) {
+    LineTask(String[] line,
+             int start,
+             int end,
+             String word) {
       super();
       this.line = line;
       this.start = start;
@@ -167,19 +196,24 @@ public enum ForkJoinResultDemo {
           result = count(line, start, end, word);
         } else {
           int mid = (start + end) / 2;
-          LineTask task1 = new LineTask(line, start, mid, word);
-          LineTask task2 = new LineTask(line, mid, end, word);
+          LineTask task1 =
+              new LineTask(line, start, mid, word);
+          LineTask task2 =
+              new LineTask(line, mid, end, word);
           invokeAll(task1, task2);
           result = groupResults(task1.get(), task2.get());
         }
-      } catch (InterruptedException | ExecutionException e) {
+      } catch (InterruptedException
+               | ExecutionException e) {
         System.err.println(e);
       }
       return result;
     }
 
-    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis"})
-    private Integer count(String[] line, int start, int end, String word) {
+    @SuppressWarnings({"checkstyle:hiddenfield",
+                       "PMD.DataflowAnomalyAnalysis"})
+    private Integer
+    count(String[] line, int start, int end, String word) {
       int counter = 0;
       for (int i = start; i < end; i++) {
         if (line[i].equals(word))
@@ -193,7 +227,8 @@ public enum ForkJoinResultDemo {
       return counter;
     }
 
-    private Integer groupResults(Integer number1, Integer number2) {
+    private Integer groupResults(Integer number1,
+                                 Integer number2) {
       return number1 + number2;
     }
   }

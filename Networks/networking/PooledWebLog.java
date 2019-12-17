@@ -19,12 +19,16 @@ public final class PooledWebLog {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void main(String[] args) throws IOException {
-    ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
+  public static void main(String[] args)
+      throws IOException {
+    ExecutorService executor =
+        Executors.newFixedThreadPool(NUM_THREADS);
     Queue<LogEntry> results = new LinkedList<>();
-    try (BufferedReader in =
-             Files.newBufferedReader(Paths.get(args[0]), Charset.forName("UTF-8"));) {
-      for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
+    try (BufferedReader in = Files.newBufferedReader(
+             Paths.get(args[0]),
+             Charset.forName("UTF-8"));) {
+      for (String entry = in.readLine(); entry != null;
+           entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);
         LogEntry result = new LogEntry(entry, future);
@@ -33,10 +37,11 @@ public final class PooledWebLog {
     }
 
     // Start printing the results. This blocks each time a result isn't ready.
-    for (LogEntry result : results) {
+    for (LogEntry result: results) {
       try {
         System.out.println(result.future.get());
-      } catch (InterruptedException | ExecutionException ex) {
+      } catch (InterruptedException
+               | ExecutionException ex) {
         System.out.println(result.original);
       }
     }

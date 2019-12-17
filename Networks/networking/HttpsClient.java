@@ -25,7 +25,8 @@ public final class HttpsClient {
 
     // default https port
     String host = args[0];
-    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+    SSLSocketFactory factory =
+        (SSLSocketFactory)SSLSocketFactory.getDefault();
     connect(host, factory);
   }
 
@@ -42,12 +43,16 @@ public final class HttpsClient {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void connect(String host, SSLSocketFactory factory) {
-    try (SSLSocket socket = (SSLSocket) factory.createSocket(host, PORT)) {
+  private static void connect(String host,
+                              SSLSocketFactory factory) {
+    try (SSLSocket socket =
+             (SSLSocket)factory.createSocket(host, PORT)) {
       // enable all the suites
-      String[] supported = socket.getSupportedCipherSuites();
+      String[] supported =
+          socket.getSupportedCipherSuites();
       socket.setEnabledCipherSuites(supported);
-      Writer out = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
+      Writer out = new OutputStreamWriter(
+          socket.getOutputStream(), "UTF-8");
 
       // https requires the full URL in the GET line
       out.write("GET http://" + host + "/ HTTP/1.1\r\n");
@@ -56,8 +61,10 @@ public final class HttpsClient {
       out.flush();
 
       // read response
-      BufferedReader in = new BufferedReader(
-          new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8.name()));
+      BufferedReader in =
+          new BufferedReader(new InputStreamReader(
+              socket.getInputStream(),
+              StandardCharsets.UTF_8.name()));
 
       // read the header
       String s = in.readLine();

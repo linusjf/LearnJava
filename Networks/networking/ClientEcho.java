@@ -24,25 +24,34 @@ public final class ClientEcho {
         System.out.printf("Using %d.%n", args[1], port);
       } catch (NumberFormatException nfe) {
         port = PORT;
-        System.err.printf("Invalid input %s for port. Using %d.%n", args[1], port);
+        System.err.printf(
+            "Invalid input %s for port. Using %d.%n",
+            args[1],
+            port);
       }
     }
     try {
       InetAddress add = InetAddress.getByName("localhost");
       DatagramSocket dsock = new DatagramSocket();
       BufferedReader stdIn =
-          new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8.name()));
+          new BufferedReader(new InputStreamReader(
+              System.in, StandardCharsets.UTF_8.name()));
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
-        byte[] arr = userInput.getBytes(StandardCharsets.UTF_8);
-        DatagramPacket dpack = new DatagramPacket(arr, arr.length, add, port);
+        byte[] arr =
+            userInput.getBytes(StandardCharsets.UTF_8);
+        DatagramPacket dpack =
+            new DatagramPacket(arr, arr.length, add, port);
         dsock.send(dpack);
 
         // send the packet
         dsock.receive(dpack);
 
         // receive the packet
-        System.out.println("echo: " + new String(dpack.getData(), StandardCharsets.UTF_8));
+        System.out.println(
+            "echo: "
+            + new String(dpack.getData(),
+                         StandardCharsets.UTF_8));
       }
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());

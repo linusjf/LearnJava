@@ -5,7 +5,11 @@ public enum Loop {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    int[][] tests = {{6, 5, 4, 3, 2, 1}, {1, 2}, {1, 2, 3}, {1, 2, 3, 4}, {1}};
+    int[][] tests = {{6, 5, 4, 3, 2, 1},
+                     {1, 2},
+                     {1, 2, 3},
+                     {1, 2, 3, 4},
+                     {1}};
     int successCount = 0;
     try {
       int i = 0;
@@ -28,9 +32,13 @@ public enum Loop {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void altMain(String... args) {
-    int[][] tests = {{6, 5, 4, 3, 2, 1}, {1, 2}, {1, 2, 3}, {1, 2, 3, 4}, {1}};
+    int[][] tests = {{6, 5, 4, 3, 2, 1},
+                     {1, 2},
+                     {1, 2, 3},
+                     {1, 2, 3, 4},
+                     {1}};
     int successCount = 0;
-    for (int[] test : tests)
+    for (int[] test: tests)
       if (thirdElementIsThree(test))
         successCount++;
     System.out.println(successCount);

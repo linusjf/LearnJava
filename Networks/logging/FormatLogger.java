@@ -34,7 +34,9 @@ public final class FormatLogger {
     log(Level.WARNING, formatter, args);
   }
 
-  public void log(Level level, String formatter, Object... args) {
+  public void log(Level level,
+                  String formatter,
+                  Object... args) {
     if (logger.isLoggable(level)) {
       /*
        * Only now is the message constructed, and each "arg"

@@ -8,15 +8,20 @@ import org.junit.Test;
 public class ConcurrencyTestTwoWrites {
   // Not thread safe address since the write is not guarded by a synchronized
   // block
-  private final AddressUsingCopyOnWriteWithoutSynchronized address =
-      new AddressUsingCopyOnWriteWithoutSynchronized("E. Bonanza St.", "South Park", "456 77 99");
+  private final AddressUsingCopyOnWriteWithoutSynchronized
+      address =
+          new AddressUsingCopyOnWriteWithoutSynchronized(
+              "E. Bonanza St.",
+              "South Park",
+              "456 77 99");
 
   // Thread safe, the write is guarded by a synchronized block
   // private final AddressUsingCopyOnWrite address = new
   // AddressUsingCopyOnWrite("E. Bonanza St." , "South Park" , "456 77 99");
   @Interleave(ConcurrencyTestTwoWrites.class)
   private void updatePostalAddress() {
-    address.updatePostalAddress("Evergreen Terrace", "Springfield");
+    address.updatePostalAddress("Evergreen Terrace",
+                                "Springfield");
   }
 
   @Interleave(ConcurrencyTestTwoWrites.class)
@@ -43,7 +48,9 @@ public class ConcurrencyTestTwoWrites {
     second.start();
     first.join();
     second.join();
-    assertEquals("The two address strings don't match",
-        "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222", address.toString());
+    assertEquals(
+        "The two address strings don't match",
+        "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222",
+        address.toString());
   }
 }

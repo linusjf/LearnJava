@@ -26,7 +26,8 @@ public enum ThreadLocalExample {
   }
 
   public static class MyRunnable implements Runnable {
-    private final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private final ThreadLocal<Integer> threadLocal =
+        new ThreadLocal<>();
     private final Random random = new Random();
 
     @Override

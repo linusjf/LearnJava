@@ -25,9 +25,11 @@ public enum EmailClient {
       System.out.println("Host ID not found!");
       System.exit(1);
     }
-    userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    userEntry = new Scanner(System.in,
+                            StandardCharsets.UTF_8.name());
     while (!"Dave".equals(name) && !"Karen".equals(name)) {
-      System.out.print("\nEnter name ('Dave' or 'Karen'): ");
+      System.out.print(
+          "\nEnter name ('Dave' or 'Karen'): ");
       name = userEntry.nextLine();
     }
     talkToServer();
@@ -37,12 +39,17 @@ public enum EmailClient {
     String option = "y";
     while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT);
-           Scanner networkInput = new Scanner(link.getInputStream(), StandardCharsets.UTF_8.name());
+           Scanner networkInput =
+               new Scanner(link.getInputStream(),
+                           StandardCharsets.UTF_8.name());
            PrintWriter networkOutput = new PrintWriter(
-               new OutputStreamWriter(link.getOutputStream(), StandardCharsets.UTF_8.name()),
+               new OutputStreamWriter(
+                   link.getOutputStream(),
+                   StandardCharsets.UTF_8.name()),
                true);) {
         String response = "";
-        while (!"read".equals(response) && !"send".equals(response)) {
+        while (!"read".equals(response)
+               && !"send".equals(response)) {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
         }
@@ -50,7 +57,8 @@ public enum EmailClient {
           doRead(networkInput, networkOutput);
         else
           doSend(networkOutput);
-        System.out.print("\nDo you wish to send or read another (y/n): ");
+        System.out.print(
+            "\nDo you wish to send or read another (y/n): ");
         option = userEntry.nextLine();
       } catch (IOException ioe) {
         System.err.println(ioe);
@@ -66,7 +74,8 @@ public enum EmailClient {
     networkOutput.println(message);
   }
 
-  private static void doRead(Scanner networkInput, PrintWriter networkOutput) {
+  private static void doRead(Scanner networkInput,
+                             PrintWriter networkOutput) {
     networkOutput.println(name);
     networkOutput.println("read");
     if (networkInput.hasNext()) {

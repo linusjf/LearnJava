@@ -34,7 +34,8 @@ public final class SecureOrderTaker {
   public static void main(String[] args) {
     try {
       // The reference implementation only supports X.509 keys
-      KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+      KeyManagerFactory kmf =
+          KeyManagerFactory.getInstance("SunX509");
 
       // Oracle's default kind of key store
       KeyStore ks = KeyStore.getInstance("JKS");
@@ -45,19 +46,24 @@ public final class SecureOrderTaker {
       // so it can be wiped from memory quickly rather than
       // waiting for a garbage collector.
       char[] password = "2andnotafnord".toCharArray();
-      ks.load(Files.newInputStream(Paths.get("jnp4e.keys")), password);
+      ks.load(Files.newInputStream(Paths.get("jnp4e.keys")),
+              password);
       kmf.init(ks, password);
-      SSLContext context = SSLContext.getInstance(ALGORITHM);
+      SSLContext context =
+          SSLContext.getInstance(ALGORITHM);
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
-      SSLServerSocketFactory factory = context.getServerSocketFactory();
-      SSLServerSocket server = (SSLServerSocket) factory.createServerSocket(PORT);
+      SSLServerSocketFactory factory =
+          context.getServerSocketFactory();
+      SSLServerSocket server =
+          (SSLServerSocket)factory.createServerSocket(PORT);
 
       // add anonymous (non-authenticated) cipher suites
       // CPD-ON
-      String[] supported = server.getSupportedCipherSuites();
+      String[] supported =
+          server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
-      for (String instance : supported) {
+      for (String instance: supported) {
         if (instance.contains("_anon_"))
           anonCiphers.add(instance);
       }
@@ -77,7 +83,8 @@ public final class SecureOrderTaker {
         try (Socket theConnection = server.accept()) {
           System.out.println("Connection accepted");
           InputStream in = theConnection.getInputStream();
-          InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8.name());
+          InputStreamReader isr = new InputStreamReader(
+              in, StandardCharsets.UTF_8.name());
           BufferedReader br = new BufferedReader(isr);
           String msg = br.readLine();
           System.out.println("Message received: " + msg);
@@ -85,8 +92,10 @@ public final class SecureOrderTaker {
           System.err.println(ex.getMessage());
         }
       }
-    } catch (IOException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException
-        | CertificateException | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException
+             | KeyStoreException | NoSuchAlgorithmException
+             | CertificateException
+             | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

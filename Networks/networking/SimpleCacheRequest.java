@@ -6,7 +6,8 @@ import java.io.OutputStream;
 import java.net.CacheRequest;
 
 public class SimpleCacheRequest extends CacheRequest {
-  private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+  private final ByteArrayOutputStream out =
+      new ByteArrayOutputStream();
 
   @Override
   public OutputStream getBody() throws IOException {

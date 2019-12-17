@@ -23,18 +23,22 @@ public final class Cookies {
     }
   }
 
-  private static void printConnectionCookies(URLConnection conn) throws IOException {
-    Map<String, List<String>> headers = conn.getHeaderFields();
+  private static void printConnectionCookies(
+      URLConnection conn) throws IOException {
+    Map<String, List<String>> headers =
+        conn.getHeaderFields();
     Map<String, List<String>> copyHeaders = new HashMap<>();
     copyHeaders.putAll(headers);
     copyHeaders.put("NULL", copyHeaders.remove(null));
-    Map<String, List<String>> headersTree = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    Map<String, List<String>> headersTree =
+        new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     headersTree.putAll(copyHeaders);
 
-    List<String> headerFieldValue = headersTree.get("Set-Cookie");
+    List<String> headerFieldValue =
+        headersTree.get("Set-Cookie");
     System.out.println(headerFieldValue);
 
-    for (String headerValue : headerFieldValue) {
+    for (String headerValue: headerFieldValue) {
       printCookie(headerValue);
     }
   }
@@ -53,10 +57,12 @@ public final class Cookies {
     System.out.println("domain:" + cookie.domain);
     System.out.println("secure:" + cookie.secure);
 
-    System.out.println("*****************************************");
+    System.out.println(
+        "*****************************************");
   }
 
-  private static void parseFieldsIntoCookie(String[] fields, Cookie cookie) {
+  private static void parseFieldsIntoCookie(String[] fields,
+                                            Cookie cookie) {
     // Parse each field
     for (int j = 1; j < fields.length; j++) {
       if ("secure".equalsIgnoreCase(fields[j])) {
@@ -79,7 +85,9 @@ public final class Cookies {
     }
   }
 
-  private static String[] splitOn(String[] values, int index, String separator) {
+  private static String[] splitOn(String[] values,
+                                  int index,
+                                  String separator) {
     return values[index].split(separator);
   }
 

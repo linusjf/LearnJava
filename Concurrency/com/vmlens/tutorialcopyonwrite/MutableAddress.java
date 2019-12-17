@@ -6,7 +6,9 @@ public class MutableAddress {
   private volatile String city;
   private volatile String phoneNumber;
 
-  public MutableAddress(String street, String city, String phoneNumber) {
+  public MutableAddress(String street,
+                        String city,
+                        String phoneNumber) {
     this.street = street;
     this.city = city;
     this.phoneNumber = phoneNumber;
@@ -27,6 +29,7 @@ public class MutableAddress {
 
   @Override
   public String toString() {
-    return "street=" + street + ",city=" + city + ",phoneNumber=" + phoneNumber;
+    return "street=" + street + ",city=" + city
+        + ",phoneNumber=" + phoneNumber;
   }
 }

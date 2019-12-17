@@ -17,7 +17,8 @@ public final class JdbcScrollableSelect {
 
   private static void connect() {
     try {
-      connection = DriverManager.getConnection("jdbc:derby:Finances", "", "");
+      connection = DriverManager.getConnection(
+          "jdbc:derby:Finances", "", "");
     } catch (SQLException sqlEx) {
       System.err.println("* Cannot connect to database! *");
       System.err.println(sqlEx);
@@ -32,7 +33,8 @@ public final class JdbcScrollableSelect {
           connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
       // clang-format on
-      results = statement.executeQuery("SELECT * FROM Accounts");
+      results =
+          statement.executeQuery("SELECT * FROM Accounts");
     } catch (SQLException sqlEx) {
       System.out.println("* Cannot execute query! *");
       System.err.println(sqlEx);
@@ -43,7 +45,9 @@ public final class JdbcScrollableSelect {
   private static void forward() {
     try {
       // Iterate through the rows in the forward
-      while (results.next()) // direction, displaying the contents of each
+      while (
+          results
+              .next())  // direction, displaying the contents of each
         // row (as in the original program)…
         showRow();
     } catch (SQLException sqlEx) {
@@ -59,7 +63,9 @@ public final class JdbcScrollableSelect {
       // just after last row, so we can make use
       // of method previous to access the data…
       // Iterate through rows in reverse direction,
-      while (results.previous()) // again displaying contents of each row…
+      while (
+          results
+              .previous())  // again displaying contents of each row…
         showRow();
     } catch (SQLException sqlEx) {
       System.err.println("* Error retrieving data! *");
@@ -88,7 +94,10 @@ public final class JdbcScrollableSelect {
   public static void showRow() throws SQLException {
     System.out.println();
     System.out.println("Account no. " + results.getInt(1));
-    System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
-    System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
+    System.out.println("Account holder: "
+                       + results.getString(3) + " "
+                       + results.getString(2));
+    System.out.printf("Balance: %.2f %n%n",
+                      results.getFloat(4));
   }
 }

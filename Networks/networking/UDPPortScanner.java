@@ -14,7 +14,8 @@ public enum UDPPortScanner {
         DatagramSocket server = new DatagramSocket(port);
         server.close();
       } catch (SocketException ex) {
-        System.out.println("There is a server on port " + port + ".");
+        System.out.println("There is a server on port "
+                           + port + ".");
       }
     }
   }

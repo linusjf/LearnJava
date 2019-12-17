@@ -7,7 +7,8 @@ package flyweight;
  * @version 1.0
  */
 public class MediumPen implements Pen {
-  private final BrushSize brushSize = BrushSize.MEDIUM; // NOPMD
+  private final BrushSize brushSize =
+      BrushSize.MEDIUM;  // NOPMD
   private String color;
 
   /**
@@ -22,7 +23,10 @@ public class MediumPen implements Pen {
 
   @Override
   public void draw(String content) {
-    System.out.println("Drawing MEDIUM content in color : " + color);
-    System.out.println("Drawing MEDIUM content with brush size : " + brushSize);
+    System.out.println("Drawing MEDIUM content in color : "
+                       + color);
+    System.out.println(
+        "Drawing MEDIUM content with brush size : "
+        + brushSize);
   }
 }

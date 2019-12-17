@@ -18,7 +18,8 @@ public final class GoogleSearch {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     String target = "";
-    for (String arg : args) target = target.concat(arg).concat(" ");
+    for (String arg: args)
+      target = target.concat(arg).concat(" ");
     target = target.trim();
     QueryString query = new QueryString();
     query.add("q", target);
@@ -27,16 +28,22 @@ public final class GoogleSearch {
     query.add("ei", "_4oFXY3oOpL39QOSvLCoBw");
     query.add("source", "hp");
     try {
-      URL u = new URL("https://www.google.com/search?" + query);
+      URL u =
+          new URL("https://www.google.com/search?" + query);
       URLConnection connection = u.openConnection();
-      connection.setRequestProperty("User-Agent",
+      connection.setRequestProperty(
+          "User-Agent",
           "Mozilla/5.0 (Linux; Android 7.1.2;"
               + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
               + "Mobile Safari/537.36");
-      try (InputStream in = new BufferedInputStream(connection.getInputStream());
-           InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+      try (InputStream in = new BufferedInputStream(
+               connection.getInputStream());
+           InputStreamReader theHTML =
+               new InputStreamReader(
+                   in, StandardCharsets.UTF_8.name());) {
         int c;
-        while ((c = theHTML.read()) != -1) System.out.print((char) c);
+        while ((c = theHTML.read()) != -1)
+          System.out.print((char)c);
       }
     } catch (MalformedURLException ex) {
       System.err.println("MalformedURL : " + ex);

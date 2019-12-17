@@ -8,7 +8,9 @@ class Personnel implements Serializable {
   private String surname;
   private final String firstNames;
 
-  Personnel(long payNum, String surName, String firstNames) {
+  Personnel(long payNum,
+            String surName,
+            String firstNames) {
     payrollNum = payNum;
     surname = surName;
     this.firstNames = firstNames;

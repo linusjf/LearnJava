@@ -7,7 +7,8 @@ public abstract class CoinSide {
   private static Random rnd = new Random();
 
   public static CoinSide flip() {
-    return rnd.nextBoolean() ? Heads.INSTANCE : Tails.INSTANCE;
+    return rnd.nextBoolean() ? Heads.INSTANCE
+                             : Tails.INSTANCE;
   }
 
   public static void main(String[] args) {

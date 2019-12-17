@@ -21,7 +21,8 @@ public final class ProtectedUrlAccess {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
       Authenticator.setDefault(
-          args.length > 0 ? new CustomAuthenticator(args[0]) : new CustomAuthenticator());
+          args.length > 0 ? new CustomAuthenticator(args[0])
+                          : new CustomAuthenticator());
 
       double random = Math.random();
 
@@ -30,20 +31,25 @@ public final class ProtectedUrlAccess {
           + random);
       byte[] b = new byte[1];
 
-      DataInputStream di = new DataInputStream(url.openStream());
-      OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"));
-      while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
+      DataInputStream di =
+          new DataInputStream(url.openStream());
+      OutputStream fo =
+          Files.newOutputStream(Paths.get(random + ".gif"));
+      while (-1 != di.read(b, 0, 1))
+        fo.write(b, 0, 1);
       di.close();
       fo.close();
       System.out.println("Saved url as " + random + ".gif");
     } catch (MalformedURLException e) {
-      System.out.println("Malformed URL: " + e.getMessage());
+      System.out.println("Malformed URL: "
+                         + e.getMessage());
     } catch (IOException e) {
       System.out.println("I/O Error: " + e.getMessage());
     }
   }
 
-  public static class CustomAuthenticator extends Authenticator {
+  public static class CustomAuthenticator
+      extends Authenticator {
     private final String password;
 
     public CustomAuthenticator(String randomString) {
@@ -58,7 +64,8 @@ public final class ProtectedUrlAccess {
 
     // Called when password authorization is needed
     @Override
-    protected PasswordAuthentication getPasswordAuthentication() {
+    protected PasswordAuthentication
+    getPasswordAuthentication() {
       // Get information about the request
       String prompt = getRequestingPrompt();
       String hostname = getRequestingHost();
@@ -73,7 +80,8 @@ public final class ProtectedUrlAccess {
       String username = "httpwatch";
 
       // Return the information (a data holder that is used by Authenticator)
-      return new PasswordAuthentication(username, password.toCharArray());
+      return new PasswordAuthentication(
+          username, password.toCharArray());
     }
   }
 }

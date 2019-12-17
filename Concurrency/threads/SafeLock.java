@@ -47,7 +47,8 @@ public enum SafeLock {
       try {
         int sleepTime = new Random().nextInt(10_000);
         Thread.sleep(sleepTime);
-        System.out.println("Exiting after " + sleepTime + " milliseconds.");
+        System.out.println("Exiting after " + sleepTime
+                           + " milliseconds.");
         System.exit(0);
       } catch (InterruptedException ex) {
         System.err.println(ex);
@@ -89,26 +90,30 @@ public enum SafeLock {
       if (impendingBow(bower)) {
         try {
           System.out.format("%s: %s has"
-                  + " bowed to me!%n",
-              this.name, bower.getName());
+                                + " bowed to me!%n",
+                            this.name,
+                            bower.getName());
           bower.bowBack(this);
         } finally {
           lock.unlock();
           bower.lock.unlock();
         }
       } else {
-        System.out.format("%s: %s started"
+        System.out.format(
+            "%s: %s started"
                 + " to bow to me, but saw that"
                 + " I was already bowing to"
                 + " him.%n",
-            this.name, bower.getName());
+            this.name,
+            bower.getName());
       }
     }
 
     public void bowBack(Friend bower) {
       System.out.format("%s: %s has"
-              + " bowed back to me!%n",
-          this.name, bower.getName());
+                            + " bowed back to me!%n",
+                        this.name,
+                        bower.getName());
     }
   }
 

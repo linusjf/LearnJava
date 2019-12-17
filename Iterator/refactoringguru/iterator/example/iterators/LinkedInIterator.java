@@ -14,7 +14,9 @@ public class LinkedInIterator implements ProfileIterator {
   private final List<String> emails = new ArrayList<>();
   private final List<Profile> contacts = new ArrayList<>();
 
-  public LinkedInIterator(LinkedIn linkedIn, String type, String email) {
+  public LinkedInIterator(LinkedIn linkedIn,
+                          String type,
+                          String email) {
     this.linkedIn = linkedIn;
     this.type = type;
     this.email = email;
@@ -23,8 +25,10 @@ public class LinkedInIterator implements ProfileIterator {
   @SuppressWarnings("PMD.LawOfDemeter")
   private void lazyLoad() {
     if (emails.isEmpty()) {
-      List<String> profiles = linkedIn.requestRelatedContactsFromLinkedInAPI(email, type);
-      for (String profile : profiles) {
+      List<String> profiles =
+          linkedIn.requestRelatedContactsFromLinkedInAPI(
+              email, type);
+      for (String profile: profiles) {
         this.emails.add(profile);
         this.contacts.add(null);
       }
@@ -46,7 +50,9 @@ public class LinkedInIterator implements ProfileIterator {
     Profile friendContact = contacts.get(currentPosition);
     if (friendContact == null) {
       String friendEmail = emails.get(currentPosition);
-      friendContact = linkedIn.requestContactInfoFromLinkedInAPI(friendEmail);
+      friendContact =
+          linkedIn.requestContactInfoFromLinkedInAPI(
+              friendEmail);
       contacts.set(currentPosition, friendContact);
     }
     currentPosition++;

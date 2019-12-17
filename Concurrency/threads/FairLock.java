@@ -6,7 +6,8 @@ import java.util.List;
 public class FairLock {
   private boolean isLocked;
   private Thread lockingThread;
-  private final List<QueueObject> waitingThreads = new ArrayList<>();
+  private final List<QueueObject> waitingThreads =
+      new ArrayList<>();
 
   public void lock() throws InterruptedException {
     QueueObject queueObject = new QueueObject();
@@ -17,7 +18,9 @@ public class FairLock {
 
     while (isLockedForThisThread) {
       synchronized (this) {
-        isLockedForThisThread = isLocked || waitingThreads.get(0) != queueObject;
+        isLockedForThisThread =
+            isLocked
+            || waitingThreads.get(0) != queueObject;
         if (!isLockedForThisThread) {
           isLocked = true;
           waitingThreads.remove(queueObject);
@@ -39,7 +42,8 @@ public class FairLock {
   public void unlock() {
     synchronized (this) {
       if (this.lockingThread != Thread.currentThread()) {
-        throw new IllegalMonitorStateException("Calling thread has not locked this lock");
+        throw new IllegalMonitorStateException(
+            "Calling thread has not locked this lock");
       }
       isLocked = false;
       if (!waitingThreads.isEmpty()) {

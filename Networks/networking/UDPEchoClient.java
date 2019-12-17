@@ -40,7 +40,8 @@ public enum UDPEchoClient {
     try {
       InetAddress ia = InetAddress.getByName(hostname);
       DatagramSocket socket = new DatagramSocket();
-      SenderThread sender = new SenderThread(socket, ia, port);
+      SenderThread sender =
+          new SenderThread(socket, ia, port);
       sender.start();
       ReceiverThread receiver = new ReceiverThread(socket);
       receiver.start();
@@ -53,7 +54,8 @@ public enum UDPEchoClient {
       // explicitly call close to kill receiving thread
       socket.close();
       receiver.join();
-    } catch (UnknownHostException | SocketException | InterruptedException ex) {
+    } catch (UnknownHostException | SocketException
+             | InterruptedException ex) {
       System.err.println(ex);
     }
   }
@@ -64,7 +66,9 @@ public enum UDPEchoClient {
     private final int port;
     private volatile boolean stopped;
 
-    SenderThread(DatagramSocket socket, InetAddress address, int port) {
+    SenderThread(DatagramSocket socket,
+                 InetAddress address,
+                 int port) {
       super();
       this.server = address;
       this.port = port;
@@ -79,8 +83,10 @@ public enum UDPEchoClient {
     @SuppressWarnings("checkstyle:returncount")
     @Override
     public void run() {
-      try (BufferedReader userInput = new BufferedReader(
-               new InputStreamReader(System.in, StandardCharsets.UTF_8.name()))) {
+      try (BufferedReader userInput =
+               new BufferedReader(new InputStreamReader(
+                   System.in,
+                   StandardCharsets.UTF_8.name()))) {
         while (true) {
           if (stopped)
             return;
@@ -88,7 +94,8 @@ public enum UDPEchoClient {
           if (".".equals(theLine))
             return;
           byte[] data = theLine.getBytes("UTF-8");
-          DatagramPacket output = new DatagramPacket(data, data.length, server, port);
+          DatagramPacket output = new DatagramPacket(
+              data, data.length, server, port);
           socket.send(output);
           Thread.yield();
         }
@@ -116,10 +123,12 @@ public enum UDPEchoClient {
       while (true) {
         if (stopped)
           return;
-        DatagramPacket dp = new DatagramPacket(new byte[65_507], 65_507);
+        DatagramPacket dp =
+            new DatagramPacket(new byte[65_507], 65_507);
         try {
           socket.receive(dp);
-          String s = new String(dp.getData(), 0, dp.getLength(), "UTF-8");
+          String s = new String(
+              dp.getData(), 0, dp.getLength(), "UTF-8");
           System.out.println(s);
           Thread.yield();
         } catch (IOException ex) {

@@ -3,8 +3,10 @@ package javapuzzles;
 public enum ByeEclipse {
   ;
 
-  @SuppressWarnings({"PMD.AssignmentInOperand", "PMD.DataflowAnomalyAnalysis"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.AssignmentInOperand",
+                     "PMD.DataflowAnomalyAnalysis"})
+  public static void
+  main(String... args) {
     boolean b1 = true;
     boolean b2 = false;
     if ((b1 = false) | (b1 ^ b2)) {

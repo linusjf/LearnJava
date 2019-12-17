@@ -7,8 +7,10 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 public class SocketClientExample {
-  public void startClient() throws IOException, InterruptedException {
-    InetSocketAddress hostAddress = new InetSocketAddress("localhost", 8090);
+  public void startClient()
+      throws IOException, InterruptedException {
+    InetSocketAddress hostAddress =
+        new InetSocketAddress("localhost", 8090);
     SocketChannel client = SocketChannel.open(hostAddress);
 
     System.out.println("Client..started");
@@ -17,9 +19,11 @@ public class SocketClientExample {
 
     // Send messages to server
     String[] messages =
-        new String[] {threadName + ": test1", threadName + ": test2", threadName + ": test3"};
+        new String[] {threadName + ": test1",
+                      threadName + ": test2",
+                      threadName + ": test3"};
 
-    for (String msg : messages) {
+    for (String msg: messages) {
       byte[] message = msg.getBytes(StandardCharsets.UTF_8);
       ByteBuffer buffer = ByteBuffer.wrap(message);
       client.write(buffer);

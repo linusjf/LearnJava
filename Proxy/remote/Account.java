@@ -12,7 +12,10 @@ public class Account implements Serializable {
   private double balance;
 
   // Constructor…
-  public Account(int acctNo, String sname, String fnames, double bal) {
+  public Account(int acctNo,
+                 String sname,
+                 String fnames,
+                 double bal) {
     acctNum = acctNo;
     surname = sname;
     firstNames = fnames;

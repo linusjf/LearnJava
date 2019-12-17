@@ -18,7 +18,8 @@ public class LookupTask implements Callable<String> {
       int index = line.indexOf(' ');
       String address = line.substring(0, index);
       String theRest = line.substring(index);
-      String hostname = InetAddress.getByName(address).getHostName();
+      String hostname =
+          InetAddress.getByName(address).getHostName();
       return hostname + " " + theRest;
     } catch (UnknownHostException ex) {
       return line;

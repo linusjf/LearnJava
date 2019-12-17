@@ -39,13 +39,14 @@ public enum ResourceServer {
         // subsequent dialogue with the client, passing
         // references to both the client's socket and
         // the Resource object…
-        ClientThread handler = new ClientThread(client, item);
+        ClientThread handler =
+            new ClientThread(client, item);
 
         // Start the ClientThread thread running…
         handler.start();
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
-    } // Server will run indefinitely.
+    }  // Server will run indefinitely.
   }
 }

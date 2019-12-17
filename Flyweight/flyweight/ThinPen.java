@@ -1,7 +1,8 @@
 package flyweight;
 
 public class ThinPen implements Pen {
-  private final BrushSize brushSize = BrushSize.THIN; // NOPMD
+  private final BrushSize brushSize =
+      BrushSize.THIN;  // NOPMD
   private String color;
 
   /**
@@ -16,7 +17,10 @@ public class ThinPen implements Pen {
 
   @Override
   public void draw(String content) {
-    System.out.println("Drawing THIN content in color : " + color);
-    System.out.println("Drawing THIN content with brush size : " + brushSize);
+    System.out.println("Drawing THIN content in color : "
+                       + color);
+    System.out.println(
+        "Drawing THIN content with brush size : "
+        + brushSize);
   }
 }

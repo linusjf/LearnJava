@@ -20,15 +20,19 @@ public class DigestRunnable implements Runnable {
   @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
-      InputStream in = Files.newInputStream(Paths.get(filename));
-      MessageDigest sha = MessageDigest.getInstance("SHA-256");
-      DigestInputStream din = new DigestInputStream(in, sha);
+      InputStream in =
+          Files.newInputStream(Paths.get(filename));
+      MessageDigest sha =
+          MessageDigest.getInstance("SHA-256");
+      DigestInputStream din =
+          new DigestInputStream(in, sha);
       while (din.read() != -1)
         ;
       din.close();
       byte[] digest = sha.digest();
       StringBuilder result = new StringBuilder(filename);
-      result.append(": ").append(Base64.getEncoder().encodeToString(digest));
+      result.append(": ").append(
+          Base64.getEncoder().encodeToString(digest));
       System.out.println(result);
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
@@ -37,7 +41,7 @@ public class DigestRunnable implements Runnable {
 
   public static void main(String[] args) {
     System.out.println("Into DigestRunnable...");
-    for (String filename : args) {
+    for (String filename: args) {
       runDigestThread(filename);
     }
   }

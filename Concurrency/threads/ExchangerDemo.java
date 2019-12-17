@@ -24,7 +24,8 @@ public enum ExchangerDemo {
     private List<String> buffer;
     private final Exchanger<List<String>> exchanger;
 
-    Producer(List<String> buffer, Exchanger<List<String>> exchanger) {
+    Producer(List<String> buffer,
+             Exchanger<List<String>> exchanger) {
       this.buffer = buffer;
       this.exchanger = exchanger;
     }
@@ -46,7 +47,8 @@ public enum ExchangerDemo {
         } catch (InterruptedException e) {
           System.err.println(e);
         }
-        System.out.println("Producer buffer size: " + buffer.size());
+        System.out.println("Producer buffer size: "
+                           + buffer.size());
       }
     }
   }
@@ -56,7 +58,8 @@ public enum ExchangerDemo {
 
     private final Exchanger<List<String>> exchanger;
 
-    Consumer(List<String> buffer, Exchanger<List<String>> exchanger) {
+    Consumer(List<String> buffer,
+             Exchanger<List<String>> exchanger) {
       this.buffer = buffer;
       this.exchanger = exchanger;
     }
@@ -73,7 +76,8 @@ public enum ExchangerDemo {
         } catch (InterruptedException e) {
           System.err.println(e);
         }
-        System.out.println("Consumer buffer size: " + buffer.size());
+        System.out.println("Consumer buffer size: "
+                           + buffer.size());
 
         for (int j = 0; j < 10; j++) {
           String message = buffer.get(0);

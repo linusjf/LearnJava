@@ -18,28 +18,35 @@ public final class ChargenClient {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     if (args.length == 0) {
-      System.out.println("Usage: java ChargenClient host [port]");
+      System.out.println(
+          "Usage: java ChargenClient host [port]");
       return;
     }
     int port;
     try {
       port = Integer.parseInt(args[1]);
       System.out.printf("Using %d.%n", port);
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+    } catch (NumberFormatException
+             | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
-      System.out.printf("Error parsing input. Using port %d: ", port);
+      System.out.printf(
+          "Error parsing input. Using port %d: ", port);
     }
-    SocketAddress address = new InetSocketAddress(args[0], port);
-    try (SocketChannel client = SocketChannel.open(address)) {
+    SocketAddress address =
+        new InetSocketAddress(args[0], port);
+    try (SocketChannel client =
+             SocketChannel.open(address)) {
       ByteBuffer buffer = ByteBuffer.allocate(74);
-      WritableByteChannel out = Channels.newChannel(System.out);
+      WritableByteChannel out =
+          Channels.newChannel(System.out);
       while (client.read(buffer) != -1) {
         buffer.flip();
         out.write(buffer);
         buffer.clear();
       }
     } catch (IOException ex) {
-      System.err.println("Error writing to server: " + ex.getMessage());
+      System.err.println("Error writing to server: "
+                         + ex.getMessage());
     }
   }
 }

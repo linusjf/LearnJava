@@ -12,13 +12,15 @@ public final class IPFinder {
 
   public static void main(String[] args) {
     String host;
-    Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    Scanner input = new Scanner(
+        System.in, StandardCharsets.UTF_8.name());
     InetAddress address;
     System.out.print("\n\nEnter host name: ");
     host = input.next();
     try {
       address = InetAddress.getByName(host);
-      System.out.println("IP address: " + address.toString());
+      System.out.println("IP address: "
+                         + address.toString());
     } catch (UnknownHostException uhEx) {
       System.out.println("Could not find " + host);
     }

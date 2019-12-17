@@ -27,13 +27,20 @@ public enum MultiEchoClient {
 
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
+         Scanner networkInput =
+             new Scanner(socket.getInputStream(),
+                         StandardCharsets.UTF_8.name());
          PrintWriter networkOutput = new PrintWriter(
-             new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()), true);
-         Scanner userEntry = new Scanner(System.in, StandardCharsets.UTF_8.name());) {
+             new OutputStreamWriter(
+                 socket.getOutputStream(),
+                 StandardCharsets.UTF_8.name()),
+             true);
+         Scanner userEntry = new Scanner(
+             System.in, StandardCharsets.UTF_8.name());) {
       String message = "";
       while (!"QUIT".equals(message)) {
-        System.out.print("Enter message ('QUIT' to exit): ");
+        System.out.print(
+            "Enter message ('QUIT' to exit): ");
         if (userEntry.hasNext()) {
           message = userEntry.nextLine();
 
@@ -43,8 +50,10 @@ public enum MultiEchoClient {
           // socket's intput stream…
           networkOutput.println(message);
         }
-        if (networkInput.hasNext()) // Display server's response to user…
-          System.out.println("\nSERVER> " + networkInput.nextLine());
+        if (networkInput
+                .hasNext())  // Display server's response to user…
+          System.out.println("\nSERVER> "
+                             + networkInput.nextLine());
       }
     } catch (IOException ioEx) {
       System.err.println(ioEx);

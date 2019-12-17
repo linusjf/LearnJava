@@ -29,30 +29,39 @@ public final class MediaServer {
       System.exit(1);
     }
     while (true) {
-      try (Socket connection = serverSocket.accept(); // Step 1…
-           Scanner inStream =
-               new Scanner(connection.getInputStream(), StandardCharsets.UTF_8.name());) {
+      try (Socket connection =
+               serverSocket.accept();  // Step 1…
+           Scanner inStream = new Scanner(
+               connection.getInputStream(),
+               StandardCharsets.UTF_8.name());) {
         // Step 2…
         String message = inStream.nextLine();
         System.out.println(message);
         if ("IMAGE".equals(message))
-          sendFile("beesting.jpg", new ObjectOutputStream(connection.getOutputStream()));
+          sendFile("beesting.jpg",
+                   new ObjectOutputStream(
+                       connection.getOutputStream()));
         if ("SOUND".equals(message))
-          sendFile("cuckoo.wav", new ObjectOutputStream(connection.getOutputStream()));
+          sendFile("cuckoo.wav",
+                   new ObjectOutputStream(
+                       connection.getOutputStream()));
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }
     }
   }
 
-  private static void sendFile(String fileName, ObjectOutputStream outStream) throws IOException {
+  private static void sendFile(String fileName,
+                               ObjectOutputStream outStream)
+      throws IOException {
     // Step 3…
-    try (InputStream fileIn = Files.newInputStream(Paths.get(fileName))) {
+    try (InputStream fileIn =
+             Files.newInputStream(Paths.get(fileName))) {
       // Step 4…
       long fileLen = new File(fileName).length();
 
       // Step 5…
-      int intFileLen = (int) fileLen;
+      int intFileLen = (int)fileLen;
 
       // Step 5 (cont'd)…
       byte[] byteArray = new byte[intFileLen];

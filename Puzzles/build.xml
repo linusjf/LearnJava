@@ -4,8 +4,8 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="${cs.properties}" />
-  <property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
@@ -1147,7 +1147,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+      properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java"
                excludes="**/Ugly.java,**/AnonymousReceiver.java" />
