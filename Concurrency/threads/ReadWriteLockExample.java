@@ -12,8 +12,7 @@ public enum ReadWriteLockExample {
     PricesInfo pricesInfo = new PricesInfo();
     Thread[] threadsReader = new Thread[5];
 
-    Arrays.setAll(threadsReader,
-                  i -> new Thread(new Reader(pricesInfo)));
+    Arrays.setAll(threadsReader, i -> new Thread(new Reader(pricesInfo)));
 
     Writer writer = new Writer(pricesInfo);
     Writer writer2 = new Writer(pricesInfo);
@@ -74,14 +73,12 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 10; i++) {
         synchronized (System.out) {
-          System.out.printf(
-              "%s: Price 1: %f%n",
-              Thread.currentThread().getName(),
-              pricesInfo.getPrice1());
-          System.out.printf(
-              "%s: Price 2: %f%n",
-              Thread.currentThread().getName(),
-              pricesInfo.getPrice2());
+          System.out.printf("%s: Price 1: %f%n",
+                            Thread.currentThread().getName(),
+                            pricesInfo.getPrice1());
+          System.out.printf("%s: Price 2: %f%n",
+                            Thread.currentThread().getName(),
+                            pricesInfo.getPrice2());
         }
       }
     }
@@ -98,16 +95,13 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 3; i++) {
         synchronized (System.out) {
-          System.out.printf(
-              "Writer %s: Attempt to modify the prices.%n",
-              Thread.currentThread().getName());
+          System.out.printf("Writer %s: Attempt to modify the prices.%n",
+                            Thread.currentThread().getName());
         }
-        pricesInfo.setPrices(Math.random() * 10,
-                             Math.random() * 8);
+        pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
         synchronized (System.out) {
-          System.out.printf(
-              "Writer %s: Prices have been modified.%n",
-              Thread.currentThread().getName());
+          System.out.printf("Writer %s: Prices have been modified.%n",
+                            Thread.currentThread().getName());
         }
         try {
           Thread.sleep(2);

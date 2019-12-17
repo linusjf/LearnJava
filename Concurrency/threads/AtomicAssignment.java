@@ -8,10 +8,8 @@ import java.util.Map;
 
 public class AtomicAssignment implements Runnable {
   private static final SimpleDateFormat SDF =
-      new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS",
-                           Locale.getDefault());
-  private static Map<String, String> configuration =
-      new HashMap<>();
+      new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS", Locale.getDefault());
+  private static Map<String, String> configuration = new HashMap<>();
 
   @Override
   public void run() {
@@ -20,10 +18,8 @@ public class AtomicAssignment implements Runnable {
       String value1 = currConfig.get("key-1");
       String value2 = currConfig.get("key-2");
       String value3 = currConfig.get("key-3");
-      if (!(value1.equals(value2)
-            && value2.equals(value3))) {
-        throw new IllegalStateException(
-            "Values are not equal.");
+      if (!(value1.equals(value2) && value2.equals(value3))) {
+        throw new IllegalStateException("Values are not equal.");
       }
       try {
         Thread.sleep(1);
@@ -63,8 +59,7 @@ public class AtomicAssignment implements Runnable {
     configThread.start();
     Thread[] threads = new Thread[5];
     for (int i = 0; i < threads.length; i++) {
-      threads[i] =
-          new Thread(new AtomicAssignment(), "thread-" + i);
+      threads[i] = new Thread(new AtomicAssignment(), "thread-" + i);
       threads[i].start();
     }
     try {
@@ -75,8 +70,7 @@ public class AtomicAssignment implements Runnable {
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }
-    System.out.println("["
-                       + Thread.currentThread().getName()
+    System.out.println("[" + Thread.currentThread().getName()
                        + "] All threads have finished.");
   }
 }

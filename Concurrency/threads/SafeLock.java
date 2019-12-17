@@ -47,8 +47,7 @@ public enum SafeLock {
       try {
         int sleepTime = new Random().nextInt(10_000);
         Thread.sleep(sleepTime);
-        System.out.println("Exiting after " + sleepTime
-                           + " milliseconds.");
+        System.out.println("Exiting after " + sleepTime + " milliseconds.");
         System.exit(0);
       } catch (InterruptedException ex) {
         System.err.println(ex);
@@ -99,13 +98,12 @@ public enum SafeLock {
           bower.lock.unlock();
         }
       } else {
-        System.out.format(
-            "%s: %s started"
-                + " to bow to me, but saw that"
-                + " I was already bowing to"
-                + " him.%n",
-            this.name,
-            bower.getName());
+        System.out.format("%s: %s started"
+                              + " to bow to me, but saw that"
+                              + " I was already bowing to"
+                              + " him.%n",
+                          this.name,
+                          bower.getName());
       }
     }
 

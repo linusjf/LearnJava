@@ -4,8 +4,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class CustomTask
-    implements Runnable, Comparable<CustomTask> {
+public class CustomTask implements Runnable, Comparable<CustomTask> {
   private final int priority;
   private final transient String name;
 
@@ -43,8 +42,7 @@ public class CustomTask
 
   @Override
   public void run() {
-    System.out.printf(
-        "CustomTask: %s Priority : %d%n", name, priority);
+    System.out.printf("CustomTask: %s Priority : %d%n", name, priority);
     try {
       TimeUnit.SECONDS.sleep(2);
     } catch (InterruptedException e) {
@@ -54,11 +52,7 @@ public class CustomTask
 
   public static void main(String[] args) {
     ThreadPoolExecutor executor = new ThreadPoolExecutor(
-        2,
-        2,
-        1,
-        TimeUnit.SECONDS,
-        new PriorityBlockingQueue<Runnable>());
+        2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
     for (int i = 0; i < 4; i++) {
       CustomTask task = new CustomTask("Task " + i, i);
       executor.execute(task);

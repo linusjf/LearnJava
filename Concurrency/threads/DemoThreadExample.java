@@ -16,24 +16,19 @@ public enum DemoThreadExample {
     thread.start();
   }
 
-  static class ExceptionHandler
-      implements Thread.UncaughtExceptionHandler {
+  static class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable e) {
       System.err.printf("An exception has been captured%n");
       System.err.printf("Thread: %s%n", t.getId());
-      System.err.printf("Exception: %s: %s%n",
-                        e.getClass().getName(),
-                        e.getMessage());
+      System.err.printf(
+          "Exception: %s: %s%n", e.getClass().getName(), e.getMessage());
       System.err.printf("Stack Trace: %n");
       StringWriter sw = new StringWriter();
       e.printStackTrace(new PrintWriter(sw));
-      System.err.printf(
-          "%s%n",
-          sw.toString().replace("%n", " ").replace("\t",
-                                                   " "));
-      System.out.printf("Thread status: %s%n",
-                        t.getState());
+      System.err.printf("%s%n",
+                        sw.toString().replace("%n", " ").replace("\t", " "));
+      System.out.printf("Thread status: %s%n", t.getState());
       synchronized (DemoThreadExample.class) {
         DemoThreadExample.runCount++;
       }

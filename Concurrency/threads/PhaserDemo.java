@@ -13,21 +13,16 @@ public enum PhaserDemo {
   public static void main(String[] args) {
     Phaser phaser = new Phaser(3);
     FileSearch system = new FileSearch(
-        "/data/data/com.termux/files/home/LearnJava",
-        "log",
-        phaser);
+        "/data/data/com.termux/files/home/LearnJava", "log", phaser);
     FileSearch apps = new FileSearch(
-        "/data/data/com.termux/files/home/LearnNodeJS",
-        "log",
-        phaser);
-    FileSearch documents = new FileSearch(
-        "/data/data/com.termux/files/home/", "log", phaser);
+        "/data/data/com.termux/files/home/LearnNodeJS", "log", phaser);
+    FileSearch documents =
+        new FileSearch("/data/data/com.termux/files/home/", "log", phaser);
     Thread systemThread = new Thread(system, "System");
     systemThread.start();
     Thread appsThread = new Thread(apps, "Apps");
     appsThread.start();
-    Thread documentsThread =
-        new Thread(documents, "Documents");
+    Thread documentsThread = new Thread(documents, "Documents");
     documentsThread.start();
     try {
       systemThread.join();
@@ -36,8 +31,7 @@ public enum PhaserDemo {
     } catch (InterruptedException e) {
       System.err.println(e);
     }
-    System.out.println("Terminated: "
-                       + phaser.isTerminated());
+    System.out.println("Terminated: " + phaser.isTerminated());
   }
 
   static class FileSearch implements Runnable {
@@ -79,8 +73,7 @@ public enum PhaserDemo {
       for (String fileName: results) {
         long fileDate = new File(fileName).lastModified();
         if (actualDate - fileDate
-            < TimeUnit.MILLISECONDS.convert(1,
-                                            TimeUnit.DAYS))
+            < TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS))
           newResults.add(fileName);
       }
       results = newResults;
@@ -120,8 +113,7 @@ public enum PhaserDemo {
     @Override
     public void run() {
       phaser.arriveAndAwaitAdvance();
-      System.out.printf("%s: Starting.%n",
-                        Thread.currentThread().getName());
+      System.out.printf("%s: Starting.%n", Thread.currentThread().getName());
       File file = new File(initPath);
       if (file.isDirectory()) {
         directoryProcess(file);

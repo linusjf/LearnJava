@@ -25,8 +25,7 @@ public class LockSplitting implements Runnable {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(
-            new LockSplitting(new CounterOneLock()));
+        threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
 
       long startMillis = System.currentTimeMillis();
       for (Thread t: threads)
@@ -35,12 +34,9 @@ public class LockSplitting implements Runnable {
       for (Thread t: threads)
         t.join();
 
-      System.out.println(
-          (System.currentTimeMillis() - startMillis)
-          + "ms");
+      System.out.println((System.currentTimeMillis() - startMillis) + "ms");
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(
-            new LockSplitting(new CounterSeparateLock()));
+        threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
 
       startMillis = System.currentTimeMillis();
       for (Thread t: threads)
@@ -49,9 +45,7 @@ public class LockSplitting implements Runnable {
       for (Thread t: threads)
         t.join();
 
-      System.out.println(
-          (System.currentTimeMillis() - startMillis)
-          + "ms");
+      System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
@@ -100,12 +94,9 @@ public class LockSplitting implements Runnable {
     }
   }
 
-  public static class CounterSeparateLock
-      implements Counter {
-    private static final Object CUSTOMER_LOCK =
-        new Object();
-    private static final Object SHIPPING_LOCK =
-        new Object();
+  public static class CounterSeparateLock implements Counter {
+    private static final Object CUSTOMER_LOCK = new Object();
+    private static final Object SHIPPING_LOCK = new Object();
     private long customerCount;
     private long shippingCount;
 

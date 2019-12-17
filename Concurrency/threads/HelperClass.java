@@ -12,9 +12,8 @@ public enum HelperClass {
     public void run() {
       synchronized (OBJ) {
         try {
-          System.out.println(
-              "[WaitingThread]: Waiting for another thread "
-                  + "to notify me or timing out in 10 seconds...");
+          System.out.println("[WaitingThread]: Waiting for another thread "
+                             + "to notify me or timing out in 10 seconds...");
           OBJ.wait(10_000);
           System.out.println(
               "[WaitingThread]: Successfully notified or timed out!");
@@ -32,8 +31,7 @@ public enum HelperClass {
     public void run() {
       synchronized (OBJ) {
         try {
-          System.out.println(
-              "[WakingThread]: Sleeping for some time...");
+          System.out.println("[WakingThread]: Sleeping for some time...");
           TimeUnit.SECONDS.sleep(5);
           System.out.println("[WakingThread]: Woke up!");
           System.out.println(

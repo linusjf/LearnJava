@@ -10,12 +10,10 @@ import java.security.NoSuchAlgorithmException;
 
 public class InstanceCallbackDigest implements Runnable {
   private final String filename;
-  private final InstanceCallbackDigestUserInterface
-      callback;
+  private final InstanceCallbackDigestUserInterface callback;
 
-  public InstanceCallbackDigest(
-      String filename,
-      InstanceCallbackDigestUserInterface callback) {
+  public InstanceCallbackDigest(String filename,
+                                InstanceCallbackDigestUserInterface callback) {
     this.filename = filename;
     this.callback = callback;
   }
@@ -24,12 +22,9 @@ public class InstanceCallbackDigest implements Runnable {
   @SuppressWarnings("PMD.EmptyWhileStmt")
   public void run() {
     try {
-      InputStream in =
-          Files.newInputStream(Paths.get(filename));
-      MessageDigest sha =
-          MessageDigest.getInstance("SHA-256");
-      DigestInputStream din =
-          new DigestInputStream(in, sha);
+      InputStream in = Files.newInputStream(Paths.get(filename));
+      MessageDigest sha = MessageDigest.getInstance("SHA-256");
+      DigestInputStream din = new DigestInputStream(in, sha);
       while (din.read() != -1)
         ;
       din.close();

@@ -11,8 +11,7 @@ public enum SemaphoreExample {
   public static void main(String[] args) {
     Thread[] thread = new Thread[10];
     PrintQueue printQueue = new PrintQueue();
-    Arrays.setAll(thread,
-                  i -> new Thread(new Job(printQueue)));
+    Arrays.setAll(thread, i -> new Thread(new Job(printQueue)));
 
     for (Thread t: thread)
       t.start();
@@ -22,10 +21,8 @@ public enum SemaphoreExample {
     private final Semaphore semaphore;
 
     PrintQueue() {
-      semaphore =
-          new Semaphore(1, new Random().nextBoolean());
-      System.out.println("Semaphore fair: "
-                         + semaphore.isFair());
+      semaphore = new Semaphore(1, new Random().nextBoolean());
+      System.out.println("Semaphore fair: " + semaphore.isFair());
     }
 
     public void printJob(Object document) {
@@ -58,9 +55,8 @@ public enum SemaphoreExample {
       System.out.printf("%s: Going to print a job%n",
                         Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf(
-          "%s: The document has been printed%n",
-          Thread.currentThread().getName());
+      System.out.printf("%s: The document has been printed%n",
+                        Thread.currentThread().getName());
     }
   }
 }

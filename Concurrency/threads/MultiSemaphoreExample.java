@@ -13,9 +13,7 @@ public enum MultiSemaphoreExample {
   public static void main(String[] args) {
     Thread[] thread = new Thread[10];
     PrintQueue printQueue = new PrintQueue();
-    Arrays.setAll(
-        thread,
-        i -> new Thread(new Job(printQueue), "Thread" + i));
+    Arrays.setAll(thread, i -> new Thread(new Job(printQueue), "Thread" + i));
     for (Thread t: thread)
       t.start();
   }
@@ -31,8 +29,7 @@ public enum MultiSemaphoreExample {
       boolean fair = random.nextBoolean();
       lockPrinters = new ReentrantLock(fair);
       semaphore = new Semaphore(3, random.nextBoolean());
-      System.out.println("Semaphore fair: "
-                         + semaphore.isFair());
+      System.out.println("Semaphore fair: " + semaphore.isFair());
       System.out.println("ReentrantLock fair: " + fair);
     }
 
@@ -84,9 +81,8 @@ public enum MultiSemaphoreExample {
       System.out.printf("%s: Going to print a job%n",
                         Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf(
-          "%s: The document has been printed%n",
-          Thread.currentThread().getName());
+      System.out.printf("%s: The document has been printed%n",
+                        Thread.currentThread().getName());
     }
   }
 }

@@ -27,16 +27,14 @@ public enum CustomPhaserDemo {
         System.err.println(e);
       }
     }
-    System.out.printf(
-        "Main:  The phaser has finished: %s.%n",
-        phaser.isTerminated());
+    System.out.printf("Main:  The phaser has finished: %s.%n",
+                      phaser.isTerminated());
   }
 
   static class MyPhaser extends Phaser {
     @SuppressWarnings("checkstyle:returncount")
     @Override
-    protected boolean onAdvance(int phase,
-                                int registeredParties) {
+    protected boolean onAdvance(int phase, int registeredParties) {
       switch (phase) {
         case 0:
           return studentsArrived();
@@ -52,8 +50,7 @@ public enum CustomPhaserDemo {
     }
 
     private boolean studentsArrived() {
-      System.out.printf(
-          "Phaser: Exams are starting. Students are ready.%n");
+      System.out.printf("Phaser: Exams are starting. Students are ready.%n");
       System.out.printf("Phaser: We have %d students.%n",
                         getRegisteredParties());
       return false;
@@ -62,24 +59,20 @@ public enum CustomPhaserDemo {
     private boolean finishFirstExercise() {
       System.out.printf(
           "Phaser: All students have finished the first exercise.%n");
-      System.out.printf(
-          "Phaser: Time for the second one.%n");
+      System.out.printf("Phaser: Time for the second one.%n");
       return false;
     }
 
     private boolean finishSecondExercise() {
       System.out.printf(
           "Phaser: All students have finished the second exercise.%n");
-      System.out.printf(
-          "Phaser: Time for the third one.%n");
+      System.out.printf("Phaser: Time for the third one.%n");
       return false;
     }
 
     private boolean finishExam() {
-      System.out.printf(
-          "Phaser: All students have finished the exam.%n");
-      System.out.printf(
-          "Phaser: Thank you for your time.%n");
+      System.out.printf("Phaser: All students have finished the exam.%n");
+      System.out.printf("Phaser: Thank you for your time.%n");
       return true;
     }
   }
@@ -93,35 +86,29 @@ public enum CustomPhaserDemo {
 
     @Override
     public void run() {
-      System.out.printf(
-          "%s: Has arrived to take the exam. %s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Has arrived to take the exam. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is about to start the first exercise. %s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Is about to start the first exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise1();
-      System.out.printf(
-          "%s: Has completed the first exercise. %s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Has completed the first exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is starting the second exercise.%s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Is starting the second exercise.%s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise2();
-      System.out.printf(
-          "%s: Has completed the second exercise. %s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Has completed the second exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is starting the third exercise. %s%n",
-          Thread.currentThread().getName(),
-          new Date());
+      System.out.printf("%s: Is starting the third exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise3();
       System.out.printf("%s: Finished the exam. %s%n",
                         Thread.currentThread().getName(),

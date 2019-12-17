@@ -12,11 +12,9 @@ public enum ForkJoinPoolRunnableDemo {
   private static final int BATCH_SIZE = 10;
 
   public static void main(String[] args) {
-    ProductListGenerator generator =
-        new ProductListGenerator();
+    ProductListGenerator generator = new ProductListGenerator();
     List<Product> products = generator.generate(10_000);
-    Task task =
-        new Task(products, 0, products.size(), 0.20);
+    Task task = new Task(products, 0, products.size(), 0.20);
     ForkJoinTask<?> t = ForkJoinTask.adapt(task);
 
     // task.setForkedTask(t);
@@ -25,10 +23,8 @@ public enum ForkJoinPoolRunnableDemo {
     do {
       System.out.printf("Main: Thread Count: %d%n",
                         pool.getActiveThreadCount());
-      System.out.printf("Main: Thread Steal: %d%n",
-                        pool.getStealCount());
-      System.out.printf("Main: Parallelism: %d%n",
-                        pool.getParallelism());
+      System.out.printf("Main: Thread Steal: %d%n", pool.getStealCount());
+      System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
       try {
         TimeUnit.MILLISECONDS.sleep(5);
       } catch (InterruptedException e) {
@@ -37,14 +33,12 @@ public enum ForkJoinPoolRunnableDemo {
     } while (!t.isDone());
     pool.shutdown();
     if (t.isCompletedNormally()) {
-      System.out.printf(
-          "Main: The process has completed normally.%n");
+      System.out.printf("Main: The process has completed normally.%n");
     }
     for (Product product: products) {
       if (product.getPrice() != EXPECTED_PRICE) {
-        System.out.printf("Product %s: %f%n",
-                          product.getName(),
-                          product.getPrice());
+        System.out.printf(
+            "Product %s: %f%n", product.getName(), product.getPrice());
       }
     }
     System.out.println("Main: End of the program.%n");
@@ -93,10 +87,7 @@ public enum ForkJoinPoolRunnableDemo {
     private final double increment;
 
     // private ForkJoinTask<?> t;
-    Task(List<Product> products,
-         int first,
-         int last,
-         double increment) {
+    Task(List<Product> products, int first, int last, double increment) {
       super();
       this.products = products;
       this.first = first;
@@ -110,13 +101,10 @@ public enum ForkJoinPoolRunnableDemo {
         updatePrices();
       else {
         int middle = (last + first) / 2;
-        System.out.printf(
-            "Task: Pending tasks: %s%n",
-            ForkJoinTask.getQueuedTaskCount());
-        Task t1 = new Task(
-            products, first, middle + 1, increment);
-        Task t2 =
-            new Task(products, middle + 1, last, increment);
+        System.out.printf("Task: Pending tasks: %s%n",
+                          ForkJoinTask.getQueuedTaskCount());
+        Task t1 = new Task(products, first, middle + 1, increment);
+        Task t2 = new Task(products, middle + 1, last, increment);
         ForkJoinTask<?> task1 = ForkJoinTask.adapt(t1);
         ForkJoinTask<?> task2 = ForkJoinTask.adapt(t2);
 
@@ -129,8 +117,7 @@ public enum ForkJoinPoolRunnableDemo {
     private void updatePrices() {
       for (int i = first; i < last; i++) {
         Product product = products.get(i);
-        product.setPrice(product.getPrice()
-                         * (1 + increment));
+        product.setPrice(product.getPrice() * (1 + increment));
       }
     }
   }

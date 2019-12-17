@@ -8,11 +8,9 @@ public final class CallbackDigestUserInterface {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void receiveDigest(byte[] digest,
-                                   String name) {
+  public static void receiveDigest(byte[] digest, String name) {
     StringBuilder result = new StringBuilder(name);
-    result.append(": ").append(
-        Base64.getEncoder().encodeToString(digest));
+    result.append(": ").append(Base64.getEncoder().encodeToString(digest));
     System.out.println(result);
   }
 

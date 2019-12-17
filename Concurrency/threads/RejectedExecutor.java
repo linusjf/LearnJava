@@ -9,8 +9,7 @@ public enum RejectedExecutor {
   ;
 
   public static void main(String[] args) {
-    RejectedTaskController controller =
-        new RejectedTaskController();
+    RejectedTaskController controller = new RejectedTaskController();
     ThreadPoolExecutor executor =
         (ThreadPoolExecutor)Executors.newCachedThreadPool();
     executor.setRejectedExecutionHandler(controller);
@@ -19,8 +18,7 @@ public enum RejectedExecutor {
       Task task = new Task("Task" + i);
       executor.submit(task);
     }
-    System.out.printf(
-        "Main: Shutting down the Executor.%n");
+    System.out.printf("Main: Shutting down the Executor.%n");
     executor.shutdown();
     System.out.printf("Main: Sending another Task.%n");
     Task task = new Task("RejectedTask");
@@ -29,23 +27,17 @@ public enum RejectedExecutor {
     System.out.printf("Main: End.%n");
   }
 
-  static class RejectedTaskController
-      implements RejectedExecutionHandler {
+  static class RejectedTaskController implements RejectedExecutionHandler {
     @Override
-    public void rejectedExecution(
-        Runnable r,
-        ThreadPoolExecutor executor) {
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
       System.out.printf(
           "RejectedTaskController: The task %s has been rejected%n",
           r.toString());
-      System.out.printf("RejectedTaskController: %s%n",
-                        executor.toString());
-      System.out.printf(
-          "RejectedTaskController: Terminating: %s%n",
-          executor.isTerminating());
-      System.out.printf(
-          "RejectedTaskController: Terminated: %s%n",
-          executor.isTerminated());
+      System.out.printf("RejectedTaskController: %s%n", executor.toString());
+      System.out.printf("RejectedTaskController: Terminating: %s%n",
+                        executor.isTerminating());
+      System.out.printf("RejectedTaskController: Terminated: %s%n",
+                        executor.isTerminated());
     }
   }
 

@@ -17,17 +17,14 @@ public enum InvokeAnyExecutor {
     String username = "test";
     String password = "test";
     UserValidator ldapValidator = new UserValidator("LDAP");
-    UserValidator dbValidator =
-        new UserValidator("DataBase");
-    TaskValidator ldapTask = new TaskValidator(
-        ldapValidator, username, password);
-    TaskValidator dbTask =
-        new TaskValidator(dbValidator, username, password);
+    UserValidator dbValidator = new UserValidator("DataBase");
+    TaskValidator ldapTask =
+        new TaskValidator(ldapValidator, username, password);
+    TaskValidator dbTask = new TaskValidator(dbValidator, username, password);
     List<TaskValidator> taskList = new ArrayList<>();
     taskList.add(ldapTask);
     taskList.add(dbTask);
-    ExecutorService executor =
-        Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     String result;
     try {
       result = executor.invokeAny(taskList);
@@ -57,9 +54,8 @@ public enum InvokeAnyExecutor {
             duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-        System.err.printf("%s: %s:- Returning false...%n",
-                          name,
-                          e.getMessage());
+        System.err.printf(
+            "%s: %s:- Returning false...%n", name, e.getMessage());
         return false;
       }
       return new Random().nextBoolean();
@@ -75,9 +71,7 @@ public enum InvokeAnyExecutor {
     private final String user;
     private final String password;
 
-    TaskValidator(UserValidator validator,
-                  String user,
-                  String password) {
+    TaskValidator(UserValidator validator, String user, String password) {
       this.validator = validator;
       this.user = user;
       this.password = password;
@@ -86,14 +80,11 @@ public enum InvokeAnyExecutor {
     @Override
     public String call() throws Exception {
       if (!validator.validate(user, password)) {
-        System.out.printf(
-            "%s: The user has not been found%n",
-            validator.getName());
-        throw new GeneralSecurityException(
-            "Error validating user");
+        System.out.printf("%s: The user has not been found%n",
+                          validator.getName());
+        throw new GeneralSecurityException("Error validating user");
       }
-      System.out.printf("%s: The user has been found%n",
-                        validator.getName());
+      System.out.printf("%s: The user has been found%n", validator.getName());
       return validator.getName();
     }
   }

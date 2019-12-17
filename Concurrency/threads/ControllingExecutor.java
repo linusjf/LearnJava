@@ -12,12 +12,10 @@ public enum ControllingExecutor {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    ExecutorService executor =
-        Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     ResultTask[] resultTasks = new ResultTask[5];
     for (int i = 0; i < 5; i++) {
-      resultTasks[i] =
-          new ResultTask(new ExecutableTask("Task " + i));
+      resultTasks[i] = new ResultTask(new ExecutableTask("Task " + i));
       executor.submit(resultTasks[i]);
     }
     try {
@@ -31,8 +29,7 @@ public enum ControllingExecutor {
       try {
         if (!task.isCancelled())
           System.out.printf("%s%n", task.get());
-      } catch (InterruptedException
-               | ExecutionException e) {
+      } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
       executor.shutdown();
@@ -55,9 +52,7 @@ public enum ControllingExecutor {
       try {
         long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "%s: Waiting %d seconds for results.%n",
-            this.name,
-            duration);
+            "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

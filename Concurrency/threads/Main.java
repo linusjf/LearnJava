@@ -23,18 +23,15 @@ public enum Main {
   private static void setupThreads(Thread... threads) {
     for (int i = 0; i < 10; i++) {
       threads[i] = new Thread(new Calculator(i));
-      threads[i].setPriority(i % 2 == 0
-                                 ? Thread.MAX_PRIORITY
-                                 : Thread.MIN_PRIORITY);
+      threads[i].setPriority(i % 2 == 0 ? Thread.MAX_PRIORITY
+                                        : Thread.MIN_PRIORITY);
       threads[i].setName("Thread " + i);
     }
   }
 
-  private static void setupStatuses(Thread.State[] status,
-                                    Thread... threads)
+  private static void setupStatuses(Thread.State[] status, Thread... threads)
       throws IOException {
-    try (BufferedWriter file = Files.newBufferedWriter(
-             Paths.get("./log.txt"));
+    try (BufferedWriter file = Files.newBufferedWriter(Paths.get("./log.txt"));
          PrintWriter pw = new PrintWriter(file);) {
       for (int i = 0; i < 10; i++) {
         pw.println("Main : Status of Thread " + i + " : "
@@ -60,9 +57,7 @@ public enum Main {
       }
       finish = true;
       for (int i = 0; i < 10; i++) {
-        finish = finish
-                 && threads[i].getState()
-                        == Thread.State.TERMINATED;
+        finish = finish && threads[i].getState() == Thread.State.TERMINATED;
       }
     }
   }
@@ -70,14 +65,10 @@ public enum Main {
   private static void writeThreadInfo(PrintWriter pw,
                                       Thread thread,
                                       Thread.State state) {
-    pw.printf("Main : Id %d - %s%n",
-              thread.getId(),
-              thread.getName());
-    pw.printf("Main : Priority: %d%n",
-              thread.getPriority());
+    pw.printf("Main : Id %d - %s%n", thread.getId(), thread.getName());
+    pw.printf("Main : Priority: %d%n", thread.getPriority());
     pw.printf("Main : Old State: %s%n", state);
     pw.printf("Main : New State: %s%n", thread.getState());
-    pw.printf(
-        "Main : ************************************%n");
+    pw.printf("Main : ************************************%n");
   }
 }

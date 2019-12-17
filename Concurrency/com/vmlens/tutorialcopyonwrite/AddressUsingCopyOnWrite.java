@@ -1,16 +1,12 @@
 package com.vmlens.tutorialcopyonwrite;
 
-@SuppressWarnings(
-    {"PMD.IllegalToken", "PMD.AvoidUsingVolatile"})
+@SuppressWarnings({"PMD.IllegalToken", "PMD.AvoidUsingVolatile"})
 public class AddressUsingCopyOnWrite {
   private volatile AddressValue addressValue;
   private final Object lock = new Object();
 
-  public AddressUsingCopyOnWrite(String street,
-                                 String city,
-                                 String phone) {
-    this.addressValue =
-        new AddressValue(street, city, phone);
+  public AddressUsingCopyOnWrite(String street, String city, String phone) {
+    this.addressValue = new AddressValue(street, city, phone);
   }
 
   public String toStringNotThreadSafe() {
@@ -22,25 +18,21 @@ public class AddressUsingCopyOnWrite {
   @Override
   public String toString() {
     AddressValue local = addressValue;
-    return "street=" + local.getStreet()
-        + ",city=" + local.getCity()
+    return "street=" + local.getStreet() + ",city=" + local.getCity()
         + ",phoneNumber=" + local.getPhoneNumber();
   }
 
-  public void updatePostalAddress(String street,
-                                  String city) {
+  public void updatePostalAddress(String street, String city) {
     synchronized (lock) {
-      addressValue = new AddressValue(
-          street, city, addressValue.getPhoneNumber());
+      addressValue =
+          new AddressValue(street, city, addressValue.getPhoneNumber());
     }
   }
 
   public void updatePhoneNumber(String phoneNumber) {
     synchronized (lock) {
-      addressValue =
-          new AddressValue(addressValue.getStreet(),
-                           addressValue.getCity(),
-                           phoneNumber);
+      addressValue = new AddressValue(
+          addressValue.getStreet(), addressValue.getCity(), phoneNumber);
     }
   }
 }

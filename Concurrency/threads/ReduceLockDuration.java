@@ -8,32 +8,25 @@ import java.util.UUID;
 public enum ReduceLockDuration {
   ;
   private static final int NUMBER_OF_THREADS = 5;
-  private static final Map<String, Integer> MAP =
-      new HashMap<>();
+  private static final Map<String, Integer> MAP = new HashMap<>();
 
   public static void main(String[] args) {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
-      Arrays.setAll(threads,
-                    i -> new Thread(new OrigThread()));
+      Arrays.setAll(threads, i -> new Thread(new OrigThread()));
       long startMillis = System.currentTimeMillis();
       for (Thread t: threads)
         t.start();
       for (Thread t: threads)
         t.join();
-      System.out.println(
-          (System.currentTimeMillis() - startMillis)
-          + "ms");
-      Arrays.setAll(threads,
-                    i -> new Thread(new ReducedThread()));
+      System.out.println((System.currentTimeMillis() - startMillis) + "ms");
+      Arrays.setAll(threads, i -> new Thread(new ReducedThread()));
       startMillis = System.currentTimeMillis();
       for (Thread t: threads)
         t.start();
       for (Thread t: threads)
         t.join();
-      System.out.println(
-          (System.currentTimeMillis() - startMillis)
-          + "ms");
+      System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }

@@ -22,8 +22,7 @@ public enum IllegalMonitorStateNotifyExample {
       System.out.println("Checking for lock...");
       if (Thread.holdsLock(HelperClass.OBJ))
         HelperClass.OBJ.notifyAll();
-      System.out.println(
-          "No exception since lock checked...");
+      System.out.println("No exception since lock checked...");
 
       System.out.println("Caring a damn for lock ...");
       HelperClass.OBJ.notifyAll();
@@ -31,9 +30,8 @@ public enum IllegalMonitorStateNotifyExample {
       // Wait for all threads to terminate.
       waitThread.join();
     } catch (InterruptedException ex) {
-      System.err.println(
-          "An InterruptedException was caught: "
-          + ex.getMessage());
+      System.err.println("An InterruptedException was caught: "
+                         + ex.getMessage());
       return;
     }
   }

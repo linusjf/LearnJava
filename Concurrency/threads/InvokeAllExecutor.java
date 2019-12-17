@@ -15,8 +15,7 @@ public enum InvokeAllExecutor {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
-    ExecutorService executor =
-        Executors.newCachedThreadPool();
+    ExecutorService executor = Executors.newCachedThreadPool();
     List<Task> taskList = new ArrayList<>();
     for (int i = 0; i < 3; i++)
       taskList.add(new Task("Task " + i));
@@ -31,10 +30,8 @@ public enum InvokeAllExecutor {
     for (Future<Result> future: resultList) {
       try {
         Result result = future.get();
-        System.out.println(result.getName() + ": "
-                           + result.getValue());
-      } catch (InterruptedException
-               | ExecutionException e) {
+        System.out.println(result.getName() + ": " + result.getValue());
+      } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
     }
@@ -77,9 +74,7 @@ public enum InvokeAllExecutor {
         long duration = random.nextInt(10);
 
         System.out.printf(
-            "%s: Waiting %d seconds for results.%n",
-            this.name,
-            duration);
+            "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

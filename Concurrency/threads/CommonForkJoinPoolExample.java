@@ -12,8 +12,7 @@ public enum CommonForkJoinPoolExample {
     numbers.parallelStream().forEach(n -> {
       try {
         Thread.sleep(5);
-        System.out.printf(
-            "Loop %d : %s%n", n, Thread.currentThread());
+        System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
       } catch (InterruptedException e) {
         System.err.println(e);
       }

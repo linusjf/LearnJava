@@ -20,47 +20,38 @@ public enum CallableExecutorExample {
     List<Future<Integer>> resultList = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
       Integer number = random.nextInt(10);
-      FactorialCalculator calculator =
-          new FactorialCalculator(number);
+      FactorialCalculator calculator = new FactorialCalculator(number);
       Future<Integer> result = executor.submit(calculator);
       resultList.add(result);
     }
     do {
-      System.out.printf(
-          "Main: Number of Completed Tasks: %d%n",
-          executor.getCompletedTaskCount());
+      System.out.printf("Main: Number of Completed Tasks: %d%n",
+                        executor.getCompletedTaskCount());
       for (int i = 0; i < resultList.size(); i++) {
         Future<Integer> result = resultList.get(i);
-        System.out.printf("Main: Task %d completed: %s%n",
-                          i,
-                          result.isDone());
+        System.out.printf("Main: Task %d completed: %s%n", i, result.isDone());
       }
       try {
         TimeUnit.MILLISECONDS.sleep(50);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-    } while (executor.getCompletedTaskCount()
-             < resultList.size());
+    } while (executor.getCompletedTaskCount() < resultList.size());
     System.out.printf("Main: Results%n");
     for (int i = 0; i < resultList.size(); i++) {
       Future<Integer> result = resultList.get(i);
       try {
         Integer number = result.get();
         System.out.printf(
-            "Main: Task %d: calculated factorial: %d%n",
-            i,
-            number);
-      } catch (InterruptedException
-               | ExecutionException e) {
+            "Main: Task %d: calculated factorial: %d%n", i, number);
+      } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }
     }
     executor.shutdown();
   }
 
-  static class FactorialCalculator
-      implements Callable<Integer> {
+  static class FactorialCalculator implements Callable<Integer> {
     private final Integer number;
 
     FactorialCalculator(Integer number) {

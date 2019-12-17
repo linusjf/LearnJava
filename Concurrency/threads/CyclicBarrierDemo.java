@@ -25,17 +25,13 @@ public class CyclicBarrierDemo {
     numPartialResults = numberOfPartialResults;
     latch = new CountDownLatch(numWorkers + 1);
 
-    cyclicBarrier = new CyclicBarrier(
-        numWorkers, new AggregatorThread());
+    cyclicBarrier = new CyclicBarrier(numWorkers, new AggregatorThread());
 
-    System.out.println("Spawning " + numWorkers
-                       + " worker threads to compute "
-                       + numPartialResults
-                       + " partial results each");
+    System.out.println("Spawning " + numWorkers + " worker threads to compute "
+                       + numPartialResults + " partial results each");
 
     for (int i = 0; i < numWorkers; i++) {
-      Thread worker =
-          new Thread(new NumberCruncherThread());
+      Thread worker = new Thread(new NumberCruncherThread());
       worker.setName("Thread " + i);
       worker.start();
     }
@@ -46,8 +42,7 @@ public class CyclicBarrierDemo {
       latch = new CountDownLatch(numWorkers + 1);
       partialResults.clear();
       for (int i = 0; i < numWorkers; i++) {
-        Thread worker =
-            new Thread(new NumberCruncherThread());
+        Thread worker = new Thread(new NumberCruncherThread());
         worker.setName("Thread " + i);
         worker.start();
       }
@@ -64,29 +59,24 @@ public class CyclicBarrierDemo {
   class NumberCruncherThread implements Runnable {
     @Override
     public void run() {
-      String thisThreadName =
-          Thread.currentThread().getName();
+      String thisThreadName = Thread.currentThread().getName();
       List<Integer> partialResult = new ArrayList<>();
 
       // Crunch some numbers and store the partial result
       for (int i = 0; i < numPartialResults; i++) {
         Integer num = random.nextInt(10);
-        System.out.println(
-            thisThreadName
-            + ": Crunching some numbers! Final result - "
-            + num);
+        System.out.println(thisThreadName
+                           + ": Crunching some numbers! Final result - " + num);
         partialResult.add(num);
       }
 
       partialResults.add(partialResult);
       try {
-        System.out.println(
-            thisThreadName
-            + " waiting for others to reach barrier.");
+        System.out.println(thisThreadName
+                           + " waiting for others to reach barrier.");
         latch.countDown();
         cyclicBarrier.await();
-      } catch (InterruptedException
-               | BrokenBarrierException e) {
+      } catch (InterruptedException | BrokenBarrierException e) {
         System.err.println(e);
       }
     }
@@ -95,13 +85,11 @@ public class CyclicBarrierDemo {
   class AggregatorThread implements Runnable {
     @Override
     public void run() {
-      String thisThreadName =
-          Thread.currentThread().getName();
+      String thisThreadName = Thread.currentThread().getName();
 
-      System.out.println(
-          thisThreadName + ": Computing sum of "
-          + numWorkers + " workers, having "
-          + numPartialResults + " results each.");
+      System.out.println(thisThreadName + ": Computing sum of " + numWorkers
+                         + " workers, having " + numPartialResults
+                         + " results each.");
       int sum = 0;
 
       for (List<Integer> threadResult: partialResults) {
@@ -112,8 +100,7 @@ public class CyclicBarrierDemo {
         }
         System.out.println();
       }
-      System.out.println(thisThreadName
-                         + ": Final result = " + sum);
+      System.out.println(thisThreadName + ": Final result = " + sum);
       latch.countDown();
     }
   }

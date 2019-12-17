@@ -43,14 +43,12 @@ public enum ExceptionalForkJoin {
 
     @Override
     protected Integer compute() {
-      System.out.printf(
-          "Task: Start from %d to %d%n", start, end);
+      System.out.printf("Task: Start from %d to %d%n", start, end);
       if (end - start < MIN_TASK_SIZE) {
         if (3 > start && 3 < end)
           completeExceptionally(new RuntimeException(
               "This task throws a Runtime "
-              + "Exception: Task from " + start + " to "
-              + end));
+              + "Exception: Task from " + start + " to " + end));
         try {
           TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -62,8 +60,7 @@ public enum ExceptionalForkJoin {
         Task task2 = new Task(array, mid, end);
         invokeAll(task1, task2);
       }
-      System.out.printf(
-          "Task: End from %d to %d%n", start, end);
+      System.out.printf("Task: End from %d to %d%n", start, end);
       return 0;
     }
   }
