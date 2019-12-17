@@ -18,12 +18,16 @@ public class BCryptor implements Encrypt {
   @Override
   public String encrypt(String text) {
     try {
-      String hash = BCryptUtil.hashpw(text, BCryptUtil.gensalt(12));
-      hash = hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
+      String hash =
+          BCryptUtil.hashpw(text, BCryptUtil.gensalt(12));
+      hash = hash.substring(
+          hash.lastIndexOf('$', hash.length()) + 1);
       return hash;
     } catch (IllegalArgumentException e) {
-      System.err.println("Illegal Argument: " + e.getMessage());
-      throw new AssertionError("Illegal argument: " + text, e);
+      System.err.println("Illegal Argument: "
+                         + e.getMessage());
+      throw new AssertionError("Illegal argument: " + text,
+                               e);
     }
   }
 }

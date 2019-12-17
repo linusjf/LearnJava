@@ -10,7 +10,7 @@ package com.lambdaworks.jni;
  *
  * @author Will Glozer
  */
-public final class LibraryLoaders { // NOPMD
+public final class LibraryLoaders {  // NOPMD
 
   private LibraryLoaders() {
     throw new IllegalStateException("Private constructor");
@@ -22,7 +22,8 @@ public final class LibraryLoaders { // NOPMD
    * @return the loader.
    */
   public static LibraryLoader loader() {
-    final String type = System.getProperty("com.lambdaworks.jni.loader");
+    final String type =
+        System.getProperty("com.lambdaworks.jni.loader");
 
     if (type != null) {
       if ("sys".equals(type))
@@ -31,10 +32,15 @@ public final class LibraryLoaders { // NOPMD
         return new NilLibraryLoader();
       if ("jar".equals(type))
         return new JarLibraryLoader();
-      throw new IllegalStateException("Illegal value for com.lambdaworks.jni.loader: " + type);
+      throw new IllegalStateException(
+          "Illegal value for com.lambdaworks.jni.loader: "
+          + type);
     }
 
-    final String vmSpec = System.getProperty("java.vm.specification.name");
-    return vmSpec.startsWith("Java") ? new JarLibraryLoader() : new SysLibraryLoader();
+    final String vmSpec =
+        System.getProperty("java.vm.specification.name");
+    return vmSpec.startsWith("Java")
+        ? new JarLibraryLoader()
+        : new SysLibraryLoader();
   }
 }

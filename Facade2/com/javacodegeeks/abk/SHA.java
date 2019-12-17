@@ -22,8 +22,10 @@ public class SHA implements Encrypt {
   @Override
   public String encrypt(String text) {
     try {
-      final MessageDigest digest = MessageDigest.getInstance("SHA");
-      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+      final MessageDigest digest =
+          MessageDigest.getInstance("SHA");
+      final byte[] textBytes = digest.digest(
+          text.getBytes(StandardCharsets.UTF_8));
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);

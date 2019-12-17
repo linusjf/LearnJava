@@ -19,7 +19,8 @@ public class SCryptor implements Encrypt {
   public String encrypt(String text) {
     try {
       String hash = SCryptUtil.scrypt(text, 16, 16, 16);
-      return hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
+      return hash.substring(
+          hash.lastIndexOf('$', hash.length()) + 1);
     } catch (IllegalStateException e) {
       throw new AssertionError("Illegal state : ", e);
     }

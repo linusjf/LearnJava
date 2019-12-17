@@ -2,17 +2,20 @@ package com.howtodoinjava.hashing.password.demo.bcrypt;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //
-// Permission to use, copy, modify, and distribute this software for any
-// purpose with or without fee is hereby granted, provided that the above
-// copyright notice and this permission notice appear in all copies.
+// Permission to use, copy, modify, and distribute this
+// software for any purpose with or without fee is hereby
+// granted, provided that the above copyright notice and
+// this permission notice appear in all copies.
 //
-// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-// WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-// MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-// ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-// WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-// ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-// OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS
+// ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO
+// EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+// INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+// WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+// WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+// TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
+// USE OR PERFORMANCE OF THIS SOFTWARE.
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptConstants.*;
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.streamtoword;
 
@@ -31,7 +34,8 @@ import java.util.stream.IntStream;
  * random salt, like this:
  *
  * <p><code>
- * String pw_hash = BCrypt.hashpw(plain_password, BCrypt.gensalt());
+ * String pw_hash = BCrypt.hashpw(plain_password,
+ * BCrypt.gensalt());
  *
  * </code>
  *
@@ -42,7 +46,8 @@ import java.util.stream.IntStream;
  * if (BCrypt.checkpw(candidate_password, stored_hash))
  * &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("It matches");
  * else
- * &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("It does not match");
+ * &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("It does not
+ * match");
  * </code>
  *
  * <p>The gensalt() method takes an optional parameter (log_rounds) that determines the
@@ -61,9 +66,11 @@ import java.util.stream.IntStream;
  */
 public class BCrypt {
   // Expanded Blowfish key
-  @SuppressWarnings("membername") private int[] P; // NOPMD
+  @SuppressWarnings("membername")
+  private int[] P;  // NOPMD
 
-  @SuppressWarnings("membername") private int[] S; // NOPMD
+  @SuppressWarnings("membername")
+  private int[] S;  // NOPMD
 
   /**
    * Blowfish encipher a single 64-bit block encoded as two 32-bit halves.
@@ -112,7 +119,8 @@ public class BCrypt {
   private void key(final byte[] key) {
     final int[] lr = {0, 0};
     final int[] koffp = {0};
-    Arrays.setAll(P, index -> P[index] ^ streamtoword(key, koffp));
+    Arrays.setAll(
+        P, index -> P[index] ^ streamtoword(key, koffp));
     encipherP(lr);
     encipherS(lr);
   }
@@ -137,7 +145,9 @@ public class BCrypt {
     });
   }
 
-  private void encipherEkskeyP(int[] lr, byte[] data, int... doffp) {
+  private void encipherEkskeyP(int[] lr,
+                               byte[] data,
+                               int... doffp) {
     IntStream.range(0, P.length).forEach(index -> {
       if (index % 2 == 0) {
         lr[0] ^= streamtoword(data, doffp);
@@ -149,7 +159,9 @@ public class BCrypt {
     });
   }
 
-  private void encipherEkskeyS(int[] lr, byte[] data, int... doffp) {
+  private void encipherEkskeyS(int[] lr,
+                               byte[] data,
+                               int... doffp) {
     IntStream.range(0, S.length).forEach(index -> {
       if (index % 2 == 0) {
         lr[0] ^= streamtoword(data, doffp);
@@ -174,14 +186,17 @@ public class BCrypt {
     final int[] doffp = {0};
     final int[] lr = {0, 0};
 
-    Arrays.setAll(P, index -> P[index] ^ streamtoword(key, koffp));
+    Arrays.setAll(
+        P, index -> P[index] ^ streamtoword(key, koffp));
     encipherEkskeyP(lr, data, doffp);
     encipherEkskeyS(lr, data, doffp);
   }
 
-  private void checkCryptParameters(int logRounds, byte[] salt) {
+  private void checkCryptParameters(int logRounds,
+                                    byte[] salt) {
     if (logRounds < 4 || logRounds > 31)
-      throw new IllegalArgumentException("Bad number of rounds");
+      throw new IllegalArgumentException(
+          "Bad number of rounds");
     if (salt.length != BCRYPT_SALT_LEN)
       throw new IllegalArgumentException("Bad salt length");
   }
@@ -195,7 +210,9 @@ public class BCrypt {
    * @return an array containing the binary hashed password
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  byte[] cryptRaw(final byte[] password, final byte[] salt, final int logRounds) {
+  byte[] cryptRaw(final byte[] password,
+                  final byte[] salt,
+                  final int logRounds) {
     checkCryptParameters(logRounds, salt);
     final int[] cdata = BFCRYPTCIPHERTEXT.clone();
     final int clen = cdata.length;
@@ -210,15 +227,16 @@ public class BCrypt {
     }
     int j;
     for (i = 0; i < 64; i++) {
-      for (j = 0; j < (clen >> 1); j++) encipher(cdata, j << 1);
+      for (j = 0; j < (clen >> 1); j++)
+        encipher(cdata, j << 1);
     }
 
     final byte[] ret = new byte[clen * 4];
     for (i = 0, j = 0; i < clen; i++) {
-      ret[j++] = (byte) ((cdata[i] >> 24) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 16) & 0xff);
-      ret[j++] = (byte) ((cdata[i] >> 8) & 0xff);
-      ret[j++] = (byte) (cdata[i] & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 24) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 16) & 0xff);
+      ret[j++] = (byte)((cdata[i] >> 8) & 0xff);
+      ret[j++] = (byte)(cdata[i] & 0xff);
     }
     return ret;
   }

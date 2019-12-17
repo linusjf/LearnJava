@@ -21,13 +21,16 @@ public class MD5Encryptor implements Encrypt {
   @Override
   public String encrypt(String text) {
     try {
-      final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
-      msgDigest.update(text.getBytes(StandardCharsets.UTF_8));
+      final MessageDigest msgDigest =
+          MessageDigest.getInstance("MD5");
+      msgDigest.update(
+          text.getBytes(StandardCharsets.UTF_8));
 
       final byte[] textBytes = msgDigest.digest();
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm not found : " + e.getMessage());
+      System.err.println("Algorithm not found : "
+                         + e.getMessage());
       throw new AssertionError("Algorithm not found : ", e);
     }
   }

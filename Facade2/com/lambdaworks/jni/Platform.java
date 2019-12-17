@@ -21,7 +21,8 @@ public final class Platform {
     Pattern pattern;
 
     Arch(String pattern) {
-      this.pattern = Pattern.compile("\\A" + pattern + "\\Z", CASE_INSENSITIVE);
+      this.pattern = Pattern.compile(
+          "\\A" + pattern + "\\Z", CASE_INSENSITIVE);
     }
   }
 
@@ -32,7 +33,8 @@ public final class Platform {
     Pattern pattern;
 
     OS(String pattern) {
-      this.pattern = Pattern.compile("\\A" + pattern + "\\Z", CASE_INSENSITIVE);
+      this.pattern = Pattern.compile(
+          "\\A" + pattern + "\\Z", CASE_INSENSITIVE);
     }
   }
 
@@ -54,9 +56,9 @@ public final class Platform {
     final String osArch = getProperty("os.arch");
     final String osName = getProperty("os.name");
 
-    for (Arch arch : Arch.values()) {
+    for (Arch arch: Arch.values()) {
       if (arch.pattern.matcher(osArch).matches()) {
-        for (OS os : OS.values()) {
+        for (OS os: OS.values()) {
           if (os.pattern.matcher(osName).matches()) {
             return new Platform(arch, os);
           }
@@ -64,7 +66,8 @@ public final class Platform {
       }
     }
 
-    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
+    final String msg = String.format(
+        "Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 }
