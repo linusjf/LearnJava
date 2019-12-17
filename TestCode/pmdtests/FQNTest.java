@@ -23,10 +23,13 @@ public enum FQNTest {
       pmdtests[i].start();
     }
     try {
-      for (Thread thread : pmdtests) thread.join();
+      for (Thread thread: pmdtests)
+        thread.join();
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }
-    System.out.println("[" + Thread.currentThread().getName() + "] All threads have finished.");
+    System.out.println("["
+                       + Thread.currentThread().getName()
+                       + "] All threads have finished.");
   }
 }

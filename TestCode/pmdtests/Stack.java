@@ -23,7 +23,8 @@ public class Stack {
       this.next = next;
       this.x = x;
 
-      // inner class updates instance variable in outer class
+      // inner class updates instance variable in outer
+      // class
       n++;
     }
   }

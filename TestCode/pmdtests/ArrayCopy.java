@@ -27,7 +27,8 @@ public enum ArrayCopy {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 100; j++)
         // words.length should not be flagged for LOD
-        document[i][j] = words[random.nextInt(words.length)];
+        document[i][j] =
+            words[random.nextInt(words.length)];
     }
   }
 }

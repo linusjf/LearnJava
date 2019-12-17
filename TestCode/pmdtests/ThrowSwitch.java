@@ -7,8 +7,10 @@ public final class ThrowSwitch {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"fallthrough", "PMD.MissingBreakInSwitch"})
-  public static void main(String... args) {
+  @SuppressWarnings({"fallthrough",
+                     "PMD.MissingBreakInSwitch"})
+  public static void
+  main(String... args) {
     int errCode = getSimulatedErrorCode();
 
     switch (errCode) {
