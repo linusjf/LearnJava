@@ -160,7 +160,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="ParameterNumber" />
     <module name="ClassFanOutComplexity" />
     <module name="JavaNCSS" />
-      <!--    <module name="Regexp" />-->
+    <module name="Regexp" />
     <module name="NPathComplexity" />
     <module name="SuppressionXpathSingleFilter">
       <property name="files"

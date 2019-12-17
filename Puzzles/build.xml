@@ -1133,7 +1133,7 @@
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
@@ -1147,7 +1147,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-      properties="../${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java"
                excludes="**/Ugly.java,**/AnonymousReceiver.java" />
