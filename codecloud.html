@@ -1,0 +1,568 @@
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,
+            initial-scale=1.0,maximum-scale=1.0" />
+        <style type="text/css">
+            canvas {
+                border: 1px solid black;
+                width: 700px;
+                height: 700px;
+            }
+        </style>
+        <script type="text/javascript">
+        
+
+function TagCloud(w, h, context) {
+    "use strict";
+    this.ctx = context;
+    this.canvasWidth = w;
+    this.canvasHeight = h;
+    this.fontSize = this.canvasHeight / 3;
+    this.shape = "rectangle";
+}
+
+TagCloud.prototype.setShape = function () {
+    this.shape = "circle";
+};
+
+TagCloud.prototype.render = function (tags) {
+    this.ctx.textBaseline = "top";
+    tags.forEach(function (tag) {
+        this.placeTag(tag[0]);
+    }, this);
+};
+
+TagCloud.prototype.placeTag = function (tag) {
+    var placement;
+    while (!(placement = this._getNonOverlappingPlaceWithBestSize(
+            this.fontSize, tag)))
+        this.fontSize *= 0.9;
+
+    this.ctx.fillStyle = this._getRandomColor();
+    this.ctx.fillText(tag, placement.x, placement.y);
+};
+
+TagCloud.prototype._getNonOverlappingPlaceWithBestSize =
+    function (fontSize, tag) {
+    this.ctx.font = "" + fontSize + "pt " + "Arial";
+    var lineHeight=this.getLineHeight(fontSize);
+    var tagWidth = this.ctx.measureText(tag).width;
+
+    var base = new BasePlacement(
+        (this.canvasWidth - tagWidth) * Math.random(),
+        (this.canvasHeight - lineHeight) * Math.random(),
+        lineHeight
+        );
+
+    var placement;
+    /* jshint ignore:start */
+    while (placement = base.nextPlaceToTry()) {
+        if (this._isPlaceEmpty(placement, tagWidth, lineHeight))
+            break;
+    }
+    /* jshint ignore:end */
+    return placement;
+};
+
+TagCloud.prototype.getLineHeight = function (fontSize) {
+    return this.ctx.measureText('M').width * 1.2;
+}
+
+TagCloud.prototype._getRandomColor = function (){
+    var colors = ["aqua", "black", "blue", "fuchsia", "gray", "green",
+                  "lime", "maroon", "navy", "olive", "orange", "purple",
+                  "red", "silver", "teal"];
+    return colors[Math.floor(colors.length * Math.random())];
+};
+
+TagCloud.prototype._isPlaceEmpty = function (placement, width, height) {
+    if (placement.x < 0 || placement.y < 0 || placement.x + width >
+         this.canvasWidth || placement.y + height > this.canvasHeight)
+        return false;
+
+    var pix = this.ctx.getImageData(
+                placement.x, placement.y, width, height).data;
+
+    for (var i = 0, n = pix.length; i < n; i += 4)
+        if (pix[i+3])
+                return false;
+
+    return [[placement.x, placement.y],
+            [placement.x + width, placement.y],
+            [placement.x, placement.y + height],
+            [placement.x + width, placement.y + height]].every(
+                function(pos) {
+                    var a = this.canvasWidth / 2;
+                    var b = this.canvasHeight / 2;
+                    var X = pos[0] - a;
+                    var Y = pos[1] - b;
+                    return (X * X / a / a + Y * Y / b / b < 1);
+                }, this);
+};
+
+TagCloud.prototype.getCoverage = function () {
+    var pix = this.ctx.getImageData(
+                0, 0, this.canvasWidth, this.canvasHeight).data;
+    var pixCount = 0;
+    for (var i = 0, n = pix.length; i < n; i += 4) {
+        if (pix[i+3])
+            pixCount++;
+    }
+    return pixCount * 100 / this.canvasWidth / this.canvasHeight;
+};
+
+function BasePlacement(x, y, h) {
+    var baseX = x,
+        baseY = y,
+        scale = h,
+        tryNumber = 0;
+
+    this.nextPlaceToTry = function() {
+        if (tryNumber < this._spiralOffsets.length)
+            return {
+                x : baseX + this._spiralOffsets[tryNumber][0] * scale,
+                y : baseY + this._spiralOffsets[tryNumber++][1] * scale
+            };
+    };
+}
+
+function generateSpiralOffsets() {
+    var spiralOffsets = [];
+    var radius = 0;
+    var dr = 0.2;
+    for (var i = 0; radius < 40; i+=0.4, radius += dr) {
+        spiralOffsets.push([
+                   radius * Math.sin(i),
+                   radius * Math.cos(i)
+                ]);
+    }
+    return spiralOffsets;
+}
+
+BasePlacement.prototype._spiralOffsets = generateSpiralOffsets();
+
+    
+        </script>
+        <script type="application/javascript">
+            function draw() {
+                var canvas = document.getElementById("canvas");
+                    if (canvas.getContext) {
+                        var ctx = canvas.getContext("2d");
+                        // scale 2x
+                        if(window.devicePixelRatio == 2) {
+                            canvas.setAttribute('width', canvas.width * 2);
+                            canvas.setAttribute('height', canvas.height * 2);
+                        }
+                        var tagCloud = new TagCloud(canvas.width,
+                            canvas.height, ctx);
+                        tagCloud.render([                                        ["System", 2599],
+                                        ["String", 2494],
+                                        ["out", 2313],
+                                        ["java", 2220],
+                                        ["println", 2179],
+                                        ["int", 1281],
+                                        ["final", 1240],
+                                        ["i", 1050],
+                                        ["package", 1028],
+                                        ["util", 912],
+                                        ["0", 794],
+                                        ["args", 769],
+                                        ["this", 752],
+                                        ["SuppressWarnings", 593],
+                                        ["Override", 580],
+                                        ["catch", 574],
+                                        ["try", 572],
+                                        ["e", 520],
+                                        ["main", 519],
+                                        ["Thread", 497],
+                                        ["1", 480],
+                                        ["IOException", 463],
+                                        ["io", 456],
+                                        ["err", 419],
+                                        ["name", 412],
+                                        ["List", 370],
+                                        ["com", 353],
+                                        ["enum", 334],
+                                        ["printf", 321],
+                                        ["ex", 293],
+                                        ["net", 286],
+                                        ["byte", 276],
+                                        ["Integer", 267],
+                                        ["throw", 259],
+                                        ["add", 249],
+                                        ["x", 248],
+                                        ["append", 242],
+                                        ["concurrent", 241],
+                                        ["nio", 241],
+                                        ["implements", 238],
+                                        ["javacodegeeks", 236],
+                                        ["length", 234],
+                                        ["...", 232],
+                                        ["start", 231],
+                                        ["long", 222],
+                                        ["StandardCharsets", 221],
+                                        ["null", 212],
+                                        ["InterruptedException", 209],
+                                        ["throws", 207],
+                                        ["2", 199],
+                                        ["port", 186],
+                                        ["while", 185],
+                                        ["file", 180],
+                                        ["getName", 178],
+                                        ["threads", 177],
+                                        ["File", 174],
+                                        ["get", 173],
+                                        ["ArrayList", 172],
+                                        ["true", 171],
+                                        ["Date", 170],
+                                        ["boolean", 167],
+                                        ["toString", 166],
+                                        ["buffer", 165],
+                                        ["Object", 163],
+                                        ["patterns", 162],
+                                        ["Random", 157],
+                                        ["list", 150],
+                                        ["UTF_8", 149],
+                                        ["extends", 147],
+                                        ["t", 147],
+                                        ["10", 144],
+                                        ["result", 142],
+                                        ["IllegalStateException", 141],
+                                        ["equals", 141],
+                                        ["s", 140],
+                                        ["run", 138],
+                                        ["getMessage", 135],
+                                        ["p", 132],
+                                        ["security", 131],
+                                        ["c", 128],
+                                        ["key", 125],
+                                        ["value", 122],
+                                        ["StringBuilder", 120],
+                                        ["j", 120],
+                                        ["Arrays", 117],
+                                        ["networking", 116],
+                                        ["socket", 116],
+                                        ["currentThread", 115],
+                                        ["sleep", 115],
+                                        ["super", 114],
+                                        ["InetAddress", 113],
+                                        ["Socket", 113],
+                                        ["y", 112],
+                                        ["TimeUnit", 111],
+                                        ["javax", 111],
+                                        ["task", 110],
+                                        ["n", 109],
+                                        ["javapuzzles", 108],
+                                        ["put", 107],
+                                        ["print", 105],
+                                        ["lang", 104],
+                                        ["size", 102],
+                                        ["Runnable", 101],
+                                        ["r", 101],
+                                        ["Map", 100],
+                                        ["charset", 100],
+                                        ["Scanner", 98],
+                                        ["data", 98],
+                                        ["random", 94],
+                                        ["5", 93],
+                                        ["address", 93],
+                                        ["3", 92],
+                                        ["Task", 92],
+                                        ["connection", 90],
+                                        ["double", 90],
+                                        ["Files", 89],
+                                        ["server", 89],
+                                        ["<?>", 88],
+                                        ["host", 88],
+                                        ["getInstance", 87],
+                                        ["input", 87],
+                                        ["message", 86],
+                                        ["stream", 86],
+                                        ["line", 85],
+                                        ["Player", 84],
+                                        ["PrintWriter", 84],
+                                        ["false", 84],
+                                        ["rank", 84],
+                                        ["T", 82],
+                                        ["Class", 81],
+                                        ["b", 81],
+                                        ["example", 81],
+                                        ["pool", 81],
+                                        ["response", 81],
+                                        ["executor", 80],
+                                        ["client", 79],
+                                        ["PORT", 78],
+                                        ["URL", 78],
+                                        ["refactoringguru", 78],
+                                        ["request", 78],
+                                        ["InputStream", 77],
+                                        ["write", 77],
+                                        ["Base64", 76],
+                                        ["Paths", 75],
+                                        ["digest", 75],
+                                        ["results", 75],
+                                        ["ByteBuffer", 74],
+                                        ["a", 73],
+                                        ["4", 72],
+                                        ["SelectionKey", 71],
+                                        ["format", 70],
+                                        ["interface", 70],
+                                        ["synchronized", 70],
+                                        ["channel", 69],
+                                        ["iterator", 69],
+                                        ["join", 69],
+                                        ["filename", 66],
+                                        ["thread", 66],
+                                        ["InputStreamReader", 65],
+                                        ["similarity", 65],
+                                        ["100", 64],
+                                        ["NoSuchAlgorithmException", 64],
+                                        ["ServerSocket", 64],
+                                        ["d", 63],
+                                        ["names", 63],
+                                        ["sb", 63],
+                                        ["BufferedReader", 62],
+                                        ["distance", 62],
+                                        ["password", 62],
+                                        ["index", 61],
+                                        ["info", 61],
+                                        ["map", 61],
+                                        ["nextInt", 61],
+                                        ["player", 61],
+                                        ["read", 61],
+                                        ["u", 61],
+                                        ["Person", 60],
+                                        ["Executors", 59],
+                                        ["MessageDigest", 59],
+                                        ["annotation", 59],
+                                        ["ioe", 59],
+                                        ["output", 59],
+                                        ["Parameter", 58],
+                                        ["assert", 58],
+                                        ["product", 58],
+                                        ["SocketChannel", 57],
+                                        ["id", 57],
+                                        ["Set", 56],
+                                        ["obj", 56],
+                                        ["queue", 56],
+                                        ["type", 56],
+                                        ["AssertionError", 55],
+                                        ["abk", 55],
+                                        ["close", 55],
+                                        ["o", 55],
+                                        ["text", 55],
+                                        ["visitor", 55],
+                                        ["method", 54],
+                                        ["numbers", 54],
+                                        ["salt", 54],
+                                        ["1000", 53],
+                                        ["ExecutorService", 53],
+                                        ["HashMap", 53],
+                                        ["selector", 53],
+                                        ["DatagramPacket", 52],
+                                        ["OutputStreamWriter", 52],
+                                        ["car", 52],
+                                        ["channels", 52],
+                                        ["UnknownHostException", 51],
+                                        ["char", 50],
+                                        ["count", 50],
+                                        ["next", 50],
+                                        ["shutdown", 50],
+                                        ["city", 49],
+                                        ["command", 49],
+                                        ["protected", 49],
+                                        ["BigInteger", 48],
+                                        ["CommandLine", 48],
+                                        ["MalformedURLException", 48],
+                                        ["^=", 48],
+                                        ["encrypt", 48],
+                                        ["f", 48],
+                                        ["first", 48],
+                                        ["forEach", 48],
+                                        ["parseInt", 48],
+                                        ["Profile", 47],
+                                        ["beust", 47],
+                                        ["flush", 47],
+                                        ["handler", 47],
+                                        ["jcommander", 47],
+                                        ["mediator", 47],
+                                        ["servlet", 47],
+                                        ["uc", 47],
+                                        ["8", 46],
+                                        ["InetSocketAddress", 46],
+                                        ["arg", 46],
+                                        ["getBytes", 46],
+                                        ["DatagramSocket", 45],
+                                        ["Pattern", 45],
+                                        ["bytes", 45],
+                                        ["crypto", 45],
+                                        ["fileName", 45],
+                                        ["number", 45],
+                                        ["org", 45],
+                                        ["pattern", 45],
+                                        ["16", 44],
+                                        ["Optional", 44],
+                                        ["getInputStream", 44],
+                                        ["http", 44],
+                                        ["word", 44],
+                                        ["ForkJoinPool", 43],
+                                        ["Method", 43],
+                                        ["abstract", 43],
+                                        ["accept", 43],
+                                        ["logging", 43],
+                                        ["reflect", 43],
+                                        ["serialVersionUID", 43],
+                                        ["7", 42],
+                                        ["Locale", 42],
+                                        ["OutputStream", 42],
+                                        ["array", 42],
+                                        ["email", 42],
+                                        ["handlerName", 42],
+                                        ["set", 42],
+                                        ["hasNext", 41],
+                                        ["serverSocket", 41],
+                                        ["asList", 40],
+                                        ["1L", 39],
+                                        ["LOGGER", 39],
+                                        ["Objects", 39],
+                                        ["TennisPlayer", 39],
+                                        ["duration", 39],
+                                        ["lineSeparator", 39],
+                                        ["matcher", 39],
+                                        ["nextLine", 39],
+                                        ["url", 39],
+                                        ["v", 39],
+                                        ["Callable", 38],
+                                        ["SECONDS", 38],
+                                        ["description", 38],
+                                        ["urlString", 38],
+                                        ["Expression", 37],
+                                        ["getOutputStream", 37],
+                                        ["getPort", 37],
+                                        ["ioEx", 37],
+                                        ["open", 37],
+                                        ["raw", 37],
+                                        ["Collections", 36],
+                                        ["Future", 36],
+                                        ["Math", 36],
+                                        ["ServerSocketChannel", 36],
+                                        ["execute", 36],
+                                        ["exit", 36],
+                                        ["lock", 36],
+                                        ["substring", 36],
+                                        ["work", 36],
+                                        ["ExecutionException", 35],
+                                        ["JCommander", 35],
+                                        ["RemoteException", 35],
+                                        ["time", 35],
+                                        ["IllegalArgumentException", 34],
+                                        ["Iterator", 34],
+                                        ["NumberFormatException", 34],
+                                        ["Product", 34],
+                                        ["argv", 34],
+                                        ["builder", 34],
+                                        ["date", 34],
+                                        ["instance", 34],
+                                        ["myText", 34],
+                                        ["regex", 34],
+                                        ["rmi", 34],
+                                        ["vector", 34],
+                                        ["0xff", 33],
+                                        ["Event", 33],
+                                        ["Friend", 33],
+                                        ["IntStream", 33],
+                                        ["Pair", 33],
+                                        ["Target", 33],
+                                        ["URLConnection", 33],
+                                        ["getEncoder", 33],
+                                        ["ie", 33],
+                                        ["l", 33],
+                                        ["leftRotate", 33],
+                                        ["parse", 33],
+                                        ["picocli", 33],
+                                        ["profile", 33],
+                                        ["sql", 33],
+                                        ["HeavyList", 32],
+                                        ["Logger", 32],
+                                        ["Option", 32],
+                                        ["encodeToString", 32],
+                                        ["remove", 32],
+                                        ["Selector", 31],
+                                        ["build", 31],
+                                        ["contains", 31],
+                                        ["lr", 31],
+                                        ["readLine", 31],
+                                        ["scanner", 31],
+                                        ["scheduleServer", 31],
+                                        ["%", 30],
+                                        ["Writer", 30],
+                                        ["color", 30],
+                                        ["entry", 30],
+                                        ["profileEmail", 30],
+                                        ["roster", 30],
+                                        ["Encrypt", 29],
+                                        ["Personnel", 29],
+                                        ["SnookerPlayer", 29],
+                                        ["counter", 29],
+                                        ["hashCode", 29],
+                                        ["init", 29],
+                                        ["m", 29],
+                                        ["now", 29],
+                                        ["phaser", 29],
+                                        ["query", 29],
+                                        ["10_000", 28],
+                                        ["9", 28],
+                                        ["Assert", 28],
+                                        ["Cipher", 28],
+                                        ["Employee", 28],
+                                        ["ObjectInputStream", 28],
+                                        ["Singleton", 28],
+                                        ["Stream", 28],
+                                        ["annotations", 28],
+                                        ["currentTimeMillis", 28],
+                                        ["default", 28],
+                                        ["group", 28],
+                                        ["howtodoinjava", 28],
+                                        ["path", 28],
+                                        ["proxyToClientBw", 28],
+                                        ["reflection", 28],
+                                        ["service", 28],
+                                        ["Animal", 27],
+                                        ["KeyPairGenerator", 27],
+                                        ["Level", 27],
+                                        ["ObjectOutputStream", 27],
+                                        ["bridge", 27],
+                                        ["cl", 27],
+                                        ["files", 27],
+                                        ["getTime", 27],
+                                        ["interrupt", 27],
+                                        ["off", 27],
+                                        ["originator", 27],
+                                        ["playerType", 27],
+                                        ["price", 27],
+                                        ["target", 27],
+                                        ["valueOf", 27],
+                                        ["BufferedInputStream", 26],
+                                        ["Builder", 26],
+                                        ["Handler", 26],
+                                        ["Supplier", 26],
+                                        ["bower", 26],
+                                        ["getByName", 26],
+                                        ["hash", 26],
+                                        ["keyPairs", 26],
+                                        ["register", 26],
+                                        ["reportGenerator", 26],
+                                        ["temp", 26],
+                                        ["textBytes", 26],
+                                        ["13", 25],
+
+                                    ]);
+                                }
+                        }
+                    </script>
+                </head>
+                <body onload="draw();">
+                    <canvas id="canvas" width="700" height="700"></canvas>
+                </body>
+            </html>
