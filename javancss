@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+declare -r outputFile="javancss.report"
+declare -r classpathFile="javancss.cp"
+declare -r mainClass="javancss.Main"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+echo "$1"
+proj="$1"
+
+cd "$proj"
+java -cp @../"$classpathFile" \
+  "$mainClass" -all \
+  `find . -name "*.java"` \
+  | tee "$outputFile" \
+  || { exitCode="$?";echo "$0 exited with error code $exitCode";cd ..; exit "$exitCode";}
+res=$?
+cd ..
+exit $res
