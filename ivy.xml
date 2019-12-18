@@ -229,6 +229,8 @@
           description="javancss main jars" />
     <conf name="javancss.lib"
           description="javancss lib jars" />
+    <conf name="bcel.main"
+          description="bcel main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -535,6 +537,11 @@
     <dependency org="org.codehaus.javancss"
                 name="javancss"
                 rev="33.54"
-                conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
+      conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
+      <!-- https://mvnrepository.com/artifact/org.apache.bcel/bcel -->
+    <dependency org="org.apache.bcel" 
+      name="bcel" 
+      rev="6.4.1"
+      conf="bcel.main-&gt;master;" />
   </dependencies>
 </ivy-module>

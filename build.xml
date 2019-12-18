@@ -307,6 +307,8 @@
                   conf="javancss.main" />
     <ivy:retrieve pathid="javancss.lib.path"
                   conf="javancss.lib" />
+    <ivy:retrieve pathid="bcel.main.path"
+                  conf="bcel.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -368,10 +370,14 @@
     <echo file="${error_prone.classpath.file}"
           message="${toString:error_prone_core.lib.path}:${toString:error_prone_core.main.path}" />
     <echo file="${ckjm_ext.classpath.file}"
-          message="${toString:ckjm_ext.lib.path}:${toString:ckjm_ext.main.path}" />
+          message="${toString:bcel.main.path}:${toString:ckjm_ext.lib.path}:${toString:ckjm_ext.main.path}" />
     <echo file="${javancss.classpath.file}"
           message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
     <antcall target="uniquify"></antcall>
+      <replaceregexp file="${ckjm_ext.classpath.file}"
+               match=":(.*)bcel-5.1.jar"
+               replace=""
+               byline="true"/>
   </target>
   <!-- =================================
           target: report

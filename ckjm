@@ -18,11 +18,13 @@ fi
 echo "$1"
 proj="$1"
 
-echo $CLASSPATH
-java -cp @"$classpathFile" \
+classpath="$(cat "$classpathFile"):."
+cd "$proj"
+java -cp "$classpath" \
   "$mainClass" \
-  `find "$proj" -name "*.class"` \
-  | tee "$proj"/"$errFile" \
+  `find . -name "*.class"` \
+  | tee "$errFile" \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
+cd ..
 exit $res
