@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+declare -r errFile="ckjm.errors"
+declare -r classpathFile="ckjm_ext.cp"
+declare -r mainClass="gr.spinellis.ckjm.MetricsFilter"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+echo "$1"
+proj="$1"
+
+echo $CLASSPATH
+java -cp @"$classpathFile" \
+  "$mainClass" \
+  `find "$proj" -name "*.class"` \
+  | tee "$proj"/"$errFile" \
+  || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res
