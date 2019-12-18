@@ -1,0 +1,7 @@
+#!/bin/bash
+
+lizard -w -EWordCount \
+  `find . -name "*.java"` \
+  || { echo "Errors/warnings found running $0"; exit 1;}
+res=$?
+exit $res
