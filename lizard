@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+declare -r outputFile="lizard.report"
+
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
+then
+  usage
+fi
+
+echo "$1"
+proj="$1"
+
+cd "$proj"
+lizard -l java \
+  --csv -m -s nloc \
+  `find . -name "*.java"` \
+  | tee "$outputFile" \
+  || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
+res=$?
+cd ..
+exit $res
