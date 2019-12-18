@@ -14,7 +14,6 @@
                    "PMD.UseUtilityClass"})
 class NoDot2 {
   public static void main(String[] args) throws Exception {
-
     if (new ClassLoader() {
           {
             try (AutoCloseable o = defineClass(
