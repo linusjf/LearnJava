@@ -13,7 +13,7 @@ class NoDot {
   public static void main(String[] args) throws Exception {
     try (
         AutoCloseable o = new Throwable(
-            ((char)13) + "Hello world", null, true, false) {
+            ((char)13) + "Hello, world", null, true, false) {
         } ::printStackTrace) {
     }
   }
