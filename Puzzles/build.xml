@@ -108,6 +108,16 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run104">
+    <description>NoDot3 target</description>
+    <java classname="${main.class104}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run103">
     <description>ShortCircuit target</description>
     <java classname="${main.class103}"
@@ -1085,7 +1095,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run102,run101,run100,run99,run98,run97,run96,run95,run94,run93,run92,run91,run90,run89,run88,run87,run86,run85,run84,run83,run82,run81,run80,run79,run78,run77,run76,run75,run74,run73,run72,run71,run70,run69,run68,run67,run66,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run104,run103,run102,run101,run100,run99,run98,run97,run96,run95,run94,run93,run92,run91,run90,run89,run88,run87,run86,run85,run84,run83,run82,run81,run80,run79,run78,run77,run76,run75,run74,run73,run72,run71,run70,run69,run68,run67,run66,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
 
     <description>Odd target</description>
     <java classname="${main.class}">
