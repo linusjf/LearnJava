@@ -9,7 +9,8 @@ package org.programming.mitra.exercises;
 public enum IntegerCacheExample {
   ;
 
-  @SuppressWarnings("PMD.CompareObjectsWithEquals")
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     int a = 127;
     int b = 127;

@@ -16,6 +16,10 @@ public enum SerialKiller {
     Sub sub = new Sub(666);
     sub.checkInvariant();
     Sub copy = (Sub)deepCopy(sub);
+    checkCopy(copy);
+  }
+
+  public static void checkCopy(Sub copy) {
     copy.checkInvariant();
   }
 
