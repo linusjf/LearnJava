@@ -9,14 +9,17 @@ public class Foo {
     this.i = i;
   }
 
+@SuppressWarnings("PMD.LawOfDemeter")
   public void meth() {
     System.out.println(this.i);
   }
 
+@SuppressWarnings("PMD.LawOfDemeter")
   public void method(Foo this) {
     System.out.println(this.i);
   }
 
+@SuppressWarnings("PMD.LawOfDemeter")
   public void method(Foo this, String... args) {
     System.out.println(this.i);
     for (String arg: args)

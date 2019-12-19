@@ -39,6 +39,7 @@ public enum HelloGoodbye {
     System.exit(0);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void haltMain(String... args) {
     Runtime.getRuntime().addShutdownHook(
         new Thread(() -> System.out.println("Shutdown Hook: Goodbye world")));

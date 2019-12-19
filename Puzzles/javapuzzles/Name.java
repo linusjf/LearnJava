@@ -13,6 +13,7 @@ public class Name {
     this.last = last;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public boolean equals(Object o) {
     if (!(o instanceof Name))

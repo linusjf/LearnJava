@@ -9,6 +9,7 @@ import java.util.Set;
 public enum Reflector {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       Set<String> s = new HashSet<>();
@@ -23,6 +24,7 @@ public enum Reflector {
     altMain(args);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void altMain(String... args) {
     try {
       Set<String> s = new HashSet<>();

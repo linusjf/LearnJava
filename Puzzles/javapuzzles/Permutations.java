@@ -11,12 +11,14 @@ import java.util.stream.Stream;
 public enum Permutations {
   ;
 
-  @SuppressWarnings("PMD.ShortMethodName")
+  @SuppressWarnings({"PMD.ShortMethodName",
+  "PMD.LawOfDemeter"})
   public static <T> Stream<Stream<T>> of(final List<T> items) {
     return IntStream.range(0, factorial(items.size()))
         .mapToObj(i -> permutation(i, items).stream());
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int factorial(final int num) {
     return IntStream.rangeClosed(2, num).reduce(1, (x, y) -> x * y);
   }
@@ -41,6 +43,7 @@ public enum Permutations {
     return permutation(count, new LinkedList<>(items), new ArrayList<>());
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     // clang-format off
     Permutations.of(Arrays.asList(1, 2, 3))
