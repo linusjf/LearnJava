@@ -144,7 +144,8 @@ public class RequestHandler implements Runnable {
    *
    * @param cachedFile The file to be sent (can be image/text)
    */
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private void sendCachedPageToClient(
       File cachedFile,
       BufferedWriter proxyToClientBw) {
@@ -246,7 +247,8 @@ public class RequestHandler implements Runnable {
    *
    * @param urlString URL ofthe file requested
    */
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private void sendNonCachedToClient(
       String urlString,
       BufferedWriter proxyToClientBw) {
@@ -298,14 +300,7 @@ public class RequestHandler implements Runnable {
 
         // Create a connection to remote server
         HttpURLConnection proxyToServerCon =
-            (HttpURLConnection)remoteURL.openConnection();
-        proxyToServerCon.setRequestProperty(
-            "Content-Type",
-            "application/x-www-form-urlencoded");
-        proxyToServerCon.setRequestProperty(
-            "Content-Language", "en-US");
-        proxyToServerCon.setUseCaches(false);
-        proxyToServerCon.setDoOutput(true);
+          openConnection(remoteURL);
 
         // Create Buffered Reader from remote Server
         try (BufferedReader proxyToServerBR =
@@ -345,13 +340,35 @@ public class RequestHandler implements Runnable {
     }
   }
 
+  private HttpURLConnection openConnection(URL remoteURL) 
+  throws IOException {
+
+        HttpURLConnection proxyToServerCon =
+            (HttpURLConnection)remoteURL.openConnection();
+        setProperties(proxyToServerCon);
+        return proxyToServerCon;
+
+  }
+
+  private void setProperties(HttpURLConnection conn) {
+        conn.setRequestProperty(
+            "Content-Type",
+            "application/x-www-form-urlencoded");
+        conn.setRequestProperty(
+            "Content-Language", "en-US");
+        conn.setUseCaches(false);
+        conn.setDoOutput(true);
+  }
+
   /**
    * Handles HTTPS requests between client and remote server.
    *
    * @param urlString desired file to be transmitted over https
    */
   @SuppressWarnings({"checkstyle:abbreviationaswordinname",
-                     "checkstyle:magicnumber"})
+                     "checkstyle:magicnumber",
+  "PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private void
   handleHTTPSRequest(String urlString,
                      BufferedWriter proxyToClientBw,
