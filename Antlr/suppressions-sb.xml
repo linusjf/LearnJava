@@ -3,4 +3,11 @@
   <Match>
     <Class name="~hello[.].*" />
   </Match>
+  <Match>
+    <Or>
+      <Class name="~tee[.].+Parser" />
+      <Class name="~tee[.].+Lexer" />
+      <Class name="~tee[.].+Listener" />
+    </Or>
+  </Match>
 </FindBugsFilter>

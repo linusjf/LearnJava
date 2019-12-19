@@ -116,7 +116,8 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          input="test.txt">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -180,8 +181,8 @@
                 failOnViolation="false"
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
-               excludes="hello/*.java"
-               includes="**/*.java" />
+               excludes="hello/*.java,tee/*.java"
+               includes="**/*.java,tee/Test.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
@@ -203,10 +204,9 @@
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
-      <fileset dir="${basedir}">
-        <exclude name="hello/*.java" />
-        <include name="**/*.java" />
-      </fileset>
+      <fileset dir="${basedir}"
+               excludes="hello/*.java,tee/*.java"
+               includes="**/*.java,tee/Test.java"></fileset>
     </pmd>
   </target>
   <target name="pmd-result"
