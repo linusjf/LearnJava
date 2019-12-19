@@ -8,6 +8,7 @@ public enum Coin {
   TAILS;
   private static Random rnd = new Random();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public String toString() {
     return name().toLowerCase(Locale.getDefault());

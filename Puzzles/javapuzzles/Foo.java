@@ -9,6 +9,10 @@ public class Foo {
     this.i = i;
   }
 
+  public void meth() {
+    System.out.println(this.i);
+  }
+
   public void method(Foo this) {
     System.out.println(this.i);
   }

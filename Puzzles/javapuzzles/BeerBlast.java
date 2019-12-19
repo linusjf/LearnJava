@@ -10,6 +10,7 @@ public enum BeerBlast {
   ;
   static final String COMMAND = "java javapuzzles.BeerBlast slave";
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     if (args.length == 1 && args[0].equals("slave")) {
       for (int i = 99; i > 0; i--) {
