@@ -17,7 +17,7 @@ public final class Elvis {
   }
 
   public static void main(String[] args) {
-    System.out.println("Elvis wears a size "
-                       + INSTANCE.getBeltSize() + " belt.");
+    System.out.println("Elvis wears a size " + INSTANCE.getBeltSize()
+                       + " belt.");
   }
 }

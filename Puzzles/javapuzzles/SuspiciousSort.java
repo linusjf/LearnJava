@@ -41,8 +41,7 @@ public enum SuspiciousSort {
     Integer[] arr = new Integer[100];
     for (int i = 0; i < arr.length; i++)
       arr[i] = RANDOM.nextInt();
-    Comparator<Integer> cmp =
-        (i1, i2) -> i2 < i1 ? -1 : i2 > i1 ? 1 : 0;
+    Comparator<Integer> cmp = (i1, i2) -> i2 < i1 ? -1 : i2 > i1 ? 1 : 0;
     Arrays.sort(arr, cmp);
     System.out.println(order(arr));
   }

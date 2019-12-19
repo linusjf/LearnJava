@@ -18,11 +18,9 @@ public enum Change {
 
     // This creates an exact value for 0.1 which is
     // not just 0.1
-    System.out.println(new BigDecimal(2.00).subtract(
-        new BigDecimal(1.10)));
+    System.out.println(new BigDecimal(2.00).subtract(new BigDecimal(1.10)));
 
     // This is the best way to do it; using the String constructor
-    System.out.println(new BigDecimal("2.00").subtract(
-        new BigDecimal("1.10")));
+    System.out.println(new BigDecimal("2.00").subtract(new BigDecimal("1.10")));
   }
 }

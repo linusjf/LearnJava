@@ -13,8 +13,7 @@ public class Reluctant {
       Reluctant b = new Reluctant();
       System.out.println("Surprise!");
     } catch (Exception | Error ex) {
-      System.err.println("StackOverflowError caught: "
-                         + ex.getMessage());
+      System.err.println("StackOverflowError caught: " + ex.getMessage());
       System.out.println("I told you so");
     }
   }

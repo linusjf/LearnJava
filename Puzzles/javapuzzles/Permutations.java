@@ -12,21 +12,18 @@ public enum Permutations {
   ;
 
   @SuppressWarnings("PMD.ShortMethodName")
-  public static <T> Stream<Stream<T>> of(
-      final List<T> items) {
+  public static <T> Stream<Stream<T>> of(final List<T> items) {
     return IntStream.range(0, factorial(items.size()))
         .mapToObj(i -> permutation(i, items).stream());
   }
 
   private static int factorial(final int num) {
-    return IntStream.rangeClosed(2, num).reduce(
-        1, (x, y) -> x * y);
+    return IntStream.rangeClosed(2, num).reduce(1, (x, y) -> x * y);
   }
 
-  private static <T> List<T> permutation(
-      final int count,
-      final List<T> input,
-      final List<T> output) {
+  private static <T> List<T> permutation(final int count,
+                                         final List<T> input,
+                                         final List<T> output) {
     if (input.isEmpty()) {
       return output;
     }
@@ -35,17 +32,13 @@ public enum Permutations {
     System.out.printf("Factorial = %d%n", factorial);
     System.out.println("input = " + input);
     System.out.println("count = " + count);
-    System.out.printf("count/factorial = %d%n",
-                      count / factorial);
+    System.out.printf("count/factorial = %d%n", count / factorial);
     output.add(input.remove(count / factorial));
     return permutation(count % factorial, input, output);
   }
 
-  private static <T> List<T> permutation(
-      final int count,
-      final List<T> items) {
-    return permutation(
-        count, new LinkedList<>(items), new ArrayList<>());
+  private static <T> List<T> permutation(final int count, final List<T> items) {
+    return permutation(count, new LinkedList<>(items), new ArrayList<>());
   }
 
   public static void main(String... args) {

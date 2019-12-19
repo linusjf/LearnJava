@@ -28,8 +28,7 @@ public class Foo {
   }
 }
 
-@SuppressWarnings(
-    {"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
+@SuppressWarnings({"checkstyle:onetoplevelclass", "PMD.ShortClassName"})
 class Bar extends Foo {
   Bar(int i) {
     super(i);

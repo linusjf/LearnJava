@@ -19,11 +19,9 @@ public enum CopyDog {
   // This method is very slow and generally a bad idea!
   public static Object deepCopy(Object obj) {
     try {
-      ByteArrayOutputStream bos =
-          new ByteArrayOutputStream();
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
       new ObjectOutputStream(bos).writeObject(obj);
-      ByteArrayInputStream bin =
-          new ByteArrayInputStream(bos.toByteArray());
+      ByteArrayInputStream bin = new ByteArrayInputStream(bos.toByteArray());
       return new ObjectInputStream(bin).readObject();
     } catch (ClassNotFoundException | IOException e) {
       throw new IllegalArgumentException(e);

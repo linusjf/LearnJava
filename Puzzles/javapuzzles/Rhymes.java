@@ -43,8 +43,7 @@ public enum Rhymes {
   }
 
   public static void elegantMain(String... args) {
-    System.out.println("PGM".charAt(rnd.nextInt(3))
-                       + "ain");
+    System.out.println("PGM".charAt(rnd.nextInt(3)) + "ain");
   }
 
   public static void generalMain(String... args) {

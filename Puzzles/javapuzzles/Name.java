@@ -29,7 +29,6 @@ public class Name {
   public static void main(String[] args) {
     Set<Name> s = new HashSet<>();
     s.add(new Name("Mickey", "Mouse"));
-    System.out.println(
-        s.contains(new Name("Mickey", "Mouse")));
+    System.out.println(s.contains(new Name("Mickey", "Mouse")));
   }
 }

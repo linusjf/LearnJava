@@ -34,18 +34,14 @@ public enum HelloGoodbye {
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void shutdownHooksMain(String... args) {
     System.out.println("Hello world");
-    Runtime.getRuntime().addShutdownHook(new Thread(
-        ()
-            -> System.out.println(
-                "Shutdown Hook: Goodbye world")));
+    Runtime.getRuntime().addShutdownHook(
+        new Thread(() -> System.out.println("Shutdown Hook: Goodbye world")));
     System.exit(0);
   }
 
   public static void haltMain(String... args) {
-    Runtime.getRuntime().addShutdownHook(new Thread(
-        ()
-            -> System.out.println(
-                "Shutdown Hook: Goodbye world")));
+    Runtime.getRuntime().addShutdownHook(
+        new Thread(() -> System.out.println("Shutdown Hook: Goodbye world")));
     System.out.println("Halting...Hello world");
     Runtime.getRuntime().halt(1);
   }

@@ -22,8 +22,7 @@ public class Pair<T> {
   }
 
   public List<String> stringList() {
-    return Arrays.asList(String.valueOf(first),
-                         String.valueOf(second));
+    return Arrays.asList(String.valueOf(first), String.valueOf(second));
   }
 
   public static void main(String[] args) {

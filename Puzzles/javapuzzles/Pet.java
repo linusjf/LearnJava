@@ -1,7 +1,6 @@
 package javapuzzles;
 
-@SuppressWarnings(
-    {"PMD.ShortClassName", "PMD.DoNotCallSystemExit"})
+@SuppressWarnings({"PMD.ShortClassName", "PMD.DoNotCallSystemExit"})
 public class Pet {
   public final String name;
   public final String food;
