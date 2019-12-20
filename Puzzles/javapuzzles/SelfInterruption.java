@@ -2,6 +2,7 @@ package javapuzzles;
 
 import static java.lang.Thread.*;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public enum SelfInterruption {
   ;
 
