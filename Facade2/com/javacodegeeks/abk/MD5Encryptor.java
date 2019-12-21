@@ -12,6 +12,9 @@ import java.util.Base64;
  * @version 1.0
  */
 public class MD5Encryptor implements Encrypt {
+
+  private static final Base64.Encoder ENCODER = Base64.getEncoder();
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -19,15 +22,15 @@ public class MD5Encryptor implements Encrypt {
    * @return a <code>String</code> value
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
       final MessageDigest msgDigest =
           MessageDigest.getInstance("MD5");
       msgDigest.update(
           text.getBytes(StandardCharsets.UTF_8));
-
-      final byte[] textBytes = msgDigest.digest();
-      return Base64.getEncoder().encodeToString(textBytes);
+      byte[] textBytes = msgDigest.digest();
+      return ENCODER.encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       System.err.println("Algorithm not found : "
                          + e.getMessage());

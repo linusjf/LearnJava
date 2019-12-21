@@ -12,6 +12,8 @@ import java.util.Base64;
  * @version 1.0
  */
 public class SHA512 implements Encrypt {
+  private final Base64.Encoder encoder = Base64.getEncoder(); 
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -19,13 +21,14 @@ public class SHA512 implements Encrypt {
    * @return a <code>String</code> value
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
-      final MessageDigest digest =
+      MessageDigest digest =
           MessageDigest.getInstance("SHA-512");
-      final byte[] textBytes = digest.digest(
+      byte[] textBytes = digest.digest(
           text.getBytes(StandardCharsets.UTF_8));
-      return Base64.getEncoder().encodeToString(textBytes);
+      return encoder.encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);
     }
