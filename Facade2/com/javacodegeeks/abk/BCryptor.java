@@ -1,6 +1,6 @@
 package com.javacodegeeks.abk;
 
-import com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil;
+import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.*;
 
 /**
  * Describe class <code>BCryptor</code> here.
@@ -16,10 +16,11 @@ public class BCryptor implements Encrypt {
    * @return a <code>String</code> value
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
       String hash =
-          BCryptUtil.hashpw(text, BCryptUtil.gensalt(12));
+          hashpw(text, gensalt(12));
       hash = hash.substring(
           hash.lastIndexOf('$', hash.length()) + 1);
       return hash;

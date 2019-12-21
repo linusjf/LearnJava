@@ -1,32 +1,36 @@
 package collections;
 
 import java.util.concurrent.ThreadLocalRandom;
+import static java.lang.System.out;
 
 public class TaskLocalRandom implements Runnable {
-  public TaskLocalRandom() {
-    ThreadLocalRandom.current();
-  }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   @Override
   public void run() {
     StringBuilder sb = new StringBuilder(40);
-    sb.append(Thread.currentThread().getName()).append(" with priority %d: %d \n");
+    sb.append(Thread.currentThread().getName()).append(" with priority ")
+      .append(Thread.currentThread().getPriority())
+      .append(": %d %n");
     String str = sb.toString();
     for (int i = 0; i < 10; i++)
-      System.out.printf(
-          str, Thread.currentThread().getPriority(), ThreadLocalRandom.current().nextInt(10));
+      out.printf(
+          str, 
+         ThreadLocalRandom.current().nextInt(10) );
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Thread[] threads = {
         new Thread(new TaskLocalRandom()),
         new Thread(new TaskLocalRandom()),
         new Thread(new TaskLocalRandom()),
     };
-    for (Thread t : threads) {
-      t.setPriority(ThreadLocalRandom.current().nextInt(10) + 1);
+    ThreadLocalRandom tlr = ThreadLocalRandom.current();
+    for (Thread t : threads) 
+      t.setPriority(tlr.nextInt(10) + 1);
+    for (Thread t: threads)
       t.start();
-    }
   }
 }

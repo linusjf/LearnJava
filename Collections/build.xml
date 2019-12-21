@@ -217,7 +217,7 @@
     </java>
   </target>
   <target name="run4">
-    <description>Run4 target</description>
+    <description>TaskLocalRandom target</description>
     <java classname="${main.class4}"
           fork="true">
       <classpath>

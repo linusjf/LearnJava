@@ -125,6 +125,7 @@ public class BCrypt {
     encipherS(lr);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void encipherS(int... lr) {
     IntStream.range(0, S.length).forEach(index -> {
       if (index % 2 == 0) {
@@ -135,6 +136,7 @@ public class BCrypt {
     });
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void encipherP(int... lr) {
     IntStream.range(0, P.length).forEach(index -> {
       if (index % 2 == 0) {
@@ -145,6 +147,7 @@ public class BCrypt {
     });
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void encipherEkskeyP(int[] lr,
                                byte[] data,
                                int... doffp) {
@@ -159,6 +162,7 @@ public class BCrypt {
     });
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void encipherEkskeyS(int[] lr,
                                byte[] data,
                                int... doffp) {

@@ -28,6 +28,9 @@ public final class BCryptUtil {
   private static final Pattern PASSWORD_PATTERN =
       Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
+  private static final Base64.Encoder ENCODER = Base64.getEncoder();
+  private static final Base64.Decoder DECODER = Base64.getDecoder();
+
   private BCryptUtil() {
     throw new IllegalStateException("Private constructor");
   }
@@ -41,7 +44,7 @@ public final class BCryptUtil {
    * @exception IllegalArgumentException if the length is invalid
    */
   private static String encodeBase64(final byte[] d) {
-    return Base64.getEncoder().encodeToString(d);
+    return ENCODER.encodeToString(d);
   }
 
   /**
@@ -53,7 +56,7 @@ public final class BCryptUtil {
    * @throws IllegalArgumentException if maxolen is invalid
    */
   private static byte[] decodeBase64(final String s) {
-    return Base64.getDecoder().decode(s);
+    return DECODER.decode(s);
   }
 
   /**
@@ -84,9 +87,10 @@ public final class BCryptUtil {
   private static String[] retrieveOffsetMinor(String salt) {
     char minor = (char)0;
     int off = 0;
-    Matcher matcher = PASSWORD_PATTERN.matcher(salt);
-    if (matcher.matches()) {
-      off = matcher.end(1);
+    Regex regex = new Regex(salt);
+    //Matcher matcher = PASSWORD_PATTERN.matcher(salt);
+    if (regex.matches()) {
+      off = regex.end(1);
       if (off == OFFSET_4)
         minor = 'a';
     } else
@@ -108,6 +112,7 @@ public final class BCryptUtil {
    * @param salt the salt to hash with (perhaps generated using BCrypt.gensalt)
    * @return the hashed password
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static String hashpw(final String password,
                               final String salt) {
     try {
@@ -209,5 +214,21 @@ public final class BCryptUtil {
   public static boolean checkpw(final String plaintext,
                                 final String hashed) {
     return hashed.compareTo(hashpw(plaintext, hashed)) == 0;
+  }
+
+  static class Regex {
+    Matcher matcher;
+
+    Regex(String sequence) {
+    this.matcher = PASSWORD_PATTERN.matcher(sequence);
+    }
+
+    public boolean matches() {
+      return matcher.matches();
+    }
+    
+    public int end(int idx) {
+      return matcher.end(idx);
+    }
   }
 }
