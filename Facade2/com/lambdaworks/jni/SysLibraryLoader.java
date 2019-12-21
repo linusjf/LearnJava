@@ -1,5 +1,7 @@
 package com.lambdaworks.jni;
 
+import static java.lang.System.*;
+
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 /**
  * A native library loader that simply invokes {@link System#loadLibrary}. The shared library path
@@ -19,13 +21,17 @@ public class SysLibraryLoader implements LibraryLoader {
   @SuppressWarnings("PMD.AvoidUsingNativeCode")
   public boolean load(String name, boolean verify) {
     try {
-      System.getSecurityManager().checkLink(name);
-      System.loadLibrary(name);
+      checkLink(getSecurityManager(),name);
+      loadLibrary(name);
       return true;
     } catch (SecurityException e) {
       System.err.println("Error loading system library "
                          + name + " : " + e.getMessage());
       return false;
     }
+  }
+
+  private void checkLink(SecurityManager sm,String name) {
+    sm.checkLink(name);
   }
 }

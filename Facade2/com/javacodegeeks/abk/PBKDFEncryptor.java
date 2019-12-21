@@ -22,6 +22,7 @@ public class PBKDFEncryptor implements Encrypt {
    * @return a <code>String</code> value
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
       final byte[] textBytes =

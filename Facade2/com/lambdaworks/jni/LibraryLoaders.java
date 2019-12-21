@@ -21,6 +21,7 @@ public final class LibraryLoaders {  // NOPMD
    *
    * @return the loader.
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static LibraryLoader loader() {
     final String type =
         System.getProperty("com.lambdaworks.jni.loader");

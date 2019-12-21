@@ -19,6 +19,7 @@ public class SHA implements Encrypt {
    * @param text a <code>String</code> value
    * @return a <code>String</code> value
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public String encrypt(String text) {
     try {

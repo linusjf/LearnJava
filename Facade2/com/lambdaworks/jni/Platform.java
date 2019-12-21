@@ -57,9 +57,9 @@ public final class Platform {
     final String osName = getProperty("os.name");
 
     for (Arch arch: Arch.values()) {
-      if (arch.pattern.matcher(osArch).matches()) {
+      if (patternMatches(arch.pattern,osArch)) {
         for (OS os: OS.values()) {
-          if (os.pattern.matcher(osName).matches()) {
+          if (patternMatches(os.pattern,osName)) {
             return new Platform(arch, os);
           }
         }
@@ -69,5 +69,10 @@ public final class Platform {
     final String msg = String.format(
         "Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static boolean patternMatches(Pattern pattern,String input) {
+    return pattern.matcher(input).matches();
   }
 }
