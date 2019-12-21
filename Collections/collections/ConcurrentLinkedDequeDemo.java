@@ -7,6 +7,7 @@ public enum ConcurrentLinkedDequeDemo {
   ;
   private static Random random = new Random();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
     Thread[] threads = new Thread[100];
@@ -68,6 +69,7 @@ public enum ConcurrentLinkedDequeDemo {
     System.out.printf("Alternate Main: Size of the List: %d%n", list.size());
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void startThreads(
       Thread[] threads, Thread[] threads2, ConcurrentLinkedDeque<String> list) {
     for (int i = 0; i < threads.length; i++) {
@@ -89,11 +91,13 @@ public enum ConcurrentLinkedDequeDemo {
       this.list = list;
     }
 
-    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+    @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+    "PMD.LawOfDemeter"})
     @Override
     public void run() {
       String str = Thread.currentThread().getName() + " Element : %d";
-      for (int i = 0; i < 10_000; i++) list.add(String.format(str, i));
+      for (int i = 0; i < 10_000; i++) 
+        list.add(String.format(str, i));
     }
   }
 

@@ -6,6 +6,7 @@ public enum AtomicArrayDemo {
   ;
   private static final int THREADS = 100;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     AtomicIntegerArray vector = new AtomicIntegerArray(1000);
     Incrementer incrementer = new Incrementer(vector);

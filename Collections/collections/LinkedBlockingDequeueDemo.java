@@ -2,7 +2,8 @@ package collections;
 
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public enum LinkedBlockingDequeueDemo {
   ;
@@ -19,7 +20,7 @@ public enum LinkedBlockingDequeueDemo {
           System.out.printf(
               "Main: Request: %s at %s. Size: %d%n", request, new Date(), list.size());
         }
-        TimeUnit.MILLISECONDS.sleep(300);
+        MILLISECONDS.sleep(300);
       }
       System.out.printf("Main: End of the program.%n");
     } catch (InterruptedException ie) {
@@ -48,7 +49,7 @@ public enum LinkedBlockingDequeueDemo {
           System.out.printf("Client: %s at %s.%n", request, new Date());
         }
         try {
-          TimeUnit.SECONDS.sleep(2);
+          SECONDS.sleep(2);
         } catch (InterruptedException e) {
           System.err.println(e);
         }

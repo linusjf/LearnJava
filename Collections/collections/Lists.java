@@ -18,6 +18,7 @@ public enum Lists {
     for (T elt : arr) list.add(elt);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     List<Integer> ints = Lists.toList(1, 2, 3);
     System.out.println(ints);
@@ -27,9 +28,9 @@ public enum Lists {
     Lists.addAll(ints, 1, 2);
     Lists.addAll(ints, new Integer[] {3, 4});
     assert ints.toString().equals("[1, 2, 3, 4]");
-    ints = Lists.<Integer>toList();
+    ints = Lists.toList();
     System.out.println(ints);
-    List<Object> objs = Lists.<Object>toList(1, "two");
+    List<Object> objs = Lists.toList(1, "two");
     System.out.println(objs);
   }
 }

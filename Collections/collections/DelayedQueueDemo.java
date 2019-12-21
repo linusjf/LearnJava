@@ -14,12 +14,14 @@ public enum DelayedQueueDemo {
       DelayQueue<Event> queue = new DelayQueue<>();
       Thread[] threads = new Thread[5];
       startThreads(threads, queue);
-      for (Thread thread : threads) thread.join();
+      for (Thread thread : threads) 
+        thread.join();
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void startThreads(Thread[] threads, DelayQueue<Event> queue) {
     for (int i = 0; i < threads.length; ++i) {
       Task task = new Task(i + 1, queue);
@@ -54,6 +56,7 @@ public enum DelayedQueueDemo {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public boolean equals(Object o) {
       // If the object is compared with itself then return true
       if (o == this)

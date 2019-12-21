@@ -19,28 +19,44 @@ public enum ConcurrentSkipListMapDemo {
       }
     }
     System.out.printf("Main: Size of the map: %d%n", map.size());
-
-    Map.Entry<String, Contact> element;
-    Contact contact;
-
-    element = map.firstEntry();
-    contact = element.getValue();
-    System.out.printf("Main: First Entry: %s: %s%n", contact.getName(), contact.getPhone());
-
-    element = map.lastEntry();
-    contact = element.getValue();
-    System.out.printf("Main: Last Entry: %s: %s%n", contact.getName(), contact.getPhone());
+    printFirstEntry(map);
+    printLastEntry(map);
     System.out.printf("Main: Submap from A1996 to B1002: %n");
     ConcurrentNavigableMap<String, Contact> submap = map.subMap("A1996", "B1002");
-    do {
-      element = submap.pollFirstEntry();
-      if (element != null) {
-        contact = element.getValue();
-        System.out.printf("%s: %s%n", contact.getName(), contact.getPhone());
-      }
-    } while (element != null);
+    printSubMap(submap);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static void printSubMap(ConcurrentNavigableMap<String, Contact> submap) {
+    Map.Entry<String, Contact> element = submap.pollFirstEntry();
+    while (element != null) {
+      Contact contact = element.getValue();
+      printContact(contact);
+      element = submap.pollFirstEntry();
+    } 
+  }
+
+  private static void printContact(Contact contact) {
+    System.out.printf("%s: %s%n", contact.getName(), contact.getPhone());
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static void printFirstEntry(ConcurrentSkipListMap<String, Contact> map) {
+    Map.Entry<String, Contact> element = map.firstEntry();
+    Contact contact = element.getValue();
+    System.out.printf("Main: First Entry: ");
+    printContact(contact);
+  }
+  
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static void printLastEntry(ConcurrentSkipListMap<String, Contact> map) {
+    Map.Entry<String, Contact> element = map.lastEntry();
+    Contact contact = element.getValue();
+    System.out.printf("Main: Last Entry: ");
+    printContact(contact);
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void startThreads(Thread[] threads, ConcurrentSkipListMap<String, Contact> map) {
     for (char i = 'A'; i < 'Z'; i++) {
       Task task = new Task(map, String.valueOf(i));
