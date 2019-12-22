@@ -15,14 +15,7 @@ public enum AllHeaders {
       try {
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
-        Map<String, List<String>> headers =
-            uc.getHeaderFields();
-        System.out.println("Headers for " + arg);
-        for (Map.Entry<String, List<String>> entry:
-             headers.entrySet())
-          System.out.println(
-              "Header Key = " + entry.getKey()
-              + ", Header Values = " + entry.getValue());
+        printHeaders(uc);
       } catch (MalformedURLException ex) {
         System.err.println(arg
                            + " is not a URL I understand.");
@@ -31,5 +24,16 @@ public enum AllHeaders {
       }
       System.out.println();
     }
+  }
+
+  private static void printHeaders(URLConnection uc) throws IOException {
+        Map<String, List<String>> headers =
+            uc.getHeaderFields();
+        System.out.println("Headers for " + uc.getURL());
+        for (Map.Entry<String, List<String>> entry:
+             headers.entrySet())
+          System.out.println(
+              "Header Key = " + entry.getKey()
+              + ", Header Values = " + entry.getValue());
   }
 }

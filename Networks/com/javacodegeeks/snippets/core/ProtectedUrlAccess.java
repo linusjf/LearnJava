@@ -16,6 +16,8 @@ public final class ProtectedUrlAccess {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings({"PMD.LawOfDemeter",
+  "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
     try {
       // Sets the authenticator that will be used by the networking code
@@ -31,16 +33,15 @@ public final class ProtectedUrlAccess {
           "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
           + random);
       byte[] b = new byte[1];
-
+try(
       DataInputStream di =
           new DataInputStream(url.openStream());
       OutputStream fo =
-          Files.newOutputStream(Paths.get(random + ".gif"));
+          Files.newOutputStream(Paths.get(random + ".gif"))) {
       while (-1 != di.read(b, 0, 1))
         fo.write(b, 0, 1);
-      di.close();
-      fo.close();
       System.out.println("Saved url as " + random + ".gif");
+          }
     } catch (MalformedURLException e) {
       System.out.println("Malformed URL: "
                          + e.getMessage());

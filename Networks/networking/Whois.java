@@ -71,6 +71,10 @@ public class Whois {
       pattern.append("){1})$");
       return Pattern.compile(pattern.toString());
     }
+    
+    public static String getRegexPatternAsString() {
+      return getRegexPattern().toString();
+    }
   }
 
   // Categories to search in
@@ -96,6 +100,10 @@ public class Whois {
       pattern.deleteCharAt(pattern.length() - 1);
       pattern.append("){1})$");
       return Pattern.compile(pattern.toString());
+    }
+    
+    public static String getRegexPatternAsString() {
+      return getRegexPattern().toString();
     }
   }
 

@@ -17,6 +17,7 @@ public final class ChargenServer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     int port;
     try {
@@ -42,7 +43,8 @@ public final class ChargenServer {
     return rotation;
   }
 
-  @SuppressWarnings("checkstyle:magicnumber")
+  @SuppressWarnings({"checkstyle:magicnumber",
+  "PMD.LawOfDemeter"})
   private static void handleChannels(SelectionKey key,
                                      byte[] rotation,
                                      Selector selector) {

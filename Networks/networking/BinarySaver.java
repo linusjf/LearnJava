@@ -29,7 +29,8 @@ public final class BinarySaver {
     }
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void saveBinaryFile(URL u)
       throws IOException {
     URLConnection uc = u.openConnection();

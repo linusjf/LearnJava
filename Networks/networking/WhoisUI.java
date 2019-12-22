@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class WhoisUI {
   private String searchFor;
@@ -12,10 +11,12 @@ public class WhoisUI {
   private boolean exactMatch;
   private String whois;
   private String searchIn;
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name(); 
 
   public void inputWhoisFields(String... args) {
     Scanner scanner = new Scanner(
-        System.in, StandardCharsets.UTF_8.name());
+        System.in, UTF_8);
     inputWhois(scanner);
     inputExactMatch(scanner);
     inputSearchFor(scanner);
@@ -23,6 +24,7 @@ public class WhoisUI {
     inputSearchAt(scanner);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void inputWhois(Scanner scanner) {
     System.out.println(
         "Enter entity name for whois record: ");
@@ -30,20 +32,21 @@ public class WhoisUI {
       whois = scanner.next().trim();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void inputSearchFor(Scanner scanner) {
     System.out.println("Enter entity type to search for: ");
-    Pattern pattern = Whois.SearchFor.getRegexPattern();
+    String pattern = Whois.SearchFor.getRegexPatternAsString();
     System.out.println(pattern);
     do {
-      if (scanner.hasNext()) {
+      if (scanner.hasNext()) 
         searchFor = scanner.next();
-      } else {
+       else 
         scanner.next();
-      }
-    } while (!searchFor.matches(pattern.toString()));
+    } while (!searchFor.matches(pattern));
     System.out.println(searchFor);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void inputSearchAt(Scanner scanner) {
     System.out.println(
         "Enter name of registry server to search at: ");
@@ -51,17 +54,17 @@ public class WhoisUI {
       searchAt = scanner.next().trim();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void inputSearchIn(Scanner scanner) {
     System.out.println("Enter records to search in: ");
-    Pattern pattern = Whois.SearchIn.getRegexPattern();
+    String pattern = Whois.SearchIn.getRegexPatternAsString();
     System.out.println(pattern);
     do {
-      if (scanner.hasNext()) {
+      if (scanner.hasNext()) 
         searchIn = scanner.next();
-      } else {
+       else 
         scanner.next();
-      }
-    } while (!searchIn.matches(pattern.toString()));
+    } while (!searchIn.matches(pattern));
     System.out.println(searchIn);
   }
 
@@ -71,6 +74,7 @@ public class WhoisUI {
       exactMatch = scanner.nextBoolean();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       WhoisUI ui = new WhoisUI();

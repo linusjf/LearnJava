@@ -21,6 +21,7 @@ public enum UDPEchoClient {
     return "localhost";
   }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     if (args.length > 1) {
       try {
@@ -66,6 +67,8 @@ public enum UDPEchoClient {
     private final int port;
     private volatile boolean stopped;
 
+    private static final String UTF_8 = StandardCharsets.UTF_8.name();
+
     SenderThread(DatagramSocket socket,
                  InetAddress address,
                  int port) {
@@ -80,13 +83,14 @@ public enum UDPEchoClient {
       this.stopped = true;
     }
 
-    @SuppressWarnings("checkstyle:returncount")
+    @SuppressWarnings({"checkstyle:returncount",
+    "PMD.LawOfDemeter"})
     @Override
     public void run() {
       try (BufferedReader userInput =
                new BufferedReader(new InputStreamReader(
                    System.in,
-                   StandardCharsets.UTF_8.name()))) {
+                   UTF_8))) {
         while (true) {
           if (stopped)
             return;

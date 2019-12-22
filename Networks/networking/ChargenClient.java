@@ -15,7 +15,7 @@ public final class ChargenClient {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println(
@@ -25,7 +25,7 @@ public final class ChargenClient {
     int port;
     try {
       port = Integer.parseInt(args[1]);
-      System.out.printf("Using %d.%n", port);
+      System.out.printf("Using %d%n", port);
     } catch (NumberFormatException
              | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
@@ -39,14 +39,20 @@ public final class ChargenClient {
       ByteBuffer buffer = ByteBuffer.allocate(74);
       WritableByteChannel out =
           Channels.newChannel(System.out);
+        writeToBuffer(client,out,buffer);
+    } catch (IOException ex) {
+      System.err.println("Error writing to server: "
+                         + ex.getMessage());
+    }
+  }
+
+  private static void writeToBuffer(SocketChannel client,
+      WritableByteChannel out,
+     ByteBuffer buffer) throws IOException {
       while (client.read(buffer) != -1) {
         buffer.flip();
         out.write(buffer);
         buffer.clear();
       }
-    } catch (IOException ex) {
-      System.err.println("Error writing to server: "
-                         + ex.getMessage());
-    }
   }
 }

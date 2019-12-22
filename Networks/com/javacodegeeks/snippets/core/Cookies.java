@@ -85,6 +85,7 @@ public final class Cookies {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String[] splitOn(String[] values,
                                   int index,
                                   String separator) {
