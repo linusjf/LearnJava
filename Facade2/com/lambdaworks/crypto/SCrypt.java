@@ -224,7 +224,8 @@ public final class SCrypt {  // NOPMD
    *
    * @param bytes a <code>byte</code> value
    */
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void salsa20Slash8(byte[] bytes) {
     final int[] b32 = new int[16];
     final int[] x = new int[16];

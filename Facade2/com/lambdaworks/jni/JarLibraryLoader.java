@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import static com.lambdaworks.jni.*;
+import static com.lambdaworks.jni.Platform.*;
 
 /**
  * A native library loader that will extract and load a shared library contained in a jar. This
@@ -60,6 +60,7 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return true if the library was successfully loaded.
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public boolean load(String name, boolean verify) {
     try (JarFile jar = new JarFile(
              codeSource.getLocation().getPath(), verify)) {
@@ -71,7 +72,7 @@ public class JarLibraryLoader implements LibraryLoader {
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
-          sm.checkLink(lib.getAbsolutePath());
+          checkLink(sm,lib.getAbsolutePath());
           System.load(lib.getAbsolutePath());
           return lib.delete();
         }
@@ -82,6 +83,10 @@ public class JarLibraryLoader implements LibraryLoader {
     return false;
   }
 
+  private void checkLink(SecurityManager sm,File lib) {
+      sm.checkLink(lib);
+  }
+
   /**
    * Extract a jar entry to a temp file.
    *
@@ -90,7 +95,8 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return A temporary file.
    * @throws IOException when an IO error occurs.
    */
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   private static File extract(String name, InputStream is)
       throws IOException {
     final byte[] buf = new byte[4096];

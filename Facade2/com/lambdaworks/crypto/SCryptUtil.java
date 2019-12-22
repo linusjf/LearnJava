@@ -44,6 +44,7 @@ public final class SCryptUtil {  // NOPMD
    * @param p Parallelization parameter.
    * @return The hashed password.
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static String scrypt(String passwd,
                               int enCPUCost,
                               int rmemCost,
@@ -91,7 +92,7 @@ public final class SCryptUtil {  // NOPMD
    * @param hashed scrypt hashed password.
    * @return true if passwd matches hashed value.
    */
-  @SuppressWarnings("PMD.CyclomaticComplexity")
+  @SuppressWarnings({"PMD.CyclomaticComplexity","PMD.LawOfDemeter"})
   public static boolean check(String passwd,
                               String hashed) {
     try {
