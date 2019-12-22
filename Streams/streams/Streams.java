@@ -22,6 +22,7 @@ public enum Streams {
   }
 
   // clang-format on
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     // clang-format off
     final Collection<Task> tasks =

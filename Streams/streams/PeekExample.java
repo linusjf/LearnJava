@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 public enum PeekExample {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     Stream.of("one", "two", "three", "four")
         .peek(e -> System.out.println("Original value: " + e))

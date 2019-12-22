@@ -6,6 +6,7 @@ import java.util.List;
 public enum OrderParallel {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     List<String> list = new ArrayList<>();
     list.add("C");
