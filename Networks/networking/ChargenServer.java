@@ -137,7 +137,17 @@ public final class ChargenServer {
                            + ex.getMessage());
         break;
       }
+      iterateOverKeys(selector,rotation);
+    }
+  }
+
+  private static void iterateOverKeys(Selector selector,byte[] rotation) {
       Set<SelectionKey> readyKeys = selector.selectedKeys();
+      iterateOverKeys(readyKeys,rotation,selector);
+  }
+  
+  private static void iterateOverKeys(Set<SelectionKey> readyKeys,byte[] rotation,
+      Selector selector) {
       Iterator<SelectionKey> iterator =
           readyKeys.iterator();
       while (iterator.hasNext()) {
@@ -145,6 +155,5 @@ public final class ChargenServer {
         iterator.remove();
         handleChannels(key, rotation, selector);
       }
-    }
   }
 }

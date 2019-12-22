@@ -15,6 +15,7 @@ public enum ConsumerClient {
   private static InetAddress host;
   private static final int PORT = 1234;
   private static final Random RANDOM = new Random();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -31,14 +32,14 @@ public enum ConsumerClient {
     try (Socket socket = new Socket(host, PORT);
          Scanner networkInput =
              new Scanner(socket.getInputStream(),
-                         StandardCharsets.UTF_8.name());
+                         UTF_8);
          PrintWriter networkOutput = new PrintWriter(
              new OutputStreamWriter(
                  socket.getOutputStream(),
-                 StandardCharsets.UTF_8.name()),
+                 UTF_8),
              true);
          Scanner userEntry = new Scanner(
-             System.in, StandardCharsets.UTF_8.name());) {
+             System.in, UTF_8);) {
       String message = "";
       while (!"0".equals(message)) {
         System.out.print("Enter '1' ('0' to exit): ");
@@ -51,11 +52,10 @@ public enum ConsumerClient {
           // socket's intput stream…
           networkOutput.println(message);
         }
-        if (networkInput.hasNext()) {
+        if (networkInput.hasNext()) 
           // Display server's response to user…
           System.out.println("\nSERVER> "
                              + networkInput.nextLine());
-        }
 
         // 'Sleep' for 0-5 seconds…
         Thread.sleep(RANDOM.nextInt(5000));
