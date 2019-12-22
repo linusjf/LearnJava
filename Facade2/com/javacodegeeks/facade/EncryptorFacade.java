@@ -81,6 +81,7 @@ public final class EncryptorFacade {
         Collections.unmodifiableMap(encryptors);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Encrypt supplyEncryptor(EncryptionType type) {
     Supplier<Encrypt> supplier = Objects.requireNonNull(
         ENCRYPTOR_SUPPLIER.get(type),
@@ -97,6 +98,17 @@ public final class EncryptorFacade {
    */
   public String encrypt(EncryptionType type, String text) {
     final Encrypt e = supplyEncryptor(type);
-    return e.encrypt(text);
+    return encrypt(e,text);
+  }
+
+  /**
+   * Describe <code>encrypt</code> method here.
+   *
+   * @param e an <code>Encrypt</code> value
+   * @param s a <code>String</code> value
+   * @return a <code>String</code> value
+   */
+  public String encrypt(Encrypt e,String s) {
+    return e.encrypt(s);
   }
 }

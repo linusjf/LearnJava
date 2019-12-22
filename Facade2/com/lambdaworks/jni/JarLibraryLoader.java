@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import static com.lambdaworks.jni.*;
 
 /**
  * A native library loader that will extract and load a shared library contained in a jar. This
@@ -62,9 +63,9 @@ public class JarLibraryLoader implements LibraryLoader {
   public boolean load(String name, boolean verify) {
     try (JarFile jar = new JarFile(
              codeSource.getLocation().getPath(), verify)) {
-      final Platform platform = Platform.detect();
+      Platform platform = detect();
       for (String path: libCandidates(platform, name)) {
-        final JarEntry entry = jar.getJarEntry(path);
+        JarEntry entry = jar.getJarEntry(path);
         if (entry == null)
           continue;
         else {

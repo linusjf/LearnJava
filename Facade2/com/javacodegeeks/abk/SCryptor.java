@@ -16,6 +16,7 @@ public class SCryptor implements Encrypt {
    * @return a <code>String</code> value
    */
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
       String hash = SCryptUtil.scrypt(text, 16, 16, 16);
