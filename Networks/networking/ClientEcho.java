@@ -10,12 +10,14 @@ import java.nio.charset.StandardCharsets;
 
 public final class ClientEcho {
   private static final int PORT = 7;
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private ClientEcho() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String... args) {
     int port = PORT;
     if (args.length > 0) {
@@ -32,10 +34,11 @@ public final class ClientEcho {
     }
     try {
       InetAddress add = InetAddress.getByName("localhost");
+      try(
       DatagramSocket dsock = new DatagramSocket();
       BufferedReader stdIn =
           new BufferedReader(new InputStreamReader(
-              System.in, StandardCharsets.UTF_8.name()));
+              System.in, UTF_8));) {
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         byte[] arr =
@@ -53,6 +56,7 @@ public final class ClientEcho {
             + new String(dpack.getData(),
                          StandardCharsets.UTF_8));
       }
+              }
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }

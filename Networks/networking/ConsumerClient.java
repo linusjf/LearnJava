@@ -28,6 +28,7 @@ public enum ConsumerClient {
     sendMessages();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
          Scanner networkInput =
