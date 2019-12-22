@@ -14,6 +14,7 @@ public final class ListDirectoryRecursive {
     listRecursive(dir);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void listRecursive(File dir) {
     if (dir.isDirectory()) {
       File[] items = dir.listFiles();

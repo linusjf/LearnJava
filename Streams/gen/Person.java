@@ -53,10 +53,12 @@ public class Person {
     emailAddress = emailArg;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public int getAge() {
     return birthday.until(IsoChronology.INSTANCE.dateNow()).getYears();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void printPerson() {
     System.out.println(name + ", " + this.getAge());
   }
@@ -77,20 +79,26 @@ public class Person {
     return birthday;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static int compareByAge(Person a, Person b) {
     return a.birthday.compareTo(b.birthday);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static List<Person> createRoster() {
     List<Person> roster = new ArrayList<>();
     roster.add(new Person(
-        "Fred", IsoChronology.INSTANCE.date(1980, 6, 20), Person.Sex.MALE, "fred@example.com"));
+        "Fred", IsoChronology.INSTANCE.date(1980, 6, 20),
+        Person.Sex.MALE, "fred@example.com"));
     roster.add(new Person(
-        "Jane", IsoChronology.INSTANCE.date(1990, 7, 15), Person.Sex.FEMALE, "jane@example.com"));
+        "Jane", IsoChronology.INSTANCE.date(1990, 7, 15),
+        Person.Sex.FEMALE, "jane@example.com"));
     roster.add(new Person(
-        "George", IsoChronology.INSTANCE.date(1991, 8, 13), Person.Sex.MALE, "george@example.com"));
+        "George", IsoChronology.INSTANCE.date(1991, 8, 13),
+        Person.Sex.MALE, "george@example.com"));
     roster.add(new Person(
-        "Bob", IsoChronology.INSTANCE.date(2000, 9, 12), Person.Sex.MALE, "bob@example.com"));
+        "Bob", IsoChronology.INSTANCE.date(2000, 9, 12), 
+        Person.Sex.MALE, "bob@example.com"));
 
     return roster;
   }

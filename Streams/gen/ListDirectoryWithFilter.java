@@ -14,6 +14,7 @@ public final class ListDirectoryWithFilter {
     listRecursiveFiles(dir);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void listRecursiveFiles(File dir) {
     if (dir.isDirectory()) {
       listFiles(dir);

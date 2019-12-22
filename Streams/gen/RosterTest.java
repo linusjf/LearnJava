@@ -120,13 +120,13 @@ public final class RosterTest {
     }
   }
 
-  @SuppressWarnings("PMD.ExcessiveMethodLength")
+  @SuppressWarnings({"PMD.ExcessiveMethodLength",
+  "PMD.LawOfDemeter"})
   public static void main(String... args) {
     List<Person> roster = Person.createRoster();
 
-    for (Person p : roster) {
+    for (Person p : roster) 
       p.printPerson();
-    }
 
     // Approach 1: Create Methods that Search for Persons that Match One
     // Characteristic
@@ -219,7 +219,7 @@ public final class RosterTest {
     roster.stream()
         .filter(p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25)
         .map(p -> p.getEmailAddress())
-        .forEach(email -> System.out.println(email));
+        .forEach(System.out::println);
   }
 
   interface CheckPerson {

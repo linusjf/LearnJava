@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public enum ParallelArrays {
   ;
   // clang-format off
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     long[] arrayOfLong = new long[20_000];
     Arrays.parallelSetAll(arrayOfLong, index -> ThreadLocalRandom.current().nextInt(1_000_000));

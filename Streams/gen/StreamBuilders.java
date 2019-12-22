@@ -23,27 +23,30 @@ public enum StreamBuilders {
     parallelStream();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void streamOf() {
     Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    stream.forEach(p -> System.out.println(p));
+    stream.forEach(System.out::println);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void arrayOf() {
     Stream<Integer> stream = Stream.of(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
-    stream.forEach(p -> System.out.println(p));
+    stream.forEach(System.out::println);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void listStream() {
     List<Integer> list = new ArrayList<>();
 
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 10; i++) 
       list.add(i);
-    }
 
     Stream<Integer> stream = list.stream();
-    stream.forEach(p -> System.out.println(p));
+    stream.forEach(System.out::println);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void streamGenerate() {
     // clang-format off
     Stream<Date> stream = Stream.generate(Date::new);
@@ -52,39 +55,42 @@ public enum StreamBuilders {
     stream.limit(50).forEach(System.out::println);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void tokenStreams() {
     IntStream stream = "12345_abcdefg".chars();
-    stream.forEach(p -> System.out.println(p));
+    stream.forEach(System.out::println);
 
     // OR
     Stream<String> stream1 = Stream.of("A$B$C".split("\\$"));
-    stream1.forEach(p -> System.out.println(p));
+    stream1.forEach(System.out::println);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void filterStream() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 10; i++) 
       list.add(i);
-    }
     Stream<Integer> stream = list.stream();
     List<Integer> evenNumbersList = stream.filter(i -> i % 2 == 0).collect(Collectors.toList());
     System.out.println(evenNumbersList);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void filterStreamToArray() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 10; i++) 
       list.add(i);
-    }
     Stream<Integer> stream = list.stream();
 
     // clang-format off
     Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
 
     // clang-format on
-    for (Integer num : evenNumbersArr) System.out.println(num);
+    for (Integer num : evenNumbersArr) 
+      System.out.println(num);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void coreStream() {
     List<String> memberNames = new ArrayList<>();
     memberNames.add("Amitabh");
@@ -137,16 +143,19 @@ public enum StreamBuilders {
     System.out.println(firstMatchedName);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void parallelStream() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) list.add(i);
+    for (int i = 1; i < 10; i++) 
+      list.add(i);
 
     // Here creating a parallel stream
     Stream<Integer> stream = list.parallelStream();
 
     // clang-format off
     Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
-    for (Integer num : evenNumbersArr) System.out.println(num);
+    for (Integer num : evenNumbersArr) 
+      System.out.println(num);
     // clang-format on
   }
 }

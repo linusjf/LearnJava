@@ -11,6 +11,7 @@ import java.util.List;
 public enum ParallelStreamPerformanceCheck {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     List<Integer> numList = new ArrayList<>();
     for (int i = 0; i < 1000; i++) numList.add(i);
@@ -32,6 +33,7 @@ public enum ParallelStreamPerformanceCheck {
         "Differential time : " + (sequentialStreamTimetaken - parallelStreamTimetaken));
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void processData(int num) {
     try {
       Thread.sleep(10);
