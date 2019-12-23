@@ -17,6 +17,7 @@ public final class EchoServer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     int port;
     try {

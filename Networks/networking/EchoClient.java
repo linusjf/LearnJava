@@ -11,6 +11,8 @@ import java.nio.charset.StandardCharsets;
 
 public final class EchoClient {
   private static final int ECHO_PORT = 7;
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
 
   private EchoClient() {
     throw new IllegalStateException("Private constructor");
@@ -18,7 +20,8 @@ public final class EchoClient {
 
   @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
                      "PMD.DataflowAnomalyAnalysis",
-                     "PMD.DoNotCallSystemExit"})
+                     "PMD.DoNotCallSystemExit",
+  "PMD.LawOfDemeter"})
   public static void
   main(String[] args) throws IOException {
     if (args.length < 2) {
@@ -43,16 +46,16 @@ public final class EchoClient {
          PrintWriter out = new PrintWriter(
              new OutputStreamWriter(
                  echoSocket.getOutputStream(),
-                 StandardCharsets.UTF_8.name()),
+                 UTF_8),
              true);
          BufferedReader in =
              new BufferedReader(new InputStreamReader(
                  echoSocket.getInputStream(),
-                 StandardCharsets.UTF_8.name()));
+                 UTF_8));
          BufferedReader stdIn =
              new BufferedReader(new InputStreamReader(
                  System.in,
-                 StandardCharsets.UTF_8.name()))) {
+                 UTF_8))) {
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         out.println(userInput);
