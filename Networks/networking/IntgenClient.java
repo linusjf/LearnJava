@@ -14,6 +14,7 @@ public final class IntgenClient {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println(
@@ -52,6 +53,7 @@ public final class IntgenClient {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[1]);

@@ -23,7 +23,7 @@ public final class IPFinder {
     String host = input.next();
       address = InetAddress.getByName(host);
       System.out.println("IP address: "
-                         + address.toString());
+                         + address);
     } catch (UnknownHostException uhEx) {
       System.err.println("Could not find " + uhEx.getMessage());
     }

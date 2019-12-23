@@ -9,14 +9,12 @@ public final class InterfaceLister {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       Enumeration<NetworkInterface> interfaces =
           NetworkInterface.getNetworkInterfaces();
-      while (interfaces.hasMoreElements()) {
-        NetworkInterface ni = interfaces.nextElement();
-        System.out.println(ni);
-      }
+      interfaces.asIterator().forEachRemaining(System.out::println);
     } catch (SocketException se) {
       System.err.println("Socket error: "
                          + se.getMessage());

@@ -18,6 +18,7 @@ public final class IntgenServer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void handleKey(SelectionKey key,
                                 Selector selector) {
     try {
@@ -56,6 +57,7 @@ public final class IntgenServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[0]);
@@ -65,6 +67,7 @@ public final class IntgenServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     int port = getPort();
 
