@@ -45,6 +45,7 @@ public enum DaytimeUDPClient {
       };
 
   // clang-format on
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try (DatagramSocket socket = new DatagramSocket(0)) {
       socket.setSoTimeout(10_000);

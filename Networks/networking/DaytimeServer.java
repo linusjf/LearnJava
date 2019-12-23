@@ -13,17 +13,20 @@ import java.util.Locale;
 public final class DaytimeServer {
   public static final int PORT = 1313;
 
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
+
   private DaytimeServer() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
         try (Socket connection = server.accept();
              Writer out = new OutputStreamWriter(
                  connection.getOutputStream(),
-                 StandardCharsets.UTF_8.name());) {
+                 UTF_8);) {
           Date now = new Date();
           SimpleDateFormat format = new SimpleDateFormat(
               "yy-MM-dd hh:mm:ss Z", Locale.getDefault());

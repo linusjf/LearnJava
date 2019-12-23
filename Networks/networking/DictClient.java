@@ -37,7 +37,8 @@ public final class DictClient {
     }
   }
 
-  @SuppressWarnings("checkstyle:returncount")
+  @SuppressWarnings({"checkstyle:returncount",
+  "PMD.LawOfDemeter"})
   static void define(String word,
                      Writer writer,
                      BufferedReader reader)

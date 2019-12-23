@@ -9,6 +9,7 @@ public final class ContentGetter {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     if (args.length > 0) {
       // Open the URLs for reading
@@ -25,6 +26,7 @@ public final class ContentGetter {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void processUrl(String url)
       throws MalformedURLException, IOException {
     URL u = new URL(url);

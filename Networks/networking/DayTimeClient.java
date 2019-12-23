@@ -9,7 +9,8 @@ public final class DayTimeClient {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.DoNotCallSystemExit")
+  @SuppressWarnings({"PMD.DoNotCallSystemExit",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     try {
       if (args.length == 0) {

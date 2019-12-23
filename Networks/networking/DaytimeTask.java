@@ -14,6 +14,8 @@ public class DaytimeTask
     implements Runnable, Callable<Void> {
   private final Socket connection;
 
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
+
   DaytimeTask(Socket connection) {
     this.connection = connection;
   }
@@ -25,11 +27,14 @@ public class DaytimeTask
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
-    try {
+    try (
       Writer out = new OutputStreamWriter(
           connection.getOutputStream(),
-          StandardCharsets.UTF_8.name());
+          UTF_8);
+      connection;) {
+
       Date now = new Date();
       SimpleDateFormat format = new SimpleDateFormat(
           "yy-MM-dd hh:mm:ss Z", Locale.getDefault());
@@ -38,12 +43,6 @@ public class DaytimeTask
       out.flush();
     } catch (IOException ex) {
       System.err.println(ex);
-    } finally {
-      try {
-        connection.close();
-      } catch (IOException e) {
-        System.err.println(e.getMessage());
-      }
     }
   }
 }
