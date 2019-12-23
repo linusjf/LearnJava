@@ -16,6 +16,19 @@ public final class HeaderViewer {
       try {
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
+        printHeaders(uc);
+      } catch (MalformedURLException ex) {
+        System.err.println(arg
+                           + " is not a URL I understand");
+      } catch (IOException ex) {
+        System.err.println(ex);
+      }
+      System.out.println();
+    }
+  }
+
+  private static void printHeaders(URLConnection uc) throws IOException {
+
         System.out.println("Content-type: "
                            + uc.getContentType());
         if (uc.getContentEncoding() != null)
@@ -35,13 +48,5 @@ public final class HeaderViewer {
         if (uc.getContentLength() != -1)
           System.out.println("Content-length: "
                              + uc.getContentLength());
-      } catch (MalformedURLException ex) {
-        System.err.println(arg
-                           + " is not a URL I understand");
-      } catch (IOException ex) {
-        System.err.println(ex);
-      }
-      System.out.println();
-    }
   }
 }

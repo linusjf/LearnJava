@@ -11,11 +11,16 @@ import java.nio.charset.StandardCharsets;
 
 /** Set user-agent property. ** */
 public final class GoogleSearch {
+
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
   private GoogleSearch() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     String target = "";
     for (String arg: args)
@@ -39,6 +44,7 @@ public final class GoogleSearch {
     }
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void read(URLConnection connection) throws IOException {
 
       connection.setRequestProperty(
@@ -50,7 +56,7 @@ public final class GoogleSearch {
                connection.getInputStream());
            InputStreamReader theHTML =
                new InputStreamReader(
-                   in, StandardCharsets.UTF_8.name());) {
+                   in, UTF_8);) {
         int c;
         while ((c = theHTML.read()) != -1)
           System.out.print((char)c);
