@@ -16,6 +16,7 @@ public enum EmailClient {
   private static String name = "";
   private static Scanner userEntry;
   private static int numMessages;
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -26,7 +27,7 @@ public enum EmailClient {
       System.exit(1);
     }
     userEntry = new Scanner(System.in,
-                            StandardCharsets.UTF_8.name());
+                            UTF_8);
     while (!"Dave".equals(name) && !"Karen".equals(name)) {
       System.out.print(
           "\nEnter name ('Dave' or 'Karen'): ");
@@ -41,11 +42,11 @@ public enum EmailClient {
       try (Socket link = new Socket(host, PORT);
            Scanner networkInput =
                new Scanner(link.getInputStream(),
-                           StandardCharsets.UTF_8.name());
+                           UTF_8);
            PrintWriter networkOutput = new PrintWriter(
                new OutputStreamWriter(
                    link.getOutputStream(),
-                   StandardCharsets.UTF_8.name()),
+                   UTF_8),
                true);) {
         String response = "";
         while (!"read".equals(response)

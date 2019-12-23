@@ -31,6 +31,16 @@ public final class GoogleSearch {
       URL u =
           new URL("https://www.google.com/search?" + query);
       URLConnection connection = u.openConnection();
+      read(connection);
+    } catch (MalformedURLException ex) {
+      System.err.println("MalformedURL : " + ex);
+    } catch (IOException ex) {
+      System.err.println("IOException : " + ex);
+    }
+  }
+
+  private static void read(URLConnection connection) throws IOException {
+
       connection.setRequestProperty(
           "User-Agent",
           "Mozilla/5.0 (Linux; Android 7.1.2;"
@@ -45,10 +55,5 @@ public final class GoogleSearch {
         while ((c = theHTML.read()) != -1)
           System.out.print((char)c);
       }
-    } catch (MalformedURLException ex) {
-      System.err.println("MalformedURL : " + ex);
-    } catch (IOException ex) {
-      System.err.println("IOException : " + ex);
-    }
   }
 }

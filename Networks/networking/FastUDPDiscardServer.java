@@ -14,6 +14,7 @@ public class FastUDPDiscardServer extends UDPServer {
     super(port);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     int port = args.length > 0 ?
                    readPort(args[0], DEFAULT_PORT) :

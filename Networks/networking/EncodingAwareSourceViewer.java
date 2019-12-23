@@ -18,23 +18,9 @@ public enum EncodingAwareSourceViewer {
     for (String arg: args) {
       try {
         // set default encoding
-        String encoding;
         URL u = new URL(arg);
         URLConnection uc = u.openConnection();
-        String contentType = uc.getContentType();
-        int encodingStart = contentType.indexOf("charset=");
-        if (encodingStart > 0)
-          encoding =
-              contentType.substring(encodingStart + 8);
-        else
-          encoding = "ISO-8859-1";
-        InputStream in =
-            new BufferedInputStream(uc.getInputStream());
-        Reader r = new InputStreamReader(in, encoding);
-        int c;
-        while ((c = r.read()) != -1)
-          System.out.print((char)c);
-        r.close();
+        read(uc);
       } catch (MalformedURLException ex) {
         System.err.println(arg + " is not a parseable URL");
       } catch (UnsupportedEncodingException ex) {
@@ -44,6 +30,26 @@ public enum EncodingAwareSourceViewer {
       } catch (IOException ex) {
         System.err.println(ex);
       }
+    }
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static void read(URLConnection uc) throws IOException {
+        String encoding;
+        String contentType = uc.getContentType();
+        int encodingStart = contentType.indexOf("charset=");
+        if (encodingStart > 0)
+          encoding =
+              contentType.substring(encodingStart + 8);
+        else
+          encoding = "ISO-8859-1";
+        try (
+        InputStream in =
+            new BufferedInputStream(uc.getInputStream());
+        Reader r = new InputStreamReader(in, encoding);) {
+        int c;
+        while ((c = r.read()) != -1)
+          System.out.print((char)c);
     }
   }
 }

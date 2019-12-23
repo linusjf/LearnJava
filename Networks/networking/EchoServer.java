@@ -31,7 +31,7 @@ public final class EchoServer {
     return port;
   }
 
-  @SuppressWarnings("checkstyle:magicnumber")
+  @SuppressWarnings({"checkstyle:magicnumber","PMD.LawOfDemeter"})
   private static void handleChannels(SelectionKey key,
                                      Selector selector) {
     try {
@@ -71,6 +71,7 @@ public final class EchoServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try (ServerSocketChannel serverChannel =
              ServerSocketChannel.open()) {

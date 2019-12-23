@@ -21,6 +21,7 @@ public enum EmailServer {
       new String[MAX_MESSAGES];
   private static int messagesInBox1;
   private static int messagesInBox2;
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -68,14 +69,15 @@ public enum EmailServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void runService()
       throws InvalidClientException,
              InvalidRequestException {
-    try {
+    try (
       Socket link = serverSocket.accept();
       Scanner input =
           new Scanner(link.getInputStream(),
-                      StandardCharsets.UTF_8.name());
+                      UTF_8);) {
       String name = input.nextLine();
       if (!name.equals(CLIENT1) && !name.equals(CLIENT2))
         throw new InvalidClientException();
@@ -85,18 +87,18 @@ public enum EmailServer {
         throw new InvalidRequestException();
       System.out.println("\n" + name + " " + sendRead
                          + "ing mail…");
+      try (
       PrintWriter output = new PrintWriter(
           new OutputStreamWriter(
               link.getOutputStream(),
-              StandardCharsets.UTF_8.name()),
-          true);
-      if (name.equals(CLIENT1)) {
+              UTF_8),
+          true);) {
+      if (name.equals(CLIENT1)) 
         handleClient1(sendRead, input, output);
-      } else {
+       else 
         // from client 2
         handleClient2(sendRead, input, output);
-      }
-      link.close();
+              }
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }
@@ -118,6 +120,7 @@ public enum EmailServer {
       mailbox[messagesInBox] = input.nextLine();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void doRead(String[] mailbox,
                              int messagesInBox,
                              PrintWriter output) {

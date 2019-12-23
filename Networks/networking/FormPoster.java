@@ -14,6 +14,7 @@ import java.util.Locale;
 public class FormPoster {
   private final URL url;
   private final QueryString query = new QueryString();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public FormPoster(URL url) {
     if (!url.getProtocol()
@@ -36,9 +37,14 @@ public class FormPoster {
   public InputStream post() throws IOException {
     // open the connection and prepare it to POST
     URLConnection uc = url.openConnection();
+    return post(uc);  
+  }
+  
+    public InputStream post(URLConnection uc) throws IOException {
+    // open the connection and prepare it to POST
     uc.setDoOutput(true);
     try (OutputStreamWriter out = new OutputStreamWriter(
-             uc.getOutputStream(), "UTF-8")) {
+             uc.getOutputStream(), UTF_8)) {
       // The POST line, the Content-type header,
       // and the Content-length headers are sent by the URLConnection.
       // We just need to send the data
@@ -46,7 +52,6 @@ public class FormPoster {
       out.write("\r\n");
       out.flush();
     }
-
     // Return the response
     return uc.getInputStream();
   }
@@ -77,7 +82,7 @@ public class FormPoster {
     try (InputStream in = poster.post()) {
       // Read the response
       Reader r = new InputStreamReader(
-          in, StandardCharsets.UTF_8.name());
+          in, UTF_8);
       int c;
       while ((c = r.read()) != -1)
         System.out.print((char)c);

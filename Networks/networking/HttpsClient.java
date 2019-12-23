@@ -11,6 +11,8 @@ import javax.net.ssl.SSLSocketFactory;
 
 public final class HttpsClient {
   private static final int PORT = 443;
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
 
   private HttpsClient() {
     throw new IllegalStateException("Private constructor");
@@ -61,10 +63,11 @@ public final class HttpsClient {
       out.flush();
 
       // read response
+      try (
       BufferedReader in =
           new BufferedReader(new InputStreamReader(
               socket.getInputStream(),
-              StandardCharsets.UTF_8.name()));
+              UTF_8))) {
 
       // read the header
       String s = in.readLine();
@@ -80,10 +83,10 @@ public final class HttpsClient {
       System.out.println(length);
       int c;
       int i = 0;
-      while ((c = in.read()) != -1 && i++ < length) {
+      while ((c = in.read()) != -1 && i++ < length) 
         System.out.write(c);
-      }
       System.out.println();
+    }
     } catch (IOException ex) {
       System.err.println(ex);
     }
