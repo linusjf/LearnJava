@@ -13,7 +13,6 @@ import java.net.URLConnection;
 public enum EncodingAwareSourceViewer {
   ;
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     for (String arg: args) {
       try {
@@ -33,16 +32,15 @@ public enum EncodingAwareSourceViewer {
     }
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter",
+  "PMD.DataflowAnomalyAnalysis"})
   private static void read(URLConnection uc) throws IOException {
-        String encoding;
+        String encoding = "ISO-8859-1";
         String contentType = uc.getContentType();
         int encodingStart = contentType.indexOf("charset=");
         if (encodingStart > 0)
           encoding =
               contentType.substring(encodingStart + 8);
-        else
-          encoding = "ISO-8859-1";
         try (
         InputStream in =
             new BufferedInputStream(uc.getInputStream());

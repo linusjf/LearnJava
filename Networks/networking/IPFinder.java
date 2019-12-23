@@ -6,23 +6,26 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class IPFinder {
+
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+
   private IPFinder() {
     throw new IllegalStateException("Private constructor");
   }
 
   public static void main(String[] args) {
-    String host;
+    try (
     Scanner input = new Scanner(
-        System.in, StandardCharsets.UTF_8.name());
+        System.in, UTF_8);) {
     InetAddress address;
     System.out.print("\n\nEnter host name: ");
-    host = input.next();
-    try {
+    String host = input.next();
       address = InetAddress.getByName(host);
       System.out.println("IP address: "
                          + address.toString());
     } catch (UnknownHostException uhEx) {
-      System.out.println("Could not find " + host);
+      System.err.println("Could not find " + uhEx.getMessage());
     }
   }
 }
