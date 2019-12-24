@@ -18,6 +18,7 @@ public enum UDPDiscardServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     int port = args.length > 0 ? readPort(args[0]) : PORT;
     System.out.println("port: " + port);
