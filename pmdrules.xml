@@ -66,7 +66,11 @@
   <rule ref="category/java/bestpractices.xml/UseAssertSameInsteadOfAssertTrue" />
   <rule ref="category/java/bestpractices.xml/UseAssertTrueInsteadOfAssertEquals" />
   <rule ref="category/java/bestpractices.xml/UseCollectionIsEmpty" />
-  <rule ref="category/java/bestpractices.xml/UseTryWithResources" />
+  <rule ref="category/java/bestpractices.xml/UseTryWithResources">
+    <properties>
+        <property name="closeMethods" value="close,closeQuietly" />
+    </properties>
+</rule>
   <rule ref="category/java/bestpractices.xml/UseVarargs" />
   <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean" />
   <!-- NAMING CONVENTIONS -->

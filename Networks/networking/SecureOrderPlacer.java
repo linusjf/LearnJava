@@ -27,6 +27,7 @@ public final class SecureOrderPlacer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       // The reference implementation only supports X.509 keys
@@ -47,7 +48,8 @@ public final class SecureOrderPlacer {
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLSocketFactory ssf = context.getSocketFactory();
-      SSLSocket s = (SSLSocket) ssf.createSocket("localhost", PORT);
+      try (
+      SSLSocket s = (SSLSocket) ssf.createSocket("localhost", PORT);) {
 
       // add anonymous (non-authenticated) cipher suites
       String[] supported = ssf.getSupportedCipherSuites();
@@ -70,9 +72,11 @@ public final class SecureOrderPlacer {
 
       // Now all the set up is complete and we can focus
       // on the actual communication.
-      OutputStream out = s.getOutputStream();
+      try (OutputStream out = s.getOutputStream();) {
       out.write("Let's place an order".getBytes(StandardCharsets.UTF_8));
       out.flush();
+      }
+      }
     } catch (IOException
         | KeyManagementException
         | KeyStoreException

@@ -14,6 +14,8 @@ public enum PersonnelClient {
   ;
   private static InetAddress host;
   private static final int PORT = 1234;
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -28,13 +30,14 @@ public enum PersonnelClient {
     }
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked",
+  "PMD.LawOfDemeter"})
   private static void talkToServer() throws ClassNotFoundException {
     try (Socket socket = new Socket(host, PORT);
         ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
         PrintWriter outStream =
             new PrintWriter(
-                new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()),
+                new OutputStreamWriter(socket.getOutputStream(), UTF_8),
                 true); ) {
       outStream.println("SEND PERSONNEL DETAILS");
       ArrayList<Personnel> response = (ArrayList<Personnel>) inStream.readObject();
@@ -54,13 +57,6 @@ public enum PersonnelClient {
                 System.out.println("First names: " + person.getFirstNames());
               });
 
-      /*  for (Personnel person: response) {
-        staffCount++;
-        System.out.println("\nStaff member " + staffCount);
-        System.out.println("Payroll number: " + person.getPayNum());
-        System.out.println("Surname: " + person.getSurname());
-        System.out.println("First names: " + person.getFirstNames());
-      }*/
       System.out.println("\n\n");
     } catch (IOException ioEx) {
       System.err.println(ioEx);

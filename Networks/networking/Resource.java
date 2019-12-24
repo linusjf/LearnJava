@@ -12,6 +12,7 @@ class Resource {
     return numResources;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public int addOne() {
     try {
       synchronized (this) {
@@ -28,6 +29,7 @@ class Resource {
     return numResources;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public int takeOne() {
     try {
       synchronized (this) {

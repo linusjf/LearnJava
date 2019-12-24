@@ -82,7 +82,8 @@ public final class SpamCheck {
     try (InputStream in = new BufferedInputStream(connection.getInputStream());
         InputStreamReader theHTML = new InputStreamReader(in, UTF_8); ) {
       int c;
-      while ((c = theHTML.read()) != -1) sb.append((char) c);
+      while ((c = theHTML.read()) != -1) 
+        sb.append((char) c);
       return isIpFlagged(sb.toString(), ip);
     }
   }
@@ -95,6 +96,7 @@ public final class SpamCheck {
             + "Mobile Safari/537.36");
     connection.setRequestProperty("Cookie", cookies);
   }
+
   @SuppressWarnings("PMD.OneDeclarationPerLine")
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};

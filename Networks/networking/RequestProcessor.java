@@ -20,6 +20,8 @@ import logging.FormatLogger;
 public class RequestProcessor implements Runnable {
   private static final FormatLogger LOGGER =
       new FormatLogger(Logger.getLogger(RequestProcessor.class.getCanonicalName()));
+  private static final String US_ASCII =
+      StandardCharsets.US_ASCII.name();
   private File rootDirectory;
   private String indexFileName = "index.html";
   private final Socket connection;
@@ -41,13 +43,14 @@ public class RequestProcessor implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     try (OutputStream raw = new BufferedOutputStream(connection.getOutputStream());
-        Writer out = new OutputStreamWriter(raw, StandardCharsets.US_ASCII.name());
+        Writer out = new OutputStreamWriter(raw, US_ASCII);
         Reader in =
             new InputStreamReader(
                 new BufferedInputStream(connection.getInputStream()),
-                StandardCharsets.US_ASCII.name()); ) {
+                US_ASCII);connection; ) {
       StringBuilder requestLine = new StringBuilder();
       while (true) {
         int c = in.read();
@@ -82,12 +85,6 @@ public class RequestProcessor implements Runnable {
     } catch (IOException ex) {
       LOGGER.warning(
           "Error talking to %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
-    } finally {
-      try {
-        connection.close();
-      } catch (IOException ex) {
-        LOGGER.warning("Error closing connection: ", ex.getMessage());
-      }
     }
   }
 
@@ -96,10 +93,12 @@ public class RequestProcessor implements Runnable {
     return "";
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+  "PMD.LawOfDemeter"})
   private void handleGet(String[] tokens, OutputStream raw, Writer out) throws IOException {
     String fileName = tokens[1];
-    if (fileName.endsWith("/")) fileName = fileName.concat(indexFileName);
+    if (fileName.endsWith("/")) 
+      fileName = fileName.concat(indexFileName);
     File theFile = new File(rootDirectory, fileName.substring(1, fileName.length()));
 
     String version = getVersionFromTokens(tokens);

@@ -40,6 +40,7 @@ public class NonblockingSingleFileHttpServer {
     this.contentBuffer = buffer;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() throws IOException {
     ServerSocketChannel serverChannel = ServerSocketChannel.open();
     ServerSocket serverSocket = serverChannel.socket();
@@ -92,6 +93,7 @@ public class NonblockingSingleFileHttpServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       int port = Integer.parseInt(args[1]);
@@ -102,12 +104,14 @@ public class NonblockingSingleFileHttpServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String getEncoding(String... args) {
     if (args.length > (1 + 1)) return args[2];
     return "UTF-8";
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Usage: java NonblockingSingleFileHTTPServer file port encoding");

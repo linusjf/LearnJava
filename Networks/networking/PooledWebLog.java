@@ -3,6 +3,7 @@ package networking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
@@ -14,16 +15,19 @@ import java.util.concurrent.Future;
 
 public final class PooledWebLog {
   private static final int NUM_THREADS = 4;
+  private static final Charset UTF_8 =
+    StandardCharsets.UTF_8;
 
   private PooledWebLog() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) throws IOException {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     Queue<LogEntry> results = new LinkedList<>();
     try (BufferedReader in =
-        Files.newBufferedReader(Paths.get(args[0]), Charset.forName("UTF-8")); ) {
+        Files.newBufferedReader(Paths.get(args[0]), UTF_8); ) {
       for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);

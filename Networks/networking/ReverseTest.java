@@ -9,6 +9,7 @@ public final class ReverseTest {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       InetAddress ia = InetAddress.getByName("208.201.239.100");

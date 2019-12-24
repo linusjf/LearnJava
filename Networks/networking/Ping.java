@@ -58,6 +58,7 @@ public final class Ping {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getFirstArg(String... args) {
     if (Pattern.matches("[0-9]+", args[0])) {
       port = Integer.parseInt(args[0]);
@@ -156,10 +157,8 @@ public final class Ping {
     @Override
     public void run() {
       try {
-        while (true) {
-          Target t = waitAndGetTarget();
-          t.show();
-        }
+        while (true) 
+          showTarget();
       } catch (InterruptedException x) {
         return;
       }
@@ -167,9 +166,16 @@ public final class Ping {
 
     private Target waitAndGetTarget() throws InterruptedException {
       synchronized (pending) {
-        while (pending.isEmpty()) pending.wait();
+        while (pending.isEmpty())
+          pending.wait();
         return pending.remove(0);
       }
+    }
+    
+    @SuppressWarnings("PMD.LawOfDemeter")
+    private void showTarget() throws InterruptedException {
+          Target t = waitAndGetTarget();
+          t.show();
     }
   }
 
@@ -228,6 +234,7 @@ public final class Ping {
 
     // Process any targets in the pending list
     //
+    @SuppressWarnings("PMD.LawOfDemeter")
     void processPendingTargets() throws IOException {
       synchronized (pending) {
         while (!pending.isEmpty()) {
@@ -238,7 +245,8 @@ public final class Ping {
             // target object so that we can get the target back
             // after the key is added to the selector's
             // selected-key set
-            if (t.channel != null) t.channel.register(sel, SelectionKey.OP_CONNECT, t);
+            if (t.channel != null) 
+              t.channel.register(sel, SelectionKey.OP_CONNECT, t);
           } catch (IOException x) {
             // Something went wrong, so close the channel and
             // record the failure
@@ -252,6 +260,7 @@ public final class Ping {
 
     // Process keys that have become selected
     //
+    @SuppressWarnings("PMD.LawOfDemeter")
     void processSelectedKeys() throws IOException {
       for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext(); ) {
         // Retrieve the next key and remove it from the set

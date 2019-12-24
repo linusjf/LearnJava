@@ -17,6 +17,8 @@ import logging.FormatLogger;
 
 public class Redirector {
   private static final FormatLogger LOGGER = new FormatLogger(Logger.getLogger("Redirector"));
+    private static final String US_ASCII =
+      StandardCharsets.US_ASCII.name();
   private final int port;
   private final String newSite;
 
@@ -44,6 +46,7 @@ public class Redirector {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     if (args.length > 1) {
       try {
@@ -55,15 +58,15 @@ public class Redirector {
     return 80;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     String theSite;
     if (args.length > 0) {
       theSite = args[0];
 
       // trim trailing slash
-      if (theSite.endsWith("/")) {
+      if (theSite.endsWith("/")) 
         theSite = theSite.substring(0, theSite.length() - 1);
-      }
     } else {
       System.out.println("Usage: java Redirector http://www.newsite.com/ port");
       return;
@@ -75,6 +78,7 @@ public class Redirector {
   }
 
   private class RedirectThread extends Thread {
+
     private final Socket connection;
 
     RedirectThread(Socket s) {
@@ -82,16 +86,17 @@ public class Redirector {
       this.connection = s;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     @Override
     public void run() {
       try (Writer out =
               new BufferedWriter(
                   new OutputStreamWriter(
-                      connection.getOutputStream(), StandardCharsets.US_ASCII.name()));
+                      connection.getOutputStream(), US_ASCII));
           Reader in =
               new InputStreamReader(
                   new BufferedInputStream(connection.getInputStream()),
-                  StandardCharsets.US_ASCII.name()); ) {
+                  US_ASCII);connection; ) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
@@ -134,13 +139,6 @@ public class Redirector {
       } catch (IOException ex) {
         LOGGER.warning(
             "Error talking to %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
-      } finally {
-        try {
-          connection.close();
-        } catch (IOException ex) {
-          LOGGER.warning(
-              "Error closing %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
-        }
       }
     }
   }
