@@ -47,7 +47,7 @@ public class SocketEchoServer {
     }
   }
 
-  @SupportWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void serve() {
       while (true) {
     try (

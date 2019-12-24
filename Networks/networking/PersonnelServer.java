@@ -13,10 +13,9 @@ public enum PersonnelServer {
   ;
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
-  private static Socket socket;
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
   private static List<Personnel> staffListOut;
-  private static Scanner inStream;
-  private static ObjectOutputStream outStream;
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -37,16 +36,17 @@ public enum PersonnelServer {
     };
 
     // clang-format on
-    for (Personnel person : staff) staffListOut.add(person);
+    for (Personnel person : staff) 
+      staffListOut.add(person);
     startServer();
   }
 
   private static void startServer() {
     while (true) {
-      try {
-        socket = serverSocket.accept();
-        inStream = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8.name());
-        outStream = new ObjectOutputStream(socket.getOutputStream());
+      try (
+        Socket socket = serverSocket.accept();
+        Scanner inStream = new Scanner(socket.getInputStream(), UTF_8);
+        ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());) {
 
         /*
                       The above line and associated declaration
@@ -56,10 +56,9 @@ public enum PersonnelServer {
         String message = inStream.nextLine();
         if ("SEND PERSONNEL DETAILS".equals(message)) {
           outStream.writeObject(staffListOut);
-          outStream.close();
+          outStream.flush();
         }
         System.out.println("\n* Closing connection… *");
-        socket.close();
       } catch (IOException ioEx) {
         System.err.println(ioEx);
       }

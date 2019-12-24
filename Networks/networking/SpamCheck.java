@@ -31,6 +31,9 @@ public final class SpamCheck {
   private static final String POLICY_LISTER = "{0} is listed in the PBL";
   private static final String EXPLOIT_LISTER = "{0} is listed in the XBL";
   private static final String LOOKUP = "https://www.spamhaus.org/lookup/ip/?";
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
   private static String cookies;
 
   static {
@@ -51,22 +54,13 @@ public final class SpamCheck {
     cookies = sb.toString();
   }
 
-  private static QueryString getQueryString() {
-    return new QueryString();
-  }
-
-  private static String getCookies() {
-    return cookies;
-  }
-
   public static void main(String[] args) {
     for (String arg : args) {
       try {
-        if (isInSpammerLists(arg)) {
+        if (isInSpammerLists(arg)) 
           System.out.println(arg + " is a known spammer.");
-        } else {
+         else 
           System.out.println(arg + " appears legitimate.");
-        }
       } catch (MalformedURLException ex) {
         System.err.println("MalformedURL : " + ex);
       } catch (IOException ex) {
@@ -77,27 +71,30 @@ public final class SpamCheck {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static boolean isInSpammerLists(String ip) throws IOException, MalformedURLException {
-    QueryString query = getQueryString();
+    QueryString query = new QueryString();
     query.add("ip", ip);
 
     System.out.println(LOOKUP + query);
     URL u = new URL(LOOKUP + query);
     URLConnection connection = u.openConnection();
-    connection.setRequestProperty(
-        "User-Agent",
-        "Mozilla/5.0 (Linux; Android 7.1.2;"
-            + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
-            + "Mobile Safari/537.36");
-    connection.setRequestProperty("Cookie", getCookies());
+    setProperties(connection);
     StringBuilder sb = new StringBuilder();
     try (InputStream in = new BufferedInputStream(connection.getInputStream());
-        InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name()); ) {
+        InputStreamReader theHTML = new InputStreamReader(in, UTF_8); ) {
       int c;
       while ((c = theHTML.read()) != -1) sb.append((char) c);
       return isIpFlagged(sb.toString(), ip);
     }
   }
 
+  private static void setProperties(URLConnection connection) throws IOException {
+    connection.setRequestProperty(
+        "User-Agent",
+        "Mozilla/5.0 (Linux; Android 7.1.2;"
+            + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
+            + "Mobile Safari/537.36");
+    connection.setRequestProperty("Cookie", cookies);
+  }
   @SuppressWarnings("PMD.OneDeclarationPerLine")
   private static boolean isIpFlagged(String content, String ip) {
     String[] params = new String[] {ip};

@@ -24,16 +24,16 @@ public enum OptionSupport {
     }
   }
 
-  private static void printOptions(NetworkChannel channel) throws IOException {
+  @SuppressWarnings("PMD.LawOfDemeter")  
+  private static void printOptions(final NetworkChannel channel) throws IOException {
     System.out.println(channel.getClass().getSimpleName() + " supports:");
     for (SocketOption<?> option : channel.supportedOptions()) {
-      try {
+      try (channel) {
         System.out.println(option.name() + ": " + channel.getOption(option));
       } catch (AssertionError ae) {
         System.err.println("Option not found for : " + option.name());
       }
     }
     System.out.println();
-    channel.close();
   }
 }
