@@ -5,6 +5,7 @@ import java.net.HttpCookie;
 import java.net.URI;
 import java.util.Locale;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public class NoGovernmentCookies implements CookiePolicy {
   @Override
   public boolean shouldAccept(URI uri, HttpCookie cookie) {
