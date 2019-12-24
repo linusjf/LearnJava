@@ -37,12 +37,16 @@ public enum Shuffle {
 
   private static void storeInMap(int to, int from) {
     Integer count = map.get(to);
-    if (count == null) map.put(to, 1);
-    else map.put(to, ++count);
+    if (count == null)
+      map.put(to, 1);
+    else
+      map.put(to, ++count);
 
     Integer counter = map.get(from);
-    if (counter == null) map.put(from, 1);
-    else map.put(from, ++counter);
+    if (counter == null)
+      map.put(from, 1);
+    else
+      map.put(from, ++counter);
   }
 
   private static void dumpMap() {
@@ -51,8 +55,10 @@ public enum Shuffle {
     int max = 0;
     for (Map.Entry<Integer, Integer> entry : entries) {
       System.out.printf(" (%d : %d) ", entry.getKey(), entry.getValue());
-      if (entry.getValue() > max) max = entry.getValue();
-      if (entry.getValue() < min) min = entry.getValue();
+      if (entry.getValue() > max)
+        max = entry.getValue();
+      if (entry.getValue() < min)
+        min = entry.getValue();
     }
     System.out.printf("%nRange: %d - %d %n", min, max);
   }

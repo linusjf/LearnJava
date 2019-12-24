@@ -8,7 +8,8 @@ public enum PeekMore {
   private static final AtomicBoolean FLAG = new AtomicBoolean(false);
 
   private static void setFlagIfGreaterThanZero(int val) {
-    if (val > 0) FLAG.set(true);
+    if (val > 0)
+      FLAG.set(true);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

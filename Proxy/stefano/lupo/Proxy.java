@@ -71,8 +71,7 @@ public class Proxy implements Runnable {
   private ServerSocket serverSocket;
 
   /** Semaphore for Proxy and Consolee Management System. */
-  @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true; // NOPMD
+  @SuppressWarnings("checkstyle:IllegalToken") private volatile boolean running = true; // NOPMD
 
   static {
     // Load in hash map containing previously cached sites and blocked Sites
@@ -121,8 +120,8 @@ public class Proxy implements Runnable {
       File cachedSites = new File("cachedSites.txt");
       if (!cachedSites.createNewFile()) {
         try (InputStream fileInputStream =
-                Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+                 Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
           cache = (HashMap<String, File>) objectInputStream.readObject();
         } catch (IOException ioe) {
           System.err.println("Error loading previously cached sites file :" + ioe.getMessage());
@@ -133,8 +132,8 @@ public class Proxy implements Runnable {
       File blockedSitesTxtFile = new File("blockedSites.txt");
       if (!blockedSitesTxtFile.createNewFile()) {
         try (InputStream fileInputStream =
-                Files.newInputStream(Paths.get(blockedSitesTxtFile.getAbsolutePath()));
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream); ) {
+                 Files.newInputStream(Paths.get(blockedSitesTxtFile.getAbsolutePath()));
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
           blockedSites = (HashMap<String, String>) objectInputStream.readObject();
         } catch (IOException e) {
           System.err.println("Error loading previously cached sites file :" + e.getMessage());
@@ -206,12 +205,12 @@ public class Proxy implements Runnable {
       System.out.println("\nClosing Server..");
       running = false;
       try (OutputStream fileOutputStream = Files.newOutputStream(Paths.get("cachedSites.txt"));
-          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream); ) {
+           ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);) {
         objectOutputStream.writeObject(cache);
         System.out.println("Cached Sites written");
       }
       try (OutputStream fileOutputStream2 = Files.newOutputStream(Paths.get("blockedSites.txt"));
-          ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(fileOutputStream2); ) {
+           ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(fileOutputStream2);) {
         objectOutputStream2.writeObject(blockedSites);
         System.out.println("Blocked Site list saved");
       }
@@ -278,11 +277,10 @@ public class Proxy implements Runnable {
   @Override
   public void run() {
     Scanner scanner = new Scanner(System.in, UTF_8);
-    System.out.println(
-        "Enter new site to block, or type "
-            + "\"blocked\" to see blocked sites, "
-            + "\"cached\" to see cached sites, or "
-            + "\"close\" to close server.");
+    System.out.println("Enter new site to block, or type "
+        + "\"blocked\" to see blocked sites, "
+        + "\"cached\" to see cached sites, or "
+        + "\"close\" to close server.");
     handleCommands(scanner);
     scanner.close();
   }

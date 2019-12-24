@@ -30,7 +30,8 @@ public enum DemoThreadExample {
       synchronized (DemoThreadExample.class) {
         DemoThreadExample.runCount++;
       }
-      if (DemoThreadExample.runCount < LIMIT) new Thread(new Task()).start();
+      if (DemoThreadExample.runCount < LIMIT)
+        new Thread(new Task()).start();
     }
   }
 

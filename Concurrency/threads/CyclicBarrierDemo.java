@@ -27,12 +27,8 @@ public class CyclicBarrierDemo {
 
     cyclicBarrier = new CyclicBarrier(numWorkers, new AggregatorThread());
 
-    System.out.println(
-        "Spawning "
-            + numWorkers
-            + " worker threads to compute "
-            + numPartialResults
-            + " partial results each");
+    System.out.println("Spawning " + numWorkers + " worker threads to compute " + numPartialResults
+        + " partial results each");
 
     for (int i = 0; i < numWorkers; i++) {
       Thread worker = new Thread(new NumberCruncherThread());
@@ -89,13 +85,8 @@ public class CyclicBarrierDemo {
     public void run() {
       String thisThreadName = Thread.currentThread().getName();
 
-      System.out.println(
-          thisThreadName
-              + ": Computing sum of "
-              + numWorkers
-              + " workers, having "
-              + numPartialResults
-              + " results each.");
+      System.out.println(thisThreadName + ": Computing sum of " + numWorkers + " workers, having "
+          + numPartialResults + " results each.");
       int sum = 0;
 
       for (List<Integer> threadResult : partialResults) {

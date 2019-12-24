@@ -14,8 +14,7 @@ import java.util.Scanner;
 public final class MediaServer {
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private MediaServer() {
     throw new IllegalStateException("Private constructor");
@@ -33,8 +32,7 @@ public final class MediaServer {
     while (true) {
       // Step 1…
       try (Socket connection = serverSocket.accept();
-          Scanner inStream =
-              new Scanner(connection.getInputStream(), UTF_8); ) {
+           Scanner inStream = new Scanner(connection.getInputStream(), UTF_8);) {
         // Step 2…
         String message = inStream.nextLine();
         System.out.println(message);

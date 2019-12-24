@@ -24,13 +24,17 @@ public enum FileMethods {
           // Get out of loop.
         }
         System.out.print(filename + " is a ");
-        if (fileDir.isFile()) System.out.println("file.");
-        else System.out.println("directory.");
+        if (fileDir.isFile())
+          System.out.println("file.");
+        else
+          System.out.println("directory.");
         System.out.print("It is ");
-        if (!fileDir.canRead()) System.out.print("not ");
+        if (!fileDir.canRead())
+          System.out.print("not ");
         System.out.println("readable.");
         System.out.print("It is ");
-        if (!fileDir.canWrite()) System.out.print("not ");
+        if (!fileDir.canWrite())
+          System.out.print("not ");
         System.out.println("writeable.");
         if (fileDir.isDirectory()) {
           System.out.println("Contents:");

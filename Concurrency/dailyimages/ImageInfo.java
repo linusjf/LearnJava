@@ -33,6 +33,5 @@ abstract class ImageInfo {
     return imageData;
   }
 
-  @SuppressWarnings("checkstyle:hiddenfield")
-  public abstract String getUrlForDate(LocalDate date);
+  @SuppressWarnings("checkstyle:hiddenfield") public abstract String getUrlForDate(LocalDate date);
 }

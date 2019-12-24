@@ -17,8 +17,7 @@ public enum TestProxy {
 
   private static final String PROXY_HOST = "localhost";
 
-  @SuppressWarnings("checkstyle:magicnumber")
-  private static final int PROXY_PORT = 8085;
+  @SuppressWarnings("checkstyle:magicnumber") private static final int PROXY_PORT = 8085;
 
   /**
    * Main program.
@@ -76,7 +75,8 @@ public enum TestProxy {
     System.out.println("Using proxy: " + connection.usingProxy());
     connection.getInputStream();
     int responseCode = connection.getResponseCode();
-    if (responseCode / 100 == 2) System.out.println("Connection successful");
+    if (responseCode / 100 == 2)
+      System.out.println("Connection successful");
     connection.disconnect();
   }
 }

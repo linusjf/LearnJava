@@ -84,9 +84,8 @@ public enum PhaserDemo {
         phaser.arriveAndDeregister();
         return false;
       } else {
-        System.out.printf(
-            "%s: Phase %d: %d results.%n",
-            Thread.currentThread().getName(), phaser.getPhase(), results.size());
+        System.out.printf("%s: Phase %d: %d results.%n", Thread.currentThread().getName(),
+            phaser.getPhase(), results.size());
         phaser.arriveAndAwaitAdvance();
         return true;
       }
@@ -109,9 +108,11 @@ public enum PhaserDemo {
       if (file.isDirectory()) {
         directoryProcess(file);
       }
-      if (!checkResults()) return;
+      if (!checkResults())
+        return;
       filterResults();
-      if (!checkResults()) return;
+      if (!checkResults())
+        return;
       showInfo();
       phaser.arriveAndDeregister();
       System.out.printf("%s: Work completed.%n", Thread.currentThread().getName());

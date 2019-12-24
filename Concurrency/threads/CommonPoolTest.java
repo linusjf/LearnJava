@@ -19,7 +19,7 @@ public enum CommonPoolTest {
         IntStream.range(0, 100)
             .mapToObj(i -> CompletableFuture.runAsync(CommonPoolTest::blockingOperation))
             .collect(Collectors.toUnmodifiableList());
-    CompletableFuture.allOf(futures.toArray(new CompletableFuture<?>[0])).join();
+    CompletableFuture.allOf(futures.toArray(new CompletableFuture<?>[ 0 ])).join();
     System.out.println(
         "Processed in " + Duration.ofNanos(System.nanoTime() - start).toSeconds() + " secs");
   }

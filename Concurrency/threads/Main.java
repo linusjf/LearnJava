@@ -30,7 +30,7 @@ public enum Main {
 
   private static void setupStatuses(Thread.State[] status, Thread... threads) throws IOException {
     try (BufferedWriter file = Files.newBufferedWriter(Paths.get("./log.txt"));
-        PrintWriter pw = new PrintWriter(file); ) {
+         PrintWriter pw = new PrintWriter(file);) {
       for (int i = 0; i < 10; i++) {
         pw.println("Main : Status of Thread " + i + " : " + threads[i].getState());
         status[i] = threads[i].getState();

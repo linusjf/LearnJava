@@ -30,15 +30,16 @@ public final class GZipAllFiles {
   private static void zip(File f, ExecutorService pool) {
     if (f.isDirectory()) {
       Optional<?> objs = Optional.ofNullable(f.listFiles());
-      objs.ifPresent(
-          obj -> {
-            File[] files = (File[]) obj;
-            for (File file : files) {
-              // don't recurse directories
-              if (!file.isDirectory()) submitZipTask(file, pool);
-            }
-          });
-    } else submitZipTask(f, pool);
+      objs.ifPresent(obj -> {
+        File[] files = (File[]) obj;
+        for (File file : files) {
+          // don't recurse directories
+          if (!file.isDirectory())
+            submitZipTask(file, pool);
+        }
+      });
+    } else
+      submitZipTask(f, pool);
   }
 
   private static void submitZipTask(File file, ExecutorService pool) {

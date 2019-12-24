@@ -45,7 +45,8 @@ public final class Mopex {
     while (c != null) {
       Method[] methods = c.getDeclaredMethods();
       for (Method method : methods)
-        if (!Modifier.isStatic(method.getModifiers())) instanceMethods.add(method);
+        if (!Modifier.isStatic(method.getModifiers()))
+          instanceMethods.add(method);
       c = c.getSuperclass();
     }
   }
@@ -55,7 +56,8 @@ public final class Mopex {
    * Note that Class.getField returns only public fields.
    */
   public static Field findField(Class<?> cls, String name) throws NoSuchFieldException {
-    if (cls == null) throw new NoSuchFieldException("Null class object.");
+    if (cls == null)
+      throw new NoSuchFieldException("Null class object.");
     else {
       try {
         return cls.getDeclaredField(name);
@@ -92,7 +94,8 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append(getTypeName(pts[i])).append(" p").append(i);
-      if (i < pts.length - 1) result.append(',');
+      if (i < pts.length - 1)
+        result.append(',');
     }
     return result.toString();
   }
@@ -105,7 +108,8 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append('p').append(i);
-      if (i < pts.length - 1) result.append(',');
+      if (i < pts.length - 1)
+        result.append(',');
     }
     return result.toString();
   }
@@ -119,7 +123,8 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append(getTypeName(pts[i]));
-      if (i < pts.length - 1) result.append(',');
+      if (i < pts.length - 1)
+        result.append(',');
     }
     return result.toString();
   }

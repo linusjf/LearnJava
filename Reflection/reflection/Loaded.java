@@ -36,10 +36,11 @@ public enum Loaded {
   static class TestClassLoader extends ClassLoader {
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-      if (!REFLECTABLE_CLASS.equals(name)) return super.loadClass(name);
-      try (InputStream in =
-              ClassLoader.getSystemResourceAsStream(name.replace(".", "/") + ".class");
-          ByteArrayOutputStream buffer = new ByteArrayOutputStream(); ) {
+      if (!REFLECTABLE_CLASS.equals(name))
+        return super.loadClass(name);
+      try (
+          InputStream in = ClassLoader.getSystemResourceAsStream(name.replace(".", "/") + ".class");
+          ByteArrayOutputStream buffer = new ByteArrayOutputStream();) {
         int data = in.read();
         while (data != -1) {
           buffer.write(data);

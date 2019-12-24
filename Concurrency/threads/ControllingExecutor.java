@@ -26,7 +26,8 @@ public enum ControllingExecutor {
     for (ResultTask task : resultTasks) task.cancel(true);
     for (ResultTask task : resultTasks) {
       try {
-        if (!task.isCancelled()) System.out.printf("%s%n", task.get());
+        if (!task.isCancelled())
+          System.out.printf("%s%n", task.get());
       } catch (InterruptedException | ExecutionException e) {
         System.err.println(e);
       }

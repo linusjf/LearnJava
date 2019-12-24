@@ -54,8 +54,10 @@ public enum PriorityQueueDemo {
 
     @Override
     public int compareTo(Event e) {
-      if (this.priority > e.getPriority()) return -1;
-      if (this.priority < e.getPriority()) return 1;
+      if (this.priority > e.getPriority())
+        return -1;
+      if (this.priority < e.getPriority())
+        return 1;
       return 0;
     }
 
@@ -67,12 +69,14 @@ public enum PriorityQueueDemo {
     @Override
     public boolean equals(Object o) {
       // If the object is compared with itself then return true
-      if (o == this) return true;
+      if (o == this)
+        return true;
 
       /* Check if o is an instance of Event or not
 
       "null instanceof [type]" also returns false */
-      if (!(o instanceof Event)) return false;
+      if (!(o instanceof Event))
+        return false;
 
       // typecast o to Event so that we can compare data members
       Event e = (Event) o;

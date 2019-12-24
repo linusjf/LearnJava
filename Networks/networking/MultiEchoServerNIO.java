@@ -162,7 +162,8 @@ public final class MultiEchoServerNIO {
 
   private static void closeSocket(Socket socket) {
     try {
-      if (socket != null) socket.close();
+      if (socket != null)
+        socket.close();
     } catch (IOException ioEx) {
       System.out.println("*** Unable to close socket! ***");
     }

@@ -37,9 +37,8 @@ public class GrayscaleImageAction extends RecursiveAction {
     try {
       ForkJoinPool pool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
       BufferedImage bufferedImage = ImageIO.read(new File(args[0]));
-      BufferedImage img =
-          new BufferedImage(
-              bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+      BufferedImage img = new BufferedImage(
+          bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
       img.getGraphics().drawImage(bufferedImage, 0, 0, null);
       int height = bufferedImage.getHeight();
       final long startTime = System.currentTimeMillis();

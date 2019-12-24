@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 
 /** Set user-agent property. ** */
 public final class GoogleSearch {
-
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private GoogleSearch() {
@@ -42,14 +41,12 @@ public final class GoogleSearch {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void read(URLConnection connection) throws IOException {
-
-    connection.setRequestProperty(
-        "User-Agent",
+    connection.setRequestProperty("User-Agent",
         "Mozilla/5.0 (Linux; Android 7.1.2;"
             + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
             + "Mobile Safari/537.36");
     try (InputStream in = new BufferedInputStream(connection.getInputStream());
-        InputStreamReader theHTML = new InputStreamReader(in, UTF_8); ) {
+         InputStreamReader theHTML = new InputStreamReader(in, UTF_8);) {
       int c;
       while ((c = theHTML.read()) != -1) System.out.print((char) c);
     }

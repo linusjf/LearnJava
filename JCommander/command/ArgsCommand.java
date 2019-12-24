@@ -6,14 +6,12 @@ import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 class ArgsMaster {
-  @Parameter(names = "-master")
-  String master;
+  @Parameter(names = "-master") String master;
 }
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 class ArgsSlave {
-  @Parameter(names = "-slave")
-  String slave;
+  @Parameter(names = "-slave") String slave;
 }
 
 public enum ArgsCommand {

@@ -38,11 +38,10 @@ public class ImageProcessor {
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
 
-  private final HttpClient client =
-      HttpClient.newBuilder()
-          .executor(executor1)
-          .followRedirects(HttpClient.Redirect.NEVER)
-          .build();
+  private final HttpClient client = HttpClient.newBuilder()
+                                        .executor(executor1)
+                                        .followRedirects(HttpClient.Redirect.NEVER)
+                                        .build();
 
   public <T> CompletableFuture<T> getAsync(
       String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
@@ -51,8 +50,7 @@ public class ImageProcessor {
     if (executor2.isShutdown())
       return client.sendAsync(request, responseBodyHandler).thenApply(HttpResponse::body);
     else
-      return client
-          .sendAsync(request, responseBodyHandler)
+      return client.sendAsync(request, responseBodyHandler)
           .thenApplyAsync(HttpResponse::body, executor2);
   }
 
@@ -75,12 +73,11 @@ public class ImageProcessor {
     findImageInfo(date, info)
         .thenCompose(this::findImageData)
         .thenAccept(this::process)
-        .exceptionally(
-            t -> {
-              System.err.println(info.getUrlForDate(date) + " : " + t);
-              failureCount.incrementAndGet();
-              return null;
-            })
+        .exceptionally(t -> {
+          System.err.println(info.getUrlForDate(date) + " : " + t);
+          failureCount.incrementAndGet();
+          return null;
+        })
         .thenAccept(t -> latch.countDown());
   }
 
@@ -89,12 +86,15 @@ public class ImageProcessor {
     LocalDate newDate = LocalDate.now();
     for (int i = 0; i < NUMBER_TO_SHOW; i++) {
       ImageInfo info;
-      if (isDilbert) info = new DilbertImageInfo();
-      else info = new WikimediaImageInfo();
+      if (isDilbert)
+        info = new DilbertImageInfo();
+      else
+        info = new WikimediaImageInfo();
       info.setDate(newDate.toString());
       System.out.println("Loading " + newDate);
       load(newDate, info);
-      if (DELAY > 0) Thread.sleep(DELAY);
+      if (DELAY > 0)
+        Thread.sleep(DELAY);
       newDate = newDate.minusDays(1);
     }
   }

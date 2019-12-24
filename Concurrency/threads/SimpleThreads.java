@@ -96,7 +96,10 @@ public enum SimpleThreads {
     @Override
     public void run() {
       String[] importantInfo = {
-        "Mares eat oats", "Does eat oats", "Little lambs eat ivy", "A kid will eat ivy too",
+          "Mares eat oats",
+          "Does eat oats",
+          "Little lambs eat ivy",
+          "A kid will eat ivy too",
       };
       try {
         for (String info : importantInfo) {

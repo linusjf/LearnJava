@@ -17,7 +17,7 @@ public enum RanFile1 {
 
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in, UTF_8);
-        RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw"); ) {
+         RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");) {
       String reply = "y";
       while ("y".equalsIgnoreCase(reply)) {
         acctNum++;
@@ -88,7 +88,9 @@ public enum RanFile1 {
       // readString defined below.
       initials = readString(file, NUM_INITS);
       balance = file.readFloat();
-      System.out.printf(acctNum + " " + surname + " " + initials + " " + "%.2f %n", balance);
+      System.out.printf(acctNum + " " + surname + " " + initials + " "
+              + "%.2f %n",
+          balance);
     }
   }
 

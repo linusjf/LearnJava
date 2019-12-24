@@ -24,8 +24,7 @@ public enum MinHashExample {
     int[] sig2 = minhash.signature(set2);
 
     System.out.println("Signature similarity: " + minhash.similarity(sig1, sig2));
-    System.out.println(
-        "Real similarity (Jaccard index)"
-            + MinHash.jaccardIndex(MinHash.convert2Set(vector1), set2));
+    System.out.println("Real similarity (Jaccard index)"
+        + MinHash.jaccardIndex(MinHash.convert2Set(vector1), set2));
   }
 }

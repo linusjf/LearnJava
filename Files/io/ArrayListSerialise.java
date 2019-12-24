@@ -16,7 +16,7 @@ public enum ArrayListSerialise {
     ArrayList<Personnel> staffListOut = new ArrayList<>();
     ArrayList<Personnel> staffListIn;
     try (ObjectOutputStream outStream =
-        new ObjectOutputStream(Files.newOutputStream(Paths.get("personnel.dat")))) {
+             new ObjectOutputStream(Files.newOutputStream(Paths.get("personnel.dat")))) {
       // clang-format off
       Personnel[] staff = {
         new Personnel(123_456, "Smith", "John"),
@@ -32,7 +32,7 @@ public enum ArrayListSerialise {
     }
 
     try (ObjectInputStream inStream =
-        new ObjectInputStream(Files.newInputStream(Paths.get("personnel.dat")))) {
+             new ObjectInputStream(Files.newInputStream(Paths.get("personnel.dat")))) {
       int staffCount = 0;
       staffListIn = (ArrayList<Personnel>) inStream.readObject();
 

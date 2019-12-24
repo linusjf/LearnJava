@@ -9,17 +9,14 @@ public enum CommonForkJoinPoolExample {
 
   public static void main(String[] args) {
     final List<Integer> numbers = getNumbers();
-    numbers
-        .parallelStream()
-        .forEach(
-            n -> {
-              try {
-                Thread.sleep(5);
-                System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
-              } catch (InterruptedException e) {
-                System.err.println(e);
-              }
-            });
+    numbers.parallelStream().forEach(n -> {
+      try {
+        Thread.sleep(5);
+        System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      }
+    });
   }
 
   private static List<Integer> getNumbers() {

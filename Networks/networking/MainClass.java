@@ -9,7 +9,6 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 
 public final class MainClass {
-
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private MainClass() {
@@ -30,8 +29,8 @@ public final class MainClass {
   private static void acceptConnections(SSLServerSocket ss) throws IOException {
     while (true) {
       try (Socket socket = ss.accept();
-          PrintWriter out =
-              new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true); ) {
+           PrintWriter out =
+               new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);) {
         out.println("Hello World!");
       }
     }

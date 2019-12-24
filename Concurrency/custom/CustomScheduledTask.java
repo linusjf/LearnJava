@@ -14,10 +14,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
   private transient long period;
   private transient long startDate;
 
-  public CustomScheduledTask(
-      Runnable runnable,
-      V result,
-      RunnableScheduledFuture<V> task,
+  public CustomScheduledTask(Runnable runnable, V result, RunnableScheduledFuture<V> task,
       ScheduledThreadPoolExecutor executor) {
     super(runnable, result);
     this.task = task;
@@ -45,8 +42,10 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
 
   @Override
   public long getDelay(TimeUnit unit) {
-    if (!isPeriodic()) return task.getDelay(unit);
-    if (startDate == 0) return task.getDelay(unit);
+    if (!isPeriodic())
+      return task.getDelay(unit);
+    if (startDate == 0)
+      return task.getDelay(unit);
     else {
       Date now = new Date();
       long delay = startDate - now.getTime();
@@ -61,7 +60,8 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Delayed)) return false;
+    if (!(o instanceof Delayed))
+      return false;
     return task.compareTo((Delayed) o) == 0;
   }
 

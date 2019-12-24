@@ -24,7 +24,8 @@ public class CallbackDigest implements Runnable {
       DigestInputStream din = new DigestInputStream(in, sha);
 
       // read entire file
-      while (din.read() != -1) ;
+      while (din.read() != -1)
+        ;
       din.close();
       byte[] digest = sha.digest();
       CallbackDigestUserInterface.receiveDigest(digest, filename);

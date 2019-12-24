@@ -19,27 +19,18 @@ public final class Dynamic {
   @SuppressWarnings({"unchecked", "PMD.LawOfDemeter"})
   public static void main(String... args) {
     Map<Object, Object> proxyInstance =
-        (Map<Object, Object>)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {Map.class},
-                new DynamicInvocationHandler());
+        (Map<Object, Object>) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+            new Class<?>[] {Map.class}, new DynamicInvocationHandler());
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));
 
-    proxyInstance =
-        (Map<Object, Object>)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {Map.class},
-                new TimingDynamicInvocationHandler(new HashMap<Object, Object>()));
+    proxyInstance = (Map<Object, Object>) Proxy.newProxyInstance(
+        Thread.currentThread().getContextClassLoader(), new Class<?>[] {Map.class},
+        new TimingDynamicInvocationHandler(new HashMap<Object, Object>()));
 
     CharSequence csProxyInstance =
-        (CharSequence)
-            Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] {CharSequence.class},
-                new TimingDynamicInvocationHandler("Hello World"));
+        (CharSequence) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+            new Class<?>[] {CharSequence.class}, new TimingDynamicInvocationHandler("Hello World"));
 
     proxyInstance.put(HELLO, "world");
     System.out.println(proxyInstance.get(HELLO));

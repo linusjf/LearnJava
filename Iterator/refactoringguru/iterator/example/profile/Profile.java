@@ -21,7 +21,8 @@ public class Profile {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;
-      if (parts.length == 1) contactEmail = parts[0];
+      if (parts.length == 1)
+        contactEmail = parts[0];
       else {
         contactType = parts[0];
         contactEmail = parts[1];
@@ -49,7 +50,8 @@ public class Profile {
   @SuppressWarnings({"PMD.LawOfDemeter", "checkstyle:hiddenfield"})
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Profile || o instanceof String)) return false;
+    if (!(o instanceof Profile || o instanceof String))
+      return false;
     if (o instanceof Profile) {
       Profile profile = (Profile) o;
       return areEmailsEqual(profile);

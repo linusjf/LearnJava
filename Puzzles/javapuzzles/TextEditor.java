@@ -19,15 +19,14 @@ public enum TextEditor {
   public static void main(String[] args) {
     typeText(new Char('A'));
 
-    typeText(
-        new Char('B') {
-          @Override
-          public void print() {
-            System.out.print("[");
-            super.print();
-            System.out.print("]");
-          }
-        });
+    typeText(new Char('B') {
+      @Override
+      public void print() {
+        System.out.print("[");
+        super.print();
+        System.out.print("]");
+      }
+    });
   }
 
   private static void typeText(Char c) {

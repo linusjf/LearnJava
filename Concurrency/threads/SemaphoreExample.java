@@ -28,8 +28,7 @@ public enum SemaphoreExample {
       try {
         semaphore.acquire();
         long duration = (long) (Math.random() * 10);
-        System.out.printf(
-            "%s: PrintQueue: Printing a Job utilizing %d seconds%n",
+        System.out.printf("%s: PrintQueue: Printing a Job utilizing %d seconds%n",
             Thread.currentThread().getName(), duration);
         Thread.sleep(duration);
       } catch (InterruptedException e) {

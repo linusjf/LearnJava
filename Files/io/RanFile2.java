@@ -20,7 +20,7 @@ public enum RanFile2 {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     try (Scanner input = new Scanner(System.in, UTF_8);
-        RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw"); ) {
+         RandomAccessFile ranAccts = new RandomAccessFile("accounts.dat", "rw");) {
       long numRecords = ranAccts.length() / REC_SIZE;
       String reply = "y";
 

@@ -31,11 +31,8 @@ public enum BlowFishKey {
       cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
       byte[] encrypted = cipher.doFinal("This is just an example".getBytes(StandardCharsets.UTF_8));
       System.out.println("Base 64: " + Base64.getEncoder().encodeToString(encrypted));
-    } catch (IllegalBlockSizeException
-        | InvalidKeyException
-        | BadPaddingException
-        | NoSuchPaddingException
-        | NoSuchAlgorithmException exc) {
+    } catch (IllegalBlockSizeException | InvalidKeyException | BadPaddingException
+        | NoSuchPaddingException | NoSuchAlgorithmException exc) {
       System.err.println(exc);
     }
   }

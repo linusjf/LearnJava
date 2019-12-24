@@ -16,11 +16,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   private static final int FIVE = 5;
   private final ConcurrentHashMap<String, Date> startTimes;
 
-  public CustomExecutor(
-      int corePoolSize,
-      int maximumPoolSize,
-      long keepAliveTime,
-      TimeUnit unit,
+  public CustomExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
       BlockingQueue<Runnable> workQueue) {
     super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     startTimes = new ConcurrentHashMap<>();
@@ -35,7 +31,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
     try {
       for (int i = 0; i < 10; i++) {
         System.out.printf("Main: Result for Task %d : %s%n", i, results.get(i).get());
-        if (i == FIVE) myExecutor.shutdown();
+        if (i == FIVE)
+          myExecutor.shutdown();
       }
       myExecutor.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException | ExecutionException e) {

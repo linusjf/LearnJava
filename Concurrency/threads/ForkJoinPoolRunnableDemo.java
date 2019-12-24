@@ -95,7 +95,8 @@ public enum ForkJoinPoolRunnableDemo {
 
     @Override
     public void run() {
-      if (last - first < BATCH_SIZE) updatePrices();
+      if (last - first < BATCH_SIZE)
+        updatePrices();
       else {
         int middle = (last + first) / 2;
         System.out.printf("Task: Pending tasks: %s%n", ForkJoinTask.getQueuedTaskCount());

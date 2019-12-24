@@ -19,7 +19,6 @@ class WikimediaImageInfo extends ImageInfo {
   @Override
   public String getUrlForDate(LocalDate date) {
     return "https://commons.wikimedia.org/wiki/Special:FeedItem/potd/"
-        + DateTimeFormatter.BASIC_ISO_DATE.format(date)
-        + "000000/en";
+        + DateTimeFormatter.BASIC_ISO_DATE.format(date) + "000000/en";
   }
 }

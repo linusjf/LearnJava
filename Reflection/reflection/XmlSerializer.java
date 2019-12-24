@@ -19,17 +19,18 @@ public enum XmlSerializer {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static Element serializeVariable(
-      Class<?> fieldtype, Object child, Document target, Map<Object, Object> table)
-      throws IllegalAccessException {
-    if (child == null) return new Element("empty");
+  private static Element serializeVariable(Class<?> fieldtype, Object child, Document target,
+      Map<Object, Object> table) throws IllegalAccessException {
+    if (child == null)
+      return new Element("empty");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
       Element value = new Element("value");
       value.setText(child.toString());
       return value;
     } else {
       Element reference = new Element("reference");
-      if (table.containsKey(child)) reference.setText(table.get(child).toString());
+      if (table.containsKey(child))
+        reference.setText(table.get(child).toString());
       else {
         reference.setText(Integer.toString(table.size()));
         serializeHelper(child, target, table);

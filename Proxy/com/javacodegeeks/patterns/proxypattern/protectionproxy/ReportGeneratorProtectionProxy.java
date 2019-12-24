@@ -43,6 +43,7 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
         System.err.println(e.getMessage());
       }
       return "";
-    } else return "Not Authorized to view report.";
+    } else
+      return "Not Authorized to view report.";
   }
 }

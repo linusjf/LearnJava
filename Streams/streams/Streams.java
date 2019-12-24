@@ -31,11 +31,10 @@ public enum Streams {
 
     // clang-format on
     // Calculate total points of all active tasks using sum()
-    final long totalPointsOfOpenTasks =
-        tasks.stream()
-            .filter(task -> task.getStatus() == Status.OPEN)
-            .mapToInt(Task::getPoints)
-            .sum();
+    final long totalPointsOfOpenTasks = tasks.stream()
+                                            .filter(task -> task.getStatus() == Status.OPEN)
+                                            .mapToInt(Task::getPoints)
+                                            .sum();
     System.out.println("Total points: " + totalPointsOfOpenTasks);
 
     // Calculate total points of all tasks
@@ -51,15 +50,14 @@ public enum Streams {
     System.out.println(map);
 
     // Calculate the weight of each tasks (as percent of total points)
-    final Collection<String> result =
-        tasks.stream()
-            .mapToInt(Task::getPoints)
-            .asLongStream()
-            .mapToDouble(points -> points / totalPoints)
-            .boxed()
-            .mapToLong(weigth -> (long) (weigth * 100))
-            .mapToObj(percentage -> percentage + "%")
-            .collect(Collectors.toList());
+    final Collection<String> result = tasks.stream()
+                                          .mapToInt(Task::getPoints)
+                                          .asLongStream()
+                                          .mapToDouble(points -> points / totalPoints)
+                                          .boxed()
+                                          .mapToLong(weigth -> (long) (weigth * 100))
+                                          .mapToObj(percentage -> percentage + "%")
+                                          .collect(Collectors.toList());
 
     // List< String >
     System.out.println(result);

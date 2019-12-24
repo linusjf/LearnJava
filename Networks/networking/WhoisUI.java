@@ -25,7 +25,8 @@ public class WhoisUI {
   @SuppressWarnings("PMD.LawOfDemeter")
   private void inputWhois(Scanner scanner) {
     System.out.println("Enter entity name for whois record: ");
-    if (scanner.hasNext()) whois = scanner.next().trim();
+    if (scanner.hasNext())
+      whois = scanner.next().trim();
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -34,8 +35,10 @@ public class WhoisUI {
     String pattern = Whois.SearchFor.getRegexPatternAsString();
     System.out.println(pattern);
     do {
-      if (scanner.hasNext()) searchFor = scanner.next();
-      else scanner.next();
+      if (scanner.hasNext())
+        searchFor = scanner.next();
+      else
+        scanner.next();
     } while (!searchFor.matches(pattern));
     System.out.println(searchFor);
   }
@@ -43,7 +46,8 @@ public class WhoisUI {
   @SuppressWarnings("PMD.LawOfDemeter")
   private void inputSearchAt(Scanner scanner) {
     System.out.println("Enter name of registry server to search at: ");
-    if (scanner.hasNext()) searchAt = scanner.next().trim();
+    if (scanner.hasNext())
+      searchAt = scanner.next().trim();
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -52,15 +56,18 @@ public class WhoisUI {
     String pattern = Whois.SearchIn.getRegexPatternAsString();
     System.out.println(pattern);
     do {
-      if (scanner.hasNext()) searchIn = scanner.next();
-      else scanner.next();
+      if (scanner.hasNext())
+        searchIn = scanner.next();
+      else
+        scanner.next();
     } while (!searchIn.matches(pattern));
     System.out.println(searchIn);
   }
 
   private void inputExactMatch(Scanner scanner) {
     System.out.println("Is search to be an exact match?");
-    if (scanner.hasNextBoolean()) exactMatch = scanner.nextBoolean();
+    if (scanner.hasNextBoolean())
+      exactMatch = scanner.nextBoolean();
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -70,13 +77,11 @@ public class WhoisUI {
       ui.inputWhoisFields(args);
       Whois server = new Whois(ui.searchAt);
       if (ui.exactMatch)
-        server.lookUpNamesExactMatch(
-            ui.whois,
+        server.lookUpNamesExactMatch(ui.whois,
             Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
             Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())));
       else
-        server.lookUpNames(
-            ui.whois,
+        server.lookUpNames(ui.whois,
             Whois.SearchFor.valueOf(ui.searchFor.toUpperCase(Locale.getDefault())),
             Whois.SearchIn.valueOf(ui.searchIn.toUpperCase(Locale.getDefault())));
     } catch (IOException e) {

@@ -43,9 +43,7 @@ public class ConcurrencyTestTwoWrites {
     second.start();
     first.join();
     second.join();
-    assertEquals(
-        "The two address strings don't match",
-        "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222",
-        address.toString());
+    assertEquals("The two address strings don't match",
+        "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222", address.toString());
   }
 }

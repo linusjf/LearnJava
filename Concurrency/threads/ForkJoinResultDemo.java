@@ -49,7 +49,16 @@ public enum ForkJoinResultDemo {
 
   static class DocumentMock {
     private final String[] words = {
-      "the", "hello", "goodbye", "packt", "java", "thread", "pool", "random", "class", "main",
+        "the",
+        "hello",
+        "goodbye",
+        "packt",
+        "java",
+        "thread",
+        "pool",
+        "random",
+        "class",
+        "main",
     };
 
     @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis"})
@@ -93,7 +102,8 @@ public enum ForkJoinResultDemo {
     @Override
     protected Integer compute() {
       int result = 0;
-      if (end - start < MIN_LINES) result = processLines(document, start, end, word);
+      if (end - start < MIN_LINES)
+        result = processLines(document, start, end, word);
       else {
         int mid = (start + end) / 2;
         DocumentTask task1 = new DocumentTask(document, start, mid, word);
@@ -172,7 +182,8 @@ public enum ForkJoinResultDemo {
     private Integer count(String[] line, int start, int end, String word) {
       int counter = 0;
       for (int i = start; i < end; i++) {
-        if (line[i].equals(word)) counter++;
+        if (line[i].equals(word))
+          counter++;
       }
       try {
         Thread.sleep(10);

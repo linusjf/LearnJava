@@ -26,13 +26,12 @@ public final class ProtectedUrlAccess {
 
       double random = Math.random();
 
-      URL url =
-          new URL(
-              "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
-                  + random);
+      URL url = new URL(
+          "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
+          + random);
       byte[] b = new byte[1];
       try (DataInputStream di = new DataInputStream(url.openStream());
-          OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"))) {
+           OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"))) {
         while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
         System.out.println("Saved url as " + random + ".gif");
       }

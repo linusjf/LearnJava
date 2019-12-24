@@ -85,8 +85,10 @@ public enum CancelForkJoinPool {
     protected Integer compute() {
       System.out.println("Task: " + start + ":" + end);
       int ret;
-      if (end - start > TASK_SIZE_THRESHOLD) ret = launchTasks();
-      else ret = lookForNumber();
+      if (end - start > TASK_SIZE_THRESHOLD)
+        ret = launchTasks();
+      else
+        ret = lookForNumber();
       return ret;
     }
 
@@ -118,7 +120,8 @@ public enum CancelForkJoinPool {
       int returnValue;
 
       returnValue = task1.join();
-      if (returnValue != -1) return returnValue;
+      if (returnValue != -1)
+        return returnValue;
 
       returnValue = task2.join();
       return returnValue;

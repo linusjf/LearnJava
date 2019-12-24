@@ -34,9 +34,8 @@ public final class SocketClientDemo {
       // SSLParameters sslParams = new SSLParameters();
       // sslParams.setEndpointIdentificationAlgorithm("HTTPS");
       // s.setSSLParameters(sslParams);
-      BufferedReader input =
-          new BufferedReader(
-              new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8.name()));
+      BufferedReader input = new BufferedReader(
+          new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8.name()));
       System.out.println(input.readLine());
     } catch (IOException ioe) {
       System.err.println("IO exception: " + ioe.getMessage());

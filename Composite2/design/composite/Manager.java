@@ -64,8 +64,10 @@ public class Manager extends Employee {
       for (Employee employee : managingEmployees) {
         System.out.println("Assigning work from " + employee);
         toIndex = fromIndex + employee.teamSize();
-        if (toIndex > totalWork) toIndex = totalWork;
-        if (fromIndex == toIndex) return;
+        if (toIndex > totalWork)
+          toIndex = totalWork;
+        if (fromIndex == toIndex)
+          return;
         List<String> assignWork = work.getWork(fromIndex, toIndex);
         employee.assignWork(this, new Work(work.getWorkType(), assignWork));
         fromIndex = toIndex;

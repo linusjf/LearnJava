@@ -10,8 +10,7 @@ import picocli.CommandLine.Parameters;
 public class App {
   @Parameters Locale locale;
 
-  @Option(names = "-a")
-  Cipher cipher;
+  @Option(names = "-a") Cipher cipher;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {

@@ -10,23 +10,15 @@ public class AddressUsingCopyOnWrite {
   }
 
   public String toStringNotThreadSafe() {
-    return "street="
-        + addressValue.getStreet()
-        + ",city="
-        + addressValue.getCity()
-        + ",phoneNumber="
-        + addressValue.getPhoneNumber();
+    return "street=" + addressValue.getStreet() + ",city=" + addressValue.getCity()
+        + ",phoneNumber=" + addressValue.getPhoneNumber();
   }
 
   @Override
   public String toString() {
     AddressValue local = addressValue;
-    return "street="
-        + local.getStreet()
-        + ",city="
-        + local.getCity()
-        + ",phoneNumber="
-        + local.getPhoneNumber();
+    return "street=" + local.getStreet() + ",city=" + local.getCity()
+        + ",phoneNumber=" + local.getPhoneNumber();
   }
 
   public void updatePostalAddress(String street, String city) {

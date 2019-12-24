@@ -17,7 +17,9 @@ public enum NameGame {
   public static void altMain(String... args) {
     Map<String, String> m = new IdentityHashMap<>();
     m.put("Mickey", "Mouse");
-    m.put(new String("Mic" + "key"), "Mantle");
+    m.put(new String("Mic"
+              + "key"),
+        "Mantle");
     System.out.println(m.size());
   }
 }

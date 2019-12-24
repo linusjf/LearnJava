@@ -23,13 +23,14 @@ public class MemoryCache extends ResponseCache {
     this.maxEntries = maxEntries;
   }
 
-  @SuppressWarnings({"checkstyle:returncount",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"checkstyle:returncount", "PMD.LawOfDemeter"})
   @Override
   public CacheRequest put(URI uri, URLConnection conn) throws IOException {
-    if (responses.size() >= maxEntries) return null;
+    if (responses.size() >= maxEntries)
+      return null;
     CacheControl control = new CacheControl(conn.getHeaderField("Cache-Control"));
-    if (control.isNoStore()) return null;
+    if (control.isNoStore())
+      return null;
     else if (!conn.getHeaderField(0).startsWith("GET ")) {
       // only cache GET
       return null;
@@ -57,7 +58,6 @@ public class MemoryCache extends ResponseCache {
   }
 
   private boolean isResponseExpired(SimpleCacheResponse response) {
-      return response != null && response.isExpired();
+    return response != null && response.isExpired();
   }
-
 }

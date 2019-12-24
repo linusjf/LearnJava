@@ -13,8 +13,10 @@ public class LockSplitting implements Runnable {
   @Override
   public void run() {
     for (int i = 0; i < 100_000; i++) {
-      if (ThreadLocalRandom.current().nextBoolean()) counter.incrementCustomer();
-      else counter.incrementShipping();
+      if (ThreadLocalRandom.current().nextBoolean())
+        counter.incrementCustomer();
+      else
+        counter.incrementShipping();
     }
   }
 

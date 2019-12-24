@@ -5,7 +5,6 @@ import static java.lang.System.out;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TaskLocalRandom implements Runnable {
-
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   @Override
   public void run() {
@@ -21,9 +20,9 @@ public class TaskLocalRandom implements Runnable {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     Thread[] threads = {
-      new Thread(new TaskLocalRandom()),
-      new Thread(new TaskLocalRandom()),
-      new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom()),
     };
     ThreadLocalRandom tlr = ThreadLocalRandom.current();
     for (Thread t : threads) t.setPriority(tlr.nextInt(10) + 1);

@@ -33,8 +33,8 @@ public final class MediaClient {
     }
     try (
 
-    // Set up stream for keyboard entry…
-    Scanner userEntry = new Scanner(System.in, UTF_8); ) {
+        // Set up stream for keyboard entry…
+        Scanner userEntry = new Scanner(System.in, UTF_8);) {
       System.out.print("Enter request (IMAGE/SOUND): ");
       String message = userEntry.nextLine();
       while (!"IMAGE".equalsIgnoreCase(message) && !"SOUND".equalsIgnoreCase(message)) {
@@ -44,14 +44,12 @@ public final class MediaClient {
       }
       try (Socket connection = new Socket(host, PORT);
 
-          // Step 1…
-          ObjectInputStream inStream = new ObjectInputStream(connection.getInputStream());
+           // Step 1…
+           ObjectInputStream inStream = new ObjectInputStream(connection.getInputStream());
 
-          // Step 1 (cont'd)…
-          PrintWriter outStream =
-              new PrintWriter(
-                  new OutputStreamWriter(connection.getOutputStream(), UTF_8), true); ) {
-
+           // Step 1 (cont'd)…
+           PrintWriter outStream = new PrintWriter(
+               new OutputStreamWriter(connection.getOutputStream(), UTF_8), true);) {
         // Step 2…
         outStream.println(message);
         downloadFile(inStream, message);
@@ -66,8 +64,7 @@ public final class MediaClient {
     // Steps 3 and 4…
     // (Note the unusual appearance of the typecast!)
     byte[] byteArray = (byte[]) inStream.readObject();
-    try (OutputStream mediaStream =
-        "IMAGE".equalsIgnoreCase(fileType)
+    try (OutputStream mediaStream = "IMAGE".equalsIgnoreCase(fileType)
             ? Files.newOutputStream(Paths.get("image.gif"))
             : Files.newOutputStream(Paths.get("sound.au"))) {
       // Step 6…

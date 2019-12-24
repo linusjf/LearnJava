@@ -11,12 +11,8 @@ public class AddressUsingCopyOnWriteWithoutSynchronized {
   @Override
   public String toString() {
     AddressValue local = addressValue;
-    return "street="
-        + local.getStreet()
-        + ",city="
-        + local.getCity()
-        + ",phoneNumber="
-        + local.getPhoneNumber();
+    return "street=" + local.getStreet() + ",city=" + local.getCity()
+        + ",phoneNumber=" + local.getPhoneNumber();
   }
 
   public void updatePostalAddress(String street, String city) {

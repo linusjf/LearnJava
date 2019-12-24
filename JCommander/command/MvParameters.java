@@ -7,16 +7,13 @@ import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:visibilitymodifier")
 public class MvParameters {
-  @SubParameter(order = 0)
-  public String from;
+  @SubParameter(order = 0) public String from;
 
-  @SubParameter(order = 1)
-  public String to;
+  @SubParameter(order = 1) public String to;
 
   public static void main(String... argv) {
     class Parameters {
-      @Parameter(names = "-mv", arity = 2)
-      public MvParameters mvParameters;
+      @Parameter(names = "-mv", arity = 2) public MvParameters mvParameters;
     }
 
     Parameters args = new Parameters();

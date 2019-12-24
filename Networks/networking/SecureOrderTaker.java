@@ -58,7 +58,8 @@ public final class SecureOrderTaker {
       String[] supported = server.getSupportedCipherSuites();
       List<String> anonCiphers = new ArrayList<>();
       for (String instance : supported) {
-        if (instance.contains("_anon_")) anonCiphers.add(instance);
+        if (instance.contains("_anon_"))
+          anonCiphers.add(instance);
       }
 
       // clang-format off
@@ -84,12 +85,8 @@ public final class SecureOrderTaker {
           System.err.println(ex.getMessage());
         }
       }
-    } catch (IOException
-        | KeyManagementException
-        | KeyStoreException
-        | NoSuchAlgorithmException
-        | CertificateException
-        | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException
+        | CertificateException | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

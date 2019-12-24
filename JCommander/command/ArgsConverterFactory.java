@@ -6,8 +6,7 @@ import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:magicnumber")
 public class ArgsConverterFactory {
-  @Parameter(names = "-hostport")
-  private HostPort hostPort;
+  @Parameter(names = "-hostport") private HostPort hostPort;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {

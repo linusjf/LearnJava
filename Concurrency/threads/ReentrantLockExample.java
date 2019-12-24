@@ -30,11 +30,8 @@ public enum ReentrantLockExample {
       queueLock.lock();
       try {
         Long duration = (long) (Math.random() * 10_000);
-        System.out.println(
-            Thread.currentThread().getName()
-                + ": PrintQueue: Printing a Job during "
-                + (duration / 1000)
-                + " seconds");
+        System.out.println(Thread.currentThread().getName() + ": PrintQueue: Printing a Job during "
+            + (duration / 1000) + " seconds");
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -44,11 +41,8 @@ public enum ReentrantLockExample {
       queueLock.lock();
       try {
         Long duration = (long) (Math.random() * 10_000);
-        System.out.println(
-            Thread.currentThread().getName()
-                + ": PrintQueue: Printing a Job during "
-                + (duration / 1000)
-                + " seconds");
+        System.out.println(Thread.currentThread().getName() + ": PrintQueue: Printing a Job during "
+            + (duration / 1000) + " seconds");
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

@@ -112,9 +112,9 @@ public class Whois {
     String prefix = category.label + " " + group.label;
     String query = prefix + target + suffix;
     try (Socket socket = new Socket(host, port);
-        Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
-        BufferedReader in =
-            new BufferedReader(new InputStreamReader(socket.getInputStream(), "ASCII")); ) {
+         Writer out = new OutputStreamWriter(socket.getOutputStream(), "ASCII");
+         BufferedReader in =
+             new BufferedReader(new InputStreamReader(socket.getInputStream(), "ASCII"));) {
       out.write(query + "\r\n");
       out.flush();
       StringBuilder response = new StringBuilder();

@@ -43,7 +43,8 @@ public enum SqlTypeRegex {
     public String group(int index) {
       if (matcher.matches() && index >= 0 && index <= matcher.groupCount())
         return matcher.group(index);
-      else return null;
+      else
+        return null;
     }
   }
 }

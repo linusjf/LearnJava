@@ -28,10 +28,12 @@ public final class Fielded {
         System.out.println(Modifier.toString(modifiers & Modifier.fieldModifiers()));
         if (Modifier.isStatic(modifiers)) {
           System.out.println("isAccessible: " + field.canAccess(null));
-          if (field.canAccess(null)) System.out.println("Get: " + field.get(null));
+          if (field.canAccess(null))
+            System.out.println("Get: " + field.get(null));
         } else {
           System.out.println("isAccessible: " + field.canAccess(stringer));
-          if (field.canAccess(stringer)) System.out.println("Get: " + field.get(stringer));
+          if (field.canAccess(stringer))
+            System.out.println("Get: " + field.get(stringer));
         }
       }
       checkForHashCode(stringGetClass, stringer);
@@ -54,12 +56,10 @@ public final class Fielded {
       System.err.println(iae);
     }
 
-    AccessController.doPrivileged(
-        (PrivilegedAction<?>)
-            () -> {
-              fieldHashCode.setAccessible(true);
-              return null;
-            });
+    AccessController.doPrivileged((PrivilegedAction<?>) () -> {
+      fieldHashCode.setAccessible(true);
+      return null;
+    });
 
     printHashCodeField(fieldHashCode, obj);
   }

@@ -76,7 +76,8 @@ public enum AsynchronousExample {
             task.fork();
             tasks.add(task);
           } else {
-            if (checkFile(f.getName())) list.add(f.getAbsolutePath());
+            if (checkFile(f.getName()))
+              list.add(f.getAbsolutePath());
           }
         }
         if (tasks.size() > TASK_THRESHOLD)

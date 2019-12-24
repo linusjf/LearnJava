@@ -8,8 +8,10 @@ public enum SelfInterruption {
 
   public static void main(String[] args) {
     currentThread().interrupt();
-    if (interrupted()) System.out.println("Interrupted: " + interrupted());
-    else System.out.println("Not interrupted: " + interrupted());
+    if (interrupted())
+      System.out.println("Interrupted: " + interrupted());
+    else
+      System.out.println("Not interrupted: " + interrupted());
     altMain(args);
   }
 
@@ -17,6 +19,7 @@ public enum SelfInterruption {
     currentThread().interrupt();
     if (currentThread().isInterrupted())
       System.out.println("Interrupted: " + currentThread().isInterrupted());
-    else System.out.println("Not interrupted: " + currentThread().isInterrupted());
+    else
+      System.out.println("Not interrupted: " + currentThread().isInterrupted());
   }
 }

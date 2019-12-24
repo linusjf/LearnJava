@@ -63,11 +63,10 @@ public final class Main {
       // create default connector
       tomcat.getConnector();
       tomcat.start();
-      LOGGER.info(
-          () -> {
-            return MessageFormat.format(
-                "Deployed {0} as {1}", appContext.getBaseName(), appContext.getBaseName());
-          });
+      LOGGER.info(() -> {
+        return MessageFormat.format(
+            "Deployed {0} as {1}", appContext.getBaseName(), appContext.getBaseName());
+      });
       tomcat.getServer().await();
     } catch (LifecycleException lce) {
       System.err.println(lce);

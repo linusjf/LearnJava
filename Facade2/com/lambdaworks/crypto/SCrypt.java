@@ -48,10 +48,8 @@ public final class SCrypt { // NOPMD
    */
   public static byte[] scrypt(byte[] passwd, byte[] salt, int enCPUCost, int r, int p, int dkLen)
       throws GeneralSecurityException {
-    byte[] derived =
-        NATIVE_LIBRARY_LOADED
-            ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
-            : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
+    byte[] derived = NATIVE_LIBRARY_LOADED ? scryptN(passwd, salt, enCPUCost, r, p, dkLen)
+                                           : scryptJ(passwd, salt, enCPUCost, r, p, dkLen);
     return Arrays.copyOf(derived, derived.length);
   }
 
@@ -93,7 +91,8 @@ public final class SCrypt { // NOPMD
 
     if (enCPUCost > MAX_VALUE / 128 / r)
       throw new IllegalArgumentException("Parameter nCPUCost is too large");
-    if (r > MAX_VALUE / 128 / p) throw new IllegalArgumentException("Parameter r is too large");
+    if (r > MAX_VALUE / 128 / p)
+      throw new IllegalArgumentException("Parameter r is too large");
 
     final Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(new SecretKeySpec(passwd, "HmacSHA256"));

@@ -50,10 +50,7 @@ public class SyncProxyWrapper<T> implements InvocationHandler {
     // return (T)Proxy.newProxyInstance(SyncProxyWrapper.class.getClassLoader(),
     //                               new Class[] {wrappableClass},
     //                             new SyncProxyWrapper<>(wrappableImpl));
-    return (T)
-        Proxy.newProxyInstance(
-            Thread.currentThread().getContextClassLoader(),
-            new Class[] {wrappableClass},
-            new SyncProxyWrapper<>(wrappableImpl));
+    return (T) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+        new Class[] {wrappableClass}, new SyncProxyWrapper<>(wrappableImpl));
   }
 }

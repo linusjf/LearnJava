@@ -68,7 +68,8 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
     try {
       ReportGeneratorImpl reportGenerator = new ReportGeneratorImpl();
       // Bind the remote object's stub in the registry
-      if (registry == null) getRegistry();
+      if (registry == null)
+        getRegistry();
       registry.bind("PizzaCoRemoteGenerator", reportGenerator);
     } catch (RemoteException | AlreadyBoundException e) {
       System.out.println(e.getMessage());

@@ -55,7 +55,8 @@ public class JHttp {
   private static int getPort(String... args) {
     try {
       int port = Integer.parseInt(args[1]);
-      if (port < 0 || port > 65_535) port = 80;
+      if (port < 0 || port > 65_535)
+        port = 80;
       return port;
     } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       return 80;

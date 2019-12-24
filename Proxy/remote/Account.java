@@ -33,11 +33,14 @@ public class Account implements Serializable {
   }
 
   public double withdraw(double amount) {
-    if (amount > 0 && amount <= balance) return amount;
-    else return 0;
+    if (amount > 0 && amount <= balance)
+      return amount;
+    else
+      return 0;
   }
 
   public void deposit(double amount) {
-    if (amount > 0) balance += amount;
+    if (amount > 0)
+      balance += amount;
   }
 }

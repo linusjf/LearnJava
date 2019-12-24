@@ -17,13 +17,10 @@ public final class EchoClient {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({
-    "PMD.AvoidLiteralsInIfCondition",
-    "PMD.DataflowAnomalyAnalysis",
-    "PMD.DoNotCallSystemExit",
-    "PMD.LawOfDemeter"
-  })
-  public static void main(String[] args) throws IOException {
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition", "PMD.DataflowAnomalyAnalysis",
+      "PMD.DoNotCallSystemExit", "PMD.LawOfDemeter"})
+  public static void
+  main(String[] args) throws IOException {
     if (args.length < 2) {
       System.err.println("Usage: java EchoClient <host name> <port number>");
       System.exit(1);
@@ -38,11 +35,11 @@ public final class EchoClient {
       System.err.printf("Error parsing input. Connecting to port %d%n", portNumber);
     }
     try (Socket echoSocket = new Socket(hostName, portNumber);
-        PrintWriter out =
-            new PrintWriter(new OutputStreamWriter(echoSocket.getOutputStream(), UTF_8), true);
-        BufferedReader in =
-            new BufferedReader(new InputStreamReader(echoSocket.getInputStream(), UTF_8));
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in, UTF_8))) {
+         PrintWriter out =
+             new PrintWriter(new OutputStreamWriter(echoSocket.getOutputStream(), UTF_8), true);
+         BufferedReader in =
+             new BufferedReader(new InputStreamReader(echoSocket.getInputStream(), UTF_8));
+         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in, UTF_8))) {
       String userInput;
       while ((userInput = stdIn.readLine()) != null) {
         out.println(userInput);

@@ -39,11 +39,8 @@ public enum CipherSample {
       byte[] cipherText = cipher.doFinal();
       System.out.println(new String(cipherText, StandardCharsets.UTF_8));
       System.out.println(Base64.getEncoder().encodeToString(cipherText));
-    } catch (BadPaddingException
-        | NoSuchPaddingException
-        | NoSuchAlgorithmException
-        | IllegalBlockSizeException
-        | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException | NoSuchAlgorithmException
+        | IllegalBlockSizeException | InvalidKeyException e) {
       System.err.println(e);
     }
   }

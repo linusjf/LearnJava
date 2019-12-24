@@ -13,8 +13,7 @@ public enum MultiEchoClient {
   ;
   private static InetAddress host;
   private static final int PORT = 1234;
-  private static final String UTF_8 =
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
   public static void main(String[] args) {
@@ -29,12 +28,10 @@ public enum MultiEchoClient {
 
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-        Scanner networkInput = new Scanner(socket.getInputStream(), UTF_8);
-        PrintWriter networkOutput =
-            new PrintWriter(
-                new OutputStreamWriter(socket.getOutputStream(), UTF_8),
-                true);
-        Scanner userEntry = new Scanner(System.in, UTF_8); ) {
+         Scanner networkInput = new Scanner(socket.getInputStream(), UTF_8);
+         PrintWriter networkOutput =
+             new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);
+         Scanner userEntry = new Scanner(System.in, UTF_8);) {
       String message = "";
       while (!"QUIT".equals(message)) {
         System.out.print("Enter message ('QUIT' to exit): ");
@@ -48,7 +45,8 @@ public enum MultiEchoClient {
           networkOutput.println(message);
         }
         // Display server's response to user…
-        if (networkInput.hasNext()) System.out.println("\nSERVER> " + networkInput.nextLine());
+        if (networkInput.hasNext())
+          System.out.println("\nSERVER> " + networkInput.nextLine());
       }
     } catch (IOException ioEx) {
       System.err.println(ioEx);

@@ -36,13 +36,13 @@ public final class BinarySaver {
     if (contentType.startsWith("text/") || contentLength == -1)
       throw new IOException(u + " is not a binary file.");
 
-    try (InputStream raw = uc.getInputStream();
-        InputStream in = new BufferedInputStream(raw); ) {
+    try (InputStream raw = uc.getInputStream(); InputStream in = new BufferedInputStream(raw);) {
       byte[] data = new byte[contentLength];
       int offset = 0;
       while (offset < contentLength) {
         int bytesRead = in.read(data, offset, data.length - offset);
-        if (bytesRead == -1) break;
+        if (bytesRead == -1)
+          break;
         offset += bytesRead;
       }
       if (offset != contentLength) {

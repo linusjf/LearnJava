@@ -10,34 +10,22 @@ public enum CommonForkJoinPoolThreads {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     final List<Integer> numbers = getNumbers();
-    Thread t1 =
-        new Thread(
-            () ->
-                numbers
-                    .parallelStream()
-                    .forEach(
-                        n -> {
-                          try {
-                            Thread.sleep(5);
-                            System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
-                          } catch (InterruptedException e) {
-                            System.out.println(e);
-                          }
-                        }));
-    Thread t2 =
-        new Thread(
-            () ->
-                numbers
-                    .parallelStream()
-                    .forEach(
-                        n -> {
-                          try {
-                            Thread.sleep(5);
-                            System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
-                          } catch (InterruptedException e) {
-                            System.err.println(e);
-                          }
-                        }));
+    Thread t1 = new Thread(() -> numbers.parallelStream().forEach(n -> {
+      try {
+        Thread.sleep(5);
+        System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
+      } catch (InterruptedException e) {
+        System.out.println(e);
+      }
+    }));
+    Thread t2 = new Thread(() -> numbers.parallelStream().forEach(n -> {
+      try {
+        Thread.sleep(5);
+        System.out.printf("Loop %d : %s%n", n, Thread.currentThread());
+      } catch (InterruptedException e) {
+        System.err.println(e);
+      }
+    }));
     t1.start();
     t2.start();
     try {

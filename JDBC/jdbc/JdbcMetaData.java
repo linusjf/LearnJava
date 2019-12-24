@@ -29,7 +29,8 @@ public final class JdbcMetaData {
     try {
       // Step 2…
       statement = connection.createStatement();
-      String select = "SELECT * FROM Accounts" + " WHERE acctNum = 123456";
+      String select = "SELECT * FROM Accounts"
+          + " WHERE acctNum = 123456";
 
       // Step 3…
       results = statement.executeQuery(select);

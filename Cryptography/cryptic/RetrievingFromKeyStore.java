@@ -57,11 +57,8 @@ public enum RetrievingFromKeyStore {
       SecretKey mysecretKey = secretKeyEnt.getSecretKey();
       System.out.println("Algorithm used to generate key : " + mysecretKey.getAlgorithm());
       System.out.println("Format used for the key: " + mysecretKey.getFormat());
-    } catch (UnrecoverableEntryException
-        | CertificateException
-        | NoSuchAlgorithmException
-        | KeyStoreException
-        | IOException e) {
+    } catch (UnrecoverableEntryException | CertificateException | NoSuchAlgorithmException
+        | KeyStoreException | IOException e) {
       System.err.println(e);
     }
   }

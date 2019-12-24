@@ -48,11 +48,8 @@ public enum CipherDecrypt {
       // Decrypting the text
       byte[] decipheredText = cipher.doFinal(cipherText);
       System.out.println(new String(decipheredText, StandardCharsets.UTF_8));
-    } catch (BadPaddingException
-        | NoSuchPaddingException
-        | NoSuchAlgorithmException
-        | IllegalBlockSizeException
-        | InvalidKeyException e) {
+    } catch (BadPaddingException | NoSuchPaddingException | NoSuchAlgorithmException
+        | IllegalBlockSizeException | InvalidKeyException e) {
       System.err.println(e);
     }
   }

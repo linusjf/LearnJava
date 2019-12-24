@@ -48,7 +48,8 @@ public final class Methodical {
       System.out.println(Modifier.toString(modifiers & Modifier.methodModifiers()));
       if (Modifier.isStatic(modifiers))
         System.out.println("is accessible: " + method.canAccess(null));
-      else System.out.println("is accessible: " + method.canAccess("String object"));
+      else
+        System.out.println("is accessible: " + method.canAccess("String object"));
       System.out.println("is varArgs: " + method.isVarArgs());
     }
   }

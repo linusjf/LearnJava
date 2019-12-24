@@ -34,7 +34,8 @@ public enum OptionalDemo {
     if (checkNull.isPresent()) {
       String word = checkNull.get().toLowerCase(Locale.getDefault());
       System.out.println(word);
-    } else System.out.println("word is null");
+    } else
+      System.out.println("word is null");
   }
 
   public static Integer sum(Optional<Integer> a, Optional<Integer> b) {

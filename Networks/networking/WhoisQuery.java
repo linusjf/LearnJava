@@ -35,9 +35,8 @@ public final class WhoisQuery {
         new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8.name());
     BufferedReader in = new BufferedReader(isr);
 
-    PrintWriter out =
-        new PrintWriter(
-            new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()), true);
+    PrintWriter out = new PrintWriter(
+        new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()), true);
     out.println(query);
 
     String line = "";

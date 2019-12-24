@@ -7,13 +7,11 @@ import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 class Delegate {
-  @Parameter(names = "-port")
-  int port;
+  @Parameter(names = "-port") int port;
 }
 
 public class DelegateCommand {
-  @Parameter(names = "-v")
-  boolean verbose;
+  @Parameter(names = "-v") boolean verbose;
 
   @ParametersDelegate Delegate delegate = new Delegate();
 

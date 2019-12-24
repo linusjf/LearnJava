@@ -8,10 +8,9 @@ public class AnnotatedClass {
   }
 
   @CustomAnnotationMethod(
-      author = "friend of mine",
-      date = "2014-06-05",
-      description = "annotated method")
-  public String annotatedMethodFromAFriend() {
+      author = "friend of mine", date = "2014-06-05", description = "annotated method")
+  public String
+  annotatedMethodFromAFriend() {
     return "nothing niente";
   }
 }

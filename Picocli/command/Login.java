@@ -9,16 +9,10 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 public class Login implements Callable<Integer> {
-  @Option(
-      names = {"-u", "--user"},
-      description = "User name")
-  String user;
+  @Option(names = {"-u", "--user"}, description = "User name") String user;
 
   @Option(
-      names = {"-p", "--password"},
-      description = "Passphrase",
-      interactive = true,
-      arity = "0..1")
+      names = {"-p", "--password"}, description = "Passphrase", interactive = true, arity = "0..1")
   char[] password;
 
   private final Base64.Encoder encoder = Base64.getEncoder();

@@ -39,7 +39,8 @@ public class FacebookIterator implements ProfileIterator {
 
   @Override
   public Profile getNext() {
-    if (!hasNext()) return null;
+    if (!hasNext())
+      return null;
 
     Profile friendProfile = profiles.get(currentPosition);
     if (friendProfile == null) {

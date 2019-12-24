@@ -43,12 +43,10 @@ public enum FlattenStreams {
     return finalList;
   }
 
-  @SuppressWarnings({
-    "PMD.ReplaceVectorWithList",
-    "PMD.UseArrayListInsteadOfVector",
-    "PMD.LawOfDemeter"
-  })
-  public static <T> List<T> flattenParallelStreamVector(Collection<List<T>> lists) {
+  @SuppressWarnings(
+      {"PMD.ReplaceVectorWithList", "PMD.UseArrayListInsteadOfVector", "PMD.LawOfDemeter"})
+  public static <T> List<T>
+  flattenParallelStreamVector(Collection<List<T>> lists) {
     Vector<T> finalList = new Vector<>();
 
     for (List<T> list : lists) list.parallelStream().forEach(finalList::add);

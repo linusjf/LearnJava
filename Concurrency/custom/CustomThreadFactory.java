@@ -39,7 +39,8 @@ public class CustomThreadFactory implements ThreadFactory {
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
       System.out.printf("Alternate Main: End of the program.%n");
-    if (result.get() == null) System.out.printf("Task completed successfully%n");
+    if (result.get() == null)
+      System.out.printf("Task completed successfully%n");
   }
 
   @Override
@@ -75,8 +76,7 @@ public class CustomThreadFactory implements ThreadFactory {
     @Override
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
-      buffer
-          .append(getName())
+      buffer.append(getName())
           .append(":  Creation Date: ")
           .append(creationDate)
           .append(" : Running time: ")

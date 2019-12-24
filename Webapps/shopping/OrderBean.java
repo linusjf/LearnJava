@@ -76,12 +76,15 @@ public class OrderBean implements java.io.Serializable {
 
   @SuppressWarnings("PMD.NullAssignment")
   public void setOrderDate(Date orderDate) {
-    if (orderDate == null) this.orderDate = null;
-    else this.orderDate = new Date(orderDate.getTime());
+    if (orderDate == null)
+      this.orderDate = null;
+    else
+      this.orderDate = new Date(orderDate.getTime());
   }
 
   public Date getOrderDate() {
-    if (orderDate == null) return null;
+    if (orderDate == null)
+      return null;
     return new Date(orderDate.getTime());
   }
 }
