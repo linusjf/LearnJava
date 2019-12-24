@@ -13,6 +13,7 @@ public final class ServerEcho {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     if (args.length > 0) {
       try {
