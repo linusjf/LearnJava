@@ -55,8 +55,7 @@ public enum UDPEchoClientWithChannels {
 
       // All packets have been written and it doesn't look like any
       // more are will arrive from the network
-      if (readyKeys.isEmpty() && n == LIMIT)
-        break;
+      if (readyKeys.isEmpty() && n == LIMIT) break;
       else {
         Iterator<SelectionKey> iterator = readyKeys.iterator();
         while (iterator.hasNext()) {

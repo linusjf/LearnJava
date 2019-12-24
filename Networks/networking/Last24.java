@@ -42,7 +42,7 @@ public final class Last24 {
     System.out.println(
         "Will retrieve file if it's modified since " + new Date(uc.getIfModifiedSince()));
     try (InputStream in = new BufferedInputStream(uc.getInputStream());
-         Reader r = new InputStreamReader(in, UTF_8);) {
+        Reader r = new InputStreamReader(in, UTF_8); ) {
       int c;
       while ((c = r.read()) != -1) System.out.print((char) c);
       System.out.println();

@@ -12,8 +12,7 @@ public final class MyAddress {
     try {
       InetAddress address = InetAddress.getLocalHost();
       System.out.println(address);
-      String dottedQuad = address.getHostAddress();
-      System.out.println(dottedQuad);
+      System.out.println(address.getHostAddress());
     } catch (UnknownHostException ex) {
       System.out.println("Could not find this computer's address: " + ex.getMessage());
     }

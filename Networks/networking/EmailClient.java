@@ -38,18 +38,16 @@ public enum EmailClient {
     String option = "y";
     while (!"n".equals(option)) {
       try (Socket link = new Socket(host, PORT);
-           Scanner networkInput = new Scanner(link.getInputStream(), UTF_8);
-           PrintWriter networkOutput =
-               new PrintWriter(new OutputStreamWriter(link.getOutputStream(), UTF_8), true);) {
+          Scanner networkInput = new Scanner(link.getInputStream(), UTF_8);
+          PrintWriter networkOutput =
+              new PrintWriter(new OutputStreamWriter(link.getOutputStream(), UTF_8), true); ) {
         String response = "";
         while (!"read".equals(response) && !"send".equals(response)) {
           System.out.print("\nsend or read? :");
           response = userEntry.nextLine();
         }
-        if ("read".equals(response))
-          doRead(networkInput, networkOutput);
-        else
-          doSend(networkOutput);
+        if ("read".equals(response)) doRead(networkInput, networkOutput);
+        else doSend(networkOutput);
         System.out.print("\nDo you wish to send or read another (y/n): ");
         option = userEntry.nextLine();
       } catch (IOException ioe) {

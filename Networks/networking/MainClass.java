@@ -29,8 +29,8 @@ public final class MainClass {
   private static void acceptConnections(SSLServerSocket ss) throws IOException {
     while (true) {
       try (Socket socket = ss.accept();
-           PrintWriter out =
-               new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);) {
+          PrintWriter out =
+              new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true); ) {
         out.println("Hello World!");
       }
     }

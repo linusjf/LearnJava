@@ -58,7 +58,7 @@ public final class HttpsClient {
 
       // read response
       try (BufferedReader in =
-               new BufferedReader(new InputStreamReader(socket.getInputStream(), UTF_8))) {
+          new BufferedReader(new InputStreamReader(socket.getInputStream(), UTF_8))) {
         // read the header
         String s = in.readLine();
         while (!"".equals(s)) {

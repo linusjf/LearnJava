@@ -31,10 +31,11 @@ public enum PersonnelClient {
   @SuppressWarnings("unchecked")
   private static void talkToServer() throws ClassNotFoundException {
     try (Socket socket = new Socket(host, PORT);
-         ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
-         PrintWriter outStream = new PrintWriter(
-             new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()),
-             true);) {
+        ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
+        PrintWriter outStream =
+            new PrintWriter(
+                new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8.name()),
+                true); ) {
       outStream.println("SEND PERSONNEL DETAILS");
       ArrayList<Personnel> response = (ArrayList<Personnel>) inStream.readObject();
 
@@ -44,12 +45,14 @@ public enum PersonnelClient {
                 Simply ignore this warning.
       */
       int[] staffCount = {0};
-      response.stream().forEach(person -> {
-        System.out.println("\nStaff member " + ++staffCount[0]);
-        System.out.println("Payroll number: " + person.getPayNum());
-        System.out.println("Surname: " + person.getSurname());
-        System.out.println("First names: " + person.getFirstNames());
-      });
+      response.stream()
+          .forEach(
+              person -> {
+                System.out.println("\nStaff member " + ++staffCount[0]);
+                System.out.println("Payroll number: " + person.getPayNum());
+                System.out.println("Surname: " + person.getSurname());
+                System.out.println("First names: " + person.getFirstNames());
+              });
 
       /*  for (Personnel person: response) {
         staffCount++;

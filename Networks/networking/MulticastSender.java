@@ -30,8 +30,7 @@ public final class MulticastSender {
 
   private static byte getTTL(String... args) {
     try {
-      if (args.length > (1 + 1))
-        return (byte) Integer.parseInt(args[2]);
+      if (args.length > (1 + 1)) return (byte) Integer.parseInt(args[2]);
     } catch (NumberFormatException e) {
       // empty catch block
     }
@@ -49,13 +48,15 @@ public final class MulticastSender {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
       DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
-      IntStream.range(1, 10).forEach(i -> {
-        try {
-          ms.send(dp);
-        } catch (IOException e) {
-          System.err.println(e);
-        }
-      });
+      IntStream.range(1, 10)
+          .forEach(
+              i -> {
+                try {
+                  ms.send(dp);
+                } catch (IOException e) {
+                  System.err.println(e);
+                }
+              });
 
       /*for (int i = 1; i < 10; i++)
       ms.send(dp);*/

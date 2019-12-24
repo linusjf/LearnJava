@@ -21,8 +21,8 @@ public enum SourceViewer2 {
         URL u = new URL(args[0]);
         URLConnection uc = u.openConnection();
         try (InputStream raw = uc.getInputStream();
-             InputStream buffer = new BufferedInputStream(raw);
-             Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name());) {
+            InputStream buffer = new BufferedInputStream(raw);
+            Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name()); ) {
           int c;
           while ((c = reader.read()) != -1) System.out.print((char) c);
         }

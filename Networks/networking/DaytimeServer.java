@@ -24,7 +24,7 @@ public final class DaytimeServer {
     try (ServerSocket server = new ServerSocket(PORT)) {
       while (true) {
         try (Socket connection = server.accept();
-             Writer out = new OutputStreamWriter(connection.getOutputStream(), UTF_8);) {
+            Writer out = new OutputStreamWriter(connection.getOutputStream(), UTF_8); ) {
           Date now = new Date();
           SimpleDateFormat format =
               new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());

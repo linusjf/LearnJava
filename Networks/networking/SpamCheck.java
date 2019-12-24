@@ -83,14 +83,15 @@ public final class SpamCheck {
     System.out.println(LOOKUP + query);
     URL u = new URL(LOOKUP + query);
     URLConnection connection = u.openConnection();
-    connection.setRequestProperty("User-Agent",
+    connection.setRequestProperty(
+        "User-Agent",
         "Mozilla/5.0 (Linux; Android 7.1.2;"
             + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
             + "Mobile Safari/537.36");
     connection.setRequestProperty("Cookie", getCookies());
     StringBuilder sb = new StringBuilder();
     try (InputStream in = new BufferedInputStream(connection.getInputStream());
-         InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name());) {
+        InputStreamReader theHTML = new InputStreamReader(in, StandardCharsets.UTF_8.name()); ) {
       int c;
       while ((c = theHTML.read()) != -1) sb.append((char) c);
       return isIpFlagged(sb.toString(), ip);
@@ -113,7 +114,8 @@ public final class SpamCheck {
       formatter = new MessageFormat(EXPLOIT_LISTER);
       xblString = formatter.format(params);
     }
-    return content.contains(sblString) || content.contains(xblString)
+    return content.contains(sblString)
+        || content.contains(xblString)
         || content.contains(pblString);
   }
 }

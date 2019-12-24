@@ -74,7 +74,7 @@ public final class LoggingDaytimeServer {
         // write the log entry first in case the client disconnects
         AUDIT_LOGGER.info("%s %s", (Object) now, (Object) connection.getRemoteSocketAddress());
         try (Writer out = new OutputStreamWriter(connection.getOutputStream(), UTF_8);
-             connection;) {
+            connection; ) {
           SimpleDateFormat format =
               new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
           out.write(ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n");

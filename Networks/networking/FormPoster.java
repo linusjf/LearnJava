@@ -54,10 +54,11 @@ public class FormPoster {
 
   @SuppressWarnings({"PMD.DoNotCallSystemExit", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
-    Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
-      System.err.println(e.getMessage());
-      System.exit(1);
-    });
+    Thread.setDefaultUncaughtExceptionHandler(
+        (t, e) -> {
+          System.err.println(e.getMessage());
+          System.exit(1);
+        });
 
     URL url = getDefaultURL();
     if (args.length > 0) {

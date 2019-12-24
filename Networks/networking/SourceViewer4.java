@@ -35,7 +35,7 @@ public final class SourceViewer4 {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void printFromStream(InputStream raw) throws IOException {
     try (InputStream buffer = new BufferedInputStream(raw);
-         Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name());) {
+        Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name()); ) {
       int c;
       while ((c = reader.read()) != -1) System.out.print((char) c);
     }

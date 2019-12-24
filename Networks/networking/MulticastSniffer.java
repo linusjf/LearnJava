@@ -10,6 +10,7 @@ public final class MulticastSniffer {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static InetAddress getAddress(String... args) {
     try {
       return InetAddress.getByName(args[0]);
@@ -18,6 +19,7 @@ public final class MulticastSniffer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[1]);

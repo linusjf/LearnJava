@@ -27,27 +27,29 @@ public class SocketServerExample {
   }
 
   public static void main(String[] args) {
-    Runnable server = new Runnable() {
-      @Override
-      public void run() {
-        try {
-          new SocketServerExample("localhost", 8090).startServer();
-        } catch (IOException e) {
-          System.out.println("Error running server: " + e.getMessage());
-        }
-      }
-    };
+    Runnable server =
+        new Runnable() {
+          @Override
+          public void run() {
+            try {
+              new SocketServerExample("localhost", 8090).startServer();
+            } catch (IOException e) {
+              System.out.println("Error running server: " + e.getMessage());
+            }
+          }
+        };
 
-    Runnable client = new Runnable() {
-      @Override
-      public void run() {
-        try {
-          new SocketClientExample().startClient();
-        } catch (IOException | InterruptedException e) {
-          System.out.println("Error connecting to  server: " + e.getMessage());
-        }
-      }
-    };
+    Runnable client =
+        new Runnable() {
+          @Override
+          public void run() {
+            try {
+              new SocketClientExample().startClient();
+            } catch (IOException | InterruptedException e) {
+              System.out.println("Error connecting to  server: " + e.getMessage());
+            }
+          }
+        };
     new Thread(server).start();
     new Thread(client, "client-A").start();
     new Thread(client, "client-B").start();

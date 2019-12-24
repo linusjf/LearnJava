@@ -32,7 +32,7 @@ public final class MediaServer {
     while (true) {
       // Step 1…
       try (Socket connection = serverSocket.accept();
-           Scanner inStream = new Scanner(connection.getInputStream(), UTF_8);) {
+          Scanner inStream = new Scanner(connection.getInputStream(), UTF_8); ) {
         // Step 2…
         String message = inStream.nextLine();
         System.out.println(message);

@@ -31,7 +31,7 @@ public final class ClientEcho {
     try {
       InetAddress add = InetAddress.getByName("localhost");
       try (DatagramSocket dsock = new DatagramSocket();
-           BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in, UTF_8));) {
+          BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in, UTF_8)); ) {
         String userInput;
         while ((userInput = stdIn.readLine()) != null) {
           byte[] arr = userInput.getBytes(StandardCharsets.UTF_8);

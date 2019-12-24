@@ -29,6 +29,7 @@ public final class MultiEchoServerNIO {
     detecting incoming data from existing connections
     (on the SocketChannel).
   */
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     System.out.println("Opening port…\n");
     try {
@@ -64,6 +65,7 @@ public final class MultiEchoServerNIO {
     processConnections();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void processConnections() {
     while (true) {
       try {
@@ -105,6 +107,7 @@ public final class MultiEchoServerNIO {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void acceptConnection(SelectionKey key) throws IOException {
     // Accept incoming connection and add to list.
     SocketChannel socketChannel = serverSocketChannel.accept();
@@ -120,6 +123,7 @@ public final class MultiEchoServerNIO {
     selector.selectedKeys().remove(key);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void acceptData(SelectionKey key) throws IOException {
     // Accept data from existing connection.
     ByteBuffer buffer = ByteBuffer.allocate(2048);
@@ -130,42 +134,32 @@ public final class MultiEchoServerNIO {
     buffer.clear();
     int numBytes = socketChannel.read(buffer);
     System.out.println(numBytes + " bytes read.");
-    Socket socket = socketChannel.socket();
-    if (numBytes == -1) {
-      // OP_READ event also triggered by closure of
-      // connection or error of some kind. In either
-      // case, numBytes = -1.
-      // Request that registration of this key's
-      // channel with its selector be cancelled…
-      key.cancel();
-      System.out.println("\nClosing socket " + socket + "…");
-      closeSocket(socket);
-    } else {
-      try {
-        /*
-                      Reset buffer pointer to start of buffer,
-                      prior to reading buffer's contents and
-                      writing them to the SocketChannel…
-        */
-        buffer.flip();
-        while (buffer.remaining() > 0) socketChannel.write(buffer);
-      } catch (IOException ioEx) {
+    try (Socket socket = socketChannel.socket()) {
+      if (numBytes == -1) {
+        // OP_READ event also triggered by closure of
+        // connection or error of some kind. In either
+        // case, numBytes = -1.
+        // Request that registration of this key's
+        // channel with its selector be cancelled…
+        key.cancel();
         System.out.println("\nClosing socket " + socket + "…");
-        closeSocket(socket);
+      } else {
+        try {
+          /*
+                        Reset buffer pointer to start of buffer,
+                        prior to reading buffer's contents and
+                        writing them to the SocketChannel…
+          */
+          buffer.flip();
+          while (buffer.remaining() > 0) socketChannel.write(buffer);
+        } catch (IOException ioEx) {
+          System.out.println(ioEx.getMessage());
+        }
       }
     }
 
     // Remove this event, to avoid re-processing it
     // as though it were a new one…
     selector.selectedKeys().remove(key);
-  }
-
-  private static void closeSocket(Socket socket) {
-    try {
-      if (socket != null)
-        socket.close();
-    } catch (IOException ioEx) {
-      System.out.println("*** Unable to close socket! ***");
-    }
   }
 }

@@ -52,8 +52,7 @@ public enum EmailServer {
   private static void handleClient2(String sendRead, Scanner input, PrintWriter output) {
     if ("send".equals(sendRead)) {
       doSend(mailbox1, messagesInBox1, input);
-      if (messagesInBox1 < MAX_MESSAGES)
-        messagesInBox1++;
+      if (messagesInBox1 < MAX_MESSAGES) messagesInBox1++;
     } else {
       doRead(mailbox2, messagesInBox2, output);
       messagesInBox2 = 0;
@@ -63,18 +62,15 @@ public enum EmailServer {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void runService() throws InvalidClientException, InvalidRequestException {
     try (Socket link = serverSocket.accept();
-         Scanner input = new Scanner(link.getInputStream(), UTF_8);) {
+        Scanner input = new Scanner(link.getInputStream(), UTF_8); ) {
       String name = input.nextLine();
-      if (!name.equals(CLIENT1) && !name.equals(CLIENT2))
-        throw new InvalidClientException();
+      if (!name.equals(CLIENT1) && !name.equals(CLIENT2)) throw new InvalidClientException();
       String sendRead = input.nextLine();
-      if (!"send".equals(sendRead) && !"read".equals(sendRead))
-        throw new InvalidRequestException();
+      if (!"send".equals(sendRead) && !"read".equals(sendRead)) throw new InvalidRequestException();
       System.out.println("\n" + name + " " + sendRead + "ing mail…");
       try (PrintWriter output =
-               new PrintWriter(new OutputStreamWriter(link.getOutputStream(), UTF_8), true);) {
-        if (name.equals(CLIENT1))
-          handleClient1(sendRead, input, output);
+          new PrintWriter(new OutputStreamWriter(link.getOutputStream(), UTF_8), true); ) {
+        if (name.equals(CLIENT1)) handleClient1(sendRead, input, output);
         else
           // from client 2
           handleClient2(sendRead, input, output);
@@ -94,8 +90,7 @@ public enum EmailServer {
     if (messagesInBox == MAX_MESSAGES) {
       System.out.println("\nMessage box full!");
       input.skip("^.*$");
-    } else
-      mailbox[messagesInBox] = input.nextLine();
+    } else mailbox[messagesInBox] = input.nextLine();
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
