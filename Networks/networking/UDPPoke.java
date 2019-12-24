@@ -8,6 +8,9 @@ import java.net.UnknownHostException;
 import java.util.Base64;
 
 public class UDPPoke {
+  private static final Base64.Encoder ENCODER =
+    Base64.getEncoder();
+
   private int bufferSize;
 
   // in bytes
@@ -54,6 +57,7 @@ public class UDPPoke {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static InetAddress getHost(String... args) {
     try {
       return InetAddress.getByName(args[0]);
@@ -62,6 +66,7 @@ public class UDPPoke {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[1]);
@@ -80,9 +85,10 @@ public class UDPPoke {
       System.out.println("No response within allotted time");
       return;
     }
-    System.out.println(Base64.getEncoder().encodeToString(response));
+    System.out.println(ENCODER.encodeToString(response));
     StringBuilder sb = new StringBuilder(8);
-    for (byte b : response) sb.append(String.format("%02X ", b));
+    for (byte b : response) 
+      sb.append(String.format("%02X ", b));
     System.out.println(sb.toString());
   }
 }

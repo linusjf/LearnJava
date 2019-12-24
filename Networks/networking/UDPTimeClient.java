@@ -10,10 +10,13 @@ public enum UDPTimeClient {
   public static final String DEFAULT_HOST = "time.nist.gov";
   public static final int NO_OF_BYTES_EXPECTED = 4;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static InetAddress getAddress(String... args) {
     try {
-      if (args.length > 0) return InetAddress.getByName(args[0]);
-      else return InetAddress.getByName(DEFAULT_HOST);
+      if (args.length > 0) 
+        return InetAddress.getByName(args[0]);
+      else 
+        return InetAddress.getByName(DEFAULT_HOST);
     } catch (UnknownHostException ex) {
       throw new AssertionError("Usage: java UDPTimeClient [host]", ex);
     }
