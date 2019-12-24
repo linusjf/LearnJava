@@ -59,6 +59,7 @@ public class JHttp {
     return new File(args[0]);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       int port = Integer.parseInt(args[1]);

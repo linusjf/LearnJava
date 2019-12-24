@@ -36,7 +36,8 @@ public final class ListDicts {
     }
   }
 
-  @SuppressWarnings("checkstyle:returncount")
+  @SuppressWarnings({"checkstyle:returncount",
+  "PMD.LawOfDemeter"})
   static void listDatabases(Writer writer,
                             BufferedReader reader)
       throws IOException, UnsupportedEncodingException {

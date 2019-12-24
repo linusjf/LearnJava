@@ -17,10 +17,7 @@ public final class LastModified {
         URL u = new URL(arg);
         HttpURLConnection http =
             (HttpURLConnection)u.openConnection();
-        http.setRequestMethod("HEAD");
-        System.out.println(
-            u + " was last modified at "
-            + new Date(http.getLastModified()));
+        readLastModified(http,u);
       } catch (MalformedURLException ex) {
         System.err.println(arg
                            + " is not a URL I understand");
@@ -30,4 +27,11 @@ public final class LastModified {
       System.out.println();
     }
   }
+
+  private static void readLastModified(HttpURLConnection http,URL u) throws IOException {
+        http.setRequestMethod("HEAD");
+        System.out.println(
+            u + " was last modified at "
+            + new Date(http.getLastModified()));
+  } 
 }
