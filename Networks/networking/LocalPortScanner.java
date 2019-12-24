@@ -10,6 +10,7 @@ public final class LocalPortScanner {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     for (int port = 1; port <= 65_535; port++) {
       try (ServerSocket server = new ServerSocket();) {

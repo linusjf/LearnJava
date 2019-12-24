@@ -24,10 +24,14 @@ public final class LoggingDaytimeServer {
   private static final FormatLogger ERROR_LOGGER =
       new FormatLogger(Logger.getLogger("errors"));
 
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
   private LoggingDaytimeServer() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[0]);
@@ -72,6 +76,7 @@ public final class LoggingDaytimeServer {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public Void call() {
       try {
         Date now = new Date();
@@ -81,22 +86,18 @@ public final class LoggingDaytimeServer {
             "%s %s",
             (Object)now,
             (Object)connection.getRemoteSocketAddress());
+        try (
         Writer out = new OutputStreamWriter(
             connection.getOutputStream(),
-            StandardCharsets.UTF_8.name());
+            UTF_8);connection;) {
         SimpleDateFormat format = new SimpleDateFormat(
             "yy-MM-dd hh:mm:ss Z", Locale.getDefault());
         out.write(ProcessHandle.current().pid() + " "
                   + format.format(now) + "\\r\\n");
         out.flush();
+            }
       } catch (IOException ex) {
         AUDIT_LOGGER.warning(ex.getMessage());
-      } finally {
-        try {
-          connection.close();
-        } catch (IOException ex) {
-          AUDIT_LOGGER.warning(ex.getMessage());
-        }
       }
       return null;
     }

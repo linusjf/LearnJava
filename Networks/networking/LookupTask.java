@@ -12,6 +12,7 @@ public class LookupTask implements Callable<String> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String call() {
     try {
       // separate out the IP address
