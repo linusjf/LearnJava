@@ -56,6 +56,7 @@ public class SocketServerExample {
   }
 
   // create server channel
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void startServer() throws IOException {
    try (Selector selector = Selector.open();
     ServerSocketChannel serverChannel = 
@@ -97,6 +98,7 @@ public class SocketServerExample {
   }
 
   // accept a connection made to this channel's socket
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void accept(SelectionKey key) throws IOException {
     try (
      ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
@@ -115,6 +117,7 @@ public class SocketServerExample {
   }
 
   // read from the socket channel
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void read(SelectionKey key) throws IOException {
     try (
     SocketChannel channel = (SocketChannel) key.channel();) {

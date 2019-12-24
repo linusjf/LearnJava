@@ -56,6 +56,7 @@ public class Whois {
       this.label = label;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public static Pattern getRegexPattern() {
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
@@ -66,6 +67,7 @@ public class Whois {
       return Pattern.compile(pattern.toString());
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public static String getRegexPatternAsString() {
       return getRegexPattern().toString();
     }
@@ -83,6 +85,7 @@ public class Whois {
       this.label = label;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public static Pattern getRegexPattern() {
       StringBuilder pattern = new StringBuilder();
       pattern.append("(?i)^((");
@@ -93,6 +96,7 @@ public class Whois {
       return Pattern.compile(pattern.toString());
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public static String getRegexPatternAsString() {
       return getRegexPattern().toString();
     }

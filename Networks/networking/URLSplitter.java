@@ -8,6 +8,7 @@ public final class URLSplitter {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     for (String arg : args) {
       try {
@@ -18,7 +19,8 @@ public final class URLSplitter {
         String host = u.getHost();
         if (host != null) {
           int atSign = host.indexOf('@');
-          if (atSign != -1) host = host.substring(atSign + 1);
+          if (atSign != -1) 
+            host = host.substring(atSign + 1);
         }
         System.out.println("The host is " + host);
         System.out.println("The port is " + u.getPort());

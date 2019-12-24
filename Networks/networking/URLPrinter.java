@@ -9,6 +9,7 @@ public final class URLPrinter {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       URL u = new URL("http://www.oreilly.com/");
