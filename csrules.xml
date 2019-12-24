@@ -56,10 +56,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="RegexpHeader">
     <property name="headerFile"
-              value="${cs.regexp.header.file}" />
+    value="${cs.regexp.header.file}" /> 
     <property name="fileExtensions"
-              value="java" />
-      <property name="multiLines" value="1"/>
+      value="java" />
   </module>
   <module name="LineLength">
     <property name="max"
