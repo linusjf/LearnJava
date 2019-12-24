@@ -77,6 +77,7 @@ public class SingleFileHttpServer {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       if (args.length > 1) {
@@ -90,12 +91,15 @@ public class SingleFileHttpServer {
     return 80;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String getEncoding(String... args) {
-    if (args.length > (1 + 1)) return args[2];
+    if (args.length > (1 + 1)) 
+      return args[2];
     return "UTF-8";
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     // set the port to listen on
     int port = getPort(args);

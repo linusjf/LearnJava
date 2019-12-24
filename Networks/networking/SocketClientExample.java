@@ -7,9 +7,13 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 public class SocketClientExample {
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public void startClient() throws IOException, InterruptedException {
     InetSocketAddress hostAddress = new InetSocketAddress("localhost", 8090);
-    SocketChannel client = SocketChannel.open(hostAddress);
+    try (
+    SocketChannel client = SocketChannel.open(hostAddress);)
+    {
 
     System.out.println("Client..started");
 
@@ -27,6 +31,6 @@ public class SocketClientExample {
       buffer.clear();
       Thread.sleep(5000);
     }
-    client.close();
+    }
   }
 }
