@@ -34,6 +34,9 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class SocketEchoServer {
+  private static final String UTF_8 = 
+    StandardCharsets.UTF_8.name();
+
   private ServerSocket server;
 
   public SocketEchoServer(int portnum) {
@@ -44,28 +47,29 @@ public class SocketEchoServer {
     }
   }
 
+  @SupportWarnings("PMD.LawOfDemeter")
   public void serve() {
-    try {
       while (true) {
+    try (
         Socket client = server.accept();
         BufferedReader r =
             new BufferedReader(
-                new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8.name()));
+                new InputStreamReader(client.getInputStream(), UTF_8));
         PrintWriter w =
             new PrintWriter(
-                new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8.name()),
-                true);
+                new OutputStreamWriter(client.getOutputStream(), UTF_8),
+                true);) {
         w.println("Welcome to the Java EchoServer.  Type 'bye' to close.");
-        String line;
-        do {
+        String line = "";
+        while (!line.trim().equals("bye")) {
           line = r.readLine();
-          if (line != null) w.println("Got: " + line);
-        } while (!line.trim().equals("bye"));
-        client.close();
-      }
+          if (line != null) 
+            w.println("Got: " + line);
+        } 
     } catch (IOException err) {
       System.err.println(err);
     }
+      }
   }
 
   public static void main(String[] args) {

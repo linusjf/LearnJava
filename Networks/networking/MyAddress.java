@@ -8,6 +8,7 @@ public final class MyAddress {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       InetAddress address = InetAddress.getLocalHost();

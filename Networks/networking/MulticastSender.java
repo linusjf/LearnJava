@@ -12,6 +12,7 @@ public final class MulticastSender {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static InetAddress getAddress(String... args) {
     try {
       return InetAddress.getByName(args[0]);
@@ -20,6 +21,7 @@ public final class MulticastSender {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[1]);
@@ -28,16 +30,19 @@ public final class MulticastSender {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static byte getTTL(String... args) {
     try {
-      if (args.length > (1 + 1)) return (byte) Integer.parseInt(args[2]);
+      if (args.length > (1 + 1)) 
+        return (byte) Integer.parseInt(args[2]);
     } catch (NumberFormatException e) {
       // empty catch block
     }
     return (byte) 1;
   }
 
-  @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
+  @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     InetAddress ia = getAddress(args);
     int port = getPort(args);
