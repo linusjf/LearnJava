@@ -13,8 +13,7 @@ public class QueryString {
 
   public void add(String name, String value) {
     synchronized (query) {
-      if (query.length() > 0)
-        query.append('&');
+      if (query.length() > 0) query.append('&');
       encode(name, value);
     }
   }
@@ -25,8 +24,7 @@ public class QueryString {
       query.append('=');
       query.append(URLEncoder.encode(value, "UTF-8"));
     } catch (UnsupportedEncodingException ex) {
-      throw new EncodingException(
-          "Broken VM does not support UTF-8", ex);
+      throw new EncodingException("Broken VM does not support UTF-8", ex);
     }
   }
 

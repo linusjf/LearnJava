@@ -14,7 +14,6 @@ public class RubyPlatform implements Platform {
 
   @Override
   public void execute(Code code) {
-    System.out.println(
-        "Compiling and executing Ruby code.");
+    System.out.println("Compiling and executing Ruby code.");
   }
 }

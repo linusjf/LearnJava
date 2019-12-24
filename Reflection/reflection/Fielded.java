@@ -14,29 +14,24 @@ public final class Fielded {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.CompareObjectsWithEquals",
-                     "checkstyle:executablestatementcount"})
-  public static void
-  main(String... args) {
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals", "checkstyle:executablestatementcount"})
+  public static void main(String... args) {
     try {
       System.out.println(stringGetClass == stringclass);
       System.out.println(stringGetClass.equals(stringclass));
       Field[] fields = stringclass.getDeclaredFields();
-      for (Field field: fields) {
+      for (Field field : fields) {
         System.out.println("*************************");
         System.out.println("Name: " + field.getName());
         System.out.println("Type: " + field.getType());
         int modifiers = field.getModifiers();
-        System.out.println(
-            Modifier.toString(modifiers & Modifier.fieldModifiers()));
+        System.out.println(Modifier.toString(modifiers & Modifier.fieldModifiers()));
         if (Modifier.isStatic(modifiers)) {
           System.out.println("isAccessible: " + field.canAccess(null));
-          if (field.canAccess(null))
-            System.out.println("Get: " + field.get(null));
+          if (field.canAccess(null)) System.out.println("Get: " + field.get(null));
         } else {
           System.out.println("isAccessible: " + field.canAccess(stringer));
-          if (field.canAccess(stringer))
-            System.out.println("Get: " + field.get(stringer));
+          if (field.canAccess(stringer)) System.out.println("Get: " + field.get(stringer));
         }
       }
       checkForHashCode(stringGetClass, stringer);
@@ -59,10 +54,12 @@ public final class Fielded {
       System.err.println(iae);
     }
 
-    AccessController.doPrivileged((PrivilegedAction<?>)() -> {
-      fieldHashCode.setAccessible(true);
-      return null;
-    });
+    AccessController.doPrivileged(
+        (PrivilegedAction<?>)
+            () -> {
+              fieldHashCode.setAccessible(true);
+              return null;
+            });
 
     printHashCodeField(fieldHashCode, obj);
   }

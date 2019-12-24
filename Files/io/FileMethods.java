@@ -24,17 +24,13 @@ public enum FileMethods {
           // Get out of loop.
         }
         System.out.print(filename + " is a ");
-        if (fileDir.isFile())
-          System.out.println("file.");
-        else
-          System.out.println("directory.");
+        if (fileDir.isFile()) System.out.println("file.");
+        else System.out.println("directory.");
         System.out.print("It is ");
-        if (!fileDir.canRead())
-          System.out.print("not ");
+        if (!fileDir.canRead()) System.out.print("not ");
         System.out.println("readable.");
         System.out.print("It is ");
-        if (!fileDir.canWrite())
-          System.out.print("not ");
+        if (!fileDir.canWrite()) System.out.print("not ");
         System.out.println("writeable.");
         if (fileDir.isDirectory()) {
           System.out.println("Contents:");
@@ -43,8 +39,7 @@ public enum FileMethods {
           // Now display list of files in
           // directory…
           if (fileList != null) {
-            for (String fileName: fileList)
-              System.out.println(" " + fileName);
+            for (String fileName : fileList) System.out.println(" " + fileName);
           }
         } else {
           System.out.print("Size of file: ");

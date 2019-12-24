@@ -15,10 +15,8 @@ public enum EmailServer {
   private static final String CLIENT1 = "Dave";
   private static final String CLIENT2 = "Karen";
   private static final int MAX_MESSAGES = 10;
-  private static String[] mailbox1 =
-      new String[MAX_MESSAGES];
-  private static String[] mailbox2 =
-      new String[MAX_MESSAGES];
+  private static String[] mailbox1 = new String[MAX_MESSAGES];
+  private static String[] mailbox2 = new String[MAX_MESSAGES];
   private static int messagesInBox1;
   private static int messagesInBox2;
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
@@ -35,34 +33,26 @@ public enum EmailServer {
     while (true) {
       try {
         runService();
-      } catch (InvalidClientException
-               | InvalidRequestException exc) {
+      } catch (InvalidClientException | InvalidRequestException exc) {
         System.out.println("Error: " + exc);
       }
     }
   }
 
-  private static void handleClient1(String sendRead,
-                                    Scanner input,
-                                    PrintWriter output) {
+  private static void handleClient1(String sendRead, Scanner input, PrintWriter output) {
     if ("send".equals(sendRead)) {
       doSend(mailbox2, messagesInBox2, input);
-      messagesInBox2 = messagesInBox2 < MAX_MESSAGES ?
-                           messagesInBox2 + 1 :
-                           messagesInBox2;
+      messagesInBox2 = messagesInBox2 < MAX_MESSAGES ? messagesInBox2 + 1 : messagesInBox2;
     } else {
       doRead(mailbox1, messagesInBox1, output);
       messagesInBox1 = 0;
     }
   }
 
-  private static void handleClient2(String sendRead,
-                                    Scanner input,
-                                    PrintWriter output) {
+  private static void handleClient2(String sendRead, Scanner input, PrintWriter output) {
     if ("send".equals(sendRead)) {
       doSend(mailbox1, messagesInBox1, input);
-      if (messagesInBox1 < MAX_MESSAGES)
-        messagesInBox1++;
+      if (messagesInBox1 < MAX_MESSAGES) messagesInBox1++;
     } else {
       doRead(mailbox2, messagesInBox2, output);
       messagesInBox2 = 0;
@@ -70,43 +60,27 @@ public enum EmailServer {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void runService()
-      throws InvalidClientException,
-             InvalidRequestException {
-    try (
-      Socket link = serverSocket.accept();
-      Scanner input =
-          new Scanner(link.getInputStream(),
-                      UTF_8);) {
+  private static void runService() throws InvalidClientException, InvalidRequestException {
+    try (Socket link = serverSocket.accept();
+        Scanner input = new Scanner(link.getInputStream(), UTF_8); ) {
       String name = input.nextLine();
-      if (!name.equals(CLIENT1) && !name.equals(CLIENT2))
-        throw new InvalidClientException();
+      if (!name.equals(CLIENT1) && !name.equals(CLIENT2)) throw new InvalidClientException();
       String sendRead = input.nextLine();
-      if (!"send".equals(sendRead)
-          && !"read".equals(sendRead))
-        throw new InvalidRequestException();
-      System.out.println("\n" + name + " " + sendRead
-                         + "ing mail…");
-      try (
-      PrintWriter output = new PrintWriter(
-          new OutputStreamWriter(
-              link.getOutputStream(),
-              UTF_8),
-          true);) {
-      if (name.equals(CLIENT1)) 
-        handleClient1(sendRead, input, output);
-       else 
-        // from client 2
-        handleClient2(sendRead, input, output);
-              }
+      if (!"send".equals(sendRead) && !"read".equals(sendRead)) throw new InvalidRequestException();
+      System.out.println("\n" + name + " " + sendRead + "ing mail…");
+      try (PrintWriter output =
+          new PrintWriter(new OutputStreamWriter(link.getOutputStream(), UTF_8), true); ) {
+        if (name.equals(CLIENT1)) handleClient1(sendRead, input, output);
+        else
+          // from client 2
+          handleClient2(sendRead, input, output);
+      }
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }
   }
 
-  private static void doSend(String[] mailbox,
-                             int messagesInBox,
-                             Scanner input) {
+  private static void doSend(String[] mailbox, int messagesInBox, Scanner input) {
     /*
           Client has requested 'sending', so server must
           read message from this client and then place
@@ -116,24 +90,19 @@ public enum EmailServer {
     if (messagesInBox == MAX_MESSAGES) {
       System.out.println("\nMessage box full!");
       input.skip("^.*$");
-    } else
-      mailbox[messagesInBox] = input.nextLine();
+    } else mailbox[messagesInBox] = input.nextLine();
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void doRead(String[] mailbox,
-                             int messagesInBox,
-                             PrintWriter output) {
+  private static void doRead(String[] mailbox, int messagesInBox, PrintWriter output) {
     /*
           Client has requested 'reading', so server must
           read messages from other client's message box and
           then send those messages to the first client.
     */
-    System.out.println("\nReading " + messagesInBox
-                       + " message(s).\n");
+    System.out.println("\nReading " + messagesInBox + " message(s).\n");
     output.println(messagesInBox);
-    for (int i = 0; i < messagesInBox; i++)
-      output.println(mailbox[i]);
+    for (int i = 0; i < messagesInBox; i++) output.println(mailbox[i]);
   }
 
   static class InvalidClientException extends Exception {

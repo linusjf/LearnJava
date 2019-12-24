@@ -33,7 +33,7 @@ public enum ConcurrentSkipListMapDemo {
       Contact contact = element.getValue();
       printContact(contact);
       element = submap.pollFirstEntry();
-    } 
+    }
   }
 
   private static void printContact(Contact contact) {
@@ -47,7 +47,7 @@ public enum ConcurrentSkipListMapDemo {
     System.out.printf("Main: First Entry: ");
     printContact(contact);
   }
-  
+
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void printLastEntry(ConcurrentSkipListMap<String, Contact> map) {
     Map.Entry<String, Contact> element = map.lastEntry();

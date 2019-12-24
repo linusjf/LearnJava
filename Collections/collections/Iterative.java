@@ -9,15 +9,13 @@ public enum Iterative {
   ;
 
   public static void removeNegative(List<Double> v) {
-    for (Iterator<Double> it = v.iterator(); it.hasNext();) {
-      if (it.next() < 0)
-        it.remove();
+    for (Iterator<Double> it = v.iterator(); it.hasNext(); ) {
+      if (it.next() < 0) it.remove();
     }
   }
 
   public static double dot(List<Double> u, List<Double> v) {
-    if (u.size() != v.size())
-      throw new IllegalArgumentException("different sizes");
+    if (u.size() != v.size()) throw new IllegalArgumentException("different sizes");
     double d = 0;
     Iterator<Double> uiterator = u.iterator();
     Iterator<Double> viterator = v.iterator();

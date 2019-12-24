@@ -24,12 +24,10 @@ public class SHA224Salted implements Encrypt {
   @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
-      final MessageDigest digest =
-          MessageDigest.getInstance("SHA-224");
+      final MessageDigest digest = MessageDigest.getInstance("SHA-224");
       final byte[] salt = getSalt();
       digest.update(salt);
-      final byte[] textBytes = digest.digest(
-          text.getBytes(StandardCharsets.UTF_8));
+      final byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       return Base64.getEncoder().encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);

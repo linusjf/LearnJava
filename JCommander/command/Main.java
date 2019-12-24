@@ -18,14 +18,12 @@ public class Main {
 
   public static void main(String... argv) {
     Main main = new Main();
-    JCommander.newBuilder().addObject(main).build().parse(
-        argv);
+    JCommander.newBuilder().addObject(main).build().parse(argv);
     main.run();
   }
 
   public void run() {
     System.out.printf("%d %d %n", length, pattern);
-    for (String host: hosts)
-      System.out.println(host);
+    for (String host : hosts) System.out.println(host);
   }
 }

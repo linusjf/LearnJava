@@ -31,16 +31,10 @@ public enum ConsumerClient {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput =
-             new Scanner(socket.getInputStream(),
-                         UTF_8);
-         PrintWriter networkOutput = new PrintWriter(
-             new OutputStreamWriter(
-                 socket.getOutputStream(),
-                 UTF_8),
-             true);
-         Scanner userEntry = new Scanner(
-             System.in, UTF_8);) {
+        Scanner networkInput = new Scanner(socket.getInputStream(), UTF_8);
+        PrintWriter networkOutput =
+            new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);
+        Scanner userEntry = new Scanner(System.in, UTF_8); ) {
       String message = "";
       while (!"0".equals(message)) {
         System.out.print("Enter '1' ('0' to exit): ");
@@ -53,10 +47,9 @@ public enum ConsumerClient {
           // socket's intput stream…
           networkOutput.println(message);
         }
-        if (networkInput.hasNext()) 
+        if (networkInput.hasNext())
           // Display server's response to user…
-          System.out.println("\nSERVER> "
-                             + networkInput.nextLine());
+          System.out.println("\nSERVER> " + networkInput.nextLine());
 
         // 'Sleep' for 0-5 seconds…
         Thread.sleep(RANDOM.nextInt(5000));

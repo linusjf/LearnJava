@@ -16,16 +16,13 @@ public class SimpleCacheResponse extends CacheResponse {
   private final Date expires;
   private final CacheControl control;
 
-  public SimpleCacheResponse(SimpleCacheRequest request,
-                             URLConnection uc,
-                             CacheControl control)
+  public SimpleCacheResponse(SimpleCacheRequest request, URLConnection uc, CacheControl control)
       throws IOException {
     super();
     this.request = request;
     this.control = control;
     this.expires = new Date(uc.getExpiration());
-    this.headers =
-        Collections.unmodifiableMap(uc.getHeaderFields());
+    this.headers = Collections.unmodifiableMap(uc.getHeaderFields());
   }
 
   @Override
@@ -34,8 +31,7 @@ public class SimpleCacheResponse extends CacheResponse {
   }
 
   @Override
-  public Map<String, List<String>> getHeaders()
-      throws IOException {
+  public Map<String, List<String>> getHeaders() throws IOException {
     return headers;
   }
 
@@ -45,10 +41,8 @@ public class SimpleCacheResponse extends CacheResponse {
 
   public boolean isExpired() {
     Date now = new Date();
-    if (control.getMaxAge().before(now))
-      return true;
-    if (expires != null)
-      return expires.before(now);
+    if (control.getMaxAge().before(now)) return true;
+    if (expires != null) return expires.before(now);
     return false;
   }
 }

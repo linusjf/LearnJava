@@ -21,8 +21,7 @@ public final class Platform {
     Pattern pattern;
 
     Arch(String pattern) {
-      this.pattern = Pattern.compile(
-          "\\A" + pattern + "\\Z", CASE_INSENSITIVE);
+      this.pattern = Pattern.compile("\\A" + pattern + "\\Z", CASE_INSENSITIVE);
     }
   }
 
@@ -33,8 +32,7 @@ public final class Platform {
     Pattern pattern;
 
     OS(String pattern) {
-      this.pattern = Pattern.compile(
-          "\\A" + pattern + "\\Z", CASE_INSENSITIVE);
+      this.pattern = Pattern.compile("\\A" + pattern + "\\Z", CASE_INSENSITIVE);
     }
   }
 
@@ -56,23 +54,22 @@ public final class Platform {
     final String osArch = getProperty("os.arch");
     final String osName = getProperty("os.name");
 
-    for (Arch arch: Arch.values()) {
-      if (patternMatches(arch.pattern,osArch)) {
-        for (OS os: OS.values()) {
-          if (patternMatches(os.pattern,osName)) {
+    for (Arch arch : Arch.values()) {
+      if (patternMatches(arch.pattern, osArch)) {
+        for (OS os : OS.values()) {
+          if (patternMatches(os.pattern, osName)) {
             return new Platform(arch, os);
           }
         }
       }
     }
 
-    final String msg = String.format(
-        "Unsupported platform %s %s", osArch, osName);
+    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static boolean patternMatches(Pattern pattern,String input) {
+  private static boolean patternMatches(Pattern pattern, String input) {
     return pattern.matcher(input).matches();
   }
 }

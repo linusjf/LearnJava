@@ -15,9 +15,7 @@ class NegatableOptionsDemo {
   @Option(names = "-XX:-UseG1GC", negatable = true)
   boolean useG1GC = true;
 
-  @Option(names = "--no-backup",
-          negatable = true,
-          description = "Make a backup. True by default.")
+  @Option(names = "--no-backup", negatable = true, description = "Make a backup. True by default.")
   boolean backup = true;
 
   public static void main(String... args) {

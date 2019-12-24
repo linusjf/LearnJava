@@ -20,10 +20,7 @@ public class MvParameters {
     }
 
     Parameters args = new Parameters();
-    JCommander.newBuilder()
-        .addObject(args)
-        .args(argv)
-        .build();
+    JCommander.newBuilder().addObject(args).args(argv).build();
 
     Assert.assertNotNull(args.mvParameters);
     Assert.assertEquals(args.mvParameters.from, "from");

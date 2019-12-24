@@ -15,8 +15,7 @@ public enum OptionalExample {
   ;
 
   public static void main(String... args) {
-    Address johnaddress =
-        new Address("52/A, 22nd Street", "Mumbai", "India", 400_001);
+    Address johnaddress = new Address("52/A, 22nd Street", "Mumbai", "India", 400_001);
 
     Person john = new Person("John", johnaddress, 874_731_232);
 
@@ -28,11 +27,12 @@ public enum OptionalExample {
     people.add(mac);
     people.add(gautam);
 
-    people.stream().forEach(p -> {
-      System.out.printf("%s from %s %n",
-                        p.getName(),
-                        p.getAddress().orElse(Address.EMPTY_ADDRESS));
-    });
+    people.stream()
+        .forEach(
+            p -> {
+              System.out.printf(
+                  "%s from %s %n", p.getName(), p.getAddress().orElse(Address.EMPTY_ADDRESS));
+            });
   }
 
   @SuppressWarnings("PMD.DataClass")
@@ -43,8 +43,7 @@ public enum OptionalExample {
 
     Person(String name, Address address, int phone) {
       if (name == null) {
-        throw new IllegalArgumentException(
-            "Null value for name is not permitted");
+        throw new IllegalArgumentException("Null value for name is not permitted");
       }
       this.name = name;
       this.address = Optional.ofNullable(address);
@@ -65,9 +64,7 @@ public enum OptionalExample {
 
     @Override
     public String toString() {
-      return "Person{"
-          + "name=" + name + ", address=" + address.get() + ", phone=" + phone
-          + '}';
+      return "Person{" + "name=" + name + ", address=" + address.get() + ", phone=" + phone + '}';
     }
   }
 
@@ -105,8 +102,15 @@ public enum OptionalExample {
     @Override
     public String toString() {
       return "Address{"
-          + "line1=" + line1 + ", city=" + city + ", country=" + country
-          + ", zipcode=" + zipcode + '}';
+          + "line1="
+          + line1
+          + ", city="
+          + city
+          + ", country="
+          + country
+          + ", zipcode="
+          + zipcode
+          + '}';
     }
   }
 }

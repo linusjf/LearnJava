@@ -16,42 +16,34 @@ public final class ProtectedUrlAccess {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.LawOfDemeter",
-  "PMD.DataflowAnomalyAnalysis"})
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
     try {
       // Sets the authenticator that will be used by the networking code
       // when a proxy or an HTTP server asks for authentication.
       Authenticator.setDefault(
-          args.length > 0 ?
-              new CustomAuthenticator(args[0]) :
-              new CustomAuthenticator());
+          args.length > 0 ? new CustomAuthenticator(args[0]) : new CustomAuthenticator());
 
       double random = Math.random();
 
-      URL url = new URL(
-          "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
-          + random);
+      URL url =
+          new URL(
+              "http://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx?"
+                  + random);
       byte[] b = new byte[1];
-try(
-      DataInputStream di =
-          new DataInputStream(url.openStream());
-      OutputStream fo =
-          Files.newOutputStream(Paths.get(random + ".gif"))) {
-      while (-1 != di.read(b, 0, 1))
-        fo.write(b, 0, 1);
-      System.out.println("Saved url as " + random + ".gif");
-          }
+      try (DataInputStream di = new DataInputStream(url.openStream());
+          OutputStream fo = Files.newOutputStream(Paths.get(random + ".gif"))) {
+        while (-1 != di.read(b, 0, 1)) fo.write(b, 0, 1);
+        System.out.println("Saved url as " + random + ".gif");
+      }
     } catch (MalformedURLException e) {
-      System.out.println("Malformed URL: "
-                         + e.getMessage());
+      System.out.println("Malformed URL: " + e.getMessage());
     } catch (IOException e) {
       System.out.println("I/O Error: " + e.getMessage());
     }
   }
 
-  public static class CustomAuthenticator
-      extends Authenticator {
+  public static class CustomAuthenticator extends Authenticator {
     private final String password;
 
     public CustomAuthenticator(String randomString) {
@@ -66,8 +58,7 @@ try(
 
     // Called when password authorization is needed
     @Override
-    protected PasswordAuthentication
-    getPasswordAuthentication() {
+    protected PasswordAuthentication getPasswordAuthentication() {
       // Get information about the request
       String prompt = getRequestingPrompt();
       String hostname = getRequestingHost();
@@ -82,8 +73,7 @@ try(
       String username = "httpwatch";
 
       // Return the information (a data holder that is used by Authenticator)
-      return new PasswordAuthentication(
-          username, password.toCharArray());
+      return new PasswordAuthentication(username, password.toCharArray());
     }
   }
 }

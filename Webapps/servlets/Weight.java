@@ -26,10 +26,8 @@ public class Weight extends HttpServlet {
           (after any required updating of the shopping
           cart session variable has been carried out).
     */
-    if ("Next".equals(choice))
-      response.sendRedirect("ShoppingCart.html");
-    if ("Checkout".equals(choice))
-      response.sendRedirect("Checkout");
+    if ("Next".equals(choice)) response.sendRedirect("ShoppingCart.html");
+    if ("Checkout".equals(choice)) response.sendRedirect("Checkout");
     if ("Add".equals(choice)) {
       doAdd(request.getSession(), request);
       response.sendRedirect("ShoppingCart.html");
@@ -50,10 +48,8 @@ public class Weight extends HttpServlet {
       String currentProduct = (String) cart.getAttribute("currentProd");
 
       // Check that user actually entered a value!
-      if ("Apples".equals(currentProduct))
-        cart.setAttribute("Apples", qty);
-      else
-        cart.setAttribute("Pears", qty);
+      if ("Apples".equals(currentProduct)) cart.setAttribute("Apples", qty);
+      else cart.setAttribute("Pears", qty);
     }
   }
 
@@ -65,7 +61,6 @@ public class Weight extends HttpServlet {
     // String , since we only need to know that there
     // is an order for the current product in the cart.
     // Product found in cart.
-    if (product != null)
-      cart.removeAttribute(currentProduct);
+    if (product != null) cart.removeAttribute(currentProduct);
   }
 }

@@ -15,13 +15,11 @@ public class DelegateCommand {
   @Parameter(names = "-v")
   boolean verbose;
 
-  @ParametersDelegate
-  Delegate delegate = new Delegate();
+  @ParametersDelegate Delegate delegate = new Delegate();
 
   public static void main(String... argv) {
     DelegateCommand p = new DelegateCommand();
-    JCommander.newBuilder().addObject(p).build().parse(
-        argv);
+    JCommander.newBuilder().addObject(p).build().parse(argv);
     Assert.assertTrue(p.verbose);
     Assert.assertEquals(p.delegate.port, 1234);
     System.out.println("Asserts cleared.");

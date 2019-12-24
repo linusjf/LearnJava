@@ -12,8 +12,7 @@ public class SeparatorCommand {
 
   public static void main(String... argv) {
     SeparatorCommand fc = new SeparatorCommand();
-    JCommander.newBuilder().addObject(fc).build().parse(
-        argv);
+    JCommander.newBuilder().addObject(fc).build().parse(argv);
     fc.run();
   }
 

@@ -17,12 +17,11 @@ public class Profile {
     this.name = name;
 
     // Parse contact list from a set of "friend:email@gmail.com" pairs.
-    for (String contact: contacts) {
+    for (String contact : contacts) {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;
-      if (parts.length == 1)
-        contactEmail = parts[0];
+      if (parts.length == 1) contactEmail = parts[0];
       else {
         contactType = parts[0];
         contactEmail = parts[1];
@@ -50,14 +49,13 @@ public class Profile {
   @SuppressWarnings({"PMD.LawOfDemeter", "checkstyle:hiddenfield"})
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Profile || o instanceof String))
-      return false;
+    if (!(o instanceof Profile || o instanceof String)) return false;
     if (o instanceof Profile) {
-      Profile profile = (Profile)o;
+      Profile profile = (Profile) o;
       return areEmailsEqual(profile);
     }
     if (o instanceof String) {
-      String email = (String)o;
+      String email = (String) o;
       return email.equals(this.email);
     }
     return false;

@@ -21,8 +21,7 @@ public abstract class PropertyContainerImpl implements PropertyContainer, Serial
    */
   @Override
   public void addPropertyBy(Object value, String token) {
-    if (value == null || token == null)
-      return;
+    if (value == null || token == null) return;
     ivProperties.remove(token);
     ivProperties.put(token, value);
   }
@@ -59,8 +58,7 @@ public abstract class PropertyContainerImpl implements PropertyContainer, Serial
    */
   @Override
   public void removeProperty(String token) {
-    if (token == null)
-      return;
+    if (token == null) return;
     ivProperties.remove(token);
   }
 
@@ -74,10 +72,8 @@ public abstract class PropertyContainerImpl implements PropertyContainer, Serial
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof PropertyContainerImpl))
-      return false;
-    if (o == this)
-      return true;
+    if (!(o instanceof PropertyContainerImpl)) return false;
+    if (o == this) return true;
     PropertyContainerImpl obj = (PropertyContainerImpl) o;
     return ivProperties.equals(obj.ivProperties);
   }

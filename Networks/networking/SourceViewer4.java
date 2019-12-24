@@ -18,8 +18,7 @@ public final class SourceViewer4 {
   public static void main(String[] args) {
     try {
       URL u = new URL(args[0]);
-      HttpURLConnection uc =
-          (HttpURLConnection)u.openConnection();
+      HttpURLConnection uc = (HttpURLConnection) u.openConnection();
       try (InputStream raw = uc.getInputStream()) {
         printFromStream(raw);
       } catch (IOException ex) {
@@ -27,22 +26,18 @@ public final class SourceViewer4 {
         printFromStream(uc.getErrorStream());
       }
     } catch (MalformedURLException ex) {
-      System.err.println(args[0]
-                         + " is not a parseable URL");
+      System.err.println(args[0] + " is not a parseable URL");
     } catch (IOException ex) {
       System.err.println(ex);
     }
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void printFromStream(InputStream raw)
-      throws IOException {
+  private static void printFromStream(InputStream raw) throws IOException {
     try (InputStream buffer = new BufferedInputStream(raw);
-         Reader reader = new InputStreamReader(
-             buffer, StandardCharsets.UTF_8.name());) {
+        Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name()); ) {
       int c;
-      while ((c = reader.read()) != -1)
-        System.out.print((char)c);
+      while ((c = reader.read()) != -1) System.out.print((char) c);
     }
   }
 }

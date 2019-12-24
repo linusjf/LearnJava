@@ -16,17 +16,14 @@ public class FastUDPDiscardServer extends UDPServer {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    int port = args.length > 0 ?
-                   readPort(args[0], DEFAULT_PORT) :
-                   DEFAULT_PORT;
+    int port = args.length > 0 ? readPort(args[0], DEFAULT_PORT) : DEFAULT_PORT;
     UDPServer server = new FastUDPDiscardServer(port);
     Thread t = new Thread(server);
     t.start();
   }
 
   @Override
-  public void respond(DatagramSocket socket,
-                      DatagramPacket request) {
+  public void respond(DatagramSocket socket, DatagramPacket request) {
     // empty, do-nothing method
   }
 }

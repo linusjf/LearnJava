@@ -36,10 +36,8 @@ public final class ScannerHasNextPatternDemo {
   public static void printNames(Scanner scan, Pattern pattern) {
     while (scan.hasNext()) {
       // check if the token consists of declared pattern
-      if (scan.hasNext(pattern))
-        System.out.println(scan.next());
-      else
-        scan.next();
+      if (scan.hasNext(pattern)) System.out.println(scan.next());
+      else scan.next();
     }
   }
 }

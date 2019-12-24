@@ -21,17 +21,16 @@ public class SysLibraryLoader implements LibraryLoader {
   @SuppressWarnings("PMD.AvoidUsingNativeCode")
   public boolean load(String name, boolean verify) {
     try {
-      checkLink(getSecurityManager(),name);
+      checkLink(getSecurityManager(), name);
       loadLibrary(name);
       return true;
     } catch (SecurityException e) {
-      System.err.println("Error loading system library "
-                         + name + " : " + e.getMessage());
+      System.err.println("Error loading system library " + name + " : " + e.getMessage());
       return false;
     }
   }
 
-  private void checkLink(SecurityManager sm,String name) {
+  private void checkLink(SecurityManager sm, String name) {
     sm.checkLink(name);
   }
 }

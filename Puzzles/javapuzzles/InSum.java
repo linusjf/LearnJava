@@ -8,14 +8,13 @@ public enum InSum {
 
   public static int sum(List<Integer> ints) {
     int s = 0;
-    for (int n: ints)
-      s += n;
+    for (int n : ints) s += n;
     return s;
   }
 
   public static Integer sumInteger(List<Integer> ints) {
     Integer s = 0;
-    for (Integer n: ints) {
+    for (Integer n : ints) {
       s += n;
     }
     return s;

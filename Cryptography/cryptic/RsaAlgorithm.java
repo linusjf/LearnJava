@@ -39,12 +39,12 @@ public class RsaAlgorithm {
     String inputString;
     System.out.println("Enter message you wish to send.");
     inputString = input.readLine();
-    if (inputString == null)
-      return;
+    if (inputString == null) return;
     else {
       System.out.println("Encrypting the message: " + inputString);
-      System.out.println("The message in bytes is:: "
-          + bytesToString(inputString.getBytes(StandardCharsets.UTF_8)));
+      System.out.println(
+          "The message in bytes is:: "
+              + bytesToString(inputString.getBytes(StandardCharsets.UTF_8)));
       RsaAlgorithm rsa = new RsaAlgorithm();
 
       // encryption

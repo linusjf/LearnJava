@@ -15,8 +15,7 @@ public enum ListingRecur {
   private static final int RECURSION_COUNT = 5;
   private static int loopCount;
 
-  @SuppressWarnings({"PMD.DoubleBraceInitialization",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DoubleBraceInitialization", "PMD.LawOfDemeter"})
   public static void main(String... args) {
     try {
       List<String> list = Arrays.asList(new String[] {FOO, BAR});
@@ -26,8 +25,7 @@ public enum ListingRecur {
 
       assert list.contains(FOO);
 
-      if (loopCount < RECURSION_COUNT)
-        list.add(BAZ);
+      if (loopCount < RECURSION_COUNT) list.add(BAZ);
 
       String[] array = {FOO, BAR};
       list = Arrays.asList(array);
@@ -38,13 +36,14 @@ public enum ListingRecur {
       list = Stream.of(FOO, BAR).collect(Collectors.toList());
 
       assert list.contains(FOO);
-      List<String> cities = new ArrayList<>() {
-        {
-          add("New York");
-          add("Rio");
-          add("Tokyo");
-        }
-      };
+      List<String> cities =
+          new ArrayList<>() {
+            {
+              add("New York");
+              add("Rio");
+              add("Tokyo");
+            }
+          };
 
       System.out.println(cities.contains("Rio"));
       assert cities.contains("Rio");

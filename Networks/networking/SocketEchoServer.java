@@ -49,21 +49,17 @@ public class SocketEchoServer {
       while (true) {
         Socket client = server.accept();
         BufferedReader r =
-            new BufferedReader(new InputStreamReader(
-                client.getInputStream(),
-                StandardCharsets.UTF_8.name()));
-        PrintWriter w = new PrintWriter(
-            new OutputStreamWriter(
-                client.getOutputStream(),
-                StandardCharsets.UTF_8.name()),
-            true);
-        w.println(
-            "Welcome to the Java EchoServer.  Type 'bye' to close.");
+            new BufferedReader(
+                new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8.name()));
+        PrintWriter w =
+            new PrintWriter(
+                new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8.name()),
+                true);
+        w.println("Welcome to the Java EchoServer.  Type 'bye' to close.");
         String line;
         do {
           line = r.readLine();
-          if (line != null)
-            w.println("Got: " + line);
+          if (line != null) w.println("Got: " + line);
         } while (!line.trim().equals("bye"));
         client.close();
       }

@@ -29,10 +29,8 @@ public class FileDataSource implements DataSource {
     File file = new File(name);
     try (Reader reader = Files.newBufferedReader(Paths.get(file.getPath()))) {
       char[] buffer = new char[(int) file.length()];
-      if (reader.read(buffer) == -1)
-        throw new IOException("Error reading into buffer.");
-      else
-        return new String(buffer);
+      if (reader.read(buffer) == -1) throw new IOException("Error reading into buffer.");
+      else return new String(buffer);
     }
   }
 }

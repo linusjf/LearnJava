@@ -12,10 +12,7 @@ public class Account implements Serializable {
   private double balance;
 
   // Constructor…
-  public Account(int acctNo,
-                 String sname,
-                 String fnames,
-                 double bal) {
+  public Account(int acctNo, String sname, String fnames, double bal) {
     acctNum = acctNo;
     surname = sname;
     firstNames = fnames;
@@ -36,14 +33,11 @@ public class Account implements Serializable {
   }
 
   public double withdraw(double amount) {
-    if (amount > 0 && amount <= balance)
-      return amount;
-    else
-      return 0;
+    if (amount > 0 && amount <= balance) return amount;
+    else return 0;
   }
 
   public void deposit(double amount) {
-    if (amount > 0)
-      balance += amount;
+    if (amount > 0) balance += amount;
   }
 }

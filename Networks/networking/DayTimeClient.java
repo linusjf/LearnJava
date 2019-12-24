@@ -9,8 +9,7 @@ public final class DayTimeClient {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.DoNotCallSystemExit",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DoNotCallSystemExit", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     try {
       if (args.length == 0) {
@@ -23,8 +22,7 @@ public final class DayTimeClient {
         System.out.println(time);
         System.exit(0);
       }
-      Date time = Daytime.getDateFromNetwork(
-          args[0], Integer.parseInt(args[1]));
+      Date time = Daytime.getDateFromNetwork(args[0], Integer.parseInt(args[1]));
       System.out.println(time);
       System.exit(0);
     } catch (IOException | ParseException ex) {

@@ -11,16 +11,10 @@ public enum TestVirtualProxy {
    */
   public static void main(String[] args) {
     Company company =
-        new Company("ABC Company",
-                    "India",
-                    "+91-011-28458965",
-                    new ContactListProxyImpl());
-    System.out.println("Company Name: "
-                       + company.getCompanyName());
-    System.out.println("Company Address: "
-                       + company.getCompanyAddress());
-    System.out.println("Company Contact No.: "
-                       + company.getCompanyContactNo());
+        new Company("ABC Company", "India", "+91-011-28458965", new ContactListProxyImpl());
+    System.out.println("Company Name: " + company.getCompanyName());
+    System.out.println("Company Address: " + company.getCompanyAddress());
+    System.out.println("Company Contact No.: " + company.getCompanyContactNo());
     System.out.println("Requesting for contact list");
     printEmployees(company);
   }
@@ -30,13 +24,11 @@ public enum TestVirtualProxy {
     printContactList(contactList);
   }
 
-  private static void printContactList(
-      ContactList contactList) {
+  private static void printContactList(ContactList contactList) {
     printList(contactList.getEmployeeList());
   }
 
   private static void printList(List<Employee> empList) {
-    for (Employee emp: empList)
-      System.out.println(emp);
+    for (Employee emp : empList) System.out.println(emp);
   }
 }

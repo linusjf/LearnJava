@@ -98,10 +98,9 @@ public final class Ping {
       connector.join();
 
       // Print status of targets that have not yet been shown
-      for (Target t: targets) {
+      for (Target t : targets) {
         // Target t = (Target)i.next();
-        if (!t.shown)
-          t.show();
+        if (!t.shown) t.show();
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);
@@ -120,8 +119,7 @@ public final class Ping {
 
     Target(String host) {
       try {
-        address = new InetSocketAddress(
-            InetAddress.getByName(host), port);
+        address = new InetSocketAddress(InetAddress.getByName(host), port);
       } catch (IOException x) {
         failure = x;
       }
@@ -129,11 +127,9 @@ public final class Ping {
 
     void show() {
       String result =
-          connectFinish > 0 ?
-              Long.toString(connectFinish - connectStart)
-                  + "ms" :
-              failure == null ? "Timed out" :
-                                failure.toString();
+          connectFinish > 0
+              ? Long.toString(connectFinish - connectStart) + "ms"
+              : failure == null ? "Timed out" : failure.toString();
       System.out.println(address + " : " + result);
       shown = true;
     }
@@ -169,11 +165,9 @@ public final class Ping {
       }
     }
 
-    private Target waitAndGetTarget()
-        throws InterruptedException {
+    private Target waitAndGetTarget() throws InterruptedException {
       synchronized (pending) {
-        while (pending.isEmpty())
-          pending.wait();
+        while (pending.isEmpty()) pending.wait();
         return pending.remove(0);
       }
     }
@@ -244,9 +238,7 @@ public final class Ping {
             // target object so that we can get the target back
             // after the key is added to the selector's
             // selected-key set
-            if (t.channel != null)
-              t.channel.register(
-                  sel, SelectionKey.OP_CONNECT, t);
+            if (t.channel != null) t.channel.register(sel, SelectionKey.OP_CONNECT, t);
           } catch (IOException x) {
             // Something went wrong, so close the channel and
             // record the failure
@@ -261,16 +253,14 @@ public final class Ping {
     // Process keys that have become selected
     //
     void processSelectedKeys() throws IOException {
-      for (Iterator<SelectionKey> i =
-               sel.selectedKeys().iterator();
-           i.hasNext();) {
+      for (Iterator<SelectionKey> i = sel.selectedKeys().iterator(); i.hasNext(); ) {
         // Retrieve the next key and remove it from the set
         SelectionKey sk = i.next();
         i.remove();
 
         // Retrieve the target and the channel
-        Target t = (Target)sk.attachment();
-        SocketChannel sc = (SocketChannel)sk.channel();
+        Target t = (Target) sk.attachment();
+        SocketChannel sc = (SocketChannel) sk.channel();
 
         // Attempt to complete the connection sequence
         try {
@@ -299,11 +289,10 @@ public final class Ping {
     //
     @Override
     public void run() {
-      for (;;) {
+      for (; ; ) {
         try {
           int n = sel.select();
-          if (n > 0)
-            processSelectedKeys();
+          if (n > 0) processSelectedKeys();
           processPendingTargets();
           if (isShutdown) {
             sel.close();

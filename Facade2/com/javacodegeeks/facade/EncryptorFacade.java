@@ -48,44 +48,32 @@ public final class EncryptorFacade {
     ;
   }
 
-  private static final
-      Map<EncryptionType, Supplier<Encrypt>>
-          ENCRYPTOR_SUPPLIER;
+  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
 
   static {
-    final Map<EncryptionType, Supplier<Encrypt>>
-        encryptors = new HashMap<>();
+    final Map<EncryptionType, Supplier<Encrypt>> encryptors = new HashMap<>();
     encryptors.put(EncryptionType.MD5, MD5Encryptor::new);
-    encryptors.put(EncryptionType.MD5SALTED,
-                   MD5Salted::new);
+    encryptors.put(EncryptionType.MD5SALTED, MD5Salted::new);
     encryptors.put(EncryptionType.SHA, SHA::new);
-    encryptors.put(EncryptionType.SHASALTED,
-                   SHASalted::new);
+    encryptors.put(EncryptionType.SHASALTED, SHASalted::new);
     encryptors.put(EncryptionType.SHA224, SHA224::new);
-    encryptors.put(EncryptionType.SHA224SALTED,
-                   SHA224Salted::new);
+    encryptors.put(EncryptionType.SHA224SALTED, SHA224Salted::new);
     encryptors.put(EncryptionType.SHA256, SHA256::new);
-    encryptors.put(EncryptionType.SHA256SALTED,
-                   SHA256Salted::new);
+    encryptors.put(EncryptionType.SHA256SALTED, SHA256Salted::new);
     encryptors.put(EncryptionType.SHA384, SHA384::new);
-    encryptors.put(EncryptionType.SHA384SALTED,
-                   SHA384Salted::new);
+    encryptors.put(EncryptionType.SHA384SALTED, SHA384Salted::new);
     encryptors.put(EncryptionType.SHA512, SHA512::new);
-    encryptors.put(EncryptionType.SHA512SALTED,
-                   SHA512Salted::new);
+    encryptors.put(EncryptionType.SHA512SALTED, SHA512Salted::new);
     encryptors.put(EncryptionType.BCRYPT, BCryptor::new);
     encryptors.put(EncryptionType.SCRYPT, SCryptor::new);
-    encryptors.put(EncryptionType.PBKDF,
-                   PBKDFEncryptor::new);
-    ENCRYPTOR_SUPPLIER =
-        Collections.unmodifiableMap(encryptors);
+    encryptors.put(EncryptionType.PBKDF, PBKDFEncryptor::new);
+    ENCRYPTOR_SUPPLIER = Collections.unmodifiableMap(encryptors);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public Encrypt supplyEncryptor(EncryptionType type) {
-    Supplier<Encrypt> supplier = Objects.requireNonNull(
-        ENCRYPTOR_SUPPLIER.get(type),
-        "No encryptor exists for " + type);
+    Supplier<Encrypt> supplier =
+        Objects.requireNonNull(ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
     return supplier.get();
   }
 
@@ -98,7 +86,7 @@ public final class EncryptorFacade {
    */
   public String encrypt(EncryptionType type, String text) {
     final Encrypt e = supplyEncryptor(type);
-    return encrypt(e,text);
+    return encrypt(e, text);
   }
 
   /**
@@ -108,7 +96,7 @@ public final class EncryptorFacade {
    * @param s a <code>String</code> value
    * @return a <code>String</code> value
    */
-  public String encrypt(Encrypt e,String s) {
+  public String encrypt(Encrypt e, String s) {
     return e.encrypt(s);
   }
 }

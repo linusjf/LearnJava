@@ -19,7 +19,6 @@ public enum SimpleRegexTest {
       int matchedTo = M.end();
       System.out.println(
           "matched [" + matchedText + "] from " + matchedFrom + " to " + matchedTo + ".");
-    } else
-      System.out.println("didn’t match");
+    } else System.out.println("didn’t match");
   }
 }

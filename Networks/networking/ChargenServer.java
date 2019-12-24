@@ -23,17 +23,14 @@ public final class ChargenServer {
     try {
       port = Integer.parseInt(args[0]);
       System.out.printf("Using port %d: ", port);
-    } catch (NumberFormatException
-             | ArrayIndexOutOfBoundsException ex) {
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       port = DEFAULT_PORT;
-      System.out.printf(
-          "Error parsing input. Using port %d: ", port);
+      System.out.printf("Error parsing input. Using port %d: ", port);
     }
     return port;
   }
 
-  @SuppressWarnings({"checkstyle:magicnumber",
-                     "PMD.DataflowAnomalyAnalysis"})
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.DataflowAnomalyAnalysis"})
   private static byte[] constructRotatingArray() {
     byte[] rotation = new byte[95 * 2];
     for (byte i = ' '; i <= '~'; i++) {
@@ -43,30 +40,24 @@ public final class ChargenServer {
     return rotation;
   }
 
-  @SuppressWarnings({"checkstyle:magicnumber",
-  "PMD.LawOfDemeter"})
-  private static void handleChannels(SelectionKey key,
-                                     byte[] rotation,
-                                     Selector selector) {
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.LawOfDemeter"})
+  private static void handleChannels(SelectionKey key, byte[] rotation, Selector selector) {
     try {
       if (key.isAcceptable()) {
-        ServerSocketChannel server =
-            (ServerSocketChannel)key.channel();
+        ServerSocketChannel server = (ServerSocketChannel) key.channel();
         SocketChannel client = server.accept();
-        System.out.println("Accepted connection from "
-                           + client);
+        System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
         ByteBuffer buffer = ByteBuffer.allocate(74);
         buffer.put(rotation, 0, 72);
-        buffer.put((byte)'\r');
-        buffer.put((byte)'\n');
+        buffer.put((byte) '\r');
+        buffer.put((byte) '\n');
         buffer.flip();
-        SelectionKey key2 = client.register(
-            selector, SelectionKey.OP_WRITE);
+        SelectionKey key2 = client.register(selector, SelectionKey.OP_WRITE);
         key2.attach(buffer);
       } else if (key.isWritable()) {
-        SocketChannel client = (SocketChannel)key.channel();
-        ByteBuffer buffer = (ByteBuffer)key.attachment();
+        SocketChannel client = (SocketChannel) key.channel();
+        ByteBuffer buffer = (ByteBuffer) key.attachment();
         if (!buffer.hasRemaining()) {
           // Refill the buffer with the next line
           buffer.rewind();
@@ -84,8 +75,8 @@ public final class ChargenServer {
           buffer.put(rotation, position, 72);
 
           // Store a line break at the end of the buffer
-          buffer.put((byte)'\r');
-          buffer.put((byte)'\n');
+          buffer.put((byte) '\r');
+          buffer.put((byte) '\n');
 
           // Prepare the buffer for writing
           buffer.flip();
@@ -97,8 +88,7 @@ public final class ChargenServer {
       try {
         key.channel().close();
       } catch (IOException cex) {
-        System.err.println("Error closing channel: "
-                           + cex.getMessage());
+        System.err.println("Error closing channel: " + cex.getMessage());
       }
     }
   }
@@ -107,23 +97,18 @@ public final class ChargenServer {
     // get port value from command line
     // parameters or default value
     int port = getPort(args);
-    System.out.println("Listening for connections on port "
-                       + port);
+    System.out.println("Listening for connections on port " + port);
     ServerSocketChannel serverChannel;
     Selector selector;
     try {
       serverChannel = ServerSocketChannel.open();
-      InetSocketAddress address =
-          new InetSocketAddress(port);
+      InetSocketAddress address = new InetSocketAddress(port);
       serverChannel.bind(address);
       serverChannel.configureBlocking(false);
       selector = Selector.open();
-      serverChannel.register(selector,
-                             SelectionKey.OP_ACCEPT);
+      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ex) {
-      System.err.println(
-          "Error with server socket channel: "
-          + ex.getMessage());
+      System.err.println("Error with server socket channel: " + ex.getMessage());
       return;
     }
 
@@ -133,27 +118,25 @@ public final class ChargenServer {
       try {
         selector.select();
       } catch (IOException ex) {
-        System.err.println("Error selecting: "
-                           + ex.getMessage());
+        System.err.println("Error selecting: " + ex.getMessage());
         break;
       }
-      iterateOverKeys(selector,rotation);
+      iterateOverKeys(selector, rotation);
     }
   }
 
-  private static void iterateOverKeys(Selector selector,byte[] rotation) {
-      Set<SelectionKey> readyKeys = selector.selectedKeys();
-      iterateOverKeys(readyKeys,rotation,selector);
+  private static void iterateOverKeys(Selector selector, byte[] rotation) {
+    Set<SelectionKey> readyKeys = selector.selectedKeys();
+    iterateOverKeys(readyKeys, rotation, selector);
   }
-  
-  private static void iterateOverKeys(Set<SelectionKey> readyKeys,byte[] rotation,
-      Selector selector) {
-      Iterator<SelectionKey> iterator =
-          readyKeys.iterator();
-      while (iterator.hasNext()) {
-        SelectionKey key = iterator.next();
-        iterator.remove();
-        handleChannels(key, rotation, selector);
-      }
+
+  private static void iterateOverKeys(
+      Set<SelectionKey> readyKeys, byte[] rotation, Selector selector) {
+    Iterator<SelectionKey> iterator = readyKeys.iterator();
+    while (iterator.hasNext()) {
+      SelectionKey key = iterator.next();
+      iterator.remove();
+      handleChannels(key, rotation, selector);
+    }
   }
 }

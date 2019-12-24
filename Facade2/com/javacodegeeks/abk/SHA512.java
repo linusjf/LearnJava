@@ -12,7 +12,7 @@ import java.util.Base64;
  * @version 1.0
  */
 public class SHA512 implements Encrypt {
-  private final Base64.Encoder encoder = Base64.getEncoder(); 
+  private final Base64.Encoder encoder = Base64.getEncoder();
 
   /**
    * Describe <code>encrypt</code> method here.
@@ -24,10 +24,8 @@ public class SHA512 implements Encrypt {
   @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
-      MessageDigest digest =
-          MessageDigest.getInstance("SHA-512");
-      byte[] textBytes = digest.digest(
-          text.getBytes(StandardCharsets.UTF_8));
+      MessageDigest digest = MessageDigest.getInstance("SHA-512");
+      byte[] textBytes = digest.digest(text.getBytes(StandardCharsets.UTF_8));
       return encoder.encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
       throw new AssertionError("Algorithm not found : ", e);

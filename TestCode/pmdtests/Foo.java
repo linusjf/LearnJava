@@ -7,7 +7,7 @@ public class Foo {
     this.i = i;
   }
 
-public void meth() {
+  public void meth() {
     System.out.println(this.i);
   }
 
@@ -17,7 +17,6 @@ public void meth() {
 
   public void method(Foo this, String... args) {
     System.out.println(this.i);
-    for (String arg: args)
-      System.out.println(arg);
+    for (String arg : args) System.out.println(arg);
   }
 }

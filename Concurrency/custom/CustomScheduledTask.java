@@ -8,17 +8,17 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class CustomScheduledTask<V>
-    extends FutureTask<V> implements RunnableScheduledFuture<V> {
+public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableScheduledFuture<V> {
   private final RunnableScheduledFuture<V> task;
   private final transient ScheduledThreadPoolExecutor executor;
   private transient long period;
   private transient long startDate;
 
-  public CustomScheduledTask(Runnable runnable,
-                             V result,
-                             RunnableScheduledFuture<V> task,
-                             ScheduledThreadPoolExecutor executor) {
+  public CustomScheduledTask(
+      Runnable runnable,
+      V result,
+      RunnableScheduledFuture<V> task,
+      ScheduledThreadPoolExecutor executor) {
     super(runnable, result);
     this.task = task;
     this.executor = executor;
@@ -26,8 +26,7 @@ public class CustomScheduledTask<V>
 
   public static void main(String[] args) {
     try {
-      CustomScheduledThreadPoolExecutor executor =
-          new CustomScheduledThreadPoolExecutor(2);
+      CustomScheduledThreadPoolExecutor executor = new CustomScheduledThreadPoolExecutor(2);
       Task task = new Task();
       System.out.printf("Main: %s%n", new Date());
       executor.schedule(task, 1, TimeUnit.SECONDS);
@@ -46,10 +45,8 @@ public class CustomScheduledTask<V>
 
   @Override
   public long getDelay(TimeUnit unit) {
-    if (!isPeriodic())
-      return task.getDelay(unit);
-    if (startDate == 0)
-      return task.getDelay(unit);
+    if (!isPeriodic()) return task.getDelay(unit);
+    if (startDate == 0) return task.getDelay(unit);
     else {
       Date now = new Date();
       long delay = startDate - now.getTime();
@@ -64,9 +61,8 @@ public class CustomScheduledTask<V>
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Delayed))
-      return false;
-    return task.compareTo((Delayed)o) == 0;
+    if (!(o instanceof Delayed)) return false;
+    return task.compareTo((Delayed) o) == 0;
   }
 
   @Override
@@ -96,26 +92,23 @@ public class CustomScheduledTask<V>
     this.period = period;
   }
 
-  static class CustomScheduledThreadPoolExecutor
-      extends ScheduledThreadPoolExecutor {
+  static class CustomScheduledThreadPoolExecutor extends ScheduledThreadPoolExecutor {
     CustomScheduledThreadPoolExecutor(int corePoolSize) {
       super(corePoolSize);
     }
 
     @Override
     protected <V> RunnableScheduledFuture<V> decorateTask(
-        Runnable runnable,
-        RunnableScheduledFuture<V> task) {
+        Runnable runnable, RunnableScheduledFuture<V> task) {
       return new CustomScheduledTask<V>(runnable, null, task, this);
     }
 
     // clang-format off
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(
-        Runnable command, long initialDelay, long period, TimeUnit unit) {  // clang-format on
-      ScheduledFuture<?> task =
-          super.scheduleAtFixedRate(command, initialDelay, period, unit);
-      CustomScheduledTask<?> myTask = (CustomScheduledTask<?>)task;
+        Runnable command, long initialDelay, long period, TimeUnit unit) { // clang-format on
+      ScheduledFuture<?> task = super.scheduleAtFixedRate(command, initialDelay, period, unit);
+      CustomScheduledTask<?> myTask = (CustomScheduledTask<?>) task;
       myTask.setPeriod(TimeUnit.MILLISECONDS.convert(period, unit));
       return task;
     }

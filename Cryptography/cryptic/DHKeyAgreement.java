@@ -168,8 +168,8 @@ public final class DHKeyAgreement {
       aliceCipher.init(Cipher.DECRYPT_MODE, aliceAesKey, aesParams);
       byte[] recovered = aliceCipher.doFinal(ciphertext);
       if (!java.util.Arrays.equals(cleartext, recovered))
-        throw new GeneralSecurityException("AES in CBC mode recovered text is "
-            + "different from cleartext");
+        throw new GeneralSecurityException(
+            "AES in CBC mode recovered text is " + "different from cleartext");
       System.out.println("AES in CBC mode recovered text is same as cleartext");
     } catch (GeneralSecurityException | IOException exc) {
       System.err.println(exc);

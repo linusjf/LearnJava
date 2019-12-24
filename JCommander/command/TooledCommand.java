@@ -8,9 +8,7 @@ import java.util.List;
 import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
-@Parameters(
-    separators = "=",
-    commandDescription = "Record changes to the repository")
+@Parameters(separators = "=", commandDescription = "Record changes to the repository")
 class CommandCommit {
   @Parameter(description = "The list of files to commit")
   List<String> files;
@@ -23,11 +21,9 @@ class CommandCommit {
 }
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
-@Parameters(commandDescription =
-                "Add file contents to the index")
+@Parameters(commandDescription = "Add file contents to the index")
 class CommandAdd {
-  @Parameter(description =
-                 "File patterns to add to the index")
+  @Parameter(description = "File patterns to add to the index")
   List<String> patterns;
 
   @Parameter(names = "-i")
@@ -36,8 +32,9 @@ class CommandAdd {
 
 @Parameters(commandDescription = "Tool command")
 public class TooledCommand {
-  @Parameter(names = {"-log", "-verbose"},
-             description = "Level of verbosity")
+  @Parameter(
+      names = {"-log", "-verbose"},
+      description = "Level of verbosity")
   Boolean verbose;
 
   @Parameter(names = "-test", description = "Test")
@@ -48,11 +45,12 @@ public class TooledCommand {
     TooledCommand tc = new TooledCommand();
     CommandAdd add = new CommandAdd();
     CommandCommit commit = new CommandCommit();
-    JCommander jc = JCommander.newBuilder()
-                        .addObject(tc)
-                        .addCommand("add", add)
-                        .addCommand("commit", commit)
-                        .build();
+    JCommander jc =
+        JCommander.newBuilder()
+            .addObject(tc)
+            .addCommand("add", add)
+            .addCommand("commit", commit)
+            .build();
 
     jc.parse(argv);
 
@@ -60,8 +58,7 @@ public class TooledCommand {
     Assert.assertEquals(jc.getParsedCommand(), "commit");
     Assert.assertTrue(commit.amend);
     Assert.assertEquals(commit.author, "cbeust");
-    Assert.assertEquals(commit.files,
-                        Arrays.asList("A.java", "B.java"));
+    Assert.assertEquals(commit.files, Arrays.asList("A.java", "B.java"));
     System.out.println("Asserts cleared");
   }
 }

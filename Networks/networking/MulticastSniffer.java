@@ -14,8 +14,7 @@ public final class MulticastSniffer {
     try {
       return InetAddress.getByName(args[0]);
     } catch (IOException | SecurityException e) {
-      throw new AssertionError(
-          "Invalid host or address specified", e);
+      throw new AssertionError("Invalid host or address specified", e);
     }
   }
 
@@ -23,8 +22,7 @@ public final class MulticastSniffer {
     try {
       return Integer.parseInt(args[1]);
     } catch (NumberFormatException e) {
-      throw new AssertionError("Invalid number specified",
-                               e);
+      throw new AssertionError("Invalid number specified", e);
     }
   }
 
@@ -36,8 +34,7 @@ public final class MulticastSniffer {
       MulticastSocket ms = new MulticastSocket(port);
       ms.joinGroup(group);
       while (true) {
-        DatagramPacket dp =
-            new DatagramPacket(new byte[8192], 8192);
+        DatagramPacket dp = new DatagramPacket(new byte[8192], 8192);
         try {
           ms.receive(dp);
         } catch (IOException ioe) {

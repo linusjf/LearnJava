@@ -16,12 +16,11 @@ public enum UDPEchoClient {
   public static final int PORT = 7;
 
   private static String getHostName(String... args) {
-    if (args.length > 0)
-      return args[0];
+    if (args.length > 0) return args[0];
     return "localhost";
   }
 
-    @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static int getPort(String... args) {
     if (args.length > 1) {
       try {
@@ -41,8 +40,7 @@ public enum UDPEchoClient {
     try {
       InetAddress ia = InetAddress.getByName(hostname);
       DatagramSocket socket = new DatagramSocket();
-      SenderThread sender =
-          new SenderThread(socket, ia, port);
+      SenderThread sender = new SenderThread(socket, ia, port);
       sender.start();
       ReceiverThread receiver = new ReceiverThread(socket);
       receiver.start();
@@ -55,8 +53,7 @@ public enum UDPEchoClient {
       // explicitly call close to kill receiving thread
       socket.close();
       receiver.join();
-    } catch (UnknownHostException | SocketException
-             | InterruptedException ex) {
+    } catch (UnknownHostException | SocketException | InterruptedException ex) {
       System.err.println(ex);
     }
   }
@@ -69,9 +66,7 @@ public enum UDPEchoClient {
 
     private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
-    SenderThread(DatagramSocket socket,
-                 InetAddress address,
-                 int port) {
+    SenderThread(DatagramSocket socket, InetAddress address, int port) {
       super();
       this.server = address;
       this.port = port;
@@ -83,23 +78,16 @@ public enum UDPEchoClient {
       this.stopped = true;
     }
 
-    @SuppressWarnings({"checkstyle:returncount",
-    "PMD.LawOfDemeter"})
+    @SuppressWarnings({"checkstyle:returncount", "PMD.LawOfDemeter"})
     @Override
     public void run() {
-      try (BufferedReader userInput =
-               new BufferedReader(new InputStreamReader(
-                   System.in,
-                   UTF_8))) {
+      try (BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in, UTF_8))) {
         while (true) {
-          if (stopped)
-            return;
+          if (stopped) return;
           String theLine = userInput.readLine();
-          if (".".equals(theLine))
-            return;
+          if (".".equals(theLine)) return;
           byte[] data = theLine.getBytes("UTF-8");
-          DatagramPacket output = new DatagramPacket(
-              data, data.length, server, port);
+          DatagramPacket output = new DatagramPacket(data, data.length, server, port);
           socket.send(output);
           Thread.yield();
         }
@@ -125,14 +113,11 @@ public enum UDPEchoClient {
     @Override
     public void run() {
       while (true) {
-        if (stopped)
-          return;
-        DatagramPacket dp =
-            new DatagramPacket(new byte[65_507], 65_507);
+        if (stopped) return;
+        DatagramPacket dp = new DatagramPacket(new byte[65_507], 65_507);
         try {
           socket.receive(dp);
-          String s = new String(
-              dp.getData(), 0, dp.getLength(), "UTF-8");
+          String s = new String(dp.getData(), 0, dp.getLength(), "UTF-8");
           System.out.println(s);
           Thread.yield();
         } catch (IOException ex) {

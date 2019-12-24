@@ -1,7 +1,8 @@
 package collections;
 
-import java.util.List;
 import static java.util.Arrays.*;
+
+import java.util.List;
 
 public enum Containment {
   ;

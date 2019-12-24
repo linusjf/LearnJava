@@ -23,8 +23,9 @@ public class TestDu {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void runOnceMore() {
     String str = Thread.currentThread().getName() + " Element : %d";
-    list = IntStream.range(0, 10_000)
-               .mapToObj(i -> String.format(str, i))
-               .collect(Collectors.toList());
+    list =
+        IntStream.range(0, 10_000)
+            .mapToObj(i -> String.format(str, i))
+            .collect(Collectors.toList());
   }
 }

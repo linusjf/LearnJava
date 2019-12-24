@@ -52,7 +52,9 @@ public enum DigitalSignature {
       System.out.println("Digital signature for given text: " + new String(signature, "UTF8"));
 
       System.out.println(Base64.getEncoder().encodeToString(signature));
-    } catch (UnsupportedEncodingException | SignatureException | NoSuchAlgorithmException
+    } catch (UnsupportedEncodingException
+        | SignatureException
+        | NoSuchAlgorithmException
         | InvalidKeyException ex) {
       System.err.println(ex);
     }

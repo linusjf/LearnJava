@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
-public class DaytimeTask
-    implements Runnable, Callable<Void> {
+public class DaytimeTask implements Runnable, Callable<Void> {
   private final Socket connection;
 
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
@@ -29,17 +28,12 @@ public class DaytimeTask
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
-    try (
-      Writer out = new OutputStreamWriter(
-          connection.getOutputStream(),
-          UTF_8);
-      connection;) {
+    try (Writer out = new OutputStreamWriter(connection.getOutputStream(), UTF_8);
+        connection; ) {
 
       Date now = new Date();
-      SimpleDateFormat format = new SimpleDateFormat(
-          "yy-MM-dd hh:mm:ss Z", Locale.getDefault());
-      out.write(ProcessHandle.current().pid() + " "
-                + format.format(now) + "\\r\\n");
+      SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss Z", Locale.getDefault());
+      out.write(ProcessHandle.current().pid() + " " + format.format(now) + "\\r\\n");
       out.flush();
     } catch (IOException ex) {
       System.err.println(ex);

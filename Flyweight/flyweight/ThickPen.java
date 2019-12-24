@@ -7,8 +7,7 @@ package flyweight;
  * @version 1.0
  */
 public class ThickPen implements Pen {
-  private final BrushSize brushSize =
-      BrushSize.THICK;  // NOPMD
+  private final BrushSize brushSize = BrushSize.THICK; // NOPMD
   private String color;
 
   // extrinsic state - supplied by client
@@ -24,10 +23,7 @@ public class ThickPen implements Pen {
 
   @Override
   public void draw(String content) {
-    System.out.println("Drawing THICK content in color : "
-                       + color);
-    System.out.println(
-        "Drawing THICK content with brush size : "
-        + brushSize);
+    System.out.println("Drawing THICK content in color : " + color);
+    System.out.println("Drawing THICK content with brush size : " + brushSize);
   }
 }

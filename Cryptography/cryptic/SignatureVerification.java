@@ -46,10 +46,8 @@ public enum SignatureVerification {
       // Verifying the signature
       boolean bool = sign.verify(signature);
 
-      if (bool)
-        System.out.println("Signature verified");
-      else
-        System.out.println("Signature failed");
+      if (bool) System.out.println("Signature verified");
+      else System.out.println("Signature failed");
     } catch (SignatureException | NoSuchAlgorithmException | InvalidKeyException ex) {
       System.err.println(ex);
     }

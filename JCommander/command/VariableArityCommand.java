@@ -12,13 +12,11 @@ public class VariableArityCommand {
   public static void main(String... argv) {
     VariableArityCommand ac = new VariableArityCommand();
 
-    JCommander.newBuilder().addObject(ac).build().parse(
-        argv);
+    JCommander.newBuilder().addObject(ac).build().parse(argv);
     ac.run();
   }
 
   public void run() {
-    for (String one: foo)
-      System.out.println(one);
+    for (String one : foo) System.out.println(one);
   }
 }

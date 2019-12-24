@@ -19,8 +19,7 @@ class Producer extends Thread {
       try {
         // Add 1 to level and return new level…
         newLevel = item.addOne();
-        System.out.println("<Producer> New level: "
-                           + newLevel);
+        System.out.println("<Producer> New level: " + newLevel);
         pause = random.nextInt(5000);
 
         // 'Sleep' for 0-5 seconds…

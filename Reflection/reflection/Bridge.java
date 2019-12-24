@@ -20,9 +20,8 @@ public enum Bridge {
   private static void printBridgeMethods(Class<? extends Object> obj) {
     Method[] methods = obj.getMethods();
     System.out.println("Bridge Methods of " + obj + " are");
-    for (Method m: methods) {
-      if (m.isBridge())
-        System.out.println("Method: " + m.getName());
+    for (Method m : methods) {
+      if (m.isBridge()) System.out.println("Method: " + m.getName());
     }
   }
 }

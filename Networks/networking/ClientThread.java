@@ -20,13 +20,11 @@ class ClientThread extends Thread {
     try {
       // Create input and output streams
       // on the socket…
-      input = new Scanner(client.getInputStream(),
-                          StandardCharsets.UTF_8.name());
-      output = new PrintWriter(
-          new OutputStreamWriter(
-              client.getOutputStream(),
-              StandardCharsets.UTF_8.name()),
-          true);
+      input = new Scanner(client.getInputStream(), StandardCharsets.UTF_8.name());
+      output =
+          new PrintWriter(
+              new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8.name()),
+              true);
     } catch (IOException ioEx) {
       System.err.println(ioEx);
     }
@@ -51,8 +49,7 @@ class ClientThread extends Thread {
       System.out.println("Closing down connection…");
       client.close();
     } catch (IOException ioEx) {
-      System.out.println(
-          "Unable to close connection to client!");
+      System.out.println("Unable to close connection to client!");
     }
   }
 }

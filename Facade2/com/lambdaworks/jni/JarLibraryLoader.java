@@ -1,6 +1,8 @@
 package com.lambdaworks.jni;
 
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
+import static com.lambdaworks.jni.Platform.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import static com.lambdaworks.jni.Platform.*;
 
 /**
  * A native library loader that will extract and load a shared library contained in a jar. This
@@ -34,9 +35,7 @@ public class JarLibraryLoader implements LibraryLoader {
    * and with a path starting with {@code lib}.
    */
   public JarLibraryLoader() {
-    this(JarLibraryLoader.class.getProtectionDomain()
-             .getCodeSource(),
-         "lib");
+    this(JarLibraryLoader.class.getProtectionDomain().getCodeSource(), "lib");
   }
 
   /**
@@ -46,8 +45,7 @@ public class JarLibraryLoader implements LibraryLoader {
    * @param codeSource Code source containing shared libraries.
    * @param libraryPath Path prefix of shared libraries.
    */
-  public JarLibraryLoader(CodeSource codeSource,
-                          String libraryPath) {
+  public JarLibraryLoader(CodeSource codeSource, String libraryPath) {
     this.codeSource = codeSource;
     this.libraryPath = libraryPath;
   }
@@ -62,17 +60,15 @@ public class JarLibraryLoader implements LibraryLoader {
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public boolean load(String name, boolean verify) {
-    try (JarFile jar = new JarFile(
-             codeSource.getLocation().getPath(), verify)) {
+    try (JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)) {
       Platform platform = detect();
-      for (String path: libCandidates(platform, name)) {
+      for (String path : libCandidates(platform, name)) {
         JarEntry entry = jar.getJarEntry(path);
-        if (entry == null)
-          continue;
+        if (entry == null) continue;
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
-          checkLink(sm,lib.getAbsolutePath());
+          checkLink(sm, lib.getAbsolutePath());
           System.load(lib.getAbsolutePath());
           return lib.delete();
         }
@@ -83,8 +79,8 @@ public class JarLibraryLoader implements LibraryLoader {
     return false;
   }
 
-  private void checkLink(SecurityManager sm,File lib) {
-      sm.checkLink(lib);
+  private void checkLink(SecurityManager sm, File lib) {
+    sm.checkLink(lib);
   }
 
   /**
@@ -95,19 +91,15 @@ public class JarLibraryLoader implements LibraryLoader {
    * @return A temporary file.
    * @throws IOException when an IO error occurs.
    */
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-  "PMD.LawOfDemeter"})
-  private static File extract(String name, InputStream is)
-      throws IOException {
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
+  private static File extract(String name, InputStream is) throws IOException {
     final byte[] buf = new byte[4096];
 
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
-    try (OutputStream os = Files.newOutputStream(
-             Paths.get(lib.getAbsolutePath()))) {
+    try (OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()))) {
       int len;
-      while ((len = is.read(buf)) > 0)
-        os.write(buf, 0, len);
+      while ((len = is.read(buf)) > 0) os.write(buf, 0, len);
     }
     return lib;
   }
@@ -120,8 +112,7 @@ public class JarLibraryLoader implements LibraryLoader {
    * @param name Library name.
    * @return List of potential library names.
    */
-  private List<String> libCandidates(Platform platform,
-                                     String name) {
+  private List<String> libCandidates(Platform platform, String name) {
     final List<String> candidates = new ArrayList<>();
     final StringBuilder sb = new StringBuilder();
 
@@ -138,7 +129,7 @@ public class JarLibraryLoader implements LibraryLoader {
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case LINUX:  // falls through
+      case LINUX: // falls through
       case FREEBSD:
         candidates.add(sb + ".so");
         break;

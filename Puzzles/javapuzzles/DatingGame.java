@@ -6,8 +6,7 @@ import java.util.Date;
 public enum DatingGame {
   ;
 
-  @SuppressWarnings({"deprecation",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"deprecation", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     Calendar cal = Calendar.getInstance();
     cal.set(1999, 12, 31);

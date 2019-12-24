@@ -22,7 +22,7 @@ public final class Mopex {
     List<Field> accum = new LinkedList<>();
     while (fldClass != null) {
       Field[] fields = fldClass.getDeclaredFields();
-      for (Field field: fields) {
+      for (Field field : fields) {
         if (!Modifier.isStatic(field.getModifiers())) {
           accum.add(field);
         }
@@ -40,14 +40,12 @@ public final class Mopex {
     return instanceMethods.toArray(new Method[0]);
   }
 
-  private static void addInstanceMethods(List<Method> instanceMethods,
-                                         Class<?> cls) {
+  private static void addInstanceMethods(List<Method> instanceMethods, Class<?> cls) {
     Class<?> c = cls;
     while (c != null) {
       Method[] methods = c.getDeclaredMethods();
-      for (Method method: methods)
-        if (!Modifier.isStatic(method.getModifiers()))
-          instanceMethods.add(method);
+      for (Method method : methods)
+        if (!Modifier.isStatic(method.getModifiers())) instanceMethods.add(method);
       c = c.getSuperclass();
     }
   }
@@ -56,10 +54,8 @@ public final class Mopex {
    * Finds the first (from the bottom of the inheritance hierarchy) field with the specified name.
    * Note that Class.getField returns only public fields.
    */
-  public static Field findField(Class<?> cls, String name)
-      throws NoSuchFieldException {
-    if (cls == null)
-      throw new NoSuchFieldException("Null class object.");
+  public static Field findField(Class<?> cls, String name) throws NoSuchFieldException {
+    if (cls == null) throw new NoSuchFieldException("Null class object.");
     else {
       try {
         return cls.getDeclaredField(name);
@@ -74,9 +70,7 @@ public final class Mopex {
    * a super statement to call c. This method is used when generating a subclass of class that
    * declared c.
    */
-  public static String createRenamedConstructor(Constructor<?> c,
-                                                String name,
-                                                String code) {
+  public static String createRenamedConstructor(Constructor<?> c, String name, String code) {
     Class<?>[] pta = c.getParameterTypes();
     String fpl = formalParametersToString(pta);
     String apl = actualParametersToString(pta);
@@ -84,14 +78,8 @@ public final class Mopex {
     StringBuilder result = new StringBuilder(40);
     result.append(name).append('(').append(fpl).append(")\n");
     if (excTypes.length != 0)
-      result.append("    throws ")
-          .append(classArrayToString(excTypes))
-          .append('\n');
-    result.append("{\n    super(")
-        .append(apl)
-        .append(");\n")
-        .append(code)
-        .append("}\n");
+      result.append("    throws ").append(classArrayToString(excTypes)).append('\n');
+    result.append("{\n    super(").append(apl).append(");\n").append(code).append("}\n");
     return result.toString();
   }
 
@@ -104,8 +92,7 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append(getTypeName(pts[i])).append(" p").append(i);
-      if (i < pts.length - 1)
-        result.append(',');
+      if (i < pts.length - 1) result.append(',');
     }
     return result.toString();
   }
@@ -118,8 +105,7 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append('p').append(i);
-      if (i < pts.length - 1)
-        result.append(',');
+      if (i < pts.length - 1) result.append(',');
     }
     return result.toString();
   }
@@ -133,8 +119,7 @@ public final class Mopex {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < pts.length; i++) {
       result.append(getTypeName(pts[i]));
-      if (i < pts.length - 1)
-        result.append(',');
+      if (i < pts.length - 1) result.append(',');
     }
     return result.toString();
   }

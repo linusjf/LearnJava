@@ -10,8 +10,7 @@ public class Employee implements Staff {
   private ReportGeneratorProxy reportGenerator;
 
   @Override
-  public void setReportGenerator(
-      ReportGeneratorProxy reportGenerator) {
+  public void setReportGenerator(ReportGeneratorProxy reportGenerator) {
     this.reportGenerator = reportGenerator;
   }
 
@@ -26,8 +25,7 @@ public class Employee implements Staff {
    * @return a <code>String</code> value
    */
   public String generateDailyReport() {
-    if (reportGenerator == null)
-      return "";
+    if (reportGenerator == null) return "";
     return reportGenerator.generateDailyReport();
   }
 }

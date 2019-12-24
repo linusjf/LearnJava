@@ -13,29 +13,23 @@ public enum XmlSerializer {
   ;
   private static final String STRING_CLASS = "java.lang.String";
 
-  public static Document serializeObject(Object source)
-      throws IllegalAccessException {
-    return serializeHelper(source,
-                           new Document(new Element("serialized")),
-                           new IdentityHashMap<Object, Object>());
+  public static Document serializeObject(Object source) throws IllegalAccessException {
+    return serializeHelper(
+        source, new Document(new Element("serialized")), new IdentityHashMap<Object, Object>());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static Element serializeVariable(Class<?> fieldtype,
-                                           Object child,
-                                           Document target,
-                                           Map<Object, Object> table)
+  private static Element serializeVariable(
+      Class<?> fieldtype, Object child, Document target, Map<Object, Object> table)
       throws IllegalAccessException {
-    if (child == null)
-      return new Element("empty");
+    if (child == null) return new Element("empty");
     if (fieldtype.isPrimitive() || STRING_CLASS.equals(fieldtype.getName())) {
       Element value = new Element("value");
       value.setText(child.toString());
       return value;
     } else {
       Element reference = new Element("reference");
-      if (table.containsKey(child))
-        reference.setText(table.get(child).toString());
+      if (table.containsKey(child)) reference.setText(table.get(child).toString());
       else {
         reference.setText(Integer.toString(table.size()));
         serializeHelper(child, target, table);

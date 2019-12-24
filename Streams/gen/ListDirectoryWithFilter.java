@@ -20,14 +20,14 @@ public final class ListDirectoryWithFilter {
       listFiles(dir);
       File[] items = dir.listFiles();
       Optional<?> files = Optional.ofNullable(items);
-      files.ifPresent(obj -> {
-        File[] objs = (File[]) obj;
-        for (File item : objs) {
-          if (item.isDirectory())
-            listRecursiveFiles(item);
-          // Recursive call
-        }
-      });
+      files.ifPresent(
+          obj -> {
+            File[] objs = (File[]) obj;
+            for (File item : objs) {
+              if (item.isDirectory()) listRecursiveFiles(item);
+              // Recursive call
+            }
+          });
     }
   }
 

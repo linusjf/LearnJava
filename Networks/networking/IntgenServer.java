@@ -19,25 +19,21 @@ public final class IntgenServer {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void handleKey(SelectionKey key,
-                                Selector selector) {
+  private static void handleKey(SelectionKey key, Selector selector) {
     try {
       if (key.isAcceptable()) {
-        ServerSocketChannel server =
-            (ServerSocketChannel)key.channel();
+        ServerSocketChannel server = (ServerSocketChannel) key.channel();
         SocketChannel client = server.accept();
-        System.out.println("Accepted connection from "
-                           + client);
+        System.out.println("Accepted connection from " + client);
         client.configureBlocking(false);
-        SelectionKey key2 = client.register(
-            selector, SelectionKey.OP_WRITE);
+        SelectionKey key2 = client.register(selector, SelectionKey.OP_WRITE);
         ByteBuffer output = ByteBuffer.allocate(4);
         output.putInt(0);
         output.flip();
         key2.attach(output);
       } else if (key.isWritable()) {
-        SocketChannel client = (SocketChannel)key.channel();
-        ByteBuffer output = (ByteBuffer)key.attachment();
+        SocketChannel client = (SocketChannel) key.channel();
+        ByteBuffer output = (ByteBuffer) key.attachment();
         if (!output.hasRemaining()) {
           output.rewind();
           int value = output.getInt();
@@ -61,8 +57,7 @@ public final class IntgenServer {
   private static int getPort(String... args) {
     try {
       return Integer.parseInt(args[0]);
-    } catch (NumberFormatException
-             | ArrayIndexOutOfBoundsException ex) {
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
       return DEFAULT_PORT;
     }
   }
@@ -71,20 +66,17 @@ public final class IntgenServer {
   public static void main(String[] args) {
     int port = getPort();
 
-    System.out.println("Listening for connections on port "
-                       + port);
+    System.out.println("Listening for connections on port " + port);
     ServerSocketChannel serverChannel;
     Selector selector;
     try {
       serverChannel = ServerSocketChannel.open();
       ServerSocket ss = serverChannel.socket();
-      InetSocketAddress address =
-          new InetSocketAddress(port);
+      InetSocketAddress address = new InetSocketAddress(port);
       ss.bind(address);
       serverChannel.configureBlocking(false);
       selector = Selector.open();
-      serverChannel.register(selector,
-                             SelectionKey.OP_ACCEPT);
+      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException e) {
       System.err.println(e);
       return;
@@ -97,8 +89,7 @@ public final class IntgenServer {
         break;
       }
       Set<SelectionKey> readyKeys = selector.selectedKeys();
-      Iterator<SelectionKey> iterator =
-          readyKeys.iterator();
+      Iterator<SelectionKey> iterator = readyKeys.iterator();
       while (iterator.hasNext()) {
         SelectionKey key = iterator.next();
         iterator.remove();

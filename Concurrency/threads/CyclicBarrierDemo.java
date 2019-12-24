@@ -27,8 +27,12 @@ public class CyclicBarrierDemo {
 
     cyclicBarrier = new CyclicBarrier(numWorkers, new AggregatorThread());
 
-    System.out.println("Spawning " + numWorkers + " worker threads to compute "
-                       + numPartialResults + " partial results each");
+    System.out.println(
+        "Spawning "
+            + numWorkers
+            + " worker threads to compute "
+            + numPartialResults
+            + " partial results each");
 
     for (int i = 0; i < numWorkers; i++) {
       Thread worker = new Thread(new NumberCruncherThread());
@@ -65,15 +69,13 @@ public class CyclicBarrierDemo {
       // Crunch some numbers and store the partial result
       for (int i = 0; i < numPartialResults; i++) {
         Integer num = random.nextInt(10);
-        System.out.println(thisThreadName
-                           + ": Crunching some numbers! Final result - " + num);
+        System.out.println(thisThreadName + ": Crunching some numbers! Final result - " + num);
         partialResult.add(num);
       }
 
       partialResults.add(partialResult);
       try {
-        System.out.println(thisThreadName
-                           + " waiting for others to reach barrier.");
+        System.out.println(thisThreadName + " waiting for others to reach barrier.");
         latch.countDown();
         cyclicBarrier.await();
       } catch (InterruptedException | BrokenBarrierException e) {
@@ -87,14 +89,18 @@ public class CyclicBarrierDemo {
     public void run() {
       String thisThreadName = Thread.currentThread().getName();
 
-      System.out.println(thisThreadName + ": Computing sum of " + numWorkers
-                         + " workers, having " + numPartialResults
-                         + " results each.");
+      System.out.println(
+          thisThreadName
+              + ": Computing sum of "
+              + numWorkers
+              + " workers, having "
+              + numPartialResults
+              + " results each.");
       int sum = 0;
 
-      for (List<Integer> threadResult: partialResults) {
+      for (List<Integer> threadResult : partialResults) {
         System.out.print("Adding ");
-        for (Integer partialResult: threadResult) {
+        for (Integer partialResult : threadResult) {
           System.out.print(partialResult + " ");
           sum += partialResult;
         }

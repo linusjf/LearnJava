@@ -6,8 +6,7 @@ public enum GCD {
   ;
 
   public static long gcdRecursive(long x, long y) {
-    if (y == 0)
-      return x;
+    if (y == 0) return x;
     return gcdRecursive(y, x % y);
   }
 
@@ -37,22 +36,19 @@ public enum GCD {
       t[0] = u[0] - v[0] * q;
       t[1] = u[1] - v[1] * q;
       t[2] = u[2] - v[2] * q;
-      if (check(x, y, t))
-        return new long[0];
+      if (check(x, y, t)) return new long[0];
 
       // vector equation: u = v;
       u[0] = v[0];
       u[1] = v[1];
       u[2] = v[2];
-      if (check(x, y, u))
-        return new long[0];
+      if (check(x, y, u)) return new long[0];
 
       // vector equation: v = t;
       v[0] = t[0];
       v[1] = t[1];
       v[2] = t[2];
-      if (check(x, y, v))
-        return new long[0];
+      if (check(x, y, v)) return new long[0];
     }
     return u;
   }
@@ -76,7 +72,6 @@ public enum GCD {
 
     long[] u = gcdKnuth(first, second);
     for (long l : u) System.out.println(l);
-    if (u.length > 0)
-      assert u[0] * first + u[1] * second == u[2];
+    if (u.length > 0) assert u[0] * first + u[1] * second == u[2];
   }
 }

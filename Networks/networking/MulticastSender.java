@@ -16,8 +16,7 @@ public final class MulticastSender {
     try {
       return InetAddress.getByName(args[0]);
     } catch (IOException | SecurityException e) {
-      throw new AssertionError(
-          "Invalid host or address specified", e);
+      throw new AssertionError("Invalid host or address specified", e);
     }
   }
 
@@ -25,19 +24,17 @@ public final class MulticastSender {
     try {
       return Integer.parseInt(args[1]);
     } catch (NumberFormatException e) {
-      throw new AssertionError("Invalid number specified",
-                               e);
+      throw new AssertionError("Invalid number specified", e);
     }
   }
 
   private static byte getTTL(String... args) {
     try {
-      if (args.length > (1 + 1))
-        return (byte)Integer.parseInt(args[2]);
+      if (args.length > (1 + 1)) return (byte) Integer.parseInt(args[2]);
     } catch (NumberFormatException e) {
       // empty catch block
     }
-    return (byte)1;
+    return (byte) 1;
   }
 
   @SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
@@ -46,20 +43,20 @@ public final class MulticastSender {
     int port = getPort(args);
     byte ttl = getTTL(args);
 
-    byte[] data = "Here's some multicast data\r\n".getBytes(
-        StandardCharsets.UTF_8);
+    byte[] data = "Here's some multicast data\r\n".getBytes(StandardCharsets.UTF_8);
     try (MulticastSocket ms = new MulticastSocket()) {
       ms.setTimeToLive(ttl);
       ms.joinGroup(ia);
-      DatagramPacket dp =
-          new DatagramPacket(data, data.length, ia, port);
-      IntStream.range(1, 10).forEach(i -> {
-        try {
-          ms.send(dp);
-        } catch (IOException e) {
-          System.err.println(e);
-        }
-      });
+      DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
+      IntStream.range(1, 10)
+          .forEach(
+              i -> {
+                try {
+                  ms.send(dp);
+                } catch (IOException e) {
+                  System.err.println(e);
+                }
+              });
 
       /*for (int i = 1; i < 10; i++)
       ms.send(dp);*/

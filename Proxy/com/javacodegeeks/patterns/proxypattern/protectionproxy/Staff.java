@@ -19,6 +19,5 @@ public interface Staff {
    *
    * @param reportGenerator a <code>ReportGeneratorProxy</code> value
    */
-  void setReportGenerator(
-      ReportGeneratorProxy reportGenerator);
+  void setReportGenerator(ReportGeneratorProxy reportGenerator);
 }

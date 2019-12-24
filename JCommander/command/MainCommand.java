@@ -10,20 +10,17 @@ public class MainCommand {
   @Parameter(description = "Files")
   private List<String> files = new ArrayList<>();
 
-  @Parameter(names = "-debug",
-             description = "Debugging level")
+  @Parameter(names = "-debug", description = "Debugging level")
   private Integer debug = 1;
 
   public static void main(String... argv) {
     MainCommand fc = new MainCommand();
-    JCommander.newBuilder().addObject(fc).build().parse(
-        argv);
+    JCommander.newBuilder().addObject(fc).build().parse(argv);
     fc.run();
   }
 
   public void run() {
     System.out.printf("%d %n", debug);
-    for (String file: files)
-      System.out.println(file);
+    for (String file : files) System.out.println(file);
   }
 }

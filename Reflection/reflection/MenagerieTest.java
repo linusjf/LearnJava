@@ -11,12 +11,9 @@ public final class MenagerieTest {
   }
 
   public static void main(String[] args) {
-    Animal panda1 =
-        new Animal("Tian Tian", "male", "Ailuropoda melanoleuca", 271);
-    Animal panda2 =
-        new Animal("Mei Xiang", "female", "Ailuropoda melanoleuca", 221);
-    Menagerie national =
-        new Menagerie("National Zoological Park", "Washington, D.C.");
+    Animal panda1 = new Animal("Tian Tian", "male", "Ailuropoda melanoleuca", 271);
+    Animal panda2 = new Animal("Mei Xiang", "female", "Ailuropoda melanoleuca", 221);
+    Menagerie national = new Menagerie("National Zoological Park", "Washington, D.C.");
 
     national.add(panda1);
     national.add(panda2);

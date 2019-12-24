@@ -34,8 +34,7 @@ public final class MultiEchoServerNIO {
     try {
       serverSocketChannel = ServerSocketChannel.open();
       serverSocketChannel.configureBlocking(false);
-      ServerSocket serverSocket =
-          serverSocketChannel.socket();
+      ServerSocket serverSocket = serverSocketChannel.socket();
 
       /*
                 ServerSocketChannel created before
@@ -46,8 +45,7 @@ public final class MultiEchoServerNIO {
                 (ServerSocket will have a ServerSocketChannel
                 only if latter is created first.)
       */
-      InetSocketAddress netAddress =
-          new InetSocketAddress(PORT);
+      InetSocketAddress netAddress = new InetSocketAddress(PORT);
 
       // Bind socket to port…
       serverSocket.bind(netAddress);
@@ -58,8 +56,7 @@ public final class MultiEchoServerNIO {
 
       // Register ServerSocketChannel with Selector
       // for receiving incoming connections…
-      serverSocketChannel.register(selector,
-                                   SelectionKey.OP_ACCEPT);
+      serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     } catch (IOException ioEx) {
       System.err.println(ioEx);
       throw new AssertionError(ioEx.getMessage(), ioEx);
@@ -77,15 +74,12 @@ public final class MultiEchoServerNIO {
         if (numKeys > 0) {
           // Extract event(s) that have been
           // triggered …
-          Set<SelectionKey> eventKeys =
-              selector.selectedKeys();
+          Set<SelectionKey> eventKeys = selector.selectedKeys();
 
           // Set up Iterator to cycle though set
           // of events…
-          Set<SelectionKey> copyEventKeys =
-              new HashSet<>(eventKeys);
-          Iterator<SelectionKey> keyCycler =
-              copyEventKeys.iterator();
+          Set<SelectionKey> copyEventKeys = new HashSet<>(eventKeys);
+          Iterator<SelectionKey> keyCycler = copyEventKeys.iterator();
 
           while (keyCycler.hasNext()) {
             SelectionKey key = keyCycler.next();
@@ -93,32 +87,27 @@ public final class MultiEchoServerNIO {
             // Retrieve set of ready ops for
             // this key (as a bit pattern)…
             int keyOps = key.readyOps();
-            if ((keyOps & SelectionKey.OP_ACCEPT)
-                == SelectionKey.OP_ACCEPT) {
+            if ((keyOps & SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT) {
               // New connection.
               acceptConnection(key);
               continue;
             }
-            if ((keyOps & SelectionKey.OP_READ)
-                == SelectionKey.OP_READ) {
+            if ((keyOps & SelectionKey.OP_READ) == SelectionKey.OP_READ) {
               // Data from existing client.
               acceptData(key);
             }
           }
         }
-      } catch (IOException
-               | ConcurrentModificationException ioEx) {
+      } catch (IOException | ConcurrentModificationException ioEx) {
         System.err.println(ioEx);
         throw new AssertionError(ioEx.getMessage(), ioEx);
       }
     }
   }
 
-  private static void acceptConnection(SelectionKey key)
-      throws IOException {
+  private static void acceptConnection(SelectionKey key) throws IOException {
     // Accept incoming connection and add to list.
-    SocketChannel socketChannel =
-        serverSocketChannel.accept();
+    SocketChannel socketChannel = serverSocketChannel.accept();
     socketChannel.configureBlocking(false);
     Socket socket = socketChannel.socket();
     System.out.println("Connection on " + socket + ".");
@@ -131,15 +120,13 @@ public final class MultiEchoServerNIO {
     selector.selectedKeys().remove(key);
   }
 
-  private static void acceptData(SelectionKey key)
-      throws IOException {
+  private static void acceptData(SelectionKey key) throws IOException {
     // Accept data from existing connection.
     ByteBuffer buffer = ByteBuffer.allocate(2048);
 
     // Above used for reading/writing data from/to
     // SocketChannel.
-    SocketChannel socketChannel =
-        (SocketChannel)key.channel();
+    SocketChannel socketChannel = (SocketChannel) key.channel();
     buffer.clear();
     int numBytes = socketChannel.read(buffer);
     System.out.println(numBytes + " bytes read.");
@@ -151,8 +138,7 @@ public final class MultiEchoServerNIO {
       // Request that registration of this key's
       // channel with its selector be cancelled…
       key.cancel();
-      System.out.println("\nClosing socket " + socket
-                         + "…");
+      System.out.println("\nClosing socket " + socket + "…");
       closeSocket(socket);
     } else {
       try {
@@ -162,11 +148,9 @@ public final class MultiEchoServerNIO {
                       writing them to the SocketChannel…
         */
         buffer.flip();
-        while (buffer.remaining() > 0)
-          socketChannel.write(buffer);
+        while (buffer.remaining() > 0) socketChannel.write(buffer);
       } catch (IOException ioEx) {
-        System.out.println("\nClosing socket " + socket
-                           + "…");
+        System.out.println("\nClosing socket " + socket + "…");
         closeSocket(socket);
       }
     }
@@ -178,8 +162,7 @@ public final class MultiEchoServerNIO {
 
   private static void closeSocket(Socket socket) {
     try {
-      if (socket != null)
-        socket.close();
+      if (socket != null) socket.close();
     } catch (IOException ioEx) {
       System.out.println("*** Unable to close socket! ***");
     }

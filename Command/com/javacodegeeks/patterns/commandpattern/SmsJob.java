@@ -12,8 +12,7 @@ public class SmsJob implements Job {
   @Override
   public void run() {
     System.out.println("Job ID: " + Thread.currentThread().getId() + " executing sms jobs.");
-    if (sms != null)
-      sms.sendSms();
+    if (sms != null) sms.sendSms();
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {

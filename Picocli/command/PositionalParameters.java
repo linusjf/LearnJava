@@ -24,17 +24,12 @@ public class PositionalParameters {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
-    PositionalParameters params =
-        CommandLine.populateCommand(
-            new PositionalParameters(), args);
+    PositionalParameters params = CommandLine.populateCommand(new PositionalParameters(), args);
     assert params.host.getHostName().equals("localhost");
     assert params.port == 12_345;
-    assert Arrays.equals(
-        params.files,
-        new File[] {new File("file1.txt"),
-                    new File("file2.txt")});
-    assert params.allParameters.equals(Arrays.asList(
-        "localhost", "12345", "file1.txt", "file2.txt"));
+    assert Arrays.equals(params.files, new File[] {new File("file1.txt"), new File("file2.txt")});
+    assert params.allParameters.equals(
+        Arrays.asList("localhost", "12345", "file1.txt", "file2.txt"));
     System.out.println("Cleared all asserts");
   }
 }

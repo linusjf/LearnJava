@@ -12,19 +12,16 @@ import java.nio.charset.StandardCharsets;
 /** Set user-agent property. ** */
 public final class GoogleSearch {
 
-  private static final String UTF_8 =
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private GoogleSearch() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     String target = "";
-    for (String arg: args)
-      target = target.concat(arg).concat(" ");
+    for (String arg : args) target = target.concat(arg).concat(" ");
     target = target.trim();
     QueryString query = new QueryString();
     query.add("q", target);
@@ -33,8 +30,7 @@ public final class GoogleSearch {
     query.add("ei", "_4oFXY3oOpL39QOSvLCoBw");
     query.add("source", "hp");
     try {
-      URL u =
-          new URL("https://www.google.com/search?" + query);
+      URL u = new URL("https://www.google.com/search?" + query);
       URLConnection connection = u.openConnection();
       read(connection);
     } catch (MalformedURLException ex) {
@@ -47,19 +43,15 @@ public final class GoogleSearch {
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void read(URLConnection connection) throws IOException {
 
-      connection.setRequestProperty(
-          "User-Agent",
-          "Mozilla/5.0 (Linux; Android 7.1.2;"
-              + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
-              + "Mobile Safari/537.36");
-      try (InputStream in = new BufferedInputStream(
-               connection.getInputStream());
-           InputStreamReader theHTML =
-               new InputStreamReader(
-                   in, UTF_8);) {
-        int c;
-        while ((c = theHTML.read()) != -1)
-          System.out.print((char)c);
-      }
+    connection.setRequestProperty(
+        "User-Agent",
+        "Mozilla/5.0 (Linux; Android 7.1.2;"
+            + " Redmi Y1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 "
+            + "Mobile Safari/537.36");
+    try (InputStream in = new BufferedInputStream(connection.getInputStream());
+        InputStreamReader theHTML = new InputStreamReader(in, UTF_8); ) {
+      int c;
+      while ((c = theHTML.read()) != -1) System.out.print((char) c);
+    }
   }
 }

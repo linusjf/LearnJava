@@ -39,8 +39,7 @@ public enum StreamBuilders {
   public static void listStream() {
     List<Integer> list = new ArrayList<>();
 
-    for (int i = 1; i < 10; i++) 
-      list.add(i);
+    for (int i = 1; i < 10; i++) list.add(i);
 
     Stream<Integer> stream = list.stream();
     stream.forEach(System.out::println);
@@ -68,8 +67,7 @@ public enum StreamBuilders {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void filterStream() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) 
-      list.add(i);
+    for (int i = 1; i < 10; i++) list.add(i);
     Stream<Integer> stream = list.stream();
     List<Integer> evenNumbersList = stream.filter(i -> i % 2 == 0).collect(Collectors.toList());
     System.out.println(evenNumbersList);
@@ -78,16 +76,14 @@ public enum StreamBuilders {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void filterStreamToArray() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) 
-      list.add(i);
+    for (int i = 1; i < 10; i++) list.add(i);
     Stream<Integer> stream = list.stream();
 
     // clang-format off
     Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
 
     // clang-format on
-    for (Integer num : evenNumbersArr) 
-      System.out.println(num);
+    for (Integer num : evenNumbersArr) System.out.println(num);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -146,16 +142,14 @@ public enum StreamBuilders {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void parallelStream() {
     List<Integer> list = new ArrayList<>();
-    for (int i = 1; i < 10; i++) 
-      list.add(i);
+    for (int i = 1; i < 10; i++) list.add(i);
 
     // Here creating a parallel stream
     Stream<Integer> stream = list.parallelStream();
 
     // clang-format off
     Integer[] evenNumbersArr = stream.filter(i -> i % 2 == 0).toArray(Integer[]::new);
-    for (Integer num : evenNumbersArr) 
-      System.out.println(num);
+    for (Integer num : evenNumbersArr) System.out.println(num);
     // clang-format on
   }
 }

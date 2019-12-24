@@ -25,15 +25,12 @@ public class MD5Encryptor implements Encrypt {
   @SuppressWarnings("PMD.LawOfDemeter")
   public String encrypt(String text) {
     try {
-      final MessageDigest msgDigest =
-          MessageDigest.getInstance("MD5");
-      msgDigest.update(
-          text.getBytes(StandardCharsets.UTF_8));
+      final MessageDigest msgDigest = MessageDigest.getInstance("MD5");
+      msgDigest.update(text.getBytes(StandardCharsets.UTF_8));
       byte[] textBytes = msgDigest.digest();
       return ENCODER.encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("Algorithm not found : "
-                         + e.getMessage());
+      System.err.println("Algorithm not found : " + e.getMessage());
       throw new AssertionError("Algorithm not found : ", e);
     }
   }

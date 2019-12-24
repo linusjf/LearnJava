@@ -42,7 +42,13 @@ public class User {
 
   @Override
   public String toString() {
-    return "Name: " + userName + ", Level: " + level + ", Access Control Level:"
-        + accessControl.getControlLevel() + ", Access: " + accessControl.getAccess();
+    return "Name: "
+        + userName
+        + ", Level: "
+        + level
+        + ", Access Control Level:"
+        + accessControl.getControlLevel()
+        + ", Access: "
+        + accessControl.getAccess();
   }
 }

@@ -14,11 +14,9 @@ import java.rmi.registry.Registry;
 public class ReportGeneratorClient {
   ReportGenerator stub;
 
-  public ReportGeneratorClient()
-      throws RemoteException, NotBoundException {
+  public ReportGeneratorClient() throws RemoteException, NotBoundException {
     Registry registry = LocateRegistry.getRegistry(null);
-    stub = (ReportGenerator)registry.lookup(
-        "PizzaCoRemoteGenerator");
+    stub = (ReportGenerator) registry.lookup("PizzaCoRemoteGenerator");
   }
 
   /**

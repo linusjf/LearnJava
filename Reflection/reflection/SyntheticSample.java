@@ -19,9 +19,8 @@ public final class SyntheticSample {
     Method[] methods = c.getDeclaredMethods();
 
     // The synthetic method displays the receiver parameter.
-    for (Method method: methods)
-      System.out.println("method: " + method
-                         + " method.isSynthetic: " + method.isSynthetic());
+    for (Method method : methods)
+      System.out.println("method: " + method + " method.isSynthetic: " + method.isSynthetic());
   }
 
   @SuppressWarnings("PMD.FinalFieldCouldBeStatic")

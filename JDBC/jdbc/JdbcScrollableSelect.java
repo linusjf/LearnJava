@@ -17,8 +17,7 @@ public final class JdbcScrollableSelect {
 
   private static void connect() {
     try {
-      connection = DriverManager.getConnection(
-          "jdbc:derby:Finances", "", "");
+      connection = DriverManager.getConnection("jdbc:derby:Finances", "", "");
     } catch (SQLException sqlEx) {
       System.err.println("* Cannot connect to database! *");
       System.err.println(sqlEx);
@@ -33,8 +32,7 @@ public final class JdbcScrollableSelect {
           connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
       // clang-format on
-      results =
-          statement.executeQuery("SELECT * FROM Accounts");
+      results = statement.executeQuery("SELECT * FROM Accounts");
     } catch (SQLException sqlEx) {
       System.out.println("* Cannot execute query! *");
       System.err.println(sqlEx);
@@ -92,10 +90,7 @@ public final class JdbcScrollableSelect {
   public static void showRow() throws SQLException {
     System.out.println();
     System.out.println("Account no. " + results.getInt(1));
-    System.out.println("Account holder: "
-                       + results.getString(3) + " "
-                       + results.getString(2));
-    System.out.printf("Balance: %.2f %n%n",
-                      results.getFloat(4));
+    System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
+    System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
   }
 }

@@ -11,8 +11,7 @@ public enum PeriodicExecutor {
 
   private static void printAndDelay(ScheduledFuture<?> result) {
     for (int i = 0; i < 10; i++) {
-      System.out.printf("Main: Delay: %d%n",
-                        result.getDelay(TimeUnit.MILLISECONDS));
+      System.out.printf("Main: Delay: %d%n", result.getDelay(TimeUnit.MILLISECONDS));
       try {
         TimeUnit.MILLISECONDS.sleep(500);
       } catch (InterruptedException e) {

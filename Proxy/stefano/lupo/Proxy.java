@@ -72,7 +72,7 @@ public class Proxy implements Runnable {
 
   /** Semaphore for Proxy and Consolee Management System. */
   @SuppressWarnings("checkstyle:IllegalToken")
-  private volatile boolean running = true;  // NOPMD
+  private volatile boolean running = true; // NOPMD
 
   static {
     // Load in hash map containing previously cached sites and blocked Sites
@@ -98,22 +98,14 @@ public class Proxy implements Runnable {
       // Set the timeout
       // serverSocket.setSoTimeout(100000);
       // debug
-      System.out.println("Waiting for client on port "
-                         + serverSocket.getLocalPort()
-                         + "..");
+      System.out.println("Waiting for client on port " + serverSocket.getLocalPort() + "..");
       running = true;
     } catch (SocketException se) {
-      System.out.println(
-          "Socket Exception when connecting to client "
-          + se.getMessage());
+      System.out.println("Socket Exception when connecting to client " + se.getMessage());
     } catch (SocketTimeoutException ste) {
-      System.out.println(
-          "Timeout occured while connecting to client "
-          + ste.getMessage());
+      System.out.println("Timeout occured while connecting to client " + ste.getMessage());
     } catch (IOException io) {
-      System.out.println(
-          "IO exception when connecting to client "
-          + io.getMessage());
+      System.out.println("IO exception when connecting to client " + io.getMessage());
     }
   }
 
@@ -129,49 +121,33 @@ public class Proxy implements Runnable {
       File cachedSites = new File("cachedSites.txt");
       if (!cachedSites.createNewFile()) {
         try (InputStream fileInputStream =
-                 Files.newInputStream(Paths.get(
-                     cachedSites.getAbsolutePath()));
-             ObjectInputStream objectInputStream =
-                 new ObjectInputStream(fileInputStream)) {
-          cache = (HashMap<String, File>)
-                      objectInputStream.readObject();
+                Files.newInputStream(Paths.get(cachedSites.getAbsolutePath()));
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+          cache = (HashMap<String, File>) objectInputStream.readObject();
         } catch (IOException ioe) {
-          System.err.println(
-              "Error loading previously cached sites file :"
-              + ioe.getMessage());
+          System.err.println("Error loading previously cached sites file :" + ioe.getMessage());
         }
       }
 
       // Load in blocked sites from file
-      File blockedSitesTxtFile =
-          new File("blockedSites.txt");
+      File blockedSitesTxtFile = new File("blockedSites.txt");
       if (!blockedSitesTxtFile.createNewFile()) {
-        try (
-            InputStream fileInputStream =
-                Files.newInputStream(Paths.get(
-                    blockedSitesTxtFile.getAbsolutePath()));
-            ObjectInputStream objectInputStream =
-                new ObjectInputStream(fileInputStream);) {
-          blockedSites = (HashMap<String, String>)
-                             objectInputStream.readObject();
+        try (InputStream fileInputStream =
+                Files.newInputStream(Paths.get(blockedSitesTxtFile.getAbsolutePath()));
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream); ) {
+          blockedSites = (HashMap<String, String>) objectInputStream.readObject();
         } catch (IOException e) {
-          System.err.println(
-              "Error loading previously cached sites file :"
-              + e.getMessage());
+          System.err.println("Error loading previously cached sites file :" + e.getMessage());
         } catch (ClassNotFoundException e) {
           System.out.println(
-              "Class not found loading in previously cached sites file : "
-              + e.getMessage());
+              "Class not found loading in previously cached sites file : " + e.getMessage());
         }
       }
     } catch (IOException e) {
-      System.err.println(
-          "Error loading previously cached sites file :"
-          + e.getMessage());
+      System.err.println("Error loading previously cached sites file :" + e.getMessage());
     } catch (ClassNotFoundException e) {
       System.out.println(
-          "Class not found loading in previously cached sites file : "
-          + e.getMessage());
+          "Class not found loading in previously cached sites file : " + e.getMessage());
     }
   }
 
@@ -203,16 +179,14 @@ public class Proxy implements Runnable {
       } catch (SocketException e) {
         // Socket exception is triggered by management system to shut down the
         // proxy
-        System.out.println("Socket error : "
-                           + e.getMessage());
+        System.out.println("Socket error : " + e.getMessage());
       } catch (IOException e) {
         System.out.println("IO error : " + e.getMessage());
       }
     }
   }
 
-  private void spinOffRequest(Socket socket)
-      throws SocketException {
+  private void spinOffRequest(Socket socket) throws SocketException {
     socket.setSoTimeout(60 * 1000);
     // Create new Thread and pass it Runnable RequestHandler
     Thread thread = new Thread(new RequestHandler(socket));
@@ -231,28 +205,21 @@ public class Proxy implements Runnable {
     try {
       System.out.println("\nClosing Server..");
       running = false;
-      try (OutputStream fileOutputStream =
-               Files.newOutputStream(
-                   Paths.get("cachedSites.txt"));
-           ObjectOutputStream objectOutputStream =
-               new ObjectOutputStream(fileOutputStream);) {
+      try (OutputStream fileOutputStream = Files.newOutputStream(Paths.get("cachedSites.txt"));
+          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream); ) {
         objectOutputStream.writeObject(cache);
         System.out.println("Cached Sites written");
       }
-      try (OutputStream fileOutputStream2 =
-               Files.newOutputStream(
-                   Paths.get("blockedSites.txt"));
-           ObjectOutputStream objectOutputStream2 =
-               new ObjectOutputStream(fileOutputStream2);) {
+      try (OutputStream fileOutputStream2 = Files.newOutputStream(Paths.get("blockedSites.txt"));
+          ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(fileOutputStream2); ) {
         objectOutputStream2.writeObject(blockedSites);
         System.out.println("Blocked Site list saved");
       }
       try {
         // Close all servicing threads
-        for (Thread thread: servicingThreads) {
+        for (Thread thread : servicingThreads) {
           if (thread.isAlive()) {
-            System.out.print("Waiting on " + thread.getId()
-                             + " to close..");
+            System.out.print("Waiting on " + thread.getId() + " to close..");
             thread.join();
             System.out.println(" closed");
           }
@@ -261,8 +228,7 @@ public class Proxy implements Runnable {
         System.err.println(e.getMessage());
       }
     } catch (IOException e) {
-      System.out.println("Error saving cache/blocked sites "
-                         + e.getMessage());
+      System.out.println("Error saving cache/blocked sites " + e.getMessage());
     }
 
     // Close Server Socket
@@ -270,9 +236,7 @@ public class Proxy implements Runnable {
       System.out.println("Terminating Connection");
       serverSocket.close();
     } catch (IOException e) {
-      System.out.println(
-          "Exception closing proxy's server socket "
-          + e.getMessage());
+      System.out.println("Exception closing proxy's server socket " + e.getMessage());
     }
   }
 
@@ -292,8 +256,7 @@ public class Proxy implements Runnable {
    * @param urlString URL of webpage to cache
    * @param fileToCache File Object pointing to File put in cache
    */
-  public static void addCachedPage(String urlString,
-                                   File fileToCache) {
+  public static void addCachedPage(String urlString, File fileToCache) {
     cache.put(urlString, fileToCache);
   }
 
@@ -317,9 +280,9 @@ public class Proxy implements Runnable {
     Scanner scanner = new Scanner(System.in, UTF_8);
     System.out.println(
         "Enter new site to block, or type "
-        + "\"blocked\" to see blocked sites, "
-        + "\"cached\" to see cached sites, or "
-        + "\"close\" to close server.");
+            + "\"blocked\" to see blocked sites, "
+            + "\"cached\" to see cached sites, or "
+            + "\"close\" to close server.");
     handleCommands(scanner);
     scanner.close();
   }
@@ -328,26 +291,20 @@ public class Proxy implements Runnable {
     while (running) {
       if (scanner.hasNext()) {
         command = scanner.nextLine();
-        if ("blocked".equals(
-                command.toLowerCase(Locale.getDefault()))) {
+        if ("blocked".equals(command.toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Blocked Sites");
-          for (String key: blockedSites.keySet())
-            System.out.println(key);
+          for (String key : blockedSites.keySet()) System.out.println(key);
           System.out.println();
-        } else if ("cached".equals(command.toLowerCase(
-                       Locale.getDefault()))) {
+        } else if ("cached".equals(command.toLowerCase(Locale.getDefault()))) {
           System.out.println("\nCurrently Cached Sites");
-          for (String key: cache.keySet())
-            System.out.println(key);
+          for (String key : cache.keySet()) System.out.println(key);
           System.out.println();
-        } else if ("close".equals(command.toLowerCase(
-                       Locale.getDefault()))) {
+        } else if ("close".equals(command.toLowerCase(Locale.getDefault()))) {
           running = false;
           closeServer();
         } else {
           blockedSites.put(command, command);
-          System.out.println("\n" + command
-                             + " blocked successfully \n");
+          System.out.println("\n" + command + " blocked successfully \n");
         }
       }
     }

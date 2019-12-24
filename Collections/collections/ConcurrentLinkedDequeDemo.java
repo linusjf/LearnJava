@@ -91,13 +91,11 @@ public enum ConcurrentLinkedDequeDemo {
       this.list = list;
     }
 
-    @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-    "PMD.LawOfDemeter"})
+    @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
     @Override
     public void run() {
       String str = Thread.currentThread().getName() + " Element : %d";
-      for (int i = 0; i < 10_000; i++) 
-        list.add(String.format(str, i));
+      for (int i = 0; i < 10_000; i++) list.add(String.format(str, i));
     }
   }
 

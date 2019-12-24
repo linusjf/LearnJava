@@ -11,8 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MemoryCache extends ResponseCache {
-  private final Map<URI, SimpleCacheResponse> responses =
-      new ConcurrentHashMap<>();
+  private final Map<URI, SimpleCacheResponse> responses = new ConcurrentHashMap<>();
   private final int maxEntries;
 
   public MemoryCache() {
@@ -24,38 +23,31 @@ public class MemoryCache extends ResponseCache {
     this.maxEntries = maxEntries;
   }
 
-  @SuppressWarnings("checkstyle:returncount")
+  @SuppressWarnings({"checkstyle:returncount",
+  "PMD.LawOfDemeter"})
   @Override
-  public CacheRequest put(URI uri, URLConnection conn)
-      throws IOException {
-    if (responses.size() >= maxEntries)
-      return null;
-    CacheControl control = new CacheControl(
-        conn.getHeaderField("Cache-Control"));
-    if (control.isNoStore())
-      return null;
+  public CacheRequest put(URI uri, URLConnection conn) throws IOException {
+    if (responses.size() >= maxEntries) return null;
+    CacheControl control = new CacheControl(conn.getHeaderField("Cache-Control"));
+    if (control.isNoStore()) return null;
     else if (!conn.getHeaderField(0).startsWith("GET ")) {
       // only cache GET
       return null;
     }
     SimpleCacheRequest request = new SimpleCacheRequest();
-    SimpleCacheResponse response =
-        new SimpleCacheResponse(request, conn, control);
+    SimpleCacheResponse response = new SimpleCacheResponse(request, conn, control);
     responses.put(uri, response);
     return request;
   }
 
   @Override
-  public CacheResponse get(
-      URI uri,
-      String requestMethod,
-      Map<String, List<String>> requestHeaders)
+  public CacheResponse get(URI uri, String requestMethod, Map<String, List<String>> requestHeaders)
       throws IOException {
     if ("GET".equals(requestMethod)) {
       SimpleCacheResponse response = responses.get(uri);
 
       // check expiration date
-      if (response != null && response.isExpired()) {
+      if (isResponseExpired(response)) {
         responses.remove(uri);
         return null;
       }
@@ -63,4 +55,9 @@ public class MemoryCache extends ResponseCache {
     }
     return null;
   }
+
+  private boolean isResponseExpired(SimpleCacheResponse response) {
+      return response != null && response.isExpired();
+  }
+
 }

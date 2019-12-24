@@ -20,8 +20,7 @@ public class PasswordDemo implements Runnable {
   @Option(names = "--password", interactive = true)
   String password;
 
-  @Spec
-  CommandSpec spec;
+  @Spec CommandSpec spec;
 
   @SuppressWarnings("checkstyle:returncount")
   @Override
@@ -36,13 +35,10 @@ public class PasswordDemo implements Runnable {
         return;
       }
       if (passwordFile != null) {
-        login(new String(
-            Files.readAllBytes(passwordFile.toPath()),
-            StandardCharsets.UTF_8));
+        login(new String(Files.readAllBytes(passwordFile.toPath()), StandardCharsets.UTF_8));
         return;
       }
-      throw new ParameterException(spec.commandLine(),
-                                   "Password required");
+      throw new ParameterException(spec.commandLine(), "Password required");
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }

@@ -26,25 +26,20 @@ public final class SocketClientDemo {
   public static void main(String... args) {
     try {
       int port = getPort(args);
-      SSLSocketFactory ssf =
-          (SSLSocketFactory)SSLSocketFactory.getDefault();
-      SSLSocket s =
-          (SSLSocket)ssf.createSocket("localhost", port);
-      s.setEnabledCipherSuites(new String[] {
-          "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
+      SSLSocketFactory ssf = (SSLSocketFactory) SSLSocketFactory.getDefault();
+      SSLSocket s = (SSLSocket) ssf.createSocket("localhost", port);
+      s.setEnabledCipherSuites(new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
       s.setEnabledProtocols(new String[] {"TLSv1.2"});
 
       // SSLParameters sslParams = new SSLParameters();
       // sslParams.setEndpointIdentificationAlgorithm("HTTPS");
       // s.setSSLParameters(sslParams);
       BufferedReader input =
-          new BufferedReader(new InputStreamReader(
-              s.getInputStream(),
-              StandardCharsets.UTF_8.name()));
+          new BufferedReader(
+              new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8.name()));
       System.out.println(input.readLine());
     } catch (IOException ioe) {
-      System.err.println("IO exception: "
-                         + ioe.getMessage());
+      System.err.println("IO exception: " + ioe.getMessage());
     }
   }
 }

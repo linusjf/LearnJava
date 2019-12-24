@@ -13,10 +13,8 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class ReportGeneratorImpl
-    extends UnicastRemoteObject implements ReportGenerator {
-  private static final long serialVersionUID =
-      3107413009881629428L;
+public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGenerator {
+  private static final long serialVersionUID = 3107413009881629428L;
 
   private static Registry registry;
 
@@ -38,11 +36,9 @@ public class ReportGeneratorImpl
   }
 
   @Override
-  public String generateDailyReport()
-      throws RemoteException {
+  public String generateDailyReport() throws RemoteException {
     StringBuilder sb = new StringBuilder(250);
-    sb.append(
-          "********************Location X Daily Report********************")
+    sb.append("********************Location X Daily Report********************")
         .append(System.lineSeparator())
         .append(" Location ID: 012")
         .append(System.lineSeparator())
@@ -55,13 +51,11 @@ public class ReportGeneratorImpl
         .append(System.lineSeparator())
         .append(" Net Profit: $1985")
         .append(System.lineSeparator())
-        .append(
-            "***************************************************************");
+        .append("***************************************************************");
     return sb.toString();
   }
 
-  private static Registry getRegistry()
-      throws RemoteException {
+  private static Registry getRegistry() throws RemoteException {
     return LocateRegistry.getRegistry();
   }
 
@@ -72,13 +66,10 @@ public class ReportGeneratorImpl
    */
   public static void main(String[] args) {
     try {
-      ReportGeneratorImpl reportGenerator =
-          new ReportGeneratorImpl();
+      ReportGeneratorImpl reportGenerator = new ReportGeneratorImpl();
       // Bind the remote object's stub in the registry
-      if (registry == null)
-        getRegistry();
-      registry.bind("PizzaCoRemoteGenerator",
-                    reportGenerator);
+      if (registry == null) getRegistry();
+      registry.bind("PizzaCoRemoteGenerator", reportGenerator);
     } catch (RemoteException | AlreadyBoundException e) {
       System.out.println(e.getMessage());
     }

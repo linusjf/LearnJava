@@ -5,8 +5,7 @@ public enum Mod {
   ;
   private static final int MODULUS = 3;
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     int[] histogram = new int[MODULUS];
 
@@ -16,8 +15,7 @@ public enum Mod {
       do {
         histogram[Math.abs(i) % MODULUS]++;
       } while (i++ != Integer.MAX_VALUE);
-      for (int j = 0; j < MODULUS; j++)
-        System.out.print(histogram[j] + " ");
+      for (int j = 0; j < MODULUS; j++) System.out.print(histogram[j] + " ");
     } catch (ArrayIndexOutOfBoundsException e) {
       System.err.println(e);
     }
@@ -29,8 +27,7 @@ public enum Mod {
     return result < 0 ? result + modulus : result;
   }
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void altMain(String... args) {
     int[] histogram = new int[MODULUS];
 
@@ -39,7 +36,6 @@ public enum Mod {
     do {
       histogram[mod(i, MODULUS)]++;
     } while (i++ != Integer.MAX_VALUE);
-    for (int j = 0; j < MODULUS; j++)
-      System.out.print(histogram[j] + " ");
+    for (int j = 0; j < MODULUS; j++) System.out.print(histogram[j] + " ");
   }
 }

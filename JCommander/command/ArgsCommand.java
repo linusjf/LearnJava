@@ -22,10 +22,7 @@ public enum ArgsCommand {
   public static void main(String... args) {
     ArgsMaster m = new ArgsMaster();
     ArgsSlave s = new ArgsSlave();
-    JCommander.newBuilder()
-        .addObject(new Object[] {m, s})
-        .build()
-        .parse(args);
+    JCommander.newBuilder().addObject(new Object[] {m, s}).build().parse(args);
 
     Assert.assertEquals(m.master, "master");
     Assert.assertEquals(s.slave, "slave");

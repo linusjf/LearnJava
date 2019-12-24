@@ -16,8 +16,7 @@ public final class MultithreadedDaytimeServer {
       while (true) {
         try {
           Socket connection = server.accept();
-          Thread task =
-              new Thread(new DaytimeTask(connection));
+          Thread task = new Thread(new DaytimeTask(connection));
           task.start();
         } catch (IOException ex) {
           System.err.println(ex.getMessage());

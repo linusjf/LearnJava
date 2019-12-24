@@ -60,14 +60,14 @@ public final class ThreadPool {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void runTopJob() throws InterruptedException {
-      Stream
-          .generate(() -> {
-            try {
-              return jobQueue.take();
-            } catch (InterruptedException ie) {
-              return null;
-            }
-          })
+      Stream.generate(
+              () -> {
+                try {
+                  return jobQueue.take();
+                } catch (InterruptedException ie) {
+                  return null;
+                }
+              })
           .findFirst()
           .get()
           .run();

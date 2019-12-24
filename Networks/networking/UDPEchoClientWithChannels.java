@@ -26,8 +26,7 @@ public enum UDPEchoClientWithChannels {
   public static void main(String[] args) {
     String host = args.length > 0 ? args[0] : "localhost";
     int port = args.length > 1 ? readPort(args[1]) : PORT;
-    SocketAddress remote =
-        new InetSocketAddress(host, port);
+    SocketAddress remote = new InetSocketAddress(host, port);
     echoToServer(remote);
   }
 
@@ -36,9 +35,7 @@ public enum UDPEchoClientWithChannels {
       channel.configureBlocking(false);
       channel.connect(remote);
       Selector selector = Selector.open();
-      channel.register(
-          selector,
-          SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+      channel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
       ByteBuffer buffer = ByteBuffer.allocate(4);
       echoToServer(buffer, selector, channel);
     } catch (IOException ex) {
@@ -47,9 +44,7 @@ public enum UDPEchoClientWithChannels {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void echoToServer(ByteBuffer buffer,
-                                   Selector selector,
-                                   DatagramChannel channel)
+  private static void echoToServer(ByteBuffer buffer, Selector selector, DatagramChannel channel)
       throws IOException {
     int n = 0;
     int numbersRead = 0;
@@ -60,11 +55,9 @@ public enum UDPEchoClientWithChannels {
 
       // All packets have been written and it doesn't look like any
       // more are will arrive from the network
-      if (readyKeys.isEmpty() && n == LIMIT)
-        break;
+      if (readyKeys.isEmpty() && n == LIMIT) break;
       else {
-        Iterator<SelectionKey> iterator =
-            readyKeys.iterator();
+        Iterator<SelectionKey> iterator = readyKeys.iterator();
         while (iterator.hasNext()) {
           SelectionKey key = iterator.next();
           iterator.remove();
@@ -91,9 +84,7 @@ public enum UDPEchoClientWithChannels {
         }
       }
     }
-    System.out.println("Echoed " + numbersRead + " out of "
-                       + LIMIT + " sent");
-    System.out.println("Success rate: "
-                       + 100.0 * numbersRead / LIMIT + "%");
+    System.out.println("Echoed " + numbersRead + " out of " + LIMIT + " sent");
+    System.out.println("Success rate: " + 100.0 * numbersRead / LIMIT + "%");
   }
 }
