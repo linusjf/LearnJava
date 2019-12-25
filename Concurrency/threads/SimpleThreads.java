@@ -34,11 +34,13 @@ public enum SimpleThreads {
   ;
   // Display a message, preceded by
   // the name of the current thread
+  @SuppressWarnings("PMD.LawOfDemeter")
   static void threadMessage(String message) {
     String threadName = Thread.currentThread().getName();
     System.out.format("%s: %s%n", threadName, message);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static long getPatience(String... args) {
     if (args.length > 0) {
       try {

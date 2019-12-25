@@ -13,6 +13,7 @@ public enum ThreadLocalOne {
 
   private static ThreadLocal<List<Integer>> threadLocal = new ThreadLocal<>();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     System.out.println("Free memory: " + Runtime.getRuntime().freeMemory() / (1024 * 1024) + " MB");
     ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);

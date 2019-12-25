@@ -11,6 +11,7 @@ public class ParallelAdder {
   private static final int NUM_COUNT = 100;
   private static final int NUM_THREADS = 10;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Integer parallelSum() {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     List<Future<Integer>> list = new ArrayList<>();

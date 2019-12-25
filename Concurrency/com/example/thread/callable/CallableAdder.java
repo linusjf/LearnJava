@@ -12,6 +12,7 @@ public class CallableAdder implements Callable<Integer> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Integer call() throws Exception {
     System.out.println(Thread.currentThread().getName() + " says : partial Sum for " + operand1
         + " and " + operand2 + " is " + (operand1 + operand2));

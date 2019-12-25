@@ -26,6 +26,7 @@ public enum HelperClass {
 
   public static class WakingThread extends Thread {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       synchronized (OBJ) {
         try {
