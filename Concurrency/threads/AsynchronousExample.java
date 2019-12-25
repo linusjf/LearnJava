@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public enum AsynchronousExample {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ForkJoinPool pool = new ForkJoinPool();
     FolderProcessor system =
@@ -89,7 +90,8 @@ public enum AsynchronousExample {
     }
 
     private void addResultsFromTasks(List<String> list, List<FolderProcessor> tasks) {
-      for (FolderProcessor item : tasks) list.addAll(item.join());
+      for (FolderProcessor item : tasks) 
+        list.addAll(item.join());
     }
 
     private boolean checkFile(String name) {
