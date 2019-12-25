@@ -43,6 +43,7 @@ public class ImageProcessor {
                                         .followRedirects(HttpClient.Redirect.NEVER)
                                         .build();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public <T> CompletableFuture<T> getAsync(
       String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
     HttpRequest request =
@@ -54,6 +55,7 @@ public class ImageProcessor {
           .thenApplyAsync(HttpResponse::body, executor2);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date, ImageInfo info) {
     return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString())
         .thenApply(info::findImage);
@@ -64,11 +66,13 @@ public class ImageProcessor {
     System.out.println("Executor 2: " + executor2);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
     return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray())
         .thenApply(info::setImageData);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void load(LocalDate date, ImageInfo info) {
     findImageInfo(date, info)
         .thenCompose(this::findImageData)
@@ -99,6 +103,7 @@ public class ImageProcessor {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void loadAll() {
     long time = System.nanoTime();
     try {
@@ -125,6 +130,7 @@ public class ImageProcessor {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void process(ImageInfo info) {
     latch.countDown();
     if (PRINT_MESSAGE) {
