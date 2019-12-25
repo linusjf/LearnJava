@@ -11,20 +11,20 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public final class SourceViewer4 {
+
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
   private SourceViewer4() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       URL u = new URL(args[0]);
       HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-      try (InputStream raw = uc.getInputStream()) {
-        printFromStream(raw);
-      } catch (IOException ex) {
-        System.err.println(uc.getURL());
-        printFromStream(uc.getErrorStream());
-      }
+      printFromConnection(uc);
     } catch (MalformedURLException ex) {
       System.err.println(args[0] + " is not a parseable URL");
     } catch (IOException ex) {
@@ -32,12 +32,22 @@ public final class SourceViewer4 {
     }
   }
 
+  private static void printFromConnection(HttpURLConnection uc) throws IOException {
+      try (InputStream raw = uc.getInputStream()) {
+        printFromStream(raw);
+      } catch (IOException ex) {
+        System.err.println(uc.getURL());
+        printFromStream(uc.getErrorStream());
+      }
+  }
+
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void printFromStream(InputStream raw) throws IOException {
     try (InputStream buffer = new BufferedInputStream(raw);
-        Reader reader = new InputStreamReader(buffer, StandardCharsets.UTF_8.name()); ) {
+        Reader reader = new InputStreamReader(buffer, UTF_8); ) {
       int c;
-      while ((c = reader.read()) != -1) System.out.print((char) c);
+      while ((c = reader.read()) != -1) 
+        System.out.print((char) c);
     }
   }
 }

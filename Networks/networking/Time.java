@@ -15,7 +15,7 @@ public final class Time {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("fallthrough")
+  @SuppressWarnings({"fallthrough","PMD.LawOfDemeter"})
   public static void main(String[] args) {
     try {
       Date d;
@@ -45,13 +45,17 @@ public final class Time {
     // the Java Date class at 1970. This number
     // converts between them.
     // long differenceBetweenEpochs = 2208988800L;
-    Socket socket = new Socket(host, port);
+  try (
+    Socket socket = new Socket(host, port);) {
     socket.setSoTimeout(15_000);
-
-    InputStream raw = socket.getInputStream();
+    try (
+    InputStream raw = socket.getInputStream();) {
     return new Date(getMillisSince1970(raw));
+    }
+    }
   }
 
+  @SuppressWarnings({"fallthrough","PMD.LawOfDemeter"})
   private static long getMillisSince1970(InputStream raw) throws IOException {
     TimeZone gmt = TimeZone.getTimeZone("GMT");
     Calendar epoch1900 = Calendar.getInstance(gmt);

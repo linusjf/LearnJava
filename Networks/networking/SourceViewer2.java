@@ -16,7 +16,8 @@ public enum SourceViewer2 {
   private static final String UTF_8 =
     StandardCharsets.UTF_8.name();
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     if (args.length > 0) {
       try {
