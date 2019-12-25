@@ -8,6 +8,7 @@ public final class CallbackDigestUserInterface {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void receiveDigest(byte[] digest, String name) {
     StringBuilder result = new StringBuilder(name);
     result.append(": ").append(Base64.getEncoder().encodeToString(digest));
@@ -15,9 +16,8 @@ public final class CallbackDigestUserInterface {
   }
 
   public static void main(String[] args) {
-    for (String filename : args) {
+    for (String filename : args) 
       spinOffCallback(filename);
-    }
   }
 
   private static void spinOffCallback(String filename) {

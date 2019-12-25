@@ -11,6 +11,7 @@ public class AtomicAssignment implements Runnable {
       new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS", Locale.getDefault());
   private static Map<String, String> configuration = new HashMap<>();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
     for (int i = 0; i < 10_000; i++) {
@@ -40,7 +41,8 @@ public class AtomicAssignment implements Runnable {
     configuration = newConfig;
   }
 
-  @SuppressWarnings("PMD.UnnecessaryFullyQualifiedName")
+  @SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     readConfig();
     Thread configThread = new Thread(new Runnable() {
@@ -63,9 +65,8 @@ public class AtomicAssignment implements Runnable {
       threads[i].start();
     }
     try {
-      for (Thread thread : threads) {
+      for (Thread thread : threads) 
         thread.join();
-      }
       configThread.join();
     } catch (InterruptedException ex) {
       System.err.println(ex);

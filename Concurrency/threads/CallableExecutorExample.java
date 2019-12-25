@@ -14,6 +14,7 @@ public enum CallableExecutorExample {
   ;
   private static Random random = new Random();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
     List<Future<Integer>> resultList = new ArrayList<>();
@@ -56,6 +57,7 @@ public enum CallableExecutorExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public Integer call() throws Exception {
       int result = 1;
       if (number > 1) {
