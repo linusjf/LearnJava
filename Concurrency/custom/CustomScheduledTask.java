@@ -21,6 +21,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
     this.executor = executor;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       CustomScheduledThreadPoolExecutor executor = new CustomScheduledThreadPoolExecutor(2);
@@ -76,6 +77,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     if (isPeriodic() && !executor.isShutdown()) {
       Date now = new Date();
@@ -105,6 +107,7 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
 
     // clang-format off
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public ScheduledFuture<?> scheduleAtFixedRate(
         Runnable command, long initialDelay, long period, TimeUnit unit) { // clang-format on
       ScheduledFuture<?> task = super.scheduleAtFixedRate(command, initialDelay, period, unit);
@@ -114,7 +117,8 @@ public class CustomScheduledTask<V> extends FutureTask<V> implements RunnableSch
     }
   }
 
-  @SuppressWarnings("PMD.ShortClassName")
+  @SuppressWarnings({"PMD.ShortClassName",
+  "PMD.LawOfDemeter"})
   static class Task implements Runnable {
     @Override
     public void run() {

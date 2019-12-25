@@ -18,6 +18,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public int hashCode() {
     return Integer.valueOf(priority).hashCode();
   }
@@ -41,6 +42,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     System.out.printf("CustomTask: %s Priority : %d%n", name, priority);
     try {
@@ -50,6 +52,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ThreadPoolExecutor executor =
         new ThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());

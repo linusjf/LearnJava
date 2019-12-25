@@ -15,6 +15,7 @@ public class AddressUsingCopyOnWrite {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String toString() {
     AddressValue local = addressValue;
     return "street=" + local.getStreet() + ",city=" + local.getCity()

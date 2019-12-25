@@ -22,7 +22,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
     startTimes = new ConcurrentHashMap<>();
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     CustomExecutor myExecutor =
         new CustomExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
@@ -42,6 +43,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void shutdown() {
     System.out.printf("CustomExecutor: Going to shutdown.%n");
     System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
@@ -51,6 +53,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public List<Runnable> shutdownNow() {
     System.out.printf("CustomExecutor: Going to immediately shutdown.%n");
     System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
@@ -66,6 +69,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   protected void afterExecute(Runnable r, Throwable t) {
     Future<?> result = (Future<?>) r;
     try {
@@ -82,6 +86,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   static class SleepTwoSecondsTask implements Callable<String> {
     @Override
     public String call() throws Exception {

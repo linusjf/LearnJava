@@ -31,6 +31,7 @@ public class ConcurrencyTestReadWrite {
   }
 
   @Test
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void test() throws InterruptedException {
     // clang-format off
     Thread first =
