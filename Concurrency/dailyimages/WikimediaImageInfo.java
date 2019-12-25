@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 class WikimediaImageInfo extends ImageInfo {
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public WikimediaImageInfo findImage(String body) {
     Pattern pattern = Pattern.compile("<img\\s+alt=\"[^\"]+\"\\s+src=\"(?<src>[^\\\"]+)\"");
     Matcher matcher = pattern.matcher(body);
@@ -17,6 +18,7 @@ class WikimediaImageInfo extends ImageInfo {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String getUrlForDate(LocalDate date) {
     return "https://commons.wikimedia.org/wiki/Special:FeedItem/potd/"
         + DateTimeFormatter.BASIC_ISO_DATE.format(date) + "000000/en";

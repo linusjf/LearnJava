@@ -31,6 +31,7 @@ public class CustomThreadFactory implements ThreadFactory {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void alternateMain() throws InterruptedException, ExecutionException {
     CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
@@ -88,6 +89,7 @@ public class CustomThreadFactory implements ThreadFactory {
 
   static class CustomTask implements Runnable {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       try {
         TimeUnit.SECONDS.sleep(2);

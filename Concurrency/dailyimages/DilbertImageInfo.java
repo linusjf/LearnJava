@@ -10,7 +10,7 @@ class DilbertImageInfo extends ImageInfo {
     return this;
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   private static String findProperty(String body, String filter) {
     String search = "meta name=\"twitter:" + filter + "\" content=\"";
     return body.lines()
@@ -22,6 +22,7 @@ class DilbertImageInfo extends ImageInfo {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String getUrlForDate(LocalDate date) {
     return "https://dilbert.com/strip/" + DateTimeFormatter.ISO_DATE.format(date);
   }
