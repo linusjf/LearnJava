@@ -26,6 +26,7 @@ public enum ReentrantLockExample {
   static class PrintQueue {
     private final Lock queueLock = new ReentrantLock(new Random().nextBoolean());
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void printJob(Object document) {
       queueLock.lock();
       try {
@@ -65,6 +66,7 @@ public enum ReentrantLockExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf("%s: Going to print a document%n", Thread.currentThread().getName());
       printQueue.printJob(new Object());

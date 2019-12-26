@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public enum RejectedExecutor {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     RejectedTaskController controller = new RejectedTaskController();
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
@@ -45,6 +46,7 @@ public enum RejectedExecutor {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.println("Task " + name + ": Starting");
       try {

@@ -14,6 +14,7 @@ public enum ForkJoinResultDemo {
   private static final int MIN_LINES = 10;
   private static final int MIN_WORDS = 100;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     DocumentMock mock = new DocumentMock();
     String[][] document = mock.generateDocument(100, 1000, WORD);
@@ -61,7 +62,7 @@ public enum ForkJoinResultDemo {
         "main",
     };
 
-    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis"})
+    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
     public String[][] generateDocument(int numLines, int numWords, String word) {
       int counter = 0;
       String[][] document = new String[numLines][numWords];
@@ -178,7 +179,7 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
-    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis"})
+    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
     private Integer count(String[] line, int start, int end, String word) {
       int counter = 0;
       for (int i = start; i < end; i++) {
