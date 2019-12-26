@@ -106,6 +106,7 @@ public class ForkBlur extends RecursiveAction {
   }
 
   // Plumbing follows.
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       String srcName = "Red_Tulips.jpg";
@@ -129,6 +130,7 @@ public class ForkBlur extends RecursiveAction {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static BufferedImage blur(BufferedImage srcImage) {
     int w = srcImage.getWidth();
     int h = srcImage.getHeight();

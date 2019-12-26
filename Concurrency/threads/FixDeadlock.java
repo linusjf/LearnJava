@@ -58,6 +58,7 @@ public enum FixDeadlock {
       return this.name;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void bow(Friend bower) {
       synchronized (lock1) {
         System.out.format("%s: %s"
@@ -67,6 +68,7 @@ public enum FixDeadlock {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void bowBack(Friend bower) {
       synchronized (lock2) {
         System.out.format("%s: %s"
