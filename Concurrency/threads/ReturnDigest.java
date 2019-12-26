@@ -19,7 +19,8 @@ public class ReturnDigest extends Thread {
   }
 
   @Override
-  @SuppressWarnings("PMD.EmptyWhileStmt")
+  @SuppressWarnings({"PMD.EmptyWhileStmt",
+  "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));
@@ -28,13 +29,17 @@ public class ReturnDigest extends Thread {
       while (din.read() != -1)
         ;
       din.close();
-      digest = sha.digest();
+      setDigest(sha.digest());
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }
   }
 
+  private void setDigest(byte[] digest) {
+    this.digest = Arrays.copyOf(digest, digest.length);
+  }
+
   public byte[] getDigest() {
-    return Arrays.copyOf(digest, digest.length);
+    return digest;
   }
 }

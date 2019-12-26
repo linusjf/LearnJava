@@ -11,13 +11,16 @@ import java.util.Base64;
 
 public class DigestRunnable implements Runnable {
   private final String filename;
+  private static final Base64.Encoder ENCODER =
+    Base64.getEncoder();
 
   public DigestRunnable(String filename) {
     this.filename = filename;
   }
 
   @Override
-  @SuppressWarnings("PMD.EmptyWhileStmt")
+  @SuppressWarnings({"PMD.EmptyWhileStmt",
+  "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));
@@ -28,7 +31,7 @@ public class DigestRunnable implements Runnable {
       din.close();
       byte[] digest = sha.digest();
       StringBuilder result = new StringBuilder(filename);
-      result.append(": ").append(Base64.getEncoder().encodeToString(digest));
+      result.append(": ").append(ENCODER.encodeToString(digest));
       System.out.println(result);
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
@@ -37,9 +40,8 @@ public class DigestRunnable implements Runnable {
 
   public static void main(String[] args) {
     System.out.println("Into DigestRunnable...");
-    for (String filename : args) {
+    for (String filename : args) 
       runDigestThread(filename);
-    }
   }
 
   private static void runDigestThread(String filename) {

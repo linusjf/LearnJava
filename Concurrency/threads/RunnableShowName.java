@@ -13,6 +13,7 @@ public class RunnableShowName implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     int pause;
     for (int i = 0; i < 10; i++) {

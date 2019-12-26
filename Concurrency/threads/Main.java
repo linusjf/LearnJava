@@ -20,6 +20,7 @@ public enum Main {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void setupThreads(Thread... threads) {
     for (int i = 0; i < 10; i++) {
       threads[i] = new Thread(new Calculator(i));
@@ -28,6 +29,7 @@ public enum Main {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void setupStatuses(Thread.State[] status, Thread... threads) throws IOException {
     try (BufferedWriter file = Files.newBufferedWriter(Paths.get("./log.txt"));
          PrintWriter pw = new PrintWriter(file);) {
@@ -35,11 +37,13 @@ public enum Main {
         pw.println("Main : Status of Thread " + i + " : " + threads[i].getState());
         status[i] = threads[i].getState();
       }
-      for (Thread t : threads) t.start();
+      for (Thread t : threads) 
+        t.start();
       logThreadState(threads, status, pw);
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void logThreadState(Thread[] threads, Thread.State[] status, PrintWriter pw) {
     boolean finish = false;
     while (!finish) {

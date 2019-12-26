@@ -72,6 +72,7 @@ public enum LockProducerConsumer {
       pendingLines = true;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void insert(String line) {
       lock.lock();
       try {
@@ -87,10 +88,12 @@ public enum LockProducerConsumer {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public String get() {
       lock.lock();
       try {
-        while (queue.size() == 0 && hasPendingLines()) lines.await();
+        while (queue.size() == 0 && hasPendingLines()) 
+          lines.await();
 
         if (hasPendingLines()) {
           String line = queue.poll();
