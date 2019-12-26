@@ -93,6 +93,7 @@ public enum CleanerDaemon {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void clean(Date date) {
       if (deque.size() == 0) 
         return;

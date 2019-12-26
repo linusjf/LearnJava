@@ -50,6 +50,7 @@ public enum CancelForkJoinPool {
       tasks.add(task);
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void cancelTasks(ForkJoinTask<Integer> cancelTask) {
       for (ForkJoinTask<Integer> task : tasks) {
         if (!task.equals(cancelTask)) {
@@ -92,6 +93,7 @@ public enum CancelForkJoinPool {
       return ret;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private int lookForNumber() {
       for (int i = start; i < end; i++) {
         if (numbers[i] == number) {
