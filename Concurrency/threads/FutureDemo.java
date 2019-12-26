@@ -18,6 +18,7 @@ public enum FutureDemo {
   ;
   private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(3);
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       FactorialCalculator task = new FactorialCalculator(10);
@@ -51,6 +52,7 @@ public enum FutureDemo {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public Long call() {
       try {
         return factorial(number);
@@ -62,9 +64,8 @@ public enum FutureDemo {
 
     @SuppressWarnings("checkstyle:hiddenfield")
     private long factorial(int number) throws InterruptedException {
-      if (number < 0) {
+      if (number < 0) 
         throw new IllegalArgumentException("Number must be greater than zero");
-      }
       int num = number;
       long result = 1;
       while (num > 0) {

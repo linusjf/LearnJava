@@ -15,6 +15,7 @@ public enum ForkJoinPuzzle {
   private static AtomicInteger counter = new AtomicInteger();
   private static Map<String, Integer> processorsCount = new ConcurrentHashMap<>();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     int parallelism = ThreadLocalRandom.current().nextInt(1, 3);
 
@@ -49,6 +50,7 @@ public enum ForkJoinPuzzle {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void process() {
     try {
       String processor = Thread.currentThread().getName();
@@ -77,10 +79,12 @@ public enum ForkJoinPuzzle {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static IntStream parallelStream() {
     return IntStream.range(0, Runtime.getRuntime().availableProcessors()).parallel();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static IntStream sequentialStream() {
     return IntStream.range(0, Runtime.getRuntime().availableProcessors()).sequential();
   }
