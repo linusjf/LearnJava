@@ -24,6 +24,7 @@ public enum SemaphoreExample {
       System.out.println("Semaphore fair: " + semaphore.isFair());
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void printJob(Object document) {
       try {
         semaphore.acquire();
@@ -48,6 +49,7 @@ public enum SemaphoreExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf("%s: Going to print a job%n", Thread.currentThread().getName());
       printQueue.printJob(new Object());

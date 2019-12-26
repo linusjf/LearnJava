@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public enum DelayedExecutor {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ScheduledThreadPoolExecutor executor =
         (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);

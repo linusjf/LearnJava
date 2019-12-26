@@ -65,6 +65,7 @@ public enum Deadlock {
       return this.name;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public synchronized void bow(Friend bower) {
       System.out.format("%s: %s"
               + "  has bowed to me!%n",
@@ -72,6 +73,7 @@ public enum Deadlock {
       bower.bowBack(this);
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public synchronized void bowBack(Friend bower) {
       System.out.format("%s: %s"
               + " has bowed back to me!%n",

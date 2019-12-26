@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public enum ControllingExecutor {
   ;
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
     ResultTask[] resultTasks = new ResultTask[5];
@@ -23,7 +23,8 @@ public enum ControllingExecutor {
     } catch (InterruptedException e1) {
       System.err.println(e1);
     }
-    for (ResultTask task : resultTasks) task.cancel(true);
+    for (ResultTask task : resultTasks) 
+      task.cancel(true);
     for (ResultTask task : resultTasks) {
       try {
         if (!task.isCancelled())
@@ -47,6 +48,7 @@ public enum ControllingExecutor {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public String call() throws Exception {
       try {
         long duration = (long) (Math.random() * 10);

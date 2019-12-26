@@ -13,11 +13,12 @@ import java.util.concurrent.TimeUnit;
 public enum InvokeAllExecutor {
   ;
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
     List<Task> taskList = new ArrayList<>();
-    for (int i = 0; i < 3; i++) taskList.add(new Task("Task " + i));
+    for (int i = 0; i < 3; i++) 
+      taskList.add(new Task("Task " + i));
     List<Future<Result>> resultList = null;
     try {
       resultList = executor.invokeAll(taskList);
@@ -68,6 +69,7 @@ public enum InvokeAllExecutor {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public Result call() throws Exception {
       try {
         long duration = random.nextInt(10);
@@ -78,7 +80,8 @@ public enum InvokeAllExecutor {
         System.err.println(e);
       }
       int value = 0;
-      for (int i = 0; i < 5; i++) value += random.nextInt(100);
+      for (int i = 0; i < 5; i++) 
+        value += random.nextInt(100);
       Result result = new Result();
       result.setName(this.name);
       result.setValue(value);

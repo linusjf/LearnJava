@@ -67,7 +67,7 @@ public enum SafeLock {
       return this.name;
     }
 
-    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+    @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
     public boolean impendingBow(Friend bower) {
       Boolean myLock = false;
       Boolean yourLock = false;
@@ -85,6 +85,7 @@ public enum SafeLock {
       return myLock && yourLock;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void bow(Friend bower) {
       if (impendingBow(bower)) {
         try {
@@ -105,6 +106,7 @@ public enum SafeLock {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void bowBack(Friend bower) {
       System.out.format("%s: %s has"
               + " bowed back to me!%n",

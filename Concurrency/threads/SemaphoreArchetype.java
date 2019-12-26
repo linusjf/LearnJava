@@ -11,13 +11,16 @@ public class SemaphoreArchetype implements Runnable {
   private static final long END_MILLIS = System.currentTimeMillis() + 1000;
   private static final int MAX_THREADS = 3;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService executorService = Executors.newFixedThreadPool(5);
-    for (int i = 0; i < 5; i++) executorService.execute(new SemaphoreArchetype());
+    for (int i = 0; i < 5; i++) 
+      executorService.execute(new SemaphoreArchetype());
     executorService.shutdown();
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     while (System.currentTimeMillis() < END_MILLIS) {
       try {
