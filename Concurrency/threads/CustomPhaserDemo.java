@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public enum CustomPhaserDemo {
   ;
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   public static void main(String[] args) {
     MyPhaser phaser = new MyPhaser();
     Student[] students = new Student[5];
@@ -81,6 +81,7 @@ public enum CustomPhaserDemo {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf(
           "%s: Has arrived to take the exam. %s%n", Thread.currentThread().getName(), new Date());
@@ -105,6 +106,7 @@ public enum CustomPhaserDemo {
       phaser.arriveAndAwaitAdvance();
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise1() {
       try {
         long duration = (long) (Math.random() * 10);
@@ -114,6 +116,7 @@ public enum CustomPhaserDemo {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise2() {
       try {
         long duration = (long) (Math.random() * 10);
@@ -123,6 +126,7 @@ public enum CustomPhaserDemo {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise3() {
       try {
         long duration = (long) (Math.random() * 10);

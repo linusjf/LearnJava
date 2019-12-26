@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public enum CommonPoolTest {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     System.out.println("CPU Core: " + Runtime.getRuntime().availableProcessors());
     System.out.println("CommonPool Parallelism: " + ForkJoinPool.commonPool().getParallelism());

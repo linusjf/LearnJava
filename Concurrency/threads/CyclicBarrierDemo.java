@@ -58,6 +58,7 @@ public class CyclicBarrierDemo {
 
   class NumberCruncherThread implements Runnable {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       String thisThreadName = Thread.currentThread().getName();
       List<Integer> partialResult = new ArrayList<>();
@@ -82,6 +83,7 @@ public class CyclicBarrierDemo {
 
   class AggregatorThread implements Runnable {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       String thisThreadName = Thread.currentThread().getName();
 

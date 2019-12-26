@@ -10,6 +10,7 @@ public class CountDownLatchExample implements Runnable {
   private static final CountDownLatch LATCH = new CountDownLatch(NUMBER_OF_THREADS);
   private static Random random = new Random(System.currentTimeMillis());
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     for (int i = 0; i < NUMBER_OF_THREADS; i++)
@@ -18,6 +19,7 @@ public class CountDownLatchExample implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     try {
       int randomSleepTime = random.nextInt(20_000);

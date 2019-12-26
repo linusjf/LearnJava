@@ -18,6 +18,7 @@ public class CyclicBarrierArchetype implements Runnable {
     }
   });
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     for (int i = 0; i < NUMBER_OF_THREADS; i++) {
@@ -27,6 +28,7 @@ public class CyclicBarrierArchetype implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     try {
       while (counter.get() < 3) {

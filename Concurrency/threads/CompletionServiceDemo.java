@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public enum CompletionServiceDemo {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
 
@@ -54,6 +55,7 @@ public enum CompletionServiceDemo {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public String call() throws Exception {
       try {
         Long duration = (long) (Math.random() * 10);
@@ -93,6 +95,7 @@ public enum CompletionServiceDemo {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       while (!end) {
         try {

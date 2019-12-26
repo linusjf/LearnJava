@@ -45,13 +45,15 @@ public enum CyclicBarrierExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       try {
         System.out.println(Thread.currentThread().getName() + " is waiting on barrier");
         barrier.await();
         System.out.println(Thread.currentThread().getName() + " has crossed the barrier");
       } catch (InterruptedException | BrokenBarrierException ex) {
-        Logger.getLogger(CyclicBarrierExample.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CyclicBarrierExample.class.getName())
+          .log(Level.SEVERE, null, ex);
       }
     }
   }

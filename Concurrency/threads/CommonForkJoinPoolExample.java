@@ -7,6 +7,7 @@ import java.util.List;
 public enum CommonForkJoinPoolExample {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     final List<Integer> numbers = getNumbers();
     numbers.parallelStream().forEach(n -> {

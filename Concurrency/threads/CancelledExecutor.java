@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public enum CancelledExecutor {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     Task task = new Task();
