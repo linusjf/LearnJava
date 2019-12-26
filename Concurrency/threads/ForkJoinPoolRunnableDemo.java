@@ -11,6 +11,7 @@ public enum ForkJoinPoolRunnableDemo {
   private static final int EXPECTED_PRICE = 12;
   private static final int BATCH_SIZE = 10;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ProductListGenerator generator = new ProductListGenerator();
     List<Product> products = generator.generate(10_000);
@@ -20,7 +21,7 @@ public enum ForkJoinPoolRunnableDemo {
     // task.setForkedTask(t);
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(t);
-    do {
+    while (!t.isDone()) {
       System.out.printf("Main: Thread Count: %d%n", pool.getActiveThreadCount());
       System.out.printf("Main: Thread Steal: %d%n", pool.getStealCount());
       System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
@@ -29,17 +30,15 @@ public enum ForkJoinPoolRunnableDemo {
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-    } while (!t.isDone());
+    } 
     pool.shutdown();
-    if (t.isCompletedNormally()) {
+    if (t.isCompletedNormally()) 
       System.out.printf("Main: The process has completed normally.%n");
-    }
     for (Product product : products) {
-      if (product.getPrice() != EXPECTED_PRICE) {
+      if (product.getPrice() != EXPECTED_PRICE) 
         System.out.printf("Product %s: %f%n", product.getName(), product.getPrice());
-      }
     }
-    System.out.println("Main: End of the program.%n");
+    System.out.printf("Main: End of the program.%n");
   }
 
   @SuppressWarnings("PMD.DataClass")
@@ -110,7 +109,8 @@ public enum ForkJoinPoolRunnableDemo {
         ForkJoinTask.invokeAll(task1, task2);
       }
     }
-
+    
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void updatePrices() {
       for (int i = first; i < last; i++) {
         Product product = products.get(i);

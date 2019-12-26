@@ -28,6 +28,7 @@ public enum FixedSizeExecutorExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf(
           "%s: Task %s: Created on: %s%n", Thread.currentThread().getName(), name, initDate);
