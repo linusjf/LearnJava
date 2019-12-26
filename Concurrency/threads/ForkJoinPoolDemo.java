@@ -12,6 +12,7 @@ public enum ForkJoinPoolDemo {
   private static final int EXPECTED_PRICE = 12;
   private static final int BATCH_SIZE = 10;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ProductListGenerator generator = new ProductListGenerator();
     List<Product> products = generator.generate(10_000);
@@ -108,6 +109,7 @@ public enum ForkJoinPoolDemo {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void updatePrices() {
       for (int i = first; i < last; i++) {
         Product product = products.get(i);
