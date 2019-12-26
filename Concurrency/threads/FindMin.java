@@ -20,6 +20,7 @@ public class FindMin extends RecursiveTask<Integer> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   protected Integer compute() {
     int sliceLength = (endIndex - startIndex) + 1;
     if (sliceLength > MIN_SIZE) {
@@ -28,12 +29,12 @@ public class FindMin extends RecursiveTask<Integer> {
       FindMin upperFindMin = new FindMin(numbers, startIndex + sliceLength / 2, endIndex);
       upperFindMin.fork();
       return Math.min(lowerFindMin.join(), upperFindMin.join());
-    } else {
+    } else 
       return Math.min(numbers[startIndex], numbers[endIndex]);
-    }
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     int[] numbers = new int[100];
     Random random = new Random();

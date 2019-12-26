@@ -36,15 +36,15 @@ public class FairLock {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void unlock() {
     synchronized (this) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException("Calling thread has not locked this lock");
       }
       isLocked = false;
-      if (!waitingThreads.isEmpty()) {
+      if (!waitingThreads.isEmpty()) 
         waitingThreads.get(0).doNotify();
-      }
     }
   }
 }

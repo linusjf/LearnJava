@@ -23,6 +23,7 @@ public class FindMinTask implements Callable<Integer> {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public Integer call() throws InterruptedException, ExecutionException {
     int sliceLength = (endIndex - startIndex) + 1;
     if (sliceLength > MIN_SIZE) {
@@ -33,12 +34,12 @@ public class FindMinTask implements Callable<Integer> {
           new FindMinTask(executorService, numbers, startIndex + (sliceLength / 2), endIndex);
       Future<Integer> futureUpperFindMin = executorService.submit(upperFindMin);
       return Math.min(futureLowerFindMin.get(), futureUpperFindMin.get());
-    } else {
+    } else 
       return Math.min(numbers[startIndex], numbers[endIndex]);
-    }
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
+  "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     int[] numbers = new int[10_000];
     Random random = new Random();

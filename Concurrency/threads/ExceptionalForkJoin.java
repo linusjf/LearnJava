@@ -42,6 +42,7 @@ public enum ExceptionalForkJoin {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     protected Integer compute() {
       System.out.printf("Task: Start from %d to %d%n", start, end);
       if (end - start < MIN_TASK_SIZE) {
