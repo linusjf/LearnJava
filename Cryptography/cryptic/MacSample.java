@@ -12,6 +12,7 @@ import javax.crypto.Mac;
 public enum MacSample {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       // Creating a KeyGenerator object
@@ -25,6 +26,15 @@ public enum MacSample {
 
       // Creating/Generating a key
       Key key = keyGen.generateKey();
+      computeMac(key);
+    } catch (NoSuchAlgorithmException | InvalidKeyException e) {
+      System.err.println(e);
+    }
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private static void computeMac(Key key) throws NoSuchAlgorithmException,
+          InvalidKeyException {
 
       // Creating a Mac object
       Mac mac = Mac.getInstance("HmacSHA256");
@@ -41,8 +51,5 @@ public enum MacSample {
       System.out.println(new String(macResult, StandardCharsets.UTF_8));
       System.out.println("Base64: ");
       System.out.println(Base64.getEncoder().encodeToString(macResult));
-    } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-      System.err.println(e);
-    }
   }
 }

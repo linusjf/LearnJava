@@ -32,14 +32,14 @@ public enum DHHelper {
   /*
    * Converts a byte array to hex string
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   static String toHexString(byte[] block) {
     StringBuilder buf = new StringBuilder();
     int len = block.length;
     for (int i = 0; i < len; i++) {
       byte2hex(block[i], buf);
-      if (i < len - 1) {
+      if (i < len - 1) 
         buf.append(':');
-      }
     }
     return buf.toString();
   }

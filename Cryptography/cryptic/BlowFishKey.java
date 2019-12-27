@@ -20,6 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 public enum BlowFishKey {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       KeyGenerator kgen = KeyGenerator.getInstance("Blowfish");
