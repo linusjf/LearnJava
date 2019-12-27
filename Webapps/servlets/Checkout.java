@@ -27,7 +27,7 @@ public class Checkout extends HttpServlet {
     printProducts(out,cart);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter","PMD.AvoidDuplicateLiterals", "checkstyle:javancss"})
   private void printProducts(PrintWriter out,HttpSession cart) {
     cart.removeAttribute("currentProd");
     float totalCost = 0;

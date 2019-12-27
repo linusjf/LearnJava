@@ -14,6 +14,7 @@ public class Selection extends HttpServlet {
 
   // In a real application, above prices would
   // be retrieved from a database, of course.
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String currentProduct = request.getParameter("Product");
@@ -31,10 +32,14 @@ public class Selection extends HttpServlet {
     // Creates page for selection of weight.
   }
 
-  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
   private void sendPage(HttpServletResponse reply, String product) throws IOException {
     reply.setContentType("text/HTML");
     PrintWriter out = reply.getWriter();
+    writePage(out,product); 
+  }
+
+  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
+  private void writePage(PrintWriter out,String product) {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>" + product + "</TITLE>");

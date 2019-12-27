@@ -12,12 +12,17 @@ import javax.servlet.http.HttpSession;
 public class GetPreferences extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     response.setContentType("text/HTML");
     HttpSession adderSession = request.getSession();
     adderSession.setAttribute("firstVisit", "Yes");
     PrintWriter out = response.getWriter();
+    writeResponse(out);
+  }
+
+  private void writeResponse(PrintWriter out) {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Preferences</TITLE>");

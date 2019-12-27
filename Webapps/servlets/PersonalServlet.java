@@ -23,7 +23,7 @@ public class PersonalServlet extends HttpServlet {
   }
 
   private void printResponse(PrintWriter out,
-      HttpServletRequest request) {
+      HttpServletRequest request) throws IOException {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Simple Servlet</TITLE>");
