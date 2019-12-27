@@ -20,6 +20,7 @@ public final class DHThreeWay {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     try {
       // Alice creates her own DH key pair with 2048-bit key size
@@ -105,6 +106,7 @@ public final class DHThreeWay {
   /*
    * Converts a byte array to Base64 string
    */
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static String toBase64String(byte[] block) {
     return Base64.getEncoder().encodeToString(block);
   }

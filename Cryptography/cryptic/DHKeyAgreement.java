@@ -25,6 +25,7 @@ public final class DHKeyAgreement {
     throw new IllegalStateException("Private coonstructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void initAliceKey() throws GeneralSecurityException {
     /*
      * Alice creates her own DH key pair with 2048-bit key size
@@ -40,12 +41,13 @@ public final class DHKeyAgreement {
     aliceKeyAgree.init(aliceKpair.getPrivate());
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static byte[] getAlicePublicEncodedKey() throws GeneralSecurityException {
     // Alice encodes her public key, and sends it over to Bob.
     return aliceKpair.getPublic().getEncoded();
   }
 
-  @SuppressWarnings({"checkstyle:illegaltoken", "PMD.ExcessiveMethodLength"})
+  @SuppressWarnings({"checkstyle:illegaltoken", "PMD.ExcessiveMethodLength","PMD.LawOfDemeter"})
   public static void main(String... argv) {
     try {
       initAliceKey();

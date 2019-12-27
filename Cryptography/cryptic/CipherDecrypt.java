@@ -14,6 +14,7 @@ import javax.crypto.NoSuchPaddingException;
 public enum CipherDecrypt {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object

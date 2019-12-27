@@ -12,6 +12,7 @@ import java.security.SignatureException;
 public enum SignatureVerification {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object

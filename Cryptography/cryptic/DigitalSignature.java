@@ -15,6 +15,7 @@ import java.util.Scanner;
 public enum DigitalSignature {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       // Accepting text from user

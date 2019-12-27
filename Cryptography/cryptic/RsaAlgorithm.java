@@ -33,6 +33,7 @@ public class RsaAlgorithm {
     this.n = n;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] arguments) throws IOException {
     BufferedReader input =
         new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8.name()));
