@@ -54,9 +54,9 @@ public final class Platform {
     final String osArch = getProperty("os.arch");
     final String osName = getProperty("os.name");
 
-    for (Arch arch : Arch.values()) {
+    for (Arch arch: Arch.values()) {
       if (patternMatches(arch.pattern, osArch)) {
-        for (OS os : OS.values()) {
+        for (OS os: OS.values()) {
           if (patternMatches(os.pattern, osName)) {
             return new Platform(arch, os);
           }
@@ -64,7 +64,8 @@ public final class Platform {
       }
     }
 
-    final String msg = String.format("Unsupported platform %s %s", osArch, osName);
+    final String msg =
+        String.format("Unsupported platform %s %s", osArch, osName);
     throw new UnsupportedPlatformException(msg);
   }
 

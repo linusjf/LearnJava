@@ -12,7 +12,8 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Will Glozer
  */
-@SuppressWarnings("checkstyle:abbreviationaswordinname") public final class PBKDF { // NOPMD
+@SuppressWarnings("checkstyle:abbreviationaswordinname")
+public final class PBKDF {  // NOPMD
 
   private PBKDF() {
     throw new IllegalStateException("Private constructor");
@@ -29,8 +30,11 @@ import javax.crypto.spec.SecretKeySpec;
    * @return The derived key in bytes
    * @throws GeneralSecurityException security exception
    */
-  public static byte[] pbkdf2(String alg, byte[] password, byte[] salt, int c, int dkLen)
-      throws GeneralSecurityException {
+  public static byte[] pbkdf2(String alg,
+                              byte[] password,
+                              byte[] salt,
+                              int c,
+                              int dkLen) throws GeneralSecurityException {
     final Mac mac = Mac.getInstance(alg);
     mac.init(new SecretKeySpec(password, alg));
     final byte[] derivedKey = new byte[dkLen];
@@ -49,8 +53,11 @@ import javax.crypto.spec.SecretKeySpec;
    * @throws GeneralSecurityException security exception
    */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  public static void pbkdf2(Mac mac, byte[] salt, int c, byte[] derivedKey, int dkLen)
-      throws GeneralSecurityException {
+  public static void pbkdf2(Mac mac,
+                            byte[] salt,
+                            int c,
+                            byte[] derivedKey,
+                            int dkLen) throws GeneralSecurityException {
     final int lengthH = mac.getMacLength();
 
     if (dkLen > (Math.pow(2, 32) - 1) * lengthH) {
@@ -62,19 +69,19 @@ import javax.crypto.spec.SecretKeySpec;
 
     final byte[] block1 = new byte[salt.length + 4];
 
-    final int l = (int) Math.ceil((double) dkLen / lengthH);
+    final int l = (int)Math.ceil((double)dkLen / lengthH);
 
     final int r = dkLen - (l - 1) * lengthH;
 
     arraycopy(salt, 0, block1, 0, salt.length);
 
     for (int i = 1; i <= l; i++) {
-      block1[salt.length + 0] = (byte) (i >> 24 & 0xff);
+      block1[salt.length + 0] = (byte)(i >> 24 & 0xff);
 
-      block1[salt.length + 1] = (byte) (i >> 16 & 0xff);
+      block1[salt.length + 1] = (byte)(i >> 16 & 0xff);
 
-      block1[salt.length + 2] = (byte) (i >> 8 & 0xff);
-      block1[salt.length + 3] = (byte) (i >> 0 & 0xff);
+      block1[salt.length + 2] = (byte)(i >> 8 & 0xff);
+      block1[salt.length + 3] = (byte)(i >> 0 & 0xff);
 
       mac.update(block1);
       mac.doFinal(bytesU, 0);

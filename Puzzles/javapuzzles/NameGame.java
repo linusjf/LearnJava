@@ -18,8 +18,8 @@ public enum NameGame {
     Map<String, String> m = new IdentityHashMap<>();
     m.put("Mickey", "Mouse");
     m.put(new String("Mic"
-              + "key"),
-        "Mantle");
+                     + "key"),
+          "Mantle");
     System.out.println(m.size());
   }
 }

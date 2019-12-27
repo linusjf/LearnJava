@@ -11,7 +11,7 @@ public enum CopyDog {
   ;
 
   public static void main(String[] args) {
-    Dog newDog = (Dog) deepCopy(Dog.INSTANCE);
+    Dog newDog = (Dog)deepCopy(Dog.INSTANCE);
     System.out.println(newDog == Dog.INSTANCE);
     System.out.println(newDog);
   }

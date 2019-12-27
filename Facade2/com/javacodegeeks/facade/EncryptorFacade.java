@@ -48,7 +48,8 @@ public final class EncryptorFacade {
     ;
   }
 
-  private static final Map<EncryptionType, Supplier<Encrypt>> ENCRYPTOR_SUPPLIER;
+  private static final Map<EncryptionType, Supplier<Encrypt>>
+      ENCRYPTOR_SUPPLIER;
 
   static {
     final Map<EncryptionType, Supplier<Encrypt>> encryptors = new HashMap<>();
@@ -72,8 +73,8 @@ public final class EncryptorFacade {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public Encrypt supplyEncryptor(EncryptionType type) {
-    Supplier<Encrypt> supplier =
-        Objects.requireNonNull(ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
+    Supplier<Encrypt> supplier = Objects.requireNonNull(
+        ENCRYPTOR_SUPPLIER.get(type), "No encryptor exists for " + type);
     return supplier.get();
   }
 
