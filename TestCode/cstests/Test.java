@@ -4,8 +4,8 @@ package cstests;
 class Test {
   {
     String a = "\"escaped\""
-        + "that";
+               + "that";
     String b = "'apos'"
-        + "2";
+               + "2";
   }
 }

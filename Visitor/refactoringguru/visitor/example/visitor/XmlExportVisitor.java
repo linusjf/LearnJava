@@ -10,9 +10,9 @@ import refactoringguru.visitor.example.shapes.Shape;
 public class XmlExportVisitor implements Visitor {
   public String export(Shape... args) {
     StringBuilder sb = new StringBuilder(50);
-    for (Shape shape : args) {
+    for (Shape shape: args) {
       sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-          + "\n");
+                + "\n");
       sb.append(shape.accept(this)).append('\n');
       System.out.println(sb.toString());
       sb.setLength(0);
@@ -76,7 +76,7 @@ public class XmlExportVisitor implements Visitor {
   @SuppressWarnings("PMD.LawOfDemeter")
   private String visitCompoundGraphicChildren(CompoundShape cg) {
     StringBuilder sb = new StringBuilder();
-    for (Shape shape : cg.getChildren()) {
+    for (Shape shape: cg.getChildren()) {
       String obj = shape.accept(this);
 
       // Proper indentation for sub-objects.

@@ -6,7 +6,8 @@ import com.howtodoinjava.prototypedemo.model.Movie;
 import com.howtodoinjava.prototypedemo.model.Show;
 
 public final class PrototypeFactory {
-  private static java.util.Map<String, PrototypeCapable> prototypes = new java.util.HashMap<>();
+  private static java.util.Map<String, PrototypeCapable> prototypes =
+      new java.util.HashMap<>();
 
   private PrototypeFactory() {
     throw new IllegalStateException("Private constructor");
@@ -19,7 +20,8 @@ public final class PrototypeFactory {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static PrototypeCapable getInstance(final String s) throws CloneNotSupportedException {
+  public static PrototypeCapable getInstance(final String s)
+      throws CloneNotSupportedException {
     return prototypes.get(s).clone();
   }
 

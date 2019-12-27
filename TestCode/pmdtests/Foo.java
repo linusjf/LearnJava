@@ -17,6 +17,7 @@ public class Foo {
 
   public void method(Foo this, String... args) {
     System.out.println(this.i);
-    for (String arg : args) System.out.println(arg);
+    for (String arg: args)
+      System.out.println(arg);
   }
 }

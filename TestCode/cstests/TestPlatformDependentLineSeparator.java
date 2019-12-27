@@ -26,7 +26,8 @@ public final class TestPlatformDependentLineSeparator {
 
   private static String testString3 = "\\nTest to escape line separator\\n";
 
-  private static String testString4 = "\\r\\nTest to escape line separator\\r\\n";
+  private static String testString4 =
+      "\\r\\nTest to escape line separator\\r\\n";
 
   // this must be flagged
   private static final String CRLF = "/r/n";
