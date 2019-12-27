@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public enum InvokeAnyExecutor {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     String username = "test";
     String password = "test";
@@ -43,7 +44,7 @@ public enum InvokeAnyExecutor {
       this.name = name;
     }
 
-    @SuppressWarnings("checkstyle:hiddenfield")
+    @SuppressWarnings({"checkstyle:hiddenfield","PMD.LawOfDemeter"})
     public boolean validate(String name, String password) {
       try {
         long duration = (long) (random.nextInt(10));

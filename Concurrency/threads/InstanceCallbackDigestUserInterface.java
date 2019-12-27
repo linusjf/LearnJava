@@ -20,6 +20,7 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public String toString() {
     String result = filename + ": ";
     return digest == null ? result.concat("digest not available")
