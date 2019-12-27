@@ -18,7 +18,8 @@ public enum ReadWriteLockExample {
     Writer writer2 = new Writer(pricesInfo);
     Thread threadWriter = new Thread(writer);
     Thread threadWriter2 = new Thread(writer2);
-    for (Thread t : threadsReader) t.start();
+    for (Thread t : threadsReader) 
+      t.start();
 
     threadWriter.start();
     threadWriter2.start();
@@ -38,6 +39,7 @@ public enum ReadWriteLockExample {
       System.out.println("Fair mode: " + fair);
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public double getPrice1() {
       lock.readLock().lock();
       double value = price1;
@@ -45,6 +47,7 @@ public enum ReadWriteLockExample {
       return value;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public double getPrice2() {
       lock.readLock().lock();
       double value = price2;
@@ -52,7 +55,7 @@ public enum ReadWriteLockExample {
       return value;
     }
 
-    @SuppressWarnings("checkstyle:hiddenfield")
+    @SuppressWarnings({"checkstyle:hiddenfield","PMD.LawOfDemeter"})
     public void setPrices(double price1, double price2) {
       lock.writeLock().lock();
       this.price1 = price1;
@@ -69,6 +72,7 @@ public enum ReadWriteLockExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       for (int i = 0; i < 10; i++) {
         synchronized (System.out) {
@@ -89,6 +93,7 @@ public enum ReadWriteLockExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       for (int i = 0; i < 3; i++) {
         synchronized (System.out) {

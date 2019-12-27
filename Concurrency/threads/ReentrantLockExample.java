@@ -52,6 +52,7 @@ public enum ReentrantLockExample {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public boolean usingFair() {
       return ((ReentrantLock) queueLock).isFair();
     }
