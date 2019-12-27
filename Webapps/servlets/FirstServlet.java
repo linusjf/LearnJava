@@ -15,6 +15,10 @@ public class FirstServlet extends HttpServlet {
       throws IOException, ServletException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
+    printResponse(out);
+  }
+
+  private void printResponse(PrintWriter out) {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Simple Servlet</TITLE>");

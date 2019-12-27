@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class ShowSum extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void service(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     HttpSession adderSession = request.getSession();
@@ -24,6 +25,7 @@ public class ShowSum extends HttpServlet {
     sendPage(response, adderSession);
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void sendPage(HttpServletResponse reply, HttpSession session) throws IOException {
     /*
           Value of 'sum' originally saved as instance of
@@ -53,6 +55,7 @@ public class ShowSum extends HttpServlet {
     out.flush();
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private void retrieveNewPreferences(HttpServletRequest request, HttpServletResponse response,
       HttpSession session) throws IOException {
     String forename = request.getParameter("Name");

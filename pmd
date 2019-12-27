@@ -34,7 +34,7 @@ fi
 
 readExclusions
 set -o noglob
-find "$proj" -type f -name "*.java" ${exclusions[@]} | tr '\n' ',' > "$proj"/"$fileslist"
+find "$proj" -type f -name "*.java" -o -name "*.jsp" ${exclusions[@]} | tr '\n' ',' > "$proj"/"$fileslist"
 if [ -s "$proj"/"$fileslist" ]
 then
   java -cp @"$classpathFile" \

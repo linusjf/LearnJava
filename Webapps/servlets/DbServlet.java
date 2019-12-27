@@ -68,6 +68,10 @@ public class DbServlet extends HttpServlet {
       printHtmlSelectError(out);
       return;
     }
+    printClosingTags(out);
+  }
+
+  private void printClosingTags(PrintWriter out) {
     out.println("<BODY>");
     out.println("</HTML>");
     out.flush();

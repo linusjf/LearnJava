@@ -24,6 +24,11 @@ public class Checkout extends HttpServlet {
     PrintWriter out = response.getWriter();
     printHtmlHeader(out);
     HttpSession cart = request.getSession();
+    printProducts(out,cart);
+  }
+
+  @SuppressWarnings("PMD.LawOfDemeter")
+  private void printProducts(PrintWriter out,HttpSession cart) {
     cart.removeAttribute("currentProd");
     float totalCost = 0;
     int numProducts = 0;
@@ -61,7 +66,7 @@ public class Checkout extends HttpServlet {
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();
-  }
+  } 
 
   private void printHtmlHeader(PrintWriter out) {
     out.println("<HTML>");
