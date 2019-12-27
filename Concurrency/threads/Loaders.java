@@ -25,6 +25,7 @@ public enum Loaders {
 
   static class DataSourcesLoader implements Runnable {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf("Beginning data sources loading: %s%n", new Date());
       try {
@@ -38,6 +39,7 @@ public enum Loaders {
 
   static class NetworkConnectionsLoader implements Runnable {
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf("Beginning network connections loading: %s%n", new Date());
       try {

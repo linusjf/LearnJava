@@ -14,7 +14,8 @@ public enum MultiSemaphoreExample {
     Thread[] thread = new Thread[10];
     PrintQueue printQueue = new PrintQueue();
     Arrays.setAll(thread, i -> new Thread(new Job(printQueue), "Thread" + i));
-    for (Thread t : thread) t.start();
+    for (Thread t : thread) 
+      t.start();
   }
 
   static class PrintQueue {
@@ -32,6 +33,7 @@ public enum MultiSemaphoreExample {
       System.out.println("ReentrantLock fair: " + fair);
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void printJob(Object document) {
       try {
         semaphore.acquire();
@@ -73,6 +75,7 @@ public enum MultiSemaphoreExample {
     }
 
     @Override
+    @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       System.out.printf("%s: Going to print a job%n", Thread.currentThread().getName());
       printQueue.printJob(new Object());

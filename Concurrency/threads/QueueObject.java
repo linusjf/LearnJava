@@ -7,9 +7,8 @@ public class QueueObject {
 
   public void doWait() throws InterruptedException {
     synchronized (this) {
-      while (!isNotified) {
+      while (!isNotified) 
         this.wait();
-      }
       this.isNotified = false;
     }
   }
@@ -22,6 +21,7 @@ public class QueueObject {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public int hashCode() {
     return Objects.hash(super.hashCode(), isNotified);
   }

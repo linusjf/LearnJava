@@ -11,6 +11,7 @@ public class LockSplitting implements Runnable {
   }
 
   @Override
+  @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     for (int i = 0; i < 100_000; i++) {
       if (ThreadLocalRandom.current().nextBoolean())

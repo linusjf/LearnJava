@@ -43,13 +43,12 @@ public final class MultithreadedMaxFinder {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("checkstyle:hiddenfield")
+  @SuppressWarnings({"checkstyle:hiddenfield","PMD.LawOfDemeter"})
   public static int max(int... data) throws InterruptedException, ExecutionException {
-    if (data.length == 1) {
+    if (data.length == 1) 
       return data[0];
-    } else if (data.length == 0) {
+    else if (data.length == 0) 
       throw new IllegalArgumentException();
-    }
 
     // split the job into 2 pieces
     FindMaxTask task1 = new FindMaxTask(data, 0, data.length / 2);

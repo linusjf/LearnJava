@@ -57,13 +57,13 @@ public enum PhaserDemo {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void fileProcess(File file) {
-      if (file.getName().endsWith(end)) {
+      if (file.getName().endsWith(end)) 
         results.add(file.getAbsolutePath());
-      }
     }
 
-    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+    @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
     private void filterResults() {
       List<String> newResults = new ArrayList<>();
       long actualDate = new Date().getTime();
@@ -75,6 +75,7 @@ public enum PhaserDemo {
       results = newResults;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private boolean checkResults() {
       if (results.isEmpty()) {
         System.out.printf(
@@ -91,6 +92,7 @@ public enum PhaserDemo {
       }
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     private void showInfo() {
       for (String fileName : results) {
         File file = new File(fileName);
@@ -99,15 +101,15 @@ public enum PhaserDemo {
       phaser.arriveAndAwaitAdvance();
     }
 
-    @SuppressWarnings("checkstyle:returncount")
+    @SuppressWarnings({"checkstyle:returncount",
+    "PMD.LawOfDemeter"})
     @Override
     public void run() {
       phaser.arriveAndAwaitAdvance();
       System.out.printf("%s: Starting.%n", Thread.currentThread().getName());
       File file = new File(initPath);
-      if (file.isDirectory()) {
+      if (file.isDirectory()) 
         directoryProcess(file);
-      }
       if (!checkResults())
         return;
       filterResults();
