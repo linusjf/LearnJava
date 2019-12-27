@@ -12,6 +12,7 @@ public final class GZipAllFiles {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
     for (String filename : args) {
@@ -22,11 +23,11 @@ public final class GZipAllFiles {
 
   private static void zipFile(String filename, ExecutorService pool) {
     File f = new File(filename);
-    if (f.exists()) {
+    if (f.exists()) 
       zip(f, pool);
-    }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static void zip(File f, ExecutorService pool) {
     if (f.isDirectory()) {
       Optional<?> objs = Optional.ofNullable(f.listFiles());

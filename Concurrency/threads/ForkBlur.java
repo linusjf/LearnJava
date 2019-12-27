@@ -61,7 +61,7 @@ public class ForkBlur extends RecursiveAction {
 
   // Processing window size, should be odd.
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
-  public ForkBlur(final int[] src, int start, int length, finalint... dst) {
+  public ForkBlur(final int[] src, int start, int length, final int... dst) {
     super();
     mSource = src;
     mStart = start;

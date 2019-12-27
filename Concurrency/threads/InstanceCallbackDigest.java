@@ -18,7 +18,8 @@ public class InstanceCallbackDigest implements Runnable {
   }
 
   @Override
-  @SuppressWarnings("PMD.EmptyWhileStmt")
+  @SuppressWarnings({"PMD.EmptyWhileStmt",
+  "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));

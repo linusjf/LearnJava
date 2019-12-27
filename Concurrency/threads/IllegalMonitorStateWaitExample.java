@@ -2,7 +2,7 @@ package threads;
 
 public enum IllegalMonitorStateWaitExample {
   ;
-
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       // Try to wait on the synchronization object, without owning it.

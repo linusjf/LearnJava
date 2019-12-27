@@ -5,6 +5,8 @@ import java.util.Base64;
 
 public class InstanceCallbackDigestUserInterface {
   private final String filename;
+  private final Base64.Encoder encoder =
+    Base64.getEncoder();
   private byte[] digest;
 
   public InstanceCallbackDigestUserInterface(String filename) {
@@ -21,7 +23,7 @@ public class InstanceCallbackDigestUserInterface {
   public String toString() {
     String result = filename + ": ";
     return digest == null ? result.concat("digest not available")
-                          : result.concat(Base64.getEncoder().encodeToString(digest));
+                          : result.concat(encoder.encodeToString(digest));
   }
 
   public void calculateDigest() {
@@ -36,9 +38,7 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   public static void main(String[] args) {
-    for (String filename : args) {
-      // Calculate the digest
+    for (String filename : args) 
       calculateDigest(filename);
-    }
   }
 }

@@ -5,7 +5,7 @@ import threads.HelperClass.WaitingThread;
 
 public enum IllegalMonitorStateNotifyExample {
   ;
-
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
       Thread waitThread = new WaitingThread();

@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 
 public class GrayscaleImageAction extends RecursiveAction {
   private static final long serialVersionUID = 1L;
+  private static final int AVAILABLE_PROCESSORS =
+    Runtime.getRuntime().availableProcessors();
   private final int row;
   private final transient BufferedImage bufferedImage;
 
@@ -33,9 +35,10 @@ public class GrayscaleImageAction extends RecursiveAction {
     }
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
-      ForkJoinPool pool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
+      ForkJoinPool pool = new ForkJoinPool(AVAILABLE_PROCESSORS);
       BufferedImage bufferedImage = ImageIO.read(new File(args[0]));
       BufferedImage img = new BufferedImage(
           bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);

@@ -17,7 +17,7 @@ public class GZipRunnable implements Runnable {
     this.input = input;
   }
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
   @Override
   public void run() {
     // don't compress an already compressed file
