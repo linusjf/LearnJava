@@ -16,6 +16,7 @@ import javax.crypto.NoSuchPaddingException;
 public enum KeyGeneratorExample {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       // Creating a SecureRandom object

@@ -9,9 +9,13 @@ import java.util.Scanner;
 public enum MessageDigestExample {
   ;
 
+  private static final String UTF_8 =
+    StandardCharsets.UTF_8.name();
+
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     // Reading data from user
-    Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8.name());
+    Scanner sc = new Scanner(System.in, UTF_8);
     System.out.println("Enter the message");
     String message = sc.nextLine();
 
@@ -28,7 +32,8 @@ public enum MessageDigestExample {
       // Converting the byte array in to HexString format
       StringBuilder hexString = new StringBuilder();
 
-      for (byte token : digest) hexString.append(Integer.toHexString(0xFF & token));
+      for (byte token : digest) 
+        hexString.append(Integer.toHexString(0xFF & token));
       System.out.println("Hex format : " + hexString);
       System.out.println("Base64 format : " + Base64.getEncoder().encodeToString(digest));
     } catch (NoSuchAlgorithmException nsae) {

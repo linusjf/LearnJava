@@ -5,7 +5,8 @@ import java.util.Random;
 public enum Exponential {
   ;
   private static final char BINARY_ONE = '1';
-
+  
+  @SuppressWarnings("PMD.LawOfDemeter")
   static int fastExp1(int base, int exponent) {
     String binString = Integer.toBinaryString(exponent);
     char[] binary = binString.toCharArray();

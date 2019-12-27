@@ -20,6 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 public enum RetrievingFromKeyStore {
   ;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       // Creating the KeyStore object
