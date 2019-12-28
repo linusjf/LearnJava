@@ -39,7 +39,8 @@ public final class ThreadPool {
       }
     }
     shutdown.set(true);
-    for (Thread workerThread : jobThreads) workerThread.interrupt();
+    for (Thread workerThread: jobThreads)
+      workerThread.interrupt();
   }
 
   private class Worker extends Thread {

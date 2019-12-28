@@ -36,6 +36,7 @@ public enum Loaded {
   static class TestClassLoader extends ClassLoader {
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
+      assert name != null;
       if (!REFLECTABLE_CLASS.equals(name))
         return super.loadClass(name);
       try (

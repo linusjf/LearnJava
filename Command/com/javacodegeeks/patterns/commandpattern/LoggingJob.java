@@ -11,7 +11,8 @@ public class LoggingJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId() + " executing logging jobs.");
+    System.out.println("Job ID: " + Thread.currentThread().getId()
+                       + " executing logging jobs.");
     if (logging != null)
       logging.log();
     try {
