@@ -7,9 +7,11 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 public class Mixed {
-  @Parameters List<String> positional;
+  @Parameters 
+  List<String> positional;
 
-  @Option(names = "-o") List<String> options;
+  @Option(names = "-o") 
+  List<String> options;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {

@@ -11,11 +11,14 @@ import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Spec;
 
 public class PasswordDemo implements Runnable {
-  @Option(names = "--password:file") File passwordFile;
+  @Option(names = "--password:file") 
+  File passwordFile;
 
-  @Option(names = "--password:env") String passwordEnvironmentVariable;
+  @Option(names = "--password:env") 
+  String passwordEnvironmentVariable;
 
-  @Option(names = "--password", interactive = true) String password;
+  @Option(names = "--password", interactive = true) 
+  String password;
 
   @Spec CommandSpec spec;
 

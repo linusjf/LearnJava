@@ -8,9 +8,11 @@ import picocli.CommandLine.Parameters;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class App {
-  @Parameters Locale locale;
+  @Parameters 
+  Locale locale;
 
-  @Option(names = "-a") Cipher cipher;
+  @Option(names = "-a") 
+  Cipher cipher;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {

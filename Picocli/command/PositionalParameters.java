@@ -9,14 +9,18 @@ import picocli.CommandLine.Parameters;
 
 public class PositionalParameters {
   // "hidden": don't show this parameter in usage help message
-  @Parameters(hidden = true) List<String> allParameters;
+  @Parameters(hidden = true) 
+  List<String> allParameters;
 
   // no "index" attribute: captures _all_ arguments (as Strings)
-  @Parameters(index = "0") InetAddress host;
+  @Parameters(index = "0") 
+  InetAddress host;
 
-  @Parameters(index = "1") int port;
+  @Parameters(index = "1") 
+  int port;
 
-  @Parameters(index = "2..*") File[] files;
+  @Parameters(index = "2..*") 
+  File[] files;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {

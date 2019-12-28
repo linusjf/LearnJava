@@ -17,7 +17,8 @@ import picocli.CommandLine.Parameters;
 @Command(description = "Prints the checksum (MD5 by default) of a file to STDOUT.",
     name = "checksum", mixinStandardHelpOptions = true, version = "checksum 3.0")
 public class CheckSum implements Callable<Integer> {
-  @Parameters(index = "0", description = "The file whose checksum to calculate.") private File file;
+  @Parameters(index = "0", description = "The file whose checksum to calculate.") 
+  private File file;
 
   @Option(names = {"-a", "--algorithm"}, description = "MD5, SHA-1, SHA-256, ...")
   private String algorithm = "SHA-1";
