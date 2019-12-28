@@ -1,2 +1,5 @@
--path hello/** -prune
--path docs/** -prune
+-not -path Antlr/hello/**
+-not -path Antlr/docs/**
+-not -path Antlr/tee/*Lexer.java
+-not -path Antlr/tee/*Parser.java
+-not -path Antlr/tee/*Listener.java
