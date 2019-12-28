@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="DbServlet.java"
-       checks="ExecutableStatementCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]"/>
-<suppress-xpath
-       files="DbServlet.java"
-       checks="ReturnCountCheck"
-       query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]"/>
-<suppress-xpath
-       files="DbServlet.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+  <suppress-xpath files="DbServlet.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
+  <suppress-xpath files="DbServlet.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
+  <suppress-xpath files="DbServlet.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
   <suppress-xpath files="Selection.java"
                   checks="ExecutableStatementCountCheck"
                   query="/CLASS_DEF[./IDENT[@text='Selection']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendPage']]" />

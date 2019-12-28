@@ -9,6 +9,6 @@ Specification-Title: Decorator
 Specification-Version: 2.1.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f720384d December 4 2019
+Implementation-Version: 39b3f1db December 28 2019
 Implementation-Vendor: 
 

@@ -6,6 +6,11 @@
     <Bug code="RE" />
   </Match>
   <Match>
+    <Class name="javapuzzles.BigProblem" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
     <Class name="NoDot2" />
     <Method name="main" />
     <Bug code="UCF" />
@@ -16,9 +21,14 @@
     <Bug code="UC" />
   </Match>
   <Match>
-    <Class name="javapuzzles.BigProblem" />
+    <Class name="javapuzzles.BigDelight" />
     <Method name="main" />
-    <Bug code="RV" />
+    <Bug code="UC" />
+  </Match>
+  <Match>
+    <Class name="javapuzzles.ShortCircuit" />
+    <Method name="main" />
+    <Bug code="NP,Dm,ES" />
   </Match>
   <Match>
     <Class name="javapuzzles.C" />

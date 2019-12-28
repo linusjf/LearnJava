@@ -19,14 +19,15 @@ public class ShowSum extends HttpServlet {
   public void service(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     HttpSession adderSession = request.getSession();
-    String firstTime = (String) adderSession.getAttribute("firstVisit");
+    String firstTime = (String)adderSession.getAttribute("firstVisit");
     if ("Yes".equals(firstTime))
       retrieveNewPreferences(request, response, adderSession);
     sendPage(response, adderSession);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private void sendPage(HttpServletResponse reply, HttpSession session) throws IOException {
+  private void sendPage(HttpServletResponse reply, HttpSession session)
+      throws IOException {
     /*
           Value of 'sum' originally saved as instance of
           class Integer (and saved as instance of class
@@ -41,14 +42,14 @@ public class ShowSum extends HttpServlet {
     out.println("<HEAD>");
     out.println("<TITLE>Result</TITLE>");
     out.println("</HEAD>");
-    String foreColour = (String) session.getAttribute("foreColour");
-    String backColour = (String) session.getAttribute("backColour");
+    String foreColour = (String)session.getAttribute("foreColour");
+    String backColour = (String)session.getAttribute("backColour");
     out.println("<BODY TEXT=" + foreColour + " BGCOLOR=" + backColour + ">");
     String sum = session.getAttribute("sum").toString();
-    String userName = (String) session.getAttribute("name");
+    String userName = (String)session.getAttribute("name");
     if (!userName.isEmpty())
       out.println("<H2>" + userName + "'s "
-          + "Result</H2>");
+                  + "Result</H2>");
     out.println("<BR/><BR/><BR/><H3>" + sum + "</H3>");
     out.println("</BODY>");
     out.println("</HTML>");
@@ -56,14 +57,16 @@ public class ShowSum extends HttpServlet {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private void retrieveNewPreferences(HttpServletRequest request, HttpServletResponse response,
-      HttpSession session) throws IOException {
+  private void retrieveNewPreferences(HttpServletRequest request,
+                                      HttpServletResponse response,
+                                      HttpSession session) throws IOException {
     String forename = request.getParameter("Name");
     if (forename == null)
       return;
     final int age = 60;
     if (!forename.isEmpty()) {
-      forename = URLEncoder.encode(forename, StandardCharsets.UTF_8.displayName());
+      forename =
+          URLEncoder.encode(forename, StandardCharsets.UTF_8.displayName());
       Cookie nameCookie = new Cookie("name", forename);
       nameCookie.setMaxAge(age);
       response.addCookie(nameCookie);
@@ -72,7 +75,8 @@ public class ShowSum extends HttpServlet {
     String foreColour = request.getParameter("ForeColour");
     if (foreColour.isEmpty())
       foreColour = "Black";
-    foreColour = URLEncoder.encode(foreColour, StandardCharsets.UTF_8.displayName());
+    foreColour =
+        URLEncoder.encode(foreColour, StandardCharsets.UTF_8.displayName());
     Cookie foreColourCookie = new Cookie("foreColour", foreColour);
     foreColourCookie.setMaxAge(age);
     response.addCookie(foreColourCookie);
@@ -80,7 +84,8 @@ public class ShowSum extends HttpServlet {
     String backColour = request.getParameter("BackColour");
     if (backColour.isEmpty())
       backColour = "White";
-    backColour = URLEncoder.encode(backColour, StandardCharsets.UTF_8.displayName());
+    backColour =
+        URLEncoder.encode(backColour, StandardCharsets.UTF_8.displayName());
     Cookie backColourCookie = new Cookie("backColour", backColour);
     backColourCookie.setMaxAge(age);
     response.addCookie(backColourCookie);

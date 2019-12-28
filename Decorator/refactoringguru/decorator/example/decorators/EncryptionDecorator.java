@@ -26,14 +26,15 @@ public class EncryptionDecorator extends DataSourceDecorator {
   private String encode(String data) {
     byte[] result = data.getBytes(StandardCharsets.UTF_8);
     for (int i = 0; i < result.length; i++) {
-      result[i] += (byte) 1;
+      result[i] += (byte)1;
     }
     return encoder.encodeToString(result);
   }
 
   private String decode(String data) {
     byte[] result = decoder.decode(data);
-    for (int i = 0; i < result.length; i++) result[i] -= (byte) 1;
+    for (int i = 0; i < result.length; i++)
+      result[i] -= (byte)1;
     return new String(result, StandardCharsets.UTF_8);
   }
 }

@@ -38,6 +38,7 @@ public class DbServlet extends HttpServlet {
     String telNum = request.getParameter("PhoneNum");
     try (PreparedStatement statement =
              link.prepareStatement("INSERT INTO PhoneNums VALUES(?,?,?)")) {
+      assert statement != null;
       statement.setString(1, forenames);
       statement.setString(2, surname);
       statement.setString(3, telNum);
@@ -48,7 +49,9 @@ public class DbServlet extends HttpServlet {
       return;
     }
     try (Statement statement = link.createStatement();
-         ResultSet results = statement.executeQuery("SELECT * FROM PhoneNums");) {
+         ResultSet results =
+             statement.executeQuery("SELECT * FROM PhoneNums");) {
+      assert results != null;
       printHtmlTableHeader(out);
       while (results.next()) {
         out.println("<TR>");
@@ -96,7 +99,7 @@ public class DbServlet extends HttpServlet {
 
   private void printHtmlInsertError(PrintWriter out) {
     out.println("<BR/><H2>Unable to execute"
-        + " insertion!</H2>");
+                + " insertion!</H2>");
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();

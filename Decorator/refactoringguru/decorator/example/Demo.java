@@ -15,9 +15,10 @@ public final class Demo {
 
   public static void main(String[] args) {
     try {
-      String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
-      DataSourceDecorator encoded =
-          new CompressionDecorator(new EncryptionDecorator(new FileDataSource("OutputDemo.txt")));
+      String salaryRecords =
+          "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
+      DataSourceDecorator encoded = new CompressionDecorator(
+          new EncryptionDecorator(new FileDataSource("OutputDemo.txt")));
       encoded.writeData(salaryRecords);
       DataSource plain = new FileDataSource("OutputDemo.txt");
 

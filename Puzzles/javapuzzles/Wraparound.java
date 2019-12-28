@@ -10,11 +10,11 @@ public enum Wraparound {
 
   public static void method(int max, int min) {
     System.out.println("No");
-    System.out.printf("%d %d\n", max, min);
+    System.out.printf("%d %d%n", max, min);
   }
 
   public static void method(long max, long min) {
     System.out.println("Yes");
-    System.out.printf("%d %d\n", max, min);
+    System.out.printf("%d %d%n", max, min);
   }
 }

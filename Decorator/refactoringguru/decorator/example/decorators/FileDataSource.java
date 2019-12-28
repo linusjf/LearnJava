@@ -20,6 +20,7 @@ public class FileDataSource implements DataSource {
   public void writeData(String data) throws IOException {
     File file = new File(name);
     try (OutputStream fos = Files.newOutputStream(Paths.get(file.getPath()))) {
+      assert fos != null;
       fos.write(data.getBytes(StandardCharsets.UTF_8), 0, data.length());
     }
   }
@@ -28,7 +29,8 @@ public class FileDataSource implements DataSource {
   public String readData() throws IOException {
     File file = new File(name);
     try (Reader reader = Files.newBufferedReader(Paths.get(file.getPath()))) {
-      char[] buffer = new char[(int) file.length()];
+      assert reader != null;
+      char[] buffer = new char[(int)file.length()];
       if (reader.read(buffer) == -1)
         throw new IOException("Error reading into buffer.");
       else

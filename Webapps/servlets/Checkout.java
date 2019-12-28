@@ -24,20 +24,24 @@ public class Checkout extends HttpServlet {
     PrintWriter out = response.getWriter();
     printHtmlHeader(out);
     HttpSession cart = request.getSession();
-    printProducts(out,cart);
+    printProducts(out, cart);
   }
 
-  @SuppressWarnings({"PMD.LawOfDemeter","PMD.AvoidDuplicateLiterals", "checkstyle:javancss"})
-  private void printProducts(PrintWriter out,HttpSession cart) {
+  @SuppressWarnings({"PMD.LawOfDemeter",
+                     "PMD.AvoidDuplicateLiterals",
+                     "checkstyle:javancss"})
+  private void
+  printProducts(PrintWriter out, HttpSession cart) {
     cart.removeAttribute("currentProd");
     float totalCost = 0;
     int numProducts = 0;
 
     // print product lines
-    for (Enumeration<String> prodNames = cart.getAttributeNames(); prodNames.hasMoreElements();
+    for (Enumeration<String> prodNames = cart.getAttributeNames();
+         prodNames.hasMoreElements();
          ++numProducts) {
       String product = prodNames.nextElement();
-      String stringWt = (String) cart.getAttribute(product);
+      String stringWt = (String)cart.getAttribute(product);
       float wt = Float.parseFloat(stringWt);
       float cost;
       if ("Apples".equals(product))
@@ -66,7 +70,7 @@ public class Checkout extends HttpServlet {
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();
-  } 
+  }
 
   private void printHtmlHeader(PrintWriter out) {
     out.println("<HTML>");

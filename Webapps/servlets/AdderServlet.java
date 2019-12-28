@@ -25,12 +25,13 @@ public class AdderServlet extends HttpServlet {
     }
   }
 
-  private void sendPage(HttpServletResponse reply, String result) throws IOException {
+  private void sendPage(HttpServletResponse reply, String result)
+      throws IOException {
     reply.setContentType("text/HTML");
-    writeResult(reply.getWriter(),result);
+    writeResult(reply.getWriter(), result);
   }
 
-  private void writeResult(PrintWriter out,String result) {
+  private void writeResult(PrintWriter out, String result) {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Result</TITLE>");
@@ -43,6 +44,5 @@ public class AdderServlet extends HttpServlet {
     out.println("</BODY>");
     out.println("</HTML>");
     out.flush();
-
-  } 
+  }
 }

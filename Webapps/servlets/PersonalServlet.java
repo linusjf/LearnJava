@@ -12,18 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 // @WebServlet("/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.displayName();
+  private static final String UTF_8 = StandardCharsets.UTF_8.displayName();
 
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     response.setContentType("text/HTML");
     PrintWriter out = response.getWriter();
-    printResponse(out,request);
+    printResponse(out, request);
   }
 
-  private void printResponse(PrintWriter out,
-      HttpServletRequest request) throws IOException {
+  private void printResponse(PrintWriter out, HttpServletRequest request)
+      throws IOException {
     out.println("<HTML>");
     out.println("<HEAD>");
     out.println("<TITLE>Simple Servlet</TITLE>");

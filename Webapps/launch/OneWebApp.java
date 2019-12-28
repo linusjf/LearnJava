@@ -27,8 +27,7 @@ public final class OneWebApp {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.AvoidCatchingGenericException",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.AvoidCatchingGenericException", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     try {
       // Create a basic jetty server object that will listen on port 8080.
@@ -38,7 +37,8 @@ public final class OneWebApp {
       Server server = new Server(8080);
 
       // Setup JMX
-      MBeanContainer mbContainer = new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
+      MBeanContainer mbContainer =
+          new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
       server.addBean(mbContainer);
 
       // The WebAppContext is the entity that controls the environment in

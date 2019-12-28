@@ -26,6 +26,7 @@ public class SocialSpammer {
   }
 
   public void sendMessages(String message) {
+    assert iterator != null;
     while (iterator.hasNext()) {
       Profile profile = iterator.getNext();
       sendMessage(profile, message);
@@ -37,6 +38,7 @@ public class SocialSpammer {
   }
 
   public void sendMessage(String email, String message) {
-    System.out.println("Sent message to: '" + email + "'. Message body: '" + message + "'");
+    System.out.println("Sent message to: '" + email + "'. Message body: '"
+                       + message + "'");
   }
 }

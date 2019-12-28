@@ -47,7 +47,7 @@ public class WeightX extends HttpServlet {
 
     // Value of weight entered by user retrieved here.
     if (qty != null) {
-      String currentProduct = (String) cart.getAttribute("currentProd");
+      String currentProduct = (String)cart.getAttribute("currentProd");
 
       // Check that user actually entered a value!
       if ("Apples".equals(currentProduct))
@@ -58,7 +58,7 @@ public class WeightX extends HttpServlet {
   }
 
   private void doRemove(HttpSession cart) {
-    String currentProduct = (String) cart.getAttribute("currentProd");
+    String currentProduct = (String)cart.getAttribute("currentProd");
     Object product = cart.getAttribute(currentProduct);
 
     // Note that there is no need for a typecast into

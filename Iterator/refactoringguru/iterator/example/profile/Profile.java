@@ -8,8 +8,8 @@ import java.util.Objects;
 
 public class Profile {
   private final String name;
-  private final String email;
   private final Map<String, List<String>> contacts = new HashMap<>();
+  final String email;
 
   @SuppressWarnings("checkstyle:hiddenfield")
   public Profile(String email, String name, String... contacts) {
@@ -17,7 +17,7 @@ public class Profile {
     this.name = name;
 
     // Parse contact list from a set of "friend:email@gmail.com" pairs.
-    for (String contact : contacts) {
+    for (String contact: contacts) {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;
@@ -50,22 +50,15 @@ public class Profile {
   @SuppressWarnings({"PMD.LawOfDemeter", "checkstyle:hiddenfield"})
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Profile || o instanceof String))
+    if (!(o instanceof Profile))
       return false;
-    if (o instanceof Profile) {
-      Profile profile = (Profile) o;
-      return areEmailsEqual(profile);
-    }
-    if (o instanceof String) {
-      String email = (String) o;
-      return email.equals(this.email);
-    }
-    return false;
+    Profile profile = (Profile)o;
+    return areEmailsEqual(profile);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private boolean areEmailsEqual(Profile profile) {
-    return profile.getEmail().equals(email);
+    return profile.email.equals(email);
   }
 
   @Override
