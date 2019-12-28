@@ -7,14 +7,14 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * {@link TeeParser}.
  */
 public interface TeeListener extends ParseTreeListener {
-  /**
-   * Enter a parse tree produced by {@link TeeParser#r}.
-   * @param ctx the parse tree
-   */
-  void enterR(TeeParser.RContext ctx);
-  /**
-   * Exit a parse tree produced by {@link TeeParser#r}.
-   * @param ctx the parse tree
-   */
-  void exitR(TeeParser.RContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TeeParser#r}.
+	 * @param ctx the parse tree
+	 */
+	void enterR(TeeParser.RContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TeeParser#r}.
+	 * @param ctx the parse tree
+	 */
+	void exitR(TeeParser.RContext ctx);
 }
