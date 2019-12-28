@@ -19,7 +19,8 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory =
+          new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -32,8 +33,10 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static void alternateMain() throws InterruptedException, ExecutionException {
-    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
+  public static void alternateMain()
+      throws InterruptedException, ExecutionException {
+    CustomThreadFactory threadFactory =
+        new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     Future<?> result = executor.submit(task);

@@ -7,7 +7,7 @@ public class QueueObject {
 
   public void doWait() throws InterruptedException {
     synchronized (this) {
-      while (!isNotified) 
+      while (!isNotified)
         this.wait();
       this.isNotified = false;
     }

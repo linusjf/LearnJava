@@ -41,8 +41,7 @@ public class AtomicAssignment implements Runnable {
     configuration = newConfig;
   }
 
-  @SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     readConfig();
     Thread configThread = new Thread(new Runnable() {
@@ -65,12 +64,13 @@ public class AtomicAssignment implements Runnable {
       threads[i].start();
     }
     try {
-      for (Thread thread : threads) 
+      for (Thread thread: threads)
         thread.join();
       configThread.join();
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }
-    System.out.println("[" + Thread.currentThread().getName() + "] All threads have finished.");
+    System.out.println("[" + Thread.currentThread().getName()
+                       + "] All threads have finished.");
   }
 }

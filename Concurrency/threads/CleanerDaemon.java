@@ -16,7 +16,8 @@ public enum CleanerDaemon {
         new Thread(writer),
         new Thread(writer),
     };
-    for (Thread t : threads) t.start();
+    for (Thread t: threads)
+      t.start();
     CleanerTask cleaner = new CleanerTask(deque);
     cleaner.start();
   }
@@ -55,9 +56,8 @@ public enum CleanerDaemon {
       for (int i = 1; i < 100; i++) {
         Event event = new Event();
         event.setDate(new Date());
-        event.setEvent(
-            String.format("The thread %s has generated an event", 
-              Thread.currentThread().getId()));
+        event.setEvent(String.format("The thread %s has generated an event",
+                                     Thread.currentThread().getId()));
         synchronized (deque) {
           deque.addFirst(event);
         }
@@ -95,7 +95,7 @@ public enum CleanerDaemon {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void clean(Date date) {
-      if (deque.size() == 0) 
+      if (deque.size() == 0)
         return;
       boolean delete = false;
       Event e = deque.getLast();

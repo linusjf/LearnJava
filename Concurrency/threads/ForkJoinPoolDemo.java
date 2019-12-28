@@ -20,7 +20,8 @@ public enum ForkJoinPoolDemo {
     ForkJoinPool pool = new ForkJoinPool();
     pool.execute(task);
     do {
-      System.out.printf("Main: Thread Count: %d%n", pool.getActiveThreadCount());
+      System.out.printf("Main: Thread Count: %d%n",
+                        pool.getActiveThreadCount());
       System.out.printf("Main: Thread Steal: %d%n", pool.getStealCount());
       System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
       try {
@@ -35,9 +36,10 @@ public enum ForkJoinPoolDemo {
     if (task.isCompletedNormally()) {
       System.out.printf("Main: The process has completed normally.%n");
     }
-    for (Product product : products) {
+    for (Product product: products) {
       if (product.getPrice() != EXPECTED_PRICE) {
-        System.out.printf("Product %s: %f%n", product.getName(), product.getPrice());
+        System.out.printf(
+            "Product %s: %f%n", product.getName(), product.getPrice());
       }
     }
     System.out.println("Main: End of the program.%n");

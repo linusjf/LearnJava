@@ -10,17 +10,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class DigestRunnable implements Runnable {
+  private static final Base64.Encoder ENCODER = Base64.getEncoder();
   private final String filename;
-  private static final Base64.Encoder ENCODER =
-    Base64.getEncoder();
 
   public DigestRunnable(String filename) {
     this.filename = filename;
   }
 
   @Override
-  @SuppressWarnings({"PMD.EmptyWhileStmt",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));
@@ -40,7 +38,7 @@ public class DigestRunnable implements Runnable {
 
   public static void main(String[] args) {
     System.out.println("Into DigestRunnable...");
-    for (String filename : args) 
+    for (String filename: args)
       runDigestThread(filename);
   }
 

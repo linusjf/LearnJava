@@ -12,14 +12,14 @@ public class InstanceCallbackDigest implements Runnable {
   private final String filename;
   private final InstanceCallbackDigestUserInterface callback;
 
-  public InstanceCallbackDigest(String filename, InstanceCallbackDigestUserInterface callback) {
+  public InstanceCallbackDigest(String filename,
+                                InstanceCallbackDigestUserInterface callback) {
     this.filename = filename;
     this.callback = callback;
   }
 
   @Override
-  @SuppressWarnings({"PMD.EmptyWhileStmt",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));

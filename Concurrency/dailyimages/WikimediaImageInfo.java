@@ -9,7 +9,8 @@ class WikimediaImageInfo extends ImageInfo {
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public WikimediaImageInfo findImage(String body) {
-    Pattern pattern = Pattern.compile("<img\\s+alt=\"[^\"]+\"\\s+src=\"(?<src>[^\\\"]+)\"");
+    Pattern pattern =
+        Pattern.compile("<img\\s+alt=\"[^\"]+\"\\s+src=\"(?<src>[^\\\"]+)\"");
     Matcher matcher = pattern.matcher(body);
     if (matcher.find()) {
       this.imagePath = matcher.group("src");

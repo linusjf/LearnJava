@@ -13,7 +13,8 @@ public enum SemaphoreExample {
     PrintQueue printQueue = new PrintQueue();
     Arrays.setAll(thread, i -> new Thread(new Job(printQueue)));
 
-    for (Thread t : thread) t.start();
+    for (Thread t: thread)
+      t.start();
   }
 
   static class PrintQueue {
@@ -28,9 +29,11 @@ public enum SemaphoreExample {
     public void printJob(Object document) {
       try {
         semaphore.acquire();
-        long duration = (long) (Math.random() * 10);
-        System.out.printf("%s: PrintQueue: Printing a Job utilizing %d seconds%n",
-            Thread.currentThread().getName(), duration);
+        long duration = (long)(Math.random() * 10);
+        System.out.printf(
+            "%s: PrintQueue: Printing a Job utilizing %d seconds%n",
+            Thread.currentThread().getName(),
+            duration);
         Thread.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -51,9 +54,11 @@ public enum SemaphoreExample {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
-      System.out.printf("%s: Going to print a job%n", Thread.currentThread().getName());
+      System.out.printf("%s: Going to print a job%n",
+                        Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf("%s: The document has been printed%n", Thread.currentThread().getName());
+      System.out.printf("%s: The document has been printed%n",
+                        Thread.currentThread().getName());
     }
   }
 }

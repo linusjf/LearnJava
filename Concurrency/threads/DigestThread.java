@@ -11,8 +11,7 @@ import java.util.Base64;
 
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 public class DigestThread extends Thread {
-  private static final Base64.Encoder ENCODER =
-    Base64.getEncoder();
+  private static final Base64.Encoder ENCODER = Base64.getEncoder();
 
   private final String filename;
 
@@ -23,8 +22,7 @@ public class DigestThread extends Thread {
 
   // CPD-OFF
   @Override
-  @SuppressWarnings({"PMD.EmptyWhileStmt",
-  "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));
@@ -45,7 +43,7 @@ public class DigestThread extends Thread {
   // CPD-ON
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
-    for (String filename : args) 
+    for (String filename: args)
       runDigestThread(filename);
   }
 

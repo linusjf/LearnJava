@@ -10,26 +10,33 @@ import org.junit.Assert;
 @SuppressWarnings("checkstyle:onetoplevelclass")
 @Parameters(separators = "=", commandDescription = "Record changes to the repository")
 class CommandCommit {
-  @Parameter(description = "The list of files to commit") List<String> files;
+  @Parameter(description = "The list of files to commit") 
+  List<String> files;
 
-  @Parameter(names = "--amend", description = "Amend") Boolean amend = false;
+  @Parameter(names = "--amend", description = "Amend") 
+  Boolean amend = false;
 
-  @Parameter(names = "--author") String author;
+  @Parameter(names = "--author") 
+  String author;
 }
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 @Parameters(commandDescription = "Add file contents to the index")
 class CommandAdd {
-  @Parameter(description = "File patterns to add to the index") List<String> patterns;
+  @Parameter(description = "File patterns to add to the index") 
+  List<String> patterns;
 
-  @Parameter(names = "-i") Boolean interactive = false;
+  @Parameter(names = "-i") 
+  Boolean interactive = false;
 }
 
 @Parameters(commandDescription = "Tool command")
 public class TooledCommand {
-  @Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity") Boolean verbose;
+  @Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity") 
+  Boolean verbose;
 
-  @Parameter(names = "-test", description = "Test") Integer test = 1;
+  @Parameter(names = "-test", description = "Test") 
+  Integer test = 1;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {

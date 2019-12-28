@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VariableArityCommand {
-  @Parameter(names = "-foo", variableArity = true) List<String> foo = new ArrayList<>();
+  @Parameter(names = "-foo", variableArity = true) 
+  List<String> foo = new ArrayList<>();
 
   public static void main(String... argv) {
     VariableArityCommand ac = new VariableArityCommand();
@@ -16,6 +17,7 @@ public class VariableArityCommand {
   }
 
   public void run() {
-    for (String one : foo) System.out.println(one);
+    for (String one : foo) 
+      System.out.println(one);
   }
 }

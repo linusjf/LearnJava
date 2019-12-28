@@ -8,15 +8,18 @@ public final class JoinDigestUserInterface {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void startThread(int index, ReturnDigest[] digestThreads, String arg) {
+  private static void startThread(int index,
+                                  ReturnDigest[] digestThreads,
+                                  String arg) {
     digestThreads[index] = new ReturnDigest(arg);
     digestThreads[index].start();
   }
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
     ReturnDigest[] digestThreads = new ReturnDigest[args.length];
-    for (int i = 0; i < args.length; i++) startThread(i, digestThreads, args[i]);
+    for (int i = 0; i < args.length; i++)
+      startThread(i, digestThreads, args[i]);
     for (int i = 0; i < args.length; i++) {
       try {
         digestThreads[i].join();

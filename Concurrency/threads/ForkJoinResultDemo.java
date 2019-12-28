@@ -24,7 +24,8 @@ public enum ForkJoinResultDemo {
     do {
       System.out.printf("******************************************%n");
       System.out.printf("Main: Parallelism: %d%n", pool.getParallelism());
-      System.out.printf("Main: Active Threads: %d%n", pool.getActiveThreadCount());
+      System.out.printf("Main: Active Threads: %d%n",
+                        pool.getActiveThreadCount());
       System.out.printf("Main: Task Count: %d%n", pool.getQueuedTaskCount());
       System.out.printf("Main: Steal Count: %d%n", pool.getStealCount());
       System.out.printf("******************************************%n");
@@ -42,7 +43,8 @@ public enum ForkJoinResultDemo {
     }
     try {
       System.out.printf(
-          "Main: The word '" + WORD + "' appears %d times in the document.", task.get());
+          "Main: The word '" + WORD + "' appears %d times in the document.",
+          task.get());
     } catch (InterruptedException | ExecutionException e) {
       System.err.println(e);
     }
@@ -62,8 +64,12 @@ public enum ForkJoinResultDemo {
         "main",
     };
 
-    @SuppressWarnings({"PMD.AvoidArrayLoops", "PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
-    public String[][] generateDocument(int numLines, int numWords, String word) {
+    @SuppressWarnings({"PMD.AvoidArrayLoops",
+                       "PMD.DataflowAnomalyAnalysis",
+                       "PMD.LawOfDemeter"})
+    public String[][] generateDocument(int numLines,
+                                       int numWords,
+                                       String word) {
       int counter = 0;
       String[][] document = new String[numLines][numWords];
       Random random = new Random();
@@ -77,8 +83,8 @@ public enum ForkJoinResultDemo {
           }
         }
       }
-      System.out.println(
-          "DocumentMock: The word '" + word + "' appears " + counter + " times in the document");
+      System.out.println("DocumentMock: The word '" + word + "' appears "
+                         + counter + " times in the document");
       return document;
     }
   }
@@ -120,7 +126,10 @@ public enum ForkJoinResultDemo {
     }
 
     @SuppressWarnings("checkstyle:hiddenfield")
-    private Integer processLines(String[][] doc, int start, int end, String word) {
+    private Integer processLines(String[][] doc,
+                                 int start,
+                                 int end,
+                                 String word) {
       List<LineTask> tasks = new ArrayList<>();
       for (int i = start; i < end; i++) {
         LineTask task = new LineTask(doc[i], 0, doc[i].length, word);
@@ -128,7 +137,7 @@ public enum ForkJoinResultDemo {
       }
       invokeAll(tasks);
       int result = 0;
-      for (LineTask task : tasks) {
+      for (LineTask task: tasks) {
         try {
           result = result + task.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -179,8 +188,11 @@ public enum ForkJoinResultDemo {
       return result;
     }
 
-    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
-    private Integer count(String[] line, int start, int end, String word) {
+    @SuppressWarnings({"checkstyle:hiddenfield",
+                       "PMD.DataflowAnomalyAnalysis",
+                       "PMD.LawOfDemeter"})
+    private Integer
+    count(String[] line, int start, int end, String word) {
       int counter = 0;
       for (int i = start; i < end; i++) {
         if (line[i].equals(word))

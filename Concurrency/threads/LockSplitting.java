@@ -29,18 +29,22 @@ public class LockSplitting implements Runnable {
         threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
 
       long startMillis = System.currentTimeMillis();
-      for (Thread t : threads) t.start();
+      for (Thread t: threads)
+        t.start();
 
-      for (Thread t : threads) t.join();
+      for (Thread t: threads)
+        t.join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
         threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
 
       startMillis = System.currentTimeMillis();
-      for (Thread t : threads) t.start();
+      for (Thread t: threads)
+        t.start();
 
-      for (Thread t : threads) t.join();
+      for (Thread t: threads)
+        t.join();
 
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {

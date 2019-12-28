@@ -15,7 +15,7 @@ public final class GZipAllFiles {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
-    for (String filename : args) {
+    for (String filename: args) {
       zipFile(filename, pool);
     }
     pool.shutdown();
@@ -23,7 +23,7 @@ public final class GZipAllFiles {
 
   private static void zipFile(String filename, ExecutorService pool) {
     File f = new File(filename);
-    if (f.exists()) 
+    if (f.exists())
       zip(f, pool);
   }
 
@@ -32,8 +32,8 @@ public final class GZipAllFiles {
     if (f.isDirectory()) {
       Optional<?> objs = Optional.ofNullable(f.listFiles());
       objs.ifPresent(obj -> {
-        File[] files = (File[]) obj;
-        for (File file : files) {
+        File[] files = (File[])obj;
+        for (File file: files) {
           // don't recurse directories
           if (!file.isDirectory())
             submitZipTask(file, pool);

@@ -19,7 +19,8 @@ public enum InvokeAnyExecutor {
     String password = "test";
     UserValidator ldapValidator = new UserValidator("LDAP");
     UserValidator dbValidator = new UserValidator("DataBase");
-    TaskValidator ldapTask = new TaskValidator(ldapValidator, username, password);
+    TaskValidator ldapTask =
+        new TaskValidator(ldapValidator, username, password);
     TaskValidator dbTask = new TaskValidator(dbValidator, username, password);
     List<TaskValidator> taskList = new ArrayList<>();
     taskList.add(ldapTask);
@@ -44,14 +45,18 @@ public enum InvokeAnyExecutor {
       this.name = name;
     }
 
-    @SuppressWarnings({"checkstyle:hiddenfield","PMD.LawOfDemeter"})
+    @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
     public boolean validate(String name, String password) {
       try {
-        long duration = (long) (random.nextInt(10));
-        System.out.printf("Validator %s: Validating a user utilizing %d seconds%n", name, duration);
+        long duration = (long)(random.nextInt(10));
+        System.out.printf(
+            "Validator %s: Validating a user utilizing %d seconds%n",
+            name,
+            duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
-        System.err.printf("%s: %s:- Returning false...%n", name, e.getMessage());
+        System.err.printf(
+            "%s: %s:- Returning false...%n", name, e.getMessage());
         return false;
       }
       return new Random().nextBoolean();
@@ -76,7 +81,8 @@ public enum InvokeAnyExecutor {
     @Override
     public String call() throws Exception {
       if (!validator.validate(user, password)) {
-        System.out.printf("%s: The user has not been found%n", validator.getName());
+        System.out.printf("%s: The user has not been found%n",
+                          validator.getName());
         throw new GeneralSecurityException("Error validating user");
       }
       System.out.printf("%s: The user has been found%n", validator.getName());

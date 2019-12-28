@@ -10,7 +10,7 @@ class DilbertImageInfo extends ImageInfo {
     return this;
   }
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   private static String findProperty(String body, String filter) {
     String search = "meta name=\"twitter:" + filter + "\" content=\"";
     return body.lines()
@@ -18,12 +18,15 @@ class DilbertImageInfo extends ImageInfo {
         .findFirst()
         .map(line -> line.replaceAll(".*" + search, ""))
         .map(line -> line.replaceAll("\".*", ""))
-        .orElseThrow(() -> new IllegalStateException("Could not find \"" + filter + "\""));
+        .orElseThrow(()
+                         -> new IllegalStateException("Could not find \""
+                                                      + filter + "\""));
   }
 
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public String getUrlForDate(LocalDate date) {
-    return "https://dilbert.com/strip/" + DateTimeFormatter.ISO_DATE.format(date);
+    return "https://dilbert.com/strip/"
+        + DateTimeFormatter.ISO_DATE.format(date);
   }
 }

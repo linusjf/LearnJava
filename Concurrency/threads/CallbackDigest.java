@@ -16,7 +16,7 @@ public class CallbackDigest implements Runnable {
   }
 
   @Override
-  @SuppressWarnings({"PMD.EmptyWhileStmt","PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));

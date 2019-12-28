@@ -2,6 +2,7 @@ package threads;
 
 public enum IllegalMonitorStateWaitExample {
   ;
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
@@ -18,7 +19,8 @@ public enum IllegalMonitorStateWaitExample {
       // The following statement results in an IllegalMonitorStateException.
       HelperClass.OBJ.wait();
     } catch (InterruptedException ex) {
-      System.err.println("An InterruptedException was caught: " + ex.getMessage());
+      System.err.println("An InterruptedException was caught: "
+                         + ex.getMessage());
     }
   }
 }

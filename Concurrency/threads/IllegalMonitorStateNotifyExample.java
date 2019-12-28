@@ -5,6 +5,7 @@ import threads.HelperClass.WaitingThread;
 
 public enum IllegalMonitorStateNotifyExample {
   ;
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     try {
@@ -30,7 +31,8 @@ public enum IllegalMonitorStateNotifyExample {
       // Wait for all threads to terminate.
       waitThread.join();
     } catch (InterruptedException ex) {
-      System.err.println("An InterruptedException was caught: " + ex.getMessage());
+      System.err.println("An InterruptedException was caught: "
+                         + ex.getMessage());
       return;
     }
   }
