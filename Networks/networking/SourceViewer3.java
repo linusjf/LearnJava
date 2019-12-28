@@ -47,9 +47,8 @@ public final class SourceViewer3 {
       j++;
     }
     System.out.println();
-    try (InputStream in = new BufferedInputStream(uc.getInputStream())) {
-      // chain the InputStream to a Reader
-      Reader r = new InputStreamReader(in, UTF_8);
+    try (InputStream in = new BufferedInputStream(uc.getInputStream());
+         Reader r = new InputStreamReader(in, UTF_8);) {
       int c;
       while ((c = r.read()) != -1)
         System.out.print((char)c);

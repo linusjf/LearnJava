@@ -11,8 +11,7 @@ import java.util.Locale;
 import java.util.concurrent.Callable;
 
 public class DaytimeTask implements Runnable, Callable<Void> {
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
   private final Socket connection;
 
   DaytimeTask(Socket connection) {

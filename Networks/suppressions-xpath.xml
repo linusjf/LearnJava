@@ -3,26 +3,21 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="EncodingAwareSourceViewer.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='EncodingAwareSourceViewer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='read']]/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='encoding']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='encodingStart']]/NUM_INT[@text='8']"/>
-<suppress-xpath
-       files="MainClass.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='MainClass']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createServerSocket']]/SLIST/VARIABLE_DEF[./IDENT[@text='ss']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5432']"/>
-<suppress-xpath
-       files="Time.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Time']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getDateFromNetwork']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15_000']"/>
-<suppress-xpath
-       files="SocketClientExample.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SocketClientExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startClient']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
-<suppress-xpath
-       files="SocketServerExample.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SocketServerExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='read']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1024']"/>
+  <suppress-xpath files="EncodingAwareSourceViewer.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='EncodingAwareSourceViewer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='read']]/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='encoding']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='encodingStart']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="MainClass.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MainClass']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createServerSocket']]/SLIST/VARIABLE_DEF[./IDENT[@text='ss']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5432']" />
+  <suppress-xpath files="Time.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Time']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getDateFromNetwork']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15_000']" />
+  <suppress-xpath files="SocketClientExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketClientExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startClient']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']" />
+  <suppress-xpath files="SocketServerExample.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SocketServerExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='read']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1024']" />
   <suppress-xpath files="CacheControl.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='CacheControl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='parseValues']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='maxAge']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/PLUS/STAR/NUM_LONG[@text='1000L']" />

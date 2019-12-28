@@ -66,7 +66,6 @@ public enum UDPEchoClient {
     private final int port;
     private volatile boolean stopped;
 
-
     SenderThread(DatagramSocket socket, InetAddress address, int port) {
       super();
       this.server = address;

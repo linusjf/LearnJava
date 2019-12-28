@@ -49,8 +49,7 @@ public final class SecureOrderPlacer {
       Arrays.fill(password, '0');
       SSLSocketFactory ssf = context.getSocketFactory();
       try (SSLSocket s = (SSLSocket)ssf.createSocket("localhost", PORT);
-          OutputStream out = s.getOutputStream();
-          ) {
+           OutputStream out = s.getOutputStream();) {
 
         // add anonymous (non-authenticated) cipher suites
         String[] supported = ssf.getSupportedCipherSuites();
@@ -59,7 +58,7 @@ public final class SecureOrderPlacer {
         // String[] anonCipherSuitesSupported = new String[supported.length];
         // int numAnonCipherSuitesSupported = 0;
         for (String instance: supported) {
-          if (instance.contains("_anon_")) 
+          if (instance.contains("_anon_"))
             anonCiphers.add(instance);
         }
 

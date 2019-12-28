@@ -6,6 +6,11 @@
     <Bug code="RCN,BC" />
   </Match>
   <Match>
+    <Class name="networking.SocketClientExample" />
+    <Method name="startClient" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
     <Class name="networking.ListDicts" />
     <Method name="main" />
     <Bug code="RCN" />
@@ -28,7 +33,7 @@
   <Match>
     <Class name="networking.SocketClientDemo" />
     <Method name="main" />
-    <Bug code="BC" />
+    <Bug code="BC,RCN" />
   </Match>
   <Match>
     <Class name="networking.BinarySaver" />
@@ -37,7 +42,7 @@
   </Match>
   <Match>
     <Class name="networking.MainClass" />
-    <Method name="main" />
+    <Method name="createServerSocket" />
     <Bug code="BC" />
   </Match>
   <Match>
@@ -58,6 +63,11 @@
   <Match>
     <Class name="networking.TimeServer" />
     <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DaytimeTask" />
+    <Method name="run" />
     <Bug code="RCN" />
   </Match>
   <Match>
@@ -84,6 +94,11 @@
     <Class name="networking.LoggingDaytimeServer" />
     <Method name="acceptAndSubmit" />
     <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.LoggingDaytimeServer$DaytimeTask" />
+    <Method name="call" />
+    <Bug code="RCN" />
   </Match>
   <Match>
     <Class name="networking.PooledWebLog" />
@@ -118,6 +133,11 @@
   <Match>
     <Class name="networking.UDPEchoClientWithChannels" />
     <Method name="echoToServer" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.UDPDiscardClientWithChannels" />
+    <Method name="main" />
     <Bug code="RCN" />
   </Match>
   <Match>

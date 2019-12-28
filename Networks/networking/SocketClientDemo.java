@@ -32,8 +32,8 @@ public final class SocketClientDemo {
       int port = getPort(args);
       SSLSocketFactory ssf = (SSLSocketFactory)SSLSocketFactory.getDefault();
       try (SSLSocket s = (SSLSocket)ssf.createSocket("localhost", port);
-        BufferedReader input = new BufferedReader(
-                 new InputStreamReader(s.getInputStream(), UTF_8));) {
+           BufferedReader input = new BufferedReader(
+               new InputStreamReader(s.getInputStream(), UTF_8));) {
         s.setEnabledCipherSuites(
             new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
         s.setEnabledProtocols(new String[] {"TLSv1.2"});

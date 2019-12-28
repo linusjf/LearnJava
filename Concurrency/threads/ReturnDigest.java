@@ -39,6 +39,6 @@ public class ReturnDigest extends Thread {
   }
 
   public byte[] getDigest() {
-    return digest;
+    return Arrays.copyOf(digest, digest.length);
   }
 }
