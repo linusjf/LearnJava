@@ -38,7 +38,8 @@ public class Selection extends HttpServlet {
     writePage(out,product); 
   }
 
-  @SuppressWarnings("PMD.AvoidDuplicateLiterals")
+  @SuppressWarnings({"PMD.AvoidDuplicateLiterals",
+  "checkstyle:executablestatementcount"})
   private void writePage(PrintWriter out,String product) {
     out.println("<HTML>");
     out.println("<HEAD>");
