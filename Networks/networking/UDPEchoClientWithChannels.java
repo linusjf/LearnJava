@@ -22,7 +22,7 @@ public enum UDPEchoClientWithChannels {
       return PORT;
     }
   }
-  
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     String host = args.length > 0 ? args[0] : "localhost";
@@ -44,9 +44,10 @@ public enum UDPEchoClientWithChannels {
     }
   }
 
-  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis","PMD.LawOfDemeter"})
-  private static void echoToServer(ByteBuffer buffer, Selector selector, DatagramChannel channel)
-      throws IOException {
+  @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
+  private static void echoToServer(ByteBuffer buffer,
+                                   Selector selector,
+                                   DatagramChannel channel) throws IOException {
     int n = 0;
     int numbersRead = 0;
     while (numbersRead < LIMIT) {
@@ -56,7 +57,7 @@ public enum UDPEchoClientWithChannels {
 
       // All packets have been written and it doesn't look like any
       // more are will arrive from the network
-      if (readyKeys.isEmpty() && n == LIMIT) 
+      if (readyKeys.isEmpty() && n == LIMIT)
         break;
       else {
         Iterator<SelectionKey> iterator = readyKeys.iterator();
@@ -78,7 +79,7 @@ public enum UDPEchoClientWithChannels {
             channel.write(buffer);
             System.out.println("Wrote: " + n);
             n++;
-          } else 
+          } else
             // All packets have been written;
             // switch to read-only mode
             key.interestOps(SelectionKey.OP_READ);

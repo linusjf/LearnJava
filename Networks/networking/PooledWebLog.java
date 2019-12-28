@@ -15,8 +15,7 @@ import java.util.concurrent.Future;
 
 public final class PooledWebLog {
   private static final int NUM_THREADS = 4;
-  private static final Charset UTF_8 =
-    StandardCharsets.UTF_8;
+  private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
   private PooledWebLog() {
     throw new IllegalStateException("Private constructor");
@@ -27,7 +26,7 @@ public final class PooledWebLog {
     ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
     Queue<LogEntry> results = new LinkedList<>();
     try (BufferedReader in =
-        Files.newBufferedReader(Paths.get(args[0]), UTF_8); ) {
+             Files.newBufferedReader(Paths.get(args[0]), UTF_8);) {
       for (String entry = in.readLine(); entry != null; entry = in.readLine()) {
         LookupTask task = new LookupTask(entry);
         Future<String> future = executor.submit(task);
@@ -37,7 +36,7 @@ public final class PooledWebLog {
     }
 
     // Start printing the results. This blocks each time a result isn't ready.
-    for (LogEntry result : results) {
+    for (LogEntry result: results) {
       try {
         System.out.println(result.future.get());
       } catch (InterruptedException | ExecutionException ex) {

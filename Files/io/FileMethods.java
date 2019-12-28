@@ -43,7 +43,8 @@ public enum FileMethods {
           // Now display list of files in
           // directory…
           if (fileList != null) {
-            for (String fileName : fileList) System.out.println(" " + fileName);
+            for (String fileName: fileList)
+              System.out.println(" " + fileName);
           }
         } else {
           System.out.print("Size of file: ");

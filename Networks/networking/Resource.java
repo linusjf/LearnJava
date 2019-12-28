@@ -16,7 +16,8 @@ class Resource {
   public int addOne() {
     try {
       synchronized (this) {
-        while (numResources >= MAX) wait();
+        while (numResources >= MAX)
+          wait();
         numResources++;
 
         // 'Wake up' any waiting consumer…
@@ -33,7 +34,8 @@ class Resource {
   public int takeOne() {
     try {
       synchronized (this) {
-        while (numResources == 0) wait();
+        while (numResources == 0)
+          wait();
         numResources--;
 
         // 'Wake up' waiting producer…

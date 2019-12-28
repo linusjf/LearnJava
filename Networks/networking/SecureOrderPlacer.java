@@ -48,41 +48,36 @@ public final class SecureOrderPlacer {
       context.init(kmf.getKeyManagers(), null, null);
       Arrays.fill(password, '0');
       SSLSocketFactory ssf = context.getSocketFactory();
-      try (
-      SSLSocket s = (SSLSocket) ssf.createSocket("localhost", PORT);) {
+      try (SSLSocket s = (SSLSocket)ssf.createSocket("localhost", PORT);
+          OutputStream out = s.getOutputStream();
+          ) {
 
-      // add anonymous (non-authenticated) cipher suites
-      String[] supported = ssf.getSupportedCipherSuites();
-      List<String> anonCiphers = new ArrayList<>();
+        // add anonymous (non-authenticated) cipher suites
+        String[] supported = ssf.getSupportedCipherSuites();
+        List<String> anonCiphers = new ArrayList<>();
 
-      // String[] anonCipherSuitesSupported = new String[supported.length];
-      // int numAnonCipherSuitesSupported = 0;
-      for (String instance : supported) {
-        if (instance.contains("_anon_")) {
-          anonCiphers.add(instance);
+        // String[] anonCipherSuitesSupported = new String[supported.length];
+        // int numAnonCipherSuitesSupported = 0;
+        for (String instance: supported) {
+          if (instance.contains("_anon_")) 
+            anonCiphers.add(instance);
         }
-      }
 
-      // clang-format off
-      String[] enabled = anonCiphers.stream().toArray(String[]::new);
+        // clang-format off
+        String[] enabled = anonCiphers.stream().toArray(String[]::new);
 
-      // clang-format on
-      s.setEnabledCipherSuites(enabled);
-      System.out.println("about to connect...");
+        // clang-format on
+        s.setEnabledCipherSuites(enabled);
+        System.out.println("about to connect...");
 
-      // Now all the set up is complete and we can focus
-      // on the actual communication.
-      try (OutputStream out = s.getOutputStream();) {
-      out.write("Let's place an order".getBytes(StandardCharsets.UTF_8));
-      out.flush();
+        // Now all the set up is complete and we can focus
+        // on the actual communication.
+        out.write("Let's place an order".getBytes(StandardCharsets.UTF_8));
+        out.flush();
       }
-      }
-    } catch (IOException
-        | KeyManagementException
-        | KeyStoreException
-        | NoSuchAlgorithmException
-        | CertificateException
-        | UnrecoverableKeyException ex) {
+    } catch (IOException | KeyManagementException | KeyStoreException
+             | NoSuchAlgorithmException | CertificateException
+             | UnrecoverableKeyException ex) {
       System.err.println(ex.getMessage());
     }
   }

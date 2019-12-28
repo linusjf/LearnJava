@@ -13,8 +13,7 @@ import java.util.Scanner;
 
 public enum TCPEchoServer {
   ;
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
 
@@ -28,18 +27,16 @@ public enum TCPEchoServer {
       System.out.println("Unable to attach to port!");
       System.exit(1);
     }
-    while (true) 
+    while (true)
       handleClient();
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void handleClient() {
     try (Socket link = serverSocket.accept();
-        PrintWriter output =
-            new PrintWriter(
-                new OutputStreamWriter(link.getOutputStream(), UTF_8),
-                true);
-        Scanner input = new Scanner(link.getInputStream(), UTF_8); ) {
+         PrintWriter output = new PrintWriter(
+             new OutputStreamWriter(link.getOutputStream(), UTF_8), true);
+         Scanner input = new Scanner(link.getInputStream(), UTF_8);) {
       int numMessages = 0;
       String message = "";
 

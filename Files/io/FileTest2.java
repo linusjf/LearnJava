@@ -21,7 +21,8 @@ public enum FileTest2 {
     }
   }
 
-  private static void inputMarks(Scanner input, String fileName) throws IOException {
+  private static void inputMarks(Scanner input, String fileName)
+      throws IOException {
     try (PrintWriter output = new PrintWriter(new File(fileName), UTF_8)) {
       System.out.printf("Ten marks needed.%n");
       for (int i = 1; i < 11; i++) {

@@ -25,14 +25,17 @@ public enum UDPDiscardServer {
     try (DatagramSocket server = new DatagramSocket(port)) {
       while (true) {
         try {
-          DatagramPacket packet = new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);
+          DatagramPacket packet =
+              new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);
           server.receive(packet);
-          String s = new String(packet.getData(), 0, packet.getLength(), "8859_1");
-          System.out.println(packet.getAddress() + " at port " + packet.getPort() + " says: " + s);
+          String s =
+              new String(packet.getData(), 0, packet.getLength(), "8859_1");
+          System.out.println(packet.getAddress() + " at port "
+                             + packet.getPort() + " says: " + s);
         } catch (IOException ex) {
           System.err.println(ex);
         }
-      } // end while
+      }  // end while
     } catch (SocketException ex) {
       System.err.println(ex);
     }

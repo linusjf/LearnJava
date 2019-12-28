@@ -13,8 +13,7 @@ public enum PersonnelServer {
   ;
   private static ServerSocket serverSocket;
   private static final int PORT = 1234;
-  private static final String UTF_8 =
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
   private static List<Personnel> staffListOut;
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")
@@ -36,17 +35,17 @@ public enum PersonnelServer {
     };
 
     // clang-format on
-    for (Personnel person : staff) 
+    for (Personnel person: staff)
       staffListOut.add(person);
     startServer();
   }
 
   private static void startServer() {
     while (true) {
-      try (
-        Socket socket = serverSocket.accept();
-        Scanner inStream = new Scanner(socket.getInputStream(), UTF_8);
-        ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());) {
+      try (Socket socket = serverSocket.accept();
+           Scanner inStream = new Scanner(socket.getInputStream(), UTF_8);
+           ObjectOutputStream outStream =
+               new ObjectOutputStream(socket.getOutputStream());) {
 
         /*
                       The above line and associated declaration

@@ -11,8 +11,7 @@ import java.util.Scanner;
 
 public enum TCPEchoClient {
   ;
-  private static final String UTF_8 = 
-    StandardCharsets.UTF_8.name();
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private static InetAddress host;
   private static final int PORT = 1234;
@@ -30,12 +29,10 @@ public enum TCPEchoClient {
 
   private static void accessServer() {
     try (Socket link = new Socket(host, PORT);
-        Scanner input = new Scanner(link.getInputStream(), UTF_8);
-        PrintWriter output =
-            new PrintWriter(
-                new OutputStreamWriter(link.getOutputStream(), UTF_8),
-                true);
-        Scanner userEntry = new Scanner(System.in, UTF_8); ) {
+         Scanner input = new Scanner(link.getInputStream(), UTF_8);
+         PrintWriter output = new PrintWriter(
+             new OutputStreamWriter(link.getOutputStream(), UTF_8), true);
+         Scanner userEntry = new Scanner(System.in, UTF_8);) {
       // Set up stream for keyboard entry…
       String message = "";
       while (!"***CLOSE***".equals(message)) {
@@ -44,7 +41,7 @@ public enum TCPEchoClient {
           message = userEntry.nextLine();
           output.println(message);
         }
-        if (input.hasNext()) 
+        if (input.hasNext())
           System.out.println("\nSERVER> " + input.nextLine());
       }
     } catch (IOException ioEx) {

@@ -12,12 +12,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 public class FormPoster {
+  private static final String UTF_8 = StandardCharsets.UTF_8.name();
   private final URL url;
   private final QueryString query = new QueryString();
-  private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   public FormPoster(URL url) {
-    if (!url.getProtocol().toLowerCase(Locale.getDefault()).startsWith("http")) {
+    if (!url.getProtocol()
+             .toLowerCase(Locale.getDefault())
+             .startsWith("http")) {
       throw new IllegalArgumentException("Posting only works for http URLs");
     }
     this.url = url;
@@ -40,7 +42,8 @@ public class FormPoster {
   public InputStream post(URLConnection uc) throws IOException {
     // open the connection and prepare it to POST
     uc.setDoOutput(true);
-    try (OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(), UTF_8)) {
+    try (OutputStreamWriter out =
+             new OutputStreamWriter(uc.getOutputStream(), UTF_8)) {
       // The POST line, the Content-type header,
       // and the Content-length headers are sent by the URLConnection.
       // We just need to send the data
@@ -54,11 +57,10 @@ public class FormPoster {
 
   @SuppressWarnings({"PMD.DoNotCallSystemExit", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
-    Thread.setDefaultUncaughtExceptionHandler(
-        (t, e) -> {
-          System.err.println(e.getMessage());
-          System.exit(1);
-        });
+    Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+      System.err.println(e.getMessage());
+      System.exit(1);
+    });
 
     URL url = getDefaultURL();
     if (args.length > 0) {
@@ -77,7 +79,8 @@ public class FormPoster {
       // Read the response
       Reader r = new InputStreamReader(in, UTF_8);
       int c;
-      while ((c = r.read()) != -1) System.out.print((char) c);
+      while ((c = r.read()) != -1)
+        System.out.print((char)c);
       System.out.println();
     } catch (IOException ex) {
       System.err.println(ex);

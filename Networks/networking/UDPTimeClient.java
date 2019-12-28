@@ -13,9 +13,9 @@ public enum UDPTimeClient {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static InetAddress getAddress(String... args) {
     try {
-      if (args.length > 0) 
+      if (args.length > 0)
         return InetAddress.getByName(args[0]);
-      else 
+      else
         return InetAddress.getByName(DEFAULT_HOST);
     } catch (UnknownHostException ex) {
       throw new AssertionError("Usage: java UDPTimeClient [host]", ex);

@@ -70,7 +70,7 @@ public class JarLibraryLoader implements LibraryLoader {
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
-          checkLink(sm, lib.getAbsolutePath());
+          checkLink(sm);
           System.load(lib.getAbsolutePath());
           return lib.delete();
         }
@@ -81,8 +81,8 @@ public class JarLibraryLoader implements LibraryLoader {
     return false;
   }
 
-  private void checkLink(SecurityManager sm, String lib) {
-    sm.checkLink(lib);
+  private void checkLink(SecurityManager sm) {
+    sm.checkLink(lib.getAbsolutePath());
   }
 
   /**
