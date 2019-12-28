@@ -3,3 +3,6 @@
 -not -path Antlr/tee/*Lexer.java
 -not -path Antlr/tee/*Parser.java
 -not -path Antlr/tee/*Listener.java
+-not -path Antlr/expr/*Lexer.java
+-not -path Antlr/expr/*Parser.java
+-not -path Antlr/expr/*Listener.java
