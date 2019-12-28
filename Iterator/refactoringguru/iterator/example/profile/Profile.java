@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Profile {
+  private final String email;
   private final String name;
   private final Map<String, List<String>> contacts = new HashMap<>();
-  final String email;
 
   @SuppressWarnings("checkstyle:hiddenfield")
   public Profile(String email, String name, String... contacts) {
@@ -17,12 +17,11 @@ public class Profile {
     this.name = name;
 
     // Parse contact list from a set of "friend:email@gmail.com" pairs.
-    for (String contact: contacts) {
+    for (String contact : contacts) {
       String[] parts = contact.split(":");
       String contactType = "friend";
       String contactEmail;
-      if (parts.length == 1)
-        contactEmail = parts[0];
+      if (parts.length == 1) contactEmail = parts[0];
       else {
         contactType = parts[0];
         contactEmail = parts[1];
@@ -50,9 +49,8 @@ public class Profile {
   @SuppressWarnings({"PMD.LawOfDemeter", "checkstyle:hiddenfield"})
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof Profile))
-      return false;
-    Profile profile = (Profile)o;
+    if (!(o instanceof Profile)) return false;
+    Profile profile = (Profile) o;
     return areEmailsEqual(profile);
   }
 

@@ -44,6 +44,7 @@ public class Facebook implements SocialNetwork {
     return profile.isPresent() ? profile.get().getContacts(contactType) : null;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private Profile findProfile(String profileEmail) {
     for (Profile profile: profiles) {
       if (profile.getEmail().equals(profileEmail))
