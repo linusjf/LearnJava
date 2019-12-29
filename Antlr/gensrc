@@ -3,4 +3,5 @@
 ./antlr4 -package hello -Dlanguage=Python3 -o hellopy3 Hello.g4
 ./antlr4 -package tee -Dlanguage=Java -o tee Tee.g4
 ./antlr4 -package 'expr' -Dlanguage=Java -o 'expr' Expr.g4
+./antlr4 -package 'exprv2' -Dlanguage=Java -o 'exprv2' Exprv2.g4
 
