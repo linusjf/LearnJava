@@ -1,3 +1,6 @@
 tee.Test < test.txt
 expr.Test < exprtest.txt
 expr.Test < exprtesterr.txt
+exprv2.Test < exprv2test.txt
+exprv2.Test < exprtest.txt
+exprv2.Test < exprtesterr.txt

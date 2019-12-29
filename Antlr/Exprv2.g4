@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 @members {
 /** Map variable name to Integer object holding value */
-HashMap memory = new HashMap();
+HashMap<String,Integer> memory = new HashMap<>();
 }
 // END:members
 
@@ -21,7 +21,7 @@ stat:   // evaluate expr and emit result
         // match assignment and stored value
         // $ID.text is text property of token matched for ID reference
     |   ID '=' expr NEWLINE
-        {memory.put($ID.text, new Integer($expr.value));}
+        {memory.put($ID.text, Integer.valueOf($expr.value));}
 
         // do nothing: empty statement
     |   NEWLINE
@@ -59,7 +59,7 @@ atom returns [int value]
     |   ID // variable reference
         {
         // look up value of variable
-        Integer v = (Integer)memory.get($ID.text);
+        Integer v = memory.get($ID.text);
         // if found, set return value else error
         if ( v!=null ) $value = v.intValue();
         else System.err.println("undefined variable "+$ID.text);

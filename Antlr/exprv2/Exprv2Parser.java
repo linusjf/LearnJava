@@ -90,7 +90,7 @@ public class Exprv2Parser extends Parser {
 
 
 	/** Map variable name to Integer object holding value */
-	HashMap memory = new HashMap();
+	HashMap<String,Integer> memory = new HashMap<>();
 
 	public Exprv2Parser(TokenStream input) {
 		super(input);
@@ -202,7 +202,7 @@ public class Exprv2Parser extends Parser {
 				((StatContext)_localctx).expr = expr();
 				setState(22);
 				match(NEWLINE);
-				memory.put((((StatContext)_localctx).ID!=null?((StatContext)_localctx).ID.getText():null), new Integer(((StatContext)_localctx).expr.value));
+				memory.put((((StatContext)_localctx).ID!=null?((StatContext)_localctx).ID.getText():null), Integer.valueOf(((StatContext)_localctx).expr.value));
 				}
 				break;
 			case 3:
@@ -414,7 +414,7 @@ public class Exprv2Parser extends Parser {
 				((AtomContext)_localctx).ID = match(ID);
 
 				        // look up value of variable
-				        Integer v = (Integer)memory.get((((AtomContext)_localctx).ID!=null?((AtomContext)_localctx).ID.getText():null));
+				        Integer v = memory.get((((AtomContext)_localctx).ID!=null?((AtomContext)_localctx).ID.getText():null));
 				        // if found, set return value else error
 				        if ( v!=null ) ((AtomContext)_localctx).value =  v.intValue();
 				        else System.err.println("undefined variable "+(((AtomContext)_localctx).ID!=null?((AtomContext)_localctx).ID.getText():null));

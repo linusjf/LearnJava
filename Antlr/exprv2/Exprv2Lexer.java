@@ -85,7 +85,7 @@ public class Exprv2Lexer extends Lexer {
 
 
 	/** Map variable name to Integer object holding value */
-	HashMap memory = new HashMap();
+	HashMap<String,Integer> memory = new HashMap<>();
 
 
 	public Exprv2Lexer(CharStream input) {

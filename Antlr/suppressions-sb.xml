@@ -12,9 +12,9 @@
   </Match>
   <Match>
     <Or>
-      <Class name="~expr[.].+Parser" />
-      <Class name="~expr[.].+Lexer" />
-      <Class name="~expr[.].+Listener" />
+      <Class name="~expr(v2)?[.].+Parser" />
+      <Class name="~expr(v2)?[.].+Lexer" />
+      <Class name="~expr(v2)?[.].+Listener" />
     </Or>
   </Match>
 </FindBugsFilter>

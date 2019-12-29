@@ -1,4 +1,4 @@
-package expr;
+package exprv2;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -22,11 +22,11 @@ public enum Test {
       // Create an input character stream from standard in
       CharStream input = CharStreams.fromStream(System.in, UTF_8);
       // Create an ExprLexer that feeds from that stream
-      ExprLexer lexer = new ExprLexer(input);
+      Exprv2Lexer lexer = new Exprv2Lexer(input);
       // Create a stream of tokens fed by the lexer
       CommonTokenStream tokens = new CommonTokenStream(lexer);
       // Create a parser that feeds off the token stream
-      ExprParser parser = new ExprParser(tokens);
+      Exprv2Parser parser = new Exprv2Parser(tokens);
       // Begin parsing at rule prog
       parser.prog();
     } catch (IOException ioe) {
