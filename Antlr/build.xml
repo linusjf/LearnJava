@@ -114,6 +114,17 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run1err">
+    <description>ExprTest target</description>
+    <java classname="${main.class1}"
+          input="exprtesterr.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run1">
     <description>ExprTest target</description>
     <java classname="${main.class1}"
@@ -126,7 +137,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run1">
+          depends="run1err,run1">
     <description>TeeTest target</description>
     <java classname="${main.class}"
           input="test.txt">
