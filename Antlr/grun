@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -cp @../antlr4.cp org.antlr.v4.gui.TestRig $@
