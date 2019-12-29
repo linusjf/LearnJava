@@ -10,4 +10,11 @@
       <Class name="~tee[.].+Listener" />
     </Or>
   </Match>
+  <Match>
+    <Or>
+      <Class name="~expr[.].+Parser" />
+      <Class name="~expr[.].+Lexer" />
+      <Class name="~expr[.].+Listener" />
+    </Or>
+  </Match>
 </FindBugsFilter>

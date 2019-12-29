@@ -1,1 +1,2 @@
 tee.Test < test.txt
+expr.Test < exprtest.txt
