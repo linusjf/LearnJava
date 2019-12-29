@@ -105,3 +105,4 @@ NoDot3
 javapuzzles.Wraparound
 javapuzzles.ByteChar
 javapuzzles.NullFunctionValues
+javapuzzles.IntCache

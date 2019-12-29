@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
+    <Class name="javapuzzles.IntCache" />
+    <Method name="main" />
+    <Bug code="RC" />
+  </Match>
+  <Match>
     <Class name="com.javapuzzlers.Me" />
     <Method name="main" />
     <Bug code="RE" />
