@@ -34,16 +34,18 @@ fi
 
 readExclusions
 set -o noglob
-find "$proj" -type f -regex ".*[.]\(java\|jsp\)$" ${exclusions[@]} | tr '\n' ',' > "$proj"/"$fileslist"
-if [ -s "$proj"/"$fileslist" ]
+cd "$proj"
+rm ./"$fileslist"
+find . -type f -regex ".*[.]\(java\|jsp\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
+if [ -s "$fileslist" ]
 then
-  java -cp @"$classpathFile" \
+  java -cp @../"$classpathFile" \
     "$mainClass" \
-    -filelist "$proj"/"$fileslist" -R "$rulesFile" -f "$format" \
+    -filelist "$fileslist" -R ../"$rulesFile" -f "$format" \
     -min "$minpriority" -norulesetcompatibility \
-    -failOnViolation true -cache "$proj"/"$cacheFile" \
-    -reportfile "$proj"/"$errFile" \
-    -auxclasspath "$proj" \
+    -failOnViolation true -cache "$cacheFile" \
+    -reportfile "$errFile" \
+    -auxclasspath . \
     -t "$threads" \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
       res=$?

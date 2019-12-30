@@ -21,6 +21,7 @@ readExclusions()
       echo "Unable to read $proj/$exclusionsFile";}
 }
 
+set -o noglob
 declare -r optionsFile=".csoptions"
 declare -a options
 declare -r exclusionsFile=".exclusions"
@@ -77,18 +78,17 @@ fi
 #fi
 readOptions
 readExclusions
-set -o noglob
-(cd "$1" && \
+cd "$proj"
 readarray -t args \
   < <(find . -type f -name "*.java" \
 ${exclusions[@]} \
-  -not -path "./docs" -not -path "./dist") && \
+  -not -path "./docs" -not -path "./dist")
 java -cp @../"$classpathFile" \
 "$mainClass" \
 ${options[@]} \
 -c ../"$rules_file" -d \
 -p ../"$properties_file" \
 -o "$output_file" \
-"${args[@]}")
+"${args[@]}"
 set +o noglob
 exit $?
