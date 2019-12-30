@@ -241,7 +241,7 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-                rev="8.27"
+                rev="8.28"
                 conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
@@ -402,7 +402,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-core"
-                rev="3.15.7"
+                rev="3.15.8"
                 conf="javaparser-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
