@@ -487,14 +487,12 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="public" />
       <property name="allowMissingParamTags"
                 value="true" />
-      <property name="allowMissingThrowsTags"
-                value="true" />
+      <property name="validateThrows" 
+        value="false"/>
       <property name="allowMissingReturnTag"
                 value="true" />
       <property name="allowedAnnotations"
                 value="Override, Test" />
-      <property name="allowThrowsTagsForSubclasses"
-                value="true" />
     </module>
     <module name="MethodName">
       <property name="format"

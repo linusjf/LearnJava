@@ -9,3 +9,6 @@
 -not -path Antlr/exprv2/*Lexer.java
 -not -path Antlr/exprv2/*Parser.java
 -not -path Antlr/exprv2/*Listener.java
+-not -path Antlr/arrayinit/*Lexer.java
+-not -path Antlr/arrayinit/*Parser.java
+-not -path Antlr/arrayinit/*Listener.java

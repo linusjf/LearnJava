@@ -114,6 +114,28 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run3err">
+    <description>ArrayInit target</description>
+    <java classname="${main.class3}"
+          input="arraytesterr.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run3">
+    <description>ArrayInit target</description>
+    <java classname="${main.class3}"
+          input="arraytest.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run2err">
     <description>Exprv2Test target</description>
     <java classname="${main.class2}"
@@ -170,7 +192,8 @@
     </java>
   </target>
   <target name="run"
-          depends="run2err,run2test,run2,run1err,run1">
+          depends="run3err,run3,run2err,run2test,run2,run1err,run1">
+          
     <description>TeeTest target</description>
     <java classname="${main.class}"
           input="test.txt">
