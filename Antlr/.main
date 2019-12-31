@@ -9,3 +9,4 @@ arrayinit.Test < arraytesterr.txt
 arrayinit.Translate < arraytestint.txt
 arrayinit.Translate < arraytest.txt
 calc.CalcJoyRide t.expr
+libexpr.LibExprJoyRide t.expr

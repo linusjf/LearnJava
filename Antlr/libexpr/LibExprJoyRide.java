@@ -1,4 +1,4 @@
-package calc;
+package libexpr;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
  * the like. Contact us if you are in doubt. We make no guarantees that this code is fit for any
  * purpose. Visit http://www.pragmaticprogrammer.com/titles/tpantlr for more book information.
  */
-public enum CalcJoyRide {
+public enum LibExprJoyRide {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
@@ -31,11 +31,11 @@ public enum CalcJoyRide {
       // Create an input character stream from standard in
       CharStream input = CharStreams.fromStream(is, UTF_8);
       // Create an ExprLexer that feeds from that stream
-      CalcLexer lexer = new CalcLexer(input);
+      LibExprLexer lexer = new LibExprLexer(input);
       // Create a stream of tokens fed by the lexer
       CommonTokenStream tokens = new CommonTokenStream(lexer);
       // Create a parser that feeds off the token stream
-      CalcParser parser = new CalcParser(tokens);
+      LibExprParser parser = new LibExprParser(tokens);
       ParseTree tree = parser.prog();
       // begin parsing at init rule
       System.out.println(tree.toStringTree(parser));
