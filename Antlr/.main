@@ -7,3 +7,4 @@ exprv2.Test < exprtesterr.txt
 arrayinit.Test < arraytest.txt
 arrayinit.Test < arraytesterr.txt
 arrayinit.Translate < arraytestint.txt
+arrayinit.Translate < arraytest.txt
