@@ -12,3 +12,6 @@
 -not -path ./arrayinit/*Lexer.java
 -not -path ./arrayinit/*Parser.java
 -not -path ./arrayinit/*Listener.java
+-not -path ./calc/*Lexer.java
+-not -path ./calc/*Parser.java
+-not -path ./calc/*Listener.java
