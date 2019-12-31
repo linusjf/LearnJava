@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Class name="~hello[.].*" />
-  </Match>
-  <Match>
     <Or>
-      <Class name="~tee[.].+Parser" />
-      <Class name="~tee[.].+Lexer" />
-      <Class name="~tee[.].+Listener" />
-    </Or>
-  </Match>
-  <Match>
-    <Or>
-      <Class name="~expr(v2)?[.].+Parser" />
-      <Class name="~expr(v2)?[.].+Lexer" />
-      <Class name="~expr(v2)?[.].+Listener" />
-    </Or>
-  </Match>
-  <Match>
-    <Or>
-      <Class name="~arrayinit[.].+Parser" />
-      <Class name="~arrayinit[.].+Lexer" />
-      <Class name="~arrayinit[.].+Listener" />
+      <Class name="~.+[.].+Parser" />
+      <Class name="~.+[.].+Lexer" />
+      <Class name="~.+[.].+Listener" />
     </Or>
   </Match>
 </FindBugsFilter>

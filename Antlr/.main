@@ -8,3 +8,4 @@ arrayinit.Test < arraytest.txt
 arrayinit.Test < arraytesterr.txt
 arrayinit.Translate < arraytestint.txt
 arrayinit.Translate < arraytest.txt
+calc.CalcJoyRide t.expr

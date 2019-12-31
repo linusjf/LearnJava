@@ -114,6 +114,17 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run5">
+    <description>Calc Translate target</description>
+    <java classname="${main.class5}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="t.expr" />
+    </java>
+  </target>
   <target name="run4embedded">
     <description>ArrayInit Translate target</description>
     <java classname="${main.class4}"
@@ -214,7 +225,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
+          depends="run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
 
     <description>TeeTest target</description>
     <java classname="${main.class}"
