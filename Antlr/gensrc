@@ -6,4 +6,5 @@
 ./antlr4 -package 'exprv2' -Dlanguage=Java -o 'exprv2' Exprv2.g4
 ./antlr4 -package 'arrayinit' -Dlanguage=Java -o 'arrayinit' ArrayInit.g4
 ./antlr4 -package 'calc' -Dlanguage=Java -o 'calc' Calc.g4
+./antlr4 -package 'libexpr' -Dlanguage=Java -o 'libexpr' LibExpr.g4
 
