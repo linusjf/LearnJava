@@ -6,9 +6,9 @@ Main-Class: tee.Test
 
 Name: common
 Specification-Title: Antlr
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a7072c6a December 31 2019
+Implementation-Version: a793e188 December 31 2019
 Implementation-Vendor: 
 

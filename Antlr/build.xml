@@ -114,6 +114,39 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run8">
+    <description>LabeledClearExpr Calc target</description>
+    <java classname="${main.class8}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="tclear.expr" />
+    </java>
+  </target>
+  <target name="run7clear">
+    <description>LabeledExpr Calc target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="tclear.expr" />
+    </java>
+  </target>
+  <target name="run7">
+    <description>LabeledExpr Calc target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="t.expr" />
+    </java>
+  </target>
   <target name="run6">
     <description>LibExpr target</description>
     <java classname="${main.class6}">
@@ -236,7 +269,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run6,run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
+          depends="run8,run7clear,run7,run6,run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
 
     <description>TeeTest target</description>
     <java classname="${main.class}"
