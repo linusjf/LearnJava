@@ -255,6 +255,7 @@
       <exclude name="**/*Parser.java" />
       <exclude name="**/*Lexer.java" />
       <exclude name="**/*Listener.java" />
+      <exclude name="**/*Visitor.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -282,6 +283,7 @@
       <exclude name="**/*Parser.java" />
       <exclude name="**/*Lexer.java" />
       <exclude name="**/*Listener.java" />
+      <exclude name="**/*Visitor.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -311,6 +313,7 @@
         <exclude name="**/*Parser.java" />
         <exclude name="**/*Lexer.java" />
         <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
       </fileset>
       <formatter type="plain" />
       <formatter type="plain"
@@ -339,6 +342,7 @@
         <exclude name="**/*Parser.java" />
         <exclude name="**/*Lexer.java" />
         <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
       </fileset>
     </pmd>
   </target>

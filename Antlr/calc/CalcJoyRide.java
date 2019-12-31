@@ -21,10 +21,9 @@ public enum CalcJoyRide {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
-    String inputFile = args.length > 0 ?
-     args[0]: null; 
+    String inputFile = args.length > 0 ? args[0] : null;
     try (InputStream is = inputFile == null
                               ? System.in
                               : Files.newInputStream(Paths.get(inputFile));) {

@@ -2,3 +2,4 @@
 -not -path ./**/*Lexer.java
 -not -path ./**/*Parser.java
 -not -path ./**/*Listener.java
+-not -path ./**/*Visitor.java
