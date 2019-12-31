@@ -2,7 +2,7 @@
 <FindBugsFilter>
   <Match>
     <Or>
-      <Class name="~.+[.].+Parser.*" />
+      <Class name="~.+[.].+Parser([$].+)?" />
       <Class name="~.+[.].+Lexer" />
       <Class name="~.+[.].+Listener" />
       <Class name="~.+[.].+Visitor" />
