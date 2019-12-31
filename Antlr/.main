@@ -11,3 +11,5 @@ arrayinit.Translate < arraytest.txt
 calc.CalcJoyRide t.expr
 libexpr.LibExprJoyRide t.expr
 labeledexpr.Calc t.expr
+labeledexpr.Calc tclear.expr
+labeledclearexpr.Calc tclear.expr
