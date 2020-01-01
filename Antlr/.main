@@ -13,3 +13,4 @@ libexpr.LibExprJoyRide t.expr
 labeledexpr.Calc t.expr
 labeledexpr.Calc tclear.expr
 labeledclearexpr.Calc tclear.expr
+java6.ExtractInterfaceTool java6/Demo.java
