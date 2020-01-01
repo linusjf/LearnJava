@@ -19,9 +19,31 @@ public class ExtractInterfaceListener extends Java6BaseListener {
     /** Listen to matches of classDeclaration */
     @Override
     public void enterClassDeclaration(Java6Parser.ClassDeclarationContext ctx){
-        System.out.println("interface I"+ctx.Identifier()+" {");
+      System.out.println();
+      System.out.println("interface I"+ctx.Identifier()+" {");
     }
     
+	@Override 
+  public void enterPackageDeclaration(Java6Parser.PackageDeclarationContext ctx) { 
+System.out.println(parser.getTokenStream().getText(ctx));
+  }
+
+
+	@Override 
+  public void exitPackageDeclaration(Java6Parser.PackageDeclarationContext ctx) {
+    System.out.println();
+  }
+
+	@Override 
+  public void enterImportDeclaration(Java6Parser.ImportDeclarationContext ctx) {
+System.out.println(parser.getTokenStream().getText(ctx));
+  }
+
+	@Override 
+  public void exitImportDeclaration(Java6Parser.ImportDeclarationContext ctx) { 
+
+  }
+
     @Override
     public void exitClassDeclaration(Java6Parser.ClassDeclarationContext ctx) {
         System.out.println("}");
