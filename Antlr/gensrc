@@ -9,4 +9,5 @@
 ./antlr4 -package 'libexpr' -Dlanguage=Java -o 'libexpr' LibExpr.g4
 ./antlr4 -no-listener -visitor -package 'labeledexpr' -Dlanguage=Java -o 'labeledexpr' LabeledExpr.g4
 ./antlr4 -no-listener -visitor -package 'labeledclearexpr' -Dlanguage=Java -o 'labeledclearexpr' LabeledClearExpr.g4
+./antlr4 -package 'java6' -Dlanguage=Java -o 'java6' Java6.g4
 
