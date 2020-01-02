@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="DisplayParseTree.java"
+       checks="PackageNameCheck"
+       query="/PACKAGE_DEF/IDENT[@text='xmlv2']"/>
+<suppress-xpath
+       files="DisplayTokens.java"
+       checks="PackageNameCheck"
+       query="/PACKAGE_DEF/IDENT[@text='xmlv2']"/>
   <suppress-xpath files="ExtractInterfaceTool.java"
                   checks="PackageNameCheck"
                   query="/PACKAGE_DEF/IDENT[@text='java6']" />

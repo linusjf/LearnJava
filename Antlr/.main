@@ -20,3 +20,4 @@ rows.Col 3 < t.rows
 data.Data < t.data
 xmllexer.DisplayTokens < t.xml
 xmlv2.DisplayTokens < t.xml
+xmlv2.DisplayParseTree < t.xml
