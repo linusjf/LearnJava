@@ -12,4 +12,5 @@
 ./antlr4 -package 'java6' -Dlanguage=Java -o 'java6' Java6.g4
 ./antlr4 -no-listener -package 'rows' -Dlanguage=Java -o 'rows' Rows.g4
 ./antlr4 -no-listener -package 'data' -Dlanguage=Java -o 'data' Data.g4
+./antlr4 -no-listener -package 'xmllexer' -Dlanguage=Java -o 'xmllexer' XMLLexer.g4
 
