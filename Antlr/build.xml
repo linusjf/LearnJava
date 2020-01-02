@@ -114,9 +114,21 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run11">
+    <description>Data target</description>
+    <java classname="${main.class10}"
+          input="t.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run10.1">
     <description>Col target</description>
-    <java classname="${main.class10}" input="t.rows">
+    <java classname="${main.class10}"
+          input="t.rows">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -127,7 +139,8 @@
   </target>
   <target name="run10.2">
     <description>Col target</description>
-    <java classname="${main.class10}" input="t.rows">
+    <java classname="${main.class10}"
+          input="t.rows">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -138,7 +151,8 @@
   </target>
   <target name="run10.3">
     <description>Col target</description>
-    <java classname="${main.class10}" input="t.rows">
+    <java classname="${main.class10}"
+          input="t.rows">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

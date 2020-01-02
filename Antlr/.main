@@ -17,3 +17,4 @@ java6.ExtractInterfaceTool java6/Demo.java
 rows.Col 1 < t.rows
 rows.Col 2 < t.rows
 rows.Col 3 < t.rows
+data.Data < t.data
