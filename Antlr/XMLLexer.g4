@@ -1,6 +1,7 @@
 lexer grammar XMLLexer;
 
 // Default "mode": Everything OUTSIDE of a tag
+HEADER     :   '<?xml' .*? '>'    -> skip ;
 OPEN        :   '<'                 -> pushMode(INSIDE) ;
 COMMENT     :   '<!--' .*? '-->'    -> skip ;
 EntityRef   :   '&' [a-z]+ ';' ;
