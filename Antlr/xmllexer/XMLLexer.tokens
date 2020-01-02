@@ -1,6 +1,6 @@
 HEADER=1
-OPEN=2
-COMMENT=3
+COMMENT=2
+OPEN=3
 EntityRef=4
 TEXT=5
 CLOSE=6
@@ -10,7 +10,7 @@ STRING=9
 SlashName=10
 Name=11
 S=12
-'<'=2
+'<'=3
 '>'=6
 '/>'=7
 '='=8

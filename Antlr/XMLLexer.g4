@@ -2,8 +2,8 @@ lexer grammar XMLLexer;
 
 // Default "mode": Everything OUTSIDE of a tag
 HEADER     :   '<?xml' .*? '>'    -> skip ;
-OPEN        :   '<'                 -> pushMode(INSIDE) ;
 COMMENT     :   '<!--' .*? '-->'    -> skip ;
+OPEN        :   '<'                 -> pushMode(INSIDE) ;
 EntityRef   :   '&' [a-z]+ ';' ;
 TEXT        :   ~('<'|'&')+ ;           // match any 16 bit char minus < and &
 
