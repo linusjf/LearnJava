@@ -114,6 +114,17 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run15">
+    <description>JSON Data target</description>
+    <java classname="${main.class15}"
+          input="example.json">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run14">
     <description>XMLV2 DisplayParseTree target</description>
     <java classname="${main.class14}"
