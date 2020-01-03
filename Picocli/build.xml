@@ -352,7 +352,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile,pmd-result,spotbugs, jar, docs">
+          depends="compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>

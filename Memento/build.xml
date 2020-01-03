@@ -189,7 +189,7 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
-          depends="compile, jar, docs,pmd-result">
+          depends="compile, jar, docs,pmd">
     <description>Main target</description>
   </target>
 </project>
