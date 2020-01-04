@@ -7,10 +7,10 @@ import java.util.List;
 
 @SuppressWarnings("PMD.ImmutableField")
 public class MainCommand {
-  @Parameter(description = "Files") 
+  @Parameter(description = "Files")
   private List<String> files = new ArrayList<>();
 
-  @Parameter(names = "-debug", description = "Debugging level") 
+  @Parameter(names = "-debug", description = "Debugging level")
   private Integer debug = 1;
 
   public static void main(String... argv) {
@@ -21,7 +21,7 @@ public class MainCommand {
 
   public void run() {
     System.out.printf("%d %n", debug);
-    for (String file : files) 
+    for (String file: files)
       System.out.println(file);
   }
 }

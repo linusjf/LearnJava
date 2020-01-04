@@ -7,7 +7,7 @@ import com.beust.jcommander.Parameters;
 @SuppressWarnings("PMD.ImmutableField")
 @Parameters(separators = "=")
 public class SeparatorCommand {
-  @Parameter(names = "-level") 
+  @Parameter(names = "-level")
   private Integer level = 2;
 
   public static void main(String... argv) {

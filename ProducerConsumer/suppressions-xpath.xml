@@ -3,14 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ClassicProducerConsumerExample.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Buffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='produce']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="ClassicProducerConsumerExample.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Buffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='consume']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+  <suppress-xpath files="ClassicProducerConsumerExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Buffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='produce']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="ClassicProducerConsumerExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ClassicProducerConsumerExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Buffer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='consume']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
   <suppress-xpath files="ProducerConsumerBlockingQueue.java"
                   checks="ExecutableStatementCountCheck"
                   query="/ENUM_DEF[./IDENT[@text='ProducerConsumerBlockingQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />

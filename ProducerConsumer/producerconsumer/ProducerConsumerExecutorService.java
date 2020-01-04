@@ -8,7 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 public enum ProducerConsumerExecutorService {
   ;
-  static final BlockingQueue<Integer> BLOCKING_QUEUE = new LinkedBlockingDeque<>(2);
+  static final BlockingQueue<Integer> BLOCKING_QUEUE =
+      new LinkedBlockingDeque<>(2);
   static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(3);
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")

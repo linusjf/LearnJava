@@ -47,7 +47,8 @@ public final class Form {
   }
 
   private String toString(String label, Object value) {
-    return value == null ? " " + label + ":  " : " " + label + ":  " + value.toString();
+    return value == null ? " " + label + ":  "
+                         : " " + label + ":  " + value.toString();
   }
 
   @Override
@@ -95,11 +96,12 @@ public final class Form {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
-    Form form = new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
-                    .passwordHint("MyName")
-                    .city("NY")
-                    .language("English")
-                    .build();
+    Form form =
+        new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")
+            .passwordHint("MyName")
+            .city("NY")
+            .language("English")
+            .build();
     System.out.println(form);
   }
 
@@ -131,7 +133,10 @@ public final class Form {
      * @param userName a <code>String</code> value
      * @param password a <code>String</code> value
      */
-    public FormBuilder(String firstName, String lastName, String userName, String password) {
+    public FormBuilder(String firstName,
+                       String lastName,
+                       String userName,
+                       String password) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.userName = userName;

@@ -20,8 +20,8 @@ public final class ListDirectoryRecursive {
       File[] items = dir.listFiles();
       Optional<?> files = Optional.ofNullable(items);
       files.ifPresent(obj -> {
-        File[] objs = (File[]) obj;
-        for (File item : objs) {
+        File[] objs = (File[])obj;
+        for (File item: objs) {
           System.out.println(item.getAbsoluteFile());
           if (item.isDirectory())
             listRecursive(item);

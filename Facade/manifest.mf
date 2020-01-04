@@ -6,9 +6,9 @@ Main-Class: com.javacodegeeks.patterns.facadepattern.TestFacade
 
 Name: common
 Specification-Title: Facade
-Specification-Version: 1.0.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 872d36c June 19 2019
+Implementation-Version: f6bf1d1e January 4 2020
 Implementation-Vendor: 
 

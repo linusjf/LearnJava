@@ -26,7 +26,8 @@ public class CreatePlayerCommand {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public Player createPlayer(String playerType) {
-    Command cmd = requireNonNull(PLAYERS.get(playerType), "Invalid player type: " + playerType);
+    Command cmd = requireNonNull(PLAYERS.get(playerType),
+                                 "Invalid player type: " + playerType);
     return cmd.create();
   }
 }

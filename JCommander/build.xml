@@ -474,6 +474,8 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <property name="pmd.errCount"
+              value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
@@ -481,7 +483,6 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
-        <pathelement path="${runclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
@@ -490,10 +491,6 @@
         <include name="**/*.java" />
       </fileset>
     </pmd>
-  </target>
-  <target name="pmd-result"
-          depends="pmd"
-          if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs">

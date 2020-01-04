@@ -22,7 +22,9 @@ public enum SqlTypeRegex {
     return getCapturedGroup(dataType.replaceAll("\\s*", ""), regex, group);
   }
 
-  public static String getCapturedGroup(String value, String pattern, int group) {
+  public static String getCapturedGroup(String value,
+                                        String pattern,
+                                        int group) {
     Regex regex = new Regex(pattern, value);
     return regex.group(group);
   }

@@ -20,7 +20,10 @@ public class Manager extends Employee {
    * @param designation a <code>String</code> value
    * @param department a <code>Department</code> value
    */
-  public Manager(long employeeId, String employeeName, String designation, Department department) {
+  public Manager(long employeeId,
+                 String employeeName,
+                 String designation,
+                 Department department) {
     super(employeeId, employeeName, designation, department);
   }
 
@@ -47,21 +50,27 @@ public class Manager extends Employee {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public int teamSize() {
-    return managingEmployees.stream().mapToInt(employee -> employee.teamSize()).sum();
+    return managingEmployees.stream()
+        .mapToInt(employee -> employee.teamSize())
+        .sum();
   }
 
-  @SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops", "PMD.DataflowAnomalyAnalysis"})
+  @SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops",
+                     "PMD.DataflowAnomalyAnalysis"})
   @Override
-  public void assignWork(Employee manager, Work work) {
-    System.out.println(this + " has been assigned work of '" + work + "' by manager " + manager);
+  public void
+  assignWork(Employee manager, Work work) {
+    System.out.println(this + " has been assigned work of '" + work
+                       + "' by manager " + manager);
     System.out.println();
-    System.out.println(this + " distributing work '" + work + "' to managed employees..");
+    System.out.println(this + " distributing work '" + work
+                       + "' to managed employees..");
     int fromIndex = 0;
     int toIndex = 0;
     int totalWork = work.getWorkSize();
     System.out.println("totalWork = " + totalWork);
     while (toIndex < totalWork) {
-      for (Employee employee : managingEmployees) {
+      for (Employee employee: managingEmployees) {
         System.out.println("Assigning work from " + employee);
         toIndex = fromIndex + employee.teamSize();
         if (toIndex > totalWork)
@@ -78,7 +87,8 @@ public class Manager extends Employee {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void performWork() {
-    System.out.println(this + " is asking his/her managed employees to perform assigned work");
+    System.out.println(
+        this + " is asking his/her managed employees to perform assigned work");
     System.out.println();
     managingEmployees.stream().forEach(employee -> employee.performWork());
     System.out.println();

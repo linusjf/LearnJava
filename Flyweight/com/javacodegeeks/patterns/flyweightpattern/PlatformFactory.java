@@ -9,7 +9,7 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class PlatformFactory { // NOPMD
+public final class PlatformFactory {  // NOPMD
   private static Map<String, Platform> map = new HashMap<>();
 
   private PlatformFactory() {

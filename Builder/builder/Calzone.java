@@ -11,7 +11,7 @@ public final class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    this.sauceInside = builder.sauce; // NOPMD
+    this.sauceInside = builder.sauce;  // NOPMD
   }
 
   /** returns object state as String. */
@@ -23,7 +23,8 @@ public final class Calzone extends Pizza {
         .append(System.lineSeparator())
         .append("Toppings: ")
         .append(System.lineSeparator());
-    for (Topping t : toppings) sb.append(t).append(System.lineSeparator());
+    for (Topping t: toppings)
+      sb.append(t).append(System.lineSeparator());
     return sb.toString();
   }
 

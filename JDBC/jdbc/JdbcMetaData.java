@@ -30,7 +30,7 @@ public final class JdbcMetaData {
       // Step 2…
       statement = connection.createStatement();
       String select = "SELECT * FROM Accounts"
-          + " WHERE acctNum = 123456";
+                      + " WHERE acctNum = 123456";
 
       // Step 3…
       results = statement.executeQuery(select);
@@ -59,7 +59,8 @@ public final class JdbcMetaData {
     }
   }
 
-  private static void printMetaData(ResultSetMetaData metaData) throws SQLException {
+  private static void printMetaData(ResultSetMetaData metaData)
+      throws SQLException {
     int numFields = metaData.getColumnCount();
 
     // Cycle through the database fields, displaying

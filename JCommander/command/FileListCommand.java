@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.List;
 
 public class FileListCommand {
-  @Parameter(names = "-files", listConverter = FileListConverter.class) 
+  @Parameter(names = "-files", listConverter = FileListConverter.class)
   List<File> files;
 
   public static void main(String... argv) {
@@ -16,7 +16,7 @@ public class FileListCommand {
   }
 
   public void run() {
-    for (File f : files) 
+    for (File f: files)
       System.out.printf("%s %n", f);
   }
 }

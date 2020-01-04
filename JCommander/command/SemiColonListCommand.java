@@ -7,7 +7,9 @@ import java.io.File;
 import java.util.List;
 
 public class SemiColonListCommand {
-  @Parameter(names = "-files", converter = FileConverter.class, splitter = SemiColonSplitter.class)
+  @Parameter(names = "-files",
+             converter = FileConverter.class,
+             splitter = SemiColonSplitter.class)
   List<File> files;
 
   public static void main(String... argv) {
@@ -17,6 +19,7 @@ public class SemiColonListCommand {
   }
 
   public void run() {
-    for (File f : files) System.out.printf("%s %n", f);
+    for (File f: files)
+      System.out.printf("%s %n", f);
   }
 }

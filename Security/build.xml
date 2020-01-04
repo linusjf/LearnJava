@@ -177,9 +177,12 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <property name="pmd.errCount"
+              value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}">
+         suppressMarker="${pmd.suppressMarker}"
+         failuresPropertyName="pmd.errCount">
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
@@ -187,10 +190,11 @@
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
-      <fileset dir="${basedir}">
+        <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
     </pmd>
+    <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="main"
           depends="compile, jar, docs,pmd">

@@ -14,7 +14,7 @@ public class Room implements AutoCloseable {
   private static final Cleaner CLEANER = Cleaner.create();
 
   // The state of this room, shared with our cleanable
-  private final State state; // NOPMD
+  private final State state;  // NOPMD
 
   // Our cleanable. Cleans the room when it’s eligible for gc
   private final Cleaner.Cleanable cleanable;
@@ -25,7 +25,7 @@ public class Room implements AutoCloseable {
    * @param numJunkPiles an <code>int</code> value
    */
   public Room(int numJunkPiles) {
-    state = new State(numJunkPiles); // NOPMD
+    state = new State(numJunkPiles);  // NOPMD
     cleanable = CLEANER.register(this, state);
   }
 

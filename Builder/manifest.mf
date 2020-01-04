@@ -6,9 +6,9 @@ Main-Class: builder.Main
 
 Name: common
 Specification-Title: Builder
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 7f6e7765 December 11 2019
+Implementation-Version: f6bf1d1e January 4 2020
 Implementation-Vendor: 
 

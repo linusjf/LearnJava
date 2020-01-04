@@ -6,9 +6,9 @@ Main-Class: converter.TestByteToHex
 
 Name: common
 Specification-Title: ByteToHex
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 6dd9d235 December 11 2019
+Implementation-Version: f6bf1d1e January 4 2020
 Implementation-Vendor: 
 

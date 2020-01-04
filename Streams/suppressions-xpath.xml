@@ -3,18 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="ParallelStreamPerformanceCheck.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelStreamPerformanceCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sequentialStreamTimetaken']]/ASSIGN/EXPR/DIV/NUM_DOUBLE[@text='1000D']"/>
-<suppress-xpath
-       files="ParallelStreamPerformanceCheck.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ParallelStreamPerformanceCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelStreamTimetaken']]/ASSIGN/EXPR/DIV/NUM_LONG[@text='1000L']"/>
-<suppress-xpath
-       files="PrimeNumberCount.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='PrimeNumberCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRange']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='100']"/>
+  <suppress-xpath files="ParallelStreamPerformanceCheck.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelStreamPerformanceCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sequentialStreamTimetaken']]/ASSIGN/EXPR/DIV/NUM_DOUBLE[@text='1000D']" />
+  <suppress-xpath files="ParallelStreamPerformanceCheck.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ParallelStreamPerformanceCheck']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelStreamTimetaken']]/ASSIGN/EXPR/DIV/NUM_LONG[@text='1000L']" />
+  <suppress-xpath files="PrimeNumberCount.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='PrimeNumberCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRange']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='100']" />
   <suppress-xpath files="ParallelArrays.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='ParallelArrays']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='arrayOfLong']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='20_000']" />

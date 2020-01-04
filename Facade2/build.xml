@@ -180,6 +180,8 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <property name="pmd.errCount"
+              value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
@@ -195,10 +197,6 @@
         <include name="**/*.java" />
       </fileset>
     </pmd>
-  </target>
-  <target name="pmd-result"
-          depends="pmd"
-          if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs">
