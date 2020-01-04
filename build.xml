@@ -37,6 +37,7 @@
   <property file="${LearnJava.basedir}/error_prone.properties" />
   <property file="${LearnJava.basedir}/ckjm_ext.properties" />
   <property file="${LearnJava.basedir}/javancss.properties" />
+  <property file="${LearnJava.basedir}/javacc.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -309,6 +310,10 @@
                   conf="javancss.lib" />
     <ivy:retrieve pathid="bcel.main.path"
                   conf="bcel.main" />
+    <ivy:retrieve pathid="javacc.main.path"
+                  conf="javacc.main" />
+    <ivy:retrieve pathid="javacc.lib.path"
+                  conf="javacc.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -373,6 +378,8 @@
           message="${toString:bcel.main.path}:${toString:ckjm_ext.lib.path}:${toString:ckjm_ext.main.path}" />
     <echo file="${javancss.classpath.file}"
           message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
+    <echo file="${javacc.classpath.file}"
+          message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
     <antcall target="uniquify"></antcall>
       <replaceregexp file="${ckjm_ext.classpath.file}"
                match=":(.*)bcel-5.1.jar"

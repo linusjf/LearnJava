@@ -231,6 +231,10 @@
           description="javancss lib jars" />
     <conf name="bcel.main"
           description="bcel main jars" />
+    <conf name="javacc.main"
+          description="javacc main jars" />
+    <conf name="javacc.lib"
+          description="javacc lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -543,5 +547,10 @@
       name="bcel" 
       rev="6.4.1"
       conf="bcel.main-&gt;master;" />
+      <!-- https://mvnrepository.com/artifact/net.java.dev.javacc/javacc -->
+    <dependency org="net.java.dev.javacc" 
+      name="javacc" 
+      rev="7.0.5"
+      conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
