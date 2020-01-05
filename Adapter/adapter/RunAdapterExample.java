@@ -1,5 +1,7 @@
 package adapter;
 
+import java.util.logging.Logger;
+
 /**
  * Describe class <code>RunAdapterExample</code> here.
  *
@@ -8,6 +10,9 @@ package adapter;
  */
 public enum RunAdapterExample {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(RunAdapterExample.class.getName());
+
   /**
    * Describe <code>main</code> method here.
    *
@@ -27,10 +32,10 @@ public enum RunAdapterExample {
   }
 
   private static void testPayD(PayD payD) {
-    System.out.println(payD.getCardOwnerName());
-    System.out.println(payD.getCustCardNo());
-    System.out.println(payD.getCardExpMonthDate());
-    System.out.println(payD.getCvvNo());
-    System.out.println(payD.getTotalAmount());
+    LOGGER.info(payD.getCardOwnerName());
+    LOGGER.info(() -> String.format("%s", payD.getCustCardNo()));
+    LOGGER.info(payD.getCardExpMonthDate());
+    LOGGER.info(() -> String.format("%d", payD.getCvvNo()));
+    LOGGER.info(() -> String.format("%.2f", payD.getTotalAmount()));
   }
 }
