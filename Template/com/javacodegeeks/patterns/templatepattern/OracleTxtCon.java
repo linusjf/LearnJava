@@ -1,5 +1,6 @@
 package com.javacodegeeks.patterns.templatepattern;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class OracleTxtCon extends ConnectionTemplate {
   @Override
   public void setDBDriver() {

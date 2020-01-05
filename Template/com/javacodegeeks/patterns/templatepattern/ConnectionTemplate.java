@@ -2,7 +2,7 @@ package com.javacodegeeks.patterns.templatepattern;
 
 import java.util.Date;
 
-@SuppressWarnings("PMD.BeanMembersShouldSerialize")
+@SuppressWarnings({"PMD.BeanMembersShouldSerialize", "PMD.SystemPrintln"})
 public abstract class ConnectionTemplate {
   private boolean isLoggingEnabled;
 
@@ -64,8 +64,7 @@ public abstract class ConnectionTemplate {
   }
 
   private void logging(String msg) {
-    if (isLoggingEnabled) {
+    if (isLoggingEnabled)
       System.out.println("Logging....: " + msg);
-    }
   }
 }
