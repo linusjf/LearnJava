@@ -5,6 +5,7 @@ import java.util.Stack;
 public enum TestInterpreterPattern {
   ;
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     String tokenString = "7 3 - 2 1 + *";
     Expression expr = parseTokenString(tokenString);
@@ -18,11 +19,12 @@ public enum TestInterpreterPattern {
   private static Expression parseTokenString(String tokenString) {
     Stack<Expression> stack = new Stack<>();
     String[] tokenArray = tokenString.split(" ");
-    for (String s : tokenArray) {
+    for (String s: tokenArray) {
       if (ExpressionUtils.isOperator(s)) {
         Expression rightExpression = stack.pop();
         Expression leftExpression = stack.pop();
-        int result = ExpressionUtils.interpret(s, leftExpression, rightExpression);
+        int result =
+            ExpressionUtils.interpret(s, leftExpression, rightExpression);
         stack.push(new Number(result));
       } else {
         Expression i = new Number(Integer.parseInt(s));
