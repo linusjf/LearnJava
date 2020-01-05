@@ -14,6 +14,7 @@ public final class Delivered implements PackageState {
 
   // Business logic
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void updateState(DeliveryContext ctx) {
     System.out.println("Package is delivered!!");
   }

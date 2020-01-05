@@ -6,9 +6,9 @@ Main-Class: statepattern.Main
 
 Name: common
 Specification-Title: State
-Specification-Version: 1.0.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ef248d0 June 28 2019
+Implementation-Version: 787a7a65 January 5 2020
 Implementation-Vendor: 
 

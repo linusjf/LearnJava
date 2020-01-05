@@ -14,6 +14,7 @@ public final class Shipped implements PackageState {
 
   // Business logic and state transition
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void updateState(DeliveryContext ctx) {
     System.out.println("Package is shipped !!");
     ctx.setCurrentState(InTransition.getInstance());
