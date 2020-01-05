@@ -1,7 +1,12 @@
 package com.javacodegeeks.patterns.prototypepattern;
 
+import java.util.logging.Logger;
+
 @SuppressWarnings("checkstyle:noclone")
 public class AccessControl implements Prototype {
+  private static final Logger LOGGER =
+      Logger.getLogger(AccessControl.class.getName());
+
   private final String controlLevel;
 
   private String access;
@@ -16,7 +21,7 @@ public class AccessControl implements Prototype {
     try {
       return (AccessControl)super.clone();
     } catch (CloneNotSupportedException e) {
-      System.err.println(e.getMessage());
+      LOGGER.severe(e.getMessage());
     }
     return null;
   }

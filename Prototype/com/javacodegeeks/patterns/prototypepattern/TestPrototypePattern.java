@@ -1,8 +1,14 @@
 package com.javacodegeeks.patterns.prototypepattern;
 
+import java.util.logging.Logger;
+
 public enum TestPrototypePattern {
   ;
 
+  private static final Logger LOGGER =
+      Logger.getLogger(TestPrototypePattern.class.getName());
+
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     try {
       AccessControl userAccessControl =
@@ -21,7 +27,7 @@ public enum TestPrototypePattern {
       user = new User("User C", "MANAGER Level", managerAccessControl);
       System.out.println(user);
     } catch (CloneNotSupportedException cnse) {
-      System.err.println(cnse.getMessage());
+      LOGGER.severe(cnse.getMessage());
     }
   }
 }

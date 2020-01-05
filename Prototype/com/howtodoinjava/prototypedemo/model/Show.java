@@ -1,9 +1,12 @@
 package com.howtodoinjava.prototypedemo.model;
 
 import com.howtodoinjava.prototypedemo.contract.PrototypeCapable;
+import java.util.logging.Logger;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class Show implements PrototypeCapable {
+  private static final Logger LOGGER = Logger.getLogger(Show.class.getName());
+
   private String name;
 
   public String getName() {
@@ -17,7 +20,7 @@ public class Show implements PrototypeCapable {
   @SuppressWarnings("checkstyle:noclone")
   @Override
   public Show clone() throws CloneNotSupportedException {
-    System.out.println("Cloning Show object..");
+    LOGGER.info("Cloning Show object..");
     return (Show)super.clone();
   }
 

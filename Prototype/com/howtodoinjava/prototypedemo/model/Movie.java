@@ -1,9 +1,11 @@
 package com.howtodoinjava.prototypedemo.model;
 
 import com.howtodoinjava.prototypedemo.contract.PrototypeCapable;
+import java.util.logging.Logger;
 
 @SuppressWarnings("checkstyle:noclone")
 public class Movie implements PrototypeCapable {
+  private static final Logger LOGGER = Logger.getLogger(Movie.class.getName());
   private String name;
 
   public String getName() {
@@ -16,7 +18,7 @@ public class Movie implements PrototypeCapable {
 
   @Override
   public Movie clone() throws CloneNotSupportedException {
-    System.out.println("Cloning Movie object..");
+    LOGGER.info("Cloning Movie object..");
     return (Movie)super.clone();
   }
 

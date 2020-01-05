@@ -2,12 +2,16 @@ package com.javacodegeeks.patterns.prototypepattern;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public final class AccessControlProvider {
+  private static final Logger LOGGER =
+      Logger.getLogger(AccessControlProvider.class.getName());
+
   private static Map<String, AccessControl> map = new HashMap<>();
 
   static {
-    System.out.println(
+    LOGGER.info(
         "Fetching data from external resources and creating access control objects...");
     map.put("USER", new AccessControl("USER", "DO_WORK"));
     map.put("ADMIN", new AccessControl("ADMIN", "ADD/REMOVE USERS"));

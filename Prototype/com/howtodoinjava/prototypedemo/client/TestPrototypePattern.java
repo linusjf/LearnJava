@@ -3,25 +3,29 @@ package com.howtodoinjava.prototypedemo.client;
 import com.howtodoinjava.prototypedemo.contract.PrototypeCapable;
 import com.howtodoinjava.prototypedemo.factory.PrototypeFactory;
 import com.howtodoinjava.prototypedemo.factory.PrototypeFactory.ModelType;
+import java.util.logging.Logger;
 
 public enum TestPrototypePattern {
   ;
+
+  private static final Logger LOGGER =
+      Logger.getLogger(TestPrototypePattern.class.getName());
 
   public static void main(String[] args) {
     try {
       PrototypeCapable moviePrototype =
           PrototypeFactory.getInstance(ModelType.MOVIE);
-      System.out.println(moviePrototype);
+      LOGGER.info(() -> String.format("%s", moviePrototype));
 
       PrototypeCapable albumPrototype =
           PrototypeFactory.getInstance(ModelType.ALBUM);
-      System.out.println(albumPrototype);
+      LOGGER.info(() -> String.format("%s", albumPrototype));
 
       PrototypeCapable showPrototype =
           PrototypeFactory.getInstance(ModelType.SHOW);
-      System.out.println(showPrototype);
+      LOGGER.info(() -> String.format("%s", showPrototype));
     } catch (CloneNotSupportedException e) {
-      System.err.println(e.getMessage());
+      LOGGER.severe(e.getMessage());
     }
   }
 }

@@ -1,9 +1,12 @@
 package com.howtodoinjava.prototypedemo.model;
 
 import com.howtodoinjava.prototypedemo.contract.PrototypeCapable;
+import java.util.logging.Logger;
 
 @SuppressWarnings("checkstyle:noclone")
 public class Album implements PrototypeCapable {
+  private static final Logger LOGGER = Logger.getLogger(Album.class.getName());
+
   private String name;
 
   public String getName() {
@@ -16,7 +19,7 @@ public class Album implements PrototypeCapable {
 
   @Override
   public Album clone() throws CloneNotSupportedException {
-    System.out.println("Cloning Album object..");
+    LOGGER.info("Cloning Album object..");
     return (Album)super.clone();
   }
 
