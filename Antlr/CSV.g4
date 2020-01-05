@@ -31,7 +31,7 @@ grammar CSV;
 csvFile: hdr row+ ;
 hdr : row ;
 
-row : field (',' field)* '\r'? '\n' ;
+row : field (',' field)* CR ;
 
 field
     : TEXT
@@ -39,5 +39,8 @@ field
     |
     ;
 
+CR     : '\r'? '\n'
+       | '\u000D'
+       ;
 TEXT   : ~[,\n\r"]+ ;
 STRING : '"' ('""'|~'"')* '"' ; // quote-quote is an escaped quote

@@ -17,7 +17,7 @@ public class CSVParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, TEXT=4, STRING=5;
+		T__0=1, CR=2, TEXT=3, STRING=4;
 	public static final int
 		RULE_csvFile = 0, RULE_hdr = 1, RULE_row = 2, RULE_field = 3;
 	private static String[] makeRuleNames() {
@@ -29,13 +29,13 @@ public class CSVParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "','", "'\r'", "'\n'"
+			null, "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "TEXT", "STRING"
+			null, null, "CR", "TEXT", "STRING"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -135,7 +135,7 @@ public class CSVParser extends Parser {
 				setState(12); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << TEXT) | (1L << STRING))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << CR) | (1L << TEXT) | (1L << STRING))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -195,6 +195,7 @@ public class CSVParser extends Parser {
 		public FieldContext field(int i) {
 			return getRuleContext(FieldContext.class,i);
 		}
+		public TerminalNode CR() { return getToken(CSVParser.CR, 0); }
 		public RowContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -234,18 +235,8 @@ public class CSVParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(25);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if (_la==T__1) {
-				{
-				setState(24);
-				match(T__1);
-				}
-			}
-
-			setState(27);
-			match(T__2);
+			setState(24);
+			match(CR);
 			}
 		}
 		catch (RecognitionException re) {
@@ -280,26 +271,25 @@ public class CSVParser extends Parser {
 		FieldContext _localctx = new FieldContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_field);
 		try {
-			setState(32);
+			setState(29);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(29);
+				setState(26);
 				match(TEXT);
 				}
 				break;
 			case STRING:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(30);
+				setState(27);
 				match(STRING);
 				}
 				break;
 			case T__0:
-			case T__1:
-			case T__2:
+			case CR:
 				enterOuterAlt(_localctx, 3);
 				{
 				}
@@ -320,17 +310,16 @@ public class CSVParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\7%\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\6\"\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\3\2\3\2\6\2\r\n\2\r\2\16\2\16\3\3\3\3\3\4\3\4\3\4\7"+
-		"\4\26\n\4\f\4\16\4\31\13\4\3\4\5\4\34\n\4\3\4\3\4\3\5\3\5\3\5\5\5#\n\5"+
-		"\3\5\2\2\6\2\4\6\b\2\2\2%\2\n\3\2\2\2\4\20\3\2\2\2\6\22\3\2\2\2\b\"\3"+
-		"\2\2\2\n\f\5\4\3\2\13\r\5\6\4\2\f\13\3\2\2\2\r\16\3\2\2\2\16\f\3\2\2\2"+
-		"\16\17\3\2\2\2\17\3\3\2\2\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23"+
-		"\24\7\3\2\2\24\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27"+
-		"\30\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\32\34\7\4\2\2\33\32\3\2\2\2\33"+
-		"\34\3\2\2\2\34\35\3\2\2\2\35\36\7\5\2\2\36\7\3\2\2\2\37#\7\6\2\2 #\7\7"+
-		"\2\2!#\3\2\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16\27\33"+
-		"\"";
+		"\4\26\n\4\f\4\16\4\31\13\4\3\4\3\4\3\5\3\5\3\5\5\5 \n\5\3\5\2\2\6\2\4"+
+		"\6\b\2\2\2!\2\n\3\2\2\2\4\20\3\2\2\2\6\22\3\2\2\2\b\37\3\2\2\2\n\f\5\4"+
+		"\3\2\13\r\5\6\4\2\f\13\3\2\2\2\r\16\3\2\2\2\16\f\3\2\2\2\16\17\3\2\2\2"+
+		"\17\3\3\2\2\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23\24\7\3\2\2\24"+
+		"\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30"+
+		"\32\3\2\2\2\31\27\3\2\2\2\32\33\7\4\2\2\33\7\3\2\2\2\34 \7\5\2\2\35 \7"+
+		"\6\2\2\36 \3\2\2\2\37\34\3\2\2\2\37\35\3\2\2\2\37\36\3\2\2\2 \t\3\2\2"+
+		"\2\5\16\27\37";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
