@@ -7,6 +7,7 @@
   <property file="${cs.properties}" />
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -21,11 +22,17 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
+  <loadfile property="spotbugs-plugins.cp"
+            srcfile="../${spotbugs-plugin.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
+  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -167,6 +174,8 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <property name="pmd.errCount"
+              value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
@@ -182,14 +191,26 @@
         <include name="**/*.java" />
       </fileset>
     </pmd>
-  </target>
-  <target name="pmd-result"
-          depends="pmd"
-          if="pmd.errCount">
     <echo message="${pmd.errCount} violations found." />
   </target>
+  <target name="spotbugs">
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+              excludeFilter="${spotbugs.suppressions.xml}"
+              nested="true">
+      <auxClasspath path="${basedir}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
   <target name="main"
-          depends="compile, jar, docs,pmd">
+          depends="compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>

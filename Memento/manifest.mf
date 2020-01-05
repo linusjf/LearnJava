@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.mementopattern.TestMementoPatte
 
 Name: common
 Specification-Title: Memento
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 585ea5f6 December 12 2019
+Implementation-Version: df51bb89 January 5 2020
 Implementation-Vendor: 
 

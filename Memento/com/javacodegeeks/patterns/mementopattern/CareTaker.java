@@ -3,8 +3,7 @@ package com.javacodegeeks.patterns.mementopattern;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings({"PMD.BeanMembersShouldSerialize",
-"PMD.SystemPrintln"})
+@SuppressWarnings({"PMD.BeanMembersShouldSerialize", "PMD.SystemPrintln"})
 public class CareTaker {
   private final Map<String, Memento> savepointStorage = new HashMap<>();
 

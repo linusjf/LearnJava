@@ -3,8 +3,7 @@ package com.javacodegeeks.patterns.mementopattern;
 public enum TestMementoPattern {
   ;
 
-  @SuppressWarnings({"PMD.AvoidDuplicateLiterals",
-  "PMD.SystemPrintln"})
+  @SuppressWarnings({"PMD.AvoidDuplicateLiterals", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     CareTaker careTaker = new CareTaker();
     Originator originator = new Originator(5, 10, careTaker);
