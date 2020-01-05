@@ -7,9 +7,9 @@ Main-Class: com.javacodegeeks.patterns.commandpattern.TestCommandPatte
 
 Name: common
 Specification-Title: Command
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 316a45e3 December 28 2019
+Implementation-Version: 6ab7566a January 5 2020
 Implementation-Vendor: 
 

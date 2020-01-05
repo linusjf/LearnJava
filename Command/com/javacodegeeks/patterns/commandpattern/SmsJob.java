@@ -1,7 +1,12 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+import java.util.logging.Logger;
+
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class SmsJob implements Job {
+
+  private static final Logger LOGGER = Logger.getLogger(SmsJob.class.getName());
+
   private Sms sms;
 
   public void setSms(Sms sms) {
@@ -11,8 +16,9 @@ public class SmsJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing sms jobs.");
+    LOGGER.info(()
+                    -> String.format("Job ID: %d executing sms jobs.",
+                                     Thread.currentThread().getId()));
     if (sms != null)
       sms.sendSms();
     try {

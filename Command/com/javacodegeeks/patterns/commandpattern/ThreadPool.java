@@ -3,10 +3,14 @@ package com.javacodegeeks.patterns.commandpattern;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class ThreadPool {
+  private static final Logger LOGGER =
+      Logger.getLogger(ThreadPool.class.getName());
+
   private final BlockingQueue<Job> jobQueue;
   private final Thread[] jobThreads;
   private final AtomicBoolean shutdown;
@@ -35,7 +39,7 @@ public final class ThreadPool {
       try {
         Thread.sleep(1000);
       } catch (InterruptedException e) {
-        System.err.println(e.getMessage());
+        LOGGER.severe(e.getMessage());
       }
     }
     shutdown.set(true);
@@ -54,7 +58,7 @@ public final class ThreadPool {
         try {
           runTopJob();
         } catch (InterruptedException e) {
-          System.err.println(e.getMessage());
+          LOGGER.severe(e.getMessage());
         }
       }
     }

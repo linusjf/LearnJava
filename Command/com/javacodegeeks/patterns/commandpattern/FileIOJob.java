@@ -1,7 +1,12 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+import java.util.logging.Logger;
+
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class FileIOJob implements Job {
+  private static final Logger LOGGER =
+      Logger.getLogger(FileIOJob.class.getName());
+
   private FileIO fileIO;
 
   public void setFileIO(FileIO fileIO) {
@@ -11,8 +16,9 @@ public class FileIOJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing fileIO jobs.");
+    LOGGER.info(()
+                    -> String.format("Job ID: %d executing fileIO jobs.",
+                                     Thread.currentThread().getId()));
     if (fileIO != null)
       fileIO.execute();
     try {

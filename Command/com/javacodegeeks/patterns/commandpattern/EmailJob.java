@@ -1,7 +1,12 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+import java.util.logging.Logger;
+
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class EmailJob implements Job {
+  private static final Logger LOGGER =
+      Logger.getLogger(EmailJob.class.getName());
+
   private Email email;
 
   public void setEmail(Email email) {
@@ -11,12 +16,12 @@ public class EmailJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing email jobs.");
+    LOGGER.info(()
+                    -> String.format("Job ID: %d executing email jobs.",
+                                     Thread.currentThread().getId()));
 
-    if (email != null) {
+    if (email != null)
       email.sendEmail();
-    }
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {

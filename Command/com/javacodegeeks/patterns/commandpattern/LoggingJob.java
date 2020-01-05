@@ -1,7 +1,12 @@
 package com.javacodegeeks.patterns.commandpattern;
 
+import java.util.logging.Logger;
+
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LoggingJob implements Job {
+  private static final Logger LOGGER =
+      Logger.getLogger(LoggingJob.class.getName());
+
   private Logging logging;
 
   public void setLogging(Logging logging) {
@@ -11,8 +16,9 @@ public class LoggingJob implements Job {
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void run() {
-    System.out.println("Job ID: " + Thread.currentThread().getId()
-                       + " executing logging jobs.");
+    LOGGER.info(()
+                    -> String.format("Job ID: %d executing logging jobs.",
+                                     Thread.currentThread().getId()));
     if (logging != null)
       logging.log();
     try {
