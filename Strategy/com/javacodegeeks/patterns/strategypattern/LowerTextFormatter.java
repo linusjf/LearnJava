@@ -4,7 +4,9 @@ import java.util.Locale;
 
 public class LowerTextFormatter implements TextFormatter {
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void format(String text) {
-    System.out.println("[LowerTextFormatter]: " + text.toLowerCase(Locale.getDefault()));
+    System.out.println("[LowerTextFormatter]: "
+                       + text.toLowerCase(Locale.getDefault()));
   }
 }
