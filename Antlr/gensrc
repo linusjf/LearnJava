@@ -16,3 +16,4 @@
 ./antlr4 -package 'xmlv2' -Dlanguage=Java -o 'xmlv2' XMLV2Lexer.g4
 ./antlr4 -package 'xmlv2' -Dlanguage=Java -o 'xmlv2' XMLV2Parser.g4
 ./antlr4 -package 'json' -Dlanguage=Java -o 'json' JSON.g4
+./antlr4 -package 'numbers' -Dlanguage=Java -o 'numbers' Numbers.g4

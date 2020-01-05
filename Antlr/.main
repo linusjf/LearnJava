@@ -23,3 +23,5 @@ xmllexer.DisplayTokens < t.xml
 xmlv2.DisplayTokens < t.xml
 xmlv2.DisplayParseTree < t.xml
 json.Data < example.json
+numbers.Data < numbers.data
+numbers.Data < numbers1.data

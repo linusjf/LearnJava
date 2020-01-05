@@ -114,6 +114,28 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run16a">
+    <description>Numbers Data a target</description>
+    <java classname="${main.class16}"
+          input="numbers1.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run16">
+    <description>Nuumbers Data target</description>
+    <java classname="${main.class16}"
+          input="numbers.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run15">
     <description>JSON Data target</description>
     <java classname="${main.class15}"
@@ -382,7 +404,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run14,run13,run12,run11,run10.1,run10.2,run10.3,run9a,run9,run8,run7clear,run7,run6,run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
+          depends="run16a,run16,run15,run14,run13,run12,run11,run10.1,run10.2,run10.3,run9a,run9,run8,run7clear,run7,run6,run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
 
     <description>TeeTest target</description>
     <java classname="${main.class}"
