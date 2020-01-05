@@ -3,8 +3,12 @@ package annotations;
 public enum Interfacing {
   ;
 
-  @SuppressWarnings({"PMD.LawOfDemeter", "unused", "PMD.DataflowAnomalyAnalysis"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.LawOfDemeter",
+                     "unused",
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String... args) {
     // implementing its methods
     MyCustomInterface myFuncInterface = new MyCustomInterface() {
       @Override
