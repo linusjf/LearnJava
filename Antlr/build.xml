@@ -126,7 +126,7 @@
     </java>
   </target>
   <target name="run16">
-    <description>Nuumbers Data target</description>
+    <description>Numbers Data target</description>
     <java classname="${main.class16}"
           input="numbers.data">
       <classpath>
