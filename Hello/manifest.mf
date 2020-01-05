@@ -6,9 +6,9 @@ Main-Class: hello.Hello
 
 Name: common
 Specification-Title: Hello
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: fc81982b December 17 2019
+Implementation-Version: e995acd4 January 5 2020
 Implementation-Vendor: 
 

@@ -8,6 +8,7 @@ public enum Hello {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     System.out.println("Hello world, on termux!");
   }
