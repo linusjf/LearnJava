@@ -16,7 +16,7 @@ public enum Main {
    *
    * @param args a <code>String</code> value
    */
-  @SuppressWarnings("checkstyle:magicnumber")
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)
                                   .calories(100)

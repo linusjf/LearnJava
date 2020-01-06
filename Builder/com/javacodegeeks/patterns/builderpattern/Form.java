@@ -95,6 +95,7 @@ public final class Form {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Form form =
         new Form.FormBuilder("Dave", "Carter", "DavCarter", "DAvCaEr123")

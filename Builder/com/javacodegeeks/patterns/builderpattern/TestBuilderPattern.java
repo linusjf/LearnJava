@@ -7,6 +7,7 @@ public enum TestBuilderPattern {
    *
    * @param args <code>String</code> arguments.
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     CarBuilder carBuilder = new SedanCarBuilder();
     CarDirector director = new CarDirector(carBuilder);
