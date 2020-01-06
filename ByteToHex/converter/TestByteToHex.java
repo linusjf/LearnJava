@@ -28,7 +28,7 @@ public enum TestByteToHex {
    *
    * @param args a <code>String</code> value
    */
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     final byte[] raw = BYTE_STRING.getBytes(StandardCharsets.UTF_8);
     long start = System.nanoTime();
