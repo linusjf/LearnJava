@@ -3,6 +3,7 @@ package design.composite;
 import java.math.BigInteger;
 import java.util.logging.Logger;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public enum Calculator implements ICalc {
   FACTORIAL {
     @SuppressWarnings("PMD.LawOfDemeter")
