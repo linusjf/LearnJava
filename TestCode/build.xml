@@ -103,7 +103,7 @@
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
-               <fileset dir="${basedir}">
+      <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
     </pmd>
@@ -168,7 +168,7 @@
     </exec>
   </target>
   <target name="main"
-          depends="compile, pmd-result, spotbugs,checkstyle">
+          depends="compile, pmd, spotbugs,checkstyle">
     <description>Main target</description>
   </target>
 </project>
