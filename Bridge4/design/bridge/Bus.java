@@ -8,7 +8,7 @@ package design.bridge;
  */
 @SuppressWarnings("PMD.ShortClassName")
 public class Bus extends Vehicle {
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void manufacture() {
     System.out.println("Manufacturing Bus");
