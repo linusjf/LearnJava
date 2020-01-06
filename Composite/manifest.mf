@@ -10,6 +10,6 @@ Specification-Title: Composite
 Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f6bf1d1e January 4 2020
+Implementation-Version: 7ca079ac January 6 2020
 Implementation-Vendor: 
 

@@ -47,6 +47,7 @@ public class HtmlElement extends HtmlTag {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void generateHtml() {
     System.out.println(startTag + tagBody + endTag);
   }

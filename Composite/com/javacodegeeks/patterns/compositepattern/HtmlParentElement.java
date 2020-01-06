@@ -59,11 +59,11 @@ public class HtmlParentElement extends HtmlTag {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void generateHtml() {
     System.out.println(startTag);
-    for (HtmlTag tag: childrenTag) {
+    for (HtmlTag tag: childrenTag)
       tag.generateHtml();
-    }
     System.out.println(endTag);
   }
 }
