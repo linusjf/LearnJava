@@ -13,6 +13,7 @@ public class WindowsFileDownloadImplementor implements FileDownloadImplementor {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public boolean storeFile(Object object) {
     System.out.println("File downloaded successfully in WINDOWS !!");
     return true;

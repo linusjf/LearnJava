@@ -13,6 +13,7 @@ public class LinuxFileDownloadImplementor implements FileDownloadImplementor {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public boolean storeFile(Object object) {
     System.out.println("File downloaded successfully in LINUX !!");
     return true;

@@ -1,5 +1,7 @@
 package bridge;
 
+import java.util.logging.Logger;
+
 /**
  * Describe class <code>Client</code> here.
  *
@@ -8,6 +10,8 @@ package bridge;
  */
 public enum Client {
   ;
+  private static final Logger LOGGER = Logger.getLogger(Client.class.getName());
+
   /**
    * Describe <code>main</code> method here.
    *
@@ -27,7 +31,7 @@ public enum Client {
             new LinuxFileDownloadImplementor());
         break;
       default:
-        System.err.println("OS not supported !!");
+        LOGGER.severe("OS not supported !!");
         throw new AssertionError("OS not supported !!");
     }
 
