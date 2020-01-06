@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -19,10 +20,16 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 public enum CalcJoyRide {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(CalcJoyRide.class.getName());
+
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
-  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
-  public static void main(String[] args) {
+  @SuppressWarnings({"PMD.LawOfDemeter",
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String[] args) {
     String inputFile = args.length > 0 ? args[0] : null;
     try (InputStream is = inputFile == null
                               ? System.in
@@ -40,7 +47,7 @@ public enum CalcJoyRide {
       System.out.println(tree.toStringTree(parser));
       // printLISP-styletree
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }

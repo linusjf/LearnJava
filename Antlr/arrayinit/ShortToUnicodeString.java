@@ -7,6 +7,7 @@ package arrayinit;
  * fit for any purpose. Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book
  * information. Convert short array inits like {1,2,3} to "\u0001\u0002\u0003"
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public class ShortToUnicodeString extends ArrayInitBaseListener {
   /** Translate { to ". */
   @Override

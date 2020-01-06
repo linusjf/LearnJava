@@ -18,8 +18,11 @@ public enum Data {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
-  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
-  public static void main(String[] args) {
+  @SuppressWarnings({"PMD.LawOfDemeter",
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String[] args) {
     try {
       // Create an input character stream from standard in
       CharStream input = CharStreams.fromStream(System.in, UTF_8);

@@ -3,6 +3,7 @@ package exprv2;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -15,6 +16,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
  */
 public enum Test {
   ;
+  private static final Logger LOGGER = Logger.getLogger(Test.class.getName());
+
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
   public static void main(String[] args) {
@@ -30,7 +33,7 @@ public enum Test {
       // Begin parsing at rule prog
       parser.prog();
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }

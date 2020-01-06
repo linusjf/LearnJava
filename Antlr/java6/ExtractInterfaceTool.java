@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -21,6 +22,8 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 public enum ExtractInterfaceTool {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
+  private static final Logger LOGGER =
+      Logger.getLogger(ExtractInterfaceTool.class.getName());
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
   public static void main(String[] args) {
@@ -44,7 +47,7 @@ public enum ExtractInterfaceTool {
       walker.walk(extractor, tree);
       // initiate walk of tree with listener
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }

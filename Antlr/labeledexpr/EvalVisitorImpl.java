@@ -29,6 +29,7 @@ public class EvalVisitorImpl extends LabeledExprBaseVisitor<Integer> {
 
   /** expr NEWLINE. */
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public Integer visitPrintExpr(LabeledExprParser.PrintExprContext ctx) {
     Integer value = visit(ctx.expr());
     // evaluate the expr child

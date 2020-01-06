@@ -3,12 +3,14 @@ package tee;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 public enum Test {
   ;
+  private static final Logger LOGGER = Logger.getLogger(Test.class.getName());
 
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
@@ -25,7 +27,7 @@ public enum Test {
       // begin parsing at rule r
       parser.r();
     } catch (IOException e) {
-      System.err.println(e.getMessage());
+      LOGGER.severe(e.getMessage());
     }
   }
 }

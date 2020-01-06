@@ -3,6 +3,7 @@ package rows;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -15,6 +16,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
  */
 public enum Col {
   ;
+  private static final Logger LOGGER = Logger.getLogger(Col.class.getName());
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})
@@ -34,7 +36,7 @@ public enum Col {
       parser.file();
       // parse
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }
