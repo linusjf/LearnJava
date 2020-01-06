@@ -16,7 +16,7 @@ public final class Teenager {
    *
    * @param args a <code>String</code> value
    */
-  @SuppressWarnings("checkstyle:magicnumber")
+  @SuppressWarnings({"checkstyle:magicnumber", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     new Room(99);
     System.out.println("Peace out");

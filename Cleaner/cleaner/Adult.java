@@ -16,8 +16,11 @@ public final class Adult {
    *
    * @param args a <code>String</code> value
    */
-  @SuppressWarnings({"checkstyle:magicnumber", "checkstyle:illegaltoken"})
-  public static void main(String[] args) {
+  @SuppressWarnings({"checkstyle:magicnumber",
+                     "checkstyle:illegaltoken",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String[] args) {
     try (Room myRoom = new Room(7)) {
       assert myRoom != null;
 

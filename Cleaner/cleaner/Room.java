@@ -50,6 +50,7 @@ public class Room implements AutoCloseable {
 
     // Invoked by close method or cleaner
     @Override
+    @SuppressWarnings("PMD.SystemPrintln")
     public void run() {
       System.out.printf("Cleaning room with %d junk piles.%n", numJunkPiles);
       numJunkPiles = 0;
