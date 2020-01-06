@@ -2,6 +2,8 @@ package com.lambdaworks.jni;
 
 import static java.lang.System.*;
 
+import java.util.logging.Logger;
+
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 /**
  * A native library loader that simply invokes {@link System#loadLibrary}. The shared library path
@@ -10,6 +12,9 @@ import static java.lang.System.*;
  * @author Will Glozer
  */
 public class SysLibraryLoader implements LibraryLoader {
+  private static final Logger LOGGER =
+      Logger.getLogger(SysLibraryLoader.class.getName());
+
   /**
    * Load a shared library.
    *
@@ -25,8 +30,11 @@ public class SysLibraryLoader implements LibraryLoader {
       loadLibrary(name);
       return true;
     } catch (SecurityException e) {
-      System.err.println("Error loading system library " + name + " : "
-                         + e.getMessage());
+      LOGGER.severe(
+          ()
+              -> String.format("Error loading system library %s : *%s",
+                               name,
+                               e.getMessage()));
       return false;
     }
   }

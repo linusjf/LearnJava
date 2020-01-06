@@ -30,6 +30,7 @@ public enum Client2 {
    *
    * @param args a <code>String</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     String myText = "Encrypt this text";
     System.out.println("Client2: " + myText);

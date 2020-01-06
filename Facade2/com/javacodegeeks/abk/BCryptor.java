@@ -2,6 +2,8 @@ package com.javacodegeeks.abk;
 
 import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.*;
 
+import java.util.logging.Logger;
+
 /**
  * Describe class <code>BCryptor</code> here.
  *
@@ -9,6 +11,9 @@ import static com.howtodoinjava.hashing.password.demo.bcrypt.BCryptUtil.*;
  * @version 1.0
  */
 public class BCryptor implements Encrypt {
+  private static final Logger LOGGER =
+      Logger.getLogger(BCryptor.class.getName());
+
   /**
    * Describe <code>encrypt</code> method here.
    *
@@ -23,7 +28,8 @@ public class BCryptor implements Encrypt {
       hash = hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
       return hash;
     } catch (IllegalArgumentException e) {
-      System.err.println("Illegal Argument: " + e.getMessage());
+      LOGGER.severe(
+          () -> String.format("Illegal Argument: %s", e.getMessage()));
       throw new AssertionError("Illegal argument: " + text, e);
     }
   }

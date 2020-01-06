@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.logging.Logger;
 
 /**
  * A native library loader that will extract and load a shared library contained in a jar. This
@@ -26,6 +27,9 @@ import java.util.jar.JarFile;
  * @author Will Glozer
  */
 public class JarLibraryLoader implements LibraryLoader {
+  private static final Logger LOGGER =
+      Logger.getLogger(JarLibraryLoader.class.getName());
+
   File lib;
   private final CodeSource codeSource;
   private final String libraryPath;
@@ -76,7 +80,7 @@ public class JarLibraryLoader implements LibraryLoader {
         }
       }
     } catch (SecurityException | IOException e) {
-      System.err.println("Unable to load library : " + lib);
+      LOGGER.severe(() -> String.format("Unable to load library : %s", lib));
     }
     return false;
   }
