@@ -24,6 +24,7 @@ public class GearLocking implements Product {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void produce() {
     System.out.println("Producing Gear Locking System");
   }

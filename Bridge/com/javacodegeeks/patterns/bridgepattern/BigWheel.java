@@ -7,6 +7,7 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @version 1.0
  */
 public class BigWheel extends Car {
+
   private final Product product;
   private final String carType;
 
@@ -23,12 +24,14 @@ public class BigWheel extends Car {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void assemble() {
     System.out.println("Assembling " + product.productName() + " for "
                        + carType);
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void produceProduct() {
     product.produce();
     System.out.println("Modifing product " + product.productName()

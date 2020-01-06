@@ -24,6 +24,7 @@ public class CentralLocking implements Product {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void produce() {
     System.out.println("Producing Central Locking System");
   }

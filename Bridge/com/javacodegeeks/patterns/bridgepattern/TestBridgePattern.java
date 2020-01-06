@@ -20,7 +20,6 @@ public enum TestBridgePattern {
     car.produceProduct();
     car.assemble();
     car.printDetails();
-    System.out.println();
     car = new BigWheel(product2, "BigWheel xz model");
     car.produceProduct();
     car.assemble();
@@ -29,7 +28,6 @@ public enum TestBridgePattern {
     car.produceProduct();
     car.assemble();
     car.printDetails();
-    System.out.println();
     car = new Motoren(product2, "Motoren lm model");
     car.produceProduct();
     car.assemble();
