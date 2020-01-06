@@ -56,7 +56,8 @@ public class Manager extends Employee {
   }
 
   @SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops",
-                     "PMD.DataflowAnomalyAnalysis"})
+                     "PMD.DataflowAnomalyAnalysis",
+                     "PMD.SystemPrintln"})
   @Override
   public void
   assignWork(Employee manager, Work work) {
@@ -84,7 +85,7 @@ public class Manager extends Employee {
     }
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void performWork() {
     System.out.println(

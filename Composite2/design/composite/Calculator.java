@@ -1,6 +1,7 @@
 package design.composite;
 
 import java.math.BigInteger;
+import java.util.logging.Logger;
 
 public enum Calculator implements ICalc {
   FACTORIAL {
@@ -15,7 +16,8 @@ public enum Calculator implements ICalc {
           factorialValue = factorialValue.multiply(BigInteger.valueOf(i));
         answer = factorialValue.toString();
       } catch (NumberFormatException exp) {
-        System.out.println("Can't calculate factorial of " + value);
+        Logger.getLogger(Calculator.class.getName())
+            .severe("Can't calculate factorial of " + value);
       }
       return answer;
     }
@@ -49,7 +51,8 @@ public enum Calculator implements ICalc {
         }
         answer = Boolean.toString(armstrongValue == longValue);
       } catch (NumberFormatException exp) {
-        System.out.println("Can't calculate armstrong of " + value);
+        Logger.getLogger(Calculator.class.getName())
+            .severe("Can't calculate armstrong of " + value);
       }
       return answer;
     }

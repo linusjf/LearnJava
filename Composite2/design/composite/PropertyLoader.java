@@ -8,6 +8,7 @@ import java.util.MissingResourceException;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 /**
  * Describe class <code>PropertyLoader</code> here.
@@ -20,6 +21,8 @@ public final class PropertyLoader {
   private static final boolean LOAD_AS_RESOURCE_BUNDLE = false;
   private static final String SUFFIX = ".properties";
   private static final char FORWARD_SLASH = '/';
+  private static final Logger LOGGER =
+      Logger.getLogger(PropertyLoader.class.getName());
 
   private PropertyLoader() {
     throw new IllegalStateException("Private constructor");
@@ -67,8 +70,10 @@ public final class PropertyLoader {
       else
         result = loadAsStream(cl, name);
     } catch (MissingResourceException e) {
-      System.err.println("Error locating resource " + name + " : "
-                         + e.getMessage());
+      LOGGER.severe(()
+                        -> String.format("Error locating resource %s : %s",
+                                         name,
+                                         e.getMessage()));
     }
     if (THROW_ON_LOAD_FAILURE && result == null) {
       throw new IllegalArgumentException("could not load [" + name + "]"
@@ -89,8 +94,9 @@ public final class PropertyLoader {
       result.load(in);
       return result;
     } catch (IOException ioe) {
-      System.err.println("Error reading from resource " + name + " : "
-                         + ioe.getMessage());
+      LOGGER.severe(()
+                        -> String.format("Error reading from resource %s",
+                                         ioe.getMessage()));
     }
     return null;
   }

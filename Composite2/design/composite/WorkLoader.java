@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Describe class <code>WorkLoader</code> here.
@@ -18,6 +19,9 @@ import java.util.Set;
  * @version 1.0
  */
 public class WorkLoader {
+  private static final Logger LOGGER =
+      Logger.getLogger(WorkLoader.class.getName());
+
   protected Properties properties = new Properties();
 
   /**
@@ -30,7 +34,9 @@ public class WorkLoader {
       // load a properties file
       properties.load(input);
     } catch (IOException exp) {
-      System.err.println("Error reading properties file: " + exp.getMessage());
+      LOGGER.severe(()
+                        -> String.format("Error reading properties file: %s",
+                                         exp.getMessage()));
     }
   }
 
@@ -48,7 +54,7 @@ public class WorkLoader {
    *
    * @return a <code>List</code> object
    */
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public List<Work> getWorkList() {
     List<Work> workList = new ArrayList<>();
     Set<Object> keys = properties.keySet();

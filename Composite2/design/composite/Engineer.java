@@ -33,13 +33,14 @@ public class Engineer extends Employee {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void assignWork(Employee manager, Work work) {
     this.works.add(work);
     System.out.println(this + " has assigned work of '" + work + "' by manager "
                        + manager);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void performWork() {
     System.out.println(this + " is performing work of '" + works + "'");
