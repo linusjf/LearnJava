@@ -7,6 +7,7 @@ class Bike extends Vehicle {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void manufacture() {
     System.out.print("Bike ");
     workShop1.work();
