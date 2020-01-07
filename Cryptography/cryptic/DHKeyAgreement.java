@@ -11,6 +11,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.interfaces.DHPublicKey;
@@ -18,6 +19,9 @@ import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public final class DHKeyAgreement {
+  private static final Logger LOGGER =
+      Logger.getLogger(DHKeyAgreement.class.getName());
+
   private static KeyAgreement aliceKeyAgree;
   private static KeyPair aliceKpair;
 
@@ -25,7 +29,7 @@ public final class DHKeyAgreement {
     throw new IllegalStateException("Private coonstructor");
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   private static void initAliceKey() throws GeneralSecurityException {
     /*
      * Alice creates her own DH key pair with 2048-bit key size
@@ -50,7 +54,8 @@ public final class DHKeyAgreement {
 
   @SuppressWarnings({"checkstyle:illegaltoken",
                      "PMD.ExcessiveMethodLength",
-                     "PMD.LawOfDemeter"})
+                     "PMD.LawOfDemeter",
+                     "PMD.SystemPrintln"})
   public static void
   main(String... argv) {
     try {
@@ -182,7 +187,7 @@ public final class DHKeyAgreement {
                                            + "different from cleartext");
       System.out.println("AES in CBC mode recovered text is same as cleartext");
     } catch (GeneralSecurityException | IOException exc) {
-      System.err.println(exc);
+      LOGGER.severe(exc.getMessage());
     }
   }
 }

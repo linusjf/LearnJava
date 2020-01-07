@@ -6,6 +6,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -14,7 +15,10 @@ import javax.crypto.NoSuchPaddingException;
 public enum CipherSample {
   ;
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  private static final Logger LOGGER =
+      Logger.getLogger(CipherSample.class.getName());
+
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -44,7 +48,7 @@ public enum CipherSample {
     } catch (BadPaddingException | NoSuchPaddingException
              | NoSuchAlgorithmException | IllegalBlockSizeException
              | InvalidKeyException e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 }

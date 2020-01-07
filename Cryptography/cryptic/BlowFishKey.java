@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -19,8 +20,10 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public enum BlowFishKey {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(BlowFishKey.class.getName());
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     try {
       KeyGenerator kgen = KeyGenerator.getInstance("Blowfish");
@@ -37,7 +40,7 @@ public enum BlowFishKey {
     } catch (IllegalBlockSizeException | InvalidKeyException
              | BadPaddingException | NoSuchPaddingException
              | NoSuchAlgorithmException exc) {
-      System.err.println(exc);
+      LOGGER.severe(exc.getMessage());
     }
   }
 }
