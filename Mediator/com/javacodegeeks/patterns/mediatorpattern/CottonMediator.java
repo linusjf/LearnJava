@@ -18,6 +18,7 @@ public class CottonMediator implements MachineMediator {
    * @param soilRemoval a <code>SoilRemoval</code> value
    * @param valve a <code>Valve</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public CottonMediator(Machine machine,
                         Heater heater,
                         Motor motor,
@@ -39,6 +40,7 @@ public class CottonMediator implements MachineMediator {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void wash() {
     motor.startMotor();
     motor.rotateDrum(700);

@@ -13,6 +13,7 @@ public class Sensor {
    * @param temp an <code>int</code> value
    * @return a <code>boolean</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public boolean checkTemperature(int temp) {
     System.out.println("Temperature reached " + temp + " *C");
     return true;

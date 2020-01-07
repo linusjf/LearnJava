@@ -8,6 +8,7 @@ package com.javacodegeeks.patterns.mediatorpattern;
  */
 public class Motor {
   /** Describe <code>startMotor</code> method here. */
+  @SuppressWarnings("PMD.SystemPrintln")
   public void startMotor() {
     System.out.println("Start motor...");
   }
@@ -17,6 +18,7 @@ public class Motor {
    *
    * @param rpm an <code>int</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public void rotateDrum(int rpm) {
     System.out.println("Rotating drum at " + rpm + " rpm.");
   }

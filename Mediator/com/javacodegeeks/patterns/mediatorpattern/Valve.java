@@ -23,6 +23,7 @@ public class Valve implements Colleague {
   }
 
   /** Describe <code>open</code> method here. */
+  @SuppressWarnings("PMD.SystemPrintln")
   public void open() {
     System.out.println("Valve is opened...");
     System.out.println("Filling water...");
@@ -30,6 +31,7 @@ public class Valve implements Colleague {
   }
 
   /** Describe <code>closed</code> method here. */
+  @SuppressWarnings("PMD.SystemPrintln")
   public void closed() {
     System.out.println("Valve is closed...");
     mediator.on();

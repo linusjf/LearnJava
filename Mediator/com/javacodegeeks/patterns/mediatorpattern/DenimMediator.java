@@ -24,6 +24,7 @@ public class DenimMediator implements MachineMediator {
    * @param soilRemoval a <code>SoilRemoval</code> value
    * @param valve a <code>Valve</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public DenimMediator(Machine machine,
                        Heater heater,
                        Motor motor,
@@ -45,6 +46,7 @@ public class DenimMediator implements MachineMediator {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void wash() {
     motor.startMotor();
     motor.rotateDrum(1400);

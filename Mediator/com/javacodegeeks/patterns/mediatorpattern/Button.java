@@ -23,6 +23,7 @@ public class Button implements Colleague {
   }
 
   /** Describe <code>press</code> method here. */
+  @SuppressWarnings("PMD.SystemPrintln")
   public void press() {
     System.out.println("Button pressed.");
     mediator.start();
