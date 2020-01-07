@@ -10,6 +10,7 @@ public enum TestClassNames {
     showClass(o.getClass());
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   private static void showClass(Class<?> c) {
     System.out.println("getName():          " + c.getName());
     System.out.println("getCanonicalName(): " + c.getCanonicalName());
@@ -60,7 +61,8 @@ public enum TestClassNames {
   }
 }
 
-@interface SomeAnnotation {}
+@interface SomeAnnotation {
+}
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
 enum SomeEnum {

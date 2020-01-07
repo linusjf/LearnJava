@@ -56,7 +56,7 @@ public class CarBean {
   private static void invokeGetters(Method[] methods, CarBean car)
       throws ReflectiveOperationException {
     // all getters, original values
-    for (Method method : methods) {
+    for (Method method: methods) {
       if (method.getName().startsWith("get"))
         System.out.println(method.invoke(car));
     }
@@ -66,7 +66,7 @@ public class CarBean {
   private static void invokeSetters(Method[] methods, CarBean car, String value)
       throws ReflectiveOperationException {
     // setting values
-    for (Method method : methods) {
+    for (Method method: methods) {
       if (method.getName().startsWith("set"))
         method.invoke(car, value);
     }

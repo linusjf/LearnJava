@@ -7,12 +7,14 @@ public enum Modular {
   ;
   private static Module myClassModule = String.class.getModule();
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     System.out.println("isNamed: " + myClassModule.isNamed());
     ModuleDescriptor md = myClassModule.getDescriptor();
     printModuleDescription(md);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   private static void printModuleDescription(ModuleDescriptor md) {
     System.out.println("Module name: " + md.name());
     System.out.println("Module exports: ");
