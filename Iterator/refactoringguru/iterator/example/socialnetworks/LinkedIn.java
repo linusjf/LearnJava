@@ -3,12 +3,16 @@ package refactoringguru.iterator.example.socialnetworks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import refactoringguru.iterator.example.iterators.LinkedInIterator;
 import refactoringguru.iterator.example.iterators.ProfileIterator;
 import refactoringguru.iterator.example.profile.Profile;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LinkedIn implements SocialNetwork {
+  private static final Logger LOGGER =
+      Logger.getLogger(LinkedIn.class.getName());
+
   private final List<Profile> contacts;
 
   public LinkedIn(List<Profile> cache) {
@@ -16,6 +20,7 @@ public class LinkedIn implements SocialNetwork {
     this.contacts = list.orElse(new ArrayList<Profile>());
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public Profile requestContactInfoFromLinkedInAPI(String profileEmail) {
     // Here would be a POST request to one of the LinkedIn API endpoints.
     // Instead, we emulates long network connection, which you would expect
@@ -28,7 +33,7 @@ public class LinkedIn implements SocialNetwork {
     return findContact(profileEmail);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public List<String> requestRelatedContactsFromLinkedInAPI(
       String profileEmail,
       String contactType) {
@@ -58,7 +63,7 @@ public class LinkedIn implements SocialNetwork {
     try {
       Thread.sleep(2500);
     } catch (InterruptedException ex) {
-      System.err.println(ex.getMessage());
+      LOGGER.severe(ex.getMessage());
     }
   }
 

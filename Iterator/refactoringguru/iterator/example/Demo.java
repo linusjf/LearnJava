@@ -20,6 +20,7 @@ public final class Demo {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     System.out.println(
         "Please specify social network to target spam tool (default:Facebook):");
@@ -28,11 +29,10 @@ public final class Demo {
     String choice = SCANNER.nextLine();
 
     SocialNetwork network;
-    if ("2".equals(choice)) {
+    if ("2".equals(choice))
       network = new LinkedIn(createTestProfiles());
-    } else {
+    else
       network = new Facebook(createTestProfiles());
-    }
 
     SocialSpammer spammer = new SocialSpammer(network);
     spammer.sendSpamToFriends(

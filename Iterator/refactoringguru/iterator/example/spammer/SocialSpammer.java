@@ -13,14 +13,16 @@ public class SocialSpammer {
     this.network = network;
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public void sendSpamToFriends(String profileEmail, String message) {
-    System.out.println("\nIterating over friends...\n");
+    System.out.printf("%nIterating over friends...%n");
     iterator = network.createFriendsIterator(profileEmail);
     sendMessages(message);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public void sendSpamToCoworkers(String profileEmail, String message) {
-    System.out.println("\nIterating over coworkers...\n");
+    System.out.printf("%nIterating over coworkers...%n");
     iterator = network.createCoworkersIterator(profileEmail);
     sendMessages(message);
   }
@@ -37,6 +39,7 @@ public class SocialSpammer {
     sendMessage(profile.getEmail(), message);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public void sendMessage(String email, String message) {
     System.out.println("Sent message to: '" + email + "'. Message body: '"
                        + message + "'");

@@ -3,12 +3,15 @@ package refactoringguru.iterator.example.socialnetworks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import refactoringguru.iterator.example.iterators.FacebookIterator;
 import refactoringguru.iterator.example.iterators.ProfileIterator;
 import refactoringguru.iterator.example.profile.Profile;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Facebook implements SocialNetwork {
+  private static final Logger LOGGER =
+      Logger.getLogger(Facebook.class.getName());
   private final List<Profile> profiles;
 
   public Facebook(List<Profile> cache) {
@@ -16,6 +19,7 @@ public class Facebook implements SocialNetwork {
     this.profiles = list.orElse(new ArrayList<Profile>());
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public Profile requestProfileFromFacebook(String profileEmail) {
     // Here would be a POST request to one of the Facebook API endpoints.
     // Instead, we emulates long network connection, which you would expect
@@ -28,7 +32,7 @@ public class Facebook implements SocialNetwork {
     return findProfile(profileEmail);
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public List<String> requestProfileFriendsFromFacebook(String profileEmail,
                                                         String contactType) {
     // Here would be a POST request to one of the Facebook API endpoints.
@@ -57,7 +61,7 @@ public class Facebook implements SocialNetwork {
     try {
       Thread.sleep(2500);
     } catch (InterruptedException ex) {
-      System.err.println(ex.getMessage());
+      LOGGER.severe(ex.getMessage());
     }
   }
 
