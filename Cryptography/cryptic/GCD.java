@@ -61,6 +61,7 @@ public enum GCD {
     return x * w[0] + y * w[1] != w[2];
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Random rnd = new Random();
     long first = Math.abs(rnd.nextLong() % Long.MAX_VALUE);

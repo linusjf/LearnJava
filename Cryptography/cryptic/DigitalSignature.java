@@ -11,11 +11,15 @@ import java.security.Signature;
 import java.security.SignatureException;
 import java.util.Base64;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public enum DigitalSignature {
   ;
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  private static final Logger LOGGER =
+      Logger.getLogger(DigitalSignature.class.getName());
+
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     try {
       // Accepting text from user
@@ -56,7 +60,7 @@ public enum DigitalSignature {
       System.out.println(Base64.getEncoder().encodeToString(signature));
     } catch (UnsupportedEncodingException | SignatureException
              | NoSuchAlgorithmException | InvalidKeyException ex) {
-      System.err.println(ex);
+      LOGGER.severe(ex.getMessage());
     }
   }
 }

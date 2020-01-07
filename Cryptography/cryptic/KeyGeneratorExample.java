@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -15,8 +16,10 @@ import javax.crypto.NoSuchPaddingException;
 
 public enum KeyGeneratorExample {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(KeyGeneratorExample.class.getName());
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     try {
       // Creating a SecureRandom object
@@ -44,7 +47,7 @@ public enum KeyGeneratorExample {
     } catch (BadPaddingException | NoSuchPaddingException
              | IllegalBlockSizeException | NoSuchAlgorithmException
              | InvalidKeyException e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 }

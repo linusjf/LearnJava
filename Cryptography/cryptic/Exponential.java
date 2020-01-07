@@ -45,6 +45,7 @@ public enum Exponential {
     return z;
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     Random random = new Random();
     int base = random.nextInt(5);

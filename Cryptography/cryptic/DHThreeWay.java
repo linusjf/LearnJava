@@ -7,6 +7,7 @@ import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.util.Base64;
+import java.util.logging.Logger;
 import javax.crypto.KeyAgreement;
 import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
@@ -16,11 +17,15 @@ import javax.crypto.spec.DHParameterSpec;
  * 3 parties: Alice, Bob, and Carol using a shared 2048-bit DH parameter.
  */
 public final class DHThreeWay {
+
+  private static final Logger LOGGER =
+      Logger.getLogger(DHThreeWay.class.getName());
+
   private DHThreeWay() {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... argv) {
     try {
       // Alice creates her own DH key pair with 2048-bit key size
@@ -100,7 +105,7 @@ public final class DHThreeWay {
         throw new GeneralSecurityException("Bob and Carol differ");
       System.out.println("Bob and Carol are the same");
     } catch (GeneralSecurityException e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 
