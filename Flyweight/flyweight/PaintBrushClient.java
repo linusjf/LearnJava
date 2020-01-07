@@ -7,6 +7,7 @@ public enum PaintBrushClient {
    *
    * @param args <code>String</code>
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Pen yellowThinPen1 = PenFactory.getThickPen("YELLOW");
 

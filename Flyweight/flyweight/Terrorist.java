@@ -35,6 +35,7 @@ class Terrorist implements Player {
 
   /** Describe <code>mission</code> method here. */
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void mission() {
     // Work on the Mission
     System.out.println("Terrorist with weapon " + weapon + "|"

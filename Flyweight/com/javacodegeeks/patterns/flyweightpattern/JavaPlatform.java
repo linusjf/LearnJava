@@ -8,11 +8,13 @@ package com.javacodegeeks.patterns.flyweightpattern;
  */
 public class JavaPlatform implements Platform {
   /** Creates a new <code>JavaPlatform</code> instance. */
+  @SuppressWarnings("PMD.SystemPrintln")
   public JavaPlatform() {
     System.out.println("JavaPlatform object created");
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void execute(Code code) {
     System.out.println("Compiling and executing Java code.");
   }

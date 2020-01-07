@@ -28,6 +28,7 @@ final class PlayerFactory {  // NOPMD
    * @param type a <code>String</code> value
    * @return a <code>Player</code> value
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static Player getPlayer(String type) {
     Player p = hm.get(type);
 

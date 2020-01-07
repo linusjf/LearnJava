@@ -35,6 +35,7 @@ class CounterTerrorist implements Player {
 
   /** Describe <code>mission</code> method here. */
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void mission() {
     System.out.println("Counter Terrorist with weapon " + weapon + "|"
                        + " Task is " + TASK);

@@ -16,6 +16,7 @@ public enum TestFlyweight {
    *
    * @param args <code>String</code> array of arguments.
    */
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Code code = new Code();
     code.setCode("C Code...");

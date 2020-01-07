@@ -22,6 +22,7 @@ public class ThickPen implements Pen {
   }
 
   @Override
+  @SuppressWarnings("PMD.SystemPrintln")
   public void draw(String content) {
     System.out.println("Drawing THICK content in color : " + color);
     System.out.println("Drawing THICK content with brush size : " + brushSize);
