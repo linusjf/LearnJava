@@ -29,7 +29,7 @@ public final class Collecting {
     reflectionCollections("this is a string");
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   private static void reflectionCollections(Object ref) {
     // check is collection
     if (ref instanceof Collection) {

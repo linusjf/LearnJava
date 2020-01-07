@@ -4,8 +4,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.logging.Logger;
 
 public final class Fielded {
+  private static final Logger LOGGER =
+      Logger.getLogger(Fielded.class.getName());
+
   private static String stringer = "this is a String called stringer";
   private static Class<? extends String> stringGetClass = stringer.getClass();
   private static Class<String> stringclass = String.class;
@@ -15,7 +19,8 @@ public final class Fielded {
   }
 
   @SuppressWarnings({"PMD.CompareObjectsWithEquals",
-                     "checkstyle:executablestatementcount"})
+                     "checkstyle:executablestatementcount",
+                     "PMD.SystemPrintln"})
   public static void
   main(String... args) {
     try {
@@ -41,7 +46,7 @@ public final class Fielded {
       }
       checkForHashCode(stringGetClass, stringer);
     } catch (ReflectiveOperationException roe) {
-      System.err.println(roe);
+      LOGGER.severe(roe.getMessage());
     }
   }
 
@@ -50,13 +55,13 @@ public final class Fielded {
     try {
       cls.getField("hashCode");
     } catch (NoSuchFieldException nsfe) {
-      System.err.println(nsfe);
+      LOGGER.severe(nsfe.getMessage());
     }
     Field fieldHashCode = cls.getDeclaredField("hash");
     try {
       fieldHashCode.get(obj);
     } catch (IllegalAccessException iae) {
-      System.err.println(iae);
+      LOGGER.severe(iae.getMessage());
     }
 
     AccessController.doPrivileged((PrivilegedAction<?>)() -> {
@@ -67,6 +72,7 @@ public final class Fielded {
     printHashCodeField(fieldHashCode, obj);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   private static void printHashCodeField(Field field, Object object)
       throws ReflectiveOperationException {
     Object value = field.get(object);

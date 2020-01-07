@@ -16,7 +16,7 @@ public final class Dynamic {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"unchecked", "PMD.LawOfDemeter"})
+  @SuppressWarnings({"unchecked", "PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     Map<Object, Object> proxyInstance =
         (Map<Object, Object>)Proxy.newProxyInstance(

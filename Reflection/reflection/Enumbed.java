@@ -14,7 +14,7 @@ public final class Enumbed {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     ExampleEnum[] enumConstants = ExampleEnum.class.getEnumConstants();
     for (ExampleEnum exampleEnum: enumConstants)

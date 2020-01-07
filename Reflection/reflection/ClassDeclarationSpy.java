@@ -8,9 +8,12 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logging;
 
 public enum ClassDeclarationSpy {
   ;
+  private static final Logging LOGGER =
+    Logger.getLogger(ClassDeclarationSpy.class.getName());
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
@@ -19,7 +22,7 @@ public enum ClassDeclarationSpy {
       printClassDeclaration(c);
       // production code should handle this exception more gracefully
     } catch (ClassNotFoundException x) {
-      System.err.println(x);
+      LOGGER.severe(x.getMessage());
     }
   }
 

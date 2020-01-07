@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Class to show how to use reflection and generics.
@@ -13,6 +14,9 @@ import java.util.Map;
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class GenericsClass {
+  private static final Logger LOGGER =
+      Logger.getLogger(GenericsClass.class.getName());
+
   List<String> internalList;
   Map<String, Object> internalMap;
 
@@ -40,7 +44,7 @@ public class GenericsClass {
           GenericsClass.class.getMethod("getInternalMap");
       printParameterTypes(getInternalMapMethod);
     } catch (ReflectiveOperationException roe) {
-      System.err.println(roe);
+      LOGGER.severe(roe.getMessage());
     }
   }
 
@@ -57,6 +61,7 @@ public class GenericsClass {
     }
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   private static void printParameterTypes(ParameterizedType parameterizedType) {
     // we get the type of the arguments for the parameterized type
     Type[] typeArguments = parameterizedType.getActualTypeArguments();

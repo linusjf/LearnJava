@@ -1,11 +1,15 @@
 package reflection;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 public final class MenagerieTest {
+  private static final Logger LOGGER =
+      Logger.getLogger(MenagerieTest.class.getName());
+
   private MenagerieTest() {
     throw new IllegalStateException("Private constructor.");
   }
@@ -26,7 +30,7 @@ public final class MenagerieTest {
       Document d = XmlSerializer.serializeObject(national);
       out.output(d, System.out);
     } catch (IllegalAccessException | IOException ex) {
-      System.err.println(ex);
+      LOGGER.severe(ex.getMessage());
     }
   }
 }
