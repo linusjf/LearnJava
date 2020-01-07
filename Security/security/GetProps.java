@@ -1,5 +1,7 @@
 package security;
 
+import java.util.logging.Logger;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -32,8 +34,12 @@ package security;
  */
 public enum GetProps {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(GetProps.class.getName());
+
   private static final String NOT_SPECIFIED = "not specified";
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     /* Test reading properties w & w/out security manager */
     String s;
@@ -59,7 +65,7 @@ public enum GetProps {
       s = System.getProperty("java.home", NOT_SPECIFIED);
       System.out.println("  Your JRE installation directory is: " + s);
     } catch (SecurityException | IllegalArgumentException e) {
-      System.err.println("Caught exception " + e.toString());
+      LOGGER.severe(() -> String.format("Caught exception %s", e));
     }
   }
 }

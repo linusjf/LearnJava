@@ -6,9 +6,9 @@ Main-Class: security.GetProps
 
 Name: common
 Specification-Title: Security
-Specification-Version: 1.0.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 8a91de6 July 16 2019
+Implementation-Version: 4b1bacc8 January 7 2020
 Implementation-Vendor: 
 
