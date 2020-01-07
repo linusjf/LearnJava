@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 // @WebServlet("/DbServlet")
 public class DbServlet extends HttpServlet {
+  private static final Logger LOGGER =
+      Logger.getLogger(DbServlet.class.getName());
   private static final long serialVersionUID = 1L;
   private static final String URL = "jdbc:derby:HomeDB";
   private transient Connection link;
@@ -24,7 +27,7 @@ public class DbServlet extends HttpServlet {
     try {
       link = DriverManager.getConnection(URL, "", "");
     } catch (SQLException ex) {
-      System.err.println(ex);
+      LOGGER.severe(ex.getMessage());
     }
   }
 
@@ -43,7 +46,7 @@ public class DbServlet extends HttpServlet {
       statement.setString(2, surname);
       statement.setString(3, telNum);
       int rowsInserted = statement.executeUpdate();
-      System.out.printf("%d rows inserted.%n", rowsInserted);
+      LOGGER.info(() -> String.format("%d rows inserted.%n", rowsInserted));
     } catch (SQLException sqlEx) {
       printHtmlInsertError(out);
       return;
@@ -116,8 +119,8 @@ public class DbServlet extends HttpServlet {
     try {
       link.close();
     } catch (SQLException ex) {
-      System.err.println("Error on closing database!");
-      System.err.println(ex);
+      LOGGER.severe("Error on closing database!");
+      LOGGER.severe(ex.getMessage());
     }
   }
 }

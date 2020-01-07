@@ -19,7 +19,7 @@ public final class Main {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     try {
       Tomcat tomcat = new Tomcat();
@@ -62,7 +62,7 @@ public final class Main {
       });
       tomcat.getServer().await();
     } catch (LifecycleException lce) {
-      System.err.println(lce);
+      LOGGER.severe(lce.getMessage());
     }
   }
 }

@@ -18,11 +18,15 @@ package launch;
 //
 import java.io.File;
 import java.lang.management.ManagementFactory;
+import java.util.logging.Logger;
 import org.eclipse.jetty.jmx.MBeanContainer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public final class OneWebApp {
+  private static final Logger LOGGER =
+      Logger.getLogger(OneWebApp.class.getName());
+
   private OneWebApp() {
     throw new IllegalStateException("Private constructor");
   }
@@ -71,9 +75,9 @@ public final class OneWebApp {
       server.join();
     } catch (InterruptedException ie) {
       Thread.currentThread().interrupt();
-      System.err.println(ie);
+      LOGGER.severe(ie.getMessage());
     } catch (Exception e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 }
