@@ -2,6 +2,7 @@ package reflection;
 
 import java.lang.reflect.Array;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Arrayed {
   ;
 

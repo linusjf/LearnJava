@@ -8,12 +8,12 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logging;
+import java.util.logging.Logger;
 
 public enum ClassDeclarationSpy {
   ;
-  private static final Logging LOGGER =
-    Logger.getLogger(ClassDeclarationSpy.class.getName());
+  private static final Logger LOGGER =
+      Logger.getLogger(ClassDeclarationSpy.class.getName());
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {

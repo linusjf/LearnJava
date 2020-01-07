@@ -1,9 +1,13 @@
 package reflection;
 
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 
 @SuppressWarnings("PMD.DataClass")
 public class CarBean {
+  private static final Logger LOGGER =
+      Logger.getLogger(CarBean.class.getName());
+
   private String name;
   private Object price;
   private Object year;
@@ -48,11 +52,11 @@ public class CarBean {
       invokeSetters(methods, car, "destroyed");
       invokeGetters(methods, car);
     } catch (ReflectiveOperationException roe) {
-      System.err.println(roe);
+      LOGGER.severe(roe.getMessage());
     }
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   private static void invokeGetters(Method[] methods, CarBean car)
       throws ReflectiveOperationException {
     // all getters, original values

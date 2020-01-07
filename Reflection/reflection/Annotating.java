@@ -11,6 +11,7 @@ public enum Annotating {
     printAllAnnotations(object);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void printAllAnnotations(Class<?> object) {
     // Retrieve all annotations from the class
     Annotation[] annotations = object.getAnnotations();
@@ -19,6 +20,7 @@ public enum Annotating {
     printAnnotationInClass(object, Reflectable.class);
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   private static void printAnnotationInClass(
       Class<?> object,
       Class<? extends Reflectable> annotationClass) {
