@@ -6,11 +6,14 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.logging.Logger;
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
 
 public enum MacSample {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(MacSample.class.getName());
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
@@ -28,11 +31,11 @@ public enum MacSample {
       Key key = keyGen.generateKey();
       computeMac(key);
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   private static void computeMac(Key key)
       throws NoSuchAlgorithmException, InvalidKeyException {
 

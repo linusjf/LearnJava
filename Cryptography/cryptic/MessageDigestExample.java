@@ -5,13 +5,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public enum MessageDigestExample {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(MessageDigestExample.class.getName());
 
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     // Reading data from user
     Scanner sc = new Scanner(System.in, UTF_8);
@@ -37,7 +40,7 @@ public enum MessageDigestExample {
       System.out.println("Base64 format : "
                          + Base64.getEncoder().encodeToString(digest));
     } catch (NoSuchAlgorithmException nsae) {
-      System.err.println(nsae);
+      LOGGER.severe(nsae.getMessage());
     }
   }
 }

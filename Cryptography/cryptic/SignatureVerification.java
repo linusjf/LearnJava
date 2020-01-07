@@ -8,11 +8,14 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.SignatureException;
+import java.util.logging.Logger;
 
 public enum SignatureVerification {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(SignatureVerification.class.getName());
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -53,7 +56,7 @@ public enum SignatureVerification {
         System.out.println("Signature failed");
     } catch (SignatureException | NoSuchAlgorithmException
              | InvalidKeyException ex) {
-      System.err.println(ex);
+      LOGGER.severe(ex.getMessage());
     }
   }
 }

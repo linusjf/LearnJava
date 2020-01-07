@@ -5,11 +5,14 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.logging.Logger;
 
 public enum KeyPairGeneratorExample {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(KeyPairGeneratorExample.class.getName());
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
     try {
       // Creating KeyPair generator object
@@ -30,7 +33,7 @@ public enum KeyPairGeneratorExample {
       System.out.printf("Public key : %s%n", publicKey);
       System.out.println("Keys generated");
     } catch (NoSuchAlgorithmException ex) {
-      System.err.println(ex);
+      LOGGER.severe(ex.getMessage());
     }
   }
 }

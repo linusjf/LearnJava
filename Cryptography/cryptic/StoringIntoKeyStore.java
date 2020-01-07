@@ -10,14 +10,17 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
+import java.util.logging.Logger;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 @SuppressWarnings("PMD.HardCodedCryptoKey")
 public enum StoringIntoKeyStore {
   ;
+  private static final Logger LOGGER =
+      Logger.getLogger(StoringIntoKeyStore.class.getName());
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
     try {
       // Creating the KeyStore object
@@ -50,7 +53,7 @@ public enum StoringIntoKeyStore {
       System.out.println("data stored");
     } catch (CertificateException | NoSuchAlgorithmException | KeyStoreException
              | IOException e) {
-      System.err.println(e);
+      LOGGER.severe(e.getMessage());
     }
   }
 }
