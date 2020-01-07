@@ -1,6 +1,7 @@
 package refactoringguru.decorator.example;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 import refactoringguru.decorator.example.decorators.CompressionDecorator;
 import refactoringguru.decorator.example.decorators.DataSource;
 import refactoringguru.decorator.example.decorators.DataSourceDecorator;
@@ -9,10 +10,13 @@ import refactoringguru.decorator.example.decorators.FileDataSource;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
+  private static final Logger LOGGER = Logger.getLogger(Demo.class.getName());
+
   private Demo() {
     throw new IllegalStateException("Private constructor");
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     try {
       String salaryRecords =
@@ -29,7 +33,7 @@ public final class Demo {
       System.out.println("- Decoded --------------");
       System.out.println(encoded.readData());
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }
