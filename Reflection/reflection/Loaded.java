@@ -8,8 +8,7 @@ import java.util.logging.Logger;
 @SuppressWarnings("PMD.UseProperClassLoader")
 public enum Loaded {
   ;
-  private static final Logger LOGGER =
-    Logger.getLogger(Loaded.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Loaded.class.getName());
   private static final String REFLECTABLE_CLASS = "reflection.ReflectableClass";
 
   private static ClassLoader systemClassLoader =
@@ -17,9 +16,11 @@ public enum Loaded {
   private static ClassLoader classClassLoader =
       ReflectableClass.class.getClassLoader();
 
-  @SuppressWarnings({"PMD.CompareObjectsWithEquals", "PMD.LawOfDemeter",
-  "PMD.SystemPrintln"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.CompareObjectsWithEquals",
+                     "PMD.LawOfDemeter",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String... args) {
     try {
       Class<?> reflectableClassInstanceLoaded =
           systemClassLoader.loadClass(REFLECTABLE_CLASS);
