@@ -33,6 +33,7 @@ public final class ScannerHasNextPatternDemo {
     scan.close();
   }
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void printNames(Scanner scan, Pattern pattern) {
     while (scan.hasNext()) {
       // check if the token consists of declared pattern
