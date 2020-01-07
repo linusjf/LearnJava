@@ -38,7 +38,7 @@ public enum DHHelper {
     int len = block.length;
     for (int i = 0; i < len; i++) {
       byte2hex(block[i], buf);
-      if (i < len - 1) 
+      if (i < len - 1)
         buf.append(':');
     }
     return buf.toString();

@@ -304,7 +304,8 @@
     </checkstyle>
   </target>
   <target name="pmd">
-    <property name="pmd.errCount" value="0"/>
+    <property name="pmd.errCount"
+              value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"

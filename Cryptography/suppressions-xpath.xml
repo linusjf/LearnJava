@@ -3,14 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="MessageDigestExample.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='MessageDigestExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND/NUM_INT[@text='0xFF']"/>
-<suppress-xpath
-       files="GCD.java"
-       checks="ReturnCountCheck"
-       query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='gcdKnuth']]"/>
+  <suppress-xpath files="MessageDigestExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='MessageDigestExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND/NUM_INT[@text='0xFF']" />
+  <suppress-xpath files="GCD.java"
+                  checks="ReturnCountCheck"
+                  query="/ENUM_DEF[./IDENT[@text='GCD']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='gcdKnuth']]" />
   <suppress-xpath files="DHKeyAgreement.java"
                   checks="ExecutableStatementCountCheck"
                   query="/CLASS_DEF[./IDENT[@text='DHKeyAgreement']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />

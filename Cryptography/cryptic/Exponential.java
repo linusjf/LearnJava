@@ -5,7 +5,7 @@ import java.util.Random;
 public enum Exponential {
   ;
   private static final char BINARY_ONE = '1';
-  
+
   @SuppressWarnings("PMD.LawOfDemeter")
   static int fastExp1(int base, int exponent) {
     String binString = Integer.toBinaryString(exponent);
@@ -53,7 +53,7 @@ public enum Exponential {
     System.out.printf("Base: %d Exponent %d%n", base, exponent);
 
     long start = System.nanoTime();
-    int value = (int) Math.pow((double) base, (double) exponent);
+    int value = (int)Math.pow((double)base, (double)exponent);
     long end = System.nanoTime();
 
     System.out.printf("Time taken: %d%n", end - start);

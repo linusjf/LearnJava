@@ -33,23 +33,23 @@ public enum MacSample {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void computeMac(Key key) throws NoSuchAlgorithmException,
-          InvalidKeyException {
+  private static void computeMac(Key key)
+      throws NoSuchAlgorithmException, InvalidKeyException {
 
-      // Creating a Mac object
-      Mac mac = Mac.getInstance("HmacSHA256");
+    // Creating a Mac object
+    Mac mac = Mac.getInstance("HmacSHA256");
 
-      // Initializing the Mac object
-      mac.init(key);
+    // Initializing the Mac object
+    mac.init(key);
 
-      // Computing the Mac
-      String msg = "Hi, how are you?";
-      byte[] bytes = msg.getBytes(StandardCharsets.UTF_8);
-      byte[] macResult = mac.doFinal(bytes);
+    // Computing the Mac
+    String msg = "Hi, how are you?";
+    byte[] bytes = msg.getBytes(StandardCharsets.UTF_8);
+    byte[] macResult = mac.doFinal(bytes);
 
-      System.out.println("Mac result:");
-      System.out.println(new String(macResult, StandardCharsets.UTF_8));
-      System.out.println("Base64: ");
-      System.out.println(Base64.getEncoder().encodeToString(macResult));
+    System.out.println("Mac result:");
+    System.out.println(new String(macResult, StandardCharsets.UTF_8));
+    System.out.println("Base64: ");
+    System.out.println(Base64.getEncoder().encodeToString(macResult));
   }
 }

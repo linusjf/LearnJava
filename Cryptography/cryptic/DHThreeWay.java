@@ -31,7 +31,8 @@ public final class DHThreeWay {
 
       // This DH parameters can also be constructed by creating a
       // DHParameterSpec object using agreed-upon values
-      DHParameterSpec dhParamShared = ((DHPublicKey) aliceKpair.getPublic()).getParams();
+      DHParameterSpec dhParamShared =
+          ((DHPublicKey)aliceKpair.getPublic()).getParams();
 
       // Bob creates his own DH key pair using the same params
       System.out.println("BOB: Generate DH keypair ...");

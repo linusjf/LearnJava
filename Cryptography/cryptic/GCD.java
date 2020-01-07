@@ -75,7 +75,8 @@ public enum GCD {
     System.out.println("GCD: " + gcd);
 
     long[] u = gcdKnuth(first, second);
-    for (long l : u) System.out.println(l);
+    for (long l: u)
+      System.out.println(l);
     if (u.length > 0)
       assert u[0] * first + u[1] * second == u[2];
   }
