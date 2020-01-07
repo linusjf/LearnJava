@@ -4,6 +4,7 @@ package container;
 public enum Main {
   ;
 
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     MovieImpl movie = new MovieImpl();
     movie.setId("23");

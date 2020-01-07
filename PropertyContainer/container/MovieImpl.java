@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("PMD.DataClass")
-public class MovieImpl extends PropertyContainerImpl implements Movie, Serializable {
+public class MovieImpl
+    extends PropertyContainerImpl implements Movie, Serializable {
   public static final long serialVersionUID = 1L;
 
   private int available;
@@ -80,7 +81,8 @@ public class MovieImpl extends PropertyContainerImpl implements Movie, Serializa
   public int hashCode() {
     List<Object> fields = new ArrayList<>(values());
     String[] keys = getPropertyKeys();
-    for (String key : keys) fields.add(key);
+    for (String key: keys)
+      fields.add(key);
     fields.add(id);
     fields.add(title);
     fields.add(available);
@@ -96,10 +98,12 @@ public class MovieImpl extends PropertyContainerImpl implements Movie, Serializa
       return true;
     if (!(o instanceof MovieImpl))
       return false;
-    MovieImpl obj = (MovieImpl) o;
+    MovieImpl obj = (MovieImpl)o;
     if (super.equals(obj))
-      return Objects.equals(available, obj.available) && Objects.equals(price, obj.price)
-          && Objects.equals(description, obj.description) && Objects.equals(rating, obj.rating)
+      return Objects.equals(available, obj.available)
+          && Objects.equals(price, obj.price)
+          && Objects.equals(description, obj.description)
+          && Objects.equals(rating, obj.rating)
           && Objects.equals(title, obj.title) && Objects.equals(id, obj.id);
     return false;
   }

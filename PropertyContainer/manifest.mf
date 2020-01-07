@@ -6,9 +6,9 @@ Main-Class: container.Main
 
 Name: common
 Specification-Title: PropertyContainer
-Specification-Version: 2.1.0
+Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 585ea5f6 December 13 2019
+Implementation-Version: 1abe3bff January 7 2020
 Implementation-Vendor: 
 
