@@ -3,6 +3,7 @@ package data;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -17,6 +18,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public enum Data {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
+  private static final Logger LOGGER =
+    Logger.getLogger(Data.class.getName());
 
   @SuppressWarnings({"PMD.LawOfDemeter",
                      "PMD.DataflowAnomalyAnalysis",
@@ -31,13 +34,11 @@ public enum Data {
       // Create a stream of tokens fed by the lexer
       CommonTokenStream tokens = new CommonTokenStream(lexer);
       DataParser parser = new DataParser(tokens);
-      // parser.setBuildParseTree(false);
-      // don't waste time bulding a tree
       ParseTree tree = parser.file();
       // parse
       System.out.println(tree.toStringTree(parser));
     } catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
+      LOGGER.severe(ioe.getMessage());
     }
   }
 }

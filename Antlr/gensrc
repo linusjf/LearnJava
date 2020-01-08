@@ -77,3 +77,7 @@ if [ $(find . -mtime -1 -type f -name "DOT.g4" 2>/dev/null) ];then
   ./antlr4 -package 'dot' -Dlanguage=Java -o 'dot' DOT.g4
   echo "Generated files for DOT.g4"
 fi
+if [ $(find . -mtime -1 -type f -name "Graph.g4" 2>/dev/null) ];then
+  ./antlr4 -package 'graph' -Dlanguage=Java -o 'graph' Graph.g4
+  echo "Generated files for Graph.g4"
+fi
