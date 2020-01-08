@@ -114,6 +114,39 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
+  <target name="run20">
+    <description>Graph target</description>
+    <java classname="${main.class20}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <arg value="graph.gr" />
+  </target>
+  <target name="run19">
+    <description>Dot DisplayParseTree target</description>
+    <java classname="${main.class19}"
+          input="t.dot">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run18">
+    <description>Dot DisplayTokens target</description>
+    <java classname="${main.class18}"
+          input="t.dot">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run17">
     <description>CSV Data target</description>
     <java classname="${main.class17}"
