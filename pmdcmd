@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+declare -r classpathFile="pmd.cp"
+declare -r mainClass="net.sourceforge.pmd.PMD"
+
+java -cp @"$classpathFile" "$mainClass" "$@" \
+|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res

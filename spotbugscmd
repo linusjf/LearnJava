@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-usage()
-{
-  echo "Usage: $0 dir"
-  echo "dir - Project directory"
-  exit 1
-}
-
 declare -r classpathFile="spotbugs.cp"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
 declare -r pluginjars="spotbugs-plugin.cp"
