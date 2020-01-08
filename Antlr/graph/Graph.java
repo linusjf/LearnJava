@@ -7,22 +7,22 @@ import java.util.TreeSet;
 
 public class Graph {
 
-  private List<Edge> edges;
-  private Set<Vertex> vertices;
+  private final List<Edge> edges;
+  private final Set<Vertex> vertices;
 
   public Graph() {
     edges = new ArrayList<>();
     vertices = new TreeSet<>();
   }
 
-  public void addEdge(Edge edge){
-    getEdges().add(edge);
-    getVertices().add(edge.getFromVertex());
-    getVertices().add(edge.getToVertex());
+  public void addEdge(Edge edge) {
+    edges.add(edge);
+    vertices.add(edge.getFromVertex());
+    vertices.add(edge.getToVertex());
   }
-  
-  public void addVertice(Vertex v){
-    getVertices().add(v);
+
+  public void addVertice(Vertex v) {
+    vertices.add(v);
   }
 
   public List<Edge> getEdges() {
@@ -32,14 +32,15 @@ public class Graph {
   public Set<Vertex> getVertices() {
     return vertices;
   }
-  
-  public static void printGraph(Graph g){
+
+  @SuppressWarnings("PMD.SystemPrintln")
+  public static void printGraph(Graph g) {
     System.out.println("Vertices...");
-    for (Vertex v : g.getVertices()) 
+    for (Vertex v: g.getVertices())
       System.out.print(v.getLabel() + " ");
     System.out.println("");
     System.out.println("Edges...");
-    for (Edge e : g.getEdges()) 
+    for (Edge e: g.getEdges())
       System.out.println(e);
   }
 }

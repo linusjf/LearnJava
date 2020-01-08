@@ -18,8 +18,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public enum Data {
   ;
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
-  private static final Logger LOGGER =
-    Logger.getLogger(Data.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
 
   @SuppressWarnings({"PMD.LawOfDemeter",
                      "PMD.DataflowAnomalyAnalysis",

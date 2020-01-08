@@ -1,5 +1,6 @@
 package graph;
 
+@SuppressWarnings({"PMD.ShortClassName", "PMD.DataClass"})
 public class Edge {
 
   private Vertex fromVertex;
@@ -7,11 +8,10 @@ public class Edge {
   private Double weight;
 
   public Edge() {
+    // empty constructor
   }
 
-  public Edge(Vertex fromVertex, 
-          Vertex toVertex, 
-          Double weight) {
+  public Edge(Vertex fromVertex, Vertex toVertex, Double weight) {
     this.fromVertex = fromVertex;
     this.toVertex = toVertex;
     this.weight = weight;
@@ -19,9 +19,8 @@ public class Edge {
 
   @Override
   public String toString() {
-    return fromVertex.getLabel() + 
-            " to " + toVertex.getLabel() + 
-            " with weight " + getWeight();
+    return fromVertex.getLabel() + " to " + toVertex.getLabel()
+        + " with weight " + getWeight();
   }
 
   public Vertex getFromVertex() {
