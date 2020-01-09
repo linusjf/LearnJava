@@ -3,6 +3,9 @@ declare -i all=0
 if [[ "$#" > 0 && "$1" == 'all' ]]; then
   all=1
 fi
+if [[ "$#" > 0 && -f "$1" ]]; then
+  touch -m "$1"
+fi
 if [[ $(find . -mtime -1 -type f -name "Hello.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package hello -o hello Hello.g4
   ./antlr4 -package hello -Dlanguage=Python3 -o hellopy3 Hello.g4
