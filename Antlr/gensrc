@@ -1,83 +1,91 @@
 #!/usr/bin/env bash
-if [ $(find . -mtime -1 -type f -name "Hello.g4" 2>/dev/null) ];then
+declare -i all=0
+if [[ "$#" > 0 && "$1" == 'all' ]]; then
+  all=1
+fi
+if [[ $(find . -mtime -1 -type f -name "Hello.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package hello -o hello Hello.g4
   ./antlr4 -package hello -Dlanguage=Python3 -o hellopy3 Hello.g4
   echo "Generated files for Hello.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Tee.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Tee.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package tee -Dlanguage=Java -o tee Tee.g4
   echo "Generated files for Tee.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Expr.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Expr.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'expr' -Dlanguage=Java -o 'expr' Expr.g4
   echo "Generated files for Expr.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Exprv2.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Exprv2.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'exprv2' -Dlanguage=Java -o 'exprv2' Exprv2.g4
   echo "Generated files for Exprv2.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "ArrayInit.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "ArrayInit.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'arrayinit' -Dlanguage=Java -o 'arrayinit' ArrayInit.g4
   echo "Generated files for ArrayInit.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Calc.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Calc.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'calc' -Dlanguage=Java -o 'calc' Calc.g4
   echo "Generated files for Calc.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "LibExpr.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "LibExpr.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'libexpr' -Dlanguage=Java -o 'libexpr' LibExpr.g4
   echo "Generated files for LibExpr.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "LabeledExpr.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "LabeledExpr.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -no-listener -visitor -package 'labeledexpr' -Dlanguage=Java -o 'labeledexpr' LabeledExpr.g4
   echo "Generated files for LabeledExpr.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "LabeledClearExpr.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "LabeledClearExpr.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -no-listener -visitor -package 'labeledclearexpr' -Dlanguage=Java -o 'labeledclearexpr' LabeledClearExpr.g4
   echo "Generated files for LabeledClearExpr.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Java6.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Java6.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'java6' -Dlanguage=Java -o 'java6' Java6.g4
   echo "Generated files for Java6.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Rows.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Rows.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -no-listener -package 'rows' -Dlanguage=Java -o 'rows' Rows.g4
   echo "Generated files for Rows.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Data.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Data.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -no-listener -package 'data' -Dlanguage=Java -o 'data' Data.g4
   echo "Generated files for Data.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "XMLLexer.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "XMLLexer.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -no-listener -package 'xmllexer' -Dlanguage=Java -o 'xmllexer' XMLLexer.g4
   echo "Generated files for XMLLexer.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "XMLV2Lexer.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "XMLV2Lexer.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'xmlv2' -Dlanguage=Java -o 'xmlv2' XMLV2Lexer.g4
   ./antlr4 -package 'xmlv2' -Dlanguage=Java -o 'xmlv2' XMLV2Parser.g4
   echo "Generated files for XMLV2Lexer.g4 and XMLV2Parser.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "XMLV2Parser.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "XMLV2Parser.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'xmlv2' -Dlanguage=Java -o 'xmlv2' XMLV2Parser.g4
   echo "Generated files for XMLV2Parser.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "JSON.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "JSON.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'json' -Dlanguage=Java -o 'json' JSON.g4
   echo "Generated files for JSON.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Numbers.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Numbers.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'numbers' -Dlanguage=Java -o 'numbers' Numbers.g4
   echo "Generated files for Numbers.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "CSV.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "CSV.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'csv' -Dlanguage=Java -o 'csv' CSV.g4
   echo "Generated files for CSV.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "DOT.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "DOT.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'dot' -Dlanguage=Java -o 'dot' DOT.g4
   echo "Generated files for DOT.g4"
 fi
-if [ $(find . -mtime -1 -type f -name "Graph.g4" 2>/dev/null) ];then
+if [[ $(find . -mtime -1 -type f -name "Graph.g4" 2>/dev/null) || "$all" == 1 ]];then
   ./antlr4 -package 'graph' -Dlanguage=Java -o 'graph' Graph.g4
   echo "Generated files for Graph.g4"
+fi
+if [[ $(find . -mtime -1 -type f -name "Cymbol.g4" 2>/dev/null) || "$all" == 1 ]];then
+  ./antlr4 -package 'cymbol' -Dlanguage=Java -o 'cymbol' Cymbol.g4
+  echo "Generated files for Cymbol.g4"
 fi
