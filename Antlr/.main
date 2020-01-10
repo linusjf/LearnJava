@@ -31,3 +31,7 @@ dot.DisplayParseTree < t.dot
 graph.GraphDSLAntlrSample graph.gr
 cymbol.DisplayTokens < t.cymbol
 cymbol.DisplayParseTree < t.cymbol
+rlang.DisplayTokens < t.R
+rlang.DisplayParseTree < t.R
+rlang.DisplayTokens < t2.R
+rlang.DisplayParseTree < t2.R
