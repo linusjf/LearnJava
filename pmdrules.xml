@@ -12,7 +12,6 @@
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
-
     <properties>
       <property name="foreachReassign"
                 value="firstOnly" />
@@ -154,7 +153,7 @@
                 value="false" />
     </properties>
   </rule>
-  <!--  <rule ref="category/java/codestyle.xml/DefaultPackage"/> -->
+   <rule ref="category/java/codestyle.xml/DefaultPackage"/> 
   <rule ref="category/java/codestyle.xml/DontImportJavaLang" />
   <rule ref="category/java/codestyle.xml/DuplicateImports" />
   <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract" />
@@ -277,7 +276,6 @@
   <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName" />
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause" />
   <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
-
     <properties>
       <property name="ignoreMagicNumbers"
                 value="-1,0,1" />
