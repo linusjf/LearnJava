@@ -33,7 +33,7 @@ expr:   ID '(' exprList? ')'    // func call like f(), f(x), f(1,2)
     |   ID '[' expr ']'         // array index like a[i], a[i][j]
     |   '-' expr                // unary minus
     |   '!' expr                // boolean not
-    |   expr '*' expr
+    |   expr ('*'|'/'|'%') expr
     |   expr ('+'|'-') expr
     |   expr '==' expr          // equality comparison (lowest priority op)
     |   ID                      // variable reference

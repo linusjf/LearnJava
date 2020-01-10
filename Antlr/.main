@@ -29,3 +29,5 @@ csv.Data < data.csv
 dot.DisplayTokens < t.dot
 dot.DisplayParseTree < t.dot
 graph.GraphDSLAntlrSample graph.gr
+cymbol.DisplayTokens < t.cymbol
+cymbol.DisplayParseTree < t.cymbol
