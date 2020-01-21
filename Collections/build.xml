@@ -341,7 +341,7 @@
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
-        <fileset dir="${basedir}">
+      <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
     </pmd>

@@ -381,10 +381,10 @@
     <echo file="${javacc.classpath.file}"
           message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
     <antcall target="uniquify"></antcall>
-      <replaceregexp file="${ckjm_ext.classpath.file}"
-               match=":(.*)bcel-5.1.jar"
-               replace=""
-               byline="true"/>
+    <replaceregexp file="${ckjm_ext.classpath.file}"
+                   match=":(.*)bcel-5.1.jar"
+                   replace=""
+                   byline="true" />
   </target>
   <!-- =================================
           target: report

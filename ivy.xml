@@ -541,16 +541,16 @@
     <dependency org="org.codehaus.javancss"
                 name="javancss"
                 rev="33.54"
-      conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
-      <!-- https://mvnrepository.com/artifact/org.apache.bcel/bcel -->
-    <dependency org="org.apache.bcel" 
-      name="bcel" 
-      rev="6.4.1"
-      conf="bcel.main-&gt;master;" />
-      <!-- https://mvnrepository.com/artifact/net.java.dev.javacc/javacc -->
-    <dependency org="net.java.dev.javacc" 
-      name="javacc" 
-      rev="7.0.5"
-      conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
+                conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
+    <!-- https://mvnrepository.com/artifact/org.apache.bcel/bcel -->
+    <dependency org="org.apache.bcel"
+                name="bcel"
+                rev="6.4.1"
+                conf="bcel.main-&gt;master;" />
+    <!-- https://mvnrepository.com/artifact/net.java.dev.javacc/javacc -->
+    <dependency org="net.java.dev.javacc"
+                name="javacc"
+                rev="7.0.5"
+                conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>

@@ -56,9 +56,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="RegexpHeader">
     <property name="headerFile"
-    value="${cs.regexp.header.file}" /> 
+              value="${cs.regexp.header.file}" />
     <property name="fileExtensions"
-      value="java" />
+              value="java" />
   </module>
   <module name="LineLength">
     <property name="max"
@@ -80,7 +80,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
-    <module name="JavadocContentLocationCheck"/>
+    <module name="JavadocContentLocationCheck" />
     <module name="TodoComment" />
     <module name="TrailingComment">
       <property name="legalComment"
@@ -461,15 +461,17 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
     <module name="ParenPad" />
     <module name="OperatorWrap">
-      <property name="option" value="nl"/>
-        <property name="tokens"
-    value="DIV_ASSIGN,PLUS_ASSIGN,MINUS_ASSIGN,STAR_ASSIGN,MOD_ASSIGN,
-           SR_ASSIGN,BSR_ASSIGN,SL_ASSIGN,BXOR_ASSIGN,BOR_ASSIGN,BAND_ASSIGN"/>
+      <property name="option"
+                value="nl" />
+      <property name="tokens"
+                value="DIV_ASSIGN,PLUS_ASSIGN,MINUS_ASSIGN,STAR_ASSIGN,MOD_ASSIGN,
+           SR_ASSIGN,BSR_ASSIGN,SL_ASSIGN,BXOR_ASSIGN,BOR_ASSIGN,BAND_ASSIGN" />
     </module>
     <module name="NonEmptyAtclauseDescription" />
-    <module name="JavadocTagContinuationIndentation" >
-  <property name="offset" value="4"/>
-</module>
+    <module name="JavadocTagContinuationIndentation">
+      <property name="offset"
+                value="4" />
+    </module>
     <module name="SummaryJavadoc">
       <property name="forbiddenSummaryFragments"
                 value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )" />
@@ -487,8 +489,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
                 value="public" />
       <property name="allowMissingParamTags"
                 value="true" />
-      <property name="validateThrows" 
-        value="false"/>
+      <property name="validateThrows"
+                value="false" />
       <property name="allowMissingReturnTag"
                 value="true" />
       <property name="allowedAnnotations"

@@ -8,10 +8,11 @@
   that are most likely to apply everywhere.</description>
   <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod" />
   <rule ref="category/java/bestpractices.xml/AccessorClassGeneration" />
-  <rule ref="category/java/bestpractices.xml/AccessorMethodGeneration" /> 
+  <rule ref="category/java/bestpractices.xml/AccessorMethodGeneration" />
   <rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace" />
   <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+
     <properties>
       <property name="foreachReassign"
                 value="firstOnly" />
@@ -54,7 +55,7 @@
   <rule ref="category/java/bestpractices.xml/ReplaceHashtableWithMap" />
   <rule ref="category/java/bestpractices.xml/ReplaceVectorWithList" />
   <rule ref="category/java/bestpractices.xml/SwitchStmtsShouldHaveDefault" />
-  <rule ref="category/java/bestpractices.xml/SystemPrintln" /> 
+  <rule ref="category/java/bestpractices.xml/SystemPrintln" />
   <rule ref="category/java/bestpractices.xml/UnusedFormalParameter" />
   <rule ref="category/java/bestpractices.xml/UnusedImports" />
   <rule ref="category/java/bestpractices.xml/UnusedLocalVariable" />
@@ -67,9 +68,10 @@
   <rule ref="category/java/bestpractices.xml/UseCollectionIsEmpty" />
   <rule ref="category/java/bestpractices.xml/UseTryWithResources">
     <properties>
-        <property name="closeMethods" value="close,closeQuietly" />
+      <property name="closeMethods"
+                value="close,closeQuietly" />
     </properties>
-</rule>
+  </rule>
   <rule ref="category/java/bestpractices.xml/UseVarargs" />
   <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean" />
   <!-- NAMING CONVENTIONS -->
@@ -153,7 +155,7 @@
                 value="false" />
     </properties>
   </rule>
-    <!-- <rule ref="category/java/codestyle.xml/DefaultPackage"/> -->
+  <!-- <rule ref="category/java/codestyle.xml/DefaultPackage"/> -->
   <rule ref="category/java/codestyle.xml/DontImportJavaLang" />
   <rule ref="category/java/codestyle.xml/DuplicateImports" />
   <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract" />
@@ -170,7 +172,7 @@
   <rule ref="category/java/codestyle.xml/TooManyStaticImports" />
   <rule ref="category/java/codestyle.xml/UnnecessaryAnnotationValueElement" />
   <rule ref="category/java/codestyle.xml/UnnecessaryConstructor" />
-   <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" /> 
+  <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
   <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn" />
   <rule ref="category/java/codestyle.xml/UnnecessaryModifier" />
   <rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
@@ -198,7 +200,7 @@
                 value="" />
     </properties>
   </rule>
-  <rule ref="category/java/design.xml/DataClass" /> 
+  <rule ref="category/java/design.xml/DataClass" />
   <rule ref="category/java/design.xml/DoNotExtendJavaLangError" />
   <rule ref="category/java/design.xml/ExceptionAsFlowControl" />
   <rule ref="category/java/design.xml/ExcessiveClassLength" />
@@ -209,7 +211,7 @@
   <rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
   <rule ref="category/java/design.xml/GodClass" />
   <rule ref="category/java/design.xml/ImmutableField" />
-  <rule ref="category/java/design.xml/LawOfDemeter" /> 
+  <rule ref="category/java/design.xml/LawOfDemeter" />
   <rule ref="category/java/design.xml/LogicInversion" />
   <!--  <rule ref="category/java/design.xml/LoosePackageCoupling">
     <properties>
@@ -276,6 +278,7 @@
   <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName" />
   <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause" />
   <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+
     <properties>
       <property name="ignoreMagicNumbers"
                 value="-1,0,1" />
@@ -312,7 +315,7 @@
   <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis" />
   <rule ref="category/java/errorprone.xml/DetachedTestCase" />
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly" />
-   <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" /> 
+  <rule ref="category/java/errorprone.xml/DoNotCallSystemExit" />
   <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable" />
   <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard" />
   <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally" />
@@ -328,8 +331,8 @@
   <rule ref="category/java/errorprone.xml/InstantiationToGetClass" />
   <rule ref="category/java/errorprone.xml/InvalidLogMessageFormat" />
   <rule ref="category/java/errorprone.xml/JumbledIncrementer" />
-  <rule ref="category/java/errorprone.xml/JUnitSpelling" /> 
-  <rule ref="category/java/errorprone.xml/JUnitStaticSuite" /> 
+  <rule ref="category/java/errorprone.xml/JUnitSpelling" />
+  <rule ref="category/java/errorprone.xml/JUnitStaticSuite" />
   <rule ref="category/java/errorprone.xml/MethodWithSameNameAsEnclosingClass" />
   <rule ref="category/java/errorprone.xml/MisplacedNullCheck" />
   <rule ref="category/java/errorprone.xml/MissingBreakInSwitch" />
@@ -361,7 +364,7 @@
   <rule ref="category/java/errorprone.xml/SuspiciousEqualsMethodName" />
   <rule ref="category/java/errorprone.xml/SuspiciousHashcodeMethodName" />
   <rule ref="category/java/errorprone.xml/SuspiciousOctalEscape" />
-  <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases" /> 
+  <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases" />
   <rule ref="category/java/errorprone.xml/UnconditionalIfStatement" />
   <rule ref="category/java/errorprone.xml/UnnecessaryBooleanAssertion" />
   <rule ref="category/java/errorprone.xml/UnnecessaryCaseChange" />
@@ -397,7 +400,7 @@
   <rule ref="category/java/multithreading.xml/DoubleCheckedLocking" />
   <rule ref="category/java/multithreading.xml/NonThreadSafeSingleton" />
   <rule ref="category/java/multithreading.xml/UnsynchronizedStaticFormatter" />
-    <!--  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/> -->
+  <!--  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/> -->
   <rule ref="category/java/multithreading.xml/UseNotifyAllInsteadOfNotify" />
   <rule ref="category/java/performance.xml/AddEmptyString" />
   <rule ref="category/java/performance.xml/AppendCharacterWithChar" />
