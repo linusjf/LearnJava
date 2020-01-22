@@ -3,10 +3,12 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="JavaHungry.java"
-       checks="IllegalCatchCheck"
-       query="/ENUM_DEF[./IDENT[@text='JavaHungry']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
+  <suppress-xpath files="Cretin.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Cretin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="JavaHungry.java"
+                  checks="IllegalCatchCheck"
+                  query="/ENUM_DEF[./IDENT[@text='JavaHungry']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH" />
   <suppress-xpath files="IntCache.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='IntCache']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/UNARY_MINUS[./NUM_INT[@text='128']]" />
