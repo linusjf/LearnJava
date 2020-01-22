@@ -20,6 +20,6 @@ public enum Cretin {
     }
     for (Thread thread: threads)
       thread.join();
-    System.out.println("Maurice is a cretin? " + allowed);
+    System.out.println("Are you a cretin? " + allowed);
   }
 }
