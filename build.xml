@@ -224,6 +224,10 @@
                   conf="saxon-he.lib" />
     <ivy:retrieve pathid="javaparser-core.main.path"
                   conf="javaparser-core.main" />
+    <ivy:retrieve pathid="javaparser-symbol-solver-core.main.path"
+                  conf="javaparser-symbol-solver-core.main" />
+    <ivy:retrieve pathid="javaparser-symbol-solver-core.lib.path"
+                  conf="javaparser-symbol-solver-core.lib" />
     <ivy:retrieve pathid="java-symbol-solver-core.main.path"
                   conf="java-symbol-solver-core.main" />
     <ivy:retrieve pathid="java-symbol-solver-core.lib.path"
@@ -345,7 +349,7 @@
     <echo file="${saxon-he.classpath.file}"
           message="${toString:saxon-he.main.path}:${toString:saxon-he.lib.path}" />
     <echo file="${javaparser.classpath.file}"
-          message="${toString:javaparser-core.main.path}:${toString:java-symbol-solver-core.main.path}:${toString:java-symbol-solver-core.lib.path}" />
+          message="${toString:javaparser-core.main.path}:${toString:javaparser-symbol-solver-core.main.path}:${toString:javaparser-symbol-solver-core.lib.path}" />
     <echo file="${antlr4.classpath.file}"
           message="${toString:antlr4.main.path}:${toString:antlr4.lib.path}" />
     <echo file="${java-lsh.classpath.file}"
