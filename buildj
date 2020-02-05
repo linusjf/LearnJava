@@ -128,4 +128,5 @@ else
       fi
     fi
 fi
+echo "The maintainer of this repo is looking for a job..."
 exit $((success+jarRes))
