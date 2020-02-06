@@ -104,7 +104,19 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
+      <jvmarg line="-ea -XX:+PrintCompilation -XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining" />
+      <arg line="1000" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class}"
+          fork="true">
+      <jvmarg line="-ea -XX:+PrintCompilation -XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining -XX:FreqInlineSize=10" />
+      <arg line="15000" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
