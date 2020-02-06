@@ -10,7 +10,7 @@ public class ConsecutiveNumbersSum {
 
   public long getTotalSum() {
     long totalSum = 0;
-    for (int i = 0; i < totalNumbers; i++)
+    for (int i = 0; i <= totalNumbers; i++)
       totalSum += i;
     return totalSum;
   }
@@ -24,7 +24,7 @@ public class ConsecutiveNumbersSum {
     int numIterations = Integer.parseInt(args[0]);
     for (int i = 1; i < numIterations; i++) {
       long sum = calculateSum(i);
-      assert sum > 0;
+      assert sum > 0L;
     }
   }
 }

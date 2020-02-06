@@ -1,1 +1,1 @@
--XX:+PrintCompilation -XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining
+-ea -XX:+PrintCompilation -XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining
