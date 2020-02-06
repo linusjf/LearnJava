@@ -390,6 +390,10 @@
                    replace=""
                    byline="true" />
   </target>
+  <target name="genivy">
+    <move file="ivy.xml" preservelastmodified="true" verbose="true" tofile="ivy.bak"/>
+    <ivy:convertpom pomFile="pom.xml" ivyFile="ivy.xml" />
+  </target>
   <!-- =================================
           target: report
          ================================= -->
