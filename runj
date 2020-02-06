@@ -65,6 +65,11 @@ isJVM ()
   return $?
 }
 
+displayBanner ()
+{
+  echo "$banner"
+}
+
 runJVM()
 {
   jarFile="$proj-$version.jar"
@@ -107,6 +112,13 @@ readVersion()
       echo "Unable to read $versionFile";}
 }
 
+readBanner()
+{
+  [ -e "$proj/$bannerFile" ] && \
+      { banner=$(cat "$proj/$bannerFile") || \
+      echo "No banner file: $proj/$bannerFile";}
+}
+
 readAuxClassPath()
 {
   [ -e "$proj/$runClasspathFile" ] && \
@@ -139,11 +151,13 @@ if [ -e "$proj/$nomainFile" ]
     exit 1
 fi
 
+declare -r bannerFile=".runbanner"
 declare -r versionFile=".version"
 declare -r runOptionsFile=".runoptions"
 declare -r runClasspathFile="run.cp"
 declare -a runOptions
 version="0.0.0"
+banner=""
 auxClasspath=""
 if [ "$#" -ge 2 ]
 then
@@ -154,12 +168,14 @@ else
     { echo "Error reading $proj/$mainFile";usage; }
 fi
 echo "$proj"
+readBanner
 readVersion
 readRunOptions
 readAuxClassPath
 
 isJVM
 jvm=$?
+displayBanner
 if [ $jvm -eq 0 ]
   then
     runJVM

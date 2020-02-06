@@ -22,7 +22,9 @@ public class ConsecutiveNumbersSum {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     int numIterations = Integer.parseInt(args[0]);
-    for (int i = 1; i < numIterations; i++)
-      assert calculateSum(i) > 0;
+    for (int i = 1; i < numIterations; i++) {
+      long sum = calculateSum(i);
+      assert sum > 0;
+    }
   }
 }

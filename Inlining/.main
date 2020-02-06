@@ -1,1 +1,2 @@
-inlining.ConsecutiveNumberSum
+inlining.ConsecutiveNumbersSum 1000
+inlining.ConsecutiveNumbersSum 15000
