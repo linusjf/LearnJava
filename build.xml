@@ -389,6 +389,7 @@
                    match=":(.*)bcel-5.1.jar"
                    replace=""
                    byline="true" />
+    <antcall target="makepom"></antcall>
   </target>
   <target name="genivy">
     <move file="ivy.xml" preservelastmodified="true" verbose="true" tofile="ivy.bak"/>
