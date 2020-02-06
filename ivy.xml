@@ -19,7 +19,7 @@
 -->
 <ivy-module version="2.0">
   <info organisation="linus"
-        module="LearnJava" />
+        module="LearnJava" revision="2.2.0" />
   <configurations>
     <conf name="checkstyle.main"
           description="checkstyle main jar" />

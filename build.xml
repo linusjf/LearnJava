@@ -394,6 +394,10 @@
     <move file="ivy.xml" preservelastmodified="true" verbose="true" tofile="ivy.bak"/>
     <ivy:convertpom pomFile="pom.xml" ivyFile="ivy.xml" />
   </target>
+  <target name="makepom">
+    <ivy:makepom ivyfile="ivy.xml" pomfile="pom.xml">
+</ivy:makepom>
+  </target>
   <!-- =================================
           target: report
          ================================= -->
