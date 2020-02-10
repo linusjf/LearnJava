@@ -285,7 +285,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
                 name="sevntu-checks"
-                rev="1.37.0"
+                rev="1.37.1"
                 conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
     <dependency org="org.jacorb"
@@ -365,7 +365,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-jmx"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
@@ -380,12 +380,12 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-annotations"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
     <dependency org="org.eclipse.jetty"
                 name="apache-jsp"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
     <dependency org="org.checkerframework"
@@ -405,7 +405,7 @@
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon"
                 name="Saxon-HE"
-                rev="9.9.1-5"
+                rev="9.9.1-6"
                 conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
@@ -509,7 +509,7 @@
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency org="org.assertj"
                 name="assertj-core"
-                rev="3.14.0"
+                rev="3.15.0"
                 conf="assertj-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
