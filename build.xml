@@ -383,7 +383,8 @@
     <echo file="${javancss.classpath.file}"
           message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
     <echo file="${javacc.classpath.file}"
-          message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
+      message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
+    
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

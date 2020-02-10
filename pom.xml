@@ -154,13 +154,13 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>10.0.0-alpha0</version>
+      <version>10.0.0.alpha1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>10.0.0-alpha0</version>
+      <version>10.0.0.alpha1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -172,7 +172,7 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>10.0.0-alpha0</version>
+      <version>10.0.0.alpha1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -310,25 +310,25 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest</artifactId>
-      <version>1.4.10</version>
+      <version>1.4.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-command-line</artifactId>
-      <version>1.4.10</version>
+      <version>1.4.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-junit5-plugin</artifactId>
-      <version>0.10</version>
+      <version>0.12</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-ant</artifactId>
-      <version>1.4.10</version>
+      <version>1.4.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>

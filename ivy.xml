@@ -355,12 +355,12 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-servlet"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
     <dependency org="org.eclipse.jetty"
@@ -370,7 +370,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-webapp"
-                rev="10.0.0-alpha0"
+                rev="10.0.0.alpha1"
                 conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
     <dependency org="org.eclipse.jetty"
@@ -484,22 +484,22 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
                 name="pitest"
-                rev="1.4.10"
+                rev="1.4.11"
                 conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
     <dependency org="org.pitest"
                 name="pitest-command-line"
-                rev="1.4.10"
+                rev="1.4.11"
                 conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
                 name="pitest-junit5-plugin"
-                rev="0.10"
+                rev="0.12"
                 conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
                 name="pitest-ant"
-                rev="1.4.10"
+                rev="1.4.11"
                 conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
     <dependency org="ant-contrib"
