@@ -276,11 +276,11 @@
                 conf="saxon-&gt;master" />
     <dependency org="org.apache.logging.log4j"
                 name="log4j-api"
-                rev="2.12.0"
+                rev="2.13.0"
                 conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile" />
     <dependency org="org.apache.logging.log4j"
                 name="log4j-core"
-                rev="2.12.0"
+                rev="2.13.0"
                 conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
