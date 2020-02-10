@@ -350,7 +350,7 @@
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency org="junit"
                 name="junit"
-                rev="4.4"
+                rev="4.13"
                 conf="junit.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
