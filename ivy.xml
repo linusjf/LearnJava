@@ -504,7 +504,7 @@
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
     <dependency org="ant-contrib"
                 name="ant-contrib"
-                rev="1.0b3"
+                rev="20020829"
                 conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency org="org.assertj"
