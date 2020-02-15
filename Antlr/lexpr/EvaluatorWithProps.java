@@ -60,7 +60,7 @@ public class EvaluatorWithProps extends LExprBaseListener {
   public void exitInt(LExprParser.IntContext ctx) {
     String intText = ctx.INT().getText();
     // INT   # Int
-    setValue(ctx, Integer.valueOf(intText));
+    setValue(ctx, Integer.parseInt(intText));
   }
 
   public void setValue(ParseTree node, int value) {
