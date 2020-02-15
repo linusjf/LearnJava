@@ -17,7 +17,6 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
 import java.util.logging.Logger;
 
 public enum TestLEvalVisitor {
