@@ -100,3 +100,7 @@ if [[ $(find . -mtime -1 -type f -name "PropertyFile.g4" 2>/dev/null) || "$all" 
   ./antlr4 -package 'properties' -Dlanguage=Java -o 'properties' PropertyFile.g4
   echo "Generated files for PropertyFile.g4"
 fi
+if [[ $(find . -mtime -1 -type f -name "LExpr.g4" 2>/dev/null) || "$all" == 1 ]];then
+  ./antlr4 -visitor -package 'lexpr' -Dlanguage=Java -o 'lexpr' LExpr.g4
+  echo "Generated files for LExpr.g4"
+fi

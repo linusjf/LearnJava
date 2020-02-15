@@ -9,6 +9,6 @@ Specification-Title: Antlr
 Specification-Version: 2.2.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 67e1df89 February 15 2020
+Implementation-Version: 0c3fd95e February 15 2020
 Implementation-Vendor: 
 
