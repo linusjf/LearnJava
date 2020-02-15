@@ -25,7 +25,7 @@ public enum TestPropertyFile {
   ;
 
   private static final Logger LOGGER =
-    Logger.getLogger(TestPropertyFile.class.getName());
+      Logger.getLogger(TestPropertyFile.class.getName());
 
   public static class PropertyFileLoader extends PropertyFileBaseListener {
     Map<String, String> props = new OrderedHashMap<>();
@@ -42,11 +42,11 @@ public enum TestPropertyFile {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    String inputFile = args.length > 0 ? args[0]:null;
+    String inputFile = args.length > 0 ? args[0] : null;
     try {
-      InputStream is = inputFile == null ? 
-        System.in:
-        Files.newInputStream(Paths.get(inputFile));
+      InputStream is = inputFile == null
+                           ? System.in
+                           : Files.newInputStream(Paths.get(inputFile));
       CharStream input = CharStreams.fromStream(is, StandardCharsets.UTF_8);
       PropertyFileLexer lexer = new PropertyFileLexer(input);
       CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -60,7 +60,7 @@ public enum TestPropertyFile {
       // walk parse tree
       walker.walk(loader, tree);
       // print results
-      LOGGER.info(loader.props);
+      LOGGER.info(loader.props.toString());
     } catch (IOException ioe) {
       LOGGER.severe(ioe.getMessage());
     }
