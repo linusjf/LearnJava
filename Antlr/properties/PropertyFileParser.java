@@ -17,7 +17,7 @@ public class PropertyFileParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, ID=3, STRING=4;
+		T__0=1, T__1=2, ID=3, STRING=4, NL=5, COMMENT=6;
 	public static final int
 		RULE_file = 0, RULE_prop = 1;
 	private static String[] makeRuleNames() {
@@ -35,7 +35,7 @@ public class PropertyFileParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, "ID", "STRING"
+			null, null, null, "ID", "STRING", "NL", "COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -96,6 +96,10 @@ public class PropertyFileParser extends Parser {
 		public PropContext prop(int i) {
 			return getRuleContext(PropContext.class,i);
 		}
+		public List<TerminalNode> COMMENT() { return getTokens(PropertyFileParser.COMMENT); }
+		public TerminalNode COMMENT(int i) {
+			return getToken(PropertyFileParser.COMMENT, i);
+		}
 		public FileContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -115,22 +119,49 @@ public class PropertyFileParser extends Parser {
 		enterRule(_localctx, 0, RULE_file);
 		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(5); 
+			setState(14);
 			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
+			switch (_input.LA(1)) {
+			case ID:
+				enterOuterAlt(_localctx, 1);
 				{
-				{
-				setState(4);
-				prop();
-				}
-				}
-				setState(7); 
+				setState(5); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==ID );
+				do {
+					{
+					{
+					setState(4);
+					prop();
+					}
+					}
+					setState(7); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==ID );
+				}
+				break;
+			case COMMENT:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(10); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(9);
+					match(COMMENT);
+					}
+					}
+					setState(12); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==COMMENT );
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -167,13 +198,13 @@ public class PropertyFileParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(9);
+			setState(16);
 			match(ID);
-			setState(10);
+			setState(17);
 			match(T__0);
-			setState(11);
+			setState(18);
 			match(STRING);
-			setState(12);
+			setState(19);
 			match(T__1);
 			}
 		}
@@ -189,11 +220,13 @@ public class PropertyFileParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\6\21\4\2\t\2\4\3"+
-		"\t\3\3\2\6\2\b\n\2\r\2\16\2\t\3\3\3\3\3\3\3\3\3\3\3\3\2\2\4\2\4\2\2\2"+
-		"\17\2\7\3\2\2\2\4\13\3\2\2\2\6\b\5\4\3\2\7\6\3\2\2\2\b\t\3\2\2\2\t\7\3"+
-		"\2\2\2\t\n\3\2\2\2\n\3\3\2\2\2\13\f\7\5\2\2\f\r\7\3\2\2\r\16\7\6\2\2\16"+
-		"\17\7\4\2\2\17\5\3\2\2\2\3\t";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\b\30\4\2\t\2\4\3"+
+		"\t\3\3\2\6\2\b\n\2\r\2\16\2\t\3\2\6\2\r\n\2\r\2\16\2\16\5\2\21\n\2\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\2\2\4\2\4\2\2\2\30\2\20\3\2\2\2\4\22\3\2\2\2\6\b"+
+		"\5\4\3\2\7\6\3\2\2\2\b\t\3\2\2\2\t\7\3\2\2\2\t\n\3\2\2\2\n\21\3\2\2\2"+
+		"\13\r\7\b\2\2\f\13\3\2\2\2\r\16\3\2\2\2\16\f\3\2\2\2\16\17\3\2\2\2\17"+
+		"\21\3\2\2\2\20\7\3\2\2\2\20\f\3\2\2\2\21\3\3\2\2\2\22\23\7\5\2\2\23\24"+
+		"\7\3\2\2\24\25\7\6\2\2\25\26\7\4\2\2\26\5\3\2\2\2\5\t\16\20";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
