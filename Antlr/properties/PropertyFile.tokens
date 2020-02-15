@@ -2,7 +2,6 @@ T__0=1
 T__1=2
 ID=3
 STRING=4
-NL=5
-COMMENT=6
+COMMENT=5
 '='=1
 '\n'=2
