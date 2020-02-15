@@ -35,3 +35,4 @@ rlang.DisplayTokens < t.R
 rlang.DisplayParseTree < t.R
 rlang.DisplayTokens < t2.R
 rlang.DisplayParseTree < t2.R
+properties.TestPropertyFile t.properties 
