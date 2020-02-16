@@ -39,3 +39,4 @@ properties.TestPropertyFile t.properties
 lexpr.TestLEvalVisitor t.lexpr
 lexpr.TestEvaluator t.lexpr
 lexpr.TestLEvaluatorWithProps t.lexpr
+csv2.LoadCSV t.csv

@@ -36,4 +36,8 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="LoadCSV.java"
                   checks="PackageNameCheck"
                   query="/PACKAGE_DEF/IDENT[@text='csv2']" />
+<suppress-xpath
+       files="XMLEmitter.java"
+       checks="PackageNameCheck"
+       query="/PACKAGE_DEF/IDENT[@text='json2']"/>
 </suppressions>
