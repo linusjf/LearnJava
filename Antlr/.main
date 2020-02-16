@@ -40,3 +40,4 @@ lexpr.TestLEvalVisitor t.lexpr
 lexpr.TestEvaluator t.lexpr
 lexpr.TestLEvaluatorWithProps t.lexpr
 csv2.LoadCSV t.csv
+json2.JSON2XML t.json
