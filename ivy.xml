@@ -239,6 +239,8 @@
           description="javacc main jars" />
     <conf name="javacc.lib"
           description="javacc lib jars" />
+    <conf name="trove.main"
+          description="trove main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -561,5 +563,10 @@
                 name="javacc"
                 rev="7.0.5"
                 conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
+<!-- https://mvnrepository.com/artifact/trove/trove -->
+    <dependency org="trove" 
+      name="trove" 
+      rev="1.1-beta-5"
+      conf="trove.main->master;"/>
   </dependencies>
 </ivy-module>
