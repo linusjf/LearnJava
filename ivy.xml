@@ -297,17 +297,17 @@
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
     <dependency org="org.apache.derby"
                 name="derby"
-                rev="10.15.1.3"
+                rev="10.15.2.0"
                 conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
     <dependency org="org.apache.derby"
                 name="derbytools"
-                rev="10.15.1.3"
+                rev="10.15.2.0"
                 conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
     <dependency org="org.apache.derby"
                 name="derbyshared"
-                rev="10.15.1.3"
+                rev="10.15.2.0"
                 conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
@@ -412,12 +412,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-core"
-                rev="3.15.12"
+                rev="3.15.13"
       conf="javaparser-core.main-&gt;master" />
       <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
     <dependency org="com.github.javaparser" 
       name="javaparser-symbol-solver-core" 
-      rev="3.15.12"
+      rev="3.15.13"
       conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;"/>
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
