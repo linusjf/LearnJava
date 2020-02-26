@@ -39,6 +39,7 @@
   <property file="${LearnJava.basedir}/javancss.properties" />
   <property file="${LearnJava.basedir}/javacc.properties" />
   <property file="${LearnJava.basedir}/trove.properties" />
+  <property file="${LearnJava.basedir}/spring.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -321,6 +322,10 @@
                   conf="javacc.lib" />
     <ivy:retrieve pathid="trove.main.path"
                   conf="trove.main" />
+    <ivy:retrieve pathid="spring-core.main.path"
+                  conf="spring-core.main" />
+    <ivy:retrieve pathid="spring-core.lib.path"
+                  conf="spring-core.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -389,6 +394,8 @@
       message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
     <echo file="${trove.classpath.file}"
       message="${toString:trove.main.path}" />
+    <echo file="${spring.classpath.file}"
+      message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
