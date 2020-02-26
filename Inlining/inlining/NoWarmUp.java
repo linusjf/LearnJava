@@ -1,6 +1,11 @@
 package inlining;
 
-public class NoWarmUp {
+import java.util.logging.Logger;
+
+public final class NoWarmUp {
+
+  private static final Logger LOGGER =
+      Logger.getLogger(NoWarmUp.class.getName());
 
   private NoWarmUp() {
     throw new IllegalStateException("Private constructor...");
@@ -9,7 +14,6 @@ public class NoWarmUp {
   public static void main(String[] args) {
     long start = System.nanoTime();
     ManualClassLoader.load();
-    long end = System.nanoTime();
-    System.out.println("Total time taken : " + (end - start));
+    LOGGER.info(() -> "Total time taken : " + (System.nanoTime() - start));
   }
 }

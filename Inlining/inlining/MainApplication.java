@@ -1,6 +1,11 @@
 package inlining;
 
-public class MainApplication {
+import java.util.logging.Logger;
+
+public final class MainApplication {
+
+  private static final Logger LOGGER =
+      Logger.getLogger(MainApplication.class.getName());
 
   private MainApplication() {
     throw new IllegalStateException("Private constructor...");
@@ -10,13 +15,12 @@ public class MainApplication {
     long start = System.nanoTime();
     ManualClassLoader.load();
     long end = System.nanoTime();
-    System.out.println("Warm Up time : " + (end - start));
+    LOGGER.info(() -> "Warm Up time : " + (end - start));
   }
 
   public static void main(String[] args) {
     long start = System.nanoTime();
     ManualClassLoader.load();
-    long end = System.nanoTime();
-    System.out.println("Total time taken : " + (end - start));
+    LOGGER.info(() -> "Total time taken : " + (System.nanoTime() - start));
   }
 }

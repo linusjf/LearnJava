@@ -1,6 +1,7 @@
 package inlining;
 
 public class Dummy {
-  public void mEmpty() {
+  public void emptyMethod() {
+    // empty method
   }
 }
