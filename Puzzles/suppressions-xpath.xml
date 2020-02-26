@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="TextProcessor.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='TextProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='edit']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+  <suppress-xpath files="TextProcessor.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TextProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='edit']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
   <suppress-xpath files="Cretin.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='Cretin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='1000']" />

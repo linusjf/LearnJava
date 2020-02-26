@@ -117,7 +117,7 @@
   <target name="run28">
     <description>json2 JSON2XML target</description>
     <java classname="${main.class28}">
-    <arg file="t.json" />
+      <arg file="t.json" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

@@ -56,8 +56,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-      destdir="${build.dir}"
-      classpath="${compilerclasspath}">
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -69,7 +69,7 @@
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
              additionalparam="${javadoc.params}"
-      classpath="${compilerclasspath}"></javadoc>
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />

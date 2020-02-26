@@ -239,8 +239,9 @@
   <!-- <rule ref="category/java/documentation.xml/CommentRequired" /> -->
   <rule ref="category/java/documentation.xml/CommentSize">
     <properties>
-      <property name="maxLineLength" value="100"/>
-  </properties>
+      <property name="maxLineLength"
+                value="100" />
+    </properties>
   </rule>
   <rule ref="category/java/documentation.xml/UncommentedEmptyConstructor" />
   <rule ref="category/java/documentation.xml/UncommentedEmptyMethodBody" />

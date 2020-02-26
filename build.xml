@@ -391,11 +391,11 @@
     <echo file="${javancss.classpath.file}"
           message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
     <echo file="${javacc.classpath.file}"
-      message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
+          message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
     <echo file="${trove4j.classpath.file}"
-      message="${toString:trove4j.main.path}" />
+          message="${toString:trove4j.main.path}" />
     <echo file="${spring.classpath.file}"
-      message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
+          message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
@@ -404,12 +404,16 @@
     <antcall target="makepom"></antcall>
   </target>
   <target name="genivy">
-    <move file="ivy.xml" preservelastmodified="true" verbose="true" tofile="ivy.bak"/>
-    <ivy:convertpom pomFile="pom.xml" ivyFile="ivy.xml" />
+    <move file="ivy.xml"
+          preservelastmodified="true"
+          verbose="true"
+          tofile="ivy.bak" />
+    <ivy:convertpom pomFile="pom.xml"
+                    ivyFile="ivy.xml" />
   </target>
   <target name="makepom">
-    <ivy:makepom ivyfile="ivy.xml" pomfile="pom.xml">
-</ivy:makepom>
+    <ivy:makepom ivyfile="ivy.xml"
+                 pomfile="pom.xml"></ivy:makepom>
   </target>
   <!-- =================================
           target: report
