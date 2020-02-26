@@ -11,6 +11,7 @@ public final class NoWarmUp {
     throw new IllegalStateException("Private constructor...");
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     long start = System.nanoTime();
     ManualClassLoader.load();

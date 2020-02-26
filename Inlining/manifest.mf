@@ -9,6 +9,6 @@ Specification-Title: Inlining
 Specification-Version: 2.3.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 85a9c082 February 26 2020
+Implementation-Version: ef32ef11 February 26 2020
 Implementation-Vendor: 
 

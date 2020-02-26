@@ -18,6 +18,7 @@ public final class MainApplication {
     LOGGER.info(() -> "Warm Up time : " + (end - start));
   }
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String[] args) {
     long start = System.nanoTime();
     ManualClassLoader.load();
