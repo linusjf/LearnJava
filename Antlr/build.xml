@@ -678,6 +678,7 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${compilerclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
