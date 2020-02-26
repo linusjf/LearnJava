@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public enum Demo {
   ;
 
-  private static Logger LOGGER = Logger.getLogger(Demo.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Demo.class.getName());
 
   public static void main(String... args) {
     demonstrateJdkArrayListForDoubles();
