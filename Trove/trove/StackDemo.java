@@ -4,6 +4,7 @@ import gnu.trove.stack.array.TDoubleArrayStack;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+@SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public enum StackDemo {
   ;
   private static final Logger LOGGER =
