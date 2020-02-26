@@ -1,2 +1,4 @@
 inlining.ConsecutiveNumbersSum 1000
 inlining.ConsecutiveNumbersSum 15000
+inlining.MainApplication
+inlining.NoWarmUp

@@ -102,7 +102,8 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run">
+  <target name="run"
+          depends="run3,run2,run1">
     <description>Run target</description>
     <java classname="${main.class}"
           fork="true">
@@ -113,10 +114,33 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+  </target>
+  <target name="run1">
+    <description>Run1 target</description>
     <java classname="${main.class}"
           fork="true">
       <jvmarg line="-ea -XX:+PrintCompilation -XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining -XX:FreqInlineSize=10" />
       <arg line="15000" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Run2 target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run3">
+    <description>Run3 target</description>
+    <java classname="${main.class2}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
