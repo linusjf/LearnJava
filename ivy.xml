@@ -239,8 +239,8 @@
           description="javacc main jars" />
     <conf name="javacc.lib"
           description="javacc lib jars" />
-    <conf name="trove.main"
-    description="trove main jars" />
+    <conf name="trove4j.main"
+    description="trove4j main jars" />
      <conf name="spring-core.main"
           description="spring-core main jars" />
     <conf name="spring-core.lib"
@@ -567,16 +567,14 @@
                 name="javacc"
                 rev="7.0.5"
                 conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
-<!-- https://mvnrepository.com/artifact/trove/trove -->
-    <dependency org="trove" 
-      name="trove" 
-      rev="1.1-beta-5"
-      conf="trove.main->master;"/>
+      <!-- https://mvnrepository.com/artifact/net.sf.trove4j/trove4j -->
+    <dependency org="net.sf.trove4j" 
+      name="trove4j" rev="3.0.3"
+      conf="trove4j.main->master;"/>
       <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework" 
       name="spring-core" 
       rev="5.2.4.RELEASE"
       conf="spring-core.main->master;spring-core.lib->compile;"/>
-
   </dependencies>
 </ivy-module>

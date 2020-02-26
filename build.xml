@@ -38,7 +38,7 @@
   <property file="${LearnJava.basedir}/ckjm_ext.properties" />
   <property file="${LearnJava.basedir}/javancss.properties" />
   <property file="${LearnJava.basedir}/javacc.properties" />
-  <property file="${LearnJava.basedir}/trove.properties" />
+  <property file="${LearnJava.basedir}/trove4j.properties" />
   <property file="${LearnJava.basedir}/spring.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
@@ -320,8 +320,8 @@
                   conf="javacc.main" />
     <ivy:retrieve pathid="javacc.lib.path"
                   conf="javacc.lib" />
-    <ivy:retrieve pathid="trove.main.path"
-                  conf="trove.main" />
+    <ivy:retrieve pathid="trove4j.main.path"
+                  conf="trove4j.main" />
     <ivy:retrieve pathid="spring-core.main.path"
                   conf="spring-core.main" />
     <ivy:retrieve pathid="spring-core.lib.path"
@@ -392,8 +392,8 @@
           message="${toString:javancss.lib.path}:${toString:javancss.main.path}" />
     <echo file="${javacc.classpath.file}"
       message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
-    <echo file="${trove.classpath.file}"
-      message="${toString:trove.main.path}" />
+    <echo file="${trove4j.classpath.file}"
+      message="${toString:trove4j.main.path}" />
     <echo file="${spring.classpath.file}"
       message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <antcall target="uniquify"></antcall>
