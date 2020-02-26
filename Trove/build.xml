@@ -108,9 +108,11 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run" depends="run3,run2,run1">
+  <target name="run"
+          depends="run7,run6,run5,run4,run3,run2,run1">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}"
+          fork="true">
       <classpath>
         <pathelement path="${runclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -120,35 +122,85 @@
   </target>
   <target name="run1">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}"
+          fork="true">
       <classpath>
         <pathelement path="${runclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
-      <jvmarg line="-XX:CompileThreshold=1500 -XX:+TieredCompilation -XX:TieredStopAtLevel=1"/>
+      <jvmarg line="-XX:CompileThreshold=1500 -XX:+TieredCompilation -XX:TieredStopAtLevel=1" />
     </java>
   </target>
   <target name="run2">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}"
+          fork="true">
       <classpath>
         <pathelement path="${runclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
-      <jvmarg line="-XX:CompileThreshold=1500 -XX:-TieredCompilation"/>
+      <jvmarg line="-XX:CompileThreshold=1500 -XX:-TieredCompilation" />
     </java>
   </target>
   <target name="run3">
     <description>Run target</description>
-    <java classname="${main.class}" fork="true">
+    <java classname="${main.class}"
+          fork="true">
       <classpath>
         <pathelement path="${runclasspath}" />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
-      <jvmarg line="-Xint"/>
+      <jvmarg line="-Xint" />
+    </java>
+  </target>
+  <target name="run4">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run5">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <jvmarg line="-XX:CompileThreshold=1500 -XX:+TieredCompilation -XX:TieredStopAtLevel=1" />
+    </java>
+  </target>
+  <target name="run6">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <jvmarg line="-XX:CompileThreshold=1500 -XX:-TieredCompilation" />
+    </java>
+  </target>
+  <target name="run7">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <jvmarg line="-Xint" />
     </java>
   </target>
   <target name="format">
