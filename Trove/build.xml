@@ -207,7 +207,7 @@
               reportLevel="low"
               effort="max"
               nested="true">
-    <auxClasspath path="${basedir}:${compilerclasspath}" />
+      <auxClasspath path="${basedir}:${compilerclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>

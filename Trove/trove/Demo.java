@@ -10,9 +10,20 @@ public enum Demo {
 
   private static final Logger LOGGER = Logger.getLogger(Demo.class.getName());
 
+  private static final int COUNT = 15_000;
+
   public static void main(String... args) {
-    demonstrateJdkArrayListForDoubles();
-    demonstrateTroveArrayListForDoubles();
+
+    long start = System.currentTimeMillis();
+    LOGGER.info(() -> "Start time: " + start);
+    for (int i = 0; i < COUNT; i++)
+      demonstrateJdkArrayListForDoubles();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start));
+    long start2 = System.currentTimeMillis();
+    LOGGER.info(() -> "Start time: " + start2);
+    for (int i = 0; i < COUNT; i++)
+      demonstrateTroveArrayListForDoubles();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
   }
 
   // Demonstrate standard JDK {@code ArrayList<Double>} with some JDK 8 functionality.
@@ -23,13 +34,13 @@ public enum Demo {
     doubles.add(36.3);
     doubles.add(67.6);
     doubles.add(10.0);
-    LOGGER.info("JDK ArrayList<Double>:");
-    LOGGER.info(() -> "\tDoubles List: " + doubles);
-    LOGGER.info(
+    LOGGER.fine("JDK ArrayList<Double>:");
+    LOGGER.fine(() -> "\tDoubles List: " + doubles);
+    LOGGER.fine(
         () -> "\tMaximum double: " + doubles.stream().max(Double::compare));
-    LOGGER.info(
+    LOGGER.fine(
         () -> "\tMinimum double: " + doubles.stream().min(Double::compare));
-    LOGGER.info(
+    LOGGER.fine(
         ()
             -> "\tSum of doubles: "
                    + doubles.stream().mapToDouble(Double::doubleValue).sum());
@@ -48,11 +59,11 @@ public enum Demo {
     doubles.add(36.3);
     doubles.add(67.6);
     doubles.add(10.0);
-    LOGGER.info(() -> "Trove TDoubleArrayList:");
+    LOGGER.fine(() -> "Trove TDoubleArrayList:");
     // TDoubleArrayList overrides toString()
-    LOGGER.info(() -> "\tDoubles List: " + doubles);
-    LOGGER.info(() -> "\tMaximum double: " + doubles.max());
-    LOGGER.info(() -> "\tMinimum double: " + doubles.min());
-    LOGGER.info(() -> "\tSum of doubles: " + doubles.sum());
+    LOGGER.fine(() -> "\tDoubles List: " + doubles);
+    LOGGER.fine(() -> "\tMaximum double: " + doubles.max());
+    LOGGER.fine(() -> "\tMinimum double: " + doubles.min());
+    LOGGER.fine(() -> "\tSum of doubles: " + doubles.sum());
   }
 }
