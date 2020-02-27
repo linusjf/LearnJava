@@ -256,6 +256,10 @@
           description="javolution-core-java main jars" />
     <conf name="javolution-core-java.lib"
           description="javolution-core-java lib jars" />
+    <conf name="guava.main"
+          description="guava main jars" />
+    <conf name="guava.lib"
+          description="guava lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -602,6 +606,11 @@
     <dependency org="org.javolution" 
       name="javolution-core-java" 
       rev="6.0.0"
-      conf="javolution-core-java.main-&gt;master;" />
+      conf="javolution-core-java.lib-&gt;compile;javolution-core-java.main-&gt;master;" />
+      <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency org="com.google.guava" 
+      name="guava" 
+      rev="28.2-jre"
+      conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
   </dependencies>
 </ivy-module>
