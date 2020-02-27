@@ -41,6 +41,7 @@
   <property file="${LearnJava.basedir}/trove4j.properties" />
   <property file="${LearnJava.basedir}/spring.properties" />
   <property file="${LearnJava.basedir}/testng.properties" />
+  <property file="${LearnJava.basedir}/commons-collections.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -331,6 +332,8 @@
                   conf="testng.main" />
     <ivy:retrieve pathid="testng.lib.path"
                   conf="testng.lib" />
+    <ivy:retrieve pathid="commons-collections.main.path"
+                  conf="commons-collections.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -403,6 +406,8 @@
           message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <echo file="${testng.classpath.file}"
           message="${toString:testng.main.path}:${toString:testng.lib.path}" />
+    <echo file="${commons-collections.classpath.file}"
+          message="${toString:commons-collections.main.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

@@ -250,6 +250,8 @@
           description="testng main jars" />
     <conf name="testng.lib"
           description="testng lib jars" />
+    <conf name="commons-collections.main"
+          description="commons-collections main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -587,5 +589,10 @@
       name="testng" 
       rev="7.1.0"
       conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+    <dependency org="commons-collections" 
+      name="commons-collections" 
+      rev="3.2.2"
+      conf="commons-collections.main-&gt;master;" />
   </dependencies>
 </ivy-module>
