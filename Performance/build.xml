@@ -8,6 +8,7 @@
   <property file="${gformat.properties}" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property file="../testng.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -26,6 +27,12 @@
             srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="spotbugs-plugins.cp"
             srcfile="../${spotbugs-plugin.classpath.file}" />
+  <loadfile property="testng.cp"
+            srcfile="../${testng.classpath.file}" />
+  <loadfile property="compilerclasspath"
+            srcFile="${compile.cp}" />
+  <loadfile property="runclasspath"
+            srcFile="${run.cp}" />
   <taskdef resource="${cs.taskdef.resource}"
            classpath="${cs.cp}" />
   <taskdef name="pmd"
@@ -33,6 +40,9 @@
            classpath="${pmd.cp}" />
   <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
            classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <taskdef name="testng"
+           classname="org.testng.TestNGAntTask"
+           classpath="${testng.cp}"></taskdef>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -52,7 +62,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -63,7 +74,8 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -112,6 +124,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
@@ -124,6 +137,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
@@ -134,6 +148,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
@@ -144,6 +159,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
@@ -219,6 +235,7 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${runclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
@@ -236,6 +253,7 @@
               effort="max"
               nested="true">
       <auxClasspath path="${basedir}" />
+        <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
@@ -243,6 +261,15 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </spotbugs>
+  </target>
+  <target name="testng">
+    <testng classpath="${runclasspath}"
+        outputDir="${testng.report.dir}"
+    haltOnFailure="false" verbose="2"
+    failureProperty="testng.failures"
+    >
+  <classfileset dir="${build.dir}" includes="**/*.class" />
+  </testng>
   </target>
   <target name="main"
           depends="compile, pmd, spotbugs,jar,docs">

@@ -5,10 +5,10 @@ Built-By: root
 Main-Class: inlining.ConsecutiveNumbersSum
 
 Name: common
-Specification-Title: Inlining
+Specification-Title: Performance
 Specification-Version: 2.3.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ef32ef11 February 26 2020
+Implementation-Version: b24c025a February 27 2020
 Implementation-Vendor: 
 
