@@ -246,6 +246,10 @@
           description="spring-core main jars" />
     <conf name="spring-core.lib"
           description="spring-core lib jars" />
+    <conf name="testng.main"
+          description="testng main jars" />
+    <conf name="testng.lib"
+          description="testng lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -577,6 +581,11 @@
     <dependency org="org.springframework"
                 name="spring-core"
                 rev="5.2.4.RELEASE"
-                conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
+      conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
+      <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+    <dependency org="org.testng" 
+      name="testng" 
+      rev="7.1.0"
+      conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
   </dependencies>
 </ivy-module>
