@@ -59,16 +59,14 @@ public class HashMapSpeedTest {
     String type = map.getClass().getName() + "("+typeExtension+")";
 
     stopWatch.start(type+"put()");
-    for(String o:objects){
+    for(String o:objects)
       map.put(o,o);
-    }
     stopWatch.stop();
     long putTime = stopWatch.getLastTaskTimeMillis();
 
     stopWatch.start(type+"get()");
-    for(String o:objects){
+    for(String o:objects)
       map.get(o);
-    }
     stopWatch.stop();
     long getTime = stopWatch.getLastTaskTimeMillis();
     System.out.println(type + ";" + getTime + ";" + putTime);
@@ -83,9 +81,8 @@ public class HashMapSpeedTest {
 
   private Set<String> getObjects() {
     Set<String> objects = new HashSet<>();
-    for(int i=0;i< SIZE;i++){
+    for(int i=0;i< SIZE;i++)
       objects.add("" + i);
-    }
     return objects;
   }
 }
