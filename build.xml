@@ -42,6 +42,7 @@
   <property file="${LearnJava.basedir}/spring.properties" />
   <property file="${LearnJava.basedir}/testng.properties" />
   <property file="${LearnJava.basedir}/commons-collections.properties" />
+  <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="lib.dir"
@@ -334,6 +335,10 @@
                   conf="testng.lib" />
     <ivy:retrieve pathid="commons-collections.main.path"
                   conf="commons-collections.main" />
+    <ivy:retrieve pathid="javolution-core-java.main.path"
+                  conf="javolution-core-java.main" />
+    <ivy:retrieve pathid="javolution-core-java.lib.path"
+                  conf="javolution-core-java.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -408,6 +413,8 @@
           message="${toString:testng.main.path}:${toString:testng.lib.path}" />
     <echo file="${commons-collections.classpath.file}"
           message="${toString:commons-collections.main.path}" />
+    <echo file="${javolution-core-java.classpath.file}"
+          message="${toString:javolution-core-java.main.path}:${toString:javolution-core-java.lib.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

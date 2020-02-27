@@ -252,6 +252,10 @@
           description="testng lib jars" />
     <conf name="commons-collections.main"
           description="commons-collections main jars" />
+    <conf name="javolution-core-java.main"
+          description="javolution-core-java main jars" />
+    <conf name="javolution-core-java.lib"
+          description="javolution-core-java lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -594,5 +598,10 @@
       name="commons-collections" 
       rev="3.2.2"
       conf="commons-collections.main-&gt;master;" />
+      <!-- https://mvnrepository.com/artifact/org.javolution/javolution-core-java -->
+    <dependency org="org.javolution" 
+      name="javolution-core-java" 
+      rev="6.0.0"
+      conf="javolution-core-java.main-&gt;master;" />
   </dependencies>
 </ivy-module>
