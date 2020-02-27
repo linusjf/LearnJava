@@ -252,10 +252,9 @@
               reportLevel="low"
               effort="max"
               nested="true">
-      <auxClasspath path="${basedir}" />
       <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
-      <class location="${basedir}" />
+      <class location="${build.dir}" />
       <classpath>
         <pathelement path="${spotbugs.cp}" />
         <pathelement path="${java.class.path}" />
