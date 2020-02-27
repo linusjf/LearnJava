@@ -3,6 +3,22 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="TroveProcedure.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']"/>
+<suppress-xpath
+       files="TroveProcedure.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']"/>
+<suppress-xpath
+       files="TroveProcedure.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']"/>
+<suppress-xpath
+       files="TroveProcedure.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']"/>
   <suppress-xpath files="IteratorDemo.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />

@@ -9,6 +9,6 @@ Specification-Title: Trove
 Specification-Version: 2.3.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 9c0c7562 February 27 2020
+Implementation-Version: b8419d89 February 27 2020
 Implementation-Vendor: 
 

@@ -109,7 +109,7 @@
          manifest="${jar.manifest}"></jar>
   </target>
   <target name="run"
-          depends="run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+          depends="run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
 
     <description>Run target</description>
     <java classname="${main.class}"
@@ -296,6 +296,17 @@
         <pathelement path="${java.class.path}" />
       </classpath>
       <jvmarg line="-Xint" />
+    </java>
+  </target>
+  <target name="run16">
+    <description>Run target</description>
+    <java classname="${main.class4}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
     </java>
   </target>
   <target name="format">
