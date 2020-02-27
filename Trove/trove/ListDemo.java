@@ -55,7 +55,7 @@ public enum ListDemo {
     try {
       unmodifiableIntegers.add(15);
     } catch (UnsupportedOperationException ex) {
-      LOGGER.severe(() -> "\tException caught: " + ex);
+      LOGGER.fine(() -> "\tException caught: " + ex);
     }
   }
 }
