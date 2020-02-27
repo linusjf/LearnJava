@@ -253,7 +253,7 @@
               effort="max"
               nested="true">
       <auxClasspath path="${basedir}" />
-        <auxClasspath path="${runclasspath}" />
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
@@ -264,11 +264,12 @@
   </target>
   <target name="testng">
     <testng classpath="${runclasspath}:${build.dir}"
-        outputDir="${testng.report.dir}"
-    haltOnFailure="false"
-    failureProperty="testng.failures">
-    <xmlfileset dir="${build.dir}" includes="testng.xml"/>
-  </testng>
+            outputDir="${testng.report.dir}"
+            haltOnFailure="false"
+            failureProperty="testng.failures">
+      <xmlfileset dir="${build.dir}"
+                  includes="testng.xml" />
+    </testng>
   </target>
   <target name="main"
           depends="compile, pmd, spotbugs,jar,docs">

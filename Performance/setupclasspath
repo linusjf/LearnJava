@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 awk 'BEGIN {ORS=""};FNR==1&&NR!=1{ printf ("%s",":") }1' ../guava.cp ../trove4j.cp ../spring.cp ../javolution-core-java.cp \
-  ../testng.cp ../commons-collections.cp > compile.cp
+  ../testng.cp ../commons-collections.cp ../javolution-core-java.cp > compile.cp
 cp compile.cp run.cp

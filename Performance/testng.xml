@@ -1,8 +1,9 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="SuiteHashMapTest" verbose="1" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SuiteHashMapTest"
+       verbose="1">
   <test name="TestHashMap">
     <classes>
-      <class name="performance.HashMapSpeedTest"/>
+      <class name="performance.HashMapSpeedTest" />
     </classes>
   </test>
 </suite>
