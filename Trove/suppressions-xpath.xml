@@ -4,6 +4,18 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
   <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']" />
+  <suppress-xpath files="ListDemo.java"
                   checks="StaticVariableNameCheck"
                   query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='LOGGER']" />
   <suppress-xpath files="ListDemo.java"
