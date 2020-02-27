@@ -17,6 +17,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+// http://www.klewitz.info/2013/10/18/java-hashmap-performance/
 public class HashMapSpeedTest {
 
   private static final Logger LOGGER =
