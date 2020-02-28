@@ -12,6 +12,7 @@ public enum StackDemo {
 
   private static final int COUNT = 15_000;
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     long start = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start);

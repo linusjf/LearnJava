@@ -8,6 +8,7 @@ public enum TroveStrategy {
   private static final Logger LOGGER =
       Logger.getLogger(TroveStrategy.class.getName());
 
+  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   public static void main(String... args) {
     char[] foo = new char[] {'a', 'b', 'c'};
     char[] bar = new char[] {'a', 'b', 'c'};
