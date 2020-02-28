@@ -1,8 +1,8 @@
 package trove;
 
 import gnu.trove.map.hash.TCustomHashMap;
-import java.util.logging.Logger;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public enum TroveStrategy {
   ;
@@ -16,10 +16,8 @@ public enum TroveStrategy {
     char[] bar = new char[] {'a', 'b', 'c'};
     LOGGER.info(() -> foo.hashCode() == bar.hashCode() ? "equal" : "not equal");
     LOGGER.info(() -> foo.equals(bar) ? "equal" : "not equal");
-    Map<Object,Object> map = 
-      new TCustomHashMap<>(new CharArrayStrategy());
-    map.put(foo,"foo");
+    Map<Object, Object> map = new TCustomHashMap<>(new CharArrayStrategy());
+    map.put(foo, "foo");
     LOGGER.info(() -> map.get(bar).toString());
-
   }
 }
