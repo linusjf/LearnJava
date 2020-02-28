@@ -13,17 +13,24 @@ public enum Demo {
   private static final int COUNT = 15_000;
 
   public static void main(String... args) {
-
     long start = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start);
-    for (int i = 0; i < COUNT; i++)
-      demonstrateJdkArrayListForDoubles();
+    iterateJDK();
     LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start));
     long start2 = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start2);
+    iterateTrove();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
+  }
+
+  private static void iterateJDK() {
+    for (int i = 0; i < COUNT; i++)
+      demonstrateJdkArrayListForDoubles();
+  }
+
+  private static void iterateTrove() {
     for (int i = 0; i < COUNT; i++)
       demonstrateTroveArrayListForDoubles();
-    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
   }
 
   // Demonstrate standard JDK {@code ArrayList<Double>} with some JDK 8 functionality.

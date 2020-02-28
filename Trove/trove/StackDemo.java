@@ -13,17 +13,24 @@ public enum StackDemo {
   private static final int COUNT = 15_000;
 
   public static void main(String... args) {
-
     long start = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start);
-    for (int i = 0; i < COUNT; i++)
-      demonstrateJDKDoubleStack();
+    performJDK();
     LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start));
     long start2 = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start2);
+    performTrove();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
+  }
+
+  private static void performJDK() {
+    for (int i = 0; i < COUNT; i++)
+      demonstrateJDKDoubleStack();
+  }
+
+  private static void performTrove() {
     for (int i = 0; i < COUNT; i++)
       demonstrateTroveDoubleArrayStack();
-    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
   }
 
   /**

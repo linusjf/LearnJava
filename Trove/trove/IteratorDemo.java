@@ -19,14 +19,22 @@ public enum IteratorDemo {
 
     long start = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start);
-    for (int i = 0; i < COUNT; i++)
-      demonstrateJDKIterator();
+    performJDK();
     LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start));
     long start2 = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start2);
+    performTrove();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
+  }
+
+  private static void performJDK() {
+    for (int i = 0; i < COUNT; i++)
+      demonstrateJDKIterator();
+  }
+
+  private static void performTrove() {
     for (int i = 0; i < COUNT; i++)
       demonstrateIterationWithIterator();
-    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
   }
 
   /** Demonstrate "traditional" iteration of a Trove collection. */

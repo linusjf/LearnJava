@@ -17,14 +17,22 @@ public enum ListDemo {
   public static void main(String... args) {
     long start = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start);
-    for (int i = 0; i < COUNT; i++)
-      demonstrateJDKCollectionsClass();
+    performJDK();
     LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start));
     long start2 = System.currentTimeMillis();
     LOGGER.info(() -> "Start time: " + start2);
+    performTrove();
+    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
+  }
+
+  private static void performJDK() {
+    for (int i = 0; i < COUNT; i++)
+      demonstrateJDKCollectionsClass();
+  }
+
+  private static void performTrove() {
     for (int i = 0; i < COUNT; i++)
       demonstrateTroveCollectionsClass();
-    LOGGER.info(() -> "Time taken: " + (System.currentTimeMillis() - start2));
   }
 
   /** Demonstrate one of Trove's "equivalent"s of the java.util.Collections class. */

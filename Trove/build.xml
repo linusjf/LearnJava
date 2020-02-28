@@ -309,6 +309,17 @@
       </classpath>
     </java>
   </target>
+  <target name="run17">
+    <description>Run target</description>
+    <java classname="${main.class5}"
+          fork="true">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
@@ -397,10 +408,11 @@
               outputFile="${spotbugs.output}"
               reportLevel="low"
               effort="max"
-              nested="true">
-      <auxClasspath path="${basedir}:${compilerclasspath}" />
+      nested="true"
+      excludeFilter="${spotbugs.suppressions.xml}">
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
-      <class location="${basedir}" />
+      <class location="${build.dir}" />
       <classpath>
         <pathelement path="${spotbugs.cp}" />
         <pathelement path="${java.class.path}" />

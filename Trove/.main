@@ -3,3 +3,4 @@ trove.StackDemo
 trove.ListDemo
 trove.IteratorDemo
 trove.TroveProcedure
+trove.TroveStrategy
