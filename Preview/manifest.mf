@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.7
+Created-By: 13.0.1+9 (Oracle Corporation)
+Built-By: root
+Main-Class: preview.TextBlockString
+
+Name: common
+Specification-Title: Preview
+Specification-Version: 2.4.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 8d5dc91c February 28 2020
+Implementation-Vendor: 
+
