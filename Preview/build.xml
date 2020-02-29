@@ -108,7 +108,18 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java fork="true" classname="${main.class}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <jvmarg value="${java.params}" />
+      <jvmarg value="${java.params1}" />
+    </java>
+  </target>
+  <target name="run1">
+    <description>Run target</description>
+    <java fork="true" classname="${main.class1}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -122,6 +133,7 @@
              id="javasrcs">
       <include name="**/*.java" />
       <exclude name="**/TextBlockString.java" />
+      <exclude name="**/StringNewMethods.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -141,8 +153,7 @@
   </target>
   <target name="checkstyleg">
     <fileset dir="${src.dir}"
-             includes="**/*.java"
-             excludes="**/TextBlockString.java" />
+             includes="**/*.java" />
     <pathconvert property="sources"
                  refid="javasrcs"
                  pathsep=" " />
@@ -166,8 +177,7 @@
                 failOnViolation="false"
                 properties="${cs.properties}">
       <fileset dir="${src.dir}"
-               includes="**/*.java"
-               excludes="**/TextBlockString.java" />
+               includes="**/*.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />

@@ -4,7 +4,11 @@ package preview;
 public enum TextBlockString {
   ;
 
-  /** * JEP 355: Preview Feature */
+  /*** 
+   * JEP 355: Preview Feature.
+   * New methods are to be used with Text Block Strings
+   * @param args - command line arguments
+   */
   public static void main(String[] args) {
     String textBlock =
         """
