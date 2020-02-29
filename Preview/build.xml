@@ -108,7 +108,8 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java fork="true" classname="${main.class}">
+    <java fork="true"
+          classname="${main.class}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -119,7 +120,20 @@
   </target>
   <target name="run1">
     <description>Run target</description>
-    <java fork="true" classname="${main.class1}">
+    <java fork="true"
+          classname="${main.class1}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+      <jvmarg value="${java.params}" />
+      <jvmarg value="${java.params1}" />
+    </java>
+  </target>
+  <target name="run2">
+    <description>Run target</description>
+    <java fork="true"
+          classname="${main.class2}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -131,9 +145,7 @@
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
-      <include name="**/*.java" />
-      <exclude name="**/TextBlockString.java" />
-      <exclude name="**/StringNewMethods.java" />
+      <include name="**/package-info.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -147,6 +159,9 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <exec executable="bash">
+      <arg line="../cformat ${basedir}" />
+    </exec>
     <exec executable="bash">
       <arg line="../xformatall ${basedir}" />
     </exec>
