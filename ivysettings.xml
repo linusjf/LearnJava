@@ -17,9 +17,10 @@
    under the License.
 -->
 <ivysettings>
-    <settings defaultResolver="central"/>
+        <settings defaultResolver="tray"/> 
     <resolvers>
-<ibiblio name="central" m2compatible="true"/>
+        <!--     <ibiblio name="central" m2compatible="true"/> -->
+      <bintray name="tray"/>
 </resolvers>
     <include url="${ivy.default.settings.dir}/ivysettings-public.xml"/>
     <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
