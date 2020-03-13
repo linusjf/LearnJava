@@ -19,7 +19,7 @@
 <ivysettings>
     <settings defaultResolver="default"/>
     <resolvers>
-<ibiblio name="maven" m2compatible="true" usepoms="false"/>
+<ibiblio name="maven" m2compatible="true"/>
 </resolvers>
     <include url="${ivy.default.settings.dir}/ivysettings-public.xml"/>
     <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
