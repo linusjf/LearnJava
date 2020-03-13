@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+VERSION=$(curl -s https://api.github.com/repos/pmd/pmd/releases/latest | jq --raw-output ".tag_name")
+DOWNLOAD_URL=$(curl -s https://api.github.com/repos/pmd/pmd/releases/latest | jq --raw-output ".assets[].browser_download_url" | grep pmd-bin)
+echo "version=${VERSION}"
+echo "url=${DOWNLOAD_URL}"
