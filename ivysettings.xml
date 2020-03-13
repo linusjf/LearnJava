@@ -17,9 +17,9 @@
    under the License.
 -->
 <ivysettings>
-    <settings defaultResolver="default"/>
+    <settings defaultResolver="central"/>
     <resolvers>
-<ibiblio name="maven" m2compatible="true"/>
+<ibiblio name="central" m2compatible="true"/>
 </resolvers>
     <include url="${ivy.default.settings.dir}/ivysettings-public.xml"/>
     <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
