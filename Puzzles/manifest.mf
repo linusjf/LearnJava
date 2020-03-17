@@ -6,9 +6,9 @@ Main-Class: javapuzzles.Odd
 
 Name: common
 Specification-Title: Puzzles
-Specification-Version: 2.2.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 9f2b8457 January 29 2020
+Implementation-Version: 383f93ea March 17 2020
 Implementation-Vendor: 
 
