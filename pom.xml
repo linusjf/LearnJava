@@ -346,13 +346,13 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-ant</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
