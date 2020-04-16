@@ -302,7 +302,7 @@
     <dependency org="org.apache.logging.log4j"
                 name="log4j-core"
                 rev="2.13.1"
-                conf="log4j-core.main-&gt;master;log4j-core.lib-&gt;runtime;log4j-core.lib-&gt;compile" />
+                conf="log4j-core.main-&gt;default;log4j-core.lib-&gt;default;log4j-core.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
                 name="sevntu-checks"
@@ -347,12 +347,12 @@
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-jasper"
                 rev="9.0.34"
-                conf="tomcat-embed-jasper.main-&gt;master;tomcat-embed-jasper.lib-&gt;runtime;tomcat-embed-jasper.lib-&gt;compile" />
+                conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
     <dependency org="org.eclipse.jdt.core.compiler"
                 name="ecj"
                 rev="4.6.1"
-                conf="ecj.main-&gt;master;ecj.lib-&gt;runtime;ecj.lib-&gt;compile" />
+                conf="ecj.main-&gt;default;ecj.lib-&gt;default;ecj.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-logging-juli"
@@ -377,7 +377,7 @@
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
                 rev="10.0.0.alpha2"
-                conf="jetty-server.main-&gt;master;jetty-server.lib-&gt;compile" />
+                conf="jetty-server.main-&gt;default;jetty-server.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-servlet"
@@ -417,7 +417,7 @@
     <dependency org="com.beust"
                 name="jcommander"
                 rev="1.78"
-                conf="jcommander.main-&gt;master" />
+                conf="jcommander.main-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
     <dependency org="org.jdom"
                 name="jdom2"
@@ -456,7 +456,7 @@
     <dependency org="info.debatty"
                 name="java-string-similarity"
                 rev="1.2.1"
-                conf="java-string-similarity.main-&gt;master" />
+      conf="java-string-similarity.main->master" />
     <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
     <dependency org="org.javatuples"
                 name="javatuples"
@@ -535,12 +535,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
-                rev="4.0.1"
+                rev="4.0.2"
                 conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
-                rev="4.0.1"
+                rev="4.0.2"
                 conf="spotbugs-ant.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
     <dependency org="org.slf4j"
@@ -586,7 +586,7 @@
     <dependency org="net.sf.trove4j"
                 name="trove4j"
                 rev="3.0.3"
-                conf="trove4j.main-&gt;master;" />
+                conf="trove4j.main-&gt;default;" />
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
