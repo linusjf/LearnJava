@@ -220,13 +220,13 @@
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-core</artifactId>
-      <version>3.15.18</version>
+      <version>3.15.21</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-symbol-solver-core</artifactId>
-      <version>3.15.18</version>
+      <version>3.15.21</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -400,7 +400,7 @@
     <dependency>
       <groupId>net.java.dev.javacc</groupId>
       <artifactId>javacc</artifactId>
-      <version>7.0.5</version>
+      <version>7.0.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
