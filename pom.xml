@@ -400,7 +400,7 @@
     <dependency>
       <groupId>net.java.dev.javacc</groupId>
       <artifactId>javacc</artifactId>
-      <version>7.0.5</version>
+      <version>7.0.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
