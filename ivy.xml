@@ -455,7 +455,7 @@
                 conf="java-lsh.main-&gt;master" />
     <dependency org="info.debatty"
                 name="java-string-similarity"
-                rev="1.2.1"
+                rev="2.0.0"
       conf="java-string-similarity.main->master" />
     <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
     <dependency org="org.javatuples"
