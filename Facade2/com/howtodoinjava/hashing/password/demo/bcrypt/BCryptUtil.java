@@ -25,8 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class BCryptUtil {
-  private static final Pattern PASSWORD_PATTERN =
-      Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
+  private static final Pattern PASSWORD_PATTERN = Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
   private static final Base64.Encoder ENCODER = Base64.getEncoder();
   private static final Base64.Decoder DECODER = Base64.getDecoder();
@@ -84,20 +83,17 @@ public final class BCryptUtil {
   /** Using regex. Match the initial salt and match the minor and offset values. */
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static String[] retrieveOffsetMinor(String salt) {
-    char minor = (char)0;
+    char minor = (char) 0;
     int off = 0;
     Regex regex = new Regex(salt);
     // Matcher matcher = PASSWORD_PATTERN.matcher(salt);
     if (regex.matches()) {
       off = regex.end(1);
-      if (off == OFFSET_4)
-        minor = 'a';
-    } else
-      throw new IllegalArgumentException("Invalid salt:" + salt);
+      if (off == OFFSET_4) minor = 'a';
+    } else throw new IllegalArgumentException("Invalid salt:" + salt);
 
     // Extract number of rounds
-    if (salt.charAt(off + 2) > DOLLAR)
-      throw new IllegalArgumentException("Missing salt rounds");
+    if (salt.charAt(off + 2) > DOLLAR) throw new IllegalArgumentException("Missing salt rounds");
     return new String[] {String.valueOf(minor), String.valueOf(off)};
   }
 
@@ -115,8 +111,7 @@ public final class BCryptUtil {
 
       char minor = vals[0].charAt(0);
 
-      byte[] passwordb =
-          (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
+      byte[] passwordb = (password + (minor >= LOWER_CASE_A ? "\000" : "")).getBytes("UTF-8");
 
       int off = Integer.parseInt(vals[1]);
       final int rounds = Integer.parseInt(salt.substring(off, off + 2));
@@ -131,17 +126,12 @@ public final class BCryptUtil {
     }
   }
 
-  private static String getHashedPassword(char minor,
-                                          int rounds,
-                                          byte[] saltb,
-                                          byte[] hashed) {
+  private static String getHashedPassword(char minor, int rounds, byte[] saltb, byte[] hashed) {
     final StringBuilder rs = new StringBuilder();
     rs.append("$2");
-    if (minor >= LOWER_CASE_A)
-      rs.append(minor);
+    if (minor >= LOWER_CASE_A) rs.append(minor);
     rs.append(DOLLAR);
-    if (rounds < TEN)
-      rs.append('0');
+    if (rounds < TEN) rs.append('0');
     rs.append(Integer.toString(rounds))
         .append(DOLLAR)
         .append(encodeBase64(saltb))
@@ -164,11 +154,8 @@ public final class BCryptUtil {
 
     random.nextBytes(rnd);
     rs.append("$2a$");
-    if (logRounds < TEN)
-      rs.append('0');
-    rs.append(Integer.toString(logRounds))
-        .append(DOLLAR)
-        .append(encodeBase64(rnd));
+    if (logRounds < TEN) rs.append('0');
+    rs.append(Integer.toString(logRounds)).append(DOLLAR).append(encodeBase64(rnd));
     return rs.toString();
   }
 

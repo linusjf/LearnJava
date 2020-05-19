@@ -26,23 +26,24 @@ public enum BillGenerator {
 
     PlanFactory planFactory = new PlanFactory();
 
-    try (BufferedReader br = new BufferedReader(new InputStreamReader(
-             Files.newInputStream(Paths.get(args[0])), UTF_8))) {
+    try (BufferedReader br =
+        new BufferedReader(
+            new InputStreamReader(Files.newInputStream(Paths.get(args[0])), UTF_8))) {
       Optional<String> planName = Optional.ofNullable(br.readLine());
-      planName.ifPresent(plan -> {
-        try {
-          int units = Integer.parseInt(br.readLine());
+      planName.ifPresent(
+          plan -> {
+            try {
+              int units = Integer.parseInt(br.readLine());
 
-          Plan p = planFactory.getPlan(plan);
+              Plan p = planFactory.getPlan(plan);
 
-          System.out.print("Bill amount for " + plan + " of  " + units
-                           + " units is: ");
-          p.allotRate();
-          p.calculateBill(units);
-        } catch (IOException | NumberFormatException e) {
-          System.out.println("Input error: " + e.getMessage());
-        }
-      });
+              System.out.print("Bill amount for " + plan + " of  " + units + " units is: ");
+              p.allotRate();
+              p.calculateBill(units);
+            } catch (IOException | NumberFormatException e) {
+              System.out.println("Input error: " + e.getMessage());
+            }
+          });
     } catch (IOException e) {
       System.out.println("Input error: " + e.getMessage());
     }

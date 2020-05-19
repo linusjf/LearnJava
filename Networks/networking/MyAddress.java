@@ -15,8 +15,7 @@ public final class MyAddress {
       System.out.println(address);
       System.out.println(address.getHostAddress());
     } catch (UnknownHostException ex) {
-      System.out.println("Could not find this computer's address: "
-                         + ex.getMessage());
+      System.out.println("Could not find this computer's address: " + ex.getMessage());
     }
   }
 }

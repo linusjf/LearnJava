@@ -19,8 +19,7 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory =
-          new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -33,18 +32,15 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static void alternateMain()
-      throws InterruptedException, ExecutionException {
-    CustomThreadFactory threadFactory =
-        new CustomThreadFactory("CustomThreadFactory-alternate");
+  public static void alternateMain() throws InterruptedException, ExecutionException {
+    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     Future<?> result = executor.submit(task);
     executor.shutdown();
     if (executor.awaitTermination(1, TimeUnit.DAYS))
       System.out.printf("Alternate Main: End of the program.%n");
-    if (result.get() == null)
-      System.out.printf("Task completed successfully%n");
+    if (result.get() == null) System.out.printf("Task completed successfully%n");
   }
 
   @Override
@@ -80,7 +76,8 @@ public class CustomThreadFactory implements ThreadFactory {
     @Override
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
-      buffer.append(getName())
+      buffer
+          .append(getName())
           .append(":  Creation Date: ")
           .append(creationDate)
           .append(" : Running time: ")

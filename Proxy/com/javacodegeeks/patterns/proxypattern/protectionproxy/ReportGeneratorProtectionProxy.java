@@ -29,8 +29,7 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
   private ReportGenerator getReportGenerator()
       throws NotBoundException, MalformedURLException, RemoteException {
     if (reportGenerator == null)
-      reportGenerator = (ReportGenerator)Naming.lookup(
-          "rmi://127.0.0.1/PizzaCoRemoteGenerator");
+      reportGenerator = (ReportGenerator) Naming.lookup("rmi://127.0.0.1/PizzaCoRemoteGenerator");
     return reportGenerator;
   }
 
@@ -44,7 +43,6 @@ public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy {
         System.err.println(e.getMessage());
       }
       return "";
-    } else
-      return "Not Authorized to view report.";
+    } else return "Not Authorized to view report.";
   }
 }

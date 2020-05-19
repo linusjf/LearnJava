@@ -27,27 +27,29 @@ public class SocketServerExample {
   }
 
   public static void main(String[] args) {
-    Runnable server = new Runnable() {
-      @Override
-      public void run() {
-        try {
-          new SocketServerExample("localhost", 8090).startServer();
-        } catch (IOException e) {
-          System.out.println("Error running server: " + e.getMessage());
-        }
-      }
-    };
+    Runnable server =
+        new Runnable() {
+          @Override
+          public void run() {
+            try {
+              new SocketServerExample("localhost", 8090).startServer();
+            } catch (IOException e) {
+              System.out.println("Error running server: " + e.getMessage());
+            }
+          }
+        };
 
-    Runnable client = new Runnable() {
-      @Override
-      public void run() {
-        try {
-          new SocketClientExample().startClient();
-        } catch (IOException | InterruptedException e) {
-          System.out.println("Error connecting to  server: " + e.getMessage());
-        }
-      }
-    };
+    Runnable client =
+        new Runnable() {
+          @Override
+          public void run() {
+            try {
+              new SocketClientExample().startClient();
+            } catch (IOException | InterruptedException e) {
+              System.out.println("Error connecting to  server: " + e.getMessage());
+            }
+          }
+        };
     new Thread(server).start();
     new Thread(client, "client-A").start();
     new Thread(client, "client-B").start();
@@ -57,7 +59,7 @@ public class SocketServerExample {
   @SuppressWarnings("PMD.LawOfDemeter")
   private void startServer() throws IOException {
     try (Selector selector = Selector.open();
-         ServerSocketChannel serverChannel = ServerSocketChannel.open();) {
+        ServerSocketChannel serverChannel = ServerSocketChannel.open(); ) {
       this.selector = selector;
       serverChannel.configureBlocking(false);
 
@@ -82,13 +84,10 @@ public class SocketServerExample {
           // again the next time around.
           keys.remove();
 
-          if (!key.isValid())
-            continue;
+          if (!key.isValid()) continue;
 
-          if (key.isAcceptable())
-            this.accept(key);
-          else if (key.isReadable())
-            this.read(key);
+          if (key.isAcceptable()) this.accept(key);
+          else if (key.isReadable()) this.read(key);
         }
       }
     }
@@ -97,8 +96,8 @@ public class SocketServerExample {
   // accept a connection made to this channel's socket
   @SuppressWarnings("PMD.LawOfDemeter")
   private void accept(SelectionKey key) throws IOException {
-    try (ServerSocketChannel serverChannel = (ServerSocketChannel)key.channel();
-         SocketChannel channel = serverChannel.accept();) {
+    try (ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
+        SocketChannel channel = serverChannel.accept(); ) {
       channel.configureBlocking(false);
       try (Socket socket = channel.socket()) {
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
@@ -114,7 +113,7 @@ public class SocketServerExample {
   // read from the socket channel
   @SuppressWarnings("PMD.LawOfDemeter")
   private void read(SelectionKey key) throws IOException {
-    try (SocketChannel channel = (SocketChannel)key.channel();) {
+    try (SocketChannel channel = (SocketChannel) key.channel(); ) {
       ByteBuffer buffer = ByteBuffer.allocate(1024);
       int numRead = channel.read(buffer);
 

@@ -14,14 +14,14 @@ public enum AnotherJaccardTest {
 
       System.out.println("\nSimilarity:\n");
 
-      System.out.println(jac.similarity("Who was the first king of Poland",
-                                        "Who was the first ruler of Poland"));
+      System.out.println(
+          jac.similarity("Who was the first king of Poland", "Who was the first ruler of Poland"));
 
-      System.out.println(jac.similarity("Who was the first king of Poland",
-                                        "Who was the last pharaoh of Egypt"));
+      System.out.println(
+          jac.similarity("Who was the first king of Poland", "Who was the last pharaoh of Egypt"));
 
-      System.out.println(jac.similarity("Who was the first ruler of Poland",
-                                        "Who was the last pharaoh of Egypt"));
+      System.out.println(
+          jac.similarity("Who was the first ruler of Poland", "Who was the last pharaoh of Egypt"));
     }
   }
 }

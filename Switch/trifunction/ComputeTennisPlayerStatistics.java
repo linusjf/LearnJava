@@ -8,10 +8,8 @@ public final class ComputeTennisPlayerStatistics {
     throw new AssertionError();
   }
 
-  public static String computeTrend(TennisPlayer tennisPlayer,
-                                    Period period,
-                                    String owner,
-                                    String trend) {
+  public static String computeTrend(
+      TennisPlayer tennisPlayer, Period period, String owner, String trend) {
     switch (trend) {
       case "SERVE":
         return Statistics.computeServeTrend(tennisPlayer, period, owner);

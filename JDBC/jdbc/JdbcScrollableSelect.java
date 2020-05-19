@@ -90,8 +90,7 @@ public final class JdbcScrollableSelect {
   public static void showRow() throws SQLException {
     System.out.println();
     System.out.println("Account no. " + results.getInt(1));
-    System.out.println("Account holder: " + results.getString(3) + " "
-                       + results.getString(2));
+    System.out.println("Account holder: " + results.getString(3) + " " + results.getString(2));
     System.out.printf("Balance: %.2f %n%n", results.getFloat(4));
   }
 }

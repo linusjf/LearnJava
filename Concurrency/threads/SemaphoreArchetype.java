@@ -14,8 +14,7 @@ public class SemaphoreArchetype implements Runnable {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     ExecutorService executorService = Executors.newFixedThreadPool(5);
-    for (int i = 0; i < 5; i++)
-      executorService.execute(new SemaphoreArchetype());
+    for (int i = 0; i < 5; i++) executorService.execute(new SemaphoreArchetype());
     executorService.shutdown();
   }
 
@@ -26,15 +25,13 @@ public class SemaphoreArchetype implements Runnable {
       try {
         SEMAPHORE.acquire();
       } catch (InterruptedException e) {
-        System.out.println("[" + Thread.currentThread().getName()
-                           + "]-Interrupted in acquire().");
+        System.out.println("[" + Thread.currentThread().getName() + "]-Interrupted in acquire().");
       }
       int counterValue = COUNTER.incrementAndGet();
-      System.out.println("[" + Thread.currentThread().getName()
-                         + "]-SEMAPHORE acquired: " + counterValue);
+      System.out.println(
+          "[" + Thread.currentThread().getName() + "]-SEMAPHORE acquired: " + counterValue);
       if (counterValue > MAX_THREADS) {
-        throw new IllegalStateException(
-            "More than three threads -acquired the lock.");
+        throw new IllegalStateException("More than three threads -acquired the lock.");
       }
       COUNTER.decrementAndGet();
       SEMAPHORE.release();

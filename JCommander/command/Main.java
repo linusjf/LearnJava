@@ -24,7 +24,6 @@ public class Main {
 
   public void run() {
     System.out.printf("%d %d %n", length, pattern);
-    for (String host: hosts)
-      System.out.println(host);
+    for (String host : hosts) System.out.println(host);
   }
 }

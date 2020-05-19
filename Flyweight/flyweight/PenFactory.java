@@ -9,7 +9,7 @@ import java.util.Map;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public final class PenFactory {  // NOPMD
+public final class PenFactory { // NOPMD
   private static final Map<String, Pen> PENSMAP = new HashMap<>();
 
   private PenFactory() {
@@ -27,8 +27,7 @@ public final class PenFactory {  // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new ThickPen();
     pen.setColor(color);
@@ -48,8 +47,7 @@ public final class PenFactory {  // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new ThinPen();
     pen.setColor(color);
@@ -69,8 +67,7 @@ public final class PenFactory {  // NOPMD
 
     Pen pen = PENSMAP.get(key);
 
-    if (pen != null)
-      return pen;
+    if (pen != null) return pen;
 
     pen = new MediumPen();
     pen.setColor(color);

@@ -15,7 +15,7 @@ public enum TestConcurrentHashMap {
 
     // the following case will be ignored by this rule
     Map<String, Object> map3 =
-        methodThatReturnMap();  // might be OK, if the returned map is already thread-safe
+        methodThatReturnMap(); // might be OK, if the returned map is already thread-safe
   }
 
   private Map<String, Object> methodThatReturnMap() {

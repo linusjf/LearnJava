@@ -8,8 +8,7 @@ public enum PeekMore {
   private static final AtomicBoolean FLAG = new AtomicBoolean(false);
 
   private static void setFlagIfGreaterThanZero(int val) {
-    if (val > 0)
-      FLAG.set(true);
+    if (val > 0) FLAG.set(true);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -23,29 +22,19 @@ public enum PeekMore {
     FLAG.set(false);
 
     // PeekMore 2
-    IntStream.range(0, 10)
-        .peek(PeekMore::setFlagIfGreaterThanZero)
-        .sorted()
-        .findFirst();
+    IntStream.range(0, 10).peek(PeekMore::setFlagIfGreaterThanZero).sorted().findFirst();
 
     System.out.println(FLAG.get());
     FLAG.set(false);
 
     // PeekMore 3
-    IntStream.range(0, 10)
-        .boxed()
-        .peek(PeekMore::setFlagIfGreaterThanZero)
-        .sorted()
-        .findFirst();
+    IntStream.range(0, 10).boxed().peek(PeekMore::setFlagIfGreaterThanZero).sorted().findFirst();
 
     System.out.println(FLAG.get());
     FLAG.set(false);
 
     // PeekMore 4
-    IntStream.range(0, 10)
-        .peek(PeekMore::setFlagIfGreaterThanZero)
-        .filter(x -> x == 0)
-        .toArray();
+    IntStream.range(0, 10).peek(PeekMore::setFlagIfGreaterThanZero).filter(x -> x == 0).toArray();
 
     // No find first. so returns last flag value set.
     System.out.println(FLAG.get());

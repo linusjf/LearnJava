@@ -52,9 +52,8 @@ public class ConcurrencyTestReadWrite {
     second.join();
     assertTrue(
         "readAddress:" + readAddress,
-        "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(
-            readAddress)
+        "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(readAddress)
             || "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"
-                   .equals(readAddress));
+                .equals(readAddress));
   }
 }

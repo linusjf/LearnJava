@@ -11,21 +11,20 @@ public enum Serialise {
   ;
 
   public static void main(String[] args) {
-    try (ObjectOutputStream outStream = new ObjectOutputStream(
-             Files.newOutputStream(Paths.get("personnel.dat")))) {
+    try (ObjectOutputStream outStream =
+        new ObjectOutputStream(Files.newOutputStream(Paths.get("personnel.dat")))) {
       Personnel[] staff = {
-          new Personnel(123_456, "Smith", "John"),
-          new Personnel(234_567, "Jones", "Sally Ann"),
-          new Personnel(999_999, "Black", "James Paul"),
+        new Personnel(123_456, "Smith", "John"),
+        new Personnel(234_567, "Jones", "Sally Ann"),
+        new Personnel(999_999, "Black", "James Paul"),
       };
-      for (Personnel person: staff)
-        outStream.writeObject(person);
+      for (Personnel person : staff) outStream.writeObject(person);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }
 
-    try (ObjectInputStream inStream = new ObjectInputStream(
-             Files.newInputStream(Paths.get("personnel.dat")))) {
+    try (ObjectInputStream inStream =
+        new ObjectInputStream(Files.newInputStream(Paths.get("personnel.dat")))) {
       printPersonnel(inStream);
     } catch (EOFException eofEx) {
       System.out.println("\n\n*** End of file ***\n");
@@ -41,7 +40,7 @@ public enum Serialise {
     int staffCount = 0;
 
     while (staffCount < 3) {
-      Personnel person = (Personnel)inStream.readObject();
+      Personnel person = (Personnel) inStream.readObject();
       staffCount++;
       printPersonnel(person, staffCount);
     }

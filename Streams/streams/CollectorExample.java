@@ -18,8 +18,7 @@ public enum CollectorExample {
     System.out.println();
 
     // Collectors
-    List<Integer> l =
-        listOfIntegers.stream().parallel().collect(Collectors.toList());
+    List<Integer> l = listOfIntegers.stream().parallel().collect(Collectors.toList());
     System.out.println(l);
   }
 }

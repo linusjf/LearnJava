@@ -31,10 +31,10 @@ public enum ConsumerClient {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void sendMessages() {
     try (Socket socket = new Socket(host, PORT);
-         Scanner networkInput = new Scanner(socket.getInputStream(), UTF_8);
-         PrintWriter networkOutput = new PrintWriter(
-             new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);
-         Scanner userEntry = new Scanner(System.in, UTF_8);) {
+        Scanner networkInput = new Scanner(socket.getInputStream(), UTF_8);
+        PrintWriter networkOutput =
+            new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);
+        Scanner userEntry = new Scanner(System.in, UTF_8); ) {
       String message = "";
       while (!"0".equals(message)) {
         System.out.print("Enter '1' ('0' to exit): ");

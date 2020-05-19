@@ -28,8 +28,7 @@ public final class Bank1Server {
     List<Account> acctDetails = new ArrayList<>();
 
     // Insert the Account objects into the ArrayList …
-    for (Account acct: account)
-      acctDetails.add(acct);
+    for (Account acct : account) acctDetails.add(acct);
     try {
       // Create an implementation object, passing the
       // above ArrayList to the constructor…

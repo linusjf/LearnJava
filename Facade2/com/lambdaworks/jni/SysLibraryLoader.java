@@ -12,8 +12,7 @@ import java.util.logging.Logger;
  * @author Will Glozer
  */
 public class SysLibraryLoader implements LibraryLoader {
-  private static final Logger LOGGER =
-      Logger.getLogger(SysLibraryLoader.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(SysLibraryLoader.class.getName());
 
   /**
    * Load a shared library.
@@ -31,10 +30,7 @@ public class SysLibraryLoader implements LibraryLoader {
       return true;
     } catch (SecurityException e) {
       LOGGER.severe(
-          ()
-              -> String.format("Error loading system library %s : *%s",
-                               name,
-                               e.getMessage()));
+          () -> String.format("Error loading system library %s : *%s", name, e.getMessage()));
       return false;
     }
   }

@@ -15,23 +15,16 @@ public enum Main {
    */
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    final Engineer ajay =
-        new Engineer(1001L, "Ajay", "Developer", Department.ENG);
-    final Engineer vijay =
-        new Engineer(1002L, "Vijay", "SR. Developer", Department.ENG);
+    final Engineer ajay = new Engineer(1001L, "Ajay", "Developer", Department.ENG);
+    final Engineer vijay = new Engineer(1002L, "Vijay", "SR. Developer", Department.ENG);
     final Engineer jay = new Engineer(1003L, "Jay", "Lead", Department.ENG);
     final Engineer martin = new Engineer(1004L, "Martin", "QA", Department.ENG);
     final Manager kim = new Manager(1005L, "Kim", "Manager", Department.ENG);
-    final Engineer anders =
-        new Engineer(1006L, "Andersen", "Developer", Department.ENG);
-    final Manager niels =
-        new Manager(1007L, "Niels", "Sr. Manager", Department.ENG);
-    final Engineer robert =
-        new Engineer(1008L, "Robert", "Developer", Department.ENG);
-    final Manager rachelle =
-        new Manager(1009L, "Rachelle", "Product Manager", Department.ENG);
-    final Engineer shailesh =
-        new Engineer(1010L, "Shailesh", "Engineer", Department.ENG);
+    final Engineer anders = new Engineer(1006L, "Andersen", "Developer", Department.ENG);
+    final Manager niels = new Manager(1007L, "Niels", "Sr. Manager", Department.ENG);
+    final Engineer robert = new Engineer(1008L, "Robert", "Developer", Department.ENG);
+    final Manager rachelle = new Manager(1009L, "Rachelle", "Product Manager", Department.ENG);
+    final Engineer shailesh = new Engineer(1010L, "Shailesh", "Engineer", Department.ENG);
     kim.manages(ajay);
     kim.manages(martin);
     kim.manages(vijay);
@@ -46,8 +39,7 @@ public enum Main {
 
     final WorkLoader workLoad = new WorkLoader("work.properties");
 
-    workLoad.getWorkList().stream().forEach(
-        work -> rachelle.assignWork(rachelle, work));
+    workLoad.getWorkList().stream().forEach(work -> rachelle.assignWork(rachelle, work));
     rachelle.performWork();
   }
 }

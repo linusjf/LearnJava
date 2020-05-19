@@ -35,8 +35,13 @@ public enum Main {
     System.gc();
     int removed = removeRefs(queue, references);
 
-    System.out.println("Final used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
-        + references.size());
+    System.out.println(
+        "Final used mem "
+            + getUsedMem()
+            + "    Refs removed "
+            + removed
+            + "   left "
+            + references.size());
   }
 
   @SuppressWarnings("PMD.NullAssignment")
@@ -56,8 +61,13 @@ public enum Main {
       int removed = removeRefs(queue, references);
 
       //  System.gc();   //uncomment this line to comparing with forced gc
-      System.out.println("used mem " + getUsedMem() + "    Refs removed " + removed + "   left "
-          + references.size());
+      System.out.println(
+          "used mem "
+              + getUsedMem()
+              + "    Refs removed "
+              + removed
+              + "   left "
+              + references.size());
 
       oldTail = newTail;
     }
@@ -165,8 +175,7 @@ public enum Main {
     }
 
     public HeavyList dropNext() {
-      if (next == null || next.next == null)
-        return null;
+      if (next == null || next.next == null) return null;
       HeavyList res = next;
       next = next.next;
       return res;

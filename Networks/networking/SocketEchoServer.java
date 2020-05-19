@@ -49,18 +49,16 @@ public class SocketEchoServer {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void serve() {
     while (true) {
-      try (
-          Socket client = server.accept();
-          BufferedReader r = new BufferedReader(
-              new InputStreamReader(client.getInputStream(), UTF_8));
-          PrintWriter w = new PrintWriter(
-              new OutputStreamWriter(client.getOutputStream(), UTF_8), true);) {
+      try (Socket client = server.accept();
+          BufferedReader r =
+              new BufferedReader(new InputStreamReader(client.getInputStream(), UTF_8));
+          PrintWriter w =
+              new PrintWriter(new OutputStreamWriter(client.getOutputStream(), UTF_8), true); ) {
         w.println("Welcome to the Java EchoServer.  Type 'bye' to close.");
         String line = "";
         while (!line.trim().equals("bye")) {
           line = r.readLine();
-          if (line != null)
-            w.println("Got: " + line);
+          if (line != null) w.println("Got: " + line);
         }
       } catch (IOException err) {
         System.err.println(err);

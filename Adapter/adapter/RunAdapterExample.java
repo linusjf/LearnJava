@@ -10,8 +10,7 @@ import java.util.logging.Logger;
  */
 public enum RunAdapterExample {
   ;
-  private static final Logger LOGGER =
-      Logger.getLogger(RunAdapterExample.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(RunAdapterExample.class.getName());
 
   /**
    * Describe <code>main</code> method here.
@@ -25,7 +24,7 @@ public enum RunAdapterExample {
     xpay.setCustomerName("Max Warner");
     xpay.setCardExpMonth("09");
     xpay.setCardExpYear("25");
-    xpay.setCardCvvNo((short)235);
+    xpay.setCardCvvNo((short) 235);
     xpay.setAmount(2565.23D);
     final PayD payD = new XpayToPayDAdapter(xpay);
     testPayD(payD);

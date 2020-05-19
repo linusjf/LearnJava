@@ -32,8 +32,7 @@ public abstract class Car {
   /** Describe <code>printDetails</code> method here. */
   @SuppressWarnings("PMD.SystemPrintln")
   public void printDetails() {
-    System.out.println("Car: " + carType
-                       + ", Product:" + product.productName());
+    System.out.println("Car: " + carType + ", Product:" + product.productName());
     System.out.println();
   }
 }

@@ -9,9 +9,7 @@ public class ConcurrencyTestTwoWrites {
   // Not thread safe address since the write is not guarded by a synchronized
   // block
   private final AddressUsingCopyOnWriteWithoutSynchronized address =
-      new AddressUsingCopyOnWriteWithoutSynchronized("E. Bonanza St.",
-                                                     "South Park",
-                                                     "456 77 99");
+      new AddressUsingCopyOnWriteWithoutSynchronized("E. Bonanza St.", "South Park", "456 77 99");
 
   // Thread safe, the write is guarded by a synchronized block
   // private final AddressUsingCopyOnWrite address = new

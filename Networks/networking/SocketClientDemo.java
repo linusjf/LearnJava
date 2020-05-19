@@ -30,12 +30,11 @@ public final class SocketClientDemo {
   public static void main(String... args) {
     try {
       int port = getPort(args);
-      SSLSocketFactory ssf = (SSLSocketFactory)SSLSocketFactory.getDefault();
-      try (SSLSocket s = (SSLSocket)ssf.createSocket("localhost", port);
-           BufferedReader input = new BufferedReader(
-               new InputStreamReader(s.getInputStream(), UTF_8));) {
-        s.setEnabledCipherSuites(
-            new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
+      SSLSocketFactory ssf = (SSLSocketFactory) SSLSocketFactory.getDefault();
+      try (SSLSocket s = (SSLSocket) ssf.createSocket("localhost", port);
+          BufferedReader input =
+              new BufferedReader(new InputStreamReader(s.getInputStream(), UTF_8)); ) {
+        s.setEnabledCipherSuites(new String[] {"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
         s.setEnabledProtocols(new String[] {"TLSv1.2"});
         System.out.println(input.readLine());
       }

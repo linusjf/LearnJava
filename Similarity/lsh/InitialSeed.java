@@ -29,7 +29,7 @@ public enum InitialSeed {
 
   static void println(finalint... array) {
     System.out.print("[");
-    for (int v: array) {
+    for (int v : array) {
       System.out.print(v + " ");
     }
     System.out.println("]");

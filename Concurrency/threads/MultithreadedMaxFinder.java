@@ -6,22 +6,20 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public final class MultithreadedMaxFinder {
-  private static int[] data = new int[] {
-      12,  23,  45,  46, 56, 76, 87, 98, 78,   123, 45,  56,   76,     98,  90,
-      900, 567, 456, 24, 45, 43, 45, 23, 1000, 456, 678, 1002, 12_345, 567, 567,
-  };
+  private static int[] data =
+      new int[] {
+        12, 23, 45, 46, 56, 76, 87, 98, 78, 123, 45, 56, 76, 98, 90,
+        900, 567, 456, 24, 45, 43, 45, 23, 1000, 456, 678, 1002, 12_345, 567, 567,
+      };
 
   private MultithreadedMaxFinder() {
     throw new IllegalStateException("Private constructor");
   }
 
   @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
-  public static int max(int... data)
-      throws InterruptedException, ExecutionException {
-    if (data.length == 1)
-      return data[0];
-    else if (data.length == 0)
-      throw new IllegalArgumentException();
+  public static int max(int... data) throws InterruptedException, ExecutionException {
+    if (data.length == 1) return data[0];
+    else if (data.length == 0) throw new IllegalArgumentException();
 
     // split the job into 2 pieces
     FindMaxTask task1 = new FindMaxTask(data, 0, data.length / 2);

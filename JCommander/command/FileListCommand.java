@@ -16,7 +16,6 @@ public class FileListCommand {
   }
 
   public void run() {
-    for (File f: files)
-      System.out.printf("%s %n", f);
+    for (File f : files) System.out.printf("%s %n", f);
   }
 }

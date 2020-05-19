@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("PMD.ShortClassName")
 public final class Test {
-  private static final Pattern PASSWORD_PATTERN =
-      Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
+  private static final Pattern PASSWORD_PATTERN = Pattern.compile("^((\\$2(a){0,1}\\$){1})(.*)");
 
-  private static final Pattern SEARCHFOR_PATTERN = Pattern.compile(
-      "^(((Any)|(Network)|(Person)|(Host)|"
-      + "(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$");
+  private static final Pattern SEARCHFOR_PATTERN =
+      Pattern.compile(
+          "^(((Any)|(Network)|(Person)|(Host)|"
+              + "(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$");
 
   private Test() {
     throw new IllegalStateException("Private constructor");

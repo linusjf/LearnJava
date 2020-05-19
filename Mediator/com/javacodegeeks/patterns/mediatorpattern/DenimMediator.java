@@ -25,12 +25,13 @@ public class DenimMediator implements MachineMediator {
    * @param valve a <code>Valve</code> value
    */
   @SuppressWarnings("PMD.SystemPrintln")
-  public DenimMediator(Machine machine,
-                       Heater heater,
-                       Motor motor,
-                       Sensor sensor,
-                       SoilRemoval soilRemoval,
-                       Valve valve) {
+  public DenimMediator(
+      Machine machine,
+      Heater heater,
+      Motor motor,
+      Sensor sensor,
+      SoilRemoval soilRemoval,
+      Valve valve) {
     this.machine = machine;
     this.heater = heater;
     this.motor = motor;

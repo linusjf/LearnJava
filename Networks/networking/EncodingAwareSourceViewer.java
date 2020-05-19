@@ -14,7 +14,7 @@ public enum EncodingAwareSourceViewer {
   ;
 
   public static void main(String[] args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         // set default encoding
         URL u = new URL(arg);
@@ -23,8 +23,7 @@ public enum EncodingAwareSourceViewer {
       } catch (MalformedURLException ex) {
         System.err.println(arg + " is not a parseable URL");
       } catch (UnsupportedEncodingException ex) {
-        System.err.println("Server sent an encoding Java does not support: "
-                           + ex.getMessage());
+        System.err.println("Server sent an encoding Java does not support: " + ex.getMessage());
       } catch (IOException ex) {
         System.err.println(ex);
       }
@@ -36,13 +35,11 @@ public enum EncodingAwareSourceViewer {
     String encoding = "ISO-8859-1";
     String contentType = uc.getContentType();
     int encodingStart = contentType.indexOf("charset=");
-    if (encodingStart > 0)
-      encoding = contentType.substring(encodingStart + 8);
+    if (encodingStart > 0) encoding = contentType.substring(encodingStart + 8);
     try (InputStream in = new BufferedInputStream(uc.getInputStream());
-         Reader r = new InputStreamReader(in, encoding);) {
+        Reader r = new InputStreamReader(in, encoding); ) {
       int c;
-      while ((c = r.read()) != -1)
-        System.out.print((char)c);
+      while ((c = r.read()) != -1) System.out.print((char) c);
     }
   }
 }

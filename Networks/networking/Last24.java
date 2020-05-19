@@ -23,7 +23,7 @@ public final class Last24 {
   }
 
   private static void last24hoursFiles(Date today, String... args) {
-    for (String arg: args) {
+    for (String arg : args) {
       try {
         System.out.println("Retrieving ...." + arg);
         URL u = new URL(arg);
@@ -37,17 +37,14 @@ public final class Last24 {
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
   private static void read(URLConnection uc, Date today) throws IOException {
-    System.out.println("Original if modified since: "
-                       + new Date(uc.getIfModifiedSince()));
-    uc.setIfModifiedSince(
-        new Date(today.getTime() - MILLISECONDS_PER_DAY).getTime());
-    System.out.println("Will retrieve file if it's modified since "
-                       + new Date(uc.getIfModifiedSince()));
+    System.out.println("Original if modified since: " + new Date(uc.getIfModifiedSince()));
+    uc.setIfModifiedSince(new Date(today.getTime() - MILLISECONDS_PER_DAY).getTime());
+    System.out.println(
+        "Will retrieve file if it's modified since " + new Date(uc.getIfModifiedSince()));
     try (InputStream in = new BufferedInputStream(uc.getInputStream());
-         Reader r = new InputStreamReader(in, UTF_8);) {
+        Reader r = new InputStreamReader(in, UTF_8); ) {
       int c;
-      while ((c = r.read()) != -1)
-        System.out.print((char)c);
+      while ((c = r.read()) != -1) System.out.print((char) c);
       System.out.println();
     }
   }

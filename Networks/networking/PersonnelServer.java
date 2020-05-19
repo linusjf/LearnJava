@@ -35,17 +35,15 @@ public enum PersonnelServer {
     };
 
     // clang-format on
-    for (Personnel person: staff)
-      staffListOut.add(person);
+    for (Personnel person : staff) staffListOut.add(person);
     startServer();
   }
 
   private static void startServer() {
     while (true) {
       try (Socket socket = serverSocket.accept();
-           Scanner inStream = new Scanner(socket.getInputStream(), UTF_8);
-           ObjectOutputStream outStream =
-               new ObjectOutputStream(socket.getOutputStream());) {
+          Scanner inStream = new Scanner(socket.getInputStream(), UTF_8);
+          ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream()); ) {
 
         /*
                       The above line and associated declaration

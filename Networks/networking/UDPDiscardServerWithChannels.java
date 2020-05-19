@@ -25,7 +25,7 @@ public enum UDPDiscardServerWithChannels {
   public static void main(String[] args) {
     int port = args.length > 0 ? readPort(args[0]) : PORT;
     try (DatagramChannel channel = DatagramChannel.open();
-         DatagramSocket socket = channel.socket();) {
+        DatagramSocket socket = channel.socket(); ) {
       SocketAddress address = new InetSocketAddress(port);
       socket.bind(address);
       ByteBuffer buffer = ByteBuffer.allocateDirect(MAX_PACKET_SIZE);
@@ -35,15 +35,13 @@ public enum UDPDiscardServerWithChannels {
     }
   }
 
-  private static void readAndPrintClient(ByteBuffer buffer,
-                                         DatagramChannel channel)
+  private static void readAndPrintClient(ByteBuffer buffer, DatagramChannel channel)
       throws IOException {
     while (true) {
       SocketAddress client = channel.receive(buffer);
       buffer.flip();
       System.out.print(client + " says: ");
-      while (buffer.hasRemaining())
-        System.out.write(buffer.get());
+      while (buffer.hasRemaining()) System.out.write(buffer.get());
       System.out.println();
       buffer.clear();
     }

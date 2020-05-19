@@ -11,12 +11,12 @@ public final class Calzone extends Pizza {
 
   private Calzone(Builder builder) {
     super(builder);
-    this.sauceInside = builder.sauce;  // NOPMD
+    this.sauceInside = builder.sauce;
   }
 
-  /** returns object state as String. */
+  /** describes object state as String. */
   @Override
-  public String toString() {
+  String describe() {
     StringBuilder sb = new StringBuilder(30);
     sb.append("Sauce = ")
         .append(sauceInside)
@@ -28,11 +28,16 @@ public final class Calzone extends Pizza {
     return sb.toString();
   }
 
+  /** returns object state as String. */
+  @Override
+  public String toString() {
+    return describe();
+  }
+
   /** Inner class that builds the Calzone object. */
   public static class Builder extends Pizza.Builder<Builder> {
     private boolean sauce;
 
-    // Default
     /**
      * sets sauce.
      *

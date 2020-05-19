@@ -27,9 +27,12 @@ public enum OptionalExample {
     people.add(mac);
     people.add(gautam);
 
-    people.stream().forEach(p -> {
-      System.out.printf("%s from %s %n", p.getName(), p.getAddress().orElse(Address.EMPTY_ADDRESS));
-    });
+    people.stream()
+        .forEach(
+            p -> {
+              System.out.printf(
+                  "%s from %s %n", p.getName(), p.getAddress().orElse(Address.EMPTY_ADDRESS));
+            });
   }
 
   @SuppressWarnings("PMD.DataClass")
@@ -61,8 +64,7 @@ public enum OptionalExample {
 
     @Override
     public String toString() {
-      return "Person{"
-          + "name=" + name + ", address=" + address.get() + ", phone=" + phone + '}';
+      return "Person{" + "name=" + name + ", address=" + address.get() + ", phone=" + phone + '}';
     }
   }
 
@@ -100,7 +102,14 @@ public enum OptionalExample {
     @Override
     public String toString() {
       return "Address{"
-          + "line1=" + line1 + ", city=" + city + ", country=" + country + ", zipcode=" + zipcode
+          + "line1="
+          + line1
+          + ", city="
+          + city
+          + ", country="
+          + country
+          + ", zipcode="
+          + zipcode
           + '}';
     }
   }

@@ -7,5 +7,7 @@ package com.javacodegeeks.patterns.singletonpattern;
  * @version 1.0
  */
 public class SingletonEnum {
-  public enum SingleEnum { SINGLETON_ENUM; }
+  public enum SingleEnum {
+    SINGLETON_ENUM;
+  }
 }

@@ -22,9 +22,9 @@ public final class NyPizza extends Pizza {
     this.size = builder.size;  // NOPMD
   }
 
-  /** returns object state as string. */
+  /** describes object state as string. */
   @Override
-  public String toString() {
+  String describe() {
     StringBuilder sb = new StringBuilder(36);
     sb.append("Size = ")
         .append(size)
@@ -34,6 +34,12 @@ public final class NyPizza extends Pizza {
     for (Topping t: toppings)
       sb.append(t).append(System.lineSeparator());
     return sb.toString();
+  }
+
+  /** returns object state as string. */
+  @Override
+  public String toString() {
+    return describe();
   }
 
   /** Builder class that builds the Pizza object using the Fluent API style. */

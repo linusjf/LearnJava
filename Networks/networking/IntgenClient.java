@@ -33,10 +33,9 @@ public final class IntgenClient {
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
-  private static void printInts(ByteBuffer buffer,
-                                IntBuffer view,
-                                SocketChannel client) throws IOException {
-    for (int expected = 0;; expected++) {
+  private static void printInts(ByteBuffer buffer, IntBuffer view, SocketChannel client)
+      throws IOException {
+    for (int expected = 0; ; expected++) {
       client.read(buffer);
       int actual = view.get();
       buffer.clear();

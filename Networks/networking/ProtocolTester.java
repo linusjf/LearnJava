@@ -31,12 +31,12 @@ public final class ProtocolTester {
     testProtocol("gopher://gopher.anc.org.za/");
 
     // Lightweight Directory Access Protocol
-    testProtocol(
-        "ldap://ldap.itd.umich.edu/o=University%20of%20Michigan,c=US?postalAddress");
+    testProtocol("ldap://ldap.itd.umich.edu/o=University%20of%20Michigan,c=US?postalAddress");
 
     // JAR
-    testProtocol("jar:http://cafeaulait.org/books/javaio/ioexamples/javaio.jar!"
-                 + "/com/macfaq/io/StreamCopier.class");
+    testProtocol(
+        "jar:http://cafeaulait.org/books/javaio/ioexamples/javaio.jar!"
+            + "/com/macfaq/io/StreamCopier.class");
 
     // NFS, Network File System
     testProtocol("nfs://utopia.poly.edu/usr/tmp/");

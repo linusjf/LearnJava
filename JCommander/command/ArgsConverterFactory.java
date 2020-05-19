@@ -12,10 +12,8 @@ public class ArgsConverterFactory {
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... argv) {
     ArgsConverterFactory a = new ArgsConverterFactory();
-    JCommander jc = JCommander.newBuilder()
-                        .addObject(a)
-                        .addConverterFactory(new HostPortFactory())
-                        .build();
+    JCommander jc =
+        JCommander.newBuilder().addObject(a).addConverterFactory(new HostPortFactory()).build();
     jc.parse(argv);
 
     Assert.assertEquals(a.hostPort.host, "example.com");

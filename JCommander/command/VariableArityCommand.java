@@ -17,7 +17,6 @@ public class VariableArityCommand {
   }
 
   public void run() {
-    for (String one: foo)
-      System.out.println(one);
+    for (String one : foo) System.out.println(one);
   }
 }

@@ -21,7 +21,6 @@ public class FileCommand {
 
   public void run() {
     System.out.println(file);
-    for (File f: files)
-      System.out.printf("%s %n", f);
+    for (File f : files) System.out.printf("%s %n", f);
   }
 }

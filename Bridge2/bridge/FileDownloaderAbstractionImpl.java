@@ -6,8 +6,7 @@ package bridge;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class FileDownloaderAbstractionImpl
-    implements FileDownloaderAbstraction {
+public class FileDownloaderAbstractionImpl implements FileDownloaderAbstraction {
   private final FileDownloadImplementor provider;
 
   /**

@@ -11,8 +11,7 @@ import java.util.logging.Logger;
  * @version 1.0
  */
 public class BCryptor implements Encrypt {
-  private static final Logger LOGGER =
-      Logger.getLogger(BCryptor.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(BCryptor.class.getName());
 
   /**
    * Describe <code>encrypt</code> method here.
@@ -28,8 +27,7 @@ public class BCryptor implements Encrypt {
       hash = hash.substring(hash.lastIndexOf('$', hash.length()) + 1);
       return hash;
     } catch (IllegalArgumentException e) {
-      LOGGER.severe(
-          () -> String.format("Illegal Argument: %s", e.getMessage()));
+      LOGGER.severe(() -> String.format("Illegal Argument: %s", e.getMessage()));
       throw new AssertionError("Illegal argument: " + text, e);
     }
   }

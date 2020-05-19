@@ -45,8 +45,8 @@ public final class ServerEcho {
       int packSize = dpack.getLength();
       String s2 = new String(arr2, 0, packSize, StandardCharsets.UTF_8);
 
-      System.out.println(new Date() + "  " + dpack.getAddress() + " : "
-                         + dpack.getPort() + " " + s2);
+      System.out.println(
+          new Date() + "  " + dpack.getAddress() + " : " + dpack.getPort() + " " + s2);
       dsock.send(dpack);
     }
   }

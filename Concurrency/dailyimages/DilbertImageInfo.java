@@ -18,15 +18,12 @@ class DilbertImageInfo extends ImageInfo {
         .findFirst()
         .map(line -> line.replaceAll(".*" + search, ""))
         .map(line -> line.replaceAll("\".*", ""))
-        .orElseThrow(()
-                         -> new IllegalStateException("Could not find \""
-                                                      + filter + "\""));
+        .orElseThrow(() -> new IllegalStateException("Could not find \"" + filter + "\""));
   }
 
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public String getUrlForDate(LocalDate date) {
-    return "https://dilbert.com/strip/"
-        + DateTimeFormatter.ISO_DATE.format(date);
+    return "https://dilbert.com/strip/" + DateTimeFormatter.ISO_DATE.format(date);
   }
 }

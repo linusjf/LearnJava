@@ -15,8 +15,7 @@ public class DelegateCommand {
   @Parameter(names = "-v")
   boolean verbose;
 
-  @ParametersDelegate
-  Delegate delegate = new Delegate();
+  @ParametersDelegate Delegate delegate = new Delegate();
 
   public static void main(String... argv) {
     DelegateCommand p = new DelegateCommand();
