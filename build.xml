@@ -344,8 +344,12 @@
                   conf="guava.main" />
     <ivy:retrieve pathid="guava.lib.path"
                   conf="guava.lib" />
+    <ivy:retrieve pathid="commons-logging.main.path"
+                  conf="commons-logging.main" />
+    <ivy:retrieve pathid="commons-logging.lib.path"
+                  conf="commons-logging.lib" />
     <echo file="${cs.classpath.file}"
-          message="${toString:cs.main.path}:${toString:cs.lib.path}" />
+          message="${toString:cs.main.path}:${toString:cs.lib.path}:${toString:commons-logging.main.path}:${toString:commons-logging.lib.path}:${toString:commons-collections.main.path}" />
     <echo file="${gformat.classpath.file}"
           message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
     <echo file="${pmd.classpath.file}"

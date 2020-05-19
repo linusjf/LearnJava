@@ -4,8 +4,8 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="${cs.properties}" />
-  <property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
@@ -159,8 +159,9 @@
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
-          logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+          logError="true"
+          fork="true">
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
@@ -174,11 +175,10 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />
-    <java classname="${gformat.main.class}" fork="true">
       <formatter type="plain"
                  toFile="${cs.output}" />
       <classpath>
