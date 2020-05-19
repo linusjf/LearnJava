@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="Calzone.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Calzone']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='describe']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='30']"/>
+<suppress-xpath
+       files="NyPizza.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='NyPizza']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='describe']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='36']"/>
   <suppress-xpath files="Pizza.java"
                   checks="AbstractClassNameCheck"
                   query="/CLASS_DEF[./IDENT[@text='Pizza']]" />

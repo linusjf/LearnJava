@@ -21,6 +21,13 @@ public abstract class Pizza {
   }
 
   final Set<Topping> toppings;
+  
+  /** Creates a new <code>Pizza</code> instance. */
+  Pizza(Builder<?> builder) {
+    toppings = builder.toppings.clone();
+  }
+
+  abstract String describe();
 
   abstract static class Builder<T extends Builder<T>> {
     EnumSet<Topping> toppings = EnumSet.noneOf(Topping.class);
@@ -36,10 +43,4 @@ public abstract class Pizza {
     protected abstract T self();
   }
 
-  /** Creates a new <code>Pizza</code> instance. */
-  Pizza(Builder<?> builder) {
-    toppings = builder.toppings.clone();
-  }
-
-  abstract String describe();
 }
