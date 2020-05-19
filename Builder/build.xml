@@ -178,6 +178,7 @@
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />
+    <java classname="${gformat.main.class}" fork="true">
       <formatter type="plain"
                  toFile="${cs.output}" />
       <classpath>

@@ -125,6 +125,7 @@
       <arg line="-i ${sources}" />
       <classpath>
         <pathelement path="${gformat.cp}" />
+    <java classname="${gformat.main.class}" fork="true">
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>

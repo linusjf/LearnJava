@@ -259,7 +259,7 @@
                  pathsep=" " />
     <loadfile property="gformat.cp"
               srcFile="../${gformat.classpath.file}" />
-    <java classname="${gformat.main.class}">
+    <java classname="${gformat.main.class}" fork="true">
       <arg line="-i ${sources}" />
       <classpath>
         <pathelement path="${gformat.cp}" />
