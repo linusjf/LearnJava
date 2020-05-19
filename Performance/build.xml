@@ -252,7 +252,7 @@
               reportLevel="low"
               effort="max"
               nested="true"
-      excludeFilter="${spotbugs.suppressions.xml}">
+              excludeFilter="${spotbugs.suppressions.xml}">
       <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${build.dir}" />

@@ -2,6 +2,6 @@
 <FindBugsFilter>
   <Match>
     <Class name="performance.HashMapSpeedTest" />
-    <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT"/>
+    <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
   </Match>
 </FindBugsFilter>

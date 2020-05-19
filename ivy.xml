@@ -281,17 +281,17 @@
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
                 rev="8.32"
-      conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
-      <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-    <dependency org="commons-logging" 
-      name="commons-logging" 
-      rev="1.2"
-      conf="commons-logging.main-&gt;master;commons-logging.lib-&gt;compile" />
-      <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
-    <dependency org="commons-collections" 
-      name="commons-collections" 
-      rev="20040616"
-  conf="commons-collections.main-&gt;master" />
+                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
+    <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+    <dependency org="commons-logging"
+                name="commons-logging"
+                rev="1.2"
+                conf="commons-logging.main-&gt;master;commons-logging.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+    <dependency org="commons-collections"
+                name="commons-collections"
+                rev="20040616"
+                conf="commons-collections.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
                 name="pmd-core"
@@ -476,7 +476,7 @@
     <dependency org="info.debatty"
                 name="java-string-similarity"
                 rev="2.0.0"
-      conf="java-string-similarity.main->master" />
+                conf="java-string-similarity.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
     <dependency org="org.javatuples"
                 name="javatuples"
@@ -566,8 +566,8 @@
     <dependency org="org.slf4j"
                 name="slf4j-nop"
                 rev="2.0.0-alpha1"
-      conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
+                conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
     <!--  <dependency org="jaxen" 
       name="jaxen" 
       rev="1.2.0"
@@ -616,26 +616,26 @@
     <dependency org="org.springframework"
                 name="spring-core"
                 rev="5.2.6.RELEASE"
-      conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-    <dependency org="org.testng" 
-      name="testng" 
-      rev="7.1.0"
-      conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
-      <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
-    <dependency org="commons-collections" 
-      name="commons-collections" 
-      rev="20040616"
-      conf="commons-collections.main-&gt;master;" />
-      <!-- https://mvnrepository.com/artifact/org.javolution/javolution-core-java -->
-    <dependency org="org.javolution" 
-      name="javolution-core-java" 
-      rev="6.0.0"
-      conf="javolution-core-java.lib-&gt;compile;javolution-core-java.main-&gt;master;" />
-      <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-    <dependency org="com.google.guava" 
-      name="guava" 
-      rev="29.0-jre"
-      conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
+                conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+    <dependency org="org.testng"
+                name="testng"
+                rev="7.1.0"
+                conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
+    <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+    <dependency org="commons-collections"
+                name="commons-collections"
+                rev="20040616"
+                conf="commons-collections.main-&gt;master;" />
+    <!-- https://mvnrepository.com/artifact/org.javolution/javolution-core-java -->
+    <dependency org="org.javolution"
+                name="javolution-core-java"
+                rev="6.0.0"
+                conf="javolution-core-java.lib-&gt;compile;javolution-core-java.main-&gt;master;" />
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency org="com.google.guava"
+                name="guava"
+                rev="29.0-jre"
+                conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
   </dependencies>
 </ivy-module>
