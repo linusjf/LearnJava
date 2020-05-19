@@ -21,7 +21,7 @@ public abstract class Pizza {
   }
 
   final Set<Topping> toppings;
-  
+
   /** Creates a new <code>Pizza</code> instance. */
   Pizza(Builder<?> builder) {
     toppings = builder.toppings.clone();
@@ -42,5 +42,4 @@ public abstract class Pizza {
     // Subclasses must override this method to return "this"
     protected abstract T self();
   }
-
 }

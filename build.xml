@@ -350,10 +350,6 @@
                   conf="commons-logging.lib" />
     <ivy:retrieve pathid="commons-collections.main.path"
                   conf="commons-collections.main" />
-    <ivy:retrieve pathid="jaxen.main.path"
-                  conf="jaxen.main" />
-    <ivy:retrieve pathid="jaxen.lib.path"
-                  conf="jaxen.lib" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}:${toString:commons-logging.main.path}:${toString:commons-logging.lib.path}:${toString:commons-collections.main.path}" />
     <echo file="${gformat.classpath.file}"
@@ -409,7 +405,7 @@
     <echo file="${assertj.classpath.file}"
           message="${toString:assertj.main.path}" />
     <echo file="${spotbugs.classpath.file}"
-          message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}:${toString:jaxen.main.path}:${toString:jaxen.lib.path}" />
+      message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}"/>
     <echo file="${spotbugs-plugin.classpath.file}"
           message="${toString:fb-contrib.main.path};${toString:findsecbugs-plugin.main.path}" />
     <echo file="${error_prone.classpath.file}"

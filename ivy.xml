@@ -266,10 +266,10 @@
           description="commons-logging lib jars" />
     <conf name="commons-collections.main"
           description="commons-collections main jars" />
-    <conf name="jaxen.main"
+    <!--  <conf name="jaxen.main"
           description="jaxen main jars" />
     <conf name="jaxen.lib"
-          description="jaxen lib jars" />
+    description="jaxen lib jars" /> -->
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -556,7 +556,7 @@
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
                 rev="4.0.3"
-                conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;" />
+                conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
@@ -568,10 +568,10 @@
                 rev="2.0.0-alpha1"
       conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
       <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
-    <dependency org="jaxen" 
+    <!--  <dependency org="jaxen" 
       name="jaxen" 
       rev="1.2.0"
-      conf="jaxen.main-&gt;master;jaxen.lib-&gt;compile;" />
+    conf="jaxen.main-&gt;master;jaxen.lib-&gt;compile;" /> -->
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
                 name="findsecbugs-plugin"
