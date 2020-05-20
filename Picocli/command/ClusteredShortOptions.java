@@ -4,16 +4,16 @@ import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 public class ClusteredShortOptions {
-  @Option(names = "-a") 
+  @Option(names = "-a")
   boolean aaa;
 
-  @Option(names = "-b") 
+  @Option(names = "-b")
   boolean bbb;
 
-  @Option(names = "-c") 
+  @Option(names = "-c")
   boolean ccc;
 
-  @Option(names = "-f") 
+  @Option(names = "-f")
   String file;
 
   public static void main(String... args) {

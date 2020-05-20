@@ -7,10 +7,10 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 public class Mixed {
-  @Parameters 
+  @Parameters
   List<String> positional;
 
-  @Option(names = "-o") 
+  @Option(names = "-o")
   List<String> options;
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -18,7 +18,8 @@ public class Mixed {
     Mixed mixed = new Mixed();
     new CommandLine(mixed).parseArgs(args);
 
-    assert mixed.positional.equals(Arrays.asList("param0", "param1", "param2", "param3"));
+    assert mixed.positional.equals(
+        Arrays.asList("param0", "param1", "param2", "param3"));
     assert mixed.options.equals(Arrays.asList("AAA", "BBB"));
     System.out.println("asserts cleared");
   }
