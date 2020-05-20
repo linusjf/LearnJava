@@ -49,6 +49,13 @@ readVersion()
       echo "Unable to read $versionFile";}
 }
 
+setupAuxClassPath()
+{
+  [ -e "$proj/$setupCpFile" ] && \
+      { cd "$proj" && ./$setupCpFile && cd ..  || \
+      echo "Unable to execute $proj/$setupCpFile";}
+}
+
 readAuxClassPath()
 {
   [ -e "$proj/$buildClasspathFile" ] && \
@@ -75,6 +82,7 @@ declare -i ver=8
 declare -i JVER=8
 version="0.0.0"
 auxClasspath=""
+declare -r setupCpFile="setupclasspath"
 declare -r optionsFile=".options"
 declare -a options
 declare -r distDir="dist"
@@ -101,6 +109,7 @@ else
       echo "$verErrMsg";}
     readOptions
     readCompileFindOptions
+    setupAuxClassPath
     readAuxClassPath
     javaversion=$(./javacversion)
     readarray -t javasrcs \

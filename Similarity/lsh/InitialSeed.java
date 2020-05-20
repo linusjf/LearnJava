@@ -27,7 +27,7 @@ public enum InitialSeed {
     println(mh2.signature(vector));
   }
 
-  static void println(finalint... array) {
+  static void println(final int... array) {
     System.out.print("[");
     for (int v : array) {
       System.out.print(v + " ");
