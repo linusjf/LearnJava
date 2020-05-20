@@ -12,10 +12,13 @@ public class JdbcBeanX {
 
   public JdbcBeanX() throws JdbcBeanException {
     numAccounts = 0;
-    try (Connection connection = DriverManager.getConnection("jdbc:derby:Finances", "", "");
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery("SELECT COUNT(*) FROM Accounts"); ) {
-      if (results.next()) numAccounts = results.getInt(1);
+    try (Connection connection =
+             DriverManager.getConnection("jdbc:derby:Finances", "", "");
+         Statement statement = connection.createStatement();
+         ResultSet results =
+             statement.executeQuery("SELECT COUNT(*) FROM Accounts");) {
+      if (results.next())
+        numAccounts = results.getInt(1);
     } catch (SQLException sqe) {
       throw new JdbcBeanException(sqe);
     }
