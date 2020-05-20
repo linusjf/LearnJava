@@ -18,25 +18,21 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <loadfile property="compilerclasspath"
-            srcFile="${compile.cp}" />
-  <loadfile property="runclasspath"
-            srcFile="${run.cp}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runclasspath"
+              srcFile="${run.cp}" />
+  </target>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -53,7 +49,8 @@
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
-          depends="clean, makedir,format,checkstyle">
+          depends="loadclasspath, clean, makedir,format,checkstyle">
+          
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}"
@@ -64,7 +61,7 @@
   </target>
   <!-- Creates Javadoc -->
   <target name="docs"
-          depends="compile">
+          depends="loadclasspath,compile">
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
@@ -102,7 +99,7 @@
   </target>
   <!--Creates the deployable jar file  -->
   <target name="jar"
-          depends="compile,manifest">
+          depends="loadclasspath, compile,manifest">
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
          includes="**/*.class,**/*.properties"
@@ -114,7 +111,8 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
-  <target name="run">
+  <target name="run"
+          depends="loadclasspath">
     <description>Run target</description>
     <java classname="${main.class}"
           fork="true">
@@ -436,7 +434,8 @@
       <arg line="../xformatall ${basedir}" />
     </exec>
   </target>
-  <target name="checkstyleg">
+  <target name="checkstyleg"
+          depends="loadclasspath">
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
@@ -455,7 +454,10 @@
       </classpath>
     </java>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -474,7 +476,11 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -494,7 +500,10 @@
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>
-  <target name="spotbugs">
+  <target name="spotbugs"
+          depends="loadclasspath">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
@@ -512,7 +521,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile,pmd,spotbugs, jar, docs">
+          depends="loadclasspath,compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>

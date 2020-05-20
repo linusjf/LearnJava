@@ -8,7 +8,8 @@ import java.util.List;
 import org.junit.Assert;
 
 @SuppressWarnings("checkstyle:onetoplevelclass")
-@Parameters(separators = "=", commandDescription = "Record changes to the repository")
+@Parameters(separators = "=",
+            commandDescription = "Record changes to the repository")
 class CommandCommit {
   @Parameter(description = "The list of files to commit")
   List<String> files;
@@ -32,9 +33,7 @@ class CommandAdd {
 
 @Parameters(commandDescription = "Tool command")
 public class TooledCommand {
-  @Parameter(
-      names = {"-log", "-verbose"},
-      description = "Level of verbosity")
+  @Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity")
   Boolean verbose;
 
   @Parameter(names = "-test", description = "Test")
@@ -45,12 +44,11 @@ public class TooledCommand {
     TooledCommand tc = new TooledCommand();
     CommandAdd add = new CommandAdd();
     CommandCommit commit = new CommandCommit();
-    JCommander jc =
-        JCommander.newBuilder()
-            .addObject(tc)
-            .addCommand("add", add)
-            .addCommand("commit", commit)
-            .build();
+    JCommander jc = JCommander.newBuilder()
+                        .addObject(tc)
+                        .addCommand("add", add)
+                        .addCommand("commit", commit)
+                        .build();
 
     jc.parse(argv);
 

@@ -21,6 +21,7 @@ public class MainCommand {
 
   public void run() {
     System.out.printf("%d %n", debug);
-    for (String file : files) System.out.println(file);
+    for (String file: files)
+      System.out.println(file);
   }
 }
