@@ -6,9 +6,9 @@ Main-Class: networking.OReillyByName
 
 Name: common
 Specification-Title: Networks
-Specification-Version: 2.1.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 30516a6f December 28 2019
+Implementation-Version: 3f3bff01 May 20 2020
 Implementation-Vendor: 
 

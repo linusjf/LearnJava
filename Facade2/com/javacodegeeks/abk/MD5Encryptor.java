@@ -14,7 +14,8 @@ import java.util.logging.Logger;
  */
 public class MD5Encryptor implements Encrypt {
   private static final Base64.Encoder ENCODER = Base64.getEncoder();
-  private static final Logger LOGGER = Logger.getLogger(MD5Encryptor.class.getName());
+  private static final Logger LOGGER =
+      Logger.getLogger(MD5Encryptor.class.getName());
 
   /**
    * Describe <code>encrypt</code> method here.
@@ -31,7 +32,8 @@ public class MD5Encryptor implements Encrypt {
       byte[] textBytes = msgDigest.digest();
       return ENCODER.encodeToString(textBytes);
     } catch (NoSuchAlgorithmException e) {
-      LOGGER.severe(() -> String.format("Algorithm not found : %s", e.getMessage()));
+      LOGGER.severe(
+          () -> String.format("Algorithm not found : %s", e.getMessage()));
       throw new AssertionError("Algorithm not found : ", e);
     }
   }

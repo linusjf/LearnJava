@@ -27,7 +27,8 @@ import java.util.logging.Logger;
  * @author Will Glozer
  */
 public class JarLibraryLoader implements LibraryLoader {
-  private static final Logger LOGGER = Logger.getLogger(JarLibraryLoader.class.getName());
+  private static final Logger LOGGER =
+      Logger.getLogger(JarLibraryLoader.class.getName());
 
   File lib;
   private final CodeSource codeSource;
@@ -63,11 +64,13 @@ public class JarLibraryLoader implements LibraryLoader {
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public boolean load(String name, boolean verify) {
-    try (JarFile jar = new JarFile(codeSource.getLocation().getPath(), verify)) {
+    try (JarFile jar =
+             new JarFile(codeSource.getLocation().getPath(), verify)) {
       Platform platform = detect();
-      for (String path : libCandidates(platform, name)) {
+      for (String path: libCandidates(platform, name)) {
         JarEntry entry = jar.getJarEntry(path);
-        if (entry == null) continue;
+        if (entry == null)
+          continue;
         else {
           lib = extract(name, jar.getInputStream(entry));
           SecurityManager sm = System.getSecurityManager();
@@ -100,9 +103,11 @@ public class JarLibraryLoader implements LibraryLoader {
 
     final File lib = File.createTempFile(name, "lib");
     lib.deleteOnExit();
-    try (OutputStream os = Files.newOutputStream(Paths.get(lib.getAbsolutePath()))) {
+    try (OutputStream os =
+             Files.newOutputStream(Paths.get(lib.getAbsolutePath()))) {
       int len;
-      while ((len = is.read(buf)) > 0) os.write(buf, 0, len);
+      while ((len = is.read(buf)) > 0)
+        os.write(buf, 0, len);
     }
     return lib;
   }
@@ -132,7 +137,7 @@ public class JarLibraryLoader implements LibraryLoader {
         candidates.add(sb + ".dylib");
         candidates.add(sb + ".jnilib");
         break;
-      case LINUX: // falls through
+      case LINUX:  // falls through
       case FREEBSD:
         candidates.add(sb + ".so");
         break;

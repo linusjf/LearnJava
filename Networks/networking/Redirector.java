@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 import logging.FormatLogger;
 
 public class Redirector {
-  private static final FormatLogger LOGGER = new FormatLogger(Logger.getLogger("Redirector"));
+  private static final FormatLogger LOGGER =
+      new FormatLogger(Logger.getLogger("Redirector"));
   private static final String US_ASCII = StandardCharsets.US_ASCII.name();
   private final int port;
   private final String newSite;
@@ -28,7 +29,9 @@ public class Redirector {
 
   public void start() {
     try (ServerSocket server = new ServerSocket(port)) {
-      LOGGER.info("Redirecting connections on port %d to %s", server.getLocalPort(), newSite);
+      LOGGER.info("Redirecting connections on port %d to %s",
+                  server.getLocalPort(),
+                  newSite);
       while (true) {
         try {
           Socket s = server.accept();
@@ -64,7 +67,8 @@ public class Redirector {
       theSite = args[0];
 
       // trim trailing slash
-      if (theSite.endsWith("/")) theSite = theSite.substring(0, theSite.length() - 1);
+      if (theSite.endsWith("/"))
+        theSite = theSite.substring(0, theSite.length() - 1);
     } else {
       System.out.println("Usage: java Redirector http://www.newsite.com/ port");
       return;
@@ -87,18 +91,18 @@ public class Redirector {
     @SuppressWarnings("PMD.LawOfDemeter")
     @Override
     public void run() {
-      try (Writer out =
-              new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), US_ASCII));
-          Reader in =
-              new InputStreamReader(
-                  new BufferedInputStream(connection.getInputStream()), US_ASCII);
-          connection; ) {
+      try (Writer out = new BufferedWriter(
+               new OutputStreamWriter(connection.getOutputStream(), US_ASCII));
+           Reader in = new InputStreamReader(
+               new BufferedInputStream(connection.getInputStream()), US_ASCII);
+           connection;) {
         // read the first line only; that's all we need
         StringBuilder request = new StringBuilder(80);
         while (true) {
           int c = in.read();
-          if (c == '\r' || c == '\n' || c == -1) break;
-          request.append((char) c);
+          if (c == '\r' || c == '\n' || c == -1)
+            break;
+          request.append((char)c);
         }
         String get = request.toString();
         String[] pieces = get.split("\\w*");
@@ -119,22 +123,16 @@ public class Redirector {
         // produce HTML that says where the document has moved to.
         out.write("<HTML><HEAD><TITLE>Document moved</TITLE></HEAD>\r\n");
         out.write("<BODY><H1>Document moved</H1>\r\n");
-        out.write(
-            "The document "
-                + theFile
-                + " has moved to\r\n<A HREF=\""
-                + newSite
-                + theFile
-                + "\">"
-                + newSite
-                + theFile
-                + "</A>.\r\n Please update your bookmarks<P>");
+        out.write("The document " + theFile + " has moved to\r\n<A HREF=\""
+                  + newSite + theFile + "\">" + newSite + theFile
+                  + "</A>.\r\n Please update your bookmarks<P>");
         out.write("</BODY></HTML>\r\n");
         out.flush();
         LOGGER.info("Redirected %s", connection.getRemoteSocketAddress());
       } catch (IOException ex) {
-        LOGGER.warning(
-            "Error talking to %s: %s", connection.getRemoteSocketAddress(), ex.getMessage());
+        LOGGER.warning("Error talking to %s: %s",
+                       connection.getRemoteSocketAddress(),
+                       ex.getMessage());
       }
     }
   }

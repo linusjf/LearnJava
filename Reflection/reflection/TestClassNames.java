@@ -61,6 +61,7 @@ public enum TestClassNames {
   }
 }
 
+@SuppressWarnings("checkstyle:onetoplevelclass")
 @interface SomeAnnotation {
 }
 

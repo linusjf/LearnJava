@@ -46,6 +46,6 @@ public enum ResourceServer {
       } catch (IOException ioe) {
         System.err.println(ioe);
       }
-    } // Server will run indefinitely.
+    }  // Server will run indefinitely.
   }
 }

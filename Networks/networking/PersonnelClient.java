@@ -32,11 +32,13 @@ public enum PersonnelClient {
   @SuppressWarnings({"unchecked", "PMD.LawOfDemeter"})
   private static void talkToServer() throws ClassNotFoundException {
     try (Socket socket = new Socket(host, PORT);
-        ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
-        PrintWriter outStream =
-            new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), UTF_8), true); ) {
+         ObjectInputStream inStream =
+             new ObjectInputStream(socket.getInputStream());
+         PrintWriter outStream = new PrintWriter(
+             new OutputStreamWriter(socket.getOutputStream(), UTF_8), true);) {
       outStream.println("SEND PERSONNEL DETAILS");
-      ArrayList<Personnel> response = (ArrayList<Personnel>) inStream.readObject();
+      ArrayList<Personnel> response =
+          (ArrayList<Personnel>)inStream.readObject();
 
       /*
                 As in ArrayListSerialise, the compiler will
@@ -44,14 +46,12 @@ public enum PersonnelClient {
                 Simply ignore this warning.
       */
       int[] staffCount = {0};
-      response.stream()
-          .forEach(
-              person -> {
-                System.out.println("\nStaff member " + ++staffCount[0]);
-                System.out.println("Payroll number: " + person.getPayNum());
-                System.out.println("Surname: " + person.getSurname());
-                System.out.println("First names: " + person.getFirstNames());
-              });
+      response.stream().forEach(person -> {
+        System.out.println("\nStaff member " + ++staffCount[0]);
+        System.out.println("Payroll number: " + person.getPayNum());
+        System.out.println("Surname: " + person.getSurname());
+        System.out.println("First names: " + person.getFirstNames());
+      });
 
       System.out.println("\n\n");
     } catch (IOException ioEx) {

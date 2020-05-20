@@ -39,8 +39,9 @@ public final class ChargenClient {
     }
   }
 
-  private static void writeToBuffer(
-      SocketChannel client, WritableByteChannel out, ByteBuffer buffer) throws IOException {
+  private static void writeToBuffer(SocketChannel client,
+                                    WritableByteChannel out,
+                                    ByteBuffer buffer) throws IOException {
     while (client.read(buffer) != -1) {
       buffer.flip();
       out.write(buffer);

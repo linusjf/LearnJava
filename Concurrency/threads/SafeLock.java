@@ -124,7 +124,7 @@ public enum SafeLock {
 
     @Override
     public void run() {
-      for (; ; ) {
+      while(true) {
         try {
           Thread.sleep(random.nextInt(10));
         } catch (InterruptedException e) {

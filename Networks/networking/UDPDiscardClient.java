@@ -18,12 +18,13 @@ public enum UDPDiscardClient {
     String hostname = args.length > 0 ? args[0] : "localhost";
     int port = args.length > 1 ? readPort(args[1]) : PORT;
     try (DatagramSocket theSocket = new DatagramSocket();
-        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in, UTF_8)); ) {
+         BufferedReader userInput =
+             new BufferedReader(new InputStreamReader(System.in, UTF_8));) {
       String theLine = userInput.readLine();
       while (!".".equals(theLine)) {
         byte[] data = theLine.getBytes(StandardCharsets.UTF_8);
-        DatagramPacket theOutput =
-            new DatagramPacket(data, data.length, InetAddress.getByName(hostname), port);
+        DatagramPacket theOutput = new DatagramPacket(
+            data, data.length, InetAddress.getByName(hostname), port);
         theSocket.send(theOutput);
         theLine = userInput.readLine();
       }
