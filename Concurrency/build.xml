@@ -4,8 +4,8 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="${cs.properties}" />
-  <property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <property file="../junit.properties" />
@@ -19,23 +19,19 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="junit.cp"
-            srcFile="../${junit.classpath.file}" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="junit.cp"
+              srcFile="../${junit.classpath.file}" />
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+  </target>
   <target name="setupclasspath">
     <description>Run target</description>
     <exec executable="bash">
@@ -58,7 +54,7 @@
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
-          depends="clean, makedir,format,checkstyle">
+          depends="loadclasspath,clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}">
@@ -792,7 +788,7 @@
     </java>
   </target>
   <target name="run"
-          depends="run69,run68,run67,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run49,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
+          depends="loadclasspath,run69,run68,run67,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run49,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2">
 
     <description>Run target</description>
     <java classname="${main.class}"
@@ -807,7 +803,7 @@
     </java>
   </target>
   <target name="runall"
-          depends="run,unittests"></target>
+          depends="loadclasspath,run,unittests"></target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
@@ -852,7 +848,10 @@
       </classpath>
     </java>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -871,7 +870,11 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -891,7 +894,10 @@
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>
-  <target name="spotbugs">
+  <target name="spotbugs"
+          depends="loadclasspath">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
@@ -909,7 +915,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile,pmd,spotbugs, jar, docs">
+          depends="loadclasspath,compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>
