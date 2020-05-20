@@ -107,7 +107,8 @@
       <arg value="./setupclasspath" />
     </exec>
   </target>
-  <target name="run">
+  <target name="run"
+          depends="loadclasspath">
     <description>Run target</description>
     <exec executable="bash">
       <arg value="./setup" />
