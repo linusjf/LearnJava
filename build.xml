@@ -334,8 +334,6 @@
                   conf="testng.main" />
     <ivy:retrieve pathid="testng.lib.path"
                   conf="testng.lib" />
-    <ivy:retrieve pathid="commons-collections.main.path"
-                  conf="commons-collections.main" />
     <ivy:retrieve pathid="javolution-core-java.main.path"
                   conf="javolution-core-java.main" />
     <ivy:retrieve pathid="javolution-core-java.lib.path"
@@ -344,14 +342,8 @@
                   conf="guava.main" />
     <ivy:retrieve pathid="guava.lib.path"
                   conf="guava.lib" />
-    <ivy:retrieve pathid="commons-logging.main.path"
-                  conf="commons-logging.main" />
-    <ivy:retrieve pathid="commons-logging.lib.path"
-                  conf="commons-logging.lib" />
-    <ivy:retrieve pathid="commons-collections.main.path"
-                  conf="commons-collections.main" />
     <echo file="${cs.classpath.file}"
-          message="${toString:cs.main.path}:${toString:cs.lib.path}:${toString:commons-logging.main.path}:${toString:commons-logging.lib.path}:${toString:commons-collections.main.path}" />
+          message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
           message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
     <echo file="${pmd.classpath.file}"

@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/commons-collections-20040616.jar
+${toString:commons-collections.main.path}

@@ -35,3 +35,5 @@ Concurrency/**/*.jpg
 !FactoryMethod/bill.txt
 !Networks/web.log
 !Networks/echo.txt
+*.graphml
+linus*.html

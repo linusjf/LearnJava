@@ -260,16 +260,6 @@
           description="guava main jars" />
     <conf name="guava.lib"
           description="guava lib jars" />
-    <conf name="commons-logging.main"
-          description="commons-logging main jars" />
-    <conf name="commons-logging.lib"
-          description="commons-logging lib jars" />
-    <conf name="commons-collections.main"
-          description="commons-collections main jars" />
-    <!--  <conf name="jaxen.main"
-          description="jaxen main jars" />
-    <conf name="jaxen.lib"
-    description="jaxen lib jars" /> -->
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -280,18 +270,9 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-                rev="8.32"
-                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime" />
-    <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-    <dependency org="commons-logging"
-                name="commons-logging"
-                rev="1.2"
-                conf="commons-logging.main-&gt;master;commons-logging.lib-&gt;compile" />
-    <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
-    <dependency org="commons-collections"
-                name="commons-collections"
-                rev="20040616"
-                conf="commons-collections.main-&gt;master" />
+      rev="8.32"
+      transitive="true"
+                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
                 name="pmd-core"
@@ -353,7 +334,6 @@
                 name="tomcat-embed-core"
                 rev="9.0.35"
                 conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
-    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-logging-log4j"

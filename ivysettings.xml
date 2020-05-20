@@ -17,6 +17,7 @@
    under the License.
 -->
 <ivysettings>
+  <properties file="${ivy.settings.dir}/ivy.properties" />
   <settings defaultResolver="tray" />
   <resolvers>
     <!--     <ibiblio name="central" m2compatible="true"/> -->
