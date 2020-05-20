@@ -6,9 +6,9 @@ Main-Class: trove.Demo
 
 Name: common
 Specification-Title: Trove
-Specification-Version: 2.3.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: c4751469 February 28 2020
+Implementation-Version: c9dfc884 May 20 2020
 Implementation-Vendor: 
 
