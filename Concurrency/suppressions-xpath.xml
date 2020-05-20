@@ -927,8 +927,7 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="MultithreadedMaxFinder.java"
                   checks="SingleSpaceSeparatorCheck"
                   query="/CLASS_DEF[./IDENT[@text='MultithreadedMaxFinder']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='data']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./NUM_INT[@text='90']]" />
-<suppress-xpath
-       files="SafeLock.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='SafeLock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='BowLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+  <suppress-xpath files="SafeLock.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SafeLock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='BowLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
 </suppressions>
