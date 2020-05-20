@@ -33,7 +33,8 @@ public enum LSHSuperBitExample {
     for (int i = 0; i < count; i++) {
       double[] vector = vectors[i];
       int[] hash = lsh.hash(vector);
-      for (double v : vector) System.out.printf("%6.2f\t", v);
+      for (double v: vector)
+        System.out.printf("%6.2f\t", v);
       System.out.print(hash[0]);
       System.out.print("\n");
     }

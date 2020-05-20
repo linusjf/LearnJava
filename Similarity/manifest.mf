@@ -6,9 +6,9 @@ Main-Class: similarity.LevenshteinTest
 
 Name: common
 Specification-Title: Similarity
-Specification-Version: 2.1.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a38848e7 November 15 2019
+Implementation-Version: 650450cc May 20 2020
 Implementation-Vendor: 
 

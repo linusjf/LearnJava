@@ -34,7 +34,8 @@ public enum SimpleLSHMinHashExample {
     Random rand = new Random();
 
     for (int i = 0; i < count; i++) {
-      for (int j = 0; j < n; j++) vectors[i][j] = rand.nextDouble() > sparsity;
+      for (int j = 0; j < n; j++)
+        vectors[i][j] = rand.nextDouble() > sparsity;
     }
 
     // Create and configure LSH algorithm
@@ -43,9 +44,10 @@ public enum SimpleLSHMinHashExample {
     int[][] counts = new int[stages][buckets];
 
     // Perform hashing
-    for (boolean[] vector : vectors) {
+    for (boolean[] vector: vectors) {
       int[] hash = lsh.hash(vector);
-      for (int i = 0; i < hash.length; i++) counts[i][hash[i]]++;
+      for (int i = 0; i < hash.length; i++)
+        counts[i][hash[i]]++;
     }
 
     System.out.println("Number of elements per bucket at each stage:");
@@ -57,13 +59,15 @@ public enum SimpleLSHMinHashExample {
 
   static void print(int... array) {
     System.out.print("[");
-    for (int v : array) System.out.print(v + " ");
+    for (int v: array)
+      System.out.print(v + " ");
     System.out.print("]");
   }
 
   static void print(boolean... array) {
     System.out.print("[");
-    for (boolean v : array) System.out.print(v ? "1" : "0");
+    for (boolean v: array)
+      System.out.print(v ? "1" : "0");
     System.out.print("]");
   }
 }
