@@ -342,6 +342,8 @@
                   conf="guava.main" />
     <ivy:retrieve pathid="guava.lib.path"
                   conf="guava.lib" />
+    <ivy:retrieve pathid="commons-collections.main.path"
+                  conf="commons-collections.main" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
