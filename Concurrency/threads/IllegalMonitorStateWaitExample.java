@@ -10,7 +10,8 @@ public enum IllegalMonitorStateWaitExample {
       System.out.println("Checking for lock...");
 
       // The following statement results in an IllegalMonitorStateException.
-      if (Thread.holdsLock(HelperClass.OBJ)) HelperClass.OBJ.wait();
+      if (Thread.holdsLock(HelperClass.OBJ))
+        HelperClass.OBJ.wait();
       System.out.println("No exception since lock checked...");
 
       System.out.println("Caring a damn for lock ...");
@@ -18,7 +19,8 @@ public enum IllegalMonitorStateWaitExample {
       // The following statement results in an IllegalMonitorStateException.
       HelperClass.OBJ.wait();
     } catch (InterruptedException ex) {
-      System.err.println("An InterruptedException was caught: " + ex.getMessage());
+      System.err.println("An InterruptedException was caught: "
+                         + ex.getMessage());
     }
   }
 }

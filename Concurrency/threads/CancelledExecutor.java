@@ -10,7 +10,8 @@ public enum CancelledExecutor {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+    ThreadPoolExecutor executor =
+        (ThreadPoolExecutor)Executors.newCachedThreadPool();
     Task task = new Task();
     System.out.printf("Main: Executing the Task%n");
     Future<?> result = executor.submit(task);

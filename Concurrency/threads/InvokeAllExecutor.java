@@ -17,7 +17,8 @@ public enum InvokeAllExecutor {
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
     List<Task> taskList = new ArrayList<>();
-    for (int i = 0; i < 3; i++) taskList.add(new Task("Task " + i));
+    for (int i = 0; i < 3; i++)
+      taskList.add(new Task("Task " + i));
     List<Future<Result>> resultList = null;
     try {
       resultList = executor.invokeAll(taskList);
@@ -26,7 +27,7 @@ public enum InvokeAllExecutor {
     }
     executor.shutdown();
     System.out.println("Main: Printing the results");
-    for (Future<Result> future : resultList) {
+    for (Future<Result> future: resultList) {
       try {
         Result result = future.get();
         System.out.println(result.getName() + ": " + result.getValue());
@@ -73,13 +74,15 @@ public enum InvokeAllExecutor {
       try {
         long duration = random.nextInt(10);
 
-        System.out.printf("%s: Waiting %d seconds for results.%n", this.name, duration);
+        System.out.printf(
+            "%s: Waiting %d seconds for results.%n", this.name, duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
       int value = 0;
-      for (int i = 0; i < 5; i++) value += random.nextInt(100);
+      for (int i = 0; i < 5; i++)
+        value += random.nextInt(100);
       Result result = new Result();
       result.setName(this.name);
       result.setValue(value);

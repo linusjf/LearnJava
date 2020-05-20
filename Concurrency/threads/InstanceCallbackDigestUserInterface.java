@@ -22,9 +22,8 @@ public class InstanceCallbackDigestUserInterface {
   @SuppressWarnings("PMD.LawOfDemeter")
   public String toString() {
     String result = filename + ": ";
-    return digest == null
-        ? result.concat("digest not available")
-        : result.concat(encoder.encodeToString(digest));
+    return digest == null ? result.concat("digest not available")
+                          : result.concat(encoder.encodeToString(digest));
   }
 
   public void calculateDigest() {
@@ -34,11 +33,13 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   private static void calculateDigest(String filename) {
-    InstanceCallbackDigestUserInterface d = new InstanceCallbackDigestUserInterface(filename);
+    InstanceCallbackDigestUserInterface d =
+        new InstanceCallbackDigestUserInterface(filename);
     d.calculateDigest();
   }
 
   public static void main(String[] args) {
-    for (String filename : args) calculateDigest(filename);
+    for (String filename: args)
+      calculateDigest(filename);
   }
 }
