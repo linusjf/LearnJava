@@ -141,7 +141,7 @@
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
@@ -149,15 +149,15 @@
     </java>
   </target>
   <target name="checkstyle">
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />
@@ -170,9 +170,9 @@
     </checkstyle>
   </target>
   <target name="pmd">
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -193,8 +193,8 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs">
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
