@@ -22,8 +22,30 @@ public enum TestCounters {
         service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
       }
       service.shutdown();
-      service.awaitTermination(1, TimeUnit.MINUTES);
+      service.awaitTermination(1, TimeUnit.HOURS);
       long after = System.currentTimeMillis();
+      System.out.println("Counter result: " + counter.get());
+      System.out.println("Time passed in ms:" + (after - before));
+      counter = new LockCounter();
+      // creating instance of specific counter
+      before = System.currentTimeMillis();
+      for (int i = 0; i < NUM_OF_THREADS; i++) {
+        service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
+      }
+      service.shutdown();
+      service.awaitTermination(1, TimeUnit.HOURS);
+      after = System.currentTimeMillis();
+      System.out.println("Counter result: " + counter.get());
+      System.out.println("Time passed in ms:" + (after - before));
+      counter = new AtomicCounter();
+      // creating instance of specific counter
+      before = System.currentTimeMillis();
+      for (int i = 0; i < NUM_OF_THREADS; i++) {
+        service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
+      }
+      service.shutdown();
+      service.awaitTermination(1, TimeUnit.HOURS);
+      after = System.currentTimeMillis();
       System.out.println("Counter result: " + counter.get());
       System.out.println("Time passed in ms:" + (after - before));
     } catch (InterruptedException ie) {
