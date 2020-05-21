@@ -10,7 +10,7 @@ public final class AtomicCounter implements Counter {
   private static Unsafe unsafeObject;
   private static long valueOffset;
 
-  private volatile int value;
+  private volatile long value;
 
   static {
     AccessController.doPrivileged((PrivilegedAction<Object>)() -> {
@@ -28,12 +28,12 @@ public final class AtomicCounter implements Counter {
   }
 
   @Override
-  public int increment() {
-    return unsafeObject.getAndAddInt(this, valueOffset, 1) + 1;
+  public long increment() {
+    return unsafeObject.getAndAddLong(this, valueOffset, 1L) + 1L;
   }
 
   @Override
-  public int get() {
+  public long get() {
     return value;
   }
 }
