@@ -3,6 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="LockCounter.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LockCounter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='increment']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
   <suppress-xpath files="AtomicCounterTest.java"
                   checks="MagicNumberCheck"
                   query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster2']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />

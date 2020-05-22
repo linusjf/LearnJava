@@ -13,9 +13,9 @@ public final class AtomicCounter implements Counter {
   private volatile long value;
 
   private static Unsafe getUnsafe() throws ReflectiveOperationException {
-        Field f = Unsafe.class.getDeclaredField("theUnsafe");
-        f.setAccessible(true);
-        return (Unsafe)f.get(null);
+    Field f = Unsafe.class.getDeclaredField("theUnsafe");
+    f.setAccessible(true);
+    return (Unsafe)f.get(null);
   }
 
   static {

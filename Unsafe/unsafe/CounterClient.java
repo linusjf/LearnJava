@@ -1,8 +1,8 @@
 package unsafe;
 
 public class CounterClient implements Runnable {
-  private Counter c;
-  private long num;
+  private final Counter c;
+  private final long num;
 
   public CounterClient(Counter c, long num) {
     this.c = c;
