@@ -12,6 +12,7 @@ public enum AtomicCounterTest {
     for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
       counter.increment();
     long endTime = System.nanoTime() - startTime;
+    LOGGER.info(() -> counter.getClass().getName());
     LOGGER.info(() -> String.valueOf(counter.get()));
     LOGGER.info(() -> String.valueOf(endTime));
     return endTime;

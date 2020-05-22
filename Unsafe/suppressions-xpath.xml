@@ -3,6 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="CASCounter.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT" />
+  <suppress-xpath files="CASCounter.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CASCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='counter']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="Counter.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
   <suppress-xpath files="LockCounter.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='LockCounter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='increment']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
