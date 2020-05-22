@@ -3,6 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="AtomicCounterTest.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster3']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']"/>
   <suppress-xpath files="CASCounter.java"
                   checks="IllegalImportCheck"
                   query="/IMPORT" />

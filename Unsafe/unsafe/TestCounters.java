@@ -51,12 +51,16 @@ public enum TestCounters {
 
   public static void main(String... args) {
     try {
-      Counter counter = new SynchronizedCounter();
-      long scTime = executeCounterClient(counter);
+      Counter counter = new StupidCounter();
+      executeCounterClient(counter);
+      counter = new SynchronizedCounter();
+      final long scTime = executeCounterClient(counter);
       counter = new AtomicCounter();
       long acTime = executeCounterClient(counter);
       counter = new LockCounter();
       long lcTime = executeCounterClient(counter);
+      counter = new CASCounter();
+      long casTime = executeCounterClient(counter);
       double acFaster = (double)scTime / (double)acTime;
       LOGGER.info(()
                       -> "Atomic counter: " + String.format("%.2f", acFaster)
@@ -64,6 +68,10 @@ public enum TestCounters {
       double lcFaster = (double)scTime / (double)lcTime;
       LOGGER.info(()
                       -> "Lock counter: " + String.format("%.2f", lcFaster)
+                             + " times faster.");
+      double casFaster = (double)scTime / (double)casTime;
+      LOGGER.info(()
+                      -> "CAS counter: " + String.format("%.2f", casFaster)
                              + " times faster.");
     } catch (InterruptedException ie) {
       LOGGER.severe(ie.getMessage());
