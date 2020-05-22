@@ -10,10 +10,12 @@ public enum TestCounters {
   private static final Logger LOGGER =
       Logger.getLogger(TestCounters.class.getName());
 
+      private static int NUM_OF_THREADS = 1000;
+
+      private static long NUM_OF_INCREMENTS = 10_000;
+
   public static void main(String... args) {
     try {
-      int NUM_OF_THREADS = 1000;
-      long NUM_OF_INCREMENTS = 2L * (long)Integer.MAX_VALUE;
       ExecutorService service = Executors.newFixedThreadPool(NUM_OF_THREADS);
       Counter counter = new SynchronizedCounter();
       // creating instance of specific counter
@@ -22,21 +24,11 @@ public enum TestCounters {
         service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
       }
       service.shutdown();
-      service.awaitTermination(1, TimeUnit.HOURS);
+      service.awaitTermination(1, TimeUnit.MINUTES);
       long after = System.currentTimeMillis();
       System.out.println("Counter result: " + counter.get());
       System.out.println("Time passed in ms:" + (after - before));
-      counter = new LockCounter();
-      // creating instance of specific counter
-      before = System.currentTimeMillis();
-      for (int i = 0; i < NUM_OF_THREADS; i++) {
-        service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
-      }
-      service.shutdown();
-      service.awaitTermination(1, TimeUnit.HOURS);
-      after = System.currentTimeMillis();
-      System.out.println("Counter result: " + counter.get());
-      System.out.println("Time passed in ms:" + (after - before));
+      service = Executors.newFixedThreadPool(NUM_OF_THREADS);
       counter = new AtomicCounter();
       // creating instance of specific counter
       before = System.currentTimeMillis();
@@ -44,7 +36,19 @@ public enum TestCounters {
         service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
       }
       service.shutdown();
-      service.awaitTermination(1, TimeUnit.HOURS);
+      service.awaitTermination(1, TimeUnit.MINUTES);
+      after = System.currentTimeMillis();
+      System.out.println("Counter result: " + counter.get());
+      System.out.println("Time passed in ms:" + (after - before));
+      service = Executors.newFixedThreadPool(NUM_OF_THREADS);
+      counter = new LockCounter();
+      // creating instance of specific counter
+      before = System.currentTimeMillis();
+      for (int i = 0; i < NUM_OF_THREADS; i++) {
+        service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
+      }
+      service.shutdown();
+      service.awaitTermination(1, TimeUnit.MINUTES);
       after = System.currentTimeMillis();
       System.out.println("Counter result: " + counter.get());
       System.out.println("Time passed in ms:" + (after - before));
@@ -53,3 +57,4 @@ public enum TestCounters {
     }
   }
 }
+

@@ -12,12 +12,16 @@ public final class AtomicCounter implements Counter {
 
   private volatile long value;
 
+  private static Unsafe getUnsafe() throws ReflectiveOperationException {
+        Field f = Unsafe.class.getDeclaredField("theUnsafe");
+        f.setAccessible(true);
+        return (Unsafe)f.get(null);
+  }
+
   static {
     AccessController.doPrivileged((PrivilegedAction<Object>)() -> {
       try {
-        Field f = Unsafe.class.getDeclaredField("theUnsafe");
-        f.setAccessible(true);
-        unsafeObject = (Unsafe)f.get(null);
+        unsafeObject = getUnsafe();
         valueOffset = unsafeObject.objectFieldOffset(
             AtomicCounter.class.getDeclaredField("value"));
       } catch (ReflectiveOperationException ex) {
@@ -28,8 +32,8 @@ public final class AtomicCounter implements Counter {
   }
 
   @Override
-  public long increment() {
-    return unsafeObject.getAndAddLong(this, valueOffset, 1L) + 1L;
+  public void increment() {
+    unsafeObject.getAndAddLong(this, valueOffset, 1L);
   }
 
   @Override

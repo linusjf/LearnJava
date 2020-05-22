@@ -1,5 +1,6 @@
 package unsafe;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
@@ -8,11 +9,18 @@ class LockCounter implements Counter {
   private final WriteLock lock = new ReentrantReadWriteLock(true).writeLock();
 
   @Override
-  public long increment() {
-    lock.lock();
-    counter++;
+  public void increment() {
+  // not actually doing anything resource-intensive
+    if (lock.tryLock()) {
+    try {
+    ++counter;
+    }
+    finally {
     lock.unlock();
-    return counter;
+    }
+    }
+    else
+      increment();
   }
 
   @Override

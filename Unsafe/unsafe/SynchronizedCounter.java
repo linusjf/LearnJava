@@ -4,9 +4,9 @@ public final class SynchronizedCounter implements Counter {
   private long i;
 
   @Override
-  public long increment() {
+  public void increment() {
     synchronized (this) {
-      return ++i;
+      ++i;
     }
   }
 

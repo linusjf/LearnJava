@@ -2,7 +2,7 @@ package unsafe;
 
 interface Counter {
 
-  long increment();
+  void increment();
 
   long get();
 }
