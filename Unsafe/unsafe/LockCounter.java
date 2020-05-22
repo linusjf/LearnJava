@@ -9,6 +9,7 @@ class LockCounter implements Counter {
   private final WriteLock lock = new ReentrantReadWriteLock(true).writeLock();
   private final Random random = new Random();
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   @Override
   public void increment() {
     try {

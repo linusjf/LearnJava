@@ -25,6 +25,7 @@ public enum TestCounters {
     return true;
   }
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static long executeCounterClient(Counter counter)
       throws InterruptedException {
     List<Future<?>> futures = new ArrayList<>();
@@ -41,10 +42,10 @@ public enum TestCounters {
     long after = System.currentTimeMillis();
     LOGGER.info(() -> counter.getClass().getName());
     LOGGER.info(() -> "Counter result: " + counter.get());
-    long timePassed = after - before;
-    LOGGER.info(() -> "Time passed in ms:" + timePassed);
     boolean completed = areAllTasksComplete(futures);
     LOGGER.info(() -> "All tasks completed: " + completed);
+    long timePassed = after - before;
+    LOGGER.info(() -> "Time passed in ms:" + timePassed);
     return timePassed;
   }
 
@@ -57,10 +58,10 @@ public enum TestCounters {
       counter = new LockCounter();
       long lcTime = executeCounterClient(counter);
       double acFaster = (double)scTime / (double)acTime;
-      double lcFaster = (double)scTime / (double)lcTime;
       LOGGER.info(()
                       -> "Atomic counter: " + String.format("%.2f", acFaster)
                              + " times faster.");
+      double lcFaster = (double)scTime / (double)lcTime;
       LOGGER.info(()
                       -> "Lock counter: " + String.format("%.2f", lcFaster)
                              + " times faster.");

@@ -7,34 +7,32 @@ public enum AtomicCounterTest {
   private static final Logger LOGGER =
       Logger.getLogger(AtomicCounterTest.class.getName());
 
+  private static long executeIncrement(Counter counter) {
+    long startTime = System.nanoTime();
+    for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
+      counter.increment();
+    long endTime = System.nanoTime() - startTime;
+    LOGGER.info(() -> String.valueOf(counter.get()));
+    LOGGER.info(() -> String.valueOf(endTime));
+    return endTime;
+  }
+
   public static void main(String... args) {
 
-    long startTime = System.nanoTime();
-    SynchronizedCounter sc = new SynchronizedCounter();
-    for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
-      sc.increment();
-    long endTime = System.nanoTime() - startTime;
-    LOGGER.info(() -> String.valueOf(sc.get()));
-    LOGGER.info(() -> String.valueOf(endTime));
-
-    long startTime3 = System.nanoTime();
-    LockCounter lc = new LockCounter();
-    for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
-      lc.increment();
-    long endTime3 = System.nanoTime() - startTime3;
-    LOGGER.info(() -> String.valueOf(lc.get()));
-    LOGGER.info(() -> String.valueOf(endTime3));
+    Counter counter = new SynchronizedCounter();
+    long endTime = executeIncrement(counter);
+    counter = new AtomicCounter();
+    long endTime2 = executeIncrement(counter);
+    counter = new LockCounter();
+    long endTime3 = executeIncrement(counter);
     float faster2 = (1 - ((float)endTime3 / (float)endTime)) * 100;
-    LOGGER.info(() -> String.format("%.2f", faster2) + " percent faster");
+    LOGGER.info(()
+                    -> "Lock counter: " + String.format("%.2f", faster2)
+                           + " percent faster");
 
-    long startTime2 = System.nanoTime();
-    AtomicCounter ac = new AtomicCounter();
-    for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
-      ac.increment();
-    long endTime2 = System.nanoTime() - startTime2;
-    LOGGER.info(() -> String.valueOf(ac.get()));
-    LOGGER.info(() -> String.valueOf(endTime2));
     float faster = (1 - ((float)endTime2 / (float)endTime)) * 100;
-    LOGGER.info(() -> String.format("%.2f", faster) + " percent faster");
+    LOGGER.info(()
+                    -> "Atomic counter: " + String.format("%.2f", faster)
+                           + " percent faster");
   }
 }

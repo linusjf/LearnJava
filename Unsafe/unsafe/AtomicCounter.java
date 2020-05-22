@@ -9,11 +9,13 @@ import sun.misc.Unsafe; // NOPMD
 public final class AtomicCounter implements Counter {
   private static Unsafe unsafeObject;
   private static long valueOffset;
+  private static final Class<?> UNSAFE_CLASS = Unsafe.class;
 
   private volatile long value;
 
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static Unsafe getUnsafe() throws ReflectiveOperationException {
-    Field f = Unsafe.class.getDeclaredField("theUnsafe");
+    Field f = UNSAFE_CLASS.getDeclaredField("theUnsafe");
     f.setAccessible(true);
     return (Unsafe)f.get(null);
   }
