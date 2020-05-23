@@ -42,8 +42,7 @@ public enum TestCounters {
     long after = System.currentTimeMillis();
     LOGGER.info(() -> counter.getClass().getName());
     LOGGER.info(() -> "Counter result: " + counter.get());
-    boolean completed = areAllTasksComplete(futures);
-    LOGGER.info(() -> "All tasks completed: " + completed);
+    LOGGER.info(() -> "All tasks completed: " + areAllTasksComplete(futures));
     long timePassed = after - before;
     LOGGER.info(() -> "Time passed in ms:" + timePassed);
     return timePassed;
@@ -61,18 +60,21 @@ public enum TestCounters {
       long lcTime = executeCounterClient(counter);
       counter = new CASCounter();
       long casTime = executeCounterClient(counter);
-      double acFaster = (double)scTime / (double)acTime;
-      LOGGER.info(()
-                      -> "Atomic counter: " + String.format("%.2f", acFaster)
-                             + " times faster.");
-      double lcFaster = (double)scTime / (double)lcTime;
-      LOGGER.info(()
-                      -> "Lock counter: " + String.format("%.2f", lcFaster)
-                             + " times faster.");
-      double casFaster = (double)scTime / (double)casTime;
-      LOGGER.info(()
-                      -> "CAS counter: " + String.format("%.2f", casFaster)
-                             + " times faster.");
+      LOGGER.info(
+          ()
+              -> "Atomic counter: "
+                     + String.format("%.2f", (double)scTime / (double)acTime)
+                     + " times faster.");
+      LOGGER.info(
+          ()
+              -> "Lock counter: "
+                     + String.format("%.2f", (double)scTime / (double)lcTime)
+                     + " times faster.");
+      LOGGER.info(
+          ()
+              -> "CAS counter: "
+                     + String.format("%.2f", (double)scTime / (double)casTime)
+                     + " times faster.");
     } catch (InterruptedException ie) {
       LOGGER.severe(ie.getMessage());
     }
