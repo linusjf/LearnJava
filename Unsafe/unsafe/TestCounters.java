@@ -60,6 +60,8 @@ public enum TestCounters {
       long lcTime = executeCounterClient(counter);
       counter = new CASCounter();
       long casTime = executeCounterClient(counter);
+      counter = new AtomicVHCounter();
+      long acvhTime = executeCounterClient(counter);
       LOGGER.info(
           ()
               -> "Atomic counter: "
@@ -74,6 +76,11 @@ public enum TestCounters {
           ()
               -> "CAS counter: "
                      + String.format("%.2f", (double)scTime / (double)casTime)
+                     + " times faster.");
+      LOGGER.info(
+          ()
+              -> "AtomicVH counter: "
+                     + String.format("%.2f", (double)scTime / (double)acvhTime)
                      + " times faster.");
     } catch (InterruptedException ie) {
       LOGGER.severe(ie.getMessage());

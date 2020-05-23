@@ -8,10 +8,10 @@ public enum AtomicCounterTest {
       Logger.getLogger(AtomicCounterTest.class.getName());
 
   private static long executeIncrement(Counter counter) {
-    long startTime = System.nanoTime();
+    long startTime = System.currentTimeMillis();
     for (int idx = Integer.MIN_VALUE; idx < Integer.MAX_VALUE; idx++)
       counter.increment();
-    long endTime = System.nanoTime() - startTime;
+    long endTime = System.currentTimeMillis() - startTime;
     LOGGER.info(() -> counter.getClass().getName());
     LOGGER.info(() -> String.valueOf(counter.get()));
     LOGGER.info(() -> String.valueOf(endTime));
@@ -30,6 +30,8 @@ public enum AtomicCounterTest {
     final long endTime3 = executeIncrement(counter);
     counter = new CASCounter();
     final long endTime4 = executeIncrement(counter);
+    counter = new AtomicVHCounter();
+    final long endTime5 = executeIncrement(counter);
     LOGGER.info(
         ()
             -> "Lock counter: "
@@ -47,6 +49,12 @@ public enum AtomicCounterTest {
             -> "CAS counter: "
                    + String.format(
                        "%.2f", (1 - ((float)endTime4 / (float)endTime)) * 100)
+                   + " percent faster");
+    LOGGER.info(
+        ()
+            -> "AtomicVH counter: "
+                   + String.format(
+                       "%.2f", (1 - ((float)endTime5 / (float)endTime)) * 100)
                    + " percent faster");
   }
 }
