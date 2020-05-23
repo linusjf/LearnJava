@@ -1,3 +1,4 @@
 unsafe.AtomicCounterTest
 unsafe.TestCounters
 unsafe.AClass
+unsafe.Guard
