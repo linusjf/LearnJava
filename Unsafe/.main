@@ -1,2 +1,3 @@
 unsafe.AtomicCounterTest
 unsafe.TestCounters
+unsafe.AClass
