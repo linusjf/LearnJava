@@ -2,3 +2,4 @@ unsafe.AtomicCounterTest
 unsafe.TestCounters
 unsafe.AClass
 unsafe.Guard
+unsafe.SuperArray
