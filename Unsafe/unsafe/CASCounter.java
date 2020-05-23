@@ -1,5 +1,7 @@
 package unsafe;
 
+import static unsafe.UnsafeUtils.*;
+
 import java.util.logging.Logger;
 import sun.misc.Unsafe; // NOPMD
 
@@ -14,7 +16,7 @@ public class CASCounter implements Counter {
 
   public CASCounter() {
     try {
-      unsafe = Counter.getUnsafe();
+      unsafe = getUnsafe();
       offset = unsafe.objectFieldOffset(
           CASCounter.class.getDeclaredField("counter"));
     } catch (ReflectiveOperationException roe) {

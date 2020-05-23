@@ -1,5 +1,7 @@
 package unsafe;
 
+import static unsafe.UnsafeUtils.*;
+
 import sun.misc.Unsafe; // NOPMD
 
 public class AClass {
@@ -23,14 +25,14 @@ public class AClass {
   @SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
   public static void main(String... args) {
     try {
-      Unsafe unsafe = Counter.getUnsafe();
+      Unsafe unsafe = getUnsafe();
       // constructor
       AClass o1 = new AClass();
       // prints 1
       System.out.println(o1);
 
       // reflection
-      AClass o2 = AClass.class.newInstance();
+      AClass o2 = AClass.class.getDeclaredConstructor().newInstance();
       // prints 1
       System.out.println(o2);
 

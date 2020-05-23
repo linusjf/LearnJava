@@ -1,5 +1,7 @@
 package unsafe;
 
+import static unsafe.UnsafeUtils.*;
+
 import java.util.logging.Logger;
 import sun.misc.Unsafe; // NOPMD
 
@@ -13,7 +15,7 @@ public final class AtomicCounter implements Counter {
 
   static {
     try {
-      unsafeObject = Counter.getUnsafe();
+      unsafeObject = getUnsafe();
       valueOffset = unsafeObject.objectFieldOffset(
           AtomicCounter.class.getDeclaredField("value"));
     } catch (ReflectiveOperationException roe) {

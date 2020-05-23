@@ -1,5 +1,7 @@
 package unsafe;
 
+import static unsafe.UnsafeUtils.*;
+
 import java.lang.reflect.Field;
 import sun.misc.Unsafe; // NOPMD
 
@@ -21,7 +23,7 @@ public class Guard {
       System.out.println(guard.giveAccess());
 
       // bypass
-      Unsafe unsafe = Counter.getUnsafe();
+      Unsafe unsafe = getUnsafe();
       Field f = Guard.class.getDeclaredField("accessAllowed");
       // memory corruption
       unsafe.putInt(guard, unsafe.objectFieldOffset(f), 42);
