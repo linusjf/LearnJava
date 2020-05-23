@@ -30,7 +30,7 @@ public final class Singleton implements Serializable, Cloneable {
    */
   public static Singleton getInstance() {
     if (instance == null) { // NOPMD
-      // the pmd warning emitted ignores the volatile modufier.
+      // the pmd warning emitted ignores the volatile modifier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
         if (instance == null) instance = new Singleton();
