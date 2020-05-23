@@ -29,7 +29,7 @@ public final class UnsafeUtils {
                   f.setAccessible(true);
                   return (Unsafe)f.get(null);
                 } catch (ReflectiveOperationException ex) {
-                  throw new AssertionError(ex);
+                  throw new ExceptionInInitializerError(ex);
                 }
               });
       }

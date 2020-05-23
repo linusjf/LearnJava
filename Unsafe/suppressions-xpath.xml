@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="UnsafeUtils.java"
-       checks="IllegalTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='unsafe']]/MODIFIERS/LITERAL_VOLATILE"/>
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='unsafe']]/MODIFIERS/LITERAL_VOLATILE" />
   <suppress-xpath files="UnsafeUtils.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/STAR[./NUM_INT[@text='8']]/PLUS[./NUM_INT[@text='1']]/DIV[./IDENT[@text='maxSize']]/NUM_INT[@text='8']" />
