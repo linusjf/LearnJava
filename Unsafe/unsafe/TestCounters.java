@@ -28,21 +28,18 @@ public enum TestCounters {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static long executeCounterClient(Counter counter)
       throws InterruptedException {
-    List<Future<?>> futures = new ArrayList<>();
     ExecutorService service = Executors.newFixedThreadPool(NUM_OF_THREADS);
     // creating instance of specific counter
     final long before = System.currentTimeMillis();
-    for (int i = 0; i < NUM_OF_THREADS; i++) {
-      Future<?> future =
-          service.submit(new CounterClient(counter, NUM_OF_INCREMENTS));
-      futures.add(future);
-    }
+    List<Future<?>> futures = new ArrayList<>();
+    for (int i = 0; i < NUM_OF_THREADS; i++) 
+      futures.add(service.submit(new CounterClient(counter, NUM_OF_INCREMENTS)));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
     long after = System.currentTimeMillis();
     LOGGER.info(() -> counter.getClass().getName());
-    LOGGER.info(() -> "Counter result: " + counter.get());
     LOGGER.info(() -> "All tasks completed: " + areAllTasksComplete(futures));
+    LOGGER.info(() -> "Counter result: " + counter.get());
     long timePassed = after - before;
     LOGGER.info(() -> "Time passed in ms:" + timePassed);
     return timePassed;
@@ -55,28 +52,28 @@ public enum TestCounters {
       counter = new SynchronizedCounter();
       final long scTime = executeCounterClient(counter);
       counter = new AtomicCounter();
-      long acTime = executeCounterClient(counter);
-      counter = new LockCounter();
-      long lcTime = executeCounterClient(counter);
-      counter = new CASCounter();
-      long casTime = executeCounterClient(counter);
-      counter = new AtomicVHCounter();
-      long acvhTime = executeCounterClient(counter);
+      final long acTime = executeCounterClient(counter);
       LOGGER.info(
           ()
               -> "Atomic counter: "
                      + String.format("%.2f", (double)scTime / (double)acTime)
                      + " times faster.");
+      counter = new LockCounter();
+      final long lcTime = executeCounterClient(counter);
       LOGGER.info(
           ()
               -> "Lock counter: "
                      + String.format("%.2f", (double)scTime / (double)lcTime)
                      + " times faster.");
+      counter = new CASCounter();
+      final long casTime = executeCounterClient(counter);
       LOGGER.info(
           ()
               -> "CAS counter: "
                      + String.format("%.2f", (double)scTime / (double)casTime)
                      + " times faster.");
+      counter = new AtomicVHCounter();
+      final long acvhTime = executeCounterClient(counter);
       LOGGER.info(
           ()
               -> "AtomicVH counter: "

@@ -5,7 +5,7 @@ import java.lang.invoke.VarHandle;
 
 public class AtomicVHCounter implements Counter {
   private static final VarHandle VH;
-  private volatile long value;
+  private volatile long value; // NOPMD
 
   static {
     try {
