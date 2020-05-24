@@ -1,5 +1,6 @@
 package unsafe;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
@@ -17,17 +18,20 @@ public final class UnsafeUtils {
     throw new IllegalStateException("Private constructor");
   }
 
-  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.NonThreadSafeSingleton"})
-  public static Unsafe getUnsafe() throws ReflectiveOperationException {
+  @SuppressWarnings({"PMD.LawOfDemeter",
+                     "PMD.NonThreadSafeSingleton",
+                     "PMD.AvoidAccessibilityAlteration"})
+  public static Unsafe
+  getUnsafe() throws ReflectiveOperationException {
     if (unsafe == null) {
       synchronized (UnsafeUtils.class) {
         if (unsafe == null)
           unsafe =
               AccessController.doPrivileged((PrivilegedAction<Unsafe>)() -> {
                 try {
-                  Field f = unsafeClass.getDeclaredField("theUnsafe");
-                  f.setAccessible(true);
-                  return (Unsafe)f.get(null);
+                  Constructor<Unsafe> c = Unsafe.class.getDeclaredConstructor();
+                  c.setAccessible(true);
+                  return c.newInstance();
                 } catch (ReflectiveOperationException ex) {
                   throw new ExceptionInInitializerError(ex);
                 }
