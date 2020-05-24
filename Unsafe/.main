@@ -3,3 +3,4 @@ unsafe.TestCounters
 unsafe.AClass
 unsafe.Guard
 unsafe.SuperArray
+unsafe.TypeSafety

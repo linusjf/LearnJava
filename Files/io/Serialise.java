@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Serialise {
   ;
 
@@ -18,7 +19,8 @@ public enum Serialise {
         new Personnel(234_567, "Jones", "Sally Ann"),
         new Personnel(999_999, "Black", "James Paul"),
       };
-      for (Personnel person : staff) outStream.writeObject(person);
+      for (Personnel person : staff) 
+        outStream.writeObject(person);
     } catch (IOException ioe) {
       System.err.println(ioe);
     }
@@ -33,6 +35,7 @@ public enum Serialise {
     } catch (ClassNotFoundException cnfe) {
       System.err.println("Class not found: " + cnfe);
     }
+    System.exit(0);
   }
 
   private static void printPersonnel(ObjectInputStream inStream)

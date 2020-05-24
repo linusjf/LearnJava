@@ -35,7 +35,8 @@ public enum TestCounters {
     return futures;
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter",
+  "PMD.DataflowAnalysis"})
   private static long executeCounterClient(Counter counter)
       throws InterruptedException {
     ExecutorService service = Executors.newFixedThreadPool(NUM_OF_THREADS);
