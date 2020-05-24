@@ -27,7 +27,6 @@ public enum TestCounters {
 
   private static List<Future<?>> submit(Counter counter,
                                         ExecutorService service) {
-
     List<Future<?>> futures = new ArrayList<>();
     for (int i = 0; i < NUM_OF_THREADS; i++)
       futures.add(

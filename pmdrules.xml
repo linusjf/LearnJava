@@ -48,8 +48,7 @@
                 value="false" />
     </properties>
   </rule>
-  <rule ref="category/java/bestpractices.xml/PositionLiteralsFirstInCaseInsensitiveComparisons" />
-  <rule ref="category/java/bestpractices.xml/PositionLiteralsFirstInComparisons" />
+  <rule ref="category/java/bestpractices.xml/LiteralsFirstInComparisons" />
   <rule ref="category/java/bestpractices.xml/PreserveStackTrace" />
   <rule ref="category/java/bestpractices.xml/ReplaceEnumerationWithIterator" />
   <rule ref="category/java/bestpractices.xml/ReplaceHashtableWithMap" />

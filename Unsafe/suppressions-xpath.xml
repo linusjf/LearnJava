@@ -3,10 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="Throws.java"
-       checks="IllegalCatchCheck"
-       query="/CLASS_DEF[./IDENT[@text='Throws']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='exc']]"/>
+  <suppress-xpath files="Throws.java"
+                  checks="IllegalCatchCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Throws']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='exc']]" />
   <suppress-xpath files="Throws.java"
                   checks="IllegalImportCheck"
                   query="/IMPORT" />
