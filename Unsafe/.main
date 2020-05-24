@@ -4,3 +4,4 @@ unsafe.AClass
 unsafe.Guard
 unsafe.SuperArray
 unsafe.TypeSafety
+unsafe.Throws

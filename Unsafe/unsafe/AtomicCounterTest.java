@@ -23,8 +23,7 @@ public enum AtomicCounterTest {
                                      long newTime) {
     LOGGER.info(
         ()
-            -> counter.getClass().getName() +
-            ": "
+            -> counter.getClass().getName() + ": "
                    + String.format(
                        "%.2f", (1 - ((double)newTime / (double)origTime)) * 100)
                    + " percent faster");
