@@ -461,6 +461,25 @@
          outputFile="${cpd.output}">
       <fileset dir="/${LearnJava.basedir}">
         <include name="**/*.java" />
+        <exclude name="Antlr/**/*Lexer.java" />
+        <exclude name="Antlr/**/*Parser.java" />
+        <exclude name="TestCode/**/*.java" />
+      </fileset>
+    </cpd>
+  </target>
+  <target name="cpdxml">
+    <loadfile property="pmd.cp"
+              srcFile="${pmd.classpath.file}" />
+    <taskdef name="cpd"
+             classname="net.sourceforge.pmd.cpd.CPDTask"
+             classpath="${pmd.cp}" />
+    <cpd minimumTokenCount="100"
+         language="xml"
+         format="text"
+         outputFile="${cpdxml.output}">
+      <fileset dir="/${LearnJava.basedir}">
+        <include name="**/*.xml" />
+        <exclude name="**/build.xml" />
       </fileset>
     </cpd>
   </target>
