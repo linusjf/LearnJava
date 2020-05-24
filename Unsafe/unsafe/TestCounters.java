@@ -35,7 +35,7 @@ public enum TestCounters {
     return futures;
   }
 
-  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnalysis"})
+  @SuppressWarnings("PMD.LawOfDemeter")
   private static long executeCounterClient(Counter counter)
       throws InterruptedException {
     ExecutorService service = Executors.newFixedThreadPool(NUM_OF_THREADS);
@@ -44,9 +44,11 @@ public enum TestCounters {
     final List<Future<?>> futures = submit(counter, service);
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
+    LOGGER.info(()
+                    -> counter.getClass().getName() + ": All tasks completed: "
+                           + areAllTasksComplete(futures));
     long after = System.currentTimeMillis();
     LOGGER.info(() -> counter.getClass().getName());
-    LOGGER.info(() -> "All tasks completed: " + areAllTasksComplete(futures));
     LOGGER.info(() -> "Counter result: " + counter.get());
     long timePassed = after - before;
     LOGGER.info(() -> "Time passed in ms:" + timePassed);
