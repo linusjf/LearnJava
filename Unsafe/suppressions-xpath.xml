@@ -3,14 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="AtomicCounterTest.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='AtomicVH counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="AtomicVHCounter.java"
-       checks="IllegalTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='AtomicVHCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE"/>
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logPerformance']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='AtomicVH counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicVHCounter.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AtomicVHCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE" />
   <suppress-xpath files="SuperArray.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SuperArray']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />

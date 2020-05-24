@@ -25,15 +25,23 @@ public enum TestCounters {
     return true;
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  private static List<Future<?>> submit(Counter counter,
+                                        ExecutorService service) {
+
+    List<Future<?>> futures = new ArrayList<>();
+    for (int i = 0; i < NUM_OF_THREADS; i++)
+      futures.add(
+          service.submit(new CounterClient(counter, NUM_OF_INCREMENTS)));
+    return futures;
+  }
+
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnalysis"})
   private static long executeCounterClient(Counter counter)
       throws InterruptedException {
     ExecutorService service = Executors.newFixedThreadPool(NUM_OF_THREADS);
     // creating instance of specific counter
     final long before = System.currentTimeMillis();
-    List<Future<?>> futures = new ArrayList<>();
-    for (int i = 0; i < NUM_OF_THREADS; i++) 
-      futures.add(service.submit(new CounterClient(counter, NUM_OF_INCREMENTS)));
+    final List<Future<?>> futures = submit(counter, service);
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
     long after = System.currentTimeMillis();
@@ -45,6 +53,17 @@ public enum TestCounters {
     return timePassed;
   }
 
+  private static void logPerformance(Counter counter,
+                                     long origTime,
+                                     long newTime) {
+
+    LOGGER.info(
+        ()
+            -> counter.getClass().getName()
+                   + String.format("%.2f", (double)origTime / (double)newTime)
+                   + " times faster.");
+  }
+
   public static void main(String... args) {
     try {
       Counter counter = new StupidCounter();
@@ -53,32 +72,16 @@ public enum TestCounters {
       final long scTime = executeCounterClient(counter);
       counter = new AtomicCounter();
       final long acTime = executeCounterClient(counter);
-      LOGGER.info(
-          ()
-              -> "Atomic counter: "
-                     + String.format("%.2f", (double)scTime / (double)acTime)
-                     + " times faster.");
+      logPerformance(counter, scTime, acTime);
       counter = new LockCounter();
       final long lcTime = executeCounterClient(counter);
-      LOGGER.info(
-          ()
-              -> "Lock counter: "
-                     + String.format("%.2f", (double)scTime / (double)lcTime)
-                     + " times faster.");
+      logPerformance(counter, scTime, lcTime);
       counter = new CASCounter();
       final long casTime = executeCounterClient(counter);
-      LOGGER.info(
-          ()
-              -> "CAS counter: "
-                     + String.format("%.2f", (double)scTime / (double)casTime)
-                     + " times faster.");
+      logPerformance(counter, scTime, casTime);
       counter = new AtomicVHCounter();
       final long acvhTime = executeCounterClient(counter);
-      LOGGER.info(
-          ()
-              -> "AtomicVH counter: "
-                     + String.format("%.2f", (double)scTime / (double)acvhTime)
-                     + " times faster.");
+      logPerformance(counter, scTime, acvhTime);
     } catch (InterruptedException ie) {
       LOGGER.severe(ie.getMessage());
     }

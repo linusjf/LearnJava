@@ -18,6 +18,17 @@ public enum AtomicCounterTest {
     return endTime;
   }
 
+  private static void logPerformance(Counter counter,
+                                     long origTime,
+                                     long newTime) {
+    LOGGER.info(
+        ()
+            -> counter.getClass().getName()
+                   + String.format(
+                       "%.2f", (1 - ((double)newTime / (double)origTime)) * 100)
+                   + " percent faster");
+  }
+
   public static void main(String... args) {
 
     Counter counter = new StupidCounter();
@@ -26,35 +37,15 @@ public enum AtomicCounterTest {
     final long endTime = executeIncrement(counter);
     counter = new AtomicCounter();
     final long endTime2 = executeIncrement(counter);
+    logPerformance(counter, endTime2, endTime);
     counter = new LockCounter();
     final long endTime3 = executeIncrement(counter);
+    logPerformance(counter, endTime3, endTime);
     counter = new CASCounter();
     final long endTime4 = executeIncrement(counter);
+    logPerformance(counter, endTime4, endTime);
     counter = new AtomicVHCounter();
     final long endTime5 = executeIncrement(counter);
-    LOGGER.info(
-        ()
-            -> "Lock counter: "
-                   + String.format(
-                       "%.2f", (1 - ((float)endTime3 / (float)endTime)) * 100)
-                   + " percent faster");
-    LOGGER.info(
-        ()
-            -> "Atomic counter: "
-                   + String.format(
-                       "%.2f", (1 - ((float)endTime2 / (float)endTime)) * 100)
-                   + " percent faster");
-    LOGGER.info(
-        ()
-            -> "CAS counter: "
-                   + String.format(
-                       "%.2f", (1 - ((float)endTime4 / (float)endTime)) * 100)
-                   + " percent faster");
-    LOGGER.info(
-        ()
-            -> "AtomicVH counter: "
-                   + String.format(
-                       "%.2f", (1 - ((float)endTime5 / (float)endTime)) * 100)
-                   + " percent faster");
+    logPerformance(counter, endTime5, endTime);
   }
 }
