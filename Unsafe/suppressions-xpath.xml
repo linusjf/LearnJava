@@ -3,6 +3,84 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="FinalClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SuperContainer']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/PLUS[./IDENT[@text='maximumOffset']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_LONG[@text='2L']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0xffffff00']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0x000000ff']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_LONG[@text='1000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/UNARY_MINUS[./NUM_LONG[@text='10L']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='otherAddress']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testStrangeReflectionFactory']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='20']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ClassWithExpensiveConstructor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExpensiveLookup']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='ReflectionFactory']]" />
   <suppress-xpath files="Throws.java"
                   checks="IllegalCatchCheck"
                   query="/CLASS_DEF[./IDENT[@text='Throws']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='exc']]" />

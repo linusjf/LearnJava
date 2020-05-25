@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../junit.cp run.cp
+cp ../junit.cp compile.cp
