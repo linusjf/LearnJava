@@ -1,7 +1,6 @@
 package unsafe;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -100,7 +99,7 @@ public class UnsafeTest {
   @Test
   public void testRetrieval() throws ReflectiveOperationException {
     Unsafe unsafeObj = fetchInstance();
-    assertNotEquals(null, unsafeObj);
+    assertNotNull("Unsafe object not null", unsafeObj);
   }
 
   @Test(expected = SecurityException.class)
@@ -113,7 +112,7 @@ public class UnsafeTest {
     ClassWithExpensiveConstructor instance =
         (ClassWithExpensiveConstructor)unsafe.allocateInstance(
             ClassWithExpensiveConstructor.class);
-    assertEquals(0, instance.getValue(), "Expensive constructor not invoked");
+    assertEquals("Expensive constructor not invoked", 0, instance.getValue());
   }
 
   @Test
@@ -125,11 +124,12 @@ public class UnsafeTest {
     silentConstructor.setAccessible(true);
     ClassWithExpensiveConstructor cwec =
         (ClassWithExpensiveConstructor)silentConstructor.newInstance();
-    assertEquals(0, cwec.getValue());
+    assertEquals("Constructor not invoked", 0, cwec.getValue());
   }
 
   @Test
-  public void testStrangeReflectionFactory() throws ReflectiveOperationException {
+  public void testStrangeReflectionFactory()
+      throws ReflectiveOperationException {
     @SuppressWarnings("unchecked")
     Constructor<?> silentConstructor =
         ReflectionFactory.getReflectionFactory().newConstructorForSerialization(
@@ -138,9 +138,13 @@ public class UnsafeTest {
     silentConstructor.setAccessible(true);
     ClassWithExpensiveConstructor instance =
         (ClassWithExpensiveConstructor)silentConstructor.newInstance();
-    assertEquals(10, instance.getValue());
-    assertEquals(ClassWithExpensiveConstructor.class, instance.getClass());
-    assertEquals(Object.class, instance.getClass().getSuperclass());
+    assertEquals("Constructor invoked", 10, instance.getValue());
+    assertEquals("Same class object",
+                 ClassWithExpensiveConstructor.class,
+                 instance.getClass());
+    assertEquals("Superclass is Object",
+                 Object.class,
+                 instance.getClass().getSuperclass());
   }
 
   @Test
@@ -149,9 +153,9 @@ public class UnsafeTest {
     DirectIntArray directIntArray = new DirectIntArray(maximum);
     directIntArray.setValue(0L, 2);
     directIntArray.setValue(maximum, 1);
-    assertEquals(2, directIntArray.getValue(0L));
-    assertEquals(0, directIntArray.getValue(1L));
-    assertEquals(1, directIntArray.getValue(maximum));
+    assertEquals("index 0 set", 2, directIntArray.getValue(0L));
+    assertEquals("any other index is 0", 0, directIntArray.getValue(1L));
+    assertEquals("value is 1 as expected", 1, directIntArray.getValue(maximum));
     directIntArray.destroy();
   }
 
@@ -198,7 +202,7 @@ public class UnsafeTest {
     thread.start();
     unsafe.unpark(thread);
     thread.join(100L);
-    assertTrue(run[0]);
+    assertTrue("Set true", run[0]);
   }
 
   @Test
