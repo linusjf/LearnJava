@@ -1,0 +1,6 @@
+-not -path ./**/docs/**
+-not -path ./Antlr/**/*Lexer.java
+-not -path ./Antlr/**/*Parser.java
+-not -path ./Antlr/**/*Listener.java
+-not -path ./Antlr/**/*Visitor.java
+-not -path ./TestCode/**/*.*

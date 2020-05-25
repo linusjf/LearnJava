@@ -3,12 +3,10 @@ set -o noglob
 declare -r errFile="cpd.errors"
 declare -r format="text"
 declare -r language="java"
-declare -r languagejsp="jsp"
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.cpd.CPD"
 declare -r exclusionsFile=".cpdexclusions"
 declare -r fileslist="cpdfiles.txt"
-declare -r jspfileslist="cpdjspfiles.txt"
 declare -a exclusions
 declare -i res=0
 
