@@ -10,7 +10,8 @@ import org.junit.Test;
 import sun.misc.Unsafe;               // NOPMD
 import sun.reflect.ReflectionFactory; // NOPMD
 
-@SuppressWarnings("PMD.SystemPrintln")
+@SuppressWarnings({"PMD.SystemPrintln",
+"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
 public class UnsafeTest {
 
   private Unsafe unsafe;
