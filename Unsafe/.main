@@ -5,3 +5,4 @@ unsafe.Guard
 unsafe.SuperArray
 unsafe.TypeSafety
 unsafe.Throws
+unsafe.JavaUnsafe
