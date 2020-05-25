@@ -8,7 +8,7 @@ declare -r exclusionsFile=".cpdexclusions"
 declare -r fileslist="cpdfiles.txt"
 declare -a exclusions
 declare -i res=0
-language="$1"
+language="${1,,}"
 if [ -z "$language" ];
   then 
     language="java"
@@ -18,7 +18,7 @@ usage()
 {
   echo "Usage: $0 [language]"
   echo "language - Programming language (default is java)"
-  exit 1
+  echo "Languages supported by script: java, jsp, xml."
 }
 
 readExclusions()
@@ -28,10 +28,7 @@ readExclusions()
       echo "Unable to read $exclusionsFile";}
 }
 
-if [ "$#" -ne 1 ]; 
-then
-  usage
-fi
+usage
 
 readExclusions
 rm ./"$fileslist"
