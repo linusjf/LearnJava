@@ -480,8 +480,7 @@
          format="text"
          outputFile="${cpd.output}">
       <fileset dir="/${LearnJava.basedir}">
-        <include name="**/*.xml" />
-        <exclude name="**/build.xml" />
+        <include name="**/*.jsp" />
       </fileset>
     </cpd>
   </target>
