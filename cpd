@@ -1,17 +1,35 @@
 #!/bin/bash
+set -o noglob
 declare -r errFile="cpd.errors"
 declare -r format="text"
 declare -r language="java"
+declare -r languagejsp="jsp"
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.cpd.CPD"
+declare -r exclusionsFile=".cpdexclusions"
+declare -r fileslist="cpdfiles.txt"
+declare -r jspfileslist="cpdjspfiles.txt"
+declare -a exclusions
+declare -i res=0
 
+readExclusions()
+{
+  [ -e "$exclusionsFile" ] && \
+      { readarray -t exclusions < <(cat "$exclusionsFile") || \
+      echo "Unable to read $exclusionsFile";}
+}
+
+readExclusions
+rm ./"$fileslist"
+find . -type f -regex ".*[.]\(java\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
 java -cp @"$classpathFile" \
 "$mainClass" \
 --minimum-tokens 100 \
 --format "$format" \
 --language "$language" \
---files . \
+--filelist "$fileslist" \
 | tee "$errFile" \
 || { echo "Error running $0"; exit 1;}
 res=$?
+set +o noglob
 exit $res
