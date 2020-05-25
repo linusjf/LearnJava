@@ -4,6 +4,7 @@ import static unsafe.UnsafeUtils.*;
 
 import sun.misc.Unsafe; // NOPMD
 
+@SuppressWarnings("restriction")
 public class Throws {
 
   private final Unsafe unsafe;

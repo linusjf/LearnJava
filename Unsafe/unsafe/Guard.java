@@ -8,7 +8,8 @@ import sun.misc.Unsafe; // NOPMD
 @SuppressWarnings({"PMD.SystemPrintln",
                    "PMD.FinalFieldCouldBeStatic",
                    "PMD.LawOfDemeter",
-                   "PMD.ImmutableField"})
+                   "PMD.ImmutableField",
+                   "restriction"})
 public class Guard {
   private int accessAllowed = 1;
 

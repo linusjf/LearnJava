@@ -35,8 +35,8 @@ createJar()
     "${args[@]}" || \
     { echo "Error creating jar output: $jarFile";exit 1; }
   jarRes=$? 
-  [ -e "$jarFile" ] && cp "$jarFile" .. \
-    && mkdir -p "$distDir" && mv "$jarFile" "$distDir" || \
+  [ -e "$jarFile" ] && \
+    mkdir -p "$distDir" && mv "$jarFile" "$distDir" || \
     { echo "Error moving jar file to $proj/$distDir"; }
   cd ..
   exit 0

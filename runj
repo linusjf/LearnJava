@@ -72,7 +72,7 @@ displayBanner ()
 
 runJVM()
 {
-  jarFile="$proj-$version.jar"
+  jarFile="$proj/dist/$proj-$version.jar"
   if [ -e "$jarFile" ]
     then
       setUp

@@ -4,6 +4,7 @@ import static unsafe.UnsafeUtils.*;
 
 import sun.misc.Unsafe; // NOPMD
 
+@SuppressWarnings("restriction")
 public class TypeSafety {
   private Object f = new Object();  // NOPMD
 

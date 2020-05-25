@@ -5,7 +5,7 @@ import static unsafe.UnsafeUtils.*;
 import java.util.logging.Logger;
 import sun.misc.Unsafe; // NOPMD
 
-@SuppressWarnings("PMD.AvoidUsingVolatile")
+@SuppressWarnings({"PMD.AvoidUsingVolatile", "restriction"})
 public class CASCounter implements Counter {
   private static final Logger LOGGER =
       Logger.getLogger(CASCounter.class.getName());

@@ -5,7 +5,7 @@ import static unsafe.UnsafeUtils.*;
 import java.util.logging.Logger;
 import sun.misc.Unsafe; // NOPMD
 
-@SuppressWarnings("PMD.AvoidUsingVolatile")
+@SuppressWarnings({"PMD.AvoidUsingVolatile", "restriction"})
 public final class AtomicCounter implements Counter {
   private static final Logger LOGGER =
       Logger.getLogger(AtomicCounter.class.getName());

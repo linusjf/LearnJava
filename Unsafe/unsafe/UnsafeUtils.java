@@ -20,7 +20,8 @@ public final class UnsafeUtils {
 
   @SuppressWarnings({"PMD.LawOfDemeter",
                      "PMD.NonThreadSafeSingleton",
-                     "PMD.AvoidAccessibilityAlteration"})
+                     "PMD.AvoidAccessibilityAlteration",
+                     "restriction"})
   public static Unsafe
   getUnsafe() throws ReflectiveOperationException {
     if (unsafe == null) {

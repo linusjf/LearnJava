@@ -22,7 +22,7 @@ public class AClass {
     return String.valueOf(a);
   }
 
-  @SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter", "restriction"})
   public static void main(String... args) {
     try {
       Unsafe unsafe = getUnsafe();
