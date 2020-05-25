@@ -2,13 +2,24 @@
 set -o noglob
 declare -r errFile="cpd.errors"
 declare -r format="text"
-declare -r language="java"
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.cpd.CPD"
 declare -r exclusionsFile=".cpdexclusions"
 declare -r fileslist="cpdfiles.txt"
 declare -a exclusions
 declare -i res=0
+language="$1"
+if [ -z "$language" ];
+  then 
+    language="java"
+fi
+
+usage()
+{
+  echo "Usage: $0 [language]"
+  echo "language - Programming language (default is java)"
+  exit 1
+}
 
 readExclusions()
 {
@@ -17,9 +28,14 @@ readExclusions()
       echo "Unable to read $exclusionsFile";}
 }
 
+if [ "$#" -ne 1 ]; 
+then
+  usage
+fi
+
 readExclusions
 rm ./"$fileslist"
-find . -type f -regex ".*[.]\(java\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
+find . -type f -regex ".*[.]\($language\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
 java -cp @"$classpathFile" \
 "$mainClass" \
 --minimum-tokens 100 \

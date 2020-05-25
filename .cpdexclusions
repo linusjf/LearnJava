@@ -4,3 +4,4 @@
 -not -path ./Antlr/**/*Listener.java
 -not -path ./Antlr/**/*Visitor.java
 -not -path ./TestCode/**/*.*
+-not -path ./**/build.xml
