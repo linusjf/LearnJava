@@ -463,7 +463,25 @@
         <include name="**/*.java" />
         <exclude name="Antlr/**/*Lexer.java" />
         <exclude name="Antlr/**/*Parser.java" />
+        <exclude name="Antlr/**/*Listener.java" />
+        <exclude name="Antlr/**/*Visitor.java" />
         <exclude name="TestCode/**/*.java" />
+      </fileset>
+    </cpd>
+  </target>
+  <target name="cpdjsp">
+    <loadfile property="pmd.cp"
+              srcFile="${pmd.classpath.file}" />
+    <taskdef name="cpd"
+             classname="net.sourceforge.pmd.cpd.CPDTask"
+             classpath="${pmd.cp}" />
+    <cpd minimumTokenCount="100"
+         language="jsp"
+         format="text"
+         outputFile="${cpd.output}">
+      <fileset dir="/${LearnJava.basedir}">
+        <include name="**/*.xml" />
+        <exclude name="**/build.xml" />
       </fileset>
     </cpd>
   </target>
@@ -476,7 +494,7 @@
     <cpd minimumTokenCount="100"
          language="xml"
          format="text"
-         outputFile="${cpdxml.output}">
+         outputFile="${cpd.output}">
       <fileset dir="/${LearnJava.basedir}">
         <include name="**/*.xml" />
         <exclude name="**/build.xml" />
