@@ -144,12 +144,6 @@ public class UnsafeTest {
     ClassWithExpensiveConstructor instance =
         (ClassWithExpensiveConstructor)silentConstructor.newInstance();
     assertEquals("Constructor invoked", 10, instance.getValue());
-    // assertEquals("Same class object",
-    //     ClassWithExpensiveConstructor.class,
-    //       instance.getClass());
-    // assertEquals("Superclass is Object",
-    //           Object.class,
-    //         instance.getClass().getSuperclass());
   }
 
   @Ignore
@@ -169,8 +163,6 @@ public class UnsafeTest {
   public void testMallaciousAllocation() throws Exception {
     long address = unsafe.allocateMemory(2L * 4);
     unsafe.setMemory(address, 8L, (byte)0);
-    // assertEquals(0, unsafe.getInt(address));
-    // assertEquals(0, unsafe.getInt(address + 4));
     unsafe.putInt(address + 1, 0xffffffff);
     assertTrue("Address values tested",
                0xffffff00 == unsafe.getInt(address)
@@ -198,13 +190,10 @@ public class UnsafeTest {
   @Test
   public void testPark() throws Exception {
     final boolean[] run = new boolean[1];
-    Thread thread = new Thread() {
-      @Override
-      public void run() {
-        unsafe.park(true, 100_000L);
-        run[0] = true;
-      }
-    };
+    Thread thread = new Thread(() -> {
+      unsafe.park(true, 100_000L);
+      run[0] = true;
+    });
     thread.start();
     unsafe.unpark(thread);
     thread.join(100L);
