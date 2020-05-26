@@ -5,13 +5,16 @@ import static org.junit.Assert.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Objects;
 import org.junit.Before;
 import org.junit.Test;
 import sun.misc.Unsafe;               // NOPMD
 import sun.reflect.ReflectionFactory; // NOPMD
 
-@SuppressWarnings(
-    {"PMD.SystemPrintln", "PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
+@SuppressWarnings({"PMD.SystemPrintln",
+                   "PMD.DataflowAnomalyAnalysis",
+                   "PMD.LawOfDemeter",
+                   "PMD.TooManyMethods"})
 public class UnsafeTest {
 
   private Unsafe unsafe;
@@ -303,6 +306,11 @@ public class UnsafeTest {
 
     public long getL() {
       return l;
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(i, l);
     }
 
     @Override
