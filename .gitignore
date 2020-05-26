@@ -20,6 +20,7 @@
 *.gz
 *.log*
 *docs*
+*reporttests*
 Webapps/target/**/*.*
 Webapps/target/**/*.*
 Webapps/webapp/**/*.*

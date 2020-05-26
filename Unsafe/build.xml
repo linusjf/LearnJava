@@ -8,6 +8,7 @@
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property file="../junit.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -111,7 +112,7 @@
     </exec>
   </target>
   <target name="run"
-          depends="loadclasspath">
+          depends="loadclasspath, unittests">
     <description>Run target</description>
     <java fork="true"
           classname="${main.class}">
@@ -289,6 +290,30 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </spotbugs>
+  </target>
+  <target name="unittests"
+          depends="loadclasspath">
+    <mkdir dir="${reports.tests}" />
+    <junit printsummary="withOutAndErr"
+           haltonfailure="no"
+           maxmemory="32m"
+           showOutput="yes">
+      <classpath>
+        <pathelement location="${project.class.path}" />
+        <pathelement location="${build.dir}" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <formatter type="plain" />
+      <formatter type="xml" />
+      <batchtest fork="yes"
+                 todir="${reports.tests}"
+                 skipNonTests="true">
+        <fileset dir="${src.dir}">
+          <include name="**/UnsafeTest.java" />
+        </fileset>
+      </batchtest>
+    </junit>
   </target>
   <target name="main"
           depends="loadclasspath,compile, pmd, spotbugs,jar,docs">

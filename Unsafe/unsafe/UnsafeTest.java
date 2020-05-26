@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Objects;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import sun.misc.Unsafe;               // NOPMD
 import sun.reflect.ReflectionFactory; // NOPMD
@@ -151,6 +152,7 @@ public class UnsafeTest {
     //         instance.getClass().getSuperclass());
   }
 
+  @Ignore
   @Test
   public void testDirectIntArray() throws Exception {
     long maximum = Integer.MAX_VALUE + 1L;
