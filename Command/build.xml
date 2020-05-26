@@ -198,6 +198,7 @@
               outputFile="${spotbugs.output}"
               reportLevel="low"
               effort="max"
+              excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
       <sourcePath path="${basedir}" />
