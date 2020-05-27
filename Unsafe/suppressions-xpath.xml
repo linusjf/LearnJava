@@ -4,9 +4,12 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 <suppress-xpath
-       files="UnsafeTest.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']"/>
+       files="SampleTest.java"
+       checks="IllegalImportCheck"
+       query="/IMPORT[./DOT/IDENT[@text='Unsafe']]"/>
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
   <suppress-xpath files="UnsafeTest.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL/NUM_INT[@text='0xffffff00']" />
