@@ -160,6 +160,18 @@ public class UnsafeTest {
   }
 
   @Test
+  public void testOffHeapArray() throws Exception {
+
+    long maximum = Integer.MAX_VALUE + 1L;
+    OffHeapArray array = new OffHeapArray(maximum);
+    array.set(0L, (byte)2);
+    array.set(maximum, (byte)1);
+    assertTrue("indexes set",
+               2 == array.get(0L) && 1 == array.get(maximum));
+    array.freeMemory();
+  }
+
+  @Test
   public void testMallaciousAllocation() throws Exception {
     long address = unsafe.allocateMemory(2L * 4);
     unsafe.setMemory(address, 8L, (byte)0);

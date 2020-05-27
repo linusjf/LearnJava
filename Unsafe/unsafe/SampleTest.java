@@ -40,7 +40,6 @@ public class SampleTest {
     SampleClass sampleClassObject = new SampleClass();
     long address = unsafe.getLong(sampleClassObject, 8L);
     System.out.println(address);
-    assertNotEquals(
-        "Address not zero", address, 0L);
+    assertNotEquals("Address not zero", address, 0L);
   }
 }
