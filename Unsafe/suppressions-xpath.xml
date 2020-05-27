@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="OffHeapArray.java"
+       checks="IllegalImportCheck"
+       query="/IMPORT[./DOT/IDENT[@text='Unsafe']]"/>
+<suppress-xpath
+       files="SampleTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']"/>
   <suppress-xpath files="SampleTest.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />

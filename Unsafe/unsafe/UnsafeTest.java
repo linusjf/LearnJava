@@ -166,8 +166,7 @@ public class UnsafeTest {
     OffHeapArray array = new OffHeapArray(maximum);
     array.set(0L, (byte)2);
     array.set(maximum, (byte)1);
-    assertTrue("indexes set",
-               2 == array.get(0L) && 1 == array.get(maximum));
+    assertTrue("indexes set", 2 == array.get(0L) && 1 == array.get(maximum));
     array.freeMemory();
   }
 

@@ -3,10 +3,11 @@ package unsafe;
 import java.lang.reflect.Field;
 import sun.misc.Unsafe; // NOPMD
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public class OffHeapArray {
   private static final int BYTE = 1;
-  private long size;
-  private long address;
+  private final long size;
+  private final long address;
 
   public OffHeapArray(long size)
       throws NoSuchFieldException, IllegalAccessException {
@@ -30,7 +31,7 @@ public class OffHeapArray {
     return getUnsafe().getByte(address + idx * BYTE);
   }
 
-  public long size() {
+  public long getSize() {
     return size;
   }
 
