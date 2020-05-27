@@ -311,6 +311,7 @@
                  skipNonTests="true">
         <fileset dir="${src.dir}">
           <include name="**/UnsafeTest.java" />
+          <include name="**/SampleTest.java" />
         </fileset>
       </batchtest>
     </junit>

@@ -3,10 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="SampleTest.java"
-       checks="IllegalImportCheck"
-       query="/IMPORT[./DOT/IDENT[@text='Unsafe']]"/>
+  <suppress-xpath files="SampleTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass2']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='160L']" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
   <suppress-xpath files="UnsafeTest.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />

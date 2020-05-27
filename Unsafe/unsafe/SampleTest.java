@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
 import org.junit.Before;
+import org.junit.Test;
 import sun.misc.Unsafe; // NOPMD
 
 @SuppressWarnings({"PMD.SystemPrintln",
@@ -25,5 +26,21 @@ public class SampleTest {
     unsafeConstructor.setAccessible(true);
     unsafe = unsafeConstructor.newInstance();
     return unsafe;
+  }
+
+  private long getObjectAddress(Object obj) {
+    Object[] helperArray = new Object[1];
+    helperArray[0] = obj;
+    long baseOffset = unsafe.arrayBaseOffset(Object[].class);
+    return unsafe.getLong(helperArray, baseOffset);
+  }
+
+  @Test
+  public void testClassAddress() {
+    SampleClass sampleClassObject = new SampleClass();
+    long address = unsafe.getLong(sampleClassObject, 8L);
+    System.out.println(address);
+    assertNotEquals(
+        "Address not zero", address, 0L);
   }
 }
