@@ -113,9 +113,10 @@ public class UnsafeTest {
 
   @Test
   public void testSingletonGetter() throws ReflectiveOperationException {
-    assertThrows(SecurityException
-        .class,() -> Unsafe.getUnsafe(),
-        "Throws java.lang.SecurityException");
+    assertThrows(SecurityException.class,
+                 ()
+                     -> Unsafe.getUnsafe(),
+                 "Throws java.lang.SecurityException");
   }
 
   @Test
@@ -161,7 +162,7 @@ public class UnsafeTest {
     directIntArray.setValue(maximum, 1);
     assertTrue(2 == directIntArray.getValue(0L)
                    && 1 == directIntArray.getValue(maximum),
-                   "indexes set");
+               "indexes set");
     directIntArray.destroy();
   }
 
@@ -172,8 +173,7 @@ public class UnsafeTest {
     OffHeapArray array = new OffHeapArray(maximum);
     array.set(0L, (byte)2);
     array.set(maximum, (byte)1);
-    assertTrue(2 == array.get(0L) && 1 == array.get(maximum),
-        "indexes set");
+    assertTrue(2 == array.get(0L) && 1 == array.get(maximum), "indexes set");
     array.freeMemory();
   }
 
@@ -192,8 +192,7 @@ public class UnsafeTest {
                                 .forEachOrdered(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(
-                 numIncrements * numThreads,
+    assertEquals(numIncrements * numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -214,8 +213,7 @@ public class UnsafeTest {
                                 .forEach(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(
-                 numIncrements * numThreads,
+    assertEquals(numIncrements * numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -232,8 +230,7 @@ public class UnsafeTest {
             i -> service.submit(new CounterClient(casCounter, numIncrements)));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(
-                 numIncrements * numThreads,
+    assertEquals(numIncrements * numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -243,10 +240,9 @@ public class UnsafeTest {
     long address = unsafe.allocateMemory(2L * 4);
     unsafe.setMemory(address, 8L, (byte)0);
     unsafe.putInt(address + 1, 0xffffffff);
-    assertTrue(
-               0xffffff00 == unsafe.getInt(address)
+    assertTrue(0xffffff00 == unsafe.getInt(address)
                    && 0x000000ff == unsafe.getInt(address + 4),
-                   "Address values tested");
+               "Address values tested");
   }
 
   @Test
@@ -259,15 +255,13 @@ public class UnsafeTest {
     place(c2, address + containerSize);
     Container newC1 = (Container)read(Container.class, address);
     Container newC2 = (Container)read(Container.class, address + containerSize);
-    assertTrue(c1.equals(newC1) && c2.equals(newC2),
-        "Objects are equal" );
+    assertTrue(c1.equals(newC1) && c2.equals(newC2), "Objects are equal");
   }
 
   @Test
   public void testThrowChecked() throws Exception {
-   assertThrows(Exception.class,
-       () -> 
-    throwChecked(), "Throws java.lang.Exception");
+    assertThrows(
+        Exception.class, () -> throwChecked(), "Throws java.lang.Exception");
   }
 
   @Test
@@ -280,8 +274,7 @@ public class UnsafeTest {
     thread.start();
     unsafe.unpark(thread);
     thread.join(100L);
-    assertTrue(run[0],
-        "Set true" );
+    assertTrue(run[0], "Set true");
   }
 
   @Test
@@ -290,8 +283,7 @@ public class UnsafeTest {
     unsafe.putInt(address, 100);
     long otherAddress = unsafe.allocateMemory(4L);
     unsafe.copyMemory(address, otherAddress, 4L);
-    assertEquals(100, unsafe.getInt(otherAddress),
-        "Value equals 100");
+    assertEquals(100, unsafe.getInt(otherAddress), "Value equals 100");
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

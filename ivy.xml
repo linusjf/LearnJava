@@ -104,6 +104,8 @@
           description="tomcat-jsp-api lib jars" />
     <conf name="junit.main"
           description="junit main jars" />
+    <conf name="junit.lib"
+          description="junit lib jars" />
     <conf name="jetty-server.main"
           description="jetty-server main jars" />
     <conf name="jetty-server.lib"
@@ -372,7 +374,7 @@
     <dependency org="org.junit.jupiter" 
       name="junit-jupiter-api" 
       rev="5.7.0-M1"
-    conf="junit.main-&gt;master" />
+      conf="junit.main-&gt;master;junit.lib->compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
