@@ -50,5 +50,6 @@ then
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
       res=$?
 fi
+fi
 set +o noglob
 exit $res
