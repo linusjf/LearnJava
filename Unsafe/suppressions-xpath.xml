@@ -3,6 +3,14 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+<suppress-xpath
+       files="UnsafeTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']"/>
+<suppress-xpath
+       files="UnsafeTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']"/>
   <suppress-xpath files="UnsafeTest.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />

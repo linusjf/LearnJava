@@ -174,9 +174,8 @@ public class UnsafeTest {
     array.freeMemory();
   }
 
-  @Ignore
   @Test
-  public void testCASCounter() throws InterruptedException {
+  public void testCASCounterOrdered() throws InterruptedException {
     int numThreads = 1_000;
     int numIncrements = 10_000;
     ExecutorService service = Executors.newFixedThreadPool(numThreads);
@@ -187,7 +186,45 @@ public class UnsafeTest {
                  -> service.submit(
                      ()
                          -> IntStream.rangeClosed(0, numIncrements - 1)
+                                .forEachOrdered(j -> casCounter.increment())));
+    service.shutdown();
+    service.awaitTermination(1, TimeUnit.MINUTES);
+    assertEquals("Counter has expected value",
+                 numIncrements * numThreads,
+                 casCounter.get());
+  }
+
+  @Test
+  public void testCASCounterParallel() throws InterruptedException {
+    int numThreads = 1_000;
+    int numIncrements = 10_000;
+    ExecutorService service = Executors.newFixedThreadPool(numThreads);
+    CASCounter casCounter = new CASCounter();
+
+    IntStream.rangeClosed(0, numThreads - 1).parallel()
+        .forEach(i
+                 -> service.submit(
+                     ()
+                         -> IntStream.rangeClosed(0, numIncrements - 1)
                                 .forEach(j -> casCounter.increment())));
+    service.shutdown();
+    service.awaitTermination(1, TimeUnit.MINUTES);
+    assertEquals("Counter has expected value",
+                 numIncrements * numThreads,
+                 casCounter.get());
+  }
+  
+  @Test
+  public void testCASCounterClient() throws InterruptedException {
+    int numThreads = 1_000;
+    int numIncrements = 10_000;
+    ExecutorService service = Executors.newFixedThreadPool(numThreads);
+    CASCounter casCounter = new CASCounter();
+
+    IntStream.rangeClosed(0, numThreads - 1)
+        .forEach(i
+                 -> service.submit(
+                     new CounterClient(casCounter, numIncrements)));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
     assertEquals("Counter has expected value",
