@@ -6,11 +6,25 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
 <suppress-xpath
        files="UnsafeTest.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']"/>
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']"/>
 <suppress-xpath
        files="UnsafeTest.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']"/>
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="UnsafeTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']"/>
+<suppress-xpath
+       files="UnsafeTest.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']"/>
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
   <suppress-xpath files="UnsafeTest.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />

@@ -1,6 +1,6 @@
 package unsafe;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -10,9 +10,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import sun.misc.Unsafe;               // NOPMD
 import sun.reflect.ReflectionFactory; // NOPMD
 
@@ -24,7 +24,7 @@ public class UnsafeTest {
 
   private Unsafe unsafe;
 
-  @Before
+  @BeforeAll
   public void prepareUnsafe() throws ReflectiveOperationException {
     unsafe = makeInstance();
   }
@@ -108,7 +108,7 @@ public class UnsafeTest {
   @Test
   public void testRetrieval() throws ReflectiveOperationException {
     Unsafe unsafeObj = fetchInstance();
-    assertNotNull("Unsafe object not null", unsafeObj);
+    assertNotNull(unsafeObj, "Unsafe object not null");
   }
 
   @Test(expected = SecurityException.class)
@@ -121,7 +121,7 @@ public class UnsafeTest {
     ClassWithExpensiveConstructor instance =
         (ClassWithExpensiveConstructor)unsafe.allocateInstance(
             ClassWithExpensiveConstructor.class);
-    assertEquals("Expensive constructor not invoked", 0, instance.getValue());
+    assertEquals(0, instance.getValue(), "Expensive constructor not invoked");
   }
 
   @Test
@@ -133,7 +133,7 @@ public class UnsafeTest {
     silentConstructor.setAccessible(true);
     ClassWithExpensiveConstructor cwec =
         (ClassWithExpensiveConstructor)silentConstructor.newInstance();
-    assertEquals("Constructor not invoked", 0, cwec.getValue());
+    assertEquals(0, cwec.getValue(), "Constructor not invoked");
   }
 
   @Test
@@ -147,19 +147,19 @@ public class UnsafeTest {
     silentConstructor.setAccessible(true);
     ClassWithExpensiveConstructor instance =
         (ClassWithExpensiveConstructor)silentConstructor.newInstance();
-    assertEquals("Constructor invoked", 10, instance.getValue());
+    assertEquals(10, instance.getValue(), "Constructor invoked");
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void testDirectIntArray() throws Exception {
     long maximum = Integer.MAX_VALUE + 1L;
     DirectIntArray directIntArray = new DirectIntArray(maximum);
     directIntArray.setValue(0L, 2);
     directIntArray.setValue(maximum, 1);
-    assertTrue("indexes set",
-               2 == directIntArray.getValue(0L)
-                   && 1 == directIntArray.getValue(maximum));
+    assertTrue(2 == directIntArray.getValue(0L)
+                   && 1 == directIntArray.getValue(maximum),
+                   "indexes set");
     directIntArray.destroy();
   }
 
@@ -170,7 +170,8 @@ public class UnsafeTest {
     OffHeapArray array = new OffHeapArray(maximum);
     array.set(0L, (byte)2);
     array.set(maximum, (byte)1);
-    assertTrue("indexes set", 2 == array.get(0L) && 1 == array.get(maximum));
+    assertTrue(2 == array.get(0L) && 1 == array.get(maximum),
+        "indexes set");
     array.freeMemory();
   }
 
@@ -189,9 +190,10 @@ public class UnsafeTest {
                                 .forEachOrdered(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals("Counter has expected value",
+    assertEquals(
                  numIncrements * numThreads,
-                 casCounter.get());
+                 casCounter.get(),
+                 "Counter has expected value");
   }
 
   @Test
@@ -201,7 +203,8 @@ public class UnsafeTest {
     ExecutorService service = Executors.newFixedThreadPool(numThreads);
     CASCounter casCounter = new CASCounter();
 
-    IntStream.rangeClosed(0, numThreads - 1).parallel()
+    IntStream.rangeClosed(0, numThreads - 1)
+        .parallel()
         .forEach(i
                  -> service.submit(
                      ()
@@ -209,11 +212,12 @@ public class UnsafeTest {
                                 .forEach(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals("Counter has expected value",
+    assertEquals(
                  numIncrements * numThreads,
-                 casCounter.get());
+                 casCounter.get(),
+                 "Counter has expected value");
   }
-  
+
   @Test
   public void testCASCounterClient() throws InterruptedException {
     int numThreads = 1_000;
@@ -222,14 +226,14 @@ public class UnsafeTest {
     CASCounter casCounter = new CASCounter();
 
     IntStream.rangeClosed(0, numThreads - 1)
-        .forEach(i
-                 -> service.submit(
-                     new CounterClient(casCounter, numIncrements)));
+        .forEach(
+            i -> service.submit(new CounterClient(casCounter, numIncrements)));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals("Counter has expected value",
+    assertEquals(
                  numIncrements * numThreads,
-                 casCounter.get());
+                 casCounter.get(),
+                 "Counter has expected value");
   }
 
   @Test
@@ -237,9 +241,10 @@ public class UnsafeTest {
     long address = unsafe.allocateMemory(2L * 4);
     unsafe.setMemory(address, 8L, (byte)0);
     unsafe.putInt(address + 1, 0xffffffff);
-    assertTrue("Address values tested",
+    assertTrue(
                0xffffff00 == unsafe.getInt(address)
-                   && 0x000000ff == unsafe.getInt(address + 4));
+                   && 0x000000ff == unsafe.getInt(address + 4),
+                   "Address values tested");
   }
 
   @Test
@@ -252,7 +257,8 @@ public class UnsafeTest {
     place(c2, address + containerSize);
     Container newC1 = (Container)read(Container.class, address);
     Container newC2 = (Container)read(Container.class, address + containerSize);
-    assertTrue("Objects are equal", c1.equals(newC1) && c2.equals(newC2));
+    assertTrue(c1.equals(newC1) && c2.equals(newC2),
+        "Objects are equal" );
   }
 
   @Test(expected = Exception.class)
@@ -270,7 +276,8 @@ public class UnsafeTest {
     thread.start();
     unsafe.unpark(thread);
     thread.join(100L);
-    assertTrue("Set true", run[0]);
+    assertTrue(run[0],
+        "Set true" );
   }
 
   @Test
@@ -279,7 +286,8 @@ public class UnsafeTest {
     unsafe.putInt(address, 100);
     long otherAddress = unsafe.allocateMemory(4L);
     unsafe.copyMemory(address, otherAddress, 4L);
-    assertEquals("Value equals 100", 100, unsafe.getInt(otherAddress));
+    assertEquals(100, unsafe.getInt(otherAddress),
+        "Value equals 100");
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

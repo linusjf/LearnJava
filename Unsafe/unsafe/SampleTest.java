@@ -1,10 +1,10 @@
 package unsafe;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Constructor;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import sun.misc.Unsafe; // NOPMD
 
 @SuppressWarnings({"PMD.SystemPrintln",
@@ -15,7 +15,7 @@ public class SampleTest {
 
   private Unsafe unsafe;
 
-  @Before
+  @BeforeAll
   public void prepareUnsafe() throws ReflectiveOperationException {
     unsafe = makeInstance();
   }
@@ -40,7 +40,7 @@ public class SampleTest {
     SampleClass sampleClassObject = new SampleClass();
     long address = unsafe.getLong(sampleClassObject, 8L);
     System.out.println(address);
-    assertNotEquals("Address not zero", address, 0L);
+    assertNotEquals(address, 0L,"Address not zero");
   }
 
   @Test
@@ -48,6 +48,6 @@ public class SampleTest {
     SampleClass sampleClassObject = new SampleClass();
     long address = getObjectAddress(sampleClassObject);
     System.out.println(address);
-    assertNotEquals("Address not zero", address, 0L);
+    assertNotEquals(address, 0L, "Address not zero");
   }
 }
