@@ -111,9 +111,11 @@ public class UnsafeTest {
     assertNotNull(unsafeObj, "Unsafe object not null");
   }
 
-  @Test(expected = SecurityException.class)
+  @Test
   public void testSingletonGetter() throws ReflectiveOperationException {
-    Unsafe.getUnsafe();
+    assertThrows(SecurityException
+        .class,() -> Unsafe.getUnsafe(),
+        "Throws java.lang.SecurityException");
   }
 
   @Test
@@ -261,9 +263,11 @@ public class UnsafeTest {
         "Objects are equal" );
   }
 
-  @Test(expected = Exception.class)
+  @Test
   public void testThrowChecked() throws Exception {
-    throwChecked();
+   assertThrows(Exception.class,
+       () -> 
+    throwChecked(), "Throws java.lang.Exception");
   }
 
   @Test
