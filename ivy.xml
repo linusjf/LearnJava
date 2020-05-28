@@ -106,6 +106,10 @@
           description="junit main jars" />
     <conf name="junit.lib"
           description="junit lib jars" />
+    <conf name="junitplatform.main"
+          description="junitplatform main jars" />
+    <conf name="junitplatform.lib"
+          description="junitplatform lib jars" />
     <conf name="jetty-server.main"
           description="jetty-server main jars" />
     <conf name="jetty-server.lib"
@@ -375,6 +379,11 @@
       name="junit-jupiter-api" 
       rev="5.7.0-M1"
       conf="junit.main-&gt;master;junit.lib->compile" />
+    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
+    <dependency org="org.junit.platform" 
+      name="junit-platform-launcher" 
+      rev="1.7.0-M1"
+      conf="junitplatform.main-&gt;master;junitplatform.lib->compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
@@ -549,11 +558,6 @@
                 name="slf4j-nop"
                 rev="2.0.0-alpha1"
                 conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
-    <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
-    <!--  <dependency org="jaxen" 
-      name="jaxen" 
-      rev="1.2.0"
-    conf="jaxen.main-&gt;master;jaxen.lib-&gt;compile;" /> -->
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
                 name="findsecbugs-plugin"
