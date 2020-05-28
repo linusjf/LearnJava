@@ -154,25 +154,25 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jmx</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -184,13 +184,13 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-annotations</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jsp</artifactId>
-      <version>10.0.0.alpha2</version>
+      <version>10.0.0.beta0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -220,13 +220,13 @@
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-core</artifactId>
-      <version>3.16.0</version>
+      <version>3.16.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-symbol-solver-core</artifactId>
-      <version>3.16.0</version>
+      <version>3.16.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
