@@ -42,7 +42,7 @@ public class SampleTest {
     System.out.println(address);
     assertNotEquals("Address not zero", address, 0L);
   }
-  
+
   @Test
   public void testObjectAddress() {
     SampleClass sampleClassObject = new SampleClass();

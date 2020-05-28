@@ -6,6 +6,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -168,6 +172,27 @@ public class UnsafeTest {
     array.set(maximum, (byte)1);
     assertTrue("indexes set", 2 == array.get(0L) && 1 == array.get(maximum));
     array.freeMemory();
+  }
+
+  @Ignore
+  @Test
+  public void testCASCounter() throws InterruptedException {
+    int numThreads = 1_000;
+    int numIncrements = 10_000;
+    ExecutorService service = Executors.newFixedThreadPool(numThreads);
+    CASCounter casCounter = new CASCounter();
+
+    IntStream.rangeClosed(0, numThreads - 1)
+        .forEach(i
+                 -> service.submit(
+                     ()
+                         -> IntStream.rangeClosed(0, numIncrements - 1)
+                                .forEach(j -> casCounter.increment())));
+    service.shutdown();
+    service.awaitTermination(1, TimeUnit.MINUTES);
+    assertEquals("Counter has expected value",
+                 numIncrements * numThreads,
+                 casCounter.get());
   }
 
   @Test
