@@ -45,18 +45,24 @@
   <property file="${LearnJava.basedir}/commons-collections.properties" />
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
-  <!-- Sets variables which can later be used. -->
-  <!-- The value of a property is accessed via ${} -->
-  <!--  <property name="lib.dir"
-            value="${LearnJava.basedir}/lib" />
-  <path id="lib.path.id">
-    <fileset dir="${lib.dir}" />
-  </path> -->
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
            classpath="${antcontrib.cp}"></taskdef>
-  <target name="removeduplicates"
+  <target name="removejunitplatform">
+    <loadfile srcFile="${junitplatform.classpath.file}"
+      property="junitplatform.cp"/>
+    <echo message="${ant.library.dir}"/>
+    <for list="${junitplatform.cp}" delimiter=":"
+      param="jar"
+      parallel="false">
+    <sequential>
+      <echo message="@{jar}"/>
+      <delete file="@{jar}"/>
+    </sequential>
+    </for>
+  </target>
+         <target name="removeduplicates"
           if="file">
     <loadfile srcFile="${file}"
               property="input">
@@ -100,13 +106,15 @@
       </sequential>
     </for>
   </target>
-  <target name="resolve"
+  <target name="resolve" 
           description="--&gt; retrieve dependencies with ivy">
     <first id="ivyfile">
       <fileset dir="${LearnJava.basedir}"
                includes="ivy.xml" />
     </first>
     <ivy:resolve file="${toString:ivyfile}" />
+    <antcall target="removejunitplatform"/>
+    <antcall target="retrievejunitplatform"/>
     <ivy:retrieve pathid="cs.main.path"
                   conf="checkstyle.main" />
     <ivy:retrieve pathid="gformat.main.path"
@@ -187,14 +195,14 @@
                   conf="tomcat-jsp-api.main" />
     <ivy:retrieve pathid="tomcat-jsp-api.lib.path"
                   conf="tomcat-jsp-api.lib" />
-    <ivy:retrieve pathid="junit.main.path"
-                  conf="junit.main" />
-    <ivy:retrieve pathid="junit.lib.path"
-                  conf="junit.lib" />
-    <ivy:retrieve pathid="junitplatform.main.path"
-                  conf="junitplatform.main" />
-    <ivy:retrieve pathid="junitplatform.lib.path"
-                  conf="junitplatform.lib" />
+    <ivy:retrieve 
+      pathid="junit.main.path"
+      conf="junit.main"
+      />
+    <ivy:retrieve 
+      pathid="junit.lib.path"
+      conf="junit.lib"
+      />
     <ivy:retrieve pathid="jetty-server.main.path"
                   conf="jetty-server.main" />
     <ivy:retrieve pathid="jetty-server.lib.path"
@@ -371,8 +379,6 @@
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
     <echo file="${junit.classpath.file}"
           message="${toString:junit.main.path}:${toString:junit.lib.path}" />
-    <echo file="${junitplatform.classpath.file}"
-          message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${jetty.classpath.file}"
           message="${toString:apache-jsp.main.path}:${toString:apache-jsp.lib.path}:${toString:jetty-annotations.main.path}:${toString:jetty-annotations.lib.path}:${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}" />
     <echo file="${checker.classpath.file}"
@@ -445,6 +451,16 @@
           tofile="ivy.bak" />
     <ivy:convertpom pomFile="pom.xml"
                     ivyFile="ivy.xml" />
+  </target>
+  <target name="retrievejunitplatform">
+    <ivy:retrieve pathid="junitplatform.main.path"
+      pattern="${ant.library.dir}/[artifact]-[revision].[ext]" 
+                  conf="junitplatform.main" />
+    <ivy:retrieve pathid="junitplatform.lib.path"
+      pattern="${ant.library.dir}/[artifact]-[revision].[ext]" 
+      conf="junitplatform.lib" />
+    <echo file="${junitplatform.classpath.file}"
+          message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
   </target>
   <target name="makepom">
     <ivy:makepom ivyfile="ivy.xml"
