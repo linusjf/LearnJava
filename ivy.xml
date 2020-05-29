@@ -276,8 +276,8 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-      rev="8.32"
-      transitive="true"
+                rev="8.32"
+                transitive="true"
                 conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
@@ -373,17 +373,17 @@
     <dependency org="org.apache.tomcat"
                 name="tomcat-jsp-api"
                 rev="9.0.35"
-      conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
-      <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-    <dependency org="org.junit.jupiter" 
-      name="junit-jupiter-api" 
-      rev="5.7.0-M1"
-      conf="junit.main-&gt;master;junit.lib->compile" />
+                conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <dependency org="org.junit.jupiter"
+                name="junit-jupiter-api"
+                rev="5.7.0-M1"
+                conf="junit.main-&gt;master;junit.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
-    <dependency org="org.junit.platform" 
-      name="junit-platform-launcher" 
-      rev="1.7.0-M1"
-      conf="junitplatform.main-&gt;master;junitplatform.lib->compile" />
+    <dependency org="org.junit.platform"
+                name="junit-platform-launcher"
+                rev="1.7.0-M1"
+                conf="junitplatform.main-&gt;master;junitplatform.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"

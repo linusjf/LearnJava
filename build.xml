@@ -51,18 +51,19 @@
            classpath="${antcontrib.cp}"></taskdef>
   <target name="removejunitplatform">
     <loadfile srcFile="${junitplatform.classpath.file}"
-      property="junitplatform.cp"/>
-    <echo message="${ant.library.dir}"/>
-    <for list="${junitplatform.cp}" delimiter=":"
-      param="jar"
-      parallel="false">
-    <sequential>
-      <echo message="@{jar}"/>
-      <delete file="@{jar}"/>
-    </sequential>
+              property="junitplatform.cp" />
+    <echo message="${ant.library.dir}" />
+    <for list="${junitplatform.cp}"
+         delimiter=":"
+         param="jar"
+         parallel="false">
+      <sequential>
+        <echo message="@{jar}" />
+        <delete file="@{jar}" />
+      </sequential>
     </for>
   </target>
-         <target name="removeduplicates"
+  <target name="removeduplicates"
           if="file">
     <loadfile srcFile="${file}"
               property="input">
@@ -106,15 +107,15 @@
       </sequential>
     </for>
   </target>
-  <target name="resolve" 
+  <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
     <first id="ivyfile">
       <fileset dir="${LearnJava.basedir}"
                includes="ivy.xml" />
     </first>
     <ivy:resolve file="${toString:ivyfile}" />
-    <antcall target="removejunitplatform"/>
-    <antcall target="retrievejunitplatform"/>
+    <antcall target="removejunitplatform" />
+    <antcall target="retrievejunitplatform" />
     <ivy:retrieve pathid="cs.main.path"
                   conf="checkstyle.main" />
     <ivy:retrieve pathid="gformat.main.path"
@@ -195,14 +196,10 @@
                   conf="tomcat-jsp-api.main" />
     <ivy:retrieve pathid="tomcat-jsp-api.lib.path"
                   conf="tomcat-jsp-api.lib" />
-    <ivy:retrieve 
-      pathid="junit.main.path"
-      conf="junit.main"
-      />
-    <ivy:retrieve 
-      pathid="junit.lib.path"
-      conf="junit.lib"
-      />
+    <ivy:retrieve pathid="junit.main.path"
+                  conf="junit.main" />
+    <ivy:retrieve pathid="junit.lib.path"
+                  conf="junit.lib" />
     <ivy:retrieve pathid="jetty-server.main.path"
                   conf="jetty-server.main" />
     <ivy:retrieve pathid="jetty-server.lib.path"
@@ -454,11 +451,11 @@
   </target>
   <target name="retrievejunitplatform">
     <ivy:retrieve pathid="junitplatform.main.path"
-      pattern="${ant.library.dir}/[artifact]-[revision].[ext]" 
+                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
                   conf="junitplatform.main" />
     <ivy:retrieve pathid="junitplatform.lib.path"
-      pattern="${ant.library.dir}/[artifact]-[revision].[ext]" 
-      conf="junitplatform.lib" />
+                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                  conf="junitplatform.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
   </target>
