@@ -31,6 +31,10 @@
               srcfile="../${spotbugs.classpath.file}" />
     <loadfile property="spotbugs-plugins.cp"
               srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="runclasspath"
+              srcfile="run.cp" />
+    <loadfile property="compileclasspath"
+              srcfile="compile.cp" />
   </target>
   <target name="setupclasspath">
     <description>Run target</description>
@@ -73,7 +77,8 @@
              destdir="${docs.dir}"
              additionalparam="${javadoc.params}"></javadoc>
   </target>
-  <target name="unittests">
+  <target name="unittests"
+          depends="loadclasspath">
     <mkdir dir="${reports.tests}" />
     <junitlauncher printSummary="true">
       <classpath>

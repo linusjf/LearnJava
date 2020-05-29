@@ -1,9 +1,9 @@
 package com.vmlens.tutorialcopyonwrite;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.vmlens.annotation.Interleave;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ConcurrencyTestTwoWrites {
   // Not thread safe address since the write is not guarded by a synchronized
@@ -46,8 +46,8 @@ public class ConcurrencyTestTwoWrites {
     first.join();
     second.join();
     assertEquals(
-        "The two address strings don't match",
+        address.toString(),
         "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222",
-        address.toString());
+        "The two address strings match");
   }
 }

@@ -1,9 +1,9 @@
 package com.vmlens.tutorialcopyonwrite;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.vmlens.annotation.Interleave;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ConcurrencyTestReadWrite {
   // An not thread safe address
@@ -51,10 +51,10 @@ public class ConcurrencyTestReadWrite {
     first.join();
     second.join();
     assertTrue(
-        "readAddress:" + readAddress,
         "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(
             readAddress)
             || "street=Evergreen Terrace,city=Springfield,phoneNumber=456 77 99"
-                   .equals(readAddress));
+                   .equals(readAddress),
+        "readAddress:" + readAddress);
   }
 }
