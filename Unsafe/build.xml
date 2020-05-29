@@ -294,25 +294,24 @@
   <target name="unittests"
           depends="loadclasspath">
     <mkdir dir="${reports.tests}" />
-    <junitlauncher>
+    <junitlauncher printSummary="true">
       <classpath>
-        <pathelement location="${project.class.path}" />
         <pathelement location="${build.dir}" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
-      <testclasses outputdir="${reports.tests}">
+      <testclasses outputdir="${reports.tests}" haltOnFailure="false">
         <fileset dir="${build.dir}">
           <include name="**/SampleTest.class" />
           <include name="**/UnsafeTest.class" />
         </fileset>
-        <listener type="legacy-brief"
-                  sendSysOut="true"
-                  sendSysErr="true" />
+        <listener type="legacy-plain"
+                  sendSysErr="true"
+                  sendSysOut="true" />
         <listener type="legacy-xml"
                   sendSysErr="true"
                   sendSysOut="true" />
-        <fork />
+        <fork timeout="600000" />
       </testclasses>
     </junitlauncher>
   </target>

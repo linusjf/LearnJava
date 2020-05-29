@@ -5,12 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import sun.misc.Unsafe; // NOPMD
 
 @SuppressWarnings({"PMD.SystemPrintln",
                    "PMD.DataflowAnomalyAnalysis",
                    "PMD.LawOfDemeter",
                    "PMD.TooManyMethods"})
+@TestInstance(Lifecycle.PER_CLASS)
 public class SampleTest {
 
   private Unsafe unsafe;

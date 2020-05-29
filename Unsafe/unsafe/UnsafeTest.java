@@ -13,6 +13,8 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import sun.misc.Unsafe;               // NOPMD
 import sun.reflect.ReflectionFactory; // NOPMD
 
@@ -20,6 +22,7 @@ import sun.reflect.ReflectionFactory; // NOPMD
                    "PMD.DataflowAnomalyAnalysis",
                    "PMD.LawOfDemeter",
                    "PMD.TooManyMethods"})
+@TestInstance(Lifecycle.PER_CLASS)
 public class UnsafeTest {
 
   private Unsafe unsafe;
