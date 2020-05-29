@@ -39,11 +39,11 @@ fi
 readExclusions
 set -o noglob
 cd "$proj"
-if [ -s "$fileslist" ]
+if [ -e "$fileslist" ]
 then
   rm ./"$fileslist"
 fi
-if [ -s "$setupcp" ]
+if [ -e "$setupcp" ]
 then
   ./"$setupcp"
   auxCp=$(cat "$auxCpFile")
