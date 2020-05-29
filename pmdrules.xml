@@ -310,11 +310,11 @@
       <property name="closeTargets"
                 value="" />
       <property name="types"
-                value="java.sql.Connection,java.sql.Statement,java.sql.ResultSet" />
+                value="java.lang.AutoCloseable , java.sql.Connection , java.sql.Statement , java.sql.ResultSet" />
       <property name="closeAsDefaultTarget"
                 value="true" />
       <property name="allowedResourceTypes"
-                value="java.io.ByteArrayOutputStream|java.io.StringWriter" />
+                value="java.io.ByteArrayOutputStream | java.io.ByteArrayInputStream | java.io.StringWriter | java.io.CharArrayWriter | java.util.stream.Stream | java.util.stream.IntStream | java.util.stream.LongStream | java.util.stream.DoubleStream" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals" />
