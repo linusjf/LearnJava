@@ -16,10 +16,14 @@ readExclusions()
 declare -r rulesFile="pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"
+declare -r auxCpFile="compile.cp"
+auxCp=""
+declare -r setupcp="setupclasspath"
 declare -r format="text"
 declare -i threads=5
 declare -i minpriority=5
 declare -r classpathFile="pmd.cp"
+pmdCp=$(cat "$classpathFile")
 declare -r mainClass="net.sourceforge.pmd.PMD"
 declare -r exclusionsFile=".exclusions"
 declare -r fileslist="pmdfiles.txt"
@@ -35,17 +39,24 @@ fi
 readExclusions
 set -o noglob
 cd "$proj"
-rm ./"$fileslist"
+if [ -s "$fileslist" ]
+then
+  rm ./"$fileslist"
+fi
+if [ -s "$setupcp" ]
+then
+  ./"$setupcp"
+  auxCp=$(cat "$auxCpFile")
+fi
 find . -type f -regex ".*[.]\(java\|jsp\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
 if [ -s "$fileslist" ]
 then
-      java -cp @../"$classpathFile" \
+  java -cp "$pmdCp":"$auxCp":. \
     "$mainClass" \
     -filelist "$fileslist" -R ../"$rulesFile" -f "$format" \
     -min "$minpriority" -norulesetcompatibility \
     -failOnViolation true -cache "$cacheFile" \
     -reportfile "$errFile" \
-    -auxclasspath . \
     -t "$threads" \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
       res=$?
