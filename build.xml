@@ -200,6 +200,10 @@
                   conf="junit.main" />
     <ivy:retrieve pathid="junit.lib.path"
                   conf="junit.lib" />
+    <ivy:retrieve pathid="junitengine.main.path"
+                  conf="junitengine.main" />
+    <ivy:retrieve pathid="junitengine.lib.path"
+                  conf="junitengine.lib" />
     <ivy:retrieve pathid="jetty-server.main.path"
                   conf="jetty-server.main" />
     <ivy:retrieve pathid="jetty-server.lib.path"
@@ -375,7 +379,7 @@
     <echo file="${ecj.classpath.file}"
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
     <echo file="${junit.classpath.file}"
-          message="${toString:junit.main.path}:${toString:junit.lib.path}" />
+          message="${toString:junit.main.path}:${toString:junit.lib.path}:${toString:junitengine.main.path}:${toString:junitengine.lib.path}" />
     <echo file="${jetty.classpath.file}"
           message="${toString:apache-jsp.main.path}:${toString:apache-jsp.lib.path}:${toString:jetty-annotations.main.path}:${toString:jetty-annotations.lib.path}:${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}" />
     <echo file="${checker.classpath.file}"

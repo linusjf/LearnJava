@@ -294,27 +294,27 @@
   <target name="unittests"
           depends="loadclasspath">
     <mkdir dir="${reports.tests}" />
-    <junit printsummary="withOutAndErr"
-           haltonfailure="no"
-           maxmemory="32m"
-           showOutput="yes">
+    <junitlauncher>
       <classpath>
         <pathelement location="${project.class.path}" />
         <pathelement location="${build.dir}" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
-      <formatter type="plain" />
-      <formatter type="xml" />
-      <batchtest fork="yes"
-                 todir="${reports.tests}"
-                 skipNonTests="true">
-        <fileset dir="${src.dir}">
-          <include name="**/UnsafeTest.java" />
-          <include name="**/SampleTest.java" />
+      <testclasses outputdir="${reports.tests}">
+        <fileset dir="${build.dir}">
+          <include name="**/SampleTest.class" />
+          <include name="**/UnsafeTest.class" />
         </fileset>
-      </batchtest>
-    </junit>
+        <listener type="legacy-brief"
+                  sendSysOut="true"
+                  sendSysErr="true" />
+        <listener type="legacy-xml"
+                  sendSysErr="true"
+                  sendSysOut="true" />
+        <fork />
+      </testclasses>
+    </junitlauncher>
   </target>
   <target name="main"
           depends="loadclasspath,compile, pmd, spotbugs,jar,docs">
