@@ -75,23 +75,26 @@
   </target>
   <target name="unittests">
     <mkdir dir="${reports.tests}" />
-    <junit printsummary="yes"
-           haltonfailure="yes">
+    <junitlauncher printSummary="true">
       <classpath>
-        <pathelement location="${project.class.path}" />
-        <pathelement path="${junit.cp}" />
         <pathelement location="${build.dir}" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
-      <formatter type="plain" />
-      <formatter type="xml" />
-      <batchtest fork="yes"
-                 todir="${reports.tests}">
-        <fileset dir="${src.dir}">
-          <include name="**/com/vmlens/**/*Test*.java" />
+      <testclasses outputdir="${reports.tests}"
+                   haltOnFailure="false">
+        <fileset dir="${build.dir}">
+          <include name="**/com/vmlens/**/*Test*.class" />
         </fileset>
-      </batchtest>
-    </junit>
+        <listener type="legacy-plain"
+                  sendSysErr="true"
+                  sendSysOut="true" />
+        <listener type="legacy-xml"
+                  sendSysErr="true"
+                  sendSysOut="true" />
+        <fork timeout="600000" />
+      </testclasses>
+    </junitlauncher>
   </target>
   <target name="manifest">
     <tstamp />
