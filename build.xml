@@ -63,6 +63,27 @@
       </sequential>
     </for>
   </target>
+  <target name="removecpjars" if="cpfiles">
+    <for list="${cpfiles}"
+         delimiter=","
+         param="cpfile"
+         parallel="false">
+      <sequential>
+        <echo message="@{cpfile}" />
+    <loadfile srcFile="@{cpfile}"
+              property="cp" />
+    <for list="${cp}"
+         delimiter=":"
+         param="jar"
+         parallel="false">
+      <sequential>
+        <echo message="@{jar}" />
+        <delete file="@{jar}" />
+      </sequential>
+      </for>
+      </sequential>
+    </for>
+  </target>
   <target name="removeduplicates"
           if="file">
     <loadfile srcFile="${file}"
