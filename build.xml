@@ -45,24 +45,11 @@
   <property file="${LearnJava.basedir}/commons-collections.properties" />
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
+  <property name="cpfiles" value=""/>
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
            classpath="${antcontrib.cp}"></taskdef>
-  <target name="removejunitplatform">
-    <loadfile srcFile="${junitplatform.classpath.file}"
-              property="junitplatform.cp" />
-    <echo message="${ant.library.dir}" />
-    <for list="${junitplatform.cp}"
-         delimiter=":"
-         param="jar"
-         parallel="false">
-      <sequential>
-        <echo message="@{jar}" />
-        <delete file="@{jar}" />
-      </sequential>
-    </for>
-  </target>
   <target name="removecpjars" if="cpfiles">
     <for list="${cpfiles}"
          delimiter=","
@@ -71,8 +58,9 @@
       <sequential>
         <echo message="@{cpfile}" />
     <loadfile srcFile="@{cpfile}"
-              property="cp" />
-    <for list="${cp}"
+      property="@{cpfile}" />
+    <echo message="${@{cpfile}}" />
+    <for list="${@{cpfile}}"
          delimiter=":"
          param="jar"
          parallel="false">
@@ -135,8 +123,10 @@
                includes="ivy.xml" />
     </first>
     <ivy:resolve file="${toString:ivyfile}" />
-    <antcall target="removejunitplatform" />
-    <antcall target="retrievejunitplatform" />
+    <antcall target="removecpjars" >
+          <param name="cpfiles"
+            value="${cpfiles}" />
+    </antcall>
     <ivy:retrieve pathid="cs.main.path"
                   conf="checkstyle.main" />
     <ivy:retrieve pathid="gformat.main.path"
@@ -381,6 +371,14 @@
                   conf="guava.lib" />
     <ivy:retrieve pathid="commons-collections.main.path"
                   conf="commons-collections.main" />
+    <ivy:retrieve pathid="junitplatform.main.path"
+                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                  conf="junitplatform.main" />
+    <ivy:retrieve pathid="junitplatform.lib.path"
+                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                  conf="junitplatform.lib" />
+    <echo file="${junitplatform.classpath.file}"
+          message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
           message="${toString:cs.main.path}:${toString:cs.lib.path}" />
     <echo file="${gformat.classpath.file}"
@@ -473,16 +471,6 @@
           tofile="ivy.bak" />
     <ivy:convertpom pomFile="pom.xml"
                     ivyFile="ivy.xml" />
-  </target>
-  <target name="retrievejunitplatform">
-    <ivy:retrieve pathid="junitplatform.main.path"
-                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
-                  conf="junitplatform.main" />
-    <ivy:retrieve pathid="junitplatform.lib.path"
-                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
-                  conf="junitplatform.lib" />
-    <echo file="${junitplatform.classpath.file}"
-          message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
   </target>
   <target name="makepom">
     <ivy:makepom ivyfile="ivy.xml"
