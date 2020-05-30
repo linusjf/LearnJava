@@ -46,7 +46,6 @@
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
-  <property name="cpfiles" value=""/>
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
