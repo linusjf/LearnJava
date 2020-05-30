@@ -45,6 +45,7 @@
   <property file="${LearnJava.basedir}/commons-collections.properties" />
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
+  <property file="${LearnJava.basedir}/cpfiles.properties" />
   <property name="cpfiles" value=""/>
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
