@@ -473,7 +473,7 @@
   <target name="report"
           depends="resolve"
           description="--&gt; generates a report of dependencies">
-    <ivy:report todir="." />
+  <ivy:report graph="true" dot="true" xml="true" />
   </target>
   <target name="cpd">
     <loadfile property="pmd.cp"

@@ -21,6 +21,7 @@
 *.log*
 *docs*
 *reporttests*
+*ivyreports*
 Webapps/target/**/*.*
 Webapps/target/**/*.*
 Webapps/webapp/**/*.*
