@@ -37,7 +37,7 @@ public final class BCryptConstants {
       0x3f84d5b5,
       0xb5470917,
       0x9216d5d9,
-      0x8979fb1b,
+      0x8979fb1b
   };
 
   // clang-format off
@@ -213,7 +213,7 @@ public final class BCryptConstants {
     0x38abbd60, 0x2547adf0, 0xba38209c, 0xf746ce76, 0x77afa1c5, 0x20756060,
     0x85cbfe4e, 0x8ae88dd8, 0x7aaaf9b0, 0x4cf9aa7e, 0x1948c25c, 0x02fb8a8c,
     0x01c36ae4, 0xd6ebe1f9, 0x90d4f869, 0xa65cdea0, 0x3f09252d, 0xc208e69f,
-    0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6,
+    0xb74e6132, 0xce77e25b, 0x578fdfe3, 0x3ac372e6
   };
 
   // clang-format on
@@ -225,7 +225,7 @@ public final class BCryptConstants {
       0x65686f6c,
       0x64657253,
       0x63727944,
-      0x6f756274,
+      0x6f756274
   };
 
   private BCryptConstants() {

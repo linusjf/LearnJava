@@ -44,8 +44,7 @@ public final class EncryptorFacade {
     SHA512SALTED,
     SCRYPT,
     BCRYPT,
-    PBKDF,
-    ;
+    PBKDF;
   }
 
   private static final Map<EncryptionType, Supplier<Encrypt>>
