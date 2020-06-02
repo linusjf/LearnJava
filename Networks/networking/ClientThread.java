@@ -14,7 +14,6 @@ class ClientThread extends Thread {
   private PrintWriter output;
 
   ClientThread(Socket socket, Resource resource) {
-    super();
     client = socket;
     item = resource;
     try {

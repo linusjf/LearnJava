@@ -142,7 +142,6 @@ public final class Ping {
     List<Target> pending = new LinkedList<>();
 
     Printer() {
-      super();
       setName("Printer");
       setDaemon(true);
     }
@@ -194,7 +193,6 @@ public final class Ping {
     List<Target> pending = new LinkedList<>();
 
     Connector(Printer pr) throws IOException {
-      super();
       printer = pr;
       sel = Selector.open();
       setName("Connector");

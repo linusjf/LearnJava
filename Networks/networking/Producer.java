@@ -7,7 +7,6 @@ class Producer extends Thread {
   private final Random random = new Random();
 
   Producer(Resource resource) {
-    super();
     item = resource;
   }
 

@@ -31,7 +31,7 @@ public enum PersonnelServer {
     Personnel[] staff = {
       new Personnel(123_456, "Smith", "John"),
       new Personnel(234_567, "Jones", "Sally Ann"),
-      new Personnel(999_999, "Black", "James Paul"),
+      new Personnel(999_999, "Black", "James Paul")
     };
 
     // clang-format on

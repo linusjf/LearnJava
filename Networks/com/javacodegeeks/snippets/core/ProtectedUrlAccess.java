@@ -49,12 +49,10 @@ public final class ProtectedUrlAccess {
     private final String password;
 
     public CustomAuthenticator(String randomString) {
-      super();
       this.password = randomString;
     }
 
     public CustomAuthenticator() {
-      super();
       this.password = String.valueOf(Math.random());
     }
 

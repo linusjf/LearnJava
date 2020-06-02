@@ -31,7 +31,7 @@ public final class TimeServer {
               (byte)((secondsSince1900 & 0x00000000FF000000L) >> 24),
               (byte)((secondsSince1900 & 0x0000000000FF0000L) >> 16),
               (byte)((secondsSince1900 & 0x000000000000FF00L) >> 8),
-              (byte)(secondsSince1900 & 0x00000000000000FFL),
+              (byte)(secondsSince1900 & 0x00000000000000FFL)
           };
           out.write(time);
           out.flush();

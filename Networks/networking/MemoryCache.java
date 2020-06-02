@@ -20,7 +20,6 @@ public class MemoryCache extends ResponseCache {
   }
 
   public MemoryCache(int maxEntries) {
-    super();
     this.maxEntries = maxEntries;
   }
 

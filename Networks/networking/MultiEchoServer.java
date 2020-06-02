@@ -45,7 +45,6 @@ public enum MultiEchoServer {
     private PrintWriter output;
 
     ClientHandler(Socket socket) {
-      super();
       // Set up reference to associated socket…
       client = socket;
       try {

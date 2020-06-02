@@ -41,7 +41,7 @@ public enum DaytimeUDPClient {
         "tock.usno.navy.mil",
         "ntp2.usno.navy.mil",
         "tick.usnogps.navy.mil",
-        "tock.usnogps.navy.mil",
+        "tock.usnogps.navy.mil"
       };
 
   // clang-format on
