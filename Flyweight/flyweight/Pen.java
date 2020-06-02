@@ -11,8 +11,7 @@ public interface Pen {
   enum BrushSize {
     THIN,
     MEDIUM,
-    THICK,
-    ;
+    THICK;
   }
 
   /**
