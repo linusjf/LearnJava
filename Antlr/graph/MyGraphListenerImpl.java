@@ -6,7 +6,7 @@ public class MyGraphListenerImpl extends GraphBaseListener {
   Graph g;
 
   public MyGraphListenerImpl(Graph g) {
-    super();
+
     this.g = g;
   }
 
