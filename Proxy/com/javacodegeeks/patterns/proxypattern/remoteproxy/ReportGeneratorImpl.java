@@ -13,7 +13,8 @@ import java.util.Date;
  * @author <a href="mailto:root@localhost"></a>
  * @version 1.0
  */
-public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGenerator {
+public class ReportGeneratorImpl
+    extends UnicastRemoteObject implements ReportGenerator {
   private static final long serialVersionUID = 3107413009881629428L;
 
   private static Registry registry;
@@ -32,7 +33,6 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
    * @exception RemoteException if an error occurs
    */
   protected ReportGeneratorImpl() throws RemoteException {
-    super();
   }
 
   @Override
@@ -51,7 +51,8 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
         .append(System.lineSeparator())
         .append(" Net Profit: $1985")
         .append(System.lineSeparator())
-        .append("***************************************************************");
+        .append(
+            "***************************************************************");
     return sb.toString();
   }
 
@@ -68,7 +69,8 @@ public class ReportGeneratorImpl extends UnicastRemoteObject implements ReportGe
     try {
       ReportGeneratorImpl reportGenerator = new ReportGeneratorImpl();
       // Bind the remote object's stub in the registry
-      if (registry == null) getRegistry();
+      if (registry == null)
+        getRegistry();
       registry.bind("PizzaCoRemoteGenerator", reportGenerator);
     } catch (RemoteException | AlreadyBoundException e) {
       System.out.println(e.getMessage());

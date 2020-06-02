@@ -25,7 +25,8 @@ public class Employee implements Staff {
    * @return a <code>String</code> value
    */
   public String generateDailyReport() {
-    if (reportGenerator == null) return "";
+    if (reportGenerator == null)
+      return "";
     return reportGenerator.generateDailyReport();
   }
 }

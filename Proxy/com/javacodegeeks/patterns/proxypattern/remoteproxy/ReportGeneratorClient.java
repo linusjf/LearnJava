@@ -16,7 +16,7 @@ public class ReportGeneratorClient {
 
   public ReportGeneratorClient() throws RemoteException, NotBoundException {
     Registry registry = LocateRegistry.getRegistry(null);
-    stub = (ReportGenerator) registry.lookup("PizzaCoRemoteGenerator");
+    stub = (ReportGenerator)registry.lookup("PizzaCoRemoteGenerator");
   }
 
   /**

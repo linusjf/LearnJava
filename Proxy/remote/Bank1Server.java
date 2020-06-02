@@ -21,14 +21,15 @@ public final class Bank1Server {
       new Account(111_111, "Smith", "Fred James", 112.58),
       new Account(222_222, "Jones", "Sally", 507.85),
       new Account(234_567, "White", "Mary Jane", 2345.00),
-      new Account(666_666, "Satan", "Beelzebub", 666.00),
+      new Account(666_666, "Satan", "Beelzebub", 666.00)
     };
 
     // clang-format on
     List<Account> acctDetails = new ArrayList<>();
 
     // Insert the Account objects into the ArrayList …
-    for (Account acct : account) acctDetails.add(acct);
+    for (Account acct: account)
+      acctDetails.add(acct);
     try {
       // Create an implementation object, passing the
       // above ArrayList to the constructor…

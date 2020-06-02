@@ -14,7 +14,6 @@ public class Bank1Impl extends UnicastRemoteObject implements Bank1 {
   // The constructor must be supplied with an ArrayList
   // of Account objects…
   public Bank1Impl(List<Account> acctVals) throws RemoteException {
-    super();
     acctInfo = acctVals;
   }
 
