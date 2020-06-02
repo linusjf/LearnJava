@@ -15,7 +15,8 @@ public enum ListingRecur {
   private static final int RECURSION_COUNT = 5;
   private static int loopCount;
 
-  @SuppressWarnings({"PMD.DoubleBraceInitialization", "PMD.LawOfDemeter"})
+  @SuppressWarnings({"checkstyle:avoiddoublebraceinitialization",
+  "PMD.DoubleBraceInitialization", "PMD.LawOfDemeter"})
   public static void main(String... args) {
     try {
       List<String> list = Arrays.asList(new String[] {FOO, BAR});

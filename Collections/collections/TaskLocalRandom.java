@@ -22,7 +22,7 @@ public class TaskLocalRandom implements Runnable {
     Thread[] threads = {
         new Thread(new TaskLocalRandom()),
         new Thread(new TaskLocalRandom()),
-        new Thread(new TaskLocalRandom()),
+        new Thread(new TaskLocalRandom())
     };
     ThreadLocalRandom tlr = ThreadLocalRandom.current();
     for (Thread t : threads) t.setPriority(tlr.nextInt(10) + 1);
