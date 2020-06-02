@@ -6,7 +6,6 @@ public class AddressValue {
   private final String phoneNumber;
 
   public AddressValue(String street, String city, String phoneNumber) {
-    super();
     this.street = street;
     this.city = city;
     this.phoneNumber = phoneNumber;

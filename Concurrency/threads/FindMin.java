@@ -13,7 +13,6 @@ public class FindMin extends RecursiveTask<Integer> {
 
   @SuppressWarnings("PMD.ArrayIsStoredDirectly")
   public FindMin(int[] numbers, int startIndex, int endIndex) {
-    super();
     this.numbers = numbers;
     this.startIndex = startIndex;
     this.endIndex = endIndex;

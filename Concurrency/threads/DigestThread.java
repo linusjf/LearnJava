@@ -16,7 +16,6 @@ public class DigestThread extends Thread {
   private final String filename;
 
   public DigestThread(String filename) {
-    super();
     this.filename = filename;
   }
 

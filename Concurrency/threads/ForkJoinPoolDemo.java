@@ -91,7 +91,6 @@ public enum ForkJoinPoolDemo {
     private final double increment;
 
     Task(List<Product> products, int first, int last, double increment) {
-      super();
       this.products = products;
       this.first = first;
       this.last = last;

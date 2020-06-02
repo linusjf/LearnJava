@@ -60,7 +60,6 @@ public enum AsynchronousExample {
     private final String extension;
 
     FolderProcessor(String path, String extension) {
-      super();
       this.path = path;
       this.extension = extension;
     }

@@ -14,7 +14,7 @@ public class ReturnDigest extends Thread {
   private byte[] digest = new byte[0];
 
   public ReturnDigest(String filename) {
-    super();
+
     this.filename = filename;
   }
 

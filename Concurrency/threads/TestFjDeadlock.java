@@ -36,7 +36,7 @@ public final class TestFjDeadlock {
     final int end;
 
     RecursiveIterate(final int start, final int end) {
-      super();
+
       this.start = start;
       this.end = end;
     }

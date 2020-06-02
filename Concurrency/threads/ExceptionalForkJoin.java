@@ -35,7 +35,6 @@ public enum ExceptionalForkJoin {
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     Task(int[] array, int start, int end) {
-      super();
       this.array = array;
       this.start = start;
       this.end = end;

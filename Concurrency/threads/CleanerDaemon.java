@@ -12,10 +12,7 @@ public enum CleanerDaemon {
     Deque<Event> deque = new ArrayDeque<>();
     WriterTask writer = new WriterTask(deque);
     Thread[] threads = {
-        new Thread(writer),
-        new Thread(writer),
-        new Thread(writer),
-    };
+        new Thread(writer), new Thread(writer), new Thread(writer)};
     for (Thread t: threads)
       t.start();
     CleanerTask cleaner = new CleanerTask(deque);
@@ -74,7 +71,6 @@ public enum CleanerDaemon {
     private final Deque<Event> deque;
 
     CleanerTask(Deque<Event> deque) {
-      super();
       this.deque = deque;
       setDaemon(true);
     }

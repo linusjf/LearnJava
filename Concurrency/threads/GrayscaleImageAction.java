@@ -16,7 +16,7 @@ public class GrayscaleImageAction extends RecursiveAction {
   private final transient BufferedImage bufferedImage;
 
   public GrayscaleImageAction(int row, BufferedImage bufferedImage) {
-    super();
+
     this.row = row;
     this.bufferedImage = bufferedImage;
   }

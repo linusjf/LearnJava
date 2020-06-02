@@ -7,7 +7,6 @@ public class BlockingThread extends Thread {
   private boolean throwableThrown;
 
   public BlockingThread(SimpleBlockingQueue<?> queue) {
-    super();
     this.queue = queue;
   }
 

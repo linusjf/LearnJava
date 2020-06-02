@@ -51,18 +51,16 @@ public enum ForkJoinResultDemo {
   }
 
   static class DocumentMock {
-    private final String[] words = {
-        "the",
-        "hello",
-        "goodbye",
-        "packt",
-        "java",
-        "thread",
-        "pool",
-        "random",
-        "class",
-        "main",
-    };
+    private final String[] words = {"the",
+                                    "hello",
+                                    "goodbye",
+                                    "packt",
+                                    "java",
+                                    "thread",
+                                    "pool",
+                                    "random",
+                                    "class",
+                                    "main"};
 
     @SuppressWarnings({"PMD.AvoidArrayLoops",
                        "PMD.DataflowAnomalyAnalysis",
@@ -98,7 +96,7 @@ public enum ForkJoinResultDemo {
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     DocumentTask(String[][] document, int start, int end, String word) {
-      super();
+
       this.document = document;
       this.start = start;
       this.end = end;
@@ -161,7 +159,7 @@ public enum ForkJoinResultDemo {
 
     @SuppressWarnings("PMD.ArrayIsStoredDirectly")
     LineTask(String[] line, int start, int end, String word) {
-      super();
+
       this.line = line;
       this.start = start;
       this.end = end;

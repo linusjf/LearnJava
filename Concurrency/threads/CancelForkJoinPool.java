@@ -79,7 +79,6 @@ public enum CancelForkJoinPool {
                      int end,
                      int number,
                      TaskManager manager) {
-      super();
       this.numbers = numbers;
       this.start = start;
       this.end = end;

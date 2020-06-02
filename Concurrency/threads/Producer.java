@@ -43,12 +43,10 @@ public class Producer implements Runnable {
 
   @Override
   public void run() {
-    String[] importantInfo = {
-        "Mares eat oats",
-        "Does eat oats",
-        "Little lambs eat ivy",
-        "A kid will eat ivy too",
-    };
+    String[] importantInfo = {"Mares eat oats",
+                              "Does eat oats",
+                              "Little lambs eat ivy",
+                              "A kid will eat ivy too"};
 
     for (String info: importantInfo) {
       drop.put(info);

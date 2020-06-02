@@ -98,12 +98,10 @@ public enum SimpleThreads {
   private static class MessageLoop implements Runnable {
     @Override
     public void run() {
-      String[] importantInfo = {
-          "Mares eat oats",
-          "Does eat oats",
-          "Little lambs eat ivy",
-          "A kid will eat ivy too",
-      };
+      String[] importantInfo = {"Mares eat oats",
+                                "Does eat oats",
+                                "Little lambs eat ivy",
+                                "A kid will eat ivy too"};
       try {
         for (String info: importantInfo) {
           // Pause for 4 seconds
