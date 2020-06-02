@@ -69,6 +69,5 @@ public enum TestClassNames {
 enum SomeEnum {
   BLUE,
   YELLOW,
-  RED,
-  ;
+  RED;
 }
