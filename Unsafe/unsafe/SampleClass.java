@@ -9,7 +9,6 @@ public final class SampleClass extends SampleBaseClass {
   private long l = 10;
 
   public SampleClass() {
-    super();
     // empty constructor
   }
 

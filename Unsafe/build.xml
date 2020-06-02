@@ -300,7 +300,8 @@
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
-      <testclasses outputdir="${reports.tests}" haltOnFailure="false">
+      <testclasses outputdir="${reports.tests}"
+                   haltOnFailure="false">
         <fileset dir="${build.dir}">
           <include name="**/SampleTest.class" />
           <include name="**/UnsafeTest.class" />
