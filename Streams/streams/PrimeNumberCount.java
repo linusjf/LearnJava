@@ -21,15 +21,17 @@ public final class PrimeNumberCount {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public void count(int range) {
-    final long count =
-        IntStream.range(1, range).parallel().filter(number -> isPrime(number)).count();
+    final long count = IntStream.range(1, range)
+                           .parallel()
+                           .filter(number -> isPrime(number))
+                           .count();
     System.out.println("Count - " + count);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public boolean isPrime(final int number) {
     return number > 1
-        && IntStream.rangeClosed(2, (int) Math.sqrt(number))
-            .noneMatch(divisor -> number % divisor == 0);
+        && IntStream.rangeClosed(2, (int)Math.sqrt(number))
+               .noneMatch(divisor -> number % divisor == 0);
   }
 }

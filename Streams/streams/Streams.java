@@ -17,8 +17,7 @@ public enum Streams {
   // clang-format off
   private enum Status {
     OPEN,
-    CLOSED
-    ;
+    CLOSED;
   }
 
   // clang-format on
@@ -39,8 +38,10 @@ public enum Streams {
     System.out.println("Total points: " + totalPointsOfOpenTasks);
 
     // Calculate total points of all tasks
-    final double totalPoints =
-        tasks.stream().parallel().map(task -> task.getPoints()).reduce(0, Integer::sum);
+    final double totalPoints = tasks.stream()
+                                   .parallel()
+                                   .map(task -> task.getPoints())
+                                   .reduce(0, Integer::sum);
 
     // or map( Task::getPoints )
     System.out.println("Total points (all tasks): " + totalPoints);
@@ -57,7 +58,7 @@ public enum Streams {
             .asLongStream()
             .mapToDouble(points -> points / totalPoints)
             .boxed()
-            .mapToLong(weigth -> (long) (weigth * 100))
+            .mapToLong(weigth -> (long)(weigth * 100))
             .mapToObj(percentage -> percentage + "%")
             .collect(Collectors.toList());
 
@@ -65,7 +66,8 @@ public enum Streams {
     System.out.println(result);
     final Path path = new File("build.xml").toPath();
     try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
-      lines.onClose(() -> System.out.println("Done!")).forEach(System.out::println);
+      lines.onClose(() -> System.out.println("Done!"))
+          .forEach(System.out::println);
     } catch (java.io.IOException ioe) {
       System.err.println(ioe);
     }

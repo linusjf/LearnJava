@@ -8,7 +8,6 @@ public class DeliveryContext {
   private String packageId;
 
   public DeliveryContext(PackageState currentState, String packageId) {
-    super();
     this.currentState = currentState;
     this.packageId = packageId;
 

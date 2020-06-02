@@ -6,9 +6,9 @@ Main-Class: gen.GenChars
 
 Name: common
 Specification-Title: Streams
-Specification-Version: 2.2.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: f6bf1d1e January 4 2020
+Implementation-Version: 765f6f29 June 2 2020
 Implementation-Vendor: 
 
