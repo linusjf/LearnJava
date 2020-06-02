@@ -12,8 +12,7 @@ public enum SuspiciousSort {
     ASCENDING,
     DESCENDING,
     CONSTANT,
-    UNORDERED,
-    ;
+    UNORDERED;
   }
 
   private static final Random RANDOM = new Random();

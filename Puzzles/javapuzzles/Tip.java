@@ -17,7 +17,6 @@ public enum Tip {
     protected int y = 5;
 
     Point() {
-      super();
     }
 
     Point(int x, int y) {

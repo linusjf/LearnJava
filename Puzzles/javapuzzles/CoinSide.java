@@ -20,7 +20,6 @@ final class Heads extends CoinSide {
   public static final Heads INSTANCE = new Heads();
 
   private Heads() {
-    super();
   }
 
   @Override
@@ -34,7 +33,6 @@ final class Tails extends CoinSide {
   public static final Tails INSTANCE = new Tails();
 
   private Tails() {
-    super();
   }
 
   @Override

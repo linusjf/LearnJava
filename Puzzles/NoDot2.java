@@ -6,6 +6,7 @@
                    "checkstyle:magicnumber",
                    "checkstyle:regexp",
                    "checkstyle:emptyblock",
+                   "checkstyle:avoiddoublebraceinitialization",
                    "PMD.NoPackage",
                    "PMD.CompareObjectsWithEquals",
                    "PMD.DoubleBraceInitialization",
