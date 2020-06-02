@@ -17,7 +17,7 @@ public enum Streams {
   // clang-format off
   private enum Status {
     OPEN,
-    CLOSED,
+    CLOSED
     ;
   }
 
