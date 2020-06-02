@@ -22,7 +22,7 @@ public enum DHHelper {
         'C',
         'D',
         'E',
-        'F',
+        'F'
     };
     int high = (b & 0xf0) >> 4;
     int low = b & 0x0f;
