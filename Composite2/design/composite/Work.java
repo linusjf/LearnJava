@@ -21,7 +21,7 @@ public class Work {
    * @param work list of tasks
    */
   public Work(Calculator workType, List<String> work) {
-    super();
+
     this.workType = workType;
     this.jobs = work;
   }
@@ -85,7 +85,11 @@ public class Work {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder(46);
-    builder.append("Work [workType=").append(workType).append(", work=").append(jobs).append(']');
+    builder.append("Work [workType=")
+        .append(workType)
+        .append(", work=")
+        .append(jobs)
+        .append(']');
     return builder.toString();
   }
 }

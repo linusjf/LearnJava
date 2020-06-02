@@ -19,7 +19,7 @@ public class HtmlElement extends HtmlTag {
    * @param tagName a <code>String</code> value
    */
   public HtmlElement(String tagName) {
-    super();
+
     this.tagName = tagName;
     this.tagBody = "";
     this.startTag = "";

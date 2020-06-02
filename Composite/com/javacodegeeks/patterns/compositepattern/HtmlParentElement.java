@@ -21,7 +21,7 @@ public class HtmlParentElement extends HtmlTag {
    * @param tagName a <code>String</code> value
    */
   public HtmlParentElement(String tagName) {
-    super();
+
     this.tagName = tagName;
     this.startTag = "";
     this.endTag = "";
@@ -62,7 +62,8 @@ public class HtmlParentElement extends HtmlTag {
   @SuppressWarnings("PMD.SystemPrintln")
   public void generateHtml() {
     System.out.println(startTag);
-    for (HtmlTag tag : childrenTag) tag.generateHtml();
+    for (HtmlTag tag: childrenTag)
+      tag.generateHtml();
     System.out.println(endTag);
   }
 }
