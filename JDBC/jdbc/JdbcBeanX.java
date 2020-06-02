@@ -32,7 +32,6 @@ public class JdbcBeanX {
     private static final long serialVersionUID = 1L;
 
     JdbcBeanException() {
-      super();
     }
 
     JdbcBeanException(String message) {
