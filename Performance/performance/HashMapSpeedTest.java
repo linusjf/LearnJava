@@ -52,7 +52,7 @@ public class HashMapSpeedTest {
         {new FastHashMap(SIZE), "SIZE"},
         {new TreeMap<String, Object>(), ""},
         {Maps.newHashMap(), ""},
-        {new FastTreeMap(), ""},
+        {new FastTreeMap(), ""}
     };
   }
 
