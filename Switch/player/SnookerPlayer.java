@@ -2,7 +2,6 @@ package player;
 
 public class SnookerPlayer extends Player {
   public SnookerPlayer() {
-    super();
     type = Type.SNOOKER;
   }
 
