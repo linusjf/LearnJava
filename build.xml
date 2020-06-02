@@ -50,25 +50,26 @@
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
            classpath="${antcontrib.cp}"></taskdef>
-  <target name="removecpjars" if="cpfiles">
+  <target name="removecpjars"
+          if="cpfiles">
     <for list="${cpfiles}"
          delimiter=","
          param="cpfile"
          parallel="false">
       <sequential>
         <echo message="@{cpfile}" />
-    <loadfile srcFile="@{cpfile}"
-      property="@{cpfile}" />
-    <echo message="${@{cpfile}}" />
-    <for list="${@{cpfile}}"
-         delimiter=":"
-         param="jar"
-         parallel="false">
-      <sequential>
-        <echo message="@{jar}" />
-        <delete file="@{jar}" />
-      </sequential>
-      </for>
+        <loadfile srcFile="@{cpfile}"
+                  property="@{cpfile}" />
+        <echo message="${@{cpfile}}" />
+        <for list="${@{cpfile}}"
+             delimiter=":"
+             param="jar"
+             parallel="false">
+          <sequential>
+            <echo message="@{jar}" />
+            <delete file="@{jar}" />
+          </sequential>
+        </for>
       </sequential>
     </for>
   </target>
@@ -123,9 +124,9 @@
                includes="ivy.xml" />
     </first>
     <ivy:resolve file="${toString:ivyfile}" />
-    <antcall target="removecpjars" >
-          <param name="cpfiles"
-            value="${cpfiles}" />
+    <antcall target="removecpjars">
+      <param name="cpfiles"
+             value="${cpfiles}" />
     </antcall>
     <ivy:retrieve pathid="cs.main.path"
                   conf="checkstyle.main" />
@@ -482,7 +483,9 @@
   <target name="report"
           depends="resolve"
           description="--&gt; generates a report of dependencies">
-  <ivy:report graph="true" dot="true" xml="true" />
+    <ivy:report graph="true"
+                dot="true"
+                xml="true" />
   </target>
   <target name="cpd">
     <loadfile property="pmd.cp"
@@ -544,7 +547,7 @@
          ================================= -->
   <target name="clean-lib"
           description="--&gt; clean the lib directory">
-  <delete dir="${LearnJava.basedir}/lib" />
+    <delete dir="${LearnJava.basedir}/lib" />
   </target>
   <!-- =================================
           target: clean-cache

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<project name="Networks"
+<project name="Antlr"
          default="main"
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="${cs.properties}" />
-  <property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <!-- Sets variables which can later be used. -->
@@ -18,26 +18,26 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runclasspath"
+              srcFile="${run.cp}" />
+  </target>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
       <fileset dir="."
-               includes="**/*.class,**/*.gif,**/*.png,**/*.au,**/*.out" />
+               includes="**/*.class" />
     </delete>
     <delete dir="${docs.dir}" />
     <delete dir="${dist.dir}" />
@@ -49,21 +49,23 @@
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
-          depends="clean, makedir,format,checkstyle">
+          depends="loadclasspath,clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
   <target name="docs"
-          depends="compile">
+          depends="loadclasspath,compile">
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -96,343 +98,493 @@
   </target>
   <!--Creates the deployable jar file  -->
   <target name="jar"
-          depends="compile,manifest">
+          depends="loadclasspath,compile,manifest">
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run">
+  <target name="setupclasspath">
     <description>Run target</description>
-    <java classname="${main.class}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class1}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class2}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class4}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class3}">
-      <arg line="127.0.0.1 192.168.254.32 www.oreilly.com 224.0.2.1 FF01:0:0:0:0:0:0:1 FF05:0:0:0:0:0:0:101 0::1" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class5}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class6}">
-      <arg line="207.34.56.23 125.12.32.4 130.130.130.130 213.120.105.146 82.243.67.85 171.13.31.172 46.229.168.139" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class7}">
-      <arg file="web.log" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class8}">
-      <arg file="web.log" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class9}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class10}">
-      <arg line="https://www.spamhaus.org/" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class11}">
-      <arg line="http://www.oreilly.com/ http://www.oreilly.com/graphics_new/animation.gif http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class12}">
-      <arg line="ftp://mp3:mp3@138.247.121.61:21000/c%3a/ http://www.oreilly.com http://www.ibiblio.org/nywc/compositions.phtml?category=Piano http://admin@www.blackstar.com:8080" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class13}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class14}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class15}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class16}">
-      <arg line="Bill and Melinda Gates" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <exec executable="bash"
-          outputproperty="random">
-      <arg line="../generaterandom" />
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
     </exec>
-    <java classname="${main.class18}">
-      <arg line="https://www.spamhaus.org/" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class19}">
-      <arg line="https://www.spamhaus.org/ https://www.google.com" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class20}">
-      <arg line="https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class21}">
-      <arg line="https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class22}">
-      <arg line="https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class23}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class24}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class25}">
-      <arg line="https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class26}">
-      <arg line="https://www.spamhaus.org/ https://www.thehindu.com/static/theme/default/base/img/thfooterlogo.png http://www.cafeaulait.org/RelativeURLTest.class http://www.cafeaulait.org/course/week9/spacemusic.au" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class28}">
-      <arg line="https://www.spamhaus.org/" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class29}">
-      <arg line="https://www.spamhaus.org/lookup/ip/?ip=172.43.56.67" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class30}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class31}">
-      <arg line="gold silver bronze platinum" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class32}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class33}">
-      <arg line="localhost" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class34}">
-      <arg line="www.google.com www.spamhaus.org" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class36}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class37}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class38}">
-      <arg line="www.google.com" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class39}">
-      <arg line="time-a-g.nist.gov time-b-g.nist.gov time-c-g.nist.gov time-d-g.nist.gov time-e-g.nist.gov" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class40}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class41}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class42}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class43}">
-      <arg line="time.nist.gov 37" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <java classname="${main.class44}">
-      <arg line="time.nist.gov" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <exec executable="./tests" />
   </target>
-  <target name="run17">
-    <java classname="${main.class17}">
-      <arg line="${random}" />
+  <target name="run28">
+    <description>json2 JSON2XML target</description>
+    <java classname="${main.class28}">
+      <arg file="t.json" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
   <target name="run27">
+    <description>csv2 LoadCSV target</description>
     <java classname="${main.class27}">
+      <arg file="t.csv" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
-  <target name="run45">
-    <java classname="${main.class45}">
+  <target name="run26b">
+    <description>lexpr TestEvaluatorWithProps target</description>
+    <java classname="${main.class26b}">
+      <arg file="t.lexpr" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
-  <target name="run46">
-    <java classname="${main.class46}"
-          input="domain.txt">
+  <target name="run26a">
+    <description>lexpr TestEvaluator target</description>
+    <java classname="${main.class26a}">
+      <arg file="t.lexpr" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
-  <target name="run47">
-    <java classname="${main.class47}">
+  <target name="run26">
+    <description>lexpr TestEvaluator target</description>
+    <java classname="${main.class26}">
+      <arg file="t.lexpr" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
-  <target name="whois">
-    <java classname="${main.class35}">
+  <target name="run25">
+    <description>Properties TestPropertyFile target</description>
+    <java classname="${main.class25}">
+      <arg file="t.properties" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run24a">
+    <description>RLang DisplayParseTree target</description>
+    <java classname="${main.class24}"
+          input="t2.R">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run24">
+    <description>RLang DisplayParseTree target</description>
+    <java classname="${main.class24}"
+          input="t.R">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run23a">
+    <description>RLang DisplayTokens target</description>
+    <java classname="${main.class23}"
+          input="t2.R">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run23">
+    <description>RLang DisplayTokens target</description>
+    <java classname="${main.class23}"
+          input="t.R">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run22">
+    <description>Cymbol DisplayParseTree target</description>
+    <java classname="${main.class22}"
+          input="t.cymbol">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run21">
+    <description>Cymbol DisplayTokens target</description>
+    <java classname="${main.class21}"
+          input="t.cymbol">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run20">
+    <description>Graph target</description>
+    <java classname="${main.class20}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <arg value="graph.gr" />
+  </target>
+  <target name="run19">
+    <description>Dot DisplayParseTree target</description>
+    <java classname="${main.class19}"
+          input="t.dot">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run18">
+    <description>Dot DisplayTokens target</description>
+    <java classname="${main.class18}"
+          input="t.dot">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run17">
+    <description>CSV Data target</description>
+    <java classname="${main.class17}"
+          input="data.csv">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run16a">
+    <description>Numbers Data a target</description>
+    <java classname="${main.class16}"
+          input="numbers1.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run16">
+    <description>Numbers Data target</description>
+    <java classname="${main.class16}"
+          input="numbers.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run15">
+    <description>JSON Data target</description>
+    <java classname="${main.class15}"
+          input="example.json">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run14">
+    <description>XMLV2 DisplayParseTree target</description>
+    <java classname="${main.class14}"
+          input="t.xml">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run13">
+    <description>XMLV2 target</description>
+    <java classname="${main.class13}"
+          input="t.xml">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run12">
+    <description>XMLLexer target</description>
+    <java classname="${main.class12}"
+          input="t.xml">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run11">
+    <description>Data target</description>
+    <java classname="${main.class11}"
+          input="t.data">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run10.1">
+    <description>Col target</description>
+    <java classname="${main.class10}"
+          input="t.rows">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg value="1" />
+    </java>
+  </target>
+  <target name="run10.2">
+    <description>Col target</description>
+    <java classname="${main.class10}"
+          input="t.rows">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg value="2" />
+    </java>
+  </target>
+  <target name="run10.3">
+    <description>Col target</description>
+    <java classname="${main.class10}"
+          input="t.rows">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg value="3" />
+    </java>
+  </target>
+  <target name="run9a">
+    <description>InsertSerialID target</description>
+    <java classname="${main.class9a}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="java6/Demo.java" />
+    </java>
+  </target>
+  <target name="run9">
+    <description>ExtractInterfaceTool target</description>
+    <java classname="${main.class9}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="java6/Demo.java" />
+    </java>
+  </target>
+  <target name="run8">
+    <description>LabeledClearExpr Calc target</description>
+    <java classname="${main.class8}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="tclear.expr" />
+    </java>
+  </target>
+  <target name="run7clear">
+    <description>LabeledExpr Calc target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="tclear.expr" />
+    </java>
+  </target>
+  <target name="run7">
+    <description>LabeledExpr Calc target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="t.expr" />
+    </java>
+  </target>
+  <target name="run6">
+    <description>LibExpr target</description>
+    <java classname="${main.class6}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="t.expr" />
+    </java>
+  </target>
+  <target name="run5">
+    <description>Calc target</description>
+    <java classname="${main.class5}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg file="t.expr" />
+    </java>
+  </target>
+  <target name="run4embedded">
+    <description>ArrayInit Translate target</description>
+    <java classname="${main.class4}"
+          input="arraytest.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run4">
+    <description>ArrayInit Translate target</description>
+    <java classname="${main.class4}"
+          input="arraytestint.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run3err">
+    <description>ArrayInit target</description>
+    <java classname="${main.class3}"
+          input="arraytesterr.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run3">
+    <description>ArrayInit target</description>
+    <java classname="${main.class3}"
+          input="arraytest.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2err">
+    <description>Exprv2Test target</description>
+    <java classname="${main.class2}"
+          input="exprtesterr.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2test">
+    <description>Exprv2Test target</description>
+    <java classname="${main.class2}"
+          input="exprtest.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Exprv2Test target</description>
+    <java classname="${main.class2}"
+          input="exprv2test.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run1err">
+    <description>ExprTest target</description>
+    <java classname="${main.class1}"
+          input="exprtesterr.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run1">
+    <description>ExprTest target</description>
+    <java classname="${main.class1}"
+          input="exprtest.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run"
+          depends="loadclasspath,run28,run27,run26b,run26a,run26,run25,run24a,run24,run23a,run23,run22,run21,run20,run19,run18,run17,run16a,run16,run15,run14,run13,run12,run11,run10.1,run10.2,run10.3,run9a,run9,run8,run7clear,run7,run6,run5,run4embedded,run4,run3err,run3,run2err,run2test,run2,run1err,run1">
+
+    <description>TeeTest target</description>
+    <java classname="${main.class}"
+          input="test.txt">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
       </classpath>
     </java>
   </target>
@@ -440,6 +592,10 @@
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/*Parser.java" />
+      <exclude name="**/*Lexer.java" />
+      <exclude name="**/*Listener.java" />
+      <exclude name="**/*Visitor.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -454,17 +610,22 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
-    <exec executable="bash">
-      <arg line="../cformat ${basedir}" />
+    <exec executable="sudo">
+      <arg line="clang-format -style=file -i -sort-includes ${sources}" />
     </exec>
     <exec executable="bash">
       <arg line="../xformatall ${basedir}" />
     </exec>
   </target>
-  <target name="checkstyleg">
+  <target name="checkstyleg"
+          depends="loadclasspath">
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/*Parser.java" />
+      <exclude name="**/*Lexer.java" />
+      <exclude name="**/*Listener.java" />
+      <exclude name="**/*Visitor.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -480,7 +641,10 @@
       </classpath>
     </java>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -488,8 +652,14 @@
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
                 properties="${cs.properties}">
-      <fileset dir="${src.dir}"
-               includes="**/*.java" />
+      <fileset dir="${basedir}"
+               id="javasrcs">
+        <include name="**/*.java" />
+        <exclude name="**/*Parser.java" />
+        <exclude name="**/*Lexer.java" />
+        <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
+      </fileset>
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
@@ -499,7 +669,11 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -509,18 +683,26 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${compilerclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
                  toConsole="${pmd.toConsole}"></formatter>
-      <fileset dir="${basedir}">
+      <fileset dir="${basedir}"
+               id="javasrcs">
         <include name="**/*.java" />
+        <exclude name="**/*Parser.java" />
+        <exclude name="**/*Lexer.java" />
+        <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
       </fileset>
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs"
-          depends="compile">
+          depends="loadclasspath">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
@@ -528,6 +710,7 @@
               excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
@@ -537,7 +720,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile,pmd,spotbugs, jar, docs">
+          depends="loadclasspath,compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>

@@ -197,7 +197,8 @@
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>
-  <target name="spotbugs">
+  <target name="spotbugs"
+          depends="compile">
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"

@@ -80,13 +80,13 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
-    <module name="AvoidDoubleBraceInitialization"/>
-    <module name="NoEnumTrailingComma"/>
-    <module name="NoArrayTrailingComma"/>
-    <module name="AvoidNoArgumentSuperConstructorCall"/>
-    <module name="UnnecessarySemicolonAfterOuterTypeDeclaration"/>
-    <module name="JavadocMissingWhitespaceAfterAsterisk"/>
-    <module name="NoCodeInFile"/>
+    <module name="AvoidDoubleBraceInitialization" />
+    <module name="NoEnumTrailingComma" />
+    <module name="NoArrayTrailingComma" />
+    <module name="AvoidNoArgumentSuperConstructorCall" />
+    <module name="UnnecessarySemicolonAfterOuterTypeDeclaration" />
+    <module name="JavadocMissingWhitespaceAfterAsterisk" />
+    <module name="NoCodeInFile" />
     <module name="JavadocContentLocationCheck" />
     <module name="TodoComment" />
     <module name="TrailingComment">
