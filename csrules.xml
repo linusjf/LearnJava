@@ -529,7 +529,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignoreAnnotationElementDefaults"
                 value="true" />
     </module>
-    <module name="ArrayTrailingComma" />
+    <!-- <module name="ArrayTrailingComma" /> -->
     <module name="EqualsAvoidNull" />
     <module name="IllegalCatch" />
     <module name="PackageDeclaration">
