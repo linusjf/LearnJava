@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ./findcserrors \
     | awk '{print $2}' \
     | xargs -i cat {}

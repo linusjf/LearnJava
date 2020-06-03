@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 declare -r errFile="lizardcpd.errors"
 
 lizard -w -Eduplicate \

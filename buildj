@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #######################################################################
 #@author: Linus Fernandes(linusfernandes @gmail.com)
@@ -12,7 +12,6 @@ usage() {
         echo "dir - Project directory, must exist"
         exit 1
 }
-
 
 isJVM ()
 {
@@ -78,8 +77,8 @@ readOptions()
 }
 
 proj=$1
-declare -i ver=8
-declare -i JVER=8
+declare -i ver=11
+declare -i JVER=11
 version="0.0.0"
 auxClasspath=""
 declare -r setupCpFile="setupclasspath"
@@ -137,5 +136,4 @@ else
       fi
     fi
 fi
-echo "The maintainer of this repo is looking for a job..."
 exit $((success+jarRes))

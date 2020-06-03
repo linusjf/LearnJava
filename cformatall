@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 readarray -t args < <(find . -mindepth 2 -type f -name "*.java")
 clang-format -i -style=Google -sort-includes \
   "${args[@]}"

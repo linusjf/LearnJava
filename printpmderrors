@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ./findpmderrors \
     | awk '{print $2}' \
     | xargs -i cat {}
