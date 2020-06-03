@@ -338,7 +338,7 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs"
-          depends="loadclasspath">
+          depends="loadclasspath, compile">
     <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
              classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"

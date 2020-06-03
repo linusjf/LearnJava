@@ -377,7 +377,7 @@
     </checkstyle>
   </target>
   <target name="pmd"
-          depends="loadclasspath">
+          depends="loadclasspath, compile">
     <taskdef name="pmd"
              classname="net.sourceforge.pmd.ant.PMDTask"
              classpath="${pmd.cp}" />
