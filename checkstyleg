@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 usage()
 {
   echo "Usage: $0 dir rulesfile"
@@ -22,17 +22,15 @@ fi
 proj=$1
 declare -r optionsFile=".csoptions"
 declare -a options
-rules_file="csrules.xml"
-properties_file="checkstyle.properties"
+rules_file=$(realpath "csrules.xml")
+declare -r properties_file=$(realpath "checkstyle.properties")
 output_file="cs.errors"
-classpathFile="cs.cp"
+declare -r classpathFile=$(realpath "cs.cp")
 mainClass="com.puppycrawl.tools.checkstyle.Main"
-#suppressionsFile="suppr.xml"
-#xsltFile="merge.xslt"
 echo "$1"
 if [ -n "$2" ]
   then
-    rules_file=$2
+    rules_file=$(realpath "$2")
 fi
 if [ ! -e "$rules_file" ]
   then
@@ -53,28 +51,17 @@ if [ ! -e "$properties_file" ]
       echo "Unable to create $properties_file"
     echo "Create/Modify $properties_file to configure checkstyle"
 fi
-#if [ -e $1/$suppressionsFile ] 
- # then
-  #  if [ -e $xsltFile ]
-   # then
-    #  xsltproc --novalid -o $1.xml --stringparam \
-     # with $1/$suppressionsFile $xsltFile $rules_file
-      #rules_file=$1.xml
-    #else
-     # echo "$xsltFile does not exist."
-      #exit 1
-   # fi
-#fi
+
 readOptions
 (set -o pipefail; cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
-java -cp @../"$classpathFile" \
+java -cp @"$classpathFile" \
 "$mainClass" \
 ${options[@]} \
--c ../"$rules_file" -d \
--p ../"$properties_file" \
+-c "$rules_file" -d \
+-p "$properties_file" \
 -o "$1"-xpath.xml -g \
 "${args[@]}");
 exit $?
