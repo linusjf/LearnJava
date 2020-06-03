@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 usage()
 {
   echo "Usage: $0 dir javafile"
@@ -22,16 +22,14 @@ fi
 proj=$1
 declare -r optionsFile=".csoptions"
 declare -a options
-rules_file="csrules.xml"
-properties_file="checkstyle.properties"
 output_file="cs.errors"
-classpathFile="cs.cp"
+declare -r classpathFile=$(realpath "cs.cp")
 java_file=""
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 echo "$1"
 if [ -n "$2" ]
   then
-    java_file=$2
+    java_file="$2"
 fi
 if [ ! -e "$proj/$java_file" ]
   then
@@ -45,16 +43,9 @@ if [ ! -e "$classpathFile" ]
     usage
 fi
 
-if [ ! -e "$properties_file" ]
-  then
-    echo "$properties_file not found. Creating..."
-    touch "$properties_file" || \
-      echo "Unable to create $properties_file"
-    echo "Create/Modify $properties_file to configure checkstyle"
-fi
 readOptions
 (set -o pipefail; cd "$1" && \
-java -cp @../"$classpathFile" \
+java -cp @"$classpathFile" \
 "$mainClass" \
 ${options[@]} \
 -t \

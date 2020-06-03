@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 declare -r configFileName="tidy.config"
 configFilePath="$(find .. -maxdepth 2 \
 -type f -name "$configFileName" ! -path \
