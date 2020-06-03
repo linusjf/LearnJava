@@ -15,78 +15,8 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
 -->
 <module name="Checker">
   <property name="charset"
-            value="${cs.charset}" />
-  <property name="severity"
-            value="${cs.severity}" />
-  <property name="fileExtensions"
-            value="${cs.fileExtensions}" />
-  <property name="cacheFile"
-            value="${cs.cacheFile}" />
-  <property name="haltOnException"
-            value="${cs.haltOnException}" />
-  <module name="OrderedProperties" />
-  <module name="BeforeExecutionExclusionFileFilter">
-    <property name="fileNamePattern"
-              value="package\-info\.java$" />
-  </module>
-  <module name="SeverityMatchFilter">
-    <property name="severity"
-              value="ignore" />
-    <property name="acceptOnMatch"
-              value="false" />
-  </module>
-  <!-- Checks for whitespace                               -->
-  <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-  <module name="FileTabCharacter">
-    <property name="eachLine"
-              value="true" />
-  </module>
-  <module name="SuppressionFilter">
-    <property name="file"
-              value="${cs.suppressions.file}" />
-    <property name="optional"
-              value="true" />
-  </module>
-  <module name="SuppressWarningsFilter" />
-  <module name="JavadocPackage">
-    <property name="allowLegacy"
-              value="false" />
-    <property name="fileExtensions"
-              value=".java" />
-  </module>
-  <module name="RegexpHeader">
-    <property name="headerFile"
-              value="${cs.regexp.header.file}" />
-    <property name="fileExtensions"
-              value="java" />
-  </module>
-  <module name="LineLength">
-    <property name="max"
-              value="100" />
-    <property name="ignorePattern"
-              value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
-  </module>
-  <module name="FileLength" />
-  <module name="RegexpOnFilename" />
-  <module name="RegexpMultiline" />
-  <module name="NewlineAtEndOfFile" />
-  <module name="UniqueProperties">
-    <property name="fileExtensions"
-              value="properties, translations" />
-  </module>
-  <module name="Translation">
-    <property name="fileExtensions"
-              value="properties" />
-  </module>
-  <module name="SuppressWithPlainTextCommentFilter" />
+            value="UTF-8" />
   <module name="TreeWalker">
-    <module name="SuppressionXpathFilter">
-      <property name="optional"
-                value="true" />
-      <property name="file"
-                value="${cs.suppressions-xpath.file}" />
-    </module>
-    <module name="SuppressWarningsHolder" />
     <module name="RedundantModifier" />
   </module>
 </module>
