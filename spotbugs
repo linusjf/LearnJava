@@ -8,13 +8,14 @@ usage()
 
 declare -r errFile="spotbugs.errors"
 declare -r classpathFile=$(realpath "spotbugs.cp")
+cp=$(cat "$classpathFile")
 declare -r setupCpFile="setupclasspath"
 declare -r auxCpFile="compile.cp"
 auxCp=""
 declare -r suppressionsFile="suppressions-sb.xml"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
 declare -r pluginjars=$(realpath "spotbugs-plugin.cp")
-plugincp=$(cat "$pluginjars" | tr -d \')
+plugincp=$(cat "$pluginjars")
 
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
@@ -30,7 +31,10 @@ then
   ./"$setupCpFile"
   auxCp=$(cat "$auxCpFile")
 fi
-java -cp @"$classpathFile" "$mainClass" \
+java -cp "$cp":"$plugincp" "$mainClass" \
+  -pluginList "$plugincp" \
+  -showPlugins
+java -cp "$cp":"$plugincp" "$mainClass" \
   -output "$errFile" \
   -auxclasspath "$auxCp":. -quiet -adjustExperimental \
   -workHard \
