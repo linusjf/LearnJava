@@ -39,9 +39,9 @@ public class DbServlet extends HttpServlet {
     String forenames = request.getParameter("Forenames");
     String surname = request.getParameter("Surname");
     String telNum = request.getParameter("PhoneNum");
+    assert link != null;
     try (PreparedStatement statement =
              link.prepareStatement("INSERT INTO PhoneNums VALUES(?,?,?)")) {
-      assert statement != null;
       statement.setString(1, forenames);
       statement.setString(2, surname);
       statement.setString(3, telNum);
@@ -54,7 +54,6 @@ public class DbServlet extends HttpServlet {
     try (Statement statement = link.createStatement();
          ResultSet results =
              statement.executeQuery("SELECT * FROM PhoneNums");) {
-      assert results != null;
       printHtmlTableHeader(out);
       while (results.next()) {
         out.println("<TR>");
