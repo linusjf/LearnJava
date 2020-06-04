@@ -16,7 +16,7 @@ readExclusions()
 declare -r rulesFile="pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"
-declare -r auxCpFile="pmdaux.cp"
+declare -r auxCpFile="compile.cp"
 declare -r setupcp="setupclasspath"
 declare -r format="text"
 declare -i threads=5
