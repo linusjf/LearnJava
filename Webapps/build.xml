@@ -233,6 +233,7 @@
       <class location="${basedir}" />
       <classpath>
         <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${spotbugs-plugins.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </spotbugs>

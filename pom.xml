@@ -451,5 +451,11 @@
       <version>29.0-jre</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <version>2.2</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

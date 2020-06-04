@@ -270,6 +270,8 @@
           description="guava main jars" />
     <conf name="guava.lib"
           description="guava lib jars" />
+    <conf name="hamcrest.main"
+          description="hamcrest main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -631,6 +633,11 @@
     <dependency org="com.google.guava"
                 name="guava"
                 rev="29.0-jre"
-                conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
+      conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
+      <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+    <dependency org="org.hamcrest" 
+      name="hamcrest" 
+      rev="2.2"
+      conf="hamcrest.main-&gt;master;" />
   </dependencies>
 </ivy-module>

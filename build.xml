@@ -46,6 +46,7 @@
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
+  <property file="${LearnJava.basedir}/hamcrest.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
@@ -123,7 +124,7 @@
       <fileset dir="${LearnJava.basedir}"
                includes="ivy.xml" />
     </first>
-    <ivy:resolve file="${toString:ivyfile}" />
+    <ivy:resolve file="${toString:ivyfile}" checkIfChanged="false" />
     <antcall target="removecpjars">
       <param name="cpfiles"
              value="${cpfiles}" />
@@ -378,6 +379,8 @@
     <ivy:retrieve pathid="junitplatform.lib.path"
                   pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
                   conf="junitplatform.lib" />
+    <ivy:retrieve pathid="hamcrest.main.path"
+                  conf="hamcrest.main" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -458,6 +461,8 @@
           message="${toString:javolution-core-java.main.path}:${toString:javolution-core-java.lib.path}" />
     <echo file="${guava.classpath.file}"
           message="${toString:guava.main.path}:${toString:guava.lib.path}" />
+    <echo file="${hamcrest.classpath.file}"
+          message="${toString:hamcrest.main.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
