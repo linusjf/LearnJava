@@ -2,6 +2,7 @@ package labeledclearexpr;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * * Excerpted from "The Definitive ANTLR 4 Reference", published by The Pragmatic Bookshelf.
@@ -20,7 +21,22 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
       (Object)this + "memory : " +
       memory;
   }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof EvalVisitorImpl) {
+      return memory.equals(((EvalVisitorImpl)o).memory);
+    }
+    return false;
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(memory);
+  }
+  
   @Override
   public Integer visitClear(LabeledClearExprParser.ClearContext ctx) {
     memory.clear();

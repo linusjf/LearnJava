@@ -1,5 +1,6 @@
 package lexpr;
 
+import java.util.Objects;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
@@ -8,6 +9,27 @@ public class EvaluatorWithProps extends LExprBaseListener {
   /** maps nodes to integers with Map&lt;ParseTree,Integer&gt;. */
   ParseTreeProperty<Integer> values = new ParseTreeProperty<>();
 
+  @Override
+  public String toString() {
+    return EvaluatorWithProps.class + " : " +
+      (Object)this + " values = " +
+      values;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof EvaluatorWithProps)
+      return values.equals(((EvaluatorWithProps)o).values);
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(values);
+  }
+  
   // Need to pass e's value out of rule s : e ;
   @Override
   public void exitS(LExprParser.SContext ctx) {
