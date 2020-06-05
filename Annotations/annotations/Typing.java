@@ -15,6 +15,7 @@ public class Typing {
 
     // values
     Object myObject = new @TypeAnnotated Object();
+    System.out.println(myList);
   }
 
   // in method params
