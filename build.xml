@@ -47,6 +47,7 @@
   <property file="${LearnJava.basedir}/guava.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <property file="${LearnJava.basedir}/hamcrest.properties" />
+  <property file="${LearnJava.basedir}/esapi.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
@@ -381,6 +382,10 @@
                   conf="junitplatform.lib" />
     <ivy:retrieve pathid="hamcrest.main.path"
                   conf="hamcrest.main" />
+    <ivy:retrieve pathid="esapi.main.path"
+                  conf="esapi.main" />
+    <ivy:retrieve pathid="esapi.lib.path"
+                  conf="esapi.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -463,6 +468,8 @@
           message="${toString:guava.main.path}:${toString:guava.lib.path}" />
     <echo file="${hamcrest.classpath.file}"
           message="${toString:hamcrest.main.path}" />
+    <echo file="${esapi.classpath.file}"
+          message="${toString:esapi.main.path}:${toString:esapi.lib.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

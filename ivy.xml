@@ -272,6 +272,10 @@
           description="guava lib jars" />
     <conf name="hamcrest.main"
           description="hamcrest main jars" />
+    <conf name="esapi.main"
+          description="esapi main jars" />
+    <conf name="esapi.lib"
+          description="esapi lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -639,5 +643,10 @@
       name="hamcrest" 
       rev="2.2"
       conf="hamcrest.main-&gt;master;" />
+    <!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->
+  <dependency org="org.owasp.esapi" 
+    name="esapi" 
+    rev="2.2.0.0"
+    conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
   </dependencies>
 </ivy-module>

@@ -48,9 +48,9 @@ then
     -exclude "$suppressionsFile" \
     . \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
-      res=$?
-      cd ..
-      exit $res
+    res=$?
+    cd ..
+    exit $res
 else
   exit $res
 fi
