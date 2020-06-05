@@ -33,7 +33,8 @@ public class Loader extends CSV2BaseListener {
     if (ctx.getParent().getRuleIndex() == CSV2Parser.RULE_hdr)
       return;
     // It's a data row
-    Map<String, String> m = new LinkedHashMap<>();
+    int size = (int)(currentRowFieldValues.size() / 0.75); 
+    Map<String, String> m = new LinkedHashMap<>(size);
     int i = 0;
     for (String v: currentRowFieldValues) {
       m.put(header.get(i), v);

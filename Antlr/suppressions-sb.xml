@@ -12,6 +12,31 @@
     <Bug code="RCN" />
   </Match>
   <Match>
+    <Class name="java6.InsertSerialID"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="labeledexpr.Calc"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="labeledclearexpr.Calc"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="java6.ExtractInterfaceTool"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="calc.CalcJoyRide"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
     <Or>
     <Class name="~.*[.].*Parser" />
     <Class name="~.*[.].*Parser[$].*" />
