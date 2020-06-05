@@ -68,4 +68,13 @@ public class XpayImpl implements Xpay {
   public void setAmount(Double amount) {
     this.amount = amount;
   }
+
+  @Override
+  public String toString() {
+  return "Card: " + creditCardNo +
+    "Name: " + customerName +
+  "Expiry: " + cardExpMonth + "/" +cardExpYear +
+  "CVV: " + cardCvvNo +
+  "Amount: " + amount;
+  }
 }

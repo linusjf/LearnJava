@@ -20,7 +20,7 @@ public class XpayToPayDAdapter implements PayD {
    *
    * @param xpay a <code>Xpay</code> value
    */
-  public XpayToPayDAdapter(Xpay xpay) {
+  XpayToPayDAdapter(Xpay xpay) {
     this.xpay = xpay;
     setProp();
   }
@@ -123,6 +123,15 @@ public class XpayToPayDAdapter implements PayD {
   @Override
   public final void setTotalAmount(Double totalAmount) {
     this.totalAmount = totalAmount;
+  }
+  
+  @Override
+  public String toString() {
+  return "Card: " + custCardNo +
+    "Name: " + cardOwnerName +
+  "Expiry: " + cardExpMonthDate +
+  "CVV: " + cvvNo +
+  "Amount: " + totalAmount;
   }
 
   private void setProp() {
