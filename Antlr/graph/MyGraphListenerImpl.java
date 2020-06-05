@@ -1,15 +1,38 @@
 package graph;
 
+import java.util.Objects;
+
 /** Listener used for walking through the parse tree. */
 public class MyGraphListenerImpl extends GraphBaseListener {
 
   Graph g;
 
   MyGraphListenerImpl(Graph g) {
-
     this.g = g;
   }
 
+  @Override
+  public String toString() {
+    return MyGraphListenerImpl.class + " : " +
+      (Object)this + " graph : " +
+      g;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof MyGraphListenerImpl) {
+      return g.equals(((MyGraphListenerImpl)o).g);
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(g);
+  }
+  
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public void exitEdge(GraphParser.EdgeContext ctx) {

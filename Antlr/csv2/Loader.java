@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Loader extends CSV2BaseListener {
   public static final String EMPTY = "";
@@ -13,6 +14,34 @@ public class Loader extends CSV2BaseListener {
   List<String> header = new ArrayList<>();
   // Build up a list of fields in current row
   List<String> currentRowFieldValues;
+
+  @Override
+  public String toString() {
+    return Loader.class + " : " +
+      (Object)this + "header : " +
+      header + " currentRowFieldValues : " +
+      currentRowFieldValues + " rows: " +
+      rows;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof Loader) {
+      Loader loader = (Loader) o;
+      return header.equals(loader.header)
+        && rows.equals(loader.rows) 
+        && currentRowFieldValues.equals(
+            loader.currentRowFieldValues);
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(rows, header, currentRowFieldValues);
+  }
 
   @Override
   public void exitHdr(CSV2Parser.HdrContext ctx) {

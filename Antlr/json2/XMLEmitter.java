@@ -1,5 +1,6 @@
 package json2;
 
+import java.util.Objects;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
@@ -7,6 +8,29 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 public class XMLEmitter extends JSON2BaseListener {
   ParseTreeProperty<String> xml = new ParseTreeProperty<>();
 
+
+  @Override
+  public String toString() {
+    return XMLEmitter.class + " : " +
+      (Object)this + "xml : " +
+      xml;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof XMLEmitter) {
+      return xml.equals(((XMLEmitter)o).xml);
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(xml);
+  }
+  
   String getXML(ParseTree ctx) {
     return xml.get(ctx);
   }

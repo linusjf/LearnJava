@@ -2,6 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,6 +16,28 @@ public class Graph {
     vertices = new TreeSet<>();
   }
 
+  @Override
+  public String toString() {
+    return Graph.class + " : " +
+      (Object)this + " edges : " +
+      edges + " vertices: " + vertices;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof Graph) {
+      return edges.equals(((Graph)o).edges)
+          && vertices.equals(((Graph)o).vertices);
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(edges, vertices);
+  }
   void addEdge(Edge edge) {
     edges.add(edge);
     vertices.add(edge.getFromVertex());
