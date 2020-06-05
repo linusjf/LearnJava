@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.abstractfactorypattern;
 
+import java.util.InputMismatchException;
+
 @SuppressWarnings("PMD.ClassNamingConventions")
 public final class ParserFactoryProducer {
   private ParserFactoryProducer() {
@@ -13,8 +15,7 @@ public final class ParserFactoryProducer {
       case "TWFactory":
         return new TWParserFactory();
       default:
-        break;
+        throw new InputMismatchException("Invalid input: " + factoryType);
     }
-    return null;
   }
 }
