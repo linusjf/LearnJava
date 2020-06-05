@@ -14,6 +14,13 @@ public class EvalVisitorImpl extends LabeledExprBaseVisitor<Integer> {
   /** "memory" for our calculator; variable/value pairs go here. */
   Map<String, Integer> memory = new HashMap<>();
 
+  @Override
+  public String toString() {
+    return EvalVisitorImpl.class + " : " +
+      (Object)this + "memory : " +
+      memory;
+  }
+  
   /** ID '=' expr NEWLINE. */
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -51,9 +58,10 @@ public class EvalVisitorImpl extends LabeledExprBaseVisitor<Integer> {
   @SuppressWarnings("PMD.LawOfDemeter")
   public Integer visitId(LabeledExprParser.IdContext ctx) {
     String id = ctx.ID().getText();
-    if (memory.containsKey(id))
-      return memory.get(id);
-    return 0;
+    Integer val = memory.get(id);
+    if (val == null)
+      return 0;
+    return val;
   }
 
   /** expr op=('*'|'/') expr. */

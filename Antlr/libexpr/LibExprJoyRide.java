@@ -29,10 +29,9 @@ public enum LibExprJoyRide {
                      "PMD.SystemPrintln"})
   public static void
   main(String[] args) {
-    String inputFile = args.length > 0 ? args[0] : null;
-    try (InputStream is = inputFile == null
+    try (InputStream is = args.length < 1
                               ? System.in
-                              : Files.newInputStream(Paths.get(inputFile));) {
+                              : Files.newInputStream(Paths.get(args[0]));) {
       // Create an input character stream from standard in
       CharStream input = CharStreams.fromStream(is, UTF_8);
       // Create an ExprLexer that feeds from that stream

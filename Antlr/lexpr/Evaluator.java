@@ -1,6 +1,7 @@
 package lexpr;
 
 import java.util.Stack;
+import java.util.Objects;
 
 /** Sample "calculator". */
 public class Evaluator extends LExprBaseListener {
@@ -45,5 +46,27 @@ public class Evaluator extends LExprBaseListener {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void exitInt(LExprParser.IntContext ctx) {
     stack.push(Integer.valueOf(ctx.INT().getText()));
+  }
+
+  @Override
+  public String toString() {
+    return Evaluator.class.getName() + ": " +
+      ((Object)this).toString() + " " +
+      stack;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this)
+      return true;
+    if (o instanceof lexpr.Evaluator) {
+      return stack.equals(((Evaluator)o).stack);
+    }
+    return false;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(stack);
   }
 }

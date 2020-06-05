@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
+    <Or>
     <Bug code="SECCRLFLOG" />
+    <Bug code="SECPTI" />
+  </Or>
+  </Match>
+  <Match>
+    <Class name="libexpr.LibExprJoyRide"/>
+    <Method name="main"/>
+    <Bug code="RCN" />
   </Match>
   <Match>
     <Or>

@@ -15,6 +15,13 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
   Map<String, Integer> memory = new HashMap<>();
 
   @Override
+  public String toString() {
+    return EvalVisitorImpl.class + " : " +
+      (Object)this + "memory : " +
+      memory;
+  }
+
+  @Override
   public Integer visitClear(LabeledClearExprParser.ClearContext ctx) {
     memory.clear();
     return 0;
@@ -57,9 +64,10 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
   @SuppressWarnings("PMD.LawOfDemeter")
   public Integer visitId(LabeledClearExprParser.IdContext ctx) {
     String id = ctx.ID().getText();
-    if (memory.containsKey(id))
-      return memory.get(id);
+    Integer val = memory.get(id);
+    if (val == null)
     return 0;
+    return val;
   }
 
   /** expr op=('*'|'/') expr. */
