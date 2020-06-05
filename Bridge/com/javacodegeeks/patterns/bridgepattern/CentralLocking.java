@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.bridgepattern;
 
+import java.util.Objects;
+
 /**
  * Describe class <code>CentralLocking</code> here.
  *
@@ -16,6 +18,29 @@ public class CentralLocking implements Product {
    */
   public CentralLocking(String productName) {
     this.prodName = productName;
+  }
+
+  @Override
+  public String toString() {
+    return getClass() + " : " +
+      "Product Name : " + prodName; 
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof CentralLocking &&
+        getClass().equals(o.getClass())) {
+     CentralLocking bw = (CentralLocking) o;
+     return prodName.equals(bw.prodName);
+    }
+    return false;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(prodName);
   }
 
   @Override

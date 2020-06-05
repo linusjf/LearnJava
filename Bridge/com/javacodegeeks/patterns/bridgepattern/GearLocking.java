@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.bridgepattern;
 
+import java.util.Objects;
+
 /**
  * Describe class <code>GearLocking</code> here.
  *
@@ -16,6 +18,28 @@ public class GearLocking implements Product {
    */
   public GearLocking(String productName) {
     this.prodName = productName;
+  }
+
+  @Override
+  public String toString() {
+    return GearLocking.class + " : " +
+      "Product name : " + prodName;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof GearLocking) {
+     GearLocking gl = (GearLocking) o;
+     return prodName.equals(gl.prodName);
+    }
+    return false;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(prodName);
   }
 
   @Override

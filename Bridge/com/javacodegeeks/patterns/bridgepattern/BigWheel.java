@@ -1,5 +1,7 @@
 package com.javacodegeeks.patterns.bridgepattern;
 
+import java.util.Objects;
+
 /**
  * Describe class <code>BigWheel</code> here.
  *
@@ -7,9 +9,6 @@ package com.javacodegeeks.patterns.bridgepattern;
  * @version 1.0
  */
 public class BigWheel extends Car {
-
-  private final Product product;
-  private final String carType;
 
   /**
    * Creates a new <code>BigWheel</code> instance.
@@ -19,8 +18,22 @@ public class BigWheel extends Car {
    */
   public BigWheel(Product product, String carType) {
     super(product, carType);
-    this.product = product;
-    this.carType = carType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o instanceof BigWheel &&
+        getClass().equals(o.getClass())) {
+     return super.equals(o);
+    }
+    return false;
+  }
+  
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), BigWheel.class);
   }
 
   @Override
@@ -33,6 +46,6 @@ public class BigWheel extends Car {
   @SuppressWarnings("PMD.SystemPrintln")
   public void produceProduct() {
     product.produce();
-    System.out.println("Modifing product " + product.productName() + " according to " + carType);
+    System.out.println("Modifying product " + product.productName() + " according to " + carType);
   }
 }
