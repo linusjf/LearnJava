@@ -82,7 +82,7 @@ public class XMLEmitter extends JSON2BaseListener {
     setXML(ctx, stripQuotes(ctx.getText()));
   }
 
-  public static String stripQuotes(String s) {
+  static String stripQuotes(String s) {
     if (s == null || s.charAt(0) != '"')
       return s;
     return s.substring(1, s.length() - 1);

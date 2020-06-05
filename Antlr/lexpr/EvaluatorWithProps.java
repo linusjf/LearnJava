@@ -63,11 +63,11 @@ public class EvaluatorWithProps extends LExprBaseListener {
     setValue(ctx, Integer.parseInt(intText));
   }
 
-  public void setValue(ParseTree node, int value) {
+  void setValue(ParseTree node, int value) {
     values.put(node, value);
   }
 
-  public int getValue(ParseTree node) {
+  int getValue(ParseTree node) {
     return values.get(node);
   }
 }

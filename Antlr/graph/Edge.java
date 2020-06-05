@@ -7,11 +7,12 @@ public class Edge {
   private Vertex toVertex;
   private Double weight;
 
-  public Edge() {
+  Edge() {
     // empty constructor
   }
 
-  public Edge(Vertex fromVertex, Vertex toVertex, Double weight) {
+  Edge(Vertex fromVertex, Vertex toVertex, Double weight) {
+    this();
     this.fromVertex = fromVertex;
     this.toVertex = toVertex;
     this.weight = weight;

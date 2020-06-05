@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Vertex implements Comparable<Vertex> {
   private String label;
 
-  public Vertex(String label) {
+  Vertex(String label) {
     this.label = label.toUpperCase(Locale.getDefault());
   }
 

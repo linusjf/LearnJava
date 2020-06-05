@@ -15,7 +15,7 @@ public class Graph {
     vertices = new TreeSet<>();
   }
 
-  public void addEdge(Edge edge) {
+  void addEdge(Edge edge) {
     edges.add(edge);
     vertices.add(edge.getFromVertex());
     vertices.add(edge.getToVertex());
@@ -34,7 +34,7 @@ public class Graph {
   }
 
   @SuppressWarnings("PMD.SystemPrintln")
-  public static void printGraph(Graph g) {
+  static void printGraph(Graph g) {
     System.out.println("Vertices...");
     for (Vertex v: g.getVertices())
       System.out.print(v.getLabel() + " ");

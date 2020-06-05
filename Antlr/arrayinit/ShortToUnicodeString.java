@@ -1,5 +1,7 @@
 package arrayinit;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 /**
  * Excerpted from "The Definitive ANTLR 4 Reference", published by The Pragmatic Bookshelf.
  * Copyrights apply to this code. It may not be used to create training material, courses, books,
@@ -25,7 +27,8 @@ public class ShortToUnicodeString extends ArrayInitBaseListener {
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public void enterValue(ArrayInitParser.ValueContext ctx) {
-    if (ctx.INT() != null)
-      System.out.printf("\\u%04x", Integer.parseInt(ctx.INT().getText()));
+    TerminalNode val = ctx.INT();
+    if (val != null)
+      System.out.printf("\\u%04x", Integer.valueOf(val.getText()));
   }
 }
