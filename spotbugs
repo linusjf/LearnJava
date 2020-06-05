@@ -6,6 +6,7 @@ usage()
   exit 1
 }
 
+declare -i res=0
 declare -r errFile="spotbugs.errors"
 declare -r classpathFile=$(realpath "spotbugs.cp")
 cp=$(cat "$classpathFile")
@@ -25,25 +26,31 @@ fi
 proj="$1"
 echo "$proj"
 ./buildj "$proj"
-cd "$proj"
-if [ -e "$setupCpFile" ]
-then
-  ./"$setupCpFile"
-  auxCp=$(cat "$auxCpFile")
-fi
-java -cp "$cp":"$plugincp" "$mainClass" \
-  -pluginList "$plugincp" \
-  -showPlugins
-java -cp "$cp":"$plugincp" "$mainClass" \
-  -output "$errFile" \
-  -auxclasspath "$auxCp":. -quiet -adjustExperimental \
-  -workHard \
-  -experimental -nested:true -timestampNow \
-  -longBugCodes -progress -dontCombineWarnings \
-  -pluginList "$plugincp" \
-  -exclude "$suppressionsFile" \
-  . \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
 res=$?
-cd ..
-exit $res
+if [[ "$res" == 0 ]];
+then
+  cd "$proj"
+  if [ -e "$setupCpFile" ]
+  then
+    ./"$setupCpFile"
+    auxCp=$(cat "$auxCpFile")
+  fi
+  java -cp "$cp":"$plugincp" "$mainClass" \
+    -pluginList "$plugincp" \
+    -showPlugins
+  java -cp "$cp":"$plugincp" "$mainClass" \
+    -output "$errFile" \
+    -auxclasspath "$auxCp":. -quiet -adjustExperimental \
+    -workHard \
+    -experimental -nested:true -timestampNow \
+    -longBugCodes -progress -dontCombineWarnings \
+    -pluginList "$plugincp" \
+    -exclude "$suppressionsFile" \
+    . \
+    || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
+      res=$?
+      cd ..
+      exit $res
+else
+  exit $res
+fi
