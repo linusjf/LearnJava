@@ -45,9 +45,10 @@
   <property file="${LearnJava.basedir}/commons-collections.properties" />
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
   <property file="${LearnJava.basedir}/guava.properties" />
-  <property file="${LearnJava.basedir}/cpfiles.properties" />
   <property file="${LearnJava.basedir}/hamcrest.properties" />
   <property file="${LearnJava.basedir}/esapi.properties" />
+  <property file="${LearnJava.basedir}/junit4.properties" />
+  <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
@@ -386,6 +387,10 @@
                   conf="esapi.main" />
     <ivy:retrieve pathid="esapi.lib.path"
                   conf="esapi.lib" />
+    <ivy:retrieve pathid="junit4.main.path"
+                  conf="junit4.main" />
+    <ivy:retrieve pathid="junit4.lib.path"
+                  conf="junit4.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -408,6 +413,8 @@
           message="${toString:ecj.main.path}:${toString:ecj.lib.path}" />
     <echo file="${junit.classpath.file}"
           message="${toString:junit.main.path}:${toString:junit.lib.path}:${toString:junitengine.main.path}:${toString:junitengine.lib.path}" />
+    <echo file="${junit4.classpath.file}"
+          message="${toString:junit4.main.path}:${toString:junit4.lib.path}" />
     <echo file="${jetty.classpath.file}"
           message="${toString:apache-jsp.main.path}:${toString:apache-jsp.lib.path}:${toString:jetty-annotations.main.path}:${toString:jetty-annotations.lib.path}:${toString:jetty-server.main.path}:${toString:jetty-server.lib.path}:${toString:jetty-servlet.main.path}:${toString:jetty-servlet.lib.path}:${toString:jetty-jmx.main.path}:${toString:jetty-jmx.lib.path}:${toString:jetty-jsp.main.path}:${toString:jetty-jsp.lib.path}:${toString:jetty-webapp.main.path}:${toString:jetty-webapp.lib.path}" />
     <echo file="${checker.classpath.file}"

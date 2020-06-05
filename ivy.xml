@@ -114,6 +114,10 @@
           description="junitengine main jars" />
     <conf name="junitengine.lib"
           description="junitengine lib jars" />
+    <conf name="junit4.main"
+          description="junit4 main jars" />
+    <conf name="junit4.lib"
+          description="junit4 lib jars" />
     <conf name="jetty-server.main"
           description="jetty-server main jars" />
     <conf name="jetty-server.lib"
@@ -398,7 +402,11 @@
     <dependency org="org.junit.jupiter"
                 name="junit-jupiter-engine"
                 rev="5.7.0-M1"
-                conf="junitengine.main-&gt;master;junitengine.lib-&gt;compile" />
+      conf="junitengine.main-&gt;master;junitengine.lib-&gt;compile" />
+      <!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency org="junit" 
+      name="junit" rev="4.13"
+      conf="junit4.main-&gt;master;junit4.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
