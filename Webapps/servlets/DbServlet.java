@@ -122,4 +122,13 @@ public class DbServlet extends HttpServlet {
       LOGGER.severe(ex.getMessage());
     }
   }
+
+  @Override
+  public String toString() {
+    return link == null ?
+    DbServlet.class.getName() + " : " + ((Object)this).toString()
+    : DbServlet.class.getName() + " : " + ((Object)this).toString()
+      + System.lineSeparator() +
+      link.toString();
+  }
 }
