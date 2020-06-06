@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Class name="trove.TroveStrategy" />
-    <Method name="lambda$main$0" />
-    <Bug code="DMI" />
-  </Match>
-  <Match>
-    <Class name="trove.TroveStrategy" />
-    <Method name="lambda$main$1" />
-    <Bug code="EC" />
+    <Class name="trove.TroveStrategy"/>
+    <Method name="~.*main.*"/>
+    <Bug code="ABC,DMI,EC" />
   </Match>
 </FindBugsFilter>

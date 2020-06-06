@@ -10,7 +10,7 @@ public enum TroveProcedure {
   }
 
   /** Demonstrate iteration of a Trove collection using a Procedure. */
-  public static void demonstrateIterationWithProcedure() {
+  static void demonstrateIterationWithProcedure() {
     final TLongLinkedList longs = new TLongLinkedList();
     longs.add(15L);
     longs.add(6L);
