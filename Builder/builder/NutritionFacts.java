@@ -50,12 +50,12 @@ public final class NutritionFacts {
   /** Describe class <code>Builder</code> here. */
   public static class Builder {
     // Required parameters
-    private final int servingSize;
-    private final int servings;
-    private int cals;
-    private int fats;
-    private int sod;
-    private int carbs;
+    final int servingSize;
+    final int servings;
+    int cals;
+    int fats;
+    int sod;
+    int carbs;
 
     /**
      * Creates a new <code>Builder</code> instance.

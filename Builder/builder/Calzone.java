@@ -17,14 +17,15 @@ public final class Calzone extends Pizza {
   /** describes object state as String. */
   @Override
   String describe() {
+    String ls = System.lineSeparator();
     StringBuilder sb = new StringBuilder(30);
     sb.append("Sauce = ")
         .append(sauceInside)
-        .append(System.lineSeparator())
+        .append(ls)
         .append("Toppings: ")
-        .append(System.lineSeparator());
+        .append(ls);
     for (Topping t: toppings)
-      sb.append(t).append(System.lineSeparator());
+      sb.append(t).append(ls);
     return sb.toString();
   }
 
