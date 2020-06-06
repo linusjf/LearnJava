@@ -8,7 +8,8 @@ public final class ScannerDemo1 {
   private static Charset charset = StandardCharsets.UTF_8;
 
   private ScannerDemo1() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: "
+        + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})

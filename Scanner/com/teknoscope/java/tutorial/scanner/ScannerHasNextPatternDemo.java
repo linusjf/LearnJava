@@ -12,7 +12,8 @@ import java.util.regex.Pattern;
  */
 public final class ScannerHasNextPatternDemo {
   private ScannerHasNextPatternDemo() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked in class: "
+        + getClass());
   }
 
   public static void main(String[] args) {
@@ -34,7 +35,7 @@ public final class ScannerHasNextPatternDemo {
   }
 
   @SuppressWarnings("PMD.SystemPrintln")
-  public static void printNames(Scanner scan, Pattern pattern) {
+  static void printNames(Scanner scan, Pattern pattern) {
     while (scan.hasNext()) {
       // check if the token consists of declared pattern
       if (scan.hasNext(pattern))
