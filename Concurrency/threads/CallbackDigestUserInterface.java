@@ -5,7 +5,7 @@ import java.util.Base64;
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 public final class CallbackDigestUserInterface {
   private CallbackDigestUserInterface() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

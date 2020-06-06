@@ -3,7 +3,7 @@ package javapuzzles;
 @SuppressWarnings("PMD.ShortClassName")
 public final class Odd {
   private Odd() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static boolean isOddModulo(int i) {

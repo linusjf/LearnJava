@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
 public final class ReverseTest {
   private ReverseTest() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

@@ -16,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 public final class PBKDF {  // NOPMD
 
   private PBKDF() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

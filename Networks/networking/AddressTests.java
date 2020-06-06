@@ -8,7 +8,7 @@ public final class AddressTests {
   private static final int IPV6_LENGTH = 16;
 
   private AddressTests() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static int getVersion(InetAddress ia) {

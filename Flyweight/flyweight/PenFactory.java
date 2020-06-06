@@ -13,7 +13,7 @@ public final class PenFactory { // NOPMD
   private static final Map<String, Pen> PENSMAP = new HashMap<>();
 
   private PenFactory() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

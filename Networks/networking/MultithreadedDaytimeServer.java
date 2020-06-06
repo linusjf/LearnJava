@@ -8,7 +8,7 @@ public final class MultithreadedDaytimeServer {
   public static final int PORT = 1331;
 
   private MultithreadedDaytimeServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

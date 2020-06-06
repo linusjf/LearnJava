@@ -17,7 +17,7 @@ public final class Demo {
       new Scanner(System.in, StandardCharsets.UTF_8.name());
 
   private Demo() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

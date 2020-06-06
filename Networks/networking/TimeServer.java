@@ -12,7 +12,7 @@ public final class TimeServer {
   private static final long DIFF_BTW_EPOCHS = 2_208_988_800L;
 
   private TimeServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

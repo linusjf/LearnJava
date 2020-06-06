@@ -17,7 +17,7 @@ public final class DictClient {
   public static final int TIMEOUT = 15_000;
 
   private DictClient() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

@@ -10,7 +10,7 @@ public final class Bank1Server {
   private static final String HOST = "localhost";
 
   private Bank1Server() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

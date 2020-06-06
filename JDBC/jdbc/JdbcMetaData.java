@@ -14,7 +14,7 @@ public final class JdbcMetaData {
   private static ResultSet results;
 
   private JdbcMetaData() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")

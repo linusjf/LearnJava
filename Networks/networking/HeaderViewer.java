@@ -8,7 +8,7 @@ import java.util.Date;
 
 public final class HeaderViewer {
   private HeaderViewer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

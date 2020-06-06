@@ -11,7 +11,7 @@ public final class Bank1Client {
   private static final String HOST = "localhost";
 
   private Bank1Client() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")

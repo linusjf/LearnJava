@@ -2,7 +2,7 @@ package com.javacodegeeks.patterns.interpreterpattern;
 
 public final class ExpressionUtils {
   private ExpressionUtils() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static boolean isOperator(String s) {

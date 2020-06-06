@@ -7,7 +7,7 @@ import java.net.MulticastSocket;
 
 public final class MulticastSniffer {
   private MulticastSniffer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

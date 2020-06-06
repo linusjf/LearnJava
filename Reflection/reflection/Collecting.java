@@ -8,7 +8,7 @@ import java.util.Map;
 
 public final class Collecting {
   private Collecting() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String... args) {

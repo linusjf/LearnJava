@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
   private Demo() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String... args) {

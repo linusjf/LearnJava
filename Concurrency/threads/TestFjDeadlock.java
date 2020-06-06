@@ -12,7 +12,7 @@ public final class TestFjDeadlock {
   private static final int ITERATIONS = 10_000;
 
   private TestFjDeadlock() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

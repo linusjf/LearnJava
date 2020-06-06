@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public final class Cookies {
   private Cookies() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

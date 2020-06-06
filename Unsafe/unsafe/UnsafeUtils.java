@@ -15,7 +15,7 @@ public final class UnsafeUtils {
   static volatile Unsafe unsafe;  // NOPMD
 
   private UnsafeUtils() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter",

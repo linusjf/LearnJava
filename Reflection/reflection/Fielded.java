@@ -15,7 +15,7 @@ public final class Fielded {
   private static Class<String> stringclass = String.class;
 
   private Fielded() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.CompareObjectsWithEquals",

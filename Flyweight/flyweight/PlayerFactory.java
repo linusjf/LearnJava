@@ -18,7 +18,7 @@ final class PlayerFactory { // NOPMD
   private static Map<String, Player> hm = new HashMap<>();
 
   private PlayerFactory() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   // Method to get a player

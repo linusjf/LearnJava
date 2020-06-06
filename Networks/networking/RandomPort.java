@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 
 public final class RandomPort {
   private RandomPort() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

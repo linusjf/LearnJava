@@ -14,7 +14,7 @@ public final class HttpsClient {
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private HttpsClient() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("checkstyle:innerassignment")

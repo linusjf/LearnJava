@@ -25,7 +25,7 @@ public final class PropertyLoader {
       Logger.getLogger(PropertyLoader.class.getName());
 
   private PropertyLoader() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

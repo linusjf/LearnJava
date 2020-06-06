@@ -7,7 +7,7 @@ public final class StaticReflection {
       Logger.getLogger(StaticReflection.class.getName());
 
   private StaticReflection() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",

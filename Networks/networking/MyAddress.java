@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public final class MyAddress {
   private MyAddress() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

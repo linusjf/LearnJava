@@ -15,7 +15,7 @@ public final class IntgenServer {
   private static final int DEFAULT_PORT = 1919;
 
   private IntgenServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

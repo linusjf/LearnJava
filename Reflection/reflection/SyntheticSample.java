@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class SyntheticSample {
   private SyntheticSample() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

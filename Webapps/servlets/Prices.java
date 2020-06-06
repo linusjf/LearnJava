@@ -5,6 +5,6 @@ final class Prices {
   static final float PEARS_PRICE = 1.75F;
 
   private Prices() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 }

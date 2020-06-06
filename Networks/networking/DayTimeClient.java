@@ -6,7 +6,7 @@ import java.util.Date;
 
 public final class DayTimeClient {
   private DayTimeClient() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.DoNotCallSystemExit", "PMD.LawOfDemeter"})

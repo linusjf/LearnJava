@@ -13,7 +13,7 @@ public final class Demo {
   private static final Logger LOGGER = Logger.getLogger(Demo.class.getName());
 
   private Demo() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

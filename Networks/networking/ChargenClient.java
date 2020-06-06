@@ -12,7 +12,7 @@ public final class ChargenClient {
   private static final int DEFAULT_PORT = 19;
 
   private ChargenClient() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})

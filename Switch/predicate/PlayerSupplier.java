@@ -32,7 +32,7 @@ public final class PlayerSupplier {
   }
 
   private PlayerSupplier() {
-    throw new AssertionError("Private constructor");
+    throw new AssertionError("Private constructor invoked for class: " + getClass());
   }
 
   public static Player supplyPlayer(String playerType, int rank) {

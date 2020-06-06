@@ -12,7 +12,7 @@ public final class JdbcChange {
   private static ResultSet results;
 
   private JdbcChange() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")

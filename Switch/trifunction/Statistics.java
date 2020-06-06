@@ -5,7 +5,7 @@ import player.TennisPlayer;
 
 public final class Statistics {
   private Statistics() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static String computeBackhandTrend(TennisPlayer player, Period period, String owner) {

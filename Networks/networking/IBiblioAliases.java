@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public final class IBiblioAliases {
   private IBiblioAliases() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

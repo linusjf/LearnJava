@@ -7,7 +7,7 @@ public final class EncoderTest {
   private static final String UTF8 = "UTF-8";
 
   private EncoderTest() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

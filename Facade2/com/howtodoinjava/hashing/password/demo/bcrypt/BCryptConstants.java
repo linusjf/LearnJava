@@ -229,6 +229,6 @@ public final class BCryptConstants {
   };
 
   private BCryptConstants() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 }

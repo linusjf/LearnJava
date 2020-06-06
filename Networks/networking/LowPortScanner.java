@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 
 public final class LowPortScanner {
   private LowPortScanner() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

@@ -10,7 +10,7 @@ public final class HelloClient {
   private static final String HOST = "localhost";
 
   private HelloClient() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")

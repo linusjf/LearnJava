@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 public final class BinarySaver {
   private BinarySaver() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

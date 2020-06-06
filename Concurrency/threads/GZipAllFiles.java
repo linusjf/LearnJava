@@ -9,7 +9,7 @@ public final class GZipAllFiles {
   public static final int THREAD_COUNT = 4;
 
   private GZipAllFiles() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

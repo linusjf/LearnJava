@@ -7,7 +7,7 @@ import java.lang.reflect.Parameter;
 
 public final class Construct {
   private Construct() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})

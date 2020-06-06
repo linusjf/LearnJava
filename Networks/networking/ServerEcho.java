@@ -10,7 +10,7 @@ public final class ServerEcho {
   private static final int PORT = 7;
 
   private ServerEcho() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

@@ -5,7 +5,7 @@ import java.io.File;
 @SuppressWarnings("PMD.LawOfDemeter")
 public final class RequestHandlerUtils {
   private RequestHandlerUtils() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   static String extractURL(String requestString) {

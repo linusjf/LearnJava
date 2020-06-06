@@ -16,7 +16,7 @@ public final class MultithreadedMaxFinder {
   // clang-format on
 
   private MultithreadedMaxFinder() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})

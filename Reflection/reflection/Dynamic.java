@@ -13,7 +13,7 @@ public final class Dynamic {
   private static final String HELLO = "Hello";
 
   private Dynamic() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"unchecked", "PMD.LawOfDemeter", "PMD.SystemPrintln"})

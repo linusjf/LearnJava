@@ -6,7 +6,7 @@ import java.util.Enumeration;
 
 public final class InterfaceLister {
   private InterfaceLister() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

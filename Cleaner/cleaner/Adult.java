@@ -8,7 +8,7 @@ package cleaner;
  */
 public final class Adult {
   private Adult() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

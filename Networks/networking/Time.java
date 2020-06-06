@@ -12,7 +12,7 @@ public final class Time {
   private static final String HOSTNAME = "time.nist.gov";
 
   private Time() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"fallthrough", "PMD.LawOfDemeter"})

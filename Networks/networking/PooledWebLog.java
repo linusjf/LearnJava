@@ -18,7 +18,7 @@ public final class PooledWebLog {
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
   private PooledWebLog() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

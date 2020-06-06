@@ -14,7 +14,7 @@ public final class WhoisQuery {
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private WhoisQuery() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

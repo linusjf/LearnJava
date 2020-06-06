@@ -10,7 +10,7 @@ public final class PrototypeFactory {
       new java.util.HashMap<>();
 
   private PrototypeFactory() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   static {

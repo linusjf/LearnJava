@@ -12,7 +12,7 @@ public final class ZooTest {
       Logger.getLogger(ZooTest.class.getName());
 
   private ZooTest() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

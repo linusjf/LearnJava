@@ -8,7 +8,7 @@ public final class HelloServer {
   private static final String HOST = "localhost";
 
   private HelloServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

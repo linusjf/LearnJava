@@ -20,7 +20,7 @@ public final class MultiEchoServerNIO {
   private static Selector selector;
 
   private MultiEchoServerNIO() {
-    throw new IllegalStateException("Private constructor.");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /*

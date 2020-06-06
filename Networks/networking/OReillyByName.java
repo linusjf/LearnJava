@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public final class OReillyByName {
   private OReillyByName() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

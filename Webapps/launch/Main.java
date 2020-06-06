@@ -16,7 +16,7 @@ public final class Main {
       System.getProperty("java.io.tmpdir") + "/webapps";
 
   private Main() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})

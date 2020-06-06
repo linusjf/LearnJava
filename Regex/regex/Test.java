@@ -15,7 +15,7 @@ public final class Test {
               + "(Domain)|(Organization)|(Group)|(Gateway)|(ASN)){1})$");
 
   private Test() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String... args) {

@@ -29,7 +29,7 @@ public final class SCrypt {  // NOPMD
   }
 
   private SCrypt() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

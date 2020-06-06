@@ -11,7 +11,7 @@ public final class PooledDaytimeServer {
   public static final int PORT = 3131;
 
   private PooledDaytimeServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

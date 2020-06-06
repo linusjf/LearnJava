@@ -17,7 +17,7 @@ public final class ListDicts {
   public static final int TIMEOUT = 15_000;
 
   private ListDicts() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String[] args) {

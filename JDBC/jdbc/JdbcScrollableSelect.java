@@ -12,7 +12,7 @@ public final class JdbcScrollableSelect {
   private static ResultSet results;
 
   private JdbcScrollableSelect() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   private static void connect() {

@@ -13,7 +13,7 @@ package com.lambdaworks.jni;
 public final class LibraryLoaders {  // NOPMD
 
   private LibraryLoaders() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

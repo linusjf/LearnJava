@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 public final class ProtectedUrlAccess {
   private ProtectedUrlAccess() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.DataflowAnomalyAnalysis"})

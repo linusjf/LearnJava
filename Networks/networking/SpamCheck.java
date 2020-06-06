@@ -40,7 +40,7 @@ public final class SpamCheck {
   }
 
   private SpamCheck() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.ConsecutiveLiteralAppends")

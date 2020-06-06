@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public final class MulticastSender {
   private MulticastSender() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

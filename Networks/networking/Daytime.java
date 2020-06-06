@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public final class Daytime {
   private Daytime() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static Date getDateFromNetwork() throws IOException, ParseException {

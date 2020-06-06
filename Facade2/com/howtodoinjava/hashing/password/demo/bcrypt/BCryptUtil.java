@@ -32,7 +32,7 @@ public final class BCryptUtil {
   private static final Base64.Decoder DECODER = Base64.getDecoder();
 
   private BCryptUtil() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

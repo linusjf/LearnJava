@@ -75,7 +75,7 @@ public final class TestPlatformDependentLineSeparator {
   }
 
   private TestPlatformDependentLineSeparator() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String... args) {

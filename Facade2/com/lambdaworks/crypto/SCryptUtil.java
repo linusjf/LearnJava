@@ -31,7 +31,7 @@ import java.util.Base64;
 public final class SCryptUtil {  // NOPMD
 
   private SCryptUtil() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   /**

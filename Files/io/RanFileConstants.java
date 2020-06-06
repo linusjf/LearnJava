@@ -6,6 +6,6 @@ public final class RanFileConstants {
   static final int NUM_INITS = 3;
 
   private RanFileConstants() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 }

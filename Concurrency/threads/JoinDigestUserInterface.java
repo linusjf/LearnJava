@@ -4,7 +4,7 @@ import java.util.Base64;
 
 public final class JoinDigestUserInterface {
   private JoinDigestUserInterface() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

@@ -28,7 +28,7 @@ public final class OneWebApp {
       Logger.getLogger(OneWebApp.class.getName());
 
   private OneWebApp() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"PMD.AvoidCatchingGenericException", "PMD.LawOfDemeter"})

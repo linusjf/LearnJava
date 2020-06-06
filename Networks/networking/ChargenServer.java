@@ -14,7 +14,7 @@ public final class ChargenServer {
   private static final int DEFAULT_PORT = 19;
 
   private ChargenServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

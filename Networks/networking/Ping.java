@@ -55,7 +55,7 @@ public final class Ping {
   static int port = DAYTIME_PORT;
 
   private Ping() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

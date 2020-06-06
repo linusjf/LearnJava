@@ -28,7 +28,7 @@ public final class SecureOrderTaker {
 
   // CPD-OFF
   private SecureOrderTaker() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

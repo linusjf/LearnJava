@@ -14,7 +14,7 @@ public final class EchoServer {
   public static final int DEFAULT_PORT = 7;
 
   private EchoServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

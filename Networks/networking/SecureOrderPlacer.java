@@ -24,7 +24,7 @@ public final class SecureOrderPlacer {
   public static final String ALGORITHM = "SSL";
 
   private SecureOrderPlacer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

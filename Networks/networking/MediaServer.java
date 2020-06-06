@@ -17,7 +17,7 @@ public final class MediaServer {
   private static final String UTF_8 = StandardCharsets.UTF_8.name();
 
   private MediaServer() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.DoNotCallSystemExit")

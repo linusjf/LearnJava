@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public final class IPCharacteristics {
   private IPCharacteristics() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   private static void handleWildcardAddress(InetAddress address) {

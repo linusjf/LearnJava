@@ -6,7 +6,7 @@ import java.net.URLConnection;
 
 public final class URLPrinter {
   private URLPrinter() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
