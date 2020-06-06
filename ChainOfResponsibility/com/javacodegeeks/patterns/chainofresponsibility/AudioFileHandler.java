@@ -27,7 +27,7 @@ public class AudioFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("audio")) {
+    if ("audio".equals(file.getFileType())) {
       System.out.println("Process and saving audio file... by " + handlerName);
       return;
     }

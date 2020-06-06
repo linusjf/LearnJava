@@ -27,7 +27,7 @@ public class DocFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("doc")) {
+    if ("doc".equals(file.getFileType())) {
       System.out.println("Process and saving doc file... by " + handlerName);
       return;
     }

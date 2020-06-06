@@ -27,7 +27,7 @@ public class ImageFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("image")) {
+    if ("image".equals(file.getFileType())) {
       System.out.println("Process and saving image file... by " + handlerName);
       return;
     }

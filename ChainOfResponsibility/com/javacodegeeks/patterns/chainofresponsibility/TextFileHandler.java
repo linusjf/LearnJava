@@ -27,7 +27,7 @@ public class TextFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("text")) {
+    if ("text".equals(file.getFileType())) {
       System.out.println("Process and saving text file... by " + handlerName);
       return;
     }

@@ -27,7 +27,7 @@ public class VideoFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("video")) {
+    if ("video".equals(file.getFileType())) {
       System.out.println("Process and saving video file... by " + handlerName);
       return;
     }

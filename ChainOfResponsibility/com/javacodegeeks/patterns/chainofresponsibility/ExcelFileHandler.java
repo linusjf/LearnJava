@@ -27,7 +27,7 @@ public class ExcelFileHandler implements Handler {
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   @Override
   public void process(File file) {
-    if (file.getFileType().equals("excel")) {
+    if ("excel".equals(file.getFileType())) {
       System.out.println("Process and saving excel file... by " + handlerName);
       return;
     }
