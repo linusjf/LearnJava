@@ -6,6 +6,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -195,7 +196,7 @@ public class UnsafeTest {
                                 .forEachOrdered(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(numIncrements * numThreads,
+    assertEquals((long)numIncrements * (long)numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -216,7 +217,7 @@ public class UnsafeTest {
                                 .forEach(j -> casCounter.increment())));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(numIncrements * numThreads,
+    assertEquals((long)numIncrements * (long)numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -233,7 +234,7 @@ public class UnsafeTest {
             i -> service.submit(new CounterClient(casCounter, numIncrements)));
     service.shutdown();
     service.awaitTermination(1, TimeUnit.MINUTES);
-    assertEquals(numIncrements * numThreads,
+    assertEquals((long)numIncrements * (long)numThreads,
                  casCounter.get(),
                  "Counter has expected value");
   }
@@ -291,7 +292,6 @@ public class UnsafeTest {
 
   @SuppressWarnings("PMD.SystemPrintln")
   private static final class ClassWithExpensiveConstructor {
-
     private final int value;
 
     private ClassWithExpensiveConstructor() {
@@ -304,7 +304,7 @@ public class UnsafeTest {
       } catch (InterruptedException e) {
         System.err.println(e.getMessage());
       }
-      return 1;
+      return ThreadLocalRandom.current().nextInt();
     }
 
     public int getValue() {
@@ -315,8 +315,8 @@ public class UnsafeTest {
   @SuppressWarnings("PMD.SystemPrintln")
   private static final class OtherClass {
 
-    private final int value;
-    private final int unknownValue;
+    final int value;
+    final int unknownValue;
 
     private OtherClass() {
       System.out.println("test");

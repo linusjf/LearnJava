@@ -1,18 +1,20 @@
 package unsafe;
 
 public final class SynchronizedCounter implements Counter {
+  
   private long i;
+  private Object syncOn = new Object();
 
   @Override
   public void increment() {
-    synchronized (this) {
+    synchronized (syncOn) {
       ++i;
     }
   }
 
   @Override
   public long get() {
-    synchronized (this) {
+    synchronized (syncOn) {
       return i;
     }
   }

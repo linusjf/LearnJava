@@ -34,7 +34,7 @@ public final class SampleClass extends SampleBaseClass {
     this.l = l;
   }
 
-  public static byte getB() {
-    return B;
-  }
+//  public static byte getB() {
+  //  return B;
+  //}
 }

@@ -5,4 +5,12 @@
     <Method name="main" />
     <Bug code="ISC" />
   </Match>
+  <Match>
+    <Class name="unsafe.SampleBaseClass" />
+    <Field name="s" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Bug code="SECPR,MDM,IICU,RFI,OPM,SECCRLFLOG,PRMC,HES,RV" />
+  </Match>
 </FindBugsFilter>

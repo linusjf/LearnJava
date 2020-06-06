@@ -67,8 +67,7 @@ public final class UnsafeUtils {
     return getMaxFieldOffset(u, fields);
   }
 
-  private static long getMaxFieldOffset(Unsafe u, Set<Field> fields)
-      throws ReflectiveOperationException {
+  private static long getMaxFieldOffset(Unsafe u, Set<Field> fields) {
     long maxSize = 0;
     for (Field f: fields) {
       long offset = u.objectFieldOffset(f);

@@ -17,7 +17,7 @@ public enum TestCounters {
 
   private static final long NUM_OF_INCREMENTS = 10_000;
 
-  private static boolean areAllTasksComplete(List<Future<?>> futures) {
+  private static boolean areAllTasksComplete(Iterable<Future<?>> futures) {
     for (Future<?> ft: futures) {
       if (!ft.isDone())
         return false;
@@ -27,7 +27,7 @@ public enum TestCounters {
 
   private static List<Future<?>> submit(Counter counter,
                                         ExecutorService service) {
-    List<Future<?>> futures = new ArrayList<>();
+    List<Future<?>> futures = new ArrayList<>(NUM_OF_THREADS);
     for (int i = 0; i < NUM_OF_THREADS; i++)
       futures.add(
           service.submit(new CounterClient(counter, NUM_OF_INCREMENTS)));
