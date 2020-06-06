@@ -53,6 +53,7 @@ public final class Form {
 
   @Override
   public String toString() {
+    String ls = System.lineSeparator();
     StringBuilder sb = new StringBuilder(100);
     sb.append(" First Name: ")
         .append(firstName)
@@ -62,29 +63,29 @@ public final class Form {
         .append(userName)
         .append("\n Password: ")
         .append(password)
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Address", address))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("DOB", dob))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Email", email))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Backup Email", backupEmail))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Spouse Name", spouseName))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("City", city))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("State", state))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Country", country))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Language", language))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Password Hint", passwordHint))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Security Question", securityQuestion))
-        .append(System.lineSeparator())
+        .append(ls)
         .append(toString("Security Answer", securityAnswer));
 
     return sb.toString();
@@ -109,22 +110,22 @@ public final class Form {
   /** Describe class <code>FormBuilder</code> here. */
   @SuppressWarnings({"PMD.TooManyMethods", "PMD.TooManyFields"})
   public static class FormBuilder {
-    private final String firstName;
-    private final String lastName;
-    private final String userName;
-    private final String password;
-    private String addr;
-    private Date dateOfBirth;
-    private String emailAddress;
-    private String backupEmailAddress;
-    private String spouse;
-    private String cityName;
-    private String stateName;
-    private String countryName;
-    private String lang;
-    private String hint;
-    private String securityQuery;
-    private String securityReply;
+    final String firstName;
+     final String lastName;
+     final String userName;
+     final String password;
+     String addr;
+     Date dateOfBirth;
+     String emailAddress;
+     String backupEmailAddress;
+     String spouse;
+     String cityName;
+     String stateName;
+     String countryName;
+     String lang;
+     String hint;
+     String securityQuery;
+     String securityReply;
 
     /**
      * Creates a new <code>FormBuilder</code> instance.
