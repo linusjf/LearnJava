@@ -3,5 +3,5 @@ cp ../jcommander.cp run.cp
 cp ../jcommander.cp compile.cp
 echo -n ':' >> run.cp
 echo -n ':' >> compile.cp
-cat ../junit.cp >> run.cp
-cat ../junit.cp >> compile.cp
+cat ../junit4.cp >> run.cp
+cat ../junit4.cp >> compile.cp
