@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public enum Lists {
@@ -8,14 +9,16 @@ public enum Lists {
 
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
-    List<T> list = new ArrayList<>();
-    for (T elt : arr) list.add(elt);
+    List<T> list = new ArrayList<>(arr.length);
+    for (T elt : arr) 
+      list.add(elt);
     return list;
   }
 
   @SafeVarargs
-  public static <T> void addAll(List<T> list, T... arr) {
-    for (T elt : arr) list.add(elt);
+  public static <T> void addAll(Collection<T> list, T... arr) {
+    for (T elt : arr) 
+      list.add(elt);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -27,7 +30,7 @@ public enum Lists {
     ints = new ArrayList<>();
     Lists.addAll(ints, 1, 2);
     Lists.addAll(ints, new Integer[] {3, 4});
-    assert ints.toString().equals("[1, 2, 3, 4]");
+    assert "[1, 2, 3, 4]".equals(ints.toString());
     ints = Lists.toList();
     System.out.println(ints);
     List<Object> objs = Lists.toList(1, "two");

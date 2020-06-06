@@ -35,7 +35,8 @@ public enum DelayedQueueDemo {
 
     Event(Date startDate) {
       if (startDate == null)
-        throw new IllegalArgumentException("null");
+        throw new IllegalArgumentException("Null date arg in constructor of class: "
+            + getClass());
       this.startDate = startDate;
     }
 

@@ -15,4 +15,11 @@
     <Method name="main" />
     <Bug code="ES" />
   </Match>
+  <Match>
+    <Bug code="SECPR,OPM,MDM, SACM" />
+  </Match>
+  <Match>
+    <Class name="collections.TaskLocalRandom" />
+    <Bug code="SECFSM,MDM" />
+  </Match>
 </FindBugsFilter>

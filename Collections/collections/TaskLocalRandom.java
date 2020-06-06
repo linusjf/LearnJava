@@ -14,7 +14,8 @@ public class TaskLocalRandom implements Runnable {
         .append(Thread.currentThread().getPriority())
         .append(": %d %n");
     String str = sb.toString();
-    for (int i = 0; i < 10; i++) out.printf(str, ThreadLocalRandom.current().nextInt(10));
+    for (int i = 0; i < 10; i++) 
+      out.printf(str, ThreadLocalRandom.current().nextInt(10));
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
