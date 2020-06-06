@@ -19,7 +19,7 @@ public final class ByteToHex { // NOPMD
    * @param raw a <code>byte</code> value
    * @return a <code>String</code> value
    */
-  public static String getHex(byte[] raw) {
+  static String getHex(byte[] raw) {
     final StringBuilder hex = new StringBuilder(2 * raw.length);
     for (final byte b : raw)
       hex.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt(b & 0x0F));

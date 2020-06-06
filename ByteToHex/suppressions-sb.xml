@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="converter.ByteToHex"/>
+    <Method name="&lt;init&gt;"/>
+    <Bug code="WEM" />
+  </Match>
+</FindBugsFilter>
