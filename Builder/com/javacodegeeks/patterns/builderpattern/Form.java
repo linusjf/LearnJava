@@ -111,21 +111,21 @@ public final class Form {
   @SuppressWarnings({"PMD.TooManyMethods", "PMD.TooManyFields"})
   public static class FormBuilder {
     final String firstName;
-     final String lastName;
-     final String userName;
-     final String password;
-     String addr;
-     Date dateOfBirth;
-     String emailAddress;
-     String backupEmailAddress;
-     String spouse;
-     String cityName;
-     String stateName;
-     String countryName;
-     String lang;
-     String hint;
-     String securityQuery;
-     String securityReply;
+    final String lastName;
+    final String userName;
+    final String password;
+    String addr;
+    Date dateOfBirth;
+    String emailAddress;
+    String backupEmailAddress;
+    String spouse;
+    String cityName;
+    String stateName;
+    String countryName;
+    String lang;
+    String hint;
+    String securityQuery;
+    String securityReply;
 
     /**
      * Creates a new <code>FormBuilder</code> instance.

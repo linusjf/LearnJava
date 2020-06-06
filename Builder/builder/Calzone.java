@@ -18,7 +18,7 @@ public final class Calzone extends Pizza {
   @Override
   String describe() {
     String ls = System.lineSeparator();
-    StringBuilder sb = new StringBuilder(30);
+    StringBuilder sb = new StringBuilder(36);
     sb.append("Sauce = ")
         .append(sauceInside)
         .append(ls)
