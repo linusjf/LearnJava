@@ -10,7 +10,8 @@ public final class ByteToHex { // NOPMD
   private static final String HEXES = "0123456789abcdef";
 
   private ByteToHex() {
-    throw new IllegalStateException("Private constructor");
+    throw new IllegalStateException("Private constructor in class : " +
+        getClass());
   }
 
   /**
