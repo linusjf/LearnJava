@@ -47,8 +47,7 @@ tmpFolder=$(realpath /tmp/"$1")
 res=$?
 if [ -e "$tmpFolder" ]
 then
-  find "$tmpFolder" -name "*.java" \
-    | xargs -I % sh -c 'cp -v % "$1"'
+  cp -rv "$tmpFolder"/* "$proj"
   res=($?+"$res")
   rm -rf "$tmpFolder"
   res=($?+"$res")
