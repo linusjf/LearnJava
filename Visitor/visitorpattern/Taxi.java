@@ -22,4 +22,32 @@ public class Taxi implements Visitor {
   public double getTotalFare() {
     return totalFare;
   }
+
+  @Override
+  public String toString() {
+    return "Taxi(totalFare=" + this.getTotalFare() + ")";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Taxi)) return false;
+    Taxi other = (Taxi) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (Double.compare(this.getTotalFare(), other.getTotalFare()) != 0) return false;
+    return true;
+  }
+
+  protected boolean canEqual(Object other) {
+    return other instanceof Taxi;
+  }
+
+  @Override
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    long $totalFare = Double.doubleToLongBits(this.getTotalFare());
+    result = result * PRIME + (int) ($totalFare >>> 32 ^ $totalFare);
+    return result;
+  }
 }

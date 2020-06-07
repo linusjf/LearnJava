@@ -38,4 +38,36 @@ public class CompoundShape implements Shape {
   public void add(Shape shape) {
     children.add(shape);
   }
+
+  @Override
+  public String toString() {
+    return "CompoundShape(id=" + this.getId() + ", children=" + this.getChildren() + ")";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof CompoundShape)) return false;
+    CompoundShape other = (CompoundShape) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.getId() != other.getId()) return false;
+    Object this$children = this.getChildren();
+    Object other$children = other.getChildren();
+    if (this$children == null ? other$children != null : !this$children.equals(other$children)) return false;
+    return true;
+  }
+
+  protected boolean canEqual(Object other) {
+    return other instanceof CompoundShape;
+  }
+
+  @Override
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    result = result * PRIME + this.getId();
+    Object $children = this.getChildren();
+    result = result * PRIME + ($children == null ? 43 : $children.hashCode());
+    return result;
+  }
 }

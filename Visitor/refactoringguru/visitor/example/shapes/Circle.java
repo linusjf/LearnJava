@@ -18,4 +18,32 @@ public class Circle extends Dot {
   public int getRadius() {
     return radius;
   }
+
+  @Override
+  public String toString() {
+    return "Circle(radius=" + this.getRadius() + ")";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Circle)) return false;
+    Circle other = (Circle) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (!super.equals(o)) return false;
+    if (this.getRadius() != other.getRadius()) return false;
+    return true;
+  }
+
+  protected boolean canEqual(Object other) {
+    return other instanceof Circle;
+  }
+
+  @Override
+  public int hashCode() {
+    int PRIME = 59;
+    int result = super.hashCode();
+    result = result * PRIME + this.getRadius();
+    return result;
+  }
 }

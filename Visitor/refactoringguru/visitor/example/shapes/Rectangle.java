@@ -51,4 +51,39 @@ public class Rectangle implements Shape {
   public int getHeight() {
     return height;
   }
+
+  @Override
+  public String toString() {
+    return "Rectangle(id=" + this.getId() + ", x=" + this.getX() + ", y=" + this.getY() + ", width=" + this.getWidth() + ", height=" + this.getHeight() + ")";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Rectangle)) return false;
+    Rectangle other = (Rectangle) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.getId() != other.getId()) return false;
+    if (this.getX() != other.getX()) return false;
+    if (this.getY() != other.getY()) return false;
+    if (this.getWidth() != other.getWidth()) return false;
+    if (this.getHeight() != other.getHeight()) return false;
+    return true;
+  }
+
+  protected boolean canEqual(Object other) {
+    return other instanceof Rectangle;
+  }
+
+  @Override
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    result = result * PRIME + this.getId();
+    result = result * PRIME + this.getX();
+    result = result * PRIME + this.getY();
+    result = result * PRIME + this.getWidth();
+    result = result * PRIME + this.getHeight();
+    return result;
+  }
 }
