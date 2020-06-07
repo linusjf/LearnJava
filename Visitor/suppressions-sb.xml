@@ -3,4 +3,9 @@
   <Match>
     <Bug code="OPM" />
   </Match>
+  <Match>
+    <Class name="~.*"/>
+    <Method name="hashCode"/>
+    <Bug code="USBR" />
+  </Match>
 </FindBugsFilter>
