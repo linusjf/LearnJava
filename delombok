@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 dir"
+  echo "dir - Project directory"
+  exit 1
+}
+
+readExclusions()
+{
+  [ -e "$proj"/"$exclusionsFile" ] && \
+      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
+      echo "Unable to read $proj/$exclusionsFile";}
+}
+
+declare -r setupcp="setupclasspath"
+declare -r auxCpFile="compile.cp"
+auxCp=""
+declare -i res=0
+proj="$1"
+
+if [ "$#" -ne 1 ] || ! [ -d "$proj" ]; 
+then
+  usage
+fi
+
+proj=$(realpath "$proj")
+
+if [ -e "$setupcp" ]
+then
+  ./"$setupcp"
+  auxCp=$(cat "$auxCpFile")
+fi
+if [ -e /tmp/"$1" ]
+then
+  rm -rf /tmp/"$1"
+fi
+mkdir /tmp/"$1"
+tmpFolder=$(realpath /tmp/"$1")
+./delombokcmd "$proj" -d "$tmpFolder" \
+  -n -v -f pretty -f indent:2 \
+  -f finalParams:skip -f constructorProperties:skip \
+  -f emptyLines:indent \
+  || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
+res=$?
+declare -a args=( -rv $tmpFolder/* "$1")
+cp "${args[@]}"
+res=($?+"$res")
+rm -rf "$tmpFolder"
+res=($?+"$res")
+exit $res
