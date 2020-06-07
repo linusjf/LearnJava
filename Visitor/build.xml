@@ -158,8 +158,8 @@
     </java>
   </target>
   <target name="checkstyle">
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -181,9 +181,9 @@
   <target name="pmd">
     <property name="pmd.errCount"
               value="0" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <pmd cacheLocation="${pmd.cacheFile}"
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
@@ -203,8 +203,8 @@
   </target>
   <target name="spotbugs"
           depends="compile">
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
@@ -221,29 +221,29 @@
     </spotbugs>
   </target>
   <target name="delombok">
-    <taskdef classname="lombok.delombok.ant.Tasks$Delombok" 
-      classpath="${lombok.cp}" 
-      name="delombok" />
-  <delete dir="/tmp/${ant.project.name}"/>
+    <taskdef classname="lombok.delombok.ant.Tasks$Delombok"
+             classpath="${lombok.cp}"
+             name="delombok" />
+    <delete dir="/tmp/${ant.project.name}" />
     <mkdir dir="/tmp/${ant.project.name}" />
     <delombok verbose="true"
-      encoding="UTF-8" 
-      to="/tmp/${ant.project.name}">
+              encoding="UTF-8"
+              to="/tmp/${ant.project.name}">
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
-	<format value="pretty" />
-	<format value="finalParams:skip" />
-	<format value="indent:2" />
-	<format value="emptyLines:indent" />
-	<format value="constructorProperties:skip" />
-</delombok>
-<copy todir="${basedir}">
-  <fileset dir="/tmp/${ant.project.name}">
-  </fileset>
-</copy>
-  <delete dir="/tmp/${ant.project.name}"/>
-</target>
+      <format value="pretty" />
+      <format value="suppressWarnings:generate" />
+      <format value="finalParams:skip" />
+      <format value="indent:2" />
+      <format value="emptyLines:indent" />
+      <format value="constructorProperties:skip" />
+    </delombok>
+    <copy todir="${basedir}">
+      <fileset dir="/tmp/${ant.project.name}"></fileset>
+    </copy>
+    <delete dir="/tmp/${ant.project.name}" />
+  </target>
   <target name="main"
           depends="compile,pmd,spotbugs, jar, docs">
     <description>Main target</description>

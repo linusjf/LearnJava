@@ -4,9 +4,11 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="${cs.properties}" />
-  <property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
+  <property file="../lombok.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -21,11 +23,12 @@
             srcFile="../${cs.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
+  <loadfile property="spotbugs.cp"
+            srcfile="../${spotbugs.classpath.file}" />
+  <loadfile property="spotbugs-plugins.cp"
+            srcfile="../${spotbugs-plugin.classpath.file}" />
+  <loadfile property="lombok.cp"
+            srcfile="../${lombok.classpath.file}" />
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -113,7 +116,8 @@
                  pathsep=" " />
     <loadfile property="gformat.cp"
               srcFile="../${gformat.classpath.file}" />
-    <java classname="${gformat.main.class}">
+    <java fork="true"
+          classname="${gformat.main.class}">
       <arg line="-i ${sources}" />
       <classpath>
         <pathelement path="${gformat.cp}" />
@@ -147,6 +151,8 @@
     </java>
   </target>
   <target name="checkstyle">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -166,6 +172,9 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -187,6 +196,8 @@
   </target>
   <target name="spotbugs"
           depends="compile">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
@@ -202,8 +213,32 @@
       </classpath>
     </spotbugs>
   </target>
+  <target name="delombok">
+    <taskdef classname="lombok.delombok.ant.Tasks$Delombok"
+             classpath="${lombok.cp}"
+             name="delombok" />
+    <delete dir="/tmp/${ant.project.name}" />
+    <mkdir dir="/tmp/${ant.project.name}" />
+    <delombok verbose="true"
+              encoding="UTF-8"
+              to="/tmp/${ant.project.name}">
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
+      <format value="pretty" />
+      <format value="suppressWarnings:generate" />
+      <format value="finalParams:skip" />
+      <format value="indent:2" />
+      <format value="emptyLines:indent" />
+      <format value="constructorProperties:skip" />
+    </delombok>
+    <copy todir="${basedir}">
+      <fileset dir="/tmp/${ant.project.name}"></fileset>
+    </copy>
+    <delete dir="/tmp/${ant.project.name}" />
+  </target>
   <target name="main"
-          depends="compile, pmd,jar, docs">
+          depends="compile, pmd, spotbugs, jar, docs">
     <description>Main target</description>
   </target>
 </project>

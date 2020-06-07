@@ -52,29 +52,43 @@ public class Rectangle implements Shape {
     return height;
   }
 
+  @SuppressWarnings("all")
   @Override
   public String toString() {
-    return "Rectangle(id=" + this.getId() + ", x=" + this.getX() + ", y=" + this.getY() + ", width=" + this.getWidth() + ", height=" + this.getHeight() + ")";
+    return "Rectangle(id=" + this.getId() + ", x=" + this.getX()
+        + ", y=" + this.getY() + ", width=" + this.getWidth()
+        + ", height=" + this.getHeight() + ")";
   }
 
+  @SuppressWarnings("all")
   @Override
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Rectangle)) return false;
-    Rectangle other = (Rectangle) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.getId() != other.getId()) return false;
-    if (this.getX() != other.getX()) return false;
-    if (this.getY() != other.getY()) return false;
-    if (this.getWidth() != other.getWidth()) return false;
-    if (this.getHeight() != other.getHeight()) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Rectangle))
+      return false;
+    Rectangle other = (Rectangle)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.getId() != other.getId())
+      return false;
+    if (this.getX() != other.getX())
+      return false;
+    if (this.getY() != other.getY())
+      return false;
+    if (this.getWidth() != other.getWidth())
+      return false;
+    if (this.getHeight() != other.getHeight())
+      return false;
     return true;
   }
 
+  @SuppressWarnings("all")
   protected boolean canEqual(Object other) {
     return other instanceof Rectangle;
   }
 
+  @SuppressWarnings("all")
   @Override
   public int hashCode() {
     int PRIME = 59;

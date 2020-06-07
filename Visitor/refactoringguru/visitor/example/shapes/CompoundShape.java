@@ -41,26 +41,36 @@ public class CompoundShape implements Shape {
 
   @Override
   public String toString() {
-    return "CompoundShape(id=" + this.getId() + ", children=" + this.getChildren() + ")";
+    return "CompoundShape(id=" + this.getId()
+        + ", children=" + this.getChildren() + ")";
   }
 
+  @SuppressWarnings("all")
   @Override
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof CompoundShape)) return false;
-    CompoundShape other = (CompoundShape) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.getId() != other.getId()) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof CompoundShape))
+      return false;
+    CompoundShape other = (CompoundShape)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.getId() != other.getId())
+      return false;
     Object this$children = this.getChildren();
     Object other$children = other.getChildren();
-    if (this$children == null ? other$children != null : !this$children.equals(other$children)) return false;
+    if (this$children == null ? other$children != null
+                              : !this$children.equals(other$children))
+      return false;
     return true;
   }
 
+  @SuppressWarnings("all")
   protected boolean canEqual(Object other) {
     return other instanceof CompoundShape;
   }
 
+  @SuppressWarnings("all")
   @Override
   public int hashCode() {
     int PRIME = 59;

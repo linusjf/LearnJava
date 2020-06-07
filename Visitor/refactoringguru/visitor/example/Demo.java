@@ -10,7 +10,8 @@ import refactoringguru.visitor.example.visitor.XmlExportVisitor;
 @SuppressWarnings("PMD.ShortClassName")
 public final class Demo {
   private Demo() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   public static void main(String[] args) {

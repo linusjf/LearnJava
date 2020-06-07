@@ -40,7 +40,7 @@ res=$?
 tmpFolder=$(realpath /tmp/"$1")
 ./delombokcmd "$proj" -d "$tmpFolder" \
   -n -v --onlyChanged \
-  -f pretty -f indent:2 \
+  -f pretty -f indent:2 -f suppressWarnings:generate \
   -f finalParams:skip -f constructorProperties:skip \
   -f emptyLines:indent \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}

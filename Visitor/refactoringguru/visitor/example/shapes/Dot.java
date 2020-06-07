@@ -45,27 +45,38 @@ public class Dot implements Shape {
     return id;
   }
 
+  @SuppressWarnings("all")
   @Override
   public String toString() {
-    return "Dot(id=" + this.getId() + ", xPoint=" + this.xPoint + ", yPoint=" + this.yPoint + ")";
+    return "Dot(id=" + this.getId() + ", xPoint=" + this.xPoint
+        + ", yPoint=" + this.yPoint + ")";
   }
 
+  @SuppressWarnings("all")
   @Override
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Dot)) return false;
-    Dot other = (Dot) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.getId() != other.getId()) return false;
-    if (this.xPoint != other.xPoint) return false;
-    if (this.yPoint != other.yPoint) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Dot))
+      return false;
+    Dot other = (Dot)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.getId() != other.getId())
+      return false;
+    if (this.xPoint != other.xPoint)
+      return false;
+    if (this.yPoint != other.yPoint)
+      return false;
     return true;
   }
 
+  @SuppressWarnings("all")
   protected boolean canEqual(Object other) {
     return other instanceof Dot;
   }
 
+  @SuppressWarnings("all")
   @Override
   public int hashCode() {
     int PRIME = 59;
