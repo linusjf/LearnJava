@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("PMD.DataClass")
-public class MovieImpl
-    extends PropertyContainerImpl implements Movie, Serializable {
-  public static final long serialVersionUID = 1L;
-
+public class MovieImpl extends PropertyContainerImpl implements Movie, Serializable {
+  private static final long serialVersionUID = 1L;
   private int available;
   private String description;
   private float price;
@@ -77,12 +75,12 @@ public class MovieImpl
     this.id = id;
   }
 
+  @SuppressWarnings("all")
   @Override
   public int hashCode() {
     List<Object> fields = new ArrayList<>(values());
     String[] keys = getPropertyKeys();
-    for (String key: keys)
-      fields.add(key);
+    for (String key : keys) fields.add(key);
     fields.add(id);
     fields.add(title);
     fields.add(available);
@@ -92,19 +90,36 @@ public class MovieImpl
     return Objects.hash(fields.toArray());
   }
 
+  @SuppressWarnings("all")
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) 
       return true;
-    if (!(o instanceof MovieImpl))
+    if (!(o instanceof MovieImpl)) 
       return false;
-    MovieImpl obj = (MovieImpl)o;
-    if (super.equals(obj))
-      return Objects.equals(available, obj.available)
-          && Objects.equals(price, obj.price)
-          && Objects.equals(description, obj.description)
-          && Objects.equals(rating, obj.rating)
-          && Objects.equals(title, obj.title) && Objects.equals(id, obj.id);
+    MovieImpl obj = (MovieImpl) o;
+    if (!super.equals(obj)) 
     return false;
+    else { 
+      if (!Objects.equals(available, obj.available))
+          return false;
+      if (!Objects.equals(price, obj.price))
+      return false;
+      if (!Objects.equals(description, obj.description))
+        return false;
+      if (!Objects.equals(rating, obj.rating))
+        return false;
+      if (!Objects.equals(title, obj.title))
+        return false;
+      if (!Objects.equals(id, obj.id))
+        return false;
+    }
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "MovieImpl(available=" + this.getAvailable() + ", description=" + this.getDescription() + ", price=" + this.getPrice() + ", rating=" + this.getRating() + ", title=" + this.getTitle() + ", id=" + this.getId() + ")";
   }
 }

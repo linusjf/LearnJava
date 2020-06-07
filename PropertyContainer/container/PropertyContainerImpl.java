@@ -9,7 +9,7 @@ import java.util.Set;
 
 public abstract class PropertyContainerImpl
     implements PropertyContainer, Serializable {
-  public static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   protected Map<String, Object> ivProperties = new Hashtable<>();
 
