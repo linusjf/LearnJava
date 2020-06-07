@@ -4,6 +4,7 @@ import static java.util.Optional.*;
 
 import java.util.Locale;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 public enum OptionalDemo {
   ;
@@ -22,10 +23,10 @@ public enum OptionalDemo {
 
     Integer value1 = null;
     Integer value2 = 10;
-    Optional<Integer> a = ofNullable(value1);
+    OptionalInt a = OptionalInt.of(value1);
 
     // Optional.of - throws NullPointerException if passed parameter is null
-    Optional<Integer> b = of(value2);
+    OptionalInt b = OptionalInt.of(value2);
     System.out.println(sum(a, b));
   }
 
@@ -37,7 +38,7 @@ public enum OptionalDemo {
     } else System.out.println("word is null");
   }
 
-  public static Integer sum(Optional<Integer> a, Optional<Integer> b) {
+  public static Integer sum(OptionalInt a, OptionalInt b) {
     // Optional.isPresent - checks the value is present or not
     System.out.println("First parameter is present: " + a.isPresent());
     System.out.println("Second parameter is present: " + b.isPresent());
@@ -47,7 +48,7 @@ public enum OptionalDemo {
     Integer value1 = a.orElse(0);
 
     // Optional.get - gets the value, value should be present
-    Integer value2 = b.get();
+    Integer value2 = b.getAsInt();
     return value1 + value2;
   }
 }

@@ -43,7 +43,8 @@ public enum OptionalExample {
 
     Person(String name, Address address, int phone) {
       if (name == null) {
-        throw new IllegalArgumentException("Null value for name is not permitted");
+        throw new IllegalArgumentException("Null value for name is not permitted in constructor for class : "
+            + getClass());
       }
       this.name = name;
       this.address = Optional.ofNullable(address);

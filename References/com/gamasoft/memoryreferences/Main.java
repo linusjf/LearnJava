@@ -93,7 +93,8 @@ public enum Main {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private static long getUsedMem() {
-    return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    Runtime rt = Runtime.getRuntime();
+    return rt.totalMemory() - rt.freeMemory();
   }
 
   // clang-format off
@@ -121,22 +122,23 @@ public enum Main {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void printMem() {
+    Runtime rt = Runtime.getRuntime();
     /* Total number of processors or cores available to the JVM */
     System.out.println(
-        "Available processors (cores): " + Runtime.getRuntime().availableProcessors());
+        "Available processors (cores): " + rt.availableProcessors());
 
     /* Total amount of free memory available to the JVM */
-    System.out.println("Free memory (bytes): " + Runtime.getRuntime().freeMemory());
+    System.out.println("Free memory (bytes): " + rt.freeMemory());
 
     /* This will return Long.MAX_VALUE if there is no preset limit */
-    long maxMemory = Runtime.getRuntime().maxMemory();
+    long maxMemory = rt.maxMemory();
 
     /* Maximum amount of memory the JVM will attempt to use */
     System.out.println(
         "Maximum memory (bytes): " + (maxMemory == Long.MAX_VALUE ? "no limit" : maxMemory));
 
     /* Total memory currently in use by the JVM */
-    System.out.println("Total memory (bytes): " + Runtime.getRuntime().totalMemory());
+    System.out.println("Total memory (bytes): " + rt.totalMemory());
   }
 
   private static HeavyList allocate(int howMany, HeavyList startFrom) {
@@ -175,7 +177,9 @@ public enum Main {
     }
 
     public HeavyList dropNext() {
-      if (next == null || next.next == null) return null;
+      if (next == null || next.next == null) 
+        throw new NullPointerException("Null object encountered in method dropNext of class "
+            + getClass());
       HeavyList res = next;
       next = next.next;
       return res;

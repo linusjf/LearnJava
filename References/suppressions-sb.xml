@@ -6,6 +6,9 @@
     <Bug code="UPM" />
   </Match>
   <Match>
+    <Bug code="OPM" />
+  </Match>
+  <Match>
     <Class name="com.gamasoft.memoryreferences.Main" />
     <Method name="allocationLoop" />
     <Bug code="DLS" />
