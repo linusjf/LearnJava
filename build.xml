@@ -48,6 +48,7 @@
   <property file="${LearnJava.basedir}/hamcrest.properties" />
   <property file="${LearnJava.basedir}/esapi.properties" />
   <property file="${LearnJava.basedir}/junit4.properties" />
+  <property file="${LearnJava.basedir}/lombok.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -391,6 +392,8 @@
                   conf="junit4.main" />
     <ivy:retrieve pathid="junit4.lib.path"
                   conf="junit4.lib" />
+    <ivy:retrieve pathid="lombok.main.path"
+                  conf="lombok.main" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -477,6 +480,8 @@
           message="${toString:hamcrest.main.path}" />
     <echo file="${esapi.classpath.file}"
           message="${toString:esapi.main.path}:${toString:esapi.lib.path}" />
+    <echo file="${lombok.classpath.file}"
+      message="${toString:lombok.main.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

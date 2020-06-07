@@ -280,6 +280,8 @@
           description="esapi main jars" />
     <conf name="esapi.lib"
           description="esapi lib jars" />
+    <conf name="lombok.main"
+          description="lombok main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -656,5 +658,10 @@
     name="esapi" 
     rev="2.2.0.0"
     conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+  <dependency org="org.projectlombok" 
+    name="lombok" 
+    rev="1.18.12"
+    conf="lombok.main-&gt;master" />
   </dependencies>
 </ivy-module>
