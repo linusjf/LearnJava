@@ -2,6 +2,7 @@ package regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Optional;
 
 public enum SqlTypeRegex {
   ;
@@ -24,7 +25,7 @@ public enum SqlTypeRegex {
 
   public static String getCapturedGroup(String value, String pattern, int group) {
     Regex regex = new Regex(pattern, value);
-    return regex.group(group);
+    return regex.group(group).get();
   }
 
   static final class Regex {
@@ -40,10 +41,10 @@ public enum SqlTypeRegex {
       return pattern.matcher(value);
     }
 
-    public String group(int index) {
-      if (matcher.matches() && index >= 0 && index <= matcher.groupCount())
-        return matcher.group(index);
-      else return null;
+    public Optional<String> group(int index) {
+      if (index >= 0 && index <= matcher.groupCount() && matcher.matches())
+        return Optional.ofNullable(matcher.group(index));
+      return Optional.ofNullable(null); 
     }
   }
 }

@@ -2,6 +2,7 @@ package regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Optional;
 
 public enum TypeNameRegex {
   ;
@@ -11,11 +12,12 @@ public enum TypeNameRegex {
   public static String getTypenameComponent(String classname, int group) {
     // regex is: (?:(.*)\.)?([^\.]*)
     Matcher m = P.matcher(classname);
-    return findTypeComponent(m, group);
+    return findTypeComponent(m, group).get();
   }
 
-  private static String findTypeComponent(Matcher m, int group) {
-    return m.matches() ? m.group(group) : null;
+  private static Optional<String> findTypeComponent(Matcher m, int group) {
+    return m.matches() ? Optional.ofNullable(m.group(group)) 
+      : Optional.ofNullable(null);
   }
 
   public static void main(String... args) {
