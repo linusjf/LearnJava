@@ -26,13 +26,6 @@
             srcfile="../${spotbugs.classpath.file}" />
   <loadfile property="spotbugs-plugins.cp"
             srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -121,7 +114,7 @@
                  pathsep=" " />
     <loadfile property="gformat.cp"
               srcFile="../${gformat.classpath.file}" />
-    <java classname="${gformat.main.class}">
+    <java fork="true" classname="${gformat.main.class}">
       <arg line="-i ${sources}" />
       <classpath>
         <pathelement path="${gformat.cp}" />
@@ -155,6 +148,8 @@
     </java>
   </target>
   <target name="checkstyle">
+  <taskdef resource="${cs.taskdef.resource}"
+           classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -174,6 +169,9 @@
     </checkstyle>
   </target>
   <target name="pmd">
+  <taskdef name="pmd"
+           classname="net.sourceforge.pmd.ant.PMDTask"
+           classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -195,6 +193,8 @@
   </target>
   <target name="spotbugs"
           depends="compile">
+  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"

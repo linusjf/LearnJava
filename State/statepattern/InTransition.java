@@ -15,7 +15,7 @@ public final class InTransition implements PackageState {
   // Business logic and state transition
   @Override
   @SuppressWarnings("PMD.SystemPrintln")
-  public void updateState(DeliveryContext ctx) {
+  public void updateState(IDeliveryContext ctx) {
     System.out.println("Package is in transition !!");
     ctx.setCurrentState(OutForDelivery.getInstance());
   }
