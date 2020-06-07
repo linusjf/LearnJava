@@ -36,16 +36,21 @@ then
   rm -rf /tmp/"$1"
 fi
 mkdir /tmp/"$1"
+res=$?
 tmpFolder=$(realpath /tmp/"$1")
 ./delombokcmd "$proj" -d "$tmpFolder" \
-  -n -v -f pretty -f indent:2 \
+  -n -v --onlyChanged \
+  -f pretty -f indent:2 \
   -f finalParams:skip -f constructorProperties:skip \
   -f emptyLines:indent \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
 res=$?
-declare -a args=( -rv $tmpFolder/* "$1")
-cp "${args[@]}"
-res=($?+"$res")
-rm -rf "$tmpFolder"
-res=($?+"$res")
+if [ -e "$tmpFolder" ]
+then
+  find "$tmpFolder" -name "*.java" \
+    | xargs -I % sh -c 'cp -v % "$1"'
+  res=($?+"$res")
+  rm -rf "$tmpFolder"
+  res=($?+"$res")
+fi
 exit $res
