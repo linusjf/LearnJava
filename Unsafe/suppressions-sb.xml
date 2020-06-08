@@ -11,6 +11,6 @@
     <Bug code="UrF" />
   </Match>
   <Match>
-    <Bug code="SECPR,MDM,IICU,RFI,OPM,SECCRLFLOG,PRMC,HES,RV" />
+    <Bug code="USBR,SECPR,MDM,IICU,RFI,OPM,SECCRLFLOG,PRMC,HES,RV" />
   </Match>
 </FindBugsFilter>

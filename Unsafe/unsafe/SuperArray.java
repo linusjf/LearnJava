@@ -5,8 +5,7 @@ import static unsafe.UnsafeUtils.*;
 @SuppressWarnings("PMD.LawOfDemeter")
 public class SuperArray {
   private static final int BYTE = 1;
-
-  private static final long SUPER_SIZE = (long)Integer.MAX_VALUE * 2;
+  private static final long SUPER_SIZE = (long) Integer.MAX_VALUE * 2;
   private final long size;
   private final long address;
 
@@ -35,13 +34,48 @@ public class SuperArray {
       // 4294967294
       long sum = 0L;
       for (int i = 0; i < 100; i++) {
-        array.set((long)Integer.MAX_VALUE + i, (byte)3);
-        sum += array.get((long)Integer.MAX_VALUE + i);
+        array.set((long) Integer.MAX_VALUE + i, (byte) 3);
+        sum += array.get((long) Integer.MAX_VALUE + i);
       }
       // 300
       System.out.println("Sum of 100 elements:" + sum);
     } catch (ReflectiveOperationException roe) {
       System.err.println(roe.getMessage());
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "SuperArray(size=" + this.getSize() + ", address=" + this.address + ")";
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof SuperArray)) return false;
+    SuperArray other = (SuperArray) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.getSize() != other.getSize()) return false;
+    if (this.address != other.address) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof SuperArray;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    long $size = this.getSize();
+    result = result * PRIME + (int) ($size >>> 32 ^ $size);
+    long $address = this.address;
+    result = result * PRIME + (int) ($address >>> 32 ^ $address);
+    return result;
   }
 }

@@ -43,13 +43,14 @@ tmpFolder=$(realpath /tmp/"$1")
   -f pretty -f indent:2 -f suppressWarnings:generate \
   -f finalParams:skip -f constructorProperties:skip \
   -f emptyLines:indent \
+  --classpath "$auxCp" \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
 res=$?
-if [ -e "$tmpFolder" ]
+if [ $(ls -A "$tmpFolder") ]
 then
   cp -rv "$tmpFolder"/* "$proj"
   res=($?+"$res")
-  rm -rf "$tmpFolder"
-  res=($?+"$res")
 fi
+rm -rf "$tmpFolder"
+res=($?+"$res")
 exit $res
