@@ -1,5 +1,4 @@
 package builder;
-
 // Builder Pattern
 /**
  * Describe class <code>NutritionFacts</code> here.
@@ -32,22 +31,42 @@ public final class NutritionFacts {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder(100);
-    sb.append("serving size = ")
-        .append(servingSize)
-        .append(", servings = ")
-        .append(servings)
-        .append(", calories = ")
-        .append(calories)
-        .append(", fat = ")
-        .append(fat)
-        .append(", sodium = ")
-        .append(sodium)
-        .append(", carbohydrates = ")
-        .append(carbohydrate);
+    sb.append("serving size = ").append(servingSize).append(", servings = ").append(servings).append(", calories = ").append(calories).append(", fat = ").append(fat).append(", sodium = ").append(sodium).append(", carbohydrates = ").append(carbohydrate);
     return sb.toString();
   }
 
-  /** Describe class <code>Builder</code> here. */
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof NutritionFacts)) return false;
+    NutritionFacts other = (NutritionFacts) o;
+    if (this.servingSize != other.servingSize) return false;
+    if (this.servings != other.servings) return false;
+    if (this.calories != other.calories) return false;
+    if (this.fat != other.fat) return false;
+    if (this.sodium != other.sodium) return false;
+    if (this.carbohydrate != other.carbohydrate) return false;
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    result = result * PRIME + this.servingSize;
+    result = result * PRIME + this.servings;
+    result = result * PRIME + this.calories;
+    result = result * PRIME + this.fat;
+    result = result * PRIME + this.sodium;
+    result = result * PRIME + this.carbohydrate;
+    return result;
+  }
+
+  /**
+   * Describe class <code>Builder</code> here.
+   */
   public static class Builder {
     // Required parameters
     final int servingSize;
@@ -121,4 +140,5 @@ public final class NutritionFacts {
       return new NutritionFacts(this);
     }
   }
+
 }

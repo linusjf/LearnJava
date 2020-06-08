@@ -11,18 +11,12 @@ public class SedanCarBuilder implements CarBuilder {
 
   @Override
   public void buildBodyStyle() {
-    car.setBodyStyle(
-        "External dimensions: overall length (inches): 202.9, "
-        + "overall width (inches): 76.2, overall height (inches):"
-        + "60.7, wheelbase (inches): 112.9,"
-        + " front track (inches): 65.3, rear track (inches): 65.5 and"
-        + "curb to curb turning circle (feet): 39.5");
+    car.setBodyStyle("External dimensions: overall length (inches): 202.9, " + "overall width (inches): 76.2, overall height (inches):" + "60.7, wheelbase (inches): 112.9," + " front track (inches): 65.3, rear track (inches): 65.5 and" + "curb to curb turning circle (feet): 39.5");
   }
 
   @Override
   public void buildPower() {
-    car.setPower("285 hp @ 6,500 rpm; "
-                 + "253 ft lb of torque @ 4,000 rpm");
+    car.setPower("285 hp @ 6,500 rpm; " + "253 ft lb of torque @ 4,000 rpm");
   }
 
   @Override
@@ -32,14 +26,12 @@ public class SedanCarBuilder implements CarBuilder {
 
   @Override
   public void buildBrakes() {
-    car.setBrakes("Four-wheel disc brakes: two ventilated."
-                  + "Electronic brake distribution");
+    car.setBrakes("Four-wheel disc brakes: two ventilated." + "Electronic brake distribution");
   }
 
   @Override
   public void buildSeats() {
-    car.setSeats("Front seat center armrest.Rear seat center armrest.Split-"
-                 + "folding rear seats");
+    car.setSeats("Front seat center armrest.Rear seat center armrest.Split-" + "folding rear seats");
   }
 
   @Override
@@ -49,12 +41,45 @@ public class SedanCarBuilder implements CarBuilder {
 
   @Override
   public void buildFuelType() {
-    car.setFuelType("Gasoline 19 MPG city, 29 MPG highway, 23 MPG combined and "
-                    + "437 mi. range");
+    car.setFuelType("Gasoline 19 MPG city, 29 MPG highway, 23 MPG combined and " + "437 mi. range");
   }
 
   @Override
   public Car getCar() {
     return car;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "SedanCarBuilder(car=" + this.getCar() + ")";
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof SedanCarBuilder)) return false;
+    SedanCarBuilder other = (SedanCarBuilder) o;
+    if (!other.canEqual((Object) this)) return false;
+    Object this$car = this.getCar();
+    Object other$car = other.getCar();
+    if (this$car == null ? other$car != null : !this$car.equals(other$car)) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof SedanCarBuilder;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $car = this.getCar();
+    result = result * PRIME + ($car == null ? 43 : $car.hashCode());
+    return result;
   }
 }

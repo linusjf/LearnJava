@@ -14,28 +14,55 @@ public final class Calzone extends Pizza {
     this.sauceInside = builder.sauce;
   }
 
-  /** describes object state as String. */
+  /**
+   * describes object state as String.
+   */
   @Override
   String describe() {
     String ls = System.lineSeparator();
     StringBuilder sb = new StringBuilder(36);
-    sb.append("Sauce = ")
-        .append(sauceInside)
-        .append(ls)
-        .append("Toppings: ")
-        .append(ls);
-    for (Topping t: toppings)
-      sb.append(t).append(ls);
+    sb.append("Sauce = ").append(sauceInside).append(ls).append("Toppings: ").append(ls);
+    for (Topping t : toppings) sb.append(t).append(ls);
     return sb.toString();
   }
 
-  /** returns object state as String. */
+  /**
+   * returns object state as String.
+   */
   @Override
   public String toString() {
     return describe();
   }
 
-  /** Inner class that builds the Calzone object. */
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof Calzone;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Calzone)) return false;
+    Calzone other = (Calzone) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (!super.equals(o)) return false;
+    if (this.sauceInside != other.sauceInside) return false;
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = super.hashCode();
+    result = result * PRIME + (this.sauceInside ? 79 : 97);
+    return result;
+  }
+
+  /**
+   * Inner class that builds the Calzone object.
+   */
   public static class Builder extends Pizza.Builder<Builder> {
     private boolean sauce;
 
@@ -59,4 +86,5 @@ public final class Calzone extends Pizza {
       return this;
     }
   }
+
 }
