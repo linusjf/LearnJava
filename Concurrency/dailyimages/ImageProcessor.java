@@ -25,6 +25,7 @@ public class ImageProcessor {
   public static final int DELAY = 100;
   private static final boolean PRINT_MESSAGE = true;
   private static final boolean SAVE_FILE = true;
+  private static boolean isDilbert;
 
   // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
@@ -117,7 +118,6 @@ public class ImageProcessor {
   public void loadAll() {
     long time = System.nanoTime();
     try {
-      boolean isDilbert = new Random().nextBoolean();
       loopLoadAll(isDilbert);
       latch.await();
       System.out.println("PAST LATCH");
@@ -158,6 +158,8 @@ public class ImageProcessor {
   }
 
   public static void main(String... args) {
+    if (args.length > 0)
+      isDilbert = true;
     ImageProcessor processor = new ImageProcessor();
     processor.printExecutors();
     processor.loadAll();
