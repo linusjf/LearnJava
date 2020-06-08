@@ -6,6 +6,9 @@
     <Bug code="UPM" />
   </Match>
   <Match>
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
     <Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
     <Method name="hashCode"/>
     <Bug code="USBR" />

@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -35,14 +38,18 @@ public enum SingletonTest {
    * @param args a <code>String</code> value
    */
   public static void main(String[] args) {
+  try {
     testConcurrency();
     testSerializable();
     testCloneable();
     testReflection();
     testState();
+  } catch (InterruptedException ie) {
+    System.err.println(ie.getMessage());
+  }
   }
 
-  private static void testConcurrency() {
+  private static void testConcurrency() throws InterruptedException {
     int size = 12;
 
     final CyclicBarrier cyclicBarrier = new CyclicBarrier(size);
@@ -56,44 +63,37 @@ public enum SingletonTest {
     final List<Thread> threads = new LinkedList<>();
     for (int i = 0; i < size; i++) {
       final Thread thread =
-          new Thread(
-              new Runnable() {
-                @Override
-                public void run() {
-                  try {
-                    cyclicBarrier.await();
-                  } catch (InterruptedException | BrokenBarrierException e) {
-                    exception.compareAndSet(null, e);
-                    return;
-                  }
-
-                  final Singleton singleton = Singleton.getInstance();
-                  final long value = singleton.getNextValue();
-
-                  // Synchronise the access as the collections used are not thread-safe
-                  synchronized (SingletonTest.class) {
-                    if (!generatedValues.add(value)) {
-                      exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
-                      return;
-                    }
-                    instances.add(singleton);
-                  }
-                }
-              });
+          new Thread(() -> {
+            try {
+              cyclicBarrier.await(1, TimeUnit.MINUTES);
+            } catch (InterruptedException | BrokenBarrierException | TimeoutException e) {
+              exception.compareAndSet(null, e);
+              return;
+            }
+            final Singleton singleton = Singleton.getInstance();
+            final long value = singleton.getNextValue();
+            // Synchronise the access as the collections used are not thread-safe
+            synchronized (SingletonTest.class) {
+              if (!generatedValues.add(value)) {
+                exception.compareAndSet(null, new AssertionError("Duplicate value " + value));
+                return;
+              }
+              instances.add(singleton);
+            }
+          });
       thread.start();
       threads.add(thread);
     }
-    testForSingleton(threads, generatedValues, instances, exception);
+    for (final Thread thread : threads) 
+        thread.join();
+    testForSingleton(generatedValues, instances, exception);
   }
 
   private static void testForSingleton(
-      List<Thread> threads,
       Set<Long> generatedValues,
       Set<Singleton> instances,
       AtomicReference<Throwable> exception) {
     try {
-      for (final Thread thread : threads) thread.join();
-      
       Throwable t = exception.get();
       if (t != null) 
         throw t;
@@ -115,7 +115,8 @@ public enum SingletonTest {
 
   private static void printValues(Set<Long> generatedValues) {
     System.out.println("Sequence in order in which inserted: ");
-    for (final long value : generatedValues) System.out.print(value + " ");
+    for (final long value : generatedValues) 
+      System.out.print(value + " ");
     System.out.println();
   }
 
@@ -123,14 +124,15 @@ public enum SingletonTest {
     final Singleton instance = Singleton.getInstance();
 
     try {
+      Path serFilePath = Paths.get("singleton.ser");
       final ObjectOutput out =
-          new ObjectOutputStream(Files.newOutputStream(Paths.get("singleton.ser")));
+          new ObjectOutputStream(Files.newOutputStream(serFilePath));
       out.writeObject(instance);
       out.close();
 
       // deserialize from file to object
       final ObjectInput in =
-          new ObjectInputStream(Files.newInputStream(Paths.get("singleton.ser")));
+          new ObjectInputStream(Files.newInputStream(serFilePath));
       final Singleton instance2 = (Singleton) in.readObject();
       in.close();
       printEqualityTests(instance, instance2);
@@ -179,13 +181,15 @@ public enum SingletonTest {
     try {
       resetSingleton();
       Singleton singleton = Singleton.getInstance();
-      if (singleton.getNextValue() != 0L) throw new AssertionError("Next value should be zero.");
+      if (singleton.getNextValue() != 1L) 
+        throw new AssertionError("Next value should be zero.");
       resetSingleton();
       singleton = Singleton.getInstance();
       singleton.getNextValue();
       singleton.getNextValue();
       singleton.getNextValue();
-      if (singleton.getNextValue() != 3L) throw new AssertionError("Next value should be three.");
+      if (singleton.getNextValue() != 4L) 
+        throw new AssertionError("Next value should be three.");
       System.out.println("No assert errors. State validated.");
     } catch (NoSuchFieldException | IllegalAccessException e) {
       System.out.println(e.getMessage());
