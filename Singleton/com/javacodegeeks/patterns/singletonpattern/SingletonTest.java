@@ -149,10 +149,15 @@ public enum SingletonTest {
     System.out.println(instance2);
   }
 
+  private static void ignore(Object obj) {
+    System.out.println("Ignored object: "
+        + obj);
+  }
+
   private static void testCloneable() {
     final Singleton obj = Singleton.getInstance();
     try {
-      obj.clone();
+      ignore(obj.clone());
     } catch (CloneNotSupportedException e) {
       System.out.println(e.getMessage());
     }
@@ -163,9 +168,10 @@ public enum SingletonTest {
     try {
       final Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
       for (Constructor<?> constructor : constructors) {
-        constructor.setAccessible(true);
+        if (constructor.trySetAccessible()) {
         final Singleton obj = (Singleton) constructor.newInstance();
         System.out.println("obj: Break through Reflection:" + obj);
+        }
       }
     } catch (SecurityException
         | InstantiationException
@@ -199,7 +205,7 @@ public enum SingletonTest {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void resetSingleton() throws NoSuchFieldException, IllegalAccessException {
     final Field instance = Singleton.class.getDeclaredField("instance");
-    instance.setAccessible(true);
-    instance.set(null, null);
+    if (instance.trySetAccessible())
+      instance.set(null, null);
   }
 }

@@ -6,7 +6,7 @@
     <Bug code="UPM" />
   </Match>
   <Match>
-    <Bug code="PRMC" />
+    <Bug code="PRMC, MDM" />
   </Match>
   <Match>
     <Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
