@@ -15,6 +15,7 @@ private static final int SIZE = 100;
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
+try {
     final List<Integer> numbers = getNumbers();
     numbers.parallelStream().forEach(n -> 
       sec.schedule(() -> 
@@ -22,6 +23,11 @@ private static final int SIZE = 100;
             n, 
             Thread.currentThread()),
             5, TimeUnit.MILLISECONDS));
+    sec.shutdown();
+    sec.awaitTermination(1, TimeUnit.MINUTES);
+} catch (InterruptedException ie) {
+System.err.println(ie.getMessage());
+}
   }
 
   private static List<Integer> getNumbers() {
