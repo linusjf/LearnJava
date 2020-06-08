@@ -10,16 +10,15 @@ import java.io.Serializable;
  * @version 1.0
  */
 public final class Singleton implements Serializable, Cloneable {
-  private static final long serialVersionUID = -1093810940935189395L;
-
+  private static final long serialVersionUID = 1L;
   @SuppressWarnings("checkstyle:illegaltoken")
-  private static transient volatile Singleton instance; // NOPMD
-
+  private static volatile transient Singleton instance; // NOPMD
   private transient long nextValue;
+  private Object syncObj = new Object();
 
   private Singleton() {
     if (instance != null) {
-      throw new IllegalStateException("Illegal access to constructor: Already instantiated.");
+      throw new IllegalStateException("Illegal access to constructor: Already instantiated for class " + getClass());
     }
   }
 
@@ -29,7 +28,8 @@ public final class Singleton implements Serializable, Cloneable {
    * @return a <code>Singleton</code> value
    */
   public static Singleton getInstance() {
-    if (instance == null) { // NOPMD
+    if (instance == null) {
+      // NOPMD
       // the pmd warning emitted ignores the volatile modifier.
       // works for Java 1.5 onwards
       synchronized (Singleton.class) {
@@ -39,11 +39,11 @@ public final class Singleton implements Serializable, Cloneable {
     return instance;
   }
 
-  private Object readResolve() throws ObjectStreamException {
+  private Object readResolve() {
     return instance;
   }
 
-  private Object writeReplace() throws ObjectStreamException {
+  private Object writeReplace() {
     return instance;
   }
 
@@ -58,7 +58,7 @@ public final class Singleton implements Serializable, Cloneable {
   @SuppressWarnings("checkstyle:noclone")
   @Override
   public Singleton clone() throws CloneNotSupportedException {
-    throw new CloneNotSupportedException("Singleton, cannot be cloned");
+    throw new CloneNotSupportedException("Singleton cannot be cloned : " + getClass());
   }
 
   @SuppressWarnings({"unused", "PMD.UseProperClassLoader", "PMD.LawOfDemeter"})
@@ -74,8 +74,36 @@ public final class Singleton implements Serializable, Cloneable {
    * @return a <code>long</code> value
    */
   public long getNextValue() {
-    synchronized (this) {
+    synchronized (syncObj) {
       return nextValue++;
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "Singleton(nextValue=" + this.getNextValue() + ", syncObj=" + this.syncObj + ")";
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Singleton)) return false;
+    Singleton other = (Singleton) o;
+    Object this$syncObj = this.syncObj;
+    Object other$syncObj = other.syncObj;
+    if (this$syncObj == null ? other$syncObj != null : !this$syncObj.equals(other$syncObj)) return false;
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $syncObj = this.syncObj;
+    result = result * PRIME + ($syncObj == null ? 43 : $syncObj.hashCode());
+    return result;
   }
 }

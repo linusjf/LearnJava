@@ -5,4 +5,14 @@
     <Method name="getClass" />
     <Bug code="UPM" />
   </Match>
+  <Match>
+    <Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
+    <Method name="hashCode"/>
+    <Bug code="USBR" />
+  </Match>
+  <Match>
+    <Class name="com.javacodegeeks.patterns.singletonpattern.SingletonHolder$Holder" />
+    <Method name="&lt;clinit&gt;"/>
+    <Bug code="ISC" />
+  </Match>
 </FindBugsFilter>

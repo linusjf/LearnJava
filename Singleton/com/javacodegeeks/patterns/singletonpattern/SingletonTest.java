@@ -93,8 +93,10 @@ public enum SingletonTest {
       AtomicReference<Throwable> exception) {
     try {
       for (final Thread thread : threads) thread.join();
-
-      if (exception.get() != null) throw exception.get();
+      
+      Throwable t = exception.get();
+      if (t != null) 
+        throw t;
 
       switch (instances.size()) {
         case 0:
