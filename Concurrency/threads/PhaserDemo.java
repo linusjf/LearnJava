@@ -17,7 +17,7 @@ public enum PhaserDemo {
     FileSearch apps = new FileSearch(
         "/data/data/com.termux/files/home/LearnNodeJS", "log", phaser);
     FileSearch documents =
-        new FileSearch("/data/data/com.termux/files/home/", "log", phaser);
+        new FileSearch("/data/data/com.termux/files/home/LearnCS", "log", phaser);
     Thread systemThread = new Thread(system, "System");
     systemThread.start();
     Thread appsThread = new Thread(apps, "Apps");
