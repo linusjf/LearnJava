@@ -90,7 +90,7 @@ runJVM()
       echo "Running $a...";echo
       cd "$proj"
       printf -v cmdPrefix '%q ' java ${runOptions[@]} -cp $auxClasspath:../$jarFile:. 
-      eval "$cmdPrefix $a" && cd .. || { cd ..; exit 1;}
+      eval "$cmdPrefix $a" && cd .. || { cd ..;}
     done
     tearDown;
     if [[ ${#main[@]} > 1 ]]
