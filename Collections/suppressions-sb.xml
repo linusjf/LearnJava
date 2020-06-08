@@ -22,4 +22,7 @@
     <Class name="collections.TaskLocalRandom" />
     <Bug code="SECFSM,MDM" />
   </Match>
+  <Match>
+    <Bug code="SECFSM" />
+  </Match>
 </FindBugsFilter>

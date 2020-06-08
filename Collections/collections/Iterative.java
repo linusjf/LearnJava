@@ -8,7 +8,7 @@ import java.util.List;
 public enum Iterative {
   ;
 
-  public static void removeNegative(List<Double> v) {
+  public static void removeNegative(Iterable <Double> v) {
     for (Iterator<Double> it = v.iterator(); it.hasNext();) {
       if (it.next() < 0)
         it.remove();
@@ -16,8 +16,11 @@ public enum Iterative {
   }
 
   public static double dot(List<Double> u, List<Double> v) {
-    if (u.size() != v.size())
-      throw new IllegalArgumentException("different sizes");
+    int usize = u.size();
+    int vsize = v.size();
+    if (usize != vsize)
+      throw new IllegalArgumentException("different sizes: "
+          + usize + " <> " + vsize);
     double d = 0;
     Iterator<Double> uiterator = u.iterator();
     Iterator<Double> viterator = v.iterator();
