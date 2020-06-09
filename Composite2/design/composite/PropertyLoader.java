@@ -69,7 +69,7 @@ public final class PropertyLoader {
         result = loadAsResourceBundle(cl, name);
       else
         result = loadAsStream(cl, name);
-    } catch (MissingResourceException e) {
+    } catch (MissingResourceException | IOException e) {
       LOGGER.severe(()
                         -> String.format("Error locating resource %s : %s",
                                          name,
@@ -86,19 +86,14 @@ public final class PropertyLoader {
   }
 
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
-  private static Properties loadAsStream(ClassLoader loader, String nome) {
+  private static Properties loadAsStream(ClassLoader loader, String nome) throws IOException {
     String name = nome.replace('.', '/');
     name = name.endsWith(SUFFIX) ? name : name.concat(SUFFIX);
     try (InputStream in = loader.getResourceAsStream(name)) {
       Properties result = new Properties();
       result.load(in);
       return result;
-    } catch (IOException ioe) {
-      LOGGER.severe(()
-                        -> String.format("Error reading from resource %s",
-                                         ioe.getMessage()));
     }
-    return null;
   }
 
   private static Properties loadAsResourceBundle(ClassLoader loader,
@@ -112,7 +107,7 @@ public final class PropertyLoader {
   private static Properties getProperties(ResourceBundle rb) {
     Properties result = new Properties();
     for (String key: Collections.list(rb.getKeys()))
-      result.put(key, rb.getString(key));
+      result.setProperty(key, rb.getString(key));
     return result;
   }
 

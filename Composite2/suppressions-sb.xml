@@ -10,4 +10,10 @@
     <Method name="&lt;init&gt;" />
     <Bug code="RCN" />
   </Match>
+  <Match>
+    <Bug pattern="SPP_NO_CHAR_SB_CTOR"/>
+  </Match>
+  <Match>
+    <Bug code="SECCRLFLOG, OPM, SECPTI, USBR" />
+  </Match>
 </FindBugsFilter>

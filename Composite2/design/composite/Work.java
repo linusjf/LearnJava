@@ -21,7 +21,6 @@ public class Work {
    * @param work list of tasks
    */
   public Work(Calculator workType, List<String> work) {
-
     this.workType = workType;
     this.jobs = work;
   }
@@ -85,11 +84,40 @@ public class Work {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder(46);
-    builder.append("Work [workType=")
-        .append(workType)
-        .append(", work=")
-        .append(jobs)
-        .append(']');
+    builder.append("Work [workType=").append(workType).append(", work=").append(jobs).append(']');
     return builder.toString();
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Work)) return false;
+    Work other = (Work) o;
+    if (!other.canEqual((Object) this)) return false;
+    Object this$workType = this.getWorkType();
+    Object other$workType = other.getWorkType();
+    if (this$workType == null ? other$workType != null : !this$workType.equals(other$workType)) return false;
+    Object this$jobs = this.jobs;
+    Object other$jobs = other.jobs;
+    if (this$jobs == null ? other$jobs != null : !this$jobs.equals(other$jobs)) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof Work;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $workType = this.getWorkType();
+    result = result * PRIME + ($workType == null ? 43 : $workType.hashCode());
+    Object $jobs = this.jobs;
+    result = result * PRIME + ($jobs == null ? 43 : $jobs.hashCode());
+    return result;
   }
 }
