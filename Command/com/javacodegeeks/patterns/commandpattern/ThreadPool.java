@@ -2,6 +2,7 @@ package com.javacodegeeks.patterns.commandpattern;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -35,7 +36,7 @@ public final class ThreadPool {
   public void shutdownPool() {
     while (!jobQueue.isEmpty()) {
       try {
-        Thread.sleep(1000);
+        TimeUnit.MILLISECONDS.sleep(1000);
       } catch (InterruptedException e) {
         LOGGER.severe(e.getMessage());
       }
@@ -52,17 +53,12 @@ public final class ThreadPool {
 
     @Override
     public void run() {
-      while (!shutdown.get()) {
-        try {
+      while (!shutdown.get()) 
           runTopJob();
-        } catch (InterruptedException e) {
-          LOGGER.severe(e.getMessage());
-        }
-      }
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    private void runTopJob() throws InterruptedException {
+    private void runTopJob() {
       Stream.generate(() -> {
         try {
           return jobQueue.take();

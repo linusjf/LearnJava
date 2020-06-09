@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.commandpattern;
 
 import java.util.logging.Logger;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class LoggingJob implements Job {
@@ -17,7 +18,7 @@ public class LoggingJob implements Job {
     LOGGER.info(() -> String.format("Job ID: %d executing logging jobs.", Thread.currentThread().getId()));
     if (logging != null) logging.log();
     try {
-      Thread.sleep(1000);
+      TimeUnit.MILLISECONDS.sleep(1000);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }

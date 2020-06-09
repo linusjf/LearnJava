@@ -1,6 +1,7 @@
 package com.javacodegeeks.patterns.commandpattern;
 
 import java.util.logging.Logger;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class EmailJob implements Job {
@@ -17,7 +18,7 @@ public class EmailJob implements Job {
     LOGGER.info(() -> String.format("Job ID: %d executing email jobs.", Thread.currentThread().getId()));
     if (email != null) email.sendEmail();
     try {
-      Thread.sleep(1000);
+      TimeUnit.MILLISECONDS.sleep(1000);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
