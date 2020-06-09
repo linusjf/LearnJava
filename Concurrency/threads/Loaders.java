@@ -15,8 +15,8 @@ public enum Loaders {
     thread2.start();
 
     try {
-      thread1.join();
-      thread2.join();
+      thread1.join(10_000);
+      thread2.join(10_000);
     } catch (InterruptedException e) {
       System.err.println(e);
     }
