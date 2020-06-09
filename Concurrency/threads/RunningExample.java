@@ -16,8 +16,8 @@ public enum RunningExample {
       wakingThread.start();
 
       // Wait for all threads to terminate.
-      waitThread.join();
-      wakingThread.join();
+      waitThread.join(10_00);
+      wakingThread.join(10_00);
     } catch (InterruptedException ex) {
       System.err.println("An InterruptedException was caught: "
                          + ex.getMessage());

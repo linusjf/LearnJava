@@ -29,7 +29,7 @@ public enum IllegalMonitorStateNotifyExample {
       HelperClass.OBJ.notifyAll();
 
       // Wait for all threads to terminate.
-      waitThread.join();
+      waitThread.join(1000);
     } catch (InterruptedException ex) {
       System.err.println("An InterruptedException was caught: "
                          + ex.getMessage());
