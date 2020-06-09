@@ -1,5 +1,7 @@
 package threads;
 
+import java.util.concurrent.TimeUnit;
+
 public class BlockingThread extends Thread {
   private final SimpleBlockingQueue<?> queue;
   private boolean wasInterrupted;

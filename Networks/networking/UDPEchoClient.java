@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("PMD.AvoidUsingVolatile")
 public enum UDPEchoClient {

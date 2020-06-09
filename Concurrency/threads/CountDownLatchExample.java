@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchExample implements Runnable {
   private static final int NUMBER_OF_THREADS = 5;

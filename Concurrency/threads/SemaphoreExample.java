@@ -2,6 +2,7 @@ package threads;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Semaphore;
 
 public enum SemaphoreExample {

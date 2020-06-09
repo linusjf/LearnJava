@@ -31,6 +31,7 @@ package threads;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Consumer implements Runnable {
   private final Drop drop;

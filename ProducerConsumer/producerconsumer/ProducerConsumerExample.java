@@ -2,6 +2,7 @@ package producerconsumer;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.AvoidUsingVolatile"})
 public enum ProducerConsumerExample {

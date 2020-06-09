@@ -40,6 +40,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 
 /* Connect to each of a list of hosts and measure the time required to complete
  * the connection.  This example uses a selector and two additional threads in
