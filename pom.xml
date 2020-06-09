@@ -364,13 +364,13 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs</artifactId>
-      <version>4.0.3</version>
+      <version>4.0.4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-ant</artifactId>
-      <version>4.0.3</version>
+      <version>4.0.4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -430,7 +430,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>5.2.6.RELEASE</version>
+      <version>5.2.7.RELEASE</version>
       <optional>true</optional>
     </dependency>
     <dependency>
