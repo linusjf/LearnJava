@@ -47,11 +47,10 @@ public enum LockProducerConsumer {
     }
 
     public String getLine() {
-      if (this.hasMoreLines()) {
-        System.out.println("Mock: " + (content.length - index));
-        return content[index++];
-      }
-      return null;
+      if (!hasMoreLines()) 
+        return null;
+      System.out.println("Mock: " + (content.length - index));
+      return content[index++];
     }
   }
 
@@ -95,25 +94,25 @@ public enum LockProducerConsumer {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     public String get() {
+      String line = null;
       lock.lock();
       try {
         while (queue.size() == 0 && hasPendingLines())
           lines.await();
 
         if (hasPendingLines()) {
-          String line = queue.poll();
+          line = queue.poll();
           System.out.printf("%s: Line Read: %d%n",
                             Thread.currentThread().getName(),
                             queue.size());
           space.signalAll();
-          return line;
         }
       } catch (InterruptedException e) {
         System.err.println(e);
       } finally {
         lock.unlock();
       }
-      return null;
+      return line;
     }
 
     public void setPendingLines(boolean pendingLines) {

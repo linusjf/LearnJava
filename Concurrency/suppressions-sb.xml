@@ -12,6 +12,19 @@
     <Bug code="DMI" />
   </Match>
   <Match>
+    <Class name="threads.ReadWriteLockExample$PricesInfo"/>
+    <Bug code="FCBL" />
+    </Match>
+  <Match>
+    <Class name="threads.LockProducerConsumer$FileMock"/>
+    <Bug code="FCBL" />
+    </Match>
+  <Match>
+    <Class name="threads.LockProducerConsumer$FileMock" />
+    <Method name="getLine"/>
+    <Bug code="AI" />
+  </Match>
+  <Match>
     <Class name="threads.Main" />
     <method name="setupStatuses" />
     <Bug code="RCN" />
@@ -101,6 +114,6 @@
     <Bug code="PRMC" />
   </Match>
   <Match>
-    <Bug pattern="MDM_RANDOM_SEED"/>
+    <Bug pattern="MDM_RANDOM_SEED,MDM_WAIT_WITHOUT_TIMEOUT"/>
   </Match>
 </FindBugsFilter>

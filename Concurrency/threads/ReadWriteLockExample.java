@@ -8,23 +8,19 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public enum ReadWriteLockExample {
   ;
-
   public static void main(String[] args) {
     PricesInfo pricesInfo = new PricesInfo();
     Thread[] threadsReader = new Thread[5];
-
     Arrays.setAll(threadsReader, i -> new Thread(new Reader(pricesInfo)));
-
     Writer writer = new Writer(pricesInfo);
     Writer writer2 = new Writer(pricesInfo);
     Thread threadWriter = new Thread(writer);
     Thread threadWriter2 = new Thread(writer2);
-    for (Thread t: threadsReader)
-      t.start();
-
+    for (Thread t : threadsReader) t.start();
     threadWriter.start();
     threadWriter2.start();
   }
+
 
   static class PricesInfo {
     private double price1;
@@ -63,7 +59,9 @@ public enum ReadWriteLockExample {
       this.price2 = price2;
       lock.writeLock().unlock();
     }
+
   }
+
 
   static class Reader implements Runnable {
     private final PricesInfo pricesInfo;
@@ -77,16 +75,13 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 10; i++) {
         synchronized (System.out) {
-          System.out.printf("%s: Price 1: %f%n",
-                            Thread.currentThread().getName(),
-                            pricesInfo.getPrice1());
-          System.out.printf("%s: Price 2: %f%n",
-                            Thread.currentThread().getName(),
-                            pricesInfo.getPrice2());
+          System.out.printf("%s: Price 1: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice1());
+          System.out.printf("%s: Price 2: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice2());
         }
       }
     }
   }
+
 
   static class Writer implements Runnable {
     private final PricesInfo pricesInfo;
@@ -100,13 +95,11 @@ public enum ReadWriteLockExample {
     public void run() {
       for (int i = 0; i < 3; i++) {
         synchronized (System.out) {
-          System.out.printf("Writer %s: Attempt to modify the prices.%n",
-                            Thread.currentThread().getName());
+          System.out.printf("Writer %s: Attempt to modify the prices.%n", Thread.currentThread().getName());
         }
         pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
         synchronized (System.out) {
-          System.out.printf("Writer %s: Prices have been modified.%n",
-                            Thread.currentThread().getName());
+          System.out.printf("Writer %s: Prices have been modified.%n", Thread.currentThread().getName());
         }
         try {
           TimeUnit.MILLISECONDS.sleep(2);
