@@ -40,8 +40,8 @@ then
     -showPlugins
   java -cp "$cp":"$plugincp" "$mainClass" \
     -output "$errFile" \
-    -auxclasspath "$auxCp":. -quiet -adjustExperimental \
-    -workHard \
+    -auxclasspath "$auxCp":. -adjustExperimental \
+    -workHard -quiet \
     -experimental -nested:true -timestampNow \
     -longBugCodes -progress -dontCombineWarnings \
     -pluginList "$plugincp" \
