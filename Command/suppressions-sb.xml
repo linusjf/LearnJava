@@ -5,4 +5,7 @@
     <Method name="runTopJob" />
     <Bug code="UPM" />
   </Match>
+  <Match>
+    <Bug code="USBR, SECCRLFLOG" />
+  </Match>
 </FindBugsFilter>

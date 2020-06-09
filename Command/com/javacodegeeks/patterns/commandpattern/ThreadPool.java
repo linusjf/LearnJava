@@ -8,9 +8,7 @@ import java.util.stream.Stream;
 
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public final class ThreadPool {
-  private static final Logger LOGGER =
-      Logger.getLogger(ThreadPool.class.getName());
-
+  private static final Logger LOGGER = Logger.getLogger(ThreadPool.class.getName());
   private final BlockingQueue<Job> jobQueue;
   private final Thread[] jobThreads;
   private final AtomicBoolean shutdown;
@@ -43,9 +41,9 @@ public final class ThreadPool {
       }
     }
     shutdown.set(true);
-    for (Thread workerThread: jobThreads)
-      workerThread.interrupt();
+    for (Thread workerThread : jobThreads) workerThread.interrupt();
   }
+
 
   private class Worker extends Thread {
     Worker(String name) {
@@ -65,17 +63,48 @@ public final class ThreadPool {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void runTopJob() throws InterruptedException {
-      Stream
-          .generate(() -> {
-            try {
-              return jobQueue.take();
-            } catch (InterruptedException ie) {
-              return null;
-            }
-          })
-          .findFirst()
-          .get()
-          .run();
+      Stream.generate(() -> {
+        try {
+          return jobQueue.take();
+        } catch (InterruptedException ie) {
+          return null;
+        }
+      }).findFirst().get().run();
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "ThreadPool(jobQueue=" + this.jobQueue + ", jobThreads=" + java.util.Arrays.deepToString(this.jobThreads) + ", shutdown=" + this.shutdown + ")";
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof ThreadPool)) return false;
+    ThreadPool other = (ThreadPool) o;
+    Object this$jobQueue = this.jobQueue;
+    Object other$jobQueue = other.jobQueue;
+    if (this$jobQueue == null ? other$jobQueue != null : !this$jobQueue.equals(other$jobQueue)) return false;
+    if (!java.util.Arrays.deepEquals(this.jobThreads, other.jobThreads)) return false;
+    Object this$shutdown = this.shutdown;
+    Object other$shutdown = other.shutdown;
+    if (this$shutdown == null ? other$shutdown != null : !this$shutdown.equals(other$shutdown)) return false;
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $jobQueue = this.jobQueue;
+    result = result * PRIME + ($jobQueue == null ? 43 : $jobQueue.hashCode());
+    result = result * PRIME + java.util.Arrays.deepHashCode(this.jobThreads);
+    Object $shutdown = this.shutdown;
+    result = result * PRIME + ($shutdown == null ? 43 : $shutdown.hashCode());
+    return result;
   }
 }
