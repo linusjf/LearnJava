@@ -31,21 +31,22 @@ package threads;
  */
 class SynchronizedCounter {
   private int c;
+  private Object lock = new Object();
 
   public void increment() {
-    synchronized (this) {
+    synchronized (lock) {
       c++;
     }
   }
 
   public void decrement() {
-    synchronized (this) {
+    synchronized (lock) {
       c--;
     }
   }
 
   public int value() {
-    synchronized (this) {
+    synchronized (lock) {
       return c;
     }
   }
