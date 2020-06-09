@@ -8,10 +8,9 @@ public enum ThreadLocalExample {
 
   public static void main(String[] args) {
     try {
-      MyRunnable sharedRunnableInstance = new MyRunnable();
 
-      Thread thread1 = new Thread(sharedRunnableInstance);
-      Thread thread2 = new Thread(sharedRunnableInstance);
+      Thread thread1 = new Thread(new MyRunnable());
+      Thread thread2 = new Thread(new MyRunnable());
 
       thread1.start();
       thread2.start();
@@ -27,7 +26,7 @@ public enum ThreadLocalExample {
   }
 
   public static class MyRunnable implements Runnable {
-    private final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
     private final Random random = new Random();
 
     @Override

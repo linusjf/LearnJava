@@ -35,6 +35,7 @@ public class SynchronizedRGB {
   private int green;
   private int blue;
   private String name;
+  private Object lock = new Object();
 
   public SynchronizedRGB(int red, int green, int blue, String name) {
     check(red, green, blue);
@@ -54,7 +55,7 @@ public class SynchronizedRGB {
   @SuppressWarnings("checkstyle:hiddenfield")
   public void set(int red, int green, int blue, String name) {
     check(red, green, blue);
-    synchronized (this) {
+    synchronized (lock) {
       this.red = red;
       this.green = green;
       this.blue = blue;
@@ -63,19 +64,19 @@ public class SynchronizedRGB {
   }
 
   public int getRGB() {
-    synchronized (this) {
+    synchronized (lock) {
       return (red << 16) | (green << 8) | blue;
     }
   }
 
   public String getName() {
-    synchronized (this) {
+    synchronized (lock) {
       return name;
     }
   }
 
   public void invert() {
-    synchronized (this) {
+    synchronized (lock) {
       red = 255 - red;
       green = 255 - green;
       blue = 255 - blue;

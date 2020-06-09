@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public enum ReduceLockDuration {
   ;
@@ -60,7 +61,12 @@ public enum ReduceLockDuration {
         synchronized (MAP) {
           MAP.put(key, value);
         }
-        Thread.yield();
+        // Thread.yield();
+        try {
+        TimeUnit.MILLISECONDS.sleep(1);
+        } catch (InterruptedException ie) {
+        Thread.currentThread().interrupt();
+        }
       }
     }
   }
