@@ -52,7 +52,7 @@ public enum ConsumerClient {
           System.out.println("\nSERVER> " + networkInput.nextLine());
 
         // 'Sleep' for 0-5 seconds…
-        Thread.sleep(RANDOM.nextInt(5000));
+        TimeUnit.MILLISECONDS.sleep(RANDOM.nextInt(5000));
       }
     } catch (IOException | InterruptedException ex) {
       System.err.println(ex);

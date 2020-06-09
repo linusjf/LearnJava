@@ -109,7 +109,7 @@ public class ImageProcessor {
       System.out.println("Loading " + newDate);
       load(newDate, info);
       if (DELAY > 0)
-        Thread.sleep(DELAY);
+        TimeUnit.MILLISECONDS.sleep(DELAY);
       newDate = newDate.minusDays(1);
     }
   }
@@ -124,7 +124,7 @@ public class ImageProcessor {
 
       // wait for a minute  before shutting down executor2
       // http timeouts must expire first
-      Thread.sleep(30_000);
+      TimeUnit.MILLISECONDS.sleep(30_000);
       executor2.shutdown();
       executor2.awaitTermination(1, TimeUnit.DAYS);
 

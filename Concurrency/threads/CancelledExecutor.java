@@ -36,7 +36,7 @@ public enum CancelledExecutor {
         try {
           System.out.printf("Task: Test%n");
 
-          Thread.sleep(100);
+          TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e) {
           System.err.println(e);
           return;

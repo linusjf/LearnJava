@@ -21,7 +21,7 @@ public enum ProducerConsumerExecutorService {
               BLOCKING_QUEUE.put(value);
               System.out.println("Produced " + value);
               value++;
-              Thread.sleep(1000);
+              TimeUnit.MILLISECONDS.sleep(1000);
             }
           } catch (InterruptedException e) {
             System.err.println("Producer thread: " + e.getMessage());
@@ -34,7 +34,7 @@ public enum ProducerConsumerExecutorService {
             while (!EXECUTOR.isShutdown()) {
               int value = BLOCKING_QUEUE.take();
               System.out.println("Consumed " + value);
-              Thread.sleep(1000);
+              TimeUnit.MILLISECONDS.sleep(1000);
             }
           } catch (InterruptedException e) {
             System.err.println("Consumer thread: " + e.getMessage());
@@ -44,7 +44,7 @@ public enum ProducerConsumerExecutorService {
     Runnable terminatorTask =
         () -> {
           try {
-            Thread.sleep(10_000);
+            TimeUnit.MILLISECONDS.sleep(10_000);
             EXECUTOR.shutdown();
             System.out.println("Blocking for 10 seconds...");
             EXECUTOR.awaitTermination(10, TimeUnit.SECONDS);

@@ -34,7 +34,7 @@ public enum ThreadLocalExample {
       threadLocal.set(random.nextInt(100));
 
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
       } catch (InterruptedException e) {
         System.err.println(e);
       }

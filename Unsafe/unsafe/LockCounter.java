@@ -23,7 +23,7 @@ class LockCounter implements Counter {
             lock.unlock();
           }
         }
-        Thread.sleep(random.nextInt(10));
+        TimeUnit.MILLISECONDS.sleep(random.nextInt(10));
       }
     } catch (InterruptedException ie) {
       Thread.currentThread().interrupt();

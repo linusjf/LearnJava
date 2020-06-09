@@ -19,7 +19,7 @@ public enum ForkJoinPoolExample {
                                 .submit(() -> {
                                   numbers.parallelStream().forEach(n -> {
                                     try {
-                                      Thread.sleep(5);
+                                      TimeUnit.MILLISECONDS.sleep(5);
                                       System.out.println(
                                           "Loop 1 : " + Thread.currentThread());
                                     } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ public enum ForkJoinPoolExample {
                                 .submit(() -> {
                                   numbers.parallelStream().forEach(n -> {
                                     try {
-                                      Thread.sleep(5);
+                                      TimeUnit.MILLISECONDS.sleep(5);
                                       System.out.println(
                                           "Loop 2 : " + Thread.currentThread());
                                     } catch (InterruptedException e) {

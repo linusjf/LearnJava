@@ -34,7 +34,7 @@ public enum CommonPoolTest {
 
   private static void blockingOperation() {
     try {
-      Thread.sleep(1000);
+      TimeUnit.MILLISECONDS.sleep(1000);
     } catch (InterruptedException e) {
       System.err.println(e);
     }

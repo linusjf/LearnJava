@@ -44,7 +44,7 @@ public enum MultiSemaphoreExample {
             Thread.currentThread().getName(),
             assignedPrinter,
             duration);
-        Thread.sleep(duration);
+        TimeUnit.MILLISECONDS.sleep(duration);
         freePrinters[assignedPrinter] = true;
       } catch (InterruptedException e) {
         System.err.println(e);

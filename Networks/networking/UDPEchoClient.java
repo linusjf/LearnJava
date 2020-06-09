@@ -46,7 +46,7 @@ public enum UDPEchoClient {
       ReceiverThread receiver = new ReceiverThread(socket);
       receiver.start();
       sender.join();
-      Thread.sleep(1000);
+      TimeUnit.MILLISECONDS.sleep(1000);
 
       // halt will not stop blocking call receive
       receiver.halt();

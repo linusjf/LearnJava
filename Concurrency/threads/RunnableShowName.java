@@ -26,7 +26,7 @@ public class RunnableShowName implements Runnable {
         pause = random.nextInt(3000);
 
         // Call static method sleep…
-        Thread.sleep(pause);
+        TimeUnit.MILLISECONDS.sleep(pause);
       } catch (InterruptedException interruptEx) {
         System.out.println(interruptEx);
         Thread.currentThread().interrupt();

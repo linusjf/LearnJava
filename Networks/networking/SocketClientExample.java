@@ -26,7 +26,7 @@ public class SocketClientExample {
         client.write(buffer);
         System.out.println(msg);
         buffer.clear();
-        Thread.sleep(5000);
+        TimeUnit.MILLISECONDS.sleep(5000);
       }
     }
   }

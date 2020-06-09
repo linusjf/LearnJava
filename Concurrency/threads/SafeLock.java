@@ -46,7 +46,7 @@ public enum SafeLock {
     new Thread(() -> {
       try {
         int sleepTime = new Random().nextInt(10_000);
-        Thread.sleep(sleepTime);
+        TimeUnit.MILLISECONDS.sleep(sleepTime);
         System.out.println("Exiting after " + sleepTime + " milliseconds.");
         System.exit(0);
       } catch (InterruptedException ex) {
@@ -132,7 +132,7 @@ public enum SafeLock {
     public void run() {
       while (true) {
         try {
-          Thread.sleep(random.nextInt(10));
+          TimeUnit.MILLISECONDS.sleep(random.nextInt(10));
         } catch (InterruptedException e) {
           System.err.println(e);
         }

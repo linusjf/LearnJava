@@ -21,7 +21,7 @@ public enum ProducerConsumerExample {
                     buffer.add(value);
                     System.out.println("Produced " + value);
                     value++;
-                    Thread.sleep(1000);
+                    TimeUnit.MILLISECONDS.sleep(1000);
                   }
                 } catch (InterruptedException e) {
                   System.out.println(e);
@@ -35,7 +35,7 @@ public enum ProducerConsumerExample {
                   while (!shutdown) {
                     int value = buffer.poll();
                     System.out.println("Consumed " + value);
-                    Thread.sleep(1000);
+                    TimeUnit.MILLISECONDS.sleep(1000);
                   }
                 } catch (InterruptedException e) {
                   System.out.println(e);
@@ -46,7 +46,7 @@ public enum ProducerConsumerExample {
           new Thread(
               () -> {
                 try {
-                  Thread.sleep(10_000);
+                  TimeUnit.MILLISECONDS.sleep(10_000);
                   System.err.println("Exiting program...");
                   shutdown = true;
                 } catch (InterruptedException e) {

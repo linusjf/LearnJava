@@ -49,12 +49,12 @@ public class BlockingThread extends Thread {
     final SimpleBlockingQueue<Object> queue = new SimpleBlockingQueue<>();
     BlockingThread blockingThread = new BlockingThread(queue);
     blockingThread.start();
-    Thread.sleep(5000);
+    TimeUnit.MILLISECONDS.sleep(5000);
     assert !blockingThread.isReachedAfterGet();
     assert !blockingThread.isWasInterrupted();
     assert !blockingThread.isThrowableThrown();
     queue.put(new Object());
-    Thread.sleep(1000);
+    TimeUnit.MILLISECONDS.sleep(1000);
     assert blockingThread.isReachedAfterGet();
     assert !blockingThread.isWasInterrupted();
     assert !blockingThread.isThrowableThrown();

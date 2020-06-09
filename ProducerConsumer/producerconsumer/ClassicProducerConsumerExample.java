@@ -45,7 +45,7 @@ public enum ClassicProducerConsumerExample {
               @Override
               public void run() {
                 try {
-                  Thread.sleep(10_000);
+                  TimeUnit.MILLISECONDS.sleep(10_000);
                   System.out.println("Exiting program...");
                   producerThread.interrupt();
                   consumerThread.interrupt();
@@ -80,7 +80,7 @@ public enum ClassicProducerConsumerExample {
 
       // equivalent of while(true)
       while (value >= 0) {
-        Thread.sleep(random.nextInt(1000));
+        TimeUnit.MILLISECONDS.sleep(random.nextInt(1000));
         synchronized (this) {
           while (list.size() >= size) {
             // wait for the consumer
@@ -98,7 +98,7 @@ public enum ClassicProducerConsumerExample {
 
     public void consume() throws InterruptedException {
       while (true) {
-        Thread.sleep(random.nextInt(1000));
+        TimeUnit.MILLISECONDS.sleep(random.nextInt(1000));
         synchronized (this) {
           while (list.size() == 0) {
             // wait for the producer

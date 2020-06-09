@@ -34,7 +34,7 @@ public enum SemaphoreExample {
             "%s: PrintQueue: Printing a Job utilizing %d seconds%n",
             Thread.currentThread().getName(),
             duration);
-        Thread.sleep(duration);
+        TimeUnit.MILLISECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       } finally {

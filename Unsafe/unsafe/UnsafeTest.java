@@ -300,7 +300,7 @@ public class UnsafeTest {
 
     private int doExpensiveLookup() {
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
       } catch (InterruptedException e) {
         System.err.println(e.getMessage());
       }

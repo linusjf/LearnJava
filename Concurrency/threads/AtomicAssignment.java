@@ -23,7 +23,7 @@ public class AtomicAssignment implements Runnable {
         throw new IllegalStateException("Values are not equal.");
       }
       try {
-        Thread.sleep(1);
+        TimeUnit.MILLISECONDS.sleep(1);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
@@ -50,7 +50,7 @@ public class AtomicAssignment implements Runnable {
         for (int i = 0; i < 10_000; i++) {
           readConfig();
           try {
-            Thread.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(1);
           } catch (InterruptedException e) {
             System.err.println(e);
           }

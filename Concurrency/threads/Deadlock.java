@@ -44,7 +44,7 @@ public enum Deadlock {
     new Thread(() -> gaston.bow(alphonse)).start();
     new Thread(() -> {
       try {
-        Thread.sleep(10_000);
+        TimeUnit.MILLISECONDS.sleep(10_000);
         System.out.println("10 seconds of deadlock. That's enough...");
         System.exit(1);
       } catch (InterruptedException ie) {

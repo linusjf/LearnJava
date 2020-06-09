@@ -164,7 +164,7 @@ public enum LockProducerConsumer {
       try {
         System.out.printf("About to process line: %s", line);
         Random random = new Random();
-        Thread.sleep(random.nextInt(100));
+        TimeUnit.MILLISECONDS.sleep(random.nextInt(100));
       } catch (InterruptedException e) {
         System.err.println(e);
       }

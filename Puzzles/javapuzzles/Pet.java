@@ -32,7 +32,7 @@ public class Pet {
         play();
         sleep();
         try {
-          Thread.sleep(1000);
+          TimeUnit.MILLISECONDS.sleep(1000);
         } catch (InterruptedException ie) {
           System.err.println(ie);
         }
@@ -43,7 +43,7 @@ public class Pet {
   public static void main(String[] args) {
     new Pet("Fido", "beef", "Woof").live();
     try {
-      Thread.sleep(5000);
+      TimeUnit.MILLISECONDS.sleep(5000);
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }

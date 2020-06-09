@@ -108,7 +108,7 @@ public enum ReadWriteLockExample {
                             Thread.currentThread().getName());
         }
         try {
-          Thread.sleep(2);
+          TimeUnit.MILLISECONDS.sleep(2);
         } catch (InterruptedException e) {
           System.err.println(e);
         }

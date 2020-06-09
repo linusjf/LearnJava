@@ -15,7 +15,7 @@ public enum ReentrantLockExample {
     for (Thread t: thread) {
       t.start();
       try {
-        Thread.sleep(100);
+        TimeUnit.MILLISECONDS.sleep(100);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
@@ -35,7 +35,7 @@ public enum ReentrantLockExample {
         System.out.println(Thread.currentThread().getName()
                            + ": PrintQueue: Printing a Job during "
                            + (duration / 1000) + " seconds");
-        Thread.sleep(duration);
+        TimeUnit.MILLISECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       } finally {
@@ -47,7 +47,7 @@ public enum ReentrantLockExample {
         System.out.println(Thread.currentThread().getName()
                            + ": PrintQueue: Printing a Job during "
                            + (duration / 1000) + " seconds");
-        Thread.sleep(duration);
+        TimeUnit.MILLISECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
       } finally {

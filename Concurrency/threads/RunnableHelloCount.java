@@ -25,7 +25,7 @@ public class RunnableHelloCount implements Runnable {
         System.out.println(Thread.currentThread().getName()
                            + " being executed.");
         pause = random.nextInt(3000);
-        Thread.sleep(pause);
+        TimeUnit.MILLISECONDS.sleep(pause);
       } catch (InterruptedException interruptEx) {
         System.out.println(interruptEx);
         Thread.currentThread().interrupt();

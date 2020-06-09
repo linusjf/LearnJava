@@ -6,7 +6,7 @@ public final class Sleepy {
   // clang-format off
   {
     System.out.println("Initializer block");
-    Thread.sleep(1000);
+    TimeUnit.MILLISECONDS.sleep(1000);
   }
 
   // clang-format on

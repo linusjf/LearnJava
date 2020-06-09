@@ -93,7 +93,7 @@ public final class Ping {
       }
 
       // Wait for everything to finish
-      Thread.sleep(2000);
+      TimeUnit.MILLISECONDS.sleep(2000);
       connector.shutDown();
       System.err.println("shutting down....");
       connector.join();

@@ -105,7 +105,7 @@ public enum SimpleThreads {
       try {
         for (String info: importantInfo) {
           // Pause for 4 seconds
-          Thread.sleep(4000);
+          TimeUnit.MILLISECONDS.sleep(4000);
 
           // Print a message
           threadMessage(info);

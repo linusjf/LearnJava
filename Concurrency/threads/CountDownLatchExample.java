@@ -27,7 +27,7 @@ public class CountDownLatchExample implements Runnable {
       int randomSleepTime = random.nextInt(20_000);
       System.out.println("[" + Thread.currentThread().getName()
                          + "]-Sleeping for " + randomSleepTime);
-      Thread.sleep(randomSleepTime);
+      TimeUnit.MILLISECONDS.sleep(randomSleepTime);
       LATCH.countDown();
       System.out.println("[" + Thread.currentThread().getName()
                          + "]-Waiting for latch.");

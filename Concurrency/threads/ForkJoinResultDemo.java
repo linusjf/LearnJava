@@ -197,7 +197,7 @@ public enum ForkJoinResultDemo {
           counter++;
       }
       try {
-        Thread.sleep(10);
+        TimeUnit.MILLISECONDS.sleep(10);
       } catch (InterruptedException e) {
         System.err.println(e);
       }

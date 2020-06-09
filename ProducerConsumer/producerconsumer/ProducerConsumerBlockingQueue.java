@@ -23,7 +23,7 @@ public enum ProducerConsumerBlockingQueue {
                     blockingQueue.put(value);
                     System.out.println("Produced " + value);
                     value++;
-                    Thread.sleep(1000);
+                    TimeUnit.MILLISECONDS.sleep(1000);
                   }
                 } catch (InterruptedException e) {
                   System.err.println("Producer thread: " + e.getMessage());
@@ -39,7 +39,7 @@ public enum ProducerConsumerBlockingQueue {
                   while (!Thread.interrupted()) {
                     int value = blockingQueue.take();
                     System.out.println("Consumed " + value);
-                    Thread.sleep(1000);
+                    TimeUnit.MILLISECONDS.sleep(1000);
                   }
                 } catch (InterruptedException e) {
                   System.err.println("Consumer thread: " + e.getMessage());
@@ -51,7 +51,7 @@ public enum ProducerConsumerBlockingQueue {
           new Thread(
               () -> {
                 try {
-                  Thread.sleep(10_000);
+                  TimeUnit.MILLISECONDS.sleep(10_000);
                   System.err.println("Exiting program...");
                   synchronized (group) {
                     group.interrupt();

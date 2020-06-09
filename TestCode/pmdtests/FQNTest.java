@@ -15,7 +15,7 @@ public enum FQNTest {
                 public void run() {
                   for (int j = 0; j < 10_000; j++) {
                     try {
-                      Thread.sleep(1);
+                      TimeUnit.MILLISECONDS.sleep(1);
                     } catch (InterruptedException e) {
                       System.err.println(e);
                     }

@@ -37,7 +37,7 @@ public class CyclicBarrierArchetype implements Runnable {
         int randomSleepTime = random.nextInt(10_000);
         System.out.println("[" + Thread.currentThread().getName()
                            + "] Sleeping for " + randomSleepTime);
-        Thread.sleep(randomSleepTime);
+        TimeUnit.MILLISECONDS.sleep(randomSleepTime);
         System.out.println("[" + Thread.currentThread().getName()
                            + "] Waiting for barrier.");
         BARRIER.await();

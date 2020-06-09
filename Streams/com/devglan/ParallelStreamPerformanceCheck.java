@@ -39,7 +39,7 @@ public enum ParallelStreamPerformanceCheck {
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void processData(int num) {
     try {
-      Thread.sleep(10);
+      TimeUnit.MILLISECONDS.sleep(10);
     } catch (InterruptedException e) {
       System.err.println(e);
       Thread.currentThread().interrupt();

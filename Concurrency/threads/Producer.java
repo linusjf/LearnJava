@@ -51,7 +51,7 @@ public class Producer implements Runnable {
     for (String info: importantInfo) {
       drop.put(info);
       try {
-        Thread.sleep(random.nextInt(5000));
+        TimeUnit.MILLISECONDS.sleep(random.nextInt(5000));
       } catch (InterruptedException e) {
         System.err.println(e);
       }

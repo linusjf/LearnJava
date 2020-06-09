@@ -13,7 +13,7 @@ public enum CountDownLatchDemo {
       System.out.println(DOING_WORK);
 
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
         COUNT_DOWN_LATCH.countDown();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -24,7 +24,7 @@ public enum CountDownLatchDemo {
       System.out.println(DOING_WORK);
 
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
         COUNT_DOWN_LATCH.countDown();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -35,7 +35,7 @@ public enum CountDownLatchDemo {
       System.out.println(DOING_WORK);
 
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
         COUNT_DOWN_LATCH.countDown();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -46,7 +46,7 @@ public enum CountDownLatchDemo {
       System.out.println(DOING_WORK);
 
       try {
-        Thread.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(2000);
         COUNT_DOWN_LATCH.countDown();
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -57,7 +57,7 @@ public enum CountDownLatchDemo {
       System.out.println(DOING_WORK);
 
       try {
-        Thread.sleep(3000);
+        TimeUnit.MILLISECONDS.sleep(3000);
         COUNT_DOWN_LATCH.countDown();
       } catch (InterruptedException e) {
         System.err.println(e);
