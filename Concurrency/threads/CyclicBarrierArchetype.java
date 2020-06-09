@@ -25,13 +25,17 @@ public class CyclicBarrierArchetype implements Runnable {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
+  try {
     executorService =
         Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     for (int i = 0; i < NUMBER_OF_THREADS; i++) {
       executorService.execute(new CyclicBarrierArchetype());
     }
     executorService.shutdown();
-    executorService.awaitTimeout(1, TimeUnit.HOURS);
+    executorService.awaitTermination(1, TimeUnit.HOURS);
+  } catch (InterruptedException ie) {
+System.err.println(ie.getMessage());
+  }
   }
 
   @Override

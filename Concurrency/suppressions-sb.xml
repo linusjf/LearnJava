@@ -12,6 +12,15 @@
     <Bug code="DMI" />
   </Match>
   <Match>
+    <Class name="threads.Main" />
+    <method name="setupStatuses" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="threads.Main" />
+    <Bug code="MDM" />
+  </Match>
+  <Match>
     <Class name="threads.ControllingExecutor" />
     <Method name="main" />
     <Bug code="RV" />

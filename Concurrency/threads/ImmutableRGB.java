@@ -1,5 +1,4 @@
 package threads;
-
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -47,8 +46,7 @@ public final class ImmutableRGB {
 
   @SuppressWarnings("checkstyle:hiddenfield")
   private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
-        || blue > 255) {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
       throw new IllegalArgumentException();
     }
   }
@@ -62,7 +60,40 @@ public final class ImmutableRGB {
   }
 
   public ImmutableRGB invert() {
-    return new ImmutableRGB(
-        255 - red, 255 - green, 255 - blue, "Inverse of " + name);
+    return new ImmutableRGB(255 - red, 255 - green, 255 - blue, "Inverse of " + name);
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof ImmutableRGB)) return false;
+    ImmutableRGB other = (ImmutableRGB) o;
+    if (this.red != other.red) return false;
+    if (this.green != other.green) return false;
+    if (this.blue != other.blue) return false;
+    Object this$name = this.getName();
+    Object other$name = other.getName();
+    if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
+    return true;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    result = result * PRIME + this.red;
+    result = result * PRIME + this.green;
+    result = result * PRIME + this.blue;
+    Object $name = this.getName();
+    result = result * PRIME + ($name == null ? 43 : $name.hashCode());
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "ImmutableRGB(red=" + this.red + ", green=" + this.green + ", blue=" + this.blue + ", name=" + this.getName() + ")";
   }
 }

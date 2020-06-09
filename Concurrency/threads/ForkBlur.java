@@ -37,7 +37,6 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.imageio.ImageIO;
-
 /**
  * ForkBlur implements a simple horizontal image blur. It averages pixels in the source array and
  * writes them to a destination array. The S_THRESHOLD value determines whether the blurring will be
@@ -48,12 +47,10 @@ import javax.imageio.ImageIO;
  */
 public class ForkBlur extends RecursiveAction {
   public static final long serialVersionUID = 1L;
-  protected static final int S_THRESHOLD = 10_000;
+  protected static final int S_THRESHOLD = 10000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
   private static final int BLUR_WIDTH = 15;
-
   private static final int SIDE_PIXELS = (BLUR_WIDTH - 1) / 2;
-
   private final int[] mSource;
   private final int mStart;
   private final int mLength;
@@ -73,20 +70,19 @@ public class ForkBlur extends RecursiveAction {
     for (int index = mStart; index < mStart + mLength; index++) {
       // Calculate average.
       // clang-format off
-      float rt = 0, gt = 0, bt = 0; // NOPMD
-
+      float rt = 0;
+      float gt = 0;
+      float bt = 0; // NOPMD
       // clang-format on
       for (int mi = -SIDE_PIXELS; mi <= SIDE_PIXELS; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
-        rt += (float)((pixel & 0x00ff0000) >> 16) / BLUR_WIDTH;
-        gt += (float)((pixel & 0x0000ff00) >> 8) / BLUR_WIDTH;
-        bt += (float)((pixel & 0x000000ff) >> 0) / BLUR_WIDTH;
+        rt += (float) ((pixel & 16711680) >> 16) / BLUR_WIDTH;
+        gt += (float) ((pixel & 65280) >> 8) / BLUR_WIDTH;
+        bt += (float) ((pixel & 255) >> 0) / BLUR_WIDTH;
       }
-
       // Re-assemble destination pixel.
-      int dpixel =
-          0xff000000 | (((int)rt) << 16) | (((int)gt) << 8) | (((int)bt) << 0);
+      int dpixel = -16777216 | (((int) rt) << 16) | (((int) gt) << 8) | (((int) bt) << 0);
       mDestination[index] = dpixel;
     }
   }
@@ -98,12 +94,8 @@ public class ForkBlur extends RecursiveAction {
       computeDirectly();
       return;
     }
-
     int split = mLength / 2;
-
-    invokeAll(
-        new ForkBlur(mSource, mStart, split, mDestination),
-        new ForkBlur(mSource, mStart + split, mLength - split, mDestination));
+    invokeAll(new ForkBlur(mSource, mStart, split, mDestination), new ForkBlur(mSource, mStart + split, mLength - split, mDestination));
   }
 
   // Plumbing follows.
@@ -113,18 +105,13 @@ public class ForkBlur extends RecursiveAction {
       String srcName = "Red_Tulips.jpg";
       File srcFile = new File(srcName);
       BufferedImage image = ImageIO.read(srcFile);
-
-      BufferedImage img = new BufferedImage(
-          image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+      BufferedImage img = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
       img.getGraphics().drawImage(image, 0, 0, null);
       System.out.println("Source image: " + srcName);
-
       BufferedImage blurredImage = blur(img);
-
       String dstName = "blurred-tulips.jpg";
       File dstFile = new File(dstName);
       ImageIO.write(blurredImage, "jpeg", dstFile);
-
       System.out.println("Output image: " + dstName);
     } catch (IOException ioe) {
       System.err.println(ioe);
@@ -135,33 +122,61 @@ public class ForkBlur extends RecursiveAction {
   public static BufferedImage blur(BufferedImage srcImage) {
     int w = srcImage.getWidth();
     int h = srcImage.getHeight();
-
     int[] src = srcImage.getRGB(0, 0, w, h, null, 0, w);
     int[] dst = new int[src.length];
-
     System.out.println("Array size is " + src.length);
     System.out.println("Threshold is " + S_THRESHOLD);
-
     int processors = Runtime.getRuntime().availableProcessors();
-    System.out.println(Integer.toString(processors) + " processor"
-                       + (processors > 1 ? "s are " : " is ") + "available");
-
+    System.out.println(Integer.toString(processors) + " processor" + (processors > 1 ? "s are " : " is ") + "available");
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
-
     ForkJoinPool pool = new ForkJoinPool();
-
     long startTime = System.currentTimeMillis();
     pool.invoke(fb);
     pool.shutdown();
     long endTime = System.currentTimeMillis();
-
-    System.out.println("Image blur took " + (endTime - startTime)
-                       + " milliseconds.");
+    System.out.println("Image blur took " + (endTime - startTime) + " milliseconds.");
     System.out.println("Task count: " + taskCount.get());
     BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
     dstImage.getGraphics().drawImage(srcImage, 0, 0, null);
     dstImage.setRGB(0, 0, w, h, dst, 0, w);
-
     return dstImage;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof ForkBlur)) return false;
+    ForkBlur other = (ForkBlur) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (!super.equals(o)) return false;
+    if (!java.util.Arrays.equals(this.mSource, other.mSource)) return false;
+    if (this.mStart != other.mStart) return false;
+    if (this.mLength != other.mLength) return false;
+    if (!java.util.Arrays.equals(this.mDestination, other.mDestination)) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof ForkBlur;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = super.hashCode();
+    result = result * PRIME + java.util.Arrays.hashCode(this.mSource);
+    result = result * PRIME + this.mStart;
+    result = result * PRIME + this.mLength;
+    result = result * PRIME + java.util.Arrays.hashCode(this.mDestination);
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "ForkBlur(mSource=" + java.util.Arrays.toString(this.mSource) + ", mStart=" + this.mStart + ", mLength=" + this.mLength + ", mDestination=" + java.util.Arrays.toString(this.mDestination) + ")";
   }
 }

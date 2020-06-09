@@ -13,11 +13,9 @@ public class LockSplitting implements Runnable {
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
-    for (int i = 0; i < 100_000; i++) {
-      if (ThreadLocalRandom.current().nextBoolean())
-        counter.incrementCustomer();
-      else
-        counter.incrementShipping();
+    for (int i = 0; i < 100000; i++) {
+      if (ThreadLocalRandom.current().nextBoolean()) counter.incrementCustomer();
+       else counter.incrementShipping();
     }
   }
 
@@ -25,32 +23,21 @@ public class LockSplitting implements Runnable {
   public static void main(String[] args) {
     try {
       Thread[] threads = new Thread[NUMBER_OF_THREADS];
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
-
+      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
       long startMillis = System.currentTimeMillis();
-      for (Thread t: threads)
-        t.start();
-
-      for (Thread t: threads)
-        t.join();
-
+      for (Thread t : threads) t.start();
+      for (Thread t : threads) t.join();
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
-      for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
-
+      for (int i = 0; i < NUMBER_OF_THREADS; i++) threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
       startMillis = System.currentTimeMillis();
-      for (Thread t: threads)
-        t.start();
-
-      for (Thread t: threads)
-        t.join();
-
+      for (Thread t : threads) t.start();
+      for (Thread t : threads) t.join();
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
   }
+
 
   public interface Counter {
     void incrementCustomer();
@@ -61,6 +48,7 @@ public class LockSplitting implements Runnable {
 
     long getShippingCount();
   }
+
 
   public static class CounterOneLock implements Counter {
     private long customerCount;
@@ -96,6 +84,7 @@ public class LockSplitting implements Runnable {
     }
   }
 
+
   public static class CounterSeparateLock implements Counter {
     private static final Object CUSTOMER_LOCK = new Object();
     private static final Object SHIPPING_LOCK = new Object();
@@ -129,5 +118,39 @@ public class LockSplitting implements Runnable {
         return shippingCount;
       }
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof LockSplitting)) return false;
+    LockSplitting other = (LockSplitting) o;
+    if (!other.canEqual((Object) this)) return false;
+    Object this$counter = this.counter;
+    Object other$counter = other.counter;
+    if (this$counter == null ? other$counter != null : !this$counter.equals(other$counter)) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof LockSplitting;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $counter = this.counter;
+    result = result * PRIME + ($counter == null ? 43 : $counter.hashCode());
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "LockSplitting(counter=" + this.counter + ")";
   }
 }

@@ -1,5 +1,4 @@
 package threads;
-
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -49,5 +48,36 @@ class SynchronizedCounter {
     synchronized (this) {
       return c;
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof SynchronizedCounter)) return false;
+    SynchronizedCounter other = (SynchronizedCounter) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.c != other.c) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof SynchronizedCounter;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    result = result * PRIME + this.c;
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "SynchronizedCounter(c=" + this.c + ")";
   }
 }
