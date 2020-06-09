@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Bug code="SECPTI, SECPR" />
+    <Bug code="SECPTI, SECPR, OPM" />
   </Match>
   <Match>
     <Method name="hashCode"/>
@@ -94,6 +94,11 @@
     <Class name="threads.DemoThreadExample$ExceptionHandler" />
     <Method name="uncaughtException" />
     <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="threads.CustomPhaserDemo$Student" />
+    <Method name="run" />
+    <Bug code="PRMC" />
   </Match>
   <Match>
     <Bug pattern="MDM_RANDOM_SEED"/>
