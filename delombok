@@ -46,7 +46,7 @@ tmpFolder=$(realpath /tmp/"$1")
   --classpath "$auxCp" \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
 res=$?
-if [ $(ls -A "$tmpFolder") ]
+if [ "$(ls -A "$tmpFolder")" ]
 then
   cp -rv "$tmpFolder"/* "$proj"
   res=($?+"$res")
