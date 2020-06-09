@@ -81,19 +81,21 @@ public enum PhaserDemo {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private boolean checkResults() {
+        String threadName = Thread.currentThread().getName();
+        int phase = phaser.getPhase();
       if (results.isEmpty()) {
         System.out.printf("%s: Phase %d: 0 results.%n",
-                          Thread.currentThread().getName(),
-                          phaser.getPhase());
+                          threadName ,
+                          phase);
         System.out.printf("%s: Phase %d: End.%n",
-                          Thread.currentThread().getName(),
-                          phaser.getPhase());
+                          threadName,
+                          phase);
         phaser.arriveAndDeregister();
         return false;
       } else {
         System.out.printf("%s: Phase %d: %d results.%n",
-                          Thread.currentThread().getName(),
-                          phaser.getPhase(),
+                          threadName,
+                          phase,
                           results.size());
         phaser.arriveAndAwaitAdvance();
         return true;

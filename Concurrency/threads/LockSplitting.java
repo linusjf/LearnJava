@@ -65,31 +65,32 @@ public class LockSplitting implements Runnable {
   public static class CounterOneLock implements Counter {
     private long customerCount;
     private long shippingCount;
+    private Object lock = new Object();
 
     @Override
     public void incrementCustomer() {
-      synchronized (this) {
+      synchronized (lock) {
         customerCount++;
       }
     }
 
     @Override
     public void incrementShipping() {
-      synchronized (this) {
+      synchronized (lock) {
         shippingCount++;
       }
     }
 
     @Override
     public long getCustomerCount() {
-      synchronized (this) {
+      synchronized (lock) {
         return customerCount;
       }
     }
 
     @Override
     public long getShippingCount() {
-      synchronized (this) {
+      synchronized (lock) {
         return shippingCount;
       }
     }

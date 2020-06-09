@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Bug code="SECPTI" />
+    <Bug code="SECPTI, SECPR" />
+  </Match>
+  <Match>
+    <Method name="hashCode"/>
+    <Bug code="USBR" />
   </Match>
   <Match>
     <Class name="dailyimages.ImageProcessor" />

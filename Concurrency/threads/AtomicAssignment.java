@@ -21,12 +21,15 @@ public class AtomicAssignment implements Runnable {
       String value2 = currConfig.get("key-2");
       String value3 = currConfig.get("key-3");
       if (!(value1.equals(value2) && value2.equals(value3))) {
-        throw new IllegalStateException("Values are not equal.");
+        throw new IllegalStateException("Values are not equal: "
+            + value1 + "," + value2 + ","
+            + value3);
       }
       try {
         TimeUnit.MILLISECONDS.sleep(1);
       } catch (InterruptedException e) {
         System.err.println(e);
+        Thread.currentThread().interrupt();
       }
     }
   }
@@ -54,6 +57,7 @@ public class AtomicAssignment implements Runnable {
             TimeUnit.MILLISECONDS.sleep(1);
           } catch (InterruptedException e) {
             System.err.println(e);
+            Thread.currentThread().interrupt();
           }
         }
       }
@@ -66,8 +70,8 @@ public class AtomicAssignment implements Runnable {
     }
     try {
       for (Thread thread: threads)
-        thread.join();
-      configThread.join();
+        thread.join(10_000);
+      configThread.join(10_000);
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }

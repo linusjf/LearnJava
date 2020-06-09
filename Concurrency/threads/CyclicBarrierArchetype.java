@@ -12,6 +12,9 @@ public class CyclicBarrierArchetype implements Runnable {
   private static final int NUMBER_OF_THREADS = 5;
   private static AtomicInteger counter = new AtomicInteger();
   private static Random random = new Random(System.currentTimeMillis());
+
+  private static ExecutorService executorService;
+
   private static final CyclicBarrier BARRIER =
       new CyclicBarrier(5, new Runnable() {
         @Override
@@ -22,12 +25,13 @@ public class CyclicBarrierArchetype implements Runnable {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ExecutorService executorService =
+    executorService =
         Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     for (int i = 0; i < NUMBER_OF_THREADS; i++) {
       executorService.execute(new CyclicBarrierArchetype());
     }
     executorService.shutdown();
+    executorService.awaitTimeout(1, TimeUnit.HOURS);
   }
 
   @Override
