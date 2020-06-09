@@ -38,36 +38,28 @@ public abstract class HtmlTag {
    *
    * @param tagBody a <code>String</code> value
    */
-  public void setTagBody(String tagBody) {
-    throw new UnsupportedOperationException(UNSUPPORTED_OPERATION);
-  }
+  public abstract void setTagBody(String tagBody);
 
   /**
    * Describe <code>addChildTag</code> method here.
    *
    * @param htmlTag a <code>HtmlTag</code> value
    */
-  public void addChildTag(HtmlTag htmlTag) {
-    throw new UnsupportedOperationException(UNSUPPORTED_OPERATION);
-  }
+  public abstract void addChildTag(HtmlTag htmlTag);
 
   /**
    * Describe <code>removeChildTag</code> method here.
    *
    * @param htmlTag a <code>HtmlTag</code> value
    */
-  public void removeChildTag(HtmlTag htmlTag) {
-    throw new UnsupportedOperationException(UNSUPPORTED_OPERATION);
-  }
+  public abstract void removeChildTag(HtmlTag htmlTag);
 
   /**
    * Describe <code>getChildren</code> method here.
    *
    * @return a <code>List</code> object
    */
-  public List<HtmlTag> getChildren() {
-    throw new UnsupportedOperationException(UNSUPPORTED_OPERATION);
-  }
+  public abstract List<HtmlTag> getChildren();
 
   /** Describe <code>generateHtml</code> method here. */
   public abstract void generateHtml();
