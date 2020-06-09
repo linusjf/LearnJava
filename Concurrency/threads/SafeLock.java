@@ -69,12 +69,12 @@ public enum SafeLock {
     }
 
     @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
-    public boolean impendingBow(Friend bower) {
-      Boolean myLock = false;
-      Boolean yourLock = false;
+    public boolean impendingBow(Friend bower) throws InterruptedException {
+      boolean myLock = false;
+      boolean yourLock = false;
       try {
-        myLock = lock.tryLock();
-        yourLock = bower.lock.tryLock();
+        myLock = lock.tryLock(0, TimeUnit.SECONDS);
+        yourLock = bower.lock.tryLock(0, TimeUnit.SECONDS);
       } finally {
         if (!(myLock && yourLock)) {
           if (myLock)
@@ -87,7 +87,7 @@ public enum SafeLock {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public void bow(Friend bower) {
+    public void bow(Friend bower) throws InterruptedException {
       if (impendingBow(bower)) {
         try {
           System.out.format("%s: %s has"
@@ -134,10 +134,11 @@ public enum SafeLock {
       while (true) {
         try {
           TimeUnit.MILLISECONDS.sleep(random.nextInt(10));
+        bowee.bow(bower);
         } catch (InterruptedException e) {
           System.err.println(e);
+          Thread.currentThread().interrupt();
         }
-        bowee.bow(bower);
       }
     }
   }
