@@ -10,9 +10,9 @@ import java.security.NoSuchAlgorithmException;
 
 public class InstanceCallbackDigest implements Runnable {
   private final String filename;
-  private final InstanceCallbackDigestUserInterface callback;
+  private final Receiver callback;
 
-  public InstanceCallbackDigest(String filename, InstanceCallbackDigestUserInterface callback) {
+  public InstanceCallbackDigest(String filename, Receiver callback) {
     this.filename = filename;
     this.callback = callback;
   }

@@ -9,10 +9,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CallbackDigest implements Runnable {
-  private final String filename;
 
-  public CallbackDigest(String filename) {
+  private final String filename;
+  private final Receiver callback;
+
+  public CallbackDigest(String filename, Receiver receiver) {
     this.filename = filename;
+    this.callback = receiver;
   }
 
   @Override
@@ -26,7 +29,7 @@ public class CallbackDigest implements Runnable {
       while (din.read() != -1) ;
       din.close();
       byte[] digest = sha.digest();
-      CallbackDigestUserInterface.receiveDigest(digest, filename);
+      callback.receiveDigest(digest);
     } catch (IOException | NoSuchAlgorithmException ex) {
       System.err.println(ex);
     }

@@ -3,7 +3,7 @@ package threads;
 import java.util.Arrays;
 import java.util.Base64;
 
-public class InstanceCallbackDigestUserInterface {
+public class InstanceCallbackDigestUserInterface implements Receiver {
   private final String filename;
   private final Base64.Encoder encoder = Base64.getEncoder();
   private byte[] digest;
@@ -12,8 +12,9 @@ public class InstanceCallbackDigestUserInterface {
     this.filename = filename;
   }
 
+  @Override
   @SuppressWarnings("checkstyle:hiddenfield")
-  void receiveDigest(byte[] digest) {
+  public void receiveDigest(byte[] digest) {
     this.digest = Arrays.copyOf(digest, digest.length);
     System.out.println(this);
   }
@@ -26,7 +27,7 @@ public class InstanceCallbackDigestUserInterface {
   }
 
   public void calculateDigest() {
-    InstanceCallbackDigest cb = new InstanceCallbackDigest(filename, this);
+    Runnable cb = new InstanceCallbackDigest(filename, this);
     Thread t = new Thread(cb);
     t.start();
   }
