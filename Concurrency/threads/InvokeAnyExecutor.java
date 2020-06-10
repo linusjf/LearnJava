@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 public enum InvokeAnyExecutor {
   ;
 
+  private static ExecutorService executor = Executors.newCachedThreadPool();
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     String username = "test";
@@ -25,7 +27,6 @@ public enum InvokeAnyExecutor {
     List<TaskValidator> taskList = new ArrayList<>();
     taskList.add(ldapTask);
     taskList.add(dbTask);
-    ExecutorService executor = Executors.newCachedThreadPool();
     String result;
     try {
       result = executor.invokeAny(taskList);

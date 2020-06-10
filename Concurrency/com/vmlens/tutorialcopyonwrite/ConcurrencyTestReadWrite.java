@@ -48,8 +48,8 @@ public class ConcurrencyTestReadWrite {
     // clang-format on
     first.start();
     second.start();
-    first.join();
-    second.join();
+    first.join(100);
+    second.join(100);
     assertTrue(
         "street=E. Bonanza St.,city=South Park,phoneNumber=456 77 99".equals(
             readAddress)

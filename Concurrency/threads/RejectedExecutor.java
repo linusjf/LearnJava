@@ -8,11 +8,12 @@ import java.util.concurrent.TimeUnit;
 public enum RejectedExecutor {
   ;
 
+    private static ThreadPoolExecutor executor =
+        (ThreadPoolExecutor)Executors.newCachedThreadPool();
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
     RejectedTaskController controller = new RejectedTaskController();
-    ThreadPoolExecutor executor =
-        (ThreadPoolExecutor)Executors.newCachedThreadPool();
     executor.setRejectedExecutionHandler(controller);
     System.out.printf("Main: Starting.%n");
     for (int i = 0; i < 3; i++) {

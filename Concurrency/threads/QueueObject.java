@@ -4,19 +4,20 @@ import java.util.Objects;
 
 public class QueueObject {
   private boolean isNotified;
+  private final Object obj = new Object();
 
   public void doWait() throws InterruptedException {
-    synchronized (this) {
+    synchronized (obj) {
       while (!isNotified)
-        this.wait();
+        obj.wait(100);
       this.isNotified = false;
     }
   }
 
   public void doNotify() {
-    synchronized (this) {
+    synchronized (obj) {
       this.isNotified = true;
-      this.notifyAll();
+      obj.notifyAll();
     }
   }
 

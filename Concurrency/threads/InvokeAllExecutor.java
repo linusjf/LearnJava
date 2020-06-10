@@ -13,10 +13,11 @@ import java.util.concurrent.TimeUnit;
 public enum InvokeAllExecutor {
   ;
 
+  private static ExecutorService executor = Executors.newCachedThreadPool();
+
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
-    ExecutorService executor = Executors.newCachedThreadPool();
-    List<Task> taskList = new ArrayList<>();
+    List<Task> taskList = new ArrayList<>(3);
     for (int i = 0; i < 3; i++)
       taskList.add(new Task("Task " + i));
     List<Future<Result>> resultList = null;

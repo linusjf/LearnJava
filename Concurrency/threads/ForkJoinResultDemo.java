@@ -128,7 +128,7 @@ public enum ForkJoinResultDemo {
                                  int start,
                                  int end,
                                  String word) {
-      List<LineTask> tasks = new ArrayList<>();
+      List<LineTask> tasks = new ArrayList<>(end - start);
       for (int i = start; i < end; i++) {
         LineTask task = new LineTask(doc[i], 0, doc[i].length, word);
         tasks.add(task);

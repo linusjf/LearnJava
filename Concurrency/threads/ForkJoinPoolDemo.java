@@ -70,7 +70,7 @@ public enum ForkJoinPoolDemo {
 
   static class ProductListGenerator {
     public List<Product> generate(int size) {
-      List<Product> ret = new ArrayList<>();
+      List<Product> ret = new ArrayList<>(size);
       for (int i = 0; i < size; i++) {
         Product product = new Product();
         product.setName("Product " + i);

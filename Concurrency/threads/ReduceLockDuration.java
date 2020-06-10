@@ -20,14 +20,14 @@ public enum ReduceLockDuration {
       for (Thread t: threads)
         t.start();
       for (Thread t: threads)
-        t.join();
+        t.join(100);
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
       Arrays.setAll(threads, i -> new Thread(new ReducedThread()));
       startMillis = System.currentTimeMillis();
       for (Thread t: threads)
         t.start();
       for (Thread t: threads)
-        t.join();
+        t.join(100);
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
       System.err.println(ie);
