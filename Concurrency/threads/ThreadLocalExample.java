@@ -15,11 +15,11 @@ public enum ThreadLocalExample {
       thread1.start();
       thread2.start();
 
-      thread1.join();
-
       // wait for thread 1 to terminate
-      thread2.join();
+      thread1.join(2000);
+
       // wait for thread 2 to terminate
+      thread2.join(2000);
     } catch (InterruptedException ex) {
       System.err.println(ex);
     }

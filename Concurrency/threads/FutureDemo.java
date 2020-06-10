@@ -67,8 +67,9 @@ public enum FutureDemo {
 
     @SuppressWarnings("checkstyle:hiddenfield")
     private long factorial(int number) throws InterruptedException {
-      if (number < 0)
-        throw new IllegalArgumentException("Number must be greater than zero");
+      if (number <= 0)
+        throw new IllegalArgumentException("Number must be greater than zero: "
+            + number);
       int num = number;
       long result = 1;
       while (num > 0) {

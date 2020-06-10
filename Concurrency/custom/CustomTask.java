@@ -25,20 +25,15 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public int compareTo(CustomTask o) {
-    if (this.getPriority() < o.getPriority())
-      return 1;
-
-    if (this.getPriority() > o.getPriority())
-      return -1;
-
+    if (this.getPriority() < o.getPriority()) return 1;
+    if (this.getPriority() > o.getPriority()) return -1;
     return 0;
   }
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof CustomTask))
-      return false;
-    return compareTo((CustomTask)o) == 0;
+    if (!(o instanceof CustomTask)) return false;
+    return compareTo((CustomTask) o) == 0;
   }
 
   @Override
@@ -54,8 +49,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(
-        2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
     for (int i = 0; i < 4; i++) {
       CustomTask task = new CustomTask("Task " + i, i);
       executor.execute(task);
@@ -76,5 +70,11 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
       System.err.println(e);
     }
     System.out.printf("Main: End of the program.%n");
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "CustomTask(priority=" + this.getPriority() + ", name=" + this.name + ")";
   }
 }

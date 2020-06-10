@@ -116,4 +116,8 @@
   <Match>
     <Bug pattern="MDM_RANDOM_SEED"/>
   </Match>
+  <Match>
+    <Class name="threads.SimpleThreads" />
+    <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT"/>
+  </Match>
 </FindBugsFilter>

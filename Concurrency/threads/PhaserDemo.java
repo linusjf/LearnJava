@@ -25,9 +25,10 @@ public enum PhaserDemo {
     Thread documentsThread = new Thread(documents, "Documents");
     documentsThread.start();
     try {
-      systemThread.join();
-      appsThread.join();
-      documentsThread.join();
+      // time out in 10 minutes
+      systemThread.join(6_000_000);
+      appsThread.join(6_000_000);
+      documentsThread.join(6_000_000);
     } catch (InterruptedException e) {
       System.err.println(e);
     }

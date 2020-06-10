@@ -44,8 +44,7 @@ public class Consumer implements Runnable {
   @Override
   public void run() {
     Random random = new Random();
-    for (String message = drop.take(); !"DONE".equals(message);
-         message = drop.take()) {
+    for (String message = drop.take(); !"DONE".equals(message); message = drop.take()) {
       System.out.format("MESSAGE RECEIVED: %s%n", message);
       try {
         TimeUnit.MILLISECONDS.sleep(new Random(random.nextLong()).nextInt(5000));
@@ -53,5 +52,39 @@ public class Consumer implements Runnable {
         System.err.println(e);
       }
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Consumer)) return false;
+    Consumer other = (Consumer) o;
+    if (!other.canEqual((Object) this)) return false;
+    Object this$drop = this.drop;
+    Object other$drop = other.drop;
+    if (this$drop == null ? other$drop != null : !this$drop.equals(other$drop)) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof Consumer;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $drop = this.drop;
+    result = result * PRIME + ($drop == null ? 43 : $drop.hashCode());
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "Consumer(drop=" + this.drop + ")";
   }
 }

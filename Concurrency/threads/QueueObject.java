@@ -7,8 +7,7 @@ public class QueueObject {
 
   public void doWait() throws InterruptedException {
     synchronized (this) {
-      while (!isNotified)
-        this.wait();
+      while (!isNotified) this.wait();
       this.isNotified = false;
     }
   }
@@ -29,5 +28,11 @@ public class QueueObject {
   @Override
   public boolean equals(Object o) {
     return this == o;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "QueueObject(isNotified=" + this.isNotified + ")";
   }
 }

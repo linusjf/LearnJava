@@ -1,5 +1,4 @@
 package threads;
-
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -35,7 +34,6 @@ public class Drop {
   // Message sent from producer
   // to consumer.
   private String message = "";
-
   // True if consumer should wait
   // for producer to send message,
   // false if producer should wait for
@@ -53,10 +51,8 @@ public class Drop {
           System.err.println(e);
         }
       }
-
       // Toggle status.
       empty = true;
-
       // Notify producer that
       // status has changed.
       notifyAll();
@@ -76,16 +72,49 @@ public class Drop {
           System.err.println(e);
         }
       }
-
       // Toggle status.
       empty = false;
-
       // Store message.
       this.message = message;
-
       // Notify consumer that status
       // has changed.
       notifyAll();
     }
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public boolean equals(Object o) {
+    if (o == this) return true;
+    if (!(o instanceof Drop)) return false;
+    Drop other = (Drop) o;
+    if (!other.canEqual((Object) this)) return false;
+    Object this$message = this.message;
+    Object other$message = other.message;
+    if (this$message == null ? other$message != null : !this$message.equals(other$message)) return false;
+    if (this.empty != other.empty) return false;
+    return true;
+  }
+
+  @SuppressWarnings("all")
+  protected boolean canEqual(Object other) {
+    return other instanceof Drop;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public int hashCode() {
+    int PRIME = 59;
+    int result = 1;
+    Object $message = this.message;
+    result = result * PRIME + ($message == null ? 43 : $message.hashCode());
+    result = result * PRIME + (this.empty ? 79 : 97);
+    return result;
+  }
+
+  @Override
+  @SuppressWarnings("all")
+  public String toString() {
+    return "Drop(message=" + this.message + ", empty=" + this.empty + ")";
   }
 }
