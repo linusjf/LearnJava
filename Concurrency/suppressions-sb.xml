@@ -9,12 +9,16 @@
     <Bug code="ERRMSG" />
   </Match>
   <Match>
+    <Class name="~.*ExceptionHandler.*" />
+    <Bug code="ERRMSG" />
+  </Match>
+  <Match>
     <Class name="threads.DemoThreadExample$ExceptionHandler" />
     <method name="uncaughtException" />
     <Bug code="UCPM" />
   </Match>
   <Match>
-    <Class name="~.*threads.Deadlock.lambda$friendlyBow.*" />
+    <Class name="~.*threads[.]Deadlock.*" />
     <Bug pattern="DM_EXIT" />
   </Match>
   <Match>
@@ -127,5 +131,8 @@
   </Match>
   <Match>
     <Bug pattern="MDM_RANDOM_SEED" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_THREAD_PRIORITIES" />
   </Match>
 </FindBugsFilter>

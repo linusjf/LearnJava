@@ -30,8 +30,8 @@ public enum CompletionServiceDemo {
     senderThread.start();
     try {
       System.out.printf("Main: Waiting for the report generators.%n");
-      faceThread.join();
-      onlineThread.join();
+      faceThread.join(100);
+      onlineThread.join(100);
     } catch (InterruptedException e) {
       System.err.println(e);
     }

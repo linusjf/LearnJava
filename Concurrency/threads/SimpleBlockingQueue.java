@@ -20,15 +20,11 @@ public class SimpleBlockingQueue<T> {
   }
 
   public T get() throws InterruptedException {
-    while (true) {
       synchronized (queue) {
-        if (queue.isEmpty()) {
-          queue.wait();
-        } else {
-          return queue.remove(0);
-        }
+        while (queue.isEmpty()) 
+          queue.wait(100);
+        return queue.remove(0);
       }
-    }
   }
 
   @Override

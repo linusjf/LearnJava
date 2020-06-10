@@ -9,7 +9,7 @@ public class Lock {
   public void lock() throws InterruptedException {
     synchronized (obj) {
       while (isLocked) {
-        obj.wait();
+        obj.wait(100);
       }
       isLocked = true;
       lockingThread = Thread.currentThread();
@@ -20,7 +20,9 @@ public class Lock {
     synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException(
-            "Calling thread has not locked this lock");
+            "Calling thread has not locked this lock: " 
+            +
+            this);
       }
       isLocked = false;
       obj.notifyAll();

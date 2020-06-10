@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 public class CustomThreadFactory implements ThreadFactory {
+  private static ExecutorService executor;
   private int counter;
   private final String prefix;
 
@@ -24,7 +25,7 @@ public class CustomThreadFactory implements ThreadFactory {
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
-      thread.join();
+      thread.join(1000);
       System.out.printf("Main: End of the example.%n");
       alternateMain();
     } catch (InterruptedException | ExecutionException ie) {
@@ -37,7 +38,7 @@ public class CustomThreadFactory implements ThreadFactory {
       throws InterruptedException, ExecutionException {
     CustomThreadFactory threadFactory =
         new CustomThreadFactory("CustomThreadFactory-alternate");
-    ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
+    executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     Future<?> result = executor.submit(task);
     executor.shutdown();

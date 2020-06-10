@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 public enum PeriodicExecutor {
   ;
 
+  private static ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void printAndDelay(ScheduledFuture<?> result) {
     for (int i = 0; i < 10; i++) {
@@ -24,7 +26,6 @@ public enum PeriodicExecutor {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     System.out.printf("Main: Starting at: %s%n", new Date());
     ScheduledFuture<?> result =
         executor.scheduleAtFixedRate(new Task("Task"), 1, 2, TimeUnit.SECONDS);
