@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomTask implements Runnable, Comparable<CustomTask> {
+  private static ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
   private final int priority;
   private final transient String name;
 
@@ -49,7 +50,6 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
     for (int i = 0; i < 4; i++) {
       CustomTask task = new CustomTask("Task " + i, i);
       executor.execute(task);

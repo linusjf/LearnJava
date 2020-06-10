@@ -47,8 +47,8 @@ public enum ForkJoinPoolExample {
                                 .invoke());
       t1.start();
       t2.start();
-      t1.join();
-      t2.join();
+      t1.join(5);
+      t2.join(5);
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
