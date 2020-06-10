@@ -22,7 +22,7 @@ public enum CustomPhaserDemo {
     }
     for (Thread thread: threads) {
       try {
-        thread.join();
+        thread.join(600_000);
       } catch (InterruptedException e) {
         System.err.println(e);
       }

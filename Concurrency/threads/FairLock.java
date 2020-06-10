@@ -40,7 +40,8 @@ public class FairLock {
   public void unlock() {
     synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
-        throw new IllegalMonitorStateException("Calling thread has not locked this lock");
+        throw new IllegalMonitorStateException("Calling thread has not locked this lock in class: "
+            + getClass() + " - " + this);
       }
       isLocked = false;
       if (!waitingThreads.isEmpty()) waitingThreads.get(0).doNotify();

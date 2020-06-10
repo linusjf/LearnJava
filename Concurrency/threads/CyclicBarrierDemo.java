@@ -56,7 +56,7 @@ public class CyclicBarrierDemo {
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       String thisThreadName = Thread.currentThread().getName();
-      List<Integer> partialResult = new ArrayList<>();
+      List<Integer> partialResult = new ArrayList<>(numPartialResults);
       // Crunch some numbers and store the partial result
       for (int i = 0; i < numPartialResults; i++) {
         Integer num = random.nextInt(10);
