@@ -23,8 +23,8 @@ public class ThreadShowName extends Thread {
         pause = random.nextInt(3000);
         sleep(pause);
       } catch (
-      // 0-3 seconds.
-      InterruptedException interruptEx) {
+          // 0-3 seconds.
+          InterruptedException interruptEx) {
         System.out.println(interruptEx);
         interrupt();
       }
@@ -34,14 +34,20 @@ public class ThreadShowName extends Thread {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof ThreadShowName)) return false;
-    ThreadShowName other = (ThreadShowName) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof ThreadShowName))
+      return false;
+    ThreadShowName other = (ThreadShowName)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
     Object this$random = this.random;
     Object other$random = other.random;
-    if (this$random == null ? other$random != null : !this$random.equals(other$random)) return false;
+    if (this$random == null ? other$random != null
+                            : !this$random.equals(other$random))
+      return false;
     return true;
   }
 

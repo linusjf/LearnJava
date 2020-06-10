@@ -44,8 +44,11 @@ public class Producer implements Runnable {
 
   @Override
   public void run() {
-    String[] importantInfo = {"Mares eat oats", "Does eat oats", "Little lambs eat ivy", "A kid will eat ivy too"};
-    for (String info : importantInfo) {
+    String[] importantInfo = {"Mares eat oats",
+                              "Does eat oats",
+                              "Little lambs eat ivy",
+                              "A kid will eat ivy too"};
+    for (String info: importantInfo) {
       drop.put(info);
       try {
         TimeUnit.MILLISECONDS.sleep(random.nextInt(5000));
@@ -59,16 +62,22 @@ public class Producer implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Producer)) return false;
-    Producer other = (Producer) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Producer))
+      return false;
+    Producer other = (Producer)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$drop = this.drop;
     Object other$drop = other.drop;
-    if (this$drop == null ? other$drop != null : !this$drop.equals(other$drop)) return false;
+    if (this$drop == null ? other$drop != null : !this$drop.equals(other$drop))
+      return false;
     Object this$random = this.random;
     Object other$random = other.random;
-    if (this$random == null ? other$random != null : !this$random.equals(other$random)) return false;
+    if (this$random == null ? other$random != null
+                            : !this$random.equals(other$random))
+      return false;
     return true;
   }
 

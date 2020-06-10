@@ -2,8 +2,8 @@ package threads;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -56,7 +56,7 @@ public enum MultiSemaphoreExample {
 
     private int getPrinter() throws InterruptedException {
       int printer = -1;
-        if (lockPrinters.tryLock(100, TimeUnit.MILLISECONDS)) {
+      if (lockPrinters.tryLock(100, TimeUnit.MILLISECONDS)) {
         for (int i = 0; i < freePrinters.length; i++) {
           if (freePrinters[i]) {
             freePrinters[i] = false;

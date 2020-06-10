@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Method name="hashCode"/>
+    <Method name="hashCode" />
     <Bug code="USBR" />
   </Match>
   <Match>
@@ -14,7 +14,7 @@
     <Bug code="UCPM" />
   </Match>
   <Match>
-    <Class name="~*threads.Deadlock.lambda$friendlyBow.*" />
+    <Class name="~.*threads.Deadlock.lambda$friendlyBow.*" />
     <Bug pattern="DM_EXIT" />
   </Match>
   <Match>
@@ -22,16 +22,16 @@
     <Bug code="DMI" />
   </Match>
   <Match>
-    <Class name="threads.ReadWriteLockExample$PricesInfo"/>
+    <Class name="threads.ReadWriteLockExample$PricesInfo" />
     <Bug code="FCBL" />
-    </Match>
-  <Match>
-    <Class name="threads.LockProducerConsumer$FileMock"/>
-    <Bug code="FCBL" />
-    </Match>
+  </Match>
   <Match>
     <Class name="threads.LockProducerConsumer$FileMock" />
-    <Method name="getLine"/>
+    <Bug code="FCBL" />
+  </Match>
+  <Match>
+    <Class name="threads.LockProducerConsumer$FileMock" />
+    <Method name="getLine" />
     <Bug code="AI" />
   </Match>
   <Match>
@@ -120,12 +120,12 @@
   </Match>
   <Match>
     <Class name="threads.SimpleThreads" />
-    <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT"/>
+    <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT" />
   </Match>
   <Match>
     <Bug code="SECPTI, SECPR, OPM" />
   </Match>
   <Match>
-    <Bug pattern="MDM_RANDOM_SEED"/>
+    <Bug pattern="MDM_RANDOM_SEED" />
   </Match>
 </FindBugsFilter>

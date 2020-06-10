@@ -18,7 +18,8 @@ class FindMaxTask implements Callable<Integer> {
   public Integer call() {
     int max = Integer.MIN_VALUE;
     for (int i = start; i < end; i++) {
-      if (data[i] > max) max = data[i];
+      if (data[i] > max)
+        max = data[i];
     }
     return max;
   }
@@ -26,13 +27,19 @@ class FindMaxTask implements Callable<Integer> {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof FindMaxTask)) return false;
-    FindMaxTask other = (FindMaxTask) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!java.util.Arrays.equals(this.data, other.data)) return false;
-    if (this.start != other.start) return false;
-    if (this.end != other.end) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof FindMaxTask))
+      return false;
+    FindMaxTask other = (FindMaxTask)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!java.util.Arrays.equals(this.data, other.data))
+      return false;
+    if (this.start != other.start)
+      return false;
+    if (this.end != other.end)
+      return false;
     return true;
   }
 
@@ -55,6 +62,7 @@ class FindMaxTask implements Callable<Integer> {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "FindMaxTask(data=" + java.util.Arrays.toString(this.data) + ", start=" + this.start + ", end=" + this.end + ")";
+    return "FindMaxTask(data=" + java.util.Arrays.toString(this.data)
+        + ", start=" + this.start + ", end=" + this.end + ")";
   }
 }

@@ -23,7 +23,8 @@ public class InstanceCallbackDigestUserInterface implements Receiver {
   @SuppressWarnings("PMD.LawOfDemeter")
   public String toString() {
     String result = filename + ": ";
-    return digest == null ? result.concat("digest not available") : result.concat(encoder.encodeToString(digest));
+    return digest == null ? result.concat("digest not available")
+                          : result.concat(encoder.encodeToString(digest));
   }
 
   public void calculateDigest() {
@@ -33,29 +34,39 @@ public class InstanceCallbackDigestUserInterface implements Receiver {
   }
 
   private static void calculateDigestForFile(String filename) {
-    InstanceCallbackDigestUserInterface d = new InstanceCallbackDigestUserInterface(filename);
+    InstanceCallbackDigestUserInterface d =
+        new InstanceCallbackDigestUserInterface(filename);
     d.calculateDigest();
   }
 
   public static void main(String[] args) {
-    for (String filename : args) 
+    for (String filename: args)
       calculateDigestForFile(filename);
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof InstanceCallbackDigestUserInterface)) return false;
-    InstanceCallbackDigestUserInterface other = (InstanceCallbackDigestUserInterface) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof InstanceCallbackDigestUserInterface))
+      return false;
+    InstanceCallbackDigestUserInterface other =
+        (InstanceCallbackDigestUserInterface)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename)) return false;
+    if (this$filename == null ? other$filename != null
+                              : !this$filename.equals(other$filename))
+      return false;
     Object this$encoder = this.encoder;
     Object other$encoder = other.encoder;
-    if (this$encoder == null ? other$encoder != null : !this$encoder.equals(other$encoder)) return false;
-    if (!java.util.Arrays.equals(this.digest, other.digest)) return false;
+    if (this$encoder == null ? other$encoder != null
+                             : !this$encoder.equals(other$encoder))
+      return false;
+    if (!java.util.Arrays.equals(this.digest, other.digest))
+      return false;
     return true;
   }
 

@@ -7,10 +7,12 @@ import java.util.concurrent.Executors;
 
 public final class GZipAllFiles {
   public static final int THREAD_COUNT = 4;
-  private static ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
+  private static ExecutorService pool =
+      Executors.newFixedThreadPool(THREAD_COUNT);
 
   private GZipAllFiles() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")

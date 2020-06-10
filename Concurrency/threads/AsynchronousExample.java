@@ -93,8 +93,8 @@ public enum AsynchronousExample {
       return list;
     }
 
-    private void addResultsFromTasks(Collection <String> list,
-                                     Iterable <FolderProcessor> tasks) {
+    private void addResultsFromTasks(Collection<String> list,
+                                     Iterable<FolderProcessor> tasks) {
       for (FolderProcessor item: tasks)
         list.addAll(item.join());
     }

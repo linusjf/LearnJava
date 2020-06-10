@@ -26,7 +26,8 @@ public class CallbackDigest implements Runnable {
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
       // read entire file
-      while (din.read() != -1) ;
+      while (din.read() != -1)
+        ;
       din.close();
       byte[] digest = sha.digest();
       callback.receiveDigest(digest);
@@ -38,13 +39,18 @@ public class CallbackDigest implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof CallbackDigest)) return false;
-    CallbackDigest other = (CallbackDigest) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof CallbackDigest))
+      return false;
+    CallbackDigest other = (CallbackDigest)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename)) return false;
+    if (this$filename == null ? other$filename != null
+                              : !this$filename.equals(other$filename))
+      return false;
     return true;
   }
 

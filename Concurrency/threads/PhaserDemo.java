@@ -16,8 +16,8 @@ public enum PhaserDemo {
         "/data/data/com.termux/files/home/LearnJava", "log", phaser);
     FileSearch apps = new FileSearch(
         "/data/data/com.termux/files/home/LearnNodeJS", "log", phaser);
-    FileSearch documents =
-        new FileSearch("/data/data/com.termux/files/home/LearnCS", "log", phaser);
+    FileSearch documents = new FileSearch(
+        "/data/data/com.termux/files/home/LearnCS", "log", phaser);
     Thread systemThread = new Thread(system, "System");
     systemThread.start();
     Thread appsThread = new Thread(apps, "Apps");
@@ -82,22 +82,16 @@ public enum PhaserDemo {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private boolean checkResults() {
-        String threadName = Thread.currentThread().getName();
-        int phase = phaser.getPhase();
+      String threadName = Thread.currentThread().getName();
+      int phase = phaser.getPhase();
       if (results.isEmpty()) {
-        System.out.printf("%s: Phase %d: 0 results.%n",
-                          threadName ,
-                          phase);
-        System.out.printf("%s: Phase %d: End.%n",
-                          threadName,
-                          phase);
+        System.out.printf("%s: Phase %d: 0 results.%n", threadName, phase);
+        System.out.printf("%s: Phase %d: End.%n", threadName, phase);
         phaser.arriveAndDeregister();
         return false;
       } else {
-        System.out.printf("%s: Phase %d: %d results.%n",
-                          threadName,
-                          phase,
-                          results.size());
+        System.out.printf(
+            "%s: Phase %d: %d results.%n", threadName, phase, results.size());
         phaser.arriveAndAwaitAdvance();
         return true;
       }

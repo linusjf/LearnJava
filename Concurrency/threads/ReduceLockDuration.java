@@ -45,11 +45,11 @@ public enum ReduceLockDuration {
           String key = randomUUID.toString();
           MAP.put(key, value);
         }
-        //Thread.yield();
+        // Thread.yield();
         try {
-        TimeUnit.NANOSECONDS.sleep(1);
+          TimeUnit.NANOSECONDS.sleep(1);
         } catch (InterruptedException ie) {
-        Thread.currentThread().interrupt();
+          Thread.currentThread().interrupt();
         }
       }
     }
@@ -68,9 +68,9 @@ public enum ReduceLockDuration {
         }
         // Thread.yield();
         try {
-        TimeUnit.NANOSECONDS.sleep(1);
+          TimeUnit.NANOSECONDS.sleep(1);
         } catch (InterruptedException ie) {
-        Thread.currentThread().interrupt();
+          Thread.currentThread().interrupt();
         }
       }
     }

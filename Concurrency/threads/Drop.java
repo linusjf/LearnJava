@@ -86,14 +86,20 @@ public class Drop {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Drop)) return false;
-    Drop other = (Drop) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Drop))
+      return false;
+    Drop other = (Drop)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$message = this.message;
     Object other$message = other.message;
-    if (this$message == null ? other$message != null : !this$message.equals(other$message)) return false;
-    if (this.empty != other.empty) return false;
+    if (this$message == null ? other$message != null
+                             : !this$message.equals(other$message))
+      return false;
+    if (this.empty != other.empty)
+      return false;
     return true;
   }
 

@@ -9,6 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public enum ReadWriteLockExample {
   ;
+
   public static void main(String[] args) {
     PricesInfo pricesInfo = new PricesInfo();
     Thread[] threadsReader = new Thread[5];
@@ -17,11 +18,11 @@ public enum ReadWriteLockExample {
     Writer writer2 = new Writer(pricesInfo);
     Thread threadWriter = new Thread(writer);
     Thread threadWriter2 = new Thread(writer2);
-    for (Thread t : threadsReader) t.start();
+    for (Thread t: threadsReader)
+      t.start();
     threadWriter.start();
     threadWriter2.start();
   }
-
 
   static class PricesInfo {
     private double price1;
@@ -40,34 +41,34 @@ public enum ReadWriteLockExample {
     @SuppressWarnings("PMD.LawOfDemeter")
     public double getPrice1() throws InterruptedException, TimeoutException {
       if (lock.readLock().tryLock(1, TimeUnit.SECONDS)) {
-      double value = price1;
-      lock.readLock().unlock();
-      return value;
+        double value = price1;
+        lock.readLock().unlock();
+        return value;
       }
       throw new TimeoutException("Unable to read price1 in class "
-          + getClass());
+                                 + getClass());
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
     public double getPrice2() throws InterruptedException, TimeoutException {
       if (lock.readLock().tryLock(1, TimeUnit.SECONDS)) {
-      double value = price2;
-      lock.readLock().unlock();
-      return value;
+        double value = price2;
+        lock.readLock().unlock();
+        return value;
       }
       throw new TimeoutException("Unable to read price2 in class "
-          + getClass());
+                                 + getClass());
     }
 
     @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
-    public void setPrices(double price1, double price2)  throws InterruptedException, TimeoutException{
+    public void setPrices(double price1, double price2)
+        throws InterruptedException, TimeoutException {
       if (lock.writeLock().tryLock(1, TimeUnit.SECONDS)) {
-      this.price1 = price1;
-      this.price2 = price2;
-      lock.writeLock().unlock();
+        this.price1 = price1;
+        this.price2 = price2;
+        lock.writeLock().unlock();
       }
-      throw new TimeoutException("Unable to set prices in class "
-          + getClass());
+      throw new TimeoutException("Unable to set prices in class " + getClass());
     }
   }
 
@@ -82,20 +83,23 @@ public enum ReadWriteLockExample {
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
       try {
-      for (int i = 0; i < 10; i++) {
-        synchronized (System.out) {
-          System.out.printf("%s: Price 1: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice1());
-          System.out.printf("%s: Price 2: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice2());
+        for (int i = 0; i < 10; i++) {
+          synchronized (System.out) {
+            System.out.printf("%s: Price 1: %f%n",
+                              Thread.currentThread().getName(),
+                              pricesInfo.getPrice1());
+            System.out.printf("%s: Price 2: %f%n",
+                              Thread.currentThread().getName(),
+                              pricesInfo.getPrice2());
+          }
         }
+      } catch (InterruptedException ie) {
+        Thread.currentThread().interrupt();
+      } catch (TimeoutException te) {
+        System.err.println(te.getMessage());
       }
-    } catch (InterruptedException ie) {
-      Thread.currentThread().interrupt();
-    } catch (TimeoutException te) {
-      System.err.println(te.getMessage());
-    } 
     }
   }
-
 
   static class Writer implements Runnable {
     private final PricesInfo pricesInfo;
@@ -107,22 +111,24 @@ public enum ReadWriteLockExample {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
-  try {
-      for (int i = 0; i < 3; i++) {
-        synchronized (System.out) {
-          System.out.printf("Writer %s: Attempt to modify the prices.%n", Thread.currentThread().getName());
-        }
-        pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
-        synchronized (System.out) {
-          System.out.printf("Writer %s: Prices have been modified.%n", Thread.currentThread().getName());
-        }
+      try {
+        for (int i = 0; i < 3; i++) {
+          synchronized (System.out) {
+            System.out.printf("Writer %s: Attempt to modify the prices.%n",
+                              Thread.currentThread().getName());
+          }
+          pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
+          synchronized (System.out) {
+            System.out.printf("Writer %s: Prices have been modified.%n",
+                              Thread.currentThread().getName());
+          }
           TimeUnit.MILLISECONDS.sleep(2);
+        }
+      } catch (InterruptedException ie) {
+        Thread.currentThread().interrupt();
+      } catch (TimeoutException te) {
+        System.err.println(te.getMessage());
       }
-    } catch (InterruptedException ie) {
-      Thread.currentThread().interrupt();
-    } catch (TimeoutException te) {
-      System.err.println(te.getMessage());
-    } 
     }
   }
 }

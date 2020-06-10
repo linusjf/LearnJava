@@ -1,7 +1,7 @@
 package threads;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
@@ -24,13 +24,13 @@ public class Solver {
       thread.start();
     }
     // wait until done
-    for (Thread thread : threads) thread.join();
+    for (Thread thread: threads)
+      thread.join();
   }
 
   void mergeRows() {
     System.out.println("Merging rows....");
   }
-
 
   class Worker implements Runnable {
     int myRow;
@@ -60,15 +60,22 @@ public class Solver {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Solver)) return false;
-    Solver other = (Solver) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.N != other.N) return false;
-    if (!java.util.Arrays.deepEquals(this.data, other.data)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Solver))
+      return false;
+    Solver other = (Solver)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.N != other.N)
+      return false;
+    if (!java.util.Arrays.deepEquals(this.data, other.data))
+      return false;
     Object this$barrier = this.barrier;
     Object other$barrier = other.barrier;
-    if (this$barrier == null ? other$barrier != null : !this$barrier.equals(other$barrier)) return false;
+    if (this$barrier == null ? other$barrier != null
+                             : !this$barrier.equals(other$barrier))
+      return false;
     return true;
   }
 
@@ -92,6 +99,8 @@ public class Solver {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "Solver(N=" + this.N + ", data=" + java.util.Arrays.deepToString(this.data) + ", barrier=" + this.barrier + ")";
+    return "Solver(N=" + this.N
+        + ", data=" + java.util.Arrays.deepToString(this.data)
+        + ", barrier=" + this.barrier + ")";
   }
 }

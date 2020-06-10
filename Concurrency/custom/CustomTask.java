@@ -5,7 +5,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CustomTask implements Runnable, Comparable<CustomTask> {
-  private static ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
+  private static ThreadPoolExecutor executor =
+      new ThreadPoolExecutor(2,
+                             2,
+                             1,
+                             TimeUnit.SECONDS,
+                             new PriorityBlockingQueue<Runnable>());
   private final int priority;
   private final transient String name;
 
@@ -26,15 +31,18 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
 
   @Override
   public int compareTo(CustomTask o) {
-    if (this.getPriority() < o.getPriority()) return 1;
-    if (this.getPriority() > o.getPriority()) return -1;
+    if (this.getPriority() < o.getPriority())
+      return 1;
+    if (this.getPriority() > o.getPriority())
+      return -1;
     return 0;
   }
 
   @Override
   public boolean equals(Object o) {
-    if (!(o instanceof CustomTask)) return false;
-    return compareTo((CustomTask) o) == 0;
+    if (!(o instanceof CustomTask))
+      return false;
+    return compareTo((CustomTask)o) == 0;
   }
 
   @Override
@@ -75,6 +83,7 @@ public class CustomTask implements Runnable, Comparable<CustomTask> {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "CustomTask(priority=" + this.getPriority() + ", name=" + this.name + ")";
+    return "CustomTask(priority=" + this.getPriority() + ", name=" + this.name
+        + ")";
   }
 }

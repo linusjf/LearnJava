@@ -17,7 +17,8 @@ public final class MultithreadedMaxFinder {
   private static ExecutorService service = Executors.newFixedThreadPool(2);
 
   private MultithreadedMaxFinder() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})

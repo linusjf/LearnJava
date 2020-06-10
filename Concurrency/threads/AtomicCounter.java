@@ -50,13 +50,17 @@ class AtomicCounter {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof AtomicCounter)) return false;
-    AtomicCounter other = (AtomicCounter) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof AtomicCounter))
+      return false;
+    AtomicCounter other = (AtomicCounter)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$c = this.c;
     Object other$c = other.c;
-    if (this$c == null ? other$c != null : !this$c.equals(other$c)) return false;
+    if (this$c == null ? other$c != null : !this$c.equals(other$c))
+      return false;
     return true;
   }
 

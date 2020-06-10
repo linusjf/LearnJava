@@ -83,8 +83,7 @@ public enum InvokeAnyExecutor {
       if (!validator.validate(user, password)) {
         System.out.printf("%s: The user has not been found%n",
                           validator.getName());
-        throw new GeneralSecurityException("Error validating user: "
-            + user);
+        throw new GeneralSecurityException("Error validating user: " + user);
       }
       String name = validator.getName();
       System.out.printf("%s: The user has been found%n", name);

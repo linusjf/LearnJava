@@ -19,7 +19,8 @@ public class CustomThreadFactory implements ThreadFactory {
 
   public static void main(String[] args) {
     try {
-      CustomThreadFactory myFactory = new CustomThreadFactory("CustomThreadFactory");
+      CustomThreadFactory myFactory =
+          new CustomThreadFactory("CustomThreadFactory");
       CustomTask task = new CustomTask();
       Thread thread = myFactory.newThread(task);
       thread.start();
@@ -32,14 +33,18 @@ public class CustomThreadFactory implements ThreadFactory {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static void alternateMain() throws InterruptedException, ExecutionException {
-    CustomThreadFactory threadFactory = new CustomThreadFactory("CustomThreadFactory-alternate");
+  public static void alternateMain()
+      throws InterruptedException, ExecutionException {
+    CustomThreadFactory threadFactory =
+        new CustomThreadFactory("CustomThreadFactory-alternate");
     ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
     CustomTask task = new CustomTask();
     Future<?> result = executor.submit(task);
     executor.shutdown();
-    if (executor.awaitTermination(1, TimeUnit.DAYS)) System.out.printf("Alternate Main: End of the program.%n");
-    if (result.get() == null) System.out.printf("Task completed successfully%n");
+    if (executor.awaitTermination(1, TimeUnit.DAYS))
+      System.out.printf("Alternate Main: End of the program.%n");
+    if (result.get() == null)
+      System.out.printf("Task completed successfully%n");
   }
 
   @Override
@@ -48,7 +53,6 @@ public class CustomThreadFactory implements ThreadFactory {
     counter++;
     return myThread;
   }
-
 
   static class CustomThread extends Thread {
     private final Date creationDate;
@@ -76,11 +80,15 @@ public class CustomThreadFactory implements ThreadFactory {
     @Override
     public String toString() {
       StringBuilder buffer = new StringBuilder(50);
-      buffer.append(getName()).append(":  Creation Date: ").append(creationDate).append(" : Running time: ").append(getExecutionTime()).append(" Milliseconds.");
+      buffer.append(getName())
+          .append(":  Creation Date: ")
+          .append(creationDate)
+          .append(" : Running time: ")
+          .append(getExecutionTime())
+          .append(" Milliseconds.");
       return buffer.toString();
     }
   }
-
 
   static class CustomTask implements Runnable {
     @Override
@@ -97,14 +105,20 @@ public class CustomThreadFactory implements ThreadFactory {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof CustomThreadFactory)) return false;
-    CustomThreadFactory other = (CustomThreadFactory) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.counter != other.counter) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof CustomThreadFactory))
+      return false;
+    CustomThreadFactory other = (CustomThreadFactory)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.counter != other.counter)
+      return false;
     Object this$prefix = this.prefix;
     Object other$prefix = other.prefix;
-    if (this$prefix == null ? other$prefix != null : !this$prefix.equals(other$prefix)) return false;
+    if (this$prefix == null ? other$prefix != null
+                            : !this$prefix.equals(other$prefix))
+      return false;
     return true;
   }
 
@@ -127,6 +141,7 @@ public class CustomThreadFactory implements ThreadFactory {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "CustomThreadFactory(counter=" + this.counter + ", prefix=" + this.prefix + ")";
+    return "CustomThreadFactory(counter=" + this.counter
+        + ", prefix=" + this.prefix + ")";
   }
 }

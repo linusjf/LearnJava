@@ -53,7 +53,7 @@ public enum LockProducerConsumer {
     }
 
     public String getLine() {
-      if (!hasMoreLines()) 
+      if (!hasMoreLines())
         return null;
       System.out.println("Mock: " + (content.length - index));
       return content[index++];
@@ -81,51 +81,50 @@ public enum LockProducerConsumer {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public void insert(String line) throws InterruptedException, TimeoutException {
+    public void insert(String line)
+        throws InterruptedException, TimeoutException {
       if (lock.tryLock(1, TimeUnit.SECONDS)) {
-      try {
-        while (queue.size() == maxSize)
-          ignore(space.await(1, TimeUnit.MILLISECONDS));
-        queue.offer(line);
-        System.out.printf("%s: Inserted Line: %d%n",
-                          Thread.currentThread().getName(),
-                          queue.size());
-        lines.signalAll();
-      } catch (InterruptedException e) {
-        System.err.println(e);
-      } finally {
-        lock.unlock();
-      }
-      }
-      else 
-        throw new TimeoutException("Timed out after 1 second: '"
-            + line + "' cannot be inserted");
+        try {
+          while (queue.size() == maxSize)
+            ignore(space.await(1, TimeUnit.MILLISECONDS));
+          queue.offer(line);
+          System.out.printf("%s: Inserted Line: %d%n",
+                            Thread.currentThread().getName(),
+                            queue.size());
+          lines.signalAll();
+        } catch (InterruptedException e) {
+          System.err.println(e);
+        } finally {
+          lock.unlock();
+        }
+      } else
+        throw new TimeoutException("Timed out after 1 second: '" + line
+                                   + "' cannot be inserted");
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
     public String get() throws InterruptedException, TimeoutException {
       String line = null;
-    if (lock.tryLock(1, TimeUnit.SECONDS)) {
+      if (lock.tryLock(1, TimeUnit.SECONDS)) {
         try {
           while (queue.size() == 0 && hasPendingLines())
-          ignore(lines.await(1,TimeUnit.MILLISECONDS));
+            ignore(lines.await(1, TimeUnit.MILLISECONDS));
 
-        if (hasPendingLines()) {
-          line = queue.poll();
-          System.out.printf("%s: Line Read: %d%n",
-                            Thread.currentThread().getName(),
-                            queue.size());
-          space.signalAll();
+          if (hasPendingLines()) {
+            line = queue.poll();
+            System.out.printf("%s: Line Read: %d%n",
+                              Thread.currentThread().getName(),
+                              queue.size());
+            space.signalAll();
+          }
+        } catch (InterruptedException e) {
+          System.err.println(e);
+        } finally {
+          lock.unlock();
         }
-      } catch (InterruptedException e) {
-        System.err.println(e);
-      } finally {
-        lock.unlock();
-      }
-    return line;
-    }
-    else throw new TimeoutException("Error in get in class "
-        + getClass());
+        return line;
+      } else
+        throw new TimeoutException("Error in get in class " + getClass());
     }
 
     public void setPendingLines(boolean pendingLines) {
@@ -150,12 +149,12 @@ public enum LockProducerConsumer {
     @Override
     public void run() {
       try {
-      buffer.setPendingLines(true);
-      while (mock.hasMoreLines()) {
-        String line = mock.getLine();
-        buffer.insert(line);
-      }
-      buffer.setPendingLines(false);
+        buffer.setPendingLines(true);
+        while (mock.hasMoreLines()) {
+          String line = mock.getLine();
+          buffer.insert(line);
+        }
+        buffer.setPendingLines(false);
       } catch (InterruptedException ie) {
         Thread.currentThread().interrupt();
       } catch (TimeoutException te) {
@@ -173,16 +172,16 @@ public enum LockProducerConsumer {
 
     @Override
     public void run() {
-    try {
-      while (buffer.hasPendingLines()) {
-        String line = buffer.get();
-        processLine(line);
+      try {
+        while (buffer.hasPendingLines()) {
+          String line = buffer.get();
+          processLine(line);
+        }
+      } catch (InterruptedException ie) {
+        Thread.currentThread().interrupt();
+      } catch (TimeoutException te) {
+        System.err.println(te.getMessage());
       }
-    } catch (InterruptedException ie) {
-      Thread.currentThread().interrupt();
-    } catch (TimeoutException te) {
-      System.err.println(te.getMessage());
-    }
     }
 
     private void processLine(String line) {

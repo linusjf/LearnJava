@@ -15,7 +15,7 @@ public enum CallableExecutorExample {
   private static Random random = new Random();
 
   private static ThreadPoolExecutor executor =
-        (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+      (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {

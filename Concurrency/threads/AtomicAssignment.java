@@ -21,9 +21,8 @@ public class AtomicAssignment implements Runnable {
       String value2 = currConfig.get("key-2");
       String value3 = currConfig.get("key-3");
       if (!(value1.equals(value2) && value2.equals(value3))) {
-        throw new IllegalStateException("Values are not equal: "
-            + value1 + "," + value2 + ","
-            + value3);
+        throw new IllegalStateException("Values are not equal: " + value1 + ","
+                                        + value2 + "," + value3);
       }
       try {
         TimeUnit.MILLISECONDS.sleep(1);

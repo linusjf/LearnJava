@@ -4,7 +4,7 @@ import java.util.Base64;
 
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 public final class CallbackDigestUserInterface implements Receiver {
- 
+
   private final String filename;
 
   public CallbackDigestUserInterface(String filename) {
@@ -26,7 +26,8 @@ public final class CallbackDigestUserInterface implements Receiver {
 
   private static void spinOffCallback(String filename) {
     // Calculate the digest
-    Runnable cb = new CallbackDigest(filename, new CallbackDigestUserInterface(filename));
+    Runnable cb =
+        new CallbackDigest(filename, new CallbackDigestUserInterface(filename));
     Thread t = new Thread(cb);
     t.start();
   }

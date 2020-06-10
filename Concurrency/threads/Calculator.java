@@ -11,18 +11,26 @@ public class Calculator implements Runnable {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     for (int i = 1; i <= 10; i++) {
-      System.out.printf("%s: %d * %d = %d%n", Thread.currentThread().getName(), number, i, i * number);
+      System.out.printf("%s: %d * %d = %d%n",
+                        Thread.currentThread().getName(),
+                        number,
+                        i,
+                        i * number);
     }
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Calculator)) return false;
-    Calculator other = (Calculator) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (this.number != other.number) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Calculator))
+      return false;
+    Calculator other = (Calculator)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (this.number != other.number)
+      return false;
     return true;
   }
 

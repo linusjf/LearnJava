@@ -69,7 +69,7 @@ public enum FutureDemo {
     private long factorial(int number) throws InterruptedException {
       if (number <= 0)
         throw new IllegalArgumentException("Number must be greater than zero: "
-            + number);
+                                           + number);
       int num = number;
       long result = 1;
       while (num > 0) {

@@ -134,7 +134,7 @@ public enum SafeLock {
       while (true) {
         try {
           TimeUnit.MILLISECONDS.sleep(random.nextInt(10));
-        bowee.bow(bower);
+          bowee.bow(bower);
         } catch (InterruptedException e) {
           System.err.println(e);
           Thread.currentThread().interrupt();

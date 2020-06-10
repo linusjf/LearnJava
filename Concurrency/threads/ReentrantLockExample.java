@@ -31,23 +31,23 @@ public enum ReentrantLockExample {
     @SuppressWarnings("PMD.LawOfDemeter")
     public boolean printJob(Object document) throws InterruptedException {
       boolean completed = false;
-      if (queueLock.tryLock(0, TimeUnit.SECONDS)) { 
-      try {
-        Long duration = (long)(Math.random() * 10_000);
-        System.out.println(Thread.currentThread().getName()
-                           + ": PrintQueue: Printing a Job during "
-                           + (duration / 1000) + " seconds");
-        TimeUnit.MILLISECONDS.sleep(duration);
-        completed = true;
-      } catch (InterruptedException e) {
-        System.err.println(e);
-        Thread.currentThread().interrupt();
-      } finally {
-        queueLock.unlock();
+      if (queueLock.tryLock(0, TimeUnit.SECONDS)) {
+        try {
+          Long duration = (long)(Math.random() * 10_000);
+          System.out.println(Thread.currentThread().getName()
+                             + ": PrintQueue: Printing a Job during "
+                             + (duration / 1000) + " seconds");
+          TimeUnit.MILLISECONDS.sleep(duration);
+          completed = true;
+        } catch (InterruptedException e) {
+          System.err.println(e);
+          Thread.currentThread().interrupt();
+        } finally {
+          queueLock.unlock();
+        }
       }
+      return completed;
     }
-    return completed;
-}
 
     @SuppressWarnings("PMD.LawOfDemeter")
     public boolean usingFair() {
@@ -70,7 +70,8 @@ public enum ReentrantLockExample {
                         Thread.currentThread().getName());
       try {
         Object obj = new Object();
-     while(!printQueue.printJob(obj));
+        while (!printQueue.printJob(obj))
+          ;
       } catch (InterruptedException ie) {
         Thread.currentThread().interrupt();
       }
