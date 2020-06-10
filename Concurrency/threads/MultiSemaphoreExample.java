@@ -54,19 +54,19 @@ public enum MultiSemaphoreExample {
       }
     }
 
-    private int getPrinter() {
-      try {
-        lockPrinters.lock();
+    private int getPrinter() throws InterruptedException {
+      int printer = -1;
+        if (lockPrinters.tryLock(100, TimeUnit.MILLISECONDS)) {
         for (int i = 0; i < freePrinters.length; i++) {
           if (freePrinters[i]) {
             freePrinters[i] = false;
-            return i;
+            printer = i;
+            break;
           }
         }
-      } finally {
         lockPrinters.unlock();
       }
-      return -1;
+      return printer;
     }
   }
 

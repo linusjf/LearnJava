@@ -14,11 +14,12 @@ public enum CallableExecutorExample {
   ;
   private static Random random = new Random();
 
+  private static ThreadPoolExecutor executor =
+        (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ThreadPoolExecutor executor =
-        (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
-    List<Future<Integer>> resultList = new ArrayList<>();
+    List<Future<Integer>> resultList = new ArrayList<>(10);
     for (int i = 0; i < 10; i++) {
       Integer number = random.nextInt(10);
       FactorialCalculator calculator = new FactorialCalculator(number);

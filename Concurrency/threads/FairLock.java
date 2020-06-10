@@ -7,15 +7,16 @@ public class FairLock {
   private boolean isLocked;
   private Thread lockingThread;
   private final List<QueueObject> waitingThreads = new ArrayList<>();
+  private final Object obj = new Object();
 
   public void lock() throws InterruptedException {
     QueueObject queueObject = new QueueObject();
     boolean isLockedForThisThread = true;
-    synchronized (this) {
+    synchronized (obj) {
       waitingThreads.add(queueObject);
     }
     while (isLockedForThisThread) {
-      synchronized (this) {
+      synchronized (obj) {
         isLockedForThisThread = isLocked || waitingThreads.get(0) != queueObject;
         if (!isLockedForThisThread) {
           isLocked = true;
@@ -27,7 +28,7 @@ public class FairLock {
       try {
         queueObject.doWait();
       } catch (InterruptedException e) {
-        synchronized (this) {
+        synchronized (obj) {
           waitingThreads.remove(queueObject);
         }
         throw e;
@@ -37,7 +38,7 @@ public class FairLock {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public void unlock() {
-    synchronized (this) {
+    synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException("Calling thread has not locked this lock");
       }

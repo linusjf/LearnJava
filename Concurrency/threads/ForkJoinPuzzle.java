@@ -36,11 +36,8 @@ public enum ForkJoinPuzzle {
     } catch (InterruptedException | ExecutionException ie) {
       System.err.println(ie);
     }
-
-    // sequentialStream().forEach(val -> process());
-    // parallelStream().forEach(val -> process());
     System.out.println("counter = " + counter.get());
-    // printProcessorCount();
+    processorsCount.clear();
   }
 
   private static void printProcessorCount() {
@@ -74,7 +71,7 @@ public enum ForkJoinPuzzle {
         processorsCount.put(processor, 1);
       else
         processorsCount.put(processor, ++count);
-      thread.join();
+      thread.join(100);
       System.out.println("Ended: " + processor);
       printProcessorCount();
     } catch (InterruptedException e) {

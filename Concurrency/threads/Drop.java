@@ -39,14 +39,15 @@ public class Drop {
   // false if producer should wait for
   // consumer to retrieve message.
   private boolean empty = true;
+  private Object obj = new Object();
 
   public String take() {
-    synchronized (this) {
+    synchronized (obj) {
       // Wait until message is
       // available.
       while (empty) {
         try {
-          wait();
+          obj.wait(100);
         } catch (InterruptedException e) {
           System.err.println(e);
         }
@@ -55,19 +56,19 @@ public class Drop {
       empty = true;
       // Notify producer that
       // status has changed.
-      notifyAll();
+      obj.notifyAll();
       return message;
     }
   }
 
   @SuppressWarnings("checkstyle:hiddenfield")
   public void put(String message) {
-    synchronized (this) {
+    synchronized (obj) {
       // Wait until message has
       // been retrieved.
       while (!empty) {
         try {
-          wait();
+          obj.wait(100);
         } catch (InterruptedException e) {
           System.err.println(e);
         }
@@ -78,7 +79,7 @@ public class Drop {
       this.message = message;
       // Notify consumer that status
       // has changed.
-      notifyAll();
+      obj.notifyAll();
     }
   }
 

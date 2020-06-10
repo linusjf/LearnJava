@@ -2,6 +2,7 @@ package threads;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
@@ -92,8 +93,8 @@ public enum AsynchronousExample {
       return list;
     }
 
-    private void addResultsFromTasks(List<String> list,
-                                     List<FolderProcessor> tasks) {
+    private void addResultsFromTasks(Collection <String> list,
+                                     Iterable <FolderProcessor> tasks) {
       for (FolderProcessor item: tasks)
         list.addAll(item.join());
     }

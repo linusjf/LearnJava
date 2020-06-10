@@ -4,11 +4,12 @@ package threads;
 public class Lock {
   private boolean isLocked;
   private Thread lockingThread;
+  private final Object obj = new Object();
 
   public void lock() throws InterruptedException {
-    synchronized (this) {
+    synchronized (obj) {
       while (isLocked) {
-        wait();
+        obj.wait();
       }
       isLocked = true;
       lockingThread = Thread.currentThread();
@@ -16,12 +17,12 @@ public class Lock {
   }
 
   public void unlock() {
-    synchronized (this) {
+    synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException("Calling thread has not locked this lock");
       }
       isLocked = false;
-      notifyAll();
+      obj.notifyAll();
     }
   }
 

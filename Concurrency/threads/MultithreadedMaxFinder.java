@@ -14,6 +14,7 @@ public final class MultithreadedMaxFinder {
         43, 45, 23, 1000, 456, 678, 1002, 12_345, 567, 567
       };
   // clang-format on
+  private static ExecutorService service = Executors.newFixedThreadPool(2);
 
   private MultithreadedMaxFinder() {
     throw new IllegalStateException("Private constructor invoked for class: " + getClass());
@@ -32,7 +33,6 @@ public final class MultithreadedMaxFinder {
     FindMaxTask task2 = new FindMaxTask(data, data.length / 2, data.length);
 
     // spawn 2 threads
-    ExecutorService service = Executors.newFixedThreadPool(2);
     Future<Integer> future1 = service.submit(task1);
     Future<Integer> future2 = service.submit(task2);
     int val = future1.get();
