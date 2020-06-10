@@ -25,6 +25,11 @@ public enum LockProducerConsumer {
       t.start();
   }
 
+  @SuppressWarnings("all")
+  static void ignore(Object o) {
+    // no-op method
+  }
+
   static class FileMock {
     private final String[] content;
     private int index;
@@ -80,7 +85,7 @@ public enum LockProducerConsumer {
       if (lock.tryLock(1, TimeUnit.SECONDS)) {
       try {
         while (queue.size() == maxSize)
-          space.await(1, TimeUnit.MILLISECONDS);
+          ignore(space.await(1, TimeUnit.MILLISECONDS));
         queue.offer(line);
         System.out.printf("%s: Inserted Line: %d%n",
                           Thread.currentThread().getName(),
@@ -98,12 +103,12 @@ public enum LockProducerConsumer {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public String get() {
+    public String get() throws InterruptedException, TimeoutException {
       String line = null;
-      lock.lock();
-      try {
-        while (queue.size() == 0 && hasPendingLines())
-          lines.await();
+    if (lock.tryLock(1, TimeUnit.SECONDS)) {
+        try {
+          while (queue.size() == 0 && hasPendingLines())
+          ignore(lines.await(1,TimeUnit.MILLISECONDS));
 
         if (hasPendingLines()) {
           line = queue.poll();
@@ -117,7 +122,10 @@ public enum LockProducerConsumer {
       } finally {
         lock.unlock();
       }
-      return line;
+    return line;
+    }
+    else throw new TimeoutException("Error in get in class "
+        + getClass());
     }
 
     public void setPendingLines(boolean pendingLines) {
@@ -165,10 +173,16 @@ public enum LockProducerConsumer {
 
     @Override
     public void run() {
+    try {
       while (buffer.hasPendingLines()) {
         String line = buffer.get();
         processLine(line);
       }
+    } catch (InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    } catch (TimeoutException te) {
+      System.err.println(te.getMessage());
+    }
     }
 
     private void processLine(String line) {
