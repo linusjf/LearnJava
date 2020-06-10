@@ -46,7 +46,7 @@ import javax.imageio.ImageIO;
  * the Fork/Join framework.
  */
 public class ForkBlur extends RecursiveAction {
-  public static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
   protected static final int S_THRESHOLD = 10000;
   private static AtomicInteger taskCount = new AtomicInteger(0);
   private static final int BLUR_WIDTH = 15;

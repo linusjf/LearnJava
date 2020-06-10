@@ -12,10 +12,11 @@ public class CountDownLatchExample implements Runnable {
       new CountDownLatch(NUMBER_OF_THREADS);
   private static Random random = new Random(System.currentTimeMillis());
 
+  private static ExecutorService executorService =
+        Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    ExecutorService executorService =
-        Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     for (int i = 0; i < NUMBER_OF_THREADS; i++)
       executorService.execute(new CountDownLatchExample());
     executorService.shutdown();

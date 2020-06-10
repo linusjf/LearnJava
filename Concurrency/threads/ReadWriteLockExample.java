@@ -3,6 +3,7 @@ package threads;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -37,31 +38,38 @@ public enum ReadWriteLockExample {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public double getPrice1() {
-      lock.readLock().lock();
+    public double getPrice1() throws InterruptedException, TimeoutException {
+      if (lock.readLock().tryLock(1, TimeUnit.SECONDS)) {
       double value = price1;
       lock.readLock().unlock();
       return value;
+      }
+      throw new TimeoutException("Unable to read price1 in class "
+          + getClass());
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public double getPrice2() {
-      lock.readLock().lock();
+    public double getPrice2() throws InterruptedException, TimeoutException {
+      if (lock.readLock().tryLock(1, TimeUnit.SECONDS)) {
       double value = price2;
       lock.readLock().unlock();
       return value;
+      }
+      throw new TimeoutException("Unable to read price2 in class "
+          + getClass());
     }
 
     @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
-    public void setPrices(double price1, double price2) {
-      lock.writeLock().lock();
+    public void setPrices(double price1, double price2)  throws InterruptedException, TimeoutException{
+      if (lock.writeLock().tryLock(1, TimeUnit.SECONDS)) {
       this.price1 = price1;
       this.price2 = price2;
       lock.writeLock().unlock();
+      }
+      throw new TimeoutException("Unable to set prices in class "
+          + getClass());
     }
-
   }
-
 
   static class Reader implements Runnable {
     private final PricesInfo pricesInfo;
@@ -73,12 +81,18 @@ public enum ReadWriteLockExample {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
+      try {
       for (int i = 0; i < 10; i++) {
         synchronized (System.out) {
           System.out.printf("%s: Price 1: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice1());
           System.out.printf("%s: Price 2: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice2());
         }
       }
+    } catch (InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    } catch (TimeoutException te) {
+      System.err.println(te.getMessage());
+    } 
     }
   }
 
@@ -93,6 +107,7 @@ public enum ReadWriteLockExample {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
+  try {
       for (int i = 0; i < 3; i++) {
         synchronized (System.out) {
           System.out.printf("Writer %s: Attempt to modify the prices.%n", Thread.currentThread().getName());
@@ -101,12 +116,13 @@ public enum ReadWriteLockExample {
         synchronized (System.out) {
           System.out.printf("Writer %s: Prices have been modified.%n", Thread.currentThread().getName());
         }
-        try {
           TimeUnit.MILLISECONDS.sleep(2);
-        } catch (InterruptedException e) {
-          System.err.println(e);
-        }
       }
+    } catch (InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    } catch (TimeoutException te) {
+      System.err.println(te.getMessage());
+    } 
     }
   }
 }

@@ -5,6 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -75,11 +76,11 @@ public enum LockProducerConsumer {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public void insert(String line) {
-      lock.lock();
+    public void insert(String line) throws InterruptedException, TimeoutException {
+      if (lock.tryLock(1, TimeUnit.SECONDS)) {
       try {
         while (queue.size() == maxSize)
-          space.await();
+          space.await(1, TimeUnit.MILLISECONDS);
         queue.offer(line);
         System.out.printf("%s: Inserted Line: %d%n",
                           Thread.currentThread().getName(),
@@ -90,6 +91,10 @@ public enum LockProducerConsumer {
       } finally {
         lock.unlock();
       }
+      }
+      else 
+        throw new TimeoutException("Timed out after 1 second: '"
+            + line + "' cannot be inserted");
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
@@ -136,12 +141,18 @@ public enum LockProducerConsumer {
 
     @Override
     public void run() {
+      try {
       buffer.setPendingLines(true);
       while (mock.hasMoreLines()) {
         String line = mock.getLine();
         buffer.insert(line);
       }
       buffer.setPendingLines(false);
+      } catch (InterruptedException ie) {
+        Thread.currentThread().interrupt();
+      } catch (TimeoutException te) {
+        System.err.println(te.getMessage());
+      }
     }
   }
 

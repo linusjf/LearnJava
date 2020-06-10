@@ -12,7 +12,7 @@ public class GrayscaleImageAction extends RecursiveAction {
   private static final long serialVersionUID = 1L;
   private static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
   private final int row;
-  private final transient BufferedImage bufferedImage;
+  private transient BufferedImage bufferedImage;
 
   public GrayscaleImageAction(int row, BufferedImage bufferedImage) {
     this.row = row;

@@ -114,6 +114,6 @@
     <Bug code="PRMC" />
   </Match>
   <Match>
-    <Bug pattern="MDM_RANDOM_SEED,MDM_WAIT_WITHOUT_TIMEOUT"/>
+    <Bug pattern="MDM_RANDOM_SEED"/>
   </Match>
 </FindBugsFilter>
