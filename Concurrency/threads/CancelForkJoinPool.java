@@ -132,8 +132,7 @@ public enum CancelForkJoinPool {
       if (returnValue != -1)
         return returnValue;
 
-      returnValue = task2.join();
-      return returnValue;
+      return task2.join();
     }
 
     public void writeCancelMessage() {

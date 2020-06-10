@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
   <Match>
-    <Bug code="SECPTI, SECPR, OPM" />
-  </Match>
-  <Match>
     <Method name="hashCode"/>
     <Bug code="USBR" />
+  </Match>
+  <Match>
+    <Class name="~.*DemoThreadExample.*" />
+    <Bug code="ERRMSG" />
+  </Match>
+  <Match>
+    <Class name="threads.DemoThreadExample$ExceptionHandler" />
+    <method name="uncaughtException" />
+    <Bug code="UCPM" />
+  </Match>
+  <Match>
+    <Class name="~*threads.Deadlock.lambda$friendlyBow.*" />
+    <Bug pattern="DM_EXIT" />
   </Match>
   <Match>
     <Class name="dailyimages.ImageProcessor" />
@@ -39,12 +49,7 @@
     <Bug code="RV" />
   </Match>
   <Match>
-    <Class name="threads.FindMin" />
-    <Method name="&lt;init&gt;" />
-    <Bug code="EI2" />
-  </Match>
-  <Match>
-    <Class name="threads.FindMinTask" />
+    <Class name="~.*threads.FindMin.*" />
     <Method name="&lt;init&gt;" />
     <Bug code="EI2" />
   </Match>
@@ -114,10 +119,13 @@
     <Bug code="PRMC" />
   </Match>
   <Match>
-    <Bug pattern="MDM_RANDOM_SEED"/>
-  </Match>
-  <Match>
     <Class name="threads.SimpleThreads" />
     <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT"/>
+  </Match>
+  <Match>
+    <Bug code="SECPTI, SECPR, OPM" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_RANDOM_SEED"/>
   </Match>
 </FindBugsFilter>

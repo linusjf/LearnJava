@@ -40,13 +40,13 @@ then
     -showPlugins
   java -cp "$cp":"$plugincp" "$mainClass" \
     -output "$errFile" \
+    -exclude $(realpath "$suppressionsFile") \
     -auxclasspath "$auxCp":. -adjustExperimental \
     -workHard -quiet \
     -experimental -nested:true -timestampNow \
-    -longBugCodes -progress -dontCombineWarnings \
+    -longBugCodes -progress \
     -pluginList "$plugincp" \
-    -exclude "$suppressionsFile" \
-    . \
+    -sourcepath . . \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
     res=$?
     cd ..
