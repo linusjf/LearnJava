@@ -3,6 +3,7 @@ package dailyimages;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpClient.Version;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
@@ -11,84 +12,94 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm. */
-public class ImageProcessor implements Runnable {
+public class NewImageProcessor {
   public static final int NUMBER_TO_SHOW = 100;
-  public static final int MAX_CONCURRENT_STREAMS = 100;
+  public static final int MAX_CONCURRENT_STREAMS = 10;
   public static final int DELAY = 100;
   private static final boolean PRINT_MESSAGE = true;
   private static final boolean SAVE_FILE = true;
   private static boolean isDilbert;
   // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  private final ExecutorService executor1 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
-                                   new NamedThreadFactory("executor1"));
+  
+BlockingQueue<Runnable> boundedQueue = new ArrayBlockingQueue<Runnable>(NUMBER_TO_SHOW);
+private ExecutorService executor1 = new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue, new AbortPolicy());
+BlockingQueue<Runnable> boundedQueue2 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
   private final ExecutorService executor2 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
-                                   new NamedThreadFactory("executor2"));
+      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue2, new AbortPolicy());
+BlockingQueue<Runnable> boundedQueue3 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
+  private final ExecutorService executor3 =
+      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue3, new AbortPolicy());
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
   private final HttpClient client =
       HttpClient.newBuilder()
+      .version(Version.HTTP_2)
           .executor(executor1)
           .followRedirects(HttpClient.Redirect.NEVER)
-          .connectTimeout(Duration.ofSeconds(20))
           .build();
 
-  @Override
-  public void run() {
-    loadAll();
+  @SuppressWarnings("PMD.LawOfDemeter")
+  public <T> CompletableFuture<T> getAsync2(
+      String url,
+      HttpResponse.BodyHandler<T> responseBodyHandler) {
+    HttpRequest request = 
+      HttpRequest.newBuilder()
+      .GET()
+      .uri(URI.create(url))
+      .build();
+      return client.sendAsync(request, responseBodyHandler)
+          .thenApplyAsync(HttpResponse::body, executor3);
   }
-
   @SuppressWarnings("PMD.LawOfDemeter")
   public <T> CompletableFuture<T> getAsync(
       String url,
       HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request = HttpRequest.newBuilder()
-                              .GET()
-                              .uri(URI.create(url))
-                              .timeout(Duration.ofSeconds(5))
-                              .build();
+    HttpRequest request = 
+      HttpRequest.newBuilder()
+      .GET()
+      .uri(URI.create(url))
+      .build();
       return client.sendAsync(request, responseBodyHandler)
-        .exceptionally(t -> {
-          System.err.println(request  + " failed with exception : " + t);
-          return null;
-        })
-        .thenApplyAsync(HttpResponse::body, executor2)
-    .orTimeout(DELAY,TimeUnit.MILLISECONDS);
+          .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
-      ImageInfo info) {
-      return getAsync(info.getUrlForDate(date),
-          HttpResponse.BodyHandlers.ofString())
-        .exceptionally(t -> {
-            System.err.println("Request failed for :"
-              + info.getUrlForDate(date));
-            return info.toString();})
-    .thenApply(info::findImage);
+                                                    ImageInfo info) {
+    System.out.println("Finding image info: " + info);
+    return getAsync(info.getUrlForDate(date),
+                    HttpResponse.BodyHandlers.ofString())
+        .thenApply(info::findImage);
   }
 
+  public void printExecutors() {
+    System.out.println("Executor 1: " + executor1);
+    System.out.println("Executor 2: " + executor2);
+  }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
-    return getAsync(info.getImagePath(),
+    System.out.println("Finding image data: " + info);
+    return getAsync2(info.getImagePath(),
                     HttpResponse.BodyHandlers.ofByteArray())
         .thenApply(info::setImageData);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public void load(LocalDate date, ImageInfo info) throws InterruptedException {
-      TimeUnit.MILLISECONDS.sleep(DELAY);
+  public void load(LocalDate date, ImageInfo info) {
     findImageInfo(date, info)
         .thenCompose(this::findImageData)
         .thenAccept(this::process)
@@ -97,7 +108,7 @@ public class ImageProcessor implements Runnable {
           failureCount.incrementAndGet();
           return null;
         })
-        .thenAccept(t -> latch.countDown());
+        .whenComplete((x, t) -> latch.countDown());
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -112,6 +123,8 @@ public class ImageProcessor implements Runnable {
       info.setDate(newDate.toString());
       System.out.println("Loading " + newDate);
       load(newDate, info);
+      if (DELAY > 0)
+        TimeUnit.MILLISECONDS.sleep(DELAY);
       newDate = newDate.minusDays(1);
     }
   }
@@ -123,15 +136,12 @@ public class ImageProcessor implements Runnable {
       loopLoadAll(isDilbert);
       latch.await();
       System.out.println("PAST LATCH");
+      // wait for a minute  before shutting down executor2
+      // http timeouts must expire first
       executor1.shutdown();
+      executor1.awaitTermination(1, TimeUnit.MINUTES);
       executor2.shutdown();
-      System.out.println("PAST SHUTDOWN");
-      //if (!executor1.awaitTermination(1, TimeUnit.MINUTES))
-        //executor1.shutdownNow();
-     // if (!executor2.awaitTermination(1, TimeUnit.MINUTES))
-       // executor2.shutdownNow();
-      //System.out.println("PAST TERMINATION and SHUTDOWNNOW");
-      
+      executor2.awaitTermination(1, TimeUnit.MINUTES);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       System.err.println("Interrupted");
@@ -144,7 +154,6 @@ public class ImageProcessor implements Runnable {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public void process(ImageInfo info) {
-      System.out.println("processing " + info);
     latch.countDown();
     String infoDate = info.getDate();
     if (PRINT_MESSAGE) {
@@ -153,30 +162,22 @@ public class ImageProcessor implements Runnable {
     }
     if (SAVE_FILE)
       try {
-      System.out.println("saving " + info);
         Files.createDirectories(imageDir);
         Files.write(imageDir.resolve(infoDate + ".jpg"),
                     info.getImageData());
+      System.out.println("file created for "
+          + infoDate);
       } catch (IOException ex) {
         System.err.println(ex);
       }
   }
 
-  public static void main(String... args) throws InterruptedException {
+  public static void main(String... args) {
     if (args.length > 0)
       isDilbert = true;
-    ImageProcessor processor = new ImageProcessor();
-    Thread thread = new Thread(processor);
-    thread.start();
-    thread.join();
-    Thread
-      .getAllStackTraces()
-      .keySet()
-      .forEach((t) -> System.out.println(t.getName() 
-            + "\tIs Daemon " 
-            + t.isDaemon() 
-            + "\tIs Alive " 
-            + t.isAlive()));
+    NewImageProcessor processor = new NewImageProcessor();
+    processor.printExecutors();
+    processor.loadAll();
   }
 
   @Override
@@ -184,9 +185,9 @@ public class ImageProcessor implements Runnable {
   public boolean equals(Object o) {
     if (o == this)
       return true;
-    if (!(o instanceof ImageProcessor))
+    if (!(o instanceof NewImageProcessor))
       return false;
-    ImageProcessor other = (ImageProcessor)o;
+    NewImageProcessor other = (NewImageProcessor)o;
     if (!other.canEqual((Object)this))
       return false;
     Object this$latch = this.latch;
@@ -198,6 +199,11 @@ public class ImageProcessor implements Runnable {
     Object other$executor1 = other.executor1;
     if (this$executor1 == null ? other$executor1 != null
                                : !this$executor1.equals(other$executor1))
+      return false;
+    Object this$executor2 = this.executor2;
+    Object other$executor2 = other.executor2;
+    if (this$executor2 == null ? other$executor2 != null
+                               : !this$executor2.equals(other$executor2))
       return false;
     Object this$failureCount = this.failureCount;
     Object other$failureCount = other.failureCount;
@@ -220,7 +226,7 @@ public class ImageProcessor implements Runnable {
 
   @SuppressWarnings("all")
   protected boolean canEqual(Object other) {
-    return other instanceof ImageProcessor;
+    return other instanceof NewImageProcessor;
   }
 
   @Override
@@ -232,6 +238,8 @@ public class ImageProcessor implements Runnable {
     result = result * PRIME + ($latch == null ? 43 : $latch.hashCode());
     Object $executor1 = this.executor1;
     result = result * PRIME + ($executor1 == null ? 43 : $executor1.hashCode());
+    Object $executor2 = this.executor2;
+    result = result * PRIME + ($executor2 == null ? 43 : $executor2.hashCode());
     Object $failureCount = this.failureCount;
     result = result * PRIME
              + ($failureCount == null ? 43 : $failureCount.hashCode());
@@ -246,7 +254,7 @@ public class ImageProcessor implements Runnable {
   @SuppressWarnings("all")
   public String toString() {
     return "ImageProcessor(latch=" + this.latch
-        + ", executor1=" + this.executor1 
+        + ", executor1=" + this.executor1 + ", executor2=" + this.executor2
         + ", failureCount=" + this.failureCount + ", imageDir=" + this.imageDir
         + ", client=" + this.client + ")";
   }
