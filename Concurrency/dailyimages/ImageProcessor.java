@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -137,14 +138,15 @@ public class ImageProcessor {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void process(ImageInfo info) {
     latch.countDown();
+    String infoDate = info.getDate();
     if (PRINT_MESSAGE) {
       System.out.println("process called by " + Thread.currentThread()
-                         + ", date: " + info.getDate());
+                         + ", date: " + infoDate);
     }
     if (SAVE_FILE)
       try {
         Files.createDirectories(imageDir);
-        Files.write(imageDir.resolve(info.getDate() + ".jpg"),
+        Files.write(imageDir.resolve(infoDate + ".jpg"),
                     info.getImageData());
       } catch (IOException ex) {
         System.err.println(ex);

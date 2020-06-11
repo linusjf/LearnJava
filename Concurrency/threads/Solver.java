@@ -12,11 +12,14 @@ public class Solver {
   final float[][] data;
   final CyclicBarrier barrier;
 
-  public Solver(float[][] matrix) throws InterruptedException {
+  public Solver(float[][] matrix)  {
     data = matrix;
     N = matrix.length;
     Runnable barrierAction = () -> mergeRows();
     barrier = new CyclicBarrier(N, barrierAction);
+  }
+
+  void solve() throws InterruptedException {
     List<Thread> threads = new ArrayList<>(N);
     for (int i = 0; i < N; i++) {
       Thread thread = new Thread(new Worker(i));
@@ -25,7 +28,7 @@ public class Solver {
     }
     // wait until done
     for (Thread thread: threads)
-      thread.join();
+      thread.join((long)N * 1000 * 60);
   }
 
   void mergeRows() {

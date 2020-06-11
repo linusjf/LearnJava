@@ -10,9 +10,10 @@ import java.util.concurrent.TimeUnit;
 public enum ControllingExecutor {
   ;
 
+  private static ExecutorService executor = Executors.newCachedThreadPool();
+
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
-    ExecutorService executor = Executors.newCachedThreadPool();
     ResultTask[] resultTasks = new ResultTask[5];
     for (int i = 0; i < 5; i++) {
       resultTasks[i] = new ResultTask(new ExecutableTask("Task " + i));
