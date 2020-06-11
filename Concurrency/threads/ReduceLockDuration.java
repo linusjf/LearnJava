@@ -29,6 +29,7 @@ public enum ReduceLockDuration {
       for (Thread t: threads)
         t.join(100);
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
+      MAP.clear();
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }

@@ -43,8 +43,8 @@ public class ConcurrencyTestTwoWrites {
     // clang-format on
     first.start();
     second.start();
-    first.join();
-    second.join();
+    first.join(100);
+    second.join(100);
     assertEquals(
         address.toString(),
         "street=Evergreen Terrace,city=Springfield,phoneNumber=99 55 2222",

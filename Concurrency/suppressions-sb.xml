@@ -127,12 +127,31 @@
     <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT" />
   </Match>
   <Match>
-    <Bug code="SECPTI, SECPR, OPM" />
+    <Bug code="STT, SECPTI, SECPR, OPM" />
   </Match>
   <Match>
     <Bug pattern="MDM_RANDOM_SEED" />
   </Match>
   <Match>
     <Bug pattern="MDM_THREAD_PRIORITIES" />
+  </Match>
+  <Match>
+    <Class name="threads.Solver"/>
+    <method name="&lt;init&gt;"/>
+    <Bug pattern="EI_EXPOSE_REP2" />
+  </Match>
+  <Match>
+    <Class name="threads.AsynchronousExample"/>
+    <method name="main"/>
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkJoinResultDemo"/>
+    <method name="main"/>
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
+    <Class name="threads.ReduceLockDuration"/>
+    <Bug code="WOC" />
   </Match>
 </FindBugsFilter>
