@@ -10,41 +10,53 @@ public class AddressUsingCopyOnWrite {
   }
 
   public String toStringNotThreadSafe() {
-    return "street=" + addressValue.getStreet() + ",city=" + addressValue.getCity() + ",phoneNumber=" + addressValue.getPhoneNumber();
+    return "street=" + addressValue.getStreet()
+        + ",city=" + addressValue.getCity()
+        + ",phoneNumber=" + addressValue.getPhoneNumber();
   }
 
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public String toString() {
     AddressValue local = addressValue;
-    return "street=" + local.getStreet() + ",city=" + local.getCity() + ",phoneNumber=" + local.getPhoneNumber();
+    return "street=" + local.getStreet() + ",city=" + local.getCity()
+        + ",phoneNumber=" + local.getPhoneNumber();
   }
 
   public void updatePostalAddress(String street, String city) {
     synchronized (lock) {
-      addressValue = new AddressValue(street, city, addressValue.getPhoneNumber());
+      addressValue =
+          new AddressValue(street, city, addressValue.getPhoneNumber());
     }
   }
 
   public void updatePhoneNumber(String phoneNumber) {
     synchronized (lock) {
-      addressValue = new AddressValue(addressValue.getStreet(), addressValue.getCity(), phoneNumber);
+      addressValue = new AddressValue(
+          addressValue.getStreet(), addressValue.getCity(), phoneNumber);
     }
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof AddressUsingCopyOnWrite)) return false;
-    AddressUsingCopyOnWrite other = (AddressUsingCopyOnWrite) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof AddressUsingCopyOnWrite))
+      return false;
+    AddressUsingCopyOnWrite other = (AddressUsingCopyOnWrite)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$addressValue = this.addressValue;
     Object other$addressValue = other.addressValue;
-    if (this$addressValue == null ? other$addressValue != null : !this$addressValue.equals(other$addressValue)) return false;
+    if (this$addressValue == null
+            ? other$addressValue != null
+            : !this$addressValue.equals(other$addressValue))
+      return false;
     Object this$lock = this.lock;
     Object other$lock = other.lock;
-    if (this$lock == null ? other$lock != null : !this$lock.equals(other$lock)) return false;
+    if (this$lock == null ? other$lock != null : !this$lock.equals(other$lock))
+      return false;
     return true;
   }
 
@@ -59,7 +71,8 @@ public class AddressUsingCopyOnWrite {
     int PRIME = 59;
     int result = 1;
     Object $addressValue = this.addressValue;
-    result = result * PRIME + ($addressValue == null ? 43 : $addressValue.hashCode());
+    result = result * PRIME
+             + ($addressValue == null ? 43 : $addressValue.hashCode());
     Object $lock = this.lock;
     result = result * PRIME + ($lock == null ? 43 : $lock.hashCode());
     return result;

@@ -37,9 +37,9 @@ public class Producer implements Runnable {
   private final Drop drop;
   private final Random random;
   String[] importantInfo = {"Mares eat oats",
-                              "Does eat oats",
-                              "Little lambs eat ivy",
-                              "A kid will eat ivy too"};
+                            "Does eat oats",
+                            "Little lambs eat ivy",
+                            "A kid will eat ivy too"};
 
   public Producer(Drop drop) {
     this.drop = drop;

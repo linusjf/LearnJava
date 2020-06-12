@@ -12,7 +12,7 @@ public class Solver {
   final float[][] data;
   final CyclicBarrier barrier;
 
-  public Solver(float[][] matrix)  {
+  public Solver(float[][] matrix) {
     data = matrix;
     N = matrix.length;
     Runnable barrierAction = () -> mergeRows();

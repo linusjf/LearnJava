@@ -9,18 +9,15 @@ import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm. */
@@ -33,20 +30,38 @@ public class NewImageProcessor {
   private static boolean isDilbert;
   // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  
-BlockingQueue<Runnable> boundedQueue = new ArrayBlockingQueue<Runnable>(NUMBER_TO_SHOW);
-private ExecutorService executor1 = new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue, new AbortPolicy());
-BlockingQueue<Runnable> boundedQueue2 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
+
+  BlockingQueue<Runnable> boundedQueue =
+      new ArrayBlockingQueue<Runnable>(NUMBER_TO_SHOW);
+  private ExecutorService executor1 = new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
+                                                             NUMBER_TO_SHOW,
+                                                             60,
+                                                             TimeUnit.SECONDS,
+                                                             boundedQueue,
+                                                             new AbortPolicy());
+  BlockingQueue<Runnable> boundedQueue2 =
+      new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
   private final ExecutorService executor2 =
-      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue2, new AbortPolicy());
-BlockingQueue<Runnable> boundedQueue3 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
+      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
+                             NUMBER_TO_SHOW,
+                             60,
+                             TimeUnit.SECONDS,
+                             boundedQueue2,
+                             new AbortPolicy());
+  BlockingQueue<Runnable> boundedQueue3 =
+      new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
   private final ExecutorService executor3 =
-      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2, NUMBER_TO_SHOW, 60, TimeUnit.SECONDS, boundedQueue3, new AbortPolicy());
+      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
+                             NUMBER_TO_SHOW,
+                             60,
+                             TimeUnit.SECONDS,
+                             boundedQueue3,
+                             new AbortPolicy());
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
   private final HttpClient client =
       HttpClient.newBuilder()
-      .version(Version.HTTP_2)
+          .version(Version.HTTP_2)
           .executor(executor1)
           .followRedirects(HttpClient.Redirect.NEVER)
           .build();
@@ -55,25 +70,20 @@ BlockingQueue<Runnable> boundedQueue3 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW)
   public <T> CompletableFuture<T> getAsync2(
       String url,
       HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request = 
-      HttpRequest.newBuilder()
-      .GET()
-      .uri(URI.create(url))
-      .build();
-      return client.sendAsync(request, responseBodyHandler)
-          .thenApplyAsync(HttpResponse::body, executor3);
+    HttpRequest request =
+        HttpRequest.newBuilder().GET().uri(URI.create(url)).build();
+    return client.sendAsync(request, responseBodyHandler)
+        .thenApplyAsync(HttpResponse::body, executor3);
   }
+
   @SuppressWarnings("PMD.LawOfDemeter")
   public <T> CompletableFuture<T> getAsync(
       String url,
       HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request = 
-      HttpRequest.newBuilder()
-      .GET()
-      .uri(URI.create(url))
-      .build();
-      return client.sendAsync(request, responseBodyHandler)
-          .thenApplyAsync(HttpResponse::body, executor2);
+    HttpRequest request =
+        HttpRequest.newBuilder().GET().uri(URI.create(url)).build();
+    return client.sendAsync(request, responseBodyHandler)
+        .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -94,7 +104,7 @@ BlockingQueue<Runnable> boundedQueue3 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW)
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
     System.out.println("Finding image data: " + info);
     return getAsync2(info.getImagePath(),
-                    HttpResponse.BodyHandlers.ofByteArray())
+                     HttpResponse.BodyHandlers.ofByteArray())
         .thenApply(info::setImageData);
   }
 
@@ -163,10 +173,8 @@ BlockingQueue<Runnable> boundedQueue3 = new ArrayBlockingQueue<>(NUMBER_TO_SHOW)
     if (SAVE_FILE)
       try {
         Files.createDirectories(imageDir);
-        Files.write(imageDir.resolve(infoDate + ".jpg"),
-                    info.getImageData());
-      System.out.println("file created for "
-          + infoDate);
+        Files.write(imageDir.resolve(infoDate + ".jpg"), info.getImageData());
+        System.out.println("file created for " + infoDate);
       } catch (IOException ex) {
         System.err.println(ex);
       }

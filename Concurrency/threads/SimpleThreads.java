@@ -98,11 +98,11 @@ public enum SimpleThreads {
   }
 
   private static class MessageLoop implements Runnable {
-      String[] importantInfo = {"Mares eat oats",
-                                "Does eat oats",
-                                "Little lambs eat ivy",
-                                "A kid will eat ivy too"};
- 
+    String[] importantInfo = {"Mares eat oats",
+                              "Does eat oats",
+                              "Little lambs eat ivy",
+                              "A kid will eat ivy too"};
+
     @Override
     public void run() {
       try {

@@ -20,9 +20,7 @@ public class Lock {
     synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException(
-            "Calling thread has not locked this lock: " 
-            +
-            this);
+            "Calling thread has not locked this lock: " + this);
       }
       isLocked = false;
       obj.notifyAll();

@@ -10,7 +10,8 @@ public class SemaphoreArchetype implements Runnable {
   private static final AtomicInteger COUNTER = new AtomicInteger();
   private static final long END_MILLIS = System.currentTimeMillis() + 1000;
   private static final int MAX_THREADS = 3;
-  private static final ExecutorService executorService = Executors.newFixedThreadPool(5);
+  private static final ExecutorService executorService =
+      Executors.newFixedThreadPool(5);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
@@ -34,9 +35,8 @@ public class SemaphoreArchetype implements Runnable {
                          + "]-SEMAPHORE acquired: " + counterValue);
       if (counterValue > MAX_THREADS) {
         throw new IllegalStateException(
-            "More than three threads -acquired the lock." +
-            counterValue +
-            this);
+            "More than three threads -acquired the lock." + counterValue
+            + this);
       }
       COUNTER.decrementAndGet();
       SEMAPHORE.release();
