@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -20,7 +22,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm. */
 public class ImageProcessor implements Runnable {
   public static final int NUMBER_TO_SHOW = 100;
-  public static final int MAX_CONCURRENT_STREAMS = 100;
+  public static final int MAX_CONCURRENT_STREAMS = 20;
+  public static final int MAX_THREADS = 20;
   public static final int DELAY = 100;
   private static final boolean PRINT_MESSAGE = true;
   private static final boolean SAVE_FILE = true;
@@ -28,10 +31,9 @@ public class ImageProcessor implements Runnable {
   // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
   private final ExecutorService executor1 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
-                                   new NamedThreadFactory("executor1"));
+      Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
   private final ExecutorService executor2 =
-      Executors.newFixedThreadPool(MAX_CONCURRENT_STREAMS,
+      Executors.newCachedThreadPool(
                                    new NamedThreadFactory("executor2"));
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
@@ -42,6 +44,7 @@ public class ImageProcessor implements Runnable {
           .connectTimeout(Duration.ofSeconds(20))
           .build();
   private boolean finished;
+  private Random random = new Random();
 
   @Override
   public void run() {
@@ -60,10 +63,11 @@ public class ImageProcessor implements Runnable {
     return client.sendAsync(request, responseBodyHandler)
         .exceptionally(t -> {
           System.err.println(request + " failed with exception : " + t);
+          failureCount.incrementAndGet();
+          latch.countDown();
           return null;
         })
-        .thenApplyAsync(HttpResponse::body, executor2)
-        .orTimeout(DELAY, TimeUnit.MILLISECONDS);
+        .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
@@ -73,6 +77,8 @@ public class ImageProcessor implements Runnable {
                     HttpResponse.BodyHandlers.ofString())
         .exceptionally(t -> {
           System.err.println("Request failed for :" + info.getUrlForDate(date));
+          failureCount.incrementAndGet();
+          latch.countDown();
           return info.toString();
         })
         .thenApply(info::findImage);
@@ -87,13 +93,14 @@ public class ImageProcessor implements Runnable {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public void load(LocalDate date, ImageInfo info) throws InterruptedException {
-    TimeUnit.MILLISECONDS.sleep(DELAY);
+    TimeUnit.MILLISECONDS.sleep(random.nextInt(DELAY));
     findImageInfo(date, info)
         .thenCompose(this::findImageData)
         .thenAccept(this::process)
         .exceptionally(t -> {
           System.err.println(info.getUrlForDate(date) + " : " + t);
           failureCount.incrementAndGet();
+          latch.countDown();
           return null;
         })
         .thenAccept(t -> latch.countDown());
@@ -120,7 +127,7 @@ public class ImageProcessor implements Runnable {
     long time = System.nanoTime();
     try {
       loopLoadAll(isDilbert);
-      latch.await();
+      latch.await(3,TimeUnit.MINUTES);
       System.out.println("PAST LATCH");
       executor1.shutdown();
       executor2.shutdown();
@@ -136,7 +143,7 @@ public class ImageProcessor implements Runnable {
       System.err.println("Interrupted");
     } finally {
       time = System.nanoTime() - time;
-      System.out.printf("time = %dms%n", time / 1000000);
+      System.out.printf("time = %dms%n", time / 1_000_000);
       System.out.println(failureCount.get() + " failures downloading");
       finished = true;
     }
@@ -169,7 +176,7 @@ public class ImageProcessor implements Runnable {
     thread.start();
     Thread threadTracer = new Thread(new ThreadTrace(processor));
     threadTracer.start();
-    thread.join();
+    thread.join(3 * 60 * 1000);
   }
 
   private static class ThreadTrace implements Runnable {
@@ -184,11 +191,17 @@ public class ImageProcessor implements Runnable {
     public void run() {
       while (!proc.finished) {
         try {
-          Thread.getAllStackTraces().keySet().forEach(
+          Map<Thread, StackTraceElement[]> map = 
+            Thread.getAllStackTraces();
+            map.keySet().forEach(
               (t)
                   -> System.out.println(t.getName() + "\tIs Daemon "
                                         + t.isDaemon() + "\tIs Alive "
                                         + t.isAlive()));
+          System.out.println("Number of threads: "+
+              map.size());
+          System.out.println("Latch value: "+
+              proc.latch.getCount());
           TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException ie) {
           Thread.currentThread().interrupt();
