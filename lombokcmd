@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+declare -r classpathFile="lombok.cp"
+declare -r mainClass="lombok.launch.Main"
+
+java -cp @"$classpathFile" "$mainClass" "$@" \
+|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res
