@@ -14,10 +14,8 @@ public class LockSplitting implements Runnable {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void run() {
     for (int i = 0; i < 100_000; i++) {
-      if (ThreadLocalRandom.current().nextBoolean())
-        counter.incrementCustomer();
-      else
-        counter.incrementShipping();
+      if (ThreadLocalRandom.current().nextBoolean()) counter.incrementCustomer();
+      else counter.incrementShipping();
     }
   }
 
@@ -28,18 +26,14 @@ public class LockSplitting implements Runnable {
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
         threads[i] = new Thread(new LockSplitting(new CounterOneLock()));
       long startMillis = System.currentTimeMillis();
-      for (Thread t: threads)
-        t.start();
-      for (Thread t: threads)
-        t.join(100_000);
+      for (Thread t : threads) t.start();
+      for (Thread t : threads) t.join(100_000);
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
       for (int i = 0; i < NUMBER_OF_THREADS; i++)
         threads[i] = new Thread(new LockSplitting(new CounterSeparateLock()));
       startMillis = System.currentTimeMillis();
-      for (Thread t: threads)
-        t.start();
-      for (Thread t: threads)
-        t.join(100_000);
+      for (Thread t : threads) t.start();
+      for (Thread t : threads) t.join(100_000);
       System.out.println((System.currentTimeMillis() - startMillis) + "ms");
     } catch (InterruptedException ie) {
       System.err.println(ie);
@@ -128,17 +122,13 @@ public class LockSplitting implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof LockSplitting))
-      return false;
-    LockSplitting other = (LockSplitting)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof LockSplitting)) return false;
+    LockSplitting other = (LockSplitting) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$counter = this.counter;
     Object other$counter = other.counter;
-    if (this$counter == null ? other$counter != null
-                             : !this$counter.equals(other$counter))
+    if (this$counter == null ? other$counter != null : !this$counter.equals(other$counter))
       return false;
     return true;
   }

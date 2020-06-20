@@ -10,13 +10,11 @@ public class SemaphoreArchetype implements Runnable {
   private static final AtomicInteger COUNTER = new AtomicInteger();
   private static final long END_MILLIS = System.currentTimeMillis() + 1000;
   private static final int MAX_THREADS = 3;
-  private static final ExecutorService executorService =
-      Executors.newFixedThreadPool(5);
+  private static final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    for (int i = 0; i < 5; i++)
-      executorService.execute(new SemaphoreArchetype());
+    for (int i = 0; i < 5; i++) executorService.execute(new SemaphoreArchetype());
     executorService.shutdown();
   }
 
@@ -27,16 +25,14 @@ public class SemaphoreArchetype implements Runnable {
       try {
         SEMAPHORE.acquire();
       } catch (InterruptedException e) {
-        System.out.println("[" + Thread.currentThread().getName()
-                           + "]-Interrupted in acquire().");
+        System.out.println("[" + Thread.currentThread().getName() + "]-Interrupted in acquire().");
       }
       int counterValue = COUNTER.incrementAndGet();
-      System.out.println("[" + Thread.currentThread().getName()
-                         + "]-SEMAPHORE acquired: " + counterValue);
+      System.out.println(
+          "[" + Thread.currentThread().getName() + "]-SEMAPHORE acquired: " + counterValue);
       if (counterValue > MAX_THREADS) {
         throw new IllegalStateException(
-            "More than three threads -acquired the lock." + counterValue
-            + this);
+            "More than three threads -acquired the lock." + counterValue + this);
       }
       COUNTER.decrementAndGet();
       SEMAPHORE.release();

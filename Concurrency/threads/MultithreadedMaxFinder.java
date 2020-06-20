@@ -17,17 +17,13 @@ public final class MultithreadedMaxFinder {
   private static ExecutorService service = Executors.newFixedThreadPool(2);
 
   private MultithreadedMaxFinder() {
-    throw new IllegalStateException("Private constructor invoked for class: "
-                                    + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
-  public static int max(int... data)
-      throws InterruptedException, ExecutionException {
-    if (data.length == 1)
-      return data[0];
-    else if (data.length == 0)
-      throw new IllegalArgumentException();
+  public static int max(int... data) throws InterruptedException, ExecutionException {
+    if (data.length == 1) return data[0];
+    else if (data.length == 0) throw new IllegalArgumentException();
 
     // split the job into 2 pieces
     FindMaxTask task1 = new FindMaxTask(data, 0, data.length / 2);

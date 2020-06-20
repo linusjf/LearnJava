@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
 public enum CancelledExecutor {
   ;
 
-  private static ThreadPoolExecutor executor =
-      (ThreadPoolExecutor)Executors.newCachedThreadPool();
+  private static ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {

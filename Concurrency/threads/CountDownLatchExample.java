@@ -8,12 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchExample implements Runnable {
   private static final int NUMBER_OF_THREADS = 5;
-  private static final CountDownLatch LATCH =
-      new CountDownLatch(NUMBER_OF_THREADS);
+  private static final CountDownLatch LATCH = new CountDownLatch(NUMBER_OF_THREADS);
   private static Random random = new Random(System.currentTimeMillis());
 
-  private static ExecutorService executorService =
-      Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+  private static ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
@@ -27,15 +25,13 @@ public class CountDownLatchExample implements Runnable {
   public void run() {
     try {
       int randomSleepTime = random.nextInt(20_000);
-      System.out.println("[" + Thread.currentThread().getName()
-                         + "]-Sleeping for " + randomSleepTime);
+      System.out.println(
+          "[" + Thread.currentThread().getName() + "]-Sleeping for " + randomSleepTime);
       TimeUnit.MILLISECONDS.sleep(randomSleepTime);
       LATCH.countDown();
-      System.out.println("[" + Thread.currentThread().getName()
-                         + "]-Waiting for latch.");
+      System.out.println("[" + Thread.currentThread().getName() + "]-Waiting for latch.");
       LATCH.await();
-      System.out.println("[" + Thread.currentThread().getName()
-                         + "]-Finished.");
+      System.out.println("[" + Thread.currentThread().getName() + "]-Finished.");
     } catch (InterruptedException e) {
       System.err.println(e);
     }

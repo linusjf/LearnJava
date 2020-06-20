@@ -17,8 +17,7 @@ public class FairLock {
     }
     while (isLockedForThisThread) {
       synchronized (obj) {
-        isLockedForThisThread =
-            isLocked || waitingThreads.get(0) != queueObject;
+        isLockedForThisThread = isLocked || waitingThreads.get(0) != queueObject;
         if (!isLockedForThisThread) {
           isLocked = true;
           waitingThreads.remove(queueObject);
@@ -42,39 +41,31 @@ public class FairLock {
     synchronized (obj) {
       if (this.lockingThread != Thread.currentThread()) {
         throw new IllegalMonitorStateException(
-            "Calling thread has not locked this lock in class: " + getClass()
-            + " - " + this);
+            "Calling thread has not locked this lock in class: " + getClass() + " - " + this);
       }
       isLocked = false;
-      if (!waitingThreads.isEmpty())
-        waitingThreads.get(0).doNotify();
+      if (!waitingThreads.isEmpty()) waitingThreads.get(0).doNotify();
     }
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof FairLock))
-      return false;
-    FairLock other = (FairLock)o;
-    if (!other.canEqual((Object)this))
-      return false;
-    if (this.isLocked != other.isLocked)
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof FairLock)) return false;
+    FairLock other = (FairLock) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.isLocked != other.isLocked) return false;
     Object this$lockingThread = this.lockingThread;
     Object other$lockingThread = other.lockingThread;
     if (this$lockingThread == null
-            ? other$lockingThread != null
-            : !this$lockingThread.equals(other$lockingThread))
-      return false;
+        ? other$lockingThread != null
+        : !this$lockingThread.equals(other$lockingThread)) return false;
     Object this$waitingThreads = this.waitingThreads;
     Object other$waitingThreads = other.waitingThreads;
     if (this$waitingThreads == null
-            ? other$waitingThreads != null
-            : !this$waitingThreads.equals(other$waitingThreads))
-      return false;
+        ? other$waitingThreads != null
+        : !this$waitingThreads.equals(other$waitingThreads)) return false;
     return true;
   }
 
@@ -90,18 +81,21 @@ public class FairLock {
     int result = 1;
     result = result * PRIME + (this.isLocked ? 79 : 97);
     Object $lockingThread = this.lockingThread;
-    result = result * PRIME
-             + ($lockingThread == null ? 43 : $lockingThread.hashCode());
+    result = result * PRIME + ($lockingThread == null ? 43 : $lockingThread.hashCode());
     Object $waitingThreads = this.waitingThreads;
-    result = result * PRIME
-             + ($waitingThreads == null ? 43 : $waitingThreads.hashCode());
+    result = result * PRIME + ($waitingThreads == null ? 43 : $waitingThreads.hashCode());
     return result;
   }
 
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "FairLock(isLocked=" + this.isLocked + ", lockingThread="
-        + this.lockingThread + ", waitingThreads=" + this.waitingThreads + ")";
+    return "FairLock(isLocked="
+        + this.isLocked
+        + ", lockingThread="
+        + this.lockingThread
+        + ", waitingThreads="
+        + this.waitingThreads
+        + ")";
   }
 }

@@ -41,8 +41,7 @@ public class DigestThread extends Thread {
   // CPD-ON
   public static void main(String[] args) {
     System.out.println("Into DigestThread...");
-    for (String filename: args)
-      runDigestThread(filename);
+    for (String filename : args) runDigestThread(filename);
   }
 
   private static void runDigestThread(String filename) {
@@ -53,19 +52,14 @@ public class DigestThread extends Thread {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof DigestThread))
-      return false;
-    DigestThread other = (DigestThread)o;
-    if (!other.canEqual((Object)this))
-      return false;
-    if (!super.equals(o))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof DigestThread)) return false;
+    DigestThread other = (DigestThread) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (!super.equals(o)) return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null
-                              : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
       return false;
     return true;
   }

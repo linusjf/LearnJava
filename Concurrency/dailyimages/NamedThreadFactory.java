@@ -24,19 +24,14 @@ public class NamedThreadFactory implements ThreadFactory {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof NamedThreadFactory))
-      return false;
-    NamedThreadFactory other = (NamedThreadFactory)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof NamedThreadFactory)) return false;
+    NamedThreadFactory other = (NamedThreadFactory) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$name = this.name;
     Object other$name = other.name;
-    if (this$name == null ? other$name != null : !this$name.equals(other$name))
-      return false;
-    if (this.count != other.count)
-      return false;
+    if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
+    if (this.count != other.count) return false;
     return true;
   }
 
@@ -59,7 +54,6 @@ public class NamedThreadFactory implements ThreadFactory {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "NamedThreadFactory(name=" + this.name + ", count=" + this.count
-        + ")";
+    return "NamedThreadFactory(name=" + this.name + ", count=" + this.count + ")";
   }
 }

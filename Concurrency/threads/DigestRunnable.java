@@ -38,8 +38,7 @@ public class DigestRunnable implements Runnable {
 
   public static void main(String[] args) {
     System.out.println("Into DigestRunnable...");
-    for (String filename: args)
-      runDigestThread(filename);
+    for (String filename : args) runDigestThread(filename);
   }
 
   private static void runDigestThread(String filename) {
@@ -50,17 +49,13 @@ public class DigestRunnable implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof DigestRunnable))
-      return false;
-    DigestRunnable other = (DigestRunnable)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof DigestRunnable)) return false;
+    DigestRunnable other = (DigestRunnable) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null
-                              : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
       return false;
     return true;
   }

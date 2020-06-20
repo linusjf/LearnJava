@@ -21,8 +21,7 @@ public class SimpleBlockingQueue<T> {
 
   public T get() throws InterruptedException {
     synchronized (queue) {
-      while (queue.isEmpty())
-        queue.wait(100);
+      while (queue.isEmpty()) queue.wait(100);
       return queue.remove(0);
     }
   }
@@ -30,18 +29,13 @@ public class SimpleBlockingQueue<T> {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof SimpleBlockingQueue))
-      return false;
-    SimpleBlockingQueue<?> other = (SimpleBlockingQueue<?>)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof SimpleBlockingQueue)) return false;
+    SimpleBlockingQueue<?> other = (SimpleBlockingQueue<?>) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$queue = this.queue;
     Object other$queue = other.queue;
-    if (this$queue == null ? other$queue != null
-                           : !this$queue.equals(other$queue))
-      return false;
+    if (this$queue == null ? other$queue != null : !this$queue.equals(other$queue)) return false;
     return true;
   }
 

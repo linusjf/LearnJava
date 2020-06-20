@@ -9,14 +9,12 @@ import java.util.concurrent.TimeUnit;
 public enum PeriodicExecutor {
   ;
 
-  private static ScheduledExecutorService executor =
-      Executors.newScheduledThreadPool(1);
+  private static ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   private static void printAndDelay(ScheduledFuture<?> result) {
     for (int i = 0; i < 10; i++) {
-      System.out.printf("Main: Delay: %d%n",
-                        result.getDelay(TimeUnit.MILLISECONDS));
+      System.out.printf("Main: Delay: %d%n", result.getDelay(TimeUnit.MILLISECONDS));
       try {
         TimeUnit.MILLISECONDS.sleep(500);
       } catch (InterruptedException e) {

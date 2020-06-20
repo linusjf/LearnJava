@@ -54,15 +54,11 @@ class SynchronizedCounter {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof SynchronizedCounter))
-      return false;
-    SynchronizedCounter other = (SynchronizedCounter)o;
-    if (!other.canEqual((Object)this))
-      return false;
-    if (this.c != other.c)
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof SynchronizedCounter)) return false;
+    SynchronizedCounter other = (SynchronizedCounter) o;
+    if (!other.canEqual((Object) this)) return false;
+    if (this.c != other.c) return false;
     return true;
   }
 

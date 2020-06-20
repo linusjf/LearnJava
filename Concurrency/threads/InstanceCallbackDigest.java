@@ -37,22 +37,17 @@ public class InstanceCallbackDigest implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof InstanceCallbackDigest))
-      return false;
-    InstanceCallbackDigest other = (InstanceCallbackDigest)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof InstanceCallbackDigest)) return false;
+    InstanceCallbackDigest other = (InstanceCallbackDigest) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null
-                              : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
       return false;
     Object this$callback = this.callback;
     Object other$callback = other.callback;
-    if (this$callback == null ? other$callback != null
-                              : !this$callback.equals(other$callback))
+    if (this$callback == null ? other$callback != null : !this$callback.equals(other$callback))
       return false;
     return true;
   }
@@ -77,7 +72,6 @@ public class InstanceCallbackDigest implements Runnable {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "InstanceCallbackDigest(filename=" + this.filename
-        + ", callback=" + this.callback + ")";
+    return "InstanceCallbackDigest(filename=" + this.filename + ", callback=" + this.callback + ")";
   }
 }

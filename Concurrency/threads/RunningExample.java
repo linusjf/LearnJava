@@ -19,8 +19,7 @@ public enum RunningExample {
       waitThread.join(10_00);
       wakingThread.join(10_00);
     } catch (InterruptedException ex) {
-      System.err.println("An InterruptedException was caught: "
-                         + ex.getMessage());
+      System.err.println("An InterruptedException was caught: " + ex.getMessage());
     }
   }
 }

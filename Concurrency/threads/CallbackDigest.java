@@ -39,17 +39,13 @@ public class CallbackDigest implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof CallbackDigest))
-      return false;
-    CallbackDigest other = (CallbackDigest)o;
-    if (!other.canEqual((Object)this))
-      return false;
+    if (o == this) return true;
+    if (!(o instanceof CallbackDigest)) return false;
+    CallbackDigest other = (CallbackDigest) o;
+    if (!other.canEqual((Object) this)) return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null
-                              : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
       return false;
     return true;
   }

@@ -18,10 +18,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
 /** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm. */
 public class ImageProcessor implements Runnable {
-  @SuppressWarnings("all")
-  private static final java.util.logging.Logger LOG = java.util.logging.Logger.getLogger(ImageProcessor.class.getName());
+  private static final java.util.logging.Logger LOG =
+      java.util.logging.Logger.getLogger(ImageProcessor.class.getName());
   public static final int NUMBER_TO_SHOW = 100;
   public static final int MAX_CONCURRENT_STREAMS = 20;
   public static final int MAX_THREADS = 20;
@@ -31,11 +32,18 @@ public class ImageProcessor implements Runnable {
   private static boolean isDilbert;
   // ms between requests
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
-  private final ExecutorService executor1 = Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
-  private final ExecutorService executor2 = Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
+  private final ExecutorService executor1 =
+      Executors.newCachedThreadPool(new NamedThreadFactory("executor1"));
+  private final ExecutorService executor2 =
+      Executors.newCachedThreadPool(new NamedThreadFactory("executor2"));
   private final AtomicInteger failureCount = new AtomicInteger(0);
   private final Path imageDir = Paths.get("/tmp/images");
-  private final HttpClient client = HttpClient.newBuilder().executor(executor1).followRedirects(HttpClient.Redirect.NEVER).connectTimeout(Duration.ofSeconds(20)).build();
+  private final HttpClient client =
+      HttpClient.newBuilder()
+          .executor(executor1)
+          .followRedirects(HttpClient.Redirect.NEVER)
+          .connectTimeout(Duration.ofSeconds(30))
+          .build();
   private boolean finished;
   private Random random = new Random();
 
@@ -45,42 +53,48 @@ public class ImageProcessor implements Runnable {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public <T> CompletableFuture<T> getAsync(String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
-    return client.sendAsync(request, responseBodyHandler)
-      .exceptionally(t -> {
-      LOG.severe(() -> request + " failed with exception : " + t);
-      failureCount.incrementAndGet();
-      latch.countDown();
-      return null;
-    })
-    .thenApplyAsync(HttpResponse::body, executor2);
+  public <T> CompletableFuture<T> getAsync(
+      String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
+    HttpRequest request =
+        HttpRequest.newBuilder().GET().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
+    return client
+        .sendAsync(request, responseBodyHandler)
+        .exceptionally(
+            t -> {
+              LOG.severe(() -> request + " failed with exception : " + t);
+              failureCount.incrementAndGet();
+              latch.countDown();
+              return null;
+            })
+        .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageInfo(LocalDate date, ImageInfo info) {
-    return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString()).exceptionally(t -> {
-      LOG.severe(() -> "Request failed for :" + info.getUrlForDate(date));
-      failureCount.incrementAndGet();
-      latch.countDown();
-      return info.toString();
-    }).thenApply(info::findImage);
+    return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString())
+        .thenApply(info::findImage);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
-    return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray()).thenApply(info::setImageData);
+    return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray())
+        .thenApply(info::setImageData);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public void load(LocalDate date, ImageInfo info) throws InterruptedException {
     TimeUnit.MILLISECONDS.sleep(random.nextInt(DELAY));
-    findImageInfo(date, info).thenCompose(this::findImageData).thenAccept(this::process).exceptionally(t -> {
-      LOG.severe(() -> info.getUrlForDate(date) + " : " + t);
-       failureCount.incrementAndGet();
-       latch.countDown();
-      return null;
-    }).thenAccept(t -> latch.countDown());
+    findImageInfo(date, info)
+        .thenCompose(this::findImageData)
+        .thenAccept(this::process)
+        .exceptionally(
+            t -> {
+              LOG.severe(() -> info.getUrlForDate(date) + " : " + t);
+              failureCount.incrementAndGet();
+              latch.countDown();
+              return null;
+            })
+        .thenAccept(t -> latch.countDown());
   }
 
   @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
@@ -89,7 +103,7 @@ public class ImageProcessor implements Runnable {
     for (int i = 0; i < NUMBER_TO_SHOW; i++) {
       final ImageInfo info;
       if (isDilbert) info = new DilbertImageInfo();
-       else info = new WikimediaImageInfo();
+      else info = new WikimediaImageInfo();
       info.setDate(newDate.toString());
       LOG.info(() -> "Loading " + info.getDate());
       load(newDate, info);
@@ -129,14 +143,14 @@ public class ImageProcessor implements Runnable {
     if (PRINT_MESSAGE) {
       LOG.info(() -> "process called by " + Thread.currentThread() + ", date: " + infoDate);
     }
-    if (SAVE_FILE) 
+    if (SAVE_FILE)
       try {
-      LOG.info(() -> "saving " + info);
-      Files.createDirectories(imageDir);
-      Files.write(imageDir.resolve(infoDate + ".jpg"), info.getImageData());
-    } catch (IOException ex) {
-      LOG.severe(() -> ex.getMessage());
-    }
+        LOG.info(() -> "saving " + info);
+        Files.createDirectories(imageDir);
+        Files.write(imageDir.resolve(infoDate + ".jpg"), info.getImageData());
+      } catch (IOException ex) {
+        LOG.severe(() -> ex.getMessage());
+      }
   }
 
   public static void main(String... args) throws InterruptedException {
@@ -151,7 +165,6 @@ public class ImageProcessor implements Runnable {
     LOG.info("PROGRAM TERMINATED");
   }
 
-
   private static class ThreadTrace implements Runnable {
     ImageProcessor proc;
 
@@ -164,7 +177,15 @@ public class ImageProcessor implements Runnable {
       while (!proc.finished) {
         try {
           Map<Thread, StackTraceElement[]> map = Thread.getAllStackTraces();
-          map.keySet().forEach(t -> LOG.fine(t.getName() + "\tIs Daemon " + t.isDaemon() + "\tIs Alive " + t.isAlive()));
+          map.keySet()
+              .forEach(
+                  t ->
+                      LOG.info(
+                          t.getName()
+                              + "\tIs Daemon "
+                              + t.isDaemon()
+                              + "\tIs Alive "
+                              + t.isAlive()));
           LOG.info("Number of threads: " + map.size());
           LOG.info("Latch value: " + proc.latch.getCount());
           TimeUnit.SECONDS.sleep(5);
