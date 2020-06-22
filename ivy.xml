@@ -234,8 +234,8 @@
           description="slf4j nop main jars" />
     <conf name="findsecbugs-plugin.main"
           description="findsecbugs-plugin main jars" />
-    <conf name="fb-contrib.main"
-          description="fb-contrib main jars" />
+    <conf name="sb-contrib.main"
+          description="sb-contrib main jars" />
     <conf name="error_prone_core.main"
           description="error_prone_core main jars" />
     <conf name="error_prone_core.lib"
@@ -588,11 +588,11 @@
                 name="findsecbugs-plugin"
                 rev="1.10.1"
                 conf="findsecbugs-plugin.main-&gt;master" />
-    <!-- https://mvnrepository.com/artifact/com.mebigfatguy.fb-contrib/fb-contrib -->
-    <dependency org="com.mebigfatguy.fb-contrib"
-                name="fb-contrib"
+    <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
+    <dependency org="com.mebigfatguy.sb-contrib"
+                name="sb-contrib"
                 rev="7.4.7"
-                conf="fb-contrib.main-&gt;master" />
+                conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
                 name="error_prone_core"
