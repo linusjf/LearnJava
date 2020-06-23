@@ -500,7 +500,7 @@
 	</target>
 	<target name="makepom">
 	<ivy:makepom ivyfile="ivy.xml"
-							pomfile="pom.xml"></ivy:makepom>
+    pomfile="pom.xml"/>
 	</target>
 	<!-- =================================
           target: report
