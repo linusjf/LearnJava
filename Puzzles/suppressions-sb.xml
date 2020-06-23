@@ -1,250 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="javapuzzles.IntCache" />
-    <Method name="main" />
-    <Bug code="RC" />
-  </Match>
-  <Match>
-    <Class name="com.javapuzzlers.Me" />
-    <Method name="main" />
-    <Bug code="RE" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.BigProblem" />
-    <Method name="main" />
-    <Bug code="RV" />
-  </Match>
-  <Match>
-    <Class name="NoDot2" />
-    <Method name="main" />
-    <Bug code="UCF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.BigDelight" />
-    <Method name="main" />
-    <Bug code="UC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.BigDelight" />
-    <Method name="main" />
-    <Bug code="UC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.ShortCircuit" />
-    <Method name="main" />
-    <Bug code="NP,Dm,ES" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.C" />
-    <Field name="Z" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Change" />
-    <Method name="main" />
-    <Bug code="DMI" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.ColorPoint" />
-    <Method name="makeName" />
-    <Bug code="UR" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Count" />
-    <Method name="main" />
-    <Bug code="IL" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Creator" />
-    <Method name="main" />
-    <Bug code="ISC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Creature" />
-    <Method name="&lt;init&gt;" />
-    <Bug code="ST" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Crito" />
-    <Method name="main" />
-    <Bug code="DMI,Dm,ES" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.DatingGame" />
-    <Method name="main" />
-    <Bug code="DMI" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Derived" />
-    <Field name="className" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Elvis" />
-    <Bug code="SI" />
-  </Match>
-  <Match>
-    <Class name="org.programming.mitra.exercises.IntegerCacheExample" />
-    <Method name="main" />
-    <Bug code="RC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Twisted" />
-    <Bug code="UPM,SIC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Theaetetus" />
-    <Method name="main" />
-    <Bug code="RV" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Equivalency" />
-    <Method name="main" />
-    <Bug code="Dm,ES" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Increment" />
-    <Method name="main" />
-    <Bug code="SA,DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Lazy$1" />
-    <Method name="run" />
-    <Bug code="ST" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Sleepy" />
-    <Method name="main" />
-    <Bug code="DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.AnimalFarm" />
-    <Method name="main" />
-    <Bug code="ES" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.WeirdLoop" />
-    <Method name="main" />
-    <Bug code="DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.MoreNames" />
-    <Method name="MoreNames" />
-    <Bug code="Nm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.NameGame" />
-    <Method name="altMain" />
-    <Bug code="Dm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Odd" />
-    <Method name="isOddModulo" />
-    <Bug code="IM" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.InSum" />
-    <Method name="main" />
-    <Bug code="RC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Obscure" />
-    <Field name="System" />
-    <Bug code="Nm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.CleverSwap" />
-    <Method name="main" />
-    <Bug code="DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Loopy" />
-    <Method name="main" />
-    <Bug code="DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Reluctant" />
-    <Method name="&lt;init&gt;" />
-    <Bug code="IL,ISC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Reluctant" />
-    <Method name="main" />
-    <Bug code="ISC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.StringAlong" />
-    <Method name="main" />
-    <Bug code="DMI,Dm,ES" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.HelloGoodbye" />
-    <Method name="finallyMain" />
-    <Bug code="Dm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.HelloGoodbye" />
-    <Method name="shutdownHooksMain" />
-    <Bug code="Dm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.HelloGoodbye" />
-    <Method name="shutdownHooksMain" />
-    <Bug code="Dm" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.PingPong" />
-    <Method name="main" />
-    <Bug code="Ru" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.ReferenceComparison" />
-    <Method name="main" />
-    <Bug code="RC" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Rhymes" />
-    <Method name="main" />
-    <Bug code="SF,DLS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.PoisonParen" />
-    <Field name="i" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.PoisonParen" />
-    <Field name="j" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Size$Student" />
-    <Field name="id" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.See" />
-    <Field name="z" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Obscure" />
-    <Field name="System" />
-    <Bug code="UrF,UuF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Reluctant" />
-    <Field name="internalInstance" />
-    <Bug code="UrF" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Puzzle" />
-    <Field name="x" />
-    <Bug code="UrF,SS" />
-  </Match>
-  <Match>
-    <Class name="javapuzzles.Outer$Inner" />
-    <Bug code="SIC" />
-  </Match>
+	<Match>
+	<Class name="javapuzzles.IntCache" />
+	<Method name="main" />
+	<Bug code="RC" />
+	</Match>
+	<Match>
+	<Class name="com.javapuzzlers.Me" />
+	<Method name="main" />
+	<Bug code="RE" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.BigProblem" />
+	<Method name="main" />
+	<Bug code="RV" />
+	</Match>
+	<Match>
+	<Class name="NoDot2" />
+	<Method name="main" />
+	<Bug code="UCF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.BigDelight" />
+	<Method name="main" />
+	<Bug code="UC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.BigDelight" />
+	<Method name="main" />
+	<Bug code="UC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.ShortCircuit" />
+	<Method name="main" />
+	<Bug code="NP,Dm,ES" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.C" />
+	<Field name="Z" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Change" />
+	<Method name="main" />
+	<Bug code="DMI" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.ColorPoint" />
+	<Method name="makeName" />
+	<Bug code="UR" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Count" />
+	<Method name="main" />
+	<Bug code="IL" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Creator" />
+	<Method name="main" />
+	<Bug code="ISC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Creature" />
+	<Method name="&lt;init&gt;" />
+	<Bug code="ST" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Crito" />
+	<Method name="main" />
+	<Bug code="DMI,Dm,ES" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.DatingGame" />
+	<Method name="main" />
+	<Bug code="DMI" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Derived" />
+	<Field name="className" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Elvis" />
+	<Bug code="SI" />
+	</Match>
+	<Match>
+	<Class name="org.programming.mitra.exercises.IntegerCacheExample" />
+	<Method name="main" />
+	<Bug code="RC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Twisted" />
+	<Bug code="UPM,SIC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Theaetetus" />
+	<Method name="main" />
+	<Bug code="RV" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Equivalency" />
+	<Method name="main" />
+	<Bug code="Dm,ES" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Increment" />
+	<Method name="main" />
+	<Bug code="SA,DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Lazy$1" />
+	<Method name="run" />
+	<Bug code="ST" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Sleepy" />
+	<Method name="main" />
+	<Bug code="DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.AnimalFarm" />
+	<Method name="main" />
+	<Bug code="ES" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.WeirdLoop" />
+	<Method name="main" />
+	<Bug code="DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.MoreNames" />
+	<Method name="MoreNames" />
+	<Bug code="Nm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.NameGame" />
+	<Method name="altMain" />
+	<Bug code="Dm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Odd" />
+	<Method name="isOddModulo" />
+	<Bug code="IM" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.InSum" />
+	<Method name="main" />
+	<Bug code="RC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Obscure" />
+	<Field name="System" />
+	<Bug code="Nm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.CleverSwap" />
+	<Method name="main" />
+	<Bug code="DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Loopy" />
+	<Method name="main" />
+	<Bug code="DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Reluctant" />
+	<Method name="&lt;init&gt;" />
+	<Bug code="IL,ISC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Reluctant" />
+	<Method name="main" />
+	<Bug code="ISC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.StringAlong" />
+	<Method name="main" />
+	<Bug code="DMI,Dm,ES" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.HelloGoodbye" />
+	<Method name="finallyMain" />
+	<Bug code="Dm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.HelloGoodbye" />
+	<Method name="shutdownHooksMain" />
+	<Bug code="Dm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.HelloGoodbye" />
+	<Method name="shutdownHooksMain" />
+	<Bug code="Dm" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.PingPong" />
+	<Method name="main" />
+	<Bug code="Ru" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.ReferenceComparison" />
+	<Method name="main" />
+	<Bug code="RC" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Rhymes" />
+	<Method name="main" />
+	<Bug code="SF,DLS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.PoisonParen" />
+	<Field name="i" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.PoisonParen" />
+	<Field name="j" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Size$Student" />
+	<Field name="id" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.See" />
+	<Field name="z" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Obscure" />
+	<Field name="System" />
+	<Bug code="UrF,UuF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Reluctant" />
+	<Field name="internalInstance" />
+	<Bug code="UrF" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Puzzle" />
+	<Field name="x" />
+	<Bug code="UrF,SS" />
+	</Match>
+	<Match>
+	<Class name="javapuzzles.Outer$Inner" />
+	<Bug code="SIC" />
+	</Match>
 </FindBugsFilter>

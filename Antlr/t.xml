@@ -9,5 +9,5 @@
  ! Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
 -->
 <tools>
-  <tool name="ANTLR">A parser generator</tool>
+	<tool name="ANTLR">A parser generator</tool>
 </tools>

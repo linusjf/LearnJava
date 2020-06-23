@@ -3,10 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="NYParserFactory.java"
-                  checks="ReturnCountCheck"
-                  query="/CLASS_DEF[./IDENT[@text='NYParserFactory']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getParserInstance']]" />
-  <suppress-xpath files="TWParserFactory.java"
-                  checks="ReturnCountCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TWParserFactory']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getParserInstance']]" />
+	<suppress-xpath files="NYParserFactory.java"
+								checks="ReturnCountCheck"
+								query="/CLASS_DEF[./IDENT[@text='NYParserFactory']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getParserInstance']]" />
+	<suppress-xpath files="TWParserFactory.java"
+								checks="ReturnCountCheck"
+								query="/CLASS_DEF[./IDENT[@text='TWParserFactory']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getParserInstance']]" />
 </suppressions>

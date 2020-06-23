@@ -3,43 +3,43 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="Client.java"
-                  checks="ExecutableStatementCountCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-  <suppress-xpath files="Client2.java"
-                  checks="ExecutableStatementCountCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Client2']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-  <suppress-xpath files="SCrypt.java"
-                  checks="ExecutableStatementCountCheck"
-                  query="/CLASS_DEF[./IDENT[@text='SCrypt']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='salsa20Slash8']]" />
-  <suppress-xpath files="LibraryLoaders.java"
-                  checks="ReturnCountCheck"
-                  query="/CLASS_DEF[./IDENT[@text='LibraryLoaders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loader']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='1']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='3']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='4']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='5']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='6']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='7']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='8']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='9']]" />
-  <suppress-xpath files="BCryptConstants.java"
-                  checks="SingleSpaceSeparatorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='10']]" />
+	<suppress-xpath files="Client.java"
+								checks="ExecutableStatementCountCheck"
+								query="/ENUM_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+	<suppress-xpath files="Client2.java"
+								checks="ExecutableStatementCountCheck"
+								query="/ENUM_DEF[./IDENT[@text='Client2']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+	<suppress-xpath files="SCrypt.java"
+								checks="ExecutableStatementCountCheck"
+								query="/CLASS_DEF[./IDENT[@text='SCrypt']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='salsa20Slash8']]" />
+	<suppress-xpath files="LibraryLoaders.java"
+								checks="ReturnCountCheck"
+								query="/CLASS_DEF[./IDENT[@text='LibraryLoaders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loader']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='1']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='3']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='4']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='5']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='6']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='7']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='8']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='9']]" />
+	<suppress-xpath files="BCryptConstants.java"
+								checks="SingleSpaceSeparatorCheck"
+								query="/CLASS_DEF[./IDENT[@text='BCryptConstants']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INDEX64']]/ASSIGN/ARRAY_INIT/EXPR[./NUM_INT[@text='10']]" />
 </suppressions>

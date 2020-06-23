@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="collections.Listing" />
-    <Method name="main" />
-    <Bug code="ES" />
-  </Match>
-  <Match>
-    <Class name="collections.ListingDefault" />
-    <Method name="main" />
-    <Bug code="ES" />
-  </Match>
-  <Match>
-    <Class name="collections.ListingRecur" />
-    <Method name="main" />
-    <Bug code="ES" />
-  </Match>
-  <Match>
-    <Bug code="SECPR,OPM,MDM, SACM" />
-  </Match>
-  <Match>
-    <Class name="collections.TaskLocalRandom" />
-    <Bug code="SECFSM,MDM" />
-  </Match>
-  <Match>
-    <Bug code="SECFSM" />
-  </Match>
+	<Match>
+	<Class name="collections.Listing" />
+	<Method name="main" />
+	<Bug code="ES" />
+	</Match>
+	<Match>
+	<Class name="collections.ListingDefault" />
+	<Method name="main" />
+	<Bug code="ES" />
+	</Match>
+	<Match>
+	<Class name="collections.ListingRecur" />
+	<Method name="main" />
+	<Bug code="ES" />
+	</Match>
+	<Match>
+	<Bug code="SECPR,OPM,MDM, SACM" />
+	</Match>
+	<Match>
+	<Class name="collections.TaskLocalRandom" />
+	<Bug code="SECFSM,MDM" />
+	</Match>
+	<Match>
+	<Bug code="SECFSM" />
+	</Match>
 </FindBugsFilter>

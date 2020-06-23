@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Or>
-    <Bug code="SECCRLFLOG" />
-    <Bug code="SECPTI" />
-  </Or>
-  </Match>
-  <Match>
-    <Class name="libexpr.LibExprJoyRide"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="java6.InsertSerialID"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="labeledexpr.Calc"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="labeledclearexpr.Calc"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="java6.ExtractInterfaceTool"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="calc.CalcJoyRide"/>
-    <Method name="main"/>
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Or>
-    <Class name="~.*[.].*Parser" />
-    <Class name="~.*[.].*Parser[$].*" />
-    <Class name="~.*[.].*Lexer" />
-    <Class name="~.*[.].*Lexer[$].*" />
-    <Class name="~.*[.].*Listener" />
-    <Class name="~.*[.].*Listener[$].*" />
-    <Class name="~.*[.].*Visitor" />
-    <Class name="~.*[.].*Visitor[$].*" />
-  </Or>
-  </Match>
+	<Match>
+	<Or>
+	<Bug code="SECCRLFLOG" />
+	<Bug code="SECPTI" />
+	</Or>
+	</Match>
+	<Match>
+	<Class name="libexpr.LibExprJoyRide" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="java6.InsertSerialID" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="labeledexpr.Calc" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="labeledclearexpr.Calc" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="java6.ExtractInterfaceTool" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="calc.CalcJoyRide" />
+	<Method name="main" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Or>
+	<Class name="~.*[.].*Parser" />
+	<Class name="~.*[.].*Parser[$].*" />
+	<Class name="~.*[.].*Lexer" />
+	<Class name="~.*[.].*Lexer[$].*" />
+	<Class name="~.*[.].*Listener" />
+	<Class name="~.*[.].*Listener[$].*" />
+	<Class name="~.*[.].*Visitor" />
+	<Class name="~.*[.].*Visitor[$].*" />
+	</Or>
+	</Match>
 </FindBugsFilter>

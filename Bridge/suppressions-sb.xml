@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <class name="com.javacodegeeks.patterns.bridgepattern.TestBridgePattern"/>
-    <Bug code="CE"/>
-  </Match>
-  <Match>
-    <class name="com.javacodegeeks.patterns.bridgepattern.Car"/>
-    <method name="equals"/>
-    <Bug code="OPM"/>
-  </Match>
+	<Match>
+	<class name="com.javacodegeeks.patterns.bridgepattern.TestBridgePattern" />
+	<Bug code="CE" />
+	</Match>
+	<Match>
+	<class name="com.javacodegeeks.patterns.bridgepattern.Car" />
+	<method name="equals" />
+	<Bug code="OPM" />
+	</Match>
 </FindBugsFilter>

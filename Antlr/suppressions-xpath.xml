@@ -3,46 +3,46 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="InsertSerialID.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='java6']" />
-  <suppress-xpath files="DisplayParseTree.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='xmlv2']" />
-  <suppress-xpath files="DisplayTokens.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='xmlv2']" />
-  <suppress-xpath files="ExtractInterfaceTool.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='java6']" />
-  <suppress-xpath files="Demo.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='java6']" />
-  <suppress-xpath files="Demo.java"
-                  checks="MethodNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='f']" />
-  <suppress-xpath files="Demo.java"
-                  checks="MethodNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='g']" />
-  <suppress-xpath files="Demo.java"
-                  checks="MethodNameCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='h']" />
-  <suppress-xpath files="Test.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='exprv2']" />
-  <suppress-xpath files="Loader.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='csv2']" />
-  <suppress-xpath files="LoadCSV.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='csv2']" />
-  <suppress-xpath files="XMLEmitter.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='json2']" />
-  <suppress-xpath files="XMLEmitter.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='XMLEmitter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='exitArrayOfValues']]/SLIST/VARIABLE_DEF[./IDENT[@text='buf']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
-  <suppress-xpath files="JSON2XML.java"
-                  checks="PackageNameCheck"
-                  query="/PACKAGE_DEF/IDENT[@text='json2']" />
+	<suppress-xpath files="InsertSerialID.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='java6']" />
+	<suppress-xpath files="DisplayParseTree.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='xmlv2']" />
+	<suppress-xpath files="DisplayTokens.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='xmlv2']" />
+	<suppress-xpath files="ExtractInterfaceTool.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='java6']" />
+	<suppress-xpath files="Demo.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='java6']" />
+	<suppress-xpath files="Demo.java"
+								checks="MethodNameCheck"
+								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='f']" />
+	<suppress-xpath files="Demo.java"
+								checks="MethodNameCheck"
+								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='g']" />
+	<suppress-xpath files="Demo.java"
+								checks="MethodNameCheck"
+								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF/IDENT[@text='h']" />
+	<suppress-xpath files="Test.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='exprv2']" />
+	<suppress-xpath files="Loader.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='csv2']" />
+	<suppress-xpath files="LoadCSV.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='csv2']" />
+	<suppress-xpath files="XMLEmitter.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='json2']" />
+	<suppress-xpath files="XMLEmitter.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='XMLEmitter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='exitArrayOfValues']]/SLIST/VARIABLE_DEF[./IDENT[@text='buf']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
+	<suppress-xpath files="JSON2XML.java"
+								checks="PackageNameCheck"
+								query="/PACKAGE_DEF/IDENT[@text='json2']" />
 </suppressions>

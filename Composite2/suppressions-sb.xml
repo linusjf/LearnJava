@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="design.composite.PropertyLoader" />
-    <Method name="loadAsResourceBundle" />
-    <Bug code="UPM" />
-  </Match>
-  <Match>
-    <Class name="design.composite.WorkLoader" />
-    <Method name="&lt;init&gt;" />
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Bug pattern="SPP_NO_CHAR_SB_CTOR"/>
-  </Match>
-  <Match>
-    <Bug code="SECCRLFLOG, OPM, SECPTI, USBR" />
-  </Match>
+	<Match>
+	<Class name="design.composite.PropertyLoader" />
+	<Method name="loadAsResourceBundle" />
+	<Bug code="UPM" />
+	</Match>
+	<Match>
+	<Class name="design.composite.WorkLoader" />
+	<Method name="&lt;init&gt;" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Bug pattern="SPP_NO_CHAR_SB_CTOR" />
+	</Match>
+	<Match>
+	<Bug code="SECCRLFLOG, OPM, SECPTI, USBR" />
+	</Match>
 </FindBugsFilter>

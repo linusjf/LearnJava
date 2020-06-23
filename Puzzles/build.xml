@@ -1,1295 +1,1295 @@
 <?xml version="1.0"?>
 <project name="Puzzles"
-         default="main"
-         basedir=".">
-  <property file="build.properties" />
-  <property file="../globalbuild.properties" />
-  <property file="../checkstyle.properties" />
-  <property file="../gformat.properties" />
-  <property file="../pmd.properties" />
-  <property file="../spotbugs.properties" />
-  <!-- Sets variables which can later be used. -->
-  <!-- The value of a property is accessed via ${} -->
-  <property name="src.dir"
-            location="." />
-  <property name="build.dir"
-            location="." />
-  <property name="dist.dir"
-            location="dist" />
-  <property name="docs.dir"
-            location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
-  <!-- Deletes the existing build, docs and dist directory-->
-  <target name="clean">
-    <delete>
-      <fileset dir="."
-               includes="**/*.class" />
-    </delete>
-    <delete dir="${docs.dir}" />
-    <delete dir="${dist.dir}" />
-  </target>
-  <!-- Creates the  build, docs and dist directory-->
-  <target name="makedir">
-    <mkdir dir="${docs.dir}" />
-    <mkdir dir="${dist.dir}" />
-  </target>
-  <!-- Compiles the java code (including the usage of library for JUnit -->
-  <target name="compile"
-          depends="clean, makedir,format,checkstyle">
-    <javac includeantruntime="false"
-           srcdir="${src.dir}"
-           destdir="${build.dir}">
-      <compilerarg value="${javac.params}" />
-      <compilerarg value="${javac.params1}" />
-      <exclude name="**/AnonymousReceiver.java" />
-    </javac>
-  </target>
-  <!-- Creates Javadoc -->
-  <target name="docs"
-          depends="compile">
-    <javadoc packagenames="${packages}"
-             sourcepath="${src.dir}"
-             destdir="${docs.dir}"
-             additionalparam="${javadoc.params}">
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </javadoc>
-  </target>
-  <target name="manifest">
-    <tstamp />
-    <exec executable="bash"
-          outputproperty="build">
-      <arg value="-c" />
-      <arg value="git log --pretty=format:'%h' | head -1" />
-    </exec>
-    <manifest mode="update"
-              file="${jar.manifest}">
-      <attribute name="Built-By"
-                 value="${user.name}" />
-      <section name="common">
-        <attribute name="Specification-Title"
-                   value="${ant.project.name}" />
-        <attribute name="Specification-Version"
-                   value="${version}" />
-        <attribute name="Specification-Vendor"
-                   value="" />
-        <attribute name="Implementation-Title"
-                   value="" />
-        <attribute name="Implementation-Version"
-                   value="${build} ${TODAY}" />
-        <attribute name="Implementation-Vendor"
-                   value="" />
-      </section>
-      <attribute name="Main-Class"
-                 value="${main.class}" />
-    </manifest>
-  </target>
-  <!--Creates the deployable jar file  -->
-  <target name="jar"
-          depends="compile,manifest">
-    <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
-         basedir="${build.dir}"
-         includes="**/*.class"
-         manifest="${jar.manifest}"></jar>
-  </target>
-  <target name="run112">
-    <description>DoubleXX target</description>
-    <java classname="${main.class112}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run111">
-    <description>TextProcessor target</description>
-    <java classname="${main.class111}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run110">
-    <description>Cretin target</description>
-    <java classname="${main.class110}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run109">
-    <description>JavaHungry target</description>
-    <java classname="${main.class109}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run108">
-    <description>IntCache target</description>
-    <java classname="${main.class108}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run107">
-    <description>NullFunctionValues target</description>
-    <java classname="${main.class107}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run106">
-    <description>ByteChar target</description>
-    <java classname="${main.class106}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run105">
-    <description>Wraparound target</description>
-    <java classname="${main.class105}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run104">
-    <description>NoDot3 target</description>
-    <java classname="${main.class104}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run103">
-    <description>ShortCircuit target</description>
-    <java classname="${main.class103}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run102">
-    <description>IPlusPlus target</description>
-    <java classname="${main.class102}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run101">
-    <description>TextEditor target</description>
-    <java classname="${main.class101}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run100">
-    <description>Arrayed target</description>
-    <java classname="${main.class100}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run99">
-    <description>WeirdLoop target</description>
-    <java classname="${main.class99}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run98">
-    <description>ByteLoop target</description>
-    <java classname="${main.class98}"
-          fork="true"
-          timeout="2000">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run97">
-    <description>TestSystemProperty target</description>
-    <java classname="${main.class97}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run96">
-    <description>Symposium target</description>
-    <java classname="${main.class96}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run95">
-    <description>ReturnFinally target</description>
-    <java classname="${main.class95}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run94">
-    <description>StringAlong target</description>
-    <java classname="${main.class94}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run93">
-    <description>Add String target</description>
-    <java classname="${main.class93}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run92">
-    <description>Voiding target</description>
-    <java classname="${main.class92}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run91">
-    <description>Compliance target</description>
-    <java classname="${main.class91}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run90">
-    <description>Size target</description>
-    <java classname="${main.class90}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run89">
-    <description>ByeEclipse target</description>
-    <java classname="${main.class89}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run88">
-    <description>Outer target</description>
-    <java classname="${main.class88}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run87">
-    <description>Foo target</description>
-    <java classname="${main.class87}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run86">
-    <description>Sleepy target</description>
-    <java classname="${main.class86}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run85">
-    <description>Puzzle target</description>
-    <java classname="${main.class85}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run84">
-    <description>Addition target</description>
-    <java classname="${main.class84}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run83">
-    <description>InSum target</description>
-    <java classname="${main.class83}"
-          fork="true">
-      <jvmarg value="${java.params}" />
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run82">
-    <description>NoDot2 target</description>
-    <java classname="${main.class82}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run81">
-    <description>NoDot target</description>
-    <java classname="${main.class81}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run80">
-    <description>Crito target</description>
-    <java classname="${main.class80}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run79">
-    <description>Meno target</description>
-    <java classname="${main.class79}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run78">
-    <description>ThreadIon target</description>
-    <java classname="${main.class78}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run77">
-    <description>Ion target</description>
-    <java classname="${main.class77}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run76">
-    <description>SetSize target</description>
-    <java classname="${main.class76}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run75">
-    <description>DoubleIncrement target</description>
-    <java classname="${main.class75}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run74">
-    <description>Equivalency target</description>
-    <java classname="${main.class74}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run73">
-    <description>Tip target</description>
-    <java classname="${main.class73}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run72">
-    <description>Loopy target</description>
-    <java classname="${main.class72}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run71">
-    <description>Theaetetus target</description>
-    <java classname="${main.class71}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run70">
-    <description>RunNull target</description>
-    <java classname="${main.class70}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run69">
-    <description>GetString target</description>
-    <java classname="${main.class69}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run68">
-    <description>Laches target</description>
-    <java classname="${main.class68}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run67">
-    <description>IntegerCacheExample target</description>
-    <java classname="${main.class67}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run66">
-    <description>ChocolateCake target</description>
-    <java classname="${main.class66}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run65">
-    <description>BananaBread target</description>
-    <java classname="${main.class65}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run64">
-    <description>ApplePie target</description>
-    <java classname="${main.class64}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run63">
-    <description>Shuffle target</description>
-    <java classname="${main.class63}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run62">
-    <description>Twisted target</description>
-    <java classname="${main.class62}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run61">
-    <description>SerialKiller target</description>
-    <java classname="${main.class61}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run60">
-    <description>LinkedList target</description>
-    <java classname="${main.class60}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run59">
-    <description>Pair target</description>
-    <java classname="${main.class59}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run58">
-    <description>Transitive target</description>
-    <java classname="${main.class58}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run57">
-    <description>SelfInterruption target</description>
-    <java classname="${main.class57}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run56">
-    <description>CopyDog target</description>
-    <java classname="${main.class56}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run55">
-    <description>BeerBlast target</description>
-    <java classname="${main.class55}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run54">
-    <description>Greeter target</description>
-    <java classname="${main.class54}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run53">
-    <description>Pet target</description>
-    <java classname="${main.class53}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run52">
-    <description>Reflector target</description>
-    <java classname="${main.class52}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run51">
-    <description>PingPong target</description>
-    <java classname="${main.class51}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run50">
-    <description>Obscure target</description>
-    <java classname="${main.class50}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run49">
-    <description>Coin target</description>
-    <java classname="${main.class49}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run48">
-    <description>CoinSide target</description>
-    <java classname="${main.class48}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run47">
-    <description>Coinside target</description>
-    <java classname="${main.class47}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run46">
-    <description>DoubleJeopardy target</description>
-    <java classname="${main.class46}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run45">
-    <description>TypeIt target</description>
-    <java classname="${main.class45}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run44">
-    <description>FadeToBlack target</description>
-    <java classname="${main.class44}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run43">
-    <description>ShadesOfGray target</description>
-    <java classname="${main.class43}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run42">
-    <description>StrungOut target</description>
-    <java classname="${main.class42}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run41">
-    <description>PrivateMatter target</description>
-    <java classname="${main.class41}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run40">
-    <description>SuspiciousSort target</description>
-    <java classname="${main.class40}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run39">
-    <description>Mod target</description>
-    <java classname="${main.class39}"
-          fork="true">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run38">
-    <description>MoreNames target</description>
-    <java classname="${main.class38}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run37">
-    <description>NameGame target</description>
-    <java classname="${main.class37}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run36">
-    <description>DatingGame target</description>
-    <java classname="${main.class36}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run35">
-    <description>Name target</description>
-    <java classname="${main.class35}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run34">
-    <description>Differences target</description>
-    <java classname="${main.class34}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run33">
-    <description>BigProblem target</description>
-    <java classname="${main.class33}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run32">
-    <description>Creator target</description>
-    <java classname="${main.class32}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run31">
-    <description>Null target</description>
-    <java classname="${main.class31}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run30">
-    <description>Client target</description>
-    <java classname="${main.class30}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run29">
-    <description>ColorPoint target</description>
-    <java classname="${main.class29}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run28">
-    <description>Elvis target</description>
-    <java classname="${main.class28}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run27">
-    <description>Confusing target</description>
-    <java classname="${main.class27}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run26">
-    <description>Loop target</description>
-    <java classname="${main.class26}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run25">
-    <description>Reluctant target</description>
-    <java classname="${main.class25}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run24">
-    <description>HelloGoodbye target</description>
-    <java classname="${main.class24}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run23">
-    <description>Arcane target</description>
-    <java classname="${main.class23}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run22">
-    <description>Indecisive target</description>
-    <java classname="${main.class22}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run21">
-    <description>Count target</description>
-    <java classname="${main.class21}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run20">
-    <description>ReferenceComparison target</description>
-    <java classname="${main.class20}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run19">
-    <description>ValueComparison target</description>
-    <java classname="${main.class19}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run18">
-    <description>Shifty target</description>
-    <java classname="${main.class18}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run17">
-    <description>Increment target</description>
-    <java classname="${main.class17}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run16">
-    <description>BigDelight target</description>
-    <java classname="${main.class16}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run15">
-    <description>Rhymes target</description>
-    <java classname="${main.class15}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run14">
-    <description>BrowserTest target</description>
-    <java classname="${main.class14}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run13">
-    <description>Me target</description>
-    <java classname="${main.class13}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run12">
-    <description>StringCheese target</description>
-    <java classname="${main.class12}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run11">
-    <description>Ugly target</description>
-    <java classname="${main.class11}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run10">
-    <description>EscapeRout target</description>
-    <java classname="${main.class10}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run9">
-    <description>AnimalFarm target</description>
-    <java classname="${main.class9}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run8">
-    <description>Abc target</description>
-    <java classname="${main.class8}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run7">
-    <description>LastLaugh target</description>
-    <java classname="${main.class7}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run6">
-    <description>DosEquis target</description>
-    <java classname="${main.class6}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run5">
-    <description>CleverSwap target</description>
-    <java classname="${main.class5}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run4">
-    <description>Multicast target</description>
-    <java classname="${main.class4}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run3">
-    <description>Joy Of Hex target</description>
-    <java classname="${main.class3}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run2">
-    <description>Long Division target</description>
-    <java classname="${main.class2}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run1">
-    <description>Change target</description>
-    <java classname="${main.class1}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="run"
-          depends="run112,run111,run110,run109,run108,run107,run106,run105,run104,run103,run102,run101,run100,run99,run98,run97,run96,run95,run94,run93,run92,run91,run90,run89,run88,run87,run86,run85,run84,run83,run82,run81,run80,run79,run78,run77,run76,run75,run74,run73,run72,run71,run70,run69,run68,run67,run66,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+				default="main"
+				basedir=".">
+	<property file="build.properties" />
+	<property file="../globalbuild.properties" />
+	<property file="../checkstyle.properties" />
+	<property file="../gformat.properties" />
+	<property file="../pmd.properties" />
+	<property file="../spotbugs.properties" />
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="src.dir"
+					location="." />
+	<property name="build.dir"
+					location="." />
+	<property name="dist.dir"
+					location="dist" />
+	<property name="docs.dir"
+					location="docs" />
+	<loadfile property="cs.cp"
+					srcFile="../${cs.classpath.file}" />
+	<loadfile property="pmd.cp"
+					srcFile="../${pmd.classpath.file}" />
+	<loadfile property="spotbugs.cp"
+					srcfile="../${spotbugs.classpath.file}" />
+	<loadfile property="spotbugs-plugins.cp"
+					srcfile="../${spotbugs-plugin.classpath.file}" />
+	<taskdef resource="${cs.taskdef.resource}"
+					classpath="${cs.cp}" />
+	<taskdef name="pmd"
+					classname="net.sourceforge.pmd.ant.PMDTask"
+					classpath="${pmd.cp}" />
+	<taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+					classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+	<delete>
+	<fileset dir="."
+						includes="**/*.class" />
+	</delete>
+	<delete dir="${docs.dir}" />
+	<delete dir="${dist.dir}" />
+	</target>
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+	<mkdir dir="${docs.dir}" />
+	<mkdir dir="${dist.dir}" />
+	</target>
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile"
+				depends="clean, makedir,format,checkstyle">
+	<javac includeantruntime="false"
+				srcdir="${src.dir}"
+				destdir="${build.dir}">
+	<compilerarg value="${javac.params}" />
+	<compilerarg value="${javac.params1}" />
+	<exclude name="**/AnonymousReceiver.java" />
+	</javac>
+	</target>
+	<!-- Creates Javadoc -->
+	<target name="docs"
+				depends="compile">
+	<javadoc packagenames="${packages}"
+					sourcepath="${src.dir}"
+					destdir="${docs.dir}"
+					additionalparam="${javadoc.params}">
+	<classpath>
+		<pathelement path="${cs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</javadoc>
+	</target>
+	<target name="manifest">
+	<tstamp />
+	<exec executable="bash"
+				outputproperty="build">
+	<arg value="-c" />
+	<arg value="git log --pretty=format:'%h' | head -1" />
+	</exec>
+	<manifest mode="update"
+						file="${jar.manifest}">
+	<attribute name="Built-By"
+							value="${user.name}" />
+	<section name="common">
+		<attribute name="Specification-Title"
+							value="${ant.project.name}" />
+		<attribute name="Specification-Version"
+							value="${version}" />
+		<attribute name="Specification-Vendor"
+							value="" />
+		<attribute name="Implementation-Title"
+							value="" />
+		<attribute name="Implementation-Version"
+							value="${build} ${TODAY}" />
+		<attribute name="Implementation-Vendor"
+							value="" />
+	</section>
+	<attribute name="Main-Class"
+							value="${main.class}" />
+	</manifest>
+	</target>
+	<!--Creates the deployable jar file  -->
+	<target name="jar"
+				depends="compile,manifest">
+	<jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
+			basedir="${build.dir}"
+			includes="**/*.class"
+			manifest="${jar.manifest}"></jar>
+	</target>
+	<target name="run112">
+	<description>DoubleXX target</description>
+	<java classname="${main.class112}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run111">
+	<description>TextProcessor target</description>
+	<java classname="${main.class111}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run110">
+	<description>Cretin target</description>
+	<java classname="${main.class110}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run109">
+	<description>JavaHungry target</description>
+	<java classname="${main.class109}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run108">
+	<description>IntCache target</description>
+	<java classname="${main.class108}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run107">
+	<description>NullFunctionValues target</description>
+	<java classname="${main.class107}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run106">
+	<description>ByteChar target</description>
+	<java classname="${main.class106}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run105">
+	<description>Wraparound target</description>
+	<java classname="${main.class105}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run104">
+	<description>NoDot3 target</description>
+	<java classname="${main.class104}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run103">
+	<description>ShortCircuit target</description>
+	<java classname="${main.class103}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run102">
+	<description>IPlusPlus target</description>
+	<java classname="${main.class102}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run101">
+	<description>TextEditor target</description>
+	<java classname="${main.class101}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run100">
+	<description>Arrayed target</description>
+	<java classname="${main.class100}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run99">
+	<description>WeirdLoop target</description>
+	<java classname="${main.class99}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run98">
+	<description>ByteLoop target</description>
+	<java classname="${main.class98}"
+				fork="true"
+				timeout="2000">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run97">
+	<description>TestSystemProperty target</description>
+	<java classname="${main.class97}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run96">
+	<description>Symposium target</description>
+	<java classname="${main.class96}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run95">
+	<description>ReturnFinally target</description>
+	<java classname="${main.class95}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run94">
+	<description>StringAlong target</description>
+	<java classname="${main.class94}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run93">
+	<description>Add String target</description>
+	<java classname="${main.class93}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run92">
+	<description>Voiding target</description>
+	<java classname="${main.class92}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run91">
+	<description>Compliance target</description>
+	<java classname="${main.class91}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run90">
+	<description>Size target</description>
+	<java classname="${main.class90}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run89">
+	<description>ByeEclipse target</description>
+	<java classname="${main.class89}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run88">
+	<description>Outer target</description>
+	<java classname="${main.class88}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run87">
+	<description>Foo target</description>
+	<java classname="${main.class87}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run86">
+	<description>Sleepy target</description>
+	<java classname="${main.class86}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run85">
+	<description>Puzzle target</description>
+	<java classname="${main.class85}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run84">
+	<description>Addition target</description>
+	<java classname="${main.class84}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run83">
+	<description>InSum target</description>
+	<java classname="${main.class83}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run82">
+	<description>NoDot2 target</description>
+	<java classname="${main.class82}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run81">
+	<description>NoDot target</description>
+	<java classname="${main.class81}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run80">
+	<description>Crito target</description>
+	<java classname="${main.class80}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run79">
+	<description>Meno target</description>
+	<java classname="${main.class79}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run78">
+	<description>ThreadIon target</description>
+	<java classname="${main.class78}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run77">
+	<description>Ion target</description>
+	<java classname="${main.class77}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run76">
+	<description>SetSize target</description>
+	<java classname="${main.class76}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run75">
+	<description>DoubleIncrement target</description>
+	<java classname="${main.class75}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run74">
+	<description>Equivalency target</description>
+	<java classname="${main.class74}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run73">
+	<description>Tip target</description>
+	<java classname="${main.class73}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run72">
+	<description>Loopy target</description>
+	<java classname="${main.class72}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run71">
+	<description>Theaetetus target</description>
+	<java classname="${main.class71}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run70">
+	<description>RunNull target</description>
+	<java classname="${main.class70}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run69">
+	<description>GetString target</description>
+	<java classname="${main.class69}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run68">
+	<description>Laches target</description>
+	<java classname="${main.class68}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run67">
+	<description>IntegerCacheExample target</description>
+	<java classname="${main.class67}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run66">
+	<description>ChocolateCake target</description>
+	<java classname="${main.class66}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run65">
+	<description>BananaBread target</description>
+	<java classname="${main.class65}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run64">
+	<description>ApplePie target</description>
+	<java classname="${main.class64}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run63">
+	<description>Shuffle target</description>
+	<java classname="${main.class63}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run62">
+	<description>Twisted target</description>
+	<java classname="${main.class62}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run61">
+	<description>SerialKiller target</description>
+	<java classname="${main.class61}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run60">
+	<description>LinkedList target</description>
+	<java classname="${main.class60}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run59">
+	<description>Pair target</description>
+	<java classname="${main.class59}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run58">
+	<description>Transitive target</description>
+	<java classname="${main.class58}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run57">
+	<description>SelfInterruption target</description>
+	<java classname="${main.class57}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run56">
+	<description>CopyDog target</description>
+	<java classname="${main.class56}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run55">
+	<description>BeerBlast target</description>
+	<java classname="${main.class55}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run54">
+	<description>Greeter target</description>
+	<java classname="${main.class54}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run53">
+	<description>Pet target</description>
+	<java classname="${main.class53}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run52">
+	<description>Reflector target</description>
+	<java classname="${main.class52}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run51">
+	<description>PingPong target</description>
+	<java classname="${main.class51}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run50">
+	<description>Obscure target</description>
+	<java classname="${main.class50}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run49">
+	<description>Coin target</description>
+	<java classname="${main.class49}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run48">
+	<description>CoinSide target</description>
+	<java classname="${main.class48}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run47">
+	<description>Coinside target</description>
+	<java classname="${main.class47}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run46">
+	<description>DoubleJeopardy target</description>
+	<java classname="${main.class46}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run45">
+	<description>TypeIt target</description>
+	<java classname="${main.class45}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run44">
+	<description>FadeToBlack target</description>
+	<java classname="${main.class44}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run43">
+	<description>ShadesOfGray target</description>
+	<java classname="${main.class43}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run42">
+	<description>StrungOut target</description>
+	<java classname="${main.class42}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run41">
+	<description>PrivateMatter target</description>
+	<java classname="${main.class41}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run40">
+	<description>SuspiciousSort target</description>
+	<java classname="${main.class40}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run39">
+	<description>Mod target</description>
+	<java classname="${main.class39}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run38">
+	<description>MoreNames target</description>
+	<java classname="${main.class38}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run37">
+	<description>NameGame target</description>
+	<java classname="${main.class37}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run36">
+	<description>DatingGame target</description>
+	<java classname="${main.class36}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run35">
+	<description>Name target</description>
+	<java classname="${main.class35}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run34">
+	<description>Differences target</description>
+	<java classname="${main.class34}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run33">
+	<description>BigProblem target</description>
+	<java classname="${main.class33}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run32">
+	<description>Creator target</description>
+	<java classname="${main.class32}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run31">
+	<description>Null target</description>
+	<java classname="${main.class31}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run30">
+	<description>Client target</description>
+	<java classname="${main.class30}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run29">
+	<description>ColorPoint target</description>
+	<java classname="${main.class29}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run28">
+	<description>Elvis target</description>
+	<java classname="${main.class28}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run27">
+	<description>Confusing target</description>
+	<java classname="${main.class27}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run26">
+	<description>Loop target</description>
+	<java classname="${main.class26}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run25">
+	<description>Reluctant target</description>
+	<java classname="${main.class25}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run24">
+	<description>HelloGoodbye target</description>
+	<java classname="${main.class24}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run23">
+	<description>Arcane target</description>
+	<java classname="${main.class23}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run22">
+	<description>Indecisive target</description>
+	<java classname="${main.class22}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run21">
+	<description>Count target</description>
+	<java classname="${main.class21}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run20">
+	<description>ReferenceComparison target</description>
+	<java classname="${main.class20}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run19">
+	<description>ValueComparison target</description>
+	<java classname="${main.class19}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run18">
+	<description>Shifty target</description>
+	<java classname="${main.class18}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run17">
+	<description>Increment target</description>
+	<java classname="${main.class17}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run16">
+	<description>BigDelight target</description>
+	<java classname="${main.class16}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run15">
+	<description>Rhymes target</description>
+	<java classname="${main.class15}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run14">
+	<description>BrowserTest target</description>
+	<java classname="${main.class14}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run13">
+	<description>Me target</description>
+	<java classname="${main.class13}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run12">
+	<description>StringCheese target</description>
+	<java classname="${main.class12}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run11">
+	<description>Ugly target</description>
+	<java classname="${main.class11}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run10">
+	<description>EscapeRout target</description>
+	<java classname="${main.class10}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run9">
+	<description>AnimalFarm target</description>
+	<java classname="${main.class9}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run8">
+	<description>Abc target</description>
+	<java classname="${main.class8}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run7">
+	<description>LastLaugh target</description>
+	<java classname="${main.class7}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run6">
+	<description>DosEquis target</description>
+	<java classname="${main.class6}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run5">
+	<description>CleverSwap target</description>
+	<java classname="${main.class5}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run4">
+	<description>Multicast target</description>
+	<java classname="${main.class4}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run3">
+	<description>Joy Of Hex target</description>
+	<java classname="${main.class3}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run2">
+	<description>Long Division target</description>
+	<java classname="${main.class2}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run1">
+	<description>Change target</description>
+	<java classname="${main.class1}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="run"
+				depends="run112,run111,run110,run109,run108,run107,run106,run105,run104,run103,run102,run101,run100,run99,run98,run97,run96,run95,run94,run93,run92,run91,run90,run89,run88,run87,run86,run85,run84,run83,run82,run81,run80,run79,run78,run77,run76,run75,run74,run73,run72,run71,run70,run69,run68,run67,run66,run65,run64,run63,run62,run61,run60,run59,run58,run57,run56,run55,run54,run53,run52,run51,run50,run48,run47,run46,run45,run44,run43,run42,run41,run40,run39,run38,run37,run36,run35,run34,run33,run32,run31,run30,run29,run28,run27,run26,run25,run24,run23,run22,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
 
-    <description>Odd target</description>
-    <java classname="${main.class}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="format">
-    <fileset dir="${basedir}"
-             id="javasrcs">
-      <include name="**/*.java" />
-      <exclude name="**/Ugly.java" />
-      <exclude name="**/EscapeRout.java" />
-    </fileset>
-    <pathconvert property="sources"
-                 refid="javasrcs"
-                 pathsep=" " />
-    <loadfile property="gformat.cp"
-              srcFile="../${gformat.classpath.file}" />
-    <java classname="${gformat.main.class}"
-          fork="true">
-      <arg line="-i ${sources}" />
-      <classpath>
-        <pathelement path="${gformat.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <exec executable="bash">
-      <arg line="../cformat ${basedir}" />
-    </exec>
-    <exec executable="bash">
-      <arg line="../xformatall ${basedir}" />
-    </exec>
-  </target>
-  <target name="checkstyleg">
-    <fileset dir="${basedir}"
-             id="javasrcs"
-             includes="**/*.java"
-             excludes="**/Ugly.java,**/AnonymousReceiver.java" />
-    <pathconvert property="sources"
-                 refid="javasrcs"
-                 pathsep=" " />
-    <loadfile property="cs.cp"
-              srcFile="../${cs.classpath.file}" />
-    <java classname="${cs.main.class}"
-          logError="true">
-      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="checkstyle">
-    <first id="checkstylefile">
-      <fileset dir=".."
-               includes="${cs.config}" />
-    </first>
-    <checkstyle config="${toString:checkstylefile}"
-                failOnViolation="false"
-                properties="../${cs.properties}">
-      <fileset dir="${src.dir}"
-               includes="**/*.java"
-               excludes="**/Ugly.java,**/AnonymousReceiver.java" />
-      <formatter type="plain" />
-      <formatter type="plain"
-                 toFile="${cs.output}" />
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </checkstyle>
-  </target>
-  <target name="pmd">
-    <property name="pmd.errCount"
-              value="0" />
-    <pmd cacheLocation="${pmd.cacheFile}"
-         minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}"
-         failuresPropertyName="pmd.errCount">
-      <ruleset>../${pmd.config}</ruleset>
-      <auxclasspath>
-        <pathelement path="${basedir}" />
-      </auxclasspath>
-      <formatter type="${pmd.reportFormat}"
-                 toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
-      <fileset dir="${basedir}">
-        <include name="**/*.java" />
-      </fileset>
-    </pmd>
-    <echo message="${pmd.errCount} violations found." />
-  </target>
-  <target name="spotbugs"
-          depends="compile">
-    <spotbugs output="text"
-              outputFile="${spotbugs.output}"
-              reportLevel="low"
-              effort="max"
-              excludeFilter="${spotbugs.suppressions.xml}"
-              nested="true">
-      <auxClasspath path="${basedir}" />
-      <sourcePath path="${basedir}" />
-      <class location="${basedir}" />
-      <classpath>
-        <pathelement path="${spotbugs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </spotbugs>
-  </target>
-  <target name="main"
-          depends="compile,pmd,spotbugs, jar, docs">
-    <description>Main target</description>
-  </target>
+	<description>Odd target</description>
+	<java classname="${main.class}">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="format">
+	<fileset dir="${basedir}"
+					id="javasrcs">
+	<include name="**/*.java" />
+	<exclude name="**/Ugly.java" />
+	<exclude name="**/EscapeRout.java" />
+	</fileset>
+	<pathconvert property="sources"
+							refid="javasrcs"
+							pathsep=" " />
+	<loadfile property="gformat.cp"
+						srcFile="../${gformat.classpath.file}" />
+	<java classname="${gformat.main.class}"
+				fork="true">
+	<arg line="-i ${sources}" />
+	<classpath>
+		<pathelement path="${gformat.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	<exec executable="bash">
+	<arg line="../cformat ${basedir}" />
+	</exec>
+	<exec executable="bash">
+	<arg line="../xformatall ${basedir}" />
+	</exec>
+	</target>
+	<target name="checkstyleg">
+	<fileset dir="${basedir}"
+					id="javasrcs"
+					includes="**/*.java"
+					excludes="**/Ugly.java,**/AnonymousReceiver.java" />
+	<pathconvert property="sources"
+							refid="javasrcs"
+							pathsep=" " />
+	<loadfile property="cs.cp"
+						srcFile="../${cs.classpath.file}" />
+	<java classname="${cs.main.class}"
+				logError="true">
+	<arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+	<classpath>
+		<pathelement path="${cs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="checkstyle">
+	<first id="checkstylefile">
+	<fileset dir=".."
+						includes="${cs.config}" />
+	</first>
+	<checkstyle config="${toString:checkstylefile}"
+							failOnViolation="false"
+							properties="../${cs.properties}">
+	<fileset dir="${src.dir}"
+						includes="**/*.java"
+						excludes="**/Ugly.java,**/AnonymousReceiver.java" />
+	<formatter type="plain" />
+	<formatter type="plain"
+							toFile="${cs.output}" />
+	<classpath>
+		<pathelement path="${cs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</checkstyle>
+	</target>
+	<target name="pmd">
+	<property name="pmd.errCount"
+						value="0" />
+	<pmd cacheLocation="${pmd.cacheFile}"
+			minimumPriority="${pmd.minimumPriority}"
+			suppressMarker="${pmd.suppressMarker}"
+			failuresPropertyName="pmd.errCount">
+	<ruleset>../${pmd.config}</ruleset>
+	<auxclasspath>
+		<pathelement path="${basedir}" />
+	</auxclasspath>
+	<formatter type="${pmd.reportFormat}"
+							toFile="${pmd.output}"
+							toConsole="${pmd.toConsole}"></formatter>
+	<fileset dir="${basedir}">
+		<include name="**/*.java" />
+	</fileset>
+	</pmd>
+	<echo message="${pmd.errCount} violations found." />
+	</target>
+	<target name="spotbugs"
+				depends="compile">
+	<spotbugs output="text"
+						outputFile="${spotbugs.output}"
+						reportLevel="low"
+						effort="max"
+						excludeFilter="${spotbugs.suppressions.xml}"
+						nested="true">
+	<auxClasspath path="${basedir}" />
+	<sourcePath path="${basedir}" />
+	<class location="${basedir}" />
+	<classpath>
+		<pathelement path="${spotbugs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</spotbugs>
+	</target>
+	<target name="main"
+				depends="compile,pmd,spotbugs, jar, docs">
+	<description>Main target</description>
+	</target>
 </project>

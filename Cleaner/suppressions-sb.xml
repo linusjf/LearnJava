@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="cleaner.Teenager"/>
-    <Method name="main"/>
-    <Bug code="SEC" />
-  </Match>
-  <Match>
-    <Bug code="USBR" />
-  </Match>
+	<Match>
+	<Class name="cleaner.Teenager" />
+	<Method name="main" />
+	<Bug code="SEC" />
+	</Match>
+	<Match>
+	<Bug code="USBR" />
+	</Match>
 </FindBugsFilter>
