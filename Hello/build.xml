@@ -137,7 +137,13 @@
 	</exec>
 	</target>
 	<target name="checkstyleg">
-	<fileset dir="${basedir}"
+    <move file="suppressions-xpath.xml"
+      tofile="suppressions-xpath.xml.bak"
+      preservelastmodified="true"
+      force="true"
+      failonerror="false"
+      verbose="true"/>
+    <fileset dir="${basedir}"
 					id="javasrcs">
 	<include name="**/*.java" />
 	</fileset>
@@ -153,7 +159,13 @@
 		<pathelement path="${cs.cp}" />
 		<pathelement path="${java.class.path}" />
 	</classpath>
-	</java>
+</java>
+    <move file="${ant.project.name}-xpath.xml"
+      tofile="suppressions-xpath.xml"
+      preservelastmodified="true"
+      force="true"
+      failonerror="true"
+      verbose="true"/>
 	</target>
 	<target name="checkstyle">
 	<first id="checkstylefile">
