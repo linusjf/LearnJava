@@ -57,11 +57,13 @@ readOptions
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
+  find . -maxdepth 1 -name suppressions-xpath.xml -type f -exec mv {} {}.bak \; && \
 java -cp @"$classpathFile" \
 "$mainClass" \
 ${options[@]} \
 -c "$rules_file" -d \
 -p "$properties_file" \
 -o "$1"-xpath.xml -g \
-"${args[@]}");
+"${args[@]}" && \ 
+mv "$1"-xpath.xml suppressions-xpath.xml;)
 exit $?

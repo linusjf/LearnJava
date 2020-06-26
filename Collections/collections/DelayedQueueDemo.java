@@ -14,7 +14,8 @@ public enum DelayedQueueDemo {
       DelayQueue<Event> queue = new DelayQueue<>();
       Thread[] threads = new Thread[5];
       startThreads(threads, queue);
-      for (Thread thread : threads) thread.join();
+      for (Thread thread: threads)
+        thread.join();
     } catch (InterruptedException ie) {
       System.err.println(ie);
     }
@@ -35,14 +36,15 @@ public enum DelayedQueueDemo {
 
     Event(Date startDate) {
       if (startDate == null)
-        throw new IllegalArgumentException("Null date arg in constructor of class: "
-            + getClass());
+        throw new IllegalArgumentException(
+            "Null date arg in constructor of class: " + getClass());
       this.startDate = startDate;
     }
 
     @Override
     public int compareTo(Delayed o) {
-      long result = this.getDelay(TimeUnit.NANOSECONDS) - o.getDelay(TimeUnit.NANOSECONDS);
+      long result = this.getDelay(TimeUnit.NANOSECONDS)
+                    - o.getDelay(TimeUnit.NANOSECONDS);
       if (result < 0)
         return -1;
       if (result > 0)
@@ -69,7 +71,7 @@ public enum DelayedQueueDemo {
         return false;
 
       // typecast o to Event so that we can compare data members
-      Event e = (Event) o;
+      Event e = (Event)o;
 
       // Compare the data members and return accordingly
       return e.startDate.equals(startDate);

@@ -10,14 +10,14 @@ public enum Lists {
   @SafeVarargs
   public static <T> List<T> toList(T... arr) {
     List<T> list = new ArrayList<>(arr.length);
-    for (T elt : arr) 
+    for (T elt: arr)
       list.add(elt);
     return list;
   }
 
   @SafeVarargs
   public static <T> void addAll(Collection<T> list, T... arr) {
-    for (T elt : arr) 
+    for (T elt: arr)
       list.add(elt);
   }
 

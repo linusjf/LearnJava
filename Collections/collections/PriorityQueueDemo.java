@@ -13,9 +13,10 @@ public enum PriorityQueueDemo {
       Task task = new Task(i, queue);
       taskThreads[i] = new Thread(task);
     }
-    for (Thread taskThread : taskThreads) taskThread.start();
+    for (Thread taskThread: taskThreads)
+      taskThread.start();
 
-    for (Thread taskThread : taskThreads) {
+    for (Thread taskThread: taskThreads) {
       try {
         taskThread.join();
       } catch (InterruptedException e) {
@@ -32,7 +33,8 @@ public enum PriorityQueueDemo {
   }
 
   private static void printEvent(Event event) {
-    System.out.printf("Thread %s: Priority %d%n", event.getThread(), event.getPriority());
+    System.out.printf(
+        "Thread %s: Priority %d%n", event.getThread(), event.getPriority());
   }
 
   static class Event implements Comparable<Event> {
@@ -79,7 +81,7 @@ public enum PriorityQueueDemo {
         return false;
 
       // typecast o to Event so that we can compare data members
-      Event e = (Event) o;
+      Event e = (Event)o;
 
       // Compare the data members and return accordingly
       return e.thread == thread && e.priority == priority;

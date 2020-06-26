@@ -6,9 +6,9 @@ Main-Class: collections.ConcurrentLinkedDequeDemo
 
 Name: common
 Specification-Title: Collections
-Specification-Version: 2.1.0
+Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: aa96fe14 December 7 2019
+Implementation-Version: 10a9f635 June 24 2020
 Implementation-Vendor: 
 

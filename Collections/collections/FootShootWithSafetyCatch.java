@@ -9,14 +9,16 @@ import java.util.List;
 public enum FootShootWithSafetyCatch {
   ;
   private static List<String> names =
-    Collections.checkedList(new ArrayList<String>(), String.class);
+      Collections.checkedList(new ArrayList<String>(), String.class);
 
   static {
     Collections.addAll(names, "John", "Anton", "Heinz");
   }
 
-  @SuppressWarnings({"rawtypes", "unchecked", "PMD.DoNotCallSystemExit", "PMD.LawOfDemeter"})
-  public static void main(String... args) {
+  @SuppressWarnings(
+      {"rawtypes", "unchecked", "PMD.DoNotCallSystemExit", "PMD.LawOfDemeter"})
+  public static void
+  main(String... args) {
     Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
       System.err.printf("Thread %s throws following exception: %s%n", t, e);
       System.out.println("Printing names...");

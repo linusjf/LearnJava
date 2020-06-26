@@ -25,9 +25,10 @@ public enum ListingDefault {
   }
 
   @SuppressWarnings({"checkstyle:avoiddoublebraceinitialization",
-  "PMD.DoubleBraceInitialization",
-  "PMD.LawOfDemeter"})
-  public static void main(String... args) {
+                     "PMD.DoubleBraceInitialization",
+                     "PMD.LawOfDemeter"})
+  public static void
+  main(String... args) {
     List<String> list = Arrays.asList(new String[] {FOO, BAR});
     assert list.contains(FOO);
 

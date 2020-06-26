@@ -5,7 +5,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
 
 public enum LinkedBlockingDequeueDemo {
   ;
@@ -19,8 +18,10 @@ public enum LinkedBlockingDequeueDemo {
       for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 3; j++) {
           String request = list.take();
-          System.out.printf(
-              "Main: Request: %s at %s. Size: %d%n", request, new Date(), list.size());
+          System.out.printf("Main: Request: %s at %s. Size: %d%n",
+                            request,
+                            new Date(),
+                            list.size());
         }
         MILLISECONDS.sleep(300);
       }

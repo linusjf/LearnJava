@@ -11,7 +11,7 @@ public enum ConcurrentSkipListMapDemo {
     Thread[] threads = new Thread[25];
     ConcurrentSkipListMap<String, Contact> map = new ConcurrentSkipListMap<>();
     startThreads(threads, map);
-    for (Thread t : threads) {
+    for (Thread t: threads) {
       try {
         t.join();
       } catch (InterruptedException e) {
@@ -22,12 +22,14 @@ public enum ConcurrentSkipListMapDemo {
     printFirstEntry(map);
     printLastEntry(map);
     System.out.printf("Main: Submap from A1996 to B1002: %n");
-    ConcurrentNavigableMap<String, Contact> submap = map.subMap("A1996", "B1002");
+    ConcurrentNavigableMap<String, Contact> submap =
+        map.subMap("A1996", "B1002");
     printSubMap(submap);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void printSubMap(ConcurrentNavigableMap<String, Contact> submap) {
+  private static void printSubMap(
+      ConcurrentNavigableMap<String, Contact> submap) {
     Map.Entry<String, Contact> element = submap.pollFirstEntry();
     while (element != null) {
       Contact contact = element.getValue();
@@ -41,7 +43,8 @@ public enum ConcurrentSkipListMapDemo {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void printFirstEntry(ConcurrentSkipListMap<String, Contact> map) {
+  private static void printFirstEntry(
+      ConcurrentSkipListMap<String, Contact> map) {
     Map.Entry<String, Contact> element = map.firstEntry();
     Contact contact = element.getValue();
     System.out.printf("Main: First Entry: ");
@@ -49,7 +52,8 @@ public enum ConcurrentSkipListMapDemo {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void printLastEntry(ConcurrentSkipListMap<String, Contact> map) {
+  private static void printLastEntry(
+      ConcurrentSkipListMap<String, Contact> map) {
     Map.Entry<String, Contact> element = map.lastEntry();
     Contact contact = element.getValue();
     System.out.printf("Main: Last Entry: ");
@@ -57,7 +61,8 @@ public enum ConcurrentSkipListMapDemo {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  private static void startThreads(Thread[] threads, ConcurrentSkipListMap<String, Contact> map) {
+  private static void startThreads(Thread[] threads,
+                                   ConcurrentSkipListMap<String, Contact> map) {
     for (char i = 'A'; i < 'Z'; i++) {
       Task task = new Task(map, String.valueOf(i));
       int index = i - 'A';

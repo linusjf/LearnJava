@@ -14,3 +14,5 @@ collections.Lists
 collections.Containment
 collections.ReverseCapture
 collections.WildcardRestrictions
+collections.VectorBench
+collections.VectorBenchAgain
