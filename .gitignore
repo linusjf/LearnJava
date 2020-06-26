@@ -40,3 +40,5 @@ Concurrency/**/*.jpg
 *.graphml
 linus*.html
 *.css
+*-xpath.xml
+!suppressions-xpath.xml

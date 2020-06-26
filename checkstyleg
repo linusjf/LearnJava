@@ -64,6 +64,11 @@ ${options[@]} \
 -c "$rules_file" -d \
 -p "$properties_file" \
 -o "$1"-xpath.xml -g \
-"${args[@]}" && \ 
-mv "$1"-xpath.xml suppressions-xpath.xml;)
-exit $?
+"${args[@]}";)
+ret=$?
+if [ ! -s "$1"-xpath.xml ]
+then
+  mv "$1"-xpath.xml suppressions-xpath.xml
+  ret=("$ret" + "$?")
+fi
+exit "$ret"
