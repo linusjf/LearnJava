@@ -169,14 +169,23 @@
 	<rule ref="category/java/codestyle.xml/PrematureDeclaration" />
 	<rule ref="category/java/codestyle.xml/TooManyStaticImports" />
 	<rule ref="category/java/codestyle.xml/UnnecessaryAnnotationValueElement" />
-	<rule ref="category/java/codestyle.xml/UnnecessaryConstructor" />
-	<rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
+  <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
+  <rule ref="category/java/codestyle.xml/UnnecessaryCast" />
 	<rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn" />
 	<rule ref="category/java/codestyle.xml/UnnecessaryModifier" />
 	<rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
-	<rule ref="category/java/codestyle.xml/UseDiamondOperator" />
+  <rule ref="category/java/codestyle.xml/UseDiamondOperator">
+    <properties>
+        <property name="java7Compatibility" value="false" />
+    </properties>
+</rule>
 	<rule ref="category/java/codestyle.xml/UselessParentheses" />
-	<rule ref="category/java/codestyle.xml/UselessQualifiedThis" />
+  <rule ref="category/java/codestyle.xml/UselessQualifiedThis" />
+    <rule ref="category/java/codestyle.xml/UnnecessaryConstructor">
+    <properties>
+        <property name="ignoredAnnotations" value="javax.inject.Inject" />
+    </properties>
+</rule>
 	<rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod" />
 	<rule ref="category/java/design.xml/AvoidCatchingGenericException" />
 	<rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts" />
@@ -436,7 +445,9 @@
 	<rule ref="category/java/performance.xml/UselessStringValueOf" />
 	<rule ref="category/java/performance.xml/UseStringBufferForStringAppends" />
 	<rule ref="category/java/performance.xml/UseStringBufferLength" />
-	<rule ref="category/java/security.xml/HardCodedCryptoKey" />
+  <rule ref="category/java/performance.xml/AvoidCalendarDateCreation" />
+<rule ref="category/java/performance.xml/UseIOStreamsWithApacheCommonsFileItem" />
+  <rule ref="category/java/security.xml/HardCodedCryptoKey" />
 	<rule ref="category/java/security.xml/InsecureCryptoIv" />
 	<rule ref="category/java/bestpractices.xml/DoubleBraceInitialization" />
 	<rule ref="category/jsp/bestpractices.xml/NoClassAttribute" />
