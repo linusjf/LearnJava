@@ -18,29 +18,30 @@ public enum VectorBench {
     IntStream range = IntStream.range(1, 100_000_000);
     if (parallel)
       range = range.parallel();
-    long time = System.nanoTime();
+      long time = System.nanoTime();
     try {
       ThreadLocal<List<Integer>> lists = ThreadLocal.withInitial(() -> {
+      long time2 = System.nanoTime();
         List<Integer> result = new Vector<>();
         for (int i = 0; i < 1024; i++)
           result.add(i);
+      time2 = System.nanoTime() - time2;
+      System.out.printf(
+          "Thread Local Storage: %dms%n",  time2 / 1_000_000);
         return result;
       });
       int sum = 1023 * 1024 / 2 * (100_000_000 / 1024);
-      int mod = (100_000_000 % 1024) - 1;
+      int mod = (100_000_000 & 1023) - 1;
       sum += mod * ++mod / 2;
 
-      System.out.println(sum);
+      System.out.println("Formulaic sum = " + sum);
       time = System.nanoTime() - time;
       System.out.printf(
-          "%dms%n",  time / 1_000_000);
-
+          "Formulaic time: %dms%n",  time / 1_000_000);
 
     time = System.nanoTime();
       System.out.println("Sum = "
-          + range.map(i -> {
-            return lists.get().get(i & 1023);
-          })
+          + range.map(i -> lists.get().get(i & 1023))
           .sum()
           );
     } finally {
