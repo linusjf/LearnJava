@@ -1,5 +1,7 @@
 package javapuzzles;
 
+import java.util.concurrent.TimeUnit;
+
 @SuppressWarnings({"PMD.ShortClassName", "PMD.DoNotCallSystemExit"})
 public class Pet {
   public final String name;

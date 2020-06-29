@@ -1,5 +1,7 @@
 package javapuzzles;
 
+import java.util.concurrent.TimeUnit;
+
 // https://twitter.com/heinzkabutz/status/1174714312151187456
 @SuppressWarnings({"PMD.NonStaticInitializer", "PMD.UnusedLocalVariable"})
 public final class Sleepy {
