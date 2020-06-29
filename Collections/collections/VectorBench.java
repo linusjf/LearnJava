@@ -26,8 +26,23 @@ public enum VectorBench {
           result.add(i);
         return result;
       });
+      int sum = 1023 * 1024 / 2 * (100_000_000 / 1024);
+      int mod = (100_000_000 % 1024) - 1;
+      sum += mod * ++mod / 2;
+
+      System.out.println(sum);
+      time = System.nanoTime() - time;
+      System.out.printf(
+          "%dms%n",  time / 1_000_000);
+
+
+    time = System.nanoTime();
       System.out.println("Sum = "
-          + range.map(i -> lists.get().get(i & 1023)).sum());
+          + range.map(i -> {
+            return lists.get().get(i & 1023);
+          })
+          .sum()
+          );
     } finally {
       time = System.nanoTime() - time;
       System.out.printf(
