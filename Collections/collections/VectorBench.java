@@ -51,10 +51,10 @@ public enum VectorBench {
           "Formulaic time: %.6fms%n", (double) time / (double)1_000_000);
       
       time = System.nanoTime();
-      System.out.println("Formulaic sum = " + RESULT);
+      System.out.println("Result sum = " + RESULT);
       time = System.nanoTime() - time;
       System.out.printf(
-          "Formulaic time (result): %.6fms%n", (double) time / (double)1_000_000);
+          "Result time : %.6fms%n", (double) time / (double)1_000_000);
 
     time = System.nanoTime();
       System.out.println("Sum = "
