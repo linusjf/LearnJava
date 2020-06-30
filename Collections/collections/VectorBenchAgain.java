@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public enum VectorBenchAgain {
   ;
 
+  private static final int RESULT = -389705856;
   private static int sum;
   
   private static int computeSum() {
@@ -58,6 +59,12 @@ public enum VectorBenchAgain {
       time = System.nanoTime() - time;
       System.out.printf(
           "Formulaic time: %.6fms%n", (double) time / (double)1_000_000);
+      
+      time = System.nanoTime();
+      System.out.println("Formulaic sum = " + RESULT);
+      time = System.nanoTime() - time;
+      System.out.printf(
+          "Formulaic time (result): %.6fms%n", (double) time / (double)1_000_000);
 
     time = System.nanoTime();
     System.out.println("Sum = "

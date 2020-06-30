@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 public enum VectorBench {
   ;
 
+  private static final int RESULT = -389705856;
   private static int sum;
 
   public static void main(String... args) {
@@ -48,6 +49,12 @@ public enum VectorBench {
       time = System.nanoTime() - time;
       System.out.printf(
           "Formulaic time: %.6fms%n", (double) time / (double)1_000_000);
+      
+      time = System.nanoTime();
+      System.out.println("Formulaic sum = " + RESULT);
+      time = System.nanoTime() - time;
+      System.out.printf(
+          "Formulaic time (result): %.6fms%n", (double) time / (double)1_000_000);
 
     time = System.nanoTime();
       System.out.println("Sum = "
