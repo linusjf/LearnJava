@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.stream.IntStream;
 
+// Original source: https://www.javaspecialists.eu/archive/Issue280.html
 public enum VectorBenchAgain {
   ;
 

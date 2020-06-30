@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.stream.IntStream;
 
+// Original source: https://www.javaspecialists.eu/archive/Issue280.html
 public enum VectorBench {
   ;
 
