@@ -1,0 +1,33 @@
+#!/bin/bash
+
+######################################################################
+# @author      : Linus Fernandes (linusfernandes@gmail.com)
+# @file        : gitpush
+# @created     : Thursday May 02, 2019 21:07:57 IST
+# @copyright   : Copyright (c) Linus Fernandes
+# @description : 
+######################################################################
+RED="\033[0;31m"
+NC="\033[0m" # No Color
+set -e
+command=""
+trap message EXIT
+function message()
+{
+  ret=$?
+  if [ $ret -eq 0 ]
+  then
+    echo exit $ret from last command: $command
+  else
+    echo ${RED}exit $ret from last command: $command${NC}
+fi
+  exit $ret
+}
+command="git checkout master"
+$command
+command="git merge development"
+$command
+command="git push -u origin master"
+$command
+command="git checkout development"
+$command
