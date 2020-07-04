@@ -4,8 +4,8 @@
 				basedir=".">
 	<property file="build.properties" />
 	<property file="../globalbuild.properties" />
-	<property file="${cs.properties}" />
-	<property file="${gformat.properties}" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
 	<property file="../pmd.properties" />
 	<property file="../spotbugs.properties" />
 	<property file="../antcontrib.properties" />
