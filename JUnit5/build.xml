@@ -240,6 +240,7 @@
 								haltOnFailure="false">
 		<fileset dir="${build.dir}">
 		<include name="**/*Test.class" />
+		<include name="**/*Demo.class" />
 		</fileset>
 		<listener type="legacy-plain"
 							sendSysErr="true"
