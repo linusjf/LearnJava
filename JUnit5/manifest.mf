@@ -9,6 +9,6 @@ Specification-Title: JUnit5
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 92567f55 July 5 2020
+Implementation-Version: 88037043 July 5 2020
 Implementation-Vendor: 
 

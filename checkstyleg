@@ -21,6 +21,7 @@ fi
 
 proj=$1
 declare -r optionsFile=".csoptions"
+declare -r suppressionsFile="suppressions-xpath.xml"
 declare -a options
 rules_file=$(realpath "csrules.xml")
 declare -r properties_file=$(realpath "checkstyle.properties")
@@ -57,7 +58,7 @@ readOptions
 readarray -t args \
   < <(find . -type f -name "*.java" \
   ! -path "docs/**" ! -path "dist/**") && \
-  find . -maxdepth 1 -name suppressions-xpath.xml -type f -exec mv {} {}.bak \; && \
+  find . -maxdepth 1 -name "$suppressionsFile" -type f -exec mv {} {}.bak \; && \
   java -cp @"$classpathFile" \
   "$mainClass" \
   ${options[@]} \
@@ -66,9 +67,9 @@ readarray -t args \
   -o "$1"-xpath.xml -g \
   "${args[@]}";)
 ret=$?
-if [ ! -s "$1"-xpath.xml ]
+if [ -s "$1"/"$1"-xpath.xml ]
 then
-  mv "$1"-xpath.xml suppressions-xpath.xml
+  mv "$1"/"$1"-xpath.xml "$1"/"$suppressionsFile"
   ret=("$ret" + "$?")
 fi
 exit "$ret"
