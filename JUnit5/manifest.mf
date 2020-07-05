@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.8
+Created-By: 11.0.7+10 (Oracle Corporation)
+Built-By: root
+Main-Class: ${main.class}
+
+Name: common
+Specification-Title: JUnit5
+Specification-Version: 2.4.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: 086a6a5b July 5 2020
+Implementation-Vendor: 
+
