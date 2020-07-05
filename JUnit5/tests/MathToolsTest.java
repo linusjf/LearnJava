@@ -7,13 +7,13 @@ import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
 class MathToolsTest {
-  @RepeatedTest(Integer.MAX_VALUE)
+  @RepeatedTest(10_000)
   void testConvertToDecimalSuccess(RepetitionInfo ri) {
     int iteration = ri.getCurrentRepetition();
-    double result = MathTools.convertToDecimal(iteration, Integer.MAX_VALUE);
-    assertEquals((float)iteration / (float)Integer.MAX_VALUE,
+    double result = MathTools.convertToDecimal(iteration, 10_000);
+    assertEquals((float)iteration / (float)10_000,
                  result,
-                 0.0001d,
+                 0.000_000_001d,
                  "Values are equal");
   }
 

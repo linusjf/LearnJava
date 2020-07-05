@@ -9,6 +9,7 @@
 	<property file="../pmd.properties" />
 	<property file="../spotbugs.properties" />
 	<property file="../junit.properties" />
+	<property file="../antcontrib.properties" />
 	<!-- Sets variables which can later be used. -->
 	<!-- The value of a property is accessed via ${} -->
 	<property name="src.dir"
@@ -19,6 +20,10 @@
 					location="dist" />
 	<property name="docs.dir"
 					location="docs" />
+	<loadfile property="antcontrib.cp"
+					srcFile="../${antcontrib.classpath.file}" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml"
+					classpath="${antcontrib.cp}"></taskdef>
 	<target name="loadclasspath"
 				depends="setupclasspath">
 	<loadfile property="cs.cp"
@@ -142,6 +147,12 @@
 	</target>
 	<target name="checkstyleg"
 				depends="loadclasspath">
+	<move file="suppressions-xpath.xml"
+				tofile="suppressions-xpath.xml.bak"
+				preservelastmodified="true"
+				force="true"
+				failonerror="false"
+				verbose="true" />
 	<fileset dir="${basedir}"
 					id="javasrcs">
 	<include name="**/*.java" />
@@ -159,6 +170,24 @@
 		<pathelement path="${java.class.path}" />
 	</classpath>
 	</java>
+	<condition property="file.is.empty"
+						else="false">
+	<length file="${ant.project.name}-xpath.xml"
+					when="equal"
+					length="0" />
+	</condition>
+	<if>
+	<equals arg1="${file.is.empty}"
+					arg2="false" />
+	<then>
+		<move file="${ant.project.name}-xpath.xml"
+					tofile="suppressions-xpath.xml"
+					preservelastmodified="true"
+					force="true"
+					failonerror="true"
+					verbose="true" />
+	</then>
+	</if>
 	</target>
 	<target name="checkstyle"
 				depends="loadclasspath">
