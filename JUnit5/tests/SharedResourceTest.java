@@ -14,7 +14,6 @@ import org.junit.jupiter.api.parallel.ResourceLock;
 @Execution(ExecutionMode.CONCURRENT)
 public class SharedResourceTest {
 
-  // static final String GLOBAL_USERS = "tests.GlobalUsers.users";
   static final String GLOBAL_USERS = "Hello";
 
   @BeforeEach

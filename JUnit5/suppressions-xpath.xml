@@ -6,15 +6,7 @@
 <suppress-xpath
        files="MathToolsTest.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="MathToolsTest.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="MathToolsTest.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_DOUBLE[@text='0.000_000_001d']"/>
+       query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertNotEquals']]/ELIST/EXPR/NUM_DOUBLE[@text='0.000_000_000_000_001d']"/>
 <suppress-xpath
        files="MathToolsTest.java"
        checks="MagicNumberCheck"
