@@ -64,17 +64,18 @@ if [ ! -e "$properties_file" ]
 fi
 readOptions
 readExclusions
-cd "$proj"
+(set -o pipefail; cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
-${exclusions[@]} \
-  -not -path "./docs" -not -path "./dist")
-java -cp @"$classpathFile" \
-"$mainClass" \
-${options[@]} \
--c "$rules_file" -d \
--p "$properties_file" \
--o "$output_file" \
-"${args[@]}"
+  ${exclusions[@]} \
+  -not -path "./docs" -not -path "./dist") && \
+  java -cp @"$classpathFile" \
+  "$mainClass" \
+  ${options[@]} \
+  -c "$rules_file" -d \
+  -p "$properties_file" \
+  -o "$output_file"  \
+  "${args[@]}";)
+ret=$?
 set +o noglob
-exit $?
+exit "$ret"

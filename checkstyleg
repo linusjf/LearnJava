@@ -14,13 +14,22 @@ readOptions()
       echo "Unable to read $proj/$optionsFile";}
 }
 
+readExclusions()
+{
+  [ -e "$proj"/"$exclusionsFile" ] && \
+      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
+      echo "Unable to read $proj/$exclusionsFile";}
+}
+
 if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
 then
   usage
 fi
 
 proj=$1
+declare -i ret=0
 declare -r optionsFile=".csoptions"
+declare -r exclusionsFile=".exclusions"
 declare -r suppressionsFile="suppressions-xpath.xml"
 declare -a options
 rules_file=$(realpath "csrules.xml")
@@ -54,10 +63,12 @@ if [ ! -e "$properties_file" ]
 fi
 
 readOptions
+readExclusions
 (set -o pipefail; cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
-  ! -path "docs/**" ! -path "dist/**") && \
+  ${exclusions[@]} \
+  -not -path "./docs" -not -path "./dist") && \
   find . -maxdepth 1 -name "$suppressionsFile" -type f -exec mv {} {}.bak \; && \
   java -cp @"$classpathFile" \
   "$mainClass" \
@@ -70,6 +81,6 @@ ret=$?
 if [ -s "$1"/"$1"-xpath.xml ]
 then
   mv "$1"/"$1"-xpath.xml "$1"/"$suppressionsFile"
-  ret=("$ret" + "$?")
+  ret="$ret"+"$?"
 fi
 exit "$ret"

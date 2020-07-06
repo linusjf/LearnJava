@@ -405,6 +405,10 @@
        query="/ENUM_DEF[./IDENT[@text='DemoThreadExample']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runCount']]/MODIFIERS/LITERAL_VOLATILE"/>
 <suppress-xpath
        files="Drop.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='Drop']]"/>
+<suppress-xpath
+       files="Drop.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Drop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='take']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
 <suppress-xpath
@@ -675,6 +679,14 @@
        files="IllegalMonitorStateWaitExample.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateWaitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/MODIFIERS/BLOCK_COMMENT_BEGIN"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]"/>
 <suppress-xpath
        files="ImmutableRGB.java"
        checks="BooleanExpressionComplexityCheck"
@@ -1019,6 +1031,18 @@
        files="SimpleThreads.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MessageLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4000']"/>
+<suppress-xpath
+       files="SynchronizedCounter.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedCounter']]"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/MODIFIERS/BLOCK_COMMENT_BEGIN"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]"/>
 <suppress-xpath
        files="SynchronizedRGB.java"
        checks="BooleanExpressionComplexityCheck"
