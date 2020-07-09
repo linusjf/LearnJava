@@ -414,4 +414,10 @@
   <rule ref="category/jsp/design.xml/NoScriptlets"/>
   <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration"/>
   <rule ref="category/xml/errorprone.xml/MistypedCDATASection"/>
+  <rule ref="category/pom/errorprone.xml/InvalidDependencyTypes">
+    <properties>
+      <property name="validTypes" value="pom,jar,maven-plugin,ejb,war,ear,rar,par"/>
+    </properties>
+  </rule>
+  <rule ref="category/pom/errorprone.xml/ProjectVersionAsDependencyVersion"/>
 </ruleset>
