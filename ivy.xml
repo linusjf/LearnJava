@@ -602,7 +602,7 @@
 	<!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
 	<dependency org="gr.spinellis.ckjm"
 							name="ckjm_ext"
-							rev="2.2"
+							rev="2.3"
 							conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
 	<!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
 	<dependency org="org.codehaus.javancss"
