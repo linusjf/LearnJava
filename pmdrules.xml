@@ -62,6 +62,12 @@
   </rule>
   <rule ref="category/java/bestpractices.xml/UseVarargs"/>
   <rule ref="category/java/bestpractices.xml/WhileLoopWithLiteralBoolean"/>
+  <rule ref="category/java/bestpractices.xml/UnusedAssignment">
+    <properties>
+      <property name="checkUnusedPrefixIncrement" value="true"/>
+      <property name="reportUnusedVariables" value="true"/>
+    </properties>
+  </rule>
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
@@ -135,7 +141,7 @@
   <!-- <rule ref="category/java/codestyle.xml/MethodArgumentCouldBeFinal" /> -->
   <rule ref="category/java/codestyle.xml/NoPackage"/>
   <rule ref="category/java/codestyle.xml/UseUnderscoresInNumericLiterals"/>
-    <!-- <rule ref="category/java/codestyle.xml/OnlyOneReturn" /> -->
+  <!-- <rule ref="category/java/codestyle.xml/OnlyOneReturn" /> -->
   <rule ref="category/java/codestyle.xml/PrematureDeclaration"/>
   <rule ref="category/java/codestyle.xml/TooManyStaticImports">
     <properties>
