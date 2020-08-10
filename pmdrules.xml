@@ -27,7 +27,11 @@
   <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseBeforeAnnotation"/>
   <rule ref="category/java/bestpractices.xml/JUnit4TestShouldUseTestAnnotation"/>
   <rule ref="category/java/bestpractices.xml/JUnitAssertionsShouldIncludeMessage"/>
-  <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts"/>
+  <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts">
+    <properties>
+      <property name="maximumAsserts" value="5"/>
+    </properties>
+  </rule>
   <rule ref="category/java/bestpractices.xml/JUnitTestsShouldIncludeAssert"/>
   <rule ref="category/java/bestpractices.xml/JUnitUseExpected"/>
   <rule ref="category/java/bestpractices.xml/LooseCoupling"/>
@@ -65,7 +69,7 @@
   <rule ref="category/java/bestpractices.xml/UnusedAssignment">
     <properties>
       <property name="checkUnusedPrefixIncrement" value="true"/>
-      <property name="reportUnusedVariables" value="true"/>
+      <property name="reportUnusedVariables" value="false"/>
     </properties>
   </rule>
   <!-- NAMING CONVENTIONS -->
@@ -290,7 +294,6 @@
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals"/>
   <rule ref="category/java/errorprone.xml/ConstructorCallsOverridableMethod"/>
-  <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis"/>
   <rule ref="category/java/errorprone.xml/DetachedTestCase"/>
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly"/>
   <rule ref="category/java/errorprone.xml/DoNotCallSystemExit"/>
