@@ -156,6 +156,18 @@
 	</classpath>
 	</java>
 	</target>
+	<target name="run4">
+	<description>Run4 target</description>
+	<java classname="${main.class3}"
+				fork="true">
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+		<pathelement path="${runclasspath}" />
+  </classpath>
+  <arg line="performance 10000"/>
+	</java>
+	</target>
 	<target name="format">
 	<fileset dir="${basedir}"
 					id="javasrcs">
