@@ -572,12 +572,12 @@
 	<!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
 	<dependency org="com.github.spotbugs"
 							name="spotbugs"
-							rev="4.1.1"
+							rev="4.1.2"
 							conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
 	<!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
 	<dependency org="com.github.spotbugs"
 							name="spotbugs-ant"
-							rev="4.1.1"
+							rev="4.1.2"
 							conf="spotbugs-ant.main-&gt;master;" />
 	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
 	<dependency org="org.slf4j"
