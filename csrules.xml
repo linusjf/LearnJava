@@ -400,8 +400,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="SuperClone"/>
     <module name="SuperFinalize"/>
     <module name="RequireThis"/>
-    <module name="ReturnCount">
-      <property name="max" value="3"/>
-    </module>
+  <module name="ReturnCount">
+  <property name="max" value="3"/>
+  <property name="maxForVoid" value="3"/>
+</module>
   </module>
 </module>
