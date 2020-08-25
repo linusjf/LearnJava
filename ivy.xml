@@ -287,7 +287,7 @@
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
 	<dependency org="com.google.googlejavaformat"
 							name="google-java-format"
-							rev="1.8"
+							rev="1.9"
 							conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
 	<!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
 	<dependency org="com.puppycrawl.tools"
@@ -567,7 +567,7 @@
 	<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 	<dependency org="org.assertj"
 							name="assertj-core"
-							rev="3.16.1"
+							rev="3.17.0"
 							conf="assertj-core.main-&gt;master" />
 	<!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
 	<dependency org="com.github.spotbugs"

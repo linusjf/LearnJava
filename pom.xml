@@ -16,7 +16,7 @@
     <dependency>
       <groupId>com.google.googlejavaformat</groupId>
       <artifactId>google-java-format</artifactId>
-      <version>1.8</version>
+      <version>1.9</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -358,7 +358,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.16.1</version>
+      <version>3.17.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
