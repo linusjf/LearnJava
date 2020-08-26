@@ -463,7 +463,7 @@
 	<!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
 	<dependency org="net.sf.saxon"
 							name="Saxon-HE"
-							rev="10.1"
+							rev="10.2"
 							conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
 	<!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
 	<dependency org="com.github.javaparser"
