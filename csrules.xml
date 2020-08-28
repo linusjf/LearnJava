@@ -400,9 +400,23 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="SuperClone"/>
     <module name="SuperFinalize"/>
     <module name="RequireThis"/>
-  <module name="ReturnCount">
-  <property name="max" value="3"/>
-  <property name="maxForVoid" value="3"/>
-</module>
+    <module name="ReturnCount">
+      <property name="max" value="3"/>
+      <property name="maxForVoid" value="3"/>
+    </module>
+    <module name="IllegalIdentifierName">
+      <property name="format" value="(?i)^(?!(record|yield|var                     |permits|sealed|open|transitive|_)$).+$"/>
+    </module>
+    <module name="RecordComponentNumber">
+      <property name="max" value="3"/>
+      <property name="accessModifiers" value="private"/>
+    </module>
+    <module name="RecordComponentNumber">
+      <property name="max" value="10"/>
+      <property name="accessModifiers" value="public"/>
+    </module>
+    <module name="RecordTypeParameterName">
+      <property name="format" value="^[a-zA-Z]$"/>
+    </module>
   </module>
 </module>
