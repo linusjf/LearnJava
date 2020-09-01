@@ -72,6 +72,7 @@
       <property name="reportUnusedVariables" value="false"/>
     </properties>
   </rule>
+  <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
@@ -290,6 +291,7 @@
       <property name="types" value="java.lang.AutoCloseable , java.sql.Connection , java.sql.Statement , java.sql.ResultSet"/>
       <property name="closeAsDefaultTarget" value="true"/>
       <property name="allowedResourceTypes" value="java.io.ByteArrayOutputStream | java.io.ByteArrayInputStream | java.io.StringWriter | java.io.CharArrayWriter | java.util.stream.Stream | java.util.stream.IntStream | java.util.stream.LongStream | java.util.stream.DoubleStream"/>
+      <property name="closeNotInFinally" value="true" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals"/>
