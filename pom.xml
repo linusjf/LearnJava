@@ -316,7 +316,7 @@
     <dependency>
       <groupId>org.jacoco</groupId>
       <artifactId>org.jacoco.cli</artifactId>
-      <version>0.8.5</version>
+      <version>0.8.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
