@@ -72,7 +72,7 @@
       <property name="reportUnusedVariables" value="false"/>
     </properties>
   </rule>
-  <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
+  <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables"/>
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
@@ -291,7 +291,7 @@
       <property name="types" value="java.lang.AutoCloseable , java.sql.Connection , java.sql.Statement , java.sql.ResultSet"/>
       <property name="closeAsDefaultTarget" value="true"/>
       <property name="allowedResourceTypes" value="java.io.ByteArrayOutputStream | java.io.ByteArrayInputStream | java.io.StringWriter | java.io.CharArrayWriter | java.util.stream.Stream | java.util.stream.IntStream | java.util.stream.LongStream | java.util.stream.DoubleStream"/>
-      <property name="closeNotInFinally" value="true" />
+      <property name="closeNotInFinally" value="true"/>
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals"/>
@@ -379,7 +379,7 @@
   <rule ref="category/java/multithreading.xml/DoubleCheckedLocking"/>
   <rule ref="category/java/multithreading.xml/NonThreadSafeSingleton"/>
   <rule ref="category/java/multithreading.xml/UnsynchronizedStaticFormatter"/>
-  <!--  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/> -->
+  <rule ref="category/java/multithreading.xml/UseConcurrentHashMap"/> 
   <rule ref="category/java/multithreading.xml/UseNotifyAllInsteadOfNotify"/>
   <rule ref="category/java/performance.xml/AddEmptyString"/>
   <rule ref="category/java/performance.xml/AppendCharacterWithChar"/>
