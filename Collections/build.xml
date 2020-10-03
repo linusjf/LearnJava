@@ -107,6 +107,17 @@
 			includes="**/*.class"
 			manifest="${jar.manifest}"></jar>
 	</target>
+	<target name="run18">
+	<description>TestListIterator target</description>
+	<java classname="${main.class18}"
+				fork="true">
+	<jvmarg value="${java.params}" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
 	<target name="run17">
 	<description>VectorBenchAgain target</description>
 	<java classname="${main.class17}"

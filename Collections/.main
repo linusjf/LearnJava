@@ -16,3 +16,4 @@ collections.ReverseCapture
 collections.WildcardRestrictions
 collections.VectorBench
 collections.VectorBenchAgain
+collections.TestListIterator
