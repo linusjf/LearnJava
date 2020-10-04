@@ -2,7 +2,6 @@ package collections;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.SplitIterator;
 import java.util.List;
 
 public enum TestListIterator {
@@ -20,6 +19,14 @@ public enum TestListIterator {
       iter.remove();
       if (val == 100)
         iter.add(400);
+    }
+    System.out.println(ints);
+    iter = ints.listIterator(0);
+    while (iter.hasNext()) {
+      int val = iter.next();
+      iter.remove();
+      iter.add(val + 1);
+      iter.add(val - 1);
     }
     System.out.println(ints);
   }
