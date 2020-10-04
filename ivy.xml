@@ -383,12 +383,12 @@
 	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
 	<dependency org="org.apache.tomcat"
 							name="tomcat-servlet-api"
-							rev="9.0.37"
+							rev="9.0.38"
 							conf="tomcat-servlet-api.main-&gt;master" />
 	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
 	<dependency org="org.apache.tomcat"
 							name="tomcat-jsp-api"
-							rev="9.0.37"
+							rev="9.0.38"
 							conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
 	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 	<dependency org="org.junit.jupiter"
