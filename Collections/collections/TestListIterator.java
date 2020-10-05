@@ -29,5 +29,38 @@ public enum TestListIterator {
       iter.add(val - 1);
     }
     System.out.println(ints);
+    testAddIteratedCheck();
   }
+
+    static void testAddIteratedCheck() {
+      LinkedList<Integer> list = new LinkedList<>();
+
+      list.add(10);
+      list.add(20);
+      list.add(1);
+      ListIterator<Integer> iter = list.listIterator();
+      while (iter.hasNext()) {
+        System.out.println("iter : " + iter);
+        int val = iter.next();
+        System.out.println("iter next : " + iter);
+        System.out.println(list);
+        iter.remove();
+        System.out.println("iter remove : " + iter);
+        System.out.println(list);
+        iter.add(val + 1);
+        System.out.println("iter first add : " + iter);
+        System.out.println(list);
+        if (iter.hasPrevious()) { 
+          val = iter.previous();
+        System.out.println("iter previous : " + iter);
+        System.out.println(list);
+        }
+        iter.add(val + 1);
+        System.out.println("iter second add : " + iter);
+        System.out.println(list);
+        if (list.size() >= 100)
+          break;
+      }
+      System.out.println(list);
+    }
 }
