@@ -662,7 +662,7 @@
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency org="org.projectlombok"
 							name="lombok"
-							rev="1.18.12"
+							rev="1.18.14"
 							conf="lombok.main-&gt;master" />
 	</dependencies>
 </ivy-module>
