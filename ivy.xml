@@ -651,7 +651,7 @@
 							conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
 	<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
 	<dependency org="org.hamcrest"
-							name="hamcret"
+							name="hamcrest"
 							rev="2.2"
 							conf="hamcrest.main-&gt;master;" />
 	<!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->

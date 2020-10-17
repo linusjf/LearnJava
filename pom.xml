@@ -238,13 +238,13 @@
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-core</artifactId>
-      <version>3.16.1</version>
+      <version>3.16.2</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-symbol-solver-core</artifactId>
-      <version>3.16.1</version>
+      <version>3.16.2</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -454,7 +454,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>29.0-jre</version>
+      <version>30.0-jre</version>
       <optional>true</optional>
     </dependency>
     <dependency>
