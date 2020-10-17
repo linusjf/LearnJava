@@ -468,12 +468,12 @@
 	<!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
 	<dependency org="com.github.javaparser"
 							name="javaparser-core"
-							rev="3.16.1"
+							rev="3.16.2"
 							conf="javaparser-core.main-&gt;master" />
 	<!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
 	<dependency org="com.github.javaparser"
 							name="javaparser-symbol-solver-core"
-							rev="3.16.1"
+							rev="3.16.2"
 							conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
 	<!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
 	<dependency org="com.github.javaparser"
@@ -647,11 +647,11 @@
 	<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 	<dependency org="com.google.guava"
 							name="guava"
-							rev="29.0-jre"
+							rev="30.0-jre"
 							conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
 	<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
 	<dependency org="org.hamcrest"
-							name="hamcrest"
+							name="hamcret"
 							rev="2.2"
 							conf="hamcrest.main-&gt;master;" />
 	<!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->
@@ -662,7 +662,7 @@
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency org="org.projectlombok"
 							name="lombok"
-							rev="1.18.14"
+							rev="1.18.16"
 							conf="lombok.main-&gt;master" />
 	</dependencies>
 </ivy-module>

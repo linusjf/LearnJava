@@ -19,10 +19,10 @@
 <ivysettings>
 	<!--<properties file="${ivy.settings.dir}/ivy.properties" /> -->
 	<properties file="ivy.properties" />
-	<settings defaultResolver="tray" />
+	<settings defaultResolver="central" />
 	<resolvers>
-	<!--     <ibiblio name="central" m2compatible="true"/> -->
-	<bintray name="tray" />
+	<ibiblio name="central" m2compatible="true"/> 
+	<!--bintray name="tray" /-->
 	</resolvers>
 	<include url="${ivy.default.settings.dir}/ivysettings-public.xml" />
 	<include url="ivysettings-shared.xml" />
