@@ -172,25 +172,25 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jmx</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -202,13 +202,13 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-annotations</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jsp</artifactId>
-      <version>10.0.0.beta2</version>
+      <version>10.0.0.beta3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
