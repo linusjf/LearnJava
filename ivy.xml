@@ -286,6 +286,8 @@
     description="jmh main jars" />
   <conf name="jmh.lib"
     description="jmh lib jars" />
+  <conf name="jmh-generator-annprocess.main"
+    description="jmh-generator-annprocess jars" />
 	</configurations>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -673,5 +675,10 @@
     name="jmh-core" 
     rev="1.26"
     conf="jmh.main-&gt;master;jmh.lib->compile" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-generator-annprocess" 
+    rev="1.26"
+    conf="jmh-generator-annprocess.main-&gt;master" />
 	</dependencies>
 </ivy-module>

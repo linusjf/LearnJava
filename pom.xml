@@ -481,5 +481,11 @@
       <version>1.26</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-annprocess</artifactId>
+      <version>1.26</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>
