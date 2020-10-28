@@ -281,7 +281,11 @@
 	<conf name="esapi.lib"
 				description="esapi lib jars" />
 	<conf name="lombok.main"
-				description="lombok main jars" />
+    description="lombok main jars" />
+  <conf name="jmh.main"
+    description="jmh main jars" />
+  <conf name="jmh.lib"
+    description="jmh lib jars" />
 	</configurations>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -663,6 +667,11 @@
 	<dependency org="org.projectlombok"
 							name="lombok"
 							rev="1.18.16"
-							conf="lombok.main-&gt;master" />
+    conf="lombok.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-core" 
+    rev="1.26"
+    conf="jmh.main-&gt;master;jmh.lib->compile" />
 	</dependencies>
 </ivy-module>
