@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../jmh.cp run.cp
+cp ../jmh.cp compile.cp
