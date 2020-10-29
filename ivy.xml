@@ -601,7 +601,7 @@
 	<!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
 	<dependency org="com.h3xstream.findsecbugs"
 							name="findsecbugs-plugin"
-							rev="1.10.1"
+							rev="1.11.0"
 							conf="findsecbugs-plugin.main-&gt;master" />
 	<!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
 	<dependency org="com.mebigfatguy.sb-contrib"
