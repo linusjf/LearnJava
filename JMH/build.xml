@@ -10,6 +10,7 @@
 	<property file="../spotbugs.properties" />
 	<property file="../antcontrib.properties" />
 	<property file="../jmh.properties" />
+	<property file="../groovy-ant.properties" />
 	<!-- Sets variables which can later be used. -->
 	<!-- The value of a property is accessed via ${} -->
 	<property name="src.dir"
@@ -38,6 +39,8 @@
 						srcfile="../${spotbugs-plugin.classpath.file}" />
 	<loadfile property="antcontrib.cp"
 						srcFile="../${antcontrib.classpath.file}" />
+	<loadfile property="groovy-ant.cp"
+						srcFile="../${groovy-ant.classpath.file}" />
 	<loadfile property="compilerclasspath"
 						srcFile="${compile.cp}" />
 	<loadfile property="runclasspath"
@@ -111,9 +114,11 @@
 	<!--Creates the deployable jar file  -->
 	<target name="jar"
 				depends="loadclasspath,compile,manifest">
-	<taskdef resource="net/sf/antcontrib/antlib.xml"
-					classpath="${antcontrib.cp}"></taskdef>
-	<jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
+ <taskdef name="groovy"
+         classname="org.codehaus.groovy.ant.Groovy"
+   classpathref="${groovy-ant.cp}"/>
+ <groovy src="jar.groovy"/>
+ <!--  <jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
 			basedir="${build.dir}"
 			includes="**/*.class">
 	<manifest>
@@ -129,7 +134,7 @@
 								excludes="**/META-INF/services/**" />
 		</sequential>
 	</for>
-	</jar>
+</jar> -->
 	</target>
 	<target name="run"
 				depends="loadclasspath">
