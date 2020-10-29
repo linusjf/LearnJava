@@ -1,7 +1,7 @@
 package lexpr;
 
-import java.util.Stack;
 import java.util.Objects;
+import java.util.Stack;
 
 /** Sample "calculator". */
 public class Evaluator extends LExprBaseListener {
@@ -50,9 +50,8 @@ public class Evaluator extends LExprBaseListener {
 
   @Override
   public String toString() {
-    return Evaluator.class.getName() + ": " +
-      ((Object)this).toString() + " " +
-      stack;
+    return Evaluator.class.getName() + ": " + ((Object)this).toString() + " "
+        + stack;
   }
 
   @Override
@@ -64,7 +63,7 @@ public class Evaluator extends LExprBaseListener {
     }
     return false;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hashCode(stack);

@@ -17,11 +17,9 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
 
   @Override
   public String toString() {
-    return EvalVisitorImpl.class + " : " +
-      (Object)this + "memory : " +
-      memory;
+    return EvalVisitorImpl.class + " : " + (Object)this + "memory : " + memory;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -36,7 +34,7 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
   public int hashCode() {
     return Objects.hashCode(memory);
   }
-  
+
   @Override
   public Integer visitClear(LabeledClearExprParser.ClearContext ctx) {
     memory.clear();
@@ -82,7 +80,7 @@ public class EvalVisitorImpl extends LabeledClearExprBaseVisitor<Integer> {
     String id = ctx.ID().getText();
     Integer val = memory.get(id);
     if (val == null)
-    return 0;
+      return 0;
     return val;
   }
 

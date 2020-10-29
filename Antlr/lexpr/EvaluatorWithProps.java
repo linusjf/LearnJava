@@ -11,11 +11,10 @@ public class EvaluatorWithProps extends LExprBaseListener {
 
   @Override
   public String toString() {
-    return EvaluatorWithProps.class + " : " +
-      (Object)this + " values = " +
-      values;
+    return EvaluatorWithProps.class + " : " + (Object)this
+        + " values = " + values;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -29,7 +28,7 @@ public class EvaluatorWithProps extends LExprBaseListener {
   public int hashCode() {
     return Objects.hashCode(values);
   }
-  
+
   // Need to pass e's value out of rule s : e ;
   @Override
   public void exitS(LExprParser.SContext ctx) {

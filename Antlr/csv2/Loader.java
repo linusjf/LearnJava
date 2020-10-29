@@ -17,23 +17,19 @@ public class Loader extends CSV2BaseListener {
 
   @Override
   public String toString() {
-    return Loader.class + " : " +
-      (Object)this + "header : " +
-      header + " currentRowFieldValues : " +
-      currentRowFieldValues + " rows: " +
-      rows;
+    return Loader.class + " : " + (Object)this + "header : " + header
+        + " currentRowFieldValues : " + currentRowFieldValues
+        + " rows: " + rows;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o instanceof Loader) {
-      Loader loader = (Loader) o;
-      return header.equals(loader.header)
-        && rows.equals(loader.rows) 
-        && currentRowFieldValues.equals(
-            loader.currentRowFieldValues);
+      Loader loader = (Loader)o;
+      return header.equals(loader.header) && rows.equals(loader.rows)
+          && currentRowFieldValues.equals(loader.currentRowFieldValues);
     }
     return false;
   }
@@ -62,7 +58,7 @@ public class Loader extends CSV2BaseListener {
     if (ctx.getParent().getRuleIndex() == CSV2Parser.RULE_hdr)
       return;
     // It's a data row
-    int size = (int)(currentRowFieldValues.size() / 0.75); 
+    int size = (int)(currentRowFieldValues.size() / 0.75);
     Map<String, String> m = new LinkedHashMap<>(size);
     int i = 0;
     for (String v: currentRowFieldValues) {

@@ -18,11 +18,10 @@ public class Graph {
 
   @Override
   public String toString() {
-    return Graph.class + " : " +
-      (Object)this + " edges : " +
-      edges + " vertices: " + vertices;
+    return Graph.class + " : " + (Object)this + " edges : " + edges
+        + " vertices: " + vertices;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -38,6 +37,7 @@ public class Graph {
   public int hashCode() {
     return Objects.hash(edges, vertices);
   }
+
   void addEdge(Edge edge) {
     edges.add(edge);
     vertices.add(edge.getFromVertex());

@@ -8,14 +8,11 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 public class XMLEmitter extends JSON2BaseListener {
   ParseTreeProperty<String> xml = new ParseTreeProperty<>();
 
-
   @Override
   public String toString() {
-    return XMLEmitter.class + " : " +
-      (Object)this + "xml : " +
-      xml;
+    return XMLEmitter.class + " : " + (Object)this + "xml : " + xml;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -30,7 +27,7 @@ public class XMLEmitter extends JSON2BaseListener {
   public int hashCode() {
     return Objects.hashCode(xml);
   }
-  
+
   String getXML(ParseTree ctx) {
     return xml.get(ctx);
   }

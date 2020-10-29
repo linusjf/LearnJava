@@ -17,11 +17,9 @@ public class EvalVisitorImpl extends LabeledExprBaseVisitor<Integer> {
 
   @Override
   public String toString() {
-    return EvalVisitorImpl.class + " : " +
-      (Object)this + "memory : " +
-      memory;
+    return EvalVisitorImpl.class + " : " + (Object)this + "memory : " + memory;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -31,7 +29,7 @@ public class EvalVisitorImpl extends LabeledExprBaseVisitor<Integer> {
     }
     return false;
   }
- 
+
   @Override
   public int hashCode() {
     return Objects.hashCode(memory);

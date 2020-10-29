@@ -13,11 +13,9 @@ public class MyGraphListenerImpl extends GraphBaseListener {
 
   @Override
   public String toString() {
-    return MyGraphListenerImpl.class + " : " +
-      (Object)this + " graph : " +
-      g;
+    return MyGraphListenerImpl.class + " : " + (Object)this + " graph : " + g;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
@@ -32,7 +30,7 @@ public class MyGraphListenerImpl extends GraphBaseListener {
   public int hashCode() {
     return Objects.hashCode(g);
   }
-  
+
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public void exitEdge(GraphParser.EdgeContext ctx) {

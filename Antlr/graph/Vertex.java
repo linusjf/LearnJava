@@ -26,11 +26,10 @@ public class Vertex implements Comparable<Vertex> {
   public int hashCode() {
     return Objects.hashCode(label);
   }
-  
+
   @Override
   public String toString() {
-    return Vertex.class + " : " + (Object)this +
-      "label : " + label;
+    return Vertex.class + " : " + (Object)this + "label : " + label;
   }
 
   public String getLabel() {
