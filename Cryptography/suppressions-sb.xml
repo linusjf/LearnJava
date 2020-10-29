@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Method name="hashCode" />
-	<Bug code="USBR" />
-	</Match>
-	<Match>
-	<Bug code="STT, SECPTI, SECPR, OPM" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_RANDOM_SEED" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_THREAD_PRIORITIES" />
-	</Match>
+  <Match>
+    <Method name="hashCode" />
+    <Bug code="USBR" />
+  </Match>
+  <Match>
+    <Bug code="STT, SECPTI, SECPR, OPM" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_RANDOM_SEED" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_THREAD_PRIORITIES" />
+  </Match>
 </FindBugsFilter>

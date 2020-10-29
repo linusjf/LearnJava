@@ -1,433 +1,433 @@
 <?xml version="1.0"?>
 <project name="Reflection"
-				default="main"
-				basedir=".">
-	<property file="build.properties" />
-	<property file="../globalbuild.properties" />
-	<property file="../checkstyle.properties" />
-	<property file="../gformat.properties" />
-	<property file="../pmd.properties" />
-	<property file="../spotbugs.properties" />
-	<!-- Sets variables which can later be used. -->
-	<!-- The value of a property is accessed via ${} -->
-	<property name="src.dir"
-					location="." />
-	<property name="build.dir"
-					location="." />
-	<property name="dist.dir"
-					location="dist" />
-	<property name="docs.dir"
-					location="docs" />
-	<target name="loadclasspath"
-				depends="setupclasspath">
-	<loadfile property="cs.cp"
-						srcFile="../${cs.classpath.file}" />
-	<loadfile property="pmd.cp"
-						srcFile="../${pmd.classpath.file}" />
-	<loadfile property="spotbugs.cp"
-						srcfile="../${spotbugs.classpath.file}" />
-	<loadfile property="spotbugs-plugins.cp"
-						srcfile="../${spotbugs-plugin.classpath.file}" />
-	<loadfile property="compilerclasspath"
-						srcFile="${compile.cp}" />
-	<loadfile property="runtimeclasspath"
-						srcFile="${run.cp}" />
-	</target>
-	<!-- Deletes the existing build, docs and dist directory-->
-	<target name="clean">
-	<delete>
-	<fileset dir="."
-						includes="**/*.class" />
-	</delete>
-	<delete dir="${docs.dir}" />
-	<delete dir="${dist.dir}" />
-	</target>
-	<!-- Creates the  build, docs and dist directory-->
-	<target name="makedir">
-	<mkdir dir="${docs.dir}" />
-	<mkdir dir="${dist.dir}" />
-	</target>
-	<!-- Compiles the java code (including the usage of library for JUnit -->
-	<target name="compile"
-				depends="loadclasspath,clean, makedir,format,checkstyle">
-	<javac includeantruntime="false"
-				srcdir="${src.dir}"
-				destdir="${build.dir}"
-				classpath="${compilerclasspath}"
-				fork="true">
-	<compilerarg value="${javac.params}" />
-	<compilerarg value="${javac.params1}" />
-	</javac>
-	</target>
-	<!-- Creates Javadoc -->
-	<target name="docs"
-				depends="loadclasspath,compile">
-	<javadoc packagenames="${packages}"
-					sourcepath="${src.dir}"
-					destdir="${docs.dir}"
-					additionalparam="${javadoc.params}"
-					classpath="${compilerclasspath}"></javadoc>
-	</target>
-	<target name="manifest">
-	<tstamp />
-	<exec executable="bash"
-				outputproperty="build">
-	<arg value="-c" />
-	<arg value="git log --pretty=format:'%h' | head -1" />
-	</exec>
-	<manifest mode="update"
-						file="${jar.manifest}">
-	<attribute name="Built-By"
-							value="${user.name}" />
-	<section name="common">
-		<attribute name="Specification-Title"
-							value="${ant.project.name}" />
-		<attribute name="Specification-Version"
-							value="${version}" />
-		<attribute name="Specification-Vendor"
-							value="" />
-		<attribute name="Implementation-Title"
-							value="" />
-		<attribute name="Implementation-Version"
-							value="${build} ${TODAY}" />
-		<attribute name="Implementation-Vendor"
-							value="" />
-	</section>
-	<attribute name="Main-Class"
-							value="${main.class}" />
-	</manifest>
-	</target>
-	<!--Creates the deployable jar file  -->
-	<target name="jar"
-				depends="loadclasspath,compile,manifest">
-	<jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
-			basedir="${build.dir}"
-			includes="**/*.class"
-			manifest="${jar.manifest}"></jar>
-	</target>
-	<target name="run21">
-	<description>Run21 target</description>
-	<java classname="${main.class20}">
-	<classpath>
-		<pathelement location="${runtimeclasspath}" />
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run20">
-	<description>Run20 target</description>
-	<java classname="${main.class19}">
-	<classpath>
-		<pathelement location="${runtimeclasspath}" />
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run19">
-	<description>Run19 target</description>
-	<java classname="${main.class18}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run18">
-	<description>Run18 target</description>
-	<java classname="${main.class17}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run17">
-	<description>Run17 target</description>
-	<java classname="${main.class16}">
-	<arg value="java.io.File" />
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run16">
-	<description>Run16 target</description>
-	<java classname="${main.class16}">
-	<arg value="java.lang.String" />
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run15">
-	<description>Run15 target</description>
-	<java classname="${main.class15}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run14">
-	<description>Run14 target</description>
-	<java classname="${main.class14}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run13">
-	<description>Run13 target</description>
-	<java classname="${main.class13}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run12">
-	<description>Run12 target</description>
-	<java classname="${main.class12}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run11">
-	<description>Run11 target</description>
-	<java classname="${main.class11}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run10">
-	<description>Run10 target</description>
-	<java classname="${main.class10}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run9">
-	<description>Run9 target</description>
-	<java classname="${main.class9}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run8">
-	<description>Run8 target</description>
-	<java classname="${main.class8}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run7">
-	<description>Run7 target</description>
-	<java classname="${main.class7}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run6">
-	<description>Run6 target</description>
-	<java classname="${main.class6}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run5">
-	<description>Run5 target</description>
-	<java classname="${main.class5}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run4">
-	<description>Run4 target</description>
-	<java classname="${main.class4}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run3">
-	<description>Run3 target</description>
-	<java classname="${main.class3}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run2">
-	<description>Run2 target</description>
-	<java classname="${main.class2}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run1">
-	<description>Run1 target</description>
-	<java classname="${main.class1}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="run"
-				depends="loadclasspath,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
+         default="main"
+         basedir=".">
+  <property file="build.properties" />
+  <property file="../globalbuild.properties" />
+  <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
+  <property file="../pmd.properties" />
+  <property file="../spotbugs.properties" />
+  <!-- Sets variables which can later be used. -->
+  <!-- The value of a property is accessed via ${} -->
+  <property name="src.dir"
+            location="." />
+  <property name="build.dir"
+            location="." />
+  <property name="dist.dir"
+            location="dist" />
+  <property name="docs.dir"
+            location="docs" />
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runtimeclasspath"
+              srcFile="${run.cp}" />
+  </target>
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete>
+      <fileset dir="."
+               includes="**/*.class" />
+    </delete>
+    <delete dir="${docs.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${docs.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+  <!-- Compiles the java code (including the usage of library for JUnit -->
+  <target name="compile"
+          depends="loadclasspath,clean, makedir,format,checkstyle">
+    <javac includeantruntime="false"
+           srcdir="${src.dir}"
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}"
+           fork="true">
+      <compilerarg value="${javac.params}" />
+      <compilerarg value="${javac.params1}" />
+    </javac>
+  </target>
+  <!-- Creates Javadoc -->
+  <target name="docs"
+          depends="loadclasspath,compile">
+    <javadoc packagenames="${packages}"
+             sourcepath="${src.dir}"
+             destdir="${docs.dir}"
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
+  </target>
+  <target name="manifest">
+    <tstamp />
+    <exec executable="bash"
+          outputproperty="build">
+      <arg value="-c" />
+      <arg value="git log --pretty=format:'%h' | head -1" />
+    </exec>
+    <manifest mode="update"
+              file="${jar.manifest}">
+      <attribute name="Built-By"
+                 value="${user.name}" />
+      <section name="common">
+        <attribute name="Specification-Title"
+                   value="${ant.project.name}" />
+        <attribute name="Specification-Version"
+                   value="${version}" />
+        <attribute name="Specification-Vendor"
+                   value="" />
+        <attribute name="Implementation-Title"
+                   value="" />
+        <attribute name="Implementation-Version"
+                   value="${build} ${TODAY}" />
+        <attribute name="Implementation-Vendor"
+                   value="" />
+      </section>
+      <attribute name="Main-Class"
+                 value="${main.class}" />
+    </manifest>
+  </target>
+  <!--Creates the deployable jar file  -->
+  <target name="jar"
+          depends="loadclasspath,compile,manifest">
+    <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
+         basedir="${build.dir}"
+         includes="**/*.class"
+         manifest="${jar.manifest}"></jar>
+  </target>
+  <target name="run21">
+    <description>Run21 target</description>
+    <java classname="${main.class20}">
+      <classpath>
+        <pathelement location="${runtimeclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run20">
+    <description>Run20 target</description>
+    <java classname="${main.class19}">
+      <classpath>
+        <pathelement location="${runtimeclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run19">
+    <description>Run19 target</description>
+    <java classname="${main.class18}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run18">
+    <description>Run18 target</description>
+    <java classname="${main.class17}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run17">
+    <description>Run17 target</description>
+    <java classname="${main.class16}">
+      <arg value="java.io.File" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run16">
+    <description>Run16 target</description>
+    <java classname="${main.class16}">
+      <arg value="java.lang.String" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run15">
+    <description>Run15 target</description>
+    <java classname="${main.class15}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run14">
+    <description>Run14 target</description>
+    <java classname="${main.class14}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run13">
+    <description>Run13 target</description>
+    <java classname="${main.class13}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run12">
+    <description>Run12 target</description>
+    <java classname="${main.class12}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run11">
+    <description>Run11 target</description>
+    <java classname="${main.class11}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run10">
+    <description>Run10 target</description>
+    <java classname="${main.class10}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run9">
+    <description>Run9 target</description>
+    <java classname="${main.class9}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run8">
+    <description>Run8 target</description>
+    <java classname="${main.class8}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run7">
+    <description>Run7 target</description>
+    <java classname="${main.class7}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run6">
+    <description>Run6 target</description>
+    <java classname="${main.class6}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run5">
+    <description>Run5 target</description>
+    <java classname="${main.class5}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run4">
+    <description>Run4 target</description>
+    <java classname="${main.class4}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run3">
+    <description>Run3 target</description>
+    <java classname="${main.class3}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Run2 target</description>
+    <java classname="${main.class2}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run1">
+    <description>Run1 target</description>
+    <java classname="${main.class1}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run"
+          depends="loadclasspath,run21,run20,run19,run18,run17,run16,run15,run14,run13,run12,run11,run10,run9,run8,run7,run6,run5,run4,run3,run2,run1">
 
-	<description>Run target</description>
-	<java classname="${main.class}">
-	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="format">
-	<fileset dir="${basedir}"
-					id="javasrcs">
-	<include name="**/*.java" />
-	</fileset>
-	<pathconvert property="sources"
-							refid="javasrcs"
-							pathsep=" " />
-	<loadfile property="gformat.cp"
-						srcFile="../${gformat.classpath.file}" />
-	<java classname="${gformat.main.class}"
-				fork="true">
-	<arg line="-i ${sources}" />
-	<classpath>
-		<pathelement path="${gformat.cp}" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	<exec executable="bash">
-	<arg line="../cformat ${basedir}" />
-	</exec>
-	<exec executable="bash">
-	<arg line="../xformatall ${basedir}" />
-	</exec>
-	</target>
-	<target name="checkstyleg"
-				depends="loadclasspath">
-	<fileset dir="${basedir}"
-					id="javasrcs">
-	<include name="**/*.java" />
-	</fileset>
-	<pathconvert property="sources"
-							refid="javasrcs"
-							pathsep=" " />
-	<loadfile property="cs.cp"
-						srcFile="../${cs.classpath.file}" />
-	<java classname="${cs.main.class}"
-				logError="true">
-	<arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
-	<classpath>
-		<pathelement path="${cs.cp}" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</java>
-	</target>
-	<target name="checkstyle"
-				depends="loadclasspath">
-	<taskdef resource="${cs.taskdef.resource}"
-					classpath="${cs.cp}" />
-	<first id="checkstylefile">
-	<fileset dir=".."
-						includes="${cs.config}" />
-	</first>
-	<checkstyle config="${toString:checkstylefile}"
-							failOnViolation="false"
-							properties="${cs.properties}">
-	<fileset dir="${src.dir}"
-						includes="**/*.java" />
-	<formatter type="plain" />
-	<formatter type="plain"
-							toFile="${cs.output}" />
-	<classpath>
-		<pathelement path="${cs.cp}" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</checkstyle>
-	</target>
-	<target name="pmd"
-				depends="loadclasspath, compile">
-	<taskdef name="pmd"
-					classname="net.sourceforge.pmd.ant.PMDTask"
-					classpath="${pmd.cp}" />
-	<property name="pmd.errCount"
-						value="0" />
-	<pmd cacheLocation="${pmd.cacheFile}"
-			minimumPriority="${pmd.minimumPriority}"
-			suppressMarker="${pmd.suppressMarker}"
-			failuresPropertyName="pmd.errCount">
-	<ruleset>../${pmd.config}</ruleset>
-	<auxclasspath>
-		<pathelement path="${basedir}" />
-	</auxclasspath>
-	<formatter type="${pmd.reportFormat}"
-							toFile="${pmd.output}"
-							toConsole="${pmd.toConsole}"></formatter>
-	<fileset dir="${basedir}">
-		<include name="**/*.java" />
-	</fileset>
-	</pmd>
-	<echo message="${pmd.errCount} violations found." />
-	</target>
-	<target name="setupclasspath">
-	<description>Run target</description>
-	<exec executable="bash">
-	<arg value="./setupclasspath" />
-	</exec>
-	</target>
-	<target name="spotbugs"
-				depends="loadclasspath">
-	<taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-					classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
-	<spotbugs output="text"
-						outputFile="${spotbugs.output}"
-						reportLevel="low"
-						effort="max"
-						nested="true"
-						excludeFilter="${spotbugs.suppressions.xml}">
-	<auxClasspath path="${basedir}" />
-	<auxClasspath location="${compilerclasspath}" />
-	<sourcePath path="${basedir}" />
-	<class location="${basedir}" />
-	<classpath>
-		<pathelement path="${spotbugs.cp}" />
-		<pathelement path="${java.class.path}" />
-	</classpath>
-	</spotbugs>
-	</target>
-	<target name="main"
-				depends="loadclasspath,compile, pmd,spotbugs,jar, docs">
-	<description>Main target</description>
-	</target>
+    <description>Run target</description>
+    <java classname="${main.class}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="format">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="gformat.cp"
+              srcFile="../${gformat.classpath.file}" />
+    <java classname="${gformat.main.class}"
+          fork="true">
+      <arg line="-i ${sources}" />
+      <classpath>
+        <pathelement path="${gformat.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <exec executable="bash">
+      <arg line="../cformat ${basedir}" />
+    </exec>
+    <exec executable="bash">
+      <arg line="../xformatall ${basedir}" />
+    </exec>
+  </target>
+  <target name="checkstyleg"
+          depends="loadclasspath">
+    <fileset dir="${basedir}"
+             id="javasrcs">
+      <include name="**/*.java" />
+    </fileset>
+    <pathconvert property="sources"
+                 refid="javasrcs"
+                 pathsep=" " />
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <java classname="${cs.main.class}"
+          logError="true">
+      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
+    <first id="checkstylefile">
+      <fileset dir=".."
+               includes="${cs.config}" />
+    </first>
+    <checkstyle config="${toString:checkstylefile}"
+                failOnViolation="false"
+                properties="${cs.properties}">
+      <fileset dir="${src.dir}"
+               includes="**/*.java" />
+      <formatter type="plain" />
+      <formatter type="plain"
+                 toFile="${cs.output}" />
+      <classpath>
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </checkstyle>
+  </target>
+  <target name="pmd"
+          depends="loadclasspath, compile">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
+    <property name="pmd.errCount"
+              value="0" />
+    <pmd cacheLocation="${pmd.cacheFile}"
+         minimumPriority="${pmd.minimumPriority}"
+         suppressMarker="${pmd.suppressMarker}"
+         failuresPropertyName="pmd.errCount">
+      <ruleset>../${pmd.config}</ruleset>
+      <auxclasspath>
+        <pathelement path="${basedir}" />
+      </auxclasspath>
+      <formatter type="${pmd.reportFormat}"
+                 toFile="${pmd.output}"
+                 toConsole="${pmd.toConsole}"></formatter>
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
+    </pmd>
+    <echo message="${pmd.errCount} violations found." />
+  </target>
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
+  <target name="spotbugs"
+          depends="loadclasspath">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+    <spotbugs output="text"
+              outputFile="${spotbugs.output}"
+              reportLevel="low"
+              effort="max"
+              nested="true"
+              excludeFilter="${spotbugs.suppressions.xml}">
+      <auxClasspath path="${basedir}" />
+      <auxClasspath location="${compilerclasspath}" />
+      <sourcePath path="${basedir}" />
+      <class location="${basedir}" />
+      <classpath>
+        <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </spotbugs>
+  </target>
+  <target name="main"
+          depends="loadclasspath,compile, pmd,spotbugs,jar, docs">
+    <description>Main target</description>
+  </target>
 </project>

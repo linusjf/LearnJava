@@ -3,37 +3,37 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xF0']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/SR/NUM_INT[@text='4']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0F']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='0x100']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xff']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/PLUS/NUM_INT[@text='0x100']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./NUM_INT[@text='0xF']]/SR[./IDENT[@text='b']]/NUM_INT[@text='4']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND/NUM_INT[@text='0xF']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xF']" />
-	<suppress-xpath files="ByteToHex.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/SR[./NUM_INT[@text='4']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xF0']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/SR/NUM_INT[@text='4']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0x0F']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='0x100']]/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xff']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/PLUS/NUM_INT[@text='0x100']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex2']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='substring']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./NUM_INT[@text='0xF']]/SR[./IDENT[@text='b']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND/NUM_INT[@text='0xF']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='b']]/NUM_INT[@text='0xF']" />
+  <suppress-xpath files="ByteToHex.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ByteToHex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getHex4']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='16']" />
 </suppressions>

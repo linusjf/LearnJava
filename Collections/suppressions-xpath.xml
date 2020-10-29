@@ -1,374 +1,282 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="AtomicArrayDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='AtomicArrayDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='vector']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='AtomicIntegerArray']]/ELIST/EXPR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="AtomicArrayDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='AtomicArrayDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='alternateMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='alternateMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='AddTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="ConcurrentLinkedDequeDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PollTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5000']"/>
-<suppress-xpath
-       files="ConcurrentSkipListMapDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='25']"/>
-<suppress-xpath
-       files="ConcurrentSkipListMapDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="ConcurrentSkipListMapDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='contact']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Contact']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='i']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="Containment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='objs']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="Containment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="Containment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='objs']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Containment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='ints']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Containment.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='ints']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="DelayedQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="DelayedQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_LONG[@text='1000L']"/>
-<suppress-xpath
-       files="DelayedQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="FootShootWithSafetyCatch.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='FootShootWithSafetyCatch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']"/>
-<suppress-xpath
-       files="Iterative.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='LinkedBlockingDeque']]/ELIST/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='300']"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="LinkedBlockingDequeueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="Lists.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="PriorityQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='taskThreads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="PriorityQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/STAR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="PriorityQueueDemo.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="Symposium.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="TaskLocalRandom.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR[./NUM_INT[@text='1023']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='range']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="VariableDeclarationUsageDistanceCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/IDENT[@text='time2']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time2']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='Sum = ']]/METHOD_CALL/DOT[./IDENT[@text='sum']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='i']]/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='i']]/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBench.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR[./NUM_INT[@text='1023']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="EmptyLineSeparatorCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='range']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="VariableDeclarationUsageDistanceCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="SingleSpaceSeparatorCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/IDENT[@text='time2']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time2']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='Sum = ']]/METHOD_CALL/DOT[./IDENT[@text='sum']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='i']]/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='i']]/NUM_INT[@text='1023']"/>
-<suppress-xpath
-       files="VectorBenchAgain.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="WildcardRestrictions.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='WildcardRestrictions']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='nums']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="WildcardRestrictions.java"
-       checks="MagicNumberCheck"
-       query="/ENUM_DEF[./IDENT[@text='WildcardRestrictions']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+  <suppress-xpath files="AtomicArrayDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicArrayDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='vector']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='AtomicIntegerArray']]/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="AtomicArrayDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicArrayDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='alternateMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='alternateMain']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='startThreads']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='AddTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="ConcurrentLinkedDequeDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentLinkedDequeDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PollTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5000']" />
+  <suppress-xpath files="ConcurrentSkipListMapDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='25']" />
+  <suppress-xpath files="ConcurrentSkipListMapDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="ConcurrentSkipListMapDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ConcurrentSkipListMapDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='contact']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Contact']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='i']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="Containment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='objs']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Containment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Containment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='objs']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Containment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='ints']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Containment.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Containment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='ints']]/METHOD_CALL[./IDENT[@text='asList']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='id']]/NUM_LONG[@text='1000L']" />
+  <suppress-xpath files="DelayedQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='DelayedQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="FootShootWithSafetyCatch.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='FootShootWithSafetyCatch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.2d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='3.4d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='6.78d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='2.45d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='3.4d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='2.56d']]" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_DOUBLE[@text='4.23d']" />
+  <suppress-xpath files="Iterative.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Iterative']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='doubles2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/UNARY_MINUS[./NUM_DOUBLE[@text='5.6d']]" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='LinkedBlockingDeque']]/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='300']" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="LinkedBlockingDequeueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LinkedBlockingDequeueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Client']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ints']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Lists.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Lists']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]/ARRAY_INIT/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="PriorityQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='taskThreads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="PriorityQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/STAR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="PriorityQueueDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='PriorityQueueDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="Symposium.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Symposium']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="TaskLocalRandom.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TaskLocalRandom']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR[./NUM_INT[@text='1023']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='range']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="VariableDeclarationUsageDistanceCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/IDENT[@text='time2']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time2']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='Sum = ']]/METHOD_CALL/DOT[./IDENT[@text='sum']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='i']]/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='i']]/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBench.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBench']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='2']]/STAR[./NUM_INT[@text='1023']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN[./IDENT[@text='sum']]/STAR/DIV[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSum']]/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='mod']]/ASSIGN/EXPR/MINUS[./NUM_INT[@text='1']]/BAND[./NUM_INT[@text='100_000_000']]/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="EmptyLineSeparatorCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='range']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="VariableDeclarationUsageDistanceCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='1024']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="SingleSpaceSeparatorCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/IDENT[@text='time2']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='lists']]/ASSIGN/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time2']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV/TYPECAST/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='Sum = ']]/METHOD_CALL/DOT[./IDENT[@text='sum']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='i']]/EXPR/METHOD_CALL/ELIST/EXPR/BAND[./IDENT[@text='i']]/NUM_INT[@text='1023']" />
+  <suppress-xpath files="VectorBenchAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='VectorBenchAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="WildcardRestrictions.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WildcardRestrictions']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='nums']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="WildcardRestrictions.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WildcardRestrictions']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
 </suppressions>

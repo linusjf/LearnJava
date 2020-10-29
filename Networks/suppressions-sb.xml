@@ -1,186 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Method name="hashCode" />
-	<Bug code="USBR" />
-	</Match>
-	<Match>
-	<Bug code="STT, SECPTI, SECPR, OPM" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_RANDOM_SEED" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_THREAD_PRIORITIES" />
-	</Match>
-	<Match>
-	<Class name="networking.HttpsClient" />
-	<Method name="connect" />
-	<Bug code="RCN,BC" />
-	</Match>
-	<Match>
-	<Class name="networking.SocketClientExample" />
-	<Method name="startClient" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.ListDicts" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.SecureOrderTaker" />
-	<Method name="main" />
-	<Bug code="RCN,BC" />
-	</Match>
-	<Match>
-	<Class name="networking.SingleFileHttpServer" />
-	<Method name="acceptAndSubmit" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="networking.DictClient" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.SocketClientDemo" />
-	<Method name="main" />
-	<Bug code="BC,RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.BinarySaver" />
-	<Method name="saveBinaryFile" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.MainClass" />
-	<Method name="createServerSocket" />
-	<Bug code="BC" />
-	</Match>
-	<Match>
-	<Class name="networking.CacheControl" />
-	<Field name="noStore" />
-	<Bug code="UwF" />
-	</Match>
-	<Match>
-	<Class name="networking.PooledDaytimeServer" />
-	<Method name="acceptAndSubmit" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="networking.ChargenClient" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.TimeServer" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.DaytimeTask" />
-	<Method name="run" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.SourceViewer2" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.SourceViewer4" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.Resource" />
-	<Field name="numResources" />
-	<Bug code="IS" />
-	</Match>
-	<Match>
-	<Class name="networking.JHttp" />
-	<Method name="acceptAndSubmit" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="networking.LoggingDaytimeServer" />
-	<Method name="acceptAndSubmit" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="networking.LoggingDaytimeServer$DaytimeTask" />
-	<Method name="call" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.PooledWebLog" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.FormPoster" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.Ping$Connector" />
-	<Method name="add" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.DaytimeServer" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.MediaClient" />
-	<Method name="downloadFile" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.SecureOrderPlacer" />
-	<Method name="main" />
-	<Bug code="BC" />
-	</Match>
-	<Match>
-	<Class name="networking.UDPEchoClientWithChannels" />
-	<Method name="echoToServer" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.UDPDiscardClientWithChannels" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.TCPEchoServer" />
-	<Method name="handleClient" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.URLEquality" />
-	<Method name="main" />
-	<Bug code="Dm" />
-	</Match>
-	<Match>
-	<Class name="networking.MediaServer" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.MediaServer" />
-	<Method name="sendFile" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.DefaultSocketOptionValues" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="networking.WebLog" />
-	<Method name="main" />
-	<Bug code="RCN" />
-	</Match>
+  <Match>
+    <Method name="hashCode" />
+    <Bug code="USBR" />
+  </Match>
+  <Match>
+    <Bug code="STT, SECPTI, SECPR, OPM" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_RANDOM_SEED" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_THREAD_PRIORITIES" />
+  </Match>
+  <Match>
+    <Class name="networking.HttpsClient" />
+    <Method name="connect" />
+    <Bug code="RCN,BC" />
+  </Match>
+  <Match>
+    <Class name="networking.SocketClientExample" />
+    <Method name="startClient" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.ListDicts" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SecureOrderTaker" />
+    <Method name="main" />
+    <Bug code="RCN,BC" />
+  </Match>
+  <Match>
+    <Class name="networking.SingleFileHttpServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.DictClient" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SocketClientDemo" />
+    <Method name="main" />
+    <Bug code="BC,RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.BinarySaver" />
+    <Method name="saveBinaryFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.MainClass" />
+    <Method name="createServerSocket" />
+    <Bug code="BC" />
+  </Match>
+  <Match>
+    <Class name="networking.CacheControl" />
+    <Field name="noStore" />
+    <Bug code="UwF" />
+  </Match>
+  <Match>
+    <Class name="networking.PooledDaytimeServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.ChargenClient" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.TimeServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DaytimeTask" />
+    <Method name="run" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SourceViewer2" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SourceViewer4" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.Resource" />
+    <Field name="numResources" />
+    <Bug code="IS" />
+  </Match>
+  <Match>
+    <Class name="networking.JHttp" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.LoggingDaytimeServer" />
+    <Method name="acceptAndSubmit" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="networking.LoggingDaytimeServer$DaytimeTask" />
+    <Method name="call" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.PooledWebLog" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.FormPoster" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.Ping$Connector" />
+    <Method name="add" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DaytimeServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.MediaClient" />
+    <Method name="downloadFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.SecureOrderPlacer" />
+    <Method name="main" />
+    <Bug code="BC" />
+  </Match>
+  <Match>
+    <Class name="networking.UDPEchoClientWithChannels" />
+    <Method name="echoToServer" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.UDPDiscardClientWithChannels" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.TCPEchoServer" />
+    <Method name="handleClient" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.URLEquality" />
+    <Method name="main" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="networking.MediaServer" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.MediaServer" />
+    <Method name="sendFile" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.DefaultSocketOptionValues" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="networking.WebLog" />
+    <Method name="main" />
+    <Bug code="RCN" />
+  </Match>
 </FindBugsFilter>

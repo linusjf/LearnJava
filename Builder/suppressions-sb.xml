@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Bug code="SPP,USBR" />
-	</Match>
-	<Match>
-	<Class name="com.javacodegeeks.patterns.builderpattern.Form" />
-	<Method name="equals" />
-	<Bug code="CC" />
-	</Match>
+  <Match>
+    <Bug code="SPP,USBR" />
+  </Match>
+  <Match>
+    <Class name="com.javacodegeeks.patterns.builderpattern.Form" />
+    <Method name="equals" />
+    <Bug code="CC" />
+  </Match>
 </FindBugsFilter>

@@ -3,31 +3,31 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="JdbcBean.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcBean']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='JdbcBean']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="JdbcBean.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcBean']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='JdbcBean']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
-	<suppress-xpath files="JdbcChange.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='42.55f']" />
-	<suppress-xpath files="JdbcChange.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='999_999']" />
-	<suppress-xpath files="JdbcChange.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2500f']" />
-	<suppress-xpath files="JdbcChange.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='displayTable']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/PLUS[./STRING_LITERAL[@text='Account holder: ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="JdbcChange.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='displayTable']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
-	<suppress-xpath files="JdbcScrollableSelect.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/PLUS[./STRING_LITERAL[@text='Account holder: ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="JdbcScrollableSelect.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="JdbcBean.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcBean']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='JdbcBean']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="JdbcBean.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcBean']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='JdbcBean']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="JdbcChange.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='42.55f']" />
+  <suppress-xpath files="JdbcChange.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='999_999']" />
+  <suppress-xpath files="JdbcChange.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2500f']" />
+  <suppress-xpath files="JdbcChange.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='displayTable']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/PLUS[./STRING_LITERAL[@text='Account holder: ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="JdbcChange.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcChange']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='displayTable']]/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="JdbcScrollableSelect.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/PLUS[./STRING_LITERAL[@text=' ']]/PLUS[./STRING_LITERAL[@text='Account holder: ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="JdbcScrollableSelect.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='JdbcScrollableSelect']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='showRow']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
 </suppressions>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Class name="command.NegatableOptionsDemo" />
-	<Field name="backup" />
-	<Bug code="UrF" />
-	</Match>
-	<Match>
-	<Class name="command.NegatableOptionsDemo" />
-	<Field name="useG1GC" />
-	<Bug code="UrF" />
-	</Match>
+  <Match>
+    <Class name="command.NegatableOptionsDemo" />
+    <Field name="backup" />
+    <Bug code="UrF" />
+  </Match>
+  <Match>
+    <Class name="command.NegatableOptionsDemo" />
+    <Field name="useG1GC" />
+    <Bug code="UrF" />
+  </Match>
 </FindBugsFilter>

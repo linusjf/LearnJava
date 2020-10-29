@@ -3,223 +3,223 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
-	<suppress-xpath files="OffHeapArray.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="SampleTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
-	<suppress-xpath files="SampleTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
-	<suppress-xpath files="SampleTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass2']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='160L']" />
-	<suppress-xpath files="SampleTest.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL/NUM_INT[@text='0xffffff00']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL/NUM_INT[@text='0x000000ff']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL[./NUM_INT[@text='0x000000ff']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="FinalClassCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SuperContainer']]" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/PLUS[./IDENT[@text='maximumOffset']]/NUM_INT[@text='8']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_LONG[@text='2L']]/NUM_INT[@text='4']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0xffffff00']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0x000000ff']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_LONG[@text='1000L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/UNARY_MINUS[./NUM_LONG[@text='10L']]" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100000L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='otherAddress']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testStrangeReflectionFactory']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='10']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='20']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ClassWithExpensiveConstructor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExpensiveLookup']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="UnsafeTest.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='ReflectionFactory']]" />
-	<suppress-xpath files="Throws.java"
-								checks="IllegalCatchCheck"
-								query="/CLASS_DEF[./IDENT[@text='Throws']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='exc']]" />
-	<suppress-xpath files="Throws.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT" />
-	<suppress-xpath files="TypeSafety.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT" />
-	<suppress-xpath files="TypeSafety.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='TypeSafety']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1_234_567_890']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logPerformance']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='AtomicVH counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicVHCounter.java"
-								checks="IllegalTokenCheck"
-								query="/CLASS_DEF[./IDENT[@text='AtomicVHCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE" />
-	<suppress-xpath files="SuperArray.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='SuperArray']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
-	<suppress-xpath files="SuperArray.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='SuperArray']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/TYPECAST/NUM_INT[@text='3']" />
-	<suppress-xpath files="UnsafeUtils.java"
-								checks="IllegalTokenCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='unsafe']]/MODIFIERS/LITERAL_VOLATILE" />
-	<suppress-xpath files="UnsafeUtils.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/STAR[./NUM_INT[@text='8']]/PLUS[./NUM_INT[@text='1']]/DIV[./IDENT[@text='maxSize']]/NUM_INT[@text='8']" />
-	<suppress-xpath files="UnsafeUtils.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/STAR/NUM_INT[@text='8']" />
-	<suppress-xpath files="UnsafeUtils.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='normalize']]/SLIST/LITERAL_RETURN/EXPR/BAND[./IDENT[@text='value']]/BSR/NUM_INT[@text='32']" />
-	<suppress-xpath files="UnsafeUtils.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="Guard.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="Guard.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Guard']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='giveAccess']]/SLIST/LITERAL_RETURN/EXPR/EQUAL/NUM_INT[@text='42']" />
-	<suppress-xpath files="Guard.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Guard']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='Lock counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='Atomic counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='CAS counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AClass.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster3']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="CASCounter.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT" />
-	<suppress-xpath files="CASCounter.java"
-								checks="IllegalTokenCheck"
-								query="/CLASS_DEF[./IDENT[@text='CASCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='counter']]/MODIFIERS/LITERAL_VOLATILE" />
-	<suppress-xpath files="Counter.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="LockCounter.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='LockCounter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='increment']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster2']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicCounterTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
-	<suppress-xpath files="AtomicCounter.java"
-								checks="IllegalImportCheck"
-								query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
-	<suppress-xpath files="AtomicCounter.java"
-								checks="IllegalTokenCheck"
-								query="/CLASS_DEF[./IDENT[@text='AtomicCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterOrdered']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterParallel']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounterClient']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numThreads']]/ASSIGN/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCASCounter']]/SLIST/VARIABLE_DEF[./IDENT[@text='numIncrements']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="OffHeapArray.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SampleTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testClassAddress']]/SLIST/VARIABLE_DEF[./IDENT[@text='addressOfSampleClass2']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='160L']" />
+  <suppress-xpath files="SampleTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL/NUM_INT[@text='0xffffff00']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL/NUM_INT[@text='0x000000ff']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertTrue']]/ELIST/EXPR/LAND/EQUAL[./NUM_INT[@text='0x000000ff']]/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100_000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="FinalClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SuperContainer']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/PLUS[./IDENT[@text='maximumOffset']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_LONG[@text='2L']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='8L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0xffffff00']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='0x000000ff']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMallaciousAllocation']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./IDENT[@text='address']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_LONG[@text='1000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testObjectAllocation']]/SLIST/VARIABLE_DEF[./IDENT[@text='c2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Container']]/ELIST/EXPR/UNARY_MINUS[./NUM_LONG[@text='10L']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100000L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPark']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='100L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='address']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/VARIABLE_DEF[./IDENT[@text='otherAddress']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='4L']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testCopy']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testStrangeReflectionFactory']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertEquals']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='10']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OtherClass']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='OtherClass']]/SLIST/EXPR/ASSIGN/NUM_INT[@text='20']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeTest']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ClassWithExpensiveConstructor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExpensiveLookup']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="UnsafeTest.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='ReflectionFactory']]" />
+  <suppress-xpath files="Throws.java"
+                  checks="IllegalCatchCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Throws']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='exc']]" />
+  <suppress-xpath files="Throws.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT" />
+  <suppress-xpath files="TypeSafety.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT" />
+  <suppress-xpath files="TypeSafety.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TypeSafety']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1_234_567_890']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logPerformance']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='AtomicVH counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicVHCounter.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AtomicVHCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="SuperArray.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SuperArray']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="SuperArray.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SuperArray']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/TYPECAST/NUM_INT[@text='3']" />
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='unsafe']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/STAR[./NUM_INT[@text='8']]/PLUS[./NUM_INT[@text='1']]/DIV[./IDENT[@text='maxSize']]/NUM_INT[@text='8']" />
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sizeOf']]/SLIST/LITERAL_RETURN/EXPR/STAR/NUM_INT[@text='8']" />
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='UnsafeUtils']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='normalize']]/SLIST/LITERAL_RETURN/EXPR/BAND[./IDENT[@text='value']]/BSR/NUM_INT[@text='32']" />
+  <suppress-xpath files="UnsafeUtils.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="Guard.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="Guard.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Guard']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='giveAccess']]/SLIST/LITERAL_RETURN/EXPR/EQUAL/NUM_INT[@text='42']" />
+  <suppress-xpath files="Guard.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Guard']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='Lock counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='Atomic counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/PLUS[./STRING_LITERAL[@text=' percent faster']]/PLUS[./STRING_LITERAL[@text='CAS counter: ']]/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AClass.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster3']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="CASCounter.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT" />
+  <suppress-xpath files="CASCounter.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CASCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='counter']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="Counter.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="LockCounter.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='LockCounter']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='increment']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster2']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounterTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AtomicCounterTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='faster']]/ASSIGN/EXPR/STAR/NUM_INT[@text='100']" />
+  <suppress-xpath files="AtomicCounter.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="AtomicCounter.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='AtomicCounter']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='value']]/MODIFIERS/LITERAL_VOLATILE" />
 </suppressions>
