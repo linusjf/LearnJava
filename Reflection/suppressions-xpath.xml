@@ -3,52 +3,52 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="Dynamic.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Dynamic']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DynamicInvocationHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invoke']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='42']" />
-  <suppress-xpath files="Loaded.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Loaded']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestClassLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadClass']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']" />
-  <suppress-xpath files="TestClassNames.java"
-                  checks="OuterTypeNumberCheck"
-                  query="/PACKAGE_DEF[./IDENT[@text='reflection']]" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="ExecutableStatementCountCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='strArrayOne']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='strArrayOne[3] (not initialized) : ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='strArrayOne[9] : ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='intArrayOne']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
-  <suppress-xpath files="Arrayed.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-  <suppress-xpath files="Mopex.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Mopex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createRenamedConstructor']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
-  <suppress-xpath files="MenagerieTest.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']" />
-  <suppress-xpath files="MenagerieTest.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']" />
-  <suppress-xpath files="ZooTest.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']" />
-  <suppress-xpath files="ZooTest.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']" />
+	<suppress-xpath files="Dynamic.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Dynamic']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DynamicInvocationHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invoke']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='42']" />
+	<suppress-xpath files="Loaded.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Loaded']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestClassLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadClass']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']" />
+	<suppress-xpath files="TestClassNames.java"
+								checks="OuterTypeNumberCheck"
+								query="/PACKAGE_DEF[./IDENT[@text='reflection']]" />
+	<suppress-xpath files="Arrayed.java"
+								checks="ExecutableStatementCountCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='strArrayOne']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='strArrayOne[3] (not initialized) : ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='strArrayOne[9] : ']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='intArrayOne']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='9']" />
+	<suppress-xpath files="Arrayed.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='Arrayed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+	<suppress-xpath files="Mopex.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Mopex']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createRenamedConstructor']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='40']" />
+	<suppress-xpath files="MenagerieTest.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']" />
+	<suppress-xpath files="MenagerieTest.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='MenagerieTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']" />
+	<suppress-xpath files="ZooTest.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='271']" />
+	<suppress-xpath files="ZooTest.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='ZooTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='panda2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_INT[@text='221']" />
 </suppressions>

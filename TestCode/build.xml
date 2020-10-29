@@ -1,176 +1,176 @@
 <?xml version="1.0"?>
 <project name="TestCode"
-         default="main"
-         basedir=".">
-  <property file="build.properties" />
-  <property file="../globalbuild.properties" />
-  <property file="../gformat.properties" />
-  <property file="../checkstyle.properties" />
-  <property file="../pmd.properties" />
-  <property file="../spotbugs.properties" />
-  <property name="src.dir"
-            location="." />
-  <property name="build.dir"
-            location="." />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
-  <target name="manifest">
-    <tstamp />
-    <manifest mode="update"
-              file="manifest.mf">
-      <attribute name="Built-By"
-                 value="${user.name}" />
-      <section name="common">
-        <attribute name="Specification-Title"
-                   value="${ant.project.name}" />
-        <attribute name="Specification-Version"
-                   value="1.0.0" />
-        <attribute name="Specification-Vendor"
-                   value="" />
-        <attribute name="Implementation-Title"
-                   value="" />
-        <attribute name="Implementation-Version"
-                   value="${TODAY}" />
-        <attribute name="Implementation-Vendor"
-                   value="" />
-      </section>
-      <attribute name="Main-Class"
-                 value="${main.class}" />
-    </manifest>
-  </target>
-  <target name="checkstyle">
-    <first id="checkstylefile">
-      <fileset dir=".."
-               includes="${cs.config}" />
-    </first>
-    <checkstyle config="${toString:checkstylefile}"
-                failOnViolation="false"
-                properties="../${cs.properties}">
-      <fileset dir="${src.dir}"
-               includes="**/*.java" />
-      <formatter type="plain" />
-      <formatter type="plain"
-                 toFile="${cs.output}" />
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </checkstyle>
-  </target>
-  <target name="checkstyleg">
-    <fileset dir="${basedir}"
-             id="javasrcs">
-      <include name="**/*.java" />
-    </fileset>
-    <pathconvert property="sources"
-                 refid="javasrcs"
-                 pathsep=" " />
-    <loadfile property="cs.cp"
-              srcFile="../${cs.classpath.file}" />
-    <java classname="${cs.main.class}"
-          logError="true">
-      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-  </target>
-  <target name="pmd">
-    <property name="pmd.errCount"
-              value="0" />
-    <pmd cacheLocation="${pmd.cacheFile}"
-         minimumPriority="${pmd.minimumPriority}"
-         suppressMarker="${pmd.suppressMarker}"
-         failuresPropertyName="pmd.errCount">
-      <ruleset>../${pmd.config}</ruleset>
-      <auxclasspath>
-        <pathelement path="${basedir}" />
-      </auxclasspath>
-      <formatter type="${pmd.reportFormat}"
-                 toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
-      <fileset dir="${basedir}">
-        <include name="**/*.java" />
-      </fileset>
-    </pmd>
-    <echo message="${pmd.errCount} violations found." />
-  </target>
-  <target name="spotbugs"
-          depends="compile">
-    <spotbugs output="text"
-              outputFile="${spotbugs.output}"
-              reportLevel="low"
-              effort="max"
-              excludeFilter="${spotbugs.suppressions.xml}"
-              nested="true">
-      <auxClasspath path="${basedir}" />
-      <sourcePath path="${basedir}" />
-      <class location="${basedir}" />
-      <classpath>
-        <pathelement path="${spotbugs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </spotbugs>
-  </target>
-  <target name="compile"
-          depends="clean, makedir,format">
-    <javac includeantruntime="false"
-           srcdir="${src.dir}"
-           destdir="${build.dir}">
-      <compilerarg value="${javac.params}" />
-      <compilerarg value="${javac.params1}" />
-    </javac>
-  </target>
-  <!-- Deletes the existing build, docs and dist directory-->
-  <target name="clean">
-    <delete>
-      <fileset dir="."
-               includes="**/*.class" />
-    </delete>
-  </target>
-  <!-- Creates the  build, docs and dist directory-->
-  <target name="makedir"></target>
-  <target name="format">
-    <fileset dir="${basedir}"
-             id="javasrcs">
-      <include name="**/*.java" />
-    </fileset>
-    <pathconvert property="sources"
-                 refid="javasrcs"
-                 pathsep=" " />
-    <loadfile property="gformat.cp"
-              srcFile="../${gformat.classpath.file}" />
-    <java classname="${gformat.main.class}"
-          fork="true">
-      <arg line="-i ${sources}" />
-      <classpath>
-        <pathelement path="${gformat.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
-    </java>
-    <exec executable="bash">
-      <arg line="../cformat ${basedir}" />
-    </exec>
-    <exec executable="bash">
-      <arg line="../xformatall ${basedir}" />
-    </exec>
-  </target>
-  <target name="main"
-          depends="compile, pmd, spotbugs,checkstyle">
-    <description>Main target</description>
-  </target>
+				default="main"
+				basedir=".">
+	<property file="build.properties" />
+	<property file="../globalbuild.properties" />
+	<property file="../gformat.properties" />
+	<property file="../checkstyle.properties" />
+	<property file="../pmd.properties" />
+	<property file="../spotbugs.properties" />
+	<property name="src.dir"
+					location="." />
+	<property name="build.dir"
+					location="." />
+	<loadfile property="cs.cp"
+					srcFile="../${cs.classpath.file}" />
+	<loadfile property="pmd.cp"
+					srcFile="../${pmd.classpath.file}" />
+	<loadfile property="spotbugs.cp"
+					srcfile="../${spotbugs.classpath.file}" />
+	<loadfile property="spotbugs-plugins.cp"
+					srcfile="../${spotbugs-plugin.classpath.file}" />
+	<taskdef resource="${cs.taskdef.resource}"
+					classpath="${cs.cp}" />
+	<taskdef name="pmd"
+					classname="net.sourceforge.pmd.ant.PMDTask"
+					classpath="${pmd.cp}" />
+	<taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+					classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+	<target name="manifest">
+	<tstamp />
+	<manifest mode="update"
+						file="manifest.mf">
+	<attribute name="Built-By"
+							value="${user.name}" />
+	<section name="common">
+		<attribute name="Specification-Title"
+							value="${ant.project.name}" />
+		<attribute name="Specification-Version"
+							value="1.0.0" />
+		<attribute name="Specification-Vendor"
+							value="" />
+		<attribute name="Implementation-Title"
+							value="" />
+		<attribute name="Implementation-Version"
+							value="${TODAY}" />
+		<attribute name="Implementation-Vendor"
+							value="" />
+	</section>
+	<attribute name="Main-Class"
+							value="${main.class}" />
+	</manifest>
+	</target>
+	<target name="checkstyle">
+	<first id="checkstylefile">
+	<fileset dir=".."
+						includes="${cs.config}" />
+	</first>
+	<checkstyle config="${toString:checkstylefile}"
+							failOnViolation="false"
+							properties="../${cs.properties}">
+	<fileset dir="${src.dir}"
+						includes="**/*.java" />
+	<formatter type="plain" />
+	<formatter type="plain"
+							toFile="${cs.output}" />
+	<classpath>
+		<pathelement path="${cs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</checkstyle>
+	</target>
+	<target name="checkstyleg">
+	<fileset dir="${basedir}"
+					id="javasrcs">
+	<include name="**/*.java" />
+	</fileset>
+	<pathconvert property="sources"
+							refid="javasrcs"
+							pathsep=" " />
+	<loadfile property="cs.cp"
+						srcFile="../${cs.classpath.file}" />
+	<java classname="${cs.main.class}"
+				logError="true">
+	<arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+	<classpath>
+		<pathelement path="${cs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="pmd">
+	<property name="pmd.errCount"
+						value="0" />
+	<pmd cacheLocation="${pmd.cacheFile}"
+			minimumPriority="${pmd.minimumPriority}"
+			suppressMarker="${pmd.suppressMarker}"
+			failuresPropertyName="pmd.errCount">
+	<ruleset>../${pmd.config}</ruleset>
+	<auxclasspath>
+		<pathelement path="${basedir}" />
+	</auxclasspath>
+	<formatter type="${pmd.reportFormat}"
+							toFile="${pmd.output}"
+							toConsole="${pmd.toConsole}"></formatter>
+	<fileset dir="${basedir}">
+		<include name="**/*.java" />
+	</fileset>
+	</pmd>
+	<echo message="${pmd.errCount} violations found." />
+	</target>
+	<target name="spotbugs"
+				depends="compile">
+	<spotbugs output="text"
+						outputFile="${spotbugs.output}"
+						reportLevel="low"
+						effort="max"
+						excludeFilter="${spotbugs.suppressions.xml}"
+						nested="true">
+	<auxClasspath path="${basedir}" />
+	<sourcePath path="${basedir}" />
+	<class location="${basedir}" />
+	<classpath>
+		<pathelement path="${spotbugs.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</spotbugs>
+	</target>
+	<target name="compile"
+				depends="clean, makedir,format">
+	<javac includeantruntime="false"
+				srcdir="${src.dir}"
+				destdir="${build.dir}">
+	<compilerarg value="${javac.params}" />
+	<compilerarg value="${javac.params1}" />
+	</javac>
+	</target>
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+	<delete>
+	<fileset dir="."
+						includes="**/*.class" />
+	</delete>
+	</target>
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir"></target>
+	<target name="format">
+	<fileset dir="${basedir}"
+					id="javasrcs">
+	<include name="**/*.java" />
+	</fileset>
+	<pathconvert property="sources"
+							refid="javasrcs"
+							pathsep=" " />
+	<loadfile property="gformat.cp"
+						srcFile="../${gformat.classpath.file}" />
+	<java classname="${gformat.main.class}"
+				fork="true">
+	<arg line="-i ${sources}" />
+	<classpath>
+		<pathelement path="${gformat.cp}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	<exec executable="bash">
+	<arg line="../cformat ${basedir}" />
+	</exec>
+	<exec executable="bash">
+	<arg line="../xformatall ${basedir}" />
+	</exec>
+	</target>
+	<target name="main"
+				depends="compile, pmd, spotbugs,checkstyle">
+	<description>Main target</description>
+	</target>
 </project>

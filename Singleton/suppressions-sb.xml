@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
-    <Method name="getClass" />
-    <Bug code="UPM" />
-  </Match>
-  <Match>
-    <Bug code="PRMC, MDM" />
-  </Match>
-  <Match>
-    <Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
-    <Method name="hashCode" />
-    <Bug code="USBR" />
-  </Match>
-  <Match>
-    <Class name="com.javacodegeeks.patterns.singletonpattern.SingletonHolder$Holder" />
-    <Method name="&lt;clinit&gt;" />
-    <Bug code="ISC" />
-  </Match>
+	<Match>
+	<Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
+	<Method name="getClass" />
+	<Bug code="UPM" />
+	</Match>
+	<Match>
+	<Bug code="PRMC, MDM" />
+	</Match>
+	<Match>
+	<Class name="com.javacodegeeks.patterns.singletonpattern.Singleton" />
+	<Method name="hashCode" />
+	<Bug code="USBR" />
+	</Match>
+	<Match>
+	<Class name="com.javacodegeeks.patterns.singletonpattern.SingletonHolder$Holder" />
+	<Method name="&lt;clinit&gt;" />
+	<Bug code="ISC" />
+	</Match>
 </FindBugsFilter>

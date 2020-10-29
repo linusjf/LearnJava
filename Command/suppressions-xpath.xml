@@ -3,31 +3,31 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="EmailJob.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='EmailJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
-  <suppress-xpath files="FileIOJob.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='FileIOJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
-  <suppress-xpath files="LoggingJob.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='LoggingJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
-  <suppress-xpath files="SmsJob.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='SmsJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
-  <suppress-xpath files="TestCommandPattern.java"
-                  checks="ClassDataAbstractionCouplingCheck"
-                  query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]" />
-  <suppress-xpath files="TestCommandPattern.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='init']]/SLIST/VARIABLE_DEF[./IDENT[@text='pool']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ThreadPool']]/ELIST/EXPR/NUM_INT[@text='10']" />
-  <suppress-xpath files="TestCommandPattern.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='init']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
-  <suppress-xpath files="ThreadPool.java"
-                  checks="IllegalTokenCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ThreadPool']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='shutdown']]/MODIFIERS/LITERAL_VOLATILE" />
-  <suppress-xpath files="ThreadPool.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ThreadPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='shutdownPool']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+	<suppress-xpath files="EmailJob.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='EmailJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+	<suppress-xpath files="FileIOJob.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='FileIOJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+	<suppress-xpath files="LoggingJob.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='LoggingJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+	<suppress-xpath files="SmsJob.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='SmsJob']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+	<suppress-xpath files="TestCommandPattern.java"
+								checks="ClassDataAbstractionCouplingCheck"
+								query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]" />
+	<suppress-xpath files="TestCommandPattern.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='init']]/SLIST/VARIABLE_DEF[./IDENT[@text='pool']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ThreadPool']]/ELIST/EXPR/NUM_INT[@text='10']" />
+	<suppress-xpath files="TestCommandPattern.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='TestCommandPattern']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='init']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']" />
+	<suppress-xpath files="ThreadPool.java"
+								checks="IllegalTokenCheck"
+								query="/CLASS_DEF[./IDENT[@text='ThreadPool']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='shutdown']]/MODIFIERS/LITERAL_VOLATILE" />
+	<suppress-xpath files="ThreadPool.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='ThreadPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='shutdownPool']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
 </suppressions>

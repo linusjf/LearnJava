@@ -3,9 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 <suppressions>
-  <!--The Check generates too many violations, fixing them will make code unmanageable.-->
-  <suppress checks="MagicNumber"
-            files=".*[\\/](com|converter)[\\/].*\.java" />
-  <suppress checks="IllegalCatch"
-            files=".*LibraryLoader\.java" />
+	<!--The Check generates too many violations, fixing them will make code unmanageable.-->
+	<suppress checks="MagicNumber"
+					files=".*[\\/](com|converter)[\\/].*\.java" />
+	<suppress checks="IllegalCatch"
+					files=".*LibraryLoader\.java" />
 </suppressions>

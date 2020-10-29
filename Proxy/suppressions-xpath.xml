@@ -3,43 +3,43 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="Proxy.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='60']" />
-  <suppress-xpath files="Proxy.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='1000']" />
-  <suppress-xpath files="TestProxy.java"
-                  checks="MagicNumberCheck"
-                  query="/ENUM_DEF[./IDENT[@text='TestProxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='processConnection']]/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='2']]/DIV[./IDENT[@text='responseCode']]/NUM_INT[@text='100']" />
-  <suppress-xpath files="RequestHandler.java"
-                  checks="ExecutableStatementCountCheck"
-                  query="/CLASS_DEF[./IDENT[@text='RequestHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendNonCachedToClient']]" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='111_111']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='112.58']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='222_222']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='507.85']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='234_567']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='2345.00']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='666_666']" />
-  <suppress-xpath files="Bank1Server.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='666.00']" />
-  <suppress-xpath files="ReportGeneratorImpl.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ReportGeneratorImpl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateDailyReport']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='250']" />
+	<suppress-xpath files="Proxy.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='60']" />
+	<suppress-xpath files="Proxy.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Proxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='spinOffRequest']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='60']]/NUM_INT[@text='1000']" />
+	<suppress-xpath files="TestProxy.java"
+								checks="MagicNumberCheck"
+								query="/ENUM_DEF[./IDENT[@text='TestProxy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='processConnection']]/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='2']]/DIV[./IDENT[@text='responseCode']]/NUM_INT[@text='100']" />
+	<suppress-xpath files="RequestHandler.java"
+								checks="ExecutableStatementCountCheck"
+								query="/CLASS_DEF[./IDENT[@text='RequestHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendNonCachedToClient']]" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='111_111']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='112.58']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='222_222']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='507.85']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='234_567']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='2345.00']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_INT[@text='666_666']" />
+	<suppress-xpath files="Bank1Server.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='Bank1Server']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='account']]/ASSIGN/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='Account']]/ELIST/EXPR/NUM_FLOAT[@text='666.00']" />
+	<suppress-xpath files="ReportGeneratorImpl.java"
+								checks="MagicNumberCheck"
+								query="/CLASS_DEF[./IDENT[@text='ReportGeneratorImpl']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateDailyReport']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='250']" />
 </suppressions>

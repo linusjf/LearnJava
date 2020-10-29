@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <class name="bridge.FileDownloaderAbstractionImpl" />
-    <method name="&lt;init&gt;" />
-    <Bug code="OPM" />
-  </Match>
+	<Match>
+	<class name="bridge.FileDownloaderAbstractionImpl" />
+	<method name="&lt;init&gt;" />
+	<Bug code="OPM" />
+	</Match>
 </FindBugsFilter>

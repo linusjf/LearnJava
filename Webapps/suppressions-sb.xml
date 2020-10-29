@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="servlets.DbServlet" />
-    <Method name="init" />
-    <Bug pattern="DMI_EMPTY_DB_PASSWORD" />
-  </Match>
+	<Match>
+	<Class name="servlets.DbServlet" />
+	<Method name="init" />
+	<Bug pattern="DMI_EMPTY_DB_PASSWORD" />
+	</Match>
 </FindBugsFilter>

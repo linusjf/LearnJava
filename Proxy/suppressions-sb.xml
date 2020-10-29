@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-  <Match>
-    <Class name="stefano.lupo.TestProxy" />
-    <Method name="readURLsFromFile" />
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="stefano.lupo.Proxy" />
-    <Method name="closeServer" />
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="stefano.lupo.Proxy" />
-    <Method name="loadCaches" />
-    <Bug code="RCN" />
-  </Match>
-  <Match>
-    <Class name="stefano.lupo.RequestHandler" />
-    <Method name="sendCachedPageToClient" />
-    <Bug code="RCN" />
-  </Match>
+	<Match>
+	<Class name="stefano.lupo.TestProxy" />
+	<Method name="readURLsFromFile" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="stefano.lupo.Proxy" />
+	<Method name="closeServer" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="stefano.lupo.Proxy" />
+	<Method name="loadCaches" />
+	<Bug code="RCN" />
+	</Match>
+	<Match>
+	<Class name="stefano.lupo.RequestHandler" />
+	<Method name="sendCachedPageToClient" />
+	<Bug code="RCN" />
+	</Match>
 </FindBugsFilter>
