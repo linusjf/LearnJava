@@ -4,8 +4,8 @@
 				basedir=".">
 	<property file="build.properties" />
 	<property file="../globalbuild.properties" />
-  <property file="../checkstyle.properties" />
-  <property file="../gformat.properties" />
+	<property file="../checkstyle.properties" />
+	<property file="../gformat.properties" />
 	<property file="../pmd.properties" />
 	<property file="../spotbugs.properties" />
 	<property file="../antcontrib.properties" />
@@ -35,7 +35,7 @@
 	<taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
 					classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
 	<loadfile property="antcontrib.cp"
-    srcFile="../${antcontrib.classpath.file}" />
+					srcFile="../${antcontrib.classpath.file}" />
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 					classpath="${antcontrib.cp}"></taskdef>
 	<!-- Deletes the existing build, docs and dist directory-->
@@ -142,13 +142,13 @@
 	</exec>
 	</target>
 	<target name="checkstyleg">
-    <move file="suppressions-xpath.xml"
-      tofile="suppressions-xpath.xml.bak"
-      preservelastmodified="true"
-      force="true"
-      failonerror="false"
-      verbose="true"/>
-    <fileset dir="${basedir}"
+	<move file="suppressions-xpath.xml"
+				tofile="suppressions-xpath.xml.bak"
+				preservelastmodified="true"
+				force="true"
+				failonerror="false"
+				verbose="true" />
+	<fileset dir="${basedir}"
 					id="javasrcs">
 	<include name="**/*.java" />
 	</fileset>
@@ -159,26 +159,37 @@
 						srcFile="../${cs.classpath.file}" />
 	<java classname="${cs.main.class}"
 				logError="true">
-	<arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+  <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
 	<classpath>
 		<pathelement path="${cs.cp}" />
 		<pathelement path="${java.class.path}" />
 	</classpath>
-</java>
-<condition property="file.is.empty" else="false">
-     <length file="${ant.project.name}-xpath.xml" when="equal" length="0" />
-   </condition>
-   <if>
-     <equals arg1="${file.is.empty}" arg2="false"/>
-     <then>
-     <move file="${ant.project.name}-xpath.xml"
-      tofile="suppressions-xpath.xml"
-      preservelastmodified="true"
-      force="true"
-      failonerror="true"
-  verbose="true"/>
-   </then>
-</if>
+	</java>
+	<condition property="file.is.empty"
+						else="false">
+	<length file="${ant.project.name}-xpath.xml"
+					when="equal"
+					length="0" />
+	</condition>
+	<if>
+	<equals arg1="${file.is.empty}"
+					arg2="false" />
+	<then>
+		<move file="${ant.project.name}-xpath.xml"
+					tofile="suppressions-xpath.xml"
+					preservelastmodified="true"
+					force="true"
+					failonerror="true"
+					verbose="true" />
+  </then>
+  <else>
+    <echo message="No suppressions generated."/>
+    <delete file="${ant.project.name}-xpath.xml"
+     verbose="true"
+      failonerror="false"
+      />
+  </else>
+	</if>
 	</target>
 	<target name="checkstyle">
 	<first id="checkstylefile">
@@ -187,7 +198,7 @@
 	</first>
 	<checkstyle config="${toString:checkstylefile}"
 							failOnViolation="false"
-							properties="${cs.properties}">
+							properties="../${cs.properties}">
 	<fileset dir="${src.dir}"
 						includes="**/*.java" />
 	<formatter type="plain" />
