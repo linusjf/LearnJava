@@ -294,6 +294,8 @@
     description="jmh-generator-bytecode jars" />
   <conf name="jmh-generator-asm.main"
     description="jmh-generator-asm jars" />
+  <conf name="jmh-core-benchmarks.main"
+    description="jmh-core-benchmarks jars" />
 	</configurations>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -701,5 +703,10 @@
     name="jmh-generator-asm" 
     rev="1.26"
     conf="jmh-generator-asm.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core-benchmarks -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-core-benchmarks" 
+    rev="1.26"
+    conf="jmh-core-benchmarks.main-&gt;master" />
 	</dependencies>
 </ivy-module>
