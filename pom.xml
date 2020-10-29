@@ -511,5 +511,11 @@
       <version>1.26</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-ant</artifactId>
+      <version>3.0.6</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

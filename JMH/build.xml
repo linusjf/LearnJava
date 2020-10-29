@@ -111,10 +111,25 @@
 	<!--Creates the deployable jar file  -->
 	<target name="jar"
 				depends="loadclasspath,compile,manifest">
-	<jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
+	<taskdef resource="net/sf/antcontrib/antlib.xml"
+					classpath="${antcontrib.cp}"></taskdef>
+	<jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
 			basedir="${build.dir}"
-			includes="**/*.class"
-			manifest="${jar.manifest}"></jar>
+			includes="**/*.class">
+	<manifest>
+		<attribute name="Main-Class"
+							value="org.openjdk.jmh.Main" />
+	</manifest>
+	<for list="${runclasspath}"
+				param="jarfile"
+				delimiter=":"
+				trim="true">
+		<sequential>
+		<zipfileset src="@{jarfile}"
+								excludes="**/META-INF/services/**" />
+		</sequential>
+	</for>
+	</jar>
 	</target>
 	<target name="run"
 				depends="loadclasspath">

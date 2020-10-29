@@ -296,6 +296,10 @@
 				description="jmh-generator-asm jars" />
 	<conf name="jmh-core-benchmarks.main"
 				description="jmh-core-benchmarks jars" />
+	<conf name="groovy-ant.main"
+				description="groovy-ant jars" />
+	<conf name="groovy-ant.lib"
+				description="groovy-ant lib jars" />
 	</configurations>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -707,6 +711,11 @@
 	<dependency org="org.openjdk.jmh"
 							name="jmh-core-benchmarks"
 							rev="1.26"
-							conf="jmh-core-benchmarks.main-&gt;master" />
+    conf="jmh-core-benchmarks.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-ant -->
+  <dependency org="org.codehaus.groovy" 
+    name="groovy-ant" 
+    rev="3.0.6"
+    conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
 	</dependencies>
 </ivy-module>
