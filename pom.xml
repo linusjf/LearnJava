@@ -232,7 +232,7 @@
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>Saxon-HE</artifactId>
-      <version>10.2</version>
+      <version>10.3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -484,6 +484,24 @@
     <dependency>
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-generator-annprocess</artifactId>
+      <version>1.26</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-reflection</artifactId>
+      <version>1.26</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-bytecode</artifactId>
+      <version>1.26</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-asm</artifactId>
       <version>1.26</version>
       <optional>true</optional>
     </dependency>

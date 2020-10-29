@@ -402,6 +402,12 @@
 								conf="jmh.lib" />
 	<ivy:retrieve pathid="jmh-generator-annprocess.main.path"
 								conf="jmh-generator-annprocess.main" />
+	<ivy:retrieve pathid="jmh-generator-reflection.main.path"
+								conf="jmh-generator-reflection.main" />
+	<ivy:retrieve pathid="jmh-generator-bytecode.main.path"
+								conf="jmh-generator-bytecode.main" />
+	<ivy:retrieve pathid="jmh-generator-asm.main.path"
+								conf="jmh-generator-asm.main" />
 	<echo file="${junitplatform.classpath.file}"
 				message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
 	<echo file="${cs.classpath.file}"
@@ -491,7 +497,7 @@
 	<echo file="${lombok.classpath.file}"
 				message="${toString:lombok.main.path}" />
 	<echo file="${jmh.classpath.file}"
-				message="${toString:jmh.main.path}:${toString:jmh.lib.path};${toString:jmh-generator-annprocess.main.path}" />
+				message="${toString:jmh.main.path}:${toString:jmh.lib.path};${toString:jmh-generator-annprocess.main.path}:${toString:jmh-generator-reflection.main.path}:${toString:jmh-generator-bytecode.main.path}:${toString:jmh-generator-asm.main.path}" />
 	<antcall target="uniquify"></antcall>
 	<replaceregexp file="${ckjm_ext.classpath.file}"
 								match=":(.*)bcel-5.1.jar"

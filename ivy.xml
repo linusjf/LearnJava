@@ -288,6 +288,12 @@
     description="jmh lib jars" />
   <conf name="jmh-generator-annprocess.main"
     description="jmh-generator-annprocess jars" />
+  <conf name="jmh-generator-reflection.main"
+    description="jmh-generator-reflection jars" />
+  <conf name="jmh-generator-bytecode.main"
+    description="jmh-generator-bytecode jars" />
+  <conf name="jmh-generator-asm.main"
+    description="jmh-generator-asm jars" />
 	</configurations>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -469,7 +475,7 @@
 	<!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
 	<dependency org="net.sf.saxon"
 							name="Saxon-HE"
-							rev="10.2"
+							rev="10.3"
 							conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
 	<!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
 	<dependency org="com.github.javaparser"
@@ -680,5 +686,20 @@
     name="jmh-generator-annprocess" 
     rev="1.26"
     conf="jmh-generator-annprocess.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-reflection -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-generator-reflection" 
+    rev="1.26"
+    conf="jmh-generator-reflection.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-bytecode -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-generator-bytecode" 
+    rev="1.26"
+    conf="jmh-generator-bytecode.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-asm -->
+  <dependency org="org.openjdk.jmh" 
+    name="jmh-generator-asm" 
+    rev="1.26"
+    conf="jmh-generator-asm.main-&gt;master" />
 	</dependencies>
 </ivy-module>
