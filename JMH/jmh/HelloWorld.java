@@ -18,7 +18,7 @@ public class HelloWorld {
     Options opt = new OptionsBuilder()
                       .include(HelloWorld.class.getSimpleName())
                       .verbosity(VerboseMode.EXTRA)
-                      .forks(1)
+                      .forks(0)
                       .build();
     new Runner(opt).run();
   }

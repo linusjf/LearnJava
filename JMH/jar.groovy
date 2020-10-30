@@ -15,12 +15,15 @@ public void createJar() throws IOException
    {
      def ver = properties.get("version")
        def buildDir = properties.get("build.dir")  
-      Manifest manifest = new Manifest(Files.newInputStream(Paths.get("manifest.mf")));
-      JarOutputStream target = new JarOutputStream(Files.newOutputStream(Paths.get("dist/" + project.name + "-" + ver + ".jar")), manifest);
-      File inputDirectory = new File(buildDir);
+     // Manifest manifest = new Manifest(Files.newInputStream(Paths.get("manifest.mf")));
+      JarOutputStream target = new JarOutputStream(Files.newOutputStream(Paths.get("dist/" + project.name + "-" + ver + ".jar")));
+     /** File inputDirectory = new File(buildDir);
+      for (File nestedFile : inputDirectory.listFiles())
+         add("", nestedFile, target);*/
+      File inputDirectory = new File("/tmp/jmhclasses");
       for (File nestedFile : inputDirectory.listFiles())
          add("", nestedFile, target);
-      String jars = properties.get("runclasspath")
+   /**   String jars = properties.get("runclasspath")
         for (String jar: jars.split(":")) {
           File jarFile = new File(jar)
         JarEntry entry = new JarEntry(jarFile.getName());
@@ -37,7 +40,7 @@ public void createJar() throws IOException
             target.write(buffer, 0, count);
          }
          target.closeEntry();
-        }
+        } **/
       target.close();
    }
 
@@ -48,7 +51,7 @@ public void createJar() throws IOException
       {
          String name = (parents + source.getName()).replace("\\", "/");
 
-         if (source.isDirectory() && source.getName().startsWith("jmh"))
+         if (source.isDirectory())
          {
             if (!name.isEmpty())
             {
@@ -56,6 +59,7 @@ public void createJar() throws IOException
                   name += "/";
                JarEntry entry = new JarEntry(name);
                entry.setTime(source.lastModified());
+
                target.putNextEntry(entry);
                target.closeEntry();
             }
@@ -64,8 +68,9 @@ public void createJar() throws IOException
             return;
          }
 
-        if (name.endsWith(".jar") ||
-            name.endsWith(".class"))  {
+    /**    if (name.endsWith(".class") || name.endsWith(".properties")
+            || name.endsWith("BenchmarkList")
+            || name.endsWith("CompilerHints"))  { */
          JarEntry entry = new JarEntry(name);
          entry.setTime(source.lastModified());
          target.putNextEntry(entry);
@@ -80,7 +85,7 @@ public void createJar() throws IOException
             target.write(buffer, 0, count);
          }
          target.closeEntry();
-        }
+        // }
       }
       finally
       {
