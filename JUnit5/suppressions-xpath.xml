@@ -3,10 +3,10 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="MathToolsTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertNotEquals']]/ELIST/EXPR/NUM_DOUBLE[@text='0.000_000_000_000_001d']" />
-	<suppress-xpath files="MathToolsTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalInvalidDenominator']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertThrows']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="MathToolsTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalSuccess']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertNotEquals']]/ELIST/EXPR/NUM_DOUBLE[@text='0.000_000_000_000_001d']" />
+  <suppress-xpath files="MathToolsTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='MathToolsTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testConvertToDecimalInvalidDenominator']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='assertThrows']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
 </suppressions>

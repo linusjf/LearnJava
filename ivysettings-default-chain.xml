@@ -17,12 +17,12 @@
    under the License.
 -->
 <ivysettings>
-	<resolvers>
-	<chain name="default"
-				returnFirst="true"
-				checkmodified="true">
-	<resolver ref="local" />
-	<resolver ref="main" />
-	</chain>
-	</resolvers>
+  <resolvers>
+    <chain name="default"
+           returnFirst="true"
+           checkmodified="true">
+      <resolver ref="local" />
+      <resolver ref="main" />
+    </chain>
+  </resolvers>
 </ivysettings>

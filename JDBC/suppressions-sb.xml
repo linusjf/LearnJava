@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter xmlns="https://github.com/spotbugs/filter/3.0.0"
-								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-								xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
 
-	<Match>
-	<Class name="jdbc.JdbcMetaData" />
-	<Method name="main" />
-	<Bug code="Dm" />
-	</Match>
-	<Match>
-	<Class name="jdbc.JdbcChange" />
-	<Method name="main" />
-	<Bug code="Dm" />
-	</Match>
-	<Match>
-	<Class name="jdbc.JdbcScrollableSelect" />
-	<Method name="connect" />
-	<Bug code="Dm" />
-	</Match>
-	<Match>
-	<Class name="jdbc.JdbcBeanX" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="Dm" />
-	</Match>
-	<Match>
-	<Class name="jdbc.JdbcBean" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="Dm" />
-	</Match>
+  <Match>
+    <Class name="jdbc.JdbcMetaData" />
+    <Method name="main" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="jdbc.JdbcChange" />
+    <Method name="main" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="jdbc.JdbcScrollableSelect" />
+    <Method name="connect" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="jdbc.JdbcBeanX" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="jdbc.JdbcBean" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="Dm" />
+  </Match>
 </FindBugsFilter>

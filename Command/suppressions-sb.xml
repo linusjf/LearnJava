@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Class name="com.javacodegeeks.patterns.commandpattern.ThreadPool$Worker" />
-	<Method name="runTopJob" />
-	<Bug code="UPM" />
-	</Match>
-	<Match>
-	<Bug code="USBR, SECCRLFLOG" />
-	</Match>
+  <Match>
+    <Class name="com.javacodegeeks.patterns.commandpattern.ThreadPool$Worker" />
+    <Method name="runTopJob" />
+    <Bug code="UPM" />
+  </Match>
+  <Match>
+    <Bug code="USBR, SECCRLFLOG" />
+  </Match>
 </FindBugsFilter>

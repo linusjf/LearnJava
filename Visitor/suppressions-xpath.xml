@@ -3,55 +3,55 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="TaxiBilling.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Person']]/ELIST/EXPR/NUM_FLOAT[@text='12.4f']" />
-	<suppress-xpath files="TaxiBilling.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_FLOAT[@text='24.5f']" />
-	<suppress-xpath files="TaxiBilling.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_FLOAT[@text='10.9f']" />
-	<suppress-xpath files="TaxiBilling.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="XmlExportVisitor.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='XmlExportVisitor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='export']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='50']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dot']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Dot']]/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dot']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Dot']]/ELIST/EXPR/NUM_INT[@text='55']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='23']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='15']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='17']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='20']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='30']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='compoundShape']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CompoundShape']]/ELIST/EXPR/NUM_INT[@text='4']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CompoundShape']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Person']]/ELIST/EXPR/NUM_FLOAT[@text='12.4f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Animal']]/ELIST/EXPR/NUM_FLOAT[@text='24.5f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_FLOAT[@text='10.9f']" />
+  <suppress-xpath files="TaxiBilling.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TaxiBilling']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Luggage']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="XmlExportVisitor.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='XmlExportVisitor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='export']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='50']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dot']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Dot']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dot']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Dot']]/ELIST/EXPR/NUM_INT[@text='55']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='23']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='15']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='circle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Circle']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='17']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='20']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='rectangle']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Rectangle']]/ELIST/EXPR/NUM_INT[@text='30']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='compoundShape']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CompoundShape']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CompoundShape']]/ELIST/EXPR/NUM_INT[@text='5']" />
 </suppressions>

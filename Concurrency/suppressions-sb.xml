@@ -1,157 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
-	<Match>
-	<Method name="hashCode" />
-	<Bug code="USBR" />
-	</Match>
-	<Match>
-	<Class name="~.*DemoThreadExample.*" />
-	<Bug code="ERRMSG" />
-	</Match>
-	<Match>
-	<Class name="~.*ExceptionHandler.*" />
-	<Bug code="ERRMSG" />
-	</Match>
-	<Match>
-	<Class name="threads.DemoThreadExample$ExceptionHandler" />
-	<method name="uncaughtException" />
-	<Bug code="UCPM" />
-	</Match>
-	<Match>
-	<Class name="~.*threads[.]Deadlock.*" />
-	<Bug pattern="DM_EXIT" />
-	</Match>
-	<Match>
-	<Class name="dailyimages.ImageProcessor" />
-	<Bug code="DMI" />
-	</Match>
-	<Match>
-	<Class name="threads.ReadWriteLockExample$PricesInfo" />
-	<Bug code="FCBL" />
-	</Match>
-	<Match>
-	<Class name="threads.LockProducerConsumer$FileMock" />
-	<Bug code="FCBL" />
-	</Match>
-	<Match>
-	<Class name="threads.LockProducerConsumer$FileMock" />
-	<Method name="getLine" />
-	<Bug code="AI" />
-	</Match>
-	<Match>
-	<Class name="threads.Main" />
-	<method name="setupStatuses" />
-	<Bug code="RCN" />
-	</Match>
-	<Match>
-	<Class name="threads.Main" />
-	<Bug code="MDM" />
-	</Match>
-	<Match>
-	<Class name="threads.ControllingExecutor" />
-	<Method name="main" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="~.*threads.FindMin.*" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="EI2" />
-	</Match>
-	<Match>
-	<Class name="threads.ForkBlur" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="EI2" />
-	</Match>
-	<Match>
-	<Class name="threads.ForkJoinPuzzle" />
-	<Method name="sequentialStream" />
-	<Bug code="UPM" />
-	</Match>
-	<Match>
-	<Class name="threads.GZipAllFiles" />
-	<Method name="submitZipTask" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="threads.ReentrantLockExample$PrintQueue" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="DMI" />
-	</Match>
-	<Match>
-	<Class name="threads.HelperClass$WaitingThread" />
-	<Method name="run" />
-	<Bug code="UW,Wa" />
-	</Match>
-	<Match>
-	<Class name="threads.IllegalMonitorStateWaitExample" />
-	<Method name="main" />
-	<Bug code="Wa" />
-	</Match>
-	<Match>
-	<Class name="threads.GrayscaleImageAction" />
-	<Field name="bufferedImage" />
-	<Bug code="Se" />
-	</Match>
-	<Match>
-	<Class name="threads.QueueObject" />
-	<Field name="isNotified" />
-	<Bug code="IS" />
-	</Match>
-	<Match>
-	<Class name="threads.InvokeAnyExecutor$UserValidator" />
-	<Method name="validate" />
-	<Bug code="DMI" />
-	</Match>
-	<Match>
-	<Class name="threads.RejectedExecutor" />
-	<Method name="main" />
-	<Bug code="RV" />
-	</Match>
-	<Match>
-	<Class name="threads.SemaphoreExample$PrintQueue" />
-	<Method name="&lt;init&gt;" />
-	<Bug code="DMI" />
-	</Match>
-	<Match>
-	<Class name="threads.DemoThreadExample$ExceptionHandler" />
-	<Method name="uncaughtException" />
-	<Bug code="ST" />
-	</Match>
-	<Match>
-	<Class name="threads.CustomPhaserDemo$Student" />
-	<Method name="run" />
-	<Bug code="PRMC" />
-	</Match>
-	<Match>
-	<Class name="threads.SimpleThreads" />
-	<Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT" />
-	</Match>
-	<Match>
-	<Bug code="STT, SECPTI, SECPR, OPM" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_RANDOM_SEED" />
-	</Match>
-	<Match>
-	<Bug pattern="MDM_THREAD_PRIORITIES" />
-	</Match>
-	<Match>
-	<Class name="threads.Solver" />
-	<method name="&lt;init&gt;" />
-	<Bug pattern="EI_EXPOSE_REP2" />
-	</Match>
-	<Match>
-	<Class name="threads.AsynchronousExample" />
-	<method name="main" />
-	<Bug code="PRMC" />
-	</Match>
-	<Match>
-	<Class name="threads.ForkJoinResultDemo" />
-	<method name="main" />
-	<Bug code="PRMC" />
-	</Match>
-	<Match>
-	<Class name="threads.ReduceLockDuration" />
-	<Bug code="WOC" />
-	</Match>
+  <Match>
+    <Method name="hashCode" />
+    <Bug code="USBR" />
+  </Match>
+  <Match>
+    <Class name="~.*DemoThreadExample.*" />
+    <Bug code="ERRMSG" />
+  </Match>
+  <Match>
+    <Class name="~.*ExceptionHandler.*" />
+    <Bug code="ERRMSG" />
+  </Match>
+  <Match>
+    <Class name="threads.DemoThreadExample$ExceptionHandler" />
+    <method name="uncaughtException" />
+    <Bug code="UCPM" />
+  </Match>
+  <Match>
+    <Class name="~.*threads[.]Deadlock.*" />
+    <Bug pattern="DM_EXIT" />
+  </Match>
+  <Match>
+    <Class name="dailyimages.ImageProcessor" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="threads.ReadWriteLockExample$PricesInfo" />
+    <Bug code="FCBL" />
+  </Match>
+  <Match>
+    <Class name="threads.LockProducerConsumer$FileMock" />
+    <Bug code="FCBL" />
+  </Match>
+  <Match>
+    <Class name="threads.LockProducerConsumer$FileMock" />
+    <Method name="getLine" />
+    <Bug code="AI" />
+  </Match>
+  <Match>
+    <Class name="threads.Main" />
+    <method name="setupStatuses" />
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <Class name="threads.Main" />
+    <Bug code="MDM" />
+  </Match>
+  <Match>
+    <Class name="threads.ControllingExecutor" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="~.*threads.FindMin.*" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="EI2" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkBlur" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="EI2" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkJoinPuzzle" />
+    <Method name="sequentialStream" />
+    <Bug code="UPM" />
+  </Match>
+  <Match>
+    <Class name="threads.GZipAllFiles" />
+    <Method name="submitZipTask" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="threads.ReentrantLockExample$PrintQueue" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="threads.HelperClass$WaitingThread" />
+    <Method name="run" />
+    <Bug code="UW,Wa" />
+  </Match>
+  <Match>
+    <Class name="threads.IllegalMonitorStateWaitExample" />
+    <Method name="main" />
+    <Bug code="Wa" />
+  </Match>
+  <Match>
+    <Class name="threads.GrayscaleImageAction" />
+    <Field name="bufferedImage" />
+    <Bug code="Se" />
+  </Match>
+  <Match>
+    <Class name="threads.QueueObject" />
+    <Field name="isNotified" />
+    <Bug code="IS" />
+  </Match>
+  <Match>
+    <Class name="threads.InvokeAnyExecutor$UserValidator" />
+    <Method name="validate" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="threads.RejectedExecutor" />
+    <Method name="main" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <Class name="threads.SemaphoreExample$PrintQueue" />
+    <Method name="&lt;init&gt;" />
+    <Bug code="DMI" />
+  </Match>
+  <Match>
+    <Class name="threads.DemoThreadExample$ExceptionHandler" />
+    <Method name="uncaughtException" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="threads.CustomPhaserDemo$Student" />
+    <Method name="run" />
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
+    <Class name="threads.SimpleThreads" />
+    <Bug pattern="MDM_WAIT_WITHOUT_TIMEOUT" />
+  </Match>
+  <Match>
+    <Bug code="STT, SECPTI, SECPR, OPM" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_RANDOM_SEED" />
+  </Match>
+  <Match>
+    <Bug pattern="MDM_THREAD_PRIORITIES" />
+  </Match>
+  <Match>
+    <Class name="threads.Solver" />
+    <method name="&lt;init&gt;" />
+    <Bug pattern="EI_EXPOSE_REP2" />
+  </Match>
+  <Match>
+    <Class name="threads.AsynchronousExample" />
+    <method name="main" />
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
+    <Class name="threads.ForkJoinResultDemo" />
+    <method name="main" />
+    <Bug code="PRMC" />
+  </Match>
+  <Match>
+    <Class name="threads.ReduceLockDuration" />
+    <Bug code="WOC" />
+  </Match>
 </FindBugsFilter>

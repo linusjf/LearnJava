@@ -3,112 +3,112 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="CyclomaticComplexityCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="ExecutableStatementCountCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="NPathComplexityCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
-	<suppress-xpath files="WeightedLevenshteinTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='WeightedLevenshteinTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='wl']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='WeightedLevenshtein']]/ELIST/LAMBDA/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_FLOAT[@text='0.5']" />
-	<suppress-xpath files="NGramTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='NGramTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ngram']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='NGram']]/ELIST/EXPR/NUM_INT[@text='4']" />
-	<suppress-xpath files="Sift4Test.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Sift4Test']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="Sift4Test.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Sift4Test']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='expResult']]/ASSIGN/EXPR/NUM_FLOAT[@text='11.0']" />
-	<suppress-xpath files="AnotherJaccardTest.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='AnotherJaccardTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='i']]/NUM_INT[@text='10']" />
-	<suppress-xpath files="SimpleLSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sparsity']]/ASSIGN/EXPR/NUM_FLOAT[@text='0.75']" />
-	<suppress-xpath files="SimpleLSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
-	<suppress-xpath files="SimpleLSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="SimpleLSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='2000']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/EQUAL[./NUM_INT[@text='0']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/QUESTION/LE/NUM_FLOAT[@text='0.7']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/QUESTION/EQUAL[./NUM_INT[@text='0']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='stages']]/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='11']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC/INDEX_OP/INDEX_OP[./IDENT[@text='results']]/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/SLIST/EXPR/POST_INC/INDEX_OP/INDEX_OP[./IDENT[@text='results']]/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
-	<suppress-xpath files="LSHMinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='similarity']]/ASSIGN/EXPR/DIV/NUM_INT[@text='10']" />
-	<suppress-xpath files="MinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='minhash']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MinHash']]/ELIST/EXPR/NUM_FLOAT[@text='0.1']" />
-	<suppress-xpath files="MinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='minhash']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MinHash']]/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="MinHashExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="InitialSeed.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='signatureSize']]/ASSIGN/EXPR/NUM_INT[@text='20']" />
-	<suppress-xpath files="InitialSeed.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dictionarySize']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="InitialSeed.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='initialSeed']]/ASSIGN/EXPR/NUM_INT[@text='123_456']" />
-	<suppress-xpath files="LSHSuperBitExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="LSHSuperBitExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="LSHSuperBitExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='4']" />
-	<suppress-xpath files="SuperBitSig.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SuperBitSig']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
-	<suppress-xpath files="SerializeExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
-	<suppress-xpath files="SerializeExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='sparsity']]/ASSIGN/EXPR/NUM_FLOAT[@text='0.75']" />
-	<suppress-xpath files="SerializeExample.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="CyclomaticComplexityCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="NPathComplexityCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]" />
+  <suppress-xpath files="WeightedLevenshteinTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='WeightedLevenshteinTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='wl']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='WeightedLevenshtein']]/ELIST/LAMBDA/SLIST/LITERAL_IF/LITERAL_RETURN/EXPR/NUM_FLOAT[@text='0.5']" />
+  <suppress-xpath files="NGramTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='NGramTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='ngram']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='NGram']]/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="Sift4Test.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Sift4Test']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="Sift4Test.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Sift4Test']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='expResult']]/ASSIGN/EXPR/NUM_FLOAT[@text='11.0']" />
+  <suppress-xpath files="AnotherJaccardTest.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='AnotherJaccardTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="SimpleLSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sparsity']]/ASSIGN/EXPR/NUM_FLOAT[@text='0.75']" />
+  <suppress-xpath files="SimpleLSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="SimpleLSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="SimpleLSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SimpleLSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='2000']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/EQUAL[./NUM_INT[@text='0']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/QUESTION/LE/NUM_FLOAT[@text='0.7']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/QUESTION/EQUAL[./NUM_INT[@text='0']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='stages']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='11']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC/INDEX_OP/INDEX_OP[./IDENT[@text='results']]/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/SLIST/EXPR/POST_INC/INDEX_OP/INDEX_OP[./IDENT[@text='results']]/EXPR/TYPECAST/STAR/NUM_INT[@text='10']" />
+  <suppress-xpath files="LSHMinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHMinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='similarity']]/ASSIGN/EXPR/DIV/NUM_INT[@text='10']" />
+  <suppress-xpath files="MinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='minhash']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MinHash']]/ELIST/EXPR/NUM_FLOAT[@text='0.1']" />
+  <suppress-xpath files="MinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='minhash']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MinHash']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="MinHashExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='MinHashExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="InitialSeed.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='signatureSize']]/ASSIGN/EXPR/NUM_INT[@text='20']" />
+  <suppress-xpath files="InitialSeed.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='dictionarySize']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="InitialSeed.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='InitialSeed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='initialSeed']]/ASSIGN/EXPR/NUM_INT[@text='123_456']" />
+  <suppress-xpath files="LSHSuperBitExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='count']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="LSHSuperBitExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="LSHSuperBitExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='LSHSuperBitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="SuperBitSig.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SuperBitSig']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="SerializeExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='n']]/ASSIGN/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="SerializeExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='sparsity']]/ASSIGN/EXPR/NUM_FLOAT[@text='0.75']" />
+  <suppress-xpath files="SerializeExample.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='SerializeExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='buckets']]/ASSIGN/EXPR/NUM_INT[@text='10']" />
 </suppressions>

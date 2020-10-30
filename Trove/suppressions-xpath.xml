@@ -3,124 +3,124 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="CharArrayStrategy.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='CharArrayStrategy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeHashCode']]/SLIST/VARIABLE_DEF[./IDENT[@text='h']]/ASSIGN/EXPR/NUM_INT[@text='31']" />
-	<suppress-xpath files="CharArrayStrategy.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='CharArrayStrategy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeHashCode']]/SLIST/LITERAL_FOR/EXPR/ASSIGN[./IDENT[@text='h']]/BXOR[./IDENT[@text='h']]/PLUS[./IDENT[@text='ch']]/PLUS/SL[./IDENT[@text='h']]/NUM_INT[@text='5']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='24.4']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='36.3']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='67.6']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='10.0']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='24.4']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='36.3']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='67.6']" />
-	<suppress-xpath files="Demo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='10.0']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
-	<suppress-xpath files="IteratorDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="ListDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='17.3']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='16.6']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2.2']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='17.3']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='16.6']" />
-	<suppress-xpath files="StackDemo.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2.2']" />
-	<suppress-xpath files="TroveProcedure.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
-	<suppress-xpath files="TroveProcedure.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
-	<suppress-xpath files="TroveProcedure.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
-	<suppress-xpath files="TroveProcedure.java"
-								checks="MagicNumberCheck"
-								query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
+  <suppress-xpath files="CharArrayStrategy.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CharArrayStrategy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeHashCode']]/SLIST/VARIABLE_DEF[./IDENT[@text='h']]/ASSIGN/EXPR/NUM_INT[@text='31']" />
+  <suppress-xpath files="CharArrayStrategy.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CharArrayStrategy']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeHashCode']]/SLIST/LITERAL_FOR/EXPR/ASSIGN[./IDENT[@text='h']]/BXOR[./IDENT[@text='h']]/PLUS[./IDENT[@text='ch']]/PLUS/SL[./IDENT[@text='h']]/NUM_INT[@text='5']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='24.4']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='36.3']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='67.6']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJdkArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='10.0']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='24.4']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='36.3']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='67.6']" />
+  <suppress-xpath files="Demo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='Demo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveArrayListForDoubles']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='10.0']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
+  <suppress-xpath files="IteratorDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='IteratorDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKIterator']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveCollectionsClass']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='7']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="ListDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='ListDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKCollectionsClass']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='17.3']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='16.6']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateTroveDoubleArrayStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2.2']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='15.5']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='17.3']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='16.6']" />
+  <suppress-xpath files="StackDemo.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='StackDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateJDKDoubleStack']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='2.2']" />
+  <suppress-xpath files="TroveProcedure.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='15L']" />
+  <suppress-xpath files="TroveProcedure.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='6L']" />
+  <suppress-xpath files="TroveProcedure.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='12L']" />
+  <suppress-xpath files="TroveProcedure.java"
+                  checks="MagicNumberCheck"
+                  query="/ENUM_DEF[./IDENT[@text='TroveProcedure']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='demonstrateIterationWithProcedure']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_LONG[@text='13L']" />
 </suppressions>

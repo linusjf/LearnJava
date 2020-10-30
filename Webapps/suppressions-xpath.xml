@@ -3,28 +3,28 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="DbServlet.java"
-								checks="ExecutableStatementCountCheck"
-								query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
-	<suppress-xpath files="DbServlet.java"
-								checks="ReturnCountCheck"
-								query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
-	<suppress-xpath files="DbServlet.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
-	<suppress-xpath files="Selection.java"
-								checks="ExecutableStatementCountCheck"
-								query="/CLASS_DEF[./IDENT[@text='Selection']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendPage']]" />
-	<suppress-xpath files="Checkout.java"
-								checks="ExecutableStatementCountCheck"
-								query="/CLASS_DEF[./IDENT[@text='Checkout']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='service']]" />
-	<suppress-xpath files="GetPreferences.java"
-								checks="ExecutableStatementCountCheck"
-								query="/CLASS_DEF[./IDENT[@text='GetPreferences']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doGet']]" />
-	<suppress-xpath files="OneWebApp.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='server']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Server']]/ELIST/EXPR/NUM_INT[@text='8080']" />
-	<suppress-xpath files="OneWebApp.java"
-								checks="IllegalCatchCheck"
-								query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='e']]" />
+  <suppress-xpath files="DbServlet.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
+  <suppress-xpath files="DbServlet.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]" />
+  <suppress-xpath files="DbServlet.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='DbServlet']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doPost']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="Selection.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Selection']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='sendPage']]" />
+  <suppress-xpath files="Checkout.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Checkout']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='service']]" />
+  <suppress-xpath files="GetPreferences.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='GetPreferences']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doGet']]" />
+  <suppress-xpath files="OneWebApp.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='server']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Server']]/ELIST/EXPR/NUM_INT[@text='8080']" />
+  <suppress-xpath files="OneWebApp.java"
+                  checks="IllegalCatchCheck"
+                  query="/CLASS_DEF[./IDENT[@text='OneWebApp']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/LITERAL_CATCH[./PARAMETER_DEF/IDENT[@text='e']]" />
 </suppressions>

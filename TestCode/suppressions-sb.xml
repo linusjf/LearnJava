@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter xmlns="https://github.com/spotbugs/filter/3.0.0"
-								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-								xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
 
-	<Match>
-	<Class name="cstests.TestPlatformDependentLineSeparator" />
-	<Bug code="FS" />
-	</Match>
-	<Match>
-	<Class name="pmdtests.Demo" />
-	</Match>
-	<Match>
-	<Class name="pmdtests.Stack$Node" />
-	<Bug code="SIC,UrF" />
-	</Match>
-	<Match>
-	<Class name="pmdtests.Construct" />
-	<Bug code="DLS" />
-	</Match>
-	<Match>
-	<Class name="sbtests.Twisted" />
-	<Bug code="SIC" />
-	</Match>
-	<Match>
-	<Class name="~.*[.]TestString.*" />
-	<Bug code="UPM,UwF,Dm" />
-	</Match>
+  <Match>
+    <Class name="cstests.TestPlatformDependentLineSeparator" />
+    <Bug code="FS" />
+  </Match>
+  <Match>
+    <Class name="pmdtests.Demo" />
+  </Match>
+  <Match>
+    <Class name="pmdtests.Stack$Node" />
+    <Bug code="SIC,UrF" />
+  </Match>
+  <Match>
+    <Class name="pmdtests.Construct" />
+    <Bug code="DLS" />
+  </Match>
+  <Match>
+    <Class name="sbtests.Twisted" />
+    <Bug code="SIC" />
+  </Match>
+  <Match>
+    <Class name="~.*[.]TestString.*" />
+    <Bug code="UPM,UwF,Dm" />
+  </Match>
 </FindBugsFilter>

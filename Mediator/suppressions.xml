@@ -3,7 +3,7 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 <suppressions>
-	<!--The Check generates too many violations, fixing them will make code unmanageable.-->
-	<suppress checks="MagicNumber"
-					files=".*[\\/](com)[\\/].*(Denim|Cotton)Mediator\.java" />
+  <!--The Check generates too many violations, fixing them will make code unmanageable.-->
+  <suppress checks="MagicNumber"
+            files=".*[\\/](com)[\\/].*(Denim|Cotton)Mediator\.java" />
 </suppressions>

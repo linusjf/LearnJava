@@ -3,16 +3,16 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-	<suppress-xpath files="HashMapSpeedTest.java"
-								checks="DeclarationOrderCheck"
-								query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='SIZE']]/MODIFIERS" />
-	<suppress-xpath files="HashMapSpeedTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='10f']" />
-	<suppress-xpath files="HashMapSpeedTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='0.3f']" />
-	<suppress-xpath files="HashMapSpeedTest.java"
-								checks="MagicNumberCheck"
-								query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='0.1f']" />
+  <suppress-xpath files="HashMapSpeedTest.java"
+                  checks="DeclarationOrderCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='SIZE']]/MODIFIERS" />
+  <suppress-xpath files="HashMapSpeedTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='10f']" />
+  <suppress-xpath files="HashMapSpeedTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='0.3f']" />
+  <suppress-xpath files="HashMapSpeedTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HashMapSpeedTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='mapProvider']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]/ARRAY_INIT/ARRAY_INIT/EXPR/LITERAL_NEW[./IDENT[@text='HashMap']]/ELIST/EXPR/NUM_FLOAT[@text='0.1f']" />
 </suppressions>
