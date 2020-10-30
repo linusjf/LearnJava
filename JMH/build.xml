@@ -21,6 +21,10 @@
 					location="dist" />
 	<property name="docs.dir"
 					location="docs" />
+	<loadfile property="compilerclasspath"
+					srcFile="${compile.cp}" />
+	<loadfile property="runclasspath"
+					srcFile="${run.cp}" />
 	<target name="setupclasspath">
 	<description>setupclasspath target</description>
 	<exec executable="bash">
@@ -41,10 +45,6 @@
 						srcFile="../${antcontrib.classpath.file}" />
 	<loadfile property="groovy-ant.cp"
 						srcFile="../${groovy-ant.classpath.file}" />
-	<loadfile property="compilerclasspath"
-						srcFile="${compile.cp}" />
-	<loadfile property="runclasspath"
-						srcFile="${run.cp}" />
 	</target>
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
@@ -114,26 +114,26 @@
 	<!--Creates the deployable jar file  -->
 	<target name="jar"
 				depends="loadclasspath,compile,manifest">
- <taskdef name="groovy"
-         classname="org.codehaus.groovy.ant.Groovy"
-   classpathref="${groovy-ant.cp}"/>
- <groovy src="jar.groovy"/>
- <!--  <jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
-			basedir="${build.dir}"
-			includes="**/*.class">
-	<manifest>
-		<attribute name="Main-Class"
-							value="org.openjdk.jmh.Main" />
-	</manifest>
-	<for list="${runclasspath}"
-				param="jarfile"
-				delimiter=":"
-				trim="true">
-		<sequential>
-		<zipfileset src="@{jarfile}"
-								excludes="**/META-INF/services/**" />
-		</sequential>
-	</for>
+	<taskdef name="groovy"
+					classname="org.codehaus.groovy.ant.Groovy"
+					classpath="${groovy-ant.cp}" />
+	<groovy src="jar.groovy" />
+	<!--  <jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
+      basedir="${build.dir}"
+      includes="**/*.class">
+  <manifest>
+    <attribute name="Main-Class"
+              value="org.openjdk.jmh.Main" />
+  </manifest>
+  <for list="${runclasspath}"
+        param="jarfile"
+        delimiter=":"
+        trim="true">
+    <sequential>
+    <zipfileset src="@{jarfile}"
+                excludes="**/META-INF/services/**" />
+    </sequential>
+  </for>
 </jar> -->
 	</target>
 	<target name="run"
