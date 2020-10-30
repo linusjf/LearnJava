@@ -68,8 +68,7 @@
 	<javac srcdir="${src.dir}"
 				destdir="${build.dir}"
 				classpath="${jmh-core.jar};${jmh-generator-annprocess.jar}" />
-	<delete dir="${dist.dir} " />
-	<mkdir dir="${dist.dir}" />
+	<delete file="${dist.dir}/benchmarks.jar" />
 	<jar jarfile="${dist.dir}/benchmarks.jar"
 			basedir="${build.dir}">
 	<manifest>
@@ -189,22 +188,9 @@
 					parallel="false"
 					trim="true"
 					inheritall="true" />
-	<copy todir="/tmp/jmhclasses/META-INF/"
-				overwrite="true">
-	<fileset dir="META-INF">
-		<include name="**/BenchmarkList" />
-		<include name="**/CompilerHints" />
-	</fileset>
-	</copy>
 	<copy file="MANIFEST.MF"
 				overwrite="true"
 				todir="/tmp/jmhclasses/META-INF"></copy>
-	<copy todir="/tmp/jmhclasses"
-				overwrite="true">
-	<fileset dir="${build.dir}">
-		<include name="**/*.class" />
-	</fileset>
-	</copy>
 	<groovy src="jar.groovy" />
 	<delete dir="/tmp/jmhclasses" />
 	</target>
@@ -213,7 +199,7 @@
 	<description>Run target</description>
 	<java classname="${jmh.main.class}"
 				fork="true">
-	<arg line="jmh.HelloWorld" />
+	<arg line="HelloWorld" />
 	<classpath>
 		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
 		<pathelement path="${dist.dir}" />
@@ -369,8 +355,13 @@
 						effort="max"
 						excludeFilter="suppressions-sb.xml"
 						nested="true">
-	<auxClasspath path="${basedir}" />
-	<auxClasspath path="${runclasspath}" />
+	<auxClasspath path="${basedir}">
+		<fileset dir="${basedir}">
+		<exclude name="**/jmh_generated/*.class" />
+		<exclude name="**/libs/*.jar" />
+		<include name="**/*.class" />
+		</fileset>
+	</auxClasspath>
 	<sourcePath path="${basedir}">
 		<fileset dir="${basedir}">
 		<exclude name="**/jmh_generated/*.java" />
