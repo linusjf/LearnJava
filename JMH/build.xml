@@ -165,7 +165,9 @@
 	<unzip src="${jarfile}"
 				dest="/tmp/jmhclasses"
 				failOnEmptyArchive="true">
-	<patternset></patternset>
+	<patternset>
+		<exclude name="**/META-INF/services/**" />
+	</patternset>
 	</unzip>
 	</target>
 	<!--Creates the deployable jar file  -->
@@ -187,9 +189,26 @@
 	<copy file="MANIFEST.MF"
 				overwrite="true"
 				todir="/tmp/jmhclasses/META-INF"></copy>
-	<!--<jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
-      basedir="/tmp/jmhclasses"></jar>-->
-	<groovy src="jar.groovy" />
+	<copy file="META-INF/BenchmarkList"
+				overwrite="true"
+				todir="/tmp/jmhclasses/META-INF"></copy>
+	<copy file="META-INF/CompilerHints"
+				overwrite="true"
+				todir="/tmp/jmhclasses/META-INF"></copy>
+	<copy overwrite="true"
+				todir="/tmp/jmhclasses">
+	<fileset dir="${build.dir}">
+		<include name="**/*.class" />
+	</fileset>
+	</copy>
+	<jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
+			basedir="/tmp/jmhclasses">
+	<manifest>
+		<attribute name="Main-Class"
+							value="org.openjdk.jmh.Main" />
+	</manifest>
+	</jar>
+	<!--  <groovy src="jar.groovy" /> -->
 	</target>
 	<target name="run"
 				depends="loadclasspath">
@@ -199,7 +218,7 @@
 	<arg line="HelloWorld" />
 	<classpath>
 		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-		<pathelement path="${dist.dir}" />
+		<pathelement path="${build.dir}" />
 		<pathelement path="${java.class.path}" />
 	</classpath>
 	</java>
