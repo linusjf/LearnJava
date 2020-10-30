@@ -64,10 +64,6 @@
 	<target name="jarbenchmarks"
 				description="Generate the self-contained JAR"
 				depends="download-libs">
-	<mkdir dir="${build.dir}" />
-	<javac srcdir="${src.dir}"
-				destdir="${build.dir}"
-				classpath="${jmh-core.jar};${jmh-generator-annprocess.jar}" />
 	<delete file="${dist.dir}/benchmarks.jar" />
 	<jar jarfile="${dist.dir}/benchmarks.jar"
 			basedir="${build.dir}">
@@ -191,8 +187,9 @@
 	<copy file="MANIFEST.MF"
 				overwrite="true"
 				todir="/tmp/jmhclasses/META-INF"></copy>
+	<!--<jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
+      basedir="/tmp/jmhclasses"></jar>-->
 	<groovy src="jar.groovy" />
-	<delete dir="/tmp/jmhclasses" />
 	</target>
 	<target name="run"
 				depends="loadclasspath">
@@ -208,7 +205,7 @@
 	</java>
 	</target>
 	<target name="runbenchmarks">
-	<description>Run target</description>
+	<description>Runbenchmarks target</description>
 	<java classname="${jmh.main.class}"
 				fork="true">
 	<arg line="HelloWorld" />
@@ -355,20 +352,19 @@
 						effort="max"
 						excludeFilter="suppressions-sb.xml"
 						nested="true">
-	<auxClasspath path="${basedir}">
-		<fileset dir="${basedir}">
-		<exclude name="**/jmh_generated/*.class" />
-		<exclude name="**/libs/*.jar" />
-		<include name="**/*.class" />
-		</fileset>
-	</auxClasspath>
+	<auxClasspath path="${basedir}"></auxClasspath>
 	<sourcePath path="${basedir}">
 		<fileset dir="${basedir}">
 		<exclude name="**/jmh_generated/*.java" />
 		<include name="**/*.java" />
 		</fileset>
 	</sourcePath>
-	<class location="${basedir}" />
+	<!--  <class location="${basedir}" /> -->
+	<fileset dir="${basedir}">
+		<exclude name="**/jmh_generated/*.class" />
+		<exclude name="**/libs/*.jar" />
+		<include name="**/*.class" />
+	</fileset>
 	<classpath>
 		<pathelement path="${spotbugs.cp}" />
 		<pathelement path="${java.class.path}" />
