@@ -504,7 +504,8 @@
 	<echo file="${lombok.classpath.file}"
 				message="${toString:lombok.main.path}" />
 	<echo file="${jmh.classpath.file}"
-				message="${toString:jmh.main.path}:${toString:jmh.lib.path}:${toString:jmh-generator-annprocess.main.path}:${toString:jmh-generator-reflection.main.path}:${toString:jmh-generator-bytecode.main.path}:${toString:jmh-generator-asm.main.path}:${toString:jmh-core-benchmarks.main.path}" />
+    message="${toString:jmh.main.path}:${toString:jmh.lib.path}:${toString:jmh-generator-annprocess.main.path}" />
+			<!--message="${toString:jmh.main.path}:${toString:jmh.lib.path}:${toString:jmh-generator-annprocess.main.path}:${toString:jmh-generator-reflection.main.path}:${toString:jmh-generator-bytecode.main.path}:${toString:jmh-generator-asm.main.path}:${toString:jmh-core-benchmarks.main.path}" /> -->
 	<echo file="${groovy-ant.classpath.file}"
 				message="${toString:groovy-ant.main.path}:${toString:groovy-ant.lib.path}" />
 	<antcall target="uniquify"></antcall>
