@@ -21,10 +21,6 @@
 					location="dist" />
 	<property name="docs.dir"
 					location="docs" />
-	<loadfile property="compilerclasspath"
-					srcFile="${compile.cp}" />
-	<loadfile property="runclasspath"
-					srcFile="${run.cp}" />
 	<target name="setupclasspath">
 	<description>setupclasspath target</description>
 	<exec executable="bash">
@@ -45,6 +41,10 @@
 						srcFile="../${antcontrib.classpath.file}" />
 	<loadfile property="groovy-ant.cp"
 						srcFile="../${groovy-ant.classpath.file}" />
+	<loadfile property="compilerclasspath"
+						srcFile="${compile.cp}" />
+	<loadfile property="runclasspath"
+						srcFile="${run.cp}" />
 	</target>
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
@@ -108,7 +108,7 @@
 							value="" />
 	</section>
 	<attribute name="Main-Class"
-							value="${main.class}" />
+							value="${jmh.main.class}" />
 	</manifest>
 	</target>
 	<!--Creates the deployable jar file  -->

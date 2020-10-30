@@ -9,10 +9,6 @@ import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
 
-System.out.println(properties.get("groovy-ant.cp"))
-System.out.println(properties.get("version"))
-System.out.println(properties.get("build.dir"))
-System.out.println(properties.get("runclasspath"))
 createJar()
 
 public void createJar() throws IOException
@@ -20,16 +16,17 @@ public void createJar() throws IOException
      def ver = properties.get("version")
        def buildDir = properties.get("build.dir")  
       Manifest manifest = new Manifest(Files.newInputStream(Paths.get("manifest.mf")));
-      JarOutputStream target = new JarOutputStream(Files.newOutputStream(Paths.get("dist/" + project.name + ver + ".jar")), manifest);
+      JarOutputStream target = new JarOutputStream(Files.newOutputStream(Paths.get("dist/" + project.name + "-" + ver + ".jar")), manifest);
       File inputDirectory = new File(buildDir);
       for (File nestedFile : inputDirectory.listFiles())
          add("", nestedFile, target);
       String jars = properties.get("runclasspath")
-        for (String jar: jars.split(":")) { 
-        JarEntry entry = new JarEntry(jar);
+        for (String jar: jars.split(":")) {
+          File jarFile = new File(jar)
+        JarEntry entry = new JarEntry(jarFile.getName());
         entry.setTime(inputDirectory.lastModified());
          target.putNextEntry(entry);
-         in = new BufferedInputStream(new FileInputStream(jar));
+         in = new BufferedInputStream(new FileInputStream(jarFile));
 
          byte[] buffer = new byte[1024];
          while (true)
@@ -51,7 +48,7 @@ public void createJar() throws IOException
       {
          String name = (parents + source.getName()).replace("\\", "/");
 
-         if (source.isDirectory())
+         if (source.isDirectory() && source.getName().startsWith("jmh"))
          {
             if (!name.isEmpty())
             {
