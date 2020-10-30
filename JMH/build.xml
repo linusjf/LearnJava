@@ -227,7 +227,7 @@
 				fork="true">
 	<arg line="HelloWorld" />
 	<classpath>
-		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement location="${dist.dir}\benchmarks.jar" />
 		<pathelement path="${build.dir}" />
 		<pathelement path="${java.class.path}" />
 	</classpath>
@@ -322,8 +322,6 @@
 	<checkstyle config="${toString:checkstylefile}"
 							failOnViolation="false"
 							properties="../${cs.properties}">
-	<!--  <fileset dir="${src.dir}"
-  includes="**/*.java" /> -->
 	<fileset dir="${src.dir}"
 						excludes="jmh/jmh_generated/*.java" />
 	<formatter type="plain" />
@@ -387,7 +385,8 @@
 	</spotbugs>
 	</target>
 	<target name="main"
-				depends="loadclasspath,compile, pmd, spotbugs,jar,docs">
+				depends="loadclasspath,compile, pmd, spotbugs,jar,jarbenchmarks,docs">
+				
 	<description>Main target</description>
 	</target>
 </project>
