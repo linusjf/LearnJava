@@ -2,6 +2,8 @@
 <project name="JMH"
 				default="main"
 				basedir=".">
+	<property name="jmh.ver"
+					value="1.26" />
 	<property file="build.properties" />
 	<property file="../globalbuild.properties" />
 	<property file="../checkstyle.properties" />
@@ -21,11 +23,64 @@
 					location="dist" />
 	<property name="docs.dir"
 					location="docs" />
+	<property name="jmh-core.jar"
+					location="${build.dir}/libs/jmh-core.jar" />
+	<property name="jmh-generator-annprocess.jar"
+					location="${build.dir}/libs/jmh-generator-annprocess.jar" />
+	<property name="joptsimple.jar"
+					location="${build.dir}/libs/joptsimple.jar" />
+	<property name="commonsmath.jar"
+					location="${build.dir}/libs/commonsmath.jar" />
 	<target name="setupclasspath">
 	<description>setupclasspath target</description>
 	<exec executable="bash">
 	<arg value="./setupclasspath" />
 	</exec>
+	</target>
+	<target name="download-libs"
+				description="Download libraries">
+	<mkdir dir="${build.dir}/libs/" />
+	<get src="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/${jmh.ver}/jmh-core-${jmh.ver}.jar"
+			dest="${jmh-core.jar}"
+			verbose="true"
+			usetimestamp="true"
+			skipexisting="true" />
+	<get src="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/${jmh.ver}/jmh-generator-annprocess-${jmh.ver}.jar"
+			dest="${jmh-generator-annprocess.jar}"
+			verbose="true"
+			usetimestamp="true"
+			skipexisting="true" />
+	<get src="https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar"
+			dest="${joptsimple.jar}"
+			verbose="true"
+			usetimestamp="true"
+			skipexisting="true" />
+	<get src="https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar"
+			dest="${commonsmath.jar}"
+			verbose="true"
+			usetimestamp="true"
+			skipexisting="true" />
+	</target>
+	<target name="jarbenchmarks"
+				description="Generate the self-contained JAR"
+				depends="download-libs">
+	<mkdir dir="${build.dir}" />
+	<javac srcdir="${src.dir}"
+				destdir="${build.dir}"
+				classpath="${jmh-core.jar};${jmh-generator-annprocess.jar}" />
+	<delete dir="${dist.dir} " />
+	<mkdir dir="${dist.dir}" />
+	<jar jarfile="${dist.dir}/benchmarks.jar"
+			basedir="${build.dir}">
+	<manifest>
+		<attribute name="Main-Class"
+							value="org.openjdk.jmh.Main" />
+	</manifest>
+	<zipfileset src="${jmh-core.jar}"
+							excludes="**/META-INF/services/**" />
+	<zipfileset src="${joptsimple.jar}" />
+	<zipfileset src="${commonsmath.jar}" />
+	</jar>
 	</target>
 	<target name="loadclasspath"
 				depends="setupclasspath">
@@ -156,11 +211,24 @@
 	<target name="run"
 				depends="loadclasspath">
 	<description>Run target</description>
-	<java classname="${jmh.main.class}">
-	<arg line="HelloWorld" />
+	<java classname="${jmh.main.class}"
+				fork="true">
+	<arg line="jmh.HelloWorld" />
 	<classpath>
 		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
 		<pathelement path="${dist.dir}" />
+		<pathelement path="${java.class.path}" />
+	</classpath>
+	</java>
+	</target>
+	<target name="runbenchmarks">
+	<description>Run target</description>
+	<java classname="${jmh.main.class}"
+				fork="true">
+	<arg line="HelloWorld" />
+	<classpath>
+		<pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+		<pathelement path="${build.dir}" />
 		<pathelement path="${java.class.path}" />
 	</classpath>
 	</java>

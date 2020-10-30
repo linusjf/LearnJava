@@ -1,2 +1,3 @@
 jmh/jmh_generated/*.*
 dist/**/*.*
+lib*/**/*.*
