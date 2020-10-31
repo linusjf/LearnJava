@@ -84,6 +84,9 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
+    <module name="LambdaBodyLength">
+            <property name="max" value="10"/>
+          </module>
     <module name="AvoidDoubleBraceInitialization" />
     <module name="NoEnumTrailingComma" />
     <module name="NoArrayTrailingComma" />

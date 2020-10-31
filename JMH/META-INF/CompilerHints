@@ -51,4 +51,5 @@ inline,jmh/States.measureUnshared
 inline,jmh/Tokenizer.doSetup
 inline,jmh/Tokenizer.doTearDown
 inline,jmh/Tokenizer.measureStringSplit
+inline,jmh/Tokenizer.measureStringSplitRegex
 inline,jmh/Tokenizer.measureStringTokenizer
