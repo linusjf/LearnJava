@@ -4,6 +4,8 @@
          basedir=".">
   <property name="jmh.ver"
             value="1.26" />
+  <property name="tmp.dir"
+            value="/tmp/jmhclasses" />
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
   <property file="../checkstyle.properties" />
@@ -163,7 +165,7 @@
   </target>
   <target name="unzip">
     <unzip src="${jarfile}"
-           dest="/tmp/jmhclasses"
+           dest="${tmp.dir}"
            failOnEmptyArchive="true">
       <patternset>
         <exclude name="**/META-INF/services/**" />
@@ -178,7 +180,7 @@
     <taskdef name="groovy"
              classname="org.codehaus.groovy.ant.Groovy"
              classpath="${groovy-ant.cp}" />
-    <delete dir="/tmp/jmhclasses" />
+    <delete dir="${tmp.dir}" />
     <foreach list="${runclasspath}"
              param="jarfile"
              delimiter=":"
@@ -188,21 +190,21 @@
              inheritall="true" />
     <copy file="MANIFEST.MF"
           overwrite="true"
-          todir="/tmp/jmhclasses/META-INF"></copy>
+          todir="${tmp.dir}/META-INF"></copy>
     <copy file="META-INF/BenchmarkList"
           overwrite="true"
-          todir="/tmp/jmhclasses/META-INF"></copy>
+          todir="${tmp.dir}/META-INF"></copy>
     <copy file="META-INF/CompilerHints"
           overwrite="true"
-          todir="/tmp/jmhclasses/META-INF"></copy>
+          todir="${tmp.dir}/META-INF"></copy>
     <copy overwrite="true"
-          todir="/tmp/jmhclasses">
+          todir="${tmp.dir}">
       <fileset dir="${build.dir}">
         <include name="**/*.class" />
       </fileset>
     </copy>
     <jar jarfile="${dist.dir}/${ant.project.name}-${version}.jar"
-         basedir="/tmp/jmhclasses">
+         basedir="${tmp.dir}">
       <manifest>
         <attribute name="Main-Class"
                    value="org.openjdk.jmh.Main" />

@@ -15,8 +15,9 @@ public void createJar() throws IOException
    {
      def ver = properties.get("version")
        def buildDir = properties.get("build.dir")  
+       def tempDir = properties.get("tmp.dir")  
       JarOutputStream target = new JarOutputStream(Files.newOutputStream(Paths.get("dist/" + project.name + "-" + ver + ".jar")));
-      File inputDirectory = new File("/tmp/jmhclasses");
+      File inputDirectory = new File(tempDir);
       for (File nestedFile : inputDirectory.listFiles())
          add("", nestedFile, target);
       target.close();
