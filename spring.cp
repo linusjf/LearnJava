@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/spring-core-5.2.10.RELEASE.jar:/data/data/com.termux/files/home/LearnJava/lib/spring-jcl-5.2.10.RELEASE.jar
+/data/data/com.termux/files/home/LearnJava/lib/spring-core-5.3.0.jar:/data/data/com.termux/files/home/LearnJava/lib/spring-jcl-5.3.0.jar
