@@ -10,6 +10,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 public class StateFixtures {
 
@@ -69,6 +70,7 @@ public class StateFixtures {
    * not pass the check, and JMH will fail the run.
    */
 
+  @SuppressWarnings({"PMD.UnusedLocalVariable","PMD.UnusedAssignment"})
   @Benchmark
   public void measureWrong() {
     double x = 0;

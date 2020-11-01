@@ -13,6 +13,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -53,7 +54,7 @@ public class Forking {
 
   @Benchmark
   @Fork(0)
-  public int measure_1_c1() {
+  public int measure1c1() {
     return measure(c1);
   }
 
@@ -63,7 +64,7 @@ public class Forking {
 
   @Benchmark
   @Fork(0)
-  public int measure_2_c2() {
+  public int measure2c2() {
     return measure(c2);
   }
 
@@ -73,7 +74,7 @@ public class Forking {
 
   @Benchmark
   @Fork(0)
-  public int measure_3_c1_again() {
+  public int measure3c1again() {
     return measure(c1);
   }
 
@@ -89,7 +90,7 @@ public class Forking {
 
   @Benchmark
   @Fork(1)
-  public int measure_4_forked_c1() {
+  public int measure4forkedc1() {
     return measure(c1);
   }
 
@@ -99,7 +100,7 @@ public class Forking {
 
   @Benchmark
   @Fork(1)
-  public int measure_5_forked_c2() {
+  public int measure5forkedc2() {
     return measure(c2);
   }
 

@@ -136,8 +136,9 @@ public class FixtureLevelInvocation {
     }
   }
 
+  @SuppressWarnings("PMD.ShortClassName")
   public static class Task implements Callable<Double> {
-    private Scratch s;
+    private final Scratch s;
 
     public Task(Scratch s) {
       this.s = s;

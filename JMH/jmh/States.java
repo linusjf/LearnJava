@@ -8,6 +8,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 public class States {
 
   /*
@@ -83,11 +84,13 @@ public class States {
    * threads (ThreadLocals are yours, etc).
    */
 
+  @SuppressWarnings("PMD.AvoidUsingVolatile")
   @State(Scope.Benchmark)
   public static class BenchmarkState {
     volatile double x = Math.PI;
   }
 
+  @SuppressWarnings("PMD.AvoidUsingVolatile")
   @State(Scope.Thread)
   public static class ThreadState {
     volatile double x = Math.PI;

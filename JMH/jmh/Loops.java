@@ -13,6 +13,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -64,37 +65,37 @@ public class Loops {
 
   @Benchmark
   @OperationsPerInvocation(1)
-  public int measureWrong_1() {
+  public int measureWrong1() {
     return reps(1);
   }
 
   @Benchmark
   @OperationsPerInvocation(10)
-  public int measureWrong_10() {
+  public int measureWrong10() {
     return reps(10);
   }
 
   @Benchmark
   @OperationsPerInvocation(100)
-  public int measureWrong_100() {
+  public int measureWrong100() {
     return reps(100);
   }
 
   @Benchmark
   @OperationsPerInvocation(1_000)
-  public int measureWrong_1000() {
+  public int measureWrong1000() {
     return reps(1_000);
   }
 
   @Benchmark
   @OperationsPerInvocation(10_000)
-  public int measureWrong_10000() {
+  public int measureWrong10000() {
     return reps(10_000);
   }
 
   @Benchmark
   @OperationsPerInvocation(100_000)
-  public int measureWrong_100000() {
+  public int measureWrong100000() {
     return reps(100_000);
   }
 
