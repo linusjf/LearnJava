@@ -70,7 +70,7 @@ public class StateFixtures {
    * not pass the check, and JMH will fail the run.
    */
 
-  @SuppressWarnings({"PMD.UnusedLocalVariable","PMD.UnusedAssignment"})
+  @SuppressWarnings({"PMD.UnusedLocalVariable", "PMD.UnusedAssignment"})
   @Benchmark
   public void measureWrong() {
     double x = 0;

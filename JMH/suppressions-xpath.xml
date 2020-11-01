@@ -38,23 +38,23 @@
 <suppress-xpath
        files="Loops.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong_10']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10']"/>
 <suppress-xpath
        files="Loops.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong_100']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100']"/>
+       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100']"/>
 <suppress-xpath
        files="Loops.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong_1000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='1_000']"/>
+       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong1000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='1_000']"/>
 <suppress-xpath
        files="Loops.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong_10000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10_000']"/>
 <suppress-xpath
        files="Loops.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong_100000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100_000']"/>
+       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100_000']"/>
 <suppress-xpath
        files="StateFixtures.java"
        checks="HiddenFieldCheck"

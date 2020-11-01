@@ -40,8 +40,7 @@ public class FixtureLevel {
     x++;
   }
 
-  @SuppressWarnings({"PMD.UnusedLocalVariable",
-  "PMD.UnusedAssignment"})
+  @SuppressWarnings({"PMD.UnusedLocalVariable", "PMD.UnusedAssignment"})
   @Benchmark
   public void measureWrong() {
     double x = 0;

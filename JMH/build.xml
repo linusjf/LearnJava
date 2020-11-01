@@ -377,14 +377,15 @@
       <sourcePath path="${basedir}">
         <fileset dir="${basedir}">
           <exclude name="**/jmh_generated/*.java" />
-          <include name="**/*.java" />
+          <exclude name="**/jmh/*.java" />
         </fileset>
       </sourcePath>
-      <!--  <class location="${basedir}" /> -->
       <fileset dir="${basedir}">
-        <exclude name="**/jmh_generated/*.class" />
+        <exclude name="jmh/jmh_generated/*.class" />
+        <exclude name="jmh/*.class" />
         <exclude name="**/libs/*.jar" />
-        <include name="**/*.class" />
+        <include name="jmh/package-info.class" />
+        <include name="jmh/Tokenizer.class" />
       </fileset>
       <classpath>
         <pathelement path="${spotbugs.cp}" />
