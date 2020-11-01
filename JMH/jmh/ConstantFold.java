@@ -12,6 +12,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -31,6 +32,7 @@ public class ConstantFold {
 
   // IDEs will say "Oh, you can convert this field to local variable". Don't. Trust. Them.
   // (While this is normally fine advice, it does not work in the context of measuring correctly.)
+  @SuppressWarnings("PMD.ImmutableField")
   private double x = Math.PI;
 
   // IDEs will probably also say "Look, it could be final". Don't. Trust. Them. Either.
@@ -44,13 +46,13 @@ public class ConstantFold {
   }
 
   @Benchmark
-  public double measureWrong_1() {
+  public double measureWrong1() {
     // This is wrong: the source is predictable, and computation is foldable.
     return Math.log(Math.PI);
   }
 
   @Benchmark
-  public double measureWrong_2() {
+  public double measureWrong2() {
     // This is wrong: the source is predictable, and computation is foldable.
     return Math.log(wrongX);
   }

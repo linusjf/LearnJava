@@ -12,6 +12,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -28,7 +29,7 @@ public class DeadCode {
    * to deal with the result to limit dead-code elimination (returned results
    * are implicitly consumed by Blackholes, see JMHSample_09_Blackholes).
    */
-
+  @SuppressWarnings("PMD.ImmutableField")
   private double x = Math.PI;
 
   @Benchmark

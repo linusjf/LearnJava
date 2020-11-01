@@ -16,7 +16,7 @@ public enum TestPremature {
     int result;
 
     if (value1 == null || value2 == null)
-      return compareNulls(value1,value2);
+      return compareNulls(value1, value2);
 
     result = value1.compareToIgnoreCase(value2);
 
@@ -27,26 +27,24 @@ public enum TestPremature {
   }
 
   public static int compareNulls(Object a, Object b) {
-      if (a == null && b == null)
-        return 0;
-      if (a == null && b != null)
-        return 1;
-      return -1;
+    if (a == null && b == null)
+      return 0;
+    if (a == null && b != null)
+      return 1;
+    return -1;
   }
 
-  public static int compareStringAgain(String value1, String value2)
-   {
-      int result;
+  public static int compareStringAgain(String value1, String value2) {
+    int result;
 
-      if (value1 == null || value2 == null)
-         result = compareNulls(value1, value2);
-      else
-      {
-         result = value1.compareToIgnoreCase(value2);
+    if (value1 == null || value2 == null)
+      result = compareNulls(value1, value2);
+    else {
+      result = value1.compareToIgnoreCase(value2);
 
-         if (result == 0)
-            result = value1.compareTo(value2);
-      }
-      return result;
-   }
+      if (result == 0)
+        result = value1.compareTo(value2);
+    }
+    return result;
+  }
 }

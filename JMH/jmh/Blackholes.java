@@ -13,6 +13,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Thread)
@@ -59,7 +60,7 @@ public class Blackholes {
    */
 
   @Benchmark
-  public double measureRight_1() {
+  public double measureRight1() {
     return Math.log(x1) + Math.log(x2);
   }
 
@@ -71,7 +72,7 @@ public class Blackholes {
    */
 
   @Benchmark
-  public void measureRight_2(Blackhole bh) {
+  public void measureRight2(Blackhole bh) {
     bh.consume(Math.log(x1));
     bh.consume(Math.log(x2));
   }
@@ -93,7 +94,6 @@ public class Blackholes {
    *    (see the JMH homepage for possible caveats when running from IDE:
    *      http://openjdk.java.net/projects/code-tools/jmh/)
    */
-
   public static void main(String[] args) throws RunnerException {
     Options opt = new OptionsBuilder()
                       .include(Blackholes.class.getSimpleName())

@@ -10,6 +10,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("PMD.CommentSize")
 @State(Scope.Thread)
 public class FixtureLevel {
 
@@ -39,6 +40,8 @@ public class FixtureLevel {
     x++;
   }
 
+  @SuppressWarnings({"PMD.UnusedLocalVariable",
+  "PMD.UnusedAssignment"})
   @Benchmark
   public void measureWrong() {
     double x = 0;

@@ -24,6 +24,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  * sometimes to do some per-invocation work which should not count as payload (e.g. sleep for some
  * time to emulate think time)
  */
+@SuppressWarnings({"PMD.CommentSize",
+"PMD.LawOfDemeter"})
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class FixtureLevelInvocation {
 
