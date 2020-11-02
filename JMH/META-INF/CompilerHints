@@ -42,6 +42,10 @@ inline,jmh/Loops.measureWrong100
 inline,jmh/Loops.measureWrong1000
 inline,jmh/Loops.measureWrong10000
 inline,jmh/Loops.measureWrong100000
+inline,jmh/RunToRun$SleepyState.setup
+inline,jmh/RunToRun.baseline
+inline,jmh/RunToRun.fork1
+inline,jmh/RunToRun.fork2
 inline,jmh/StateFixtures.check
 inline,jmh/StateFixtures.measureRight
 inline,jmh/StateFixtures.measureWrong
