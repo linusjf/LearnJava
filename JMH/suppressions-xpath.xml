@@ -1,90 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureThroughput']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureAvgTime']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureSamples']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureSingleShot']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureMultiple']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="BenchmarkModes.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureAll']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="FixtureLevel.java"
-       checks="HiddenFieldCheck"
-       query="/CLASS_DEF[./IDENT[@text='FixtureLevel']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong']]/SLIST/VARIABLE_DEF/IDENT[@text='x']"/>
-<suppress-xpath
-       files="Forking.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Forking']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measure']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="Loops.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="Loops.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="Loops.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong1000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='1_000']"/>
-<suppress-xpath
-       files="Loops.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="Loops.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100_000']"/>
-<suppress-xpath
-       files="StateFixtures.java"
-       checks="HiddenFieldCheck"
-       query="/CLASS_DEF[./IDENT[@text='StateFixtures']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong']]/SLIST/VARIABLE_DEF/IDENT[@text='x']"/>
-<suppress-xpath
-       files="States.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='opt']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/DOT[./IDENT[@text='forks']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="States.java"
-       checks="IllegalTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='BenchmarkState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='x']]/MODIFIERS/LITERAL_VOLATILE"/>
-<suppress-xpath
-       files="States.java"
-       checks="IllegalTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ThreadState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='x']]/MODIFIERS/LITERAL_VOLATILE"/>
-<suppress-xpath
-       files="Tokenizer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='100_000']"/>
-<suppress-xpath
-       files="Tokenizer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/PLUS/NUM_INT[@text='100_000']"/>
-<suppress-xpath
-       files="Tokenizer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/PLUS[./NUM_INT[@text='100_000']]/NUM_INT[@text='60']"/>
-<suppress-xpath
-       files="Tokenizer.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureThroughput']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureAvgTime']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureSamples']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureSingleShot']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureMultiple']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="BenchmarkModes.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureAll']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="FixtureLevel.java"
+                  checks="HiddenFieldCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FixtureLevel']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong']]/SLIST/VARIABLE_DEF/IDENT[@text='x']" />
+  <suppress-xpath files="Forking.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Forking']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measure']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="Loops.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="Loops.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100']" />
+  <suppress-xpath files="Loops.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong1000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='1_000']" />
+  <suppress-xpath files="Loops.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong10000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="Loops.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Loops']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong100000']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL[./IDENT[@text='reps']]/ELIST/EXPR/NUM_INT[@text='100_000']" />
+  <suppress-xpath files="StateFixtures.java"
+                  checks="HiddenFieldCheck"
+                  query="/CLASS_DEF[./IDENT[@text='StateFixtures']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong']]/SLIST/VARIABLE_DEF/IDENT[@text='x']" />
+  <suppress-xpath files="States.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='opt']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/DOT[./IDENT[@text='forks']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="States.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='BenchmarkState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='x']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="States.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='States']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ThreadState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='x']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="Tokenizer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='100_000']" />
+  <suppress-xpath files="Tokenizer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/PLUS/NUM_INT[@text='100_000']" />
+  <suppress-xpath files="Tokenizer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/PLUS[./NUM_INT[@text='100_000']]/NUM_INT[@text='60']" />
+  <suppress-xpath files="Tokenizer.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Tokenizer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSetup']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='i']]/NUM_INT[@text='5']" />
 </suppressions>

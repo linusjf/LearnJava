@@ -23,10 +23,10 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 public class Tokenizer {
 
-  String sample;
-  int tokenCount;
-  int splitCount;
-  int splitRegexCount;
+  volatile String sample;
+  volatile int tokenCount;
+  volatile int splitCount;
+  volatile int splitRegexCount;
 
   @Setup(Level.Trial)
   public void doSetup() {
