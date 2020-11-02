@@ -28,6 +28,10 @@
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='BenchmarkModes']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureAll']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
 <suppress-xpath
+       files="CompilerControlExample.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CompilerControlExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='opt']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/DOT[./IDENT[@text='forks']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
        files="FixtureLevel.java"
        checks="HiddenFieldCheck"
        query="/CLASS_DEF[./IDENT[@text='FixtureLevel']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='measureWrong']]/SLIST/VARIABLE_DEF/IDENT[@text='x']"/>

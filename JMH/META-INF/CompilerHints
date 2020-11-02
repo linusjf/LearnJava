@@ -3,6 +3,11 @@ dontinline,*.*_avgt_jmhStub
 dontinline,*.*_sample_jmhStub
 dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
+dontinline,jmh/CompilerControlExample.targetDontInline
+exclude,jmh/CompilerControlExample.targetExclude
+inline,jmh/Asymmetric.get
+inline,jmh/Asymmetric.inc
+inline,jmh/Asymmetric.up
 inline,jmh/BenchmarkModes.measureAll
 inline,jmh/BenchmarkModes.measureAvgTime
 inline,jmh/BenchmarkModes.measureMultiple
@@ -13,6 +18,12 @@ inline,jmh/Blackholes.baseline
 inline,jmh/Blackholes.measureRight1
 inline,jmh/Blackholes.measureRight2
 inline,jmh/Blackholes.measureWrong
+inline,jmh/CompilerControlExample.baseline
+inline,jmh/CompilerControlExample.blank
+inline,jmh/CompilerControlExample.dontinline
+inline,jmh/CompilerControlExample.exclude
+inline,jmh/CompilerControlExample.inline
+inline,jmh/CompilerControlExample.targetInline
 inline,jmh/ConstantFold.baseline
 inline,jmh/ConstantFold.measureRight
 inline,jmh/ConstantFold.measureWrong1
