@@ -9,6 +9,8 @@ inline,jmh/Annotations.measure
 inline,jmh/Asymmetric.get
 inline,jmh/Asymmetric.inc
 inline,jmh/Asymmetric.up
+inline,jmh/AuxCountersExample.runSETI
+inline,jmh/AuxCountersExample.splitBranch
 inline,jmh/BenchmarkModes.measureAll
 inline,jmh/BenchmarkModes.measureAvgTime
 inline,jmh/BenchmarkModes.measureMultiple
