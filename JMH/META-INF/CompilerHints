@@ -5,6 +5,7 @@ dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
 dontinline,jmh/CompilerControlExample.targetDontInline
 exclude,jmh/CompilerControlExample.targetExclude
+inline,jmh/APIGA.test
 inline,jmh/Annotations.measure
 inline,jmh/Asymmetric.get
 inline,jmh/Asymmetric.inc
@@ -65,6 +66,8 @@ inline,jmh/Forking.measure3c1again
 inline,jmh/Forking.measure4forkedc1
 inline,jmh/Forking.measure5forkedc2
 inline,jmh/HelloWorld.wellHelloThere
+inline,jmh/Inheritance$AbstractBenchmark.bench
+inline,jmh/Inheritance$AbstractBenchmark.setup
 inline,jmh/Loops.measureRight
 inline,jmh/Loops.measureWrong1
 inline,jmh/Loops.measureWrong10
