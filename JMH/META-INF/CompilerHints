@@ -74,8 +74,15 @@ inline,jmh/Forking.measure3c1again
 inline,jmh/Forking.measure4forkedc1
 inline,jmh/Forking.measure5forkedc2
 inline,jmh/HelloWorld.wellHelloThere
+inline,jmh/InfraParams$Ids.setup
+inline,jmh/InfraParams.measureDefault
+inline,jmh/InfraParams.measureFollowThreads
+inline,jmh/InfraParams.setup
 inline,jmh/Inheritance$AbstractBenchmark.bench
 inline,jmh/Inheritance$AbstractBenchmark.setup
+inline,jmh/Interrupts.put
+inline,jmh/Interrupts.setup
+inline,jmh/Interrupts.take
 inline,jmh/Loops.measureRight
 inline,jmh/Loops.measureWrong1
 inline,jmh/Loops.measureWrong10
