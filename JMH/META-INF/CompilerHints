@@ -28,6 +28,8 @@ inline,jmh/ConstantFold.baseline
 inline,jmh/ConstantFold.measureRight
 inline,jmh/ConstantFold.measureWrong1
 inline,jmh/ConstantFold.measureWrong2
+inline,jmh/ControlExample.ping
+inline,jmh/ControlExample.pong
 inline,jmh/DeadCode.baseline
 inline,jmh/DeadCode.measureRight
 inline,jmh/DeadCode.measureWrong
@@ -63,6 +65,7 @@ inline,jmh/StateFixtures.measureWrong
 inline,jmh/StateFixtures.prepare
 inline,jmh/States.measureShared
 inline,jmh/States.measureUnshared
+inline,jmh/SyncIterations.test
 inline,jmh/Tokenizer.doSetup
 inline,jmh/Tokenizer.doTearDown
 inline,jmh/Tokenizer.measureStringSplit
