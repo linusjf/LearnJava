@@ -26,8 +26,7 @@ public final class TestPlatformDependentLineSeparator {
 
   private static String testString3 = "\\nTest to escape line separator\\n";
 
-  private static String testString4 =
-      "\\r\\nTest to escape line separator\\r\\n";
+  private static String testString4 = "\\r\\nTest to escape line separator\\r\\n";
 
   // this must be flagged
   private static final String CRLF = "/r/n";
@@ -76,8 +75,7 @@ public final class TestPlatformDependentLineSeparator {
   }
 
   private TestPlatformDependentLineSeparator() {
-    throw new IllegalStateException("Private constructor invoked for class: "
-                                    + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
   }
 
   public static void main(String... args) {

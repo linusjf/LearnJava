@@ -6,7 +6,7 @@ public enum Capture {
   ;
 
   public static Supplier<Object> createObjectArray() {
-    return new Object[0] ::clone;
+    return new Object[0]::clone;
   }
 
   public static Supplier<Object> createObjectArray0() {

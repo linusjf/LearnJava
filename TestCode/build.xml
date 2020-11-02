@@ -60,7 +60,8 @@
                 failOnViolation="false"
                 properties="../${cs.properties}">
       <fileset dir="${src.dir}"
-               includes="**/*.java" />
+               includes="**/*.java"
+               excludes="**/TestMagicNumber.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
@@ -74,6 +75,7 @@
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/TestMagicNumber.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
