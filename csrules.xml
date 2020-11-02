@@ -322,7 +322,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     <module name="ModifierOrder" />
     <module name="EmptyLineSeparator">
       <property name="allowNoEmptyLineBetweenFields"
-                value="true" />
+                value="false" />
     </module>
     <module name="SeparatorWrap">
       <property name="id"
