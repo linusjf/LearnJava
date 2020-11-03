@@ -45,7 +45,7 @@ public class ControlExample {
       ;
   }
 
-    /*
+  /*
    * ============================== HOW TO RUN THIS TEST: ====================================
    *
    * You can run this test:
@@ -60,12 +60,12 @@ public class ControlExample {
    *      http://openjdk.java.net/projects/code-tools/jmh/)
    */
 
-    public static void main(String[] args) throws RunnerException {
-      Options opt = new OptionsBuilder()
-                        .include(ControlExample.class.getSimpleName())
-                        .threads(2)
-                        .forks(1)
-                        .build();
-      new Runner(opt).run();
-    }
+  public static void main(String[] args) throws RunnerException {
+    Options opt = new OptionsBuilder()
+                      .include(ControlExample.class.getSimpleName())
+                      .threads(2)
+                      .forks(1)
+                      .build();
+    new Runner(opt).run();
   }
+}
