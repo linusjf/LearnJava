@@ -33,8 +33,7 @@ public class BlackholeHelpers {
    * applies to both @Setup and @TearDown methods, and also to other JMH infrastructure objects,
    * like Control.
    *
-   * <p>Below is the variant of {@link org.openjdk.jmh.samples.JMHSample_08_DeadCode} test, but
-   * wrapped in the anonymous classes.
+   * <p>Below is the variant of {@link jmh.DeadCode} test, but wrapped in the anonymous classes.
    */
   public interface Worker { void work(); }
 

@@ -7,7 +7,17 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
-import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.profile.ClassloaderProfiler;
 import org.openjdk.jmh.profile.LinuxPerfProfiler;
@@ -17,6 +27,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 public class Profilers {
 
   /*
@@ -112,52 +123,53 @@ public class Profilers {
         Running this benchmark will yield something like:
 
           Benchmark                              (type)  Mode  Cnt     Score    Error   Units
-          JMHSample_35_Profilers.Maps.test     hashmap  avgt    5  1553.201 ±   6.199   ns/op
-          JMHSample_35_Profilers.Maps.test     treemap  avgt    5  5177.065 ± 361.278   ns/op
+          Profilers.Maps.test     hashmap  avgt    5  1553.201 ±   6.199   ns/op
+          Profilers.Maps.test     treemap  avgt    5  5177.065 ± 361.278   ns/op
 
         Running with -prof stack will yield:
 
-          ....[Thread state: RUNNABLE]........................................................................
-           99.0%  99.0% org.openjdk.jmh.samples.JMHSample_35_Profilers$Maps.test
-            0.4%   0.4% org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Maps_test.test_avgt_jmhStub
+          ....[Thread state: RUNNABLE].................................................
+           99.0%  99.0% jmh.Profilers$Maps.test
+            0.4%   0.4% jmh.Profilers_Maps_test.test_avgt_jmhStub
             0.2%   0.2% sun.reflect.NativeMethodAccessorImpl.invoke0
             0.2%   0.2% java.lang.Integer.valueOf
             0.2%   0.2% sun.misc.Unsafe.compareAndSwapInt
 
-          ....[Thread state: RUNNABLE]........................................................................
+          ....[Thread state: RUNNABLE]...................................
            78.0%  78.0% java.util.TreeMap.getEntry
-           21.2%  21.2% org.openjdk.jmh.samples.JMHSample_35_Profilers$Maps.test
+           21.2%  21.2% jmh.Profilers$Maps.test
             0.4%   0.4% java.lang.Integer.valueOf
             0.2%   0.2% sun.reflect.NativeMethodAccessorImpl.invoke0
-            0.2%   0.2% org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Maps_test.test_avgt_jmhStub
+            0.2%   0.2% jmh.Profilers_Maps_test.test_avgt_jmhStub
 
-        Stack profiler is useful to quickly see if the code we are stressing actually executes. As many other
-        sampling profilers, it is susceptible for sampling bias: it can fail to notice quickly executing methods,
-        for example. In the benchmark above, it does not notice HashMap.get.
+        Stack profiler is useful to quickly see if the code we are stressing actually executes.
+        As many other sampling profilers, it is susceptible for sampling bias.
+        It can fail to notice quickly executing methods, for example.
+        In the benchmark above, it does not notice HashMap.get.
 
         Next up, GC profiler. Running with -prof gc will yield:
 
           Benchmark                                                            (type)  Mode  Cnt    Score     Error   Units
 
-          JMHSample_35_Profilers.Maps.test                                   hashmap  avgt    5  1553.201 ±   6.199   ns/op
-          JMHSample_35_Profilers.Maps.test:·gc.alloc.rate                    hashmap  avgt    5  1257.046 ±   5.675  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.alloc.rate.norm               hashmap  avgt    5  2048.001 ±   0.001    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Eden_Space           hashmap  avgt    5  1259.148 ± 315.277  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Eden_Space.norm      hashmap  avgt    5  2051.519 ± 520.324    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Survivor_Space       hashmap  avgt    5     0.175 ±   0.386  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Survivor_Space.norm  hashmap  avgt    5     0.285 ±   0.629    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.count                         hashmap  avgt    5    29.000            counts
-          JMHSample_35_Profilers.Maps.test:·gc.time                          hashmap  avgt    5    16.000                ms
+          Profilers.Maps.test                                   hashmap  avgt    5  1553.201 ±   6.199   ns/op
+          Profilers.Maps.test:·gc.alloc.rate                    hashmap  avgt    5  1257.046 ±   5.675  MB/sec
+          Profilers.Maps.test:·gc.alloc.rate.norm               hashmap  avgt    5  2048.001 ±   0.001    B/op
+          Profilers.Maps.test:·gc.churn.PS_Eden_Space           hashmap  avgt    5  1259.148 ± 315.277  MB/sec
+          Profilers.Maps.test:·gc.churn.PS_Eden_Space.norm      hashmap  avgt    5  2051.519 ± 520.324    B/op
+          Profilers.Maps.test:·gc.churn.PS_Survivor_Space       hashmap  avgt    5     0.175 ±   0.386  MB/sec
+          Profilers.Maps.test:·gc.churn.PS_Survivor_Space.norm  hashmap  avgt    5     0.285 ±   0.629    B/op
+          Profilers.Maps.test:·gc.count                         hashmap  avgt    5    29.000            counts
+          Profilers.Maps.test:·gc.time                          hashmap  avgt    5    16.000                ms
 
-          JMHSample_35_Profilers.Maps.test                                   treemap  avgt    5  5177.065 ± 361.278   ns/op
-          JMHSample_35_Profilers.Maps.test:·gc.alloc.rate                    treemap  avgt    5   377.251 ±  26.188  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.alloc.rate.norm               treemap  avgt    5  2048.003 ±   0.001    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Eden_Space           treemap  avgt    5   392.743 ± 174.156  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Eden_Space.norm      treemap  avgt    5  2131.767 ± 913.941    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Survivor_Space       treemap  avgt    5     0.131 ±   0.215  MB/sec
-          JMHSample_35_Profilers.Maps.test:·gc.churn.PS_Survivor_Space.norm  treemap  avgt    5     0.709 ±   1.125    B/op
-          JMHSample_35_Profilers.Maps.test:·gc.count                         treemap  avgt    5    25.000            counts
-          JMHSample_35_Profilers.Maps.test:·gc.time                          treemap  avgt    5    26.000                ms
+          Profilers.Maps.test                                   treemap  avgt    5  5177.065 ± 361.278   ns/op
+          Profilers.Maps.test:·gc.alloc.rate                    treemap  avgt    5   377.251 ±  26.188  MB/sec
+          Profilers.Maps.test:·gc.alloc.rate.norm               treemap  avgt    5  2048.003 ±   0.001    B/op
+          Profilers.Maps.test:·gc.churn.PS_Eden_Space           treemap  avgt    5   392.743 ± 174.156  MB/sec
+          Profilers.Maps.test:·gc.churn.PS_Eden_Space.norm      treemap  avgt    5  2131.767 ± 913.941    B/op
+          Profilers.Maps.test:·gc.churn.PS_Survivor_Space       treemap  avgt    5     0.131 ±   0.215  MB/sec
+          Profilers.Maps.test:·gc.churn.PS_Survivor_Space.norm  treemap  avgt    5     0.709 ±   1.125    B/op
+          Profilers.Maps.test:·gc.count                         treemap  avgt    5    25.000            counts
+          Profilers.Maps.test:·gc.time                          treemap  avgt    5    26.000                ms
 
         There, we can see that the tests are producing quite some garbage. "gc.alloc" would say we are allocating 1257
         and 377 MB of objects per second, or 2048 bytes per benchmark operation. "gc.churn" would say that GC removes
@@ -274,11 +286,11 @@ public class Profilers {
        Running with -prof cl will yield:
 
            Benchmark                                              Mode  Cnt      Score      Error        Units
-           JMHSample_35_Profilers.Classy.load                     avgt   15  34215.363 ±  545.892        ns/op
-           JMHSample_35_Profilers.Classy.load:·class.load         avgt   15  29374.097 ±  716.743  classes/sec
-           JMHSample_35_Profilers.Classy.load:·class.load.norm    avgt   15      1.000 ±    0.001   classes/op
-           JMHSample_35_Profilers.Classy.load:·class.unload       avgt   15  29598.233 ± 3420.181  classes/sec
-           JMHSample_35_Profilers.Classy.load:·class.unload.norm  avgt   15      1.008 ±    0.119   classes/op
+           Profilers.Classy.load                     avgt   15  34215.363 ±  545.892        ns/op
+           Profilers.Classy.load:·class.load         avgt   15  29374.097 ±  716.743  classes/sec
+           Profilers.Classy.load:·class.load.norm    avgt   15      1.000 ±    0.001   classes/op
+           Profilers.Classy.load:·class.unload       avgt   15  29598.233 ± 3420.181  classes/sec
+           Profilers.Classy.load:·class.unload.norm  avgt   15      1.008 ±    0.119   classes/op
 
        Here, we can see the benchmark indeed load class per benchmark op, and this adds up to more than 29K classloads
        per second. We can also see the runtime is able to successfully keep the number of loaded classes at bay,
@@ -293,9 +305,9 @@ public class Profilers {
        with measurement, -prof comp:
 
            Benchmark                                                   Mode  Cnt      Score      Error  Units
-           JMHSample_35_Profilers.Classy.load                          avgt    5  33523.875 ± 3026.025  ns/op
-           JMHSample_35_Profilers.Classy.load:·compiler.time.profiled  avgt    5      5.000                ms
-           JMHSample_35_Profilers.Classy.load:·compiler.time.total     avgt    5    479.000                ms
+           Profilers.Classy.load                          avgt    5  33523.875 ± 3026.025  ns/op
+           Profilers.Classy.load:·compiler.time.profiled  avgt    5      5.000                ms
+           Profilers.Classy.load:·compiler.time.total     avgt    5    479.000                ms
 
        We seem to be at proper steady state: out of 479 ms of total compiler work, only 5 ms happen during the
        measurement window. It is expected to have some level of background compilation even at steady state.
@@ -407,31 +419,31 @@ public class Profilers {
         This is exactly what -prof perfnorm does:
 
             Benchmark                                                   Mode  Cnt   Score    Error  Units
-            JMHSample_35_Profilers.Atomic.test                          avgt   15   6.551 ±  0.023  ns/op
-            JMHSample_35_Profilers.Atomic.test:·CPI                     avgt    3   0.933 ±  0.026   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-load-misses   avgt    3   0.001 ±  0.022   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-loads         avgt    3  12.267 ±  1.324   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-store-misses  avgt    3   0.001 ±  0.006   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-stores        avgt    3   4.090 ±  0.402   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-icache-load-misses   avgt    3   0.001 ±  0.011   #/op
-            JMHSample_35_Profilers.Atomic.test:·LLC-loads               avgt    3   0.001 ±  0.004   #/op
-            JMHSample_35_Profilers.Atomic.test:·LLC-stores              avgt    3  ≈ 10⁻⁴            #/op
-            JMHSample_35_Profilers.Atomic.test:·branch-misses           avgt    3  ≈ 10⁻⁴            #/op
-            JMHSample_35_Profilers.Atomic.test:·branches                avgt    3   6.152 ±  0.385   #/op
-            JMHSample_35_Profilers.Atomic.test:·bus-cycles              avgt    3   0.670 ±  0.048   #/op
-            JMHSample_35_Profilers.Atomic.test:·context-switches        avgt    3  ≈ 10⁻⁶            #/op
-            JMHSample_35_Profilers.Atomic.test:·cpu-migrations          avgt    3  ≈ 10⁻⁷            #/op
-            JMHSample_35_Profilers.Atomic.test:·cycles                  avgt    3  26.790 ±  1.393   #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-load-misses        avgt    3  ≈ 10⁻⁴            #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-loads              avgt    3  12.278 ±  0.277   #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-store-misses       avgt    3  ≈ 10⁻⁵            #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-stores             avgt    3   4.113 ±  0.437   #/op
-            JMHSample_35_Profilers.Atomic.test:·iTLB-load-misses        avgt    3  ≈ 10⁻⁵            #/op
-            JMHSample_35_Profilers.Atomic.test:·iTLB-loads              avgt    3   0.001 ±  0.034   #/op
-            JMHSample_35_Profilers.Atomic.test:·instructions            avgt    3  28.729 ±  1.297   #/op
-            JMHSample_35_Profilers.Atomic.test:·minor-faults            avgt    3  ≈ 10⁻⁷            #/op
-            JMHSample_35_Profilers.Atomic.test:·page-faults             avgt    3  ≈ 10⁻⁷            #/op
-            JMHSample_35_Profilers.Atomic.test:·ref-cycles              avgt    3  26.734 ±  2.081   #/op
+            Profilers.Atomic.test                          avgt   15   6.551 ±  0.023  ns/op
+            Profilers.Atomic.test:·CPI                     avgt    3   0.933 ±  0.026   #/op
+            Profilers.Atomic.test:·L1-dcache-load-misses   avgt    3   0.001 ±  0.022   #/op
+            Profilers.Atomic.test:·L1-dcache-loads         avgt    3  12.267 ±  1.324   #/op
+            Profilers.Atomic.test:·L1-dcache-store-misses  avgt    3   0.001 ±  0.006   #/op
+            Profilers.Atomic.test:·L1-dcache-stores        avgt    3   4.090 ±  0.402   #/op
+            Profilers.Atomic.test:·L1-icache-load-misses   avgt    3   0.001 ±  0.011   #/op
+            Profilers.Atomic.test:·LLC-loads               avgt    3   0.001 ±  0.004   #/op
+            Profilers.Atomic.test:·LLC-stores              avgt    3  ≈ 10⁻⁴            #/op
+            Profilers.Atomic.test:·branch-misses           avgt    3  ≈ 10⁻⁴            #/op
+            Profilers.Atomic.test:·branches                avgt    3   6.152 ±  0.385   #/op
+            Profilers.Atomic.test:·bus-cycles              avgt    3   0.670 ±  0.048   #/op
+            Profilers.Atomic.test:·context-switches        avgt    3  ≈ 10⁻⁶            #/op
+            Profilers.Atomic.test:·cpu-migrations          avgt    3  ≈ 10⁻⁷            #/op
+            Profilers.Atomic.test:·cycles                  avgt    3  26.790 ±  1.393   #/op
+            Profilers.Atomic.test:·dTLB-load-misses        avgt    3  ≈ 10⁻⁴            #/op
+            Profilers.Atomic.test:·dTLB-loads              avgt    3  12.278 ±  0.277   #/op
+            Profilers.Atomic.test:·dTLB-store-misses       avgt    3  ≈ 10⁻⁵            #/op
+            Profilers.Atomic.test:·dTLB-stores             avgt    3   4.113 ±  0.437   #/op
+            Profilers.Atomic.test:·iTLB-load-misses        avgt    3  ≈ 10⁻⁵            #/op
+            Profilers.Atomic.test:·iTLB-loads              avgt    3   0.001 ±  0.034   #/op
+            Profilers.Atomic.test:·instructions            avgt    3  28.729 ±  1.297   #/op
+            Profilers.Atomic.test:·minor-faults            avgt    3  ≈ 10⁻⁷            #/op
+            Profilers.Atomic.test:·page-faults             avgt    3  ≈ 10⁻⁷            #/op
+            Profilers.Atomic.test:·ref-cycles              avgt    3  26.734 ±  2.081   #/op
 
         It is customary to trim the lines irrelevant to the particular benchmark. We show all of them here for
         completeness.
@@ -443,31 +455,31 @@ public class Profilers {
         The output would get more interesting when we run with more threads, say, -t 8:
 
             Benchmark                                                   Mode  Cnt    Score     Error  Units
-            JMHSample_35_Profilers.Atomic.test                          avgt   15  143.595 ±   1.968  ns/op
-            JMHSample_35_Profilers.Atomic.test:·CPI                     avgt    3   17.741 ±  28.761   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-load-misses   avgt    3    0.175 ±   0.406   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-loads         avgt    3   11.872 ±   0.786   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-store-misses  avgt    3    0.184 ±   0.505   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-dcache-stores        avgt    3    4.422 ±   0.561   #/op
-            JMHSample_35_Profilers.Atomic.test:·L1-icache-load-misses   avgt    3    0.015 ±   0.083   #/op
-            JMHSample_35_Profilers.Atomic.test:·LLC-loads               avgt    3    0.015 ±   0.128   #/op
-            JMHSample_35_Profilers.Atomic.test:·LLC-stores              avgt    3    1.036 ±   0.045   #/op
-            JMHSample_35_Profilers.Atomic.test:·branch-misses           avgt    3    0.224 ±   0.492   #/op
-            JMHSample_35_Profilers.Atomic.test:·branches                avgt    3    6.524 ±   2.873   #/op
-            JMHSample_35_Profilers.Atomic.test:·bus-cycles              avgt    3   13.475 ±  14.502   #/op
-            JMHSample_35_Profilers.Atomic.test:·context-switches        avgt    3   ≈ 10⁻⁴             #/op
-            JMHSample_35_Profilers.Atomic.test:·cpu-migrations          avgt    3   ≈ 10⁻⁶             #/op
-            JMHSample_35_Profilers.Atomic.test:·cycles                  avgt    3  537.874 ± 595.723   #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-load-misses        avgt    3    0.001 ±   0.006   #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-loads              avgt    3   12.032 ±   2.430   #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-store-misses       avgt    3   ≈ 10⁻⁴             #/op
-            JMHSample_35_Profilers.Atomic.test:·dTLB-stores             avgt    3    4.557 ±   0.948   #/op
-            JMHSample_35_Profilers.Atomic.test:·iTLB-load-misses        avgt    3   ≈ 10⁻³             #/op
-            JMHSample_35_Profilers.Atomic.test:·iTLB-loads              avgt    3    0.016 ±   0.052   #/op
-            JMHSample_35_Profilers.Atomic.test:·instructions            avgt    3   30.367 ±  15.052   #/op
-            JMHSample_35_Profilers.Atomic.test:·minor-faults            avgt    3   ≈ 10⁻⁵             #/op
-            JMHSample_35_Profilers.Atomic.test:·page-faults             avgt    3   ≈ 10⁻⁵             #/op
-            JMHSample_35_Profilers.Atomic.test:·ref-cycles              avgt    3  538.697 ± 590.183   #/op
+            Profilers.Atomic.test                          avgt   15  143.595 ±   1.968  ns/op
+            Profilers.Atomic.test:·CPI                     avgt    3   17.741 ±  28.761   #/op
+            Profilers.Atomic.test:·L1-dcache-load-misses   avgt    3    0.175 ±   0.406   #/op
+            Profilers.Atomic.test:·L1-dcache-loads         avgt    3   11.872 ±   0.786   #/op
+            Profilers.Atomic.test:·L1-dcache-store-misses  avgt    3    0.184 ±   0.505   #/op
+            Profilers.Atomic.test:·L1-dcache-stores        avgt    3    4.422 ±   0.561   #/op
+            Profilers.Atomic.test:·L1-icache-load-misses   avgt    3    0.015 ±   0.083   #/op
+            Profilers.Atomic.test:·LLC-loads               avgt    3    0.015 ±   0.128   #/op
+            Profilers.Atomic.test:·LLC-stores              avgt    3    1.036 ±   0.045   #/op
+            Profilers.Atomic.test:·branch-misses           avgt    3    0.224 ±   0.492   #/op
+            Profilers.Atomic.test:·branches                avgt    3    6.524 ±   2.873   #/op
+            Profilers.Atomic.test:·bus-cycles              avgt    3   13.475 ±  14.502   #/op
+            Profilers.Atomic.test:·context-switches        avgt    3   ≈ 10⁻⁴             #/op
+            Profilers.Atomic.test:·cpu-migrations          avgt    3   ≈ 10⁻⁶             #/op
+            Profilers.Atomic.test:·cycles                  avgt    3  537.874 ± 595.723   #/op
+            Profilers.Atomic.test:·dTLB-load-misses        avgt    3    0.001 ±   0.006   #/op
+            Profilers.Atomic.test:·dTLB-loads              avgt    3   12.032 ±   2.430   #/op
+            Profilers.Atomic.test:·dTLB-store-misses       avgt    3   ≈ 10⁻⁴             #/op
+            Profilers.Atomic.test:·dTLB-stores             avgt    3    4.557 ±   0.948   #/op
+            Profilers.Atomic.test:·iTLB-load-misses        avgt    3   ≈ 10⁻³             #/op
+            Profilers.Atomic.test:·iTLB-loads              avgt    3    0.016 ±   0.052   #/op
+            Profilers.Atomic.test:·instructions            avgt    3   30.367 ±  15.052   #/op
+            Profilers.Atomic.test:·minor-faults            avgt    3   ≈ 10⁻⁵             #/op
+            Profilers.Atomic.test:·page-faults             avgt    3   ≈ 10⁻⁵             #/op
+            Profilers.Atomic.test:·ref-cycles              avgt    3  538.697 ± 590.183   #/op
 
         Note how this time the CPI is awfully high: 17 cycles per instruction! Indeed, we are making almost the
         same ~30 instructions, but now they take >530 cycles. Other counters highlight why: we now have cache
@@ -489,52 +501,52 @@ public class Profilers {
 
             Hottest code regions (>10.00% "cycles" events):
             ....[Hottest Region 1]..............................................................................
-             [0x7f1824f87c45:0x7f1824f87c79] in org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub
+             [0x7f1824f87c45:0x7f1824f87c79] in org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub
 
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@29 (line 201)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@29 (line 201)
                                                                               ; implicit exception: dispatches to 0x00007f1824f87d21
                                 0x00007f1824f87c25: test   %r11d,%r11d
                                 0x00007f1824f87c28: jne    0x00007f1824f87cbd  ;*ifeq
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@32 (line 201)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@32 (line 201)
                                 0x00007f1824f87c2e: mov    $0x1,%ebp
                                 0x00007f1824f87c33: nopw   0x0(%rax,%rax,1)
                                 0x00007f1824f87c3c: xchg   %ax,%ax            ;*aload
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@13 (line 199)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@13 (line 199)
                                 0x00007f1824f87c40: mov    0x8(%rsp),%r10
               0.00%             0x00007f1824f87c45: mov    0xc(%r10),%r11d    ;*getfield n
-                                                                              ; - org.openjdk.jmh.samples.JMHSample_35_Profilers$Atomic::test@1 (line 280)
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
+                                                                              ; - org.openjdk.jmh.samples.Profilers$Atomic::test@1 (line 280)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
               0.19%    0.02%    0x00007f1824f87c49: test   %r11d,%r11d
                                 0x00007f1824f87c4c: je     0x00007f1824f87cad
                                 0x00007f1824f87c4e: mov    $0x1,%edx
                                 0x00007f1824f87c53: lock xadd %rdx,0x10(%r12,%r11,8)
                                                                               ;*invokevirtual getAndAddLong
                                                                               ; - java.util.concurrent.atomic.AtomicLong::incrementAndGet@8 (line 200)
-                                                                              ; - org.openjdk.jmh.samples.JMHSample_35_Profilers$Atomic::test@4 (line 280)
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
+                                                                              ; - org.openjdk.jmh.samples.Profilers$Atomic::test@4 (line 280)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
              95.20%   95.06%    0x00007f1824f87c5a: add    $0x1,%rdx          ;*ladd
                                                                               ; - java.util.concurrent.atomic.AtomicLong::incrementAndGet@12 (line 200)
-                                                                              ; - org.openjdk.jmh.samples.JMHSample_35_Profilers$Atomic::test@4 (line 280)
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
+                                                                              ; - org.openjdk.jmh.samples.Profilers$Atomic::test@4 (line 280)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@16 (line 199)
               0.24%    0.00%    0x00007f1824f87c5e: mov    0x10(%rsp),%rsi
                                 0x00007f1824f87c63: callq  0x00007f1824e2b020  ; OopMap{[0]=Oop [8]=Oop [16]=Oop [24]=Oop off=232}
                                                                               ;*invokevirtual consume
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@19 (line 199)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@19 (line 199)
                                                                               ;   {optimized virtual_call}
               0.20%    0.01%    0x00007f1824f87c68: mov    0x18(%rsp),%r10
                                 0x00007f1824f87c6d: movzbl 0x94(%r10),%r11d   ;*getfield isDone
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@29 (line 201)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@29 (line 201)
               0.00%             0x00007f1824f87c75: add    $0x1,%rbp          ; OopMap{r10=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop off=249}
                                                                               ;*ifeq
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@32 (line 201)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@32 (line 201)
               0.20%    0.01%    0x00007f1824f87c79: test   %eax,0x15f36381(%rip)        # 0x00007f183aebe000
                                                                               ;   {poll}
                                 0x00007f1824f87c7f: test   %r11d,%r11d
                                 0x00007f1824f87c82: je     0x00007f1824f87c40  ;*aload_2
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@35 (line 202)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@35 (line 202)
                                 0x00007f1824f87c84: mov    $0x7f1839be4220,%r10
                                 0x00007f1824f87c8e: callq  *%r10              ;*invokestatic nanoTime
-                                                                              ; - org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub@36 (line 202)
+                                                                              ; - org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub@36 (line 202)
                                 0x00007f1824f87c91: mov    (%rsp),%r10
             ....................................................................................................
              96.03%   95.10%  <total for region 1>
@@ -543,8 +555,8 @@ public class Profilers {
         it can demangle VM and kernel symbols as well:
 
             ....[Hottest Methods (after inlining)]..............................................................
-             96.03%   95.10%  org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_avgt_jmhStub
-              0.73%    0.78%  org.openjdk.jmh.samples.generated.JMHSample_35_Profilers_Atomic_test::test_AverageTime
+             96.03%   95.10%  org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_avgt_jmhStub
+              0.73%    0.78%  org.openjdk.jmh.samples.generated.Profilers_Atomic_test::test_AverageTime
               0.63%    0.00%  org.openjdk.jmh.infra.Blackhole::consume
               0.23%    0.25%  native_write_msr_safe ([kernel.kallsyms])
               0.09%    0.05%  _raw_spin_unlock ([kernel.kallsyms])

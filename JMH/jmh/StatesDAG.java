@@ -21,6 +21,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
@@ -35,7 +36,7 @@ public class StatesDAG {
    * There are weird cases when the benchmark state is more cleanly described by the set of @States,
    * and those @States reference each other. JMH allows linking @States in directed acyclic graphs
    * (DAGs) by referencing @States in helper method signatures. (Note that {@link
-   * org.openjdk.jmh.samples.JMHSample_28_BlackholeHelpers} is just a special case of that.
+   * jmh.BlackholeHelpers} is just a special case of that.
    *
    * <p>Following the interface for @Benchmark calls, all @Setups for referenced @State-s are fired
    * before it becomes accessible to current @State. Similarly, no @TearDown methods are fired for
@@ -70,27 +71,34 @@ public class StatesDAG {
   public static class Shared {
     List<Counter> all;
     Queue<Counter> available;
+    Object lock = new Object();
 
     @Setup
-    public synchronized void setup() {
-      all = new ArrayList<>();
-      for (int c = 0; c < 10; c++) {
-        all.add(new Counter());
-      }
+    public void setup() {
+      synchronized (lock) {
+        all = new ArrayList<>();
+        for (int c = 0; c < 10; c++) {
+          all.add(new Counter());
+        }
 
-      available = new LinkedList<>();
-      available.addAll(all);
+        available = new LinkedList<>();
+        available.addAll(all);
+      }
     }
 
     @TearDown
-    public synchronized void tearDown() {
-      for (Counter c: all) {
-        c.dispose();
+    public void teardown() {
+      synchronized (lock) {
+        for (Counter c: all) {
+          c.dispose();
+        }
       }
     }
 
-    public synchronized Counter getMine() {
-      return available.poll();
+    public Counter getMine() {
+      synchronized (lock) {
+        return available.poll();
+      }
     }
   }
 

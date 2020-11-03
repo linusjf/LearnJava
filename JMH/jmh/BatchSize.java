@@ -16,6 +16,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @State(Scope.Thread)
 public class BatchSize {
 

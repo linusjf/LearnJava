@@ -19,6 +19,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @State(Scope.Thread)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
@@ -28,7 +29,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 public class SafeLooping {
 
   /*
-   * JMHSample_11_Loops warns about the dangers of using loops in @Benchmark methods.
+   * Loops warns about the dangers of using loops in @Benchmark methods.
    * Sometimes, however, one needs to traverse through several elements in a dataset.
    * This is hard to do without loops, and therefore we need to devise a scheme for
    * safe looping.
@@ -73,7 +74,7 @@ public class SafeLooping {
    */
 
   @Benchmark
-  public int measureWrong_1() {
+  public int measureWrong1() {
     int acc = 0;
     for (int x: xs) {
       acc = work(x);
@@ -94,7 +95,7 @@ public class SafeLooping {
    */
 
   @Benchmark
-  public int measureWrong_2() {
+  public int measureWrong2() {
     int acc = 0;
     for (int x: xs) {
       acc += work(x);
@@ -105,13 +106,15 @@ public class SafeLooping {
   /*
    * Now, let's see how to measure these things properly. A very straight-forward way to
    * break the merging is to sink each result to Blackhole. This will force runtime to compute
-   * every work() call in full. (We would normally like to care about several concurrent work()
-   * computations at once, but the memory effects from Blackhole.consume() prevent those optimization
+   * every work() call in full.
+   * (We would normally like to care about several concurrent work()
+   * computations at once,
+   * but the memory effects from Blackhole.consume() prevent those optimization
    * on most runtimes).
    */
 
   @Benchmark
-  public void measureRight_1(Blackhole bh) {
+  public void measureRight1(Blackhole bh) {
     for (int x: xs) {
       bh.consume(work(x));
     }
@@ -120,16 +123,19 @@ public class SafeLooping {
   /*
    * DANGEROUS AREA, PLEASE READ THE DESCRIPTION BELOW.
    *
-   * Sometimes, the cost of sinking the value into a Blackhole is dominating the nano-benchmark score.
-   * In these cases, one may try to do a make-shift "sinker" with non-inlineable method. This trick is
-   * *very* VM-specific, and can only be used if you are verifying the generated code (that's a good
-   * strategy when dealing with nano-benchmarks anyway).
+   * Sometimes, the cost of sinking the value into a Blackhole is
+   * dominating the nano-benchmark score.
+   * In these cases, one may try to do a make-shift "sinker" with non-inlineable method.
+   * This trick is
+   * *very* VM-specific, and can only be used if you are verifying the generated code
+   * (that's a good strategy when dealing with nano-benchmarks anyway).
    *
-   * You SHOULD NOT use this trick in most cases. Apply only where needed.
+   * You SHOULD NOT use this trick in most cases.
+   * Apply only where needed.
    */
 
   @Benchmark
-  public void measureRight_2() {
+  public void measureRight2() {
     for (int x: xs) {
       sink(work(x));
     }

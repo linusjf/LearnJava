@@ -20,6 +20,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class SecurityManagerExample {
@@ -59,7 +60,7 @@ public class SecurityManagerExample {
     }
 
     @TearDown
-    public void tearDown() {
+    public void teardown() {
       System.setSecurityManager(null);
     }
   }

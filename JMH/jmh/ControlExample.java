@@ -11,7 +11,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@SuppressWarnings({"PMD.CommentSize", "PMD.LawOfDemeter"})
+@SuppressWarnings("all")
 @State(Scope.Group)
 public class ControlExample {
 
@@ -34,20 +34,18 @@ public class ControlExample {
   @Benchmark
   @Group("pingpong")
   public void ping(Control cnt) {
-    while (!cnt.stopMeasurement && !flag.compareAndSet(false, true)) {
-      // this body is intentionally left blank
-    }
+    while (!cnt.stopMeasurement && !flag.compareAndSet(false, true))
+      ;
   }
 
   @Benchmark
   @Group("pingpong")
   public void pong(Control cnt) {
-    while (!cnt.stopMeasurement && !flag.compareAndSet(true, false)) {
-      // this body is intentionally left blank
-    }
+    while (!cnt.stopMeasurement && !flag.compareAndSet(true, false))
+      ;
   }
 
-  /*
+    /*
    * ============================== HOW TO RUN THIS TEST: ====================================
    *
    * You can run this test:
@@ -62,12 +60,12 @@ public class ControlExample {
    *      http://openjdk.java.net/projects/code-tools/jmh/)
    */
 
-  public static void main(String[] args) throws RunnerException {
-    Options opt = new OptionsBuilder()
-                      .include(ControlExample.class.getSimpleName())
-                      .threads(2)
-                      .forks(1)
-                      .build();
-    new Runner(opt).run();
+    public static void main(String[] args) throws RunnerException {
+      Options opt = new OptionsBuilder()
+                        .include(ControlExample.class.getSimpleName())
+                        .threads(2)
+                        .forks(1)
+                        .build();
+      new Runner(opt).run();
+    }
   }
-}

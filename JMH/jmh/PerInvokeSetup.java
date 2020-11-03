@@ -9,6 +9,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
@@ -118,8 +119,10 @@ public class PerInvokeSetup {
      JMHSample_38_PerInvokeSetup.measureRight        256  avgt   25  58812.411 ± 997.951  ns/op
 
      We can clearly see that "measureWrong" provides a very weird result: it "sorts" way too fast.
-     "measureNeutral" is neither good or bad: while it prepares the data for each invocation correctly,
-     the timing overheads are clearly visible. These overheads can be overwhelming, depending on
+     "measureNeutral" is neither good or bad.
+     While it prepares the data for each invocation correctly,
+     the timing overheads are clearly visible.
+     These overheads can be overwhelming, depending on
      the thread count and/or OS flavor.
   */
 
