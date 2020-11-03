@@ -15,6 +15,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
+@SuppressWarnings("all")
 @State(Scope.Thread)
 public class APIGA {
 
@@ -33,6 +34,7 @@ public class APIGA {
     return veryImportantCode(1000, v);
   }
 
+  @SuppressWarnings("checkstyle:hiddenfield")
   public int veryImportantCode(int d, int v) {
     if (d == 0) {
       return v;
@@ -55,6 +57,7 @@ public class APIGA {
    * performance. Try to run the sample and see if it improves performance.
    */
 
+  @SuppressWarnings("checkstyle:localfinalvariablename")
   public static void main(String[] args) throws RunnerException {
     // These are our base options. We will mix these options into the
     // measurement runs. That is, all measurement runs will inherit these,

@@ -10,7 +10,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@SuppressWarnings({"PMD.LawOfDemeter", "PMD.CommentSize"})
+@SuppressWarnings("all")
 public class BenchmarkModes {
 
   /*

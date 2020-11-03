@@ -2,13 +2,24 @@ package jmh;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OperationsPerInvocation;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+@SuppressWarnings("all")
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
@@ -67,21 +78,21 @@ public class CacheAccess {
      -prof perfnorm conveniently highlights that, with >2 cache misses per one benchmark op:
 
      Benchmark                                                 Mode  Cnt   Score    Error  Units
-     JMHSample_37_MatrixCopy.colFirst                          avgt   25   5.306 ±  0.020  ns/op
-     JMHSample_37_MatrixCopy.colFirst:·CPI                     avgt    5   0.621 ±  0.011   #/op
-     JMHSample_37_MatrixCopy.colFirst:·L1-dcache-load-misses   avgt    5   2.177 ±  0.044   #/op <-- OOPS
-     JMHSample_37_MatrixCopy.colFirst:·L1-dcache-loads         avgt    5  14.804 ±  0.261   #/op
-     JMHSample_37_MatrixCopy.colFirst:·LLC-loads               avgt    5   2.165 ±  0.091   #/op
-     JMHSample_37_MatrixCopy.colFirst:·cycles                  avgt    5  22.272 ±  0.372   #/op
-     JMHSample_37_MatrixCopy.colFirst:·instructions            avgt    5  35.888 ±  1.215   #/op
+     MatrixCopy.colFirst                          avgt   25   5.306 ±  0.020  ns/op
+     MatrixCopy.colFirst:·CPI                     avgt    5   0.621 ±  0.011   #/op
+     MatrixCopy.colFirst:·L1-dcache-load-misses   avgt    5   2.177 ±  0.044   #/op <-- OOPS
+     MatrixCopy.colFirst:·L1-dcache-loads         avgt    5  14.804 ±  0.261   #/op
+     MatrixCopy.colFirst:·LLC-loads               avgt    5   2.165 ±  0.091   #/op
+     MatrixCopy.colFirst:·cycles                  avgt    5  22.272 ±  0.372   #/op
+     MatrixCopy.colFirst:·instructions            avgt    5  35.888 ±  1.215   #/op
 
-     JMHSample_37_MatrixCopy.rowFirst                          avgt   25   2.662 ±  0.003  ns/op
-     JMHSample_37_MatrixCopy.rowFirst:·CPI                     avgt    5   0.312 ±  0.003   #/op
-     JMHSample_37_MatrixCopy.rowFirst:·L1-dcache-load-misses   avgt    5   0.066 ±  0.001   #/op
-     JMHSample_37_MatrixCopy.rowFirst:·L1-dcache-loads         avgt    5  14.570 ±  0.400   #/op
-     JMHSample_37_MatrixCopy.rowFirst:·LLC-loads               avgt    5   0.002 ±  0.001   #/op
-     JMHSample_37_MatrixCopy.rowFirst:·cycles                  avgt    5  11.046 ±  0.343   #/op
-     JMHSample_37_MatrixCopy.rowFirst:·instructions            avgt    5  35.416 ±  1.248   #/op
+     MatrixCopy.rowFirst                          avgt   25   2.662 ±  0.003  ns/op
+     MatrixCopy.rowFirst:·CPI                     avgt    5   0.312 ±  0.003   #/op
+     MatrixCopy.rowFirst:·L1-dcache-load-misses   avgt    5   0.066 ±  0.001   #/op
+     MatrixCopy.rowFirst:·L1-dcache-loads         avgt    5  14.570 ±  0.400   #/op
+     MatrixCopy.rowFirst:·LLC-loads               avgt    5   0.002 ±  0.001   #/op
+     MatrixCopy.rowFirst:·cycles                  avgt    5  11.046 ±  0.343   #/op
+     MatrixCopy.rowFirst:·instructions            avgt    5  35.416 ±  1.248   #/op
 
      So, when comparing two different benchmarks, you have to follow up if the difference is caused
      by the memory locality issues.
