@@ -2,8 +2,8 @@ package ga;
 
 @SuppressWarnings("PMD.DataClass")
 public class Individual {
-  protected int defaultGeneLength = 64;
-  private byte[] genes = new byte[defaultGeneLength];
+  static final int DEFAULT_GENE_LENGTH = 64;
+  private byte[] genes = new byte[DEFAULT_GENE_LENGTH];
   private int fitness;
   private final SimpleGeneticAlgorithm sga;
 
@@ -15,54 +15,35 @@ public class Individual {
     }
   }
 
-  protected byte getSingleGene(int index) {
+  byte getSingleGene(int index) {
     return genes[index];
   }
 
-  protected void setSingleGene(int index, byte value) {
+  void setSingleGene(int index, byte value) {
     genes[index] = value;
     fitness = 0;
   }
 
-  public int getFitness() {
-    if (fitness == 0) {
+  int getFitness() {
+    if (fitness == 0)
       fitness = sga.getFitness(this);
-    }
     return fitness;
   }
 
   @Override
   public String toString() {
     StringBuilder geneString = new StringBuilder(genes.length);
-    for (int i = 0; i < genes.length; i++) {
+    for (int i = 0; i < genes.length; i++)
       geneString.append(getSingleGene(i));
-    }
     return geneString.toString();
   }
 
-  @SuppressWarnings("all")
   public int getDefaultGeneLength() {
-    return this.defaultGeneLength;
+    return DEFAULT_GENE_LENGTH;
   }
 
-  @SuppressWarnings("all")
   public byte[] getGenes() {
     return this.genes.clone();
-  }
-
-  @SuppressWarnings("all")
-  public void setDefaultGeneLength(int defaultGeneLength) {
-    this.defaultGeneLength = defaultGeneLength;
-  }
-
-  @SuppressWarnings("all")
-  public void setGenes(byte[] genes) {
-    this.genes = genes.clone();
-  }
-
-  @SuppressWarnings("all")
-  public void setFitness(int fitness) {
-    this.fitness = fitness;
   }
 
   @Override

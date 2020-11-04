@@ -10,17 +10,16 @@ public class Population {
   public Population(int size, boolean createNew, SimpleGeneticAlgorithm sga) {
     this.sga = sga;
     individuals = new ArrayList<>();
-    if (createNew) {
+    if (createNew)
       createNewPopulation(size);
-    }
   }
 
-  protected Individual getIndividual(int index) {
+  Individual getIndividual(int index) {
     return individuals.get(index);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  protected Individual getFittest() {
+  Individual getFittest() {
     Individual fittest = individuals.get(0);
     for (int i = 0; i < individuals.size(); i++) {
       if (fittest.getFitness() <= getIndividual(i).getFitness()) {
@@ -28,6 +27,14 @@ public class Population {
       }
     }
     return fittest;
+  }
+
+  int size() {
+    return individuals.size();
+  }
+
+  void add(int index, Individual ind) {
+    individuals.add(index, ind);
   }
 
   private void createNewPopulation(int size) {

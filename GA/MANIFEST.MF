@@ -9,6 +9,6 @@ Specification-Title: GA
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 6b577b3e November 4 2020
+Implementation-Version: f418b8e2 November 4 2020
 Implementation-Vendor: 
 
