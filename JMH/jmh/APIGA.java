@@ -80,7 +80,7 @@ public class APIGA {
     }
 
     // Make a few rounds of optimization:
-    final int GENERATIONS = 100;
+    final int GENERATIONS = 10;
     for (int g = 0; g < GENERATIONS; g++) {
       System.out.println("Entering generation " + g);
 
@@ -108,9 +108,8 @@ public class APIGA {
 
       // Copy out elite solutions
       final int ELITE = 2;
-      for (Chromosome c: pop.getAll().subList(0, ELITE)) {
+      for (Chromosome c: pop.getAll().subList(0, ELITE)) 
         newPop.addChromosome(c);
-      }
 
       // Cross-breed the rest of new population
       while (newPop.size() < pop.size()) {
@@ -123,6 +122,8 @@ public class APIGA {
 
       pop = newPop;
     }
+    System.out.println(pop.getAll().get(0));
+    System.out.println(pop.getAll().get(1));
   }
 
   /** Population. */
