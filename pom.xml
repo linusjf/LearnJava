@@ -517,5 +517,11 @@
       <version>3.0.6</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>io.jenetics</groupId>
+      <artifactId>jenetics</artifactId>
+      <version>6.1.0</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

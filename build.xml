@@ -51,6 +51,7 @@
   <property file="${LearnJava.basedir}/lombok.properties" />
   <property file="${LearnJava.basedir}/jmh.properties" />
   <property file="${LearnJava.basedir}/groovy-ant.properties" />
+  <property file="${LearnJava.basedir}/jenetics.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -415,6 +416,8 @@
                   conf="groovy-ant.main" />
     <ivy:retrieve pathid="groovy-ant.lib.path"
                   conf="groovy-ant.lib" />
+    <ivy:retrieve pathid="jenetics.main.path"
+                  conf="jenetics.main" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -505,9 +508,10 @@
           message="${toString:lombok.main.path}" />
     <echo file="${jmh.classpath.file}"
           message="${toString:jmh.main.path}:${toString:jmh.lib.path}:${toString:jmh-generator-annprocess.main.path}" />
-    <!--message="${toString:jmh.main.path}:${toString:jmh.lib.path}:${toString:jmh-generator-annprocess.main.path}:${toString:jmh-generator-reflection.main.path}:${toString:jmh-generator-bytecode.main.path}:${toString:jmh-generator-asm.main.path}:${toString:jmh-core-benchmarks.main.path}" /> -->
     <echo file="${groovy-ant.classpath.file}"
           message="${toString:groovy-ant.main.path}:${toString:groovy-ant.lib.path}" />
+    <echo file="${jenetics.classpath.file}"
+          message="${toString:jenetics.main.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

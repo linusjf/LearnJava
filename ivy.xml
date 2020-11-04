@@ -300,6 +300,8 @@
           description="groovy-ant jars" />
     <conf name="groovy-ant.lib"
           description="groovy-ant lib jars" />
+    <conf name="jenetics.main"
+          description="jenetics jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -716,6 +718,11 @@
     <dependency org="org.codehaus.groovy"
                 name="groovy-ant"
                 rev="3.0.6"
-                conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
+      conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
+      <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
+    <dependency org="io.jenetics" 
+      name="jenetics" 
+      rev="6.1.0"
+      conf="jenetics.main-&gt;master" />
   </dependencies>
 </ivy-module>
