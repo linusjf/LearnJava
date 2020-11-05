@@ -62,8 +62,8 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-      destdir="${build.dir}"
-      classpath="${compilerclasspath}">
+           destdir="${build.dir}"
+           classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -114,9 +114,21 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run">
+  <target name="run"
+          depends="run1">
     <description>Run target</description>
     <java classname="${main.class}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement location="${compilerclasspath}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run1"
+          depends="loadclasspath">
+    <description>Run1 target</description>
+    <java classname="${main.class1}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />

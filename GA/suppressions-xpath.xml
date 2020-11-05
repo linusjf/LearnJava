@@ -3,6 +3,15 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="SimpleGA.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SimpleGA']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='gtf']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']" />
+  <suppress-xpath files="SimpleGA.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SimpleGA']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='gtf']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_FLOAT[@text='0.5']" />
+  <suppress-xpath files="SimpleGA.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SimpleGA']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']" />
   <suppress-xpath files="SimpleGeneticAlgorithm.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='SimpleGeneticAlgorithm']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='50']" />
