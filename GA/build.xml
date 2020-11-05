@@ -8,6 +8,7 @@
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property file="../jenetics.properties" />
   <property file="../antcontrib.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
@@ -19,25 +20,29 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
-  <loadfile property="antcontrib.cp"
-            srcFile="../${antcontrib.classpath.file}" />
-  <taskdef resource="net/sf/antcontrib/antlib.xml"
-           classpath="${antcontrib.cp}"></taskdef>
+  <target name="setupclasspath">
+    <description>setupclasspath target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="antcontrib.cp"
+              srcFile="../${antcontrib.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runclasspath"
+              srcFile="${run.cp}" />
+  </target>
   <!-- Deletes the existing build, docs and dist directory-->
   <target name="clean">
     <delete>
@@ -57,18 +62,20 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
+      destdir="${build.dir}"
+      classpath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
   <target name="docs"
-          depends="compile">
+          depends="loadclasspath,compile">
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             classpath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -101,7 +108,7 @@
   </target>
   <!--Creates the deployable jar file  -->
   <target name="jar"
-          depends="compile,manifest">
+          depends="loadclasspath,compile,manifest">
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
          includes="**/*.class"
@@ -113,6 +120,7 @@
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
+        <pathelement path="${compilerclasspath}" />
       </classpath>
     </java>
   </target>
@@ -141,7 +149,10 @@
       <arg line="../xformatall ${basedir}" />
     </exec>
   </target>
-  <target name="checkstyleg">
+  <target name="checkstyleg"
+          depends="loadclasspath">
+    <taskdef resource="net/sf/antcontrib/antlib.xml"
+             classpath="${antcontrib.cp}"></taskdef>
     <move file="suppressions-xpath.xml"
           tofile="suppressions-xpath.xml.bak"
           preservelastmodified="true"
@@ -190,7 +201,10 @@
       </else>
     </if>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -209,7 +223,11 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -219,6 +237,7 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${compilerclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
@@ -230,13 +249,16 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs"
-          depends="compile">
+          depends="loadclasspath,compile">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
               effort="max"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${compilerclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
@@ -246,7 +268,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile, pmd, spotbugs,jar,docs">
+          depends="loadclasspath,compile, pmd, spotbugs,jar,docs">
     <description>Main target</description>
   </target>
 </project>

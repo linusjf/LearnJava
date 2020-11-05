@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../jenetics.cp run.cp
+cp ../jenetics.cp compile.cp
