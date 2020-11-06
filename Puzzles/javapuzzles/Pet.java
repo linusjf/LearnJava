@@ -27,19 +27,20 @@ public class Pet {
   }
 
   public void live() {
-    // new Thread() {
-    new Thread(() -> {
-      while (true) {
-        eat();
-        play();
-        sleep();
-        try {
-          TimeUnit.MILLISECONDS.sleep(1000);
-        } catch (InterruptedException ie) {
-          System.err.println(ie);
-        }
+    new Thread(() -> eatPlaySleep()).start();
+  }
+
+  private void eatPlaySleep() {
+    while (true) {
+      eat();
+      play();
+      sleep();
+      try {
+        TimeUnit.MILLISECONDS.sleep(1000);
+      } catch (InterruptedException ie) {
+        System.err.println(ie);
       }
-    }).start();
+    }
   }
 
   public static void main(String[] args) {
