@@ -108,6 +108,16 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run116">
+    <description>EnumPrivate target</description>
+    <java classname="${main.class116}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run115">
     <description>EqualTo target</description>
     <java classname="${main.class115}"

@@ -142,7 +142,11 @@
   </rule>
   <rule ref="category/java/codestyle.xml/MethodNamingConventions" />
   <rule ref="category/java/codestyle.xml/PackageCase" />
-  <rule ref="category/java/codestyle.xml/ShortClassName" />
+  <rule ref="category/java/codestyle.xml/ShortClassName" >
+    <properties>
+        <property name="minimum" value="3" />
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/ShortMethodName">
     <properties>
         <property name="minimum" value="2" />
