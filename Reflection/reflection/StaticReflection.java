@@ -7,7 +7,8 @@ public final class StaticReflection {
       Logger.getLogger(StaticReflection.class.getName());
 
   private StaticReflection() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis",
@@ -20,7 +21,7 @@ public final class StaticReflection {
       System.out.println("directly " + StaticExample.class.getName());
 
       // 2 using for name directly throws an exception
-      Class<?> forname;
+      Class<?> forname = null;
       System.out.println(
           "Class.forName reflection.StaticReflection.StaticExample");
       try {
@@ -28,6 +29,7 @@ public final class StaticReflection {
       } catch (ReflectiveOperationException roe) {
         LOGGER.severe(roe.getMessage());
       }
+      System.out.println(forname);
       System.out.println("using $ " + StaticExample.class.getName());
 
       // 3 using $ would work but is not that nice

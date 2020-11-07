@@ -50,7 +50,7 @@ public enum ClassDeclarationSpy {
       out.format("  -- No Implemented Interfaces --%n%n");
 
     out.format("Inheritance Path:%n");
-    List<Class<?>> l = new ArrayList<Class<?>>();
+    List<Class<?>> l = new ArrayList<>();
     printAncestor(c, l);
     if (l.isEmpty())
       out.format("  -- No Super Classes --%n%n");

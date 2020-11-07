@@ -11,7 +11,8 @@ public final class MenagerieTest {
       Logger.getLogger(MenagerieTest.class.getName());
 
   private MenagerieTest() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   public static void main(String[] args) {

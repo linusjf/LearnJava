@@ -105,6 +105,16 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run22">
+    <description>Run22 target</description>
+    <java classname="${main.class21}">
+      <classpath>
+        <pathelement location="${runtimeclasspath}" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run21">
     <description>Run21 target</description>
     <java classname="${main.class20}">
@@ -347,7 +357,7 @@
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
@@ -364,7 +374,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />

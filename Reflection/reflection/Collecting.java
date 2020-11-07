@@ -8,9 +8,11 @@ import java.util.Map;
 
 public final class Collecting {
   private Collecting() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
+  @SuppressWarnings("PMD.UseConcurrentHashMap")
   public static void main(String... args) {
     Map<String, String> map = new HashMap<>();
     map.put("1", "a");

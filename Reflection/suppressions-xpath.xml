@@ -3,6 +3,39 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="EnumHack.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='reflection']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EnumHack']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='unsafeWay']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="AbbreviationAsWordInNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EnumHack']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='registerValue']]/SLIST/VARIABLE_DEF/IDENT[@text='$VALUESField']" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="LocalVariableNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EnumHack']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='registerValue']]/SLIST/VARIABLE_DEF/IDENT[@text='$VALUESField']" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='Entity']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Zombie']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Ork']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Wolf']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CaerbannogRabbit']]" />
+  <suppress-xpath files="EnumHack.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Lion']]" />
   <suppress-xpath files="Dynamic.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Dynamic']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DynamicInvocationHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invoke']]/SLIST/LITERAL_RETURN/EXPR/NUM_INT[@text='42']" />

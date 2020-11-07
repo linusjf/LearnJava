@@ -11,7 +11,8 @@ public final class Enumbed {
   }
 
   private Enumbed() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})

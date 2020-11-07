@@ -21,3 +21,4 @@ reflection.Dynamic
 reflection.HelloWorld
 reflection.ZooTest
 reflection.MenagerieTest
+reflection.EnumHack

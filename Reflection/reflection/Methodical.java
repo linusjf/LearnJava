@@ -8,7 +8,8 @@ public final class Methodical {
   private static Class<String> stringclass = String.class;
 
   private Methodical() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

@@ -8,16 +8,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@SuppressWarnings("PMD.BeanMembersShouldSerialize")
+@SuppressWarnings(
+    {"PMD.BeanMembersShouldSerialize", "PMD.UseConcurrentHashMap"})
 public final class Dynamic {
   private static final String HELLO = "Hello";
 
   private Dynamic() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
-  @SuppressWarnings({"unchecked", "PMD.LawOfDemeter", "PMD.SystemPrintln"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.UseConcurrentHashMap",
+                     "unchecked",
+                     "PMD.LawOfDemeter",
+                     "PMD.SystemPrintln"})
+  public static void
+  main(String... args) {
     Map<Object, Object> proxyInstance =
         (Map<Object, Object>)Proxy.newProxyInstance(
             Thread.currentThread().getContextClassLoader(),

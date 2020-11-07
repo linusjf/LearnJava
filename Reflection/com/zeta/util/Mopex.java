@@ -10,7 +10,8 @@ import java.util.List;
 
 public final class Mopex {
   private Mopex() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   /**
