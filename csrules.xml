@@ -573,7 +573,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
     </module>
     <module name="IllegalIdentifierName">
       <property name="format"
-                value="(?i)^(?!(record|yield|var                     |permits|sealed|open|transitive|_)$).+$" />
+                value="(?-i)^(?!(record|yield|var                     |permits|sealed|open|transitive|_)$).+$" />
     </module>
     <module name="RecordComponentNumber">
       <property name="max"
