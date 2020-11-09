@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]" />
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="MultipleVariableDeclarationsCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='hello']] | 
+/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='lo']]" />
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
+  <suppress-xpath files="TestStringInterned.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
+  <suppress-xpath files="Other.java"
+                  checks="HideUtilityClassConstructorCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
+  <suppress-xpath files="Other.java"
+                  checks="VisibilityModifierCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='hello']" />
+  <suppress-xpath files="Other.java"
+                  id="RightCurlyAlone"
+                  query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/RCURLY" />
+</suppressions>
