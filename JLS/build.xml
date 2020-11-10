@@ -116,6 +116,15 @@
       </classpath>
     </java>
   </target>
+  <target name="run2">
+    <description>Run2 target</description>
+    <java classname="${main.class2}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">

@@ -3,16 +3,39 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="FinalClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='d']]/ASSIGN/EXPR/NUM_FLOAT[@text='1e308']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='d']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/STAR/NUM_FLOAT[@text='1e-305']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="InnerAssignmentCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]/NUM_INT[@text='100_000']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="TestFloatingPoint.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/NUM_FLOAT[@text='12_345.6']" />
   <suppress-xpath files="TestStringInterned.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="HideUtilityClassConstructorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="MultipleVariableDeclarationsCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='hello']] | 
-/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='lo']]" />
   <suppress-xpath files="TestStringInterned.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='5']" />
@@ -25,9 +48,6 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="Other.java"
                   checks="HideUtilityClassConstructorCheck"
                   query="/CLASS_DEF[./IDENT[@text='Other']]" />
-  <suppress-xpath files="Other.java"
-                  checks="VisibilityModifierCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='hello']" />
   <suppress-xpath files="Other.java"
                   id="RightCurlyAlone"
                   query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/RCURLY" />
