@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FindBugsFilter>
+  <Match>
+    <Package name="jls" />
+    <Class name="jls.TestStringInterned" />
+    <Method name="main" />
+    <Bug code="ES" />
+  </Match>
+</FindBugsFilter>
