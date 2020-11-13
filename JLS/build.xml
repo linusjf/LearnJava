@@ -125,6 +125,24 @@
       </classpath>
     </java>
   </target>
+  <target name="run3">
+    <description>Run3 target</description>
+    <java classname="${main.class3}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run4">
+    <description>Run4 target</description>
+    <java classname="${main.class4}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
