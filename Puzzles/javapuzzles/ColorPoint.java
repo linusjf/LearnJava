@@ -16,6 +16,7 @@ public class ColorPoint extends Point {
     return super.makeName() + ":" + color;
   }
 
+@SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     // 1. Invoke subclass constructor
     System.out.println(new ColorPoint(4, 2, "purple"));

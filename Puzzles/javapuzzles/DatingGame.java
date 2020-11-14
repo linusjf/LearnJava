@@ -3,6 +3,7 @@ package javapuzzles;
 import java.util.Calendar;
 import java.util.Date;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum DatingGame {
   ;
 

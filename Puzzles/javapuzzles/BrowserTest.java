@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum BrowserTest {
   ;
 

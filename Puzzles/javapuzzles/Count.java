@@ -4,7 +4,7 @@ package javapuzzles;
 public enum Count {
   ;
 
-  @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+@SuppressWarnings({"PMD.SystemPrintln","PMD.DataflowAnomalyAnalysis"})
   public static void main(String... args) {
     final int start = 2_000_000_000;
     int count = 0;

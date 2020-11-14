@@ -1,7 +1,7 @@
 package javapuzzles;
 
 enum EnumPrivate {
-  ;
+  INSTANCE;
 
   EnumPrivate() {
     throw new IllegalStateException("Hello");

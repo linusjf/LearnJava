@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum BigDelight {
   ;
   private static final byte TARGET = (byte)0x90;

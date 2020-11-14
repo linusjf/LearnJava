@@ -4,6 +4,7 @@ package javapuzzles;
 public enum Abc {
   ;
 
+@SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     String letters = "ABC";
     char[] numbers = {'1', '2', '3'};

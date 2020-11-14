@@ -3,6 +3,7 @@ package javapuzzles;
 public enum Addition {
   ;
 
+@SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     int a = 45;
     double b = 3.141_598_7;

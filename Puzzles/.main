@@ -114,3 +114,4 @@ javapuzzlers.DoublePuzzle
 javapuzzles.DoubleMult
 javapuzzles.EqualTo
 javapuzzles.EnumPrivate
+javapuzzles.IntToFloat
