@@ -2,3 +2,4 @@ jls.TestStringInterned
 jls.TestFloatingPoint
 jls.SafeVarArgsExample
 jls.HeapPollutionExample
+jls.Narrowing

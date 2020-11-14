@@ -3,6 +3,7 @@ package jls;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public final class ArrayBuilder {
 
   private ArrayBuilder() {
