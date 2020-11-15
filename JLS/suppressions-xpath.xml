@@ -1,72 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE 
-suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="ArrayBuilder.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ArrayBuilder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='faultyMethod']]/SLIST/EXPR/ASSIGN/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']" />
-  <suppress-xpath files="Narrowing.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(short)0x12345678==0x']]/METHOD_CALL/ELIST/EXPR/TYPECAST/NUM_INT[@text='0x12345678']" />
-  <suppress-xpath files="Narrowing.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(byte)255==']]/TYPECAST/NUM_INT[@text='255']" />
-  <suppress-xpath files="Narrowing.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(int)1e20f==']]/TYPECAST/NUM_FLOAT[@text='1e20f']" />
-  <suppress-xpath files="Narrowing.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(float)-1e100==']]/TYPECAST/UNARY_MINUS[./NUM_FLOAT[@text='1e100']]" />
-  <suppress-xpath files="Narrowing.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(float)1e-50==']]/TYPECAST/NUM_FLOAT[@text='1e-50']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='d']]/ASSIGN/EXPR/NUM_FLOAT[@text='1e308']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='d']]/NUM_INT[@text='10']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/STAR/NUM_FLOAT[@text='1e-305']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="InnerAssignmentCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]/NUM_INT[@text='100_000']" />
-  <suppress-xpath files="TestFloatingPoint.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/NUM_FLOAT[@text='12_345.6']" />
-  <suppress-xpath files="TestHiddenClass.java"
-                  id="RightCurlyAlone"
-                  query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY" />
-  <suppress-xpath files="TestHiddenClass.java"
-                  id="RightCurlyAlone"
-                  query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY" />
-  <suppress-xpath files="TestHiddenClass.java"
-                  id="RightCurlyAlone"
-                  query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SecondInner']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="OuterTypeNumberCheck"
-                  query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='5']" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="OneTopLevelClassCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
-  <suppress-xpath files="TestStringInterned.java"
-                  checks="HideUtilityClassConstructorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
-  <suppress-xpath files="Other.java"
-                  checks="HideUtilityClassConstructorCheck"
-                  query="/CLASS_DEF[./IDENT[@text='Other']]" />
-  <suppress-xpath files="Other.java"
-                  id="RightCurlyAlone"
-                  query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/RCURLY" />
+<suppress-xpath
+       files="ArrayBuilder.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ArrayBuilder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='faultyMethod']]/SLIST/EXPR/ASSIGN/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
+<suppress-xpath
+       files="Narrowing.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(short)0x12345678==0x']]/METHOD_CALL/ELIST/EXPR/TYPECAST/NUM_INT[@text='0x12345678']"/>
+<suppress-xpath
+       files="Narrowing.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(byte)255==']]/TYPECAST/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="Narrowing.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(int)1e20f==']]/TYPECAST/NUM_FLOAT[@text='1e20f']"/>
+<suppress-xpath
+       files="Narrowing.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(float)-1e100==']]/TYPECAST/UNARY_MINUS[./NUM_FLOAT[@text='1e100']]"/>
+<suppress-xpath
+       files="Narrowing.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(float)1e-50==']]/TYPECAST/NUM_FLOAT[@text='1e-50']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='d']]/ASSIGN/EXPR/NUM_FLOAT[@text='1e308']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS/STAR[./IDENT[@text='d']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/STAR/NUM_FLOAT[@text='1e-305']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="InnerAssignmentCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' ']]/DIV_ASSIGN[./IDENT[@text='d']]/NUM_INT[@text='100_000']"/>
+<suppress-xpath
+       files="TestFloatingPoint.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='d']]/NUM_FLOAT[@text='12_345.6']"/>
+<suppress-xpath
+       files="TestHiddenClass.java"
+       id="RightCurlyAlone"
+       query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY"/>
+<suppress-xpath
+       files="TestHiddenClass.java"
+       id="RightCurlyAlone"
+       query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY"/>
+<suppress-xpath
+       files="TestHiddenClass.java"
+       id="RightCurlyAlone"
+       query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SecondInner']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY"/>
+<suppress-xpath
+       files="TestStringInterned.java"
+       checks="OuterTypeNumberCheck"
+       query="/PACKAGE_DEF[./IDENT[@text='jls']]"/>
+<suppress-xpath
+       files="TestStringInterned.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestStringInterned']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='sb']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="TestStringInterned.java"
+       checks="OneTopLevelClassCheck"
+       query="/CLASS_DEF[./IDENT[@text='Other']]"/>
+<suppress-xpath
+       files="TestStringInterned.java"
+       checks="HideUtilityClassConstructorCheck"
+       query="/CLASS_DEF[./IDENT[@text='Other']]"/>
+<suppress-xpath
+       files="UnsafeBounds.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnsafeBounds']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='plant']]/SLIST/VARIABLE_DEF[./IDENT[@text='plants']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='toArray']]/METHOD_CALL[./IDENT[@text='broken']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Other.java"
+       checks="HideUtilityClassConstructorCheck"
+       query="/CLASS_DEF[./IDENT[@text='Other']]"/>
+<suppress-xpath
+       files="Other.java"
+       id="RightCurlyAlone"
+       query="/CLASS_DEF[./IDENT[@text='Other']]/OBJBLOCK/RCURLY"/>
 </suppressions>

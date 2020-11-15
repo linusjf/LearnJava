@@ -4,3 +4,4 @@ jls.SafeVarArgsExample
 jls.HeapPollutionExample
 jls.Narrowing
 jls.UnsafeVarargs
+jls.UnsafeBounds
