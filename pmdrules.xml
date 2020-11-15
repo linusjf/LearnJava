@@ -59,8 +59,12 @@
   <rule ref="category/java/bestpractices.xml/ReplaceHashtableWithMap" />
   <rule ref="category/java/bestpractices.xml/ReplaceVectorWithList" />
   <rule ref="category/java/bestpractices.xml/SwitchStmtsShouldHaveDefault" />
-  <rule ref="category/java/bestpractices.xml/SystemPrintln" />
   <rule ref="category/java/bestpractices.xml/UnusedFormalParameter" />
+    <rule ref="category/java/bestpractices.xml/UnusedFormalParameter">
+    <properties>
+        <property name="checkAll" value="true" />
+    </properties>
+</rule>
   <rule ref="category/java/bestpractices.xml/UnusedImports" />
   <rule ref="category/java/bestpractices.xml/UnusedLocalVariable" />
   <rule ref="category/java/bestpractices.xml/UnusedPrivateField">
@@ -93,7 +97,7 @@
       <property name="checkUnusedPrefixIncrement"
                 value="true" />
       <property name="reportUnusedVariables"
-                value="false" />
+                value="true" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
