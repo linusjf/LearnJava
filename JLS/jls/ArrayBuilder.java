@@ -15,11 +15,13 @@ public final class ArrayBuilder {
       listArg.add(x);
   }
 
+  @SuppressWarnings({"unchecked", "varargs"})
   public static <T> void addToList2(List<T> listArg, T... elements) {
     for (T x: elements)
       listArg.add(x);
   }
 
+  @SafeVarargs
   public static <T> void addToList3(List<T> listArg, T... elements) {
     for (T x: elements)
       listArg.add(x);

@@ -3,3 +3,4 @@ jls.TestFloatingPoint
 jls.SafeVarArgsExample
 jls.HeapPollutionExample
 jls.Narrowing
+jls.UnsafeVarargs
