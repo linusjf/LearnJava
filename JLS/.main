@@ -5,3 +5,5 @@ jls.HeapPollutionExample
 jls.Narrowing
 jls.UnsafeVarargs
 jls.UnsafeBounds
+jls.UnaryNumeric
+jls.BinaryNumeric
