@@ -15,20 +15,15 @@ public final class UnsafeBounds<T extends Number> {
   }
 
   public static <T> List<T> safe(T... elements) {
-    List<T> list = Arrays.asList(elements);
-    return list;
+    return Arrays.asList(elements);
   }
 
   public static <T> List<T> broken(T seed) {
-    // broken! This will be an Object[] no matter what T is
-    List<T> plant = safe(seed, seed, seed);
-    return plant;
+    return safe(seed, seed, seed);
   }
 
   public static Number[] plant() {
-    // ClassCastException
-    Number[] plants = broken(10).toArray(new Integer[0]);
-    return plants;
+    return broken(10).toArray(new Integer[0]);
   }
 
   @SuppressWarnings("PMD.SystemPrintln")

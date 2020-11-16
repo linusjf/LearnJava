@@ -15,14 +15,12 @@ public final class UnsafeVarargs<T> {
 
   public static <T> T[] broken(T seed) {
     // broken! This will be an Object[] no matter what T is
-    T[] plant = unsafe(seed, seed, seed);
-    return plant;
+    return unsafe(seed, seed, seed);
   }
 
   public static String[] plant() {
     // ClassCastException
-    String[] plants = broken("seed");
-    return plants;
+    return broken("seed");
   }
 
   @SuppressWarnings("PMD.SystemPrintln")
