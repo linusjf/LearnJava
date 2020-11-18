@@ -8,3 +8,4 @@ jls.UnsafeBounds
 jls.UnaryNumeric
 jls.BinaryNumeric
 jls.Obscure
+jls.TestHiddenStatic

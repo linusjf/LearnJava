@@ -16,7 +16,7 @@ public class ReceiverParameters {
   // Illegal: receiver parameter in a static method
   // static void nethod(ReceiverParameters this) {
   // empty method
-  //}
+  // }
 
   // OK: the receiver parameter represents the instance
   // of Test which immediately encloses the instance
