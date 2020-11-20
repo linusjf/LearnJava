@@ -27,6 +27,18 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="Narrowing.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Narrowing']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='narrowPrimitivesLossy']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text='(float)1e-50==']]/TYPECAST/NUM_FLOAT[@text='1e-50']" />
+  <suppress-xpath files="SuperClassTest.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
+  <suppress-xpath files="SuperClassTest.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SuperClassTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']" />
+  <suppress-xpath files="SuperClassTest.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Outer']]" />
+  <suppress-xpath files="SuperClassTest.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='ChildOfInner']]" />
   <suppress-xpath files="TestFloatingPoint.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='TestFloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='d']]/ASSIGN/EXPR/NUM_FLOAT[@text='1e308']" />

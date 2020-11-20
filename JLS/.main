@@ -9,3 +9,4 @@ jls.UnaryNumeric
 jls.BinaryNumeric
 jls.Obscure
 jls.TestHiddenStatic
+jls.SuperClassTest
