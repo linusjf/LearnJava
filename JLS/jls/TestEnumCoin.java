@@ -27,11 +27,7 @@ public final class TestEnumCoin {
     }
   }
 
-  enum CoinColor { 
-    COPPER, 
-    NICKEL, 
-    SILVER 
-  }
+  enum CoinColor { COPPER, NICKEL, SILVER }
 
   static CoinColor color(Coin c) {
     switch (c) {

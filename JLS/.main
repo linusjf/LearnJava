@@ -11,3 +11,4 @@ jls.Obscure
 jls.TestHiddenStatic
 jls.SuperClassTest
 jls.TestEnumCoin
+jls.TestEnumOperation 10.0 20.0
