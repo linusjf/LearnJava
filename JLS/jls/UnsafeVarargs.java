@@ -20,7 +20,7 @@ public final class UnsafeVarargs<T> {
 
   public static String[] plant() {
     // ClassCastException
-    return broken("seed");
+   return broken("seed");
   }
 
   @SuppressWarnings("PMD.SystemPrintln")
