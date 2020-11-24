@@ -20,11 +20,11 @@ public final class UnsafeVarargs<T> {
 
   public static String[] plant() {
     // ClassCastException
-   return broken("seed");
+    return broken("seed");
   }
 
   @SuppressWarnings("PMD.SystemPrintln")
-  public static void main(String... args) {
+  public static void main(String... ignored) {
     System.out.println(Objects.toString(plant()));
   }
 }

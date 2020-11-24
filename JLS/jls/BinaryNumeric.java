@@ -6,7 +6,7 @@ public final class BinaryNumeric {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String... args) {
+  public static void main(String... ignored) {
     int i = 0;
     float f = 1.0f;
     double d = 2.0;

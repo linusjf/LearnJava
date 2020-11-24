@@ -27,7 +27,7 @@ public class SafeVarArgsExample {
       System.out.println(name);
   }
 
-  public static void main(String... args) {
+  public static void main(String... ignored) {
     final SafeVarArgsExample obj = new SafeVarArgsExample();
     List<String> list = new ArrayList<>();
     list.add("Kevin");

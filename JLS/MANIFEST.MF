@@ -9,6 +9,6 @@ Specification-Title: JLS
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 1cddbc14 November 23 2020
+Implementation-Version: 3d6f5dd0 November 24 2020
 Implementation-Vendor: 
 

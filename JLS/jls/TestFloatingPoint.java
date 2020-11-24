@@ -9,7 +9,7 @@ public final class TestFloatingPoint {
     throw new IllegalStateException("Private constructor!");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] ignored) {
     // An example of overflow:
     double d = 1e308;
     System.out.print("overflow produces infinity: ");

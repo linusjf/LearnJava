@@ -11,7 +11,7 @@ public final class HeapPollutionExample {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] ignored) {
 
     List<String> stringListA = new ArrayList<>();
     List<String> stringListB = new ArrayList<>();

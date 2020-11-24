@@ -6,7 +6,7 @@ public final class SuperClassTest {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] ignored) {
     Outer x = new Outer();
     ChildOfInner a = new ChildOfInner(x);
     ChildOfInner b = new ChildOfInner(x);

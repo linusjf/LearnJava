@@ -7,7 +7,7 @@ public final class Obscure {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String... args) {
+  public static void main(String... ignored) {
 
     System.out.println(jls);
   }

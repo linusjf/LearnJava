@@ -6,7 +6,7 @@ public final class TestHiddenStatic {
     throw new IllegalStateException("Private constructor");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] ignored) {
     Super s = new Sub();
     System.out.println(s.greeting() + ", " + s.name());
   }

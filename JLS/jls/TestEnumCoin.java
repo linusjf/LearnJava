@@ -5,7 +5,7 @@ public final class TestEnumCoin {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] ignored) {
     for (Coin c: Coin.values())
       System.out.println(c + "\t\t" + c.value() + "\t" + color(c));
   }
