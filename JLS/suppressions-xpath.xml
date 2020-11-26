@@ -69,6 +69,42 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="TestHiddenClass.java"
                   id="RightCurlyAlone"
                   query="/CLASS_DEF[./IDENT[@text='TestHiddenClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SecondInner']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Hidden']]/OBJBLOCK/RCURLY" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='I']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="InterfaceIsTypeCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='I']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="ConstantNameCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='I']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='i']" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="ConstantNameCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='I']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='ii']" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='J']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="InterfaceIsTypeCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='J']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="ConstantNameCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='J']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='j']" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="ConstantNameCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='J']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='jj']" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="OneTopLevelClassCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='K']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="InterfaceIsTypeCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='K']]" />
+  <suppress-xpath files="TestInterfaceInit.java"
+                  checks="ConstantNameCheck"
+                  query="/INTERFACE_DEF[./IDENT[@text='K']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='k']" />
   <suppress-xpath files="TestStringInterned.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='jls']]" />

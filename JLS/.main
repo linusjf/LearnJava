@@ -15,3 +15,4 @@ jls.TestEnumOperation 10.0 20.0
 jls.Deal 4 7
 jls.TestInitialise
 jls.TestSuperStatic
+jls.TestInterfaceInit
