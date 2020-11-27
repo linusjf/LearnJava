@@ -16,3 +16,4 @@ jls.Deal 4 7
 jls.TestInitialise
 jls.TestSuperStatic
 jls.TestInterfaceInit
+jls.DynamicDispatch
