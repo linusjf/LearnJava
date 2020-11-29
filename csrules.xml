@@ -84,6 +84,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
+    <module name="JavadocMissingLeadingAsterisk"/>
     <module name="LambdaBodyLength">
             <property name="max" value="10"/>
           </module>
