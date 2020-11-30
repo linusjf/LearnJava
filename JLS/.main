@@ -19,3 +19,4 @@ jls.TestInterfaceInit
 jls.DynamicDispatch
 jls.TooMany
 jls.TwoMany
+jls.TestStrictFP

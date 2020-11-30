@@ -108,7 +108,7 @@
          manifest="${jar.manifest}"></jar>
   </target>
   <target name="runall"
-          depends="run,run2,run3,run4,run5,run6,run7,run8,run9,run10,run11,run12,run13,run14,run15,run16,run17,run18,run19,run20,run21">
+          depends="run,run2,run3,run4,run5,run6,run7,run8,run9,run10,run11,run12,run13,run14,run15,run16,run17,run18,run19,run20,run21,run22">
 
     <description>Run all target</description>
   </target>
@@ -297,6 +297,15 @@
   <target name="run21">
     <description>Run21 target</description>
     <java classname="${main.class21}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run22">
+    <description>Run22 target</description>
+    <java classname="${main.class22}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
