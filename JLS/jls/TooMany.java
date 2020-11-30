@@ -6,7 +6,7 @@ public final class TooMany {
     throw new UnsupportedOperationException(
         "This is a utility class and cannot be instantiated");
   }
-  
+
   static void howMany(int k) {
     switch (k) {
       case 1:

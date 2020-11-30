@@ -200,6 +200,30 @@
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='TooMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='howMany']]/ELIST/EXPR/NUM_INT[@text='3']"/>
 <suppress-xpath
+       files="TwoMany.java"
+       checks="MissingSwitchDefaultCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='howMany']]/SLIST/LITERAL_SWITCH"/>
+<suppress-xpath
+       files="TwoMany.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='howMany']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="TwoMany.java"
+       checks="MissingSwitchDefaultCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='howManyAgain']]/SLIST/LITERAL_SWITCH"/>
+<suppress-xpath
+       files="TwoMany.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='howManyAgain']]/SLIST/LITERAL_SWITCH/SWITCH_RULE/LITERAL_CASE/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="TwoMany.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='howMany']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="TwoMany.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TwoMany']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL[./IDENT[@text='howManyAgain']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
        files="UnaryNumeric.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='UnaryNumeric']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/SL[./IDENT[@text='b']]/NUM_LONG[@text='4L']"/>
