@@ -18,3 +18,4 @@ jls.TestSuperStatic
 jls.TestInterfaceInit
 jls.DynamicDispatch
 jls.TooMany
+jls.TwoMany
