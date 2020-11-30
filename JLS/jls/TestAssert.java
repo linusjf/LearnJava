@@ -6,7 +6,7 @@ public final class TestAssert {
     throw new UnsupportedOperationException(
         "This is a utility class and cannot be instantiated");
   }
-  
+
   public static void main(String[] ignored) {
     Baz.testAsserts();
     // Will execute after Baz is initialized.
