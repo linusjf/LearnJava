@@ -108,7 +108,7 @@ public class APIGA {
 
       // Copy out elite solutions
       final int ELITE = 2;
-      for (Chromosome c: pop.getAll().subList(0, ELITE)) 
+      for (Chromosome c: pop.getAll().subList(0, ELITE))
         newPop.addChromosome(c);
 
       // Cross-breed the rest of new population

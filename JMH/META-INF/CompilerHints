@@ -32,9 +32,10 @@ inline,jmh/Blackholes.baseline
 inline,jmh/Blackholes.measureRight1
 inline,jmh/Blackholes.measureRight2
 inline,jmh/Blackholes.measureWrong
-inline,jmh/BranchPrediction.setup
-inline,jmh/BranchPrediction.sorted
-inline,jmh/BranchPrediction.unsorted
+inline,jmh/BranchPrediction.doSetup
+inline,jmh/BranchPrediction.doTearDown
+inline,jmh/BranchPrediction.withSorting
+inline,jmh/BranchPrediction.withoutSorting
 inline,jmh/BulkWarmup.measurec1
 inline,jmh/BulkWarmup.measurec2
 inline,jmh/CacheAccess.colFirst
