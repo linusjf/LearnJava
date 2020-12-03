@@ -35,6 +35,10 @@ inline,jmh/Blackholes.measureWrong
 inline,jmh/BranchPrediction.doSetup
 inline,jmh/BranchPrediction.doTearDown
 inline,jmh/BranchPrediction.withSorting
+inline,jmh/BranchPrediction.withoutBranchingBitsSorted
+inline,jmh/BranchPrediction.withoutBranchingBitsUnsorted
+inline,jmh/BranchPrediction.withoutBranchingSorted
+inline,jmh/BranchPrediction.withoutBranchingUnsorted
 inline,jmh/BranchPrediction.withoutSorting
 inline,jmh/BulkWarmup.measurec1
 inline,jmh/BulkWarmup.measurec2

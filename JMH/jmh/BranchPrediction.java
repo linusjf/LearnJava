@@ -64,6 +64,50 @@ public class BranchPrediction {
     return sum;
   }
 
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public long withoutBranchingUnsorted() {
+    long sum = 0;
+    for (int c = 0; c < unsortedData.length; ++c)
+      sum += unsortedData[c] < 128 ? 0 : unsortedData[c];
+    return sum;
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public long withoutBranchingSorted() {
+    long sum = 0;
+    for (int c = 0; c < sortedData.length; ++c)
+      sum += sortedData[c] < 128 ? 0 : sortedData[c];
+    return sum;
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public long withoutBranchingBitsUnsorted() {
+    long sum = 0;
+    for (int c = 0; c < unsortedData.length; ++c) {
+      int t = (unsortedData[c] - 128) >> 31;
+      sum += ~t & unsortedData[c];
+    }
+    return sum;
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public long withoutBranchingBitsSorted() {
+    long sum = 0;
+    for (int c = 0; c < sortedData.length; ++c) {
+      int t = (sortedData[c] - 128) >> 31;
+      sum += ~t & sortedData[c];
+    }
+    return sum;
+  }
+
   public static void main(String[] args) throws RunnerException {
     Options opt = new OptionsBuilder()
                       .include(BranchPrediction.class.getSimpleName())
