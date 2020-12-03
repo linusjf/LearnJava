@@ -13,7 +13,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@SuppressWarnings("PMD.CommentSize")
+@SuppressWarnings("all")
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(1)

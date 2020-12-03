@@ -7,6 +7,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
+@SuppressWarnings("all")
 public class HelloWorld {
 
   @Benchmark

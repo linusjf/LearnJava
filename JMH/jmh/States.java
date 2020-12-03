@@ -8,7 +8,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@SuppressWarnings("PMD.CommentSize")
+@SuppressWarnings("all")
 public class States {
 
   /*

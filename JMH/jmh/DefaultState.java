@@ -15,7 +15,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  * Java program does.
  */
 
-@SuppressWarnings("PMD.CommentSize")
+@SuppressWarnings("all")
 @State(Scope.Thread)
 public class DefaultState {
 
