@@ -98,6 +98,10 @@ inline,jmh/Inheritance$AbstractBenchmark.setup
 inline,jmh/Interrupts.put
 inline,jmh/Interrupts.setup
 inline,jmh/Interrupts.take
+inline,jmh/LongAddition.atolong
+inline,jmh/LongAddition.atolong20
+inline,jmh/LongAddition.loadder
+inline,jmh/LongAddition.loadder20
 inline,jmh/Loops.measureRight
 inline,jmh/Loops.measureWrong1
 inline,jmh/Loops.measureWrong10
