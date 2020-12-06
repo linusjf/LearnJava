@@ -312,6 +312,24 @@
       </classpath>
     </java>
   </target>
+  <target name="run23">
+    <description>Run23 target</description>
+    <java classname="${main.class23}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run24">
+    <description>Run24 target</description>
+    <java classname="${main.class24}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
