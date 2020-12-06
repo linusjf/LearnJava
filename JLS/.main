@@ -22,3 +22,4 @@ jls.TwoMany
 jls.TestStrictFP
 jls.TestDimension
 jls.NullStatic
+jls.SuperDefault
