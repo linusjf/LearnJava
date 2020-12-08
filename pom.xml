@@ -142,7 +142,7 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jsp-api</artifactId>
-      <version>9.0.40</version>
+      <version>9.0.41</version>
       <optional>true</optional>
     </dependency>
     <dependency>
