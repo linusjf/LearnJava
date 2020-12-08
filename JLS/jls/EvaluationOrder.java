@@ -1,7 +1,7 @@
 package jls;
 
+@SuppressWarnings("all")
 public final class EvaluationOrder {
-  @SuppressWarnings("all")
   private EvaluationOrder() {
     throw new UnsupportedOperationException(
         "This is a utility class and cannot be instantiated");
