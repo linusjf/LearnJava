@@ -30,10 +30,9 @@ class SubClass implements Superinterface {
   void tweak() {
     Superinterface.super.foo();
   }
-  
+
   void tweakAgain() {
     Superinterface si = (Superinterface)this;
     si.foo();
   }
 }
-
