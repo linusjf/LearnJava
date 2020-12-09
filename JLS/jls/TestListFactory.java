@@ -13,7 +13,6 @@ public final class TestListFactory {
 
   public static void main(String... args) {
     ListFactory lf = ArrayList::new;
-    ListFactory lfAgain = () -> ArrayList::new;
     List<String> ls = lf.make();
     List<Number> ln = lf.make();
   }
