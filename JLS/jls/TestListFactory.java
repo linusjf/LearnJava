@@ -13,9 +13,12 @@ public final class TestListFactory {
 
   public static void main(String... args) {
     ListFactory lf = ArrayList::new;
+    ListFactoryAgain lfAgain = ArrayList::new;
     List<String> ls = lf.make();
     List<Number> ln = lf.make();
   }
 
   static interface ListFactory { <T> List<T> make(); }
+
+  static interface ListFactoryAgain<T> { List<T> make(); }
 }
