@@ -1,5 +1,8 @@
 package jls;
 
+import java.util.Arrays;
+import java.util.List;
+
 @SuppressWarnings("all")
 public final class Ternary {
   private Ternary() {
@@ -17,6 +20,10 @@ public final class Ternary {
     return b ? c1 : c2;
   }
 
+  static List<String> chooseList(boolean b) {
+    return b ? Arrays.asList() : Arrays.asList("a", "b");
+  }
+
   public static void main(String... args) {
     System.out.println(choose(true, Integer.MAX_VALUE, Long.MAX_VALUE));
     System.out.println(choose(false, Integer.MAX_VALUE, Long.MAX_VALUE));
@@ -24,5 +31,17 @@ public final class Ternary {
     System.out.println(choose(false, Integer.class, Number.class));
     System.out.println(chooseClass(true, Integer.class, Number.class));
     System.out.println(chooseClass(false, Integer.class, Number.class));
+    System.out.println(choose(true, Arrays.asList(), Arrays.asList("a", "b")));
+    System.out.println(choose(false, Arrays.asList(), Arrays.asList("a", "b")));
+    System.out.println(chooseList(true));
+    System.out.println(chooseList(false));
+    System.out.println(choose(true, Arrays.asList(), Arrays.asList("a", "b"))
+                           .getClass()
+                           .toGenericString());
+    System.out.println(choose(false, Arrays.asList(), Arrays.asList("a", "b"))
+                           .getClass()
+                           .toGenericString());
+    System.out.println(chooseList(true).getClass().toGenericString());
+    System.out.println(chooseList(false).getClass().toGenericString());
   }
 }
