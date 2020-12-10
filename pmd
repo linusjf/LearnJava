@@ -48,7 +48,7 @@ then
   ./"$setupcp"
   auxCp=$(cat "$auxCpFile")
 fi
-find . -type f -regex ".*[.]\(java\|jsp\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
+find . -type f -regex ".*[.]\(java\|jsp\|xml\|pom\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
 if [ -s "$fileslist" ]
 then
   java -cp "$pmdCp" \
