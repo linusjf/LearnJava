@@ -18,10 +18,10 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="DynamicDispatch.java"
                   checks="OneTopLevelClassCheck"
                   query="/CLASS_DEF[./IDENT[@text='Super']]" />
-  <suppress-xpath files="EvaluationOrder.java"
-                  checks="InnerAssignmentCheck"
-                  query="/CLASS_DEF[./IDENT[@text='EvaluationOrder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_IF/EXPR/METHOD_CALL/ELIST/EXPR/ASSIGN[./IDENT[@text='s']]" />
   <suppress-xpath files="Fun.java"
+                  checks="OuterTypeNumberCheck"
+                  query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
+  <suppress-xpath files="IllustrateSimpleArrayAssignment.java"
                   checks="OuterTypeNumberCheck"
                   query="/PACKAGE_DEF[./IDENT[@text='jls']]" />
   <suppress-xpath files="Narrowing.java"
