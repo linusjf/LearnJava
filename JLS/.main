@@ -28,3 +28,5 @@ jls.TestListFactory
 jls.Remainder
 jls.Ternary
 jls.IllustrateSimpleArrayAssignment
+jls.IllustrateCompoundArrayAssignment
+jls.WordTearing
