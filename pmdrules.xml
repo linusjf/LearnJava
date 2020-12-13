@@ -105,6 +105,8 @@
                 value="true" />
       <property name="reportUnusedVariables"
                 value="true" />
+      <property name="violationSuppressXPath" 
+        value="./ancestor::MethodDeclaration[contains(@Name, 'main')]"/>
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
