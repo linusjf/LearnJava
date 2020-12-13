@@ -61,7 +61,9 @@
   <rule ref="category/java/bestpractices.xml/SwitchStmtsShouldHaveDefault" />
   <rule ref="category/java/bestpractices.xml/UnusedFormalParameter">
     <properties>
-        <property name="checkAll" value="true" />
+      <property name="checkAll" value="true" />
+      <property name="violationSuppressXPath" 
+        value="./ancestor::MethodDeclaration[contains(@Name, 'main')]"/>
     </properties>
 </rule>
   <rule ref="category/java/bestpractices.xml/UnusedImports" />
