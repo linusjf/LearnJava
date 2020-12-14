@@ -16,6 +16,6 @@ fi
 
 filePrefix=$(basename -s .java "$file")
 ./astdumpcmd --file "$file" -PrenderProlog=false -PrenderCommonAttributes=true \
-  | tee "$filePrefix".xml 
+  | tee "$filePrefix".java.xml 
 res=$?
 exit $res
