@@ -7,4 +7,10 @@ public class Spin {
       // Loop body is empty
     }
   }
+
+  void dspin() {
+    for (double i = 0.0; i < 100.0; i++) {
+      // Loop body is empty
+    }
+  }
 }
