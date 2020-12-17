@@ -20,4 +20,13 @@ enum Foo {
       return null;
     }
   }
+
+  public void doSomething() {
+  }
+
+  void onlyMe(Foo f) {
+    synchronized (f) {
+      doSomething();
+    }
+  }
 }
