@@ -30,3 +30,5 @@ jls.Ternary
 jls.IllustrateSimpleArrayAssignment
 jls.IllustrateCompoundArrayAssignment
 jls.WordTearing
+jls.StringSwitchDemo
+jls.EnumSwitchDemo
