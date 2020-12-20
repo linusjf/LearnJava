@@ -35,7 +35,9 @@ public class BlackholeHelpers {
    *
    * <p>Below is the variant of {@link jmh.DeadCode} test, but wrapped in the anonymous classes.
    */
-  public interface Worker { void work(); }
+  public interface Worker {
+    void work();
+  }
 
   private Worker workerBaseline;
   private Worker workerRight;

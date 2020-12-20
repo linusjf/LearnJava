@@ -134,7 +134,9 @@ public class Forking {
    * those are distinct classes.
    */
 
-  public interface Counter { int inc(); }
+  public interface Counter {
+    int inc();
+  }
 
   public static class Counter1 implements Counter {
     private int x;

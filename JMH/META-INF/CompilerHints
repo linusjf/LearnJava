@@ -144,6 +144,10 @@ inline,jmh/StatesDAG$Local.setup
 inline,jmh/StatesDAG$Shared.setup
 inline,jmh/StatesDAG$Shared.teardown
 inline,jmh/StatesDAG.test
+inline,jmh/SwitchString.doSetup
+inline,jmh/SwitchString.doTearDown
+inline,jmh/SwitchString.ifElse
+inline,jmh/SwitchString.switchCase
 inline,jmh/SyncIterations.test
 inline,jmh/Tokenizer.doSetup
 inline,jmh/Tokenizer.doTearDown

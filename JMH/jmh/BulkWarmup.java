@@ -98,7 +98,9 @@ public class BulkWarmup {
    * These test classes are borrowed verbatim from Forking.
    */
 
-  public interface Counter { int inc(); }
+  public interface Counter {
+    int inc();
+  }
 
   public static class Counter1 implements Counter {
     private int x;
