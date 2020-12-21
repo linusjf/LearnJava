@@ -6,6 +6,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OperationsPerInvocation;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
@@ -26,7 +27,9 @@ public class SwitchString {
 
   volatile String value;
   volatile String[] months;
+  volatile String[] codedStrings;
   volatile int[] indexes;
+  volatile int[] codedIndexes;
   volatile Random random;
 
   @Setup(Level.Trial)
@@ -44,10 +47,15 @@ public class SwitchString {
                            "October",
                            "November",
                            "December"};
+    codedStrings = new String[] {"AaAa", "BBBB", "AaBB", "BBAa"};
     random = new Random(123456789L);
     indexes = new int[SIZE];
     for (int i = 0; i < SIZE; i++)
       indexes[i] = random.nextInt(12);
+    random = new Random(987654321L);
+    codedIndexes = new int[SIZE];
+    for (int i = 0; i < SIZE; i++)
+      codedIndexes[i] = random.nextInt(4);
   }
 
   @TearDown(Level.Trial)
@@ -56,6 +64,8 @@ public class SwitchString {
     months = null;
     indexes = null;
     random = null;
+    codedIndexes = null;
+    codedStrings = null;
   }
 
   @Benchmark
@@ -149,6 +159,7 @@ public class SwitchString {
 
   @Benchmark
   @BenchmarkMode(Mode.Throughput)
+  @OperationsPerInvocation(SIZE)
   @OutputTimeUnit(TimeUnit.SECONDS)
   public void ifElseRandom(Blackhole bh) {
     for (int i = 0; i < SIZE; i++) {
@@ -184,6 +195,7 @@ public class SwitchString {
 
   @Benchmark
   @BenchmarkMode(Mode.Throughput)
+  @OperationsPerInvocation(SIZE)
   @OutputTimeUnit(TimeUnit.SECONDS)
   public void switchCaseRandom(Blackhole bh) {
     for (int i = 0; i < SIZE; i++) {
@@ -239,6 +251,55 @@ public class SwitchString {
           break;
       }
       bh.consume(month);
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OperationsPerInvocation(SIZE)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public void ifElseRandomHash(Blackhole bh) {
+    for (int i = 0; i < SIZE; i++) {
+      int idx = -1;
+      String value = codedStrings[codedIndexes[i]];
+      if (value.equals("AaAa"))
+        idx = 0;
+      else if (value.equals("BBBB"))
+        idx = 1;
+      else if (value.equals("AaBB"))
+        idx = 2;
+      else if (value.equals("BBAa"))
+        idx = 3;
+      bh.consume(idx);
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OperationsPerInvocation(SIZE)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public void switchCaseRandomHash(Blackhole bh) {
+    for (int i = 0; i < SIZE; i++) {
+      int idx = -1;
+      String value = codedStrings[codedIndexes[i]];
+      switch (value) {
+        case "AaAa":
+          idx = 0;
+          break;
+
+        case "BBBB":
+          idx = 1;
+          break;
+
+        case "AaBB":
+          idx = 2;
+          break;
+
+        case "BBAa":
+          idx = 3;
+          break;
+      }
+      bh.consume(idx);
     }
   }
 
