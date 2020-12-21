@@ -20,19 +20,49 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
 @SuppressWarnings("all")
+enum Month {
+  JANUARY,
+  FEBRUARY,
+  MARCH,
+  APRIL,
+  MAY,
+  JUNE,
+  JULY,
+  AUGUST,
+  SEPTEMBER,
+  OCTOBER,
+  NOVEMBER,
+  DECEMBER
+}
+
+@SuppressWarnings("all")
 @State(Scope.Thread)
 public class SwitchString {
 
   private static final int SIZE = 1000;
 
+  volatile Month[] enumMonths;
   volatile String[] months;
   volatile String[] codedStrings;
   volatile int[] indexes;
   volatile int[] codedIndexes;
+  volatile int[] enumIndexes;
   volatile Random random;
 
   @Setup(Level.Trial)
   public void doSetup() {
+    enumMonths = new Month[] {Month.JANUARY,
+                              Month.FEBRUARY,
+                              Month.MARCH,
+                              Month.APRIL,
+                              Month.MAY,
+                              Month.JUNE,
+                              Month.JULY,
+                              Month.AUGUST,
+                              Month.SEPTEMBER,
+                              Month.OCTOBER,
+                              Month.NOVEMBER,
+                              Month.DECEMBER};
     months = new String[] {"January",
                            "February",
                            "March",
@@ -54,15 +84,20 @@ public class SwitchString {
     codedIndexes = new int[SIZE];
     for (int i = 0; i < SIZE; i++)
       codedIndexes[i] = random.nextInt(4);
+    random = new Random(123456789L);
+    enumIndexes = new int[SIZE];
+    for (int i = 0; i < SIZE; i++)
+      enumIndexes[i] = random.nextInt(12);
   }
 
   @TearDown(Level.Trial)
   public void doTearDown() {
+    enumMonths = null;
     months = null;
     indexes = null;
-    random = null;
     codedIndexes = null;
     codedStrings = null;
+    random = null;
   }
 
   @Benchmark
@@ -155,6 +190,67 @@ public class SwitchString {
           break;
 
         case "December":
+          month = 12;
+          break;
+      }
+      bh.consume(month);
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.Throughput)
+  @OperationsPerInvocation(SIZE)
+  @OutputTimeUnit(TimeUnit.SECONDS)
+  public void switchEnumRandom(Blackhole bh) {
+    for (int i = 0; i < SIZE; i++) {
+      int month = 0;
+      Month value = enumMonths[enumIndexes[i]];
+      switch (value) {
+        case JANUARY:
+          month = 1;
+          break;
+
+        case FEBRUARY:
+          month = 2;
+          break;
+
+        case MARCH:
+          month = 3;
+          break;
+
+        case APRIL:
+          month = 4;
+          break;
+
+        case MAY:
+          month = 5;
+          break;
+
+        case JUNE:
+          month = 6;
+          break;
+
+        case JULY:
+          month = 7;
+          break;
+
+        case AUGUST:
+          month = 8;
+          break;
+
+        case SEPTEMBER:
+          month = 9;
+          break;
+
+        case OCTOBER:
+          month = 10;
+          break;
+
+        case NOVEMBER:
+          month = 11;
+          break;
+
+        case DECEMBER:
           month = 12;
           break;
       }

@@ -150,6 +150,7 @@ inline,jmh/SwitchString.ifElseRandom
 inline,jmh/SwitchString.ifElseRandomHash
 inline,jmh/SwitchString.switchCaseRandom
 inline,jmh/SwitchString.switchCaseRandomHash
+inline,jmh/SwitchString.switchEnumRandom
 inline,jmh/SyncIterations.test
 inline,jmh/Tokenizer.doSetup
 inline,jmh/Tokenizer.doTearDown
