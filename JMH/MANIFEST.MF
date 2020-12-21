@@ -9,6 +9,6 @@ Specification-Title: JMH
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: ec7ab0b2 December 20 2020
+Implementation-Version: d8b4df41 December 21 2020
 Implementation-Vendor: 
 
