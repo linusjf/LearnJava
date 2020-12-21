@@ -25,7 +25,6 @@ public class SwitchString {
 
   private static final int SIZE = 1000;
 
-  volatile String value;
   volatile String[] months;
   volatile String[] codedStrings;
   volatile int[] indexes;
@@ -34,7 +33,6 @@ public class SwitchString {
 
   @Setup(Level.Trial)
   public void doSetup() {
-    value = "July";
     months = new String[] {"January",
                            "February",
                            "March",
@@ -60,101 +58,11 @@ public class SwitchString {
 
   @TearDown(Level.Trial)
   public void doTearDown() {
-    value = null;
     months = null;
     indexes = null;
     random = null;
     codedIndexes = null;
     codedStrings = null;
-  }
-
-  @Benchmark
-  @BenchmarkMode(Mode.Throughput)
-  @OutputTimeUnit(TimeUnit.SECONDS)
-  public int ifElse() {
-    int month = 0;
-    if (value.equals("January"))
-      month = 1;
-    else if (value.equals("February"))
-      month = 2;
-    else if (value.equals("March"))
-      month = 3;
-    else if (value.equals("April"))
-      month = 4;
-    else if (value.equals("May"))
-      month = 5;
-    else if (value.equals("June"))
-      month = 6;
-    else if (value.equals("July"))
-      month = 7;
-    else if (value.equals("August"))
-      month = 8;
-    else if (value.equals("September"))
-      month = 9;
-    else if (value.equals("October"))
-      month = 10;
-    else if (value.equals("November"))
-      month = 11;
-    else if (value.equals("December"))
-      month = 12;
-    return month;
-  }
-
-  @Benchmark
-  @BenchmarkMode(Mode.Throughput)
-  @OutputTimeUnit(TimeUnit.SECONDS)
-  public int switchCase() {
-    int month = 0;
-    switch (value) {
-      case "January":
-        month = 1;
-        break;
-
-      case "February":
-        month = 2;
-        break;
-
-      case "March":
-        month = 3;
-        break;
-
-      case "April":
-        month = 4;
-        break;
-
-      case "May":
-        month = 5;
-        break;
-
-      case "June":
-        month = 6;
-        break;
-
-      case "July":
-        month = 7;
-        break;
-
-      case "August":
-        month = 8;
-        break;
-
-      case "September":
-        month = 9;
-        break;
-
-      case "October":
-        month = 10;
-        break;
-
-      case "November":
-        month = 11;
-        break;
-
-      case "December":
-        month = 12;
-        break;
-    }
-    return month;
   }
 
   @Benchmark

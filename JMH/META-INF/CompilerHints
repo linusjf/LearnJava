@@ -146,10 +146,8 @@ inline,jmh/StatesDAG$Shared.teardown
 inline,jmh/StatesDAG.test
 inline,jmh/SwitchString.doSetup
 inline,jmh/SwitchString.doTearDown
-inline,jmh/SwitchString.ifElse
 inline,jmh/SwitchString.ifElseRandom
 inline,jmh/SwitchString.ifElseRandomHash
-inline,jmh/SwitchString.switchCase
 inline,jmh/SwitchString.switchCaseRandom
 inline,jmh/SwitchString.switchCaseRandomHash
 inline,jmh/SyncIterations.test
