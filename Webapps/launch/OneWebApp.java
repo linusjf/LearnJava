@@ -75,9 +75,10 @@ public final class OneWebApp {
       server.join();
     } catch (InterruptedException ie) {
       Thread.currentThread().interrupt();
-      LOGGER.severe(ie.getMessage());
+      LOGGER.severe(ie.getMessage().replaceAll("[\r\n]",""));
+
     } catch (Exception e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(e.getMessage().replaceAll("[\r\n]",""));
     }
   }
 }
