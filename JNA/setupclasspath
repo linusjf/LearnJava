@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../jna.cp run.cp
+cp ../jna.cp compile.cp
