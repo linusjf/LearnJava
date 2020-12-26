@@ -523,5 +523,11 @@
       <version>6.1.0</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>5.6.0</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

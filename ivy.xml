@@ -302,6 +302,8 @@
           description="groovy-ant lib jars" />
     <conf name="jenetics.main"
           description="jenetics jars" />
+    <conf name="jna.main"
+          description="jna jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -724,5 +726,10 @@
       name="jenetics" 
       rev="6.1.0"
       conf="jenetics.main-&gt;master" />
+      <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+    <dependency org="net.java.dev.jna" 
+      name="jna" 
+      rev="5.6.0"
+      conf="jna.main-&gt;master"/>
   </dependencies>
 </ivy-module>

@@ -1,0 +1,1 @@
+/data/data/com.termux/files/home/LearnJava/lib/jna-5.6.0.jar

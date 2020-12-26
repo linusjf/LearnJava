@@ -52,6 +52,7 @@
   <property file="${LearnJava.basedir}/jmh.properties" />
   <property file="${LearnJava.basedir}/groovy-ant.properties" />
   <property file="${LearnJava.basedir}/jenetics.properties" />
+  <property file="${LearnJava.basedir}/jna.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -418,6 +419,8 @@
                   conf="groovy-ant.lib" />
     <ivy:retrieve pathid="jenetics.main.path"
                   conf="jenetics.main" />
+    <ivy:retrieve pathid="jna.main.path"
+                  conf="jna.main" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -512,6 +515,8 @@
           message="${toString:groovy-ant.main.path}:${toString:groovy-ant.lib.path}" />
     <echo file="${jenetics.classpath.file}"
           message="${toString:jenetics.main.path}" />
+    <echo file="${jna.classpath.file}"
+          message="${toString:jna.main.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
