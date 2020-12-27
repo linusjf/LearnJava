@@ -14,9 +14,11 @@ public final class HelloWorld {
 
   public static void main(String... args) {
     CLibrary.INSTANCE.printf("Hello, World\n");
-    for (int i = 0; i < args.length;i++) {
+    for (int i = 0; i < args.length; i++) {
       CLibrary.INSTANCE.printf("Argument %d: %s\n", i + 1, args[i]);
     }
+    CLibrary.INSTANCE.printf(null);
+    CLibrary.INSTANCE.printf("Argument %d: %s\n", new Object[0]);
   }
 
   // This is the standard, stable way of mapping, which supports extensive

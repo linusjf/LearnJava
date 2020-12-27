@@ -89,7 +89,11 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}">
+      <classpath>
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -273,6 +277,7 @@
               effort="max"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
