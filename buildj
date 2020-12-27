@@ -85,7 +85,7 @@ declare -r setupCpFile="setupclasspath"
 declare -r optionsFile=".options"
 declare -a options
 declare -r distDir="dist"
-declare -r manifestFile="manifest.mf"
+declare -r manifestFile="MANIFEST.MF"
 declare -r verFile=".ver"
 declare -r versionFile=".version"
 declare -r buildClasspathFile="compile.cp"
