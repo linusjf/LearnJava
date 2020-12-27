@@ -5,6 +5,7 @@ import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
 /** Simple example of JNA interface mapping and usage. */
+@SuppressWarnings("PMD.LawOfDemeter")
 public final class HelloWorld {
   private HelloWorld() {
     throw new UnsupportedOperationException(
