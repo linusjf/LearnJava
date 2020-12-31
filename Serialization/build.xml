@@ -108,7 +108,7 @@
          manifest="${jar.manifest}"></jar>
   </target>
   <target name="runall"
-          depends="run,run1">
+          depends="run,run1,run2">
     <description>Runall target</description>
   </target>
   <target name="run">
@@ -123,6 +123,15 @@
   <target name="run1">
     <description>Run1 target</description>
     <java classname="${main.class1}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="run2">
+    <description>Run2 target</description>
+    <java classname="${main.class2}">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
