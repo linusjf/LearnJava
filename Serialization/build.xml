@@ -107,7 +107,8 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="runall" depends="run,run1">
+  <target name="runall"
+          depends="run,run1">
     <description>Runall target</description>
   </target>
   <target name="run">

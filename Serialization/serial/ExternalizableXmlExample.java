@@ -1,9 +1,9 @@
 package serial;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,22 +28,22 @@ public final class ExternalizableXmlExample {
 
   private static void serializeToXML(UserSettings settings) {
     try (OutputStream fos = Files.newOutputStream(Paths.get("settings.xml"));
-         XMLEncoder encoder = new XMLEncoder(fos);) {
-      encoder.setExceptionListener(
-          e -> System.out.println("Exception! :" + e.toString()));
-      encoder.writeObject(settings);
+         ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+      settings.writeExternal(oos);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
     }
   }
 
   private static UserSettings deserializeFromXML() {
-    UserSettings decodedSettings = null;
+    UserSettings decodedSettings = new UserSettings();
     try (InputStream fis = Files.newInputStream(Paths.get("settings.xml"));
-         XMLDecoder decoder = new XMLDecoder(fis);) {
-      decodedSettings = (UserSettings)decoder.readObject();
+         ObjectInputStream ois = new ObjectInputStream(fis);) {
+      decodedSettings.readExternal(ois);
     } catch (IOException ioe) {
       System.err.println(ioe.getMessage());
+    } catch (ClassNotFoundException cnfe) {
+      System.err.println(cnfe.getMessage());
     }
     return decodedSettings;
   }
