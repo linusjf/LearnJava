@@ -9,6 +9,6 @@ Specification-Title: Serialization
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 3ad91783 December 31 2020
+Implementation-Version: 5385aeaa December 31 2020
 Implementation-Vendor: 
 
