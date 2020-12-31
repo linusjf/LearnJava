@@ -304,6 +304,10 @@
           description="jenetics jars" />
     <conf name="jna.main"
           description="jna jars" />
+    <conf name="xstream.main"
+          description="xstream jars" />
+    <conf name="xstream.lib"
+          description="xstream library jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -731,5 +735,10 @@
       name="jna" 
       rev="5.6.0"
       conf="jna.main-&gt;master"/>
+    <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+  <dependency org="com.thoughtworks.xstream" 
+    name="xstream" 
+    rev="1.4.15"
+    conf="xstream.main-&gt;master;xstream.lib->compile"/>
   </dependencies>
 </ivy-module>
