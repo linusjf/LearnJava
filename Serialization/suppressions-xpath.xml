@@ -3,6 +3,9 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="CustomSerialization.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CustomSerialization']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myDetails']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='User']]/ELIST/EXPR/NUM_INT[@text='123_456']" />
   <suppress-xpath files="ExternalizableXmlExample.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='ExternalizableXmlExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']" />
