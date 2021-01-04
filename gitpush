@@ -27,7 +27,7 @@ command="git push -u origin development"
 $command
 command="git checkout master"
 $command
-command="git merge development"
+command="git merge --no-edit development"
 $command
 command="git push -u origin master"
 $command
