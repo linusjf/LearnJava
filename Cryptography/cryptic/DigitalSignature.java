@@ -21,9 +21,7 @@ public enum DigitalSignature {
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String... args) {
-    try {
-      // Accepting text from user
-      Scanner sc = new Scanner(System.in, "UTF8");
+    try (Scanner sc = new Scanner(System.in, "UTF8")) {
       System.out.println("Enter some text");
       String msg = sc.nextLine();
 

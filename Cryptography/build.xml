@@ -292,7 +292,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />

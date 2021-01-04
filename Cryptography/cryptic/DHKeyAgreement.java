@@ -55,7 +55,8 @@ public final class DHKeyAgreement {
   @SuppressWarnings({"checkstyle:illegaltoken",
                      "PMD.ExcessiveMethodLength",
                      "PMD.LawOfDemeter",
-                     "PMD.SystemPrintln"})
+                     "PMD.SystemPrintln",
+                     "PMD.CommentSize"})
   public static void
   main(String... argv) {
     try {
@@ -141,8 +142,9 @@ public final class DHKeyAgreement {
        * vector (IV) parameter. Note that you have to use the same IV
        * for encryption and decryption: If you use a different IV for
        * decryption than you used for encryption, decryption will fail.
-       *
-       * If you do not specify an IV when you initialize the Cipher
+       */
+
+      /* If you do not specify an IV when you initialize the Cipher
        * object for encryption, the underlying implementation will generate
        * a random one, which you have to retrieve using the
        * javax.crypto.Cipher.getParameters() method, which returns an

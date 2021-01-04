@@ -16,12 +16,10 @@ public enum MessageDigestExample {
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public static void main(String[] args) {
-    // Reading data from user
-    Scanner sc = new Scanner(System.in, UTF_8);
-    System.out.println("Enter the message");
-    String message = sc.nextLine();
 
-    try {
+    try (Scanner sc = new Scanner(System.in, UTF_8)) {
+      System.out.println("Enter the message");
+      String message = sc.nextLine();
       // Creating the MessageDigest object
       MessageDigest md = MessageDigest.getInstance("SHA-256");
 

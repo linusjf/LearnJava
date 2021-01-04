@@ -31,9 +31,9 @@ public enum StoringIntoKeyStore {
       // Loading the KeyStore object
       char[] password = "changeit".toCharArray();
       String path = javaHome + "/lib/security/cacerts";
-      InputStream is = Files.newInputStream(Paths.get(path));
-      keyStore.load(is, password);
-
+      try (InputStream is = Files.newInputStream(Paths.get(path))) {
+        keyStore.load(is, password);
+      }
       // Creating the KeyStore.ProtectionParameter object
       KeyStore.ProtectionParameter protectionParam =
           new KeyStore.PasswordProtection(password);
@@ -48,8 +48,10 @@ public enum StoringIntoKeyStore {
       keyStore.setEntry("secretKeyAlias", secretKeyEntry, protectionParam);
 
       // Storing the KeyStore object
-      OutputStream os = Files.newOutputStream(Paths.get("newKeyStore.jks"));
-      keyStore.store(os, password);
+      try (OutputStream os =
+               Files.newOutputStream(Paths.get("newKeyStore.jks"))) {
+        keyStore.store(os, password);
+      }
       System.out.println("data stored");
     } catch (CertificateException | NoSuchAlgorithmException | KeyStoreException
              | IOException e) {

@@ -22,7 +22,8 @@ public final class DHThreeWay {
       Logger.getLogger(DHThreeWay.class.getName());
 
   private DHThreeWay() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
