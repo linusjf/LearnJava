@@ -108,6 +108,16 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run118">
+    <description>CommentDemo target</description>
+    <java classname="${main.class118}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run117">
     <description>IntToFloat target</description>
     <java classname="${main.class117}"

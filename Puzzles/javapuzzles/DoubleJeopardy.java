@@ -8,7 +8,7 @@ class Jeopardy {
 public class DoubleJeopardy extends Jeopardy {
   public static final String PRIZE = "2 cents";
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     System.out.println(DoubleJeopardy.PRIZE);
   }

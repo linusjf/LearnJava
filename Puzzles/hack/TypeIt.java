@@ -5,7 +5,7 @@ import click.CodeTalk;
 public enum TypeIt {
   ;
 
-@SuppressWarnings({"PMD.SystemPrintln","PMD.MissingOverride"})
+  @SuppressWarnings({"PMD.SystemPrintln", "PMD.MissingOverride"})
   private static class ClickIt extends CodeTalk {
     void printMessage() {
       System.out.println("Hack");

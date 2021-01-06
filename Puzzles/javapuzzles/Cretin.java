@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public enum Cretin {
   ;
 
-@SuppressWarnings({"PMD.SystemPrintln","PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
   public static void main(String... args) throws InterruptedException {
     AtomicBoolean allowed = new AtomicBoolean(false);
     Thread[] threads = new Thread[1000];

@@ -10,7 +10,7 @@ public abstract class CoinSide {
     return rnd.nextBoolean() ? Heads.INSTANCE : Tails.INSTANCE;
   }
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     System.out.println(flip());
   }

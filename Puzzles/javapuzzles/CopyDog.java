@@ -10,7 +10,7 @@ public enum CopyDog {
   // Not to be confused with copycat
   ;
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Dog newDog = (Dog)deepCopy(Dog.INSTANCE);
     System.out.println(newDog == Dog.INSTANCE);

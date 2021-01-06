@@ -21,7 +21,7 @@ public final class CoinSide {
     return rnd.nextBoolean() ? HEADS : TAILS;
   }
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     System.out.println(flip());
   }

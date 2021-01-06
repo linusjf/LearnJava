@@ -3,7 +3,7 @@ package javapuzzlers;
 public enum DoublePuzzle {
   ;
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     Double negZero = Double.valueOf(-0.0d);
 

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public enum BananaBread {
   ;
 
-@SuppressWarnings("PMD.SystemPrintln")
+  @SuppressWarnings("PMD.SystemPrintln")
   public static void main(String[] args) {
     Integer[] array = {3, 1, 4, 1, 5, 9};
 
