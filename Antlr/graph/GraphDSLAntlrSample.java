@@ -17,9 +17,10 @@ public enum GraphDSLAntlrSample {
 
   @SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
-    try {
-      // Reading the DSL script
-      InputStream is = ClassLoader.getSystemResourceAsStream(args[0]);
+    try (
+        // Reading the DSL script
+        InputStream is = ClassLoader.getSystemResourceAsStream(args[0])) {
+
       System.out.println("Loaded grammar");
       // Loading the DSL script into the ANTLR stream.
       CharStream cs = CharStreams.fromStream(is, UTF_8);

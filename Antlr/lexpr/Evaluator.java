@@ -58,7 +58,7 @@ public class Evaluator extends LExprBaseListener {
   public boolean equals(Object o) {
     if (o == this)
       return true;
-    if (o instanceof lexpr.Evaluator) {
+    if (o instanceof Evaluator) {
       return stack.equals(((Evaluator)o).stack);
     }
     return false;
