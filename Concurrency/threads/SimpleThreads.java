@@ -1,6 +1,6 @@
 package threads;
 
-import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.*;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-@SuppressWarnings("PMD.SystemPrintln")
+@SuppressWarnings({"PMD.SystemPrintln","PMD.CommentSize"})
 public enum SimpleThreads {
   ;
   // Display a message, preceded by
@@ -49,7 +49,8 @@ public enum SimpleThreads {
       try {
         return Long.parseLong(args[0]) * 1000L;
       } catch (NumberFormatException e) {
-        System.err.println("Argument must be an integer.");
+        System.err.println("Argument must be an integer: " +
+            e.getMessage());
       }
     }
     return 1000L * 60L * 60L;
@@ -109,12 +110,12 @@ public enum SimpleThreads {
       try {
         for (String info: importantInfo) {
           // Pause for 4 seconds
-          TimeUnit.MILLISECONDS.sleep(4000);
+          MILLISECONDS.sleep(4000);
 
           // Print a message
           threadMessage(info);
         }
-      } catch (InterruptedException e) {
+      } catch (InterruptedException ignored) {
         threadMessage("I wasn't done!");
       }
     }

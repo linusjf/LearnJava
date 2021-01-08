@@ -28,7 +28,7 @@ public enum SemaphoreExample {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public void printJob(Object document) {
+    public void printJob(Object ignored) {
       try {
         semaphore.acquire();
         long duration = (long)(Math.random() * 10);

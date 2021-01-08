@@ -9,11 +9,14 @@ import java.util.concurrent.TimeoutException;
 
 @SuppressWarnings("PMD.SystemPrintln")
 public class Solver {
+  @SuppressWarnings("PMD.FieldNamingConventions")
   final int N;
+
   final float[][] data;
   final CyclicBarrier barrier;
 
-  public Solver(float[][] matrix) {
+  @SuppressWarnings("PMD.ArrayIsStoredDirectly")
+  public Solver(float[]... matrix) {
     data = matrix;
     N = matrix.length;
     Runnable barrierAction = () -> mergeRows();
@@ -48,11 +51,8 @@ public class Solver {
       processRow(myRow);
       try {
         barrier.await(1, TimeUnit.MINUTES);
-      } catch (InterruptedException ex) {
-        return;
-      } catch (BrokenBarrierException ex) {
-        return;
-      } catch (TimeoutException ex) {
+      } catch (InterruptedException | BrokenBarrierException
+               | TimeoutException ignored) {
         return;
       }
     }

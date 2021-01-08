@@ -29,13 +29,14 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+@SuppressWarnings("PMD.CommentSize")
 public class SynchronizedRGB {
   // Values must be between 0 and 255.
   private int red;
   private int green;
   private int blue;
   private String name;
-  private Object lock = new Object();
+  private final Object lock = new Object();
 
   public SynchronizedRGB(int red, int green, int blue, String name) {
     check(red, green, blue);

@@ -17,11 +17,10 @@ public class ThreadShowName extends Thread {
 
   @Override
   public void run() {
-    int pause;
     for (int i = 0; i < 10; i++) {
       try {
         System.out.println(getName() + " being executed.");
-        pause = random.nextInt(3000);
+        int pause = random.nextInt(3000);
         sleep(pause);
       } catch (
           // 0-3 seconds.

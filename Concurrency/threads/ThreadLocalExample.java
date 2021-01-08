@@ -1,7 +1,8 @@
 package threads;
 
+import static java.util.concurrent.TimeUnit.*;
+
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("PMD.SystemPrintln")
 public enum ThreadLocalExample {
@@ -27,19 +28,20 @@ public enum ThreadLocalExample {
   }
 
   public static class MyRunnable implements Runnable {
-    private static final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Integer> THREAD_LOCAL =
+        new ThreadLocal<>();
     private final Random random = new Random();
 
     @Override
     public void run() {
-      threadLocal.set(random.nextInt(100));
+      THREAD_LOCAL.set(random.nextInt(100));
 
       try {
-        TimeUnit.MILLISECONDS.sleep(2000);
+        MILLISECONDS.sleep(2000);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-      System.out.println(threadLocal.get());
+      System.out.println(THREAD_LOCAL.get());
     }
   }
 }

@@ -29,9 +29,10 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+@SuppressWarnings("PMD.CommentSize")
 class SynchronizedCounter {
   private int c;
-  private Object lock = new Object();
+  private final Object lock = new Object();
 
   public void increment() {
     synchronized (lock) {
