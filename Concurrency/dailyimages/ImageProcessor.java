@@ -45,7 +45,7 @@ public class ImageProcessor implements Runnable {
           .connectTimeout(Duration.ofSeconds(30))
           .build();
   private boolean finished;
-  private Random random = new Random();
+  private final Random random = new Random();
 
   @Override
   public void run() {
@@ -134,7 +134,7 @@ public class ImageProcessor implements Runnable {
       LOG.info("PAST TERMINATION and SHUTDOWNNOW");
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      LOG.severe("Interrupted");
+      LOG.severe(() -> "Interrupted " + e.getMessage());
     } finally {
       final long endTime = System.nanoTime() - startTime;
       LOG.info(() -> String.format("time = %dms%n", endTime / 1_000_000));
@@ -183,6 +183,7 @@ public class ImageProcessor implements Runnable {
       this.proc = proc;
     }
 
+    @SuppressWarnings("PMD.LawOfDemeter")
     @Override
     public void run() {
       while (!proc.finished) {
@@ -192,10 +193,10 @@ public class ImageProcessor implements Runnable {
                                -> LOG.info(t.getName() + "\tIs Daemon "
                                            + t.isDaemon() + "\tIs Alive "
                                            + t.isAlive()));
-          LOG.info("Number of threads: " + map.size());
-          LOG.info("Latch value: " + proc.latch.getCount());
+          LOG.info(() -> "Number of threads: " + map.size());
+          LOG.info(() -> "Latch value: " + proc.latch.getCount());
           TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException ie) {
+        } catch (InterruptedException ignored) {
           Thread.currentThread().interrupt();
         }
       }

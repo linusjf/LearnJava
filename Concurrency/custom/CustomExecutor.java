@@ -78,7 +78,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
   }
 
   @Override
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.UnusedAssignment"})
   protected void afterExecute(Runnable r, Throwable t) {
     Future<?> result = (Future<?>)r;
     try {

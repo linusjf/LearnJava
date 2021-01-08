@@ -1,5 +1,7 @@
 package dailyimages;
 
+import static java.util.concurrent.TimeUnit.*;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,7 +19,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /** This sample courtesy https://www.javaspecialists.eu/archive/Issue271.htm. */
@@ -33,20 +34,21 @@ public class NewImageProcessor {
   private final CountDownLatch latch = new CountDownLatch(NUMBER_TO_SHOW);
 
   BlockingQueue<Runnable> boundedQueue =
-      new ArrayBlockingQueue<Runnable>(NUMBER_TO_SHOW);
-  private ExecutorService executor1 = new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
-                                                             NUMBER_TO_SHOW,
-                                                             60,
-                                                             TimeUnit.SECONDS,
-                                                             boundedQueue,
-                                                             new AbortPolicy());
+      new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
+  private final ExecutorService executor1 =
+      new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
+                             NUMBER_TO_SHOW,
+                             60,
+                             SECONDS,
+                             boundedQueue,
+                             new AbortPolicy());
   BlockingQueue<Runnable> boundedQueue2 =
       new ArrayBlockingQueue<>(NUMBER_TO_SHOW);
   private final ExecutorService executor2 =
       new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
                              NUMBER_TO_SHOW,
                              60,
-                             TimeUnit.SECONDS,
+                             SECONDS,
                              boundedQueue2,
                              new AbortPolicy());
   BlockingQueue<Runnable> boundedQueue3 =
@@ -55,7 +57,7 @@ public class NewImageProcessor {
       new ThreadPoolExecutor(NUMBER_TO_SHOW / 2,
                              NUMBER_TO_SHOW,
                              60,
-                             TimeUnit.SECONDS,
+                             SECONDS,
                              boundedQueue3,
                              new AbortPolicy());
   private final AtomicInteger failureCount = new AtomicInteger(0);
@@ -135,7 +137,7 @@ public class NewImageProcessor {
       System.out.println("Loading " + newDate);
       load(newDate, info);
       if (DELAY > 0)
-        TimeUnit.MILLISECONDS.sleep(DELAY);
+        MILLISECONDS.sleep(DELAY);
       newDate = newDate.minusDays(1);
     }
   }
@@ -150,15 +152,15 @@ public class NewImageProcessor {
       // wait for a minute  before shutting down executor2
       // http timeouts must expire first
       executor1.shutdown();
-      executor1.awaitTermination(1, TimeUnit.MINUTES);
+      executor1.awaitTermination(1, MINUTES);
       executor2.shutdown();
-      executor2.awaitTermination(1, TimeUnit.MINUTES);
+      executor2.awaitTermination(1, MINUTES);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      System.err.println("Interrupted");
+      System.err.println("Interrupted " + e.getMessage());
     } finally {
       time = System.nanoTime() - time;
-      System.out.printf("time = %dms%n", time / 1000000);
+      System.out.printf("time = %dms%n", time / 1_000_000);
       System.out.println(failureCount.get() + " failures downloading");
     }
   }

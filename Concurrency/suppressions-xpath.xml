@@ -158,7 +158,7 @@
 <suppress-xpath
        files="NewImageProcessor.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='NewImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1000000']"/>
+       query="/CLASS_DEF[./IDENT[@text='NewImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
        files="AtomicAssignment.java"
        checks="MagicNumberCheck"
@@ -235,6 +235,10 @@
        files="CancelForkJoinPool.java"
        checks="MagicNumberCheck"
        query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ArrayGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateArray']]/SLIST/LITERAL_FOR/EXPR/ASSIGN/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CancelForkJoinPool.java"
+       checks="WhitespaceAroundCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='SearchNumberTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='launchTasks']]/SLIST/LITERAL_RETURN/EXPR/QUESTION[./IDENT[@text='returnValue']]/COLON"/>
 <suppress-xpath
        files="CancelledExecutor.java"
        checks="MagicNumberCheck"

@@ -123,13 +123,9 @@ public enum CancelForkJoinPool {
       manager.addTask(task2);
       task1.fork();
       task2.fork();
-      int returnValue;
 
-      returnValue = task1.join();
-      if (returnValue != -1)
-        return returnValue;
-
-      return task2.join();
+      int returnValue = task1.join();
+      return returnValue == -1 ? task2.join(): returnValue;
     }
 
     public void writeCancelMessage() {

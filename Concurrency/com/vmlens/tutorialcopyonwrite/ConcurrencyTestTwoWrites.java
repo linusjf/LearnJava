@@ -1,6 +1,6 @@
 package com.vmlens.tutorialcopyonwrite;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.vmlens.annotation.Interleave;
 import org.junit.jupiter.api.Test;
