@@ -81,7 +81,8 @@ public enum SimpleThreads {
         // for MessageLoop thread
         // to finish.
         t.join(1000);
-        if ((System.currentTimeMillis() - startTime) > patience && t.isAlive()) {
+        if ((System.currentTimeMillis() - startTime) > patience
+            && t.isAlive()) {
           threadMessage("Tired of waiting!");
           t.interrupt();
 
@@ -97,14 +98,15 @@ public enum SimpleThreads {
   }
 
   private static class MessageLoop implements Runnable {
-    String[] importantInfo = {
-      "Mares eat oats", "Does eat oats", "Little lambs eat ivy", "A kid will eat ivy too"
-    };
+    String[] importantInfo = {"Mares eat oats",
+                              "Does eat oats",
+                              "Little lambs eat ivy",
+                              "A kid will eat ivy too"};
 
     @Override
     public void run() {
       try {
-        for (String info : importantInfo) {
+        for (String info: importantInfo) {
           // Pause for 4 seconds
           TimeUnit.MILLISECONDS.sleep(4000);
 

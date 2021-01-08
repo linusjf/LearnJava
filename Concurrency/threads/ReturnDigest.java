@@ -44,16 +44,22 @@ public class ReturnDigest extends Thread {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof ReturnDigest)) return false;
-    ReturnDigest other = (ReturnDigest) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof ReturnDigest))
+      return false;
+    ReturnDigest other = (ReturnDigest)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null
+                              : !this$filename.equals(other$filename))
       return false;
-    if (!java.util.Arrays.equals(this.getDigest(), other.getDigest())) return false;
+    if (!java.util.Arrays.equals(this.getDigest(), other.getDigest()))
+      return false;
     return true;
   }
 
@@ -76,10 +82,7 @@ public class ReturnDigest extends Thread {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "ReturnDigest(filename="
-        + this.filename
-        + ", digest="
-        + java.util.Arrays.toString(this.getDigest())
-        + ")";
+    return "ReturnDigest(filename=" + this.filename
+        + ", digest=" + java.util.Arrays.toString(this.getDigest()) + ")";
   }
 }

@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum CompletionServiceDemo {
   ;
 
@@ -16,7 +17,8 @@ public enum CompletionServiceDemo {
   public static void main(String[] args) {
     ExecutorService executor = Executors.newCachedThreadPool();
 
-    CompletionService<String> service = new ExecutorCompletionService<>(executor);
+    CompletionService<String> service =
+        new ExecutorCompletionService<>(executor);
     ReportRequest faceRequest = new ReportRequest("Face", service);
     ReportRequest onlineRequest = new ReportRequest("Online", service);
     ReportProcessor processor = new ReportProcessor(service);
@@ -58,10 +60,12 @@ public enum CompletionServiceDemo {
     @SuppressWarnings("PMD.LawOfDemeter")
     public String call() throws Exception {
       try {
-        Long duration = (long) (Math.random() * 10);
+        Long duration = (long)(Math.random() * 10);
         System.out.printf(
             "%s_%s: ReportGenerator: Generating a report utilizing %d seconds%n",
-            this.sender, this.title, duration);
+            this.sender,
+            this.title,
+            duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

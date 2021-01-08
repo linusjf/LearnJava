@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum LockProducerConsumer {
   ;
 
@@ -18,9 +19,11 @@ public enum LockProducerConsumer {
     Producer producer = new Producer(mock, buffer);
     Thread threadProducer = new Thread(producer, "Producer");
     Thread[] threadConsumers = new Thread[3];
-    Arrays.setAll(threadConsumers, i -> new Thread(new Consumer(buffer), "Consumer " + i));
+    Arrays.setAll(threadConsumers,
+                  i -> new Thread(new Consumer(buffer), "Consumer " + i));
     threadProducer.start();
-    for (Thread t : threadConsumers) t.start();
+    for (Thread t: threadConsumers)
+      t.start();
   }
 
   @SuppressWarnings("all")
@@ -39,7 +42,7 @@ public enum LockProducerConsumer {
         StringBuilder buffer = new StringBuilder(length);
         for (int j = 0; j < length; j++) {
           int indice = random.nextInt(255);
-          buffer.append((char) indice);
+          buffer.append((char)indice);
         }
         content[i] = buffer.toString();
       }
@@ -51,7 +54,8 @@ public enum LockProducerConsumer {
     }
 
     public String getLine() {
-      if (!hasMoreLines()) return null;
+      if (!hasMoreLines())
+        return null;
       System.out.println("Mock: " + (content.length - index));
       return content[index++];
     }
@@ -78,13 +82,16 @@ public enum LockProducerConsumer {
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
-    public void insert(String line) throws InterruptedException, TimeoutException {
+    public void insert(String line)
+        throws InterruptedException, TimeoutException {
       if (lock.tryLock(1, TimeUnit.SECONDS)) {
         try {
-          while (queue.size() == maxSize) ignore(space.await(1, TimeUnit.MILLISECONDS));
+          while (queue.size() == maxSize)
+            ignore(space.await(1, TimeUnit.MILLISECONDS));
           queue.offer(line);
-          System.out.printf(
-              "%s: Inserted Line: %d%n", Thread.currentThread().getName(), queue.size());
+          System.out.printf("%s: Inserted Line: %d%n",
+                            Thread.currentThread().getName(),
+                            queue.size());
           lines.signalAll();
         } catch (InterruptedException e) {
           System.err.println(e);
@@ -92,7 +99,8 @@ public enum LockProducerConsumer {
           lock.unlock();
         }
       } else
-        throw new TimeoutException("Timed out after 1 second: '" + line + "' cannot be inserted");
+        throw new TimeoutException("Timed out after 1 second: '" + line
+                                   + "' cannot be inserted");
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
@@ -105,8 +113,9 @@ public enum LockProducerConsumer {
 
           if (hasPendingLines()) {
             line = queue.poll();
-            System.out.printf(
-                "%s: Line Read: %d%n", Thread.currentThread().getName(), queue.size());
+            System.out.printf("%s: Line Read: %d%n",
+                              Thread.currentThread().getName(),
+                              queue.size());
             space.signalAll();
           }
         } catch (InterruptedException e) {
@@ -115,7 +124,8 @@ public enum LockProducerConsumer {
           lock.unlock();
         }
         return line;
-      } else throw new TimeoutException("Error in get in class " + getClass());
+      } else
+        throw new TimeoutException("Error in get in class " + getClass());
     }
 
     public void setPendingLines(boolean pendingLines) {

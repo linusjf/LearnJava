@@ -4,6 +4,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ExceptionalForkJoin {
   ;
 
@@ -46,9 +47,9 @@ public enum ExceptionalForkJoin {
       System.out.printf("Task: Start from %d to %d%n", start, end);
       if (end - start < MIN_TASK_SIZE) {
         if (3 > start && 3 < end)
-          completeExceptionally(
-              new RuntimeException(
-                  "This task throws a Runtime " + "Exception: Task from " + start + " to " + end));
+          completeExceptionally(new RuntimeException(
+              "This task throws a Runtime "
+              + "Exception: Task from " + start + " to " + end));
         try {
           TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {

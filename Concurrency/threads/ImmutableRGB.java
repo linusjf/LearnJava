@@ -46,7 +46,8 @@ public final class ImmutableRGB {
 
   @SuppressWarnings("checkstyle:hiddenfield")
   private void check(int red, int green, int blue) {
-    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
+        || blue > 255) {
       throw new IllegalArgumentException();
     }
   }
@@ -60,21 +61,28 @@ public final class ImmutableRGB {
   }
 
   public ImmutableRGB invert() {
-    return new ImmutableRGB(255 - red, 255 - green, 255 - blue, "Inverse of " + name);
+    return new ImmutableRGB(
+        255 - red, 255 - green, 255 - blue, "Inverse of " + name);
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof ImmutableRGB)) return false;
-    ImmutableRGB other = (ImmutableRGB) o;
-    if (this.red != other.red) return false;
-    if (this.green != other.green) return false;
-    if (this.blue != other.blue) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof ImmutableRGB))
+      return false;
+    ImmutableRGB other = (ImmutableRGB)o;
+    if (this.red != other.red)
+      return false;
+    if (this.green != other.green)
+      return false;
+    if (this.blue != other.blue)
+      return false;
     Object this$name = this.getName();
     Object other$name = other.getName();
-    if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
+    if (this$name == null ? other$name != null : !this$name.equals(other$name))
+      return false;
     return true;
   }
 
@@ -94,14 +102,7 @@ public final class ImmutableRGB {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "ImmutableRGB(red="
-        + this.red
-        + ", green="
-        + this.green
-        + ", blue="
-        + this.blue
-        + ", name="
-        + this.getName()
-        + ")";
+    return "ImmutableRGB(red=" + this.red + ", green=" + this.green
+        + ", blue=" + this.blue + ", name=" + this.getName() + ")";
   }
 }

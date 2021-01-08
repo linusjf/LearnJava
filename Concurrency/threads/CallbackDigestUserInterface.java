@@ -3,6 +3,7 @@ package threads;
 import java.util.Base64;
 // for DatatypeConverter; requires Java 6 or JAXB 1.0
 
+@SuppressWarnings("PMD.SystemPrintln")
 public final class CallbackDigestUserInterface implements Receiver {
   private final String filename;
 
@@ -19,12 +20,14 @@ public final class CallbackDigestUserInterface implements Receiver {
   }
 
   public static void main(String[] args) {
-    for (String filename : args) spinOffCallback(filename);
+    for (String filename: args)
+      spinOffCallback(filename);
   }
 
   private static void spinOffCallback(String filename) {
     // Calculate the digest
-    Runnable cb = new CallbackDigest(filename, new CallbackDigestUserInterface(filename));
+    Runnable cb =
+        new CallbackDigest(filename, new CallbackDigestUserInterface(filename));
     Thread t = new Thread(cb);
     t.start();
   }
@@ -38,12 +41,15 @@ public final class CallbackDigestUserInterface implements Receiver {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof CallbackDigestUserInterface)) return false;
-    CallbackDigestUserInterface other = (CallbackDigestUserInterface) o;
+    if (o == this)
+      return true;
+    if (!(o instanceof CallbackDigestUserInterface))
+      return false;
+    CallbackDigestUserInterface other = (CallbackDigestUserInterface)o;
     Object this$filename = this.filename;
     Object other$filename = other.filename;
-    if (this$filename == null ? other$filename != null : !this$filename.equals(other$filename))
+    if (this$filename == null ? other$filename != null
+                              : !this$filename.equals(other$filename))
       return false;
     return true;
   }

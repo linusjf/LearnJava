@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum CustomPhaserDemo {
   ;
 
@@ -20,14 +21,15 @@ public enum CustomPhaserDemo {
       threads[i] = new Thread(students[i], "Student " + i);
       threads[i].start();
     }
-    for (Thread thread : threads) {
+    for (Thread thread: threads) {
       try {
         thread.join(600_000);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
     }
-    System.out.printf("Main:  The phaser has finished: %s.%n", phaser.isTerminated());
+    System.out.printf("Main:  The phaser has finished: %s.%n",
+                      phaser.isTerminated());
   }
 
   static class MyPhaser extends Phaser {
@@ -50,18 +52,21 @@ public enum CustomPhaserDemo {
 
     private boolean studentsArrived() {
       System.out.printf("Phaser: Exams are starting. Students are ready.%n");
-      System.out.printf("Phaser: We have %d students.%n", getRegisteredParties());
+      System.out.printf("Phaser: We have %d students.%n",
+                        getRegisteredParties());
       return false;
     }
 
     private boolean finishFirstExercise() {
-      System.out.printf("Phaser: All students have finished the first exercise.%n");
+      System.out.printf(
+          "Phaser: All students have finished the first exercise.%n");
       System.out.printf("Phaser: Time for the second one.%n");
       return false;
     }
 
     private boolean finishSecondExercise() {
-      System.out.printf("Phaser: All students have finished the second exercise.%n");
+      System.out.printf(
+          "Phaser: All students have finished the second exercise.%n");
       System.out.printf("Phaser: Time for the third one.%n");
       return false;
     }
@@ -83,36 +88,40 @@ public enum CustomPhaserDemo {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
-      System.out.printf(
-          "%s: Has arrived to take the exam. %s%n", Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Has arrived to take the exam. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is about to start the first exercise. %s%n",
-          Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Is about to start the first exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise1();
-      System.out.printf(
-          "%s: Has completed the first exercise. %s%n",
-          Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Has completed the first exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is starting the second exercise.%s%n", Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Is starting the second exercise.%s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise2();
-      System.out.printf(
-          "%s: Has completed the second exercise. %s%n",
-          Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Has completed the second exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
-      System.out.printf(
-          "%s: Is starting the third exercise. %s%n", Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Is starting the third exercise. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       doExercise3();
-      System.out.printf(
-          "%s: Finished the exam. %s%n", Thread.currentThread().getName(), new Date());
+      System.out.printf("%s: Finished the exam. %s%n",
+                        Thread.currentThread().getName(),
+                        new Date());
       phaser.arriveAndAwaitAdvance();
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise1() {
       try {
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -122,7 +131,7 @@ public enum CustomPhaserDemo {
     @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise2() {
       try {
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);
@@ -132,7 +141,7 @@ public enum CustomPhaserDemo {
     @SuppressWarnings("PMD.LawOfDemeter")
     private void doExercise3() {
       try {
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

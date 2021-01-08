@@ -66,31 +66,35 @@ public class BlockingThread extends Thread {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "BlockingThread(queue="
-        + this.queue
-        + ", wasInterrupted="
-        + this.isWasInterrupted()
-        + ", reachedAfterGet="
-        + this.isReachedAfterGet()
-        + ", throwableThrown="
-        + this.isThrowableThrown()
-        + ")";
+    return "BlockingThread(queue=" + this.queue
+        + ", wasInterrupted=" + this.isWasInterrupted()
+        + ", reachedAfterGet=" + this.isReachedAfterGet()
+        + ", throwableThrown=" + this.isThrowableThrown() + ")";
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof BlockingThread)) return false;
-    BlockingThread other = (BlockingThread) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof BlockingThread))
+      return false;
+    BlockingThread other = (BlockingThread)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
     Object this$queue = this.queue;
     Object other$queue = other.queue;
-    if (this$queue == null ? other$queue != null : !this$queue.equals(other$queue)) return false;
-    if (this.isWasInterrupted() != other.isWasInterrupted()) return false;
-    if (this.isReachedAfterGet() != other.isReachedAfterGet()) return false;
-    if (this.isThrowableThrown() != other.isThrowableThrown()) return false;
+    if (this$queue == null ? other$queue != null
+                           : !this$queue.equals(other$queue))
+      return false;
+    if (this.isWasInterrupted() != other.isWasInterrupted())
+      return false;
+    if (this.isReachedAfterGet() != other.isReachedAfterGet())
+      return false;
+    if (this.isThrowableThrown() != other.isThrowableThrown())
+      return false;
     return true;
   }
 

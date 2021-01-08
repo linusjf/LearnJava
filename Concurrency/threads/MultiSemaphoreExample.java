@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum MultiSemaphoreExample {
   ;
 
@@ -15,7 +16,8 @@ public enum MultiSemaphoreExample {
     Thread[] thread = new Thread[10];
     PrintQueue printQueue = new PrintQueue();
     Arrays.setAll(thread, i -> new Thread(new Job(printQueue), "Thread" + i));
-    for (Thread t : thread) t.start();
+    for (Thread t: thread)
+      t.start();
   }
 
   static class PrintQueue {
@@ -38,10 +40,12 @@ public enum MultiSemaphoreExample {
       try {
         semaphore.acquire();
         int assignedPrinter = getPrinter();
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         System.out.printf(
             "%s: PrintQueue: Printing a Job at %d utilizing %d seconds%n",
-            Thread.currentThread().getName(), assignedPrinter, duration);
+            Thread.currentThread().getName(),
+            assignedPrinter,
+            duration);
         TimeUnit.MILLISECONDS.sleep(duration);
         freePrinters[assignedPrinter] = true;
       } catch (InterruptedException e) {
@@ -78,9 +82,11 @@ public enum MultiSemaphoreExample {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
-      System.out.printf("%s: Going to print a job%n", Thread.currentThread().getName());
+      System.out.printf("%s: Going to print a job%n",
+                        Thread.currentThread().getName());
       printQueue.printJob(new Object());
-      System.out.printf("%s: The document has been printed%n", Thread.currentThread().getName());
+      System.out.printf("%s: The document has been printed%n",
+                        Thread.currentThread().getName());
     }
   }
 }

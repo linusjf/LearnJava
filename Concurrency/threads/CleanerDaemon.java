@@ -5,14 +5,17 @@ import java.util.Date;
 import java.util.Deque;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum CleanerDaemon {
   ;
 
   public static void main(String[] args) {
     Deque<Event> deque = new ArrayDeque<>();
     WriterTask writer = new WriterTask(deque);
-    Thread[] threads = {new Thread(writer), new Thread(writer), new Thread(writer)};
-    for (Thread t : threads) t.start();
+    Thread[] threads = {
+        new Thread(writer), new Thread(writer), new Thread(writer)};
+    for (Thread t: threads)
+      t.start();
     CleanerTask cleaner = new CleanerTask(deque);
     cleaner.start();
   }
@@ -51,8 +54,8 @@ public enum CleanerDaemon {
       for (int i = 1; i < 100; i++) {
         Event event = new Event();
         event.setDate(new Date());
-        event.setEvent(
-            String.format("The thread %s has generated an event", Thread.currentThread().getId()));
+        event.setEvent(String.format("The thread %s has generated an event",
+                                     Thread.currentThread().getId()));
         synchronized (deque) {
           deque.addFirst(event);
         }
@@ -89,18 +92,21 @@ public enum CleanerDaemon {
 
     @SuppressWarnings("PMD.LawOfDemeter")
     private void clean(Date date) {
-      if (deque.size() == 0) return;
+      if (deque.size() == 0)
+        return;
       boolean delete = false;
       Event e = deque.getLast();
       long difference = date.getTime() - e.getDate().getTime();
       while (difference > 10_000 && !deque.isEmpty()) {
         System.out.printf("Cleaner: %s%n", e.getEvent());
         deque.removeLast();
-        if (!delete) delete = true;
+        if (!delete)
+          delete = true;
         e = deque.getLast();
         difference = date.getTime() - e.getDate().getTime();
       }
-      if (delete) System.out.printf("Cleaner: Size of the queue: %d%n", deque.size());
+      if (delete)
+        System.out.printf("Cleaner: Size of the queue: %d%n", deque.size());
     }
   }
 }

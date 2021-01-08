@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class ParallelAdder {
   private static final int NUM_COUNT = 100;
   private static final int NUM_THREADS = 10;
@@ -24,7 +25,7 @@ public class ParallelAdder {
       }
     }
     int totsum = 0;
-    for (Future<Integer> fut : list) {
+    for (Future<Integer> fut: list) {
       try {
         totsum = totsum + fut.get();
       } catch (InterruptedException | ExecutionException e) {
@@ -36,13 +37,16 @@ public class ParallelAdder {
     return totsum;
   }
 
-  private Future<Integer> submitNumbers(int prev, int i, ExecutorService executor) {
+  private Future<Integer> submitNumbers(int prev,
+                                        int i,
+                                        ExecutorService executor) {
     return executor.submit(new CallableAdder(prev, i));
   }
 
   public int sequentialSum() {
     Integer totsum = 0;
-    for (int i = 0; i < NUM_COUNT; i++) totsum = totsum + i;
+    for (int i = 0; i < NUM_COUNT; i++)
+      totsum = totsum + i;
     System.out.println("sequentialSum Total Sum is " + totsum);
     return totsum;
   }
@@ -58,13 +62,17 @@ public class ParallelAdder {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof ParallelAdder)) return false;
-    ParallelAdder other = (ParallelAdder) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof ParallelAdder))
+      return false;
+    ParallelAdder other = (ParallelAdder)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$executor = this.executor;
     Object other$executor = other.executor;
-    if (this$executor == null ? other$executor != null : !this$executor.equals(other$executor))
+    if (this$executor == null ? other$executor != null
+                              : !this$executor.equals(other$executor))
       return false;
     return true;
   }

@@ -3,6 +3,7 @@ package threads;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Loaders {
   ;
 
@@ -41,13 +42,15 @@ public enum Loaders {
     @Override
     @SuppressWarnings("PMD.LawOfDemeter")
     public void run() {
-      System.out.printf("Beginning network connections loading: %s%n", new Date());
+      System.out.printf("Beginning network connections loading: %s%n",
+                        new Date());
       try {
         TimeUnit.SECONDS.sleep(6);
       } catch (InterruptedException e) {
         System.err.println(e);
       }
-      System.out.printf("Network connections loading has finished: %s%n", new Date());
+      System.out.printf("Network connections loading has finished: %s%n",
+                        new Date());
     }
   }
 }

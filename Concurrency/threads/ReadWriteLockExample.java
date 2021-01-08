@@ -18,7 +18,8 @@ public enum ReadWriteLockExample {
     Writer writer2 = new Writer(pricesInfo);
     Thread threadWriter = new Thread(writer);
     Thread threadWriter2 = new Thread(writer2);
-    for (Thread t : threadsReader) t.start();
+    for (Thread t: threadsReader)
+      t.start();
     threadWriter.start();
     threadWriter2.start();
   }
@@ -44,7 +45,8 @@ public enum ReadWriteLockExample {
         lock.readLock().unlock();
         return value;
       }
-      throw new TimeoutException("Unable to read price1 in class " + getClass());
+      throw new TimeoutException("Unable to read price1 in class "
+                                 + getClass());
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
@@ -54,7 +56,8 @@ public enum ReadWriteLockExample {
         lock.readLock().unlock();
         return value;
       }
-      throw new TimeoutException("Unable to read price2 in class " + getClass());
+      throw new TimeoutException("Unable to read price2 in class "
+                                 + getClass());
     }
 
     @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LawOfDemeter"})
@@ -82,10 +85,12 @@ public enum ReadWriteLockExample {
       try {
         for (int i = 0; i < 10; i++) {
           synchronized (System.out) {
-            System.out.printf(
-                "%s: Price 1: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice1());
-            System.out.printf(
-                "%s: Price 2: %f%n", Thread.currentThread().getName(), pricesInfo.getPrice2());
+            System.out.printf("%s: Price 1: %f%n",
+                              Thread.currentThread().getName(),
+                              pricesInfo.getPrice1());
+            System.out.printf("%s: Price 2: %f%n",
+                              Thread.currentThread().getName(),
+                              pricesInfo.getPrice2());
           }
         }
       } catch (InterruptedException ie) {
@@ -109,13 +114,13 @@ public enum ReadWriteLockExample {
       try {
         for (int i = 0; i < 3; i++) {
           synchronized (System.out) {
-            System.out.printf(
-                "Writer %s: Attempt to modify the prices.%n", Thread.currentThread().getName());
+            System.out.printf("Writer %s: Attempt to modify the prices.%n",
+                              Thread.currentThread().getName());
           }
           pricesInfo.setPrices(Math.random() * 10, Math.random() * 8);
           synchronized (System.out) {
-            System.out.printf(
-                "Writer %s: Prices have been modified.%n", Thread.currentThread().getName());
+            System.out.printf("Writer %s: Prices have been modified.%n",
+                              Thread.currentThread().getName());
           }
           TimeUnit.MILLISECONDS.sleep(2);
         }

@@ -5,10 +5,12 @@ import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum RejectedExecutor {
   ;
 
-  private static ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+  private static ThreadPoolExecutor executor =
+      (ThreadPoolExecutor)Executors.newCachedThreadPool();
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
@@ -31,10 +33,14 @@ public enum RejectedExecutor {
   static class RejectedTaskController implements RejectedExecutionHandler {
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-      System.out.printf("RejectedTaskController: The task %s has been rejected%n", r.toString());
+      System.out.printf(
+          "RejectedTaskController: The task %s has been rejected%n",
+          r.toString());
       System.out.printf("RejectedTaskController: %s%n", executor.toString());
-      System.out.printf("RejectedTaskController: Terminating: %s%n", executor.isTerminating());
-      System.out.printf("RejectedTaskController: Terminated: %s%n", executor.isTerminated());
+      System.out.printf("RejectedTaskController: Terminating: %s%n",
+                        executor.isTerminating());
+      System.out.printf("RejectedTaskController: Terminated: %s%n",
+                        executor.isTerminated());
     }
   }
 
@@ -51,9 +57,11 @@ public enum RejectedExecutor {
     public void run() {
       System.out.println("Task " + name + ": Starting");
       try {
-        long duration = (long) (Math.random() * 10);
+        long duration = (long)(Math.random() * 10);
         System.out.printf(
-            "Task %s: ReportGenerator: Generating a report utilizing %d seconds%n", name, duration);
+            "Task %s: ReportGenerator: Generating a report utilizing %d seconds%n",
+            name,
+            duration);
         TimeUnit.SECONDS.sleep(duration);
       } catch (InterruptedException e) {
         System.err.println(e);

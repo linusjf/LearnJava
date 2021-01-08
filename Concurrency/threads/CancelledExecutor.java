@@ -5,10 +5,12 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum CancelledExecutor {
   ;
 
-  private static ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+  private static ThreadPoolExecutor executor =
+      (ThreadPoolExecutor)Executors.newCachedThreadPool();
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {

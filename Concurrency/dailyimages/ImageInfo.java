@@ -10,8 +10,11 @@ abstract class ImageInfo {
 
   public abstract ImageInfo findImage(String body);
 
-  @SuppressWarnings({"checkstyle:hiddenfield", "PMD.LinguisticNaming", "PMD.ArrayIsStoredDirectly"})
-  public ImageInfo setImageData(byte[] imageData) {
+  @SuppressWarnings({"checkstyle:hiddenfield",
+                     "PMD.LinguisticNaming",
+                     "PMD.ArrayIsStoredDirectly"})
+  public ImageInfo
+  setImageData(byte[] imageData) {
     this.imageData = imageData;
     return this;
   }
@@ -28,7 +31,8 @@ abstract class ImageInfo {
     return imagePath;
   }
 
-  @SuppressWarnings({"checkstyle:hiddenfield", "PMD.MethodReturnsInternalArray"})
+  @SuppressWarnings({"checkstyle:hiddenfield",
+                     "PMD.MethodReturnsInternalArray"})
   public byte[] getImageData() {
     return imageData;
   }

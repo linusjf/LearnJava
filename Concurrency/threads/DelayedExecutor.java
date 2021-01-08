@@ -6,11 +6,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum DelayedExecutor {
   ;
 
   private static ScheduledThreadPoolExecutor executor =
-      (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
+      (ScheduledThreadPoolExecutor)Executors.newScheduledThreadPool(1);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {

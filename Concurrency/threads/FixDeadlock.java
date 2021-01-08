@@ -30,6 +30,7 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public enum FixDeadlock {
   ;
 
@@ -61,7 +62,10 @@ public enum FixDeadlock {
     @SuppressWarnings("PMD.LawOfDemeter")
     public void bow(Friend bower) {
       synchronized (lock1) {
-        System.out.format("%s: %s" + "  has bowed to me!%n", this.name, bower.getName());
+        System.out.format("%s: %s"
+                              + "  has bowed to me!%n",
+                          this.name,
+                          bower.getName());
         bower.bowBack(this);
       }
     }
@@ -69,7 +73,10 @@ public enum FixDeadlock {
     @SuppressWarnings("PMD.LawOfDemeter")
     public void bowBack(Friend bower) {
       synchronized (lock2) {
-        System.out.format("%s: %s" + " has bowed back to me!%n", this.name, bower.getName());
+        System.out.format("%s: %s"
+                              + " has bowed back to me!%n",
+                          this.name,
+                          bower.getName());
       }
     }
   }

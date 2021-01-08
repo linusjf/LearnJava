@@ -15,9 +15,11 @@ import java.util.logging.Logger;
  *
  * @author Javin
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public enum FutureDemo {
   ;
-  private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(3);
+  private static final ExecutorService THREAD_POOL =
+      Executors.newFixedThreadPool(3);
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
@@ -58,7 +60,8 @@ public enum FutureDemo {
       try {
         return factorial(number);
       } catch (InterruptedException ex) {
-        Logger.getLogger(FutureDemo.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FutureDemo.class.getName())
+            .log(Level.SEVERE, null, ex);
       }
       return 0L;
     }
@@ -66,7 +69,8 @@ public enum FutureDemo {
     @SuppressWarnings("checkstyle:hiddenfield")
     private long factorial(int number) throws InterruptedException {
       if (number <= 0)
-        throw new IllegalArgumentException("Number must be greater than zero: " + number);
+        throw new IllegalArgumentException("Number must be greater than zero: "
+                                           + number);
       int num = number;
       long result = 1;
       while (num > 0) {

@@ -33,6 +33,7 @@ package threads;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class Consumer implements Runnable {
   private final Drop drop;
 
@@ -44,10 +45,12 @@ public class Consumer implements Runnable {
   @Override
   public void run() {
     Random random = new Random();
-    for (String message = drop.take(); !"DONE".equals(message); message = drop.take()) {
+    for (String message = drop.take(); !"DONE".equals(message);
+         message = drop.take()) {
       System.out.format("MESSAGE RECEIVED: %s%n", message);
       try {
-        TimeUnit.MILLISECONDS.sleep(new Random(random.nextLong()).nextInt(5000));
+        TimeUnit.MILLISECONDS.sleep(
+            new Random(random.nextLong()).nextInt(5000));
       } catch (InterruptedException e) {
         System.err.println(e);
       }
@@ -57,13 +60,17 @@ public class Consumer implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Consumer)) return false;
-    Consumer other = (Consumer) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Consumer))
+      return false;
+    Consumer other = (Consumer)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$drop = this.drop;
     Object other$drop = other.drop;
-    if (this$drop == null ? other$drop != null : !this$drop.equals(other$drop)) return false;
+    if (this$drop == null ? other$drop != null : !this$drop.equals(other$drop))
+      return false;
     return true;
   }
 

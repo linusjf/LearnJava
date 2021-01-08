@@ -9,6 +9,7 @@
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <property file="../junit.properties" />
+  <property file="../antcontrib.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -35,6 +36,8 @@
               srcfile="run.cp" />
     <loadfile property="compileclasspath"
               srcfile="compile.cp" />
+    <loadfile property="antcontrib.cp"
+              srcFile="../${antcontrib.classpath.file}" />
   </target>
   <target name="setupclasspath">
     <description>Run target</description>
@@ -866,7 +869,7 @@
     </first>
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
-                properties="${cs.properties}">
+                properties="../${cs.properties}">
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />

@@ -23,7 +23,8 @@ public class RunnableHelloCount implements Runnable {
     int pause;
     for (int i = 0; i < 10; i++) {
       try {
-        System.out.println(Thread.currentThread().getName() + " being executed.");
+        System.out.println(Thread.currentThread().getName()
+                           + " being executed.");
         pause = random.nextInt(3000);
         TimeUnit.MILLISECONDS.sleep(pause);
       } catch (InterruptedException interruptEx) {
@@ -36,21 +37,27 @@ public class RunnableHelloCount implements Runnable {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof RunnableHelloCount)) return false;
-    RunnableHelloCount other = (RunnableHelloCount) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof RunnableHelloCount))
+      return false;
+    RunnableHelloCount other = (RunnableHelloCount)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$thread1 = this.thread1;
     Object other$thread1 = other.thread1;
-    if (this$thread1 == null ? other$thread1 != null : !this$thread1.equals(other$thread1))
+    if (this$thread1 == null ? other$thread1 != null
+                             : !this$thread1.equals(other$thread1))
       return false;
     Object this$thread2 = this.thread2;
     Object other$thread2 = other.thread2;
-    if (this$thread2 == null ? other$thread2 != null : !this$thread2.equals(other$thread2))
+    if (this$thread2 == null ? other$thread2 != null
+                             : !this$thread2.equals(other$thread2))
       return false;
     Object this$random = this.random;
     Object other$random = other.random;
-    if (this$random == null ? other$random != null : !this$random.equals(other$random))
+    if (this$random == null ? other$random != null
+                            : !this$random.equals(other$random))
       return false;
     return true;
   }
@@ -77,12 +84,7 @@ public class RunnableHelloCount implements Runnable {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "RunnableHelloCount(thread1="
-        + this.thread1
-        + ", thread2="
-        + this.thread2
-        + ", random="
-        + this.random
-        + ")";
+    return "RunnableHelloCount(thread1=" + this.thread1
+        + ", thread2=" + this.thread2 + ", random=" + this.random + ")";
   }
 }

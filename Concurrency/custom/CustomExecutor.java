@@ -12,30 +12,33 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class CustomExecutor extends ThreadPoolExecutor {
   private static final int FIVE = 5;
   private final ConcurrentHashMap<String, Date> startTimes;
 
-  public CustomExecutor(
-      int corePoolSize,
-      int maximumPoolSize,
-      long keepAliveTime,
-      TimeUnit unit,
-      BlockingQueue<Runnable> workQueue) {
+  public CustomExecutor(int corePoolSize,
+                        int maximumPoolSize,
+                        long keepAliveTime,
+                        TimeUnit unit,
+                        BlockingQueue<Runnable> workQueue) {
     super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     startTimes = new ConcurrentHashMap<>();
   }
 
   @SuppressWarnings({"PMD.DataflowAnomalyAnalysis", "PMD.LawOfDemeter"})
   public static void main(String[] args) {
-    CustomExecutor myExecutor =
-        new CustomExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
+    CustomExecutor myExecutor = new CustomExecutor(
+        2, 4, 1000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
     final List<Future<String>> results = new ArrayList<>(10);
-    for (int i = 0; i < 10; i++) results.add(myExecutor.submit(new SleepTwoSecondsTask()));
+    for (int i = 0; i < 10; i++)
+      results.add(myExecutor.submit(new SleepTwoSecondsTask()));
     try {
       for (int i = 0; i < 10; i++) {
-        System.out.printf("Main: Result for Task %d : %s%n", i, results.get(i).get());
-        if (i == FIVE) myExecutor.shutdown();
+        System.out.printf(
+            "Main: Result for Task %d : %s%n", i, results.get(i).get());
+        if (i == FIVE)
+          myExecutor.shutdown();
       }
       myExecutor.awaitTermination(1, TimeUnit.DAYS);
     } catch (InterruptedException | ExecutionException e) {
@@ -48,7 +51,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @SuppressWarnings("PMD.LawOfDemeter")
   public void shutdown() {
     System.out.printf("CustomExecutor: Going to shutdown.%n");
-    System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
+    System.out.printf("CustomExecutor: Executed tasks: %d%n",
+                      getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     super.shutdown();
@@ -58,7 +62,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @SuppressWarnings("PMD.LawOfDemeter")
   public List<Runnable> shutdownNow() {
     System.out.printf("CustomExecutor: Going to immediately shutdown.%n");
-    System.out.printf("CustomExecutor: Executed tasks: %d%n", getCompletedTaskCount());
+    System.out.printf("CustomExecutor: Executed tasks: %d%n",
+                      getCompletedTaskCount());
     System.out.printf("CustomExecutor: Running tasks: %d%n", getActiveCount());
     System.out.printf("CustomExecutor: Pending tasks: %d%n", getQueue().size());
     return super.shutdownNow();
@@ -66,14 +71,16 @@ public class CustomExecutor extends ThreadPoolExecutor {
 
   @Override
   protected void beforeExecute(Thread t, Runnable r) {
-    System.out.printf("CustomExecutor: A task is beginning: %s : %s%n", t.getName(), r.hashCode());
+    System.out.printf("CustomExecutor: A task is beginning: %s : %s%n",
+                      t.getName(),
+                      r.hashCode());
     startTimes.put(String.valueOf(r.hashCode()), new Date());
   }
 
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   protected void afterExecute(Runnable r, Throwable t) {
-    Future<?> result = (Future<?>) r;
+    Future<?> result = (Future<?>)r;
     try {
       System.out.printf("*********************************%n");
       System.out.printf("CustomExecutor: A task is finishing.%n");
@@ -100,16 +107,20 @@ public class CustomExecutor extends ThreadPoolExecutor {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof CustomExecutor)) return false;
-    CustomExecutor other = (CustomExecutor) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof CustomExecutor))
+      return false;
+    CustomExecutor other = (CustomExecutor)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
     Object this$startTimes = this.startTimes;
     Object other$startTimes = other.startTimes;
-    if (this$startTimes == null
-        ? other$startTimes != null
-        : !this$startTimes.equals(other$startTimes)) return false;
+    if (this$startTimes == null ? other$startTimes != null
+                                : !this$startTimes.equals(other$startTimes))
+      return false;
     return true;
   }
 
@@ -124,7 +135,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
     int PRIME = 59;
     int result = super.hashCode();
     Object $startTimes = this.startTimes;
-    result = result * PRIME + ($startTimes == null ? 43 : $startTimes.hashCode());
+    result =
+        result * PRIME + ($startTimes == null ? 43 : $startTimes.hashCode());
     return result;
   }
 

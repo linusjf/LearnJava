@@ -29,7 +29,7 @@ package threads;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-@SuppressWarnings("PMD.ShortClassName")
+@SuppressWarnings({"PMD.ShortClassName", "PMD.SystemPrintln"})
 public class Drop {
   // Message sent from producer
   // to consumer.
@@ -86,15 +86,20 @@ public class Drop {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof Drop)) return false;
-    Drop other = (Drop) o;
-    if (!other.canEqual((Object) this)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof Drop))
+      return false;
+    Drop other = (Drop)o;
+    if (!other.canEqual((Object)this))
+      return false;
     Object this$message = this.message;
     Object other$message = other.message;
-    if (this$message == null ? other$message != null : !this$message.equals(other$message))
+    if (this$message == null ? other$message != null
+                             : !this$message.equals(other$message))
       return false;
-    if (this.empty != other.empty) return false;
+    if (this.empty != other.empty)
+      return false;
     return true;
   }
 

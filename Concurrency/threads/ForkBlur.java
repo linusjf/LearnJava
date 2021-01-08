@@ -46,6 +46,7 @@ import javax.imageio.ImageIO;
  * <p>This is not the recommended way to blur images; it is only intended to illustrate the use of
  * the Fork/Join framework.
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public class ForkBlur extends RecursiveAction {
   private static final long serialVersionUID = 1L;
   protected static final int S_THRESHOLD = 10000;
@@ -78,12 +79,13 @@ public class ForkBlur extends RecursiveAction {
       for (int mi = -SIDE_PIXELS; mi <= SIDE_PIXELS; mi++) {
         int mindex = Math.min(Math.max(mi + index, 0), mSource.length - 1);
         int pixel = mSource[mindex];
-        rt += (float) ((pixel & 16711680) >> 16) / BLUR_WIDTH;
-        gt += (float) ((pixel & 65280) >> 8) / BLUR_WIDTH;
-        bt += (float) ((pixel & 255) >> 0) / BLUR_WIDTH;
+        rt += (float)((pixel & 16711680) >> 16) / BLUR_WIDTH;
+        gt += (float)((pixel & 65280) >> 8) / BLUR_WIDTH;
+        bt += (float)((pixel & 255) >> 0) / BLUR_WIDTH;
       }
       // Re-assemble destination pixel.
-      int dpixel = -16777216 | (((int) rt) << 16) | (((int) gt) << 8) | (((int) bt) << 0);
+      int dpixel =
+          -16777216 | (((int)rt) << 16) | (((int)gt) << 8) | (((int)bt) << 0);
       mDestination[index] = dpixel;
     }
   }
@@ -108,8 +110,8 @@ public class ForkBlur extends RecursiveAction {
       String srcName = "Red_Tulips.jpg";
       File srcFile = new File(srcName);
       BufferedImage image = ImageIO.read(srcFile);
-      BufferedImage img =
-          new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+      BufferedImage img = new BufferedImage(
+          image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
       img.getGraphics().drawImage(image, 0, 0, null);
       System.out.println("Source image: " + srcName);
       BufferedImage blurredImage = blur(img);
@@ -131,18 +133,16 @@ public class ForkBlur extends RecursiveAction {
     System.out.println("Array size is " + src.length);
     System.out.println("Threshold is " + S_THRESHOLD);
     int processors = Runtime.getRuntime().availableProcessors();
-    System.out.println(
-        Integer.toString(processors)
-            + " processor"
-            + (processors > 1 ? "s are " : " is ")
-            + "available");
+    System.out.println(Integer.toString(processors) + " processor"
+                       + (processors > 1 ? "s are " : " is ") + "available");
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
     ForkJoinPool pool = new ForkJoinPool();
     long startTime = System.currentTimeMillis();
     pool.invoke(fb);
     pool.shutdown();
     long endTime = System.currentTimeMillis();
-    System.out.println("Image blur took " + (endTime - startTime) + " milliseconds.");
+    System.out.println("Image blur took " + (endTime - startTime)
+                       + " milliseconds.");
     System.out.println("Task count: " + taskCount.get());
     BufferedImage dstImage = new BufferedImage(w, h, srcImage.getType());
     dstImage.getGraphics().drawImage(srcImage, 0, 0, null);
@@ -153,15 +153,23 @@ public class ForkBlur extends RecursiveAction {
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof ForkBlur)) return false;
-    ForkBlur other = (ForkBlur) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
-    if (!java.util.Arrays.equals(this.mSource, other.mSource)) return false;
-    if (this.mStart != other.mStart) return false;
-    if (this.mLength != other.mLength) return false;
-    if (!java.util.Arrays.equals(this.mDestination, other.mDestination)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof ForkBlur))
+      return false;
+    ForkBlur other = (ForkBlur)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
+    if (!java.util.Arrays.equals(this.mSource, other.mSource))
+      return false;
+    if (this.mStart != other.mStart)
+      return false;
+    if (this.mLength != other.mLength)
+      return false;
+    if (!java.util.Arrays.equals(this.mDestination, other.mDestination))
+      return false;
     return true;
   }
 
@@ -185,14 +193,9 @@ public class ForkBlur extends RecursiveAction {
   @Override
   @SuppressWarnings("all")
   public String toString() {
-    return "ForkBlur(mSource="
-        + java.util.Arrays.toString(this.mSource)
-        + ", mStart="
-        + this.mStart
-        + ", mLength="
-        + this.mLength
-        + ", mDestination="
-        + java.util.Arrays.toString(this.mDestination)
+    return "ForkBlur(mSource=" + java.util.Arrays.toString(this.mSource)
+        + ", mStart=" + this.mStart + ", mLength=" + this.mLength
+        + ", mDestination=" + java.util.Arrays.toString(this.mDestination)
         + ")";
   }
 }

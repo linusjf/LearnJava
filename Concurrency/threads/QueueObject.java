@@ -8,7 +8,8 @@ public class QueueObject {
 
   public void doWait() throws InterruptedException {
     synchronized (obj) {
-      while (!isNotified) obj.wait(100);
+      while (!isNotified)
+        obj.wait(100);
       this.isNotified = false;
     }
   }

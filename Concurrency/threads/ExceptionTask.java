@@ -1,5 +1,6 @@
 package threads;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ExceptionTask {
   ;
 

@@ -18,23 +18,30 @@ class DilbertImageInfo extends ImageInfo {
         .findFirst()
         .map(line -> line.replaceAll(".*" + search, ""))
         .map(line -> line.replaceAll("\".*", ""))
-        .orElseThrow(() -> new IllegalStateException("Could not find \"" + filter + "\""));
+        .orElseThrow(()
+                         -> new IllegalStateException("Could not find \""
+                                                      + filter + "\""));
   }
 
   @Override
   @SuppressWarnings("PMD.LawOfDemeter")
   public String getUrlForDate(LocalDate date) {
-    return "https://dilbert.com/strip/" + DateTimeFormatter.ISO_DATE.format(date);
+    return "https://dilbert.com/strip/"
+        + DateTimeFormatter.ISO_DATE.format(date);
   }
 
   @Override
   @SuppressWarnings("all")
   public boolean equals(Object o) {
-    if (o == this) return true;
-    if (!(o instanceof DilbertImageInfo)) return false;
-    DilbertImageInfo other = (DilbertImageInfo) o;
-    if (!other.canEqual((Object) this)) return false;
-    if (!super.equals(o)) return false;
+    if (o == this)
+      return true;
+    if (!(o instanceof DilbertImageInfo))
+      return false;
+    DilbertImageInfo other = (DilbertImageInfo)o;
+    if (!other.canEqual((Object)this))
+      return false;
+    if (!super.equals(o))
+      return false;
     return true;
   }
 

@@ -54,30 +54,35 @@ public class ImageProcessor implements Runnable {
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public <T> CompletableFuture<T> getAsync(
-      String url, HttpResponse.BodyHandler<T> responseBodyHandler) {
-    HttpRequest request =
-        HttpRequest.newBuilder().GET().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
-    return client
-        .sendAsync(request, responseBodyHandler)
-        .exceptionally(
-            t -> {
-              LOG.severe(() -> request + " failed with exception : " + t);
-              failureCount.incrementAndGet();
-              latch.countDown();
-              return null;
-            })
+      String url,
+      HttpResponse.BodyHandler<T> responseBodyHandler) {
+    HttpRequest request = HttpRequest.newBuilder()
+                              .GET()
+                              .uri(URI.create(url))
+                              .timeout(Duration.ofSeconds(5))
+                              .build();
+    return client.sendAsync(request, responseBodyHandler)
+        .exceptionally(t -> {
+          LOG.severe(() -> request + " failed with exception : " + t);
+          failureCount.incrementAndGet();
+          latch.countDown();
+          return null;
+        })
         .thenApplyAsync(HttpResponse::body, executor2);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public CompletableFuture<ImageInfo> findImageInfo(LocalDate date, ImageInfo info) {
-    return getAsync(info.getUrlForDate(date), HttpResponse.BodyHandlers.ofString())
+  public CompletableFuture<ImageInfo> findImageInfo(LocalDate date,
+                                                    ImageInfo info) {
+    return getAsync(info.getUrlForDate(date),
+                    HttpResponse.BodyHandlers.ofString())
         .thenApply(info::findImage);
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
   public CompletableFuture<ImageInfo> findImageData(ImageInfo info) {
-    return getAsync(info.getImagePath(), HttpResponse.BodyHandlers.ofByteArray())
+    return getAsync(info.getImagePath(),
+                    HttpResponse.BodyHandlers.ofByteArray())
         .thenApply(info::setImageData);
   }
 
@@ -87,13 +92,12 @@ public class ImageProcessor implements Runnable {
     findImageInfo(date, info)
         .thenCompose(this::findImageData)
         .thenAccept(this::process)
-        .exceptionally(
-            t -> {
-              LOG.severe(() -> info.getUrlForDate(date) + " : " + t);
-              failureCount.incrementAndGet();
-              latch.countDown();
-              return null;
-            })
+        .exceptionally(t -> {
+          LOG.severe(() -> info.getUrlForDate(date) + " : " + t);
+          failureCount.incrementAndGet();
+          latch.countDown();
+          return null;
+        })
         .thenAccept(t -> latch.countDown());
   }
 
@@ -102,8 +106,10 @@ public class ImageProcessor implements Runnable {
     LocalDate newDate = LocalDate.now();
     for (int i = 0; i < NUMBER_TO_SHOW; i++) {
       final ImageInfo info;
-      if (isDilbert) info = new DilbertImageInfo();
-      else info = new WikimediaImageInfo();
+      if (isDilbert)
+        info = new DilbertImageInfo();
+      else
+        info = new WikimediaImageInfo();
       info.setDate(newDate.toString());
       LOG.info(() -> "Loading " + info.getDate());
       load(newDate, info);
@@ -121,8 +127,10 @@ public class ImageProcessor implements Runnable {
       executor1.shutdown();
       executor2.shutdown();
       LOG.info("PAST SHUTDOWN");
-      if (!executor1.awaitTermination(1, TimeUnit.MINUTES)) executor1.shutdownNow();
-      if (!executor2.awaitTermination(1, TimeUnit.MINUTES)) executor2.shutdownNow();
+      if (!executor1.awaitTermination(1, TimeUnit.MINUTES))
+        executor1.shutdownNow();
+      if (!executor2.awaitTermination(1, TimeUnit.MINUTES))
+        executor2.shutdownNow();
       LOG.info("PAST TERMINATION and SHUTDOWNNOW");
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
@@ -141,7 +149,9 @@ public class ImageProcessor implements Runnable {
     latch.countDown();
     String infoDate = info.getDate();
     if (PRINT_MESSAGE) {
-      LOG.info(() -> "process called by " + Thread.currentThread() + ", date: " + infoDate);
+      LOG.info(()
+                   -> "process called by " + Thread.currentThread()
+                          + ", date: " + infoDate);
     }
     if (SAVE_FILE)
       try {
@@ -154,7 +164,8 @@ public class ImageProcessor implements Runnable {
   }
 
   public static void main(String... args) throws InterruptedException {
-    if (args.length > 0) isDilbert = true;
+    if (args.length > 0)
+      isDilbert = true;
     ImageProcessor processor = new ImageProcessor();
     Thread thread = new Thread(processor);
     thread.start();
@@ -177,15 +188,10 @@ public class ImageProcessor implements Runnable {
       while (!proc.finished) {
         try {
           Map<Thread, StackTraceElement[]> map = Thread.getAllStackTraces();
-          map.keySet()
-              .forEach(
-                  t ->
-                      LOG.info(
-                          t.getName()
-                              + "\tIs Daemon "
-                              + t.isDaemon()
-                              + "\tIs Alive "
-                              + t.isAlive()));
+          map.keySet().forEach(t
+                               -> LOG.info(t.getName() + "\tIs Daemon "
+                                           + t.isDaemon() + "\tIs Alive "
+                                           + t.isAlive()));
           LOG.info("Number of threads: " + map.size());
           LOG.info("Latch value: " + proc.latch.getCount());
           TimeUnit.SECONDS.sleep(5);
