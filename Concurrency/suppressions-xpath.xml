@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="ParallelAdder.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='ParallelAdder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='submitNumbers']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='executor']"/>
+<suppress-xpath
+       files="AddressUsingCopyOnWrite.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressUsingCopyOnWrite']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='addressValue']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="AddressUsingCopyOnWriteWithoutSynchronized.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='AddressUsingCopyOnWriteWithoutSynchronized']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='addressValue']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="ConcurrencyTestReadWrite.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConcurrencyTestReadWrite']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ConcurrencyTestReadWrite.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConcurrencyTestReadWrite']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ConcurrencyTestTwoWrites.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConcurrencyTestTwoWrites']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ConcurrencyTestTwoWrites.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConcurrencyTestTwoWrites']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="MutableAddress.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='street']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="MutableAddress.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='city']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="MutableAddress.java"
+       checks="IllegalTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='MutableAddress']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='phoneNumber']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myExecutor']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CustomExecutor']]/ELIST/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='myExecutor']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CustomExecutor']]/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomExecutor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomScheduledTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomScheduledTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CustomScheduledTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomScheduledTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CustomScheduledTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomScheduledTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="CustomTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="CustomThreadFactory.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomThreadFactory']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CustomThreadFactory.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CustomThreadFactory']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CustomThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='StringBuilder']]/ELIST/EXPR/NUM_INT[@text='50']"/>
+<suppress-xpath
+       files="ImageInfo.java"
+       checks="AbstractClassNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageInfo']]"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="ClassDataAbstractionCouplingCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='NUMBER_TO_SHOW']]/MODIFIERS"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX_CONCURRENT_STREAMS']]/MODIFIERS"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX_THREADS']]/MODIFIERS"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='DELAY']]/MODIFIERS"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='client']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='30']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsync']]/SLIST/VARIABLE_DEF[./IDENT[@text='request']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='build']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loopLoadAll']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='isDilbert']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='endTime']]/NUM_INT[@text='1_000_000']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='1000']]/STAR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='1000']]/STAR[./NUM_INT[@text='3']]/NUM_INT[@text='60']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="ImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImageProcessor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ThreadTrace']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="NewImageProcessor.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='NewImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loopLoadAll']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='isDilbert']"/>
+<suppress-xpath
+       files="NewImageProcessor.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='NewImageProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='loadAll']]/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1000000']"/>
+<suppress-xpath
+       files="AtomicAssignment.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="AtomicAssignment.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='configThread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="AtomicAssignment.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="AtomicAssignment.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="AtomicAssignment.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='AtomicAssignment']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="IllegalCatchCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/LITERAL_CATCH"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="BlockingThread.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='BlockingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testPutOnEmptyQueueBlocks']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="Calculator.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Calculator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LE[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CallableExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CallableExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='resultList']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CallableExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CallableExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CallableExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CallableExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='number']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CallableExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CallableExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_DO/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='50']"/>
+<suppress-xpath
+       files="CallableExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CallableExecutorExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='FactorialCalculator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_IF/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20']"/>
+<suppress-xpath
+       files="CancelForkJoinPool.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='array']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CancelForkJoinPool.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SearchNumberTask']]/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CancelForkJoinPool.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='SearchNumberTask']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CancelForkJoinPool.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelForkJoinPool']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ArrayGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generateArray']]/SLIST/LITERAL_FOR/EXPR/ASSIGN/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CancelledExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CancelledExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CleanerDaemon.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WriterTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CleanerDaemon.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CleanerDaemon']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CleanerTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='clean']]/SLIST/LITERAL_WHILE/EXPR/LAND/GT[./IDENT[@text='difference']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getNumbers']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CommonForkJoinPoolThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonForkJoinPoolThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getNumbers']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CommonPoolTest.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonPoolTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='futures']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='mapToObj']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CommonPoolTest.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CommonPoolTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='blockingOperation']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="CompletionServiceDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CompletionServiceDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="CompletionServiceDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CompletionServiceDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CompletionServiceDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReportProcessor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='result']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20']"/>
+<suppress-xpath
+       files="Consumer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='resultTasks']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ResultTask']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ControllingExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ControllingExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ExecutableTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="ExecutableStatementCountCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run3']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run4']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="CountDownLatchDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CountDownLatchDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='run5']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+<suppress-xpath
+       files="CountDownLatchExample.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CountDownLatchExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='randomSleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='20_000']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='students']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Student']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='600_000']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyPhaser']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='onAdvance']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Student']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExercise1']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Student']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExercise2']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CustomPhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='CustomPhaserDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Student']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doExercise3']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="CyclicBarrierArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/EXPR/LT/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CyclicBarrierArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/VARIABLE_DEF[./IDENT[@text='randomSleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="CyclicBarrierDemo.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='demo']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='CyclicBarrierDemo']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="CyclicBarrierDemo.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="CyclicBarrierDemo.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='CyclicBarrierDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='NumberCruncherThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='num']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Deadlock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Deadlock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='friendlyBow']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='start']]/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="DelayedExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='DelayedExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="DemoThreadExample.java"
+       checks="IllegalTokenCheck"
+       query="/ENUM_DEF[./IDENT[@text='DemoThreadExample']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runCount']]/MODIFIERS/LITERAL_VOLATILE"/>
+<suppress-xpath
+       files="Drop.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='Drop']]"/>
+<suppress-xpath
+       files="Drop.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Drop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='take']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="Drop.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Drop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='put']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ExceptionalForkJoin.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='array']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ExceptionalForkJoin.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Task']]/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ExceptionalForkJoin.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LAND/GT/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ExceptionalForkJoin.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExceptionalForkJoin']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_IF/EXPR/LAND/LT/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ExchangerDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ExchangerDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ExchangerDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='message']]/ASSIGN/EXPR/PLUS[./STRING_LITERAL[@text='Event ']]/PLUS[./IDENT[@text='j']]/STAR[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ExchangerDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ExchangerDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ExchangerDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="FindMin.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='FindMin']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="FindMinTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10000']"/>
+<suppress-xpath
+       files="FindMinTask.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='FindMinTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='executorService']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6400']"/>
+<suppress-xpath
+       files="FixedSizeExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='FixedSizeExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="FixedSizeExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='FixedSizeExecutorExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="FixedSizeExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='FixedSizeExecutorExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Server']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='Server']]/SLIST/EXPR/ASSIGN[./IDENT[@text='executor']]/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='S_THRESHOLD']]/MODIFIERS"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='16']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='16711680']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='rt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='8']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='65280']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='gt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='bt']]/DIV[./IDENT[@text='BLUR_WIDTH']]/TYPECAST/SR[./NUM_INT[@text='0']]/BAND[./IDENT[@text='pixel']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/BOR/UNARY_MINUS[./NUM_INT[@text='16777216']]"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/BOR/SL/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="ForkBlur.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ForkBlur']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeDirectly']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='dpixel']]/ASSIGN/EXPR/BOR/BOR/SL/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="ForkJoinPoolDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='products']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ForkJoinPoolDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Task']]/ELIST/EXPR/NUM_FLOAT[@text='0.20']"/>
+<suppress-xpath
+       files="ForkJoinPoolDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_DO/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ProductListGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generate']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='forkJoinPool']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ForkJoinPool']]/ELIST/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="LambdaBodyLengthCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="LambdaBodyLengthCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='forkJoinPool2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ForkJoinPool']]/ELIST/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="LambdaBodyLengthCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="LambdaBodyLengthCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='t2']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/EXPR/METHOD_CALL/DOT[./IDENT[@text='invoke']]/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='n']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='buildIntRange']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='buildIntRange']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ForkJoinPoolRunnableDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolRunnableDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='products']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ForkJoinPoolRunnableDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolRunnableDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Task']]/ELIST/EXPR/NUM_FLOAT[@text='0.20']"/>
+<suppress-xpath
+       files="ForkJoinPoolRunnableDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolRunnableDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ForkJoinPoolRunnableDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPoolRunnableDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ProductListGenerator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='generate']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ForkJoinPuzzle.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='parallelism']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ForkJoinPuzzle.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='process']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ForkJoinResultDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinResultDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='document']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ForkJoinResultDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinResultDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='document']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="ForkJoinResultDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinResultDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='DocumentTask']]/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ForkJoinResultDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ForkJoinResultDemo']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='LineTask']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='count']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="FutureDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='FutureDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='task']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FactorialCalculator']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="GZipAllFiles.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='GZipAllFiles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='zipFile']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='pool']"/>
+<suppress-xpath
+       files="GZipAllFiles.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='GZipAllFiles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='zip']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='pool']"/>
+<suppress-xpath
+       files="GZipAllFiles.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='GZipAllFiles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='submitZipTask']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='pool']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='r']]/ASSIGN/EXPR/BAND[./NUM_INT[@text='255']]/SR[./IDENT[@text='rgb']]/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='r']]/ASSIGN/EXPR/BAND/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='g']]/ASSIGN/EXPR/BAND[./NUM_INT[@text='255']]/SR[./IDENT[@text='rgb']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='g']]/ASSIGN/EXPR/BAND/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR/BAND[./IDENT[@text='rgb']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/PLUS/STAR/NUM_FLOAT[@text='0.2126']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/PLUS/STAR/NUM_FLOAT[@text='0.7152']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='gray']]/ASSIGN/EXPR/TYPECAST/PLUS/STAR/NUM_FLOAT[@text='0.0722']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="GrayscaleImageAction.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='GrayscaleImageAction']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='gray']]/PLUS[./IDENT[@text='gray']]/PLUS/SL[./IDENT[@text='gray']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="HelperClass.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WaitingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="HelperClass.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='HelperClass']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='WakingThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="IllegalMonitorStateNotifyExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateNotifyExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="IllegalMonitorStateNotifyExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateNotifyExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="IllegalMonitorStateWaitExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateWaitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_IF/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="IllegalMonitorStateWaitExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='IllegalMonitorStateWaitExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/MODIFIERS/BLOCK_COMMENT_BEGIN"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="BooleanExpressionComplexityCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/LOR/LOR/GT[./IDENT[@text='red']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/GT[./IDENT[@text='green']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='blue']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='red']]/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='green']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="ImmutableRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ImmutableRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_RETURN/EXPR/LITERAL_NEW[./IDENT[@text='ImmutableRGB']]/ELIST/EXPR/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="InvokeAllExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='taskList']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='ArrayList']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="InvokeAllExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="InvokeAllExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="InvokeAllExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="InvokeAllExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAllExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='call']]/SLIST/LITERAL_FOR/EXPR/PLUS_ASSIGN[./IDENT[@text='value']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="InvokeAnyExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='InvokeAnyExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='UserValidator']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='validate']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Loaders.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="Loaders.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="Loaders.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='DataSourcesLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="Loaders.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Loaders']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='NetworkConnectionsLoader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
+<suppress-xpath
+       files="Lock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Lock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='lock']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='mock']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FileMock']]/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='mock']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='FileMock']]/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='buffer']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Buffer']]/ELIST/EXPR/NUM_INT[@text='20']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threadConsumers']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='FileMock']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='FileMock']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='indice']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="LockProducerConsumer.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='LockProducerConsumer']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Consumer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='processLine']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="LockSplitting.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='LockSplitting']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100_000']"/>
+<suppress-xpath
+       files="LockSplitting.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='LockSplitting']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000']"/>
+<suppress-xpath
+       files="LockSplitting.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='LockSplitting']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100_000']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='threads']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='status']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setupThreads']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setupStatuses']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="Main.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='Main']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='logThreadState']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="MultiSemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='MultiSemaphoreExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="MultiSemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='MultiSemaphoreExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='PrintQueue']]/SLIST/EXPR/ASSIGN[./IDENT[@text='semaphore']]/LITERAL_NEW[./IDENT[@text='Semaphore']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="MultiSemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='MultiSemaphoreExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="MultiSemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='MultiSemaphoreExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getPrinter']]/SLIST/LITERAL_IF/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="PeriodicExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PeriodicExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printAndDelay']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="PeriodicExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PeriodicExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printAndDelay']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='500']"/>
+<suppress-xpath
+       files="PeriodicExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PeriodicExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="PhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='phaser']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Phaser']]/ELIST/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="PhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6_000_000']"/>
+<suppress-xpath
+       files="PhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6_000_000']"/>
+<suppress-xpath
+       files="PhaserDemo.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='PhaserDemo']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6_000_000']"/>
+<suppress-xpath
+       files="Producer.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='importantInfo']]/MODIFIERS"/>
+<suppress-xpath
+       files="Producer.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Producer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5000']"/>
+<suppress-xpath
+       files="QueueObject.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='QueueObject']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doWait']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ReadWriteLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='threadsReader']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ReadWriteLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Reader']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ReadWriteLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Writer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ReadWriteLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Writer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ReadWriteLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReadWriteLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Writer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OrigThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='OrigThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_SYNCHRONIZED/SLIST/VARIABLE_DEF[./IDENT[@text='value']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReducedThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ReduceLockDuration.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReduceLockDuration']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='ReducedThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/VARIABLE_DEF[./IDENT[@text='value']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='42']"/>
+<suppress-xpath
+       files="ReentrantLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ReentrantLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ReentrantLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_IF/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="ReentrantLockExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ReentrantLockExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_IF/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' seconds']]/PLUS/DIV[./IDENT[@text='duration']]/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="RejectedExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="RejectedExecutor.java"
+       checks="HiddenFieldCheck"
+       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='RejectedTaskController']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='rejectedExecution']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='executor']"/>
+<suppress-xpath
+       files="RejectedExecutor.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RejectedExecutor']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="RunnableHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="RunnableHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='RunnableHelloCount']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+<suppress-xpath
+       files="RunnableShowName.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='RunnableShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="RunnableShowName.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='RunnableShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+<suppress-xpath
+       files="RunningExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RunningExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_00']"/>
+<suppress-xpath
+       files="RunningExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='RunningExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_00']"/>
+<suppress-xpath
+       files="SafeLock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SafeLock']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='start']]/LITERAL_NEW[./IDENT[@text='Thread']]/ELIST/LAMBDA/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='sleepTime']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="SafeLock.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SafeLock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='BowLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_WHILE/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SemaphoreArchetype.java"
+       checks="ConstantNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='SemaphoreArchetype']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='executorService']"/>
+<suppress-xpath
+       files="SemaphoreArchetype.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SemaphoreArchetype']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="SemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SemaphoreExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='thread']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Thread']]/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SemaphoreExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SemaphoreExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='PrintQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='printJob']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="SimpleBlockingQueue.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SimpleBlockingQueue']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='get']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_WHILE/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getPatience']]/SLIST/LITERAL_IF/SLIST/LITERAL_TRY/SLIST/LITERAL_RETURN/EXPR/STAR/NUM_LONG[@text='1000L']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getPatience']]/SLIST/LITERAL_RETURN/EXPR/STAR[./NUM_LONG[@text='60L']]/STAR/NUM_LONG[@text='1000L']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getPatience']]/SLIST/LITERAL_RETURN/EXPR/STAR[./NUM_LONG[@text='60L']]/STAR[./NUM_LONG[@text='1000L']]/NUM_LONG[@text='60L']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getPatience']]/SLIST/LITERAL_RETURN/EXPR/STAR/NUM_LONG[@text='60L']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/LITERAL_WHILE/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="SimpleThreads.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='SimpleThreads']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MessageLoop']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4000']"/>
+<suppress-xpath
+       files="Solver.java"
+       checks="MemberNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='Solver']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='N']"/>
+<suppress-xpath
+       files="Solver.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Solver']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='solve']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/STAR[./NUM_INT[@text='60']]/STAR/NUM_INT[@text='1000']"/>
+<suppress-xpath
+       files="Solver.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='Solver']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='solve']]/SLIST/LITERAL_FOR/EXPR/METHOD_CALL/ELIST/EXPR/STAR/NUM_INT[@text='60']"/>
+<suppress-xpath
+       files="SynchronizedCounter.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedCounter']]"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/MODIFIERS/BLOCK_COMMENT_BEGIN"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="EmptyLineSeparatorCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="BooleanExpressionComplexityCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/LOR/LOR/GT[./IDENT[@text='red']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/LOR/LOR/GT[./IDENT[@text='green']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='check']]/SLIST/LITERAL_IF/EXPR/LOR/GT[./IDENT[@text='blue']]/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='red']]/NUM_INT[@text='16']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getRGB']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/LITERAL_RETURN/EXPR/BOR[./IDENT[@text='blue']]/BOR/SL[./IDENT[@text='green']]/NUM_INT[@text='8']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='red']]/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='green']]/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="SynchronizedRGB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='SynchronizedRGB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='invert']]/SLIST/LITERAL_SYNCHRONIZED/SLIST/EXPR/ASSIGN[./IDENT[@text='blue']]/MINUS/NUM_INT[@text='255']"/>
+<suppress-xpath
+       files="TaskExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TaskExecutorExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="TaskExecutorExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='TaskExecutorExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='Task']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='duration']]/ASSIGN/EXPR/TYPECAST/STAR/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="TestFjDeadlock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']"/>
+<suppress-xpath
+       files="TestFjDeadlock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='INT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="TestFjDeadlock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='256']"/>
+<suppress-xpath
+       files="TestFjDeadlock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='FLOAT_ARRAY']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='256']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="TestFjDeadlock.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFjDeadlock']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='RecursiveIterate']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='compute']]/SLIST/LITERAL_IF/SLIST/LITERAL_FOR/FOR_ITERATOR/ELIST/EXPR/PLUS_ASSIGN[./IDENT[@text='i']]/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ThreadHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HelloThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ThreadHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='HelloThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+<suppress-xpath
+       files="ThreadHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CountThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ThreadHelloCount.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadHelloCount']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='CountThread']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+<suppress-xpath
+       files="ThreadLocalExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="ThreadLocalExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="ThreadLocalExample.java"
+       checks="ConstantNameCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyRunnable']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='threadLocal']"/>
+<suppress-xpath
+       files="ThreadLocalExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyRunnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ThreadLocalExample.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalExample']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyRunnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='2000']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR[./NUM_INT[@text='1024']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR[./NUM_INT[@text='1024']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadLocalOne.java"
+       checks="MagicNumberCheck"
+       query="/ENUM_DEF[./IDENT[@text='ThreadLocalOne']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/PLUS[./STRING_LITERAL[@text=' MB']]/PLUS[./STRING_LITERAL[@text='Free memory: ']]/DIV/STAR[./NUM_INT[@text='1024']]/NUM_INT[@text='1024']"/>
+<suppress-xpath
+       files="ThreadShowName.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThreadShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10']"/>
+<suppress-xpath
+       files="ThreadShowName.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThreadShowName']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/EXPR/ASSIGN[./IDENT[@text='pause']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='3000']"/>
+</suppressions>

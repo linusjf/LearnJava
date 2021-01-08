@@ -841,9 +841,21 @@
     </exec>
   </target>
   <target name="checkstyleg">
+    <taskdef resource="net/sf/antcontrib/antlib.xml"
+             classpath="${antcontrib.cp}"></taskdef>
+    <move file="suppressions-xpath.xml"
+          tofile="suppressions-xpath.xml.bak"
+          preservelastmodified="true"
+          force="true"
+          failonerror="false"
+          verbose="true" />
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
+      <exclude name="**/*Parser.java" />
+      <exclude name="**/*Lexer.java" />
+      <exclude name="**/*Listener.java" />
+      <exclude name="**/*Visitor.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -852,12 +864,36 @@
               srcFile="../${cs.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true">
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <condition property="file.is.empty"
+               else="false">
+      <length file="${ant.project.name}-xpath.xml"
+              when="equal"
+              length="0" />
+    </condition>
+    <if>
+      <equals arg1="${file.is.empty}"
+              arg2="false" />
+      <then>
+        <move file="${ant.project.name}-xpath.xml"
+              tofile="suppressions-xpath.xml"
+              preservelastmodified="true"
+              force="true"
+              failonerror="true"
+              verbose="true" />
+      </then>
+      <else>
+        <echo message="No suppressions generated." />
+        <delete file="${ant.project.name}-xpath.xml"
+                verbose="true"
+                failonerror="false" />
+      </else>
+    </if>
   </target>
   <target name="checkstyle"
           depends="loadclasspath">
