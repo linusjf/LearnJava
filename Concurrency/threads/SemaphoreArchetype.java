@@ -11,6 +11,7 @@ public class SemaphoreArchetype implements Runnable {
   private static final AtomicInteger COUNTER = new AtomicInteger();
   private static final long END_MILLIS = System.currentTimeMillis() + 1000;
   private static final int MAX_THREADS = 3;
+  @SuppressWarnings("PMD.FieldNamingConventions")
   private static final ExecutorService executorService =
       Executors.newFixedThreadPool(5);
 
@@ -27,7 +28,7 @@ public class SemaphoreArchetype implements Runnable {
     while (System.currentTimeMillis() < END_MILLIS) {
       try {
         SEMAPHORE.acquire();
-      } catch (InterruptedException e) {
+      } catch (InterruptedException ignored) {
         System.out.println("[" + Thread.currentThread().getName()
                            + "]-Interrupted in acquire().");
       }
