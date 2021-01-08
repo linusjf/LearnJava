@@ -8,10 +8,13 @@ import java.util.Vector;
 import java.util.stream.IntStream;
 
 // Original source: https://www.javaspecialists.eu/archive/Issue280.html
+@SuppressWarnings({"PMD.SystemPrintln",
+                   "PMD.LawOfDemeter",
+                   "PMD.UseArrayListInsteadOfVector"})
 public enum VectorBenchAgain {
   ;
 
-  private static final int RESULT = -389705856;
+  private static final int RESULT = -389_705_856;
   private static int sum;
 
   private static int computeSum() {

@@ -3,6 +3,7 @@ package collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum TestListIterator {
   ;
 

@@ -3,6 +3,7 @@ package collections;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ConcurrentLinkedDequeDemo {
   ;
   private static Random random = new Random();

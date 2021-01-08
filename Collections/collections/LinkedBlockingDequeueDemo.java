@@ -6,6 +6,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum LinkedBlockingDequeueDemo {
   ;
 

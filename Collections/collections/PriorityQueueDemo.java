@@ -3,6 +3,7 @@ package collections;
 import java.util.Objects;
 import java.util.concurrent.PriorityBlockingQueue;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum PriorityQueueDemo {
   ;
 

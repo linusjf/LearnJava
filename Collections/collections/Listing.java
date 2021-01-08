@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // https://www.baeldung.com/java-init-list-one-line
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Listing {
   ;
   private static final String FOO = "foo";

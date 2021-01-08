@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ConcurrentSkipListMapDemo {
   ;
 

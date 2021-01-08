@@ -5,6 +5,9 @@ import java.util.Vector;
 import java.util.stream.IntStream;
 
 // Original source: https://www.javaspecialists.eu/archive/Issue280.html
+@SuppressWarnings({"PMD.SystemPrintln",
+                   "PMD.LawOfDemeter",
+                   "PMD.UseArrayListInsteadOfVector"})
 public enum VectorBench {
   ;
 
@@ -23,7 +26,7 @@ public enum VectorBench {
     if (sum == 0) {
       sum = 1023 * 1024 / 2 * (100_000_000 / 1024);
       int mod = (100_000_000 & 1023) - 1;
-      sum += mod * ++mod / 2;
+      sum += (mod * ++mod) / 2;
     }
     return sum;
   }

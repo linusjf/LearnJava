@@ -6,6 +6,7 @@ import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum DelayedQueueDemo {
   ;
 

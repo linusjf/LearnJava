@@ -2,6 +2,7 @@ package collections;
 
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum AtomicArrayDemo {
   ;
   private static final int THREADS = 100;
