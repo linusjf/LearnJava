@@ -5,7 +5,7 @@ public final class CommentDemo {
     throw new UnsupportedOperationException(
         "This is a utility class and cannot be instantiated");
   }
-  
+
   public static void main(String[] args) {
     for (int i = 0; i < 5; /* exits when i reaches to 5 */ i++) {
       System.out.print(i + " ");
@@ -20,5 +20,4 @@ public final class CommentDemo {
     /* multiplies pi by 4 */
     System.out.println(pi * 4);  // \u002A is Unicode of *
   }
-
 }
