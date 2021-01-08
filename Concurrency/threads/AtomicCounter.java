@@ -32,6 +32,7 @@ package threads;
  */
 import java.util.concurrent.atomic.AtomicInteger;
 
+@SuppressWarnings("PMD.CommentSize")
 class AtomicCounter {
   private final AtomicInteger c = new AtomicInteger(0);
 

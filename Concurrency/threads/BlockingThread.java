@@ -1,7 +1,8 @@
 package threads;
 
-import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.*;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class BlockingThread extends Thread {
   private final SimpleBlockingQueue<?> queue;
   private boolean wasInterrupted;
@@ -19,10 +20,12 @@ public class BlockingThread extends Thread {
       try {
         queue.get();
       } catch (InterruptedException e) {
+        System.err.println(e.getMessage());
         wasInterrupted = true;
       }
       reachedAfterGet = true;
     } catch (Throwable t) {
+      System.err.println(t.getMessage());
       throwableThrown = true;
     }
   }
@@ -51,16 +54,16 @@ public class BlockingThread extends Thread {
     final SimpleBlockingQueue<Object> queue = new SimpleBlockingQueue<>();
     BlockingThread blockingThread = new BlockingThread(queue);
     blockingThread.start();
-    TimeUnit.MILLISECONDS.sleep(5000);
+    MILLISECONDS.sleep(5000);
     assert !blockingThread.isReachedAfterGet();
     assert !blockingThread.isWasInterrupted();
     assert !blockingThread.isThrowableThrown();
     queue.put(new Object());
-    TimeUnit.MILLISECONDS.sleep(1000);
+    MILLISECONDS.sleep(1000);
     assert blockingThread.isReachedAfterGet();
     assert !blockingThread.isWasInterrupted();
     assert !blockingThread.isThrowableThrown();
-    blockingThread.join(10000);
+    blockingThread.join(10_000);
   }
 
   @Override

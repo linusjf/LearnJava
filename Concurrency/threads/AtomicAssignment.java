@@ -2,16 +2,16 @@ package threads;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("PMD.SystemPrintln")
 public class AtomicAssignment implements Runnable {
   private static final SimpleDateFormat SDF =
       new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS", Locale.getDefault());
-  private static Map<String, String> configuration = new HashMap<>();
+  private static Map<String, String> configuration = new ConcurrentHashMap<>();
 
   @SuppressWarnings("PMD.LawOfDemeter")
   @Override
@@ -35,7 +35,7 @@ public class AtomicAssignment implements Runnable {
   }
 
   public static void readConfig() {
-    Map<String, String> newConfig = new HashMap<>();
+    Map<String, String> newConfig = new ConcurrentHashMap<>();
     Date now = new Date();
     synchronized (SDF) {
       newConfig.put("key-1", SDF.format(now));

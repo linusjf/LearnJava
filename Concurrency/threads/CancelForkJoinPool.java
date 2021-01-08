@@ -90,12 +90,8 @@ public enum CancelForkJoinPool {
     @Override
     protected Integer compute() {
       System.out.println("Task: " + start + ":" + end);
-      int ret;
-      if (end - start > TASK_SIZE_THRESHOLD)
-        ret = launchTasks();
-      else
-        ret = lookForNumber();
-      return ret;
+      return end - start > TASK_SIZE_THRESHOLD ? launchTasks()
+                                               : lookForNumber();
     }
 
     @SuppressWarnings("PMD.LawOfDemeter")
