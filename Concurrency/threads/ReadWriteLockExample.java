@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ReadWriteLockExample {
   ;
 

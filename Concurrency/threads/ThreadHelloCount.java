@@ -2,6 +2,7 @@ package threads;
 
 import java.util.Random;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ThreadHelloCount {
   ;
   private static final Random RANDOM = new Random();

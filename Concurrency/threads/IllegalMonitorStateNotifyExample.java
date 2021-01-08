@@ -3,6 +3,7 @@ package threads;
 import java.util.concurrent.TimeUnit;
 import threads.HelperClass.WaitingThread;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum IllegalMonitorStateNotifyExample {
   ;
 

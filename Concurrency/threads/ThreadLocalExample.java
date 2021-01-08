@@ -3,6 +3,7 @@ package threads;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum ThreadLocalExample {
   ;
 

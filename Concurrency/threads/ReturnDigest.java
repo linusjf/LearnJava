@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class ReturnDigest extends Thread {
   private final String filename;
   private byte[] digest = new byte[0];

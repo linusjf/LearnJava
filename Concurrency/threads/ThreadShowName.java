@@ -2,6 +2,7 @@ package threads;
 
 import java.util.Random;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class ThreadShowName extends Thread {
   private final Random random = new Random();
 

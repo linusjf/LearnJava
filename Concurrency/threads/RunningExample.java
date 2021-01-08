@@ -3,6 +3,7 @@ package threads;
 import threads.HelperClass.WaitingThread;
 import threads.HelperClass.WakingThread;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum RunningExample {
   ;
 

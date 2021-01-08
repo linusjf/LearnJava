@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public enum SimpleThreads {
   ;
   // Display a message, preceded by

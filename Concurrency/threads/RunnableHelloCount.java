@@ -3,6 +3,7 @@ package threads;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class RunnableHelloCount implements Runnable {
   Thread thread1 = new Thread(this);
   Thread thread2 = new Thread(this);

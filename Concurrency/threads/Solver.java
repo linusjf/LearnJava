@@ -7,6 +7,7 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class Solver {
   final int N;
   final float[][] data;
@@ -42,6 +43,7 @@ public class Solver {
       myRow = row;
     }
 
+    @Override
     public void run() {
       processRow(myRow);
       try {

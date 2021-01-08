@@ -3,6 +3,7 @@ package threads;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class RunnableShowName implements Runnable {
   private static Random random = new Random();
 
