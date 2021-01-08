@@ -372,9 +372,9 @@
   <rule ref="category/java/errorprone.xml/CloseResource">
     <properties>
       <property name="closeTargets"
-                value="" />
+                value="close" />
       <property name="types"
-                value="java.lang.AutoCloseable , java.sql.Connection , java.sql.Statement , java.sql.ResultSet" />
+                value="java.sql.Connection , java.sql.Statement , java.sql.ResultSet" />
       <property name="closeAsDefaultTarget"
                 value="true" />
       <property name="allowedResourceTypes"

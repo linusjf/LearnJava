@@ -26,7 +26,8 @@ public enum ListingDefault {
 
   @SuppressWarnings({"checkstyle:avoiddoublebraceinitialization",
                      "PMD.DoubleBraceInitialization",
-                     "PMD.LawOfDemeter"})
+                     "PMD.LawOfDemeter",
+                     "PMD.CompareObjectsWithEquals"})
   public static void
   main(String... args) {
     List<String> list = Arrays.asList(new String[] {FOO, BAR});

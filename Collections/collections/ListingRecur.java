@@ -17,7 +17,8 @@ public enum ListingRecur {
 
   @SuppressWarnings({"checkstyle:avoiddoublebraceinitialization",
                      "PMD.DoubleBraceInitialization",
-                     "PMD.LawOfDemeter"})
+                     "PMD.LawOfDemeter",
+                     "PMD.CompareObjectsWithEquals"})
   public static void
   main(String... args) {
     try {

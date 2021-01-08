@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public enum VectorBench {
   ;
 
-  private static final int RESULT = -389705856;
+  private static final int RESULT = -389_705_856;
   private static int sum;
 
   public static void main(String... args) {
@@ -26,42 +26,39 @@ public enum VectorBench {
       sum += mod * ++mod / 2;
     }
     return sum;
-
   }
 
   private static void test(boolean parallel) {
-    IntStream range = IntStream.range(1, 100_000_000);
-    if (parallel)
-      range = range.parallel();
-      long time = 0L;
+    long time = 0L;
     try {
+      IntStream range = IntStream.range(1, 100_000_000);
+      if (parallel)
+        range = range.parallel();
+
       ThreadLocal<List<Integer>> lists = ThreadLocal.withInitial(() -> {
-      long time2 = System.nanoTime();
+        long time2 = System.nanoTime();
         List<Integer> result = new Vector<>();
         for (int i = 0; i < 1024; i++)
           result.add(i);
-      time2 = System.nanoTime() - time2;
-      System.out.printf(
-          "Thread Local Storage: %dms%n",  time2 / 1_000_000);
+        time2 = System.nanoTime() - time2;
+        System.out.printf("Thread Local Storage: %dms%n", time2 / 1_000_000);
         return result;
       });
       time = System.nanoTime();
       System.out.println("Formulaic sum = " + computeSum());
       time = System.nanoTime() - time;
-      System.out.printf(
-          "Formulaic time: %.6fms%n", (double) time / (double)1_000_000);
-      
+      System.out.printf("Formulaic time: %.6fms%n",
+                        (double)time / (double)1_000_000);
+
       time = System.nanoTime();
       System.out.println("Result sum = " + RESULT);
       time = System.nanoTime() - time;
-      System.out.printf(
-          "Result time : %.6fms%n", (double) time / (double)1_000_000);
+      System.out.printf("Result time : %.6fms%n",
+                        (double)time / (double)1_000_000);
 
-    time = System.nanoTime();
+      time = System.nanoTime();
       System.out.println("Sum = "
-          + range.map(i -> lists.get().get(i & 1023))
-          .sum()
-          );
+                         + range.map(i -> lists.get().get(i & 1023)).sum());
     } finally {
       time = System.nanoTime() - time;
       System.out.printf(
