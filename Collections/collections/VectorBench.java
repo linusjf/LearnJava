@@ -26,7 +26,7 @@ public enum VectorBench {
     if (sum == 0) {
       sum = 1023 * 1024 / 2 * (100_000_000 / 1024);
       int mod = (100_000_000 & 1023) - 1;
-      sum += (mod * ++mod) / 2;
+      sum += mod * ++mod / 2;
     }
     return sum;
   }
