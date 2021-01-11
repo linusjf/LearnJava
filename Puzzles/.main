@@ -117,3 +117,6 @@ javapuzzles.EnumPrivate
 javapuzzles.IntToFloat
 javapuzzles.CommentDemo
 javapuzzles.AddNum
+javapuzzles.SubNum
+javapuzzles.StringLock
+javapuzzles.StringLock unlock
