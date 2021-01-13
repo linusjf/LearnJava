@@ -287,7 +287,13 @@
   <rule ref="category/java/design.xml/SimplifyBooleanExpressions" />
   <rule ref="category/java/design.xml/SimplifyBooleanReturns" />
   <rule ref="category/java/design.xml/SimplifyConditional" />
-  <rule ref="category/java/design.xml/SingularField" />
+  <rule ref="category/java/design.xml/SingularField">
+    <properties>
+        <property name="ignoredAnnotations" value="lombok.Setter|lombok.Getter|lombok.Builder|lombok.Data|lombok.RequiredArgsConstructor|lombok.AllArgsConstructor|lombok.Value|lombok.NoArgsConstructor|lombok.experimental.Delegate|lombok.EqualsAndHashCode" />
+        <property name="checkInnerClasses" value="true" />
+        <property name="disallowNotAssignment" value="true" />
+    </properties>
+</rule>
   <rule ref="category/java/design.xml/SwitchDensity" />
   <rule ref="category/java/design.xml/TooManyFields" />
   <rule ref="category/java/design.xml/TooManyMethods">
