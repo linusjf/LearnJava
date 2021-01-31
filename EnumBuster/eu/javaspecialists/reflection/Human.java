@@ -2,9 +2,8 @@ package eu.javaspecialists.reflection;
 
 @SuppressWarnings("PMD.SystemPrintln")
 public class Human {
-  public enum HumanState {
-  HAPPY, SAD
-}
+  public enum HumanState { HAPPY, SAD }
+
   public void sing(HumanState state) {
     switch (state) {
       case HAPPY:

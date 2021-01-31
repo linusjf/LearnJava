@@ -1,9 +1,9 @@
 package eu.javaspecialists.reflection;
 
+import static eu.javaspecialists.reflection.ReflectionHelper.*;
+
 import java.lang.reflect.*;
 import java.util.*;
-
-import static eu.javaspecialists.reflection.ReflectionHelper.*;
 
 public class EnumBuster<E extends Enum<E>> {
   private final Class<E> clazz;
@@ -11,9 +11,8 @@ public class EnumBuster<E extends Enum<E>> {
   private final Deque<Memento> undoStack = new ArrayDeque<>();
 
   /**
-   * Construct an EnumBuster for the given enum class and keep
-   * the switch statements of the classes specified in
-   * switchUsers in sync with the enum values.
+   * Construct an EnumBuster for the given enum class and keep the switch statements of the classes
+   * specified in switchUsers in sync with the enum values.
    */
   public EnumBuster(Class<E> clazz, Class<?>... switchUsers) {
     this.clazz = clazz;
@@ -21,30 +20,25 @@ public class EnumBuster<E extends Enum<E>> {
   }
 
   /**
-   * Make a new enum instance, without adding it to the values
-   * array and using the default ordinal of 0.
+   * Make a new enum instance, without adding it to the values array and using the default ordinal
+   * of 0.
    */
   public E make(String value) throws ReflectiveOperationException {
     return makeEnum(clazz, value);
   }
 
   /**
-   * This method adds the given enum into the array
-   * inside the enum class.  If the enum already
-   * contains that particular value, then the value
-   * is overwritten with our enum.  Otherwise it is
+   * This method adds the given enum into the array inside the enum class. If the enum already
+   * contains that particular value, then the value is overwritten with our enum. Otherwise it is
    * added at the end of the array.
-   * <p>
-   * In addition, if there is a constant field in the
-   * enum class pointing to an enum with our value,
-   * then we replace that with our enum instance.
-   * <p>
-   * The ordinal is either set to the existing position
-   * or to the last value.
-   * <p>
-   * Warning: This should probably never be called,
-   * since it can cause permanent changes to the enum
-   * values.  Use only in extreme conditions.
+   *
+   * <p>In addition, if there is a constant field in the enum class pointing to an enum with our
+   * value, then we replace that with our enum instance.
+   *
+   * <p>The ordinal is either set to the existing position or to the last value.
+   *
+   * <p>Warning: This should probably never be called, since it can cause permanent changes to the
+   * enum values. Use only in extreme conditions.
    *
    * @param e the enum to add
    */
@@ -76,16 +70,14 @@ public class EnumBuster<E extends Enum<E>> {
   }
 
   /**
-   * We delete the enum from the values array and set the
-   * constant pointer to null.
+   * We delete the enum from the values array and set the constant pointer to null.
    *
    * @param e the enum to delete from the type.
-   * @return true if the enum was found and deleted;
-   * false otherwise
+   * @return true if the enum was found and deleted; false otherwise
    */
-  public boolean deleteByValue(E e)
-      throws ReflectiveOperationException {
-    if (e == null) throw new NullPointerException();
+  public boolean deleteByValue(E e) throws ReflectiveOperationException {
+    if (e == null)
+      throw new NullPointerException();
     undoStack.push(new Memento());
     // we get the current E[]
     E[] values = values();
@@ -93,8 +85,7 @@ public class EnumBuster<E extends Enum<E>> {
       E value = values[i];
       if (value.name().equals(e.name())) {
         E[] newValues = Arrays.copyOf(values, values.length - 1);
-        System.arraycopy(values, i + 1, newValues, i,
-            values.length - i - 1);
+        System.arraycopy(values, i + 1, newValues, i, values.length - i - 1);
         for (int j = i; j < newValues.length; j++) {
           setOrdinal(newValues[j], j);
         }
@@ -108,54 +99,46 @@ public class EnumBuster<E extends Enum<E>> {
     return false;
   }
 
-  /**
-   * Undo the state right back to the beginning when the
-   * EnumBuster was created.
-   */
+  /** Undo the state right back to the beginning when the EnumBuster was created. */
   public void restore() throws ReflectiveOperationException {
     while (undo()) {
       //
     }
   }
 
-  /**
-   * Undo the previous operation.
-   */
+  /** Undo the previous operation. */
   public boolean undo() throws ReflectiveOperationException {
     Memento memento = undoStack.poll();
-    if (memento == null) return false;
+    if (memento == null)
+      return false;
     memento.undo();
     return true;
   }
 
-
   /**
-   * The only time we ever add a new enum is at the end.
-   * Thus all we need to do is expand the switch map arrays
-   * by one empty slot.
+   * The only time we ever add a new enum is at the end. Thus all we need to do is expand the switch
+   * map arrays by one empty slot.
    */
   private void addSwitchCase() throws ReflectiveOperationException {
-    for (Field switchField : switchFields) {
-      int[] switches = (int[]) switchField.get(null);
+    for (Field switchField: switchFields) {
+      int[] switches = (int[])switchField.get(null);
       switches = Arrays.copyOf(switches, switches.length + 1);
       setStaticFinalField(switchField, switches);
     }
   }
 
-  private void replaceConstant(E e)
-      throws ReflectiveOperationException {
+  private void replaceConstant(E e) throws ReflectiveOperationException {
     Field[] fields = clazz.getDeclaredFields();
-    for (Field field : fields) {
+    for (Field field: fields) {
       if (field.getName().equals(e.name())) {
         setStaticFinalField(field, e);
       }
     }
   }
 
-  private void blankOutConstant(E e)
-      throws ReflectiveOperationException {
+  private void blankOutConstant(E e) throws ReflectiveOperationException {
     Field[] fields = clazz.getDeclaredFields();
-    for (Field field : fields) {
+    for (Field field: fields) {
       if (field.getName().equals(e.name())) {
         setStaticFinalField(field, null);
       }
@@ -170,8 +153,7 @@ public class EnumBuster<E extends Enum<E>> {
   }
 
   /**
-   * Method to find the values field, set it to be accessible,
-   * and return it.
+   * Method to find the values field, set it to be accessible, and return it.
    *
    * @return the values array field for the enum.
    * @throws NoSuchFieldException if the field could not be found
@@ -185,16 +167,15 @@ public class EnumBuster<E extends Enum<E>> {
     return valuesField;
   }
 
-  private Collection<Field> findRelatedSwitchFields(
-      Class<?>[] switchUsers) {
+  private Collection<Field> findRelatedSwitchFields(Class<?>[] switchUsers) {
     Collection<Field> result = new ArrayList<>();
-    for (Class<?> switchUser : switchUsers) {
+    for (Class<?> switchUser: switchUsers) {
       Class<?>[] clazzes = getAnonymousClasses(switchUser);
-      for (Class<?> suspect : clazzes) {
+      for (Class<?> suspect: clazzes) {
         Field[] fields = suspect.getDeclaredFields();
-        for (Field field : fields) {
-          if (field.getName().startsWith("$SwitchMap$" +
-              clazz.getName().replace(".", "$"))) {
+        for (Field field: fields) {
+          if (field.getName().startsWith("$SwitchMap$"
+                                         + clazz.getName().replace(".", "$"))) {
             field.setAccessible(true);
             result.add(field);
           }
@@ -206,31 +187,31 @@ public class EnumBuster<E extends Enum<E>> {
 
   private void removeSwitchCase(int ordinal)
       throws ReflectiveOperationException {
-    for (Field switchField : switchFields) {
-      int[] switches = (int[]) switchField.get(null);
-      int[] newSwitches = Arrays.copyOf(
-          switches, switches.length - 1);
-      System.arraycopy(switches, ordinal + 1, newSwitches,
-          ordinal, switches.length - ordinal - 1);
+    for (Field switchField: switchFields) {
+      int[] switches = (int[])switchField.get(null);
+      int[] newSwitches = Arrays.copyOf(switches, switches.length - 1);
+      System.arraycopy(switches,
+                       ordinal + 1,
+                       newSwitches,
+                       ordinal,
+                       switches.length - ordinal - 1);
       setStaticFinalField(switchField, newSwitches);
     }
   }
 
   private E[] values() throws ReflectiveOperationException {
-    return (E[]) findValuesField().get(null);
+    return (E[])findValuesField().get(null);
   }
 
   private class Memento {
     private final E[] values;
-    private final Map<Field, int[]> savedSwitchFieldValues =
-        new HashMap<>();
+    private final Map<Field, int[]> savedSwitchFieldValues = new HashMap<>();
 
     private Memento() throws ReflectiveOperationException {
       values = values().clone();
-      for (Field switchField : switchFields) {
-        int[] switchArray = (int[]) switchField.get(null);
-        savedSwitchFieldValues.put(switchField,
-            switchArray.clone());
+      for (Field switchField: switchFields) {
+        int[] switchArray = (int[])switchField.get(null);
+        savedSwitchFieldValues.put(switchField, switchArray.clone());
       }
     }
 
@@ -244,19 +225,18 @@ public class EnumBuster<E extends Enum<E>> {
 
       // reset all of the constants defined inside the enum
       Map<String, E> valuesMap = new HashMap<>();
-      for (E e : values) {
+      for (E e: values) {
         valuesMap.put(e.name(), e);
       }
       Field[] constantEnumFields = clazz.getDeclaredFields();
-      for (Field constantEnumField : constantEnumFields) {
+      for (Field constantEnumField: constantEnumFields) {
         E en = valuesMap.get(constantEnumField.getName());
         if (en != null) {
           setStaticFinalField(constantEnumField, en);
         }
       }
 
-      for (Map.Entry<Field, int[]> entry :
-          savedSwitchFieldValues.entrySet()) {
+      for (Map.Entry<Field, int[]> entry: savedSwitchFieldValues.entrySet()) {
         Field field = entry.getKey();
         int[] mappings = entry.getValue();
         setStaticFinalField(field, mappings);
@@ -264,4 +244,3 @@ public class EnumBuster<E extends Enum<E>> {
     }
   }
 }
-  

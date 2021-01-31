@@ -1,18 +1,26 @@
 package eu.javaspecialists.reflection;
 
-import org.junit.*;
-import org.junit.runner.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
+import eu.javaspecialists.reflection.Human.HumanState;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@TestInstance(Lifecycle.PER_CLASS)
+@Execution(ExecutionMode.SAME_THREAD)
+@DisplayName("EnumSwitchTest")
 public class EnumSwitchTest {
   @Test
-  public void testSingingDeletingEnum()
-      throws ReflectiveOperationException {
-    EnumBuster<HumanState> buster = new EnumBuster<>(
-        HumanState.class, EnumSwitchTest.class);
+  @DisplayName("EnumSwitchTest.testSingingDeletingEnum")
+  public void testSingingDeletingEnum() throws ReflectiveOperationException {
+    EnumBuster<HumanState> buster =
+        new EnumBuster<>(HumanState.class, EnumSwitchTest.class);
     try {
-      for (HumanState state : HumanState.values()) {
+      for (HumanState state: HumanState.values()) {
         switch (state) {
           case HAPPY:
           case SAD:
@@ -23,7 +31,7 @@ public class EnumSwitchTest {
       }
 
       buster.deleteByValue(HumanState.HAPPY);
-      for (HumanState state : HumanState.values()) {
+      for (HumanState state: HumanState.values()) {
         switch (state) {
           case SAD:
             break;
@@ -35,7 +43,7 @@ public class EnumSwitchTest {
 
       buster.undo();
       buster.deleteByValue(HumanState.SAD);
-      for (HumanState state : HumanState.values()) {
+      for (HumanState state: HumanState.values()) {
         switch (state) {
           case HAPPY:
             break;
@@ -46,7 +54,7 @@ public class EnumSwitchTest {
       }
 
       buster.deleteByValue(HumanState.HAPPY);
-      for (HumanState state : HumanState.values()) {
+      for (HumanState state: HumanState.values()) {
         switch (state) {
           case HAPPY:
           case SAD:
@@ -59,4 +67,3 @@ public class EnumSwitchTest {
     }
   }
 }
-  

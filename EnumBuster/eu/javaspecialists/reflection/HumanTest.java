@@ -1,16 +1,24 @@
 package eu.javaspecialists.reflection;
 
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.*;
+import eu.javaspecialists.reflection.Human.HumanState;
+import java.util.Arrays;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
-import static org.junit.Assert.*;
-
+@TestInstance(Lifecycle.PER_CLASS)
+@Execution(ExecutionMode.SAME_THREAD)
+@DisplayName("HumanTest")
 @SuppressWarnings("PMD.SystemPrintln")
 public class HumanTest {
   @Test
-  public void testSingingAddingEnum()
-      throws ReflectiveOperationException {
+  @DisplayName("HumanTest.testSingingAddingEnum")
+  public void testSingingAddingEnum() throws ReflectiveOperationException {
     EnumBuster<HumanState> buster =
         new EnumBuster<>(HumanState.class, Human.class);
     try {
@@ -25,7 +33,8 @@ public class HumanTest {
       try {
         heinz.sing(MELLOW);
         fail("Should have caused an IllegalStateException");
-      } catch (IllegalStateException success) { }
+      } catch (IllegalStateException success) {
+      }
     } finally {
       System.out.println("Restoring HumanState");
       buster.restore();
