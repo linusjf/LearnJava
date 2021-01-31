@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="EnumSwitchTest.java"
+                  checks="CyclomaticComplexityCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EnumSwitchTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testSingingDeletingEnum']]" />
+  <suppress-xpath files="EnumSwitchTest.java"
+                  checks="NPathComplexityCheck"
+                  query="/CLASS_DEF[./IDENT[@text='EnumSwitchTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testSingingDeletingEnum']]" />
+  <suppress-xpath files="HumanTest.java"
+                  checks="AbbreviationAsWordInNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HumanTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testSingingAddingEnum']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF/IDENT[@text='MELLOW']" />
+  <suppress-xpath files="HumanTest.java"
+                  checks="LocalVariableNameCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HumanTest']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testSingingAddingEnum']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF/IDENT[@text='MELLOW']" />
+  <suppress-xpath files="ReflectionHelper.java"
+                  checks="IllegalImportCheck"
+                  query="/IMPORT[./DOT/IDENT[@text='Unsafe']]" />
+</suppressions>

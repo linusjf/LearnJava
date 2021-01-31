@@ -9,6 +9,6 @@ Specification-Title: EnumBuster
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: 7d9254bd January 31 2021
+Implementation-Version: 31c2b00c January 31 2021
 Implementation-Vendor: 
 

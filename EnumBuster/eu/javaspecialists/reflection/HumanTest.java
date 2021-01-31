@@ -33,7 +33,8 @@ public class HumanTest {
       try {
         heinz.sing(MELLOW);
         fail("Should have caused an IllegalStateException");
-      } catch (IllegalStateException success) {
+      } catch (IllegalStateException ignoredSuccess) {
+        // empty catch block
       }
     } finally {
       System.out.println("Restoring HumanState");

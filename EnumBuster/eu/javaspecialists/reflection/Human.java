@@ -13,7 +13,7 @@ public class Human {
         singDirge();
         break;
       default:
-        new IllegalStateException("Invalid State: " + state);
+        throw new IllegalStateException("Invalid State: " + state);
     }
   }
 

@@ -1,18 +1,30 @@
 package eu.javaspecialists.reflection;
 
 import static eu.javaspecialists.reflection.ReflectionHelper.*;
+import static java.util.Objects.requireNonNull;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Field;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public class EnumBuster<E extends Enum<E>> {
   private final Class<E> clazz;
   private final Collection<Field> switchFields;
   private final Deque<Memento> undoStack = new ArrayDeque<>();
 
   /**
-   * Construct an EnumBuster for the given enum class and keep the switch statements of the classes
-   * specified in switchUsers in sync with the enum values.
+   * Constructor.
+   *
+   * @param clazz class
+   * @param switchUsers array of class objects Construct an EnumBuster for the given enum class and
+   *     keep the switch statements of the classes specified in switchUsers in sync with the enum
+   *     values.
    */
   public EnumBuster(Class<E> clazz, Class<?>... switchUsers) {
     this.clazz = clazz;
@@ -20,8 +32,12 @@ public class EnumBuster<E extends Enum<E>> {
   }
 
   /**
-   * Make a new enum instance, without adding it to the values array and using the default ordinal
-   * of 0.
+   * Make enum.
+   *
+   * @param value enum name
+   * @return enum value
+   * @throws ReflectiveOperationException exception Make a new enum instance, without adding it to
+   *     the values array and using the default ordinal of 0.
    */
   public E make(String value) throws ReflectiveOperationException {
     return makeEnum(clazz, value);
@@ -41,10 +57,10 @@ public class EnumBuster<E extends Enum<E>> {
    * enum values. Use only in extreme conditions.
    *
    * @param e the enum to add
+   * @throws ReflectiveOperationException exception
    */
   public void addByValue(E e) throws ReflectiveOperationException {
     undoStack.push(new Memento());
-    Field valuesField = findValuesField();
 
     // we get the current Enum[]
     E[] values = values();
@@ -60,6 +76,7 @@ public class EnumBuster<E extends Enum<E>> {
 
     // we did not find it in the existing array, thus
     // append it to the array
+    Field valuesField = findValuesField();
     E[] newValues = Arrays.copyOf(values, values.length + 1);
     newValues[newValues.length - 1] = e;
     setStaticFinalField(valuesField, newValues);
@@ -74,10 +91,10 @@ public class EnumBuster<E extends Enum<E>> {
    *
    * @param e the enum to delete from the type.
    * @return true if the enum was found and deleted; false otherwise
+   * @throws ReflectiveOperationException exception
    */
   public boolean deleteByValue(E e) throws ReflectiveOperationException {
-    if (e == null)
-      throw new NullPointerException();
+    requireNonNull(e);
     undoStack.push(new Memento());
     // we get the current E[]
     E[] values = values();
@@ -99,14 +116,22 @@ public class EnumBuster<E extends Enum<E>> {
     return false;
   }
 
-  /** Undo the state right back to the beginning when the EnumBuster was created. */
+  /**
+   * Undo the state right back to the beginning when the EnumBuster was created.
+   *
+   * @throws ReflectiveOperationException exception
+   */
   public void restore() throws ReflectiveOperationException {
     while (undo()) {
-      //
+      // empty loop
     }
   }
 
-  /** Undo the previous operation. */
+  /**
+   * Undo the previous operation.
+   * @return true or false
+   * @throws ReflectiveOperationException exception
+   */
   public boolean undo() throws ReflectiveOperationException {
     Memento memento = undoStack.poll();
     if (memento == null)
@@ -118,6 +143,8 @@ public class EnumBuster<E extends Enum<E>> {
   /**
    * The only time we ever add a new enum is at the end. Thus all we need to do is expand the switch
    * map arrays by one empty slot.
+   *
+   * @throws ReflectiveOperationException exception
    */
   private void addSwitchCase() throws ReflectiveOperationException {
     for (Field switchField: switchFields) {
@@ -127,6 +154,11 @@ public class EnumBuster<E extends Enum<E>> {
     }
   }
 
+  /**
+   * Replace constant.
+   *
+   * @param e const name
+   */
   private void replaceConstant(E e) throws ReflectiveOperationException {
     Field[] fields = clazz.getDeclaredFields();
     for (Field field: fields) {
@@ -136,6 +168,11 @@ public class EnumBuster<E extends Enum<E>> {
     }
   }
 
+  /**
+   * Blank out constant.
+   *
+   * @param e const name
+   */
   private void blankOutConstant(E e) throws ReflectiveOperationException {
     Field[] fields = clazz.getDeclaredFields();
     for (Field field: fields) {
@@ -167,7 +204,7 @@ public class EnumBuster<E extends Enum<E>> {
     return valuesField;
   }
 
-  private Collection<Field> findRelatedSwitchFields(Class<?>[] switchUsers) {
+  private Collection<Field> findRelatedSwitchFields(Class<?>... switchUsers) {
     Collection<Field> result = new ArrayList<>();
     for (Class<?> switchUser: switchUsers) {
       Class<?>[] clazzes = getAnonymousClasses(switchUser);
@@ -203,7 +240,7 @@ public class EnumBuster<E extends Enum<E>> {
     return (E[])findValuesField().get(null);
   }
 
-  private class Memento {
+  private final class Memento {
     private final E[] values;
     private final Map<Field, int[]> savedSwitchFieldValues = new HashMap<>();
 

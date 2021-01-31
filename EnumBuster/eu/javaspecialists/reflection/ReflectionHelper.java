@@ -1,30 +1,14 @@
 package eu.javaspecialists.reflection;
 
-import java.lang.reflect.*;
-import java.util.*;
-import sun.misc.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import sun.misc.Unsafe;
 
-public class ReflectionHelper {
-  public static Class<?>[] getAnonymousClasses(Class<?> clazz) {
-    Collection<Class<?>> classes = new ArrayList<>();
-    for (int i = 1;; i++) {
-      try {
-        classes.add(
-            Class.forName(clazz.getName() + "$" + i,
-                          false,  // do not initialize
-                          Thread.currentThread().getContextClassLoader()));
-      } catch (ClassNotFoundException e) {
-        break;
-      }
-    }
-    for (Class<?> inner: clazz.getDeclaredClasses()) {
-      Collections.addAll(classes, getAnonymousClasses(inner));
-    }
-    for (Class<?> anon: new ArrayList<>(classes)) {
-      Collections.addAll(classes, getAnonymousClasses(anon));
-    }
-    return classes.toArray(new Class<?>[ 0 ]);
-  }
+@SuppressWarnings("PMD.LawOfDemeter")
+public final class ReflectionHelper {
 
   private static final Unsafe UNSAFE;
 
@@ -38,13 +22,38 @@ public class ReflectionHelper {
     }
   }
 
+  private ReflectionHelper() {
+    throw new IllegalStateException("Private constructor");
+  }
+
+  public static Class<?>[] getAnonymousClasses(Class<?> clazz) {
+    Collection<Class<?>> classes = new ArrayList<>();
+    for (int i = 1;; i++) {
+      try {
+        classes.add(
+            Class.forName(clazz.getName() + "$" + i,
+                          false,
+                          Thread.currentThread().getContextClassLoader()));
+      } catch (ClassNotFoundException ignored) {
+        break;
+      }
+    }
+    for (Class<?> inner: clazz.getDeclaredClasses()) {
+      Collections.addAll(classes, getAnonymousClasses(inner));
+    }
+    for (Class<?> anon: new ArrayList<>(classes)) {
+      Collections.addAll(classes, getAnonymousClasses(anon));
+    }
+    return classes.toArray(new Class<?>[ 0 ]);
+  }
+
   /**
    * Super dangerous and might have unintended side effects. Use only for testing, and then with
    * circumspection.
    *
-   * @param field
-   * @param value
-   * @throws ReflectiveOperationException
+   * @param field field
+   * @param value value to be set
+   * @throws ReflectiveOperationException exception
    */
   public static void setStaticFinalField(Field field, Object value)
       throws ReflectiveOperationException {
