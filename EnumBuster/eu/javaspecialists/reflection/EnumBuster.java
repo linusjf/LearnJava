@@ -12,7 +12,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings("PMD.LawOfDemeter")
+@SuppressWarnings("PMD")
 public class EnumBuster<E extends Enum<E>> {
   private final Class<E> clazz;
   private final Collection<Field> switchFields;
@@ -129,6 +129,7 @@ public class EnumBuster<E extends Enum<E>> {
 
   /**
    * Undo the previous operation.
+   *
    * @return true or false
    * @throws ReflectiveOperationException exception
    */

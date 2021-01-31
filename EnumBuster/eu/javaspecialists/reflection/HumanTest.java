@@ -14,7 +14,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 @TestInstance(Lifecycle.PER_CLASS)
 @Execution(ExecutionMode.SAME_THREAD)
 @DisplayName("HumanTest")
-@SuppressWarnings("PMD.SystemPrintln")
+@SuppressWarnings("PMD")
 public class HumanTest {
   @Test
   @DisplayName("HumanTest.testSingingAddingEnum")

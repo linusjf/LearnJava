@@ -13,7 +13,10 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 @TestInstance(Lifecycle.PER_CLASS)
 @Execution(ExecutionMode.SAME_THREAD)
 @DisplayName("EnumSwitchTest")
+@SuppressWarnings("PMD")
 public class EnumSwitchTest {
+  private static final String UNKNOWN_STATE = "Unknown state";
+
   @Test
   @DisplayName("EnumSwitchTest.testSingingDeletingEnum")
   public void testSingingDeletingEnum() throws ReflectiveOperationException {
@@ -26,7 +29,7 @@ public class EnumSwitchTest {
           case SAD:
             break;
           default:
-            fail("Unknown state");
+            fail(UNKNOWN_STATE);
         }
       }
 
@@ -37,7 +40,7 @@ public class EnumSwitchTest {
             break;
           case HAPPY:
           default:
-            fail("Unknown state");
+            fail(UNKNOWN_STATE);
         }
       }
 
@@ -49,7 +52,7 @@ public class EnumSwitchTest {
             break;
           case SAD:
           default:
-            fail("Unknown state");
+            fail(UNKNOWN_STATE);
         }
       }
 
@@ -59,7 +62,7 @@ public class EnumSwitchTest {
           case HAPPY:
           case SAD:
           default:
-            fail("Unknown state");
+            fail(UNKNOWN_STATE);
         }
       }
     } finally {

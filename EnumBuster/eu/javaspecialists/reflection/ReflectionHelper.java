@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import sun.misc.Unsafe;
 
-@SuppressWarnings("PMD.LawOfDemeter")
+@SuppressWarnings("PMD")
 public final class ReflectionHelper {
 
   private static final Unsafe UNSAFE;
