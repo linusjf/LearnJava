@@ -148,19 +148,19 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.7.0</version>
+      <version>5.7.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
-      <version>1.7.0</version>
+      <version>1.7.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.7.0</version>
+      <version>5.7.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -364,13 +364,13 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs</artifactId>
-      <version>4.2.0</version>
+      <version>4.2.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-ant</artifactId>
-      <version>4.2.0</version>
+      <version>4.2.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>

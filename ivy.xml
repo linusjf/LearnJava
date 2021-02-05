@@ -419,17 +419,17 @@
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
     <dependency org="org.junit.jupiter"
                 name="junit-jupiter-api"
-                rev="5.7.0"
+                rev="5.7.1"
                 conf="junit.main-&gt;master;junit.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
     <dependency org="org.junit.platform"
                 name="junit-platform-launcher"
-                rev="1.7.0"
+                rev="1.7.1"
                 conf="junitplatform.main-&gt;master;junitplatform.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
     <dependency org="org.junit.jupiter"
                 name="junit-jupiter-engine"
-                rev="5.7.0"
+                rev="5.7.1"
                 conf="junitengine.main-&gt;master;junitengine.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency org="junit"
@@ -598,12 +598,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
-                rev="4.2.0"
+                rev="4.2.1"
                 conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
-                rev="4.2.0"
+                rev="4.2.1"
                 conf="spotbugs-ant.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
     <dependency org="org.slf4j"
