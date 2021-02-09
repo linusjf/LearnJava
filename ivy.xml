@@ -733,7 +733,7 @@
       <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
     <dependency org="net.java.dev.jna" 
       name="jna" 
-      rev="5.6.0"
+      rev="5.7.0"
       conf="jna.main-&gt;master"/>
     <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
   <dependency org="com.thoughtworks.xstream" 
