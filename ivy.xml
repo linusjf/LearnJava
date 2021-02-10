@@ -308,6 +308,16 @@
           description="xstream jars" />
     <conf name="xstream.lib"
           description="xstream library jars" />
+    <conf name="asm.main"
+          description="asm jars" />
+    <conf name="asm-util.main"
+          description="asm-util jars" />
+    <conf name="asm-util.lib"
+          description="asm-util library jars" />
+    <conf name="asm-commons.main"
+          description="asm-commons jars" />
+    <conf name="asm-commons.lib"
+          description="asm-commons library jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -740,5 +750,20 @@
     name="xstream" 
     rev="1.4.15"
     conf="xstream.main-&gt;master;xstream.lib->compile"/>
+    <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
+  <dependency org="org.ow2.asm" 
+    name="asm" 
+    rev="9.1"
+    conf="asm.main-&gt;master"/>
+    <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-util -->
+  <dependency org="org.ow2.asm" 
+    name="asm-util" 
+    rev="9.1"
+    conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile"/>
+    <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-commons -->
+  <dependency org="org.ow2.asm" 
+    name="asm-commons" 
+    rev="9.1"
+    conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile"/>
   </dependencies>
 </ivy-module>

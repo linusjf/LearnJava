@@ -54,6 +54,7 @@
   <property file="${LearnJava.basedir}/jenetics.properties" />
   <property file="${LearnJava.basedir}/jna.properties" />
   <property file="${LearnJava.basedir}/xstream.properties" />
+  <property file="${LearnJava.basedir}/asm.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -426,6 +427,16 @@
                   conf="xstream.main" />
     <ivy:retrieve pathid="xstream.lib.path"
                   conf="xstream.lib" />
+    <ivy:retrieve pathid="asm.main.path"
+                  conf="asm.main" />
+    <ivy:retrieve pathid="asm-commons.main.path"
+                  conf="asm-commons.main" />
+    <ivy:retrieve pathid="asm-commons.lib.path"
+                  conf="asm-commons.lib" />
+    <ivy:retrieve pathid="asm-util.main.path"
+                  conf="asm-util.main" />
+    <ivy:retrieve pathid="asm-util.lib.path"
+                  conf="asm-util.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -524,6 +535,8 @@
           message="${toString:jna.main.path}" />
     <echo file="${xstream.classpath.file}"
           message="${toString:xstream.main.path}:${toString:xstream.lib.path}" />
+    <echo file="${asm.classpath.file}"
+          message="${toString:asm.main.path}:${toString:asm-util.main.path}:${toString:asm-util.lib.path}:${toString:asm-commons.main.path}:${toString:asm-commons.lib.path}"/>
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
