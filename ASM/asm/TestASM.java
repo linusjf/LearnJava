@@ -32,7 +32,7 @@ public final class TestASM {
     mv.visitCode();
     mv.visitFieldInsn(
         Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-    mv.visitLdcInsn("Hello world!");
+    mv.visitLdcInsn("Hello, world!");
     mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL,
                        "java/io/PrintStream",
                        "println",
