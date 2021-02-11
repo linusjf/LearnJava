@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../asm.cp run.cp
+cp ../asm.cp compile.cp
