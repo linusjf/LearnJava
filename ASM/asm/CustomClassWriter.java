@@ -77,7 +77,7 @@ public class CustomClassWriter {
 
   static class AddInterfaceAdapter extends ClassVisitor {
 
-    public AddInterfaceAdapter(ClassVisitor cv) {
+    AddInterfaceAdapter(ClassVisitor cv) {
       super(ASM4, cv);
     }
 
@@ -102,7 +102,7 @@ public class CustomClassWriter {
     TraceClassVisitor tracer;
     PrintWriter pw = new PrintWriter(System.out, true, StandardCharsets.UTF_8);
 
-    public PublicizeMethodAdapter(ClassVisitor cv) {
+    PublicizeMethodAdapter(ClassVisitor cv) {
       super(ASM4, cv);
       this.cv = cv;
       tracer = new TraceClassVisitor(cv, pw);
@@ -136,7 +136,7 @@ public class CustomClassWriter {
     int access;
     boolean isFieldPresent;
 
-    public AddFieldAdapter(String fieldName, int access, ClassVisitor cv) {
+    AddFieldAdapter(String fieldName, int access, ClassVisitor cv) {
       super(ASM4, cv);
       this.cv = cv;
       this.access = access;

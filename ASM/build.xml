@@ -124,6 +124,37 @@
                  value="${main.class}" />
     </manifest>
   </target>
+  <target name="agentmanifest">
+    <tstamp />
+    <exec executable="bash"
+          outputproperty="build">
+      <arg value="-c" />
+      <arg value="git log --pretty=format:'%h' | head -1" />
+    </exec>
+    <manifest mode="update"
+              file="${agent.manifest}">
+      <attribute name="Built-By"
+                 value="${user.name}" />
+      <section name="common">
+        <attribute name="Specification-Title"
+                   value="${ant.project.name}" />
+        <attribute name="Specification-Version"
+                   value="${version}" />
+        <attribute name="Specification-Vendor"
+                   value="" />
+        <attribute name="Implementation-Title"
+                   value="" />
+        <attribute name="Implementation-Version"
+                   value="${build} ${TODAY}" />
+        <attribute name="Implementation-Vendor"
+                   value="" />
+      </section>
+      <attribute name="Premain-Class"
+                 value="${premain.class}" />
+      <attribute name="Can-Retransform-Classes"
+                 value="true" />
+    </manifest>
+  </target>
   <!--Creates the deployable jar file  -->
   <target name="jar"
           depends="loadclasspath,compile,manifest">
@@ -131,6 +162,13 @@
          basedir="${build.dir}"
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
+  </target>
+  <target name="agentjar"
+          depends="loadclasspath,compile,agentmanifest">
+    <jar destfile="${dist.dir}\${ant.project.name}-agent-${version}.jar"
+         basedir="${build.dir}"
+         includes="**/Premain.class,**/CustomClassWriter.class"
+         manifest="${agent.manifest}"></jar>
   </target>
   <target name="run"
           depends="loadclasspath">
