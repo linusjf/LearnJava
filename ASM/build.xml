@@ -151,6 +151,8 @@
       </section>
       <attribute name="Premain-Class"
                  value="${premain.class}" />
+      <attribute name="Agent-Class"
+                 value="${premain.class}" />
       <attribute name="Can-Retransform-Classes"
                  value="true" />
     </manifest>
@@ -167,7 +169,7 @@
           depends="loadclasspath,compile,agentmanifest">
     <jar destfile="${dist.dir}\${ant.project.name}-agent-${version}.jar"
          basedir="${build.dir}"
-         includes="**/Premain.class,**/CustomClassWriter.class"
+         includes="**/*.class"
          manifest="${agent.manifest}"></jar>
   </target>
   <target name="run"
@@ -224,6 +226,15 @@
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
+    </java>
+    <java classname="${main4.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+      <arg value="-javaagent:${dist.dir}\${ant.project.name}-agent-${version}.jar" />
     </java>
   </target>
   <target name="format">
@@ -371,7 +382,8 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="loadclasspath,compile, pmd, spotbugs,jar,docs">
+          depends="loadclasspath,compile, pmd, spotbugs,jar,agentjar,docs">
+          
     <description>Main target</description>
   </target>
 </project>

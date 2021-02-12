@@ -10,7 +10,7 @@ public class PureJavaCheckingClassVisitor extends ClassVisitor {
   private boolean containsNative;
 
   public PureJavaCheckingClassVisitor() {
-    super(Opcodes.ASM5);
+    super(Opcodes.ASM9);
   }
 
   @Override
@@ -21,7 +21,7 @@ public class PureJavaCheckingClassVisitor extends ClassVisitor {
                                    String[] ignoredExceptions) {
     if ((flags & ACC_NATIVE) != 0)
       containsNative = true;
-    return new EmptyMethodVisitor(Opcodes.ASM5);
+    return new EmptyMethodVisitor(Opcodes.ASM9);
   }
 
   public boolean hasNative() {

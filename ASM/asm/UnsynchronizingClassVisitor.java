@@ -9,7 +9,7 @@ import org.objectweb.asm.Opcodes;
 public class UnsynchronizingClassVisitor extends ClassVisitor {
 
   public UnsynchronizingClassVisitor(ClassVisitor cv) {
-    super(Opcodes.ASM5, cv);
+    super(Opcodes.ASM9, cv);
   }
 
   @Override

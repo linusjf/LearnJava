@@ -2,8 +2,8 @@ package asm;
 
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 import static org.objectweb.asm.Opcodes.ACC_STATIC;
-import static org.objectweb.asm.Opcodes.ASM4;
-import static org.objectweb.asm.Opcodes.V1_5;
+import static org.objectweb.asm.Opcodes.ASM9;
+import static org.objectweb.asm.Opcodes.V11;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,6 +53,8 @@ public class CustomClassWriter {
 
   public static void main(String[] args) {
     CustomClassWriter ccw = new CustomClassWriter();
+    ccw.addField();
+    ccw.addInterface();
     ccw.publicizeMethod();
   }
 
@@ -78,7 +80,7 @@ public class CustomClassWriter {
   static class AddInterfaceAdapter extends ClassVisitor {
 
     AddInterfaceAdapter(ClassVisitor cv) {
-      super(ASM4, cv);
+      super(ASM9, cv);
     }
 
     @Override
@@ -92,7 +94,7 @@ public class CustomClassWriter {
       holding[holding.length - 1] = CLONEABLE;
       System.arraycopy(interfaces, 0, holding, 0, interfaces.length);
 
-      cv.visit(V1_5, access, name, signature, superName, holding);
+      cv.visit(V11, access, name, signature, superName, holding);
     }
   }
 
@@ -103,7 +105,7 @@ public class CustomClassWriter {
     PrintWriter pw = new PrintWriter(System.out, true, StandardCharsets.UTF_8);
 
     PublicizeMethodAdapter(ClassVisitor cv) {
-      super(ASM4, cv);
+      super(ASM9, cv);
       this.cv = cv;
       tracer = new TraceClassVisitor(cv, pw);
     }
@@ -137,7 +139,7 @@ public class CustomClassWriter {
     boolean isFieldPresent;
 
     AddFieldAdapter(String fieldName, int access, ClassVisitor cv) {
-      super(ASM4, cv);
+      super(ASM9, cv);
       this.cv = cv;
       this.access = access;
       this.fieldName = fieldName;
