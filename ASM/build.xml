@@ -301,6 +301,7 @@
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${runclasspath}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
