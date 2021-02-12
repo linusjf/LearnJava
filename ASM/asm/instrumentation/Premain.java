@@ -17,15 +17,24 @@ public final class Premain {
     throw new AssertionError("Private constructor");
   }
 
+  public static void agentmain(String agentArgs, Instrumentation inst) {
+    premain(agentArgs, inst);
+  }
+
   public static void premain(String agentArgs, Instrumentation inst) {
+    System.out.println("Start agent");
     inst.addTransformer(new ClassFileTransformer() {
       @Override
       public byte[] transform(
           ClassLoader l, String name, Class<?> c, ProtectionDomain d, byte[] b)
           throws IllegalClassFormatException {
-        if ("java/lang/Integer".equals(name)) {
+        System.out.println(name);
+        if ("asm/MyClass".equals(name)) {
+          System.out.println("MyClass loaded");
           CustomClassWriter cr = new CustomClassWriter(b);
-          return cr.addField();
+          cr.addField();
+          cr.addInterface();
+          return cr.publicizeMethod();
         }
         return b;
       }

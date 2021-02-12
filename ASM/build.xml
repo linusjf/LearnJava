@@ -175,29 +175,16 @@
   <target name="run"
           depends="loadclasspath">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
-    <java classname="${main.generatedclass}">
-      <classpath>
-        <pathelement location="." />
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-        <pathelement path="${runclasspath}" />
-      </classpath>
-    </java>
-    <java classname="${main1.class}">
-      <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-        <pathelement path="${java.class.path}" />
-        <pathelement path="${runclasspath}" />
-      </classpath>
-    </java>
-    <java classname="${main1.generatedclass}">
+    <java classname="${main.generatedclass}"
+          fork="true">
       <classpath>
         <pathelement location="." />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -205,21 +192,41 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
-    <java classname="${main2.class}">
+    <java classname="${main1.class}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
-    <java classname="${main3.class}">
+    <java classname="${main1.generatedclass}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main2.class}"
+          fork="true">
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
-    <java classname="${main2.class}">
+    <java classname="${main3.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main2.class}"
+          fork="true">
       <classpath>
         <pathelement location="." />
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
@@ -234,7 +241,16 @@
         <pathelement path="${java.class.path}" />
         <pathelement path="${runclasspath}" />
       </classpath>
-      <arg value="-javaagent:${dist.dir}\${ant.project.name}-agent-${version}.jar" />
+      <jvmarg value="-javaagent:${dist.dir}/${ant.project.name}-agent-${version}.jar" />
+    </java>
+    <java classname="${main5.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
     </java>
   </target>
   <target name="format">

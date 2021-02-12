@@ -5,3 +5,4 @@ HelloWorld
 asm.CounterMain
 asm.OfflineUnsynchronizer
 asm.CounterMain
+asm.CustomClassWriter

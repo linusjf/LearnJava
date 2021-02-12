@@ -117,8 +117,8 @@ public class CustomClassWriter {
                                      String signature,
                                      String[] exceptions) {
 
-      if ("toUnsignedString0".equals(name)) {
-        logger.info("Visiting unsigned method");
+      if ("main".equals(name)) {
+        logger.info("Visiting main");
         return tracer.visitMethod(
             ACC_PUBLIC + ACC_STATIC, name, desc, signature, exceptions);
       }
