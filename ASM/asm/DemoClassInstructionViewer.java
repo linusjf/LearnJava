@@ -1,5 +1,6 @@
 package asm;
 
+import java.io.IOException;
 import java.io.InputStream;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -8,17 +9,16 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.InstructionAdapter;
 
 @SuppressWarnings("PMD.SystemPrintln")
-public final class DemoClassInstructionViewer throws IOException {
-
+public final class DemoClassInstructionViewer {
   private DemoClassInstructionViewer() {
     throw new AssertionError("Private constructor");
   }
 
-  public static void main(String... args) {
-      InputStream in = DemoClassInstructionViewer.class.getResourceAsStream(
-          "/asm/ASMHelloWorld.class");
-      ClassReader classReader = new ClassReader(in);
-      classReader.accept(new MethodPrinterVisitor(Opcodes.ASM9), 0);
+  public static void main(String... args) throws IOException {
+    InputStream in = DemoClassInstructionViewer.class.getResourceAsStream(
+        "/asm/ASMHelloWorld.class");
+    ClassReader classReader = new ClassReader(in);
+    classReader.accept(new MethodPrinterVisitor(Opcodes.ASM9), 0);
   }
 
   static class MethodPrinterVisitor extends ClassVisitor {
