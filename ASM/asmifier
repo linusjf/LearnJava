@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -cp $(cat run.cp) org.objectweb.asm.util.ASMifier java.lang.String 
