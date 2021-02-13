@@ -55,6 +55,7 @@
   <property file="${LearnJava.basedir}/jna.properties" />
   <property file="${LearnJava.basedir}/xstream.properties" />
   <property file="${LearnJava.basedir}/asm.properties" />
+  <property file="${LearnJava.basedir}/byte-buddy.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -437,6 +438,8 @@
                   conf="asm-util.main" />
     <ivy:retrieve pathid="asm-util.lib.path"
                   conf="asm-util.lib" />
+    <ivy:retrieve pathid="byte-buddy.main.path"
+                  conf="byte-buddy.main" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -537,6 +540,8 @@
           message="${toString:xstream.main.path}:${toString:xstream.lib.path}" />
     <echo file="${asm.classpath.file}"
           message="${toString:asm.main.path}:${toString:asm-util.main.path}:${toString:asm-util.lib.path}:${toString:asm-commons.main.path}:${toString:asm-commons.lib.path}"/>
+    <echo file="${byte-buddy.classpath.file}"
+          message="${toString:byte-buddy.main.path}"/>
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

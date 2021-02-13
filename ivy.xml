@@ -318,6 +318,8 @@
           description="asm-commons jars" />
     <conf name="asm-commons.lib"
           description="asm-commons library jars" />
+    <conf name="byte-buddy.main"
+          description="byte-buddy jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -765,5 +767,10 @@
     name="asm-commons" 
     rev="9.1"
     conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile"/>
+    <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+  <dependency org="net.bytebuddy" 
+    name="byte-buddy" 
+    rev="1.10.20"
+    conf="byte-buddy.main-&gt;master"/>
   </dependencies>
 </ivy-module>

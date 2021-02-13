@@ -553,5 +553,11 @@
       <version>9.1</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.10.20</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>
