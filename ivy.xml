@@ -320,6 +320,8 @@
           description="asm-commons library jars" />
     <conf name="byte-buddy.main"
           description="byte-buddy jars" />
+    <conf name="byte-buddy-agent.main"
+          description="byte-buddy-agent jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -772,5 +774,10 @@
     name="byte-buddy" 
     rev="1.10.20"
     conf="byte-buddy.main-&gt;master"/>
+    <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
+  <dependency org="net.bytebuddy" 
+    name="byte-buddy-agent" 
+    rev="1.10.20"
+    conf="byte-buddy-agent.main-&gt;master"/>
   </dependencies>
 </ivy-module>
