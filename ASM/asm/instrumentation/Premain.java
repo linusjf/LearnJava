@@ -21,6 +21,7 @@ public final class Premain {
     premain(agentArgs, inst);
   }
 
+  @SuppressWarnings("checkstyle:DescendantToken")
   public static void premain(String agentArgs, Instrumentation inst) {
     System.out.println("Start agent");
     inst.addTransformer(new ClassFileTransformer() {

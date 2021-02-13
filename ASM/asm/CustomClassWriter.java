@@ -116,9 +116,8 @@ public class CustomClassWriter {
                                      String desc,
                                      String signature,
                                      String[] exceptions) {
-
       if ("main".equals(name)) {
-        logger.info("Visiting main");
+        logger.info(() -> "Visiting " + name);
         return tracer.visitMethod(
             ACC_PUBLIC + ACC_STATIC, name, desc, signature, exceptions);
       }
