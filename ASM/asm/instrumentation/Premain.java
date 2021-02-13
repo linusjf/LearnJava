@@ -28,7 +28,6 @@ public final class Premain {
       public byte[] transform(
           ClassLoader l, String name, Class<?> c, ProtectionDomain d, byte[] b)
           throws IllegalClassFormatException {
-        System.out.println(name);
         if ("asm/MyClass".equals(name)) {
           System.out.println("MyClass loaded");
           CustomClassWriter cr = new CustomClassWriter(b);

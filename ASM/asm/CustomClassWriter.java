@@ -26,7 +26,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
 @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
 public class CustomClassWriter {
 
-  static final String CLASSNAME = "java.lang.Integer";
+  static final String CLASSNAME = "asm/MyClass";
   static final String CLONEABLE = "java/lang/Cloneable";
   ClassReader reader;
   ClassWriter writer;
