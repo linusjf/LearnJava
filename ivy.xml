@@ -448,7 +448,7 @@
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency org="junit"
                 name="junit"
-                rev="4.13.1"
+                rev="4.13.2"
                 conf="junit4.main-&gt;master;junit4.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
