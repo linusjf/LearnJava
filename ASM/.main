@@ -8,3 +8,4 @@ asm.CounterMain
 asm.CustomClassWriter
 asm.ASMHelloWorld
 asm.DemoClassInstructionViewer
+asm.ClassCreationDemoMaker

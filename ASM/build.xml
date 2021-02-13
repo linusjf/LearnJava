@@ -270,6 +270,15 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main8.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"

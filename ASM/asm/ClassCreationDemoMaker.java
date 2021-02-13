@@ -14,6 +14,7 @@ public final class ClassCreationDemoMaker {
 
   private static final String VERSION = "version";
   private static final String STRINGBUILDER = "java/lang/StringBuilder";
+  private static final String CLASS = "asm/ClassCreationDemo";
 
   private ClassCreationDemoMaker() {
     throw new AssertionError("Private constructor");
@@ -25,12 +26,8 @@ public final class ClassCreationDemoMaker {
     // ClassWriter is a class visitor that generates the code for the class
     ClassWriter cw = new ClassWriter(0);
     // Start creating the class.
-    cw.visit(V11,
-             ACC_PUBLIC + ACC_SUPER,
-             "com/geekyarticles/asm/ClassCreationDemo",
-             null,
-             "java/lang/Object",
-             null);
+    cw.visit(
+        V11, ACC_PUBLIC + ACC_SUPER, CLASS, null, "java/lang/Object", null);
     FieldVisitor fv;
     MethodVisitor mv;
     {
@@ -54,8 +51,7 @@ public final class ClassCreationDemoMaker {
       mv = cw.visitMethod(ACC_PUBLIC, "getVersion", "()I", null, null);
       mv.visitCode();
       mv.visitVarInsn(ALOAD, 0);
-      mv.visitFieldInsn(
-          GETFIELD, "com/geekyarticles/asm/ClassCreationDemo", VERSION, "I");
+      mv.visitFieldInsn(GETFIELD, CLASS, VERSION, "I");
       mv.visitInsn(IRETURN);
       mv.visitMaxs(1, 1);
       mv.visitEnd();
@@ -66,8 +62,7 @@ public final class ClassCreationDemoMaker {
       mv.visitCode();
       mv.visitVarInsn(ALOAD, 0);
       mv.visitVarInsn(ILOAD, 1);
-      mv.visitFieldInsn(
-          PUTFIELD, "com/geekyarticles/asm/ClassCreationDemo", VERSION, "I");
+      mv.visitFieldInsn(PUTFIELD, CLASS, VERSION, "I");
       mv.visitInsn(RETURN);
       mv.visitMaxs(2, 2);
       mv.visitEnd();
@@ -86,7 +81,7 @@ public final class ClassCreationDemoMaker {
                          "(Ljava/lang/String;)V",
                          false);
       mv.visitVarInsn(ALOAD, 0);
-      mv.visitFieldInsn(GETFIELD, "asm/ClassCreationDemo", VERSION, "I");
+      mv.visitFieldInsn(GETFIELD, CLASS, VERSION, "I");
       mv.visitMethodInsn(INVOKEVIRTUAL,
                          STRINGBUILDER,
                          "append",
