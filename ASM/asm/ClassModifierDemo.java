@@ -18,7 +18,7 @@ public final class ClassModifierDemo {
     throw new AssertionError("Private constructor");
   }
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String... args) throws IOException {
 
     try (InputStream in = ASMHelloWorld.class.getResourceAsStream(
              "/asm/ClassModificationDemo.class")) {
@@ -26,7 +26,7 @@ public final class ClassModifierDemo {
       ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 
       // Wrap the ClassWriter with our custom ClassVisitor
-      ModifierClassWriter mcw = new ModifierClassWriter(Opcodes.ASM4, cw);
+      ModifierClassWriter mcw = new ModifierClassWriter(Opcodes.ASM9, cw);
       classReader.accept(mcw, 0);
 
       // Write the output to a class file

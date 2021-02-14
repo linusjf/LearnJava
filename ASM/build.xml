@@ -279,6 +279,24 @@
         <pathelement path="${runclasspath}" />
       </classpath>
     </java>
+    <java classname="${main9.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
+    <java classname="${main10.class}"
+          fork="true">
+      <classpath>
+        <pathelement location="." />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"

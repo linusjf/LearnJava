@@ -1,2 +1,14 @@
 #!/usr/bin/env bash
-java -cp $(cat run.cp) org.objectweb.asm.util.ASMifier java.lang.String 
+usage()
+{
+  echo "Usage: $0 classname"
+  echo "classname - FQCN"
+  exit 1
+}
+cn="$1"
+
+if [ "$#" -ne 1 ]; 
+then
+  usage
+fi
+java -cp $(cat run.cp) org.objectweb.asm.util.ASMifier "$cn" 
