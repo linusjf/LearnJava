@@ -493,7 +493,7 @@
     <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
     <dependency org="com.beust"
                 name="jcommander"
-                rev="1.78"
+                rev="1.81"
                 conf="jcommander.main-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
     <dependency org="org.jdom"
