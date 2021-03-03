@@ -10,6 +10,7 @@ public final class FloatingPoint {
   public static void main(String... args) {
     loopAddFloat();
     loopAddDouble();
+    nutty();
   }
 
   private static void loopAddFloat() {
@@ -42,5 +43,12 @@ public final class FloatingPoint {
       System.out.println("Close enough for government work.");
     else
       System.out.println("Not even close.");
+  }
+
+  private static void nutty() {
+    double x = 1.25e8;
+    double y = x + 7.5e-10;
+    if (x == y)
+      System.out.println("Am I nuts or what?");
   }
 }
