@@ -99,14 +99,15 @@ public final class FloatingPoint {
 
   private static void computeSums() {
     Random random = new Random();
-    double[] nums = new double[100];
-    for (int i = 0; i < 100; i++)
+    double[] nums = new double[10_000];
+    for (int i = 0; i < 10_000; i++)
       nums[i] = random.nextGaussian();
     double sum = 0.0;
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 10_000; i++)
       sum += nums[i];
     System.out.println("Forward sum = " + sum);
-    for (int i = 100; i > 0; i--)
+    sum = 0.0;
+    for (int i = 10_000; i > 0; i--)
       sum += nums[i - 1];
     System.out.println("Backward sum = " + sum);
   }

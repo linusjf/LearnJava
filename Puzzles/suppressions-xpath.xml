@@ -476,19 +476,19 @@
 <suppress-xpath
        files="FloatingPoint.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/VARIABLE_DEF[./IDENT[@text='nums']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='100']"/>
+       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/VARIABLE_DEF[./IDENT[@text='nums']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/NUM_INT[@text='10_000']"/>
 <suppress-xpath
        files="FloatingPoint.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
 <suppress-xpath
        files="FloatingPoint.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='100']"/>
+       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
 <suppress-xpath
        files="FloatingPoint.java"
        checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='100']"/>
+       query="/CLASS_DEF[./IDENT[@text='FloatingPoint']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='computeSums']]/SLIST/LITERAL_FOR/FOR_INIT/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='10_000']"/>
 <suppress-xpath
        files="Foo.java"
        checks="OuterTypeNumberCheck"
