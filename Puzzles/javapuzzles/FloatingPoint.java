@@ -11,6 +11,7 @@ public final class FloatingPoint {
     loopAddFloat();
     loopAddDouble();
     nutty();
+    finite();
   }
 
   private static void loopAddFloat() {
@@ -50,5 +51,19 @@ public final class FloatingPoint {
     double y = x + 7.5e-10;
     if (x == y)
       System.out.println("Am I nuts or what?");
+  }
+
+  private static void finite() {
+    double a;
+    int i;
+
+    a = 0.2;
+    a += 0.1;
+    a -= 0.3;
+
+    for (i = 0; a < 1.0; i++)
+      a += a;
+
+    System.out.printf("i=%d, a=%f\n", i, a);
   }
 }
