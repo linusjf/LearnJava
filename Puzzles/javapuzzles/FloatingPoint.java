@@ -2,6 +2,8 @@ package javapuzzles;
 
 import static java.lang.Math.abs;
 
+import java.util.Random;
+
 public final class FloatingPoint {
   private FloatingPoint() {
     throw new IllegalStateException("Private constructor.");
@@ -14,6 +16,7 @@ public final class FloatingPoint {
     finite();
     countInverses();
     countInversesD();
+    computeSums();
   }
 
   private static void loopAddFloat() {
@@ -92,5 +95,19 @@ public final class FloatingPoint {
         count += 1;
     }
     System.out.println("Found " + count);
+  }
+
+  private static void computeSums() {
+    Random random = new Random();
+    double[] nums = new double[100];
+    for (int i = 0; i < 100; i++)
+      nums[i] = random.nextGaussian();
+    double sum = 0.0;
+    for (int i = 0; i < 100; i++)
+      sum += nums[i];
+    System.out.println("Forward sum = " + sum);
+    for (int i = 100; i > 0; i--)
+      sum += nums[i - 1];
+    System.out.println("Backward sum = " + sum);
   }
 }
