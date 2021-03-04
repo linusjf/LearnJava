@@ -12,6 +12,8 @@ public final class FloatingPoint {
     loopAddDouble();
     nutty();
     finite();
+    countInverses();
+    countInversesD();
   }
 
   private static void loopAddFloat() {
@@ -65,5 +67,30 @@ public final class FloatingPoint {
       a += a;
 
     System.out.printf("i=%d, a=%f\n", i, a);
+  }
+
+  private static void countInverses() {
+
+    float y, z;
+    int count = 0;
+    for (float x = 0.0f; x < 1000.0f; x++) {
+      y = 1.0f / x;
+      z = y * x;
+      if (z != 1.0f)
+        count++;
+    }
+    System.out.println("Found " + count);
+  }
+
+  private static void countInversesD() {
+    double y, z;
+    int count = 0;
+    for (double x = 0.0; x < 1000.0; x++) {
+      y = 1.0 / x;
+      z = y * x;
+      if (z != 1.0)
+        count += 1;
+    }
+    System.out.println("Found " + count);
   }
 }
