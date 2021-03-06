@@ -4,6 +4,7 @@ import static java.lang.Math.abs;
 
 import java.util.Random;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public final class FloatingPoint {
   private FloatingPoint() {
     throw new IllegalStateException("Private constructor.");
@@ -19,6 +20,7 @@ public final class FloatingPoint {
     computeSums();
   }
 
+@SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   private static void loopAddFloat() {
     float x = 0.1f;
     float y = 0;
@@ -29,12 +31,13 @@ public final class FloatingPoint {
     else
       System.out.println("Not here.");
     System.out.println(1.0 - y);
-    if (abs(1.0 - y) < 0.000001)
+    if (abs(1.0 - y) < 0.000_001)
       System.out.println("Close enough for government work.");
     else
       System.out.println("Not even close.");
   }
 
+@SuppressWarnings("PMD.AvoidLiteralsInIfCondition")
   private static void loopAddDouble() {
     double x = 0.1f;
     double y = 0;
@@ -45,7 +48,7 @@ public final class FloatingPoint {
     else
       System.out.println("Not here.");
     System.out.println(1.0 - y);
-    if (abs(1.0 - y) < 0.000001)
+    if (abs(1.0 - y) < 0.000_001)
       System.out.println("Close enough for government work.");
     else
       System.out.println("Not even close.");
@@ -58,6 +61,7 @@ public final class FloatingPoint {
       System.out.println("Am I nuts or what?");
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static void finite() {
     double a;
     int i;
@@ -72,9 +76,12 @@ public final class FloatingPoint {
     System.out.printf("i=%d, a=%f\n", i, a);
   }
 
+@SuppressWarnings({"PMD.UnusedAssignment",
+"PMD.DontUseFloatTypeForLoopIndices"})
   private static void countInverses() {
 
-    float y, z;
+    float y;
+    float z;
     int count = 0;
     for (float x = 0.0f; x < 1000.0f; x++) {
       y = 1.0f / x;
@@ -85,6 +92,7 @@ public final class FloatingPoint {
     System.out.println("Found " + count);
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static void countInversesD() {
     double y, z;
     int count = 0;

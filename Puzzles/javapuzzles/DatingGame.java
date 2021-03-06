@@ -20,7 +20,7 @@ public enum DatingGame {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static void altMain(String... args) {
+  public static void altMain(String... unused) {
     Calendar cal = Calendar.getInstance();
     cal.set(1999, Calendar.DECEMBER, 31);
     System.out.print(cal.get(Calendar.YEAR) + " ");

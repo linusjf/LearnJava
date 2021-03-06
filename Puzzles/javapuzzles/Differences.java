@@ -19,7 +19,7 @@ public enum Differences {
   }
 
   @SuppressWarnings("PMD.LawOfDemeter")
-  public static void altMain(String... args) {
+  public static void altMain(String... unused) {
     int[] vals = {789, 678, 567, 456, 345, 234, 123, 12};
     Set<Integer> diffs = new HashSet<>();
     for (int i = 0; i < vals.length; i++)

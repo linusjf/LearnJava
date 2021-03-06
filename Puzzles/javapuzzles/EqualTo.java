@@ -2,9 +2,11 @@ package javapuzzles;
 
 import java.math.BigDecimal;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum EqualTo {
   ;
 
+@SuppressWarnings("PMD.SystemPrintln")
   public static void main(String... args) {
     floatingPoint();
 
@@ -18,6 +20,7 @@ public enum EqualTo {
     System.out.println("0.1 + 0.2 == 0.3 ? " + isEqual);
   }
 
+@SuppressWarnings("PMD.AvoidDecimalLiteralsInBigDecimalConstructor")
   private static void bigDecimalDouble() {
     BigDecimal first = new BigDecimal(0.1d);
     BigDecimal second = new BigDecimal(0.2d);

@@ -1,7 +1,7 @@
 package javapuzzles;
 
 // https://twitter.com/heinzkabutz/status/1175283793592233985
-@SuppressWarnings("PMD.ShortClassName")
+@SuppressWarnings({"PMD.ShortClassName","PMD.SystemPrintln"})
 public class Foo {
   private final int i;
 
@@ -47,7 +47,7 @@ class Bar extends Foo {
   }
 
   @Override
-  public void method(String... args) {
+  public void method(String... unused) {
     // empty method
   }
 }

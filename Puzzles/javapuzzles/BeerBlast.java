@@ -12,7 +12,7 @@ public enum BeerBlast {
   static final String COMMAND = "java javapuzzles.BeerBlast slave";
 
   public static void main(String[] args) {
-    if (args.length == 1 && "slave".equals(args[0])) {
+    if (args.length > 0 && "slave".equals(args[0])) {
       for (int i = 99; i > 0; i--) {
         System.out.println(i + " bottles of beer on the wall");
         System.out.println(i + " bottles of beer");
