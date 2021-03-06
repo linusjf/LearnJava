@@ -6,14 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-@SuppressWarnings("PMD.SystemPrintln")
+@SuppressWarnings({"PMD.SystemPrintln","PMD.LawOfDemeter"})
 public enum BeerBlast {
   ;
   static final String COMMAND = "java javapuzzles.BeerBlast slave";
 
-  @SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String[] args) {
-    if (args.length == 1 && args[0].equals("slave")) {
+    if (args.length == 1 && "slave".equals(args[0])) {
       for (int i = 99; i > 0; i--) {
         System.out.println(i + " bottles of beer on the wall");
         System.out.println(i + " bottles of beer");
@@ -44,9 +43,11 @@ public enum BeerBlast {
       BufferedReader bri = new BufferedReader(
           new InputStreamReader(is, StandardCharsets.UTF_8.name()));
       StringBuilder result = new StringBuilder();
-      String line;
-      while ((line = bri.readLine()) != null)
+      String line = bri.readLine();
+      while (line != null) {
         result.append(line).append(System.lineSeparator());
+        line = bri.readLine();
+      }
       System.out.println(result.toString());
     } catch (IOException e) {
       // return on IOException

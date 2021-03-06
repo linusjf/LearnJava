@@ -8,7 +8,7 @@ public enum Differences {
   ;
 
   @SuppressWarnings({"PMD.AvoidUsingOctalValues", "PMD.LawOfDemeter"})
-  public static void main(String[] args) {
+  public static void main(String[] unused) {
     int[] vals = {789, 678, 567, 456, 345, 234, 123, 012};
     Set<Integer> diffs = new HashSet<>();
     for (int i = 0; i < vals.length; i++)

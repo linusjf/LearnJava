@@ -1,6 +1,6 @@
 package click;
 
-@SuppressWarnings("SystemPrintln")
+@SuppressWarnings("PMD.SystemPrintln")
 public class CodeTalk {
   public void doIt() {
     printMessage();

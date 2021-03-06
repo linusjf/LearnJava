@@ -28,6 +28,7 @@ public enum AddNum {
     return sum;
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static int computeSumPlus30() {
     int sum = 0;
     int mod = 1;
@@ -35,6 +36,7 @@ public enum AddNum {
     return sum;
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static int computeSumSub() {
     int sum = 0;
     int mod = 1;
@@ -42,6 +44,7 @@ public enum AddNum {
     return sum;
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static int computeSum() {
     int sum = 0;
     int mod = 1;
@@ -49,6 +52,7 @@ public enum AddNum {
     return sum;
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static int computeSumAgain() {
     int sum = 0;
     int mod = 1;
@@ -56,6 +60,7 @@ public enum AddNum {
     return sum;
   }
 
+@SuppressWarnings("PMD.UnusedAssignment")
   private static int computeSummer() {
     int sum = 0;
     int mod = 1;

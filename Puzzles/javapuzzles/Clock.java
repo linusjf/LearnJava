@@ -1,12 +1,12 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Clock {
   ;
   private static final int MS_PER_HOUR = 60 * 60 * 1000;
   private static final int MS_PER_MINUTE = 60 * 1000;
 
-  @SuppressWarnings("PMD.SystemPrintln")
-  public static void main(String[] args) {
+  public static void main(String[] unused) {
     int minutes = 0;
     for (int ms = 0; ms < 60 * 60 * 1000; ms++)
       if (ms % (60 * 1000) == 0)
@@ -15,8 +15,7 @@ public enum Clock {
     altMain(args);
   }
 
-  @SuppressWarnings("PMD.SystemPrintln")
-  public static void altMain(String... args) {
+  public static void altMain(String... unused) {
     int minutes = 0;
     for (int ms = 0; ms < MS_PER_HOUR; ms++)
       if (ms % MS_PER_MINUTE == 0)

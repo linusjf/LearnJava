@@ -1,9 +1,10 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public enum Creator {
   ;
 
-  @SuppressWarnings("PMD.SystemPrintln")
+@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
   public static void main(String[] args) {
     for (int i = 0; i < 100; i++)
       new Creature();

@@ -1,5 +1,6 @@
 package javapuzzles;
 
+@SuppressWarnings("PMD.SystemPrintln")
 enum EnumPrivate {
   INSTANCE;
 
@@ -11,6 +12,7 @@ enum EnumPrivate {
     System.out.println("Hello!");
   }
 
+@SuppressWarnings("PMD.LawOfDemeter")
   public static void main(String... args) {
     try {
       System.out.println("Invoking hello enum");

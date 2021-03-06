@@ -1,5 +1,6 @@
 package javapuzzlers;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public enum DoublePuzzle {
   ;
 
