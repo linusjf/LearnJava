@@ -508,12 +508,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-core"
-                rev="3.19.0"
+                rev="3.20.0"
                 conf="javaparser-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-symbol-solver-core"
-                rev="3.19.0"
+                rev="3.20.0"
                 conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
