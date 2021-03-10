@@ -394,7 +394,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-core"
-                rev="10.0.2"
+                rev="10.0.4"
                 conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
     <dependency org="org.apache.tomcat.embed"
@@ -403,12 +403,12 @@
                 conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile" />
     <dependency org="org.apache.tomcat"
                 name="tomcat-dbcp"
-                rev="10.0.2"
+                rev="10.0.4"
                 conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-jasper"
-                rev="10.0.2"
+                rev="10.0.4"
                 conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
     <dependency org="org.eclipse.jdt.core.compiler"
@@ -423,12 +423,12 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
     <dependency org="org.apache.tomcat"
                 name="tomcat-servlet-api"
-                rev="10.0.2"
+                rev="10.0.4"
                 conf="tomcat-servlet-api.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
     <dependency org="org.apache.tomcat"
                 name="tomcat-jsp-api"
-                rev="10.0.2"
+                rev="10.0.4"
                 conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
     <dependency org="org.junit.jupiter"
