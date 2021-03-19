@@ -592,7 +592,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
                 name="pitest-junit5-plugin"
-                rev="0.12"
+                rev="0.13"
                 conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
@@ -687,7 +687,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency org="com.google.guava"
                 name="guava"
-                rev="30.1-jre"
+                rev="30.1.1-jre"
                 conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
     <dependency org="org.hamcrest"

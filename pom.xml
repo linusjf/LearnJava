@@ -340,7 +340,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-junit5-plugin</artifactId>
-      <version>0.12</version>
+      <version>0.13</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -454,7 +454,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>30.1-jre</version>
+      <version>30.1.1-jre</version>
       <optional>true</optional>
     </dependency>
     <dependency>
