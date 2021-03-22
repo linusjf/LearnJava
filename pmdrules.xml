@@ -254,6 +254,7 @@
   <rule ref="category/java/design.xml/TooManyMethods">
     <properties>
       <property name="maxmethods" value="30"/>
+      <property name="violationSuppressXPath" value="./ancestor::ClassOrInterfaceDeclaration[matches(@Image, '^.*Test$')]"/>
     </properties>
   </rule>
   <rule ref="category/java/design.xml/UselessOverridingMethod"/>
