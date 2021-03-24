@@ -697,7 +697,7 @@
     <!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->
     <dependency org="org.owasp.esapi"
                 name="esapi"
-                rev="2.2.2.0"
+                rev="2.2.3.0"
                 conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency org="org.projectlombok"
