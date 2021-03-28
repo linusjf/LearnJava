@@ -436,7 +436,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>7.3.0</version>
+      <version>7.4.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -526,7 +526,7 @@
     <dependency>
       <groupId>net.java.dev.jna</groupId>
       <artifactId>jna</artifactId>
-      <version>5.7.0</version>
+      <version>5.8.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>

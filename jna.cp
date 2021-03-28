@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jna-5.7.0.jar
+/data/data/com.termux/files/home/LearnJava/lib/jna-5.8.0.jar
