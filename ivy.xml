@@ -332,7 +332,7 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-                rev="8.41"
+                rev="8.41.1"
                 transitive="true"
                 conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
