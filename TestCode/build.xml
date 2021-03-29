@@ -4,10 +4,11 @@
          basedir=".">
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
-  <property file="../gformat.properties" />
   <property file="../checkstyle.properties" />
+  <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property file="../antcontrib.properties" />
   <property name="src.dir"
             location="." />
   <property name="build.dir"
@@ -27,6 +28,10 @@
            classpath="${pmd.cp}" />
   <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
            classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <loadfile property="antcontrib.cp"
+            srcFile="../${antcontrib.classpath.file}" />
+  <taskdef resource="net/sf/antcontrib/antlib.xml"
+           classpath="${antcontrib.cp}"></taskdef>
   <target name="manifest">
     <tstamp />
     <manifest mode="update"
@@ -72,10 +77,15 @@
     </checkstyle>
   </target>
   <target name="checkstyleg">
+    <move file="suppressions-xpath.xml"
+          tofile="suppressions-xpath.xml.bak"
+          preservelastmodified="true"
+          force="true"
+          failonerror="false"
+          verbose="true" />
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
-      <exclude name="**/TestMagicNumber.java" />
     </fileset>
     <pathconvert property="sources"
                  refid="javasrcs"
@@ -90,6 +100,30 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <condition property="file.is.empty"
+               else="false">
+      <length file="${ant.project.name}-xpath.xml"
+              when="equal"
+              length="0" />
+    </condition>
+    <if>
+      <equals arg1="${file.is.empty}"
+              arg2="false" />
+      <then>
+        <move file="${ant.project.name}-xpath.xml"
+              tofile="suppressions-xpath.xml"
+              preservelastmodified="true"
+              force="true"
+              failonerror="true"
+              verbose="true" />
+      </then>
+      <else>
+        <echo message="No suppressions generated." />
+        <delete file="${ant.project.name}-xpath.xml"
+                verbose="true"
+                failonerror="false" />
+      </else>
+    </if>
   </target>
   <target name="pmd">
     <property name="pmd.errCount"

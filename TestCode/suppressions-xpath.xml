@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="TestEmptyLineSeparator.java"
+       checks="MultipleVariableDeclarationsCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p01']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p02']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p03']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p04']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p05']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p06']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p07']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p08']]"/>
+<suppress-xpath
+       files="TestEmptyLineSeparator.java"
+       checks="MultipleVariableDeclarationsCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p11']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p12']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p13']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p14']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p15']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p16']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p17']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='p18']]"/>
+<suppress-xpath
+       files="TestEmptyLineSeparator.java"
+       checks="MultipleVariableDeclarationsCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q01']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q02']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q03']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q04']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q05']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q06']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q07']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q08']]"/>
+<suppress-xpath
+       files="TestEmptyLineSeparator.java"
+       checks="MultipleVariableDeclarationsCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q11']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q12']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q13']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q14']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q15']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q16']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q17']] | 
+/CLASS_DEF[./IDENT[@text='TestEmptyLineSeparator']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='q18']]"/>
+<suppress-xpath
+       files="TestExtra.java"
+       id="RightCurlyAlone"
+       query="/CLASS_DEF[./IDENT[@text='TestExtra']]/OBJBLOCK/RCURLY"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/VARIABLE_DEF[./IDENT[@text='rotation']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="TestMagicNumber.java"
+       checks="MagicNumberCheck"
+       query="/INTERFACE_DEF[./IDENT[@text='TestMagicNumber']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getAsciiRotator']]/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN[./IDENT[@text='i']]/INDEX_OP[./IDENT[@text='rotation']]/EXPR/MINUS[./CHAR_LITERAL[@text='&apos;&apos; &apos;&apos;']]/PLUS[./IDENT[@text='i']]/NUM_INT[@text='95']"/>
+<suppress-xpath
+       files="ArrayCopy.java"
+       checks="NoArrayTrailingCommaCheck"
+       query="/ENUM_DEF[./IDENT[@text='ArrayCopy']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='words']]/ASSIGN/ARRAY_INIT/COMMA[10]"/>
+<suppress-xpath
+       files="Capture.java"
+       checks="NoWhitespaceBeforeCheck"
+       query="/ENUM_DEF[./IDENT[@text='Capture']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createObjectArray']]/SLIST/LITERAL_RETURN/EXPR/METHOD_REF[./IDENT[@text='clone']]"/>
+<suppress-xpath
+       files="TestConcurrentHashMap.java"
+       checks="TrailingCommentCheck"
+       query="/ENUM_DEF[./IDENT[@text='TestConcurrentHashMap']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMap']]/SLIST/SINGLE_LINE_COMMENT"/>
+<suppress-xpath
+       files="TestDu.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestDu']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="TestDu.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestDu']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='runAgain']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="TestDu.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestDu']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='runOnceMore']]/SLIST/EXPR/ASSIGN[./IDENT[@text='list']]/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='mapToObj']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='10_000']"/>
+<suppress-xpath
+       files="TestFinal.java"
+       checks="HideUtilityClassConstructorCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFinal']]"/>
+<suppress-xpath
+       files="TestFinal.java"
+       checks="StaticVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFinal']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='TEST']"/>
+<suppress-xpath
+       files="TestFinal.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestFinal']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='TEST']"/>
+<suppress-xpath
+       files="TestString.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestString']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createEvent']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='a']"/>
+<suppress-xpath
+       files="TestString.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='TestString']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='createEvent']]/PARAMETERS/PARAMETER_DEF/IDENT[@text='c']"/>
+<suppress-xpath
+       files="ThrowSwitch.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='3']"/>
+<suppress-xpath
+       files="ThrowSwitch.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='4']"/>
+<suppress-xpath
+       files="ThrowSwitch.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="ThrowSwitch.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ThrowSwitch']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getSimulatedErrorCode']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='6']"/>
+<suppress-xpath
+       files="UnusedLocalVariable.java"
+       checks="HiddenFieldCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnusedLocalVariable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSomething']]/SLIST/VARIABLE_DEF/IDENT[@text='i']"/>
+<suppress-xpath
+       files="UnusedLocalVariable.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='UnusedLocalVariable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='doSomething']]/SLIST/VARIABLE_DEF[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='5']"/>
+<suppress-xpath
+       files="Twisted.java"
+       checks="DescendantTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='Twisted']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='reproduce']]/SLIST/EXPR/METHOD_CALL"/>
+<suppress-xpath
+       files="Twisted.java"
+       checks="DescendantTokenCheck"
+       query="/CLASS_DEF[./IDENT[@text='Twisted']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='reiterate']]/SLIST/EXPR/METHOD_CALL"/>
+</suppressions>
