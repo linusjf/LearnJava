@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/checker-3.11.0.jar
+/data/data/com.termux/files/home/LearnJava/lib/checker-3.12.0.jar
