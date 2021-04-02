@@ -369,7 +369,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
                 name="sevntu-checks"
-                rev="1.38.0"
+                rev="1.39.0"
                 conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
     <dependency org="org.jacorb"
