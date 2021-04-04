@@ -151,6 +151,44 @@
       </classpath>
     </java>
   </target>
+  <target name="runinline">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <jvmarg line="-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class2}"
+          fork="true">
+      <jvmarg line="-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="runinlinesize">
+    <description>Run target</description>
+    <java classname="${main.class1}"
+          fork="true">
+      <jvmarg line="-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining -XX:MaxInlineSize=30 -XX:FreqInlineSize=30" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class2}"
+          fork="true">
+      <jvmarg line="-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining -XX:MaxInlineSize=30 -XX:FreqInlineSize=30" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
