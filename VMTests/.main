@@ -3,3 +3,4 @@ test.HardWorker
 test.SoftWorker
 test.TestJIT
 test.TestJITAgain
+test.TestJITList
