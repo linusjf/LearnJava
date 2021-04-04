@@ -1,3 +1,5 @@
 test.CountUpperCase
 test.HardWorker
 test.SoftWorker
+test.TestJIT
+test.TestJITAgain

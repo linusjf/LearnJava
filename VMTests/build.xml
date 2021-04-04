@@ -189,6 +189,25 @@
       </classpath>
     </java>
   </target>
+  <target name="runjit">
+    <description>Run target</description>
+    <java classname="${main.class3}"
+          fork="true">
+      <jvmarg line="-XX:CompileCommand=print,test/TestJIT.benchVMethod" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java classname="${main.class4}"
+          fork="true">
+      <jvmarg line="-XX:CompileCommand=print,test/TestJITAgain.benchVMethod" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
