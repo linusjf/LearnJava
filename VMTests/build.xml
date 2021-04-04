@@ -111,6 +111,7 @@
     <description>Run target</description>
     <java classname="${main.class}"
           fork="true">
+      <jvmarg line="-XX:+PrintCompilation" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -121,7 +122,18 @@
     <description>Run target</description>
     <java classname="${main.class}"
           fork="true">
-      <jvmarg line="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler" />
+      <jvmarg line="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler -XX:+PrintCompilation" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="runtiered">
+    <description>Run target</description>
+    <java classname="${main.class}"
+          fork="true">
+      <jvmarg line="-XX:+TieredCompilation -XX:+PrintCompilation" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
