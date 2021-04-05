@@ -51,6 +51,90 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="Branching.java"
                   checks="MagicNumberCheck"
                   query="/CLASS_DEF[./IDENT[@text='Branching']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='46']" />
+  <suppress-xpath files="InliningBasedOnCalleeSize.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='InliningBasedOnCalleeSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleUserInteraction']]/SLIST/VARIABLE_DEF[./IDENT[@text='value']]/ASSIGN/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="InliningBasedOnCalleeSize.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='InliningBasedOnCalleeSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleUserInteraction']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='step']]/NUM_INT[@text='50_000']" />
+  <suppress-xpath files="InliningBasedOnCalleeSize.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='InliningBasedOnCalleeSize']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='handleEdgeCase']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]/SLIST/EXPR/ASSIGN/PLUS/METHOD_CALL[./IDENT[@text='handleRequest']]/ELIST/EXPR/NUM_INT[@text='1312']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]/SLIST/EXPR/ASSIGN/PLUS/METHOD_CALL[./IDENT[@text='handleRequest']]/ELIST/EXPR/NUM_INT[@text='2435']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculator']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculator']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='3']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEven']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEven']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEven']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='c']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEvenThree']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEvenFour']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorEvenFour']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorMono']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorMono']]/SLIST/VARIABLE_DEF[./IDENT[@text='c']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='5']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorMono']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='c']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="ReturnCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorMonoRare']]" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='getCalculatorMonoRare']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='c']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='25']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='35']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/ASSIGN[./IDENT[@text='state']]/NUM_INT[@text='3']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='160']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/SLIST/EXPR/ASSIGN[./IDENT[@text='state']]/NUM_INT[@text='4']" />
+  <suppress-xpath files="NMorphicInlining.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='NMorphicInlining']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='TestState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='180']" />
+  <suppress-xpath files="Nullness.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Nullness']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='valueSink']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="Nullness.java"
+                  checks="IllegalTokenCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Nullness']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyState']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='state']]/MODIFIERS/LITERAL_VOLATILE" />
+  <suppress-xpath files="Nullness.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Nullness']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='25']" />
+  <suppress-xpath files="Nullness.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='Nullness']]/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyState']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='setup']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='30']" />
   <suppress-xpath files="PerInvokeSetup.java"
                   checks="AvoidStarImportCheck"
                   query="/IMPORT/DOT" />

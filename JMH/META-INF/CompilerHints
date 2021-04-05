@@ -97,6 +97,7 @@ inline,jmh/InfraParams.measureFollowThreads
 inline,jmh/InfraParams.setup
 inline,jmh/Inheritance$AbstractBenchmark.bench
 inline,jmh/Inheritance$AbstractBenchmark.setup
+inline,jmh/InliningBasedOnCalleeSize.testMethod
 inline,jmh/Interrupts.put
 inline,jmh/Interrupts.setup
 inline,jmh/Interrupts.take
@@ -111,6 +112,10 @@ inline,jmh/Loops.measureWrong100
 inline,jmh/Loops.measureWrong1000
 inline,jmh/Loops.measureWrong10000
 inline,jmh/Loops.measureWrong100000
+inline,jmh/NMorphicInlining$TestState.setup
+inline,jmh/NMorphicInlining.testMethod
+inline,jmh/Nullness$MyState.setup
+inline,jmh/Nullness.testMethod
 inline,jmh/Params.bench
 inline,jmh/PerInvokeSetup$Data.setup
 inline,jmh/PerInvokeSetup$DataCopy.setup2

@@ -23,10 +23,13 @@ JMH S 16 jmh.FixtureLevel S 51 jmh.jmh_generated.FixtureLevel_measureWrong_jmhTe
 JMH S 14 jmh.HelloWorld S 51 jmh.jmh_generated.HelloWorld_wellHelloThere_jmhTest S 14 wellHelloThere S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
 JMH S 15 jmh.InfraParams S 52 jmh.jmh_generated.InfraParams_measureDefault_jmhTest S 14 measureDefault S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
 JMH S 15 jmh.InfraParams S 58 jmh.jmh_generated.InfraParams_measureFollowThreads_jmhTest S 20 measureFollowThreads S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 29 jmh.InliningBasedOnCalleeSize S 62 jmh.jmh_generated.InliningBasedOnCalleeSize_testMethod_jmhTest S 10 testMethod S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
 JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_atolong_jmhTest S 7 atolong S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
 JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_atolong20_jmhTest S 9 atolong20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
 JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_loadder_jmhTest S 7 loadder S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
 JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_loadder20_jmhTest S 9 loadder20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 20 jmh.NMorphicInlining S 53 jmh.jmh_generated.NMorphicInlining_testMethod_jmhTest S 10 testMethod S 10 Throughput E A 1 1 1 E E E E I 5 20000 T 3 1 s E E E E E E E E E E E 
+JMH S 12 jmh.Nullness S 45 jmh.jmh_generated.Nullness_testMethod_jmhTest S 10 testMethod S 10 Throughput E A 1 1 1 E E E E I 3 100 T 3 1 s E E E E E E E E E E E 
 JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureRight_jmhTest S 12 measureRight S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
 JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureWrong_jmhTest S 12 measureWrong S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
 JMH S 10 jmh.States S 46 jmh.jmh_generated.States_measureShared_jmhTest S 13 measureShared S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
