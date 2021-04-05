@@ -29,6 +29,7 @@ public class InliningBasedOnCalleeSize {
   @Benchmark
   public void testMethod(MyState s) {
     s.valueSink = s.valueSink + doSomeCalculation(1, 1);
+    handleUserInteraction(s.valueSink);
   }
 
   int handleUserInteraction(int startValue) {

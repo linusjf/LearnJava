@@ -26,7 +26,7 @@ import org.openjdk.jmh.annotations.State;
 public class NMorphicInlining {
   static final Random RANDOM = new Random();
 
-  @Measurement(iterations = 20_000, time = 1, timeUnit = TimeUnit.SECONDS)
+  @Measurement(iterations = 200, time = 1, timeUnit = TimeUnit.SECONDS)
   @Benchmark
   public void testMethod(TestState s) throws Exception {
     Calculator c = getCalculator(s);

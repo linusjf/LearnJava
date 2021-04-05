@@ -25,7 +25,7 @@ import org.openjdk.jmh.annotations.State;
 @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
 public class Branching {
 
-  @Measurement(iterations = 100)
+  @Measurement(iterations = 100, time = 1, timeUnit = TimeUnit.SECONDS)
   @Benchmark
   public void testMethod(MyState s) throws Exception {
     int i = getRandomNumber(s.random, s.chanceOfNegativeNumber);
