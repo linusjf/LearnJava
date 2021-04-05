@@ -44,22 +44,6 @@ public class Nullness {
       return null;
   }
 
-  //  private String getNull(MyState s) {
-  //    int i = s.random.nextInt(2);
-  //    if (i == 0)
-  //      return "yep";
-  //    else
-  //      return null;
-  //  }
-  //
-  //  private String getNonNull(MyState s) {
-  //    int i = s.random.nextInt(2);
-  //    if (i == 0)
-  //      return "yep";
-  //    else
-  //      return "nope";
-  //  }
-
   public String safeUpper(String s) {
     return s.toLowerCase(Locale.getDefault())
         + s.toUpperCase(Locale.getDefault());
