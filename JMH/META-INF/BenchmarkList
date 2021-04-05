@@ -1,128 +1,129 @@
-JMH S 16 jmh.ConstantFold S 47 jmh.jmh_generated.ConstantFold_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.SwitchString S 51 jmh.jmh_generated.SwitchString_ifElseRandom_jmhTest S 12 ifElseRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0512_jmhTest S 11 consume0512 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 19 jmh.SecurityManager S 55 jmh.jmh_generated.SecurityManager_testWithoutSM_jmhTest S 13 testWithoutSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 22 jmh.AuxCountersExample S 52 jmh.jmh_generated.AuxCountersExample_runSETI_jmhTest S 7 runSETI S 10 Throughput E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 7 SECONDS E E 
-JMH S 12 jmh.RunToRun S 43 jmh.jmh_generated.RunToRun_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 12 MILLISECONDS E E 
-JMH S 18 jmh.BenchmarkModes S 55 jmh.jmh_generated.BenchmarkModes_measureAvgTime_jmhTest S 14 measureAvgTime S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 20 jmh.BranchPrediction S 65 jmh.jmh_generated.BranchPrediction_withoutBranchingSorted_jmhTest S 22 withoutBranchingSorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 20 jmh.BranchPrediction S 54 jmh.jmh_generated.BranchPrediction_withSorting_jmhTest S 11 withSorting S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 11 jmh.Forking S 44 jmh.jmh_generated.Forking_measure1c1_jmhTest S 10 measure1c1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.FixtureLevel S 51 jmh.jmh_generated.FixtureLevel_measureWrong_jmhTest S 12 measureWrong S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 13 jmh.Tokenizer S 59 jmh.jmh_generated.Tokenizer_measureStringSplitRegex_jmhTest S 23 measureStringSplitRegex S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 20 jmh.BranchPrediction S 57 jmh.jmh_generated.BranchPrediction_withoutSorting_jmhTest S 14 withoutSorting S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0064_jmhTest S 11 consume0064 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0008_jmhTest S 11 consume0008 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_loadder_jmhTest S 7 loadder S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 12 jmh.DeadCode S 43 jmh.jmh_generated.DeadCode_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_atolong_jmhTest S 7 atolong S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 22 jmh.AuxCountersExample S 56 jmh.jmh_generated.AuxCountersExample_splitBranch_jmhTest S 11 splitBranch S 10 Throughput E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 7 SECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0004_jmhTest S 11 consume0004 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 9 jmh.Loops S 49 jmh.jmh_generated.Loops_measureWrong10000_jmhTest S 17 measureWrong10000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 5 10000 E 
-JMH S 10 jmh.States S 46 jmh.jmh_generated.States_measureShared_jmhTest S 13 measureShared S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 26 jmh.SecurityManagerExample S 62 jmh.jmh_generated.SecurityManagerExample_testWithoutSM_jmhTest S 13 testWithoutSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureWrong2_jmhTest S 13 measureWrong2 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0256_jmhTest S 11 consume0256 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0000_jmhTest S 11 consume0000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 28 jmh.Inheritance.BenchmarkCos S 56 jmh.jmh_generated.Inheritance_BenchmarkCos_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 13 jmh.BatchSize S 48 jmh.jmh_generated.BatchSize_measureRight_jmhTest S 12 measureRight S 14 SingleShotTime E A 1 1 1 E I 1 5 E I 4 5000 I 1 5 E I 4 5000 E E E E E E E E E E 
-JMH S 9 jmh.Loops S 44 jmh.jmh_generated.Loops_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0128_jmhTest S 11 consume0128 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.FalseSharing S 45 jmh.jmh_generated.FalseSharing_padded_jmhTest S 6 padded S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
-JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 14 SingleShotTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 13 jmh.BatchSize S 49 jmh.jmh_generated.BatchSize_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E E E E E E E E E E E 
-JMH S 18 jmh.BenchmarkModes S 55 jmh.jmh_generated.BenchmarkModes_measureSamples_jmhTest S 14 measureSamples S 10 SampleTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 16 jmh.FalseSharing S 48 jmh.jmh_generated.FalseSharing_hierarchy_jmhTest S 9 hierarchy S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
-JMH S 13 jmh.BatchSize S 49 jmh.jmh_generated.BatchSize_measureWrong5_jmhTest S 13 measureWrong5 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 5 s E I 1 5 T 3 5 s E E E E E E E E E E E 
-JMH S 14 jmh.Blackholes S 50 jmh.jmh_generated.Blackholes_measureRight1_jmhTest S 13 measureRight1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 15 jmh.Annotations S 45 jmh.jmh_generated.Annotations_measure_jmhTest S 7 measure S 10 Throughput E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 12 MICROSECONDS E E 
-JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureRight1_jmhTest S 13 measureRight1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
-JMH S 12 jmh.DeadCode S 47 jmh.jmh_generated.DeadCode_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 28 jmh.Inheritance.BenchmarkSin S 56 jmh.jmh_generated.Inheritance_BenchmarkSin_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0016_jmhTest S 11 consume0016 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 13 jmh.StatesDAG S 40 jmh.jmh_generated.StatesDAG_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 10 jmh.States S 48 jmh.jmh_generated.States_measureUnshared_jmhTest S 15 measureUnshared S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 9 jmh.Loops S 46 jmh.jmh_generated.Loops_measureWrong10_jmhTest S 14 measureWrong10 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 2 10 E 
-JMH S 20 jmh.BlackholeHelpers S 55 jmh.jmh_generated.BlackholeHelpers_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 19 jmh.SecurityManager S 52 jmh.jmh_generated.SecurityManager_testWithSM_jmhTest S 10 testWithSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 9 jmh.Loops S 50 jmh.jmh_generated.Loops_measureWrong100000_jmhTest S 18 measureWrong100000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 6 100000 E 
-JMH S 18 jmh.Profilers.Maps S 45 jmh.jmh_generated.Profilers_Maps_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 type 2 24 oBQYAMHAoBQbAEGAwBA===== 24 0BgcAUGAlBQbAEGAwBA===== U 11 NANOSECONDS E E 
-JMH S 9 jmh.Loops S 45 jmh.jmh_generated.Loops_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 1 1 E 
-JMH S 14 jmh.Blackholes S 45 jmh.jmh_generated.Blackholes_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 18 jmh.ControlExample S 49 jmh.jmh_generated.ControlExample_pingpong_jmhTest S 8 pingpong S 10 Throughput E A 2 1 1 1 1 L 2 4 ping 4 pong E E E E E E E E E E E E E E E E 
-JMH S 16 jmh.FalseSharing S 45 jmh.jmh_generated.FalseSharing_sparse_jmhTest S 6 sparse S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
-JMH S 14 jmh.Blackholes S 49 jmh.jmh_generated.Blackholes_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 26 jmh.SecurityManagerExample S 59 jmh.jmh_generated.SecurityManagerExample_testWithSM_jmhTest S 10 testWithSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 10 jmh.Params S 38 jmh.jmh_generated.Params_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E M 2 3 arg 5 8 xAA===== 8 zAQMAA== 8 2AQNAA== 8 xAAMAEDA 8 xAAMAMDA 9 certainty 7 8 wAA===== 8 xAA===== 8 yAA===== 8 0AA===== 8 4AA===== 8 xAgNAA== 8 zAgMAA== U 11 NANOSECONDS E E 
-JMH S 15 jmh.CacheAccess S 46 jmh.jmh_generated.CacheAccess_colFirst_jmhTest S 8 colFirst S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 11 NANOSECONDS I 8 16777216 E 
-JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_atolong20_jmhTest S 9 atolong20 S 11 AverageTime I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 20 jmh.BlackholeHelpers S 51 jmh.jmh_generated.BlackholeHelpers_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 26 jmh.CompilerControlExample S 55 jmh.jmh_generated.CompilerControlExample_inline_jmhTest S 6 inline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 10 SampleTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 16 jmh.ConstantFold S 52 jmh.jmh_generated.ConstantFold_measureWrong2_jmhTest S 13 measureWrong2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 18 jmh.BenchmarkModes S 51 jmh.jmh_generated.BenchmarkModes_measureAll_jmhTest S 10 measureAll S 3 All E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 14 jmh.HelloWorld S 51 jmh.jmh_generated.HelloWorld_wellHelloThere_jmhTest S 14 wellHelloThere S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_ifElseRandomHash_jmhTest S 16 ifElseRandomHash S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
-JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_switchEnumRandom_jmhTest S 16 switchEnumRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
-JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 16 jmh.ConstantFold S 51 jmh.jmh_generated.ConstantFold_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 26 jmh.CompilerControlExample S 56 jmh.jmh_generated.CompilerControlExample_exclude_jmhTest S 7 exclude S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 15 jmh.InfraParams S 52 jmh.jmh_generated.InfraParams_measureDefault_jmhTest S 14 measureDefault S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 18 jmh.PerInvokeSetup S 53 jmh.jmh_generated.PerInvokeSetup_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
-JMH S 20 jmh.BranchPrediction S 69 jmh.jmh_generated.BranchPrediction_withoutBranchingBitsSorted_jmhTest S 26 withoutBranchingBitsSorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureRight2_jmhTest S 13 measureRight2 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
-JMH S 14 jmh.Blackholes S 50 jmh.jmh_generated.Blackholes_measureRight2_jmhTest S 13 measureRight2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.Interrupts S 38 jmh.jmh_generated.Interrupts_Q_jmhTest S 1 Q S 11 AverageTime E A 2 1 1 1 1 L 2 3 put 4 take E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 13 jmh.Tokenizer S 54 jmh.jmh_generated.Tokenizer_measureStringSplit_jmhTest S 18 measureStringSplit S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_loadder_jmhTest S 7 loadder S 11 AverageTime I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 18 jmh.PerInvokeSetup S 55 jmh.jmh_generated.PerInvokeSetup_measureNeutral_jmhTest S 14 measureNeutral S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume1024_jmhTest S 11 consume1024 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 11 jmh.Forking S 50 jmh.jmh_generated.Forking_measure5forkedc2_jmhTest S 16 measure5forkedc2 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 20 jmh.Profilers.Classy S 47 jmh.jmh_generated.Profilers_Classy_load_jmhTest S 4 load S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.FalseSharing S 48 jmh.jmh_generated.FalseSharing_contended_jmhTest S 9 contended S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
-JMH S 9 jmh.Loops S 48 jmh.jmh_generated.Loops_measureWrong1000_jmhTest S 16 measureWrong1000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 4 1000 E 
-JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureWrong_jmhTest S 12 measureWrong S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0002_jmhTest S 11 consume0002 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.DefaultState S 46 jmh.jmh_generated.DefaultState_measure_jmhTest S 7 measure S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 12 jmh.RunToRun S 40 jmh.jmh_generated.RunToRun_fork1_jmhTest S 5 fork1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 5 E E E E E E U 12 MILLISECONDS E E 
-JMH S 16 jmh.ConstantFold S 52 jmh.jmh_generated.ConstantFold_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 20 jmh.Profilers.Atomic S 47 jmh.jmh_generated.Profilers_Atomic_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_atolong_jmhTest S 7 atolong S 11 AverageTime I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 14 jmh.BulkWarmup S 46 jmh.jmh_generated.BulkWarmup_measurec2_jmhTest S 9 measurec2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureRight_jmhTest S 12 measureRight S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 18 jmh.BenchmarkModes S 58 jmh.jmh_generated.BenchmarkModes_measureThroughput_jmhTest S 17 measureThroughput S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 26 jmh.CompilerControlExample S 59 jmh.jmh_generated.CompilerControlExample_dontinline_jmhTest S 10 dontinline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 20 jmh.BranchPrediction S 71 jmh.jmh_generated.BranchPrediction_withoutBranchingBitsUnsorted_jmhTest S 28 withoutBranchingBitsUnsorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 16 jmh.SwitchString S 59 jmh.jmh_generated.SwitchString_switchCaseRandomHash_jmhTest S 20 switchCaseRandomHash S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
-JMH S 15 jmh.InfraParams S 58 jmh.jmh_generated.InfraParams_measureFollowThreads_jmhTest S 20 measureFollowThreads S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
-JMH S 11 jmh.Forking S 44 jmh.jmh_generated.Forking_measure2c2_jmhTest S 10 measure2c2 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_loadder20_jmhTest S 9 loadder20 S 11 AverageTime I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 26 jmh.FixtureLevelInvocation S 60 jmh.jmh_generated.FixtureLevelInvocation_measureCold_jmhTest S 11 measureCold S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 18 jmh.SyncIterations S 45 jmh.jmh_generated.SyncIterations_test_jmhTest S 4 test S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 12 MILLISECONDS E E 
-JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_switchCaseRandom_jmhTest S 16 switchCaseRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
-JMH S 20 jmh.BlackholeHelpers S 55 jmh.jmh_generated.BlackholeHelpers_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.FalseSharing S 47 jmh.jmh_generated.FalseSharing_baseline_jmhTest S 8 baseline S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
-JMH S 15 jmh.CacheAccess S 46 jmh.jmh_generated.CacheAccess_rowFirst_jmhTest S 8 rowFirst S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 11 NANOSECONDS I 8 16777216 E 
-JMH S 28 jmh.Inheritance.BenchmarkLog S 56 jmh.jmh_generated.Inheritance_BenchmarkLog_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 13 jmh.Tokenizer S 58 jmh.jmh_generated.Tokenizer_measureStringTokenizer_jmhTest S 22 measureStringTokenizer S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 18 jmh.PerInvokeSetup S 53 jmh.jmh_generated.PerInvokeSetup_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
-JMH S 11 jmh.Forking S 49 jmh.jmh_generated.Forking_measure3c1again_jmhTest S 15 measure3c1again S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
-JMH S 12 jmh.DeadCode S 47 jmh.jmh_generated.DeadCode_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_atolong20_jmhTest S 9 atolong20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0001_jmhTest S 11 consume0001 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_loadder20_jmhTest S 9 loadder20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 12 jmh.RunToRun S 40 jmh.jmh_generated.RunToRun_fork2_jmhTest S 5 fork2 S 11 AverageTime E A 1 1 1 E E E E E E E I 2 20 E E E E E E U 12 MILLISECONDS E E 
-JMH S 11 jmh.Forking S 50 jmh.jmh_generated.Forking_measure4forkedc1_jmhTest S 16 measure4forkedc1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 9 jmh.Loops S 47 jmh.jmh_generated.Loops_measureWrong100_jmhTest S 15 measureWrong100 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 3 100 E 
 JMH S 9 jmh.APIGA S 36 jmh.jmh_generated.APIGA_test_jmhTest S 4 test S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
-JMH S 18 jmh.BenchmarkModes S 58 jmh.jmh_generated.BenchmarkModes_measureSingleShot_jmhTest S 17 measureSingleShot S 14 SingleShotTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 26 jmh.FixtureLevelInvocation S 59 jmh.jmh_generated.FixtureLevelInvocation_measureHot_jmhTest S 10 measureHot S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
-JMH S 14 jmh.Asymmetric S 38 jmh.jmh_generated.Asymmetric_g_jmhTest S 1 g S 11 AverageTime E A 2 1 1 1 3 L 2 3 get 3 inc E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.BulkWarmup S 46 jmh.jmh_generated.BulkWarmup_measurec1_jmhTest S 9 measurec1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 26 jmh.CompilerControlExample S 54 jmh.jmh_generated.CompilerControlExample_blank_jmhTest S 5 blank S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0032_jmhTest S 11 consume0032 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 26 jmh.CompilerControlExample S 57 jmh.jmh_generated.CompilerControlExample_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
-JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
+JMH S 15 jmh.Annotations S 45 jmh.jmh_generated.Annotations_measure_jmhTest S 7 measure S 10 Throughput E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 12 MICROSECONDS E E 
+JMH S 22 jmh.AuxCountersExample S 52 jmh.jmh_generated.AuxCountersExample_runSETI_jmhTest S 7 runSETI S 10 Throughput E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 7 SECONDS E E 
+JMH S 22 jmh.AuxCountersExample S 56 jmh.jmh_generated.AuxCountersExample_splitBranch_jmhTest S 11 splitBranch S 10 Throughput E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 7 SECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 58 jmh.jmh_generated.BenchmarkModes_measureThroughput_jmhTest S 17 measureThroughput S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 20 jmh.BranchPrediction S 54 jmh.jmh_generated.BranchPrediction_withSorting_jmhTest S 11 withSorting S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 20 jmh.BranchPrediction S 69 jmh.jmh_generated.BranchPrediction_withoutBranchingBitsSorted_jmhTest S 26 withoutBranchingBitsSorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 20 jmh.BranchPrediction S 71 jmh.jmh_generated.BranchPrediction_withoutBranchingBitsUnsorted_jmhTest S 28 withoutBranchingBitsUnsorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 20 jmh.BranchPrediction S 65 jmh.jmh_generated.BranchPrediction_withoutBranchingSorted_jmhTest S 22 withoutBranchingSorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
 JMH S 20 jmh.BranchPrediction S 67 jmh.jmh_generated.BranchPrediction_withoutBranchingUnsorted_jmhTest S 24 withoutBranchingUnsorted S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 20 jmh.BranchPrediction S 57 jmh.jmh_generated.BranchPrediction_withoutSorting_jmhTest S 14 withoutSorting S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 13 jmh.Branching S 46 jmh.jmh_generated.Branching_testMethod_jmhTest S 10 testMethod S 10 Throughput E A 1 1 1 E E E E I 3 100 E E E E E E E E E E E E 
+JMH S 18 jmh.ControlExample S 49 jmh.jmh_generated.ControlExample_pingpong_jmhTest S 8 pingpong S 10 Throughput E A 2 1 1 1 1 L 2 4 ping 4 pong E E E E E E E E E E E E E E E E 
+JMH S 16 jmh.DefaultState S 46 jmh.jmh_generated.DefaultState_measure_jmhTest S 7 measure S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 16 jmh.FalseSharing S 47 jmh.jmh_generated.FalseSharing_baseline_jmhTest S 8 baseline S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.FalseSharing S 48 jmh.jmh_generated.FalseSharing_contended_jmhTest S 9 contended S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.FalseSharing S 48 jmh.jmh_generated.FalseSharing_hierarchy_jmhTest S 9 hierarchy S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.FalseSharing S 45 jmh.jmh_generated.FalseSharing_padded_jmhTest S 6 padded S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.FalseSharing S 45 jmh.jmh_generated.FalseSharing_sparse_jmhTest S 6 sparse S 10 Throughput E A 2 1 1 1 1 L 2 6 reader 6 writer I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 12 MICROSECONDS E E 
 JMH S 16 jmh.FixtureLevel S 51 jmh.jmh_generated.FixtureLevel_measureRight_jmhTest S 12 measureRight S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 16 jmh.FixtureLevel S 51 jmh.jmh_generated.FixtureLevel_measureWrong_jmhTest S 12 measureWrong S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 14 jmh.HelloWorld S 51 jmh.jmh_generated.HelloWorld_wellHelloThere_jmhTest S 14 wellHelloThere S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 15 jmh.InfraParams S 52 jmh.jmh_generated.InfraParams_measureDefault_jmhTest S 14 measureDefault S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 15 jmh.InfraParams S 58 jmh.jmh_generated.InfraParams_measureFollowThreads_jmhTest S 20 measureFollowThreads S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS E E 
+JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_atolong_jmhTest S 7 atolong S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_atolong20_jmhTest S 9 atolong20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_loadder_jmhTest S 7 loadder S 10 Throughput I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_loadder20_jmhTest S 9 loadder20 S 10 Throughput I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureRight_jmhTest S 12 measureRight S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 17 jmh.StateFixtures S 52 jmh.jmh_generated.StateFixtures_measureWrong_jmhTest S 12 measureWrong S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 10 jmh.States S 46 jmh.jmh_generated.States_measureShared_jmhTest S 13 measureShared S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 10 jmh.States S 48 jmh.jmh_generated.States_measureUnshared_jmhTest S 15 measureUnshared S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 16 jmh.SwitchString S 51 jmh.jmh_generated.SwitchString_ifElseRandom_jmhTest S 12 ifElseRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
+JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_ifElseRandomHash_jmhTest S 16 ifElseRandomHash S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
+JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_switchCaseRandom_jmhTest S 16 switchCaseRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
+JMH S 16 jmh.SwitchString S 59 jmh.jmh_generated.SwitchString_switchCaseRandomHash_jmhTest S 20 switchCaseRandomHash S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
+JMH S 16 jmh.SwitchString S 55 jmh.jmh_generated.SwitchString_switchEnumRandom_jmhTest S 16 switchEnumRandom S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 7 SECONDS I 4 1000 E 
+JMH S 18 jmh.SyncIterations S 45 jmh.jmh_generated.SyncIterations_test_jmhTest S 4 test S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E U 12 MILLISECONDS E E 
+JMH S 14 jmh.Asymmetric S 38 jmh.jmh_generated.Asymmetric_g_jmhTest S 1 g S 11 AverageTime E A 2 1 1 1 3 L 2 3 get 3 inc E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 13 jmh.BatchSize S 49 jmh.jmh_generated.BatchSize_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E E E E E E E E E E E 
+JMH S 13 jmh.BatchSize S 49 jmh.jmh_generated.BatchSize_measureWrong5_jmhTest S 13 measureWrong5 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 5 s E I 1 5 T 3 5 s E E E E E E E E E E E 
+JMH S 18 jmh.BenchmarkModes S 55 jmh.jmh_generated.BenchmarkModes_measureAvgTime_jmhTest S 14 measureAvgTime S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 20 jmh.BlackholeHelpers S 51 jmh.jmh_generated.BlackholeHelpers_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 20 jmh.BlackholeHelpers S 55 jmh.jmh_generated.BlackholeHelpers_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 20 jmh.BlackholeHelpers S 55 jmh.jmh_generated.BlackholeHelpers_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.Blackholes S 45 jmh.jmh_generated.Blackholes_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.Blackholes S 50 jmh.jmh_generated.Blackholes_measureRight1_jmhTest S 13 measureRight1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.Blackholes S 50 jmh.jmh_generated.Blackholes_measureRight2_jmhTest S 13 measureRight2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.Blackholes S 49 jmh.jmh_generated.Blackholes_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.BulkWarmup S 46 jmh.jmh_generated.BulkWarmup_measurec1_jmhTest S 9 measurec1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.BulkWarmup S 46 jmh.jmh_generated.BulkWarmup_measurec2_jmhTest S 9 measurec2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 15 jmh.CacheAccess S 46 jmh.jmh_generated.CacheAccess_colFirst_jmhTest S 8 colFirst S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 11 NANOSECONDS I 8 16777216 E 
+JMH S 15 jmh.CacheAccess S 46 jmh.jmh_generated.CacheAccess_rowFirst_jmhTest S 8 rowFirst S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E E U 11 NANOSECONDS I 8 16777216 E 
+JMH S 26 jmh.CompilerControlExample S 57 jmh.jmh_generated.CompilerControlExample_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.CompilerControlExample S 54 jmh.jmh_generated.CompilerControlExample_blank_jmhTest S 5 blank S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.CompilerControlExample S 59 jmh.jmh_generated.CompilerControlExample_dontinline_jmhTest S 10 dontinline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.CompilerControlExample S 56 jmh.jmh_generated.CompilerControlExample_exclude_jmhTest S 7 exclude S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.CompilerControlExample S 55 jmh.jmh_generated.CompilerControlExample_inline_jmhTest S 6 inline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 16 jmh.ConstantFold S 47 jmh.jmh_generated.ConstantFold_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 16 jmh.ConstantFold S 51 jmh.jmh_generated.ConstantFold_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 16 jmh.ConstantFold S 52 jmh.jmh_generated.ConstantFold_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 16 jmh.ConstantFold S 52 jmh.jmh_generated.ConstantFold_measureWrong2_jmhTest S 13 measureWrong2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0000_jmhTest S 11 consume0000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0001_jmhTest S 11 consume0001 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0002_jmhTest S 11 consume0002 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0004_jmhTest S 11 consume0004 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0008_jmhTest S 11 consume0008 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0016_jmhTest S 11 consume0016 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0032_jmhTest S 11 consume0032 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0064_jmhTest S 11 consume0064 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0128_jmhTest S 11 consume0128 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0256_jmhTest S 11 consume0256 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume0512_jmhTest S 11 consume0512 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.ConsumeCPU S 48 jmh.jmh_generated.ConsumeCPU_consume1024_jmhTest S 11 consume1024 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 12 jmh.DeadCode S 43 jmh.jmh_generated.DeadCode_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 12 jmh.DeadCode S 47 jmh.jmh_generated.DeadCode_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 12 jmh.DeadCode S 47 jmh.jmh_generated.DeadCode_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.FixtureLevelInvocation S 60 jmh.jmh_generated.FixtureLevelInvocation_measureCold_jmhTest S 11 measureCold S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 26 jmh.FixtureLevelInvocation S 59 jmh.jmh_generated.FixtureLevelInvocation_measureHot_jmhTest S 10 measureHot S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 11 jmh.Forking S 44 jmh.jmh_generated.Forking_measure1c1_jmhTest S 10 measure1c1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
+JMH S 11 jmh.Forking S 44 jmh.jmh_generated.Forking_measure2c2_jmhTest S 10 measure2c2 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
+JMH S 11 jmh.Forking S 49 jmh.jmh_generated.Forking_measure3c1again_jmhTest S 15 measure3c1again S 11 AverageTime E A 1 1 1 E E E E E E E I 1 0 E E E E E E U 11 NANOSECONDS E E 
+JMH S 11 jmh.Forking S 50 jmh.jmh_generated.Forking_measure4forkedc1_jmhTest S 16 measure4forkedc1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 11 jmh.Forking S 50 jmh.jmh_generated.Forking_measure5forkedc2_jmhTest S 16 measure5forkedc2 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 28 jmh.Inheritance.BenchmarkCos S 56 jmh.jmh_generated.Inheritance_BenchmarkCos_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 28 jmh.Inheritance.BenchmarkLog S 56 jmh.jmh_generated.Inheritance_BenchmarkLog_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 28 jmh.Inheritance.BenchmarkSin S 56 jmh.jmh_generated.Inheritance_BenchmarkSin_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 6 100 ms E I 1 5 T 6 100 ms E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 14 jmh.Interrupts S 38 jmh.jmh_generated.Interrupts_Q_jmhTest S 1 Q S 11 AverageTime E A 2 1 1 1 1 L 2 3 put 4 take E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_atolong_jmhTest S 7 atolong S 11 AverageTime I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_atolong20_jmhTest S 9 atolong20 S 11 AverageTime I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 46 jmh.jmh_generated.LongAddition_loadder_jmhTest S 7 loadder S 11 AverageTime I 1 1 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 16 jmh.LongAddition S 48 jmh.jmh_generated.LongAddition_loadder20_jmhTest S 9 loadder20 S 11 AverageTime I 2 20 A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 9 jmh.Loops S 44 jmh.jmh_generated.Loops_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 9 jmh.Loops S 45 jmh.jmh_generated.Loops_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 1 1 E 
+JMH S 9 jmh.Loops S 46 jmh.jmh_generated.Loops_measureWrong10_jmhTest S 14 measureWrong10 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 2 10 E 
+JMH S 9 jmh.Loops S 47 jmh.jmh_generated.Loops_measureWrong100_jmhTest S 15 measureWrong100 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 3 100 E 
+JMH S 9 jmh.Loops S 48 jmh.jmh_generated.Loops_measureWrong1000_jmhTest S 16 measureWrong1000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 4 1000 E 
+JMH S 9 jmh.Loops S 49 jmh.jmh_generated.Loops_measureWrong10000_jmhTest S 17 measureWrong10000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 5 10000 E 
+JMH S 9 jmh.Loops S 50 jmh.jmh_generated.Loops_measureWrong100000_jmhTest S 18 measureWrong100000 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS I 6 100000 E 
+JMH S 10 jmh.Params S 38 jmh.jmh_generated.Params_bench_jmhTest S 5 bench S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E M 2 3 arg 5 8 xAA===== 8 zAQMAA== 8 2AQNAA== 8 xAAMAEDA 8 xAAMAMDA 9 certainty 7 8 wAA===== 8 xAA===== 8 yAA===== 8 0AA===== 8 4AA===== 8 xAgNAA== 8 zAgMAA== U 11 NANOSECONDS E E 
+JMH S 18 jmh.PerInvokeSetup S 55 jmh.jmh_generated.PerInvokeSetup_measureNeutral_jmhTest S 14 measureNeutral S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
+JMH S 18 jmh.PerInvokeSetup S 53 jmh.jmh_generated.PerInvokeSetup_measureRight_jmhTest S 12 measureRight S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
+JMH S 18 jmh.PerInvokeSetup S 53 jmh.jmh_generated.PerInvokeSetup_measureWrong_jmhTest S 12 measureWrong S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 5 E E E E E M 1 5 count 3 8 xAA===== 8 xAgNAA== 8 yAQNAYDA U 11 NANOSECONDS E E 
+JMH S 20 jmh.Profilers.Atomic S 47 jmh.jmh_generated.Profilers_Atomic_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 20 jmh.Profilers.Classy S 47 jmh.jmh_generated.Profilers_Classy_load_jmhTest S 4 load S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E E U 11 NANOSECONDS E E 
+JMH S 18 jmh.Profilers.Maps S 45 jmh.jmh_generated.Profilers_Maps_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 type 2 24 oBQYAMHAoBQbAEGAwBA===== 24 0BgcAUGAlBQbAEGAwBA===== U 11 NANOSECONDS E E 
+JMH S 12 jmh.RunToRun S 43 jmh.jmh_generated.RunToRun_baseline_jmhTest S 8 baseline S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E E U 12 MILLISECONDS E E 
+JMH S 12 jmh.RunToRun S 40 jmh.jmh_generated.RunToRun_fork1_jmhTest S 5 fork1 S 11 AverageTime E A 1 1 1 E E E E E E E I 1 5 E E E E E E U 12 MILLISECONDS E E 
+JMH S 12 jmh.RunToRun S 40 jmh.jmh_generated.RunToRun_fork2_jmhTest S 5 fork2 S 11 AverageTime E A 1 1 1 E E E E E E E I 2 20 E E E E E E U 12 MILLISECONDS E E 
+JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureRight1_jmhTest S 13 measureRight1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
+JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureRight2_jmhTest S 13 measureRight2 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
+JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureWrong1_jmhTest S 13 measureWrong1 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
+JMH S 15 jmh.SafeLooping S 51 jmh.jmh_generated.SafeLooping_measureWrong2_jmhTest S 13 measureWrong2 S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 3 E E E E E M 1 4 size 4 8 xAA===== 8 xAAMAA== 8 xAAMAADA 16 xAAMAADAwAA===== U 11 NANOSECONDS E E 
+JMH S 19 jmh.SecurityManager S 52 jmh.jmh_generated.SecurityManager_testWithSM_jmhTest S 10 testWithSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 19 jmh.SecurityManager S 55 jmh.jmh_generated.SecurityManager_testWithoutSM_jmhTest S 13 testWithoutSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.SecurityManagerExample S 59 jmh.jmh_generated.SecurityManagerExample_testWithSM_jmhTest S 10 testWithSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 26 jmh.SecurityManagerExample S 62 jmh.jmh_generated.SecurityManagerExample_testWithoutSM_jmhTest S 13 testWithoutSM S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 11 NANOSECONDS E E 
+JMH S 13 jmh.StatesDAG S 40 jmh.jmh_generated.StatesDAG_test_jmhTest S 4 test S 11 AverageTime E A 1 1 1 E I 1 5 T 3 1 s E I 1 5 T 3 1 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
+JMH S 13 jmh.Tokenizer S 54 jmh.jmh_generated.Tokenizer_measureStringSplit_jmhTest S 18 measureStringSplit S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 13 jmh.Tokenizer S 59 jmh.jmh_generated.Tokenizer_measureStringSplitRegex_jmhTest S 23 measureStringSplitRegex S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 13 jmh.Tokenizer S 58 jmh.jmh_generated.Tokenizer_measureStringTokenizer_jmhTest S 22 measureStringTokenizer S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 10 SampleTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 55 jmh.jmh_generated.BenchmarkModes_measureSamples_jmhTest S 14 measureSamples S 10 SampleTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 13 jmh.BatchSize S 48 jmh.jmh_generated.BatchSize_measureRight_jmhTest S 12 measureRight S 14 SingleShotTime E A 1 1 1 E I 1 5 E I 4 5000 I 1 5 E I 4 5000 E E E E E E E E E E 
+JMH S 18 jmh.BenchmarkModes S 56 jmh.jmh_generated.BenchmarkModes_measureMultiple_jmhTest S 15 measureMultiple S 14 SingleShotTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 58 jmh.jmh_generated.BenchmarkModes_measureSingleShot_jmhTest S 17 measureSingleShot S 14 SingleShotTime E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 
+JMH S 18 jmh.BenchmarkModes S 51 jmh.jmh_generated.BenchmarkModes_measureAll_jmhTest S 10 measureAll S 3 All E A 1 1 1 E E E E E E E E E E E E E E U 12 MICROSECONDS E E 

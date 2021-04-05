@@ -40,6 +40,8 @@ inline,jmh/BranchPrediction.withoutBranchingBitsUnsorted
 inline,jmh/BranchPrediction.withoutBranchingSorted
 inline,jmh/BranchPrediction.withoutBranchingUnsorted
 inline,jmh/BranchPrediction.withoutSorting
+inline,jmh/Branching$MyState.setup
+inline,jmh/Branching.testMethod
 inline,jmh/BulkWarmup.measurec1
 inline,jmh/BulkWarmup.measurec2
 inline,jmh/CacheAccess.colFirst
