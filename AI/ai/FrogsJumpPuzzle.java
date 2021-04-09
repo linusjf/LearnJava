@@ -129,6 +129,13 @@ public final class FrogsJumpPuzzle {
     fjp.verify(indices);
     System.out.println(fjp.frogs());
     System.out.println(SEPARATOR);
+    fjp = new FrogsJumpPuzzle(5);
+    System.out.println(fjp.frogs());
+    indices = fjp.solve();
+    System.out.println(indices);
+    fjp.verify(indices);
+    System.out.println(fjp.frogs());
+    System.out.println(SEPARATOR);
   }
 
   interface Frog {}
