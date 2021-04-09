@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public final class FrogsJumpPuzzle {
 
+  private static final String SEPARATOR =
+      "==≠====================================";
   int puzzleSize;
 
   List<Object> slots;
@@ -21,7 +23,11 @@ public final class FrogsJumpPuzzle {
       slots.add(new BlueFrog());
   }
 
-  public void solve() {
+  public List<Object> frogs() {
+    return slots;
+  }
+
+  public List<Integer> solve() {
     List<Integer> jumpIndices = new ArrayList<>();
     assert emptyPadIndex() == puzzleSize + 1;
     int midPoint = emptyPadIndex();
@@ -71,7 +77,23 @@ public final class FrogsJumpPuzzle {
       direction = !direction;
     }
     jumpIndices.add(midPoint);
-    System.out.println(jumpIndices);
+    return jumpIndices;
+  }
+
+  public void verify(List<Integer> indices) {
+    for (int index: indices)
+      jump(index);
+    assert emptyPadIndex() == puzzleSize + 1;
+    for (int i = 1; i < emptyPadIndex(); i++)
+      assert slots.get(i) instanceof BlueFrog;
+    for (int i = emptyPadIndex() + 1; i < slots.size(); i++)
+      assert slots.get(i) instanceof RedFrog;
+  }
+
+  private void jump(int index) {
+    Frog frog = (Frog)slots.get(index);
+    slots.set(emptyPadIndex(), frog);
+    slots.set(index, null);
   }
 
   private int emptyPadIndex() {
@@ -80,22 +102,48 @@ public final class FrogsJumpPuzzle {
 
   public static void main(String... args) {
     FrogsJumpPuzzle fjp = new FrogsJumpPuzzle(1);
-    fjp.solve();
+    System.out.println(fjp.frogs());
+    List<Integer> indices = fjp.solve();
+    System.out.println(indices);
+    fjp.verify(indices);
+    System.out.println(fjp.frogs());
+    System.out.println(SEPARATOR);
     fjp = new FrogsJumpPuzzle(2);
-    fjp.solve();
+    System.out.println(fjp.frogs());
+    indices = fjp.solve();
+    System.out.println(indices);
+    fjp.verify(indices);
+    System.out.println(fjp.frogs());
+    System.out.println(SEPARATOR);
     fjp = new FrogsJumpPuzzle(3);
-    fjp.solve();
+    System.out.println(fjp.frogs());
+    indices = fjp.solve();
+    System.out.println(indices);
+    fjp.verify(indices);
+    System.out.println(fjp.frogs());
+    System.out.println(SEPARATOR);
     fjp = new FrogsJumpPuzzle(4);
-    fjp.solve();
+    System.out.println(fjp.frogs());
+    indices = fjp.solve();
+    System.out.println(indices);
+    fjp.verify(indices);
+    System.out.println(fjp.frogs());
+    System.out.println(SEPARATOR);
   }
 
   interface Frog {}
 
   static class RedFrog implements Frog {
-    // empty class
+    @Override
+    public String toString() {
+      return "Red Frog";
+    }
   }
 
   static class BlueFrog implements Frog {
-    // empty class
+    @Override
+    public String toString() {
+      return "Blue Frog";
+    }
   }
 }

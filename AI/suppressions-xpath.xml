@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+  <suppress-xpath files="FrogsJumpPuzzle.java"
+                  checks="ExecutableStatementCountCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FrogsJumpPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='solve']]" />
+  <suppress-xpath files="FrogsJumpPuzzle.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FrogsJumpPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='fjp']]/LITERAL_NEW[./IDENT[@text='FrogsJumpPuzzle']]/ELIST/EXPR/NUM_INT[@text='3']" />
+  <suppress-xpath files="FrogsJumpPuzzle.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='FrogsJumpPuzzle']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/ASSIGN[./IDENT[@text='fjp']]/LITERAL_NEW[./IDENT[@text='FrogsJumpPuzzle']]/ELIST/EXPR/NUM_INT[@text='4']" />
+</suppressions>
