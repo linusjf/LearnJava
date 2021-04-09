@@ -7,7 +7,6 @@ import java.util.Optional;
 public final class FrogsJumpPuzzle {
 
   int puzzleSize;
-  int emptyPadIndex;
 
   List<Object> slots;
 
@@ -24,12 +23,69 @@ public final class FrogsJumpPuzzle {
 
   public void solve() {
     List<Integer> jumpIndices = new ArrayList<>();
-    int midIndex = puzzleSize + 1;
-    assert slots.indexOf(null) == puzzleSize + 1;
+    assert emptyPadIndex() == puzzleSize + 1;
+    int midPoint = emptyPadIndex();
+    int startIndex = midPoint - 1;
+    int endIndex = midPoint + 1;
+    boolean direction = true;
+    while (startIndex > 0) {
+      if (direction) {
+        jumpIndices.add(startIndex);
+        int nextIndex = startIndex + 2;
+        while (nextIndex <= endIndex) {
+          jumpIndices.add(nextIndex);
+          nextIndex += 2;
+        }
+      } else {
+        jumpIndices.add(endIndex);
+        int nextIndex = endIndex - 2;
+        while (nextIndex >= startIndex) {
+          jumpIndices.add(nextIndex);
+          nextIndex -= 2;
+        }
+      }
+      startIndex--;
+      endIndex++;
+      direction = !direction;
+    }
+    startIndex += 2;
+    endIndex -= 2;
+    while (startIndex != midPoint) {
+      if (direction) {
+        jumpIndices.add(startIndex);
+        int nextIndex = startIndex + 2;
+        while (nextIndex <= endIndex) {
+          jumpIndices.add(nextIndex);
+          nextIndex += 2;
+        }
+      } else {
+        jumpIndices.add(endIndex);
+        int nextIndex = endIndex - 2;
+        while (nextIndex >= startIndex) {
+          jumpIndices.add(nextIndex);
+          nextIndex -= 2;
+        }
+      }
+      startIndex++;
+      endIndex--;
+      direction = !direction;
+    }
+    jumpIndices.add(midPoint);
+    System.out.println(jumpIndices);
+  }
+
+  private int emptyPadIndex() {
+    return slots.indexOf(null);
   }
 
   public static void main(String... args) {
     FrogsJumpPuzzle fjp = new FrogsJumpPuzzle(1);
+    fjp.solve();
+    fjp = new FrogsJumpPuzzle(2);
+    fjp.solve();
+    fjp = new FrogsJumpPuzzle(3);
+    fjp.solve();
+    fjp = new FrogsJumpPuzzle(4);
     fjp.solve();
   }
 
