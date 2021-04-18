@@ -31,7 +31,7 @@ public enum MacSample {
       Key key = keyGen.generateKey();
       computeMac(key);
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 

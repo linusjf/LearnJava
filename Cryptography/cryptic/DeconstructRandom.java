@@ -2,7 +2,10 @@ package cryptic;
 
 import java.util.Random;
 
+/** First line. https://metebalci.com/blog/everything-about-javas-securerandom/ */
 public final class DeconstructRandom {
+
+  private static final Random RANDOM = new Random();
 
   private DeconstructRandom() {
     throw new IllegalStateException("Private constructor");
@@ -10,11 +13,9 @@ public final class DeconstructRandom {
 
   public static void main(String[] args) {
 
-    final Random random = new Random();
-
     // we are going to guess what is going to be third random
-    final int firstRandom = random.nextInt();
-    final int secondRandom = random.nextInt();
+    final int firstRandom = RANDOM.nextInt();
+    final int secondRandom = RANDOM.nextInt();
 
     // these are constants from the java.util.Random source code
     // multiplier
@@ -40,7 +41,7 @@ public final class DeconstructRandom {
       }
     }
 
-    if (nextSeed != 0) {
+    if (Math.abs(nextSeed) > 0) {
 
       System.out.println("seed found");
 
@@ -48,7 +49,7 @@ public final class DeconstructRandom {
       nextSeed = (nextSeed * a + c) & ((1L << 48) - 1);
       final int thirdRandomGuess = (int)(nextSeed >>> 16);
 
-      final int thirdRandom = random.nextInt();
+      final int thirdRandom = RANDOM.nextInt();
 
       if (thirdRandomGuess == thirdRandom)
         System.out.println("guessed third random correctly");

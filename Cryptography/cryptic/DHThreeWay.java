@@ -106,7 +106,7 @@ public final class DHThreeWay {
         throw new GeneralSecurityException("Bob and Carol differ");
       System.out.println("Bob and Carol are the same");
     } catch (GeneralSecurityException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 

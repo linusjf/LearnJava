@@ -55,7 +55,7 @@ public enum StoringIntoKeyStore {
       System.out.println("data stored");
     } catch (CertificateException | NoSuchAlgorithmException | KeyStoreException
              | IOException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 }

@@ -58,7 +58,7 @@ public enum DigitalSignature {
       System.out.println(Base64.getEncoder().encodeToString(signature));
     } catch (UnsupportedEncodingException | SignatureException
              | NoSuchAlgorithmException | InvalidKeyException ex) {
-      LOGGER.severe(ex.getMessage());
+      LOGGER.severe(() -> ex.getMessage());
     }
   }
 }

@@ -48,7 +48,7 @@ public enum CipherSample {
     } catch (BadPaddingException | NoSuchPaddingException
              | NoSuchAlgorithmException | IllegalBlockSizeException
              | InvalidKeyException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 }

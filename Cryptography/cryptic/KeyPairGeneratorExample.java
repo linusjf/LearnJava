@@ -33,7 +33,7 @@ public enum KeyPairGeneratorExample {
       System.out.printf("Public key : %s%n", publicKey);
       System.out.println("Keys generated");
     } catch (NoSuchAlgorithmException ex) {
-      LOGGER.severe(ex.getMessage());
+      LOGGER.severe(() -> ex.getMessage());
     }
   }
 }

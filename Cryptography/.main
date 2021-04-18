@@ -14,3 +14,4 @@ cryptic.DHThreeWay
 cryptic.GCD
 cryptic.Exponential
 cryptic.DeconstructRandom
+cryptic.SecureRandomAlgos

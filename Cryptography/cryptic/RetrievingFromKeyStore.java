@@ -66,7 +66,7 @@ public enum RetrievingFromKeyStore {
       System.out.println("Format used for the key: " + mysecretKey.getFormat());
     } catch (UnrecoverableEntryException | CertificateException
              | NoSuchAlgorithmException | KeyStoreException | IOException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 }

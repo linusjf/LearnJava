@@ -38,7 +38,7 @@ public enum MessageDigestExample {
       System.out.println("Base64 format : "
                          + Base64.getEncoder().encodeToString(digest));
     } catch (NoSuchAlgorithmException nsae) {
-      LOGGER.severe(nsae.getMessage());
+      LOGGER.severe(() -> nsae.getMessage());
     }
   }
 }

@@ -187,7 +187,7 @@ public final class DHKeyAgreement {
                                            + "different from cleartext");
       System.out.println("AES in CBC mode recovered text is same as cleartext");
     } catch (GeneralSecurityException | IOException exc) {
-      LOGGER.severe(exc.getMessage());
+      LOGGER.severe(() -> exc.getMessage());
     }
   }
 }

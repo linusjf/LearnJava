@@ -40,7 +40,7 @@ public enum BlowFishKey {
     } catch (IllegalBlockSizeException | InvalidKeyException
              | BadPaddingException | NoSuchPaddingException
              | NoSuchAlgorithmException exc) {
-      LOGGER.severe(exc.getMessage());
+      LOGGER.severe(() -> exc.getMessage());
     }
   }
 }

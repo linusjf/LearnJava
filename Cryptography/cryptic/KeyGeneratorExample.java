@@ -47,7 +47,7 @@ public enum KeyGeneratorExample {
     } catch (BadPaddingException | NoSuchPaddingException
              | IllegalBlockSizeException | NoSuchAlgorithmException
              | InvalidKeyException e) {
-      LOGGER.severe(e.getMessage());
+      LOGGER.severe(() -> e.getMessage());
     }
   }
 }

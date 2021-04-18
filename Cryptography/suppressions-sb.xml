@@ -5,7 +5,7 @@
     <Bug code="USBR" />
   </Match>
   <Match>
-    <Bug code="STT, SECPTI, SECPR, OPM" />
+    <Bug code="STT, SECPTI, SECPR, OPM, DMI" />
   </Match>
   <Match>
     <Bug pattern="MDM_RANDOM_SEED" />
