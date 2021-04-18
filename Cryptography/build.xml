@@ -107,6 +107,15 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
+  <target name="run17">
+    <description>BlockingSecure</description>
+    <java classname="${main.class17}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
   <target name="run16">
     <description>SecureRandomAlgos</description>
     <java classname="${main.class16}">
