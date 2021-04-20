@@ -737,7 +737,7 @@
     <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-ant -->
     <dependency org="org.codehaus.groovy"
                 name="groovy-ant"
-                rev="3.0.7"
+                rev="3.0.8"
       conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
       <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics" 
@@ -772,12 +772,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
   <dependency org="net.bytebuddy" 
     name="byte-buddy" 
-    rev="1.10.22"
+    rev="1.11.0"
     conf="byte-buddy.main-&gt;master"/>
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
   <dependency org="net.bytebuddy" 
     name="byte-buddy-agent" 
-    rev="1.10.22"
+    rev="1.11.0"
     conf="byte-buddy-agent.main-&gt;master"/>
   </dependencies>
 </ivy-module>

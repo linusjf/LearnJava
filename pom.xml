@@ -514,7 +514,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-ant</artifactId>
-      <version>3.0.7</version>
+      <version>3.0.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -556,13 +556,13 @@
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy</artifactId>
-      <version>1.10.22</version>
+      <version>1.11.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy-agent</artifactId>
-      <version>1.10.22</version>
+      <version>1.11.0</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
