@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="quickstart" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
   <description>Quickstart configuration of PMD. Includes the rules that are most likely to apply everywhere.</description>
+  <rule ref="category/java/bestpractices.xml/UseStandardCharsets" />
+  <rule ref="category/java/codestyle.xml/UnnecessaryImport" />
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <properties>
       <property name="violationSuppressXPath" value="./ancestor::MethodDeclaration[contains(@Name, 'main')]"/>
@@ -59,7 +61,6 @@
       <property name="violationSuppressXPath" value="./ancestor::MethodDeclaration[contains(@Name, 'main')]"/>
     </properties>
   </rule>
-  <rule ref="category/java/bestpractices.xml/UnusedImports"/>
   <rule ref="category/java/bestpractices.xml/UnusedLocalVariable"/>
   <rule ref="category/java/bestpractices.xml/UnusedPrivateField">
     <properties>
@@ -161,8 +162,6 @@
     </properties>
   </rule>
   <!-- <rule ref="category/java/codestyle.xml/DefaultPackage"/> -->
-  <rule ref="category/java/codestyle.xml/DontImportJavaLang"/>
-  <rule ref="category/java/codestyle.xml/DuplicateImports"/>
   <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract"/>
   <rule ref="category/java/codestyle.xml/ExtendsObject"/>
   <rule ref="category/java/codestyle.xml/FieldDeclarationsShouldBeAtStartOfClass"/>
@@ -343,7 +342,6 @@
   <rule ref="category/java/errorprone.xml/FinalizeOverloaded"/>
   <rule ref="category/java/errorprone.xml/FinalizeShouldBeProtected"/>
   <rule ref="category/java/errorprone.xml/IdempotentOperations"/>
-  <rule ref="category/java/errorprone.xml/ImportFromSamePackage"/>
   <rule ref="category/java/errorprone.xml/InstantiationToGetClass"/>
   <rule ref="category/java/errorprone.xml/InvalidLogMessageFormat"/>
   <rule ref="category/java/errorprone.xml/JumbledIncrementer"/>
