@@ -40,7 +40,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-jsp</artifactId>
-      <version>6.33.0</version>
+      <version>6.34.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
