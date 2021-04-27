@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.9
+Created-By: 11.0.10+9 (Oracle Corporation)
+Built-By: root
+Main-Class: mongodb.ConnectToDB
+
+Name: common
+Specification-Title: MongoDB
+Specification-Version: 2.4.0
+Specification-Vendor: 
+Implementation-Title: 
+Implementation-Version: b42f2012 April 27 2021
+Implementation-Vendor: 
+
