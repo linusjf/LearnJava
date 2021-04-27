@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../mongodb.cp run.cp
+cp ../mongodb.cp compile.cp
