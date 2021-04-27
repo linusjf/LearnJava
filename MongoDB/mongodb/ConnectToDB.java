@@ -10,18 +10,19 @@ public final class ConnectToDB {
     throw new IllegalStateException("Private constructor.");
   }
 
-  public static void main(String args[]) {
+  public static void main(String... args) {
 
     // Creating a Mongo client
-    MongoClient mongo = new MongoClient("localhost", 27017);
+    MongoClient mongo = new MongoClient("localhost", 27_017);
 
     // Creating Credentials
     MongoCredential credential = MongoCredential.createCredential(
-        "sampleUser", "myDb", "password".toCharArray());
+        "sampleUser", "myDB", "password".toCharArray());
     System.out.println("Connected to the database successfully");
 
     // Accessing the database
-    MongoDatabase database = mongo.getDatabase("myDb");
+    MongoDatabase database = mongo.getDatabase("myDB");
     System.out.println("Credentials ::" + credential);
+    System.out.println("Database ::" + database);
   }
 }
