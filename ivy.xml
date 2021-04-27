@@ -322,6 +322,10 @@
           description="byte-buddy jars" />
     <conf name="byte-buddy-agent.main"
           description="byte-buddy-agent jars" />
+    <conf name="mongo-java-driver.main"
+          description="mongo-java-driver jars" />
+    <conf name="mongo-java-driver.lib"
+          description="mongo-java-driver lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -779,5 +783,10 @@
     name="byte-buddy-agent" 
     rev="1.11.0"
     conf="byte-buddy-agent.main-&gt;master"/>
+    <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+  <dependency org="org.mongodb" 
+    name="mongo-java-driver" 
+    rev="3.12.8"
+    conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile"/>
   </dependencies>
 </ivy-module>
