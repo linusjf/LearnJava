@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE 
-suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-  <suppress-xpath files="ConnectToDB.java"
-                  checks="MagicNumberCheck"
-                  query="/CLASS_DEF[./IDENT[@text='ConnectToDB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='mongo']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='MongoClient']]/ELIST/EXPR/NUM_INT[@text='27_017']" />
+<suppress-xpath
+       files="ConnectToDB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConnectToDB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='document']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/DOT[./IDENT[@text='append']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="ConnectToDB.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='ConnectToDB']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='150']"/>
 </suppressions>
