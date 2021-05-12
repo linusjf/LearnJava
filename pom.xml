@@ -496,7 +496,7 @@
     <dependency>
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-generator-bytecode</artifactId>
-      <version>1.30</version>
+      <version>1.31</version>
       <optional>true</optional>
     </dependency>
     <dependency>
