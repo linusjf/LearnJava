@@ -755,7 +755,7 @@
     <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
   <dependency org="com.thoughtworks.xstream" 
     name="xstream" 
-    rev="1.4.16"
+    rev="1.4.17"
     conf="xstream.main-&gt;master;xstream.lib->compile"/>
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
   <dependency org="org.ow2.asm" 
