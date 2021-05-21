@@ -457,22 +457,22 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="jetty-server.main-&gt;default;jetty-server.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-servlet"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-jmx"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-webapp"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
     <dependency org="org.eclipse.jetty"
@@ -482,12 +482,12 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-annotations"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
     <dependency org="org.eclipse.jetty"
                 name="apache-jsp"
-                rev="11.0.2"
+                rev="11.0.3"
                 conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
     <dependency org="org.checkerframework"
