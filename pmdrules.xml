@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="quickstart" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
   <description>Quickstart configuration of PMD. Includes the rules that are most likely to apply everywhere.</description>
+  <rule ref="category/java/bestpractices.xml/JUnit5TestShouldBePackagePrivate" />
+  <rule ref="category/java/design.xml/CognitiveComplexity" />
+    <rule ref="category/java/design.xml/MutableStaticState" />
   <rule ref="category/java/bestpractices.xml/UseStandardCharsets" />
   <rule ref="category/java/codestyle.xml/UnnecessaryImport" />
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
@@ -148,7 +151,13 @@
   <rule ref="category/java/codestyle.xml/AvoidUsingNativeCode"/>
   <rule ref="category/java/codestyle.xml/BooleanGetMethodName"/>
   <!--  <rule ref="category/java/codestyle.xml/CallSuperInConstructor" /> -->
-  <!-- <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier" /> -->
+  <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
+    <properties>
+        <property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting" />
+        <property name="regex" value="\/\*\s+(default|package)\s+\*\/" />
+        <property name="checkTopLevelTypes" value="false" />
+    </properties>
+</rule>
   <rule ref="category/java/codestyle.xml/ConfusingTernary"/>
   <rule ref="category/java/codestyle.xml/ControlStatementBraces">
     <properties>
@@ -161,7 +170,6 @@
       <property name="allowEmptyLoop" value="false"/>
     </properties>
   </rule>
-  <!-- <rule ref="category/java/codestyle.xml/DefaultPackage"/> -->
   <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract"/>
   <rule ref="category/java/codestyle.xml/ExtendsObject"/>
   <rule ref="category/java/codestyle.xml/FieldDeclarationsShouldBeAtStartOfClass"/>
@@ -316,7 +324,6 @@
   <rule ref="category/java/errorprone.xml/CloneMethodMustBePublic"/>
   <rule ref="category/java/errorprone.xml/CloneMethodMustImplementCloneable"/>
   <rule ref="category/java/errorprone.xml/CloneMethodReturnTypeMustMatchClassName"/>
-  <rule ref="category/java/errorprone.xml/CloneThrowsCloneNotSupportedException"/>
   <rule ref="category/java/errorprone.xml/CloseResource">
     <properties>
       <property name="closeTargets" value="close"/>
@@ -326,7 +333,11 @@
       <property name="closeNotInFinally" value="true"/>
     </properties>
   </rule>
-  <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals"/>
+    <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals">
+    <properties>
+        <property name="typesThatCompareByReference" value="java.lang.Enum,java.lang.Class" />
+    </properties>
+</rule>
   <rule ref="category/java/errorprone.xml/ConstructorCallsOverridableMethod"/>
   <rule ref="category/java/errorprone.xml/DetachedTestCase"/>
   <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly"/>
