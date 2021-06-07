@@ -31,4 +31,23 @@ class Person {
   public List<Person> getSiblings() {
     return siblings;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder(100);
+    sb.append('{')
+        .append("name: ")
+        .append(name)
+        .append(',')
+        .append("age: ")
+        .append(age)
+        .append(',')
+        .append("gender: ")
+        .append(gender)
+        .append(',')
+        .append("siblings: ")
+        .append(siblings.size())
+        .append('}');
+    return sb.toString();
+  }
 }

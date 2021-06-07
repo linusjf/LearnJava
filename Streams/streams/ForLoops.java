@@ -2,6 +2,7 @@ package streams;
 
 import com.github.javafaker.Faker;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -23,9 +24,26 @@ public final class ForLoops {
       for (int j = 0; j < siblings.length; j++)
         persons.add(siblings[j]);
     }
+    System.out.println("Number of persons generated: " +
+        persons.size());
     streaming(persons);
     streamingNames(persons);
     streamingMales(persons);
+    streamingDistinct(persons);
+  }
+
+  private static void streamingDistinct(List<Person> persons) {
+    List<String> result = persons.stream()
+                              .flatMap(p -> p.getSiblings().stream())
+                              .distinct()
+                              .filter(p -> p.getGender().equals("M"))
+                              .filter(p -> p.getAge() > 18)
+                              .filter(p -> p.getAge() <= 65)
+                              .filter(p -> p.getName() != null)
+                              .filter(p -> p.getName().startsWith("B"))
+                              .map(p -> p.getName())
+                              .collect(Collectors.toList());
+    System.out.println("Male Names starting with B: " + result.size());
   }
 
   private static void streamingMales(List<Person> persons) {
@@ -62,11 +80,11 @@ public final class ForLoops {
   private static Person[] getNewSiblings() {
     int count = random.nextInt(MAX_SIBLINGS) + 1;
     Person[] persons = new Person[count];
+    int ageMarker = faker.number().numberBetween(0, 150);
+    int min = (ageMarker - 10 >= 0) ? ageMarker - 10 : 0;
+    int max = (ageMarker + 10 >= 150) ? 150 : ageMarker + 10;
     for (int i = 0; i < count; i++) {
       String name = faker.name().fullName();
-      int ageMarker = faker.number().numberBetween(0, 150);
-      int min = (ageMarker - 10 >= 0) ? ageMarker - 10 : 0;
-      int max = (ageMarker + 10 >= 150) ? 150 : ageMarker + 10;
       int age = faker.number().numberBetween(min, max);
       String gender = faker.bool().bool() ? "M" : "F";
       Person person = new Person(name, age, gender, new ArrayList<>(count - 1));
