@@ -6,7 +6,8 @@ import java.util.Optional;
 
 public final class ListDirectoryRecursive {
   private ListDirectoryRecursive() {
-    throw new AssertionError("Private constructor invoked for class: " + getClass());
+    throw new AssertionError("Private constructor invoked for class: "
+                             + getClass());
   }
 
   public static void main(String[] args) {

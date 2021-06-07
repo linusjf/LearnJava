@@ -6,7 +6,8 @@ import java.util.Optional;
 
 public final class ListDirectoryWithFilter {
   private ListDirectoryWithFilter() {
-    throw new AssertionError("Private constructor invoked for class: " + getClass());
+    throw new AssertionError("Private constructor invoked for class: "
+                             + getClass());
   }
 
   public static void main(String[] args) {

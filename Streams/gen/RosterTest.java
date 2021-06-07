@@ -40,7 +40,8 @@ public final class RosterTest {
       "Persons who are eligible for Selective Service ";
 
   private RosterTest() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
   // Approach 1: Create Methods that Search for Persons that Match One
