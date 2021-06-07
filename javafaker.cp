@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/javafaker-1.0.2.jar
+/data/data/com.termux/files/home/LearnJava/lib/automaton-1.11-8.jar:/data/data/com.termux/files/home/LearnJava/lib/commons-lang3-3.5.jar:/data/data/com.termux/files/home/LearnJava/lib/generex-1.0.2.jar:/data/data/com.termux/files/home/LearnJava/lib/javafaker-1.0.2.jar:/data/data/com.termux/files/home/LearnJava/lib/snakeyaml-1.23-android.jar

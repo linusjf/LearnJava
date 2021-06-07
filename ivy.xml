@@ -796,7 +796,7 @@
 <dependency org="com.github.javafaker" 
   name="javafaker" 
   rev="1.0.2"
-  conf="javafaker.main->master;javafaker.lib->compile" >
+  conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile" >
   </dependency>
 </dependencies>
 </ivy-module>

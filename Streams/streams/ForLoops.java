@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public final class ForLoops {
   private static Faker faker = new Faker();
@@ -22,6 +23,41 @@ public final class ForLoops {
       for (int j = 0; j < siblings.length; j++)
         persons.add(siblings[j]);
     }
+    streaming(persons);
+    streamingNames(persons);
+    streamingMales(persons);
+  }
+
+  private static void streamingMales(List<Person> persons) {
+    List<String> result = persons.stream()
+                              .flatMap(p -> p.getSiblings().stream())
+                              .filter(p -> p.getGender().equals("M"))
+                              .filter(p -> p.getAge() > 18)
+                              .filter(p -> p.getAge() <= 65)
+                              .filter(p -> p.getName() != null)
+                              .filter(p -> p.getName().startsWith("B"))
+                              .map(p -> p.getName())
+                              .collect(Collectors.toList());
+    System.out.println(result);
+  }
+
+  private static void streamingNames(List<Person> persons) {
+    List<String> result = persons.stream()
+                              .filter(p -> p.getAge() > 18)
+                              .filter(p -> p.getAge() <= 65)
+                              .filter(p -> p.getName() != null)
+                              .filter(p -> p.getName().startsWith("B"))
+                              .map(p -> p.getName())
+                              .collect(Collectors.toList());
+    System.out.println(result);
+  }
+
+  private static void streaming(List<Person> persons) {
+    List<String> result = persons.stream()
+                              .filter(p -> p.getAge() > 18)
+                              .map(p -> p.getName())
+                              .collect(Collectors.toList());
+    System.out.println("Age greater than 18: " + result.size());
   }
 
   private static Person[] getNewSiblings() {
