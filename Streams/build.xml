@@ -56,6 +56,11 @@
            destdir="${build.dir}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -64,7 +69,13 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+        <pathelement path="${runclasspath}" />
+      </classpath>
+    </javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -384,6 +395,7 @@
               excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
