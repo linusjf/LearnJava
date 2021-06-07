@@ -2,7 +2,6 @@ package streams;
 
 import com.github.javafaker.Faker;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -24,8 +23,7 @@ public final class ForLoops {
       for (int j = 0; j < siblings.length; j++)
         persons.add(siblings[j]);
     }
-    System.out.println("Number of persons generated: " +
-        persons.size());
+    System.out.println("Number of persons generated: " + persons.size());
     streaming(persons);
     streamingNames(persons);
     streamingMales(persons);
@@ -43,7 +41,8 @@ public final class ForLoops {
                               .filter(p -> p.getName().startsWith("B"))
                               .map(p -> p.getName())
                               .collect(Collectors.toList());
-    System.out.println("Male Names starting with B: " + result.size());
+    System.out.println("Males (who have siblings) starting with B (): "
+                       + result.size());
   }
 
   private static void streamingMales(List<Person> persons) {
