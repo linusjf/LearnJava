@@ -30,7 +30,6 @@ public final class ForLoops {
 
   private static void streamingMales(List<Person> persons) {
     List<String> result = persons.stream()
-                              .flatMap(p -> p.getSiblings().stream())
                               .filter(p -> p.getGender().equals("M"))
                               .filter(p -> p.getAge() > 18)
                               .filter(p -> p.getAge() <= 65)
@@ -38,7 +37,7 @@ public final class ForLoops {
                               .filter(p -> p.getName().startsWith("B"))
                               .map(p -> p.getName())
                               .collect(Collectors.toList());
-    System.out.println(result);
+    System.out.println("Male Names starting with B: " + result.size());
   }
 
   private static void streamingNames(List<Person> persons) {
@@ -49,7 +48,7 @@ public final class ForLoops {
                               .filter(p -> p.getName().startsWith("B"))
                               .map(p -> p.getName())
                               .collect(Collectors.toList());
-    System.out.println(result);
+    System.out.println("Names starting with B: " + result.size());
   }
 
   private static void streaming(List<Person> persons) {
