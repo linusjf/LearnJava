@@ -57,6 +57,7 @@
   <property file="${LearnJava.basedir}/asm.properties" />
   <property file="${LearnJava.basedir}/byte-buddy.properties" />
   <property file="${LearnJava.basedir}/mongodb.properties" />
+  <property file="${LearnJava.basedir}/javafaker.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -447,6 +448,10 @@
                   conf="mongo-java-driver.main" />
     <ivy:retrieve pathid="mongo-java-driver.lib.path"
                   conf="mongo-java-driver.lib" />
+    <ivy:retrieve pathid="javafaker.main.path"
+                  conf="javafaker.main" />
+    <ivy:retrieve pathid="javafaker.lib.path"
+                  conf="javafaker.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -551,6 +556,8 @@
           message="${toString:byte-buddy.main.path}:${toString:byte-buddy-agent.main.path}"/>
     <echo file="${mongo-java-driver.classpath.file}"
           message="${toString:mongo-java-driver.main.path}:${toString:mongo-java-driver.main.path}"/>
+    <echo file="${javafaker.classpath.file}"
+          message="${toString:javafaker.main.path}:${toString:javafaker.main.path}"/>
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

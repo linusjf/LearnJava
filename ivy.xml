@@ -326,6 +326,10 @@
           description="mongo-java-driver jars" />
     <conf name="mongo-java-driver.lib"
           description="mongo-java-driver lib jars" />
+    <conf name="javafaker.main"
+          description="javafaker jars" />
+    <conf name="javafaker.lib"
+          description="javafaker lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -788,5 +792,11 @@
     name="mongo-java-driver" 
     rev="3.12.8"
     conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile"/>
-  </dependencies>
+  <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+<dependency org="com.github.javafaker" 
+  name="javafaker" 
+  rev="1.0.2"
+  conf="javafaker.main->master;javafaker.lib->compile" >
+  </dependency>
+</dependencies>
 </ivy-module>
