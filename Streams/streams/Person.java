@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Person {
-  private String name;
-  private int age;
+  private final String name;
+  private final int age;
 
-  private String gender;
-  private List<Person> siblings;
+  private final String gender;
+  private final List<Person> siblings;
 
   public Person(String name, int age, String gender, List<Person> siblings) {
     this.name = name;
@@ -34,7 +34,7 @@ class Person {
   }
 
   public boolean hasSiblings() {
-    return siblings.size() > 0;
+    return !siblings.isEmpty();
   }
 
   public Stream<Person> asStream() {
@@ -44,17 +44,13 @@ class Person {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder(100);
-    sb.append('{')
-        .append("name: ")
+    sb.append("{name: ")
         .append(name)
-        .append(',')
-        .append("age: ")
+        .append(",age: ")
         .append(age)
-        .append(',')
-        .append("gender: ")
+        .append(",gender: ")
         .append(gender)
-        .append(',')
-        .append("siblings: ")
+        .append(",siblings: ")
         .append(siblings.size())
         .append('}');
     return sb.toString();

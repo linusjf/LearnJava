@@ -2,10 +2,12 @@ package streams;
 
 import com.github.javafaker.Faker;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+@SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
 public final class ForLoops {
   private static Faker faker = new Faker();
   private static Random random = new Random();
@@ -20,8 +22,7 @@ public final class ForLoops {
     List<Person> persons = new ArrayList<>();
     for (int i = 0; i < PERSON_COUNT; i++) {
       Person[] siblings = getNewSiblings();
-      for (int j = 0; j < siblings.length; j++)
-        persons.add(siblings[j]);
+      persons.addAll(Arrays.asList(siblings));
     }
     System.out.println("Number of persons generated: " + persons.size());
     streaming(persons);
@@ -37,7 +38,7 @@ public final class ForLoops {
             .flatMap(
                 p -> p.hasSiblings() ? p.getSiblings().stream() : p.asStream())
             .distinct()
-            .filter(p -> p.getGender().equals("M"))
+            .filter(p -> "M".equals(p.getGender()))
             .filter(p -> p.getAge() > 18)
             .filter(p -> p.getAge() <= 65)
             .filter(p -> p.getName() != null)
@@ -51,7 +52,7 @@ public final class ForLoops {
     List<String> result = persons.stream()
                               .flatMap(p -> p.getSiblings().stream())
                               .distinct()
-                              .filter(p -> p.getGender().equals("M"))
+                              .filter(p -> "M".equals(p.getGender()))
                               .filter(p -> p.getAge() > 18)
                               .filter(p -> p.getAge() <= 65)
                               .filter(p -> p.getName() != null)
@@ -64,7 +65,7 @@ public final class ForLoops {
 
   private static void streamingMales(List<Person> persons) {
     List<String> result = persons.stream()
-                              .filter(p -> p.getGender().equals("M"))
+                              .filter(p -> "M".equals(p.getGender()))
                               .filter(p -> p.getAge() > 18)
                               .filter(p -> p.getAge() <= 65)
                               .filter(p -> p.getName() != null)
@@ -97,8 +98,8 @@ public final class ForLoops {
     int count = random.nextInt(MAX_SIBLINGS) + 1;
     Person[] persons = new Person[count];
     int ageMarker = faker.number().numberBetween(0, 150);
-    int min = (ageMarker - 10 >= 0) ? ageMarker - 10 : 0;
-    int max = (ageMarker + 10 >= 150) ? 150 : ageMarker + 10;
+    int min = ageMarker - 10 >= 0 ? ageMarker - 10 : 0;
+    int max = ageMarker + 10 >= 150 ? 150 : ageMarker + 10;
     for (int i = 0; i < count; i++) {
       String name = faker.name().fullName();
       int age = faker.number().numberBetween(min, max);

@@ -4,6 +4,7 @@ package gen;
 import java.io.File;
 import java.util.Optional;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public final class ListDirectoryRecursive {
   private ListDirectoryRecursive() {
     throw new AssertionError("Private constructor invoked for class: "

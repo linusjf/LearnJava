@@ -35,6 +35,7 @@ import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("PMD.SystemPrintln")
 public class Person {
   public enum Sex {
     MALE,
