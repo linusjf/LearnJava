@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-@SuppressWarnings({"PMD.SystemPrintln", "PMD.LawOfDemeter"})
+@SuppressWarnings("PMD.LawOfDemeter")
 public final class ForLoops {
   private static Faker faker = new Faker();
   private static Random random = new Random();

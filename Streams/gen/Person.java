@@ -35,7 +35,6 @@ import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("PMD.SystemPrintln")
 public class Person {
   public enum Sex {
     MALE,
@@ -62,7 +61,8 @@ public class Person {
     return birthday.until(IsoChronology.INSTANCE.dateNow()).getYears();
   }
 
-  @SuppressWarnings("PMD.LawOfDemeter")
+  @SuppressWarnings({"PMD.LawOfDemeter",
+  "PMD.SystemPrintln"})
   public void printPerson() {
     System.out.println(name + ", " + this.getAge());
   }

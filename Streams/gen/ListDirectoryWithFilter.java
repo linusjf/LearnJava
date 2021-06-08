@@ -4,7 +4,6 @@ package gen;
 import java.io.File;
 import java.util.Optional;
 
-@SuppressWarnings("PMD.SystemPrintln")
 public final class ListDirectoryWithFilter {
   private ListDirectoryWithFilter() {
     throw new AssertionError("Private constructor invoked for class: "

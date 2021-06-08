@@ -2,7 +2,7 @@ package streams;
 
 import java.util.stream.IntStream;
 
-@SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
+@SuppressWarnings("PMD.LawOfDemeter")
 public final class PrimeNumberCount {
   private static int getRange(String... args) {
     try {
