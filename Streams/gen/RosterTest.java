@@ -126,8 +126,12 @@ public final class RosterTest {
     }
   }
 
-  @SuppressWarnings({"PMD.ExcessiveMethodLength", "PMD.LawOfDemeter"})
-  public static void main(String... args) {
+  @SuppressWarnings({"PMD.ExcessiveMethodLength",
+                     "PMD.LawOfDemeter",
+                     "checkstyle:CyclomaticComplexity",
+                     "checkstyle:ExecutableStatementCount"})
+  public static void
+  main(String... args) {
     List<Person> roster = Person.createRoster();
 
     for (Person p: roster)

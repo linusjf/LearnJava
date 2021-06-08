@@ -151,13 +151,13 @@
   <rule ref="category/java/codestyle.xml/AvoidUsingNativeCode"/>
   <rule ref="category/java/codestyle.xml/BooleanGetMethodName"/>
   <!--  <rule ref="category/java/codestyle.xml/CallSuperInConstructor" /> -->
-  <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
+  <!--  <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
     <properties>
         <property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting" />
-        <property name="regex" value="\/\*\s+(default|package)\s+\*\/" />
+        <property name="regex" value="[/][*]\s+(default|package)\s+[*][/]" />
         <property name="checkTopLevelTypes" value="false" />
     </properties>
-</rule>
+  </rule> -->
   <rule ref="category/java/codestyle.xml/ConfusingTernary"/>
   <rule ref="category/java/codestyle.xml/ControlStatementBraces">
     <properties>

@@ -346,7 +346,8 @@
       </else>
     </if>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
     <taskdef resource="${cs.taskdef.resource}"
              classpath="${cs.cp}" />
     <first id="checkstylefile">
@@ -368,7 +369,8 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
     <taskdef name="pmd"
              classname="net.sourceforge.pmd.ant.PMDTask"
              classpath="${pmd.cp}" />
@@ -393,7 +395,7 @@
     <echo message="${pmd.errCount} violations found." />
   </target>
   <target name="spotbugs"
-          depends="compile">
+          depends="loadclasspath,compile">
     <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
              classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
