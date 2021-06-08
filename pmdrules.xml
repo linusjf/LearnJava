@@ -90,7 +90,7 @@
   <rule ref="category/java/bestpractices.xml/UnusedAssignment">
     <properties>
       <property name="checkUnusedPrefixIncrement" value="true"/>
-      <property name="reportUnusedVariables" value="true"/>
+      <property name="reportUnusedVariables" value="false"/>
       <property name="violationSuppressXPath" value="./ancestor::MethodDeclaration[contains(@Name, 'main')]"/>
     </properties>
   </rule>
