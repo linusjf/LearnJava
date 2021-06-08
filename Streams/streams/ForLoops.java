@@ -27,7 +27,24 @@ public final class ForLoops {
     streaming(persons);
     streamingNames(persons);
     streamingMales(persons);
+    streamingCount(persons);
     streamingDistinct(persons);
+  }
+
+  private static void streamingCount(List<Person> persons) {
+    List<String> result =
+        persons.stream()
+            .flatMap(
+                p -> p.hasSiblings() ? p.getSiblings().stream() : p.asStream())
+            .distinct()
+            .filter(p -> p.getGender().equals("M"))
+            .filter(p -> p.getAge() > 18)
+            .filter(p -> p.getAge() <= 65)
+            .filter(p -> p.getName() != null)
+            .filter(p -> p.getName().startsWith("B"))
+            .map(p -> p.getName())
+            .collect(Collectors.toList());
+    System.out.println("Males starting with B (): " + result.size());
   }
 
   private static void streamingDistinct(List<Person> persons) {

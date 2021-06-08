@@ -1,6 +1,7 @@
 package streams;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class Person {
   private String name;
@@ -30,6 +31,14 @@ class Person {
 
   public List<Person> getSiblings() {
     return siblings;
+  }
+
+  public boolean hasSiblings() {
+    return siblings.size() > 0;
+  }
+
+  public Stream<Person> asStream() {
+    return Stream.of(this);
   }
 
   @Override
