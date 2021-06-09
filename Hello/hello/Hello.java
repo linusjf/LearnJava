@@ -16,11 +16,8 @@ public final class Hello {
   public static void main(String... args) {
     sayHello();
   }
-  
-  /**
-   * Describe <code>sayHello</code> method here.
-   *
-   */
+
+  /** Describe <code>sayHello</code> method here. */
   public static void sayHello() {
     System.out.println("Hello world, on termux!");
   }

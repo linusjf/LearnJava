@@ -8,7 +8,7 @@
   <rule ref="category/java/codestyle.xml/UnnecessaryImport" />
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <properties>
-      <property name="violationSuppressXPath" value="//MethodDeclaration[contains(@Name, 'main')]"/>
+      <property name="violationSuppressXPath" value="//MethodDeclaration[contains(@Name, 'main')] and ./ancestor::MethodDeclaration[contains(@Static, 'true')]"/>
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod"/>
