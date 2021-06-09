@@ -9,6 +9,6 @@ Specification-Title: Streams
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: c05ebe25 June 8 2021
+Implementation-Version: 16767fb7 June 8 2021
 Implementation-Vendor: 
 

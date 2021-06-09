@@ -61,8 +61,7 @@ public class Person {
     return birthday.until(IsoChronology.INSTANCE.dateNow()).getYears();
   }
 
-  @SuppressWarnings({"PMD.LawOfDemeter",
-  "PMD.SystemPrintln"})
+  @SuppressWarnings({"PMD.LawOfDemeter", "PMD.SystemPrintln"})
   public void printPerson() {
     System.out.println(name + ", " + this.getAge());
   }
