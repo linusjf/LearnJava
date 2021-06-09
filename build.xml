@@ -369,10 +369,6 @@
                   conf="javacc.lib" />
     <ivy:retrieve pathid="trove4j.main.path"
                   conf="trove4j.main" />
-    <ivy:retrieve pathid="spring-core.main.path"
-                  conf="spring-core.main" />
-    <ivy:retrieve pathid="spring-core.lib.path"
-                  conf="spring-core.lib" />
     <ivy:retrieve pathid="testng.main.path"
                   conf="testng.main" />
     <ivy:retrieve pathid="testng.lib.path"
@@ -453,6 +449,14 @@
                   conf="javafaker.main" />
     <ivy:retrieve pathid="javafaker.lib.path"
                   conf="javafaker.lib" />
+    <ivy:retrieve pathid="spring-core.main.path"
+                  conf="spring-core.main" />
+    <ivy:retrieve pathid="spring-core.lib.path"
+                  conf="spring-core.lib" />
+    <ivy:retrieve pathid="spring-boot.main.path"
+                  conf="spring-boot.main" />
+    <ivy:retrieve pathid="spring-boot.lib.path"
+                  conf="spring-boot.lib" />
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
