@@ -40,7 +40,6 @@
   <property file="${LearnJava.basedir}/javancss.properties" />
   <property file="${LearnJava.basedir}/javacc.properties" />
   <property file="${LearnJava.basedir}/trove4j.properties" />
-  <property file="${LearnJava.basedir}/spring.properties" />
   <property file="${LearnJava.basedir}/testng.properties" />
   <property file="${LearnJava.basedir}/commons-collections.properties" />
   <property file="${LearnJava.basedir}/javolution-core-java.properties" />
@@ -58,6 +57,8 @@
   <property file="${LearnJava.basedir}/byte-buddy.properties" />
   <property file="${LearnJava.basedir}/mongodb.properties" />
   <property file="${LearnJava.basedir}/javafaker.properties" />
+  <property file="${LearnJava.basedir}/spring.properties" />
+  <property file="${LearnJava.basedir}/spring-boot.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
@@ -524,8 +525,6 @@
           message="${toString:javacc.lib.path}:${toString:javacc.main.path}" />
     <echo file="${trove4j.classpath.file}"
           message="${toString:trove4j.main.path}" />
-    <echo file="${spring.classpath.file}"
-          message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <echo file="${testng.classpath.file}"
           message="${toString:testng.main.path}:${toString:testng.lib.path}" />
     <echo file="${commons-collections.classpath.file}"
@@ -558,6 +557,10 @@
           message="${toString:mongo-java-driver.main.path}:${toString:mongo-java-driver.lib.path}"/>
     <echo file="${javafaker.classpath.file}"
           message="${toString:javafaker.main.path}:${toString:javafaker.lib.path}"/>
+    <echo file="${spring.classpath.file}"
+          message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
+    <echo file="${spring-boot.classpath.file}"
+          message="${toString:spring-boot.main.path}:${toString:spring-boot.lib.path}" />
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"

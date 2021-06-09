@@ -256,10 +256,6 @@
           description="javacc lib jars" />
     <conf name="trove4j.main"
           description="trove4j main jars" />
-    <conf name="spring-core.main"
-          description="spring-core main jars" />
-    <conf name="spring-core.lib"
-          description="spring-core lib jars" />
     <conf name="testng.main"
           description="testng main jars" />
     <conf name="testng.lib"
@@ -330,6 +326,14 @@
           description="javafaker jars" />
     <conf name="javafaker.lib"
           description="javafaker lib jars" />
+    <conf name="spring-core.main"
+          description="spring-core main jars" />
+    <conf name="spring-core.lib"
+          description="spring-core lib jars" />
+    <conf name="spring-boot.main"
+          description="spring-boot main jars" />
+    <conf name="spring-boot.lib"
+          description="spring-boot lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -797,6 +801,12 @@
   name="javafaker" 
   rev="1.0.2"
   conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile" >
+  </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
+  <dependency org="org.springframework.boot" 
+    name="spring-boot" 
+    rev="2.5.0"
+  conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" >
   </dependency>
 </dependencies>
 </ivy-module>
