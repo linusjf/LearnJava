@@ -556,7 +556,7 @@
     <echo file="${asm.classpath.file}"
           message="${toString:asm.main.path}:${toString:asm-util.main.path}:${toString:asm-util.lib.path}:${toString:asm-commons.main.path}:${toString:asm-commons.lib.path}"/>
     <echo file="${byte-buddy.classpath.file}"
-          message="${toString:byte-buddy.main.path}:${toString:byte-buddy-agent.lib.path}"/>
+          message="${toString:byte-buddy.main.path}:${toString:byte-buddy-agent.main.path}"/>
     <echo file="${mongo-java-driver.classpath.file}"
           message="${toString:mongo-java-driver.main.path}:${toString:mongo-java-driver.lib.path}"/>
     <echo file="${javafaker.classpath.file}"
