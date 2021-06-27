@@ -66,9 +66,9 @@ readOptions
 readExclusions
 (set -o pipefail; cd "$1" && \
 readarray -t args \
-  < <(find . -type f -name "*.java" \
-  ${exclusions[@]} \
-  -not -path "./docs" -not -path "./dist") && \
+< <(find . -type f -regex ".*[.]\(java\|properties\)$" \
+-not -path "./docs" -not -path "./dist" \
+${exclusions[@]} ) && \
   java -cp @"$classpathFile" \
   "$mainClass" \
   ${options[@]} \
