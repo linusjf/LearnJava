@@ -89,6 +89,7 @@
   </target>
   <target name="removeduplicates"
           if="file">
+    <echo message="${file}" />
     <loadfile srcFile="${file}"
               property="input">
       <filterchain>
@@ -117,13 +118,12 @@
   </target>
   <target name="uniquify">
     <for param="theFile"
-         parallel="true">
+         parallel="true" threadCount="6">
       <path>
         <fileset dir="${LearnJava.basedir}"
                  includes="*.cp" />
       </path>
       <sequential>
-        <echo message="@{theFile}" />
         <antcall target="removeduplicates">
           <param name="file"
                  value="@{theFile}" />
