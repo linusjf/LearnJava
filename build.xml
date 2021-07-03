@@ -117,7 +117,7 @@
   </target>
   <target name="uniquify">
     <for param="theFile"
-         parallel="false">
+         parallel="true">
       <path>
         <fileset dir="${LearnJava.basedir}"
                  includes="*.cp" />
@@ -143,6 +143,7 @@
       <param name="cpfiles"
              value="${cpfiles}" />
     </antcall>
+      <parallel threadCount="6">
     <ivy:retrieve pathid="cs.main.path"
                   conf="checkstyle.main" />
     <ivy:retrieve pathid="gformat.main.path"
@@ -457,6 +458,8 @@
                   conf="spring-boot.main" />
     <ivy:retrieve pathid="spring-boot.lib.path"
                   conf="spring-boot.lib" />
+  </parallel>
+    <parallel threadCount="6">
     <echo file="${junitplatform.classpath.file}"
           message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
     <echo file="${cs.classpath.file}"
@@ -565,6 +568,7 @@
           message="${toString:spring-core.main.path}:${toString:spring-core.lib.path}" />
     <echo file="${spring-boot.classpath.file}"
           message="${toString:spring-boot.main.path}:${toString:spring-boot.lib.path}" />
+  </parallel>
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
