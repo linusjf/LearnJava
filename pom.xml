@@ -184,7 +184,7 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jmx</artifactId>
-      <version>11.0.5</version>
+      <version>11.0.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
