@@ -61,14 +61,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceFast']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='roll']]/SLIST/LITERAL_RETURN/EXPR/PLUS[./NUM_INT[@text='1']]/METHOD_CALL[./IDENT[@text='mod']]/ELIST/EXPR/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceFastFixedMod.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="DiceFastFixedMod.java"
-       checks="ConstantNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceFastFixedMod']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='rolls']"/>
-<suppress-xpath
-       files="DiceFastFixedMod.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceFastFixedMod']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='rolls']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='toArray']]/METHOD_CALL/DOT[./IDENT[@text='limit']]/METHOD_CALL/ELIST/LAMBDA[./IDENT[@text='i']]/EXPR/MOD/NUM_INT[@text='6']"/>
 <suppress-xpath
@@ -77,20 +69,8 @@
        query="/CLASS_DEF[./IDENT[@text='DiceFastFixedMod']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='rolls']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='toArray']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='65536']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="ConstantNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='best']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFairSR']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='20']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="TrailingCommentCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFairSR']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/TYPE/SINGLE_LINE_COMMENT[1]"/>
 <suppress-xpath
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
@@ -105,10 +85,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFairSR']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/MINUS/DIV[./IDENT[@text='RUNS']]/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFairSR']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR[./DIV/IDENT[@text='time']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFairSR']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
@@ -119,10 +95,6 @@
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFair']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='20']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="TrailingCommentCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFair']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/TYPE/SINGLE_LINE_COMMENT[1]"/>
 <suppress-xpath
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
@@ -137,10 +109,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFair']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/MINUS/DIV[./IDENT[@text='RUNS']]/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFair']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR[./DIV/IDENT[@text='time']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFair']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
@@ -151,10 +119,6 @@
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFast']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='20']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="TrailingCommentCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/TYPE/SINGLE_LINE_COMMENT[1]"/>
 <suppress-xpath
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
@@ -169,10 +133,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/MINUS/DIV[./IDENT[@text='RUNS']]/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR[./DIV/IDENT[@text='time']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
@@ -183,10 +143,6 @@
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVeryFast']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='20']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="TrailingCommentCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVeryFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/TYPE/SINGLE_LINE_COMMENT"/>
 <suppress-xpath
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
@@ -201,10 +157,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVeryFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/MINUS/DIV[./IDENT[@text='RUNS']]/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVeryFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR[./DIV/IDENT[@text='time']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVeryFast']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
@@ -215,10 +167,6 @@
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFastFixedMode']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='j']]/NUM_INT[@text='20']"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
-       checks="TrailingCommentCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFastFixedMode']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='results']]/TYPE/SINGLE_LINE_COMMENT[1]"/>
 <suppress-xpath
        files="DiceMeasurer.java"
        checks="MagicNumberCheck"
@@ -233,10 +181,6 @@
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFastFixedMode']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/SLIST/LITERAL_FOR/SLIST/EXPR/ASSIGN/MINUS/DIV[./IDENT[@text='RUNS']]/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceMeasurer.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFastFixedMode']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR[./DIV/IDENT[@text='time']]"/>
-<suppress-xpath
-       files="DiceMeasurer.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceMeasurer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='testFastFixedMode']]/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_FINALLY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='time']]/NUM_INT[@text='1_000_000']"/>
 <suppress-xpath
@@ -249,36 +193,12 @@
        query="/CLASS_DEF[./IDENT[@text='DiceOptimized']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='DiceOptimized']]/SLIST/EXPR/ASSIGN/METHOD_CALL/DOT[./IDENT[@text='iterator']]/METHOD_CALL/ELIST/EXPR/METHOD_CALL/DOT[./IDENT[@text='limit']]/METHOD_CALL/ELIST/LAMBDA/EXPR/NUM_INT[@text='6']"/>
 <suppress-xpath
        files="DiceVeryFast.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
-       checks="ConstantNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='rolls']"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='rolls']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR/NUM_INT[@text='512']"/>
 <suppress-xpath
        files="DiceVeryFast.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='rolls']]/ASSIGN/EXPR/LITERAL_NEW/ARRAY_DECLARATOR/EXPR/STAR[./NUM_INT[@text='512']]/NUM_INT[@text='1024']"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
-       checks="DeclarationOrderCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MASK']]/MODIFIERS"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
-       checks="UnnecessaryParenthesesCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='roll']]/SLIST/LITERAL_RETURN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR[./BAND/IDENT[@text='MASK']]"/>
-<suppress-xpath
-       files="DiceVeryFast.java"
-       checks="DeclarationOrderCheck"
-       query="/CLASS_DEF[./IDENT[@text='DiceVeryFast']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ROLLS']]/MODIFIERS"/>
 <suppress-xpath
        files="DiceVeryFast.java"
        checks="MagicNumberCheck"
@@ -421,21 +341,8 @@
        query="/CLASS_DEF[./IDENT[@text='EfiBoard']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='EfiBoard']]/SLIST/SUPER_CTOR_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='99']"/>
 <suppress-xpath
        files="Game.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='Game']]"/>
-<suppress-xpath
-       files="Game.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Game']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000_000']"/>
-<suppress-xpath
-       files="GameObserverDetailed.java"
-       checks="MultipleVariableDeclarationsCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameObserverDetailed']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='climbs']] | 
-/CLASS_DEF[./IDENT[@text='GameObserverDetailed']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='slides']]"/>
-<suppress-xpath
-       files="GameOptimized.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameOptimized']]"/>
 <suppress-xpath
        files="GameOptimized.java"
        checks="MagicNumberCheck"
@@ -450,82 +357,18 @@
        query="/CLASS_DEF[./IDENT[@text='GameOptimized']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='DiceOptimized']]/ELIST/EXPR/NUM_INT[@text='5']"/>
 <suppress-xpath
        files="GameReversed.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameReversed']]"/>
-<suppress-xpath
-       files="GameReversed.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='GameReversed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000_000']"/>
-<suppress-xpath
-       files="GameSimulationMixedBoardsSingleDice.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameSimulationMixedBoardsSingleDice']]"/>
 <suppress-xpath
        files="GameSimulationMixedBoardsSingleDice.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='GameSimulationMixedBoardsSingleDice']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='games']]/ASSIGN/EXPR/NUM_INT[@text='10_000_000']"/>
 <suppress-xpath
-       files="GameSimulationMixedBoardsSingleDice.java"
-       checks="LambdaParameterNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameSimulationMixedBoardsSingleDice']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/IDENT[@text='__']"/>
-<suppress-xpath
-       files="GameSimulationSingleBoardSingleDice.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameSimulationSingleBoardSingleDice']]"/>
-<suppress-xpath
        files="GameSimulationSingleBoardSingleDice.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='GameSimulationSingleBoardSingleDice']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='games']]/ASSIGN/EXPR/NUM_INT[@text='10_000_000']"/>
 <suppress-xpath
-       files="GameSimulationSingleBoardSingleDice.java"
-       checks="LambdaParameterNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameSimulationSingleBoardSingleDice']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/IDENT[@text='__']"/>
-<suppress-xpath
-       files="GameSimulationSingleBoardSingleDice.java"
-       checks="LambdaParameterNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='GameSimulationSingleBoardSingleDice']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/IDENT[@text='__']"/>
-<suppress-xpath
-       files="SimpleGame.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='SimpleGame']]"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="AvoidStarImportCheck"
-       query="/IMPORT/DOT"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="HideUtilityClassConstructorCheck"
-       query="/CLASS_DEF[./IDENT[@text='Simulation']]"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="NoWhitespaceBeforeCheck"
-       query="/CLASS_DEF[./IDENT[@text='Simulation']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/VARIABLE_DEF[./IDENT[@text='boards']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_REF[./IDENT[@text='Board']]"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="NoWhitespaceBeforeCheck"
-       query="/CLASS_DEF[./IDENT[@text='Simulation']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/VARIABLE_DEF[./IDENT[@text='dice']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_REF[./IDENT[@text='Dice']]"/>
-<suppress-xpath
-       files="Simulation.java"
-       checks="LambdaParameterNameCheck"
-       query="/CLASS_DEF[./IDENT[@text='Simulation']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/LITERAL_FOR/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/IDENT[@text='__']"/>
-<suppress-xpath
        files="Simulation.java"
        checks="MagicNumberCheck"
        query="/CLASS_DEF[./IDENT[@text='Simulation']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/SLIST/VARIABLE_DEF[./IDENT[@text='diff']]/ASSIGN/EXPR/DIV[./IDENT[@text='games']]/STAR/NUM_FLOAT[@text='100.0']"/>
-<suppress-xpath
-       files="TournamentObserver.java"
-       checks="DescendantTokenCheck"
-       query="/CLASS_DEF[./IDENT[@text='TournamentObserver']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/EXPR/METHOD_CALL"/>
-<suppress-xpath
-       files="TournamentObserver.java"
-       checks="HiddenFieldCheck"
-       query="/CLASS_DEF[./IDENT[@text='TournamentObserver']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='play']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/LITERAL_NEW[./IDENT[@text='GameObserverDetailed']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='finished']]/SLIST/VARIABLE_DEF/IDENT[@text='turns']"/>
 </suppressions>
