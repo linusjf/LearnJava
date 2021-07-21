@@ -19,9 +19,6 @@ public class DiceFast implements Dice {
   }
 
   protected int mod(int a, int div) {
-    int result = a % div;
-    if (result < 0)
-      return -result;
-    return result;
+    return Math.abs(a % div);
   }
 }
