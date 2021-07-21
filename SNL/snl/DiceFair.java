@@ -13,7 +13,7 @@ public class DiceFair implements Dice {
   public DiceFair(Random random) {
     this.random = random;
   }
- 
+
   public int roll() {
     return random.nextInt(1, 7);
   }
