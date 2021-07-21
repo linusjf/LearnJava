@@ -8,6 +8,7 @@ public class DiceFast implements Dice {
   private int y = ThreadLocalRandom.current().nextInt();
   private int z = ThreadLocalRandom.current().nextInt();
   private int w = ThreadLocalRandom.current().nextInt();
+
   public int roll() {
     final int tmp = x ^ (x << 15);
     x = y;
