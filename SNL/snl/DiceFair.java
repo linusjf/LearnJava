@@ -15,6 +15,6 @@ public class DiceFair implements Dice {
   }
 
   public int roll() {
-    return random.nextInt(1, 7);
+    return random.nextInt(6) + 1;
   }
 }

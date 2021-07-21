@@ -1,5 +1,6 @@
 package snl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameObserverDetailed extends GameObserverSummary {
