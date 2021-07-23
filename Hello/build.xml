@@ -111,7 +111,7 @@
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
-        <ement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
