@@ -3,7 +3,7 @@ package varhandles;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 
-@SuppressWarnings({"PMD", "checkstyle"})
+@SuppressWarnings("PMD")
 public class VarHandles {
 
   public int publicTestVar = 1;
@@ -28,7 +28,6 @@ public class VarHandles {
   public static void
   whenVarHandleForPublicVarIsCreated_ThenItIsInitializedProperly()
       throws NoSuchFieldException, IllegalAccessException {
-    VarHandles vh = new VarHandles();
     VarHandle PUBLIC_TEST_VARIABLE =
         MethodHandles.lookup()
             .in(VarHandles.class)
