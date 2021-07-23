@@ -111,7 +111,7 @@
     <description>Run target</description>
     <java classname="${main.class}">
       <classpath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <ement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
@@ -249,4 +249,4 @@
           depends="compile, pmd, spotbugs,jar,docs">
     <description>Main target</description>
   </target>
-</project>
+</project>pathel
