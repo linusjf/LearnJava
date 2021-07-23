@@ -9,6 +9,6 @@ Specification-Title: VarHandles
 Specification-Version: 2.4.0
 Specification-Vendor: 
 Implementation-Title: 
-Implementation-Version: a2106f1c July 23 2021
+Implementation-Version: 7e740a74 July 23 2021
 Implementation-Vendor: 
 
