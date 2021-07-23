@@ -3,6 +3,7 @@ package varhandles;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 
+@SuppressWarnings({"PMD", "checkstyle"})
 public class VarHandles {
 
   public int publicTestVar = 1;

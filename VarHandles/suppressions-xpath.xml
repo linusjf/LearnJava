@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='publicTestVar']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='variableToSet']]/MODIFIERS"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='variableToSet']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='variableToCompareAndSet']]/MODIFIERS"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='variableToCompareAndSet']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='variableToGetAndAdd']]/MODIFIERS"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='variableToGetAndAdd']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="DeclarationOrderCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='variableToBitwiseOr']]/MODIFIERS"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="VisibilityModifierCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/VARIABLE_DEF/IDENT[@text='variableToBitwiseOr']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='whenVarHandleForPublicVarIsCreated_ThenItIsInitializedProperly']]/SLIST/VARIABLE_DEF/IDENT[@text='PUBLIC_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='whenVarHandleForPublicVarIsCreated_ThenItIsInitializedProperly']]/SLIST/VARIABLE_DEF/IDENT[@text='PUBLIC_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='whenVarHandleForPrivateVarIsCreated_ThenItIsInitializedProperly']]/SLIST/VARIABLE_DEF/IDENT[@text='PRIVATE_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='whenVarHandleForPrivateVarIsCreated_ThenItIsInitializedProperly']]/SLIST/VARIABLE_DEF/IDENT[@text='PRIVATE_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetIsInvoked_ThenValueOfVarIsReturned']]/SLIST/VARIABLE_DEF/IDENT[@text='PUBLIC_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetIsInvoked_ThenValueOfVarIsReturned']]/SLIST/VARIABLE_DEF/IDENT[@text='PUBLIC_TEST_VARIABLE']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_SET']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_SET']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='15']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/LITERAL_ASSERT/EXPR/EQUAL/NUM_INT[@text='15']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenCompareAndSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_COMPARE_AND_SET']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenCompareAndSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_COMPARE_AND_SET']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenCompareAndSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenCompareAndSetIsInvoked_ThenValueOfVarIsChanged']]/SLIST/LITERAL_ASSERT/EXPR/EQUAL/NUM_INT[@text='100']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndAddIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_GET_AND_ADD']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndAddIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_GET_AND_ADD']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndAddIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF[./IDENT[@text='before']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='200']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndAddIsInvoked_ThenValueOfVarIsChanged']]/SLIST/LITERAL_ASSERT/EXPR/EQUAL/NUM_INT[@text='200']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="AbbreviationAsWordInNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndBitwiseOrIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_BITWISE_OR']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="LocalVariableNameCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndBitwiseOrIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE_TO_BITWISE_OR']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndBitwiseOrIsInvoked_ThenValueOfVarIsChanged']]/SLIST/VARIABLE_DEF[./IDENT[@text='before']]/ASSIGN/EXPR/TYPECAST/METHOD_CALL/ELIST/EXPR/TYPECAST/NUM_INT[@text='127']"/>
+<suppress-xpath
+       files="VarHandles.java"
+       checks="MagicNumberCheck"
+       query="/CLASS_DEF[./IDENT[@text='VarHandles']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='givenVarHandle_whenGetAndBitwiseOrIsInvoked_ThenValueOfVarIsChanged']]/SLIST/LITERAL_ASSERT/EXPR/EQUAL/NUM_INT[@text='127']"/>
+</suppressions>
