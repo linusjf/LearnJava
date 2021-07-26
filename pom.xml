@@ -346,7 +346,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-ant</artifactId>
-      <version>1.6.7</version>
+      <version>1.6.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
