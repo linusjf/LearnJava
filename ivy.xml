@@ -634,7 +634,7 @@
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
     <dependency org="org.slf4j"
                 name="slf4j-nop"
-                rev="2.0.0-alpha2"
+                rev="2.0.0-alpha3"
                 conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
