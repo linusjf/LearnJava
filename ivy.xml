@@ -594,12 +594,12 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
                 name="pitest"
-                rev="1.6.8"
+                rev="1.6.9"
                 conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
     <dependency org="org.pitest"
                 name="pitest-command-line"
-                rev="1.6.8"
+                rev="1.6.9"
                 conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
@@ -609,7 +609,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
                 name="pitest-ant"
-                rev="1.6.8"
+                rev="1.6.9"
                 conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
     <dependency org="ant-contrib"
@@ -807,6 +807,6 @@
     name="spring-boot" 
     rev="2.5.3"
   conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" >
-  </dependency>
+</dependency>
 </dependencies>
 </ivy-module>
