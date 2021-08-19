@@ -805,7 +805,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
   <dependency org="org.springframework.boot" 
     name="spring-boot" 
-    rev="2.5.3"
+    rev="2.5.4"
   conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" >
 </dependency>
 </dependencies>
