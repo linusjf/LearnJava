@@ -754,7 +754,7 @@
       <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics" 
       name="jenetics" 
-      rev="6.2.0"
+      rev="6.3.0"
       conf="jenetics.main-&gt;master" />
       <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
     <dependency org="net.java.dev.jna" 
