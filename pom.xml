@@ -514,7 +514,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-ant</artifactId>
-      <version>3.0.8</version>
+      <version>3.0.9</version>
       <optional>true</optional>
     </dependency>
     <dependency>

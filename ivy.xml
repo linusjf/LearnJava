@@ -749,7 +749,7 @@
     <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-ant -->
     <dependency org="org.codehaus.groovy"
                 name="groovy-ant"
-                rev="3.0.8"
+                rev="3.0.9"
       conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
       <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics" 
