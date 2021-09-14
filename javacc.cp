@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/javacc-7.0.10.jar:/data/data/com.termux/files/home/LearnJava/lib/junit-3.8.1.jar
+/root/LearnJava/lib/javacc-7.0.10.jar:/root/LearnJava/lib/junit-3.8.1.jar

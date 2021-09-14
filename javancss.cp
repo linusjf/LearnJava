@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/ccl-29.50.jar:/data/data/com.termux/files/home/LearnJava/lib/javancss-33.54.jar:/data/data/com.termux/files/home/LearnJava/lib/jhbasic-29.50.jar
+/root/LearnJava/lib/ccl-29.50.jar:/root/LearnJava/lib/javancss-33.54.jar:/root/LearnJava/lib/jhbasic-29.50.jar

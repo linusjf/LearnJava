@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/ant-contrib-20020829.jar
+/usr/share/ant/lib/ant-contrib-20020829.jar

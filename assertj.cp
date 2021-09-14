@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/assertj-core-3.20.2.jar
+/root/LearnJava/lib/assertj-core-3.20.2.jar

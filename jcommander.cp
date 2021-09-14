@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jcommander-1.81.jar
+/root/LearnJava/lib/jcommander-1.81.jar

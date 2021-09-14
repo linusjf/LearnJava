@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/commons-lang3-3.11.jar:/data/data/com.termux/files/home/LearnJava/lib/commons-text-1.9.jar
+/root/LearnJava/lib/commons-lang3-3.11.jar:/root/LearnJava/lib/commons-text-1.9.jar

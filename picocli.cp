@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/picocli-4.6.1.jar
+/root/LearnJava/lib/picocli-4.6.1.jar

@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jcommander-1.78.jar:/data/data/com.termux/files/home/LearnJava/lib/jquery-3.5.1.jar:/data/data/com.termux/files/home/LearnJava/lib/testng-7.4.0.jar
+/root/LearnJava/lib/jcommander-1.78.jar:/root/LearnJava/lib/jquery-3.5.1.jar:/root/LearnJava/lib/testng-7.4.0.jar

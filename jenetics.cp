@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jenetics-6.3.0.jar
+/root/LearnJava/lib/jenetics-6.3.0.jar

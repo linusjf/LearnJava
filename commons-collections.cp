@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/commons-collections-20040616.jar
+/root/LearnJava/lib/commons-collections-20040616.jar

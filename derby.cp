@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/derby-10.15.2.0.jar:/data/data/com.termux/files/home/LearnJava/lib/derbyshared-10.15.2.0.jar:/data/data/com.termux/files/home/LearnJava/lib/derbytools-10.15.2.0.jar
+/root/LearnJava/lib/derby-10.15.2.0.jar:/root/LearnJava/lib/derbyshared-10.15.2.0.jar:/root/LearnJava/lib/derbytools-10.15.2.0.jar
