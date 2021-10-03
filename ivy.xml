@@ -519,7 +519,7 @@
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon"
                 name="Saxon-HE"
-                rev="10.5"
+                rev="10.6"
                 conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
@@ -658,7 +658,7 @@
     <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
     <dependency org="gr.spinellis.ckjm"
                 name="ckjm_ext"
-                rev="2.3"
+                rev="2.4"
                 conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
     <dependency org="org.codehaus.javancss"
