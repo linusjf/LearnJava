@@ -583,5 +583,11 @@
       <version>2.5.5</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.12.79</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

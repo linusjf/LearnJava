@@ -334,6 +334,10 @@
           description="spring-boot main jars" />
     <conf name="spring-boot.lib"
           description="spring-boot lib jars" />
+    <conf name="aws-java-sdk.main"
+          description="aws-java-sdk main jars" />
+    <conf name="aws-java-sdk.lib"
+          description="aws-java-sdk lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
@@ -807,6 +811,12 @@
     name="spring-boot" 
     rev="2.5.5"
   conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" >
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+<dependency org="com.amazonaws" 
+  name="aws-java-sdk" 
+  rev="1.12.79"
+  conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
 </dependency>
 </dependencies>
 </ivy-module>
