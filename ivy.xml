@@ -524,12 +524,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-core"
-                rev="3.23.0"
+                rev="3.23.1"
                 conf="javaparser-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-symbol-solver-core"
-                rev="3.23.0"
+                rev="3.23.1"
                 conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
@@ -788,12 +788,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
   <dependency org="net.bytebuddy" 
     name="byte-buddy" 
-    rev="1.11.18"
+    rev="1.11.19"
     conf="byte-buddy.main-&gt;master"/>
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
   <dependency org="net.bytebuddy" 
     name="byte-buddy-agent" 
-    rev="1.11.18"
+    rev="1.11.19"
     conf="byte-buddy-agent.main-&gt;master"/>
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
   <dependency org="org.mongodb" 

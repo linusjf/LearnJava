@@ -238,13 +238,13 @@
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-core</artifactId>
-      <version>3.23.0</version>
+      <version>3.23.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-symbol-solver-core</artifactId>
-      <version>3.23.0</version>
+      <version>3.23.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -556,13 +556,13 @@
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy</artifactId>
-      <version>1.11.18</version>
+      <version>1.11.19</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy-agent</artifactId>
-      <version>1.11.18</version>
+      <version>1.11.19</version>
       <optional>true</optional>
     </dependency>
     <dependency>
