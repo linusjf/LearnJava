@@ -343,14 +343,14 @@
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat"
                 name="google-java-format"
-      rev="1.11.0"
+                rev="1.11.0"
                 conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
                 rev="9.0.1"
                 transitive="true"
-                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile"/>
+                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
                 name="pmd-core"
@@ -588,7 +588,7 @@
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
     <dependency org="org.jacoco"
                 name="org.jacoco.cli"
-      rev="0.8.7"
+                rev="0.8.7"
                 conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
     <dependency org="org.jacoco"
@@ -732,8 +732,8 @@
                 conf="jmh-generator-annprocess.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-reflection -->
     <dependency org="org.openjdk.jmh"
-      name="jmh-generator-reflection" 
-      rev="1.33"
+                name="jmh-generator-reflection"
+                rev="1.33"
                 conf="jmh-generator-reflection.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-bytecode -->
     <dependency org="org.openjdk.jmh"
@@ -754,69 +754,69 @@
     <dependency org="org.codehaus.groovy"
                 name="groovy-ant"
                 rev="3.0.9"
-      conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
-      <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
-    <dependency org="io.jenetics" 
-      name="jenetics" 
-      rev="6.3.0"
-      conf="jenetics.main-&gt;master" />
-      <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
-    <dependency org="net.java.dev.jna" 
-      name="jna" 
-      rev="5.9.0"
-      conf="jna.main-&gt;master"/>
+                conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
+    <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
+    <dependency org="io.jenetics"
+                name="jenetics"
+                rev="6.3.0"
+                conf="jenetics.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+    <dependency org="net.java.dev.jna"
+                name="jna"
+                rev="5.9.0"
+                conf="jna.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
-  <dependency org="com.thoughtworks.xstream" 
-    name="xstream" 
-    rev="1.4.18"
-    conf="xstream.main-&gt;master;xstream.lib->compile"/>
+    <dependency org="com.thoughtworks.xstream"
+                name="xstream"
+                rev="1.4.18"
+                conf="xstream.main-&gt;master;xstream.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
-  <dependency org="org.ow2.asm" 
-    name="asm" 
-    rev="9.2"
-    conf="asm.main-&gt;master"/>
+    <dependency org="org.ow2.asm"
+                name="asm"
+                rev="9.2"
+                conf="asm.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-util -->
-  <dependency org="org.ow2.asm" 
-    name="asm-util" 
-    rev="9.2"
-    conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile"/>
+    <dependency org="org.ow2.asm"
+                name="asm-util"
+                rev="9.2"
+                conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-commons -->
-  <dependency org="org.ow2.asm" 
-    name="asm-commons" 
-    rev="9.2"
-    conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile"/>
+    <dependency org="org.ow2.asm"
+                name="asm-commons"
+                rev="9.2"
+                conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
-  <dependency org="net.bytebuddy" 
-    name="byte-buddy" 
-    rev="1.11.19"
-    conf="byte-buddy.main-&gt;master"/>
+    <dependency org="net.bytebuddy"
+                name="byte-buddy"
+                rev="1.11.19"
+                conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
-  <dependency org="net.bytebuddy" 
-    name="byte-buddy-agent" 
-    rev="1.11.19"
-    conf="byte-buddy-agent.main-&gt;master"/>
+    <dependency org="net.bytebuddy"
+                name="byte-buddy-agent"
+                rev="1.11.19"
+                conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
-  <dependency org="org.mongodb" 
-    name="mongo-java-driver" 
-    rev="3.12.10"
-    conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile"/>
-  <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
-<dependency org="com.github.javafaker" 
-  name="javafaker" 
-  rev="1.0.2"
-  conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile" >
-  </dependency>
+    <dependency org="org.mongodb"
+                name="mongo-java-driver"
+                rev="3.12.10"
+                conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+    <dependency org="com.github.javafaker"
+                name="javafaker"
+                rev="1.0.2"
+                conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile">
+                </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
-  <dependency org="org.springframework.boot" 
-    name="spring-boot" 
-    rev="2.5.5"
-  conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" >
-</dependency>
-<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-<dependency org="com.amazonaws" 
-  name="aws-java-sdk" 
-  rev="1.12.81"
-  conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
-</dependency>
-</dependencies>
+    <dependency org="org.springframework.boot"
+                name="spring-boot"
+                rev="2.5.5"
+                conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile">
+                </dependency>
+    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+    <dependency org="com.amazonaws"
+                name="aws-java-sdk"
+                rev="1.12.82"
+                conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
+                </dependency>
+  </dependencies>
 </ivy-module>

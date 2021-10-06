@@ -1,90 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suppressions PUBLIC
-    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
-    "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
-<suppress-xpath
-       files="CountUpperCase.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000_000']"/>
-<suppress-xpath
-       files="CountUpperCase.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='i']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="CountUpperCase.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='i']]/NUM_INT[@text='1_000_000']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='boxed']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='400_000']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='3']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='10']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='4']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='100']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='5']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='6']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="HardWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="SoftWorker.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='SoftWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='boxed']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='400_000']"/>
-<suppress-xpath
-       files="TestJIT.java"
-       checks="FinalClassCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJIT']]"/>
-<suppress-xpath
-       files="TestJIT.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJIT']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="TestJIT.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJIT']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="TestJITAgain.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJITAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="TestJITAgain.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJITAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
-<suppress-xpath
-       files="TestJITList.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJITList']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']"/>
-<suppress-xpath
-       files="TestJITList.java"
-       checks="MagicNumberCheck"
-       query="/CLASS_DEF[./IDENT[@text='TestJITList']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']"/>
+  <suppress-xpath files="CountUpperCase.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000_000']" />
+  <suppress-xpath files="CountUpperCase.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/EXPR/EQUAL[./NUM_INT[@text='0']]/MOD[./IDENT[@text='i']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="CountUpperCase.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='CountUpperCase']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/LITERAL_IF/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/DIV[./IDENT[@text='i']]/NUM_INT[@text='1_000_000']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='boxed']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='400_000']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='3']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='10']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='4']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='100']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='5']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/EQUAL/NUM_INT[@text='6']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='1000']" />
+  <suppress-xpath files="HardWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='HardWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='isPair']]/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/LITERAL_IF/LITERAL_ELSE/EXPR/ASSIGN[./IDENT[@text='divRest']]/MOD[./IDENT[@text='number']]/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="SoftWorker.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='SoftWorker']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='numbers']]/ASSIGN/EXPR/METHOD_CALL/DOT[./IDENT[@text='collect']]/METHOD_CALL/DOT[./IDENT[@text='boxed']]/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='400_000']" />
+  <suppress-xpath files="TestJIT.java"
+                  checks="FinalClassCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJIT']]" />
+  <suppress-xpath files="TestJIT.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJIT']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="TestJIT.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJIT']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_TRY/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="TestJITAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJITAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="TestJITAgain.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJITAgain']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
+  <suppress-xpath files="TestJITList.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJITList']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/LITERAL_FOR/FOR_CONDITION/EXPR/LT[./IDENT[@text='i']]/NUM_INT[@text='10_000']" />
+  <suppress-xpath files="TestJITList.java"
+                  checks="MagicNumberCheck"
+                  query="/CLASS_DEF[./IDENT[@text='TestJITList']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='1000']" />
 </suppressions>
