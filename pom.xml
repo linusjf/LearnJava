@@ -340,7 +340,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-junit5-plugin</artifactId>
-      <version>0.15</version>
+      <version>0.14</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -586,7 +586,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.83</version>
+      <version>1.12.84</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
