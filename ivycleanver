@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cd ~/.ivy2/cache/"$1" && \
+  find . -type f -name '*$2.*' -exec rm -f {} \;

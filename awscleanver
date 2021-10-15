@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-cd ~/.ivy2/cache/com.amazonaws && \
-  find . -type f -name '*$1.*' -exec rm -f {} \;
+./ivycleanver com.amazonaws "$1"
