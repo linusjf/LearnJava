@@ -586,7 +586,11 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
+<<<<<<< HEAD
       <version>1.12.91</version>
+=======
+      <version>1.12.92</version>
+>>>>>>> development
       <optional>true</optional>
     </dependency>
   </dependencies>
