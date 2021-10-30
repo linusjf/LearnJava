@@ -15,7 +15,8 @@ public class PlayerCreator {
       case SNOOKER:
         return new SnookerPlayer();
       default:
-        throw new IllegalArgumentException("Invalid player type: " + playerType);
+        throw new IllegalArgumentException("Invalid player type: "
+                                           + playerType);
     }
   }
 

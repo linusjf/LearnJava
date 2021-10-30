@@ -4,11 +4,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class ThrowSwitch {
   private ThrowSwitch() {
-    throw new IllegalStateException("Private constructor invoked for class: " + getClass());
+    throw new IllegalStateException("Private constructor invoked for class: "
+                                    + getClass());
   }
 
-  @SuppressWarnings({"fallthrough", "PMD.MissingBreakInSwitch", "PMD.DoNotCallSystemExit"})
-  public static void main(String... args) {
+  @SuppressWarnings({"fallthrough",
+                     "PMD.MissingBreakInSwitch",
+                     "PMD.DoNotCallSystemExit"})
+  public static void
+  main(String... args) {
     int errCode = getSimulatedErrorCode(ThreadLocalRandom.current());
 
     switch (errCode) {

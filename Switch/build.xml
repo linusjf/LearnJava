@@ -55,6 +55,7 @@
            destdir="${build.dir}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
+      <compilerarg value="${javac.params2}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -152,6 +153,12 @@
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
+    <java classname="${main.class8}">
+      <classpath>
+        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
   </target>
   <target name="format">
     <fileset dir="${basedir}"
@@ -165,6 +172,11 @@
               srcFile="../${gformat.classpath.file}" />
     <java classname="${gformat.main.class}"
           fork="true">
+      <jvmarg line="--add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+      <jvmarg line="--add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
+      <jvmarg line="--add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED" />
+      <jvmarg line="--add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
+      <jvmarg line="--add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <arg line="-i ${sources}" />
       <classpath>
         <pathelement path="${gformat.cp}" />

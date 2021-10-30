@@ -30,6 +30,7 @@ public class PlayerSupplier {
   }
 
   public Supplier<Player> getPlayerSupplier(String playerType) {
-    return requireNonNull(PLAYER_SUPPLIER.get(playerType), "Invalid player type: " + playerType);
+    return requireNonNull(PLAYER_SUPPLIER.get(playerType),
+                          "Invalid player type: " + playerType);
   }
 }
