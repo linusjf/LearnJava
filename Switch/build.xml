@@ -52,7 +52,10 @@
           depends="clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            srcdir="${src.dir}"
-           destdir="${build.dir}">
+           destdir="${build.dir}"
+           nowarn="on"
+           fork="yes"
+           createMissingPackageInfoClass="false">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
       <compilerarg value="${javac.params2}" />
