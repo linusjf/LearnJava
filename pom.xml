@@ -28,25 +28,25 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-core</artifactId>
-      <version>6.39.0</version>
+      <version>6.40.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-java</artifactId>
-      <version>6.39.0</version>
+      <version>6.40.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-jsp</artifactId>
-      <version>6.39.0</version>
+      <version>6.40.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-xml</artifactId>
-      <version>6.39.0</version>
+      <version>6.40.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -340,7 +340,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-junit5-plugin</artifactId>
-      <version>0.14</version>
+      <version>0.15</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -586,11 +586,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-<<<<<<< HEAD
-      <version>1.12.91</version>
-=======
       <version>1.12.92</version>
->>>>>>> development
       <optional>true</optional>
     </dependency>
   </dependencies>

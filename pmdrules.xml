@@ -117,9 +117,8 @@
   <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
-    <properties>
-      <property name="utilityClassPattern"
-                value="[A-Z][a-zA-Z0-9]+" />
+    <properties> 
+      <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|Constants)" /> 
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/FieldNamingConventions" />

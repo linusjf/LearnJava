@@ -244,6 +244,7 @@
                  toConsole="${pmd.toConsole}"></formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
+        <exclude name="sw/ObjectSwitch.java" />
       </fileset>
     </pmd>
     <echo message="${pmd.errCount} violations found." />
