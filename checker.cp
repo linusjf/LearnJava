@@ -1,1 +1,1 @@
-/root/LearnJava/lib/checker-3.18.1.jar
+/root/LearnJava/lib/checker-3.19.0.jar
