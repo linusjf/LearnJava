@@ -635,11 +635,11 @@
                 name="spotbugs-ant"
                 rev="4.4.2"
                 conf="spotbugs-ant.main-&gt;master;" />
-    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+       <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop 
     <dependency org="org.slf4j"
                 name="slf4j-nop"
                 rev="2.0.0-alpha5"
-                conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" />
+      conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" /> -->
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
                 name="findsecbugs-plugin"

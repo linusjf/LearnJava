@@ -445,12 +445,12 @@
       <ivy:retrieve pathid="spotbugs-ant.main.path"
                     conf="spotbugs-ant.main"
                     symlink="true" />
-      <ivy:retrieve pathid="slf4j-nop.lib.path"
+      <!--   <ivy:retrieve pathid="slf4j-nop.lib.path"
                     conf="slf4j-nop.lib"
-                    symlink="true" />
+      symlink="true" /> 
       <ivy:retrieve pathid="slf4j-nop.main.path"
                     conf="slf4j-nop.main"
-                    symlink="true" />
+      symlink="true" /> -->
       <ivy:retrieve pathid="findsecbugs-plugin.main.path"
                     conf="findsecbugs-plugin.main"
                     symlink="true" />
