@@ -568,7 +568,7 @@
     <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
     <dependency org="info.picocli"
                 name="picocli"
-                rev="4.6.1"
+                rev="4.6.2"
                 conf="picocli.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
     <dependency org="org.jacoco"
