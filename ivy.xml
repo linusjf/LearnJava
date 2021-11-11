@@ -628,18 +628,13 @@
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
-                rev="4.4.2"
+                rev="4.5.0"
                 conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
-                rev="4.4.2"
+                rev="4.5.0"
                 conf="spotbugs-ant.main-&gt;master;" />
-       <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop 
-    <dependency org="org.slf4j"
-                name="slf4j-nop"
-                rev="2.0.0-alpha5"
-      conf="slf4j-nop.main-&gt;master;slf4j-nop.lib-&gt;compile;" /> -->
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
                 name="findsecbugs-plugin"
