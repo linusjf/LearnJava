@@ -38,7 +38,7 @@ java -cp @"$classpathFile" \
 --minimum-tokens 100 \
 --format "$format" \
 --language "$language" \
---filelist "$fileslist" \
+--file-list "$fileslist" \
 | tee "$errFile" \
 || { echo "Error running $0"; exit 1;}
 res=$?

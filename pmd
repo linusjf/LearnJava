@@ -53,12 +53,12 @@ if [ -s "$fileslist" ]
 then
   java -cp "$pmdCp" \
     "$mainClass" \
-    -filelist "$fileslist" -R "$rulesFile" -f "$format" \
-    -min "$minpriority" -norulesetcompatibility \
-    -failOnViolation true -cache "$cacheFile" \
-    -reportfile "$errFile" \
-    -auxclasspath "$auxCp":. \
-    -t "$threads" \
+    --file-list "$fileslist" --rulesets "$rulesFile" --format "$format" \
+    --minimum-priority "$minpriority" --no-ruleset-compatibility \
+    --fail-on-violation true --cache "$cacheFile" \
+    --report-file "$errFile" \
+    --aux-classpath "$auxCp":. \
+    --threads "$threads" \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
       res=$?
 fi
