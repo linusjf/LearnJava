@@ -514,7 +514,7 @@
     <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
     <dependency org="org.jdom"
                 name="jdom2"
-                rev="2.0.6"
+                rev="2.0.6.1"
                 conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon"
