@@ -1,1 +1,1 @@
-/root/LearnJava/lib/assertj-core-3.21.0.jar
+/root/LearnJava/lib/assertj-core-3.22.0.jar
