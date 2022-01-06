@@ -1,1 +1,1 @@
-/root/LearnJava/lib/jcommander-1.78.jar:/root/LearnJava/lib/jquery-3.5.1.jar:/root/LearnJava/lib/testng-7.4.0.jar
+/root/LearnJava/lib/jcommander-1.78.jar:/root/LearnJava/lib/jsr305-3.0.1.jar:/root/LearnJava/lib/slf4j-api-1.7.32.jar:/root/LearnJava/lib/testng-7.5.jar
