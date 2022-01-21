@@ -804,13 +804,13 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <dependency org="org.springframework.boot"
                 name="spring-boot"
-                rev="2.6.2"
+                rev="2.6.3"
                 conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile">
                 </dependency>
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.143"
+                rev="1.12.144"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
                 </dependency>
   </dependencies>
