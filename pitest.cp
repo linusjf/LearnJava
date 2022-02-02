@@ -1,1 +1,1 @@
-/root/LearnJava/lib/pitest-1.7.3.jar:/root/LearnJava/lib/pitest-ant-1.7.3.jar:/root/LearnJava/lib/pitest-command-line-1.7.3.jar:/root/LearnJava/lib/pitest-entry-1.7.3.jar:/root/LearnJava/lib/pitest-junit5-plugin-0.15.jar
+/root/LearnJava/lib/pitest-1.7.4.jar:/root/LearnJava/lib/pitest-ant-1.7.4.jar:/root/LearnJava/lib/pitest-command-line-1.7.4.jar:/root/LearnJava/lib/pitest-entry-1.7.4.jar:/root/LearnJava/lib/pitest-junit5-plugin-0.15.jar
