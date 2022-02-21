@@ -514,7 +514,7 @@
     <dependency>
       <groupId>io.jenetics</groupId>
       <artifactId>jenetics</artifactId>
-      <version>6.3.0</version>
+      <version>7.0.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
