@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+./ivycleanver org.eclipse.ee4j "$1"
+./ivycleanver org.eclipse.ee4j "$1"
+./ivycleanver org.eclipse.jdt "$1"
+./ivycleanver org.eclipse.jdt.core.compiler "$1"
+./ivycleanver org.eclipse.jetty "$1"
+./ivycleanver org.eclipse.jetty.orbit "$1"
+./ivycleanver org.eclipse.jetty.toolchain "$1"
+./ivycleanver org.eclipse.jgit "$1"
