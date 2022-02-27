@@ -380,7 +380,7 @@
                 conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile" />
     <dependency org="org.apache.logging.log4j"
                 name="log4j-core"
-                rev="2.17.1"
+                rev="2.17.2"
                 conf="log4j-core.main-&gt;default;log4j-core.lib-&gt;default;log4j-core.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
