@@ -810,7 +810,11 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
+<<<<<<< HEAD
                 rev="1.12.169"
+=======
+                rev="1.12.168"
+>>>>>>> 473b40a7 (chore: Update dependency com.amazonaws:aws-java-sdk to v1.12.168)
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
                 </dependency>
   </dependencies>

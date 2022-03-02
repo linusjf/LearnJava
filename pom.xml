@@ -580,7 +580,11 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
+<<<<<<< HEAD
       <version>1.12.169</version>
+=======
+      <version>1.12.168</version>
+>>>>>>> 473b40a7 (chore: Update dependency com.amazonaws:aws-java-sdk to v1.12.168)
       <optional>true</optional>
     </dependency>
   </dependencies>
