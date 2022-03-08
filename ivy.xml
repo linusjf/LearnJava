@@ -343,7 +343,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat"
                 name="google-java-format"
-                rev="1.14.0"
+                rev="1.15.0"
                 conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
