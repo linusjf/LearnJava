@@ -810,7 +810,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.181"
+                rev="1.12.182"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
                 </dependency>
   </dependencies>
