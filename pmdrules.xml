@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
 
   <description>Quickstart configuration of PMD. Includes the rules that
-    are most likely to apply everywhere.</description>
+  are most likely to apply everywhere.</description>
   <rule ref="category/java/codestyle.xml/FinalParameterInAbstractMethod" />
   <rule ref="category/java/bestpractices.xml/SimplifiableTestAssertion" />
   <rule ref="category/java/errorprone.xml/ReturnEmptyCollectionRatherThanNull" />
@@ -118,8 +118,9 @@
   <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
   <!-- NAMING CONVENTIONS -->
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
-    <properties> 
-      <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|Constants)" /> 
+    <properties>
+      <property name="utilityClassPattern"
+                value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|Constants)" />
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/FieldNamingConventions" />

@@ -424,7 +424,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-jasper"
-      rev="10.0.20"
+                rev="10.0.20"
                 conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
     <dependency org="org.apache.tomcat.embed"
@@ -434,7 +434,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
     <dependency org="org.apache.tomcat"
                 name="tomcat-servlet-api"
-      rev="10.0.20"
+                rev="10.0.20"
                 conf="tomcat-servlet-api.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
     <dependency org="org.apache.tomcat"
@@ -479,7 +479,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-jmx"
-      rev="11.0.9"
+                rev="11.0.9"
                 conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
@@ -494,7 +494,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-annotations"
-      rev="11.0.9"
+                rev="11.0.9"
                 conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
     <dependency org="org.eclipse.jetty"
@@ -573,27 +573,27 @@
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
     <dependency org="org.jacoco"
                 name="org.jacoco.core"
-                rev="0.8.7"
+                rev="0.8.8"
                 conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant -->
     <dependency org="org.jacoco"
                 name="org.jacoco.ant"
-                rev="0.8.7"
+                rev="0.8.8"
                 conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.report -->
     <dependency org="org.jacoco"
                 name="org.jacoco.report"
-                rev="0.8.7"
+                rev="0.8.8"
                 conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
     <dependency org="org.jacoco"
                 name="org.jacoco.cli"
-                rev="0.8.7"
+                rev="0.8.8"
                 conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
     <dependency org="org.jacoco"
                 name="org.jacoco.agent"
-                rev="0.8.7"
+                rev="0.8.8"
                 conf="org.jacoco.agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
@@ -723,7 +723,7 @@
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess -->
     <dependency org="org.openjdk.jmh"
                 name="jmh-generator-annprocess"
-      rev="1.35"
+                rev="1.35"
                 conf="jmh-generator-annprocess.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-reflection -->
     <dependency org="org.openjdk.jmh"

@@ -84,7 +84,7 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
   </module>
   <module name="SuppressWithPlainTextCommentFilter" />
   <module name="TreeWalker">
-    <module name="UnusedLocalVariable"/>
+    <module name="UnusedLocalVariable" />
     <module name="NoWhitespaceBeforeCaseDefaultColon" />
     <module name="RecordComponentName">
       <property name="format"
