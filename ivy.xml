@@ -648,7 +648,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
                 name="error_prone_core"
-                rev="2.13.0"
+                rev="2.13.1"
                 conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
     <dependency org="gr.spinellis.ckjm"
@@ -810,7 +810,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.200"
+                rev="1.12.201"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
                 </dependency>
   </dependencies>
