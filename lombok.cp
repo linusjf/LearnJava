@@ -1,1 +1,1 @@
-/root/LearnJava/lib/lombok-1.18.22.jar
+/root/LearnJava/lib/lombok-1.18.24.jar
