@@ -562,7 +562,7 @@
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
-      <version>3.12.10</version>
+      <version>3.12.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -580,7 +580,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.203</version>
+      <version>1.12.205</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
