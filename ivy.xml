@@ -628,12 +628,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
-                rev="4.6.0"
+                rev="4.7.0"
                 conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
-                rev="4.6.0"
+                rev="4.7.0"
                 conf="spotbugs-ant.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
@@ -810,7 +810,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.210"
+                rev="1.12.211"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
                 </dependency>
   </dependencies>
