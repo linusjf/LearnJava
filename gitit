@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+./xformatall
+./formatall
+gitit

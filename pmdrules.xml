@@ -89,7 +89,7 @@
       <property name="ignoredAnnotations"
                 value="lombok.Setter|lombok.Getter|lombok.Builder|lombok.Data|lombok.RequiredArgsConstructor|lombok.AllArgsConstructor|lombok.Value|lombok.NoArgsConstructor|java.lang.Deprecated|javafx.fxml.FXML|lombok.experimental.Delegate|lombok.EqualsAndHashCode" />
       <property name="ignoredFieldNames"
-                value="IDENT"/>
+                value="IDENT" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod">
@@ -479,8 +479,8 @@
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/EmptyFinalizer" />
-  <rule ref="category/java/codestyle.xml/EmptyControlStatement"/>
-  <rule ref="category/java/codestyle.xml/UnnecessarySemicolon"/>
+  <rule ref="category/java/codestyle.xml/EmptyControlStatement" />
+  <rule ref="category/java/codestyle.xml/UnnecessarySemicolon" />
   <rule ref="category/java/multithreading.xml/AvoidSynchronizedAtMethodLevel" />
   <rule ref="category/java/multithreading.xml/AvoidThreadGroup" />
   <rule ref="category/java/multithreading.xml/AvoidUsingVolatile" />
