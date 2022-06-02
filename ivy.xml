@@ -623,7 +623,7 @@
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency org="org.assertj"
                 name="assertj-core"
-                rev="3.23.0"
+                rev="3.23.1"
                 conf="assertj-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
@@ -804,7 +804,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <dependency org="org.springframework.boot"
                 name="spring-boot"
-                rev="2.6.8"
+                rev="2.7.0"
                 conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile">
                 </dependency>
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
