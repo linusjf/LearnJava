@@ -608,7 +608,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
                 name="pitest-junit5-plugin"
-                rev="0.15"
+                rev="0.16"
                 conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
