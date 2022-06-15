@@ -504,7 +504,7 @@
     <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
     <dependency org="org.checkerframework"
                 name="checker"
-                rev="3.22.1"
+                rev="3.22.2"
                 conf="checker.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
     <dependency org="com.beust"
