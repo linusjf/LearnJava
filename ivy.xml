@@ -678,7 +678,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
-                rev="5.3.20"
+                rev="5.3.21"
                 conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
@@ -753,7 +753,7 @@
     <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics"
                 name="jenetics"
-                rev="7.0.0"
+                rev="7.1.0"
                 conf="jenetics.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
     <dependency org="net.java.dev.jna"
