@@ -395,17 +395,17 @@
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
     <dependency org="org.apache.derby"
                 name="derby"
-                rev="10.15.2.0"
+                rev="10.16.1.1"
                 conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
     <dependency org="org.apache.derby"
                 name="derbytools"
-                rev="10.15.2.0"
+                rev="10.16.1.1"
                 conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
     <dependency org="org.apache.derby"
                 name="derbyshared"
-                rev="10.15.2.0"
+                rev="10.16.1.1"
                 conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
