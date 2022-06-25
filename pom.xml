@@ -521,7 +521,7 @@
     <dependency>
       <groupId>net.java.dev.jna</groupId>
       <artifactId>jna</artifactId>
-      <version>5.11.0</version>
+      <version>5.12.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -551,13 +551,13 @@
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy</artifactId>
-      <version>1.12.11</version>
+      <version>1.12.12</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy-agent</artifactId>
-      <version>1.12.11</version>
+      <version>1.12.12</version>
       <optional>true</optional>
     </dependency>
     <dependency>

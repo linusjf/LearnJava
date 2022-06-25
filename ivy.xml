@@ -758,7 +758,7 @@
     <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
     <dependency org="net.java.dev.jna"
                 name="jna"
-                rev="5.11.0"
+                rev="5.12.0"
                 conf="jna.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
     <dependency org="com.thoughtworks.xstream"
@@ -783,12 +783,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy"
-                rev="1.12.11"
+                rev="1.12.12"
                 conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy-agent"
-                rev="1.12.11"
+                rev="1.12.12"
                 conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
