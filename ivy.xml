@@ -678,7 +678,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
-                rev="5.3.21"
+                rev="5.3.22"
                 conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
@@ -748,7 +748,7 @@
     <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-ant -->
     <dependency org="org.codehaus.groovy"
                 name="groovy-ant"
-                rev="3.0.11"
+                rev="3.0.12"
                 conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics"
