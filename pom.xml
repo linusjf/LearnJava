@@ -329,13 +329,13 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest</artifactId>
-      <version>1.9.3</version>
+      <version>1.9.4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-command-line</artifactId>
-      <version>1.9.3</version>
+      <version>1.9.4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -347,7 +347,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-ant</artifactId>
-      <version>1.9.3</version>
+      <version>1.9.4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
