@@ -804,7 +804,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <dependency org="org.springframework.boot"
                 name="spring-boot"
-                rev="2.7.2"
+                rev="2.7.3"
                 conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile">
                 </dependency>
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
