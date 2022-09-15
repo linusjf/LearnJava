@@ -678,7 +678,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
-                rev="5.3.22"
+                rev="5.3.23"
                 conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
