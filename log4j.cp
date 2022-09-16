@@ -1,1 +1,1 @@
-/root/LearnJava/lib/log4j-api-2.18.0.jar:/root/LearnJava/lib/log4j-core-2.18.0.jar
+/root/LearnJava/lib/log4j-api-2.19.0.jar:/root/LearnJava/lib/log4j-core-2.19.0.jar
