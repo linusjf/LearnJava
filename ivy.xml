@@ -563,7 +563,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
     <dependency org="org.apache.commons"
                 name="commons-text"
-                rev="1.9"
+                rev="1.10.0"
                 conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
     <dependency org="info.picocli"
