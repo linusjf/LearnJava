@@ -768,17 +768,17 @@
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
     <dependency org="org.ow2.asm"
                 name="asm"
-                rev="9.3"
+                rev="9.4"
                 conf="asm.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-util -->
     <dependency org="org.ow2.asm"
                 name="asm-util"
-                rev="9.3"
+                rev="9.4"
                 conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-commons -->
     <dependency org="org.ow2.asm"
                 name="asm-commons"
-                rev="9.3"
+                rev="9.4"
                 conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
