@@ -41,7 +41,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-jsp</artifactId>
-      <version>6.50.0</version>
+      <version>6.51.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
