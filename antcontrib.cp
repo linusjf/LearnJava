@@ -1,1 +1,1 @@
-/usr/share/ant/lib/ant-contrib-20020829.jar
+/usr/share/ant/lib/ant-contrib-1.0b3.jar

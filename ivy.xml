@@ -218,8 +218,6 @@
           description="pitest ant main  jars" />
     <conf name="ant-contrib.main"
           description="ant contrib main  jars" />
-    <conf name="ant-contrib.lib"
-          description="ant contrib lib jars" />
     <conf name="assertj-core.main"
           description="assertj core main  jars" />
     <conf name="spotbugs.main"
@@ -598,12 +596,12 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
                 name="pitest"
-                rev="1.9.9"
+                rev="1.9.10"
                 conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
     <dependency org="org.pitest"
                 name="pitest-command-line"
-                rev="1.9.9"
+                rev="1.9.10"
                 conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
@@ -613,13 +611,13 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
                 name="pitest-ant"
-                rev="1.9.9"
+                rev="1.9.10"
                 conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
     <dependency org="ant-contrib"
                 name="ant-contrib"
-                rev="20020829"
-                conf="ant-contrib.main-&gt;master;ant-contrib.lib-&gt;compile;" />
+                rev="1.0b3"
+                conf="ant-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency org="org.assertj"
                 name="assertj-core"
