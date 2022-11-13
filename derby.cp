@@ -1,1 +1,0 @@
-/root/LearnJava/lib/derby-10.16.1.1.jar:/root/LearnJava/lib/derbyshared-10.16.1.1.jar:/root/LearnJava/lib/derbytools-10.16.1.1.jar

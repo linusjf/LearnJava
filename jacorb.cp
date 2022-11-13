@@ -1,1 +1,0 @@
-/root/LearnJava/lib/jacorb-3.9.jar:/root/LearnJava/lib/jacorb-omgapi-3.9.jar:/root/LearnJava/lib/slf4j-api-1.7.14.jar

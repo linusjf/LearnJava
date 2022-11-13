@@ -1,1 +1,0 @@
-/root/LearnJava/lib/automaton-1.11-8.jar:/root/LearnJava/lib/commons-lang3-3.5.jar:/root/LearnJava/lib/generex-1.0.2.jar:/root/LearnJava/lib/javafaker-1.0.2.jar:/root/LearnJava/lib/snakeyaml-1.23-android.jar

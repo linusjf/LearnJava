@@ -1,1 +1,0 @@
-/root/LearnJava/lib/jna-5.12.1.jar

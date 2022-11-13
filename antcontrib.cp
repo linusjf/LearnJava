@@ -1,1 +1,0 @@
-/usr/share/ant/lib/ant-contrib-1.0b3.jar
