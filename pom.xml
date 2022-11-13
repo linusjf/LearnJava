@@ -15,6 +15,12 @@
   <version>2.3.0</version>
   <dependencies>
     <dependency>
+      <groupId>ant-contrib</groupId>
+      <artifactId>ant-contrib</artifactId>
+      <version>1.0b3</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>com.google.googlejavaformat</groupId>
       <artifactId>google-java-format</artifactId>
       <version>1.15.0</version>
