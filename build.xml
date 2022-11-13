@@ -61,10 +61,13 @@
   <property file="${LearnJava.basedir}/spring-boot.properties" />
   <property file="${LearnJava.basedir}/aws-java-sdk.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
+  <target name="setup">
+  <antcall target="antcontrib"/>
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
-           classpath="${antcontrib.cp}" />
+  classpath="${antcontrib.cp}" />
+  </target>
   <target name="removecpjars"
           if="cpfiles">
     <for list="${cpfiles}"
@@ -132,6 +135,21 @@
         </antcall>
       </sequential>
     </for>
+  </target>
+  <target name="antcontrib"
+          description="--&gt; retrieve dependencies with ivy">
+    <first id="ivyantcontribfile">
+      <fileset dir="${LearnJava.basedir}"
+               includes="ivyantcontrib.xml" />
+    </first>
+    <ivy:resolve file="${toString:ivyantcontribfile}"
+    checkIfChanged="false" />
+      <ivy:retrieve pathid="ant-contrib.main.path"
+                    pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                    conf="ant-contrib.main"
+                    symlink="false" />
+      <echo file="${antcontrib.classpath.file}"
+            message="${toString:ant-contrib.main.path}" />
   </target>
   <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
@@ -613,14 +631,8 @@
       <ivy:retrieve pathid="aws-java-sdk.lib.path"
                     conf="aws-java-sdk.lib"
                     symlink="true" />
-      <ivy:retrieve pathid="ant-contrib.main.path"
-                    pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
-                    conf="ant-contrib.main"
-                    symlink="false" />
     </parallel>
     <parallel threadCount="6">
-      <echo file="${antcontrib.classpath.file}"
-            message="${toString:ant-contrib.main.path}" />
       <echo file="${junitplatform.classpath.file}"
             message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
       <echo file="${cs.classpath.file}"
@@ -811,7 +823,7 @@
     </cpd>
   </target>
   <target name="main"
-          depends="resolve">
+          depends="setup,resolve">
     <description>Main target</description>
   </target>
   <!-- =================================
