@@ -62,11 +62,11 @@
   <property file="${LearnJava.basedir}/aws-java-sdk.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <target name="setup">
-  <antcall target="antcontrib"/>
-  <loadfile property="antcontrib.cp"
-            srcFile="${antcontrib.classpath.file}" />
-  <taskdef resource="net/sf/antcontrib/antlib.xml"
-  classpath="${antcontrib.cp}" />
+    <antcall target="antcontrib" />
+    <loadfile property="antcontrib.cp"
+              srcFile="${antcontrib.classpath.file}" />
+    <taskdef resource="net/sf/antcontrib/antlib.xml"
+             classpath="${antcontrib.cp}" />
   </target>
   <target name="removecpjars"
           if="cpfiles">
@@ -143,13 +143,13 @@
                includes="ivyantcontrib.xml" />
     </first>
     <ivy:resolve file="${toString:ivyantcontribfile}"
-    checkIfChanged="false" />
-      <ivy:retrieve pathid="ant-contrib.main.path"
-                    pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
-                    conf="ant-contrib.main"
-                    symlink="false" />
-      <echo file="${antcontrib.classpath.file}"
-            message="${toString:ant-contrib.main.path}" />
+                 checkIfChanged="false" />
+    <ivy:retrieve pathid="ant-contrib.main.path"
+                  pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                  conf="ant-contrib.main"
+                  symlink="false" />
+    <echo file="${antcontrib.classpath.file}"
+          message="${toString:ant-contrib.main.path}" />
   </target>
   <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
