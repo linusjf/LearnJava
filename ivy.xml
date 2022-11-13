@@ -336,8 +336,15 @@
           description="aws-java-sdk main jars" />
     <conf name="aws-java-sdk.lib"
           description="aws-java-sdk lib jars" />
+    <conf name="ant-contrib.main"
+          description="ant contrib main  jars" />
   </configurations>
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
+    <dependency org="ant-contrib"
+                name="ant-contrib"
+                rev="1.0b3"
+                conf="ant-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat"
                 name="google-java-format"
