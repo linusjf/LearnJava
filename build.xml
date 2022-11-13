@@ -61,12 +61,6 @@
   <property file="${LearnJava.basedir}/spring-boot.properties" />
   <property file="${LearnJava.basedir}/aws-java-sdk.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
-  <ivy:retrieve pathid="ant-contrib.main.path"
-                pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
-                conf="ant-contrib.main"
-                symlink="false" />
-  <echo file="${antcontrib.classpath.file}"
-        message="${toString:ant-contrib.main.path}" />
   <loadfile property="antcontrib.cp"
             srcFile="${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
@@ -619,8 +613,14 @@
       <ivy:retrieve pathid="aws-java-sdk.lib.path"
                     conf="aws-java-sdk.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="ant-contrib.main.path"
+                    pattern="${ant.library.dir}/[artifact]-[revision].[ext]"
+                    conf="ant-contrib.main"
+                    symlink="false" />
     </parallel>
     <parallel threadCount="6">
+      <echo file="${antcontrib.classpath.file}"
+            message="${toString:ant-contrib.main.path}" />
       <echo file="${junitplatform.classpath.file}"
             message="${toString:junitplatform.main.path}:${toString:junitplatform.lib.path}" />
       <echo file="${cs.classpath.file}"
@@ -675,13 +675,10 @@
             message="${toString:org.jacoco.cli.main.path}:${toString:org.jacoco.cli.lib.path}:${toString:org.jacoco.report.main.path}:${toString:org.jacoco.report.lib.path}:${toString:org.jacoco.ant.main.path}:${toString:org.jacoco.ant.lib.path}:${toString:org.jacoco.core.main.path}:${toString:org.jacoco.core.lib.path}:${toString:org.jacoco.agent.main.path}" />
       <echo file="${pitest.classpath.file}"
             message="${toString:pitest-ant.main.path}:${toString:pitest-junit5-plugin.main.path}:${toString:pitest.main.path}:${toString:pitest-command-line.main.path}:${toString:pitest-command-line.lib.path}" />
-      <echo file="${antcontrib.classpath.file}"
-            message="${toString:ant-contrib.main.path}:${toString:ant-contrib.lib.path}" />
       <echo file="${assertj.classpath.file}"
             message="${toString:assertj.main.path}" />
       <echo file="${spotbugs.classpath.file}"
             message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}" />
-      <!-- message="${toString:spotbugs-ant.main.path}:${toString:spotbugs.main.path}:${toString:spotbugs.lib.path}:${toString:slf4j-nop.main.path}:${toString:slf4j-nop.lib.path}"  -->
       <echo file="${spotbugs-plugin.classpath.file}"
             message="${toString:sb-contrib.main.path}:${toString:findsecbugs-plugin.main.path}" />
       <echo file="${error_prone.classpath.file}"

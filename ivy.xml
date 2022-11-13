@@ -646,7 +646,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
                 name="error_prone_core"
-                rev="2.15.0"
+                rev="2.16"
                 conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
     <dependency org="gr.spinellis.ckjm"
