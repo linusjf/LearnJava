@@ -683,7 +683,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
-                rev="6.0.0"
+                rev="6.0.2"
                 conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
@@ -809,7 +809,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <dependency org="org.springframework.boot"
                 name="spring-boot"
-                rev="2.7.5"
+                rev="3.0.0"
                 conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile">
                 </dependency>
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
