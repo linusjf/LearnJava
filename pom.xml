@@ -53,7 +53,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-xml</artifactId>
-      <version>6.51.0</version>
+      <version>6.52.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
