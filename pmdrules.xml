@@ -6,16 +6,11 @@
 
   <description>Quickstart configuration of PMD. Includes the rules that
   are most likely to apply everywhere.</description>
-  <rule ref="category/java/codestyle.xml/FinalParameterInAbstractMethod" />
-  <rule ref="category/java/bestpractices.xml/SimplifiableTestAssertion" />
-  <rule ref="category/java/errorprone.xml/ReturnEmptyCollectionRatherThanNull" />
-  <rule ref="category/java/errorprone.xml/ImplicitSwitchFallThrough" />
+  <rule ref="category/java/bestpractices.xml/DoubleBraceInitialization" />
+  <rule ref="category/java/bestpractices.xml/UseStandardCharsets" />
   <rule ref="category/java/bestpractices.xml/PrimitiveWrapperInstantiation" />
   <rule ref="category/java/bestpractices.xml/JUnit5TestShouldBePackagePrivate" />
-  <rule ref="category/java/design.xml/CognitiveComplexity" />
-  <rule ref="category/java/design.xml/MutableStaticState" />
-  <rule ref="category/java/bestpractices.xml/UseStandardCharsets" />
-  <rule ref="category/java/codestyle.xml/UnnecessaryImport" />
+  <rule ref="category/java/bestpractices.xml/SimplifiableTestAssertion" />
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <properties>
       <property name="violationSuppressXPath"
@@ -119,10 +114,26 @@
   </rule>
   <rule ref="category/java/bestpractices.xml/AvoidReassigningCatchVariables" />
   <!-- NAMING CONVENTIONS -->
+  <rule ref="category/java/codestyle.xml/EmptyControlStatement" />
+  <rule ref="category/java/codestyle.xml/UnnecessarySemicolon" />
+  <rule ref="category/java/codestyle.xml/UnnecessaryImport" />
+  <rule ref="category/java/codestyle.xml/FinalParameterInAbstractMethod" />
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
+      <property name="classPattern"
+                value="[A-Z][a-zA-Z0-9]*" />
+      <property name="abstractClassPattern"
+                value="[A-Z][a-zA-Z0-9]*" />
+      <property name="interfacePattern"
+                value="[A-Z][a-zA-Z0-9]*" />
+      <property name="enumPattern"
+                value="[A-Z][a-zA-Z0-9]*" />
+      <property name="annotationPattern"
+                value="[A-Z][a-zA-Z0-9]*" />
       <property name="utilityClassPattern"
                 value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|Constants)" />
+      <property name="testClassPattern"
+                value="^Test.*$|^[A-Z][a-zA-Z0-9]*Test(s|Case)?$" />
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/FieldNamingConventions" />
@@ -252,6 +263,17 @@
                 value="javax.inject.Inject" />
     </properties>
   </rule>
+  <!-- Design -->
+  <rule ref="category/java/design.xml/InvalidJavaBean">
+    <properties>
+      <property name="ensureSerialization"
+                value="false" />
+      <property name="packages"
+                value="org.example.beans" />
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/CognitiveComplexity" />
+  <rule ref="category/java/design.xml/MutableStaticState" />
   <rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod" />
   <rule ref="category/java/design.xml/AvoidCatchingGenericException" />
   <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts" />
@@ -324,6 +346,7 @@
   <rule ref="category/java/design.xml/UseUtilityClass" />
   <rule ref="category/java/documentation.xml/CommentContent" />
   <!-- <rule ref="category/java/documentation.xml/CommentRequired" /> -->
+  <!-- Documentation -->
   <rule ref="category/java/documentation.xml/CommentSize">
     <properties>
       <property name="maxLines"
@@ -334,6 +357,17 @@
   </rule>
   <rule ref="category/java/documentation.xml/UncommentedEmptyConstructor" />
   <rule ref="category/java/documentation.xml/UncommentedEmptyMethodBody" />
+  <!-- Errorprone -->
+  <rule ref="category/xml/errorprone.xml/MistypedCDATASection" />
+  <rule ref="category/pom/errorprone.xml/InvalidDependencyTypes">
+    <properties>
+      <property name="validTypes"
+                value="pom,jar,maven-plugin,ejb,war,ear,rar,par" />
+    </properties>
+  </rule>
+  <rule ref="category/pom/errorprone.xml/ProjectVersionAsDependencyVersion" />
+  <rule ref="category/java/errorprone.xml/ReturnEmptyCollectionRatherThanNull" />
+  <rule ref="category/java/errorprone.xml/ImplicitSwitchFallThrough" />
   <rule ref="category/java/errorprone.xml/AssignmentInOperand">
     <properties>
       <property name="allowIf"
@@ -382,7 +416,12 @@
   <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators" />
   <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues" />
   <rule ref="category/java/errorprone.xml/ComparisonWithNaN" />
-  <!--  <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize" /> -->
+  <rule ref="category/java/errorprone.xml/NonSerializableClass">
+    <properties>
+      <property name="checkAbstractTypes"
+                value="false" />
+    </properties>
+  </rule>
   <rule ref="category/java/errorprone.xml/BrokenNullCheck" />
   <rule ref="category/java/errorprone.xml/CallSuperFirst" />
   <rule ref="category/java/errorprone.xml/CallSuperLast" />
@@ -479,8 +518,6 @@
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/EmptyFinalizer" />
-  <rule ref="category/java/codestyle.xml/EmptyControlStatement" />
-  <rule ref="category/java/codestyle.xml/UnnecessarySemicolon" />
   <rule ref="category/java/multithreading.xml/AvoidSynchronizedAtMethodLevel" />
   <rule ref="category/java/multithreading.xml/AvoidThreadGroup" />
   <rule ref="category/java/multithreading.xml/AvoidUsingVolatile" />
@@ -517,27 +554,19 @@
   <rule ref="category/java/performance.xml/UseIOStreamsWithApacheCommonsFileItem" />
   <rule ref="category/java/security.xml/HardCodedCryptoKey" />
   <rule ref="category/java/security.xml/InsecureCryptoIv" />
-  <rule ref="category/java/bestpractices.xml/DoubleBraceInitialization" />
-  <rule ref="category/jsp/bestpractices.xml/NoClassAttribute" />
-  <rule ref="category/jsp/codestyle.xml/DuplicateJspImports" />
+  <!-- JSP/html -->
+  <rule ref="category/html/bestpractices.xml/UnnecessaryTypeAttribute" />
+  <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
+  <rule ref="category/html/bestpractices.xml/AvoidInlineStyles" />
   <rule ref="category/jsp/bestpractices.xml/NoJspForward" />
   <rule ref="category/jsp/bestpractices.xml/NoHtmlComments" />
+  <rule ref="category/jsp/bestpractices.xml/NoClassAttribute" />
+  <rule ref="category/jsp/codestyle.xml/DuplicateJspImports" />
+  <rule ref="category/jsp/design.xml/NoScriptlets" />
   <rule ref="category/jsp/design.xml/NoInlineScript" />
   <rule ref="category/jsp/design.xml/NoInlineStyleInformation" />
   <rule ref="category/jsp/design.xml/NoLongScripts" />
+  <rule ref="category/jsp/errorprone.xml/JspEncoding" />
   <rule ref="category/jsp/security.xml/IframeMissingSrcAttribute" />
   <rule ref="category/jsp/security.xml/NoUnsanitizedJSPExpression" />
-  <rule ref="category/jsp/errorprone.xml/JspEncoding" />
-  <rule ref="category/jsp/design.xml/NoScriptlets" />
-  <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
-  <rule ref="category/html/bestpractices.xml/AvoidInlineStyles" />
-  <rule ref="category/html/bestpractices.xml/UnnecessaryTypeAttribute" />
-  <rule ref="category/xml/errorprone.xml/MistypedCDATASection" />
-  <rule ref="category/pom/errorprone.xml/InvalidDependencyTypes">
-    <properties>
-      <property name="validTypes"
-                value="pom,jar,maven-plugin,ejb,war,ear,rar,par" />
-    </properties>
-  </rule>
-  <rule ref="category/pom/errorprone.xml/ProjectVersionAsDependencyVersion" />
 </ruleset>

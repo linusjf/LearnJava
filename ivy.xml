@@ -359,20 +359,20 @@
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
                 name="pmd-core"
-                rev="6.51.0"
+                rev="6.52.0"
                 conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-java"
-                rev="6.51.0"
+                rev="6.52.0"
                 conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile">
     </dependency>
     <dependency org="net.sourceforge.pmd"
                 name="pmd-jsp"
-                rev="6.51.0"
+                rev="6.52.0"
                 conf="pmd-jsp.main-&gt;master"></dependency>
     <dependency org="net.sourceforge.pmd"
                 name="pmd-xml"
-                rev="6.51.0"
+                rev="6.52.0"
                 conf="pmd-xml.main-&gt;master"></dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
     <dependency org="net.sourceforge.saxon"
