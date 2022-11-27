@@ -46,3 +46,4 @@ linus*.html
 !suppressions-xpath.xml
 *tmp*
 *temp*
+cpfiles.properties*
