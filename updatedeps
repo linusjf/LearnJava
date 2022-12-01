@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-time (ant && ./gititfmt)
+time (ant && ./gititfmt) | grep real | awk '{ print $2}'
