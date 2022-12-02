@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-time (ant | tee && ./gititfmt)
+start=$SECONDS
+./updeps
+if [[ $? == 0 ]]
+then
+  echo "Completed in (( SECONDS - $start )) seconds"
+  exit 0
+fi
+exit 1

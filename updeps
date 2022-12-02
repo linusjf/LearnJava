@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+ant
+ret="$?"
+if [[ "$ret" == 0 ]]
+then
+  ./gititfmt
+else
+  exit "$ret"
+fi
+exit 0
