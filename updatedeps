@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 start=$SECONDS+0
+declare -i end=0
+declare -i minutes=0
+declare -i seconds=0
 ./updeps
 ret="$?"
 if [[ "$ret" == 0 ]]
 then
-end=( $SECONDS - $start  )
-minutes=( $end/60 )
-seconds=( $end%60 )
+end=$SECONDS-$start 
+minutes=$end/60
+seconds=$end%60
   echo "Completed in "$minutes" m "$seconds" s";
   exit 0
 fi
