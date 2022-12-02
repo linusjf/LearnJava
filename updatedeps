@@ -3,7 +3,10 @@ start=$SECONDS
 ./updeps
 if [[ $? == 0 ]]
 then
-  echo "Completed in "(( $SECONDS - $start ))" seconds";
+  end=$SECONDS-$start
+  minutes=$end/60
+  seconds=$end%60
+  echo "Completed in "$minutes" m "$seconds" s";
   exit 0
 fi
 exit 1
