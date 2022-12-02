@@ -3,7 +3,7 @@ start=$SECONDS
 ./updeps
 if [[ $? == 0 ]]
 then
-  echo "Completed in (( SECONDS - $start )) seconds"
+  echo "Completed in "(( $SECONDS - $start ))" seconds";
   exit 0
 fi
 exit 1
