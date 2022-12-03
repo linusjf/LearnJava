@@ -390,7 +390,7 @@
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
                 name="sevntu-checks"
-                rev="1.43.0"
+                rev="1.44.0"
                 conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
     <dependency org="org.jacorb"
@@ -603,12 +603,12 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
                 name="pitest"
-                rev="1.10.0"
+                rev="1.10.1"
                 conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
     <dependency org="org.pitest"
                 name="pitest-command-line"
-                rev="1.10.0"
+                rev="1.10.1"
                 conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
@@ -618,7 +618,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
                 name="pitest-ant"
-                rev="1.10.0"
+                rev="1.10.1"
                 conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
     <dependency org="ant-contrib"
