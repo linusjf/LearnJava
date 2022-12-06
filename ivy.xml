@@ -668,7 +668,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.bcel/bcel -->
     <dependency org="org.apache.bcel"
                 name="bcel"
-                rev="6.6.1"
+                rev="6.7.0"
                 conf="bcel.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/net.java.dev.javacc/javacc -->
     <dependency org="net.java.dev.javacc"
