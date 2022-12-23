@@ -581,7 +581,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
