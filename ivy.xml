@@ -688,7 +688,7 @@
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
                 name="testng"
-                rev="7.7.0"
+                rev="7.7.1"
                 conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
     <dependency org="commons-collections"
