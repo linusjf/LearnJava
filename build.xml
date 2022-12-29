@@ -123,7 +123,7 @@
   <target name="uniquify">
     <for param="theFile"
          parallel="true"
-         threadCount="6">
+    threadCount="${cores.count}">
       <path>
         <fileset dir="${LearnJava.basedir}"
                  includes="*.cp" />
@@ -151,6 +151,26 @@
     <echo file="${antcontrib.classpath.file}"
           message="${toString:ant-contrib.main.path}" />
   </target>
+  <target name="get-cores">
+        <property environment="env"/>
+        <!-- support for Windows -->
+        <condition property="cores.count" value="${env.NUMBER_OF_PROCESSORS}">
+            <os family="windows" />
+        </condition>
+        <!-- support for Linux and Solaris (package SUNWgnu-coreutils is required) -->
+        <exec executable="nproc" outputproperty="cores.count" os="Linux,SunOS,Solaris">
+            <arg value="--all"/>
+        </exec>
+        <!-- support for Mac OS X -->
+        <exec executable="sysctl" outputproperty="cores.count" os="Mac,Darwin">
+            <arg value="-n"/>
+            <arg value="hw.ncpu"/>
+        </exec>
+        <echo message="Number of cores: ${cores.count}"/>
+    </target>
+    <target name="report-error" unless="cores.count" depends="get-cores">
+        <echo message="Error: cannot determine the number of cores - OS '${os.name}' is not supported."/>
+    </target>
   <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
     <first id="ivyfile">
@@ -163,7 +183,7 @@
       <param name="cpfiles"
              value="${cpfiles}" />
     </antcall>
-    <parallel threadCount="6">
+    <parallel threadCount="${cores.count}">
       <ivy:retrieve pathid="cs.main.path"
                     conf="checkstyle.main"
                     symlink="true" />
@@ -823,7 +843,7 @@
     </cpd>
   </target>
   <target name="main"
-          depends="setup,resolve">
+          depends="setup,report-error,resolve">
     <description>Main target</description>
   </target>
   <!-- =================================
