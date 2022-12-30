@@ -123,7 +123,7 @@
   <target name="uniquify">
     <for param="theFile"
          parallel="true"
-    threadCount="${cores.count}">
+         threadCount="${cores.count}">
       <path>
         <fileset dir="${LearnJava.basedir}"
                  includes="*.cp" />
@@ -152,25 +152,32 @@
           message="${toString:ant-contrib.main.path}" />
   </target>
   <target name="get-cores">
-        <property environment="env"/>
-        <!-- support for Windows -->
-        <condition property="cores.count" value="${env.NUMBER_OF_PROCESSORS}">
-            <os family="windows" />
-        </condition>
-        <!-- support for Linux and Solaris (package SUNWgnu-coreutils is required) -->
-        <exec executable="nproc" outputproperty="cores.count" os="Linux,SunOS,Solaris">
-            <arg value="--all"/>
-        </exec>
-        <!-- support for Mac OS X -->
-        <exec executable="sysctl" outputproperty="cores.count" os="Mac,Darwin">
-            <arg value="-n"/>
-            <arg value="hw.ncpu"/>
-        </exec>
-        <echo message="Number of cores: ${cores.count}"/>
-    </target>
-    <target name="report-error" unless="cores.count" depends="get-cores">
-        <echo message="Error: cannot determine the number of cores - OS '${os.name}' is not supported."/>
-    </target>
+    <property environment="env" />
+    <!-- support for Windows -->
+    <condition property="cores.count"
+               value="${env.NUMBER_OF_PROCESSORS}">
+      <os family="windows" />
+    </condition>
+    <!-- support for Linux and Solaris (package SUNWgnu-coreutils is required) -->
+    <exec executable="nproc"
+          outputproperty="cores.count"
+          os="Linux,SunOS,Solaris">
+      <arg value="--all" />
+    </exec>
+    <!-- support for Mac OS X -->
+    <exec executable="sysctl"
+          outputproperty="cores.count"
+          os="Mac,Darwin">
+      <arg value="-n" />
+      <arg value="hw.ncpu" />
+    </exec>
+    <echo message="Number of cores: ${cores.count}" />
+  </target>
+  <target name="report-error"
+          unless="cores.count"
+          depends="get-cores">
+    <echo message="Error: cannot determine the number of cores - OS '${os.name}' is not supported." />
+  </target>
   <target name="resolve"
           description="--&gt; retrieve dependencies with ivy">
     <first id="ivyfile">
