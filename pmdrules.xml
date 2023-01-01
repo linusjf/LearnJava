@@ -85,6 +85,8 @@
                 value="lombok.Setter|lombok.Getter|lombok.Builder|lombok.Data|lombok.RequiredArgsConstructor|lombok.AllArgsConstructor|lombok.Value|lombok.NoArgsConstructor|java.lang.Deprecated|javafx.fxml.FXML|lombok.experimental.Delegate|lombok.EqualsAndHashCode" />
       <property name="ignoredFieldNames"
                 value="IDENT" />
+      <property name="reportForAnnotations"
+                value="" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod">
@@ -298,9 +300,7 @@
   <rule ref="category/java/design.xml/DataClass" />
   <rule ref="category/java/design.xml/DoNotExtendJavaLangError" />
   <rule ref="category/java/design.xml/ExceptionAsFlowControl" />
-  <rule ref="category/java/design.xml/ExcessiveClassLength" />
   <rule ref="category/java/design.xml/ExcessiveImports" />
-  <rule ref="category/java/design.xml/ExcessiveMethodLength" />
   <rule ref="category/java/design.xml/ExcessiveParameterList" />
   <rule ref="category/java/design.xml/ExcessivePublicCount" />
   <rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
