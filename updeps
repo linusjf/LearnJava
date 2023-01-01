@@ -3,7 +3,7 @@ ant
 ret="$?"
 if [[ "$ret" == 0 ]]
 then
-  ./gititfmt
+  ./gitit
 else
   exit "$ret"
 fi
