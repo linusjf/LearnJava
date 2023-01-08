@@ -590,5 +590,11 @@
       <version>1.12.376</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>com.madgag</groupId>
+      <artifactId>bfg</artifactId>
+      <version>1.14.0</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>
