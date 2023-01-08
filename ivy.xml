@@ -338,6 +338,10 @@
           description="aws-java-sdk lib jars" />
     <conf name="ant-contrib.main"
           description="ant contrib main  jars" />
+    <conf name="bfg.lib"
+          description="bfg lib jars" />
+    <conf name="bfg.main"
+          description="bfg main  jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -817,6 +821,12 @@
                 name="aws-java-sdk"
                 rev="1.12.376"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
+                </dependency>
+    <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
+    <dependency org="com.madgag"
+                name="bfg"
+                rev="1.14.0"
+                conf="bfg.main-&gt;master;bfg.lib-&gt;compile">
                 </dependency>
   </dependencies>
 </ivy-module>

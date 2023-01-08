@@ -60,6 +60,7 @@
   <property file="${LearnJava.basedir}/spring.properties" />
   <property file="${LearnJava.basedir}/spring-boot.properties" />
   <property file="${LearnJava.basedir}/aws-java-sdk.properties" />
+  <property file="${LearnJava.basedir}/bfg.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <target name="setup">
     <antcall target="antcontrib" />
@@ -658,6 +659,12 @@
       <ivy:retrieve pathid="aws-java-sdk.lib.path"
                     conf="aws-java-sdk.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="bfg.main.path"
+                    conf="bfg.main"
+                    symlink="true" />
+      <ivy:retrieve pathid="bfg.lib.path"
+                    conf="bfg.lib"
+                    symlink="true" />
     </parallel>
     <parallel threadCount="6">
       <echo file="${junitplatform.classpath.file}"
@@ -768,6 +775,8 @@
             message="${toString:spring-boot.main.path}:${toString:spring-boot.lib.path}" />
       <echo file="${aws-java-sdk.classpath.file}"
             message="${toString:aws-java-sdk.main.path}:${toString:aws-java-sdk.lib.path}" />
+      <echo file="${bfg.classpath.file}"
+            message="${toString:bfg.main.path}:${toString:bfg.lib.path}" />
     </parallel>
     <antcall target="uniquify"></antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
