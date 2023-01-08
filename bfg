@@ -5,7 +5,7 @@ usage()
   exit 1
 }
 
-declare -r classpathFile="bfg.cp"
+declare -r classpathFile="$(locate bfg.cp)"
 declare -r mainClass="com.madgag.git.bfg.cli.Main"
 
 if [ "$#" -eq 0 ]; 
