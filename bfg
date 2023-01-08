@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+usage()
+{
+  echo "Usage: $0 <bfg params>"
+  exit 1
+}
+
+declare -r classpathFile="bfg.cp"
+declare -r mainClass="com.madgag.git.bfg.cli.Main"
+
+if [ "$#" -eq 0 ]; 
+then
+  usage
+fi
+
+java -cp @"$classpathFile" "$mainClass" \
+  $@ \
+|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+res=$?
+exit $res
