@@ -66,8 +66,9 @@ then
   exit 0
 fi
 
+files="$(git diff --cached --name-only --diff-filter=ACMR | grep $exts)"
 # Format staged files
-for file in $(git diff --cached --name-only --diff-filter=ACMR | grep $exts)
+for file in $files
 do
   echo "Formatting $file"
   # Get the file from index
@@ -86,7 +87,13 @@ done
 # If no files left in index after formatting - fail
 ret=0
 if [ ! "$(git diff --cached --name-only)" ]; then
-  1>&2 echo "No files left after formatting"
-  exit 1
+	if test -z $files;
+	then
+		1>&2 echo "No files staged"
+		exit 0
+        else
+		1>&2 echo "No files left after formatting"
+  		exit 1
+	fi
 fi
 exit "$ret"
