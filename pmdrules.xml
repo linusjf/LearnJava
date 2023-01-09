@@ -556,8 +556,9 @@
   <rule ref="category/java/security.xml/InsecureCryptoIv" />
   <!-- JSP/html -->
   <rule ref="category/html/bestpractices.xml/UnnecessaryTypeAttribute" />
-  <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
   <rule ref="category/html/bestpractices.xml/AvoidInlineStyles" />
+  <rule ref="category/html/bestpractices.xml/UseAltAttributeForImages" />
+  <rule ref="category/jsp/bestpractices.xml/DontNestJsfInJstlIteration" />
   <rule ref="category/jsp/bestpractices.xml/NoJspForward" />
   <rule ref="category/jsp/bestpractices.xml/NoHtmlComments" />
   <rule ref="category/jsp/bestpractices.xml/NoClassAttribute" />
