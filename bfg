@@ -5,7 +5,8 @@ usage()
   exit 1
 }
 
-declare -r classpathFile="~/LearnJava/bfg.cp"
+declare -r classpathFile=~/LearnJava/bfg.cp
+classpath="$(cat $classpathFile)"
 declare -r mainClass="com.madgag.git.bfg.cli.Main"
 
 if [ "$#" -eq 0 ]; 
@@ -13,7 +14,7 @@ then
   usage
 fi
 
-java -cp @"$classpathFile" "$mainClass" \
+java -cp "$classpath" "$mainClass" \
   $@ \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
