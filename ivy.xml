@@ -617,7 +617,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
                 name="pitest-junit5-plugin"
-                rev="1.1.1"
+                rev="1.1.2"
                 conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
@@ -792,12 +792,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy"
-                rev="1.12.21"
+                rev="1.12.22"
                 conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy-agent"
-                rev="1.12.21"
+                rev="1.12.22"
                 conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
