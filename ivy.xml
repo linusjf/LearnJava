@@ -528,7 +528,7 @@
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon"
                 name="Saxon-HE"
-                rev="11.4"
+                rev="12.0"
                 conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
