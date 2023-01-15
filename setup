@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+./setuphooks
+echo "cpfiles=" > cpfiles.properties
