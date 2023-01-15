@@ -78,7 +78,8 @@
       <sequential>
         <echo message="@{cpfile}" />
         <loadfile srcFile="@{cpfile}"
-                  property="@{cpfile}" />
+                  property="@{cpfile}"
+                  failonerror="false" />
         <echo message="${@{cpfile}}" />
         <for list="${@{cpfile}}"
              delimiter=":"
