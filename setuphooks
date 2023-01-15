@@ -6,5 +6,7 @@ require rm cp ln realpath mv
 if test -f .git/hooks/pre-commit; then
   mv .git/hooks/pre-commit .git/hooks/pre-commit.bak
 fi
-ln -sfnv $(realpath git/hooks/pre-commit) .git/hooks/pre-commit
+f=$(realpath git/hooks/pre-commit)
+cd .git/hooks
+ln -s "$f" pre-commit
 exit "$?"
