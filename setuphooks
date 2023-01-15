@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+ln -s git/hooks/pre-commit .git/hooks/pre-commit
+exit 0
