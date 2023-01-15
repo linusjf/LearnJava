@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+function require() {
+ hash $@ || exit 127;
+}
+require rm cp ln realpath mv
 rm -f .git/hooks/pre-commit
 cp git/hooks/pre-commit .git/hooks/pre-commit
 mv git/hooks/pre-commit git/hooks/pre-commit.bak
-ln -s .git/hooks/pre-commit git/hooks/pre-commit
+ln -s "$(realpath .git/hooks/pre-commit)" git/hooks/pre-commit
 exit 0
