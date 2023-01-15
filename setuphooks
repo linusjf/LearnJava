@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 rm -f .git/hooks/pre-commit
-ln -s git/hooks/pre-commit .git/hooks/pre-commit
+cp git/hooks/pre-commit .git/hooks/pre-commit
+mv git/hooks/pre-commit git/hooks/pre-commit.bak
+ln -s .git/hooks/pre-commit git/hooks/pre-commit
 exit 0
