@@ -34,9 +34,10 @@ createJar()
     "${args[@]}" || \
     { echo "Error creating jar output: $jarFile";exit 1; }
   jarRes=$? 
+  # shellcheck disable=SC2015
   [ -e "$jarFile" ] && \
     mkdir -p "$distDir" && mv "$jarFile" "$distDir" || \
-    { echo "Error moving jar file to $proj/$distDir"; }
+    { echo "Error moving jar file to $proj/$distDir"; exit 1; }
   cd ..
   exit 0
 }
