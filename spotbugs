@@ -5,7 +5,10 @@ usage()
   echo "dir - Project directory"
   exit 1
 }
-
+require() {
+hash "@" || exit 127
+}
+require java realpath cat 
 declare -i res=0
 declare -r errFile="spotbugs.errors"
 declare -r classpathFile="$(realpath "spotbugs.cp")"

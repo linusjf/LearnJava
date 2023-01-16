@@ -32,7 +32,7 @@ usage
 
 readExclusions
 rm ./"$fileslist"
-find . -type f -regex ".*[.]\($language\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
+find . -type f -regex ".*[.]\($language\)$" "${exclusions[@]}" | tr '\n' ',' > "$fileslist"
 java -cp @"$classpathFile" \
 "$mainClass" \
 --minimum-tokens 100 \
