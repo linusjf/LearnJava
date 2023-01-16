@@ -32,8 +32,8 @@ fi
 
 readOptions
 set +o noglob
-printf -v findCmd '%q ' find $1 -type f -name '*.java' ${options[@]}
-readarray -t args < <(eval $findCmd)
+printf -v findCmd '%q ' find "$1" -type f -name '*.java' "${options[@]}"
+readarray -t args < <(eval "$findCmd")
 if [ ${#args[@]} -ne 0 ]; then
   java -cp @"$classpathFile" "$mainClass" \
     --set-exit-if-changed -i \
