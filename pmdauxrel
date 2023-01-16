@@ -36,13 +36,13 @@ fi
 
 readExclusions
 set -o noglob
-cd "$proj"
+cd "$proj" || exit $?
 rm ./"$fileslist"
 if [ -s "$setupcp" ]
 then
   ./"$setupcp"
 fi
-find . -type f -regex ".*[.]\(java\|jsp\)$" ${exclusions[@]} | tr '\n' ',' > "$fileslist"
+find . -type f -regex ".*[.]\(java\|jsp\)$" "${exclusions[@]}" | tr '\n' ',' > "$fileslist"
 if [ -s "$fileslist" ]
 then
 if [ -s "$auxCpFile" ]
