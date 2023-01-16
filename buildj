@@ -111,16 +111,16 @@ else
     setupAuxClassPath
     readAuxClassPath
     javaversion=$(./javacversion)
-    readarray -t javasrcs \
-      < <(find "$proj" -name "*.java" -type f ${compileFindOptions[@]})
+    cmd="$(find "$proj" -name "*.java" -type f "${compileFindOptions[@]}")"
+    readarray -t javasrcs < <(eval "$cmd")
     if [[ javaversion -le $JVER ]]
     then
-      javac -parameters -Xlint:all ${options[@]} -source "$ver" -target "$ver" \
-        -cp $auxClasspath:"$proj" \
+      javac -parameters -Xlint:all "${options[@]}" -source "$ver" -target "$ver" \
+        -cp "${auxClasspath}:${proj}" \
         "${javasrcs[@]}"
     else
-      javac -parameters -Xlint:all ${options[@]} --release "$ver" \
-        -cp $auxClasspath:"$proj" \
+      javac -parameters -Xlint:all "${options[@]}" --release "$ver" \
+        -cp "${auxClasspath}:${proj}" \
         "${javasrcs[@]}"
     fi
     success=$?
