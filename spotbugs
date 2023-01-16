@@ -8,8 +8,8 @@ usage()
 
 declare -i res=0
 declare -r errFile="spotbugs.errors"
-declare -r classpathFile=$(realpath "spotbugs.cp")
-cp=$(cat "$classpathFile")
+declare -r classpathFile="$(realpath "spotbugs.cp")"
+declare -r cp=$(cat "$classpathFile")
 declare -r setupCpFile="setupclasspath"
 declare -r auxCpFile="compile.cp"
 auxCp=""
@@ -29,7 +29,8 @@ echo "$proj"
 res=$?
 if [[ "$res" == 0 ]];
 then
-  cd "$proj"
+  res=$(
+  cd "$proj" || exit $?
   if [ -e "$setupCpFile" ]
   then
     ./"$setupCpFile"
@@ -40,7 +41,7 @@ then
     -showPlugins
   java -cp "$cp":"$plugincp" "$mainClass" \
     -output "$errFile" \
-    -exclude $(realpath "$suppressionsFile") \
+    -exclude "$(realpath "$suppressionsFile")" \
     -auxclasspath "$auxCp":. -adjustExperimental \
     -workHard -quiet \
     -experimental -nested:true -timestampNow \
@@ -49,8 +50,8 @@ then
     -sourcepath . . \
     || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
     res=$?
-    cd ..
     exit $res
+  )
 else
   exit $res
 fi
