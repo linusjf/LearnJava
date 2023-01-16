@@ -88,12 +88,12 @@ runJVM()
         continue
       fi
       echo "Running $a...";echo
-      cd "$proj"
-      printf -v cmdPrefix '%q ' java ${runOptions[@]} -cp $auxClasspath:.:../$jarFile:. 
-      eval "$cmdPrefix $a" && cd .. || { cd ..;}
+      cd "$proj" || exit $?
+      printf -v cmdPrefix '%q ' java "${runOptions[@]}" -cp "${auxClasspath}:.:../${jarFile}:." 
+      eval "$cmdPrefix $a && cd .." ||  cd .. 
     done
     tearDown;
-    if [[ ${#main[@]} > 1 ]]
+    if [[ ${#main[@]} -gt 1 ]]
     then
       tests;
     fi
