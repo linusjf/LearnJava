@@ -15,7 +15,7 @@ then
 fi
 
 java -cp "$classpath" "$mainClass" \
-  $@ \
+  "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
 exit $res
