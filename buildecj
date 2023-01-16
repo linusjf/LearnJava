@@ -7,6 +7,11 @@
 # @copyright: Copyright(c) Linus Fernandes
 ## @description: 
 ######################################################################
+
+require() {
+hash "@" || exit 127
+}
+
 usage() {
   echo "usage:  $0 dir"
     echo "dir - Project directory, must exist"
@@ -55,6 +60,7 @@ readOptions()
       { readarray -t options < <(cat "$proj/$optionsFile") || \
       echo "Unable to read $proj/$optionsFile";}
 }
+require cat mkdir mv ecj find 
 proj=$1
 ver="1.7"
 version="0.0.0"
@@ -81,7 +87,7 @@ else
     echo "Unable to read $proj/$verFile";
   }
   readOptions
-  ecj -Xlint:all ${options[@]} -"$ver" -cp "$proj" "$proj"
+  ecj -Xlint:all "${options[@]}" -"$ver" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
