@@ -10,7 +10,7 @@ then
 end=$SECONDS-$start 
 minutes=$end/60
 seconds=$end%60
-  echo "Completed in "$minutes"m "$seconds"s";
+  echo "Completed in ${minutes}m ${seconds}s";
   exit 0
 fi
 exit "$ret"
