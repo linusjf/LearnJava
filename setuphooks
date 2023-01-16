@@ -4,7 +4,8 @@ function require() {
 }
 require rm cp ln realpath mv
 if test -f .git/hooks/pre-commit; then
-  mv .git/hooks/pre-commit .git/hooks/pre-commit.bak
+  cp .git/hooks/pre-commit .git/hooks/pre-commit.bak
+  rm -f .git/hooks/pre-commit
 fi
 f=$(realpath git/hooks/pre-commit)
 cd .git/hooks
