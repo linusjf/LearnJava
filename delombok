@@ -6,13 +6,6 @@ usage()
   exit 1
 }
 
-readExclusions()
-{
-  [ -e "$proj"/"$exclusionsFile" ] && \
-      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
-      echo "Unable to read $proj/$exclusionsFile";}
-}
-
 declare -r setupcp="setupclasspath"
 declare -r auxCpFile="compile.cp"
 auxCp=""
@@ -48,9 +41,9 @@ tmpFolder=$(realpath /tmp/"$1")
 res=$?
 if [ "$(ls -A "$tmpFolder")" ]
 then
-  cp -rv "$tmpFolder"/* "$proj"
-  res=($?+"$res")
+  cp -rv "${tmpFolder}/*" "$proj"
+  res=$?+"$res"
 fi
 rm -rf "$tmpFolder"
-res=($?+"$res")
-exit $res
+res=$?+"$res"
+exit "$res"
