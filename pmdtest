@@ -1,7 +1,0 @@
-
-dirs="$(find . -maxdepth 1 -type d -name "[[:upper:]]*")"
-echo $dirs
-for dir in $dirs
-do
-echo $dir
-done
