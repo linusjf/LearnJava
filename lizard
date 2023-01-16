@@ -16,12 +16,11 @@ fi
 echo "$1"
 proj="$1"
 
-cd "$proj"
+res=$(cd "$proj" || exit $?
 lizard -l java \
   --csv -m -s nloc -a 10  \
-  `find . -name "*.java"` \
+  "$(find . -name '*.java')" \
   | tee "$outputFile" \
   || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
-res=$?
-cd ..
-exit $res
+exit $?)
+exit "$res"
