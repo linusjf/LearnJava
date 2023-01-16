@@ -20,14 +20,14 @@ echo "$1"
 proj="$1"
 
 classpath="$(cat "$classpathFile"):."
-cd "$proj"
+res="$(cd "$proj" || exit $?
 java -cp "$classpath" \
     "$mainClass" \
-    `find . -name "*.class"` \
+    "$(find . -name '*.class')" \
     | tee "$outputFile" \
     || { exitCode="$?";echo "$0 exited with error code $exitCode";cd ..; exit "$exitCode";}
 res=$?
 echo "ClassName WMC DIT NOC CBO RFC LCOM Ca Ce NPM LCOM3 LOC DAM MOA MFA CAM IC CBM AMC" > "$conciseFile"
 grep '^[^[:space:]]\{1\}' "$outputFile" >> "$conciseFile"
-cd ..
-exit $res
+exit $res)"
+exit "$res"
