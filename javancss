@@ -6,10 +6,14 @@ usage()
   exit 1
 }
 
+require() {
+hash "$@" || exit 127;
+}
+require realpath java find tee cat
 declare -r outputFile="javancss.report"
-declare -r classpathFile=$(realpath "javancss.cp")
+declare -r classpathFile="$(realpath "javancss.cp")"
 declare -r mainClass="javancss.Main"
-
+declare -r classpath="$(cat "$classpathFile")"
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
   usage
@@ -18,12 +22,11 @@ fi
 echo "$1"
 proj="$1"
 
-cd "$proj"
-java -cp @"$classpathFile" \
+res=$(cd "$proj" || exit $?
+java -cp "$classpath" \
   "$mainClass" -all \
-  `find . -name "*.java"` \
+  "$(find . -name "*.java")" \
   | tee "$outputFile" \
   || { exitCode="$?";echo "$0 exited with error code $exitCode";cd ..; exit "$exitCode";}
-res=$?
-cd ..
-exit $res
+)
+exit "$res"
