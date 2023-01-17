@@ -632,7 +632,7 @@
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency org="org.assertj"
                 name="assertj-core"
-                rev="3.24.1"
+                rev="3.24.2"
                 conf="assertj-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
