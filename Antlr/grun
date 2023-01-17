@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-java -cp @../antlr4.cp org.antlr.v4.gui.TestRig $@
+require() {
+hash "$@" || exit
+}
+require java cat
+classpath="$(cat ../antlr4.cp)"
+java -cp "$classpath" org.antlr.v4.gui.TestRig "$@"
