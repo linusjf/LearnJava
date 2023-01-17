@@ -21,12 +21,12 @@ isDX () {
 
 createDex() {
   dexFile="$proj"-"$version".dex
-  rm -rf "$proj"/"$distDir" || { 
+  rm -rf "{$proj}/${distDir}" || { 
     echo "Unable to delete folder $proj/$distDir"; \
   }
   dx --dex --output="$dexFile" "$proj" && \
   mkdir -p "$proj"/"$distDir" && \
-  cp "$dexFile" "$proj"/"$distDir" && exit 0 || { \
+  cp "$dexFile" "${proj}/${distDir}" && exit 0 || { \
   echo "Error creating dex output"; \
   }
   dxRes=$?
@@ -69,7 +69,7 @@ else
     echo "Unable to read $proj/$verFile"; \
   }
   readOptions
-  ecj -Xlint:all ${options[@]} -"$ver" -cp "$proj" "$proj"
+  ecj -Xlint:all "${options[@]}" "-${ver}" -cp "$proj" "$proj"
   success=$?
   if [ $success -eq 0 ]
   then
