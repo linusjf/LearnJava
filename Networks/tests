@@ -12,10 +12,9 @@ java -cp . networking.MediaClient < mediacommands.txt
 java -cp . networking.MediaClient < mediacommands1.txt
 echo "Killing MediaServer in 5 seconds..."
 sleep 5
-ps -ef | grep \
+pgrep -an \
   'networking.MediaServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.PersonnelServer &
@@ -24,10 +23,9 @@ sleep 5
 java -cp . networking.PersonnelClient
 echo "Killing PersonnelServer in 5 seconds..."
 sleep 5
-ps -ef | grep \
+pgrep -an \
   'networking.PersonnelServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.MultiEchoServerNIO &
@@ -39,10 +37,9 @@ java -cp . networking.TCPEchoClient < TCPEcho.txt &
 java -cp . networking.MultiEchoClient < MultiEcho.txt &
 echo "Killing MultiEchoServerNIO in 5 seconds..."
 sleep 5
-ps -ef | grep \
+pgrep -an \
   'networking.MultiEchoServerNIO' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.DaytimeServer &
@@ -51,10 +48,9 @@ sleep 5
 echo "Running DayTimeClient to port 1313"
 java -cp . networking.DayTimeClient localhost 1313
 echo "Killing DaytimeServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.DaytimeServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.TimeServer &
@@ -63,10 +59,9 @@ sleep 5
 echo "Running Time to port 3737"
 java -cp . networking.Time localhost 3737
 echo "Killing TimeServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.TimeServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.MultithreadedDaytimeServer &
@@ -75,10 +70,9 @@ sleep 5
 echo "Running DayTimeClient to port 1331"
 java -cp . networking.DayTimeClient localhost 1331
 echo "Killing MultithreadedDaytimeServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.MultithreadedDaytimeServer' | 
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.PooledDaytimeServer &
@@ -87,10 +81,9 @@ sleep 5
 echo "Running DayTimeClient to port 3131"
 java -cp . networking.DayTimeClient localhost 3131
 echo "Killing PooledDaytimeServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.PooledDaytimeServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 echo "Running SocketEchoServer to port 9999"
@@ -100,10 +93,9 @@ sleep 5
 echo "Running EchoClient to port 9999"
 java -cp . networking.EchoClient localhost 9999 < echo.txt
 echo "Killing SocketEchoServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.SocketEchoServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 echo "Running EchoServer to port 7777"
@@ -114,10 +106,9 @@ echo "Running Non-blocking EchoClient to port 7777"
 sleep 5
 echo "Hmm..no output??? I guess I'll have to write one now...."
 echo "Killing EchoServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.EchoServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 echo "Running RandomPort at well...random port..."
@@ -125,9 +116,8 @@ java -cp . networking.RandomPort &
 echo "Sleeping for 5 seconds again after RandomPort server start..."
 sleep 5
 echo "Killing RandomPort..."
-ps -ef | grep \
+pgrep -an \
   'networking.RandomPort' | \
-  grep -v grep | \
   awk '{print $2}' \
   | parallel -I% kill %
 echo $?
@@ -137,10 +127,9 @@ sleep 5
 echo "Running DayTimeClient to port 4141"
 java -cp . networking.DayTimeClient localhost 4141
 echo "Killing LoggingDaytimeServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.LoggingDaytimeServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -Djava.util.logging.config.file=logging.properties -cp . networking.SingleFileHttpServer web.log 8080 &
@@ -149,10 +138,9 @@ sleep 5
 echo "Running curl to port 8080"
 curl --url http://localhost:8080
 echo "Killing SingleFileHttpServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.SingleFileHttpServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -Djava.util.logging.config.file=logging.properties -cp . networking.Redirector http://www.maketimeforsports.com/ 8081 &
@@ -161,10 +149,9 @@ sleep 5
 echo "Running curl to port 8081"
 curl --url http://localhost:8081
 echo "Killing Redirector..."
-ps -ef | grep \
+pgrep -an \
   'networking.Redirector' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -Djava.util.logging.config.file=logging.properties -cp . networking.JHttp . 8082 &
@@ -177,10 +164,9 @@ curl -v -I http://localhost:8082/web.log
 echo "Running wget head request to port 8082"
 wget -S --spider http://localhost:8082/web.log
 echo "Killing JHttp..."
-ps -ef | grep \
+pgrep -an \
   'networking.JHttp' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.SecureOrderTaker &
@@ -189,10 +175,9 @@ sleep 5
 echo "Running SecureOrderPlacer to port 7000"
 java -cp . networking.SecureOrderPlacer
 echo "Killing SecureOrderTaker..."
-ps -ef | grep \
+pgrep -an \
   'networking.SecureOrderTaker' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -Djavax.net.ssl.keyStore=serverkeystore.jks \
@@ -209,10 +194,9 @@ java -Djavax.net.ssl.keyStore=clientkeystore.jks \
 	-Djavax.net.ssl.trustStorePassword=password \
 	-cp . networking.SocketClientDemo
 echo "Killing MainClass..."
-ps -ef | grep \
+pgrep -an \
   'networking.MainClass' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.ServerEcho 7007 &
@@ -220,10 +204,9 @@ echo "Sleeping for 5 seconds again after ServerEcho start..."
 sleep 5
 java -cp . networking.ClientEcho 7007 < echo.txt
 echo "Killing ServerEcho..."
-ps -ef | grep \
+pgrep -an \
   'networking.ServerEcho' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.ChargenServer 1991 &
@@ -232,26 +215,23 @@ sleep 5
 java -cp . networking.ChargenClient localhost 1991 > chargen.out &
 echo "Running ChargenClient for 0.1 seconds only..."
 sleep 0.1
-ps -ef | grep \
+pgrep -an \
   'networking.ChargenClient' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 echo "Killing ChargenServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.ChargenServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.SocketServerExample &
 echo "Running SocketServerExample for 5 seconds only..."
 sleep 5
-ps -ef | grep \
+pgrep -an \
   'networking.SocketServerExample' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.IntgenServer &
@@ -260,27 +240,24 @@ sleep 5
 java -cp . networking.IntgenClient localhost > intgen.out &
 echo "Running IntgenClient for 0.1 seconds only..."
 sleep 0.1
-ps -ef | grep \
+pgrep -an \
   'networking.IntgenClient' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 echo "Killing IntgenServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.IntgenServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.NonblockingSingleFileHttpServer build.xml 8084 &
 echo "Sleeping for 5 seconds again after NonblockingSingleFileHttpServer start..."
 sleep 5
 curl -v http://localhost:8084/
-ps -ef | grep \
+pgrep -an \
   'networking.NonblockingSingleFileHttpServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.DaytimeUDPServer &
@@ -288,10 +265,9 @@ echo "Sleeping for 5 seconds again after DaytimeUDPServer start..."
 sleep 5
 java -cp . networking.DaytimeUDPClient localhost 1313
 echo "Killing DaytimeUDPServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.DaytimeUDPServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.UDPDiscardServer 9999 &
@@ -299,10 +275,9 @@ echo "Sleeping for 5 seconds again after UDPDiscardServer start..."
 sleep 5
 java -cp . networking.UDPDiscardClient localhost 9999 < UDPEcho.txt
 echo "Killing UDPDiscardServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.UDPDiscardServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.FastUDPDiscardServer 9999 &
@@ -310,10 +285,9 @@ echo "Sleeping for 5 seconds again after UDPFastDiscardServer start..."
 sleep 5
 java -cp . networking.UDPEchoClient localhost 9999 < UDPEcho.txt
 echo "Killing FastUDPDiscardServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.FastUDPDiscardServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.UDPEchoServer 7777 &
@@ -321,10 +295,9 @@ echo "Sleeping for 5 seconds again after UDPEchoServer start..."
 sleep 5
 java -cp . networking.UDPEchoClient localhost 7777 < UDPEcho.txt
 echo "Killing UDPEchoServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.UDPEchoServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.UDPDiscardServerWithChannels 9999 &
@@ -332,10 +305,9 @@ echo "Sleeping for 5 seconds again after UDPDiscardServerWithChannels start..."
 sleep 5
 java -cp . networking.UDPEchoClientWithChannels localhost 9999
 echo "Killing UDPDiscardServerWithChannels..."
-ps -ef | grep \
+pgrep -an \
   'networking.UDPDiscardServerWithChannels' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.UDPEchoServerWithChannels 7777 &
@@ -343,10 +315,9 @@ echo "Sleeping for 5 seconds again after UDPEchoServerWithChannels start..."
 sleep 5
 java -cp . networking.UDPEchoClientWithChannels localhost 7777
 echo "Killing UDPEchoServerWithChannels..."
-ps -ef | grep \
+pgrep -an \
   'networking.UDPEchoServerWithChannels' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.MulticastSniffer 239.255.255.250 1900 &
@@ -356,10 +327,9 @@ java -cp . networking.MulticastSender all-systems.mcast.net 4000
 echo "Wait  for 30 seconds again after MulticastSender..."
 sleep 30
 echo "Killing MulticastSniffer..."
-ps -ef | grep \
+pgrep -an  \
   'networking.MulticastSniffer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.TCPEchoServer &
@@ -367,10 +337,9 @@ echo "Sleeping for 5 seconds again after TCPEchoServer start..."
 sleep 5
 java -cp . networking.TCPEchoClient < TCPEcho.txt 
 echo "Killing TCPEchoServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.TCPEchoServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.EmailServer &
@@ -379,10 +348,9 @@ sleep 5
 java -cp . networking.EmailClient < Dave.txt 
 java -cp . networking.EmailClient < Karen.txt
 echo "Killing EmailServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.EmailServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.MultiEchoServer &
@@ -390,10 +358,9 @@ echo "Sleeping for 5 seconds again after MultiEchoServer start..."
 sleep 5
 java -cp . networking.MultiEchoClient < MultiEcho.txt
 echo "Killing MultiEchoServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.MultiEchoServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . networking.ResourceServer &
@@ -401,9 +368,8 @@ echo "Sleeping for 5 seconds again after ResourceServer start..."
 sleep 5
 java -cp . networking.ConsumerClient < MultiOne.txt
 echo "Killing ResourceServer..."
-ps -ef | grep \
+pgrep -an \
   'networking.ResourceServer' | \
-  grep -v grep | \
-  awk '{print $2}' \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
