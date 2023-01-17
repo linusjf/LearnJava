@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 ./findpmderrors \
     | awk '{print $2}' \
-    | xargs -i cat {}
+    | xargs -I{} cat {}
 exit $?
