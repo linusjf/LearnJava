@@ -2,13 +2,14 @@
 require() {
 hash "@" || exit 127
 }
-require java cat 
-declare -r classpathFile="spotbugs.cp"
+require java cat realpath 
+declare -r classpathFile="$(realpath 'spotbugs.cp')"
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
 declare -r pluginjars="spotbugs-plugin.cp"
 declare -r plugins="$(cat "$pluginjars")"
 
-java -cp @"$classpathFile" "$mainClass" \
+java -cp "$classpath" "$mainClass" \
   -pluginList "<${plugins}>" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
