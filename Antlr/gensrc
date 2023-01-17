@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 declare -i all=0
-if [[ "$#" > 0 && "$1" == 'all' ]]; then
+if [[ "$#" -gt 0 && "$1" == 'all' ]]; then
   all=1
 fi
-if [[ "$#" > 0 && -f "$1" ]]; then
+if [[ "$#" -gt 0 && -f "$1" ]]; then
   touch -m "$1"
 fi
 if [[ $(find . -mtime -1 -type f -name "Hello.g4" 2>/dev/null) || "$all" == 1 ]];then
