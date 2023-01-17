@@ -7,6 +7,10 @@ usage()
   exit 1
 }
 
+require() {
+  hash "$@" || exit 127
+}
+
 readOptions()
 {
   [ -e "$proj"/"$optionsFile" ] && \
@@ -21,6 +25,7 @@ readExclusions()
       echo "Unable to read $proj/$exclusionsFile";}
 }
 
+require cat java realpath touch find
 set -o noglob
 declare -r optionsFile=".csoptions"
 declare -a options
@@ -30,6 +35,7 @@ rules_file=$(realpath "csrules.xml")
 declare -r properties_file=$(realpath "checkstyle.properties")
 declare -r output_file="cs.errors"
 declare -r classpathFile=$(realpath "cs.cp")
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
 
 if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
@@ -41,7 +47,7 @@ proj=$1
 echo "$1"
 if [ -n "$2" ]
   then
-    rules_file=$(realpath $2)
+    rules_file="$(realpath "$2")"
 fi
 if [ ! -e "$rules_file" ]
   then
@@ -68,10 +74,10 @@ readExclusions
 readarray -t args \
 < <(find . -type f -regex ".*[.]\(java\|properties\)$" \
 -not -path "./docs" -not -path "./dist" \
-${exclusions[@]} ) && \
-  java -cp @"$classpathFile" \
+"${exclusions[@]}" ) && \
+  java -cp "$classpath" \
   "$mainClass" \
-  ${options[@]} \
+  "${options[@]}" \
   -c "$rules_file" -d \
   -p "$properties_file" \
   -o "$output_file"  \
