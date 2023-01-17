@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-find . -name spotbugs.errors \
-       | xargs -i wc -l {} \
+find . -name "spotbugs.errors" -print0 \
+       | xargs --null -I{} wc -l {} \
        | awk '$1 > 0'
 exit $?
