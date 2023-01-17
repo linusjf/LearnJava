@@ -2,7 +2,7 @@
 declare -r errFile="lizardcpd.errors"
 
 lizard -w -Eduplicate \
-  `find . -name "*.java"` \
+  "$(find . -name '*.java')" \
   | tee "$errFile" \
   || { echo "Error running $0"; exit 1;}
 res=$?
