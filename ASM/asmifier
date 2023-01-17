@@ -11,4 +11,4 @@ if [ "$#" -ne 1 ];
 then
   usage
 fi
-java -cp $(cat run.cp) org.objectweb.asm.util.ASMifier "$cn" 
+java -cp "$(cat run.cp)" org.objectweb.asm.util.ASMifier "$cn" 
