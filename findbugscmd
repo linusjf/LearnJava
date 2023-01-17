@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
-usage()
-{
-  echo "Usage: $0 dir"
-  echo "dir - Project directory"
-  exit 1
-}
-
 declare -r classpathFile="spotbugs.cp"
 declare -r mainClass="edu.umd.cs.findbugs.FindBugs2"
 declare -r pluginjars="spotbugs-plugin.cp"
 
 java -cp @"$classpathFile" "$mainClass" \
-  -pluginList '<$(cat "$pluginjars")>' "$@" \
+  -pluginList "<$(cat $pluginjars)>" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
 exit $res
