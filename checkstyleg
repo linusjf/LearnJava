@@ -33,14 +33,14 @@ declare -r exclusionsFile=".exclusions"
 declare -r suppressionsFile="suppressions-xpath.xml"
 declare -a options
 rules_file=$(realpath "csrules.xml")
-declare -r properties_file=$(realpath "checkstyle.properties")
-output_file="cs.errors"
-declare -r classpathFile=$(realpath "cs.cp")
+declare -r properties_file="$(realpath 'checkstyle.properties')"
+declare -r classpathFile="$(realpath 'cs.cp')"
+declare -r classpath="$(cat "$classpathFile")"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 echo "$1"
 if [ -n "$2" ]
   then
-    rules_file=$(realpath "$2")
+    rules_file="$(realpath "$2")"
 fi
 if [ ! -e "$rules_file" ]
   then
@@ -67,12 +67,12 @@ readExclusions
 (set -o pipefail; cd "$1" && \
 readarray -t args \
   < <(find . -type f -name "*.java" \
-  ${exclusions[@]} \
+  "${exclusions[@]}" \
   -not -path "./docs" -not -path "./dist") && \
   find . -maxdepth 1 -name "$suppressionsFile" -type f -exec mv {} {}.bak \; && \
-  java -cp @"$classpathFile" \
+  java -cp "$classpath" \
   "$mainClass" \
-  ${options[@]} \
+  "${options[@]}" \
   -c "$rules_file" -d \
   -p "$properties_file" \
   -o "$1"-xpath.xml -g \

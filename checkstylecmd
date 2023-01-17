@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-usage()
-{
-  echo "Usage: $0 dir"
-  echo "dir - Project directory"
-  exit 1
-}
-
 declare -r classpathFile="cs.cp"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
 
