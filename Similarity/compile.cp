@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/java-string-similarity-2.0.0.jar:/data/data/com.termux/files/home/LearnJava/lib/javatuples-1.2.jar:/data/data/com.termux/files/home/LearnJava/lib/java-lsh-0.12.jar
+/root/LearnJava/lib/java-string-similarity-2.0.0.jar:/root/LearnJava/lib/javatuples-1.2.jar:/root/LearnJava/lib/java-lsh-0.12.jar

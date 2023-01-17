@@ -6,18 +6,18 @@ java -cp . com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorIm
 echo "Sleeping for 5 seconds again after server start..."
 sleep 5
 java -cp . com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorClient
-ps -ef | grep \
+pgrep -an \
   'com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGeneratorImpl' | \
-  awk '{print $2}' | head -1 \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . stefano.lupo.Proxy &
 echo "Sleeping for 5 seconds again after proxy start..."
 sleep 5
 java -cp . stefano.lupo.TestProxy urls.txt
-ps -ef | grep \
+pgrep -an \
   'stefano.lupo.Proxy' | \
-  awk '{print $2}' | head -1 \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -Djava.security.policy=server.policy \
@@ -32,17 +32,17 @@ java -Djava.security.policy=client.policy \
   -Djava.rmi.server.codebase=file:///data/data/com.termux/files/home/LearnJava/Proxy/dist/helloserver-2.0.0.jar \
   -cp .:dist/helloclient-2.0.0.jar \
   remote.HelloClient
-ps -ef | grep \
+pgrep -an \
   'remote.HelloServer' | \
-  awk '{print $2}' | head -1 \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?
 java -cp . remote.Bank1Server &
 echo "Sleeping for 5 seconds again after Bank1Server start..."
 sleep 5
 java -cp . remote.Bank1Client
-ps -ef | grep \
+pgrep -an \
   'remote.Bank1Server' | \
-  awk '{print $2}' | head -1 \
+  awk '{print $1}' \
   | parallel -I% kill %
 echo $?

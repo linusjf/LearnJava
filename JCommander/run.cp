@@ -1,1 +1,1 @@
-/data/data/com.termux/files/home/LearnJava/lib/jcommander-1.78.jar:/data/data/com.termux/files/home/LearnJava/lib/hamcrest-core-1.3.jar:/data/data/com.termux/files/home/LearnJava/lib/junit-4.13.jar
+/root/LearnJava/lib/jcommander-1.82.jar:/root/LearnJava/lib/hamcrest-core-1.3.jar:/root/LearnJava/lib/junit-4.13.2.jar
