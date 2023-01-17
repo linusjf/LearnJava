@@ -22,7 +22,6 @@ fi
 proj=$1
 declare -r optionsFile=".csoptions"
 declare -a options
-output_file="cs.errors"
 declare -r classpathFile=$(realpath "cs.cp")
 java_file=""
 mainClass="com.puppycrawl.tools.checkstyle.Main"
@@ -47,7 +46,7 @@ readOptions
 (set -o pipefail; cd "$1" && \
 java -cp @"$classpathFile" \
 "$mainClass" \
-${options[@]} \
+"${options[@]}" \
 -t \
 "$java_file");
 exit $?
