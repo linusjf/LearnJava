@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-find . -name pmd.errors \
-       | xargs -i wc -l {} \
+find . -name "pmd.errors" -print0 \
+       | xargs --null -I{} wc -l {} \
        | awk '$1 > 0'
 exit $?
