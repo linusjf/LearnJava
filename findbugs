@@ -17,9 +17,9 @@ then
 fi
 
 java -cp @"$classpathFile" "$mainClass" \
-  -pluginList '<$(cat "$pluginjars")>' \
+  -pluginList "<$(cat $pluginjars)>" \
   -auxclasspath "$1" -quiet -adjustExperimental \
-  -output "$1"/"$errFile" \
+  -output "${1}/${errFile}" \
   -xml:withMessages -workHard \
   -experimental -nested:true -timestampNow \
   -longBugCodes -progress -dontCombineWarnings \
