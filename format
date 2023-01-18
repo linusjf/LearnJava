@@ -13,6 +13,11 @@ readOptions()
       echo "Unable to read $proj/$optionsFile";}
 }
 
+require() {
+hash "$@" || exit 127;
+}
+require cat find java 
+
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
   usage

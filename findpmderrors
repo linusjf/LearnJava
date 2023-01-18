@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require find xargs awk wc
 find . -name "pmd.errors" -print0 \
        | xargs --null -I{} wc -l {} \
        | awk '$1 > 0'

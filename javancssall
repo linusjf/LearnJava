@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require parallel find sh
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel --joblog javancss.log --delay 1 -j 1 -I% sh -c 'echo && ./javancss %'
-exitcode="$?"
-exit "$exitcode"
+exit "$?"

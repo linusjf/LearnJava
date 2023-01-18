@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require lizard find tee
 usage()
 {
   echo "Usage: $0 dir"
@@ -21,6 +25,5 @@ lizard -l java \
   --csv -m -s nloc -a 10  \
   "$(find . -name '*.java')" \
   | tee "$outputFile" \
-  || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
-exit $?)
+  || { exitCode="$?";echo "$0 exited with error code $exitCode";exit "$exitCode";})
 exit "$res"

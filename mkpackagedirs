@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : mkpackagedirs
@@ -7,6 +6,10 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : Makes package directories from specified package name.
 ######################################################################
+require() {
+hash "$@" || exit 127;
+}
+require sed mkdir
 
 usage ()
 {

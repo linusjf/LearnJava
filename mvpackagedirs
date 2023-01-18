@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : mvpackagedirs
@@ -10,6 +9,10 @@
 #                Use from directory containing source files.
 #                Also creates package-info.java if it does not exist already.
 ######################################################################
+require() {
+hash "$@" || exit 127;
+}
+require find head grep mv sed awk mkpackagedirs 
 package=""
 pkgInfoFile="package-info.java"
 dir=""

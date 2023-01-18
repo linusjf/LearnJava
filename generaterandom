@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require tr head
 tr -cd 'a-f0-9' < /dev/urandom | head -c 32
 exit $?

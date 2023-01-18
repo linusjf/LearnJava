@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-declare -r classpathFile="lombok.cp"
+require() {
+hash "$@" || exit 127;
+}
+require java cat realpath
+declare -r classpathFile="$(realpath 'lombok.cp')"
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="lombok.launch.Main"
 
-java -cp @"$classpathFile" "$mainClass" "$@" \
+java -cp "$classpath" "$mainClass" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
-exit $res
+exit $?

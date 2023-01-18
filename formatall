@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require find 
 declare -i errs=0
 cmd="find . -maxdepth 1 -type d -name '[[:upper:]]*'"
 readarray -t dirs < <(eval "$cmd")

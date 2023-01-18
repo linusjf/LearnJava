@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-
+require() {
+hash "$@" || exit 127;
+}
+require lizard find
 lizard -w -EWordCount \
   "$(find . -name '*.java')" \
   || { echo "Errors/warnings found running $0"; exit 1;}
-res=$?
-exit $res
+exit $?

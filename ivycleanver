@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require find rm
 (cd "$HOME/.ivy2/cache/$1" || exit $?;
 find . -type f -name "*""$2"".*" -exec rm -f {} \;)
