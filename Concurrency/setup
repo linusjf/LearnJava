@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require wget 
 wget -nc https://upload.wikimedia.org/wikipedia/commons/2/23/Red_Tulips.jpg
 exit $?

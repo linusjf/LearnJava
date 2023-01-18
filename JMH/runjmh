@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require java 
 if [[ "$#" -eq 1 ]]; then
   java -jar dist/JMH-2.4.0.jar "$1"
 else

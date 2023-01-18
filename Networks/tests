@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require curl java sleep pgrep parallel awk wget 
 if ! [ -f beesting.jpg ]; then
   curl --silent -o beesting.jpg https://upload.wikimedia.org/wikipedia/commons/3/3a/Bee-sting-abeille-dard-2.jpg
 fi

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require rmiregistry cp java sleep pgrep awk parallel 
 rmiregistry &
 echo "Sleeping for 5 seconds after rmiregistry..."
 sleep 5

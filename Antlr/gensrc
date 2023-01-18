@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require find tee touch 
 declare -i all=0
 if [[ "$#" -gt 0 && "$1" == 'all' ]]; then
   all=1

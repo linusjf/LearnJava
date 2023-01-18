@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp cat 
 cp ../jcommander.cp run.cp
 cp ../jcommander.cp compile.cp
 echo -n ':' >> run.cp

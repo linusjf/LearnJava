@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp 
 cp ../trove4j.cp run.cp
 cp ../trove4j.cp compile.cp

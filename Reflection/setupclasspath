@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp 
 cp ../jdom2.cp compile.cp
 cp ../jdom2.cp run.cp

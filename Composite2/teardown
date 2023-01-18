@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require rm 
 echo "into teardown"
 rm -f ../work.properties
 echo "teardown done"

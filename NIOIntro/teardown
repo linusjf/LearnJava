@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require pgrep awk parallel 
 pgrep -an \
   'com.javacodegeeks.niotutorial.server.Server' | \
   awk '{print $1}' \

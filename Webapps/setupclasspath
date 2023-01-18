@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cat 
 cat ../tomcat.cp  > runtomcat.cp
 echo -n ":" >> runtomcat.cp
 cat ../esapi.cp >> runtomcat.cp

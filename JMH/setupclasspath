@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp 
 cp ../jmh.cp run.cp
 cp ../jmh.cp compile.cp

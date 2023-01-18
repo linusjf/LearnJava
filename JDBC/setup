@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cat java 
 classpath=$(cat run.cp)
 java -cp "$classpath":. org.apache.derby.tools.ij AccountsScript.sql
 java -cp "$classpath":. org.apache.derby.tools.ij StockScript.sql

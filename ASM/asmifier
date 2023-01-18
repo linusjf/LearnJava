@@ -5,6 +5,10 @@ usage()
   echo "classname - FQCN"
   exit 1
 }
+require() {
+hash "$@" || exit 127;
+}
+require java cat
 cn="$1"
 
 if [ "$#" -ne 1 ]; 

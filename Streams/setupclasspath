@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp 
 cp ../javafaker.cp run.cp
 cp ../javafaker.cp compile.cp

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp cat 
 cp ../java-string-similarity.cp run.cp
 cp ../java-string-similarity.cp compile.cp
 echo -n ':' >> run.cp

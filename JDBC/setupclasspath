@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp 
 cp ../derby.cp run.cp

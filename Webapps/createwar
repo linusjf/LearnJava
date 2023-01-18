@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require cp mkdir awk mv rm parallel jar 
 declare -r version="2.0.0"
 mkdir -p webapp/conf
 mkdir -p webapp/target/classes/

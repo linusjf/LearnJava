@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require curl grep xargs 
 echo "calling curl http://localhost:8080/Webapp/index.html..."
 curl http://localhost:8080/Webapp/index.html \
   |& grep -c "Click me!" | xargs -I % echo % "line(s) found" 
