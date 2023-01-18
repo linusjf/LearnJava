@@ -5,6 +5,10 @@ usage()
   echo "dir - Project directory"
   exit 1
 }
+require() {
+hash "$@" || exit 127
+}
+require ant
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then
   usage

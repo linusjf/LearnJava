@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : buildecjall
@@ -7,6 +6,10 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
+require() {
+hash "$@" || exit 127
+}
+require find rm parallel
 
 rm -f ./*.jar
 find . -mindepth 2 -name "*.class" -type f \
@@ -14,4 +17,3 @@ find . -mindepth 2 -name "*.class" -type f \
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel -j 5 -I% --max-args 1 ./buildecj %
 exit $?
-

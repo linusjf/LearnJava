@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require java cat realpath
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.util.treeexport.TreeExportCli"
+declare -r classpath="$(cat "$(realpath "$classpathFile")")"
 
-java -cp @"$classpathFile" "$mainClass" "$@" \
+java -cp "$classpath" "$mainClass" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
 exit $res

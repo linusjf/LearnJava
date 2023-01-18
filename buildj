@@ -77,6 +77,11 @@ readOptions()
       echo "Unable to read $proj/$optionsFile";}
 }
 
+require() {
+hash "$@" || exit 127
+}
+require javac find cat mkdir mv jar 
+
 proj=$1
 declare -i ver=11
 declare -i JVER=11

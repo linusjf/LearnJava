@@ -5,7 +5,10 @@ usage()
   echo "filepath - path to java file"
   exit 1
 }
-
+require() {
+hash "$@" || exit 127
+}
+require basename tee
 declare -i res=0
 file="$1"
 

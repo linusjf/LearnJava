@@ -4,8 +4,12 @@ usage()
   echo "Usage: $0 <bfg params>"
   exit 1
 }
+require() {
+hash "$@" || exit 127
+}
+require java cat
 
-declare -r classpathFile=~/LearnJava/bfg.cp
+declare -r classpathFile="$HOME/LearnJava/bfg.cp"
 classpath="$(cat $classpathFile)"
 declare -r mainClass="com.madgag.git.bfg.cli.Main"
 
@@ -17,5 +21,4 @@ fi
 java -cp "$classpath" "$mainClass" \
   "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
-exit $res
+exit $?
