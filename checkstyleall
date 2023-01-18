@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require find parallel sh
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel --joblog checkstyle.log --delay 1 -j 5 -I% sh -c 'echo && ./checkstyle %'
 exitcode="$?"

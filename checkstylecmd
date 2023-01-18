@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-declare -r classpathFile="cs.cp"
+require() {
+hash "$@" || exit 127
+}
+require java realpath cat
+declare -r classpathFile="$(realpath 'cs.cp')"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
+declare -r classpath="$(cat "$classpathFile")"
 
-java -cp @"$classpathFile" "$mainClass" "$@" \
+java -cp "$classpath" "$mainClass" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
 res=$?
 exit $res

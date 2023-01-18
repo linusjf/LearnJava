@@ -21,6 +21,11 @@ readExclusions()
       echo "Unable to read $proj/$exclusionsFile";}
 }
 
+require() {
+hash "$@" || exit 127
+}
+require java realpath cat find mv
+
 if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
 then
   usage

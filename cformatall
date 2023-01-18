@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require find clang-format
 readarray -t args < <(find . -mindepth 2 -type f -name "*.java")
 clang-format -i -style=Google -sort-includes \
   "${args[@]}"
