@@ -5,6 +5,7 @@ hash "$@" || exit 127
 require java cat 
 
 declare -r classpathFile="$HOME/LearnJava/saxon-he.cp"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="net.sf.saxon.Query"
 

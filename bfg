@@ -10,7 +10,7 @@ hash "$@" || exit 127
 require java cat
 
 declare -r classpathFile="$HOME/LearnJava/bfg.cp"
-classpath="$(cat $classpathFile)"
+classpath="$(cat "$classpathFile")"
 declare -r mainClass="com.madgag.git.bfg.cli.Main"
 
 if [ "$#" -eq 0 ]; 
