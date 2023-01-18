@@ -20,6 +20,7 @@ declare -r auxCpFile="compile.cp"
 auxCp=""
 declare -r suppressionsFile="suppressions-sb.xml"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
+# shellcheck disable=SC2155
 declare -r pluginjars=$(realpath "spotbugs-plugin.cp")
 plugincp=$(cat "$pluginjars")
 
