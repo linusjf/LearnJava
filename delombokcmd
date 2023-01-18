@@ -2,8 +2,10 @@
 require() {
 hash "$@" || exit 127
 }
-require java cat realpath 
+require java cat realpath
+# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath 'lombok.cp')"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="lombok.launch.Main"
 declare -r delombok="delombok"
