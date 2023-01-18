@@ -38,8 +38,11 @@ declare -r exclusionsFile=".exclusions"
 declare -r suppressionsFile="suppressions-xpath.xml"
 declare -a options
 rules_file=$(realpath "csrules.xml")
+# shellcheck disable=SC2155
 declare -r properties_file="$(realpath 'checkstyle.properties')"
+# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath 'cs.cp')"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 mainClass="com.puppycrawl.tools.checkstyle.Main"
 echo "$1"

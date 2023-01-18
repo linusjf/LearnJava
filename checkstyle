@@ -31,10 +31,14 @@ declare -r optionsFile=".csoptions"
 declare -a options
 declare -r exclusionsFile=".exclusions"
 declare -a exclusions
+# shellcheck disable=SC2155
 rules_file=$(realpath "csrules.xml")
+# shellcheck disable=SC2155
 declare -r properties_file=$(realpath "checkstyle.properties")
 declare -r output_file="cs.errors"
+# shellcheck disable=SC2155
 declare -r classpathFile=$(realpath "cs.cp")
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
 

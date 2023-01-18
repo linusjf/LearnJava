@@ -27,6 +27,7 @@ fi
 proj=$1
 declare -r optionsFile=".csoptions"
 declare -a options
+# shellcheck disable=SC2155
 declare -r classpathFile=$(realpath "cs.cp")
 java_file=""
 mainClass="com.puppycrawl.tools.checkstyle.Main"

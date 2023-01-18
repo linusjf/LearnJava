@@ -11,7 +11,9 @@ hash "@" || exit 127
 require java realpath cat 
 declare -i res=0
 declare -r errFile="spotbugs.errors"
+# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath "spotbugs.cp")"
+# shellcheck disable=SC2155
 declare -r cp=$(cat "$classpathFile")
 declare -r setupCpFile="setupclasspath"
 declare -r auxCpFile="compile.cp"

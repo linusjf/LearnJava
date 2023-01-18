@@ -11,8 +11,10 @@ hash "$@" || exit 127;
 }
 require realpath java find tee cat
 declare -r outputFile="javancss.report"
+# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath "javancss.cp")"
 declare -r mainClass="javancss.Main"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
 then

@@ -25,6 +25,7 @@ createDex() {
   }
   dx --dex --output="$dexFile" "$proj" && \
   mkdir -p "$proj"/"$distDir" && \
+  # shellcheck disable=SC2015
   cp "$dexFile" "${proj}/${distDir}" && exit 0 || { \
   echo "Error creating dex output"; \
   }

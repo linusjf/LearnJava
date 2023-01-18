@@ -3,7 +3,9 @@ require() {
 hash "$@" || exit 127;
 }
 require cat java realpath
+# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath 'pmd.cp')"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile"))"
 declare -r mainClass="net.sourceforge.pmd.PMD"
 

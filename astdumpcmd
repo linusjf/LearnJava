@@ -5,9 +5,9 @@ hash "$@" || exit 127
 require java cat realpath
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.util.treeexport.TreeExportCli"
+# shellcheck disable=SC2155
 declare -r classpath="$(cat "$(realpath "$classpathFile")")"
 
 java -cp "$classpath" "$mainClass" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
-exit $res
+exit $?
