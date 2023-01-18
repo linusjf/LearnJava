@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require parallel find head tidy 
 declare -r configFileName="tidy.config"
 configFilePath="$(find .. -maxdepth 2 \
 -type f -name "$configFileName" ! -path \

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : runjall
@@ -7,6 +6,10 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
+require() {
+hash "$@" || exit 127
+}
+require find parallel sh 
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel --joblog runj.log -j 5 -I% sh -c 'echo && ./runj %'
 exit $?

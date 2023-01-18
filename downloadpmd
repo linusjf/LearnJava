@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require curl jq grep 
 VERSION=$(curl -s https://api.github.com/repos/pmd/pmd/releases/latest | jq --raw-output ".tag_name")
 DOWNLOAD_URL=$(curl -s https://api.github.com/repos/pmd/pmd/releases/latest | jq --raw-output ".assets[].browser_download_url" | grep pmd-bin)
 echo "version=${VERSION}"

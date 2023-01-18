@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require ant 
 ant
 ret="$?"
 if [[ "$ret" == 0 ]]

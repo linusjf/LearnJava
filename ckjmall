@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require find parallel sh
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel --joblog ckjm.log --delay 1 -j 1 -I% sh -c 'echo && ./ckjm %'
 exitcode="$?"

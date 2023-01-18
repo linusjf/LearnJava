@@ -6,6 +6,11 @@ usage()
   exit 1
 }
 
+require() {
+hash "$@" || exit 127
+}
+require java find cat tee grep 
+
 declare -r outputFile="ckjm.report"
 declare -r conciseFile="ckjmconcise.report"
 declare -r classpathFile="ckjm_ext.cp"
@@ -29,5 +34,4 @@ java -cp "$classpath" \
 res=$?
 echo "ClassName WMC DIT NOC CBO RFC LCOM Ca Ce NPM LCOM3 LOC DAM MOA MFA CAM IC CBM AMC" > "$conciseFile"
 grep '^[^[:space:]]\{1\}' "$outputFile" >> "$conciseFile"
-exit $res)"
 exit "$res"

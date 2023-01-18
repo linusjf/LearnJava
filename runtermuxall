@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : runtermuxall
@@ -7,6 +6,10 @@
 # @copyright   : Copyright (c) Linus Fernandes
 # @description : 
 ######################################################################
+require() {
+hash "$@" || exit 127
+}
+require find parallel 
 find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
   parallel -j 5 -I% sh -c 'echo && ./runtermux %'
 exit $?

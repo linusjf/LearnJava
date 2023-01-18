@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require java cat 
 
-declare -r classpathFile="/data/data/com.termux/files/home/LearnJava/saxon-he.cp"
+declare -r classpathFile="$HOME/LearnJava/saxon-he.cp"
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="net.sf.saxon.Query"
 
 if [ ! -e "$classpathFile" ]
@@ -9,5 +14,5 @@ if [ ! -e "$classpathFile" ]
     usage
 fi
 
-java -cp @"$classpathFile" "$mainClass" "$@"
+java -cp "$classpath" "$mainClass" "$@"
 exit $?

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127
+}
+require java rm find cat tee 
 set -o noglob
 declare -r errFile="cpd.errors"
 declare -r format="text"

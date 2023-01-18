@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : runtermux
@@ -105,6 +104,11 @@ readRunOptions()
       { readarray -t runOptions < <(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
+
+require() {
+hash "$@" || exit 127
+}
+require cat dalvikvm 
 
 declare -r setupScript="setup"
 declare -r testsScript="tests"

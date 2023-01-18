@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 grep -src "^\[.*\].*" "$(find . -name 'cs.errors')" |
   grep -v ':0$' \
   | awk -F ":" '{ printf("%s %s\n",$2,$1) }'

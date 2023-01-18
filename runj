@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes@gmail.com)
 # @file        : runj
@@ -131,6 +130,11 @@ readRunOptions()
       { readarray -t runOptions < <(cat "$proj"/"$runOptionsFile") || \
       echo "Unable to read $proj/$runOptionsFile";}
 }
+
+require() {
+hash "$@" || exit 127
+}
+require cat java 
 
 declare -r setupScript="setup"
 declare -r testsScript="tests"

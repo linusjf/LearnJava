@@ -13,6 +13,11 @@ readExclusions()
       echo "Unable to read $proj/$exclusionsFile";}
 }
 
+require() {
+hash "$@" || exit 127;
+}
+require find cat java
+
 declare -r rulesFile="pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require awk xargs cat
 ./findsberrors \
     | awk '{print $2}' \
     | xargs -I{} cat {}

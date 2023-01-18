@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-declare -r classpathFile="spotbugs.cp"
+require() {
+hash "$@" || exit 127
+}
+require java realpath cat 
+declare -r classpathFile="$(realpath 'spotbugs.cp')"
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="edu.umd.cs.findbugs.FindBugs2"
 declare -r pluginjars="spotbugs-plugin.cp"
 
-java -cp @"$classpathFile" "$mainClass" \
+java -cp "$classpath" "$mainClass" \
   -pluginList "<$(cat $pluginjars)>" "$@" \
 || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
-exit $res
+exit $?
