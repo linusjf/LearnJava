@@ -71,6 +71,7 @@ then
 fi
 
 files="$(git diff --cached --name-only --diff-filter=ACMR | grep $exts)"
+echo "$files"
 # Format staged files
 for file in $files
 do
@@ -89,10 +90,12 @@ done
 
 # If no files left in index after formatting - fail
 ret=0
-if [ ! "$(git diff --cached --name-only)" ]; then
+diffs="$(git diff --cached --name-only)"
+echo "$diffs"
+if [ ! "$diffs" ]; then
 	if test -z "$files";
 	then
-    1>&2 echo "No files staged"
+    1>&2 echo "No xml files staged"
     exit 0
   else
     1>&2 echo "No files left after formatting"
