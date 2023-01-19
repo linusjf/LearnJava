@@ -78,14 +78,20 @@ do
   # Get the file from index
   git show ":$file" > "$file.tmp"
   # Format it
-  "$formatter" -config "$configFilePath" -quiet -xml -m -i "$file.tmp"
+  "$formatter" -config "$configFilePath" -quiet -xml -m -i "${file}.tmp"
   "$formatter" -config "$configFilePath" -quiet -xml -m -i "$file"
   # Create a blob object from the formatted file
-  hash=$(git hash-object -w "$file.tmp")
+  hash=$(git hash-object -w "${file}.tmp")
   # Add it back to index
   git update-index --add --cacheinfo 100644 "$hash" "$file"
-  # Remove the tmp file
-  rm "$file.tmp"
+  git cat-file -p "$hash" > "${file}.tmp"
+  diff "$file" "${file}.tmp" 
+  if test $? -eq 0; then
+    # Remove the tmp file
+    rm "$file.tmp"
+  else 
+    exit 1
+  fi
 done
 
 # If no files left in index after formatting - fail
@@ -93,11 +99,11 @@ ret=0
 if [ ! "$(git diff --cached --name-only)" ]; then
 	if test -z "$files";
 	then
-		1>&2 echo "No files staged"
-		exit 0
-        else
-		1>&2 echo "No files left after formatting"
-  		exit 1
+    1>&2 echo "No files staged"
+    exit 0
+  else
+    1>&2 echo "No files left after formatting"
+    exit 1
 	fi
 fi
 exit "$ret"
