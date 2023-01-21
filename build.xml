@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!-- project build -->
 <project xmlns:ivy="antlib:org.apache.ivy.ant"
          name="LearnJava"
          default="main"
