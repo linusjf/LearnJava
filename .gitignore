@@ -1,3 +1,4 @@
+*.wsout
 *.cp
 *.java.xml
 *.report

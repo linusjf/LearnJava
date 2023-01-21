@@ -50,6 +50,7 @@
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
           depends="loadclasspath, clean, makedir,format,checkstyle">
+          
     <javac includeantruntime="false"
            srcdir="${src.dir}"
            destdir="${build.dir}"
@@ -382,6 +383,7 @@
   </target>
   <target name="main"
           depends="loadclasspath,compile, pmd, spotbugs, jar, docs">
+          
     <description>Main target</description>
   </target>
 </project>

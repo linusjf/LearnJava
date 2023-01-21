@@ -821,7 +821,7 @@
                 name="aws-java-sdk"
                 rev="1.12.376"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile">
-                </dependency>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
     <dependency org="com.madgag"
                 name="bfg"
