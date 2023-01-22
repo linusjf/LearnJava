@@ -2,11 +2,12 @@
 require() {
   hash "$@" || exit 127
 }
-require parallel find head tidy
+require parallel find head tidy dirname readlink
+path() {
+  dirname "$(readlink -f "$1")"
+}
 declare -r configFileName="tidy.config"
-configFilePath="$(find .. -maxdepth 2 \
-  -type f -name "$configFileName" ! -path \
-  "**/.git/**" | head -n 1)"
+configFilePath="$(path "$0")/$configFileName"
 find . -maxdepth 2 -type f -name "*.xml" \
   -o -name "*.html" \
   ! -path "**/.git/**" \

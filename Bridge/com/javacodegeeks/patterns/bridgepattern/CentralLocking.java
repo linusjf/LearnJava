@@ -22,22 +22,21 @@ public class CentralLocking implements Product {
 
   @Override
   public String toString() {
-    return getClass() + " : " +
-      "Product Name : " + prodName; 
+    return getClass() + " : "
+        + "Product Name : " + prodName;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
       return true;
-    if (o instanceof CentralLocking &&
-        getClass().equals(o.getClass())) {
-     CentralLocking bw = (CentralLocking) o;
-     return prodName.equals(bw.prodName);
+    if (o instanceof CentralLocking && getClass().equals(o.getClass())) {
+      CentralLocking bw = (CentralLocking)o;
+      return prodName.equals(bw.prodName);
     }
     return false;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hashCode(prodName);

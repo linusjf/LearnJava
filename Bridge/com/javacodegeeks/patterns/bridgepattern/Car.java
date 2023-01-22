@@ -27,24 +27,21 @@ public abstract class Car {
 
   @Override
   public String toString() {
-    return getClass() + " : " +
-      "Product : " + product +
-      " Car type: " + carType;
+    return getClass() + " : "
+        + "Product : " + product + " Car type: " + carType;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
       return true;
-    if (o instanceof Car &&
-        getClass().equals(o.getClass())) {
-     Car bw = (Car) o;
-     return product.equals(bw.product)
-       && carType.equals(bw.carType);
+    if (o instanceof Car && getClass().equals(o.getClass())) {
+      Car bw = (Car)o;
+      return product.equals(bw.product) && carType.equals(bw.carType);
     }
     return false;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hash(product, carType);
@@ -59,7 +56,8 @@ public abstract class Car {
   /** Describe <code>printDetails</code> method here. */
   @SuppressWarnings("PMD.SystemPrintln")
   public void printDetails() {
-    System.out.println("Car: " + carType + ", Product:" + product.productName());
+    System.out.println("Car: " + carType
+                       + ", Product:" + product.productName());
     System.out.println();
   }
 }

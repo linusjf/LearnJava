@@ -22,21 +22,21 @@ public class GearLocking implements Product {
 
   @Override
   public String toString() {
-    return GearLocking.class + " : " +
-      "Product name : " + prodName;
+    return GearLocking.class + " : "
+        + "Product name : " + prodName;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o instanceof GearLocking) {
-     GearLocking gl = (GearLocking) o;
-     return prodName.equals(gl.prodName);
+      GearLocking gl = (GearLocking)o;
+      return prodName.equals(gl.prodName);
     }
     return false;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hashCode(prodName);

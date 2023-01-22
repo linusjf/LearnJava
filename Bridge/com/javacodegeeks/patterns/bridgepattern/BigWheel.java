@@ -24,13 +24,12 @@ public class BigWheel extends Car {
   public boolean equals(Object o) {
     if (this == o)
       return true;
-    if (o instanceof BigWheel &&
-        getClass().equals(o.getClass())) {
-     return super.equals(o);
+    if (o instanceof BigWheel && getClass().equals(o.getClass())) {
+      return super.equals(o);
     }
     return false;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), BigWheel.class);
@@ -39,13 +38,15 @@ public class BigWheel extends Car {
   @Override
   @SuppressWarnings("PMD.SystemPrintln")
   public void assemble() {
-    System.out.println("Assembling " + product.productName() + " for " + carType);
+    System.out.println("Assembling " + product.productName() + " for "
+                       + carType);
   }
 
   @Override
   @SuppressWarnings("PMD.SystemPrintln")
   public void produceProduct() {
     product.produce();
-    System.out.println("Modifying product " + product.productName() + " according to " + carType);
+    System.out.println("Modifying product " + product.productName()
+                       + " according to " + carType);
   }
 }
