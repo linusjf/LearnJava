@@ -1,24 +1,27 @@
 #!/usr/bin/env bash
-usage()
-{
+usage() {
   echo "Usage: $0 <bfg params>"
   exit 1
 }
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require java cat
+require java cat dirname readlink
+path="$(dirname "$(readlink -f "$0")")"
 
-declare -r classpathFile="$HOME/LearnJava/bfg.cp"
+declare -r classpathFile="${path}/bfg.cp"
 classpath="$(cat "$classpathFile")"
 declare -r mainClass="com.madgag.git.bfg.cli.Main"
 
-if [ "$#" -eq 0 ]; 
-then
+if [ "$#" -eq 0 ]; then
   usage
 fi
 
 java -cp "$classpath" "$mainClass" \
-  "$@" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+  "$@" ||
+  {
+    exitCode="$?"
+    echo "$0 exited with error code $exitCode"
+    exit "$exitCode"
+  }
 exit $?
