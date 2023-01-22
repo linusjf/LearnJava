@@ -87,17 +87,24 @@
         <attribute name="Specification-Version"
                    value="${version}" />
         <attribute name="Specification-Vendor"
-                   value="" />
+                   value="${user.name}" />
         <attribute name="Implementation-Title"
-                   value="" />
+                   value="${ant.project.name}" />
         <attribute name="Implementation-Version"
                    value="${build} ${TODAY}" />
         <attribute name="Implementation-Vendor"
-                   value="" />
+                   value="${user.name}" />
       </section>
       <attribute name="Main-Class"
                  value="${main.class}" />
     </manifest>
+    <fixcrlf srcdir="${src.dir}"
+             includes="**/MANIFEST.MF"
+             eol="unix"
+             eof="remove"
+             tab="remove"
+             tablength="2"
+             fixlast="false" />
   </target>
   <!--Creates the deployable jar file  -->
   <target name="jar"
