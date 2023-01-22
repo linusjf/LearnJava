@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2155
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require java cat realpath
+require java cat readlink dirname
 declare -r classpathFile="pmd.cp"
 declare -r mainClass="net.sourceforge.pmd.util.treeexport.TreeExportCli"
-# shellcheck disable=SC2155
-declare -r classpath="$(cat "$(realpath "$classpathFile")")"
+declare -r path="$(dirname "$(readlink -f "$0")")"
+declare -r classpath="$(cat "${path}/${classpathFile}")"
 
-java -cp "$classpath" "$mainClass" "$@" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+java -cp "$classpath" "$mainClass" "$@" ||
+  {
+    exitCode="$?"
+    echo "$0 exited with error code $exitCode"
+    exit "$exitCode"
+  }
 exit $?
