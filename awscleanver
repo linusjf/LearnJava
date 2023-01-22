@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-./ivycleanver com.amazonaws "$1"
+require() {
+  hash "$@" || exit 127
+}
+require dirname readlink
+path="$(dirname "$(readlink -f "$0")")"
+eval "${path}/ivycleanver com.amazonaws $1"
