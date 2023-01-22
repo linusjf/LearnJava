@@ -1,24 +1,23 @@
 #!/usr/bin/env bash
-usage()
-{
+usage() {
   echo "Usage: $0 filepath"
   echo "filepath - path to java file"
   exit 1
 }
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require basename tee
+require basename tee dirname readlink
 declare -i res=0
 file="$1"
 
-if [ "$#" -ne 1 ] || ! [ -f "$file" ]; 
-then
+if [ "$#" -ne 1 ] || ! [ -f "$file" ]; then
   usage
 fi
 
 filePrefix=$(basename -s .java "$file")
-./astdumpcmd --file "$file" -PrenderProlog=false -PrenderCommonAttributes=true \
-  | tee "$filePrefix".java.xml 
+path="$(dirname "$(readlink -f "$0")")"
+eval "${path}/astdumpcmd --file $file -PrenderProlog=false -PrenderCommonAttributes=true |
+  tee ${filePrefix}.java.xml"
 res=$?
-exit $res
+exit "$res"
