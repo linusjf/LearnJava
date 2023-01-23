@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
-require awk xargs cat
-./findcserrors \
-    | awk '{print $2}' \
-    | xargs -I{} cat {}
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require awk xargs cat dirname readlink
+dir="$(path "$0")"
+(
+  cd "$dir" || exit $?
+  ./findcserrors |
+    awk '{print $2}' |
+    xargs -I{} cat {}
+)
 exit $?
