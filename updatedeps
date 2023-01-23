@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-start=$SECONDS+0
+require() {
+  hash "$@" || exit 127
+}
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require dirname readlink
+declare -i start="$SECONDS"
 declare -i end=0
 declare -i minutes=0
 declare -i seconds=0
-./updeps
+eval "$(path "$0")/updeps"
 ret="$?"
-if [[ "$ret" == 0 ]]
-then
-end=$SECONDS-$start 
-minutes=$end/60
-seconds=$end%60
-  echo "Completed in ${minutes}m ${seconds}s";
+if [[ "$ret" -eq 0 ]]; then
+  end=$((SECONDS - start))
+  minutes=$((end / 60))
+  seconds=$((end % 60))
+  echo "Completed in ${minutes}m and ${seconds}s"
   exit 0
 fi
 exit "$ret"
