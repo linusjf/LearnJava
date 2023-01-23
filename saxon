@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
-require() {
-hash "$@" || exit 127
-}
-require java cat 
-
-declare -r classpathFile="$HOME/LearnJava/saxon-he.cp"
 # shellcheck disable=SC2155
-declare -r classpath="$(cat "$classpathFile")"
+require() {
+  hash "$@" || exit 127
+}
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require java cat readlink dirname
+
+declare -r classpathFile="$(path "$0")/saxon-he.cp"
 declare -r mainClass="net.sf.saxon.Query"
 
-if [ ! -e "$classpathFile" ]
-  then
-    echo "$classpathFile cannot be found. Run ant in root directory to generate file."
-    usage
+if test ! -e "$classpathFile"; then
+  echo "$classpathFile cannot be found. Run ant in root directory to generate file."
+  usage
 fi
 
+declare -r classpath="$(cat "$classpathFile")"
 java -cp "$classpath" "$mainClass" "$@"
 exit $?
