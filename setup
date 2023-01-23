@@ -1,3 +1,24 @@
 #!/usr/bin/env bash
-./setuphooks
-echo -n "cpfiles=" > cpfiles.properties
+require() {
+  hash "$@" || exit 127
+}
+require git
+parent="$(git rev-parse --show-toplevel 2>/dev/null)"
+if test $? -eq 0; then
+  (
+    cd "$parent" || exit $?
+    if test -e ./setuphooks && test -x ./setuphooks; then
+      if ./setuphooks; then
+        echo -n "cpfiles=" >cpfiles.properties
+      else
+        echo "Error in setting up hooks..."
+      fi
+    else
+      echo "${parent}/setuphooks either does not exist or is not executable."
+      exit 1
+    fi
+  )
+else
+  echo "Not a git repo. Exiting..."
+  exit 128
+fi
