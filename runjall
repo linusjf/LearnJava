@@ -4,12 +4,20 @@
 # @file        : runjall
 # @created     : Friday Jul 05, 2019 17:41:08 IST
 # @copyright   : Copyright (c) Linus Fernandes
-# @description : 
+# @description :
 ######################################################################
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require find parallel sh 
-find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel --joblog runj.log -j 5 -I% sh -c 'echo && ./runj %'
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require find parallel dirname readlink nproc
+dir="$(path "$0")"
+(
+  cd "$dir" || exit $?
+  procs=$(nproc)
+  find . -maxdepth 1 -type d -name "[[:upper:]]*" |
+    parallel --joblog runj.log -j "$procs" -I% bash -c 'echo && ./runj %'
+)
 exit $?
