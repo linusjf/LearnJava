@@ -11,7 +11,7 @@ require() {
 path() {
   dirname "$(readlink -f "$1")"
 }
-require java cat readlink dirname
+require java cat readlink dirname realpath
 dir="$(path "$0")"
 declare -i res=0
 declare -r errFile="spotbugs.errors"
