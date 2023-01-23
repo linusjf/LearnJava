@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2155
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
-require cat java realpath
-# shellcheck disable=SC2155
-declare -r classpathFile="$(realpath 'pmd.cp')"
-# shellcheck disable=SC2155
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require java cat readlink dirname realpath
+dir="$(path "$0")"
+declare -r classpathFile="${dir}/pmd.cp"
 declare -r classpath="$(cat "$classpathFile"))"
 declare -r mainClass="net.sourceforge.pmd.PMD"
 
-java -cp "$classpath" "$mainClass" "$@" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
-res=$?
-exit $res
+java -cp "$classpath" "$mainClass" "$@" ||
+  {
+    exitCode="$?"
+    echo "$0 exited with error code $exitCode"
+    exit "$exitCode"
+  }
+exit $?
