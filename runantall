@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 require() {
-hash "@" || exit 127
+  hash "@" || exit 127
 }
-require find parallel
-find . -maxdepth 1 -type d -name "[[:upper:]]*" \
-  | parallel --joblog runant.log -I% --max-args 1 \
-  ./runant %
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require find parallel dirname readlink nproc
+dir="$(path "$0")"
+(
+  cd "$dir" || exit $?
+  procs=$(nproc)
+  find . -maxdepth 1 -type d -name "[[:upper:]]*" |
+    parallel --joblog runant.log -j "$procs" -I% --max-args 1 \
+      ./runant %
+)
