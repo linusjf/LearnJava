@@ -1,32 +1,33 @@
 #!/usr/bin/env bash
-usage()
-{
+#shellcheck disable=SC2155
+usage() {
   echo "Usage: $0 dir"
   echo "dir - Project directory"
   exit 1
 }
 
-readExclusions()
-{
-  [ -e "$proj"/"$exclusionsFile" ] && \
-      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
-      echo "Unable to read $proj/$exclusionsFile";}
+readExclusions() {
+  [ -e "$proj"/"$exclusionsFile" ] &&
+    { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") ||
+      echo "Unable to read $proj/$exclusionsFile"; }
 }
 
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
-require find cat java
+require find cat java nproc readlink dirname
 
-declare -r rulesFile="pmdrules.xml"
+declare -r dir="$(dirname "$(readlink -f "$0")")"
+declare -r rulesFile="${dir}/pmdrules.xml"
 declare -r cacheFile="pmd.cache"
 declare -r errFile="pmd.errors"
 declare -r auxCpFile="compile.cp"
 declare -r setupcp="setupclasspath"
 declare -r format="text"
-declare -i threads=5
+declare -i threads=$(nproc)
 declare -i minpriority=5
-declare -r classpathFile="pmd.cp"
+declare -r classpathFile="${dir}/pmd.cp"
+declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="net.sourceforge.pmd.PMD"
 declare -r exclusionsFile=".exclusions"
 declare -r fileslist="pmdfiles.txt"
@@ -34,46 +35,55 @@ declare -a exclusions
 declare -i res=0
 proj="$1"
 
-if [ "$#" -ne 1 ] || ! [ -d "$proj" ]; 
-then
+if [ "$#" -ne 1 ] || ! [ -d "$proj" ]; then
   usage
 fi
 
 readExclusions
-set -o noglob
-cd "$proj" || exit $?
-rm ./"$fileslist"
-if [ -s "$setupcp" ]
-then
-  ./"$setupcp"
-fi
-find . -type f -regex ".*[.]\(java\|jsp\)$" "${exclusions[@]}" | tr '\n' ',' > "$fileslist"
-if [ -s "$fileslist" ]
-then
-if [ -s "$auxCpFile" ]
-then
-  java -cp @../"$classpathFile" \
-    "$mainClass" \
-    -filelist "$fileslist" -R ../"$rulesFile" -f "$format" \
-    -min "$minpriority" -norulesetcompatibility \
-    -failOnViolation true -cache "$cacheFile" \
-    -reportfile "$errFile" \
-    -auxclasspath file:./"$auxCpFile" \
-    -t "$threads" \
-    || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+(
+  declare -i res=0
+  set -o noglob
+  cd "$proj" || exit $?
+  rm ./"$fileslist"
+  if [ -s "$setupcp" ]; then
+    ./"$setupcp"
+  fi
+  find . -type f -regex ".*[.]\(java\|jsp\)$" "${exclusions[@]}" | tr '\n' ',' >"$fileslist"
+  if [ -s "$fileslist" ]; then
+    if [ -s "$auxCpFile" ]; then
+      java -cp "$classpath" \
+        "$mainClass" \
+        -filelist "$fileslist" -R "$rulesFile" -f "$format" \
+        -min "$minpriority" -norulesetcompatibility \
+        -failOnViolation true -cache "$cacheFile" \
+        -reportfile "$errFile" \
+        -auxclasspath file:./"$auxCpFile" \
+        -t "$threads" ||
+        {
+          exitCode="$?"
+          echo "$0 exited with error code $exitCode"
+          exit "$exitCode"
+        }
       res=$?
     else
-      java -cp @../"$classpathFile" \
-    "$mainClass" \
-    -filelist "$fileslist" -R ../"$rulesFile" -f "$format" \
-    -min "$minpriority" -norulesetcompatibility \
-    -failOnViolation true -cache "$cacheFile" \
-    -reportfile "$errFile" \
-    -auxclasspath . \
-    -t "$threads" \
-    || { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+      java -cp "$classpath" \
+        "$mainClass" \
+        -filelist "$fileslist" -R "$rulesFile" -f "$format" \
+        -min "$minpriority" -norulesetcompatibility \
+        -failOnViolation true -cache "$cacheFile" \
+        -reportfile "$errFile" \
+        -auxclasspath . \
+        -t "$threads" ||
+        {
+          exitCode="$?"
+          echo "$0 exited with error code $exitCode"
+          exit "$exitCode"
+        }
       res=$?
-fi
-fi
-set +o noglob
+    fi
+  fi
+  set +o noglob
+  exit "$res"
+)
+res=$?
 exit $res
