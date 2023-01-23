@@ -11,6 +11,26 @@ require() {
 path() {
   dirname "$(readlink -f "$1")"
 }
+WARNING="WARNING: Using existing classpath file which may be outdated. Create setupclasspath that generates compile.cp and run.cp files that contain all class jars required by project"
+ERROR="ERROR: Error executing $setupCpFile. Fix the script and run once more."
+
+setupcp() {
+  if test -e "$setupCpFile"; then
+    if ./"$setupCpFile"; then
+      auxCp=$(cat "$auxCpFile")
+      return 0
+    elif test -e "$auxCpFile"; then
+      echo "$WARNING"
+      auxCp=$(cat "$auxCpFile")
+      return 0
+    else
+      echo "$ERROR"
+      return 1
+    fi
+  fi
+  return 0
+}
+
 require java cat readlink dirname realpath
 dir="$(path "$0")"
 declare -i res=0
@@ -33,33 +53,30 @@ proj="$1"
 echo "$proj"
 eval "${dir}/buildj $proj"
 res=$?
-if [[ "$res" == 0 ]]; then
-  res=$(
+if test "$res" -eq 0; then
+  (
     cd "$proj" || exit $?
-    if [ -e "$setupCpFile" ]; then
-      ./"$setupCpFile"
-      auxCp=$(cat "$auxCpFile")
+    if setupcp; then
+      java -cp "$cp":"$plugincp" "$mainClass" \
+        -pluginList "$plugincp" \
+        -showPlugins
+      java -cp "$cp":"$plugincp" "$mainClass" \
+        -output "$errFile" \
+        -exclude "$(realpath "$suppressionsFile")" \
+        -auxclasspath "$auxCp":. -adjustExperimental \
+        -workHard -quiet \
+        -experimental -nested:true -timestampNow \
+        -longBugCodes -progress \
+        -pluginList "$plugincp" \
+        -sourcepath . . ||
+        {
+          exitCode="$?"
+          echo "$0 exited with error code $exitCode"
+          cd ..
+          exit "$exitCode"
+        }
     fi
-    java -cp "$cp":"$plugincp" "$mainClass" \
-      -pluginList "$plugincp" \
-      -showPlugins
-    java -cp "$cp":"$plugincp" "$mainClass" \
-      -output "$errFile" \
-      -exclude "$(realpath "$suppressionsFile")" \
-      -auxclasspath "$auxCp":. -adjustExperimental \
-      -workHard -quiet \
-      -experimental -nested:true -timestampNow \
-      -longBugCodes -progress \
-      -pluginList "$plugincp" \
-      -sourcepath . . ||
-      {
-        exitCode="$?"
-        echo "$0 exited with error code $exitCode"
-        cd ..
-        exit "$exitCode"
-      }
-    res=$?
-    exit $res
+    exit $?
   )
 else
   exit $res
