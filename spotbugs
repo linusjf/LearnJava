@@ -1,60 +1,63 @@
 #!/usr/bin/env bash
-usage()
-{
+# shellcheck disable=SC2155
+usage() {
   echo "Usage: $0 dir"
   echo "dir - Project directory"
   exit 1
 }
 require() {
-hash "@" || exit 127
+  hash "@" || exit 127
 }
-require java realpath cat 
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require java cat readlink dirname
+dir="$(path "$0")"
 declare -i res=0
 declare -r errFile="spotbugs.errors"
-# shellcheck disable=SC2155
-declare -r classpathFile="$(realpath "spotbugs.cp")"
-# shellcheck disable=SC2155
+declare -r classpathFile="${dir}/spotbugs.cp"
 declare -r cp=$(cat "$classpathFile")
 declare -r setupCpFile="setupclasspath"
 declare -r auxCpFile="compile.cp"
 auxCp=""
 declare -r suppressionsFile="suppressions-sb.xml"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
-# shellcheck disable=SC2155
-declare -r pluginjars=$(realpath "spotbugs-plugin.cp")
+declare -r pluginjars="${dir}/spotbugs-plugin.cp"
 plugincp=$(cat "$pluginjars")
 
-if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
-then
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; then
   usage
 fi
 
 proj="$1"
 echo "$proj"
-./buildj "$proj"
+eval "${dir}/buildj $proj"
 res=$?
-if [[ "$res" == 0 ]];
-then
+if [[ "$res" == 0 ]]; then
   res=$(
-  cd "$proj" || exit $?
-  if [ -e "$setupCpFile" ]
-  then
-    ./"$setupCpFile"
-    auxCp=$(cat "$auxCpFile")
-  fi
-  java -cp "$cp":"$plugincp" "$mainClass" \
-    -pluginList "$plugincp" \
-    -showPlugins
-  java -cp "$cp":"$plugincp" "$mainClass" \
-    -output "$errFile" \
-    -exclude "$(realpath "$suppressionsFile")" \
-    -auxclasspath "$auxCp":. -adjustExperimental \
-    -workHard -quiet \
-    -experimental -nested:true -timestampNow \
-    -longBugCodes -progress \
-    -pluginList "$plugincp" \
-    -sourcepath . . \
-    || { exitCode="$?";echo "$0 exited with error code $exitCode"; cd ..; exit "$exitCode";}
+    cd "$proj" || exit $?
+    if [ -e "$setupCpFile" ]; then
+      ./"$setupCpFile"
+      auxCp=$(cat "$auxCpFile")
+    fi
+    java -cp "$cp":"$plugincp" "$mainClass" \
+      -pluginList "$plugincp" \
+      -showPlugins
+    java -cp "$cp":"$plugincp" "$mainClass" \
+      -output "$errFile" \
+      -exclude "$(realpath "$suppressionsFile")" \
+      -auxclasspath "$auxCp":. -adjustExperimental \
+      -workHard -quiet \
+      -experimental -nested:true -timestampNow \
+      -longBugCodes -progress \
+      -pluginList "$plugincp" \
+      -sourcepath . . ||
+      {
+        exitCode="$?"
+        echo "$0 exited with error code $exitCode"
+        cd ..
+        exit "$exitCode"
+      }
     res=$?
     exit $res
   )

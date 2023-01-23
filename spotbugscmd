@@ -7,11 +7,11 @@ path() {
   dirname "$(readlink -f "$1")"
 }
 require java cat readlink dirname
-declare -i res=0
-declare -r classpathFile="$(path 'spotbugs.cp')"
+dir="$(path "$0")"
+declare -r classpathFile="${dir}/spotbugs.cp"
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="edu.umd.cs.findbugs.LaunchAppropriateUI"
-declare -r pluginjars="spotbugs-plugin.cp"
+declare -r pluginjars="${dir}/spotbugs-plugin.cp"
 declare -r plugins="$(cat "$pluginjars")"
 
 java -cp "$classpath" "$mainClass" \
@@ -21,5 +21,4 @@ java -cp "$classpath" "$mainClass" \
     echo "$0 exited with error code $exitCode"
     exit "$exitCode"
   }
-res=$?
-exit $res
+exit $?
