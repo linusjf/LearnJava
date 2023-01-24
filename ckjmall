@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require find parallel sh
-find . -maxdepth 1 -type d -name "[[:upper:]]*" | \
-  parallel --joblog ckjm.log --delay 1 -j 1 -I% sh -c 'echo && ./ckjm %'
+path() {
+  dirname "$(readlink -f "$1")"
+}
+dir="$(path "$0")"
+require find parallel bash readlink dirname
+find . -maxdepth 1 -type d -name "[[:upper:]]*" |
+  parallel --joblog ckjm.log --delay 1 -j 1 -I% bash -c "'echo && ${dir}/ckjm %'"
 exitcode="$?"
 exit "$exitcode"

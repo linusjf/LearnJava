@@ -1,38 +1,48 @@
 #!/usr/bin/env bash
-usage()
-{
+# shellcheck disable=SC2155
+usage() {
   echo "Usage: $0 dir"
   echo "dir - Project directory"
   exit 1
 }
 
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require java find cat tee grep 
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require java find cat tee grep readlink dirname realpath
+dir="$(path "$0")"
 
 declare -r outputFile="ckjm.report"
 declare -r conciseFile="ckjmconcise.report"
-declare -r classpathFile="ckjm_ext.cp"
+declare -r classpathFile="${dir}/ckjm_ext.cp"
 declare -r mainClass="gr.spinellis.ckjm.MetricsFilter"
+declare -r classpath="$(cat "$classpathFile"):."
 
-if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
-then
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; then
   usage
 fi
 
 echo "$1"
 proj="$1"
 
-# shellcheck disable=SC2155
-classpath="$(cat "$classpathFile"):."
-res="$(cd "$proj" || exit $?
-java -cp "$classpath" \
+(
+  cd "$proj" || exit $?
+  java -cp "$classpath" \
     "$mainClass" \
-    "$(find . -name '*.class')" \
-    | tee "$outputFile" \
-    || { exitCode="$?";echo "$0 exited with error code $exitCode";exit "$exitCode";}
-  )"
-echo "ClassName WMC DIT NOC CBO RFC LCOM Ca Ce NPM LCOM3 LOC DAM MOA MFA CAM IC CBM AMC" > "$conciseFile"
-grep '^[^[:space:]]\{1\}' "$outputFile" >> "$conciseFile"
+    "$(find . -name '*.class')" |
+    tee "$outputFile" ||
+    {
+      exitCode="$?"
+      echo "$0 exited with error code $exitCode"
+      exit "$exitCode"
+    }
+)
+res=$?
+if test -e "$outputFile"; then
+  echo "ClassName WMC DIT NOC CBO RFC LCOM Ca Ce NPM LCOM3 LOC DAM MOA MFA CAM IC CBM AMC" >"$conciseFile"
+  grep '^[^[:space:]]\{1\}' "$outputFile" >>"$conciseFile"
+fi
 exit "$res"
