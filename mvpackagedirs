@@ -10,9 +10,9 @@
 #                Also creates package-info.java if it does not exist already.
 ######################################################################
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
-require find head grep mv sed awk mkpackagedirs 
+require find head grep mv sed awk mkpackagedirs
 package=""
 pkgInfoFile="package-info.java"
 dir=""
@@ -20,21 +20,18 @@ declare -i count
 readarray -t args < <(find . -maxdepth 1 \
   -name "*.java" -type f \
   ! -path "**/.git/**" ! -path .)
-for file in "${args[@]}"
-  do
-    count=$(head -1 "$file" | grep -c 'package')
-    if [ $count -ne 0 ]
-    then
-      package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
-      dir=$(mkpackagedirs "$package")
-      mv "$file" "$dir"
-      if [ -e "$dir"/"$pkgInfoFile" ]
-      then
-        continue
-      else
-        echo "package $package;">"$dir/$pkgInfoFile"
-        echo "Created $dir/$pkgInfoFile"
-      fi
+for file in "${args[@]}"; do
+  count=$(head -1 "$file" | grep -c 'package')
+  if [ $count -ne 0 ]; then
+    package=$(head -1 "$file" | grep 'package' | awk '{print $2}' | sed 's/;//')
+    dir=$(mkpackagedirs "$package")
+    mv "$file" "$dir"
+    if [ -e "${dir}/${pkgInfoFile}" ]; then
+      continue
+    else
+      echo "package $package;" >"${dir}/${pkgInfoFile}"
+      echo "Created $dir/$pkgInfoFile"
     fi
+  fi
 done
 exit 0

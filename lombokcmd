@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2155
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
-require java cat realpath
-# shellcheck disable=SC2155
-declare -r classpathFile="$(realpath 'lombok.cp')"
-# shellcheck disable=SC2155
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require java cat readlink dirname
+dir="$(path "$0")"
+declare -r classpathFile="$dir/lombok.cp"
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="lombok.launch.Main"
 
-java -cp "$classpath" "$mainClass" "$@" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+java -cp "$classpath" "$mainClass" "$@" ||
+  {
+    exitCode="$?"
+    echo "$0 exited with error code $exitCode"
+    exit "$exitCode"
+  }
 exit $?
