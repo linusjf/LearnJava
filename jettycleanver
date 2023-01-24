@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
-./ivycleanver org.eclipse.ee4j "$1"
-./ivycleanver org.eclipse.ee4j "$1"
-./ivycleanver org.eclipse.jdt "$1"
-./ivycleanver org.eclipse.jdt.core.compiler "$1"
-./ivycleanver org.eclipse.jetty "$1"
-./ivycleanver org.eclipse.jetty.orbit "$1"
-./ivycleanver org.eclipse.jetty.toolchain "$1"
-./ivycleanver org.eclipse.jgit "$1"
+require() {
+  hash "$@" || exit 127
+}
+path() {
+  dirname "$(readlink -f "$1")"
+}
+require readlink dirname
+dir="$(path "$0")"
+eval "${dir}/ivycleanver org.eclipse.ee4j $1"
+eval "${dir}/ivycleanver org.eclipse.ee4j $1"
+eval "${dir}/ivycleanver org.eclipse.jdt $1"
+eval "${dir}/ivycleanver org.eclipse.jdt.core.compiler $1"
+eval "${dir}/ivycleanver org.eclipse.jetty $1"
+eval "${dir}/ivycleanver org.eclipse.jetty.orbit $1"
+eval "${dir}/ivycleanver org.eclipse.jetty.toolchain $1"
+eval "${dir}/ivycleanver org.eclipse.jgit $1"
