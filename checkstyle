@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-usage()
-{
+# shellcheck disable=SC2155
+usage() {
   echo "Usage: $0 dir rulesfile"
   echo "dir - Project directory"
   echo "rulesfile - Rules file"
@@ -11,81 +11,78 @@ require() {
   hash "$@" || exit 127
 }
 
-readOptions()
-{
-  [ -e "$proj"/"$optionsFile" ] && \
-      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
-      echo "Unable to read $proj/$optionsFile";}
+readOptions() {
+  [ -e "$proj"/"$optionsFile" ] &&
+    { readarray -t options < <(cat "$proj"/"$optionsFile") ||
+      echo "Unable to read $proj/$optionsFile"; }
 }
 
-readExclusions()
-{
-  [ -e "$proj"/"$exclusionsFile" ] && \
-      { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") || \
-      echo "Unable to read $proj/$exclusionsFile";}
+readExclusions() {
+  [ -e "$proj"/"$exclusionsFile" ] &&
+    { readarray -t exclusions < <(cat "$proj"/"$exclusionsFile") ||
+      echo "Unable to read $proj/$exclusionsFile"; }
 }
 
-require cat java realpath touch find
+path() {
+  dirname "$(readlink -f "$1")"
+}
+
+require cat java realpath touch find readlink dirname
+dir="$(path "$0")"
 set -o noglob
 declare -r optionsFile=".csoptions"
 declare -a options
 declare -r exclusionsFile=".exclusions"
 declare -a exclusions
-# shellcheck disable=SC2155
-rules_file=$(realpath "csrules.xml")
-# shellcheck disable=SC2155
-declare -r properties_file=$(realpath "checkstyle.properties")
+declare -r rules_file="${dir}/csrules.xml"
+declare -r properties_file="${dir}/checkstyle.properties"
 declare -r output_file="cs.errors"
-# shellcheck disable=SC2155
-declare -r classpathFile=$(realpath "cs.cp")
-# shellcheck disable=SC2155
+declare -r classpathFile="${dir}/cs.cp"
 declare -r classpath="$(cat "$classpathFile")"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
 
-if [ "$#" -lt 1 ] || ! [ -d "$1" ]; 
-then
+if [ "$#" -lt 1 ] || ! [ -d "$1" ]; then
   usage
 fi
 
 proj=$1
 echo "$1"
-if [ -n "$2" ]
-  then
-    rules_file="$(realpath "$2")"
+if [ -n "$2" ]; then
+  rules_file="$2"
 fi
-if [ ! -e "$rules_file" ]
-  then
-    echo "$rules_file cannot be found."
-    usage
+if [ ! -e "$rules_file" ]; then
+  echo "$rules_file cannot be found."
+  usage
 fi
 
-if [ ! -e "$classpathFile" ]
-  then
-    echo "$classpathFile cannot be found. Run ant in root directory to generate file."
-    usage
+if [ ! -e "$classpathFile" ]; then
+  echo "$classpathFile cannot be found. Run ant in root directory to generate file."
+  usage
 fi
 
-if [ ! -e "$properties_file" ]
-  then
-    echo "$properties_file not found. Creating..."
-    touch "$properties_file" || \
-      echo "Unable to create $properties_file"
-    echo "Create/Modify $properties_file to configure checkstyle"
+if [ ! -e "$properties_file" ]; then
+  echo "$properties_file not found. Creating..."
+  touch "$properties_file" ||
+    echo "Unable to create $properties_file"
+  echo "Create/Modify $properties_file to configure checkstyle"
 fi
 readOptions
 readExclusions
-(set -o pipefail; cd "$1" && \
-readarray -t args \
-< <(find . -type f -regex ".*[.]\(java\|properties\)$" \
--not -path "./docs" -not -path "./dist" \
-"${exclusions[@]}" ) && \
-  java -cp "$classpath" \
-  "$mainClass" \
-  "${options[@]}" \
-  -c "$rules_file" -d \
-  -p "$properties_file" \
-  -o "$output_file"  \
-  "${args[@]}";)
+(
+  set -o pipefail
+  cd "$1" &&
+    readarray -t args \
+      < <(find . -type f -regex ".*[.]\(java\|properties\)$" \
+        -not -path "./docs" -not -path "./dist" \
+        "${exclusions[@]}") &&
+    java -cp "$classpath" \
+      "$mainClass" \
+      "${options[@]}" \
+      -c "$rules_file" -d \
+      -p "$properties_file" \
+      -o "$output_file" \
+      "${args[@]}"
+)
 ret=$?
 set +o noglob
 exit "$ret"
