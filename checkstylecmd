@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2155
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
 require java realpath cat
-# shellcheck disable=SC2155
 declare -r classpathFile="$(realpath 'cs.cp')"
 declare -r mainClass="com.puppycrawl.tools.checkstyle.Main"
-# shellcheck disable=SC2155
 declare -r classpath="$(cat "$classpathFile")"
 
-java -cp "$classpath" "$mainClass" "$@" \
-|| { exitCode="$?";echo "$0 exited with error code $exitCode"; exit "$exitCode";}
+java -cp "$classpath" "$mainClass" "$@" ||
+  {
+    exitCode="$?"
+    echo "$0 exited with error code $exitCode"
+    exit "$exitCode"
+  }
 res=$?
 exit $res
