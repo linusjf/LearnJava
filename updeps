@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require ant 
-ant
+require ant
+ant -S
 ret="$?"
-if [[ "$ret" == 0 ]]
-then
+if [[ "$ret" == 0 ]]; then
   gitit
 else
   exit "$ret"
