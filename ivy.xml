@@ -548,7 +548,7 @@
     <!-- https://mvnrepository.com/artifact/org.antlr/antlr4 -->
     <dependency org="org.antlr"
                 name="antlr4"
-                rev="4.11.1"
+                rev="4.12.0"
                 conf="antlr4.main-&gt;master;antlr4.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
     <dependency org="info.debatty"
