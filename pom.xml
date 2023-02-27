@@ -215,7 +215,7 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jsp</artifactId>
-      <version>11.0.13</version>
+      <version>11.0.14</version>
       <optional>true</optional>
     </dependency>
     <dependency>
