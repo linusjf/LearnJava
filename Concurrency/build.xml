@@ -814,7 +814,215 @@
     </java>
   </target>
   <target name="runall"
-          depends="loadclasspath,run,unittests"></target>
+          depends="loadclasspath,run,unittests">
+    <target name="format">
+      <fileset dir="${basedir}"
+               id="javasrcs">
+        <include name="**/*.java" />
+      </fileset>
+      <pathconvert property="sources"
+                   refid="javasrcs"
+                   pathsep=" " />
+      <loadfile property="gformat.cp"
+                srcFile="../${gformat.classpath.file}" />
+      <java classname="${gformat.main.class}"
+            fork="true">
+        <arg line="-i ${sources}" />
+        <classpath>
+          <pathelement path="${gformat.cp}" />
+          <pathelement path="${java.class.path}" />
+        </classpath>
+      </java>
+      <exec executable="bash">
+        <arg line="../cformat ${basedir}" />
+      </exec>
+      <exec executable="bash">
+        <arg line="../xformatall" />
+      </exec>
+    </target>
+    <target name="checkstyleg">
+      <taskdef resource="net/sf/antcontrib/antlib.xml"
+               classpath="${antcontrib.cp}">
+        <move file="suppressions-xpath.xml"
+              tofile="suppressions-xpath.xml.bak"
+              preservelastmodified="true"
+              force="true"
+              failonerror="false"
+              verbose="true" />
+        <fileset dir="${basedir}"
+                 id="javasrcs">
+          <include name="**/*.java" />
+          <exclude name="**/*Parser.java" />
+          <exclude name="**/*Lexer.java" />
+          <exclude name="**/*Listener.java" />
+          <exclude name="**/*Visitor.java" />
+        </fileset>
+        <pathconvert property="sources"
+                     refid="javasrcs"
+                     pathsep=" " />
+        <loadfile property="cs.cp"
+                  srcFile="../${cs.classpath.file}" />
+        <java classname="${cs.main.class}"
+              logError="true">
+          <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+          <classpath>
+            <pathelement path="${cs.cp}" />
+            <pathelement path="${java.class.path}" />
+          </classpath>
+        </java>
+        <condition property="file.is.empty"
+                   else="false">
+          <length file="${ant.project.name}-xpath.xml"
+                  when="equal"
+                  length="0" />
+        </condition>
+        <if>
+          <equals arg1="${file.is.empty}"
+                  arg2="false" />
+          <then>
+            <move file="${ant.project.name}-xpath.xml"
+                  tofile="suppressions-xpath.xml"
+                  preservelastmodified="true"
+                  force="true"
+                  failonerror="true"
+                  verbose="true" />
+          </then>
+          <else>
+            <echo message="No suppressions generated." />
+            <delete file="${ant.project.name}-xpath.xml"
+                    verbose="true"
+                    failonerror="false" />
+          </else>
+        </if>
+      </taskdef>
+      <move file="suppressions-xpath.xml"
+            tofile="suppressions-xpath.xml.bak"
+            preservelastmodified="true"
+            force="true"
+            failonerror="false"
+            verbose="true" />
+      <fileset dir="${basedir}"
+               id="javasrcs">
+        <include name="**/*.java" />
+        <exclude name="**/*Parser.java" />
+        <exclude name="**/*Lexer.java" />
+        <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
+      </fileset>
+      <pathconvert property="sources"
+                   refid="javasrcs"
+                   pathsep=" " />
+      <loadfile property="cs.cp"
+                srcFile="../${cs.classpath.file}" />
+      <java classname="${cs.main.class}"
+            logError="true">
+        <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+        <classpath>
+          <pathelement path="${cs.cp}" />
+          <pathelement path="${java.class.path}" />
+        </classpath>
+      </java>
+      <condition property="file.is.empty"
+                 else="false">
+        <length file="${ant.project.name}-xpath.xml"
+                when="equal"
+                length="0" />
+      </condition>
+      <if>
+        <equals arg1="${file.is.empty}"
+                arg2="false" />
+        <then>
+          <move file="${ant.project.name}-xpath.xml"
+                tofile="suppressions-xpath.xml"
+                preservelastmodified="true"
+                force="true"
+                failonerror="true"
+                verbose="true" />
+        </then>
+        <else>
+          <echo message="No suppressions generated." />
+          <delete file="${ant.project.name}-xpath.xml"
+                  verbose="true"
+                  failonerror="false" />
+        </else>
+      </if>
+    </target>
+    <target name="checkstyle"
+            depends="loadclasspath">
+      <taskdef resource="${cs.taskdef.resource}"
+               classpath="${cs.cp}" />
+      <first id="checkstylefile">
+        <fileset dir=".."
+                 includes="${cs.config}" />
+      </first>
+      <checkstyle config="${toString:checkstylefile}"
+                  failOnViolation="false"
+                  properties="../${cs.properties}">
+        <fileset dir="${src.dir}"
+                 includes="**/*.java" />
+        <formatter type="plain" />
+        <formatter type="plain"
+                   toFile="${cs.output}" />
+        <classpath>
+          <pathelement path="${cs.cp}" />
+          <pathelement path="${java.class.path}" />
+        </classpath>
+      </checkstyle>
+    </target>
+    <target name="pmd"
+            depends="loadclasspath">
+      <taskdef name="pmd"
+               classname="net.sourceforge.pmd.ant.PMDTask"
+               classpath="${pmd.cp}" />
+      <property name="pmd.errCount"
+                value="0" />
+      <pmd cacheLocation="${pmd.cacheFile}"
+           minimumPriority="${pmd.minimumPriority}"
+           suppressMarker="${pmd.suppressMarker}"
+           failuresPropertyName="pmd.errCount">
+        <ruleset>../${pmd.config}</ruleset>
+        <auxclasspath>
+          <pathelement path="${basedir}" />
+        </auxclasspath>
+        <formatter type="${pmd.reportFormat}"
+                   toFile="${pmd.output}"
+                   toConsole="${pmd.toConsole}">
+          <fileset dir="${basedir}">
+            <include name="**/*.java" />
+          </fileset>
+        </formatter>
+        <fileset dir="${basedir}">
+          <include name="**/*.java" />
+        </fileset>
+      </pmd>
+      <echo message="${pmd.errCount} violations found." />
+    </target>
+    <target name="spotbugs"
+            depends="loadclasspath, compile">
+      <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+               classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+      <spotbugs output="text"
+                outputFile="${spotbugs.output}"
+                reportLevel="low"
+                effort="max"
+                excludeFilter="${spotbugs.suppressions.xml}"
+                nested="true">
+        <auxClasspath path="${basedir}" />
+        <auxClasspath path="${junit.cp}" />
+        <sourcePath path="${basedir}" />
+        <class location="${basedir}" />
+        <classpath>
+          <pathelement path="${spotbugs.cp}" />
+          <pathelement path="${java.class.path}" />
+        </classpath>
+      </spotbugs>
+    </target>
+    <target name="main"
+            depends="loadclasspath,compile,pmd,spotbugs, jar, docs">
+
+      <description>Main target</description>
+    </target>
+  </target>
   <target name="format">
     <fileset dir="${basedir}"
              id="javasrcs">
@@ -842,7 +1050,59 @@
   </target>
   <target name="checkstyleg">
     <taskdef resource="net/sf/antcontrib/antlib.xml"
-             classpath="${antcontrib.cp}"></taskdef>
+             classpath="${antcontrib.cp}">
+      <move file="suppressions-xpath.xml"
+            tofile="suppressions-xpath.xml.bak"
+            preservelastmodified="true"
+            force="true"
+            failonerror="false"
+            verbose="true" />
+      <fileset dir="${basedir}"
+               id="javasrcs">
+        <include name="**/*.java" />
+        <exclude name="**/*Parser.java" />
+        <exclude name="**/*Lexer.java" />
+        <exclude name="**/*Listener.java" />
+        <exclude name="**/*Visitor.java" />
+      </fileset>
+      <pathconvert property="sources"
+                   refid="javasrcs"
+                   pathsep=" " />
+      <loadfile property="cs.cp"
+                srcFile="../${cs.classpath.file}" />
+      <java classname="${cs.main.class}"
+            logError="true">
+        <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+        <classpath>
+          <pathelement path="${cs.cp}" />
+          <pathelement path="${java.class.path}" />
+        </classpath>
+      </java>
+      <condition property="file.is.empty"
+                 else="false">
+        <length file="${ant.project.name}-xpath.xml"
+                when="equal"
+                length="0" />
+      </condition>
+      <if>
+        <equals arg1="${file.is.empty}"
+                arg2="false" />
+        <then>
+          <move file="${ant.project.name}-xpath.xml"
+                tofile="suppressions-xpath.xml"
+                preservelastmodified="true"
+                force="true"
+                failonerror="true"
+                verbose="true" />
+        </then>
+        <else>
+          <echo message="No suppressions generated." />
+          <delete file="${ant.project.name}-xpath.xml"
+                  verbose="true"
+                  failonerror="false" />
+        </else>
+      </if>
+    </taskdef>
     <move file="suppressions-xpath.xml"
           tofile="suppressions-xpath.xml.bak"
           preservelastmodified="true"
@@ -934,7 +1194,11 @@
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
+                 toConsole="${pmd.toConsole}">
+        <fileset dir="${basedir}">
+          <include name="**/*.java" />
+        </fileset>
+      </formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>

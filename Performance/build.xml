@@ -253,7 +253,11 @@
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
+                 toConsole="${pmd.toConsole}">
+        <fileset dir="${basedir}">
+          <include name="**/*.java" />
+        </fileset>
+      </formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
@@ -289,7 +293,15 @@
           depends="loadclasspath">
     <taskdef name="testng"
              classname="org.testng.TestNGAntTask"
-             classpath="${testng.cp}"></taskdef>
+             classpath="${testng.cp}">
+      <testng classpath="${runclasspath}:${build.dir}"
+              outputDir="${testng.report.dir}"
+              haltOnFailure="false"
+              failureProperty="testng.failures">
+        <xmlfileset dir="${build.dir}"
+                    includes="testng.xml" />
+      </testng>
+    </taskdef>
     <testng classpath="${runclasspath}:${build.dir}"
             outputDir="${testng.report.dir}"
             haltOnFailure="false"

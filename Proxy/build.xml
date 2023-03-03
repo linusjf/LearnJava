@@ -100,11 +100,30 @@
     <jar destfile="${dist.dir}\${ant.project.name}-${version}.jar"
          basedir="${build.dir}"
          includes="**/*.class"
-         manifest="${jar.manifest}"></jar>
+         manifest="${jar.manifest}">
+      <jar destfile="${dist.dir}\helloclient-${version}.jar"
+           basedir="${build.dir}"
+           includes="**/HelloClient.class,**/ZeroSecurityManager.class"
+           manifest="${jar.manifest}">
+        <jar destfile="${dist.dir}\helloserver-${version}.jar"
+             basedir="${build.dir}"
+             includes="**/Hello*.class"
+             manifest="${jar.manifest}"></jar>
+      </jar>
+      <jar destfile="${dist.dir}\helloserver-${version}.jar"
+           basedir="${build.dir}"
+           includes="**/Hello*.class"
+           manifest="${jar.manifest}"></jar>
+    </jar>
     <jar destfile="${dist.dir}\helloclient-${version}.jar"
          basedir="${build.dir}"
          includes="**/HelloClient.class,**/ZeroSecurityManager.class"
-         manifest="${jar.manifest}"></jar>
+         manifest="${jar.manifest}">
+      <jar destfile="${dist.dir}\helloserver-${version}.jar"
+           basedir="${build.dir}"
+           includes="**/Hello*.class"
+           manifest="${jar.manifest}"></jar>
+    </jar>
     <jar destfile="${dist.dir}\helloserver-${version}.jar"
          basedir="${build.dir}"
          includes="**/Hello*.class"
@@ -208,7 +227,11 @@
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
+                 toConsole="${pmd.toConsole}">
+        <fileset dir="${basedir}">
+          <include name="**/*.java" />
+        </fileset>
+      </formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>

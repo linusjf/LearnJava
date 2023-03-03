@@ -187,7 +187,11 @@
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}"></formatter>
+                 toConsole="${pmd.toConsole}">
+        <fileset dir="${basedir}">
+          <include name="**/*.java" />
+        </fileset>
+      </formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>

@@ -780,7 +780,13 @@
       <echo file="${bfg.classpath.file}"
             message="${toString:bfg.main.path}:${toString:bfg.lib.path}" />
     </parallel>
-    <antcall target="uniquify"></antcall>
+    <antcall target="uniquify">
+      <replaceregexp file="${ckjm_ext.classpath.file}"
+                     match=":(.*)bcel-5.1.jar"
+                     replace=""
+                     byline="true" />
+      <antcall target="makepom"></antcall>
+    </antcall>
     <replaceregexp file="${ckjm_ext.classpath.file}"
                    match=":(.*)bcel-5.1.jar"
                    replace=""
