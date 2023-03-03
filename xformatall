@@ -14,5 +14,5 @@ find . -maxdepth 2 -type f -name "*.xml" \
   ! -path "**/docs/**" \
   ! -path "**/cached/**" |
   parallel -j 5 -I% \
-    tidy -config "$configFilePath" -xml -m -i -- %
+    tidy -config "$configFilePath" -quiet -xml -m -i -- %
 exit $?
