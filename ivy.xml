@@ -791,12 +791,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy"
-                rev="1.14.1"
+                rev="1.14.2"
                 conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy-agent"
-                rev="1.14.1"
+                rev="1.14.2"
                 conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
