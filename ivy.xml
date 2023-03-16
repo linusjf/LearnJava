@@ -651,7 +651,7 @@
     <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
     <dependency org="com.mebigfatguy.sb-contrib"
                 name="sb-contrib"
-                rev="7.4.7"
+                rev="7.6.0"
                 conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
