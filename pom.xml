@@ -341,7 +341,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-command-line</artifactId>
-      <version>1.11.6</version>
+      <version>1.11.7</version>
       <optional>true</optional>
     </dependency>
     <dependency>
