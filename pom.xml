@@ -5,8 +5,8 @@
    Apache Ivy version: 2.5.0-local-20191210195719 20191210195719
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>linus</groupId>
@@ -515,7 +515,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-ant</artifactId>
-      <version>3.0.16</version>
+      <version>3.0.17</version>
       <optional>true</optional>
     </dependency>
     <dependency>
