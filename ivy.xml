@@ -18,596 +18,810 @@
    under the License.
 -->
 <ivy-module version="2.0">
-  <info organisation="linus" module="LearnJava" revision="2.3.0" />
+  <info organisation="linus"
+        module="LearnJava"
+        revision="2.3.0" />
   <configurations>
     <conf name="checkstyle.main"
-    description="checkstyle main jar" />
+          description="checkstyle main jar" />
     <conf name="gformat.main"
-    description="google java format main jar" />
+          description="google java format main jar" />
     <conf name="checkstyle.lib"
-    description="checkstyle dependencies" />
+          description="checkstyle dependencies" />
     <conf name="gformat.lib"
-    description="google java format dependencies" />
-    <conf name="pmd-core.main" description="pmd core main jars" />
+          description="google java format dependencies" />
+    <conf name="pmd-core.main"
+          description="pmd core main jars" />
     <conf name="pmd-core.lib"
-    description="pmd core dependent jars" />
-    <conf name="pmd-java.main" description="pmd java main jars" />
+          description="pmd core dependent jars" />
+    <conf name="pmd-java.main"
+          description="pmd java main jars" />
     <conf name="pmd-java.lib"
-    description="pmd java dependent jars" />
-    <conf name="pmd-jsp.main" description="pmd jsp main jars" />
-    <conf name="pmd-xml.main" description="pmd xml main jars" />
+          description="pmd java dependent jars" />
+    <conf name="pmd-jsp.main"
+          description="pmd jsp main jars" />
+    <conf name="pmd-xml.main"
+          description="pmd xml main jars" />
     <conf name="log4j-core.main"
-    description="log4j core main jars" />
+          description="log4j core main jars" />
     <conf name="log4j-core.lib"
-    description="log4j core dependent jars" />
+          description="log4j core dependent jars" />
     <conf name="log4j-api.main"
-    description="log4j api main jars" />
+          description="log4j api main jars" />
     <conf name="log4j-api.lib"
-    description="log4j api dependent jars" />
-    <conf name="saxon" description="saxon jars" />
+          description="log4j api dependent jars" />
+    <conf name="saxon"
+          description="saxon jars" />
     <conf name="sevntu-check.main"
-    description="sevntu-check main jars" />
+          description="sevntu-check main jars" />
     <conf name="sevntu-check.lib"
-    description="sevntu-check dependent jars" />
-    <conf name="jacorb.main" description="jacorb main jars" />
-    <conf name="jacorb.lib" description="jacorb dependent jars" />
-    <conf name="derby.main" description="derby main jars" />
-    <conf name="derby.lib" description="derby dependent jars" />
+          description="sevntu-check dependent jars" />
+    <conf name="jacorb.main"
+          description="jacorb main jars" />
+    <conf name="jacorb.lib"
+          description="jacorb dependent jars" />
+    <conf name="derby.main"
+          description="derby main jars" />
+    <conf name="derby.lib"
+          description="derby dependent jars" />
     <conf name="derbytools.main"
-    description="derbytools main jars" />
+          description="derbytools main jars" />
     <conf name="derbytools.lib"
-    description="derbytools dependent jars" />
+          description="derbytools dependent jars" />
     <conf name="derbyshared.main"
-    description="derbyshared main jars" />
+          description="derbyshared main jars" />
     <conf name="derbyshared.lib"
-    description="derbyshared dependent jars" />
+          description="derbyshared dependent jars" />
     <conf name="tomcat-embed-core.main"
-    description="tomcat-embed-core main jars" />
+          description="tomcat-embed-core main jars" />
     <conf name="tomcat-embed-core.lib"
-    description="tomcat-embed-core dependent jars" />
+          description="tomcat-embed-core dependent jars" />
     <conf name="tomcat-embed-jasper.main"
-    description="tomcat-embed-jasper main jars" />
+          description="tomcat-embed-jasper main jars" />
     <conf name="tomcat-embed-jasper.lib"
-    description="tomcat-embed-jasper dependent jars" />
+          description="tomcat-embed-jasper dependent jars" />
     <conf name="tomcat-embed-logging-juli.main"
-    description="tomcat-embed-logging-juli main jars" />
+          description="tomcat-embed-logging-juli main jars" />
     <conf name="tomcat-embed-logging-juli.lib"
-    description="tomcat-embed-logging-juli dependent jars" />
+          description="tomcat-embed-logging-juli dependent jars" />
     <conf name="tomcat-embed-logging-log4j.main"
-    description="tomcat-embed-logging-log4j main jars" />
+          description="tomcat-embed-logging-log4j main jars" />
     <conf name="tomcat-embed-logging-log4j.lib"
-    description="tomcat-embed-logging-log4j dependent jars" />
+          description="tomcat-embed-logging-log4j dependent jars" />
     <conf name="tomcat-dbcp.main"
-    description="tomcat-dbcp main jars" />
+          description="tomcat-dbcp main jars" />
     <conf name="tomcat-dbcp.lib"
-    description="tomcat-dbcp dependent jars" />
-    <conf name="ecj.main" description="ecj main jars" />
-    <conf name="ecj.lib" description="ecj dependent jars" />
+          description="tomcat-dbcp dependent jars" />
+    <conf name="ecj.main"
+          description="ecj main jars" />
+    <conf name="ecj.lib"
+          description="ecj dependent jars" />
     <conf name="tomcat-servlet-api.main"
-    description="tomcat-servlet-api main jars" />
+          description="tomcat-servlet-api main jars" />
     <conf name="tomcat-jsp-api.main"
-    description="tomcat-jsp-api main jars" />
+          description="tomcat-jsp-api main jars" />
     <conf name="tomcat-jsp-api.lib"
-    description="tomcat-jsp-api lib jars" />
-    <conf name="junit.main" description="junit main jars" />
-    <conf name="junit.lib" description="junit lib jars" />
+          description="tomcat-jsp-api lib jars" />
+    <conf name="junit.main"
+          description="junit main jars" />
+    <conf name="junit.lib"
+          description="junit lib jars" />
     <conf name="junitplatform.main"
-    description="junitplatform main jars" />
+          description="junitplatform main jars" />
     <conf name="junitplatform.lib"
-    description="junitplatform lib jars" />
+          description="junitplatform lib jars" />
     <conf name="junitengine.main"
-    description="junitengine main jars" />
+          description="junitengine main jars" />
     <conf name="junitengine.lib"
-    description="junitengine lib jars" />
-    <conf name="junit4.main" description="junit4 main jars" />
-    <conf name="junit4.lib" description="junit4 lib jars" />
+          description="junitengine lib jars" />
+    <conf name="junit4.main"
+          description="junit4 main jars" />
+    <conf name="junit4.lib"
+          description="junit4 lib jars" />
     <conf name="jetty-server.main"
-    description="jetty-server main jars" />
+          description="jetty-server main jars" />
     <conf name="jetty-server.lib"
-    description="jetty-server lib jars" />
+          description="jetty-server lib jars" />
     <conf name="jetty-servlet.main"
-    description="jetty-servlet main jars" />
+          description="jetty-servlet main jars" />
     <conf name="jetty-servlet.lib"
-    description="jetty-servlet lib jars" />
+          description="jetty-servlet lib jars" />
     <conf name="jetty-jmx.main"
-    description="jetty-jmx main jars" />
-    <conf name="jetty-jmx.lib" description="jetty-jmx lib jars" />
+          description="jetty-jmx main jars" />
+    <conf name="jetty-jmx.lib"
+          description="jetty-jmx lib jars" />
     <conf name="jetty-webapp.main"
-    description="jetty-webapp main jars" />
+          description="jetty-webapp main jars" />
     <conf name="jetty-webapp.lib"
-    description="jetty-webapp lib jars" />
+          description="jetty-webapp lib jars" />
     <conf name="jetty-jsp.main"
-    description="jetty-jsp main jars" />
-    <conf name="jetty-jsp.lib" description="jetty-jsp lib jars" />
+          description="jetty-jsp main jars" />
+    <conf name="jetty-jsp.lib"
+          description="jetty-jsp lib jars" />
     <conf name="jetty-annotations.main"
-    description="jetty-annotations main jars" />
+          description="jetty-annotations main jars" />
     <conf name="jetty-annotations.lib"
-    description="jetty-annotations lib jars" />
+          description="jetty-annotations lib jars" />
     <conf name="apache-jsp.main"
-    description="apache-jsp main jars" />
+          description="apache-jsp main jars" />
     <conf name="apache-jsp.lib"
-    description="apache-jsp lib jars" />
-    <conf name="checker.main" description="checker main jars" />
+          description="apache-jsp lib jars" />
+    <conf name="checker.main"
+          description="checker main jars" />
     <conf name="jcommander.main"
-    description="jcommander main jars" />
-    <conf name="jdom2.main" description="jdom2 main jars" />
-    <conf name="jdom2.lib" description="jdom2 lib jars" />
-    <conf name="saxon-he.main" description="saxon-he main jars" />
-    <conf name="saxon-he.lib" description="saxon-he lib jars" />
+          description="jcommander main jars" />
+    <conf name="jdom2.main"
+          description="jdom2 main jars" />
+    <conf name="jdom2.lib"
+          description="jdom2 lib jars" />
+    <conf name="saxon-he.main"
+          description="saxon-he main jars" />
+    <conf name="saxon-he.lib"
+          description="saxon-he lib jars" />
     <conf name="javaparser-core.main"
-    description="javaparser-core main jars" />
+          description="javaparser-core main jars" />
     <conf name="javaparser-symbol-solver-core.main"
-    description="javaparser-symbol-solver-core main jars" />
+          description="javaparser-symbol-solver-core main jars" />
     <conf name="javaparser-symbol-solver-core.lib"
-    description="javaparser-symbol-solver-core lib jars" />
+          description="javaparser-symbol-solver-core lib jars" />
     <conf name="java-symbol-solver-core.main"
-    description="java-symbol-solver-core main jars" />
+          description="java-symbol-solver-core main jars" />
     <conf name="java-symbol-solver-core.lib"
-    description="java-symbol-solver-core lib jars" />
-    <conf name="antlr4.main" description="antlr4 jars" />
-    <conf name="antlr4.lib" description="antlr4 lib jars" />
-    <conf name="java-lsh.main" description="java-lsh jars" />
+          description="java-symbol-solver-core lib jars" />
+    <conf name="antlr4.main"
+          description="antlr4 jars" />
+    <conf name="antlr4.lib"
+          description="antlr4 lib jars" />
+    <conf name="java-lsh.main"
+          description="java-lsh jars" />
     <conf name="java-string-similarity.main"
-    description="java-string-similarity jars" />
-    <conf name="javatuples.main" description="javatuples jars" />
-    <conf name="truth.main" description="truth jars" />
-    <conf name="truth.lib" description="truth lib jars" />
+          description="java-string-similarity jars" />
+    <conf name="javatuples.main"
+          description="javatuples jars" />
+    <conf name="truth.main"
+          description="truth jars" />
+    <conf name="truth.lib"
+          description="truth lib jars" />
     <conf name="commons-text.main"
-    description="commons-text jars" />
+          description="commons-text jars" />
     <conf name="commons-text.lib"
-    description="commons-text lib jars" />
-    <conf name="picocli.main" description="picocli jars" />
+          description="commons-text lib jars" />
+    <conf name="picocli.main"
+          description="picocli jars" />
     <conf name="org.jacoco.core.main"
-    description="jacoco core main jars" />
+          description="jacoco core main jars" />
     <conf name="org.jacoco.core.lib"
-    description="jacoco core lib jars" />
+          description="jacoco core lib jars" />
     <conf name="org.jacoco.ant.main"
-    description="jacoco ant main jars" />
+          description="jacoco ant main jars" />
     <conf name="org.jacoco.ant.lib"
-    description="jacoco ant lib jars" />
+          description="jacoco ant lib jars" />
     <conf name="org.jacoco.report.main"
-    description="jacoco report main jars" />
+          description="jacoco report main jars" />
     <conf name="org.jacoco.report.lib"
-    description="jacoco report lib jars" />
+          description="jacoco report lib jars" />
     <conf name="org.jacoco.cli.main"
-    description="jacoco cli main jars" />
+          description="jacoco cli main jars" />
     <conf name="org.jacoco.cli.lib"
-    description="jacoco cli lib jars" />
+          description="jacoco cli lib jars" />
     <conf name="org.jacoco.agent.main"
-    description="jacoco agent jars" />
-    <conf name="pitest.main" description="pitest main jars" />
+          description="jacoco agent jars" />
+    <conf name="pitest.main"
+          description="pitest main jars" />
     <conf name="pitest-command-line.main"
-    description="pitest command line main jars" />
+          description="pitest command line main jars" />
     <conf name="pitest-command-line.lib"
-    description="pitest command line lib jars" />
+          description="pitest command line lib jars" />
     <conf name="pitest-junit5-plugin.main"
-    description="pitest junit5 plugin main jars" />
+          description="pitest junit5 plugin main jars" />
     <conf name="pitest-ant.main"
-    description="pitest ant main jars" />
+          description="pitest ant main jars" />
     <conf name="ant-contrib.main"
-    description="ant contrib main jars" />
+          description="ant contrib main jars" />
     <conf name="assertj-core.main"
-    description="assertj core main jars" />
-    <conf name="spotbugs.main" description="spotbugs main jars" />
-    <conf name="spotbugs.lib" description="spotbugs lib jars" />
+          description="assertj core main jars" />
+    <conf name="spotbugs.main"
+          description="spotbugs main jars" />
+    <conf name="spotbugs.lib"
+          description="spotbugs lib jars" />
     <conf name="spotbugs-ant.main"
-    description="spotbugs ant main jars" />
-    <conf name="slf4j-nop.lib" description="slf4j nop lib jars" />
+          description="spotbugs ant main jars" />
+    <conf name="slf4j-nop.lib"
+          description="slf4j nop lib jars" />
     <conf name="slf4j-nop.main"
-    description="slf4j nop main jars" />
+          description="slf4j nop main jars" />
     <conf name="findsecbugs-plugin.main"
-    description="findsecbugs-plugin main jars" />
+          description="findsecbugs-plugin main jars" />
     <conf name="sb-contrib.main"
-    description="sb-contrib main jars" />
+          description="sb-contrib main jars" />
     <conf name="error_prone_core.main"
-    description="error_prone_core main jars" />
+          description="error_prone_core main jars" />
     <conf name="error_prone_core.lib"
-    description="error_prone_core lib jars" />
-    <conf name="ckjm_ext.main" description="ckjm_ext main jars" />
-    <conf name="ckjm_ext.lib" description="ckjm_ext lib jars" />
-    <conf name="javancss.main" description="javancss main jars" />
-    <conf name="javancss.lib" description="javancss lib jars" />
-    <conf name="bcel.main" description="bcel main jars" />
-    <conf name="javacc.main" description="javacc main jars" />
-    <conf name="javacc.lib" description="javacc lib jars" />
-    <conf name="trove4j.main" description="trove4j main jars" />
-    <conf name="testng.main" description="testng main jars" />
-    <conf name="testng.lib" description="testng lib jars" />
+          description="error_prone_core lib jars" />
+    <conf name="ckjm_ext.main"
+          description="ckjm_ext main jars" />
+    <conf name="ckjm_ext.lib"
+          description="ckjm_ext lib jars" />
+    <conf name="javancss.main"
+          description="javancss main jars" />
+    <conf name="javancss.lib"
+          description="javancss lib jars" />
+    <conf name="bcel.main"
+          description="bcel main jars" />
+    <conf name="javacc.main"
+          description="javacc main jars" />
+    <conf name="javacc.lib"
+          description="javacc lib jars" />
+    <conf name="trove4j.main"
+          description="trove4j main jars" />
+    <conf name="testng.main"
+          description="testng main jars" />
+    <conf name="testng.lib"
+          description="testng lib jars" />
     <conf name="commons-collections.main"
-    description="commons-collections main jars" />
+          description="commons-collections main jars" />
     <conf name="javolution-core-java.main"
-    description="javolution-core-java main jars" />
+          description="javolution-core-java main jars" />
     <conf name="javolution-core-java.lib"
-    description="javolution-core-java lib jars" />
-    <conf name="guava.main" description="guava main jars" />
-    <conf name="guava.lib" description="guava lib jars" />
-    <conf name="hamcrest.main" description="hamcrest main jars" />
-    <conf name="esapi.main" description="esapi main jars" />
-    <conf name="esapi.lib" description="esapi lib jars" />
-    <conf name="lombok.main" description="lombok main jars" />
-    <conf name="jmh.main" description="jmh main jars" />
-    <conf name="jmh.lib" description="jmh lib jars" />
+          description="javolution-core-java lib jars" />
+    <conf name="guava.main"
+          description="guava main jars" />
+    <conf name="guava.lib"
+          description="guava lib jars" />
+    <conf name="hamcrest.main"
+          description="hamcrest main jars" />
+    <conf name="esapi.main"
+          description="esapi main jars" />
+    <conf name="esapi.lib"
+          description="esapi lib jars" />
+    <conf name="lombok.main"
+          description="lombok main jars" />
+    <conf name="jmh.main"
+          description="jmh main jars" />
+    <conf name="jmh.lib"
+          description="jmh lib jars" />
     <conf name="jmh-generator-annprocess.main"
-    description="jmh-generator-annprocess jars" />
+          description="jmh-generator-annprocess jars" />
     <conf name="jmh-generator-reflection.main"
-    description="jmh-generator-reflection jars" />
+          description="jmh-generator-reflection jars" />
     <conf name="jmh-generator-bytecode.main"
-    description="jmh-generator-bytecode jars" />
+          description="jmh-generator-bytecode jars" />
     <conf name="jmh-generator-asm.main"
-    description="jmh-generator-asm jars" />
+          description="jmh-generator-asm jars" />
     <conf name="jmh-core-benchmarks.main"
-    description="jmh-core-benchmarks jars" />
-    <conf name="groovy-ant.main" description="groovy-ant jars" />
+          description="jmh-core-benchmarks jars" />
+    <conf name="groovy-ant.main"
+          description="groovy-ant jars" />
     <conf name="groovy-ant.lib"
-    description="groovy-ant lib jars" />
-    <conf name="jenetics.main" description="jenetics jars" />
-    <conf name="jna.main" description="jna jars" />
-    <conf name="xstream.main" description="xstream jars" />
-    <conf name="xstream.lib" description="xstream library jars" />
-    <conf name="asm.main" description="asm jars" />
-    <conf name="asm-util.main" description="asm-util jars" />
+          description="groovy-ant lib jars" />
+    <conf name="jenetics.main"
+          description="jenetics jars" />
+    <conf name="jna.main"
+          description="jna jars" />
+    <conf name="xstream.main"
+          description="xstream jars" />
+    <conf name="xstream.lib"
+          description="xstream library jars" />
+    <conf name="asm.main"
+          description="asm jars" />
+    <conf name="asm-util.main"
+          description="asm-util jars" />
     <conf name="asm-util.lib"
-    description="asm-util library jars" />
-    <conf name="asm-commons.main" description="asm-commons jars" />
+          description="asm-util library jars" />
+    <conf name="asm-commons.main"
+          description="asm-commons jars" />
     <conf name="asm-commons.lib"
-    description="asm-commons library jars" />
-    <conf name="byte-buddy.main" description="byte-buddy jars" />
+          description="asm-commons library jars" />
+    <conf name="byte-buddy.main"
+          description="byte-buddy jars" />
     <conf name="byte-buddy-agent.main"
-    description="byte-buddy-agent jars" />
+          description="byte-buddy-agent jars" />
     <conf name="mongo-java-driver.main"
-    description="mongo-java-driver jars" />
+          description="mongo-java-driver jars" />
     <conf name="mongo-java-driver.lib"
-    description="mongo-java-driver lib jars" />
-    <conf name="javafaker.main" description="javafaker jars" />
-    <conf name="javafaker.lib" description="javafaker lib jars" />
+          description="mongo-java-driver lib jars" />
+    <conf name="javafaker.main"
+          description="javafaker jars" />
+    <conf name="javafaker.lib"
+          description="javafaker lib jars" />
     <conf name="spring-core.main"
-    description="spring-core main jars" />
+          description="spring-core main jars" />
     <conf name="spring-core.lib"
-    description="spring-core lib jars" />
+          description="spring-core lib jars" />
     <conf name="spring-boot.main"
-    description="spring-boot main jars" />
+          description="spring-boot main jars" />
     <conf name="spring-boot.lib"
-    description="spring-boot lib jars" />
+          description="spring-boot lib jars" />
     <conf name="aws-java-sdk.main"
-    description="aws-java-sdk main jars" />
+          description="aws-java-sdk main jars" />
     <conf name="aws-java-sdk.lib"
-    description="aws-java-sdk lib jars" />
+          description="aws-java-sdk lib jars" />
     <conf name="ant-contrib.main"
-    description="ant contrib main jars" />
-    <conf name="bfg.lib" description="bfg lib jars" />
-    <conf name="bfg.main" description="bfg main jars" />
+          description="ant contrib main jars" />
+    <conf name="bfg.lib"
+          description="bfg lib jars" />
+    <conf name="bfg.main"
+          description="bfg main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
-    <dependency org="ant-contrib" name="ant-contrib" rev="1.0b3"
-    conf="ant-contrib.main-&gt;master" />
+    <dependency org="ant-contrib"
+                name="ant-contrib"
+                rev="1.0b3"
+                conf="ant-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat"
-    name="google-java-format" rev="1.16.0"
-    conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
+                name="google-java-format"
+                rev="1.16.0"
+                conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
-    <dependency org="com.puppycrawl.tools" name="checkstyle"
-    rev="10.9.3" transitive="true"
-    conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
+    <dependency org="com.puppycrawl.tools"
+                name="checkstyle"
+                rev="10.9.3"
+                transitive="true"
+                conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;runtime;checkstyle.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
-    <dependency org="net.sourceforge.pmd" name="pmd-core"
-    rev="6.55.0"
-    conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
-    <dependency org="net.sourceforge.pmd" name="pmd-java"
-    rev="6.55.0"
-    conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile" />
-    <dependency org="net.sourceforge.pmd" name="pmd-jsp"
-    rev="6.55.0" conf="pmd-jsp.main-&gt;master" />
-    <dependency org="net.sourceforge.pmd" name="pmd-xml"
-    rev="6.55.0" conf="pmd-xml.main-&gt;master" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-core"
+                rev="6.55.0"
+                conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-java"
+                rev="6.55.0"
+                conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-jsp"
+                rev="6.55.0"
+                conf="pmd-jsp.main-&gt;master" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-xml"
+                rev="6.55.0"
+                conf="pmd-xml.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.sourceforge.saxon/saxon -->
-    <dependency org="net.sourceforge.saxon" name="saxon"
-    rev="9.1.0.8" conf="saxon-&gt;master" />
-    <dependency org="org.apache.logging.log4j" name="log4j-api"
-    rev="2.20.0"
-    conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile" />
-    <dependency org="org.apache.logging.log4j" name="log4j-core"
-    rev="2.20.0"
-    conf="log4j-core.main-&gt;default;log4j-core.lib-&gt;default;log4j-core.lib-&gt;default" />
+    <dependency org="net.sourceforge.saxon"
+                name="saxon"
+                rev="9.1.0.8"
+                conf="saxon-&gt;master" />
+    <dependency org="org.apache.logging.log4j"
+                name="log4j-api"
+                rev="2.20.0"
+                conf="log4j-api.main-&gt;master;log4j-api.lib-&gt;runtime;log4j-api.lib-&gt;compile" />
+    <dependency org="org.apache.logging.log4j"
+                name="log4j-core"
+                rev="2.20.0"
+                conf="log4j-core.main-&gt;default;log4j-core.lib-&gt;default;log4j-core.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/com.github.sevntu-checkstyle/sevntu-checks -->
     <dependency org="com.github.sevntu-checkstyle"
-    name="sevntu-checks" rev="1.44.1"
-    conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
+                name="sevntu-checks"
+                rev="1.44.1"
+                conf="sevntu-check.main-&gt;master;sevntu-check.lib-&gt;runtime;sevntu-check.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.jacorb/jacorb -->
-    <dependency org="org.jacorb" name="jacorb" rev="3.9"
-    conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile" />
+    <dependency org="org.jacorb"
+                name="jacorb"
+                rev="3.9"
+                conf="jacorb.main-&gt;master;jacorb.lib-&gt;runtime;jacorb.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
-    <dependency org="org.apache.derby" name="derby" rev="10.16.1.1"
-    conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile" />
+    <dependency org="org.apache.derby"
+                name="derby"
+                rev="10.16.1.1"
+                conf="derby.main-&gt;master;derby.lib-&gt;runtime;derby.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
-    <dependency org="org.apache.derby" name="derbytools"
-    rev="10.16.1.1"
-    conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile" />
+    <dependency org="org.apache.derby"
+                name="derbytools"
+                rev="10.16.1.1"
+                conf="derbytools.main-&gt;master;derbytools.lib-&gt;runtime;derbytools.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
-    <dependency org="org.apache.derby" name="derbyshared"
-    rev="10.16.1.1"
-    conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
+    <dependency org="org.apache.derby"
+                name="derbyshared"
+                rev="10.16.1.1"
+                conf="derbyshared.main-&gt;master;derbyshared.lib-&gt;runtime;derbyshared.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
-    name="tomcat-embed-core" rev="10.1.7"
-    conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
+                name="tomcat-embed-core"
+                rev="10.1.7"
+                conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
     <dependency org="org.apache.tomcat.embed"
-    name="tomcat-embed-logging-log4j" rev="9.0.0.M6"
-    conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile" />
-    <dependency org="org.apache.tomcat" name="tomcat-dbcp"
-    rev="10.1.7"
-    conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
+                name="tomcat-embed-logging-log4j"
+                rev="9.0.0.M6"
+                conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile" />
+    <dependency org="org.apache.tomcat"
+                name="tomcat-dbcp"
+                rev="10.1.7"
+                conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
     <dependency org="org.apache.tomcat.embed"
-    name="tomcat-embed-jasper" rev="10.1.7"
-    conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
+                name="tomcat-embed-jasper"
+                rev="10.1.7"
+                conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
     <dependency org="org.apache.tomcat.embed"
-    name="tomcat-embed-logging-juli" rev="9.0.0.M6"
-    conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
+                name="tomcat-embed-logging-juli"
+                rev="9.0.0.M6"
+                conf="tomcat-embed-logging-juli.main-&gt;master;tomcat-embed-logging-juli.lib-&gt;runtime;tomcat-embed-logging-juli.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
-    <dependency org="org.apache.tomcat" name="tomcat-servlet-api"
-    rev="10.1.7" conf="tomcat-servlet-api.main-&gt;master" />
+    <dependency org="org.apache.tomcat"
+                name="tomcat-servlet-api"
+                rev="10.1.7"
+                conf="tomcat-servlet-api.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
-    <dependency org="org.apache.tomcat" name="tomcat-jsp-api"
-    rev="10.1.7"
-    conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
+    <dependency org="org.apache.tomcat"
+                name="tomcat-jsp-api"
+                rev="10.1.7"
+                conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
-    <dependency org="org.eclipse.jdt.core.compiler" name="ecj"
-    rev="4.6.1"
-    conf="ecj.main-&gt;default;ecj.lib-&gt;default;ecj.lib-&gt;default" />
+    <dependency org="org.eclipse.jdt.core.compiler"
+                name="ecj"
+                rev="4.6.1"
+                conf="ecj.main-&gt;default;ecj.lib-&gt;default;ecj.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-    <dependency org="org.junit.jupiter" name="junit-jupiter-api"
-    rev="5.9.2"
-    conf="junit.main-&gt;master;junit.lib-&gt;compile" />
+    <dependency org="org.junit.jupiter"
+                name="junit-jupiter-api"
+                rev="5.9.2"
+                conf="junit.main-&gt;master;junit.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
     <dependency org="org.junit.platform"
-    name="junit-platform-launcher" rev="1.9.2"
-    conf="junitplatform.main-&gt;master;junitplatform.lib-&gt;compile" />
+                name="junit-platform-launcher"
+                rev="1.9.2"
+                conf="junitplatform.main-&gt;master;junitplatform.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
-    <dependency org="org.junit.jupiter" name="junit-jupiter-engine"
-    rev="5.9.2"
-    conf="junitengine.main-&gt;master;junitengine.lib-&gt;compile" />
+    <dependency org="org.junit.jupiter"
+                name="junit-jupiter-engine"
+                rev="5.9.2"
+                conf="junitengine.main-&gt;master;junitengine.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/junit/junit -->
-    <dependency org="junit" name="junit" rev="4.13.2"
-    conf="junit4.main-&gt;master;junit4.lib-&gt;compile" />
+    <dependency org="junit"
+                name="junit"
+                rev="4.13.2"
+                conf="junit4.main-&gt;master;junit4.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
-    <dependency org="org.eclipse.jetty" name="jetty-server"
-    rev="11.0.14"
-    conf="jetty-server.main-&gt;default;jetty-server.lib-&gt;default" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-server"
+                rev="11.0.14"
+                conf="jetty-server.main-&gt;default;jetty-server.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
-    <dependency org="org.eclipse.jetty" name="jetty-servlet"
-    rev="11.0.14"
-    conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-servlet"
+                rev="11.0.14"
+                conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
-    <dependency org="org.eclipse.jetty" name="jetty-jmx"
-    rev="11.0.14"
-    conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jmx"
+                rev="11.0.14"
+                conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
-    <dependency org="org.eclipse.jetty" name="jetty-webapp"
-    rev="11.0.14"
-    conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-webapp"
+                rev="11.0.14"
+                conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
-    <dependency org="org.eclipse.jetty" name="jetty-jsp"
-    rev="9.3.0.M1"
-    conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jsp"
+                rev="9.3.0.M1"
+                conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
-    <dependency org="org.eclipse.jetty" name="jetty-annotations"
-    rev="11.0.14"
-    conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="jetty-annotations"
+                rev="11.0.14"
+                conf="jetty-annotations.main-&gt;master;jetty-annotations.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/apache-jsp -->
-    <dependency org="org.eclipse.jetty" name="apache-jsp"
-    rev="11.0.14"
-    conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
+    <dependency org="org.eclipse.jetty"
+                name="apache-jsp"
+                rev="11.0.14"
+                conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
-    <dependency org="org.checkerframework" name="checker"
-    rev="3.32.0" conf="checker.main-&gt;master" />
+    <dependency org="org.checkerframework"
+                name="checker"
+                rev="3.32.0"
+                conf="checker.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
-    <dependency org="com.beust" name="jcommander" rev="1.82"
-    conf="jcommander.main-&gt;default" />
+    <dependency org="com.beust"
+                name="jcommander"
+                rev="1.82"
+                conf="jcommander.main-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
-    <dependency org="org.jdom" name="jdom2" rev="2.0.6.1"
-    conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
+    <dependency org="org.jdom"
+                name="jdom2"
+                rev="2.0.6.1"
+                conf="jdom2.main-&gt;master;jdom2.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
-    <dependency org="net.sf.saxon" name="Saxon-HE" rev="12.1"
-    conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
+    <dependency org="net.sf.saxon"
+                name="Saxon-HE"
+                rev="12.1"
+                conf="saxon-he.main-&gt;master;saxon-he.lib-&gt;optional" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
-    <dependency org="com.github.javaparser" name="javaparser-core"
-    rev="3.25.1" conf="javaparser-core.main-&gt;master" />
+    <dependency org="com.github.javaparser"
+                name="javaparser-core"
+                rev="3.25.2"
+                conf="javaparser-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
     <dependency org="com.github.javaparser"
-    name="javaparser-symbol-solver-core" rev="3.25.1"
-    conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
+                name="javaparser-symbol-solver-core"
+                rev="3.25.2"
+                conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
-    name="java-symbol-solver-core" rev="0.6.3"
-    conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;" />
+                name="java-symbol-solver-core"
+                rev="0.6.3"
+                conf="java-symbol-solver-core.main-&gt;master;java-symbol-solver-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.antlr/antlr4 -->
-    <dependency org="org.antlr" name="antlr4" rev="4.12.0"
-    conf="antlr4.main-&gt;master;antlr4.lib-&gt;compile;" />
+    <dependency org="org.antlr"
+                name="antlr4"
+                rev="4.12.0"
+                conf="antlr4.main-&gt;master;antlr4.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/info.debatty/java-lsh -->
-    <dependency org="info.debatty" name="java-lsh" rev="0.12"
-    conf="java-lsh.main-&gt;master" />
-    <dependency org="info.debatty" name="java-string-similarity"
-    rev="2.0.0" conf="java-string-similarity.main-&gt;master" />
+    <dependency org="info.debatty"
+                name="java-lsh"
+                rev="0.12"
+                conf="java-lsh.main-&gt;master" />
+    <dependency org="info.debatty"
+                name="java-string-similarity"
+                rev="2.0.0"
+                conf="java-string-similarity.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
-    <dependency org="org.javatuples" name="javatuples" rev="1.2"
-    conf="javatuples.main-&gt;master" />
+    <dependency org="org.javatuples"
+                name="javatuples"
+                rev="1.2"
+                conf="javatuples.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
-    <dependency org="com.google.truth" name="truth" rev="1.1.3"
-    conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
+    <dependency org="com.google.truth"
+                name="truth"
+                rev="1.1.3"
+                conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-    <dependency org="org.apache.commons" name="commons-text"
-    rev="1.10.0"
-    conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
+    <dependency org="org.apache.commons"
+                name="commons-text"
+                rev="1.10.0"
+                conf="commons-text.main-&gt;master;commons-text.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
-    <dependency org="info.picocli" name="picocli" rev="4.7.1"
-    conf="picocli.main-&gt;master" />
+    <dependency org="info.picocli"
+                name="picocli"
+                rev="4.7.1"
+                conf="picocli.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
-    <dependency org="org.jacoco" name="org.jacoco.core" rev="0.8.8"
-    conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;" />
+    <dependency org="org.jacoco"
+                name="org.jacoco.core"
+                rev="0.8.8"
+                conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant -->
-    <dependency org="org.jacoco" name="org.jacoco.ant" rev="0.8.8"
-    conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
+    <dependency org="org.jacoco"
+                name="org.jacoco.ant"
+                rev="0.8.8"
+                conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.report -->
-    <dependency org="org.jacoco" name="org.jacoco.report"
-    rev="0.8.8"
-    conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
+    <dependency org="org.jacoco"
+                name="org.jacoco.report"
+                rev="0.8.8"
+                conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
-    <dependency org="org.jacoco" name="org.jacoco.cli" rev="0.8.8"
-    conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
+    <dependency org="org.jacoco"
+                name="org.jacoco.cli"
+                rev="0.8.8"
+                conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
-    <dependency org="org.jacoco" name="org.jacoco.agent"
-    rev="0.8.8" conf="org.jacoco.agent.main-&gt;master" />
+    <dependency org="org.jacoco"
+                name="org.jacoco.agent"
+                rev="0.8.8"
+                conf="org.jacoco.agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
-    <dependency org="org.pitest" name="pitest" rev="1.11.7"
-    conf="pitest.main-&gt;master" />
+    <dependency org="org.pitest"
+                name="pitest"
+                rev="1.11.7"
+                conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
-    <dependency org="org.pitest" name="pitest-command-line"
-    rev="1.11.7"
-    conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
+    <dependency org="org.pitest"
+                name="pitest-command-line"
+                rev="1.11.7"
+                conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
-    <dependency org="org.pitest" name="pitest-junit5-plugin"
-    rev="1.1.2" conf="pitest-junit5-plugin.main-&gt;master" />
+    <dependency org="org.pitest"
+                name="pitest-junit5-plugin"
+                rev="1.1.2"
+                conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
-    <dependency org="org.pitest" name="pitest-ant" rev="1.11.7"
-    conf="pitest-ant.main-&gt;master" />
+    <dependency org="org.pitest"
+                name="pitest-ant"
+                rev="1.11.7"
+                conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
-    <dependency org="ant-contrib" name="ant-contrib" rev="1.0b3"
-    conf="ant-contrib.main-&gt;master" />
+    <dependency org="ant-contrib"
+                name="ant-contrib"
+                rev="1.0b3"
+                conf="ant-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-    <dependency org="org.assertj" name="assertj-core" rev="3.24.2"
-    conf="assertj-core.main-&gt;master" />
+    <dependency org="org.assertj"
+                name="assertj-core"
+                rev="3.24.2"
+                conf="assertj-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
-    <dependency org="com.github.spotbugs" name="spotbugs"
-    rev="4.7.3"
-    conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
+    <dependency org="com.github.spotbugs"
+                name="spotbugs"
+                rev="4.7.3"
+                conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
-    <dependency org="com.github.spotbugs" name="spotbugs-ant"
-    rev="4.7.3" conf="spotbugs-ant.main-&gt;master;" />
+    <dependency org="com.github.spotbugs"
+                name="spotbugs-ant"
+                rev="4.7.3"
+                conf="spotbugs-ant.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
-    name="findsecbugs-plugin" rev="1.12.0"
-    conf="findsecbugs-plugin.main-&gt;master" />
+                name="findsecbugs-plugin"
+                rev="1.12.0"
+                conf="findsecbugs-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
-    <dependency org="com.mebigfatguy.sb-contrib" name="sb-contrib"
-    rev="7.6.0" conf="sb-contrib.main-&gt;master" />
+    <dependency org="com.mebigfatguy.sb-contrib"
+                name="sb-contrib"
+                rev="7.6.0"
+                conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
-    <dependency org="com.google.errorprone" name="error_prone_core"
-    rev="2.18.0"
-    conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
+    <dependency org="com.google.errorprone"
+                name="error_prone_core"
+                rev="2.18.0"
+                conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
-    <dependency org="gr.spinellis.ckjm" name="ckjm_ext" rev="2.5"
-    conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
+    <dependency org="gr.spinellis.ckjm"
+                name="ckjm_ext"
+                rev="2.5"
+                conf="ckjm_ext.main-&gt;master;ckjm_ext.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.codehaus.javancss/javancss -->
-    <dependency org="org.codehaus.javancss" name="javancss"
-    rev="33.54"
-    conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
+    <dependency org="org.codehaus.javancss"
+                name="javancss"
+                rev="33.54"
+                conf="javancss.main-&gt;master;javancss.lib-&gt;compile;javancss.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/org.apache.bcel/bcel -->
-    <dependency org="org.apache.bcel" name="bcel" rev="6.7.0"
-    conf="bcel.main-&gt;master;" />
+    <dependency org="org.apache.bcel"
+                name="bcel"
+                rev="6.7.0"
+                conf="bcel.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/net.java.dev.javacc/javacc -->
-    <dependency org="net.java.dev.javacc" name="javacc"
-    rev="7.0.12"
-    conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
+    <dependency org="net.java.dev.javacc"
+                name="javacc"
+                rev="7.0.12"
+                conf="javacc.main-&gt;master;javacc.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/net.sf.trove4j/trove4j -->
-    <dependency org="net.sf.trove4j" name="trove4j" rev="3.0.3"
-    conf="trove4j.main-&gt;default;" />
+    <dependency org="net.sf.trove4j"
+                name="trove4j"
+                rev="3.0.3"
+                conf="trove4j.main-&gt;default;" />
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-    <dependency org="org.springframework" name="spring-core"
-    rev="6.0.7"
-    conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
+    <dependency org="org.springframework"
+                name="spring-core"
+                rev="6.0.7"
+                conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-    <dependency org="org.testng" name="testng" rev="7.7.1"
-    conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
+    <dependency org="org.testng"
+                name="testng"
+                rev="7.7.1"
+                conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
     <dependency org="commons-collections"
-    name="commons-collections" rev="20040616"
-    conf="commons-collections.main-&gt;master;" />
+                name="commons-collections"
+                rev="20040616"
+                conf="commons-collections.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.javolution/javolution-core-java -->
-    <dependency org="org.javolution" name="javolution-core-java"
-    rev="6.0.0"
-    conf="javolution-core-java.lib-&gt;compile;javolution-core-java.main-&gt;master;" />
+    <dependency org="org.javolution"
+                name="javolution-core-java"
+                rev="6.0.0"
+                conf="javolution-core-java.lib-&gt;compile;javolution-core-java.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-    <dependency org="com.google.guava" name="guava" rev="31.1-jre"
-    conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
+    <dependency org="com.google.guava"
+                name="guava"
+                rev="31.1-jre"
+                conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
-    <dependency org="org.hamcrest" name="hamcrest" rev="2.2"
-    conf="hamcrest.main-&gt;master;" />
+    <dependency org="org.hamcrest"
+                name="hamcrest"
+                rev="2.2"
+                conf="hamcrest.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->
-    <dependency org="org.owasp.esapi" name="esapi" rev="2.5.1.0"
-    conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
+    <dependency org="org.owasp.esapi"
+                name="esapi"
+                rev="2.5.1.0"
+                conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-    <dependency org="org.projectlombok" name="lombok" rev="1.18.26"
-    conf="lombok.main-&gt;master" />
+    <dependency org="org.projectlombok"
+                name="lombok"
+                rev="1.18.26"
+                conf="lombok.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
-    <dependency org="org.openjdk.jmh" name="jmh-core" rev="1.36"
-    conf="jmh.main-&gt;master;jmh.lib-&gt;compile" />
+    <dependency org="org.openjdk.jmh"
+                name="jmh-core"
+                rev="1.36"
+                conf="jmh.main-&gt;master;jmh.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess -->
     <dependency org="org.openjdk.jmh"
-    name="jmh-generator-annprocess" rev="1.36"
-    conf="jmh-generator-annprocess.main-&gt;master" />
+                name="jmh-generator-annprocess"
+                rev="1.36"
+                conf="jmh-generator-annprocess.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-reflection -->
     <dependency org="org.openjdk.jmh"
-    name="jmh-generator-reflection" rev="1.36"
-    conf="jmh-generator-reflection.main-&gt;master" />
+                name="jmh-generator-reflection"
+                rev="1.36"
+                conf="jmh-generator-reflection.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-bytecode -->
-    <dependency org="org.openjdk.jmh" name="jmh-generator-bytecode"
-    rev="1.36" conf="jmh-generator-bytecode.main-&gt;master" />
+    <dependency org="org.openjdk.jmh"
+                name="jmh-generator-bytecode"
+                rev="1.36"
+                conf="jmh-generator-bytecode.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-asm -->
-    <dependency org="org.openjdk.jmh" name="jmh-generator-asm"
-    rev="1.36" conf="jmh-generator-asm.main-&gt;master" />
+    <dependency org="org.openjdk.jmh"
+                name="jmh-generator-asm"
+                rev="1.36"
+                conf="jmh-generator-asm.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core-benchmarks -->
-    <dependency org="org.openjdk.jmh" name="jmh-core-benchmarks"
-    rev="1.36" conf="jmh-core-benchmarks.main-&gt;master" />
+    <dependency org="org.openjdk.jmh"
+                name="jmh-core-benchmarks"
+                rev="1.36"
+                conf="jmh-core-benchmarks.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-ant -->
-    <dependency org="org.codehaus.groovy" name="groovy-ant"
-    rev="3.0.17"
-    conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
+    <dependency org="org.codehaus.groovy"
+                name="groovy-ant"
+                rev="3.0.17"
+                conf="groovy-ant.main-&gt;master;groovy-ant.lib-&gt;compile;groovy-ant.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
-    <dependency org="io.jenetics" name="jenetics" rev="7.1.2"
-    conf="jenetics.main-&gt;master" />
+    <dependency org="io.jenetics"
+                name="jenetics"
+                rev="7.1.2"
+                conf="jenetics.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
-    <dependency org="net.java.dev.jna" name="jna" rev="5.13.0"
-    conf="jna.main-&gt;master" />
+    <dependency org="net.java.dev.jna"
+                name="jna"
+                rev="5.13.0"
+                conf="jna.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
-    <dependency org="com.thoughtworks.xstream" name="xstream"
-    rev="1.4.20"
-    conf="xstream.main-&gt;master;xstream.lib-&gt;compile" />
+    <dependency org="com.thoughtworks.xstream"
+                name="xstream"
+                rev="1.4.20"
+                conf="xstream.main-&gt;master;xstream.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
-    <dependency org="org.ow2.asm" name="asm" rev="9.5"
-    conf="asm.main-&gt;master" />
+    <dependency org="org.ow2.asm"
+                name="asm"
+                rev="9.5"
+                conf="asm.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-util -->
-    <dependency org="org.ow2.asm" name="asm-util" rev="9.5"
-    conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile" />
+    <dependency org="org.ow2.asm"
+                name="asm-util"
+                rev="9.5"
+                conf="asm-util.main-&gt;master;asm-util.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-commons -->
-    <dependency org="org.ow2.asm" name="asm-commons" rev="9.5"
-    conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile" />
+    <dependency org="org.ow2.asm"
+                name="asm-commons"
+                rev="9.5"
+                conf="asm-commons.main-&gt;master;asm-commons.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
-    <dependency org="net.bytebuddy" name="byte-buddy" rev="1.14.3"
-    conf="byte-buddy.main-&gt;master" />
+    <dependency org="net.bytebuddy"
+                name="byte-buddy"
+                rev="1.14.3"
+                conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
-    <dependency org="net.bytebuddy" name="byte-buddy-agent"
-    rev="1.14.3" conf="byte-buddy-agent.main-&gt;master" />
+    <dependency org="net.bytebuddy"
+                name="byte-buddy-agent"
+                rev="1.14.3"
+                conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
-    <dependency org="org.mongodb" name="mongo-java-driver"
-    rev="3.12.12"
-    conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile" />
+    <dependency org="org.mongodb"
+                name="mongo-java-driver"
+                rev="3.12.12"
+                conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
-    <dependency org="com.github.javafaker" name="javafaker"
-    rev="1.0.2"
-    conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile" />
+    <dependency org="com.github.javafaker"
+                name="javafaker"
+                rev="1.0.2"
+                conf="javafaker.main-&gt;master;javafaker.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
-    <dependency org="org.springframework.boot" name="spring-boot"
-    rev="3.0.5"
-    conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" />
+    <dependency org="org.springframework.boot"
+                name="spring-boot"
+                rev="3.0.5"
+                conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-    <dependency org="com.amazonaws" name="aws-java-sdk"
-    rev="1.12.376"
-    conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
+    <dependency org="com.amazonaws"
+                name="aws-java-sdk"
+                rev="1.12.376"
+                conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
-    <dependency org="com.madgag" name="bfg" rev="1.14.0"
-    conf="bfg.main-&gt;master;bfg.lib-&gt;compile" />
+    <dependency org="com.madgag"
+                name="bfg"
+                rev="1.14.0"
+                conf="bfg.main-&gt;master;bfg.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
