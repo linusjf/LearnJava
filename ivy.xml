@@ -581,27 +581,27 @@
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.core -->
     <dependency org="org.jacoco"
                 name="org.jacoco.core"
-                rev="0.8.8"
+                rev="0.8.9"
                 conf="org.jacoco.core.main-&gt;master;org.jacoco.core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant -->
     <dependency org="org.jacoco"
                 name="org.jacoco.ant"
-                rev="0.8.8"
+                rev="0.8.9"
                 conf="org.jacoco.ant.main-&gt;master;org.jacoco.ant.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.report -->
     <dependency org="org.jacoco"
                 name="org.jacoco.report"
-                rev="0.8.8"
+                rev="0.8.9"
                 conf="org.jacoco.report.main-&gt;master;org.jacoco.report.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
     <dependency org="org.jacoco"
                 name="org.jacoco.cli"
-                rev="0.8.8"
+                rev="0.8.9"
                 conf="org.jacoco.cli.main-&gt;master;org.jacoco.cli.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
     <dependency org="org.jacoco"
                 name="org.jacoco.agent"
-                rev="0.8.8"
+                rev="0.8.9"
                 conf="org.jacoco.agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
