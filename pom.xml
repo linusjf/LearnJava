@@ -221,7 +221,7 @@
     <dependency>
       <groupId>org.checkerframework</groupId>
       <artifactId>checker</artifactId>
-      <version>3.32.0</version>
+      <version>3.33.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
