@@ -224,6 +224,9 @@
       <ivy:retrieve pathid="pmd-xml.main.path"
                     conf="pmd-xml.main"
                     symlink="true" />
+      <ivy:retrieve pathid="pmd-ant.main.path"
+                    conf="pmd-ant.main"
+                    symlink="true" />
       <ivy:retrieve pathid="log4j-core.main.path"
                     conf="log4j-core.main"
                     symlink="true" />
