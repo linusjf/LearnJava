@@ -116,7 +116,9 @@
   </target>
   <target name="run">
     <description>Run target</description>
-    <java classname="${main.class}">
+    <java classname="${main.class}"
+          fork="true">
+      <jvmarg line="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <classpath>
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
         <pathelement path="${java.class.path}" />
@@ -227,18 +229,15 @@
       <sourceLanguage name="java"
                       version="${ant.build.javac.release}" />
       <ruleset>../${pmd.config}</ruleset>
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
       <auxclasspath>
         <pathelement path="${basedir}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}">
-        <fileset dir="${basedir}">
-          <include name="**/*.java" />
-        </fileset></formatter>
-      <fileset dir="${basedir}">
-        <include name="**/*.java" />
-      </fileset>
+                 toConsole="${pmd.toConsole}"></formatter>
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>
