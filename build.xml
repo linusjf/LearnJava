@@ -679,7 +679,7 @@
       <echo file="${gformat.classpath.file}"
             message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
       <echo file="${pmd.classpath.file}"
-            message="${toString:pmd-ant.main.path}${toString:pmd-xml.main.path}:${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
+            message="${toString:pmd-ant.main.path}:${toString:pmd-xml.main.path}:${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
       <echo file="${log4j.classpath.file}"
             message="${toString:log4j-core.main.path}:${toString:log4j-api.main.path}" />
       <echo file="${sevntu-check.classpath.file}"
