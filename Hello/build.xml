@@ -226,14 +226,6 @@
          failuresPropertyName="pmd.errCount">
       <sourceLanguage name="java"
                       version="${ant.build.javac.release}" />
-      <sourceLanguage name="jsp"
-                      version="" />
-      <sourceLanguage name="pom"
-                      version="" />
-      <sourceLanguage name="xsl"
-                      version="" />
-      <sourceLanguage name="xml"
-                      version="" />
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
@@ -243,8 +235,7 @@
                  toConsole="${pmd.toConsole}">
         <fileset dir="${basedir}">
           <include name="**/*.java" />
-        </fileset>
-      </formatter>
+        </fileset></formatter>
       <fileset dir="${basedir}">
         <include name="**/*.java" />
       </fileset>
