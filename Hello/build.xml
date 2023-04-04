@@ -224,6 +224,16 @@
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
          failuresPropertyName="pmd.errCount">
+      <sourceLanguage name="java"
+                      version="${ant.build.javac.release}" />
+      <sourceLanguage name="jsp"
+                      version="" />
+      <sourceLanguage name="pom"
+                      version="" />
+      <sourceLanguage name="xsl"
+                      version="" />
+      <sourceLanguage name="xml"
+                      version="" />
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
