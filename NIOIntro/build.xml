@@ -79,13 +79,13 @@
         <attribute name="Specification-Version"
                    value="${version}" />
         <attribute name="Specification-Vendor"
-                   value="" />
+                   value="${user.name}" />
         <attribute name="Implementation-Title"
-                   value="" />
+                   value="${ant.project.name}" />
         <attribute name="Implementation-Version"
                    value="${build} ${TODAY}" />
         <attribute name="Implementation-Vendor"
-                   value="" />
+                   value="${user.name}" />
         <attribute name="Multi-Release"
                    value="${multi.release}" />
       </section>
@@ -97,9 +97,9 @@
   <target name="jar"
           depends="compile,manifest">
     <jar manifest="${jar.manifest}"
-         destfile="${dist.dir}\${ant.project.name}-${version}.jar"
+         destfile="${dist.dir}/${ant.project.name}-${version}.jar"
          basedir="${build.dir}/${module}"
-         includes="**/*.class"></jar>
+         includes="**/*.class,**/*.txt"></jar>
   </target>
   <target name="run">
     <description>Run</description>

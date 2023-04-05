@@ -3,6 +3,8 @@ package com.javacodegeeks.niotutorial.file;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,11 +33,13 @@ public interface FileChannelExample {
   @SuppressWarnings("PMD.LawOfDemeter")
   default SeekableByteChannel createChannel(String path,
                                             FileOperation fileOperation)
-      throws FileNotFoundException, IOException {
-    final File file = new File(Thread.currentThread()
-                                   .getContextClassLoader()
-                                   .getResource(path)
-                                   .getFile());
+      throws FileNotFoundException, IOException, URISyntaxException {
+    final URL resource =
+        Thread.currentThread().getContextClassLoader().getResource(path);
+    if (resource == null) {
+      throw new IllegalArgumentException("file " + path + " not found!");
+    }
+    final File file = new File(resource.toURI());
     return fileOperation == FileOperation.READ
         ? Files.newByteChannel(Paths.get(file.getAbsolutePath()),
                                StandardOpenOption.READ)

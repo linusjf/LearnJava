@@ -1,6 +1,7 @@
 package com.javacodegeeks.niotutorial.file;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.charset.StandardCharsets;
@@ -47,6 +48,8 @@ public final class FileChannelReadExample implements FileChannelExample {
       return contents.toString();
     } catch (IOException e) {
       throw new NIORuntimeException("Unable to read file", e);
+    } catch (URISyntaxException e) {
+      throw new NIORuntimeException("Unable to write to file", e);
     }
   }
 
