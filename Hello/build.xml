@@ -273,7 +273,19 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile, pmd, spotbugs,jar,docs">
+          depends="compile, pmd, spotbugs,jar,docs,jlink">
     <description>Main target</description>
+  </target>
+  <target name="jlink"
+          depends="jar">
+    <jmod destfile="${jmod.name}"
+          classpath="${dist.dir}\${ant.project.name}-${version}.jar" />
+    <link destDir="build/image"
+          modulepath="${jmod.name}"
+          modules="${module}">
+      <launcher name="${launcher.name}"
+                module="${module}"
+                mainClass="${main.class}" />
+    </link>
   </target>
 </project>
