@@ -49,3 +49,4 @@ linus*.html
 *temp*
 cpfiles.properties*
 **/build/**
+*.jmod
