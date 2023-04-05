@@ -32,9 +32,6 @@ public interface FileChannelExample {
   default SeekableByteChannel createChannel(String path,
                                             FileOperation fileOperation)
       throws FileNotFoundException, IOException {
-    //    final File file =
-    //      new
-    //      File(FileChannelReadExample.class.getClassLoader().getResource(path).getFile());
     final File file = new File(Thread.currentThread()
                                    .getContextClassLoader()
                                    .getResource(path)

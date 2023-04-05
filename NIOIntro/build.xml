@@ -102,10 +102,11 @@
          includes="**/*.class"></jar>
   </target>
   <target name="run">
-    <description>Run target</description>
+    <description>Run</description>
     <exec executable="./setup" />
     <java module="${module}/${main.class}"
-          fork="true">
+          fork="true"
+          dir="${build.dir}">
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
@@ -113,11 +114,12 @@
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <modulepath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement location="${dist.dir}/${ant.project.name}-${version}.jar" />
       </modulepath>
     </java>
     <java module="${module}/${main.class1}"
-          fork="true">
+          fork="true"
+          dir="${build.dir}">
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
@@ -129,7 +131,8 @@
       </modulepath>
     </java>
     <java module="${module}/${main.class2}"
-          fork="true">
+          fork="true"
+          dir="${build.dir}">
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
@@ -224,20 +227,16 @@
          minimumPriority="${pmd.minimumPriority}"
          suppressMarker="${pmd.suppressMarker}"
          failuresPropertyName="pmd.errCount">
+      <fileset dir="${basedir}">
+        <include name="**/*.java" />
+      </fileset>
       <ruleset>../${pmd.config}</ruleset>
       <auxclasspath>
         <pathelement path="${basedir}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
-                 toConsole="${pmd.toConsole}">
-        <fileset dir="${basedir}">
-          <include name="**/*.java" />
-        </fileset>
-      </formatter>
-      <fileset dir="${basedir}">
-        <include name="**/*.java" />
-      </fileset>
+                 toConsole="${pmd.toConsole}"></formatter>
     </pmd>
     <echo message="${pmd.errCount} violations found." />
   </target>

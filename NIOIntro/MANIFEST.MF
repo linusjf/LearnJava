@@ -9,6 +9,6 @@ Specification-Title: NIOIntro
 Specification-Version: 2.4.0
 Specification-Vendor:
 Implementation-Title:
-Implementation-Version: 7f1ad0e2 April 5 2023
+Implementation-Version: 41fa9e98 April 5 2023
 Implementation-Vendor:
 Multi-Release: false

@@ -15,6 +15,10 @@ public final class FileChannelReadExample implements FileChannelExample {
   private static final String INPUT_FILE_PATH = "file/input.txt";
   private static final int BYTE_BUFFER_LENGTH = 1024;
 
+  /** Default constructor. */
+  FileChannelReadExample() {
+  }
+
   /**
    * Describe <code>main</code> method here.
    *

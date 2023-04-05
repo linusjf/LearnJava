@@ -26,6 +26,10 @@ public class FileChannelWriteExample implements FileChannelExample {
           + " Pellentesque a metus sit amet dolor sollicitudin ultricies sed a felis.";
   private static final byte[] BYTES = CONTENTS.getBytes(StandardCharsets.UTF_8);
 
+  /** Default constructor. */
+  FileChannelWriteExample() {
+  }
+
   /**
    * Describe <code>main</code> method here.
    *
