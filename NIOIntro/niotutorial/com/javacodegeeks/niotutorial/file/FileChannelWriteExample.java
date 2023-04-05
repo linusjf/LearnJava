@@ -38,7 +38,8 @@ public class FileChannelWriteExample implements FileChannelExample {
 
   /** Describe <code>writeFile</code> method here. */
   public void writeFile() {
-    try (SeekableByteChannel fileChannel = createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
+    try (SeekableByteChannel fileChannel =
+             createChannel(OUTPUT_FILE_PATH, FileOperation.WRITE)) {
       final ByteBuffer buffer = createBuffer(BYTES.length);
       processBuffer(buffer, fileChannel);
     } catch (IOException e) {
@@ -51,7 +52,8 @@ public class FileChannelWriteExample implements FileChannelExample {
     buffer.put(BYTES);
     buffer.flip();
 
-    while (buffer.hasRemaining()) fileChannel.write(buffer);
+    while (buffer.hasRemaining())
+      fileChannel.write(buffer);
   }
 
   private ByteBuffer createBuffer(final int length) {
