@@ -275,7 +275,7 @@
     </spotbugs>
   </target>
   <target name="main"
-          depends="compile, pmd, spotbugs,jar,docs,jlink">
+          depends="compile, pmd, spotbugs,jar,docs">
     <description>Main target</description>
   </target>
   <target name="jlink"

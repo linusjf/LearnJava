@@ -267,10 +267,16 @@
       <launcher name="${launcher.name}"
                 module="${module}"
                 mainClass="${main.class}" />
+      <launcher name="${launcher.name1}"
+                module="${module}"
+                mainClass="${main.class1}" />
+      <launcher name="${launcher.name2}"
+                module="${module}"
+                mainClass="${main.class2}" />
     </link>
   </target>
   <target name="main"
-          depends="compile,pmd,spotbugs, jar, docs, jlink">
+          depends="compile,pmd,spotbugs,jar,docs">
     <description>Main target</description>
   </target>
 </project>
