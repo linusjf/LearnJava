@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -34,12 +33,7 @@ public interface FileChannelExample {
   default SeekableByteChannel createChannel(String path,
                                             FileOperation fileOperation)
       throws FileNotFoundException, IOException, URISyntaxException {
-    final URL resource =
-        Thread.currentThread().getContextClassLoader().getResource(path);
-    if (resource == null) {
-      throw new IllegalArgumentException("file " + path + " not found!");
-    }
-    final File file = new File(resource.toURI());
+    final File file = new File(path);
     return fileOperation == FileOperation.READ
         ? Files.newByteChannel(Paths.get(file.getAbsolutePath()),
                                StandardOpenOption.READ)
