@@ -806,7 +806,7 @@
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
                 name="mongo-java-driver"
-                rev="3.12.12"
+                rev="3.12.13"
                 conf="mongo-java-driver.main-&gt;master;mongo-java-driver.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
     <dependency org="com.github.javafaker"
