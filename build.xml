@@ -62,6 +62,7 @@
   <property file="${LearnJava.basedir}/spring-boot.properties" />
   <property file="${LearnJava.basedir}/aws-java-sdk.properties" />
   <property file="${LearnJava.basedir}/bfg.properties" />
+  <property file="${LearnJava.basedir}/netty-all.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <target name="setup">
     <antcall target="antcontrib" />
@@ -670,6 +671,12 @@
       <ivy:retrieve pathid="bfg.lib.path"
                     conf="bfg.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="netty-all.main.path"
+                    conf="netty-all.main"
+                    symlink="true" />
+      <ivy:retrieve pathid="netty-all.lib.path"
+                    conf="netty-all.lib"
+                    symlink="true" />
     </parallel>
     <parallel threadCount="6">
       <echo file="${junitplatform.classpath.file}"
@@ -782,6 +789,8 @@
             message="${toString:aws-java-sdk.main.path}:${toString:aws-java-sdk.lib.path}" />
       <echo file="${bfg.classpath.file}"
             message="${toString:bfg.main.path}:${toString:bfg.lib.path}" />
+      <echo file="${netty.classpath.file}"
+            message="${toString:netty-all.main.path}:${toString:netty-all.lib.path}" />
     </parallel>
     <antcall target="uniquify" />
     <replaceregexp file="${ckjm_ext.classpath.file}"

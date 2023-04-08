@@ -344,6 +344,10 @@
           description="bfg lib jars" />
     <conf name="bfg.main"
           description="bfg main jars" />
+    <conf name="netty-all.lib"
+          description="netty-all lib jars" />
+    <conf name="netty-all.main"
+          description="netty-all main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -828,5 +832,10 @@
                 name="bfg"
                 rev="1.14.0"
                 conf="bfg.main-&gt;master;bfg.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+    <dependency org="io.netty"
+                name="netty-all"
+                rev="5.0.0.Alpha2"
+                conf="netty-all.main-&gt;master;netty-all.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
