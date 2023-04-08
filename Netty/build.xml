@@ -69,8 +69,6 @@
            modulepath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
-      <compilerarg value="--module" />
-      <compilerarg value="${module}" />
     </javac>
   </target>
   <!-- Creates Javadoc -->
@@ -79,7 +77,8 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}/${module}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             modulepath="${compilerclasspath}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -284,6 +283,7 @@
               effort="max"
               nested="true">
       <auxClasspath path="${basedir}" />
+      <auxClasspath path="${runclasspath}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>

@@ -10,32 +10,45 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /** Discards any incoming data. */
+@SuppressWarnings({"checkstyle:trailingcomment",
+                   "checkstyle:magicnumber",
+                   "checkstyle:descendanttoken"})
 public class DiscardServer {
 
   private int port;
 
+  public DiscardServer() {
+    this.port = 8080;
+  }
+
   public DiscardServer(int port) {
+    this();
     this.port = port;
   }
 
   public void run() throws Exception {
-    EventLoopGroup bossGroup = new NioEventLoopGroup();  // (1)
+    EventLoopGroup bossGroup = new NioEventLoopGroup();
+    // (1)
     EventLoopGroup workerGroup = new NioEventLoopGroup();
     try {
-      ServerBootstrap b = new ServerBootstrap();  // (2)
+      ServerBootstrap b = new ServerBootstrap();
+      // (2)
       b.group(bossGroup, workerGroup)
-          .channel(NioServerSocketChannel.class)                   // (3)
-          .childHandler(new ChannelInitializer<SocketChannel>() {  // (4)
+          .channel(NioServerSocketChannel.class)  // (3)
+          .childHandler(new ChannelInitializer<SocketChannel>() {
+            // (4)
             @Override
             public void initChannel(SocketChannel ch) throws Exception {
               ch.pipeline().addLast(new DiscardServerHandler());
             }
           })
-          .option(ChannelOption.SO_BACKLOG, 128)           // (5)
-          .childOption(ChannelOption.SO_KEEPALIVE, true);  // (6)
+          .option(ChannelOption.SO_BACKLOG, 128)  // (5)
+          .childOption(ChannelOption.SO_KEEPALIVE, true);
+      // (6)
 
       // Bind and start to accept incoming connections.
-      ChannelFuture f = b.bind(port).sync();  // (7)
+      ChannelFuture f = b.bind(port).sync();
+      // (7)
 
       // Wait until the server socket is closed.
       // In this example, this does not happen, but you can do that to gracefully
@@ -51,9 +64,9 @@ public class DiscardServer {
     int port;
     if (args.length > 0) {
       port = Integer.parseInt(args[0]);
+      new DiscardServer(port).run();
     } else {
-      port = 8080;
+      new DiscardServer().run();
     }
-    new DiscardServer(port).run();
   }
 }
