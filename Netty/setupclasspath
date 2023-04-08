@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../netty.cp run.cp
+cp ../netty.cp compile.cp

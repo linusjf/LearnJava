@@ -9,6 +9,7 @@
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
   <property file="../antcontrib.properties" />
+  <property file="../netty-all.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -19,21 +20,27 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runclasspath"
+              srcFile="${run.cp}" />
+  </target>
   <loadfile property="antcontrib.cp"
             srcFile="../${antcontrib.classpath.file}" />
   <taskdef resource="net/sf/antcontrib/antlib.xml"
@@ -54,11 +61,12 @@
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
-          depends="clean, makedir,format,checkstyle">
+          depends="loadclasspath,clean, makedir,format,checkstyle">
     <javac includeantruntime="false"
            modulesourcepath="${src.dir}"
            destdir="${build.dir}"
-           createMissingPackageInfoClass="false">
+           createMissingPackageInfoClass="false"
+           modulepath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
       <compilerarg value="--module" />
@@ -119,7 +127,8 @@
          includes="**/*.class"
          manifest="${jar.manifest}"></jar>
   </target>
-  <target name="run">
+  <target name="run"
+          depends="loadclasspath">
     <description>Run target</description>
     <java fork="true"
           classname="${main.class}"
@@ -217,7 +226,10 @@
       </else>
     </if>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -236,7 +248,11 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="loadclasspath">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -260,6 +276,8 @@
   </target>
   <target name="spotbugs"
           depends="compile">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
