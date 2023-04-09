@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.10.12
 Created-By: 19.0.2+7 (Oracle Corporation)
 Built-By: root
-Main-Class: netty.Hello
+Main-Class: netty.DiscardServer
 
 Name: common
 Specification-Title: Netty
 Specification-Version: 2.4.0
 Specification-Vendor: root
 Implementation-Title: Netty
-Implementation-Version: 32e41299 April 8 2023
+Implementation-Version: 22cc03a2 April 9 2023
 Implementation-Vendor: root
 Multi-Release: false
