@@ -69,7 +69,7 @@
            modulesourcepath="${src.dir}"
            destdir="${build.dir}"
            createMissingPackageInfoClass="false"
-           modulepath="${compilerclasspath}">
+           modulepath="${dist.dir}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
     </javac>
@@ -81,7 +81,7 @@
              sourcepath="${src.dir}/${module}"
              destdir="${docs.dir}"
              additionalparam="${javadoc.params}"
-             modulepath="${compilerclasspath}"></javadoc>
+             modulepath="${dist.dir}"></javadoc>
   </target>
   <target name="manifest">
     <tstamp />
@@ -143,8 +143,7 @@
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <modulepath>
-        <pathelement location="${runclasspath}" />
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${dist.dir}" />
       </modulepath>
     </java>
     <sleep seconds="10" />
@@ -188,8 +187,7 @@
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <modulepath>
-        <pathelement location="${runclasspath}" />
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${dist.dir}" />
       </modulepath>
     </java>
     <sleep seconds="10" />
@@ -339,6 +337,7 @@
       </fileset>
       <auxclasspath>
         <pathelement path="${basedir}" />
+        <pathelement path="${dist.dir}" />
       </auxclasspath>
       <formatter type="${pmd.reportFormat}"
                  toFile="${pmd.output}"
@@ -357,7 +356,7 @@
               excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
-      <auxClasspath path="${runclasspath}" />
+      <auxClasspath path="${dist.dir}" />
       <sourcePath path="${basedir}" />
       <class location="${basedir}" />
       <classpath>
@@ -374,7 +373,7 @@
           depends="loadclasspath">
     <delete file="${jmod.name}" />
     <jmod destfile="${jmod.name}"
-          classpath="${dist.dir}\${ant.project.name}-${version}.jar"
+          classpath="${dist.dir}/${ant.project.name}-${version}.jar"
           modulepath="${dist.dir}" />
     <link destDir="build/image"
           modulepath="${jmod.name}">
