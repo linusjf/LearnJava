@@ -145,6 +145,28 @@
       </modulepath>
     </java>
     <sleep seconds="10" />
+    <telnet port="8080"
+            server="localhost"
+            timeout="20">
+      <write>Hello</write>
+      <write />
+    </telnet>
+    <exec executable="jps">
+      <arg value="-l" />
+      <redirector outputproperty="process.pid">
+        <outputfilterchain>
+          <linecontains>
+            <contains value="netty/netty.DiscardServer" />
+          </linecontains>
+          <replacestring from=" netty/netty.DiscardServer" />
+        </outputfilterchain>
+      </redirector>
+    </exec>
+    <exec executable="kill"
+          osfamily="unix">
+      <arg value="-9" />
+      <arg value="${process.pid}" />
+    </exec>
   </target>
   <target name="format">
     <fileset dir="${basedir}"

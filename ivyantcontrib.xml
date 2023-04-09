@@ -24,6 +24,8 @@
   <configurations>
     <conf name="ant-contrib.main"
           description="ant contrib main  jars" />
+    <conf name="commons-net.main"
+          description="commons-net main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -31,5 +33,10 @@
                 name="ant-contrib"
                 rev="1.0b3"
                 conf="ant-contrib.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+    <dependency org="commons-net"
+                name="commons-net"
+                rev="3.9.0"
+                conf="commons-net.main-&gt;master" />
   </dependencies>
 </ivy-module>
