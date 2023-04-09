@@ -144,6 +144,7 @@
         <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
       </modulepath>
     </java>
+    <sleep seconds="10" />
   </target>
   <target name="format">
     <fileset dir="${basedir}"
