@@ -25,6 +25,9 @@
     <exec executable="bash">
       <arg value="./setupclasspath" />
     </exec>
+    <exec executable="bash">
+      <arg value="./genmodinfo" />
+    </exec>
   </target>
   <target name="loadclasspath"
           depends="setupclasspath">
@@ -61,7 +64,7 @@
   </target>
   <!-- Compiles the java code (including the usage of library for JUnit -->
   <target name="compile"
-          depends="loadclasspath,clean, makedir,format,checkstyle">
+          depends="clean, makedir,loadclasspath,format,checkstyle">
     <javac includeantruntime="false"
            modulesourcepath="${src.dir}"
            destdir="${build.dir}"
@@ -351,6 +354,7 @@
               outputFile="${spotbugs.output}"
               reportLevel="low"
               effort="max"
+              excludeFilter="${spotbugs.suppressions.xml}"
               nested="true">
       <auxClasspath path="${basedir}" />
       <auxClasspath path="${runclasspath}" />
@@ -366,19 +370,22 @@
           depends="compile, pmd, spotbugs,jar,docs">
     <description>Main target</description>
   </target>
-  <target name="jlink">
+  <target name="jlink"
+          depends="loadclasspath">
+    <delete file="${jmod.name}" />
     <jmod destfile="${jmod.name}"
-          classpath="${dist.dir}\${ant.project.name}-${version}.jar:${runclasspath}" />
+          classpath="${dist.dir}\${ant.project.name}-${version}.jar"
+          modulepath="${dist.dir}" />
     <link destDir="build/image"
           modulepath="${jmod.name}">
+      <module name="${module}" />
+      <module name="netty.all" />
       <launcher name="${launcher.name}"
                 module="${module}"
                 mainClass="${main.class}" />
       <launcher name="${launcher.name1}"
                 module="${module}"
                 mainClass="${main.class1}" />
-      <module name="${module}" />
-      <module name="netty.all" />
     </link>
   </target>
 </project>

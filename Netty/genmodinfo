@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+(
+  mod="netty.all"
+  mkdir classes
+  cp run.cp classes
+  cd classes || exit 1
+  cp "$(cat run.cp)" .
+  jarname="$(basename "$(cat run.cp)")"
+  jdeps --ignore-missing-deps --generate-module-info . "$jarname"
+  jar xf "$jarname"
+  mv "${mod}/module-info.java" .
+  javac -p "$mod" -d . module-info.java
+  rm -rf module-info.java "$mod"
+  jar uf "$jarname" -C . module-info.class
+  cp "$jarname" ../dist
+)
+rm -rf classes
+exit 0
