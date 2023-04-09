@@ -376,7 +376,7 @@
           classpath="${dist.dir}/${ant.project.name}-${version}.jar"
           modulepath="${dist.dir}" />
     <link destDir="build/image"
-          modulepath="${jmod.name}">
+          modulepath="${jmod.name}:${dist.dir}">
       <module name="${module}" />
       <module name="netty.all" />
       <launcher name="${launcher.name}"
