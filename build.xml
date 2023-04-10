@@ -894,8 +894,14 @@
     </cpd>
   </target>
   <target name="main"
-          depends="setup,report-error,resolve">
+          depends="setup,report-error,resolve,appendcs">
     <description>Main target</description>
+  </target>
+  <target name="appendcs">
+    <description>Append to cs target</description>
+    <exec executable="bash">
+      <arg value="./appendcs" />
+    </exec>
   </target>
   <!-- =================================
           target: clean-lib

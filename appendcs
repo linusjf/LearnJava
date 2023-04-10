@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo -n ":" >>cs.cp
+cat xmlresolver.cp >>cs.cp
+exit 0
