@@ -6,4 +6,7 @@
   <Match>
     <Package name="~io[.]netty[.].*" />
   </Match>
+  <Match>
+    <Package name="~jdk[.]internal[.].*" />
+  </Match>
 </FindBugsFilter>
