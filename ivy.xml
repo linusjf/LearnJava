@@ -348,6 +348,10 @@
           description="netty-all lib jars" />
     <conf name="netty-all.main"
           description="netty-all main jars" />
+    <conf name="xmlresolver.lib"
+          description="xmlresolver lib jars" />
+    <conf name="xmlresolver.main"
+          description="xmlresolver main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -837,5 +841,10 @@
                 name="netty-all"
                 rev="5.0.0.Alpha2"
                 conf="netty-all.main-&gt;master;netty-all.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.xmlresolver/xmlresolver -->
+    <dependency org="org.xmlresolver"
+                name="xmlresolver"
+                rev="5.1.2"
+                conf="xmlresolver.main-&gt;master;xmlresolver.lib-&gt;compile" />
   </dependencies>
 </ivy-module>

@@ -10,6 +10,7 @@
   <property file="../spotbugs.properties" />
   <property file="../antcontrib.properties" />
   <property file="../netty-all.properties" />
+  <property file="../xmlresolver.properties" />
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir"
@@ -366,15 +367,16 @@
     <checkstyle config="${toString:checkstylefile}"
                 failOnViolation="false"
                 properties="../${cs.properties}">
+      <classpath>
+        <pathelement path="${xmlresolver.cp}" />
+        <pathelement path="${cs.cp}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
       <fileset dir="${src.dir}"
                includes="**/*.java" />
       <formatter type="plain" />
       <formatter type="plain"
                  toFile="${cs.output}" />
-      <classpath>
-        <pathelement path="${cs.cp}" />
-        <pathelement path="${java.class.path}" />
-      </classpath>
     </checkstyle>
   </target>
   <target name="pmd"

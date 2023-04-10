@@ -608,5 +608,11 @@
       <version>5.0.0.Alpha2</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.xmlresolver</groupId>
+      <artifactId>xmlresolver</artifactId>
+      <version>5.1.2</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

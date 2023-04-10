@@ -9,6 +9,6 @@ Specification-Title: Netty
 Specification-Version: 2.4.0
 Specification-Vendor: root
 Implementation-Title: Netty
-Implementation-Version: d3ab695c April 10 2023
+Implementation-Version: 5e8c0950 April 10 2023
 Implementation-Vendor: root
 Multi-Release: false
