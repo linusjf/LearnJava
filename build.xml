@@ -831,6 +831,8 @@
   <target name="makepom">
     <ivy:makepom ivyfile="ivy.xml"
                  pomfile="pom.xml" />
+    <ivy:makepom ivyfile="ivyantcontrib.xml"
+                 pomfile="pomantcontrib.xml" />
   </target>
   <!-- =================================
           target: report
@@ -894,10 +896,10 @@
     </cpd>
   </target>
   <target name="main"
-          depends="setup,report-error,resolve">
+          depends="setup,report-error,resolve,appendtocs">
     <description>Main target</description>
   </target>
-  <target name="appendcs">
+  <target name="appendtocs">
     <description>Append to cs target</description>
     <exec executable="bash">
       <arg value="./appendcs" />

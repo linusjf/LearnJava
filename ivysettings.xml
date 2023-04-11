@@ -19,12 +19,28 @@
 <ivysettings>
   <!--<properties file="${ivy.settings.dir}/ivy.properties" /> -->
   <properties file="ivy.properties" />
-  <settings defaultResolver="central" />
+  <!--  <settings defaultResolver="central" /> -->
+  <settings defaultResolver="default" />
   <resolvers>
+    <filesystem name="local-maven-2"
+                m2compatible="true"
+                local="true">
+      <ivy pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision].pom" />
+      <artifact pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision].[ext]" />
+    </filesystem>
     <ibiblio name="central"
              m2compatible="true" />
+    <ibiblio name="sevntu-checkstyle"
+             m2compatible="true"
+             root="http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2/" />
     <!--bintray name="tray" /-->
   </resolvers>
+  <chain name="default"
+         returnFirst="true">
+    <resolver ref="local-maven-2" />
+    <resolver ref="public" />
+    <resolver ref="sevntu-checkstyle" />
+  </chain>
   <include url="${ivy.default.settings.dir}/ivysettings-public.xml" />
   <include url="ivysettings-shared.xml" />
   <include url="ivysettings-local.xml" />
