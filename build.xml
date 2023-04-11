@@ -206,11 +206,11 @@
       <ivy:retrieve pathid="cs.main.path"
                     conf="checkstyle.main"
                     symlink="true" />
-      <ivy:retrieve pathid="gformat.main.path"
-                    conf="gformat.main"
-                    symlink="true" />
       <ivy:retrieve pathid="cs.lib.path"
                     conf="checkstyle.lib"
+                    symlink="true" />
+      <ivy:retrieve pathid="gformat.main.path"
+                    conf="gformat.main"
                     symlink="true" />
       <ivy:retrieve pathid="gformat.lib.path"
                     conf="gformat.lib"
@@ -894,7 +894,7 @@
     </cpd>
   </target>
   <target name="main"
-          depends="setup,report-error,resolve,appendcs">
+          depends="setup,report-error,resolve">
     <description>Main target</description>
   </target>
   <target name="appendcs">
