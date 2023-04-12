@@ -6,6 +6,12 @@ suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Conf
   <suppress-xpath files="TimeDecoder.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeDecoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='decode']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="TimeEncoder.java"
+                  checks="MagicNumberCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeEncoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='write']]/SLIST/VARIABLE_DEF[./IDENT[@text='encoded']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
+  <suppress-xpath files="TimeEncoder.java"
+                  checks="TrailingCommentCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeEncoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='write']]/SLIST/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' (1)\n']]" />
   <suppress-xpath files="UnixTime.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UnixTime']]/SLIST/CTOR_CALL/ELIST/EXPR/PLUS[./NUM_LONG[@text='2208988800L']]/DIV/NUM_LONG[@text='1000L']" />

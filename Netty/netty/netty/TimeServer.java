@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import netty.time.TimeEncoder;
 
 /** Times any incoming data. */
 @SuppressWarnings({"checkstyle:trailingcomment",
@@ -39,6 +40,7 @@ public class TimeServer {
             // (4)
             @Override
             public void initChannel(SocketChannel ch) throws Exception {
+              ch.pipeline().addLast(new TimeEncoder());
               ch.pipeline().addLast(new TimeServerHandler());
             }
           })
