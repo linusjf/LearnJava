@@ -703,7 +703,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency org="org.springframework"
                 name="spring-core"
-                rev="6.0.7"
+                rev="6.0.8"
                 conf="spring-core.main-&gt;master;spring-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
@@ -733,7 +733,7 @@
     <!-- https://mvnrepository.com/artifact/org.owasp.esapi/esapi -->
     <dependency org="org.owasp.esapi"
                 name="esapi"
-                rev="2.5.1.0"
+                rev="2.5.2.0"
                 conf="esapi.main-&gt;master;esapi.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency org="org.projectlombok"
