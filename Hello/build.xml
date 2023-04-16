@@ -5,6 +5,7 @@
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
   <property file="../checkstyle.properties" />
+  <property file="../sevntu-check.properties" />
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
@@ -21,6 +22,8 @@
             location="docs" />
   <loadfile property="cs.cp"
             srcFile="../${cs.classpath.file}" />
+  <loadfile property="sevntu.cp"
+            srcFile="../${sevntu-check.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
@@ -30,7 +33,7 @@
   <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
            classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
   <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
+           classpath="${cs.cp}:${sevntu.cp}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
@@ -177,6 +180,8 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
+    <loadfile property="sevntu.cp"
+              srcFile="../${sevntu-check.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true"
           fork="true">
@@ -189,6 +194,7 @@
       <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
@@ -232,6 +238,7 @@
                  toFile="${cs.output}" />
       <classpath>
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </checkstyle>
