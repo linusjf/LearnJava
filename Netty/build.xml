@@ -5,6 +5,7 @@
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
   <property file="../checkstyle.properties" />
+  <property file="../sevntu-check.properties" />
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
@@ -34,6 +35,8 @@
           depends="setupclasspath">
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
+    <loadfile property="sevntu.cp"
+              srcFile="../${sevntu-check.classpath.file}" />
     <loadfile property="pmd.cp"
               srcFile="../${pmd.classpath.file}" />
     <loadfile property="spotbugs.cp"
@@ -316,6 +319,8 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
+    <loadfile property="sevntu.cp"
+              srcFile="../${sevntu-check.classpath.file}" />
     <java classname="${cs.main.class}"
           logError="true"
           fork="true">
@@ -328,6 +333,7 @@
       <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
@@ -359,7 +365,7 @@
   <target name="checkstyle"
           depends="loadclasspath">
     <taskdef resource="${cs.taskdef.resource}"
-             classpath="${cs.cp}" />
+             classpath="${cs.cp}:${sevntu.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -370,6 +376,7 @@
       <classpath>
         <pathelement path="${xmlresolver.cp}" />
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
       <fileset dir="${src.dir}"

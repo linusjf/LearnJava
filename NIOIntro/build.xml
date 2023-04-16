@@ -5,6 +5,7 @@
   <property file="build.properties" />
   <property file="../globalbuild.properties" />
   <property file="../checkstyle.properties" />
+  <property file="../sevntu-check.properties" />
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
@@ -18,6 +19,8 @@
             location="docs" />
   <loadfile property="cs.cp"
             srcFile="../${cs.classpath.file}" />
+  <loadfile property="sevntu.cp"
+            srcFile="../${sevntu-check.classpath.file}" />
   <loadfile property="pmd.cp"
             srcFile="../${pmd.classpath.file}" />
   <loadfile property="spotbugs.cp"
@@ -25,7 +28,7 @@
   <loadfile property="spotbugs-plugins.cp"
             srcfile="../${spotbugs-plugin.classpath.file}" />
   <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}" />
+           classpath="${cs.cp}:${sevntu.cp}" />
   <taskdef name="pmd"
            classname="net.sourceforge.pmd.ant.PMDTask"
            classpath="${pmd.cp}" />
@@ -186,17 +189,21 @@
                  pathsep=" " />
     <loadfile property="cs.cp"
               srcFile="../${cs.classpath.file}" />
+    <loadfile property="sevntu.cp"
+              srcFile="../${sevntu-check.classpath.file}" />
     <java classname="${cs.main.class}"
-          logError="true">
+          logError="true"
+          fork="true">
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
-      <arg line="-c ../${cs.config} -p ${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
+      <arg line="-c ../${cs.config} -p ../${cs.properties} -o ${ant.project.name}-xpath.xml -g ${sources}" />
       <classpath>
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </java>
@@ -216,6 +223,7 @@
                  toFile="${cs.output}" />
       <classpath>
         <pathelement path="${cs.cp}" />
+        <pathelement path="${sevntu.cp}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </checkstyle>

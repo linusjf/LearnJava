@@ -3,21 +3,48 @@
 suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
 "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
+  <suppress-xpath files="DiscardServer.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.MoveVariableInsideIfCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='DiscardServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]" />
+  <suppress-xpath files="DiscardServerHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.EmptyPublicCtorInClassCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='DiscardServerHandler']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='DiscardServerHandler']]" />
+  <suppress-xpath files="EchoServer.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.MoveVariableInsideIfCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='EchoServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]" />
+  <suppress-xpath files="EchoServerHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.EmptyPublicCtorInClassCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='EchoServerHandler']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='EchoServerHandler']]" />
+  <suppress-xpath files="TimeClientHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.EmptyPublicCtorInClassCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeClientHandler']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='TimeClientHandler']]" />
+  <suppress-xpath files="TimeClientHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeClientHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='channelRead']]/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF[./IDENT[@text='currentTimeMillis']]/ASSIGN/EXPR/STAR[./NUM_LONG[@text='1000L']]/MINUS/NUM_LONG[@text='2208988800L']" />
+  <suppress-xpath files="TimeServer.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.MoveVariableInsideIfCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeServer']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/SLIST/VARIABLE_DEF[./IDENT[@text='port']]" />
+  <suppress-xpath files="TimeServerHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.EmptyPublicCtorInClassCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeServerHandler']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='TimeServerHandler']]" />
+  <suppress-xpath files="TimeServerHandler.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeServerHandler']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='channelActive']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/TYPECAST/PLUS/NUM_LONG[@text='2208988800L']" />
   <suppress-xpath files="TimeDecoder.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeDecoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='decode']]/SLIST/EXPR/METHOD_CALL/ELIST/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
-  <suppress-xpath files="TimeEncoder.java"
-                  checks="MagicNumberCheck"
-                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeEncoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='write']]/SLIST/VARIABLE_DEF[./IDENT[@text='encoded']]/ASSIGN/EXPR/METHOD_CALL/ELIST/EXPR/NUM_INT[@text='4']" />
-  <suppress-xpath files="TimeEncoder.java"
-                  checks="TrailingCommentCheck"
-                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='TimeEncoder']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='write']]/SLIST/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' (1)\n']]" />
   <suppress-xpath files="UnixTime.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UnixTime']]/SLIST/CTOR_CALL/ELIST/EXPR/PLUS[./NUM_LONG[@text='2208988800L']]/DIV/NUM_LONG[@text='1000L']" />
   <suppress-xpath files="UnixTime.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UnixTime']]/SLIST/CTOR_CALL/ELIST/EXPR/PLUS/NUM_LONG[@text='2208988800L']" />
+  <suppress-xpath files="UnixTime.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/CTOR_DEF[./IDENT[@text='UnixTime']]/SLIST/CTOR_CALL/ELIST/EXPR/PLUS/NUM_LONG[@text='2208988800L']" />
+  <suppress-xpath files="UnixTime.java"
+                  checks="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"
+                  query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/DOT[./IDENT[@text='toString']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/STAR[./NUM_LONG[@text='1000L']]/MINUS/NUM_LONG[@text='2208988800L']" />
   <suppress-xpath files="UnixTime.java"
                   checks="MagicNumberCheck"
                   query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='UnixTime']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='toString']]/SLIST/LITERAL_RETURN/EXPR/METHOD_CALL/DOT[./IDENT[@text='toString']]/LITERAL_NEW[./IDENT[@text='Date']]/ELIST/EXPR/STAR[./NUM_LONG[@text='1000L']]/MINUS/NUM_LONG[@text='2208988800L']" />
