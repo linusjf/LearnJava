@@ -7,8 +7,8 @@ Main-Class: tee.Test
 Name: common
 Specification-Title: Antlr
 Specification-Version: 2.4.0
-Specification-Vendor: 
-Implementation-Title: 
-Implementation-Version: d7693bc8 January 7 2021
-Implementation-Vendor: 
-
+Specification-Vendor: root
+Implementation-Title: Antlr
+Implementation-Version: 4722bfb7 April 16 2023
+Implementation-Vendor: root
+Multi-Release: ${multi.release}
