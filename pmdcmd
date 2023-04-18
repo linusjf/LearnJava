@@ -9,10 +9,12 @@ path() {
 require java cat readlink dirname realpath
 dir="$(path "$0")"
 declare -r classpathFile="${dir}/pmd.cp"
+declare -r slf4jclasspathFile="${dir}/slf4j-simple.cp"
 declare -r classpath="$(cat "$classpathFile"))"
+declare -r slf4jclasspath="$(cat "$slf4jclasspathFile"))"
 declare -r mainClass="net.sourceforge.pmd.PMD"
 
-java -cp "$classpath" "$mainClass" "$@" ||
+java -cp "${classpath}:${slf4jclasspath}" "$mainClass" "$@" ||
   {
     exitCode="$?"
     echo "$0 exited with error code $exitCode"
