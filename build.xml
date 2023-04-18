@@ -239,6 +239,9 @@
       <ivy:retrieve pathid="pmd-html.main.path"
                     conf="pmd-html.main"
                     symlink="true" />
+      <ivy:retrieve pathid="pmd-cli.main.path"
+                    conf="pmd-cli.main"
+                    symlink="true" />
       <ivy:retrieve pathid="log4j-core.main.path"
                     conf="log4j-core.main"
                     symlink="true" />
@@ -703,7 +706,7 @@
       <echo file="${gformat.classpath.file}"
             message="${toString:gformat.main.path}:${toString:gformat.lib.path}" />
       <echo file="${pmd.classpath.file}"
-            message="${toString:pmd-html.main.path}:${toString:pmd-ant.main.path}:${toString:pmd-xml.main.path}:${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
+            message="${toString:pmd-cli.main.path}:${toString:pmd-html.main.path}:${toString:pmd-ant.main.path}:${toString:pmd-xml.main.path}:${toString:pmd-jsp.main.path}:${toString:pmd-core.main.path}:${toString:pmd-java.main.path}:${toString:pmd-core.lib.path}:${toString:pmd-java.lib.path}:${toString:saxon.main.path}" />
       <echo file="${log4j.classpath.file}"
             message="${toString:log4j-core.main.path}:${toString:log4j-api.main.path}" />
       <echo file="${sevntu-check.classpath.file}"

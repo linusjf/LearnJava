@@ -14,7 +14,7 @@
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <properties>
       <property name="violationSuppressXPath"
-                value="//MethodDeclaration[contains(@Name, 'main')] and ./ancestor::MethodDeclaration[contains(@Static, 'true')]" />
+                value="//MethodDeclaration[contains(@MethodName, 'main')] and ./ancestor::MethodDeclaration[contains(@Static, 'true')]" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod" />
@@ -251,12 +251,7 @@
   <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn" />
   <rule ref="category/java/codestyle.xml/UnnecessaryModifier" />
   <rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
-  <rule ref="category/java/codestyle.xml/UseDiamondOperator">
-    <properties>
-      <property name="java7Compatibility"
-                value="false" />
-    </properties>
-  </rule>
+  <rule ref="category/java/codestyle.xml/UseDiamondOperator" />
   <rule ref="category/java/codestyle.xml/UselessParentheses" />
   <rule ref="category/java/codestyle.xml/UselessQualifiedThis" />
   <rule ref="category/java/codestyle.xml/UnnecessaryConstructor">
@@ -324,11 +319,7 @@
   <rule ref="category/java/design.xml/SingularField">
     <properties>
       <property name="ignoredAnnotations"
-                value="lombok.Setter|lombok.Getter|lombok.Builder|lombok.Data|lombok.RequiredArgsConstructor|lombok.AllArgsConstructor|lombok.Value|lombok.NoArgsConstructor|lombok.experimental.Delegate|lombok.EqualsAndHashCode" />
-      <property name="checkInnerClasses"
-                value="true" />
-      <property name="disallowNotAssignment"
-                value="true" />
+                value="java.lang.Deprecated|javafx.fxml.FXML|lombok.Getter|lombok.Setter|lombok.experimental.Delegate" />
     </properties>
   </rule>
   <rule ref="category/java/design.xml/SwitchDensity" />
@@ -390,8 +381,6 @@
   <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor" />
   <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
     <properties>
-      <property name="separator"
-                value="," />
       <property name="maxDuplicateLiterals"
                 value="4" />
       <property name="minimumLength"
