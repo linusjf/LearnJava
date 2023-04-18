@@ -75,6 +75,12 @@
       <optional>true</optional>
     </dependency>
     <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-ui</artifactId>
+      <version>7.0.0-rc1</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>net.sourceforge.saxon</groupId>
       <artifactId>saxon</artifactId>
       <version>9.1.0.8</version>
