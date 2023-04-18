@@ -361,6 +361,8 @@
           description="xmlresolver lib jars" />
     <conf name="xmlresolver.main"
           description="xmlresolver main jars" />
+    <conf name="slf4j-simple.main"
+          description="slf4j-simple main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -870,5 +872,10 @@
                 name="xmlresolver"
                 rev="5.1.2"
                 conf="xmlresolver.main-&gt;master;xmlresolver.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+    <dependency org="org.slf4j"
+                name="slf4j-simple"
+                rev="2.0.7"
+                conf="slf4j-simple.main-&gt;master" />
   </dependencies>
 </ivy-module>

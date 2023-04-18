@@ -63,6 +63,7 @@
   <property file="${LearnJava.basedir}/bfg.properties" />
   <property file="${LearnJava.basedir}/netty-all.properties" />
   <property file="${LearnJava.basedir}/xmlresolver.properties" />
+  <property file="${LearnJava.basedir}/slf4j-simple.properties" />
   <property file="${LearnJava.basedir}/antcontrib.properties" />
   <property file="${LearnJava.basedir}/commons-net.properties" />
   <property file="${LearnJava.basedir}/cpfiles.properties" />
@@ -700,6 +701,9 @@
       <ivy:retrieve pathid="xmlresolver.lib.path"
                     conf="xmlresolver.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="slf4j-simple.main.path"
+                    conf="slf4j-simple.main"
+                    symlink="true" />
     </parallel>
     <parallel threadCount="${cores.count}">
       <echo file="${junitplatform.classpath.file}"
@@ -816,6 +820,8 @@
             message="${toString:netty-all.main.path}:${toString:netty-all.lib.path}" />
       <echo file="${xmlresolver.classpath.file}"
             message="${toString:xmlresolver.main.path}:${toString:xmlresolver.lib.path}" />
+      <echo file="${slf4j-simple.classpath.file}"
+            message="${toString:slf4j-simple.main.path}" />
     </parallel>
     <antcall target="uniquify" />
     <replaceregexp file="${ckjm_ext.classpath.file}"
