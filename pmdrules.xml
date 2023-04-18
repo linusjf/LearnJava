@@ -569,8 +569,7 @@
   <rule ref="category/jsp/errorprone.xml/JspEncoding" />
   <rule ref="category/jsp/security.xml/IframeMissingSrcAttribute" />
   <rule ref="category/jsp/security.xml/NoUnsanitizedJSPExpression" />
-  <!--
   <rule ref="category/html/bestpractices.xml/AvoidInlineStyles" />
   <rule ref="category/html/bestpractices.xml/UseAltAttributeForImages" />
-  <rule ref="category/html/bestpractices.xml/UnnecessaryTypeAttribute" />-->
+  <rule ref="category/html/bestpractices.xml/UnnecessaryTypeAttribute" />
 </ruleset>

@@ -45,6 +45,8 @@
           description="pmd xml main jars" />
     <conf name="pmd-ant.main"
           description="pmd ant main jars" />
+    <conf name="pmd-html.main"
+          description="pmd html main jars" />
     <conf name="log4j-core.main"
           description="log4j core main jars" />
     <conf name="log4j-core.lib"
@@ -395,6 +397,10 @@
                 name="pmd-ant"
                 rev="7.0.0-rc1"
                 conf="pmd-ant.main-&gt;master" />
+    <dependency org="net.sourceforge.pmd"
+                name="pmd-html"
+                rev="7.0.0-rc1"
+                conf="pmd-html.main-&gt;master" />
     <dependency org="net.sourceforge.saxon"
                 name="saxon"
                 rev="9.1.0.8"
