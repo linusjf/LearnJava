@@ -143,7 +143,7 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-dbcp</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
