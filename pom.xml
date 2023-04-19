@@ -131,7 +131,7 @@
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-core</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -143,13 +143,13 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-dbcp</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -161,13 +161,13 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jsp-api</artifactId>
-      <version>10.1.7</version>
+      <version>10.1.8</version>
       <optional>true</optional>
     </dependency>
     <dependency>
