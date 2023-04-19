@@ -611,7 +611,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.376</version>
+      <version>1.12.451</version>
       <optional>true</optional>
     </dependency>
     <dependency>
