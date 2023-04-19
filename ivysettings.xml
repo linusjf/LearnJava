@@ -20,31 +20,33 @@
   <!--<properties file="${ivy.settings.dir}/ivy.properties" /> -->
   <properties file="ivy.properties" />
   <!--  <settings defaultResolver="central" /> -->
-  <settings defaultResolver="default" />
+  <property name="m2-pattern"
+            value="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"
+            override="false" />
+  <property name="m2pom-pattern"
+            value="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).pom"
+            override="false" />
   <resolvers>
+    <filesystem name="local">
+      <ivy pattern="${ivy.local.default.root}/${ivy.local.default.ivy.pattern}" />
+      <artifact pattern="${ivy.local.default.root}/${ivy.local.default.artifact.pattern}" />
+    </filesystem>
     <filesystem name="local-maven-2"
                 m2compatible="true"
                 local="true">
-      <ivy pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision].pom" />
-      <artifact pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision].[ext]" />
+      <ivy pattern="${m2pom-pattern}" />
+      <artifact pattern="${m2-pattern}" />
     </filesystem>
     <ibiblio name="public"
              m2compatible="true" />
-    <ibiblio name="sonatype"
-             m2compatible="true"
-             root="https://oss.sonatype.org/content/repositories/snapshots/" />
-    <ibiblio name="sevntu-checkstyle"
-             m2compatible="true"
-             root="http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2/" />
-    <!--bintray name="tray" /-->
+    <chain name="chain"
+           returnFirst="true">
+      <resolver ref="local" />
+      <resolver ref="local-maven-2" />
+      <resolver ref="public" />
+    </chain>
   </resolvers>
-  <chain name="default"
-         returnFirst="true">
-    <resolver ref="local-maven-2" />
-    <resolver ref="public" />
-    <resolver ref="sonatype" />
-    <resolver ref="sevntu-checkstyle" />
-  </chain>
+  <settings defaultResolver="chain" />
   <include url="${ivy.default.settings.dir}/ivysettings-public.xml" />
   <include url="ivysettings-shared.xml" />
   <include url="ivysettings-local.xml" />
