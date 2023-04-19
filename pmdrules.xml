@@ -14,7 +14,7 @@
   <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <properties>
       <property name="violationSuppressXPath"
-                value="//MethodDeclaration[contains(@MethodName, 'main')] and ./ancestor::MethodDeclaration[contains(@Static, 'true')]" />
+                value="./ancestor::MethodDeclaration[contains(@MainMethod, 'true')]" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod" />
