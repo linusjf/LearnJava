@@ -17,15 +17,7 @@
    under the License.
 -->
 <ivysettings>
-  <!--<properties file="${ivy.settings.dir}/ivy.properties" /> -->
   <properties file="ivy.properties" />
-  <!--  <settings defaultResolver="central" /> -->
-  <property name="m2-pattern"
-            value="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"
-            override="false" />
-  <property name="m2pom-pattern"
-            value="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).pom"
-            override="false" />
   <property name="ivy.shared.default.root"
             value="${ivy.default.ivy.user.dir}/shared"
             override="false" />
@@ -44,19 +36,12 @@
       <ivy pattern="${ivy.shared.default.root}/${ivy.shared.default.ivy.pattern}" />
       <artifact pattern="${ivy.shared.default.root}/${ivy.shared.default.artifact.pattern}" />
     </filesystem>
-    <filesystem name="local-maven-2"
-                m2compatible="true"
-                local="true">
-      <ivy pattern="${m2pom-pattern}" />
-      <artifact pattern="${m2-pattern}" />
-    </filesystem>
     <ibiblio name="public"
              m2compatible="true" />
     <chain name="chain"
            returnFirst="true">
       <resolver ref="local" />
       <resolver ref="shared" />
-      <resolver ref="local-maven-2" />
       <resolver ref="public" />
     </chain>
   </resolvers>
