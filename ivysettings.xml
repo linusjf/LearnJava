@@ -38,11 +38,15 @@
     </filesystem>
     <ibiblio name="public"
              m2compatible="true" />
+    <ibiblio name="sonatype"
+             m2compatible="true"
+             root="https://oss.sonatype.org/content/repositories/snapshots/" />
     <chain name="chain"
            returnFirst="true">
       <resolver ref="local" />
       <resolver ref="shared" />
       <resolver ref="public" />
+      <resolver ref="sonatype" />
     </chain>
   </resolvers>
   <settings defaultResolver="chain" />
