@@ -800,7 +800,7 @@
     <!-- https://mvnrepository.com/artifact/io.jenetics/jenetics -->
     <dependency org="io.jenetics"
                 name="jenetics"
-                rev="7.1.2"
+                rev="7.1.3"
                 conf="jenetics.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
     <dependency org="net.java.dev.jna"
