@@ -363,6 +363,10 @@
           description="xmlresolver main jars" />
     <conf name="slf4j-simple.main"
           description="slf4j-simple main jars" />
+    <conf name="ivy.lib"
+          description="ivy lib jars" />
+    <conf name="ivy.main"
+          description="ivy main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -877,5 +881,10 @@
                 name="slf4j-simple"
                 rev="2.0.7"
                 conf="slf4j-simple.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/org.apache.ivy/ivy -->
+    <dependency org="org.apache.ivy"
+                name="ivy"
+                rev="2.5.1"
+                conf="ivy.main-&gt;master;ivy.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
