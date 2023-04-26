@@ -93,6 +93,8 @@
              parallel="false">
           <sequential>
             <echo message="@{jar}" />
+            <symlink action="delete"
+                     link="@{jar}" />
             <delete file="@{jar}" />
           </sequential>
         </for>
