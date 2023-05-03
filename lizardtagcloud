@@ -3,7 +3,7 @@ require() {
   hash "$@" || exit 127
 }
 require lizard find paste
-lizard -Ewordcount \
+lizard -w -Ewordcount \
   "$(find . -name '*.java' | paste -sd ' ')" ||
   {
     echo "Errors/warnings found running $0"
