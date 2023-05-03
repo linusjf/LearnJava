@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
 require lizard find tee
-usage()
-{
+usage() {
   echo "Usage: $0 dir"
   echo "dir - Project directory"
   exit 1
@@ -12,18 +11,23 @@ usage()
 
 declare -r outputFile="lizard.report"
 
-if [ "$#" -ne 1 ] || ! [ -d "$1" ]; 
-then
+if [ "$#" -ne 1 ] || ! [ -d "$1" ]; then
   usage
 fi
 
 echo "$1"
 proj="$1"
 
-res=$(cd "$proj" || exit $?
-lizard -l java \
-  --csv -m -s nloc -a 10  \
-  "$(find . -name '*.java')" \
-  | tee "$outputFile" \
-  || { exitCode="$?";echo "$0 exited with error code $exitCode";exit "$exitCode";})
-exit "$res"
+(
+  cd "$proj" || exit $?
+  lizard -l java \
+    --csv -m -s nloc -a 10 \
+    "$(find . -name '*.java')" |
+    tee "$outputFile" ||
+    {
+      exitCode="$?"
+      echo "$0 exited with error code $exitCode"
+      exit "$exitCode"
+    }
+)
+exit "$?"
