@@ -49,6 +49,8 @@
           description="pmd html main jars" />
     <conf name="pmd-cli.main"
           description="pmd cli main jars" />
+    <conf name="pmd-cli.lib"
+          description="pmd cli lib jars" />
     <conf name="log4j-core.main"
           description="log4j core main jars" />
     <conf name="log4j-core.lib"
@@ -412,7 +414,7 @@
     <dependency org="net.sourceforge.pmd"
                 name="pmd-cli"
                 rev="7.0.0-rc2"
-                conf="pmd-cli.main-&gt;master" />
+                conf="pmd-cli.main-&gt;master;pmd-cli.lib-&gt;compile" />
     <dependency org="net.sourceforge.saxon"
                 name="saxon"
                 rev="9.1.0.8"
