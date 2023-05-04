@@ -1,50 +1,44 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require java rm find cat tee 
+require java rm find cat tee
 set -o noglob
 declare -r errFile="cpd.errors"
 declare -r format="text"
 declare -r classpathFile="pmd.cp"
-declare -r mainClass="net.sourceforge.pmd.cpd.CPD"
+declare -r mainClass="net.sourceforge.pmd.cli.PmdCli"
 declare -r exclusionsFile=".cpdexclusions"
 declare -r fileslist="cpdfiles.txt"
 declare -a exclusions
 declare -i res=0
-language="${1,,}"
-if [ -z "$language" ];
-  then 
-    language="java"
+language="${1}"
+if [ -z "$language" ]; then
+  language="java"
 fi
 
-usage()
-{
-  echo "Usage: $0 [language]"
-  echo "language - Programming language (default is java)"
-  echo "Languages supported by script: java, jsp, xml."
+readExclusions() {
+  [ -e "$exclusionsFile" ] &&
+    { readarray -t exclusions < <(cat "$exclusionsFile") ||
+      echo "Unable to read $exclusionsFile"; }
 }
-
-readExclusions()
-{
-  [ -e "$exclusionsFile" ] && \
-      { readarray -t exclusions < <(cat "$exclusionsFile") || \
-      echo "Unable to read $exclusionsFile";}
-}
-
-usage
 
 readExclusions
 rm ./"$fileslist"
-find . -type f -regex ".*[.]\($language\)$" "${exclusions[@]}" | tr '\n' ',' > "$fileslist"
+excls="${exclusions[*]}"
+# shellcheck disable=SC2086
+find . -type f -regex ".*[.]\($language\)$" $excls | tr '\n' ',' >"$fileslist"
 java -cp @"$classpathFile" \
-"$mainClass" \
---minimum-tokens 100 \
---format "$format" \
---language "$language" \
---file-list "$fileslist" \
-| tee "$errFile" \
-|| { echo "Error running $0"; exit 1;}
+  "$mainClass" cpd \
+  --minimum-tokens 100 \
+  --format "$format" \
+  --language "$language" \
+  --file-list "$fileslist" |
+  tee "$errFile" ||
+  {
+    echo "Error running $0"
+    exit 1
+  }
 res=$?
 set +o noglob
 exit $res
