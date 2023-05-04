@@ -5,11 +5,11 @@ require() {
 }
 require java cat readlink dirname
 declare -r classpathFile="pmd.cp"
-declare -r mainClass="net.sourceforge.pmd.util.treeexport.TreeExportCli"
+declare -r mainClass="net.sourceforge.pmd.cli.PmdCli"
 declare -r path="$(dirname "$(readlink -f "$0")")"
 declare -r classpath="$(cat "${path}/${classpathFile}")"
 
-java -cp "$classpath" "$mainClass" "$@" ||
+java -cp "$classpath" "$mainClass" ast-dump "$@" ||
   {
     exitCode="$?"
     echo "$0 exited with error code $exitCode"
