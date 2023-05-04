@@ -17,6 +17,7 @@ public class DiceMeasurer {
     testVeryFast();
   }
 
+  @SuppressWarnings("CPD-START")
   private static void testFairSR() {
     for (int j = 0; j < 20; j++) {
       long time = System.nanoTime();
@@ -75,6 +76,7 @@ public class DiceMeasurer {
                       best.getThenReset() / 1_000_000);
   }
 
+  @SuppressWarnings("CPD-END")
   private static void testFast() {
     for (int j = 0; j < 20; j++) {
       long time = System.nanoTime();

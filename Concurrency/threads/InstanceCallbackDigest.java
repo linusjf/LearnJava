@@ -19,7 +19,7 @@ public class InstanceCallbackDigest implements Runnable {
   }
 
   @Override
-  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter"})
+  @SuppressWarnings({"PMD.EmptyWhileStmt", "PMD.LawOfDemeter","CPD-START"})
   public void run() {
     try {
       InputStream in = Files.newInputStream(Paths.get(filename));
@@ -36,7 +36,7 @@ public class InstanceCallbackDigest implements Runnable {
   }
 
   @Override
-  @SuppressWarnings("all")
+  @SuppressWarnings({"all","CPD-END"})
   public boolean equals(Object o) {
     if (o == this)
       return true;

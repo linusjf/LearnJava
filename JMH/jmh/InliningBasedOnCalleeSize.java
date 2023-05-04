@@ -48,6 +48,7 @@ public class InliningBasedOnCalleeSize {
       return startValue + step;
   }
 
+  @SuppressWarnings("CPD-START")
   private int handleEdgeCase() {
     assert false;
     assert false;
@@ -1041,6 +1042,7 @@ public class InliningBasedOnCalleeSize {
     assert false;
     return 1;
   }
+  @SuppressWarnings("CPD-END")
 
   @State(Scope.Thread)
   public static class MyState {

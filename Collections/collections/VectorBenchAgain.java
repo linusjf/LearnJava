@@ -34,6 +34,7 @@ public enum VectorBenchAgain {
     }
   }
 
+  @SuppressWarnings("CPD-START")
   private static void test(boolean parallel) {
     Set<List<Integer>> vectors =
         Collections.newSetFromMap(Collections.synchronizedMap(
@@ -79,3 +80,4 @@ public enum VectorBenchAgain {
     }
   }
 }
+@SuppressWarnings("CPD-END")
