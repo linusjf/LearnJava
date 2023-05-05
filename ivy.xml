@@ -365,6 +365,10 @@
           description="ivy lib jars" />
     <conf name="ivy.main"
           description="ivy main jars" />
+    <conf name="lettuce-core.lib"
+          description="lettuce-core lib jars" />
+    <conf name="lettuce-core.main"
+          description="lettuce-core main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -880,5 +884,10 @@
                 name="ivy"
                 rev="2.5.1"
                 conf="ivy.main-&gt;master;ivy.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
+    <dependency org="io.lettuce"
+                name="lettuce-core"
+                rev="6.2.4.RELEASE"
+                conf="lettuce-core.main-&gt;master;lettuce-core.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
