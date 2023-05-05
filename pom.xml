@@ -650,5 +650,11 @@
       <version>1.0.8.RELEASE</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>jakarta.enterprise</groupId>
+      <artifactId>jakarta.enterprise.cdi-api</artifactId>
+      <version>4.0.1</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

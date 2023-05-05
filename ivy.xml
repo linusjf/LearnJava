@@ -371,6 +371,10 @@
           description="lettuce-core main jars" />
     <conf name="blockhound.main"
           description="blockhound main jars" />
+    <conf name="cdi-api.main"
+          description="cdi-api main jars" />
+    <conf name="cdi-api.lib"
+          description="cdi-api lib jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -896,5 +900,10 @@
                 name="blockhound"
                 rev="1.0.8.RELEASE"
                 conf="blockhound.main-&gt;master" />
+    <!-- https://mvnrepository.com/artifact/jakarta.enterprise/jakarta.enterprise.cdi-api -->
+    <dependency org="jakarta.enterprise"
+                name="jakarta.enterprise.cdi-api"
+                rev="4.0.1"
+                conf="cdi-api.main-&gt;master;cdi-api.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
