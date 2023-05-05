@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.12
+Created-By: 20.0.1+9 (Oracle Corporation)
+Built-By: root
+Main-Class: redis.lettuce.ConnectToRedis
+
+Name: common
+Specification-Title: Redis
+Specification-Version: 2.4.0
+Specification-Vendor: root
+Implementation-Title: Redis
+Implementation-Version: b8348a72 May 5 2023
+Implementation-Vendor: root
+Multi-Release: false

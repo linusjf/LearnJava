@@ -1,19 +1,25 @@
 package redis.lettuce;
 
-import com.lambdaworks.redis.RedisClient;
-import com.lambdaworks.redis.RedisConnection;
-import com.lambdaworks.redis.RedisURI;
+import io.lettuce.core.RedisClient;
+import io.lettuce.core.api.StatefulRedisConnection;
+import io.lettuce.core.api.sync.RedisStringCommands;
 
-public class ConnectToRedis {
+public final class ConnectToRedis {
+
+  private ConnectToRedis() {
+    throw new IllegalStateException("Private constructor");
+  }
 
   public static void main(String... args) {
-    RedisClient redisClient =
-        new RedisClient(RedisURI.create("redis://127.0.0.1:6379"));
-    RedisConnection<String, String> connection = redisClient.connect();
+    RedisClient redisClient = RedisClient.create("redis://localhost");
 
-    System.out.println("Connected to Redis");
-
-    connection.close();
+    try (StatefulRedisConnection<String, String> connection =
+             redisClient.connect()) {
+      System.out.println("Connected to Redis");
+      RedisStringCommands<String, String> sync = connection.sync();
+      String value = sync.get("key");
+      System.out.println(value);
+    }
     redisClient.shutdown();
   }
 }

@@ -27,6 +27,9 @@
     <exec executable="bash">
       <arg value="./setupclasspath" />
     </exec>
+    <exec executable="bash">
+      <arg value="./genmodinfo" />
+    </exec>
   </target>
   <target name="loadclasspath"
           depends="setupclasspath">
@@ -63,7 +66,7 @@
            modulesourcepath="${src.dir}"
            destdir="${build.dir}"
            createMissingPackageInfoClass="false"
-           modulepath="${compilerclasspath}">
+           modulepath="${dist.dir}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
       <compilerarg value="--module" />
@@ -75,7 +78,8 @@
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}/${module}"
              destdir="${docs.dir}"
-             additionalparam="${javadoc.params}"></javadoc>
+             additionalparam="${javadoc.params}"
+             modulepath="${dist.dir}" />
   </target>
   <target name="manifest">
     <tstamp />
@@ -118,7 +122,9 @@
   </target>
   <target name="run">
     <description>Run</description>
-    <exec executable="./setup" />
+    <exec executable="./setup"
+          spawn="true" />
+    <sleep milliseconds="5000" />
     <java module="${module}/${main.class}"
           fork="true"
           dir="${build.dir}">
@@ -129,33 +135,7 @@
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
       <modulepath>
-        <pathelement location="${dist.dir}/${ant.project.name}-${version}.jar" />
-      </modulepath>
-    </java>
-    <java module="${module}/${main.class1}"
-          fork="true"
-          dir="${build.dir}">
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
-      <modulepath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
-      </modulepath>
-    </java>
-    <java module="${module}/${main.class2}"
-          fork="true"
-          dir="${build.dir}">
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED" />
-      <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" />
-      <modulepath>
-        <pathelement location="${dist.dir}\${ant.project.name}-${version}.jar" />
+        <pathelement path="${dist.dir}" />
       </modulepath>
     </java>
     <exec executable="./teardown" />
@@ -242,7 +222,8 @@
       </classpath>
     </checkstyle>
   </target>
-  <target name="pmd">
+  <target name="pmd"
+          depends="compile">
     <taskdef name="pmd"
              classname="net.sourceforge.pmd.ant.PMDTask"
              classpath="${pmd.cp}" />
@@ -280,6 +261,7 @@
       <class location="${basedir}" />
       <classpath>
         <pathelement path="${spotbugs.cp}" />
+        <pathelement path="${dist.dir}" />
         <pathelement path="${java.class.path}" />
       </classpath>
     </spotbugs>

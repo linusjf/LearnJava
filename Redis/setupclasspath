@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
 cp ../lettuce.cp run.cp
-: '
-echo -n ":" >>run.cp
-cat ../blockhound.cp >>run.cp
-echo -n ":" >>run.cp
-cat ../cdi-api.cp >>run.cp
-'
 cp run.cp compile.cp
