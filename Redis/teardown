@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+require() {
+  hash "$@" || exit 127
+}
+require redis-cli
+redis-cli shutdown nosave
+echo $?
