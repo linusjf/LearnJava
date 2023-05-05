@@ -122,12 +122,11 @@
   </target>
   <target name="run">
     <description>Run</description>
-    <exec executable="./setup"
-          spawn="true" />
-    <sleep milliseconds="5000" />
+    <exec executable="./setup" />
     <java module="${module}/${main.class}"
           fork="true"
-          dir="${build.dir}">
+          dir="${build.dir}"
+          spawn="false">
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
       <jvmarg value="--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED" />

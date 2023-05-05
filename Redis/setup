@@ -2,5 +2,6 @@
 require() {
   hash "$@" || exit 127
 }
-require redis-server
-redis-server
+require redis-server sleep
+redis-server &
+sleep 5s
