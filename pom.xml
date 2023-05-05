@@ -644,5 +644,11 @@
       <version>6.2.4.RELEASE</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>io.projectreactor.tools</groupId>
+      <artifactId>blockhound</artifactId>
+      <version>1.0.8.RELEASE</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

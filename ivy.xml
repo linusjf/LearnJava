@@ -369,6 +369,8 @@
           description="lettuce-core lib jars" />
     <conf name="lettuce-core.main"
           description="lettuce-core main jars" />
+    <conf name="blockhound.main"
+          description="blockhound main jars" />
   </configurations>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/ant-contrib/ant-contrib -->
@@ -889,5 +891,10 @@
                 name="lettuce-core"
                 rev="6.2.4.RELEASE"
                 conf="lettuce-core.main-&gt;master;lettuce-core.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/io.projectreactor.tools/blockhound -->
+    <dependency org="io.projectreactor.tools"
+                name="blockhound"
+                rev="1.0.8.RELEASE"
+                conf="blockhound.main-&gt;master" />
   </dependencies>
 </ivy-module>

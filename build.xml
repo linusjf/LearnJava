@@ -69,6 +69,7 @@
   <property file="${LearnJava.basedir}/cpfiles.properties" />
   <property file="${LearnJava.basedir}/ivy.properties" />
   <property file="${LearnJava.basedir}/lettuce.properties" />
+  <property file="${LearnJava.basedir}/blockhound.properties" />
   <target name="setup">
     <antcall target="antcontrib" />
     <loadfile property="antcontrib.cp"
@@ -722,6 +723,9 @@
       <ivy:retrieve pathid="lettuce-core.lib.path"
                     conf="lettuce-core.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="blockhound.main.path"
+                    conf="blockhound.main"
+                    symlink="true" />
     </parallel>
     <parallel threadCount="${cores.count}">
       <echo file="${junitplatform.classpath.file}"
@@ -844,6 +848,8 @@
             message="${toString:ivy.main.path}:${toString:ivy.lib.path}" />
       <echo file="${lettuce-core.classpath.file}"
             message="${toString:lettuce-core.main.path}:${toString:lettuce-core.lib.path}" />
+      <echo file="${blockhound.classpath.file}"
+            message="${toString:blockhound.main.path}" />
     </parallel>
     <antcall target="uniquify" />
     <replaceregexp file="${ckjm_ext.classpath.file}"
