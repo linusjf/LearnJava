@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp ../lettuce.cp run.cp
+cp ../lettuce.cp compile.cp

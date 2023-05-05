@@ -9,6 +9,7 @@
   <property file="../gformat.properties" />
   <property file="../pmd.properties" />
   <property file="../spotbugs.properties" />
+  <property file="../antcontrib.properties" />
   <property name="src.dir"
             location="." />
   <property name="build.dir"
@@ -17,23 +18,33 @@
             location="dist" />
   <property name="docs.dir"
             location="docs" />
-  <loadfile property="cs.cp"
-            srcFile="../${cs.classpath.file}" />
-  <loadfile property="sevntu.cp"
-            srcFile="../${sevntu-check.classpath.file}" />
-  <loadfile property="pmd.cp"
-            srcFile="../${pmd.classpath.file}" />
-  <loadfile property="spotbugs.cp"
-            srcfile="../${spotbugs.classpath.file}" />
-  <loadfile property="spotbugs-plugins.cp"
-            srcfile="../${spotbugs-plugin.classpath.file}" />
-  <taskdef resource="${cs.taskdef.resource}"
-           classpath="${cs.cp}:${sevntu.cp}" />
-  <taskdef name="pmd"
-           classname="net.sourceforge.pmd.ant.PMDTask"
-           classpath="${pmd.cp}" />
-  <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-           classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
+  <loadfile property="antcontrib.cp"
+            srcFile="../${antcontrib.classpath.file}" />
+  <taskdef resource="net/sf/antcontrib/antlib.xml"
+           classpath="${antcontrib.cp}" />
+  <target name="setupclasspath">
+    <description>Run target</description>
+    <exec executable="bash">
+      <arg value="./setupclasspath" />
+    </exec>
+  </target>
+  <target name="loadclasspath"
+          depends="setupclasspath">
+    <loadfile property="cs.cp"
+              srcFile="../${cs.classpath.file}" />
+    <loadfile property="sevntu.cp"
+              srcFile="../${sevntu-check.classpath.file}" />
+    <loadfile property="pmd.cp"
+              srcFile="../${pmd.classpath.file}" />
+    <loadfile property="spotbugs.cp"
+              srcfile="../${spotbugs.classpath.file}" />
+    <loadfile property="spotbugs-plugins.cp"
+              srcfile="../${spotbugs-plugin.classpath.file}" />
+    <loadfile property="compilerclasspath"
+              srcFile="${compile.cp}" />
+    <loadfile property="runclasspath"
+              srcFile="${run.cp}" />
+  </target>
   <target name="clean">
     <delete>
       <fileset dir="."
@@ -47,11 +58,12 @@
     <mkdir dir="${dist.dir}" />
   </target>
   <target name="compile"
-          depends="clean, makedir,format,checkstyle">
+          depends="clean, makedir,loadclasspath,format,checkstyle">
     <javac includeantruntime="false"
            modulesourcepath="${src.dir}"
            destdir="${build.dir}"
-           createMissingPackageInfoClass="false">
+           createMissingPackageInfoClass="false"
+           modulepath="${compilerclasspath}">
       <compilerarg value="${javac.params}" />
       <compilerarg value="${javac.params1}" />
       <compilerarg value="--module" />
@@ -59,7 +71,7 @@
     </javac>
   </target>
   <target name="docs"
-          depends="compile">
+          depends="compile, loadclasspath">
     <javadoc packagenames="${packages}"
              sourcepath="${src.dir}/${module}"
              destdir="${docs.dir}"
@@ -209,6 +221,8 @@
     </java>
   </target>
   <target name="checkstyle">
+    <taskdef resource="${cs.taskdef.resource}"
+             classpath="${cs.cp}:${sevntu.cp}" />
     <first id="checkstylefile">
       <fileset dir=".."
                includes="${cs.config}" />
@@ -229,6 +243,9 @@
     </checkstyle>
   </target>
   <target name="pmd">
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpath="${pmd.cp}" />
     <property name="pmd.errCount"
               value="0" />
     <pmd cacheLocation="${pmd.cacheFile}"
@@ -250,6 +267,8 @@
   </target>
   <target name="spotbugs"
           depends="compile">
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.cp}:${spotbugs-plugins.cp}" />
     <spotbugs output="text"
               outputFile="${spotbugs.output}"
               reportLevel="low"
