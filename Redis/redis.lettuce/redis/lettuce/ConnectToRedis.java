@@ -6,6 +6,8 @@ import io.lettuce.core.api.sync.RedisStringCommands;
 
 public final class ConnectToRedis {
 
+  private static final String FOO = "foo";
+
   private ConnectToRedis() {
     throw new IllegalStateException("Private constructor");
   }
@@ -17,7 +19,8 @@ public final class ConnectToRedis {
              redisClient.connect()) {
       System.out.println("Connected to Redis");
       RedisStringCommands<String, String> sync = connection.sync();
-      String value = sync.get("key");
+      sync.set(FOO, "bar");
+      String value = sync.get(FOO);
       System.out.println(value);
     }
     redisClient.shutdown();

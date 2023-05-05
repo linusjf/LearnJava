@@ -9,6 +9,6 @@ Specification-Title: Redis
 Specification-Version: 2.4.0
 Specification-Vendor: root
 Implementation-Title: Redis
-Implementation-Version: 76cbfd0e May 5 2023
+Implementation-Version: 271ed4e4 May 6 2023
 Implementation-Vendor: root
 Multi-Release: false

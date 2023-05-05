@@ -170,7 +170,8 @@
       <arg line="../xformatall ${basedir}" />
     </exec>
   </target>
-  <target name="checkstyleg">
+  <target name="checkstyleg"
+          depends="loadclasspath">
     <fileset dir="${basedir}"
              id="javasrcs">
       <include name="**/*.java" />
@@ -199,7 +200,8 @@
       </classpath>
     </java>
   </target>
-  <target name="checkstyle">
+  <target name="checkstyle"
+          depends="loadclasspath">
     <taskdef resource="${cs.taskdef.resource}"
              classpath="${cs.cp}:${sevntu.cp}" />
     <first id="checkstylefile">
