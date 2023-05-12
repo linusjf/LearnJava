@@ -933,5 +933,31 @@ Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
       <property name="ignoreMethod"
                 value="false" />
     </module>
+    <!--
+            Disallow usage of variable type inference using the `var` keyword.
+
+            Using `var` makes the code harder to read in all contexts except IntelliJ,
+            because the brain has to work extra to try to understand what is the type,
+            and in some cases it's impossible to know it - e.g. `var house = getHouse()`.
+            This is particularly nasty when doing PR reviews in GitHub.
+
+            There are a few where the type is directly visible:
+            * in primitive assignments: `var done = false`, `var maxAge = 39'
+            * in constructor assignments: `var person = new Person(...)`
+            While these cases are much better, they still pose a problem: our brains
+            are used in Java code to see the type to the left of the variable name.
+            If we are mixing `var` and non-`var` declarations, now the type will
+            sometimes be shown to the left of the variable name (non-`var`), and
+            sometimes to the right of the variable name (when using `var`).
+            This adds a bit of extra work for the brain, so `var` is also not
+            recommended in these cases. The extra brain power can be better used
+            to understand the intent of the code, rather than to parse Java syntax.
+        -->
+    <module name="MatchXpath">
+      <property name="query"
+                value="//VARIABLE_DEF/TYPE/IDENT[@text='var']" />
+      <message key="matchxpath.match"
+               value="The `var` keyword should be avoided to keep the code easier to understand" />
+    </module>
   </module>
 </module>
