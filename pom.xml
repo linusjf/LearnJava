@@ -35,7 +35,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-core</artifactId>
-      <version>7.0.0-rc2</version>
+      <version>7.0.0-rc3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
