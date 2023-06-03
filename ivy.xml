@@ -663,7 +663,7 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
                 name="pitest-junit5-plugin"
-                rev="1.1.2"
+                rev="1.2.0"
                 conf="pitest-junit5-plugin.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
@@ -858,7 +858,7 @@
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <dependency org="org.springframework.boot"
                 name="spring-boot"
-                rev="3.0.6"
+                rev="3.1.0"
                 conf="spring-boot.main-&gt;master;spring-boot.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
