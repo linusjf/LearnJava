@@ -385,7 +385,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
     <dependency org="com.google.googlejavaformat"
                 name="google-java-format"
-                rev="1.16.0"
+                rev="1.17.0"
                 conf="gformat.main-&gt;master;gformat.lib-&gt;runtime" />
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
@@ -703,7 +703,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
                 name="error_prone_core"
-                rev="2.18.0"
+                rev="2.19.1"
                 conf="error_prone_core.lib-&gt;compile;error_prone_core.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/gr.spinellis.ckjm/ckjm_ext -->
     <dependency org="gr.spinellis.ckjm"
