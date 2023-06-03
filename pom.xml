@@ -239,7 +239,7 @@
     <dependency>
       <groupId>org.checkerframework</groupId>
       <artifactId>checker</artifactId>
-      <version>3.33.0</version>
+      <version>3.35.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -353,13 +353,13 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest</artifactId>
-      <version>1.13.0</version>
+      <version>1.14.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-command-line</artifactId>
-      <version>1.13.0</version>
+      <version>1.14.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -371,7 +371,7 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-ant</artifactId>
-      <version>1.13.0</version>
+      <version>1.14.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
