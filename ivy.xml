@@ -738,7 +738,7 @@
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
                 name="testng"
-                rev="7.7.1"
+                rev="7.8.0"
                 conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
     <dependency org="commons-collections"
@@ -878,7 +878,7 @@
     <!-- https://mvnrepository.com/artifact/org.xmlresolver/xmlresolver -->
     <dependency org="org.xmlresolver"
                 name="xmlresolver"
-                rev="5.1.2"
+                rev="5.2.0"
                 conf="xmlresolver.main-&gt;master;xmlresolver.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
     <dependency org="org.slf4j"
