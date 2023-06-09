@@ -753,7 +753,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency org="com.google.guava"
                 name="guava"
-                rev="32.0.0-jre"
+                rev="32.0.1-jre"
                 conf="guava.lib-&gt;compile;guava.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
     <dependency org="org.hamcrest"
