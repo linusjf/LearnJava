@@ -101,16 +101,16 @@
           description="tomcat-dbcp main jars" />
     <conf name="tomcat-dbcp.lib"
           description="tomcat-dbcp dependent jars" />
-    <conf name="ecj.main"
-          description="ecj main jars" />
-    <conf name="ecj.lib"
-          description="ecj dependent jars" />
     <conf name="tomcat-servlet-api.main"
           description="tomcat-servlet-api main jars" />
     <conf name="tomcat-jsp-api.main"
           description="tomcat-jsp-api main jars" />
     <conf name="tomcat-jsp-api.lib"
           description="tomcat-jsp-api lib jars" />
+    <conf name="ecj.main"
+          description="ecj main jars" />
+    <conf name="ecj.lib"
+          description="ecj dependent jars" />
     <conf name="junit.main"
           description="junit main jars" />
     <conf name="junit.lib"
@@ -465,7 +465,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-core"
-                rev="10.1.9"
+                rev="10.1.10"
                 conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-log4j -->
     <dependency org="org.apache.tomcat.embed"
@@ -474,12 +474,12 @@
                 conf="tomcat-embed-logging-log4j.main-&gt;master;tomcat-embed-logging-log4j.lib-&gt;runtime;tomcat-embed-logging-log4j.lib-&gt;compile" />
     <dependency org="org.apache.tomcat"
                 name="tomcat-dbcp"
-                rev="10.1.9"
+                rev="10.1.10"
                 conf="tomcat-dbcp.main-&gt;master;tomcat-dbcp.lib-&gt;runtime;tomcat-dbcp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-jasper"
-                rev="10.1.9"
+                rev="10.1.10"
                 conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli -->
     <dependency org="org.apache.tomcat.embed"
@@ -489,12 +489,12 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
     <dependency org="org.apache.tomcat"
                 name="tomcat-servlet-api"
-                rev="10.1.9"
+                rev="10.1.10"
                 conf="tomcat-servlet-api.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
     <dependency org="org.apache.tomcat"
                 name="tomcat-jsp-api"
-                rev="10.1.9"
+                rev="10.1.10"
                 conf="tomcat-jsp-api.main-&gt;master;tomcat-jsp-api.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jdt.core.compiler/ecj -->
     <dependency org="org.eclipse.jdt.core.compiler"
