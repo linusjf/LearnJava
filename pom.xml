@@ -124,8 +124,8 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-core</artifactId>
-      <version>10.1.10</version>
+      <artifactId>tomcat-embed-logging-juli</artifactId>
+      <version>9.0.0.M6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -135,33 +135,33 @@
       <optional>true</optional>
     </dependency>
     <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>10.1.11</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-dbcp</artifactId>
-      <version>10.1.10</version>
+      <version>10.1.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
-      <version>10.1.10</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-logging-juli</artifactId>
-      <version>9.0.0.M6</version>
+      <version>10.1.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
-      <version>10.1.10</version>
+      <version>10.1.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jsp-api</artifactId>
-      <version>10.1.10</version>
+      <version>10.1.11</version>
       <optional>true</optional>
     </dependency>
     <dependency>
