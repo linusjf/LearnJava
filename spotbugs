@@ -6,7 +6,7 @@ usage() {
   exit 1
 }
 require() {
-  hash "@" || exit 127
+  hash "$@" || exit 127
 }
 path() {
   dirname "$(readlink -f "$1")"
