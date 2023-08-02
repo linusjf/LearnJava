@@ -31,7 +31,7 @@ setupcp() {
   return 0
 }
 
-require java cat readlink dirname realpath
+require java cat which dirname realpath
 dir="$(path "$0")"
 declare -i res=0
 declare -r errFile="spotbugs.errors"
