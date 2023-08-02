@@ -51,8 +51,9 @@ fi
 
 proj="$1"
 echo "$proj"
-eval "${dir}/buildj $proj"
-res=$?
+echo "WARNING:"
+echo "Kindly ensure that latest compiled classes are available."
+echo "Else you might encounter stale or inconsistent results."
 if test "$res" -eq 0; then
   (
     cd "$proj" || exit $?
