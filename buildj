@@ -5,82 +5,80 @@
 # @file: buildj
 ## @created: Friday May 03, 2019 21: 20: 25 IST
 # @copyright: Copyright(c) Linus Fernandes
-## @description: 
+## @description:
 ######################################################################
 usage() {
-        echo "usage: buildj dir"
-        echo "dir - Project directory, must exist"
-        exit 1
+  echo "usage: buildj dir"
+  echo "dir - Project directory, must exist"
+  exit 1
 }
 
-isJVM ()
-{
+isJVM() {
   type jar &>/dev/null
   return $?
 }
 
-createJar()
-{
-  cd "$proj" || echo "cannot cd to $proj";
+createJar() {
+  cd "$proj" || echo "cannot cd to $proj"
   jarFile="$proj-$version.jar"
-  if [ ! -e "$manifestFile" ] 
-  then
+  if [ ! -e "$manifestFile" ]; then
     echo "$manifestFile does not exist. Run ant manifest in $proj."
     exit 1
   fi
   readarray -t args < <(find . -name "*.class" \
     ! -path "**/.git/**" -type f)
   jar cfm "$jarFile" "$manifestFile" \
-    "${args[@]}" || \
-    { echo "Error creating jar output: $jarFile";exit 1; }
-  jarRes=$? 
+    "${args[@]}" ||
+    {
+      echo "Error creating jar output: $jarFile"
+      exit 1
+    }
+  jarRes=$?
   # shellcheck disable=SC2015
-  [ -e "$jarFile" ] && \
-    mkdir -p "$distDir" && mv "$jarFile" "$distDir" || \
-    { echo "Error moving jar file to $proj/$distDir"; exit 1; }
+  [ -e "$jarFile" ] &&
+    mkdir -p "$distDir" && mv "$jarFile" "$distDir" ||
+    {
+      echo "Error moving jar file to $proj/$distDir"
+      exit 1
+    }
   cd ..
   exit 0
 }
 
-readVersion()
-{
-  [ -e "$versionFile" ] && \
-      { version=$(cat "$versionFile") || \
-      echo "Unable to read $versionFile";}
+readVersion() {
+  [ -e "$versionFile" ] &&
+    { version=$(cat "$versionFile") ||
+      echo "Unable to read $versionFile"; }
 }
 
-setupAuxClassPath()
-{
-  [ -e "$proj/$setupCpFile" ] && \
-      { cd "$proj" && ./$setupCpFile && cd ..  || \
-      echo "Unable to execute $proj/$setupCpFile";}
+setupAuxClassPath() {
+  [ -e "$proj/$setupCpFile" ] &&
+    { cd "$proj" && ./$setupCpFile && cd .. ||
+      echo "Unable to execute $proj/$setupCpFile"; }
 }
 
-readAuxClassPath()
-{
-  [ -e "$proj/$buildClasspathFile" ] && \
-      { auxClasspath=$(cat "$proj/$buildClasspathFile") || \
-      echo "Unable to read $proj/$buildClasspathFile";}
+readAuxClassPath() {
+  [ -e "$proj/$buildClasspathFile" ] &&
+    { auxClasspath=$(cat "$proj/$buildClasspathFile") ||
+      echo "Unable to read $proj/$buildClasspathFile"; }
 }
 
-readCompileFindOptions()
-{
-  [ -e "$proj/$compileFindOptionsFile" ] && \
-      { readarray -t compileFindOptions < <(cat "$proj/$compileFindOptionsFile") || \
-      echo "Unable to read $proj/$compileFindOptionsFile";}
+readCompileFindOptions() {
+  [ -e "$proj/$compileFindOptionsFile" ] &&
+    { readarray -t compileFindOptions < <(cat "$proj/$compileFindOptionsFile") ||
+      echo "Unable to read $proj/$compileFindOptionsFile"; }
 }
 
-readOptions()
-{
-  [ -e "$proj"/"$optionsFile" ] && \
-      { readarray -t options < <(cat "$proj"/"$optionsFile") || \
-      echo "Unable to read $proj/$optionsFile";}
+readOptions() {
+  [ -e "$proj"/"$optionsFile" ] &&
+    { readarray -t options < <(cat "$proj"/"$optionsFile") ||
+      echo "Unable to read $proj/$optionsFile"; }
 }
 
 require() {
-hash "$@" || exit 127
+  hash "$@" || exit 127
 }
-require javac find cat mkdir mv jar 
+require javac find cat mkdir mv jar
 
 proj=$1
 declare -i ver=11
@@ -104,42 +102,37 @@ declare -a compileFindOptions
 declare -r compileFindOptionsFile=".compilefindoptions"
 isJVM
 jvm=$?
-if [ -z "$proj" ] || [ ! -d "$proj" ]
-  then
-    usage
+if [ -z "$proj" ] || [ ! -d "$proj" ]; then
+  usage
 else
-    echo "$proj"
-    [ -e "$proj"/"$verFile" ] && \
-      { ver=$(cat "$proj"/"$verFile") || \
-      echo "$verErrMsg";}
-    readOptions
-    readCompileFindOptions
-    setupAuxClassPath
-    readAuxClassPath
-    javaversion=$(./javacversion)
-    cmd="$(find "$proj" -name "*.java" -type f "${compileFindOptions[@]}")"
-    readarray -t javasrcs < <(eval "$cmd")
-    if [[ javaversion -le $JVER ]]
-    then
-      javac -parameters -Xlint:all "${options[@]}" -source "$ver" -target "$ver" \
-        -cp "${auxClasspath}:${proj}" \
-        "${javasrcs[@]}"
+  echo "$proj"
+  [ -e "$proj"/"$verFile" ] &&
+    { ver=$(cat "$proj"/"$verFile") ||
+      echo "$verErrMsg"; }
+  readOptions
+  readCompileFindOptions
+  setupAuxClassPath
+  readAuxClassPath
+  javaversion=$(./javacversion)
+  mapfile -t javasrcs < <(find "$proj" -name "*.java" -type f "${compileFindOptions[@]}")
+  if [[ javaversion -le $JVER ]]; then
+    javac -parameters -Xlint:all "${options[@]}" -source "$ver" -target "$ver" \
+      -cp "${auxClasspath}:${proj}" \
+      "${javasrcs[@]}"
+  else
+    javac -parameters -Xlint:all "${options[@]}" --release "$ver" \
+      -cp "${auxClasspath}:${proj}" \
+      "${javasrcs[@]}"
+  fi
+  success=$?
+  if [[ $success -eq SUCCESS ]]; then
+    readVersion
+    if [[ $jvm -eq SUCCESS ]]; then
+      createJar
     else
-      javac -parameters -Xlint:all "${options[@]}" --release "$ver" \
-        -cp "${auxClasspath}:${proj}" \
-        "${javasrcs[@]}"
+      echo "$archiveErrMsg"
+      success=1
     fi
-    success=$?
-    if [[ $success -eq SUCCESS ]]
-      then
-        readVersion
-      if [[ $jvm -eq SUCCESS ]]
-        then
-        createJar
-      else
-        echo "$archiveErrMsg"
-        success=1
-      fi
-    fi
+  fi
 fi
-exit $((success+jarRes))
+exit $((success + jarRes))
