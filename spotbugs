@@ -9,7 +9,7 @@ require() {
   hash "$@" || exit 127
 }
 path() {
-  dirname "$(readlink -f "$1")"
+  dirname "$(which "$1")"
 }
 WARNING="WARNING: Using existing classpath file which may be outdated. Create setupclasspath that generates compile.cp and run.cp files that contain all class jars required by project"
 ERROR="ERROR: Error executing $setupCpFile. Fix the script and run once more."

@@ -3,10 +3,14 @@
 require() {
   hash "$@" || exit 127
 }
-require java curl
+path() {
+  dirname "$(which "$1")"
+}
+require java curl dirname which
+dir="$(path "$0")"
 bndVersion="6.4.1"
 jarURL="https://bndtools.jfrog.io/artifactory/libs-snapshot/biz/aQute/bnd/biz.aQute.bnd/${bndVersion}/biz.aQute.bnd-${bndVersion}.jar"
-jarPath="lib/biz.aQute.bnd-${bndVersion}.jar"
+jarPath="${dir}/lib/biz.aQute.bnd-${bndVersion}.jar"
 curl --silent -o "$jarPath" "$jarURL" -C -
 java -jar "$jarPath" ||
   {
