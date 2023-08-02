@@ -656,5 +656,11 @@
       <version>4.0.1</version>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>biz.aQute.bnd</groupId>
+      <artifactId>biz.aQute.bndlib</artifactId>
+      <version>6.4.1</version>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 </project>

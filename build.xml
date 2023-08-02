@@ -71,6 +71,7 @@
   <property file="${LearnJava.basedir}/lettuce.properties" />
   <property file="${LearnJava.basedir}/blockhound.properties" />
   <property file="${LearnJava.basedir}/cdi-api.properties" />
+  <property file="${LearnJava.basedir}/bndlib.properties" />
   <target name="setup">
     <antcall target="antcontrib" />
     <loadfile property="antcontrib.cp"
@@ -733,6 +734,12 @@
       <ivy:retrieve pathid="cdi-api.lib.path"
                     conf="cdi-api.lib"
                     symlink="true" />
+      <ivy:retrieve pathid="bndlib.main.path"
+                    conf="bndlib.main"
+                    symlink="true" />
+      <ivy:retrieve pathid="bndlib.lib.path"
+                    conf="bndlib.lib"
+                    symlink="true" />
     </parallel>
     <parallel threadCount="${cores.count}">
       <echo file="${junitplatform.classpath.file}"
@@ -859,6 +866,8 @@
             message="${toString:blockhound.main.path}" />
       <echo file="${cdi-api.classpath.file}"
             message="${toString:cdi-api.main.path}:${toString:cdi-api.lib.path}" />
+      <echo file="${bndlib.classpath.file}"
+            message="${toString:bndlib.main.path}:${toString:bndlib.lib.path}" />
     </parallel>
     <antcall target="uniquify" />
     <replaceregexp file="${ckjm_ext.classpath.file}"
