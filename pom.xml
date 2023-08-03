@@ -527,7 +527,7 @@
     <dependency>
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-core-benchmarks</artifactId>
-      <version>1.36</version>
+      <version>1.37</version>
       <optional>true</optional>
     </dependency>
     <dependency>
