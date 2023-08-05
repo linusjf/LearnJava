@@ -867,7 +867,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.522"
+                rev="1.12.523"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
     <dependency org="com.madgag"
