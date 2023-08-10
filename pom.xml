@@ -353,19 +353,19 @@
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest</artifactId>
-      <version>1.14.2</version>
+      <version>1.14.3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-command-line</artifactId>
-      <version>1.14.2</version>
+      <version>1.14.3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.pitest</groupId>
       <artifactId>pitest-ant</artifactId>
-      <version>1.14.2</version>
+      <version>1.14.3</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -605,7 +605,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.524</version>
+      <version>1.12.526</version>
       <optional>true</optional>
     </dependency>
     <dependency>

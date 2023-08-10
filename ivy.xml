@@ -657,17 +657,17 @@
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest -->
     <dependency org="org.pitest"
                 name="pitest"
-                rev="1.14.2"
+                rev="1.14.3"
                 conf="pitest.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-command-line -->
     <dependency org="org.pitest"
                 name="pitest-command-line"
-                rev="1.14.2"
+                rev="1.14.3"
                 conf="pitest-command-line.main-&gt;master;pitest-command-line.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-ant -->
     <dependency org="org.pitest"
                 name="pitest-ant"
-                rev="1.14.2"
+                rev="1.14.3"
                 conf="pitest-ant.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
     <dependency org="org.pitest"
@@ -867,7 +867,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.524"
+                rev="1.12.526"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
     <dependency org="com.madgag"
