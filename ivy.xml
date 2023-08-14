@@ -479,7 +479,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-core"
-                rev="10.1.11"
+                rev="10.1.12"
                 conf="tomcat-embed-core.main-&gt;master;tomcat-embed-core.lib-&gt;runtime;tomcat-embed-core.lib-&gt;compile" />
     <dependency org="org.apache.tomcat"
                 name="tomcat-dbcp"
@@ -488,7 +488,7 @@
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
     <dependency org="org.apache.tomcat.embed"
                 name="tomcat-embed-jasper"
-                rev="10.1.11"
+                rev="10.1.12"
                 conf="tomcat-embed-jasper.main-&gt;default;tomcat-embed-jasper.lib-&gt;default;tomcat-embed-jasper.lib-&gt;default" />
     <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
     <dependency org="org.apache.tomcat"
@@ -867,7 +867,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.526"
+                rev="1.12.528"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
     <dependency org="com.madgag"

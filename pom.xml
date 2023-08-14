@@ -137,7 +137,7 @@
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-core</artifactId>
-      <version>10.1.11</version>
+      <version>10.1.12</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -149,7 +149,7 @@
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
-      <version>10.1.11</version>
+      <version>10.1.12</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -605,7 +605,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.526</version>
+      <version>1.12.528</version>
       <optional>true</optional>
     </dependency>
     <dependency>
