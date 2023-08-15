@@ -575,13 +575,13 @@
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy</artifactId>
-      <version>1.14.5</version>
+      <version>1.14.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy-agent</artifactId>
-      <version>1.14.5</version>
+      <version>1.14.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -605,7 +605,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.12.528</version>
+      <version>1.12.529</version>
       <optional>true</optional>
     </dependency>
     <dependency>

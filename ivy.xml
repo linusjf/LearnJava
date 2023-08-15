@@ -842,12 +842,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy"
-                rev="1.14.5"
+                rev="1.14.6"
                 conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy-agent"
-                rev="1.14.5"
+                rev="1.14.6"
                 conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
@@ -867,7 +867,7 @@
     <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency org="com.amazonaws"
                 name="aws-java-sdk"
-                rev="1.12.528"
+                rev="1.12.529"
                 conf="aws-java-sdk.main-&gt;master;aws-java-sdk.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/com.madgag/bfg -->
     <dependency org="com.madgag"
