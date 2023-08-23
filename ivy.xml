@@ -882,7 +882,7 @@
     <!-- https://mvnrepository.com/artifact/org.xmlresolver/xmlresolver -->
     <dependency org="org.xmlresolver"
                 name="xmlresolver"
-                rev="5.2.0"
+                rev="5.2.1"
                 conf="xmlresolver.main-&gt;master;xmlresolver.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
     <dependency org="org.slf4j"
