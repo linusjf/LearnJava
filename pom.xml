@@ -539,7 +539,7 @@
     <dependency>
       <groupId>io.jenetics</groupId>
       <artifactId>jenetics</artifactId>
-      <version>7.1.3</version>
+      <version>7.2.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
