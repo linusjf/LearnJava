@@ -772,7 +772,7 @@
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency org="org.projectlombok"
                 name="lombok"
-                rev="1.18.28"
+                rev="1.18.30"
                 conf="lombok.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
     <dependency org="org.openjdk.jmh"
