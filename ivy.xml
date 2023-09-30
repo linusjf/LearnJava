@@ -403,7 +403,7 @@
     <!-- https://mvnrepository.com/artifact/net.sourceforge.pmd/pmd -->
     <dependency org="net.sourceforge.pmd"
                 name="pmd-core"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-java"
@@ -419,7 +419,7 @@
                 conf="pmd-xml.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-ant"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-ant.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-html"
