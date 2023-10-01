@@ -26,9 +26,9 @@
 
     <properties>
       <property name="foreachReassign"
-                value="firstOnly" />
+                value="deny" />
       <property name="forReassign"
-                value="skip" />
+                value="deny" />
     </properties>
   </rule>
   <rule ref="category/java/bestpractices.xml/AvoidMessageDigestField" />
@@ -55,7 +55,12 @@
   </rule>
   <rule ref="category/java/bestpractices.xml/JUnitTestsShouldIncludeAssert" />
   <rule ref="category/java/bestpractices.xml/JUnitUseExpected" />
-  <rule ref="category/java/bestpractices.xml/LooseCoupling" />
+  <rule ref="category/java/bestpractices.xml/LooseCoupling">
+    <properties>
+      <property name="allowedTypes"
+                value="java.util.Properties" />
+    </properties>
+  </rule>
   <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray" />
   <rule ref="category/java/bestpractices.xml/MissingOverride" />
   <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
@@ -174,7 +179,22 @@
                 value="50" />
     </properties>
   </rule>
-  <rule ref="category/java/codestyle.xml/MethodNamingConventions" />
+  <rule ref="category/java/codestyle.xml/MethodNamingConventions">
+    <properties>
+      <property name="methodPattern"
+                value="[a-z][a-zA-Z0-9]*" />
+      <property name="staticPattern"
+                value="[a-z][a-zA-Z0-9]*" />
+      <property name="nativePattern"
+                value="[a-z][a-zA-Z0-9]*" />
+      <property name="junit3TestPattern"
+                value="test[A-Z0-9][a-zA-Z0-9]*" />
+      <property name="junit4TestPattern"
+                value="[a-z][a-zA-Z0-9]*" />
+      <property name="junit5TestPattern"
+                value="[a-z][a-zA-Z0-9]*" />
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/PackageCase" />
   <rule ref="category/java/codestyle.xml/ShortClassName">
     <properties>
@@ -246,14 +266,29 @@
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/UnnecessaryAnnotationValueElement" />
-  <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
+  <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName">
+
+    <properties>
+      <property name="reportStaticMethods"
+                value="true" />
+      <property name="reportStaticFields"
+                value="true" />
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/UnnecessaryBoxing" />
   <rule ref="category/java/codestyle.xml/UnnecessaryCast" />
   <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn" />
   <rule ref="category/java/codestyle.xml/UnnecessaryModifier" />
   <rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
   <rule ref="category/java/codestyle.xml/UseDiamondOperator" />
-  <rule ref="category/java/codestyle.xml/UselessParentheses" />
+  <rule ref="category/java/codestyle.xml/UselessParentheses">
+    <properties>
+      <property name="ignoreClarifying"
+                value="true" />
+      <property name="ignoreBalancing"
+                value="true" />
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/UselessQualifiedThis" />
   <rule ref="category/java/codestyle.xml/UnnecessaryConstructor">
     <properties>
@@ -288,7 +323,7 @@
       <property name="classReportLevel"
                 value="80" />
       <property name="methodReportLevel"
-                value="11" />
+                value="10" />
       <property name="cycloOptions"
                 value="" />
     </properties>
@@ -302,7 +337,12 @@
   <rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
   <rule ref="category/java/design.xml/GodClass" />
   <rule ref="category/java/design.xml/ImmutableField" />
-  <rule ref="category/java/design.xml/LawOfDemeter" />
+  <rule ref="category/java/design.xml/LawOfDemeter">
+    <properties>
+      <property name="trustRadius"
+                value="1" />
+    </properties>
+  </rule>
   <rule ref="category/java/design.xml/LogicInversion" />
   <!--  <rule ref="category/java/design.xml/LoosePackageCoupling">
     <properties>
@@ -311,7 +351,12 @@
     </properties>
   </rule> -->
   <rule ref="category/java/design.xml/NcssCount" />
-  <rule ref="category/java/design.xml/NPathComplexity" />
+  <rule ref="category/java/design.xml/NPathComplexity">
+    <properties>
+      <property name="reportLevel"
+                value="200" />
+    </properties>
+  </rule>
   <rule ref="category/java/design.xml/SignatureDeclareThrowsException" />
   <rule ref="category/java/design.xml/SimplifiedTernary" />
   <rule ref="category/java/design.xml/SimplifyBooleanExpressions" />
@@ -336,15 +381,34 @@
   <rule ref="category/java/design.xml/UselessOverridingMethod" />
   <rule ref="category/java/design.xml/UseObjectForClearerAPI" />
   <rule ref="category/java/design.xml/UseUtilityClass" />
-  <rule ref="category/java/documentation.xml/CommentContent" />
-  <!-- <rule ref="category/java/documentation.xml/CommentRequired" /> -->
+  <rule ref="category/java/documentation.xml/CommentContent">
+    <properties>
+      <property name="forbiddenRegex"
+                value="idiot|jerk" />
+    </properties>
+  </rule>
+  <!--
+<rule ref="category/java/documentation.xml/CommentRequired">
+    <properties>
+        <property name="methodWithOverrideCommentRequirement" value="Ignored" />
+        <property name="accessorCommentRequirement" value="Ignored" />
+        <property name="classCommentRequirement" value="Required" />
+        <property name="fieldCommentRequirement" value="Required" />
+        <property name="publicMethodCommentRequirement" value="Required" />
+        <property name="protectedMethodCommentRequirement" value="Required" />
+        <property name="enumCommentRequirement" value="Required" />
+        <property name="serialVersionUIDCommentRequired" value="Ignored" />
+        <property name="serialPersistentFieldsCommentRequired" value="Ignored" />
+    </properties>
+</rule>
+      -->
   <!-- Documentation -->
   <rule ref="category/java/documentation.xml/CommentSize">
     <properties>
       <property name="maxLines"
-                value="10" />
+                value="6" />
       <property name="maxLineLength"
-                value="100" />
+                value="80" />
     </properties>
   </rule>
   <rule ref="category/java/documentation.xml/UncommentedEmptyConstructor" />
@@ -387,7 +451,7 @@
       <property name="minimumLength"
                 value="3" />
       <property name="skipAnnotations"
-                value="true" />
+                value="false" />
       <property name="exceptionList"
                 value="" />
     </properties>
@@ -506,7 +570,9 @@
   <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
     <properties>
       <property name="allowCommentedBlocks"
-                value="true" />
+                value="false" />
+      <property name="allowExceptionNameRegex"
+                value="^(ignored|expected)$" />
     </properties>
   </rule>
   <rule ref="category/java/errorprone.xml/EmptyFinalizer" />
