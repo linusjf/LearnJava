@@ -407,7 +407,7 @@
                 conf="pmd-core.main-&gt;master;pmd-core.lib-&gt;runtime;pmd-core.lib-&gt;compile" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-java"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-java.main-&gt;master;pmd-java.lib-&gt;runtime;pmd-java.lib-&gt;compile" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-jsp"
@@ -415,7 +415,7 @@
                 conf="pmd-jsp.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-xml"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-xml.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-ant"
@@ -423,11 +423,11 @@
                 conf="pmd-ant.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-html"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-html.main-&gt;master" />
     <dependency org="net.sourceforge.pmd"
                 name="pmd-cli"
-                rev="7.0.0-rc3"
+                rev="7.0.0-rc4"
                 conf="pmd-cli.main-&gt;master;pmd-cli.lib-&gt;compile" />
     <dependency org="net.sourceforge.saxon"
                 name="saxon"
@@ -827,7 +827,7 @@
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm -->
     <dependency org="org.ow2.asm"
                 name="asm"
-                rev="9.5"
+                rev="9.6"
                 conf="asm.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.ow2.asm/asm-util -->
     <dependency org="org.ow2.asm"

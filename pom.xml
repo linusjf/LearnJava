@@ -41,7 +41,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-java</artifactId>
-      <version>7.0.0-rc3</version>
+      <version>7.0.0-rc4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -53,7 +53,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-xml</artifactId>
-      <version>7.0.0-rc3</version>
+      <version>7.0.0-rc4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -65,13 +65,13 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-html</artifactId>
-      <version>7.0.0-rc3</version>
+      <version>7.0.0-rc4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-cli</artifactId>
-      <version>7.0.0-rc3</version>
+      <version>7.0.0-rc4</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -557,7 +557,7 @@
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm</artifactId>
-      <version>9.5</version>
+      <version>9.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
