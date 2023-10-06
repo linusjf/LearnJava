@@ -912,7 +912,7 @@
     <!-- https://mvnrepository.com/artifact/biz.aQute.bnd/biz.aQute.bndlib -->
     <dependency org="biz.aQute.bnd"
                 name="biz.aQute.bndlib"
-                rev="6.4.1"
+                rev="7.0.0"
                 conf="bndlib.main-&gt;master;bndlib.lib-&gt;compile" />
   </dependencies>
 </ivy-module>
