@@ -227,13 +227,13 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-annotations</artifactId>
-      <version>11.0.17</version>
+      <version>11.0.18</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jsp</artifactId>
-      <version>11.0.17</version>
+      <version>11.0.18</version>
       <optional>true</optional>
     </dependency>
     <dependency>
