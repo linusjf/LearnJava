@@ -533,7 +533,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-servlet"
-                rev="11.0.17"
+                rev="11.0.18"
                 conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
     <dependency org="org.eclipse.jetty"
@@ -543,7 +543,7 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-webapp"
-                rev="11.0.17"
+                rev="11.0.18"
                 conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
     <dependency org="org.eclipse.jetty"
