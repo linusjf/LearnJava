@@ -239,7 +239,7 @@
     <dependency>
       <groupId>org.checkerframework</groupId>
       <artifactId>checker</artifactId>
-      <version>3.39.0</version>
+      <version>3.40.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -263,13 +263,13 @@
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-core</artifactId>
-      <version>3.25.5</version>
+      <version>3.25.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.javaparser</groupId>
       <artifactId>javaparser-symbol-solver-core</artifactId>
-      <version>3.25.5</version>
+      <version>3.25.6</version>
       <optional>true</optional>
     </dependency>
     <dependency>
