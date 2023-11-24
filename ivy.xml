@@ -702,7 +702,7 @@
     <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
     <dependency org="com.mebigfatguy.sb-contrib"
                 name="sb-contrib"
-                rev="7.6.0"
+                rev="7.6.1"
                 conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
@@ -842,12 +842,12 @@
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy"
-                rev="1.14.9"
+                rev="1.14.10"
                 conf="byte-buddy.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
     <dependency org="net.bytebuddy"
                 name="byte-buddy-agent"
-                rev="1.14.9"
+                rev="1.14.10"
                 conf="byte-buddy-agent.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency org="org.mongodb"
