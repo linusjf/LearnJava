@@ -578,7 +578,7 @@
     <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
     <dependency org="net.sf.saxon"
                 name="Saxon-HE"
-                rev="12.3"
+                rev="12.4"
                 conf="saxon-he.main-&gt;*;" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
@@ -687,12 +687,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs"
-                rev="4.8.1"
+                rev="4.8.2"
                 conf="spotbugs.main-&gt;master;spotbugs.lib-&gt;compile;spotbugs.lib-&gt;runtime;" />
     <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-ant -->
     <dependency org="com.github.spotbugs"
                 name="spotbugs-ant"
-                rev="4.8.1"
+                rev="4.8.2"
                 conf="spotbugs-ant.main-&gt;master;" />
     <!-- https://mvnrepository.com/artifact/com.h3xstream.findsecbugs/findsecbugs-plugin -->
     <dependency org="com.h3xstream.findsecbugs"
