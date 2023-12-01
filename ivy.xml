@@ -702,7 +702,7 @@
     <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
     <dependency org="com.mebigfatguy.sb-contrib"
                 name="sb-contrib"
-                rev="7.6.1"
+                rev="7.6.2"
                 conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
