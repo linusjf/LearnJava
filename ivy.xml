@@ -583,12 +583,12 @@
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-core"
-                rev="3.25.6"
+                rev="3.25.7"
                 conf="javaparser-core.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
     <dependency org="com.github.javaparser"
                 name="javaparser-symbol-solver-core"
-                rev="3.25.6"
+                rev="3.25.7"
                 conf="javaparser-symbol-solver-core.main-&gt;master;javaparser-symbol-solver-core.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/com.github.javaparser/java-symbol-solver-core -->
     <dependency org="com.github.javaparser"
@@ -702,7 +702,7 @@
     <!-- https://mvnrepository.com/artifact/com.mebigfatguy.sb-contrib/sb-contrib -->
     <dependency org="com.mebigfatguy.sb-contrib"
                 name="sb-contrib"
-                rev="7.6.2"
+                rev="7.6.3"
                 conf="sb-contrib.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
     <dependency org="com.google.errorprone"
