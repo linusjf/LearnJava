@@ -528,28 +528,23 @@
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-server"
-                rev="12.0.4"
+                rev="12.0.5"
                 conf="jetty-server.main-&gt;default;jetty-server.lib-&gt;default" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jmx"
+                rev="12.0.5"
+                conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-servlet"
                 rev="11.0.19"
                 conf="jetty-servlet.main-&gt;master;jetty-servlet.lib-&gt;compile" />
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jmx -->
-    <dependency org="org.eclipse.jetty"
-                name="jetty-jmx"
-                rev="12.0.4"
-                conf="jetty-jmx.main-&gt;master;jetty-jmx.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-webapp"
                 rev="11.0.19"
                 conf="jetty-webapp.main-&gt;master;jetty-webapp.lib-&gt;compile" />
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
-    <dependency org="org.eclipse.jetty"
-                name="jetty-jsp"
-                rev="9.3.0.M1"
-                conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations -->
     <dependency org="org.eclipse.jetty"
                 name="jetty-annotations"
@@ -560,6 +555,11 @@
                 name="apache-jsp"
                 rev="11.0.19"
                 conf="apache-jsp.main-&gt;master;apache-jsp.lib-&gt;compile" />
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
+    <dependency org="org.eclipse.jetty"
+                name="jetty-jsp"
+                rev="9.3.0.M1"
+                conf="jetty-jsp.main-&gt;master;jetty-jsp.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/org.checkerframework/checker -->
     <dependency org="org.checkerframework"
                 name="checker"
@@ -617,7 +617,7 @@
     <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
     <dependency org="com.google.truth"
                 name="truth"
-                rev="1.1.5"
+                rev="1.2.0"
                 conf="truth.main-&gt;master;truth.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
     <dependency org="org.apache.commons"
