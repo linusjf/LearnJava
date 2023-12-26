@@ -742,7 +742,7 @@
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency org="org.testng"
                 name="testng"
-                rev="7.8.0"
+                rev="7.9.0"
                 conf="testng.main-&gt;master;testng.lib-&gt;compile;" />
     <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
     <dependency org="commons-collections"
