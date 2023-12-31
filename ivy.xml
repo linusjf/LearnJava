@@ -394,7 +394,7 @@
     <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
     <dependency org="com.puppycrawl.tools"
                 name="checkstyle"
-                rev="10.12.6"
+                rev="10.12.7"
                 transitive="true"
                 conf="checkstyle.main-&gt;master;checkstyle.lib-&gt;compile">
 
