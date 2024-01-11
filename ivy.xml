@@ -897,7 +897,7 @@
     <!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
     <dependency org="io.lettuce"
                 name="lettuce-core"
-                rev="6.3.0.RELEASE"
+                rev="6.3.1.RELEASE"
                 conf="lettuce-core.main-&gt;master;lettuce-core.lib-&gt;compile" />
     <!-- https://mvnrepository.com/artifact/io.projectreactor.tools/blockhound -->
     <dependency org="io.projectreactor.tools"
