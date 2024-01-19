@@ -887,7 +887,7 @@
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
     <dependency org="org.slf4j"
                 name="slf4j-simple"
-                rev="2.0.9"
+                rev="2.0.11"
                 conf="slf4j-simple.main-&gt;master" />
     <!-- https://mvnrepository.com/artifact/org.apache.ivy/ivy -->
     <dependency org="org.apache.ivy"
